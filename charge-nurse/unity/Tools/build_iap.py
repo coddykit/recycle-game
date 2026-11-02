@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Charge Nurse — builds Assets/Resources/data/iap.json (the catalogue the game reads) from the table below (design §10,
-fleet IAP_STANDARD) and the product texts in Assets/Resources/i18n/strings.csv (keys iap.<slug>.t / iap.<slug>.d, 10
-languages — one translation source for the game and the store card). No trial, no subscription, no loot box, no premium
-currency. ad_free = grants include `noads` (Remove Ads, Chief Operator Edition, Network Pass, Complete Charge Nurse).
-Prices are NOT here: the shop shows only the store's displayPrice.
+"""Charge Nurse — builds Assets/Resources/data/iap.json (the catalogue the game reads) from the table below (plan §10 MVP
+catalogue, fleet IAP_STANDARD) and the product texts in Assets/Resources/i18n/strings.csv (keys iap.<slug>.t / iap.<slug>.d,
+10 languages — one translation source for the game and the store card). No trial, no subscription, no loot box, no premium
+currency. ad_free = grants include `noads` (Remove Ads, Chief of Medicine Edition, Complete Hospital Collection; the Chief
+Resident Pass joins in v1.1). Prices are NOT here: the shop shows only the store's displayPrice.
   python3 charge-nurse/unity/Tools/build_iap.py [--check]
 """
 import csv, json, os, sys
@@ -14,36 +14,27 @@ OUT = os.path.join(UNITY, "Assets/Resources/data/iap.json")
 CSV = os.path.join(UNITY, "Assets/Resources/i18n/strings.csv")
 LANGS = ["en", "tr", "de", "es", "fr", "pt", "ru", "ja", "ko", "hi"]
 PREFIX = "com.coddykit.chargenurse."
-COSMETICS = ["livery_sunset", "livery_forest", "skin_retro", "depot_tropic"]
+THEMES = ["theme_modern", "theme_retro", "theme_pediatric"]
 
 # slug: (kind, group, icon, usd, grants, extra)
 P = [
-    ("starter",        "consumable", "offer",    "truck", 1.99,  [], {"days_x10": 20, "offer_only": True, "van": True}),
-    ("event_kit",      "consumable", "offer",    "star",  2.99,  [], {"days_x10": 30, "offer_only": True}),
-    ("comeback",       "consumable", "offer",    "gift",  1.99,  [], {"days_x10": 20, "offer_only": True}),
-    ("noads",          "permanent",  "adfree",   "noads", 2.99,  ["noads"], {}),
-    ("premium",        "permanent",  "adfree",   "crown", 9.99,  ["noads", "gold_livery"], {"bonus_days_x10": 20}),
-    ("route_pass",     "permanent",  "adfree",   "route", 4.99,  ["route_pass", "noads"], {}),
-    ("bundle",         "permanent",  "adfree",   "box",   19.99, ["noads", "gold_livery", "route_pass", "speed", "dispatcher_plus"] + COSMETICS, {"parts": ["premium", "route_pass", "speed", "dispatcher_plus", "cosmetics_all"]}),
-    ("speed",          "permanent",  "boost",    "fast",  2.99,  ["speed"], {}),
-    ("dispatcher_plus","permanent",  "boost",    "route", 3.99,  ["dispatcher_plus"], {}),
-    ("offline_plus",   "permanent",  "boost",    "moon",  2.99,  ["offline_plus"], {}),
-    ("livery_sunset",  "permanent",  "looks",    "truck", 1.49,  ["livery_sunset"], {}),
-    ("livery_forest",  "permanent",  "looks",    "truck", 1.49,  ["livery_forest"], {}),
-    ("skin_retro",     "permanent",  "looks",    "machine", 1.99, ["skin_retro"], {}),
-    ("depot_tropic",   "permanent",  "looks",    "home",  1.99,  ["depot_tropic"], {}),
-    ("cosmetics_all",  "permanent",  "looks",    "star",  4.99,  list(COSMETICS), {"parts": list(COSMETICS)}),
-    ("cash_s",         "consumable", "budget",   "coins", 0.99,  [], {"days_x10": 10}),
-    ("cash_m",         "consumable", "budget",   "coins", 2.99,  [], {"days_x10": 25}),
-    ("cash_l",         "consumable", "budget",   "coins", 6.99,  [], {"days_x10": 50}),
-    ("cash_xl",        "consumable", "budget",   "coins", 14.99, [], {"days_x10": 100}),
+    ("starter",         "consumable", "offer",  "gift",  1.99,  [], {"days_x10": 20, "offer_only": True, "porter": True}),
+    ("noads",           "permanent",  "adfree", "noads", 2.99,  ["noads"], {}),
+    ("premium",         "permanent",  "adfree", "crown", 8.99,  ["noads", "gold_theme"], {"bonus_days_x10": 10}),
+    ("bundle",          "permanent",  "adfree", "box",   17.99, ["noads", "gold_theme", "speed"] + THEMES, {"parts": ["premium", "speed"] + THEMES}),
+    ("speed",           "permanent",  "boost",  "fast",  2.99,  ["speed"], {}),
+    ("theme_modern",    "permanent",  "looks",  "home",  1.49,  ["theme_modern"], {}),
+    ("theme_retro",     "permanent",  "looks",  "home",  1.49,  ["theme_retro"], {}),
+    ("theme_pediatric", "permanent",  "looks",  "home",  1.49,  ["theme_pediatric"], {}),
+    ("cash_s",          "consumable", "budget", "coins", 0.99,  [], {"days_x10": 10}),
+    ("cash_m",          "consumable", "budget", "coins", 2.99,  [], {"days_x10": 25}),
+    ("cash_l",          "consumable", "budget", "coins", 6.99,  [], {"days_x10": 50}),
+    ("cash_xl",         "consumable", "budget", "coins", 14.99, [], {"days_x10": 100}),
 ]
 GROUPS = ["offer", "adfree", "boost", "looks", "budget"]
 OFFERS = {
     "cooldown_days": 3, "max_per_session": 1,
     "starter": {"event": "day_report", "day_min": 3, "day_max": 7, "per_game": 1},
-    "event_kit": {"event": "match_day", "day_min": 3, "per_game": 99},
-    "comeback": {"event": "resume", "away_days_min": 3, "per_game": 99},
 }
 
 

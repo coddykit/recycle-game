@@ -1,18 +1,14 @@
 // Charge Nurse — every player action goes through here (UI buttons, world taps, the guide's checks, tests). Engine-free.
 // Action ids (the guide's targets use the same names):
-//   select_point:<i>   tap a return point (with a truck selected = add / remove it on the route draft)
-//   select_truck:<i>   tap a truck (starts a route draft for it)
-//   go                 dispatch the selected truck along the draft (or add the draft stops to a truck on the road)
-//   suggest            fill the draft with the planner's route
-//   clear              clear the draft / deselect
-//   recall:<t>         call a truck home
-//   depot | baler | till | sell:<m> | fuel_info
-//   policy:<i>:<threshold|fixed|call>:<value>
-//   buy:<id>           sim purchase (machine:<node>, bin_m:<i>, driver, …)
-//   research:<id>
-//   tech:<point|baler|truck>:<i>
-//   auto:<t>:<0|1>
-//   start_day | next_day | speed:<n> | pause | resume
+//   select_patient:<id>   tap a waiting patient (opens the card: symptoms + colour buttons)
+//   select_bed:<b>        tap a bay / ward bed (with a tagged patient selected and a free bay = send them there)
+//   tag:<id>:<0-3>        put a colour on the card (green / yellow / orange / red)
+//   assign:<b>            send the selected patient to bay b
+//   discharge:<id>        sign the discharge now      clean:<b>   clean a dirty bed now
+//   ambulance:accept | ambulance:divert                lens       the bottleneck lens (the red corridor)
+//   handover              hand the shift over (18:30-19:00)
+//   buy:<id>              sim purchase (hire:<team>, tech:<room>, bay, bed:<ward>, room:<kind>, wing:<id>, surge)
+//   research:<id>  queue:<rule>  divert:<pct>  start_day  next_day  speed:<n>  pause  resume  open  clear
 using System;
 using System.Collections.Generic;
 using ChargeNurse.Sim;
@@ -24,7 +20,8 @@ namespace ChargeNurse.Game
         public bool Ok;
         public string Error = "";
         public double Value;
-        public static ActionResult Done(double v = 0) => new ActionResult { Ok = true, Value = v };
+        public string Text = "";
+        public static ActionResult Done(double v = 0, string text = "") => new ActionResult { Ok = true, Value = v, Text = text ?? "" };
         public static ActionResult Fail(string e) => new ActionResult { Error = e ?? "failed" };
     }
 
@@ -32,18 +29,17 @@ namespace ChargeNurse.Game
     {
         public readonly GameSession Session;
         public Simulation Sim => Session.Sim;
-        public int SelectedTruck { get; private set; } = -1;
-        public int SelectedPoint { get; private set; } = -1;
-        public readonly List<int> Draft = new List<int>();
+        public int SelectedPatient { get; private set; } = -1;
+        public int SelectedBed { get; private set; } = -1;
         /// <summary>The guide / UI may forbid actions (spotlight on another target). Null = everything allowed.</summary>
         public Func<string, bool> Allowed;
         /// <summary>(action id, result) after every action — the guide advances on these.</summary>
         public event Action<string, ActionResult> Ran;
         public Action<string, Dictionary<string, object>> Analytics = (n, p) => { };
+        /// <summary>The last lens result (the HUD's red line + one sentence).</summary>
+        public Bottleneck LastLens { get; private set; }
 
         public GameActions(GameSession session) { Session = session; }
-
-        public RouteEstimate DraftEstimate => SelectedTruck >= 0 && Draft.Count > 0 ? Sim.Estimate(SelectedTruck, Draft) : null;
 
         public ActionResult Run(string id)
         {
@@ -69,87 +65,73 @@ namespace ChargeNurse.Game
             var sim = Sim;
             switch (a[0])
             {
-                case "select_point":
+                case "select_patient":
                 {
-                    int i = Int(a, 1);
-                    if (i < 0 || i >= sim.S.Points.Count) return ActionResult.Fail("invalid");
-                    SelectedPoint = i;
-                    if (SelectedTruck >= 0)
-                    {
-                        if (Draft.Contains(i)) Draft.Remove(i);
-                        else
-                        {
-                            if (!sim.CanServe(sim.S.Trucks[SelectedTruck], sim.S.Points[i])) return ActionResult.Fail("unreachable");
-                            Draft.Add(i);
-                        }
-                    }
-                    return ActionResult.Done(i);
+                    var p = sim.P(Int(a, 1));
+                    if (p == null) return ActionResult.Fail("invalid");
+                    SelectedPatient = p.Id;
+                    SelectedBed = -1;
+                    return ActionResult.Done(p.Id);
                 }
-                case "select_truck":
+                case "select_bed":
                 {
-                    int t = Int(a, 1);
-                    if (t < 0 || t >= sim.S.Trucks.Count) return ActionResult.Fail("invalid");
-                    if (SelectedTruck != t) Draft.Clear();
-                    SelectedTruck = t;
-                    SelectedPoint = -1;
-                    return ActionResult.Done(t);
+                    int b = Int(a, 1);
+                    if (b < 0 || b >= sim.S.Beds.Count) return ActionResult.Fail("invalid");
+                    SelectedBed = b;
+                    return ActionResult.Done(b);
                 }
                 case "clear":
-                    Draft.Clear(); SelectedTruck = -1; SelectedPoint = -1;
+                    SelectedPatient = -1; SelectedBed = -1;
                     return ActionResult.Done();
-                case "suggest":
+                case "tag":
                 {
-                    if (SelectedTruck < 0) return ActionResult.Fail("no_truck");
-                    var r = sim.SuggestRoute(SelectedTruck, true);
-                    Draft.Clear();
-                    Draft.AddRange(r);
-                    return r.Count > 0 ? ActionResult.Done(r.Count) : ActionResult.Fail("nothing_due");
+                    string e = sim.TagPatient(Int(a, 1), Int(a, 2));
+                    return e == "" ? ActionResult.Done(Int(a, 2)) : ActionResult.Fail(e);
                 }
-                case "go":
+                case "assign":
                 {
-                    if (SelectedTruck < 0) return ActionResult.Fail("no_truck");
-                    if (Draft.Count == 0) return ActionResult.Fail("no_stops");
-                    var t = sim.S.Trucks[SelectedTruck];
-                    string err;
-                    if (t.Busy)
-                    {
-                        err = "";
-                        foreach (int i in Draft) { string e = sim.AddStop(SelectedTruck, i); if (e != "") err = e; }
-                    }
-                    else err = sim.Dispatch(SelectedTruck, new List<int>(Draft));
-                    if (err != "") return ActionResult.Fail(err);
-                    Analytics("route_dispatch", new Dictionary<string, object> { { "stops", (long)Draft.Count }, { "truck", t.Type } });
-                    Draft.Clear();
-                    SelectedTruck = -1;
-                    Session.Save();
+                    if (SelectedPatient < 0) return ActionResult.Fail("no_patient");
+                    string e = sim.AssignBay(SelectedPatient, Int(a, 1));
+                    if (e != "") return ActionResult.Fail(e);
+                    SelectedPatient = -1;
                     return ActionResult.Done();
                 }
-                case "recall":
+                case "discharge":
                 {
-                    string e = sim.Recall(Int(a, 1, SelectedTruck));
+                    string e = sim.Discharge(Int(a, 1));
+                    if (e != "") return ActionResult.Fail(e);
+                    if (SelectedPatient == Int(a, 1)) SelectedPatient = -1;
+                    return ActionResult.Done();
+                }
+                case "clean":
+                {
+                    string e = sim.CleanBed(Int(a, 1));
                     return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
                 }
-                case "depot":
-                case "baler":
-                case "fuel_info":
+                case "ambulance":
+                {
+                    if (sim.S.Ambulance == null) return ActionResult.Fail("no_call");
+                    bool accept = a.Length > 1 && a[1] == "accept";
+                    sim.DecideAmbulance(accept);
+                    Analytics("ambulance_answer", new Dictionary<string, object> { { "accept", accept ? 1L : 0L } });
+                    return ActionResult.Done(accept ? 1 : 0);
+                }
+                case "lens":
+                {
+                    LastLens = sim.Lens();
+                    Analytics("lens_used", new Dictionary<string, object> { { "key", LastLens.Key } });
+                    return ActionResult.Done(LastLens.Count, LastLens.Key);
+                }
+                case "handover":
+                {
+                    string e = sim.Handover();
+                    if (e != "") return ActionResult.Fail(e);
+                    SelectedPatient = -1; SelectedBed = -1;
+                    Session.Save();
+                    return ActionResult.Done();
+                }
                 case "open":
                     return ActionResult.Done();
-                case "till":
-                    return ActionResult.Done(sim.CollectTill());
-                case "sell":
-                {
-                    double got = sim.Sell(Int(a, 1, 0));
-                    if (got <= 0) return ActionResult.Fail("nothing");
-                    Session.Save();
-                    return ActionResult.Done(got);
-                }
-                case "policy":
-                {
-                    string e = sim.SetPolicy(Int(a, 1), a.Length > 2 ? a[2] : "", Int(a, 3, 0));
-                    if (e != "") return ActionResult.Fail(e);
-                    Session.Save();
-                    return ActionResult.Done();
-                }
                 case "buy":
                 {
                     string item = id.Substring(4);
@@ -163,17 +145,18 @@ namespace ChargeNurse.Game
                 {
                     string e = sim.StartResearch(a.Length > 1 ? a[1] : "");
                     if (e != "") return ActionResult.Fail(e);
+                    Analytics("research_start", new Dictionary<string, object> { { "id", a[1] } });
                     Session.Save();
                     return ActionResult.Done();
                 }
-                case "tech":
+                case "queue":
                 {
-                    string e = sim.SendTech(a.Length > 1 ? a[1] : "", Int(a, 2, 0));
+                    string e = sim.SetQueue(a.Length > 1 ? a[1] : "");
                     return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
                 }
-                case "auto":
+                case "divert":
                 {
-                    string e = sim.SetAuto(Int(a, 1), Int(a, 2, 0) == 1);
+                    string e = sim.SetDivert(Int(a, 1, 0));
                     return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
                 }
                 case "start_day":
@@ -183,13 +166,12 @@ namespace ChargeNurse.Game
                     return ActionResult.Done();
                 case "next_day":
                     if (!sim.NextDay()) return ActionResult.Fail("phase");
-                    Draft.Clear(); SelectedTruck = -1;
+                    SelectedPatient = -1; SelectedBed = -1;
                     Session.Save();
                     return ActionResult.Done();
                 case "speed":
                 {
-                    int s = Int(a, 1, 1);
-                    sim.SetSpeed(s);
+                    sim.SetSpeed(Int(a, 1, 1));
                     Session.Settings.SpeedDefault = sim.S.Speed;
                     return ActionResult.Done(sim.S.Speed);
                 }

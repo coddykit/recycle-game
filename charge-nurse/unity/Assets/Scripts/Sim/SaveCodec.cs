@@ -1,8 +1,9 @@
-// Charge Nurse sim core — save codec (fleet §14). Encode = canonical JSON of the whole career (a live day included:
-// trucks mid-road, a jammed machine, the report screen, the guide). Decode never throws and never touches a running game;
-// it accepts every state the sim can produce (negative cash after a bad day, a waiting truck, an empty yard) and refuses
-// only what the sim can never write (unknown nodes / vehicle types, indices out of range, another game's file).
-// Keeping unreadable files (.unreadable copies, .bak fallback) is CoddyKit.SaveRepository's job.
+// Charge Nurse sim core — save codec (fleet §14). Encode = canonical JSON of the whole career (a live shift included:
+// patients mid-corridor, a scanner down, a closed ward, the report screen, the guide). Decode never throws and never
+// touches a running game; it accepts every state the sim can produce (negative cash after a bad day, a patient boarding
+// in the OR, a bed reserved for a porter) and refuses only what the sim can never write (unknown zones / rooms / stages,
+// indices out of range, another game's file). Keeping unreadable files (.unreadable copies, .bak fallback) is
+// CoddyKit.SaveRepository's job.
 using System;
 using System.Collections.Generic;
 
@@ -39,52 +40,95 @@ namespace ChargeNurse.Sim
             {
                 Seed = J.L(o, "seed", 1), RngState = J.L(o, "rng", 1), Day = J.I(o, "day", 1), Minute = J.D(o, "minute", gd.DayStart),
                 Phase = J.S(o, "phase", Phases.Plan), Speed = J.I(o, "speed", 1), Paused = J.B(o, "paused"), Cash = J.D(o, "cash"),
-                Rating = J.D(o, "rating", 50), Drivers = J.I(o, "drivers", 1), Techs = J.I(o, "techs"), Researching = J.S(o, "researching"),
-                ResearchLeftS = J.D(o, "research_left"), NextDispatchAt = J.D(o, "next_dispatch", gd.DayStart), Tutorial = J.B(o, "tutorial"),
-                FuelVoucher = J.B(o, "voucher"), OfflinePending = J.D(o, "offline_pending"), LastSeen = J.L(o, "last_seen"),
-                BestDayStars = J.I(o, "best_stars"), ThreeStarDays = J.I(o, "three_star_days"), Containers = J.L(o, "containers"), Bales = J.I(o, "bales"),
+                Reputation = J.D(o, "reputation", 50), Burnout = J.D(o, "burnout"), Researching = J.S(o, "researching"), ResearchLeft = J.D(o, "research_left"),
+                NextPatient = J.I(o, "next_patient", 1), Queue = J.S(o, "queue", QueueRules.Balanced), DivertAt = J.I(o, "divert_at"),
+                HandoverDone = J.B(o, "handover"), Surge = J.B(o, "surge"), SickTeam = J.S(o, "sick"), FloatTeam = J.S(o, "float_team"), FloatLeft = J.D(o, "float_left"),
+                NeighborUsed = J.B(o, "neighbor"), Tutorial = J.B(o, "tutorial"), ArrivalsOn = J.B(o, "arrivals_on", true),
+                OfflinePending = J.D(o, "offline_pending"), LastSeen = J.L(o, "last_seen"), BestStars = J.I(o, "best_stars"), GoodDays = J.I(o, "good_days"),
+                CareerTreated = J.L(o, "career_treated"),
             };
-            if (!Finite(s.Minute) || !Finite(s.Cash) || !Finite(s.Rating) || !Finite(s.ResearchLeftS) || !Finite(s.OfflinePending)) return Fail("not_finite");
+            if (!Finite(s.Minute) || !Finite(s.Cash) || !Finite(s.Reputation) || !Finite(s.ResearchLeft) || !Finite(s.OfflinePending) || !Finite(s.Burnout) || !Finite(s.FloatLeft))
+                return Fail("not_finite");
             if (s.Day < 1 || s.Day > 1000000) return Fail("day");
             if (!Phases.Valid(s.Phase)) return Fail("phase");
             if (s.Minute < gd.DayStart - 1 || s.Minute > gd.DayEnd + 1) return Fail("minute");
-            if (s.Drivers < 0 || s.Techs < 0 || s.Speed < 1 || s.Speed > 8) return Fail("counts");
-            s.Districts = J.StrList(o, "districts");
-            foreach (var d in s.Districts) if (gd.District(d) == null) return Fail("district");
-            if (s.Districts.Count == 0) return Fail("district");
+            if (s.Speed < 1 || s.Speed > 8 || s.NextPatient < 1) return Fail("counts");
+            if (!QueueRules.Valid(s.Queue)) return Fail("queue");
+            foreach (var t in new[] { s.SickTeam, s.FloatTeam }) if (t != "" && Array.IndexOf(Teams.All, t) < 0) return Fail("team");
+
+            if (J.Obj(o, "teams") is JObj tm)
+                foreach (var kv in tm)
+                {
+                    if (Teams.Index(kv.Key) < 0) return Fail("team");
+                    int n = J.I(kv.Value);
+                    if (n < 0 || n > 99) return Fail("team_count");
+                    s.Teams[kv.Key] = n;
+                }
+            foreach (var t in Teams.Pool) if (!s.Teams.ContainsKey(t)) s.Teams[t] = 0;
+            if (!ReadNums(o, "fatigue", s.Fatigue) || !ReadNums(o, "busy_min", s.BusyMin) || !ReadNums(o, "cap_min", s.CapMin)) return Fail("team");
+
+            s.Wings = J.StrList(o, "wings");
+            if (s.Wings.Count == 0) return Fail("wing");
+            foreach (var w in s.Wings) if (gd.Wing(w) == null) return Fail("wing");
             s.Research = J.StrList(o, "research");
             foreach (var r in s.Research) if (!gd.ResearchById.ContainsKey(r)) return Fail("research");
             if (s.Researching != "" && !gd.ResearchById.ContainsKey(s.Researching)) return Fail("research");
             s.Seen = J.StrList(o, "seen");
 
-            foreach (var p in J.Arr(o, "points") ?? new List<object>())
+            foreach (var x in J.Arr(o, "beds") ?? new List<object>())
             {
-                var ps = PointState.Read(p);
-                if (ps.Node < 0 || ps.Node >= gd.Nodes.Count || gd.Nodes[ps.Node].Kind != "site") return Fail("point_node");
-                if (!gd.PointKinds.ContainsKey(ps.Kind)) return Fail("point_kind");
-                s.Points.Add(ps);
+                var b = Bed.Read(x);
+                if (b.Zone < 0 || b.Zone >= gd.Zones.Count) return Fail("bed_zone");
+                var z = gd.Zones[b.Zone];
+                if (z.Kind != "bays" && z.Kind != "ward") return Fail("bed_zone");
+                if (b.Bay != (z.Kind == "bays") || b.Slot < 0 || b.Slot >= Math.Max(1, z.Slots)) return Fail("bed_slot");
+                if (!BedState.Valid(b.State) || !Finite(b.Left)) return Fail("bed_state");
+                s.Beds.Add(b);
             }
-            foreach (var t in J.Arr(o, "trucks") ?? new List<object>())
+            foreach (var x in J.Arr(o, "rooms") ?? new List<object>())
             {
-                var ts = TruckState.Read(t);
-                if (!gd.Vehicles.ContainsKey(ts.Type)) return Fail("truck_type");
-                if (ts.AtNode < 0 || ts.AtNode >= gd.Nodes.Count) return Fail("truck_node");
-                foreach (int n in ts.Path) if (n < 0 || n >= gd.Nodes.Count) return Fail("truck_path");
-                foreach (int i in ts.Stops) if (i < 0 || i >= s.Points.Count) return Fail("truck_stop");
-                if (ts.Target < -1 || ts.Target >= s.Points.Count) return Fail("truck_target");
-                if (!Finite(ts.PathPos) || !Finite(ts.PathKm) || !Finite(ts.TimeLeft)) return Fail("not_finite");
-                s.Trucks.Add(ts);
+                var r = Room.Read(x);
+                if (!gd.Rooms.ContainsKey(r.Kind) || r.Zone < 0 || r.Zone >= gd.Zones.Count) return Fail("room");
+                if (r.Techs < 0 || r.Techs > 99 || !Finite(r.Down)) return Fail("room");
+                s.Rooms.Add(r);
             }
-            foreach (var j in J.Arr(o, "tech_jobs") ?? new List<object>()) s.TechJobs.Add(TechJob.Read(j));
-            s.Depot = DepotState.Read(J.Obj(o, "depot"), gd);
-            var mk = JW.Dbl(o, "market", Mats.N);
-            for (int m = 0; m < Mats.N; m++) s.Market[m] = mk[m] > 0 ? mk[m] : 1;
+            var ids = new HashSet<int>();
+            foreach (var x in J.Arr(o, "patients") ?? new List<object>())
+            {
+                var p = Patient.Read(x);
+                if (!Stage.Valid(p.Stage)) return Fail("patient_stage");
+                if (p.Sev < 0 || p.Sev > Sev.Red || p.Tag < -1 || p.Tag > Sev.Red) return Fail("patient_sev");
+                if (p.Bed < -1 || p.Bed >= s.Beds.Count || p.Room < -1 || p.Room >= s.Rooms.Count) return Fail("patient_where");
+                if (p.Dest >= s.Beds.Count || (p.Dest <= -2 && -2 - p.Dest >= s.Rooms.Count)) return Fail("patient_dest");
+                if (p.Test != "" && p.Test != "xray" && p.Test != "lab" && p.Test != "ct") return Fail("patient_test");
+                if (!Finite(p.Left) || !Finite(p.Wait) || !Finite(p.Total)) return Fail("not_finite");
+                if (!ids.Add(p.Id) || p.Id >= s.NextPatient) return Fail("patient_id");
+                s.Patients.Add(p);
+            }
+            if (J.Obj(o, "ambulance") is JObj am)
+            {
+                s.Ambulance = AmbulanceCall.Read(am);
+                if (s.Ambulance.Sev < 0 || s.Ambulance.Sev > Sev.Red) return Fail("ambulance");
+            }
             foreach (var e in J.Arr(o, "events") ?? new List<object>()) s.Events.Add(ActiveEvent.Read(e));
             foreach (var e in J.Arr(o, "planned") ?? new List<object>()) s.Planned.Add(PlannedEvent.Read(e));
             s.Today = DayStats.Read(J.Obj(o, "today"));
             foreach (var h in J.Arr(o, "history") ?? new List<object>()) s.History.Add(DayStats.Read(h));
             if (J.Obj(o, "rewards") is JObj rw) foreach (var kv in rw) s.Rewards[kv.Key] = RewardUse.Read(kv.Value);
             return new DecodeResult { Ok = true, Sim = new Simulation(gd, s) };
+        }
+
+        static bool ReadNums(JObj o, string key, Dictionary<string, double> into)
+        {
+            if (!(J.Obj(o, key) is JObj d)) return true;
+            foreach (var kv in d)
+            {
+                if (Array.IndexOf(Teams.All, kv.Key) < 0) return false;
+                double x = J.D(kv.Value);
+                if (!Finite(x)) return false;
+                into[kv.Key] = x;
+            }
+            return true;
         }
 
         static bool Finite(double d) => !double.IsNaN(d) && !double.IsInfinity(d);

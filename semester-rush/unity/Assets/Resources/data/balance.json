@@ -1,62 +1,95 @@
 {
   "version": 1,
-  "time": { "day_start": 540, "day_end": 1140, "game_min_per_real_s": 2.5, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "depot_wrapup_min": 60 },
-  "start": { "cash": 2000, "rating": 50, "drivers": 1, "techs": 0, "trucks": ["van", "van"], "machines": ["h_fish", "h_ferry", "h_corner"], "fill_pct": { "h_fish": 0.86, "h_ferry": 0.62, "h_corner": 0.35 }, "baler_pet_kg": 58.5 },
-  "materials": {
-    "pet":   { "vol_l": 1.6,  "kg": 0.03,  "bale_kg": 60,   "bale_price": 420 },
-    "alu":   { "vol_l": 0.45, "kg": 0.015, "bale_kg": 30,   "bale_price": 1300 },
-    "glass": { "vol_l": 0.9,  "kg": 0.38,  "bale_kg": 1000, "bale_price": 160 }
+  "_doc": "Semester Rush: Campus Dean balance (UNIVERSITY_GAME_PLAN.md sections 4-10). Times are game minutes; a week = Mon-Fri, five slots a day, a 10-minute bell change before every slot. Money in $.",
+  "time": {
+    "day_start": 530, "slots": [540, 630, 720, 810, 900], "class_min": 80, "bell_min": 10, "lunch_slots": [2, 3],
+    "game_min_per_real_s": 12, "bell_min_per_real_s": 2.5, "days_per_week": 5, "weeks_per_semester": 6,
+    "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4
   },
-  "archetypes": [
-    { "id": "commuter", "min": 2,  "max": 5,  "mix": [0.70, 0.25, 0.05], "weekend": 0.6, "evening": 1.0 },
-    { "id": "family",   "min": 12, "max": 30, "mix": [0.55, 0.20, 0.25], "weekend": 2.2, "evening": 0.8 },
-    { "id": "student",  "min": 4,  "max": 10, "mix": [0.35, 0.60, 0.05], "weekend": 0.8, "evening": 2.0 },
-    { "id": "eco",      "min": 6,  "max": 15, "mix": [0.40, 0.30, 0.30], "weekend": 1.2, "evening": 1.0 },
-    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 }
+  "walk": {
+    "speed_m_per_min": 80, "path_factor": 1.1, "congestion": 1.4, "spread": 0.2, "late_credit": 0.4,
+    "snow_speed": 0.6, "bike_lanes_speed": 1.15, "signposts_time": 0.92, "shuttle_speed": 3.0,
+    "marshal_cap": 0.6, "path_cap": 30, "gate_cap": 20, "shuttle_cap": 8, "widen_mult": 2, "drill_time": 1.35, "open_day_load": 1.4, "staggered_cost_day": 60
+  },
+  "start": {
+    "cash": 3000, "prestige": 100, "zones": ["college"], "professors": ["business"],
+    "staff": { "lab_techs": 0, "maintenance": 1, "marshals": 0, "canteen_crew": 1, "registry": 1 },
+    "guide_cell": [0, 0], "guide_course": "bus101"
+  },
+  "buildings": {
+    "admin":   { "kind": "admin",   "upkeep": 40 },
+    "hall_s":  { "kind": "hall",    "room": "lecture", "seats": 50,  "price": 2400,  "upkeep": 50,  "build_min": 720 },
+    "hall_m":  { "kind": "hall",    "room": "lecture", "seats": 90,  "price": 5200,  "upkeep": 80,  "build_min": 1080 },
+    "hall_l":  { "kind": "hall",    "room": "lecture", "seats": 160, "price": 11000, "upkeep": 140, "build_min": 1500 },
+    "lab":     { "kind": "lab",     "room": "lab",     "seats": 50,  "price": 7500,  "upkeep": 120, "build_min": 1200 },
+    "library": { "kind": "library", "price": 2200, "upkeep": 50, "build_min": 540, "prestige": 3, "quality": 0.04 },
+    "canteen": { "kind": "canteen", "meals": 80, "price": 3500, "upkeep": 70, "build_min": 900 },
+    "dorm":    { "kind": "dorm",    "beds": 80, "rent": 14, "price": 4500, "upkeep": 70, "build_min": 1200 }
+  },
+  "faculties": {
+    "business":   { "zone": "college", "profs": ["lee", "ortega", "brandt"] },
+    "literature": { "zone": "quad",    "profs": ["moreau", "adeyemi", "quinn"] },
+    "law":        { "zone": "quad",    "profs": ["haddad", "silva", "novak"] },
+    "philosophy": { "zone": "quad",    "profs": ["okafor", "lindqvist", "rao"] },
+    "physics":    { "zone": "science", "profs": ["tanaka", "petrov", "mensah"] },
+    "chemistry":  { "zone": "science", "profs": ["kaur", "rossi", "weber"] },
+    "maths":      { "zone": "science", "profs": ["nakamura", "costa", "ibrahim"] }
+  },
+  "cohorts": [
+    { "id": "bus1", "faculty": "business",   "size": 60 },
+    { "id": "bus2", "faculty": "business",   "size": 50 },
+    { "id": "lit1", "faculty": "literature", "size": 50 },
+    { "id": "law1", "faculty": "law",        "size": 60 },
+    { "id": "phi1", "faculty": "philosophy", "size": 40 },
+    { "id": "phy1", "faculty": "physics",    "size": 45 },
+    { "id": "che1", "faculty": "chemistry",  "size": 45 },
+    { "id": "mat1", "faculty": "maths",      "size": 50 }
   ],
-  "hour_curve": [0.7, 0.8, 0.9, 1.0, 1.1, 0.9, 0.9, 1.1, 1.4, 1.2],
-  "weekend_mult": 1.25,
-  "points": {
-    "machine_s": { "cap_l": 240, "lease_day": 14, "jam_per_1000": 1.2, "citizens": true },
-    "machine_m": { "cap_l": 480, "lease_day": 22, "jam_per_1000": 1.0, "citizens": true },
-    "shop":      { "cap_l": 160, "lease_day": 0,  "jam_per_1000": 0,   "citizens": true, "shop_fee": 0.3 },
-    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] }
+  "courses": [
+    { "id": "bus101", "cohort": "bus1", "room": "lecture", "per_week": 2 },
+    { "id": "bus110", "cohort": "bus1", "room": "lecture", "per_week": 2 },
+    { "id": "bus201", "cohort": "bus2", "room": "lecture", "per_week": 2 },
+    { "id": "bus210", "cohort": "bus2", "room": "lecture", "per_week": 2 },
+    { "id": "lit101", "cohort": "lit1", "room": "lecture", "per_week": 2 },
+    { "id": "lit110", "cohort": "lit1", "room": "lecture", "per_week": 2 },
+    { "id": "law101", "cohort": "law1", "room": "lecture", "per_week": 2 },
+    { "id": "law110", "cohort": "law1", "room": "lecture", "per_week": 2 },
+    { "id": "phi101", "cohort": "phi1", "room": "lecture", "per_week": 2 },
+    { "id": "phi110", "cohort": "phi1", "room": "lecture", "per_week": 2 },
+    { "id": "phy101", "cohort": "phy1", "room": "lecture", "per_week": 2 },
+    { "id": "phy150", "cohort": "phy1", "room": "lab",     "per_week": 2 },
+    { "id": "che101", "cohort": "che1", "room": "lecture", "per_week": 2 },
+    { "id": "che150", "cohort": "che1", "room": "lab",     "per_week": 2 },
+    { "id": "mat101", "cohort": "mat1", "room": "lecture", "per_week": 2 },
+    { "id": "mat110", "cohort": "mat1", "room": "lecture", "per_week": 2 }
+  ],
+  "professor": { "hire": 800, "wage": 400, "skill": [0.78, 0.86, 0.92], "max_per_day": 3, "max_per_week": 10, "per_faculty": 3 },
+  "staff": {
+    "lab_techs":    { "hire": 300, "wage": 160, "max": 4 },
+    "maintenance":  { "hire": 300, "wage": 150, "max": 6 },
+    "marshals":     { "hire": 250, "wage": 140, "max": 8 },
+    "canteen_crew": { "hire": 250, "wage": 140, "max": 6 },
+    "registry":     { "hire": 300, "wage": 150, "max": 6 }
   },
-  "compactor_pet": 2.5,
-  "compactor_jam_mult": 1.6,
-  "vehicles": {
-    "van":       { "vol_l": 1800, "kg": 700,  "speed_kmh": 30, "cost_km": 1.4, "service_min": 6, "alley": true,  "pet_compress": 1.0, "price": 2500, "research": "" },
-    "bike":      { "vol_l": 450,  "kg": 90,   "speed_kmh": 16, "cost_km": 0.1, "service_min": 4, "alley": true,  "pet_compress": 1.0, "price": 900,  "research": "cargo_bike" },
-    "compactor": { "vol_l": 2600, "kg": 3000, "speed_kmh": 26, "cost_km": 2.6, "service_min": 7, "alley": false, "pet_compress": 2.5, "price": 6500, "research": "compactor_truck" }
-  },
-  "unload": { "base_min": 8, "per_container_min": 0.0025 },
-  "breakdown_per_km": 0.0015,
-  "glass_break_per_km": 0.0006,
   "economy": {
-    "fee": 1.0, "bulk_fee": 0.5, "fee_rating_min": 0.85, "fee_rating_span": 0.30,
-    "driver_wage": 110, "tech_wage": 90, "depot_power": 35, "line_power": 15,
-    "rating_alpha": 0.3, "turned_rating_free_days": 3
+    "tuition": 8.0, "prestige_mult_min": 0.8, "prestige_mult_span": 0.6, "services_per_student": 2, "gate_cost": 150, "widen_cost": 900,
+    "crew_meals": 0.25, "food_trucks_meals": 40, "hunger_mult": 0.85, "lab_untech_mult": 0.6, "no_prof_mult": 0,
+    "sub_prof_mult": 0.6, "smart_boards": 0.08, "lab_equipment": 0.12, "faculty_dev": 0.05, "tutoring_late": 0.6,
+    "maint_build_speed": 0.15, "day_income_floor": 300, "exam_fee": 6, "grant_per_student": 10, "scholarship_per_student": 12,
+    "invigilator_per": 50, "uninvigilated_mult": 0.85, "dorm_comfort_rent": 1.25, "max_cohort": 240,
+    "intake_grow": 1.2, "intake_select": 1.05, "intake_select_apt": 0.04, "intake_grow_apt": -0.03, "registry_grow": 0.03
   },
-  "depot": { "count_per_hour": 420, "lines_start": 1, "lines_max": 3, "baler_kg_per_hour": 90, "baler_jam_per_bale": 0.02, "yard_cap": 12, "intake_cap": 2500, "glass_bay_t": 3, "tech_speed_kmh": 30, "tech_fix_min": 20 },
-  "prices": {
-    "machine_s": 600, "bin_m": 700, "compactor": 900, "sensor": 250, "shop": 150, "horeca": 300,
-    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000
+  "prestige": {
+    "weekly_gain": 45, "grade_par": 0.55, "semester_gain": 70, "max": 1000, "free_weeks": 3,
+    "clubs": 3, "dorm_comfort": 1, "gym": 2
   },
-  "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
-  "stars": {
-    "service": [0.12, 0.06, 0.02],
-    "efficiency": [12, 25, 40],
-    "throughput": [0.70, 0.35, 0.10]
-  },
-  "events": { "free_days": 3, "per_day": [0.0, 0.6, 1.0, 1.4, 1.7] },
-  "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
+  "events": { "free_weeks": 1, "per_day": [0, 0.25, 0.35, 0.45, 0.5], "decision_min": 90 },
+  "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 12, "rate": 0.5, "rate_plus": 0.8, "weeks_per_hour": 0.5 },
   "rewards": {
-    "offline_x2":      { "per_day": 1, "cooldown_s": 0 },
-    "emergency_empty": { "per_day": 3, "cooldown_s": 600 },
-    "fuel_voucher":    { "per_day": 2, "cooldown_s": 900 },
-    "baler_rescue":    { "per_day": 1, "cooldown_s": 0 },
-    "daily_bonus":     { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
-    "single_max_days": 0.2
-  },
-  "day_income_floor": 600
+    "single_max_days": 0.2,
+    "offline_x2":     { "per_day": 1, "cooldown_s": 0 },
+    "extra_marshals": { "per_day": 3, "cooldown_s": 600, "count": 3 },
+    "daily_bonus":    { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
+    "city_help":      { "per_day": 1, "cooldown_s": 0 }
+  }
 }

@@ -37,10 +37,15 @@ namespace DocketDay.Game
         public long FirstSeen { get => L("first_seen"); set => D["first_seen"] = value; }
         public long LastOfferAt { get => L("last_offer_at"); set => D["last_offer_at"] = value; }
         public string ReviewDeferred { get => S("review_deferred", ""); set => D["review_deferred"] = value ?? ""; }
-        /// <summary>Speed Pack owners: skip the day report by itself.</summary>
-        public bool AutoSkipReport { get => B("auto_report", false); set => D["auto_report"] = value; }
-        /// <summary>Equipped truck livery ("" = default; premium gold / cosmetic liveries).</summary>
-        public string Livery { get => S("livery", ""); set => D["livery"] = value ?? ""; }
+        /// <summary>Faster Days owners: the billing run skips its count-up animation.</summary>
+        public bool SkipBillingAnim { get => B("skip_billing", true); set => D["skip_billing"] = value; }
+        /// <summary>Equipped cosmetics ("" = default): office style (theme_classic / theme_loft / theme_deco / gold_nameplate),
+        /// courtroom theme on/off, suits & gowns on/off.</summary>
+        public string OfficeTheme { get => S("office_theme", ""); set => D["office_theme"] = value ?? ""; }
+        public bool CourtTheme { get => B("court_theme", true); set => D["court_theme"] = value; }
+        public bool Outfits { get => B("outfits", true); set => D["outfits"] = value; }
+        /// <summary>The "objection!" timing tap in the hearing scene (optional flavour, ±5 %; can be turned off).</summary>
+        public bool ObjectionTap { get => B("objection", true); set => D["objection"] = value; }
 
         public bool Flag(string id) => MiniJson.Arr(D, "flags") is List<object> l && l.Contains(id);
 

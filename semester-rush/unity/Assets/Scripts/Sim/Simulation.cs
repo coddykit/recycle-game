@@ -1,10 +1,12 @@
 // Semester Rush sim core — engine independent (no UnityEngine). C# 9 / .NET Standard 2.1.
-// One career: a coastal region's deposit-return network. A work day runs 09:00-19:00 game time (~4 real minutes at 1x).
-//   plan  (09:00, paused)  — routes, policies, purchases;
-//   live                   — citizens bring bottles to return points, trucks drive routes, the depot counts and bales;
-//   report (19:00)         — trucks come home, the depot wraps up, costs are paid, stars + Green Rating; NextDay().
-// Partial class: this file = construction, time, demand (citizens); Fleet.cs = trucks, routes, technicians;
-// Depot.cs = count line, baler, market; Economy.cs = day end, purchases, research, offline, rewards; Crises.cs = events.
+// One career: a young campus. A week = Mon..Fri, five class slots a day with a 10-minute bell change before each one.
+//   plan   (Sunday, paused)  — the timetable board (course × day × slot × room), purchases, staff;
+//   live                     — bell changes (students walk the path graph; congestion makes them late), classes earn
+//                              tuition and grades, lunch at 12:00 / 13:30 (canteen seats), crises;
+//   report (Friday 16:20)    — weekly grades -> prestige, wages + upkeep; exam week ends the semester (intake choice).
+// Partial class: this file = construction, time, queries; Timetable.cs = placements, rules, auto-fill;
+// Bell.cs = bell-change flows, lunch, classes; Economy.cs = week end, semester, purchases, research, offline, rewards;
+// Crises.cs = events.
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +14,7 @@ namespace SemesterRush.Sim
 {
     public sealed class SimEvent
     {
-        public string Type;     // deposit, turned, jam, serviced, unloaded, bale, sold, crisis, research_done, district, day_done, day_start, ...
+        public string Type;     // bell, class_done, lunch, crisis, decision, built, zone, research_done, day_done, week_done, ...
         public int A = -1, B = -1;
         public double V;
         public string Text = "";
@@ -26,9 +28,7 @@ namespace SemesterRush.Sim
         public readonly Rng Rng;
         readonly List<SimEvent> events = new List<SimEvent>();
         readonly Dictionary<string, bool> perks = new Dictionary<string, bool>();
-        double[] litresPerContainer;  // per point node: expected litres per deposited container (estimate model)
-        /// <summary>Emit deposit / turned events for the diorama's walkers (off in balance bots).</summary>
-        public bool EmitCrowd = true;
+        PathGraph graph;
 
         public Simulation(GameData gd, long seed)
         {
@@ -45,6 +45,8 @@ namespace SemesterRush.Sim
             Gd = gd ?? throw new ArgumentNullException(nameof(gd));
             S = s;
             Rng = new Rng(1) { State = s.RngState <= 0 ? 1 : s.RngState };
+            Normalize();
+            RebuildGraph();
         }
 
         public JObj Snapshot()
@@ -55,40 +57,75 @@ namespace SemesterRush.Sim
 
         void NewCareer()
         {
-            S.Day = 1;
+            S.Week = 1; S.Day = 0;
             S.Minute = Gd.DayStart;
             S.Phase = Phases.Plan;
             S.Cash = Gd.StartCash;
-            S.Rating = Gd.StartRating;
-            S.Drivers = Gd.StartDrivers;
-            S.Techs = Gd.StartTechs;
-            S.Districts.Add(Gd.Districts.Count > 0 ? Gd.Districts[0].Id : "harbour");
-            S.Depot = new DepotState { Lines = Gd.LinesStart, YardCap = Gd.YardCap, IntakeCap = Gd.IntakeCap };
-            S.Depot.BalerIn[Mats.Pet] = Gd.StartBalerPetKg;
-            foreach (var id in Gd.StartMachines)
-            {
-                int node = Gd.Node(id);
-                var p = new PointState { Node = node, Kind = "machine_s", LastServiceDay = 0 };
-                S.Points.Add(p);
-                if (Gd.StartFill.TryGetValue(id, out double pct)) FillTo(p, pct);
-            }
-            int tid = 0;
-            foreach (var type in Gd.StartTrucks) S.Trucks.Add(new TruckState { Id = tid++, Type = type, AtNode = Gd.DepotNode });
-            S.Today = new DayStats { Day = 1 };
-            S.NextDispatchAt = Gd.DayStart;
+            S.Prestige = Gd.StartPrestige;
+            foreach (var z in Gd.StartZones) S.Zones.Add(z);
+            foreach (var n in Gd.Nodes)
+                if (n.Kind == "building") S.Buildings.Add(new BuildingState { Node = n.Index, Def = n.Building });
+            foreach (var d in Depts.All) S.Staff[d] = Gd.StartStaff.TryGetValue(d, out int k) ? k : 0;
+            Normalize();
+            foreach (var f in Gd.StartProfs) AddProf(Gd.Faculty(f).Index, false);
+            foreach (var c in Gd.Cohorts) if (Unlocked(Gd.Faculty(c.Faculty).Zone)) Enroll(c.Index);
+            // the previous dean's timetable: everything but the guide's first class (Monday 09:00, the main hall)
+            int guide = Gd.CourseIndex(Gd.GuideCourse);
+            for (int ci = 0; ci < Gd.Courses.Count; ci++) if (CohortOn(Gd.Courses[ci].CohortIndex) && ci != guide) S.CourseProf[ci] = ProfFor(ci);
+            RebuildGraph();
+            int hall = MainHall();
+            AutoFill(false, new Placement { Course = guide, Day = Gd.GuideDay, Slot = Gd.GuideSlot, Node = hall });
+            S.ThisWeek = NewWeekStats();
         }
 
-        /// <summary>Fills a point to pct of its capacity with the district's usual mix (start state, tests).</summary>
-        public void FillTo(PointState p, double pct)
+        /// <summary>Sizes every per-course / per-cohort list to the data (new saves, old saves after a data update).</summary>
+        void Normalize()
         {
-            var mix = ExpectedMix(p);
-            double target = Cap(p) * Math.Max(0, pct);
-            double perContainer = 0;
-            for (int m = 0; m < Mats.N; m++) perContainer += mix[m] * VolInPoint(p, m);
-            if (perContainer <= 0) return;
-            double n = Math.Floor(target / perContainer);
-            for (int m = 0; m < Mats.N; m++) p.Fill[m] = Math.Floor(n * mix[m]);
-            p.EstVol = Volume(p);
+            while (S.Cohorts.Count < Gd.Cohorts.Count) S.Cohorts.Add(new CohortState());
+            while (S.CourseProf.Count < Gd.Courses.Count) S.CourseProf.Add(-1);
+            while (S.WeekScore.Count < Gd.Courses.Count) S.WeekScore.Add(0);
+            while (S.WeekHeld.Count < Gd.Courses.Count) S.WeekHeld.Add(0);
+            foreach (var c in S.Cohorts) if (c.Late == null || c.Late.Length != Gd.SlotCount) c.Late = new double[Gd.SlotCount];
+            foreach (var d in Depts.All) if (!S.Staff.ContainsKey(d)) S.Staff[d] = 0;
+            if (S.ThisWeek.Cohort.Length != Gd.Cohorts.Count) S.ThisWeek.Cohort = new double[Gd.Cohorts.Count];
+        }
+
+        WeekStats NewWeekStats() => new WeekStats { Week = S.Week, Exam = ExamWeek, Cohort = new double[Gd.Cohorts.Count] };
+
+        void Enroll(int cohort)
+        {
+            var c = S.Cohorts[cohort];
+            if (c.Enrolled) return;
+            c.Enrolled = true;
+            c.Size = Gd.Cohorts[cohort].Size;
+            c.Aptitude = 1;
+        }
+
+        int AddProf(int faculty, bool assign)
+        {
+            var f = Gd.Faculties[faculty];
+            int k = S.Profs.FindAll(p => p.Faculty == faculty).Count;
+            string name = f.Profs.Find(nm => !S.Profs.Exists(p => p.Name == nm)) ?? f.Profs[k % f.Profs.Count];
+            S.Profs.Add(new ProfState { Name = name, Faculty = faculty, Skill = Gd.ProfSkill[Math.Min(k, Gd.ProfSkill.Length - 1)] });
+            int idx = S.Profs.Count - 1;
+            if (assign)
+                for (int ci = 0; ci < Gd.Courses.Count; ci++)
+                    if (S.CourseProf[ci] < 0 && FacultyIndexOfCourse(ci) == faculty) AssignProf(ci, idx);
+            return idx;
+        }
+
+        /// <summary>The faculty's least-loaded professor for a course (start state / bot), -1 when none.</summary>
+        int ProfFor(int course)
+        {
+            int fac = FacultyIndexOfCourse(course), best = -1, bestLoad = int.MaxValue;
+            for (int p = 0; p < S.Profs.Count; p++)
+            {
+                if (S.Profs[p].Faculty != fac || S.Profs[p].Leaving) continue;
+                int load = 0;
+                for (int c = 0; c < S.CourseProf.Count; c++) if (S.CourseProf[c] == p) load++;
+                if (load < bestLoad) { bestLoad = load; best = p; }
+            }
+            return best;
         }
 
         // ------------------------------------------------------------------------------------------------ queries
@@ -103,113 +140,72 @@ namespace SemesterRush.Sim
         void Emit(string type, int a = -1, int b = -1, double v = 0, string text = "") => events.Add(new SimEvent { Type = type, A = a, B = b, V = v, Text = text ?? "" });
 
         public string Phase => S.Phase;
-        public NodeDef NodeOf(PointState p) => Gd.Nodes[p.Node];
-        public PointKindDef KindOf(PointState p) => Gd.PointKinds.TryGetValue(p.Kind, out var k) ? k : Gd.PointKinds["machine_s"];
-        public VehicleDef VehicleOf(TruckState t) => Gd.Vehicles.TryGetValue(t.Type, out var v) ? v : Gd.Vehicles["van"];
+        public PathGraph Graph => graph;
         public bool Has(string research) => S.Research.Contains(research);
-        public bool Unlocked(string district) => S.Districts.Contains(district);
+        public bool Unlocked(string zone) => S.Zones.Contains(zone);
         public bool Perk(string id) => perks.TryGetValue(id, out bool b) && b;
         public int Chapter
         {
             get
             {
                 int c = 1;
-                foreach (var d in Gd.Districts) if (Unlocked(d.Id)) c = Math.Max(c, d.Chapter);
+                foreach (var z in Gd.Zones) if (Unlocked(z.Id)) c = Math.Max(c, z.Chapter);
                 return c;
             }
         }
         public int MaxSpeed => Perk("speed") ? Gd.PaidMaxSpeed : Gd.FreeMaxSpeed;
-        public double FeeMult => (Gd.FeeRatingMin + Gd.FeeRatingSpan * Math.Max(0, Math.Min(100, S.Rating)) / 100.0) * (Perk("route_pass") ? 1.10 : 1.0);
-        public int HourIndex => Math.Max(0, Math.Min(Gd.HourCurve.Length - 1, (int)((S.Minute - Gd.DayStart) / 60.0)));
-        public bool Weekend => (S.Day - 1) % 7 >= 5;
-        public int PointAt(int node) => S.Points.FindIndex(p => p.Node == node);
+        public int Semester => (S.Week - 1) / Math.Max(1, Gd.WeeksPerSemester) + 1;
+        public int WeekOfSemester => (S.Week - 1) % Math.Max(1, Gd.WeeksPerSemester) + 1;
+        public bool ExamWeek => WeekOfSemester == Gd.WeeksPerSemester;
+        public int AbsDay => (S.Week - 1) * Gd.DaysPerWeek + S.Day;
+        public double PrestigeMult => Gd.PrestigeMultMin + Gd.PrestigeMultSpan * Math.Max(0, Math.Min(Gd.PrestigeMax, S.Prestige)) / Gd.PrestigeMax;
+        public int Staff(string dept) => S.Staff.TryGetValue(dept, out int n) ? n : 0;
+        public bool CohortOn(int c) => c >= 0 && c < S.Cohorts.Count && S.Cohorts[c].Enrolled && S.Cohorts[c].Size > 0;
+        public int FacultyIndexOfCourse(int course) => Gd.Faculty(Gd.Cohorts[Gd.Courses[course].CohortIndex].Faculty).Index;
+        public bool CourseOn(int course) => course >= 0 && course < Gd.Courses.Count && CohortOn(Gd.Courses[course].CohortIndex);
+        public int TotalStudents { get { int n = 0; for (int c = 0; c < S.Cohorts.Count; c++) if (CohortOn(c)) n += S.Cohorts[c].Size; return n; } }
 
-        /// <summary>Litres one container of material m takes inside this point (compactor squeezes PET).</summary>
-        public double VolInPoint(PointState p, int m) => Gd.Materials[m].VolL / (m == Mats.Pet && p.Compactor ? Gd.CompactorPet : 1.0);
-        public double Cap(PointState p) => KindOf(p).CapL;
-        public double Volume(PointState p)
+        public BuildingState BuildingAt(int node) => S.Buildings.Find(b => b.Node == node);
+        public BuildingDef DefOf(BuildingState b) => Gd.Building(b.Def);
+        public bool IsOpen(int node) { var b = BuildingAt(node); return b != null && b.Built; }
+        public bool IsClosedNow(int node, double minute) { var b = BuildingAt(node); return b == null || !b.Built || b.ClosedUntil > minute; }
+        public int MainHall() { foreach (var b in S.Buildings) if (b.Built && DefOf(b)?.Kind == "hall") return b.Node; return -1; }
+
+        public List<int> BuiltOf(string kind)
         {
-            double v = 0;
-            for (int m = 0; m < Mats.N; m++) v += p.Fill[m] * VolInPoint(p, m);
-            return v;
+            var o = new List<int>();
+            foreach (var b in S.Buildings) if (b.Built && DefOf(b)?.Kind == kind) o.Add(b.Node);
+            return o;
         }
-        public double FillPct(PointState p) => Math.Min(1.0, Volume(p) / Math.Max(1, Cap(p)));
-        public double Containers(PointState p) => p.Fill[0] + p.Fill[1] + p.Fill[2];
-        public bool IsFull(PointState p) => FillPct(p) >= 0.97;
 
-        /// <summary>What the map shows: live with a working sensor, a frozen number when the sensor / app is wrong, an
-        /// estimate from history (no events, no weekend) without a sensor — the "fuzzy" bar of the design.</summary>
-        public double DisplayPct(PointState p)
-        {
-            if (p.SensorOffline) return p.FrozenPct;
-            if (p.Sensor) return FillPct(p);
-            return Math.Min(1.0, Math.Max(0, p.EstVol) / Math.Max(1, Cap(p)));
-        }
-        public bool DisplayIsLive(PointState p) => p.Sensor && !p.SensorOffline;
+        public int Beds { get { int n = 0; foreach (var b in S.Buildings) if (b.Built) n += DefOf(b)?.Beds ?? 0; return n; } }
+        public double ResidentShare { get { int t = TotalStudents; return t <= 0 ? 0 : Math.Min(1.0, (double)Beds / t); } }
 
-        double[] ExpectedMix(PointState p)
+        /// <summary>Lunch seats per lunch slot: canteens × (1 + crew bonus) + food trucks.</summary>
+        public double Meals
         {
-            var k = KindOf(p);
-            if (!k.Citizens) return k.Mix;
-            var mix = new double[Mats.N];
-            var w = DistrictWeights(NodeOf(p).District, false);
-            double tw = 0;
-            for (int a = 0; a < Gd.Archetypes.Count; a++)
+            get
             {
-                double ww = w[a] * Gd.Archetypes[a].Mean;
-                tw += ww;
-                for (int m = 0; m < Mats.N; m++) mix[m] += ww * Gd.Archetypes[a].Mix[m];
+                double m = 0;
+                foreach (var b in S.Buildings) if (b.Built) m += DefOf(b)?.Meals ?? 0;
+                m *= 1 + Gd.CrewMeals * Staff(Depts.Canteen);
+                if (Has("food_trucks")) m += Gd.FoodTruckMeals;
+                return m;
             }
-            if (tw > 0) for (int m = 0; m < Mats.N; m++) mix[m] /= tw;
-            return mix;
         }
 
-        double LitresPerContainer(PointState p)
+        public bool InBell => S.Phase == Phases.Live && BellSlotAt(S.Minute) >= 0;
+        /// <summary>The slot whose bell change is running at this minute, -1 none.</summary>
+        public int BellSlotAt(double minute)
         {
-            if (litresPerContainer == null) litresPerContainer = new double[Gd.Nodes.Count];
-            int key = p.Node;
-            // recomputed when 0 (compactor upgrades reset it)
-            if (litresPerContainer[key] <= 0)
-            {
-                var mix = ExpectedMix(p);
-                double l = 0;
-                for (int m = 0; m < Mats.N; m++) l += mix[m] * VolInPoint(p, m);
-                litresPerContainer[key] = Math.Max(0.1, l);
-            }
-            return litresPerContainer[key];
+            for (int k = 0; k < Gd.SlotCount; k++) if (minute >= Gd.Slots[k] - Gd.BellMin - 1e-9 && minute < Gd.Slots[k] - 1e-9) return k;
+            return -1;
         }
-        void ResetLitreCache() => litresPerContainer = null;
-
-        double[] DistrictWeights(string district, bool timeAdjusted)
+        /// <summary>The slot whose class runs at this minute, -1 none.</summary>
+        public int ClassSlotAt(double minute)
         {
-            var d = Gd.District(district);
-            var w = new double[Gd.Archetypes.Count];
-            for (int a = 0; a < w.Length; a++)
-            {
-                double x = d != null && a < d.Archetypes.Length ? d.Archetypes[a] : 1.0 / w.Length;
-                if (timeAdjusted)
-                {
-                    if (Weekend) x *= Gd.Archetypes[a].Weekend;
-                    if (S.Minute >= 1020) x *= Gd.Archetypes[a].Evening;   // from 17:00
-                }
-                w[a] = x;
-            }
-            return w;
-        }
-
-        /// <summary>Base containers per hour at a point now (site rate × hour curve), without events or weekend.</summary>
-        public double BaseRate(PointState p) => NodeOf(p).Rate * Gd.HourCurve[HourIndex];
-
-        /// <summary>Event multiplier for a point now (heat wave, match day window).</summary>
-        public double DemandMult(PointState p)
-        {
-            double m = Weekend ? Gd.WeekendMult : 1.0;
-            foreach (var e in S.Events)
-            {
-                if (e.Id == "heat_wave") m *= e.Mult;
-                else if (e.Id == "match_day" && NodeOf(p).EventSite && S.Minute >= e.From && S.Minute < e.To) m *= e.Mult;
-            }
-            return m;
+            for (int k = 0; k < Gd.SlotCount; k++) if (minute >= Gd.Slots[k] - 1e-9 && minute < Gd.Slots[k] + Gd.ClassMin - 1e-9) return k;
+            return -1;
         }
 
         // ------------------------------------------------------------------------------------------------ time
@@ -217,34 +213,36 @@ namespace SemesterRush.Sim
         public void SetSpeed(int speed) => S.Speed = Math.Max(1, Math.Min(MaxSpeed, speed));
         public void SetPaused(bool paused) => S.Paused = paused;
 
-        /// <summary>Store perks (never saved): premium, route_pass, dispatcher_plus, offline_plus, speed.</summary>
+        /// <summary>Store perks (never saved): speed, automation, offline_plus.</summary>
         public void SetPerks(Dictionary<string, bool> p)
         {
             perks.Clear();
             if (p != null) foreach (var kv in p) perks[kv.Key] = kv.Value;
             if (S.Speed > MaxSpeed) S.Speed = MaxSpeed;
-            int slots = AutoSlots;
-            int n = 0;
-            foreach (var t in S.Trucks) if (t.Auto && ++n > slots) t.Auto = false;
         }
 
-        /// <summary>Every frame with real seconds. Research runs on real time in every phase; the day only while live.</summary>
+        /// <summary>Game minutes per real second now: slow during a bell change so the walk can be watched.</summary>
+        public double MinutesPerSecond => (InBell ? Gd.BellMinPerRealS : Gd.GameMinPerRealS) * Math.Max(1, S.Speed);
+
+        /// <summary>Every frame with real seconds. Research runs on real time in every phase; the week only while live.</summary>
         public void Advance(double realDt)
         {
             if (realDt <= 0 || double.IsNaN(realDt)) return;
             realDt = Math.Min(realDt, 1.0);   // a hitch never jumps the sim
             TickResearch(realDt);
             if (S.Phase != Phases.Live || S.Paused) return;
-            double gm = realDt * Gd.GameMinPerRealS * Math.Max(1, S.Speed);
-            while (gm > 1e-9 && S.Phase == Phases.Live)
+            double left = realDt;
+            int guard = 0;
+            while (left > 1e-9 && S.Phase == Phases.Live && guard++ < 200)
             {
-                double step = Math.Min(1.0, gm);
+                double mps = MinutesPerSecond;
+                double step = Math.Min(1.0, left * mps);
                 Step(step);
-                gm -= step;
+                left -= step / mps;
             }
         }
 
-        /// <summary>Advances game minutes directly (tests, guide fast-forward). Stops at the day end.</summary>
+        /// <summary>Advances game minutes directly (tests, the guide's fast-forward, the balance bot). Stops at the week end.</summary>
         public void AdvanceMinutes(double minutes)
         {
             while (minutes > 1e-9 && S.Phase == Phases.Live)
@@ -257,112 +255,76 @@ namespace SemesterRush.Sim
 
         void Step(double dt)
         {
-            RunPlanned();
-            Demand(dt);
-            StepTrucks(dt);
-            StepTechs();
-            StepDepot(dt);
-            foreach (var p in S.Points)
-                if (IsFull(p) || p.Jammed) { p.FullMin += dt; S.Today.FullMin += dt; }
-            Dispatcher();
-            S.Minute += dt;
+            double from = S.Minute, to = S.Minute + dt;
+            RunPlanned(to);
+            Construction(dt);
+            for (int k = 0; k < Gd.SlotCount; k++)
+            {
+                double bell = Gd.Slots[k] - Gd.BellMin, start = Gd.Slots[k], end = Gd.Slots[k] + Gd.ClassMin;
+                if (Crossed(from, to, bell)) BellChange(k);
+                if (Crossed(from, to, start)) { if (Gd.IsLunchSlot(k)) Lunch(k); Emit("class_start", k); }
+                if (Crossed(from, to, end)) EndClasses(k);
+            }
+            if (S.Pending != null && to >= S.Pending.Deadline) Decide(S.Pending.Id, DefaultOption(S.Pending));
+            S.Minute = to;
             if (S.Minute >= Gd.DayEnd - 1e-9) EndDay();
         }
 
-        // ------------------------------------------------------------------------------------------------ demand
+        static bool Crossed(double from, double to, double t) => from < t - 1e-9 && to >= t - 1e-9;
 
-        void Demand(double dt)
+        void Construction(double dt)
         {
-            for (int i = 0; i < S.Points.Count; i++)
+            double speed = 1 + Gd.MaintBuildSpeed * Staff(Depts.Maintenance);
+            foreach (var b in S.Buildings)
             {
-                var p = S.Points[i];
-                var kind = KindOf(p);
-                double baseRate = BaseRate(p);
-                double lpc = LitresPerContainer(p);
-                p.EstVol += baseRate * dt / 60.0 * lpc;
-                double lambda = baseRate * DemandMult(p) * dt / 60.0;   // containers this step
-                if (!kind.Citizens)
-                {
-                    // HoReCa: staff drop bags of ~10 into the back room
-                    double bags = lambda / 10.0;
-                    int k = Sample(bags);
-                    for (int b = 0; b < k; b++) Deposit(i, Rng.RangeI(8, 14), kind.Mix, -1);
-                    continue;
-                }
-                var w = DistrictWeights(NodeOf(p).District, true);
-                double tw = 0, mean = 0;
-                for (int a = 0; a < w.Length; a++) { tw += w[a]; mean += w[a] * Gd.Archetypes[a].Mean; }
-                if (tw <= 0) continue;
-                mean /= tw;
-                int citizens = Sample(lambda / Math.Max(1, mean));
-                for (int c = 0; c < citizens; c++)
-                {
-                    int a = Rng.PickWeighted(w);
-                    if (a < 0) continue;
-                    var ar = Gd.Archetypes[a];
-                    Deposit(i, Rng.RangeI(ar.Min, ar.Max), ar.Mix, a);
-                }
+                if (b.BuildLeft <= 0) continue;
+                b.BuildLeft = Math.Max(0, b.BuildLeft - dt * speed);
+                if (b.BuildLeft <= 0) { Emit("built", b.Node, -1, 0, b.Def); RebuildGraph(); }
             }
         }
 
-        int Sample(double expected)
+        /// <summary>Plan -> live (Monday 08:50).</summary>
+        public bool StartWeek()
         {
-            if (expected <= 0) return 0;
-            int k = (int)Math.Floor(expected);
-            if (Rng.Frand() < expected - k) k++;
-            return k;
+            if (S.Phase != Phases.Plan) return false;
+            S.Phase = Phases.Live;
+            S.Paused = false;
+            S.Minute = Gd.DayStart;
+            StartDayState();
+            Emit("week_live", S.Week);
+            return true;
         }
 
-        /// <summary>One citizen (or a HoReCa bag) at point i with n containers. Returns accepted containers.</summary>
-        public int Deposit(int i, int n, double[] mix, int archetype)
+        void StartDayState()
         {
-            var p = S.Points[i];
-            p.Arrivals++;
-            S.Today.Arrivals++;
-            if (p.Jammed || p.BusyUntil > S.Minute)
-            {
-                Turn(i, archetype);
-                return 0;
-            }
-            double free = Cap(p) - Volume(p);
-            int accepted = 0, rejected = 0;
-            for (int c = 0; c < n; c++)
-            {
-                int m = Rng.PickWeighted(mix);
-                if (m < 0) m = 0;
-                double v = VolInPoint(p, m);
-                if (v <= free) { p.Fill[m] += 1; free -= v; accepted++; }
-                else rejected++;
-            }
-            p.Deposited += accepted;
-            S.Today.Deposited += accepted;
-            if (rejected > 0) Turn(i, archetype);
-            else if (EmitCrowd) Emit("deposit", i, archetype, accepted);
-            if (accepted > 0 && p.IsMachine && !p.Jammed && JamAllowed)
-            {
-                double q = KindOf(p).JamPer1000 / 1000.0 * (p.Compactor ? Gd.CompactorJamMult : 1.0) * (Has("jam_guard") ? 0.6 : 1.0);
-                if (Rng.Frand() < q * accepted) Jam(i, "random");
-            }
-            return accepted;
+            foreach (var c in S.Cohorts) { c.Lunch = -1; c.Unfed = 0; for (int k = 0; k < c.Late.Length; k++) c.Late[k] = 0; }
+            foreach (var b in S.Buildings) b.ClosedUntil = 0;
+            S.LateToday = 0; S.TripsToday = 0;
+            bell = null;
+            PlanDay();
+            if (Perk("automation") && AutoRepairOn) AutoRepair();
         }
 
-        void Turn(int i, int archetype)
-        {
-            S.Points[i].Turned++;
-            S.Today.Turned++;
-            Emit("turned", i, archetype);
-        }
+        /// <summary>The Registrar's auto-repair (automation perk; the player can turn it off in the timetable).</summary>
+        public bool AutoRepairOn = true;
 
-        /// <summary>Random breakdowns / jams only after the guide and the forgiving first days.</summary>
-        bool JamAllowed => !S.Tutorial && S.Day > Gd.EventFreeDays;
-
-        public void Jam(int i, string why)
+        void EndDay()
         {
-            var p = S.Points[i];
-            if (p.Jammed) return;
-            p.Jammed = true;
-            p.TechCalled = false;
-            Emit("jam", i, -1, 0, why);
+            S.Minute = Gd.DayEnd;
+            if (S.TripsToday > 0 && S.LateToday == 0) S.ThisWeek.OnTimeDays++;
+            EveningEvents();
+            Emit("day_done", S.Day, S.LateToday, S.TripsToday);
+            S.Events.RemoveAll(e => e.UntilDay <= AbsDay);
+            foreach (var p in S.Profs) if (p.OffDay == AbsDay) p.OffDay = -1;
+            if (S.Day < Gd.DaysPerWeek - 1)
+            {
+                S.Day++;
+                S.Minute = Gd.DayStart;
+                StartDayState();
+                Emit("day_start", S.Day);
+                return;
+            }
+            EndWeek();
         }
     }
 }

@@ -1,15 +1,10 @@
 {
-  "version": 1,
+  "_doc": "Island events (plan section 7). Never during the guide or the forgiving first days (balance events.free_days). Announced ones (heat_wave, school_trip, supply_late, dust_storm) are shown on the morning plan; rain_squall lands at a random minute of the live day. All are non-violent and recoverable: no animal or person is ever hurt.",
   "events": [
-    { "id": "heat_wave",      "weight": 1.0, "min_day": 4, "days": 2, "mult": 1.6 },
-    { "id": "match_day",      "weight": 1.4, "min_day": 4, "district": "stadium", "from": 960, "to": 1080, "mult": 4.0 },
-    { "id": "jam",            "weight": 2.0, "min_day": 4 },
-    { "id": "sensor_offline", "weight": 1.0, "min_day": 5 },
-    { "id": "bulk_returner",  "weight": 1.4, "min_day": 4, "busy_min": 40, "min": 150, "max": 300 },
-    { "id": "breakdown",      "weight": 1.0, "min_day": 5, "broken_min": 90 },
-    { "id": "fuel_spike",     "weight": 0.7, "min_day": 6, "days": 5, "mult": 1.5 },
-    { "id": "bale_crash",     "weight": 0.7, "min_day": 6, "days": 3, "mult": 0.6 },
-    { "id": "baler_down",     "weight": 0.8, "min_day": 6 },
-    { "id": "glass_break",    "weight": 0.6, "min_day": 5 }
+    { "id": "heat_wave",   "weight": 1.0, "min_day": 4, "zone": "dune", "days": 1, "mult": 1.0 },
+    { "id": "rain_squall", "weight": 1.2, "min_day": 4, "zone": "",     "days": 1, "mult": 0.7, "min": 1, "max": 2, "busy_min": 120 },
+    { "id": "school_trip", "weight": 1.0, "min_day": 4, "zone": "",     "days": 1, "mult": 1.5 },
+    { "id": "supply_late", "weight": 0.8, "min_day": 4, "zone": "",     "days": 1, "mult": 0.5, "from": 780 },
+    { "id": "dust_storm",  "weight": 0.7, "min_day": 5, "zone": "dune", "days": 1, "mult": 0.6 }
   ]
 }

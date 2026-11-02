@@ -2,7 +2,7 @@
 """Grill Convoy — builds Assets/Resources/data/iap.json (the catalogue the game reads) from the table below (design §10,
 fleet IAP_STANDARD) and the product texts in Assets/Resources/i18n/strings.csv (keys iap.<slug>.t / iap.<slug>.d, 10
 languages — one translation source for the game and the store card). No trial, no subscription, no loot box, no premium
-currency. ad_free = grants include `noads` (Remove Ads, Chief Operator Edition, Network Pass, Complete Grill Convoy).
+currency. ad_free = grants include `noads` (Remove Ads, Pitmaster Edition, Convoy Pass, Complete Grill Convoy).
 Prices are NOT here: the shop shows only the store's displayPrice.
   python3 grill-convoy/unity/Tools/build_iap.py [--check]
 """
@@ -14,36 +14,42 @@ OUT = os.path.join(UNITY, "Assets/Resources/data/iap.json")
 CSV = os.path.join(UNITY, "Assets/Resources/i18n/strings.csv")
 LANGS = ["en", "tr", "de", "es", "fr", "pt", "ru", "ja", "ko", "hi"]
 PREFIX = "com.coddykit.grillconvoy."
-COSMETICS = ["livery_sunset", "livery_forest", "skin_retro", "depot_tropic"]
+COSMETICS = ["livery_retro", "livery_neon", "uniforms", "menuboards", "window_awnings"]
+PREMIUM = ["noads", "gold_trim", "extra_slot"]
 
-# slug: (kind, group, icon, usd, grants, extra)
+# slug: (kind, group, icon, usd, grants, extra)       plan §10 MVP: 22 SKUs (scenarios + 2 more liveries come post-MVP)
 P = [
-    ("starter",        "consumable", "offer",    "truck", 1.99,  [], {"days_x10": 20, "offer_only": True, "van": True}),
-    ("event_kit",      "consumable", "offer",    "star",  2.99,  [], {"days_x10": 30, "offer_only": True}),
-    ("comeback",       "consumable", "offer",    "gift",  1.99,  [], {"days_x10": 20, "offer_only": True}),
-    ("noads",          "permanent",  "adfree",   "noads", 2.99,  ["noads"], {}),
-    ("premium",        "permanent",  "adfree",   "crown", 9.99,  ["noads", "gold_livery"], {"bonus_days_x10": 20}),
-    ("route_pass",     "permanent",  "adfree",   "route", 4.99,  ["route_pass", "noads"], {}),
-    ("bundle",         "permanent",  "adfree",   "box",   19.99, ["noads", "gold_livery", "route_pass", "speed", "dispatcher_plus"] + COSMETICS, {"parts": ["premium", "route_pass", "speed", "dispatcher_plus", "cosmetics_all"]}),
-    ("speed",          "permanent",  "boost",    "fast",  2.99,  ["speed"], {}),
-    ("dispatcher_plus","permanent",  "boost",    "route", 3.99,  ["dispatcher_plus"], {}),
-    ("offline_plus",   "permanent",  "boost",    "moon",  2.99,  ["offline_plus"], {}),
-    ("livery_sunset",  "permanent",  "looks",    "truck", 1.49,  ["livery_sunset"], {}),
-    ("livery_forest",  "permanent",  "looks",    "truck", 1.49,  ["livery_forest"], {}),
-    ("skin_retro",     "permanent",  "looks",    "machine", 1.99, ["skin_retro"], {}),
-    ("depot_tropic",   "permanent",  "looks",    "home",  1.99,  ["depot_tropic"], {}),
-    ("cosmetics_all",  "permanent",  "looks",    "star",  4.99,  list(COSMETICS), {"parts": list(COSMETICS)}),
-    ("cash_s",         "consumable", "budget",   "coins", 0.99,  [], {"days_x10": 10}),
-    ("cash_m",         "consumable", "budget",   "coins", 2.99,  [], {"days_x10": 25}),
-    ("cash_l",         "consumable", "budget",   "coins", 6.99,  [], {"days_x10": 50}),
-    ("cash_xl",        "consumable", "budget",   "coins", 14.99, [], {"days_x10": 100}),
+    ("starter",        "consumable", "offer",    "truck",  1.99,  [], {"days_x10": 20, "offer_only": True, "runner": True}),
+    ("crisis",         "consumable", "offer",    "flame",  2.99,  [], {"days_x10": 15, "offer_only": True, "propane_kits": 3}),
+    ("comeback",       "consumable", "offer",    "gift",   1.99,  [], {"days_x10": 20, "offer_only": True}),
+    ("milestone",      "consumable", "offer",    "star",   3.99,  [], {"days_x10": 30, "offer_only": True, "commissary_batches": 2}),
+    ("noads",          "permanent",  "adfree",   "noads",  2.99,  ["noads"], {}),
+    ("premium",        "permanent",  "adfree",   "crown",  9.99,  list(PREMIUM), {"bonus_days_x10": 20}),
+    ("convoy_pass",    "permanent",  "adfree",   "route",  4.99,  ["convoy_pass", "noads"], {}),
+    ("bundle",         "permanent",  "adfree",   "box",    19.99, PREMIUM + ["convoy_pass", "speed", "automation"] + COSMETICS,
+     {"parts": ["premium", "convoy_pass", "speed", "automation", "cosmetics_all"]}),
+    ("speed",          "permanent",  "boost",    "fast",   2.99,  ["speed"], {}),
+    ("automation",     "permanent",  "boost",    "chef",   3.99,  ["automation"], {}),
+    ("slots",          "permanent",  "boost",    "save",   1.99,  ["slots"], {}),
+    ("offline_plus",   "permanent",  "boost",    "moon",   2.99,  ["offline_plus"], {}),
+    ("livery_retro",   "permanent",  "looks",    "truck",  1.49,  ["livery_retro"], {}),
+    ("livery_neon",    "permanent",  "looks",    "truck",  1.49,  ["livery_neon"], {}),
+    ("uniforms",       "permanent",  "looks",    "chef",   1.99,  ["uniforms"], {}),
+    ("menuboards",     "permanent",  "looks",    "menu",   1.99,  ["menuboards"], {}),
+    ("window_awnings", "permanent",  "looks",    "awning", 1.99,  ["window_awnings"], {}),
+    ("cosmetics_all",  "permanent",  "looks",    "star",   4.99,  list(COSMETICS), {"parts": list(COSMETICS)}),
+    ("cash_s",         "consumable", "budget",   "coins",  0.99,  [], {"days_x10": 10}),
+    ("cash_m",         "consumable", "budget",   "coins",  2.99,  [], {"days_x10": 25}),
+    ("cash_l",         "consumable", "budget",   "coins",  6.99,  [], {"days_x10": 50}),
+    ("cash_xl",        "consumable", "budget",   "coins",  14.99, [], {"days_x10": 100}),
 ]
 GROUPS = ["offer", "adfree", "boost", "looks", "budget"]
 OFFERS = {
     "cooldown_days": 3, "max_per_session": 1,
     "starter": {"event": "day_report", "day_min": 3, "day_max": 7, "per_game": 1},
-    "event_kit": {"event": "match_day", "day_min": 3, "per_game": 99},
+    "crisis": {"event": "propane", "day_min": 3, "per_game": 99},
     "comeback": {"event": "resume", "away_days_min": 3, "per_game": 99},
+    "milestone": {"event": "truck_new", "per_game": 3},
 }
 
 

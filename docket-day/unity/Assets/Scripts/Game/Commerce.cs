@@ -1,15 +1,16 @@
 // Docket Day — the shop: catalogue (IapCatalog, Resources/data/iap.json) + the kit's purchase layer (CoddyPurchases on
 // RevenueCat) + the career. Engine-free (CoddyPurchases lives in CoddyKit.Core) so EditMode tests drive the real flow
 // with FakePurchases.
-//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / route_pass / bundle) —
+//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / partner_pass / bundle) —
 //     never from "bought anything" (fleet §3). House banner / interstitial and the rewarded "no video" path all read
 //     CoddyPurchases.AdFree. Legacy buyers: not applicable (new game, no earlier purchases).
 //   * permanent rights = RC entitlements (cached offline; Restore = a fresh CustomerInfo, idempotent);
 //   * consumables: the store confirms -> CoddyPurchases.Deliver(storeId, txn) -> sim.GrantCash(days) once per transaction
-//     (txn remembered in settings) -> save. ≤ 3 packs per UTC day is a PRE-purchase gate. Never restored.
+//     (txn remembered in settings) -> save. Operating cash only: trust money can never be bought. ≤ 3 packs per UTC day
+//     is a PRE-purchase gate. Never restored.
 //   * prices only from the store (displayPrice), "…" until they arrive; no trial, no subscription (fleet §1).
-//   * offers: starter (day 3-7 after a day report, once), event kit (match day), comeback (≥ 3 days away); one per session,
-//     3 days apart; never in the guide.
+//   * offers: starter (day 3-7 after a day report, once), Bridge Funds (after a day that ended below zero), comeback
+//     (≥ 3 days away); one per session, 3 days apart; never in the guide (review theme: no "limited time" spam).
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -21,7 +22,9 @@ namespace DocketDay.Game
     {
         public const string Loading = "…";
         /// <summary>RC entitlements the sim turns into perks (never saved in the career).</summary>
-        public static readonly string[] PerkEntitlements = { "route_pass", "dispatcher_plus", "offline_plus", "speed", "gold_livery" };
+        public static readonly string[] PerkEntitlements = { "speed", "automation", "overnight_plus", "extra_rule", "partner_pass" };
+        /// <summary>Cosmetic entitlements (the diorama reads them; never given by ads).</summary>
+        public static readonly string[] Cosmetics = { "gold_nameplate", "theme_classic", "theme_loft", "theme_deco", "outfits", "court_themes" };
         public static readonly string[] AdFreeEntitlements = { "noads" };
 
         public readonly IapCatalog Cat;
@@ -49,7 +52,7 @@ namespace DocketDay.Game
             Purchases.Consumables.Clear();
             foreach (string id in cat.ConsumableIds()) Purchases.Consumables.Add(id);
             Purchases.Deliver = Deliver;
-            onKitChanged = () => { GrantOneTimeBonuses(); Changed?.Invoke(); };
+            onKitChanged = () => Changed?.Invoke();
             Purchases.Changed += onKitChanged;
         }
 
@@ -126,7 +129,6 @@ namespace DocketDay.Game
                     else Toast(l != null ? l.F("shop.bought", "name", Cat.Title(slug, l.Lang)) : "", "success");
                     Cue("purchase");
                     if (ActiveOffer == slug) ActiveOffer = "";
-                    GrantOneTimeBonuses();
                 }
                 else if (o.Cancelled) Analytics("purchase_cancel", new Dictionary<string, object> { { "product", slug } });
                 else
@@ -146,26 +148,11 @@ namespace DocketDay.Game
             if (p == null || !p.Consumable || Sim == null) return false;
             if (!string.IsNullOrEmpty(txn) && session.Settings.Delivered(txn)) return true;
             lastFunds = Sim.GrantCash(p.DaysX10 / 10.0);
-            if (p.Slug == "starter" && Sim.CanBuy("truck:van").Reason != "max")
-            {
-                int id = 0;
-                foreach (var t in Sim.S.Trucks) id = Math.Max(id, t.Id + 1);
-                Sim.S.Trucks.Add(new TruckState { Id = id, Type = "van", AtNode = Sim.Gd.DepotNode });
-            }
+            if (p.DayPass) Sim.AddDayPass();   // starter: an extra intern for a day
             if (!string.IsNullOrEmpty(txn)) session.Settings.MarkDelivered(txn);
             session.Settings.Save();
             session.Save();
             return true;
-        }
-
-        /// <summary>The Edition's starter cash, once per device (the entitlement may arrive by purchase or restore).</summary>
-        void GrantOneTimeBonuses()
-        {
-            if (Sim == null || !Has("gold_livery") || session.Settings.Flag("premium_cash")) return;
-            session.Settings.SetFlag("premium_cash");
-            Sim.GrantCash(2.0);
-            session.Settings.Save();
-            session.Save();
         }
 
         public void Restore(Action<string> done = null)
@@ -185,7 +172,7 @@ namespace DocketDay.Game
 
         // ------------------------------------------------------------------------------------------------ offers
 
-        /// <summary>ev = day_report | match_day | resume. Returns the offer slug shown now, or "".</summary>
+        /// <summary>ev = day_report | cash_dip | resume. Returns the offer slug shown now, or "".</summary>
         public string TryOffer(string ev, bool tutorial, int awayDays = 0)
         {
             if (tutorial || ActiveOffer != "" || offersThisSession >= Math.Max(1, Cat.OffersPerSession)) return "";

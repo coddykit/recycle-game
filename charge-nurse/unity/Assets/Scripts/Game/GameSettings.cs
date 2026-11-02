@@ -37,10 +37,10 @@ namespace ChargeNurse.Game
         public long FirstSeen { get => L("first_seen"); set => D["first_seen"] = value; }
         public long LastOfferAt { get => L("last_offer_at"); set => D["last_offer_at"] = value; }
         public string ReviewDeferred { get => S("review_deferred", ""); set => D["review_deferred"] = value ?? ""; }
-        /// <summary>Speed Pack owners: skip the day report by itself.</summary>
+        /// <summary>Speed Pack owners: skip the shift report by itself.</summary>
         public bool AutoSkipReport { get => B("auto_report", false); set => D["auto_report"] = value; }
-        /// <summary>Equipped truck livery ("" = default; premium gold / cosmetic liveries).</summary>
-        public string Livery { get => S("livery", ""); set => D["livery"] = value ?? ""; }
+        /// <summary>Equipped hospital theme ("" = default; premium gold / cosmetic themes) — a palette swap, zero extra draws.</summary>
+        public string Theme { get => S("theme", ""); set => D["theme"] = value ?? ""; }
 
         public bool Flag(string id) => MiniJson.Arr(D, "flags") is List<object> l && l.Contains(id);
 

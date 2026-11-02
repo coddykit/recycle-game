@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Ridgeback Rangers — builds Assets/Resources/data/iap.json (the catalogue the game reads) from the table below (design §10,
+"""Ridgeback Rangers — builds Assets/Resources/data/iap.json (the catalogue the game reads) from the table below (plan §10,
 fleet IAP_STANDARD) and the product texts in Assets/Resources/i18n/strings.csv (keys iap.<slug>.t / iap.<slug>.d, 10
 languages — one translation source for the game and the store card). No trial, no subscription, no loot box, no premium
-currency. ad_free = grants include `noads` (Remove Ads, Chief Operator Edition, Network Pass, Complete Ridgeback Rangers).
-Prices are NOT here: the shop shows only the store's displayPrice.
+currency (the plan's Amber packs are left out). ad_free = grants include `noads` (Remove Ads, Chief Warden Edition, Ranger
+Pass, Complete Sanctuary Collection). Prices are NOT here: the shop shows only the store's displayPrice.
   python3 ridgeback-rangers/unity/Tools/build_iap.py [--check]
 """
 import csv, json, os, sys
@@ -14,25 +14,23 @@ OUT = os.path.join(UNITY, "Assets/Resources/data/iap.json")
 CSV = os.path.join(UNITY, "Assets/Resources/i18n/strings.csv")
 LANGS = ["en", "tr", "de", "es", "fr", "pt", "ru", "ja", "ko", "hi"]
 PREFIX = "com.coddykit.ridgebackrangers."
-COSMETICS = ["livery_sunset", "livery_forest", "skin_retro", "depot_tropic"]
+COSMETICS = ["skin_tram_sunset", "skin_tram_jungle", "skin_tram_glacier"]
 
 # slug: (kind, group, icon, usd, grants, extra)
 P = [
-    ("starter",        "consumable", "offer",    "truck", 1.99,  [], {"days_x10": 20, "offer_only": True, "van": True}),
-    ("event_kit",      "consumable", "offer",    "star",  2.99,  [], {"days_x10": 30, "offer_only": True}),
+    ("starter",        "consumable", "offer",    "gift",  1.99,  [], {"days_x10": 20, "offer_only": True, "incubator": True}),
+    ("storm_kit",      "consumable", "offer",    "star",  2.99,  [], {"days_x10": 30, "offer_only": True}),
     ("comeback",       "consumable", "offer",    "gift",  1.99,  [], {"days_x10": 20, "offer_only": True}),
     ("noads",          "permanent",  "adfree",   "noads", 2.99,  ["noads"], {}),
-    ("premium",        "permanent",  "adfree",   "crown", 9.99,  ["noads", "gold_livery"], {"bonus_days_x10": 20}),
-    ("route_pass",     "permanent",  "adfree",   "route", 4.99,  ["route_pass", "noads"], {}),
-    ("bundle",         "permanent",  "adfree",   "box",   19.99, ["noads", "gold_livery", "route_pass", "speed", "dispatcher_plus"] + COSMETICS, {"parts": ["premium", "route_pass", "speed", "dispatcher_plus", "cosmetics_all"]}),
-    ("speed",          "permanent",  "boost",    "fast",  2.99,  ["speed"], {}),
-    ("dispatcher_plus","permanent",  "boost",    "route", 3.99,  ["dispatcher_plus"], {}),
+    ("premium",        "permanent",  "adfree",   "crown", 9.99,  ["noads", "golden_tram"], {"bonus_days_x10": 20}),
+    ("ranger_pass",    "permanent",  "adfree",   "badge", 4.99,  ["ranger_pass", "noads"], {}),
+    ("bundle",         "permanent",  "adfree",   "box",   17.99, ["noads", "golden_tram", "ranger_pass", "speed"] + COSMETICS, {"parts": ["premium", "ranger_pass", "speed", "cosmetics_all"]}),
+    ("speed",          "permanent",  "boost",    "fast",  1.99,  ["speed"], {}),
     ("offline_plus",   "permanent",  "boost",    "moon",  2.99,  ["offline_plus"], {}),
-    ("livery_sunset",  "permanent",  "looks",    "truck", 1.49,  ["livery_sunset"], {}),
-    ("livery_forest",  "permanent",  "looks",    "truck", 1.49,  ["livery_forest"], {}),
-    ("skin_retro",     "permanent",  "looks",    "machine", 1.99, ["skin_retro"], {}),
-    ("depot_tropic",   "permanent",  "looks",    "home",  1.99,  ["depot_tropic"], {}),
-    ("cosmetics_all",  "permanent",  "looks",    "star",  4.99,  list(COSMETICS), {"parts": list(COSMETICS)}),
+    ("skin_tram_sunset",  "permanent", "looks",  "tram",  0.99,  ["skin_tram_sunset"], {}),
+    ("skin_tram_jungle",  "permanent", "looks",  "tram",  0.99,  ["skin_tram_jungle"], {}),
+    ("skin_tram_glacier", "permanent", "looks",  "tram",  1.99,  ["skin_tram_glacier"], {}),
+    ("cosmetics_all",  "permanent",  "looks",    "star",  2.49,  list(COSMETICS), {"parts": list(COSMETICS)}),
     ("cash_s",         "consumable", "budget",   "coins", 0.99,  [], {"days_x10": 10}),
     ("cash_m",         "consumable", "budget",   "coins", 2.99,  [], {"days_x10": 25}),
     ("cash_l",         "consumable", "budget",   "coins", 6.99,  [], {"days_x10": 50}),
@@ -42,7 +40,7 @@ GROUPS = ["offer", "adfree", "boost", "looks", "budget"]
 OFFERS = {
     "cooldown_days": 3, "max_per_session": 1,
     "starter": {"event": "day_report", "day_min": 3, "day_max": 7, "per_game": 1},
-    "event_kit": {"event": "match_day", "day_min": 3, "per_game": 99},
+    "storm_kit": {"event": "island_event", "day_min": 3, "per_game": 99},
     "comeback": {"event": "resume", "away_days_min": 3, "per_game": 99},
 }
 

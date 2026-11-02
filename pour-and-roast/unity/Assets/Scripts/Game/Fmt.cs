@@ -77,7 +77,7 @@ namespace PourAndRoast.Game
             return (s / 3600) + " " + hu + ((s % 3600) / 60 > 0 ? " " + ((s % 3600) / 60) + " " + mu : "");
         }
 
-        /// <summary>Day minute (540 = 09:00) -> "09:00".</summary>
+        /// <summary>Day minute (420 = 07:00) -> "07:00".</summary>
         public static string ClockMin(double minute) => Clock(minute / 60.0);
 
         /// <summary>0..1 -> "86 %".</summary>
@@ -87,10 +87,15 @@ namespace PourAndRoast.Game
             return lang == "tr" ? "%" + n : n + " %";   // Turkish writes the sign first (%80)
         }
 
-        /// <summary>Road km: "4.2 km" (one decimal below 10).</summary>
-        public static string Km(double km, string lang = "en") => (km < 10 ? OneDec(Math.Round(km, 1), lang) : Int((long)Math.Round(km), lang)) + " km";
+        /// <summary>Stock amounts: "4.2 kg" / "12 L" (one decimal below 10).</summary>
+        public static string Amount(double v, string unit, string lang = "en") => (Math.Abs(v) < 10 ? OneDec(Math.Round(v, 1), lang) : Int((long)Math.Round(v), lang)) + " " + unit;
 
-        /// <summary>Green Rating 0..100 -> "62".</summary>
-        public static string Rating(double r) => ((long)Math.Round(Math.Max(0, Math.Min(100, r)))).ToString(CultureInfo.InvariantCulture);
+        /// <summary>Reputation stars 0..5 -> "3.4" (one decimal, language separator).</summary>
+        public static string Stars(double r, string lang = "en") => OneDecFixed(Math.Max(0, Math.Min(5, r)), lang);
+
+        static string OneDecFixed(double v, string lang) => v.ToString("0.0", CultureInfo.InvariantCulture).Replace(".", Dec(lang));
+
+        /// <summary>Quality 0..100 -> "78".</summary>
+        public static string Q(double q) => ((long)Math.Round(Math.Max(0, Math.Min(100, q)))).ToString(CultureInfo.InvariantCulture);
     }
 }

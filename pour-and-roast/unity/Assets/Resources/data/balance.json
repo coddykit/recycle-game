@@ -1,62 +1,99 @@
 {
   "version": 1,
-  "time": { "day_start": 540, "day_end": 1140, "game_min_per_real_s": 2.5, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "depot_wrapup_min": 60 },
-  "start": { "cash": 2000, "rating": 50, "drivers": 1, "techs": 0, "trucks": ["van", "van"], "machines": ["h_fish", "h_ferry", "h_corner"], "fill_pct": { "h_fish": 0.86, "h_ferry": 0.62, "h_corner": 0.35 }, "baler_pet_kg": 58.5 },
-  "materials": {
-    "pet":   { "vol_l": 1.6,  "kg": 0.03,  "bale_kg": 60,   "bale_price": 420 },
-    "alu":   { "vol_l": 0.45, "kg": 0.015, "bale_kg": 30,   "bale_price": 1300 },
-    "glass": { "vol_l": 0.9,  "kg": 0.38,  "bale_kg": 1000, "bale_price": 160 }
+  "time": { "day_start": 420, "day_end": 1080, "game_min_per_real_s": 3.0, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4 },
+  "start": {
+    "cash": 420, "rating": 2.5, "venue": "cart", "staff": ["barista"], "beans_kg": 6, "beans_q": 52,
+    "milk": [16, 5], "milk_order": [18, 6], "supplier": "regular", "ice": 0,
+    "menu": ["espresso", "americano", "cappuccino", "latte"],
+    "forecast": ["sunny", "rain", "sunny", "fog"]
   },
-  "archetypes": [
-    { "id": "commuter", "min": 2,  "max": 5,  "mix": [0.70, 0.25, 0.05], "weekend": 0.6, "evening": 1.0 },
-    { "id": "family",   "min": 12, "max": 30, "mix": [0.55, 0.20, 0.25], "weekend": 2.2, "evening": 0.8 },
-    { "id": "student",  "min": 4,  "max": 10, "mix": [0.35, 0.60, 0.05], "weekend": 0.8, "evening": 2.0 },
-    { "id": "eco",      "min": 6,  "max": 15, "mix": [0.40, 0.30, 0.30], "weekend": 1.2, "evening": 1.0 },
-    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 }
+  "customers": [
+    { "id": "commuter",   "items": [1, 2], "patience": 9,  "oat": 0.25, "iced": 0.15, "pastry": 0.15, "pre": 0.12, "tip": 0.04, "vip": false, "rating_min": 0,   "weekend": 0.6 },
+    { "id": "tourist",    "items": [1, 3], "patience": 13, "oat": 0.20, "iced": 0.30, "pastry": 0.35, "pre": 0.03, "tip": 0.08, "vip": false, "rating_min": 0,   "weekend": 1.6 },
+    { "id": "regular",    "items": [1, 2], "patience": 14, "oat": 0.30, "iced": 0.15, "pastry": 0.25, "pre": 0.25, "tip": 0.12, "vip": true,  "rating_min": 0,   "weekend": 0.9 },
+    { "id": "student",    "items": [1, 2], "patience": 12, "oat": 0.40, "iced": 0.35, "pastry": 0.30, "pre": 0.15, "tip": 0.02, "vip": false, "rating_min": 0,   "weekend": 1.1 },
+    { "id": "influencer", "items": [2, 3], "patience": 9,  "oat": 0.50, "iced": 0.40, "pastry": 0.50, "pre": 0.30, "tip": 0.15, "vip": true,  "rating_min": 3.0, "weekend": 1.3 }
   ],
-  "hour_curve": [0.7, 0.8, 0.9, 1.0, 1.1, 0.9, 0.9, 1.1, 1.4, 1.2],
-  "weekend_mult": 1.25,
-  "points": {
-    "machine_s": { "cap_l": 240, "lease_day": 14, "jam_per_1000": 1.2, "citizens": true },
-    "machine_m": { "cap_l": 480, "lease_day": 22, "jam_per_1000": 1.0, "citizens": true },
-    "shop":      { "cap_l": 160, "lease_day": 0,  "jam_per_1000": 0,   "citizens": true, "shop_fee": 0.3 },
-    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] }
+  "hour_curve": [1.5, 1.7, 1.2, 0.9, 1.0, 1.3, 1.1, 0.8, 0.9, 1.0, 0.7],
+  "weekend_mult": 1.2,
+  "work": {
+    "shot_min": 1.1, "steam_min": 0.9, "pour_min": 0.35, "pastry_min": 0.2, "batch_mult": 1.5, "batch_look": 3,
+    "menu_free": 5, "menu_slow": 0.03, "handover_min": 1.5, "handover_host_min": 0.4, "pre_lead": [20, 40], "pre_grace": 15
   },
-  "compactor_pet": 2.5,
-  "compactor_jam_mult": 1.6,
-  "vehicles": {
-    "van":       { "vol_l": 1800, "kg": 700,  "speed_kmh": 30, "cost_km": 1.4, "service_min": 6, "alley": true,  "pet_compress": 1.0, "price": 2500, "research": "" },
-    "bike":      { "vol_l": 450,  "kg": 90,   "speed_kmh": 16, "cost_km": 0.1, "service_min": 4, "alley": true,  "pet_compress": 1.0, "price": 900,  "research": "cargo_bike" },
-    "compactor": { "vol_l": 2600, "kg": 3000, "speed_kmh": 26, "cost_km": 2.6, "service_min": 7, "alley": false, "pet_compress": 2.5, "price": 6500, "research": "compactor_truck" }
+  "beans": { "supplier_q": 52, "supplier_price": 18, "supplier_lot": 5, "par_kg": 4 },
+  "milk": { "per_drink": 0.2, "spoil": 0.5, "late_min": 180, "run_mult": 2.0, "run_l": [10, 4], "run_min": 15, "run_min_runner": 5 },
+  "suppliers": {
+    "cheap":   { "price": 0.9, "late": 0.25, "q": -4 },
+    "regular": { "price": 1.1, "late": 0.10, "q": 0 },
+    "premium": { "price": 1.4, "late": 0.03, "q": 4 }
   },
-  "unload": { "base_min": 8, "per_container_min": 0.0025 },
-  "breakdown_per_km": 0.0015,
-  "glass_break_per_km": 0.0006,
-  "economy": {
-    "fee": 1.0, "bulk_fee": 0.5, "fee_rating_min": 0.85, "fee_rating_span": 0.30,
-    "driver_wage": 110, "tech_wage": 90, "depot_power": 35, "line_power": 15,
-    "rating_alpha": 0.3, "turned_rating_free_days": 3
+  "oat_price_mult": 1.6,
+  "ice": { "per_drink": 0.3, "per_hour": [0, 6, 10, 16], "cap": [0, 24, 40, 60], "bag_kg": 10, "bag_price": 8 },
+  "pastry": { "cost_share": 0.45, "oven_cost_share": 0.35, "par_default": 6, "par_max": 30 },
+  "tune": { "drift_h": 7, "off": 60, "bad": 35, "auto_floor": 85, "penalty": 0.6, "scale_mult": 0.6 },
+  "grinder": { "wear_per_shot": 0.05, "jam_from": 80, "jam_per_shot": 0.01, "auto_fix_min": 25, "service_price": 60 },
+  "quality": { "price_min": 0.8, "price_span": 0.4, "level_q": 2, "pourover_bonus": 8, "pastry_q": 70, "oven_q": 80 },
+  "reviews": {
+    "wait": [0.5, 0.8, 1.0], "wait_pen": [0, 0.5, 1.0, 1.6],
+    "q": [75, 60, 45], "q_pen": [0, 0.5, 1.2, 2.0],
+    "late_pen": 1.5, "fail_pen": 1.2, "sub_pen": 0.4, "decor": 0.1, "music": 0.15, "wall": 12, "spree": 3
   },
-  "depot": { "count_per_hour": 420, "lines_start": 1, "lines_max": 3, "baler_kg_per_hour": 90, "baler_jam_per_bale": 0.02, "yard_cap": 12, "intake_cap": 2500, "glass_bay_t": 3, "tech_speed_kmh": 30, "tech_fix_min": 20 },
+  "staff": {
+    "roles": {
+      "barista": { "wage": 80, "price": 140, "max": 6 },
+      "cashier": { "wage": 65, "price": 160, "max": 1 },
+      "runner":  { "wage": 60, "price": 150, "max": 1 },
+      "roaster": { "wage": 95, "price": 400, "max": 1, "research": "roast_assistant" }
+    },
+    "level_speed": 0.08, "level_max": 5, "train_price": [0, 90, 180, 360, 650],
+    "traits": {
+      "steady":        { "speed": 1.0,  "q": 0, "tip": 0 },
+      "quick":         { "speed": 1.2,  "q": -2, "tip": 0 },
+      "perfectionist": { "speed": 0.9,  "q": 6, "tip": 0 },
+      "chatty":        { "speed": 0.95, "q": 0, "tip": 0.05 }
+    }
+  },
+  "economy": { "rating_alpha": 0.3, "rating_free_days": 3, "footfall_min": 0.6, "footfall_per_star": 0.16, "day_income_floor": 250, "branch_share": 0.5, "seat_footfall": 0.05, "tap_tip": 0.05 },
   "prices": {
-    "machine_s": 600, "bin_m": 700, "compactor": 900, "sensor": 250, "shop": 150, "horeca": 300,
-    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000
+    "heads": [0, 0, 300, 650, 1200, 2000, 3200], "wands": [0, 0, 260, 600, 1100],
+    "grinder": [0, 0, 420, 950], "ice": [0, 380, 700, 1100], "rail": [0, 220, 480, 900],
+    "seats": [0, 60, 240, 520, 950, 1500], "decor": [0, 180, 450, 900], "drum": [0, 0, 1800, 4200]
   },
-  "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
-  "stars": {
-    "service": [0.12, 0.06, 0.02],
-    "efficiency": [12, 25, 40],
-    "throughput": [0.70, 0.35, 0.10]
+  "rail": { "base": 6, "per_level": 2 },
+  "roast": {
+    "real_s": 30, "loss": 0.15, "sweet": [0.70, 0.86], "early": 0.6, "assist_at": 0.78,
+    "bonus_sweet": 10, "bonus_assist": 6, "bonus_pass": 4, "pen_early": -15, "pen_late": -4, "pen_auto": -6,
+    "profile_match": 6, "lab_bonus": 4, "rest_days": 1, "drum_kg": [0, 5, 10, 15], "lot_kg": 10, "lot_kg_storage": 20, "storage_discount": 0.9,
+    "market_drift": 0.05, "market_revert": 0.3
   },
-  "events": { "free_days": 3, "per_day": [0.0, 0.6, 1.0, 1.4, 1.7] },
+  "origins": [
+    { "id": "valley",   "q": 66, "price": 5.0,  "best": "dark",   "research": "" },
+    { "id": "lowland",  "q": 74, "price": 6.5,  "best": "medium", "research": "" },
+    { "id": "highland", "q": 82, "price": 9.0,  "best": "light",  "research": "roast_profiles" },
+    { "id": "volcanic", "q": 88, "price": 12.0, "best": "medium", "research": "origin_trip" }
+  ],
+  "contracts": [
+    { "id": "bistro", "kg": 3, "every": 3, "pay": 26, "min_q": 64, "rating": 3.4, "research": "" },
+    { "id": "ferry",  "kg": 5, "every": 4, "pay": 24, "min_q": 70, "rating": 3.8, "research": "packing_bench" }
+  ],
+  "contract_miss_fee": 0.2, "contract_miss_mult": 0.9, "contract_pay_floor": 0.7, "pass_wholesale": 1.1,
+  "weather": {
+    "sunny": { "weight": 0.5,  "walk": 1.0,  "pre": 1.0, "iced": 1.0, "tune": 1.0 },
+    "rain":  { "weight": 0.25, "walk": 0.75, "pre": 2.0, "iced": 0.4, "tune": 1.6 },
+    "heat":  { "weight": 0.12, "walk": 1.05, "pre": 1.0, "iced": 3.0, "tune": 1.2 },
+    "fog":   { "weight": 0.13, "walk": 0.8,  "pre": 1.5, "iced": 0.8, "tune": 1.3 }
+  },
+  "prep": { "hot_cups": 12, "hot_price": 12, "ice_kg": 10, "ice_price": 8 },
+  "events": { "free_days": 3 },
   "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
   "rewards": {
     "offline_x2":      { "per_day": 1, "cooldown_s": 0 },
-    "emergency_empty": { "per_day": 3, "cooldown_s": 600 },
-    "fuel_voucher":    { "per_day": 2, "cooldown_s": 900 },
-    "baler_rescue":    { "per_day": 1, "cooldown_s": 0 },
+    "extra_barista":   { "per_day": 3, "cooldown_s": 900, "minutes": 60 },
+    "auto_dialin":     { "per_day": 2, "cooldown_s": 1200, "minutes": 90 },
+    "emergency_stock": { "per_day": 3, "cooldown_s": 600 },
+    "crisis_halve":    { "per_day": 2, "cooldown_s": 1200 },
     "daily_bonus":     { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
     "single_max_days": 0.2
   },
-  "day_income_floor": 600
+  "day_income_floor": 250
 }

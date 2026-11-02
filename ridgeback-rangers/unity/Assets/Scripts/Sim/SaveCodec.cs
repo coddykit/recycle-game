@@ -1,8 +1,8 @@
 // Ridgeback Rangers sim core — save codec (fleet §14). Encode = canonical JSON of the whole career (a live day included:
-// trucks mid-road, a jammed machine, the report screen, the guide). Decode never throws and never touches a running game;
-// it accepts every state the sim can produce (negative cash after a bad day, a waiting truck, an empty yard) and refuses
-// only what the sim can never write (unknown nodes / vehicle types, indices out of range, another game's file).
-// Keeping unreadable files (.unreadable copies, .bak fallback) is CoddyKit.SaveRepository's job.
+// rangers mid-road, the tram mid-loop, open pins, an escape alarm, the report screen, the guide, eggs half warmed). Decode
+// never throws and never touches a running game; it accepts every state the sim can produce (negative cash after a bad day,
+// an empty queue, the nursery) and refuses only what the sim can never write (unknown species / nodes / roles, indices out
+// of range, another game's file). Keeping unreadable files (.unreadable copies, .bak fallback) is CoddyKit.SaveRepository's job.
 using System;
 using System.Collections.Generic;
 
@@ -38,49 +38,80 @@ namespace RidgebackRangers.Sim
             var s = new State
             {
                 Seed = J.L(o, "seed", 1), RngState = J.L(o, "rng", 1), Day = J.I(o, "day", 1), Minute = J.D(o, "minute", gd.DayStart),
-                Phase = J.S(o, "phase", Phases.Plan), Speed = J.I(o, "speed", 1), Paused = J.B(o, "paused"), Cash = J.D(o, "cash"),
-                Rating = J.D(o, "rating", 50), Drivers = J.I(o, "drivers", 1), Techs = J.I(o, "techs"), Researching = J.S(o, "researching"),
-                ResearchLeftS = J.D(o, "research_left"), NextDispatchAt = J.D(o, "next_dispatch", gd.DayStart), Tutorial = J.B(o, "tutorial"),
-                FuelVoucher = J.B(o, "voucher"), OfflinePending = J.D(o, "offline_pending"), LastSeen = J.L(o, "last_seen"),
-                BestDayStars = J.I(o, "best_stars"), ThreeStarDays = J.I(o, "three_star_days"), Containers = J.L(o, "containers"), Bales = J.I(o, "bales"),
+                Phase = J.S(o, "phase", Phases.Plan), Speed = J.I(o, "speed", 1), Paused = J.B(o, "paused"), Cash = J.D(o, "cash"), Cp = J.D(o, "cp"),
+                Rating = J.D(o, "rating", 50), NextId = J.I(o, "next_id", 1), GateOpen = J.B(o, "gate"), Incubators = J.I(o, "incubators", gd.StartIncubators),
+                Cafe = J.I(o, "cafe"), ChiefOn = J.B(o, "chief_on"), Tutorial = J.B(o, "tutorial"), OfflinePending = J.D(o, "offline_pending"),
+                LastSeen = J.L(o, "last_seen"), BestDayStars = J.I(o, "best_stars"), ThreeStarDays = J.I(o, "three_star_days"),
+                VisitorsTotal = J.L(o, "visitors_total"), Hatched = J.I(o, "hatched"),
             };
-            if (!Finite(s.Minute) || !Finite(s.Cash) || !Finite(s.Rating) || !Finite(s.ResearchLeftS) || !Finite(s.OfflinePending)) return Fail("not_finite");
+            if (!Finite(s.Minute) || !Finite(s.Cash) || !Finite(s.Cp) || !Finite(s.Rating) || !Finite(s.OfflinePending)) return Fail("not_finite");
             if (s.Day < 1 || s.Day > 1000000) return Fail("day");
             if (!Phases.Valid(s.Phase)) return Fail("phase");
             if (s.Minute < gd.DayStart - 1 || s.Minute > gd.DayEnd + 1) return Fail("minute");
-            if (s.Drivers < 0 || s.Techs < 0 || s.Speed < 1 || s.Speed > 8) return Fail("counts");
-            s.Districts = J.StrList(o, "districts");
-            foreach (var d in s.Districts) if (gd.District(d) == null) return Fail("district");
-            if (s.Districts.Count == 0) return Fail("district");
-            s.Research = J.StrList(o, "research");
-            foreach (var r in s.Research) if (!gd.ResearchById.ContainsKey(r)) return Fail("research");
-            if (s.Researching != "" && !gd.ResearchById.ContainsKey(s.Researching)) return Fail("research");
+            if (s.Speed < 1 || s.Speed > 8 || s.NextId < 1 || s.Incubators < 0 || s.Incubators > 32 || s.Cafe < 0 || s.Cafe > 2) return Fail("counts");
+            s.Zones = J.StrList(o, "zones");
+            if (s.Zones.Count == 0) return Fail("zone");
+            foreach (var z in s.Zones) if (gd.Zone(z) == null) return Fail("zone");
+            s.Upgrades = J.StrList(o, "upgrades");
+            s.Scouted = J.StrList(o, "scouted");
             s.Seen = J.StrList(o, "seen");
+            s.Found = J.StrList(o, "found");
+            foreach (var sp in s.Found) if (gd.Sp(sp) == null) return Fail("species");
 
-            foreach (var p in J.Arr(o, "points") ?? new List<object>())
+            foreach (var x in J.Arr(o, "paddocks") ?? new List<object>())
             {
-                var ps = PointState.Read(p);
-                if (ps.Node < 0 || ps.Node >= gd.Nodes.Count || gd.Nodes[ps.Node].Kind != "site") return Fail("point_node");
-                if (!gd.PointKinds.ContainsKey(ps.Kind)) return Fail("point_kind");
-                s.Points.Add(ps);
+                var p = PaddockState.Read(x);
+                if (p.Node < 0 || p.Node >= gd.Nodes.Count || gd.Nodes[p.Node].Kind != "paddock") return Fail("paddock_node");
+                if (s.Paddocks.Exists(q => q.Node == p.Node)) return Fail("paddock_dup");
+                s.Paddocks.Add(p);
             }
-            foreach (var t in J.Arr(o, "trucks") ?? new List<object>())
+            foreach (var x in J.Arr(o, "animals") ?? new List<object>())
             {
-                var ts = TruckState.Read(t);
-                if (!gd.Vehicles.ContainsKey(ts.Type)) return Fail("truck_type");
-                if (ts.AtNode < 0 || ts.AtNode >= gd.Nodes.Count) return Fail("truck_node");
-                foreach (int n in ts.Path) if (n < 0 || n >= gd.Nodes.Count) return Fail("truck_path");
-                foreach (int i in ts.Stops) if (i < 0 || i >= s.Points.Count) return Fail("truck_stop");
-                if (ts.Target < -1 || ts.Target >= s.Points.Count) return Fail("truck_target");
-                if (!Finite(ts.PathPos) || !Finite(ts.PathKm) || !Finite(ts.TimeLeft)) return Fail("not_finite");
-                s.Trucks.Add(ts);
+                var a = AnimalState.Read(x);
+                if (gd.Sp(a.Species) == null) return Fail("species");
+                if (a.Paddock < -1 || a.Paddock >= s.Paddocks.Count) return Fail("animal_paddock");
+                if (!Finite(a.ShowUntil)) return Fail("not_finite");
+                s.Animals.Add(a);
             }
-            foreach (var j in J.Arr(o, "tech_jobs") ?? new List<object>()) s.TechJobs.Add(TechJob.Read(j));
-            s.Depot = DepotState.Read(J.Obj(o, "depot"), gd);
-            var mk = JW.Dbl(o, "market", Mats.N);
-            for (int m = 0; m < Mats.N; m++) s.Market[m] = mk[m] > 0 ? mk[m] : 1;
-            foreach (var e in J.Arr(o, "events") ?? new List<object>()) s.Events.Add(ActiveEvent.Read(e));
-            foreach (var e in J.Arr(o, "planned") ?? new List<object>()) s.Planned.Add(PlannedEvent.Read(e));
+            if (J.Obj(o, "stations") is JObj stn)
+                foreach (var kv in stn)
+                {
+                    if (gd.Zone(kv.Key) == null) return Fail("station");
+                    s.Stations[kv.Key] = StationState.Read(kv.Value);
+                }
+            foreach (var x in J.Arr(o, "rangers") ?? new List<object>())
+            {
+                var r = RangerState.Read(x);
+                if (!Roles.Valid(r.Role)) return Fail("role");
+                if (r.AtNode < 0 || r.AtNode >= gd.Nodes.Count) return Fail("ranger_node");
+                foreach (int n in r.Path) if (n < 0 || n >= gd.Nodes.Count) return Fail("ranger_path");
+                if (r.Dig < -1 || r.Dig >= gd.DigSites.Count) return Fail("ranger_dig");
+                if (!Finite(r.TimeLeft)) return Fail("not_finite");
+                s.Rangers.Add(r);
+            }
+            foreach (var x in J.Arr(o, "pins") ?? new List<object>())
+            {
+                var p = PinState.Read(x);
+                if (!PinKinds.Valid(p.Kind)) return Fail("pin_kind");
+                if (p.Node < 0 || p.Node >= gd.Nodes.Count) return Fail("pin_node");
+                if (p.Paddock < -1 || p.Paddock >= s.Paddocks.Count || p.Animal < -1 || p.Animal >= s.Animals.Count) return Fail("pin_target");
+                s.Pins.Add(p);
+            }
+            s.Tram = TramState.Read(J.Obj(o, "tram"));
+            if (s.Tram.Cars > 16) return Fail("counts");
+            foreach (var x in J.Arr(o, "queue") ?? new List<object>()) s.Queue.Add(VisitorGroup.Read(x));
+            foreach (var x in J.Arr(o, "eggs") ?? new List<object>())
+            {
+                var e = EggState.Read(x);
+                if (gd.Sp(e.Species) == null) return Fail("species");
+                s.Eggs.Add(e);
+            }
+            s.EggsWaiting = J.StrList(o, "eggs_waiting");
+            foreach (var sp in s.EggsWaiting) if (gd.Sp(sp) == null) return Fail("species");
+            if (J.Obj(o, "shards") is JObj sh) foreach (var kv in sh) s.Shards[kv.Key] = Math.Max(0, Math.Min(100, J.D(kv.Value)));
+            if (J.Obj(o, "dig_eggs") is JObj de) foreach (var kv in de) s.DigEggs[kv.Key] = Math.Max(0, J.I(kv.Value));
+            foreach (var x in J.Arr(o, "events") ?? new List<object>()) s.Events.Add(ActiveEvent.Read(x));
+            foreach (var x in J.Arr(o, "planned") ?? new List<object>()) s.Planned.Add(PlannedEvent.Read(x));
             s.Today = DayStats.Read(J.Obj(o, "today"));
             foreach (var h in J.Arr(o, "history") ?? new List<object>()) s.History.Add(DayStats.Read(h));
             if (J.Obj(o, "rewards") is JObj rw) foreach (var kv in rw) s.Rewards[kv.Key] = RewardUse.Read(kv.Value);

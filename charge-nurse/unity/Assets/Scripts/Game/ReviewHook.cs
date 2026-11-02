@@ -1,8 +1,8 @@
 // Charge Nurse — wow moments for the in-app review ask (fleet §12; the kit's CoddyReview / ReviewGate decide WHEN: first
 // session ok, ≥ 240 s real play, never in the guide / a window / the background, ≤ 3 asks ≥ 30 days apart, OS sheet only,
 // no "do you like it" card, nothing given for a rating). This class only says WHICH moments are wow moments:
-//   * the first good day report (≥ 6 of 9 stars) — ~4 minutes into the first session, right after the guide;
-//   * the first bale sold for ≥ 1.1 × the base price;   * a new district unlocked.
+//   * the first full shift cleared with a good report (≥ 6 of 9 stars) — plan §10 "first full shift cleared" (~4 min);
+//   * a new wing opened (the clinic becomes a town hospital, a city general).
 // A moment that happens inside the guide is deferred to the first moment after it (Deferred, kept in settings).
 using ChargeNurse.Sim;
 
@@ -17,9 +17,8 @@ namespace ChargeNurse.Game
         {
             switch (e.Type)
             {
-                case "day_done": return e.B >= 6 ? "good_day" : "";
-                case "sold": return e.A >= 0 && e.A < Mats.N && sim.MarketMult(e.A) >= 1.1 ? "good_sale" : "";
-                case "district": return "district";
+                case "day_done": return e.B >= 6 ? "good_shift" : "";
+                case "wing": return "wing";
             }
             return "";
         }

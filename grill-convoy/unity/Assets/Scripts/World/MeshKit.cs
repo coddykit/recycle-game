@@ -1,6 +1,6 @@
 // Grill Convoy — the diorama's procedural geometry. Everything in the world shares ONE material (URP Simple Lit on the
 // 8×8 palette texture Resources/materials/palette.png): a model picks colours by pointing its UVs at palette swatches, so
-// the SRP batcher draws the whole town with a handful of batches (fleet §10: Low ≤ 150 draws, the plan targets ≤ 120).
+// the SRP batcher draws the whole city with a handful of batches (fleet §10: Low ≤ 150 draws; plan §8: city map ≤ 80).
 // Builders merge many boxes into one mesh per district; nothing here runs per frame.
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +11,11 @@ namespace GrillConvoy.World
     /// <summary>Palette swatch indices (Tools/make_palette.py writes the same order).</summary>
     public static class Pal
     {
-        public const int Grass = 0, GrassDark = 1, Road = 2, RoadLine = 3, Concrete = 4, WallCream = 5, WallTerracotta = 6, WallBlue = 7,
-            RoofRed = 8, RoofGrey = 9, Brand = 10, Panel = 11, TruckWhite = 12, TruckGreen = 13, Depot = 14, Water = 15, Sand = 16,
-            Tree = 17, Trunk = 18, Locked = 19, Window = 20, Pet = 21, Alu = 22, Glass = 23, Warning = 24, Yellow = 25, Litter = 26,
-            Gold = 27, Sunset = 28, Forest = 29, Tropic = 30, Retro = 31, SkinTone = 32, ShirtA = 33, ShirtB = 34, ShirtC = 35, ShirtD = 36, ShirtE = 37, Trousers = 38;
+        public const int Grass = 0, GrassDark = 1, Road = 2, RoadLine = 3, Paving = 4, WallCream = 5, WallTerracotta = 6, WallTeal = 7,
+            RoofRed = 8, RoofGrey = 9, Brand = 10, Steel = 11, TruckCream = 12, TruckTeal = 13, Commissary = 14, Water = 15, Sand = 16,
+            Tree = 17, Trunk = 18, Locked = 19, Window = 20, Bun = 21, Patty = 22, Cheese = 23, Warning = 24, Yellow = 25, Lettuce = 26,
+            Gold = 27, Sunset = 28, Neon = 29, Retro = 30, Wood = 31, SkinTone = 32, ShirtA = 33, ShirtB = 34, ShirtC = 35, ShirtD = 36, ShirtE = 37,
+            Trousers = 38, White = 39, Steam = 40, Flame = 41, Lights = 42, Stadium = 43;
         public const int Size = 8;
 
         public static Vector2 Uv(int swatch)
@@ -71,7 +72,7 @@ namespace GrillConvoy.World
         }
 
         /// <summary>A flat disc (crossings, plazas) with segs segments.</summary>
-        public void Disc(Vector3 c, float r, float y, int swatch, int segs = 10)
+        public void Disc(Vector3 c, float r, float y, int swatch, int segs = 12)
         {
             var u = Pal.Uv(swatch);
             int i0 = v.Count;
@@ -92,6 +93,14 @@ namespace GrillConvoy.World
             Box(at + Vector3.up * 4.2f * s, new Vector3(2f, 1.6f, 2f) * s, yaw + 40f, Pal.Tree);
         }
 
+        /// <summary>A beach umbrella / plaza parasol: pole + flat octagon-ish canopy (two crossed boxes).</summary>
+        public void Umbrella(Vector3 at, float s, int canopy)
+        {
+            Box(at, new Vector3(0.2f, 3.2f, 0.2f) * s, 0, Pal.Steel);
+            Box(at + Vector3.up * 3.0f * s, new Vector3(3.6f, 0.35f, 3.6f) * s, 0, canopy);
+            Box(at + Vector3.up * 3.0f * s, new Vector3(3.6f, 0.35f, 3.6f) * s, 45, canopy);
+        }
+
         public Mesh Build(string name)
         {
             var m = new Mesh { name = name };
@@ -107,76 +116,73 @@ namespace GrillConvoy.World
 
         // ------------------------------------------------------------------ props (fallbacks when the Blender kit is absent)
 
-        public static Mesh Machine(bool big)
-        {
-            var k = new MeshKit();
-            float h = big ? 5.2f : 4.2f, w = big ? 4.4f : 3.2f;
-            k.Box(Vector3.zero, new Vector3(w, h, 2.4f), 0, Pal.Brand, Pal.Brand);
-            k.Box(new Vector3(0, h * 0.45f, -1.25f), new Vector3(w * 0.7f, h * 0.35f, 0.1f), 0, Pal.Panel);
-            k.Box(new Vector3(0, h * 0.82f, -1.25f), new Vector3(w * 0.45f, h * 0.12f, 0.1f), 0, Pal.Window);
-            k.Box(new Vector3(0, h, 0), new Vector3(w + 0.4f, 0.35f, 2.8f), 0, Pal.Panel);
-            return k.Build(big ? "machine_m" : "machine_s");
-        }
-
-        public static Mesh Shop()
-        {
-            var k = new MeshKit();
-            k.Box(Vector3.zero, new Vector3(6f, 4f, 5f), 0, Pal.WallCream, Pal.RoofRed);
-            k.Box(new Vector3(0, 2.6f, -2.7f), new Vector3(6.4f, 0.3f, 1.6f), 0, Pal.Brand);
-            k.Box(new Vector3(-1.5f, 0, -3f), new Vector3(1.4f, 1.2f, 1f), 0, Pal.Pet);
-            return k.Build("shop");
-        }
-
-        public static Mesh Horeca()
-        {
-            var k = new MeshKit();
-            k.Box(Vector3.zero, new Vector3(7f, 4.5f, 6f), 0, Pal.WallTerracotta, Pal.RoofGrey);
-            for (int i = -1; i <= 1; i += 2)
-            {
-                k.Box(new Vector3(i * 2.4f, 0, -5f), new Vector3(0.2f, 2.6f, 0.2f), 0, Pal.Trunk);
-                k.Box(new Vector3(i * 2.4f, 2.6f, -5f), new Vector3(2.6f, 0.25f, 2.6f), 45, Pal.Sunset);
-            }
-            k.Box(new Vector3(3.6f, 0, 1f), new Vector3(1.2f, 1.4f, 1.6f), 0, Pal.Glass);
-            return k.Build("horeca");
-        }
-
+        /// <summary>A burger truck, forward +Z, serving hatch + awning on BOTH long sides (whichever side faces the crowd).</summary>
         public static Mesh Truck(string type)
         {
             var k = new MeshKit();
-            switch (type)
+            bool big = type == "box";
+            float len = big ? 7.2f : 6.0f, w = big ? 2.6f : 2.4f, h = big ? 3.0f : 2.7f;
+            k.Box(new Vector3(0, 0.55f, len * 0.36f), new Vector3(w * 0.95f, h * 0.7f, len * 0.26f), 0, Pal.TruckCream, Pal.TruckCream);   // cab
+            k.Box(new Vector3(0, 1.25f + h * 0.3f, len * 0.47f), new Vector3(w * 0.85f, h * 0.28f, 0.06f), 0, Pal.Window);                // windscreen
+            k.Box(new Vector3(0, 0.55f, -len * 0.12f), new Vector3(w, h, len * 0.72f), 0, big ? Pal.TruckTeal : Pal.Brand, Pal.Steel);     // kitchen box
+            for (int s = -1; s <= 1; s += 2)
             {
-                case "bike":
-                    k.Box(new Vector3(0, 0.5f, 0.8f), new Vector3(1.4f, 1.3f, 1.8f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0, -1.2f), new Vector3(0.3f, 1.6f, 0.3f), 0, Pal.Window);
-                    k.Box(new Vector3(0, 0, 0), new Vector3(0.25f, 0.6f, 3.2f), 0, Pal.Window);
-                    break;
-                case "compactor":
-                    k.Box(new Vector3(0, 0.6f, 2.6f), new Vector3(2.6f, 2.6f, 1.8f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0.6f, -0.8f), new Vector3(2.8f, 3.2f, 5f), 0, Pal.TruckGreen);
-                    k.Box(new Vector3(0, 1.6f, 3.52f), new Vector3(2.2f, 1f, 0.05f), 0, Pal.Window);
-                    for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * 1.3f, 0, j * 2f), new Vector3(0.5f, 1.1f, 1.1f), 0, Pal.Window);
-                    break;
-                default:
-                    k.Box(new Vector3(0, 0.5f, 1.6f), new Vector3(2.2f, 2f, 1.4f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0.5f, -0.6f), new Vector3(2.3f, 2.5f, 3.2f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 1.4f, 2.32f), new Vector3(1.9f, 0.8f, 0.05f), 0, Pal.Window);
-                    k.Box(new Vector3(0, 1.2f, -0.6f), new Vector3(2.35f, 0.5f, 3f), 0, Pal.Brand);
-                    for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * 1.1f, 0, j * 1.4f), new Vector3(0.4f, 0.9f, 0.9f), 0, Pal.Window);
-                    break;
+                k.Box(new Vector3(s * (w * 0.5f + 0.02f), 0.55f + h * 0.42f, -len * 0.12f), new Vector3(0.06f, h * 0.36f, len * 0.46f), 0, Pal.Window);  // hatch
+                k.Box(new Vector3(s * (w * 0.5f + 0.55f), 0.55f + h * 0.8f, -len * 0.12f), new Vector3(1.1f, 0.12f, len * 0.5f), 0, Pal.Sunset);      // awning
+                k.Box(new Vector3(s * (w * 0.5f + 0.25f), 0.55f + h * 0.36f, -len * 0.12f), new Vector3(0.5f, 0.1f, len * 0.46f), 0, Pal.Steel);       // counter
             }
+            k.Box(new Vector3(0, 0.55f + h, -len * 0.3f), new Vector3(0.5f, 0.7f, 0.5f), 0, Pal.Steel);   // vent hood (steam source)
+            k.Box(new Vector3(0, 0.55f + h, len * 0.05f), new Vector3(w * 0.7f, 0.9f, 0.12f), 0, Pal.Yellow);   // roof sign (no text)
+            for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * w * 0.42f, 0, j * len * 0.3f), new Vector3(0.45f, 0.9f, 0.9f), 0, Pal.Window);
             return k.Build("truck_" + type);
         }
 
-        /// <summary>The chunky canonical walker (crowd), ~2.6 units tall so it reads at map zoom. shirt = archetype colour.</summary>
-        public static Mesh Figure(int shirt)
+        public static Mesh Commissary()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(26, 9, 16), 0, Pal.Commissary, Pal.RoofGrey);
+            k.Box(new Vector3(-6, 0, -8.1f), new Vector3(8, 5, 0.3f), 0, Pal.Steel);           // loading door
+            k.Box(new Vector3(6, 4, -8.1f), new Vector3(9, 2.4f, 0.3f), 0, Pal.Window);        // windows
+            k.Box(new Vector3(0, 9, 2), new Vector3(4, 3, 4), 0, Pal.Steel);                    // cold-room unit
+            k.Box(new Vector3(0, 6.6f, -8.4f), new Vector3(14, 1.6f, 0.4f), 0, Pal.Brand);     // sign band (no text)
+            return k.Build("commissary");
+        }
+
+        /// <summary>The chunky canonical figure (crowd), ~2.6 units tall so it reads at map zoom. shirt = customer type colour.</summary>
+        public static Mesh Figure(int shirt, bool burger)
         {
             var k = new MeshKit();
             k.Box(new Vector3(-0.35f, 0, 0), new Vector3(0.5f, 1.1f, 0.6f), 0, Pal.Trousers);
             k.Box(new Vector3(0.35f, 0, 0), new Vector3(0.5f, 1.1f, 0.6f), 0, Pal.Trousers);
             k.Box(new Vector3(0, 1.1f, 0), new Vector3(1.4f, 1.1f, 0.8f), 0, shirt);
             k.Box(new Vector3(0, 2.2f, 0), new Vector3(0.8f, 0.7f, 0.8f), 0, Pal.SkinTone);
-            k.Box(new Vector3(0.95f, 0.7f, 0), new Vector3(0.6f, 0.8f, 0.6f), 0, Pal.Pet);   // the bottle bag
-            return k.Build("figure_" + shirt);
+            if (burger)
+            {
+                k.Box(new Vector3(0.95f, 1.1f, 0.2f), new Vector3(0.7f, 0.25f, 0.7f), 0, Pal.Bun);
+                k.Box(new Vector3(0.95f, 1.35f, 0.2f), new Vector3(0.75f, 0.15f, 0.75f), 0, Pal.Patty);
+                k.Box(new Vector3(0.95f, 1.5f, 0.2f), new Vector3(0.7f, 0.25f, 0.7f), 0, Pal.Bun);
+            }
+            return k.Build("figure_" + shirt + (burger ? "_b" : ""));
+        }
+
+        /// <summary>A soft puff (steam card stand-in: three offset boxes), white.</summary>
+        public static Mesh Puff()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(1.2f, 0.9f, 1.2f), 20, Pal.Steam);
+            k.Box(new Vector3(0.5f, 0.5f, 0.2f), new Vector3(0.9f, 0.8f, 0.9f), 50, Pal.Steam);
+            k.Box(new Vector3(-0.4f, 0.6f, -0.3f), new Vector3(0.8f, 0.7f, 0.8f), 70, Pal.Steam);
+            return k.Build("puff");
+        }
+
+        /// <summary>The cartoon flare-up pulse over a grill (no injuries, no destruction — plan §5.8).</summary>
+        public static Mesh Flame()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(1.6f, 1.4f, 1.6f), 45, Pal.Flame);
+            k.Box(new Vector3(0, 1.2f, 0), new Vector3(1.0f, 1.2f, 1.0f), 20, Pal.Yellow);
+            k.Box(new Vector3(0, 2.2f, 0), new Vector3(0.5f, 0.8f, 0.5f), 0, Pal.Flame);
+            return k.Build("flame");
         }
     }
 }

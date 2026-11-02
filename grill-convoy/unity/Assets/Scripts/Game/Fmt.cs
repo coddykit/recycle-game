@@ -1,4 +1,4 @@
-// Grill Convoy (from Volt City) — number / money / time formatting for the UI (engine-free, deterministic: no CultureInfo lookups, so IL2CPP
+// Grill Convoy (from the fleet template) — number / money / time formatting for the UI (engine-free, deterministic: no CultureInfo lookups, so IL2CPP
 // globalisation stripping and device locales can never change a label). Separators follow the UI language.
 using System;
 using System.Globalization;

@@ -1,6 +1,7 @@
 // Pour & Roast sim core — engine independent. The whole saved career (State) and its parts. Every class writes and reads
 // itself (ToJson / Read); reads are lenient (defaults for missing fields) so older saves load (fleet §14: the codec accepts
-// every state the sim can produce — negative cash, a truck mid-road, a jammed machine, the report screen, a tutorial step).
+// every state the sim can produce — negative cash, a ticket mid-shot, a jammed grinder, a batch in the drum, the report
+// screen, a tutorial step).
 using System;
 using System.Collections.Generic;
 
@@ -12,18 +13,12 @@ namespace PourAndRoast.Sim
         public static bool Valid(string p) => p == Plan || p == Live || p == Report;
     }
 
-    public static class Policies
+    /// <summary>The player-set order the bar works the ticket rail in (design §5.3: priority rules are player-set).</summary>
+    public static class Rules
     {
-        public const string Threshold = "threshold", Fixed = "fixed", Call = "call";
-        public static bool Valid(string p) => p == Threshold || p == Fixed || p == Call;
-        public static readonly int[] Thresholds = { 60, 80, 95 };
-        public static readonly int[] FixedDays = { 1, 2, 3 };
-    }
-
-    public static class TruckStatus
-    {
-        public const string Idle = "idle", Drive = "drive", Service = "service", Unload = "unload", Wait = "wait", Broken = "broken";
-        public static bool Valid(string s) => s == Idle || s == Drive || s == Service || s == Unload || s == Wait || s == Broken;
+        public const string Fifo = "fifo", Deadline = "deadline", Vip = "vip";
+        public static readonly string[] All = { Fifo, Deadline, Vip };
+        public static bool Valid(string r) => r == Fifo || r == Deadline || r == Vip;
     }
 
     static class JW
@@ -38,201 +33,189 @@ namespace PourAndRoast.Sim
             if (a != null) for (int i = 0; i < len && i < a.Count; i++) r[i] = Finite(J.D(a[i]));
             return r;
         }
-        public static List<int> Ints(object o, string key) { var r = new List<int>(); foreach (var x in J.Arr(o, key) ?? new List<object>()) r.Add(J.I(x)); return r; }
+        public static int[] Ints(object o, string key, int len)
+        {
+            var r = new int[len];
+            var a = J.Arr(o, key);
+            if (a != null) for (int i = 0; i < len && i < a.Count; i++) r[i] = J.I(a[i]);
+            return r;
+        }
         public static double Finite(double d) => double.IsNaN(d) || double.IsInfinity(d) ? 0 : d;
         public static double D(object o, string key, double def = 0) => Finite(J.D(o, key, def));
     }
 
-    public sealed class PointState
+    /// <summary>One drink / pastry of a ticket. Stage = index of its next task in the menu item's task list; Worker = the
+    /// staff id working it now (-1 none, -2 the rewarded helper).</summary>
+    public sealed class ItemState
     {
-        public int Node;
-        public string Kind = "machine_s";      // machine_s | machine_m | shop | horeca
-        public double[] Fill = new double[Mats.N]; // containers by material
-        public bool Sensor, Compactor, Jammed, SensorOffline;
-        public double FrozenPct;                // what the screen shows while the sensor/app is wrong
-        public string Policy = Policies.Threshold;
-        public int Threshold = 80, FixedEvery = 1;
-        public int LastServiceDay = -1;
-        public double LastServiceMin;
-        public double EstVol;                   // expected litres since the last service (no events, no weekend): the estimate without a sensor
-        public double BusyUntil;                // bulk returner blocking the machine (day minute)
-        public bool TechCalled;
-        // today
-        public double FullMin;
-        public int Arrivals, Turned, Deposited, Picked;
+        public int M;                 // menu index
+        public int Milk;              // 0 none, 1 whole, 2 oat
+        public int Stage;
+        public int Worker = -1;
+        public double Left;           // game minutes left of the running task
+        public double Q = 70;
+        public bool Failed, Sub;      // sold out / out of milk; milk substituted
+        public bool Batched;
 
-        public bool IsMachine => Kind == "machine_s" || Kind == "machine_m";
-
-        public JObj ToJson()
+        public JObj ToJson() => new JObj
         {
-            return new JObj
-            {
-                ["node"] = (long)Node, ["kind"] = Kind, ["fill"] = JW.Arr(Fill), ["sensor"] = Sensor, ["compactor"] = Compactor,
-                ["jammed"] = Jammed, ["sensor_off"] = SensorOffline, ["frozen"] = FrozenPct, ["policy"] = Policy, ["threshold"] = (long)Threshold,
-                ["every"] = (long)FixedEvery, ["last_day"] = (long)LastServiceDay, ["last_min"] = LastServiceMin, ["est"] = EstVol, ["busy"] = BusyUntil,
-                ["tech"] = TechCalled, ["full_min"] = FullMin, ["arr"] = (long)Arrivals, ["turned"] = (long)Turned, ["dep"] = (long)Deposited, ["picked"] = (long)Picked,
-            };
-        }
+            ["m"] = (long)M, ["milk"] = (long)Milk, ["stage"] = (long)Stage, ["w"] = (long)Worker, ["left"] = Left, ["q"] = Q, ["failed"] = Failed, ["sub"] = Sub, ["batch"] = Batched,
+        };
 
-        public static PointState Read(object o)
+        public static ItemState Read(object o) => new ItemState
         {
-            var p = new PointState
-            {
-                Node = J.I(o, "node", -1), Kind = J.S(o, "kind", "machine_s"), Fill = JW.Dbl(o, "fill", Mats.N), Sensor = J.B(o, "sensor"),
-                Compactor = J.B(o, "compactor"), Jammed = J.B(o, "jammed"), SensorOffline = J.B(o, "sensor_off"), FrozenPct = JW.D(o, "frozen"),
-                Policy = J.S(o, "policy", Policies.Threshold), Threshold = J.I(o, "threshold", 80), FixedEvery = J.I(o, "every", 1),
-                LastServiceDay = J.I(o, "last_day", -1), LastServiceMin = JW.D(o, "last_min"), EstVol = JW.D(o, "est"), BusyUntil = JW.D(o, "busy"),
-                TechCalled = J.B(o, "tech"), FullMin = JW.D(o, "full_min"), Arrivals = J.I(o, "arr"), Turned = J.I(o, "turned"),
-                Deposited = J.I(o, "dep"), Picked = J.I(o, "picked"),
-            };
-            for (int i = 0; i < Mats.N; i++) if (p.Fill[i] < 0) p.Fill[i] = 0;
-            if (!Policies.Valid(p.Policy)) p.Policy = Policies.Threshold;
-            return p;
-        }
+            M = J.I(o, "m"), Milk = J.I(o, "milk"), Stage = J.I(o, "stage"), Worker = J.I(o, "w", -1), Left = JW.D(o, "left"), Q = JW.D(o, "q", 70),
+            Failed = J.B(o, "failed"), Sub = J.B(o, "sub"), Batched = J.B(o, "batch"),
+        };
     }
 
-    public sealed class TruckState
+    public sealed class TicketState
     {
         public int Id;
-        public string Type = "van";
-        public string Status = TruckStatus.Idle;
-        public List<int> Stops = new List<int>();     // point indices still to visit
-        public List<int> Path = new List<int>();      // node path of the current leg
-        public double PathKm, PathPos;                // leg length / progress (km)
-        public int Target = -1;                       // point index of the leg, -1 = depot
-        public int AtNode;                            // where it stands when not driving
-        public double[] Load = new double[Mats.N];   // containers
-        public double TimeLeft;                       // minutes of service / unload / breakdown
-        public string ResumeStatus = "";              // after a breakdown
-        public bool Auto;                             // driven by the Dispatcher
-        public bool Voucher;                          // rewarded fuel voucher: this route at half fuel cost
-        public double KmToday;
-        public int Trips;
-
-        public bool Busy => Status != TruckStatus.Idle;
+        public int Cust;              // customer type index
+        public bool Pre, Flag, Ready, Dup;
+        public double Arrived, Due, ReadyAt;
+        public List<ItemState> Items = new List<ItemState>();
 
         public JObj ToJson()
         {
+            var it = new List<object>(); foreach (var i in Items) it.Add(i.ToJson());
             return new JObj
             {
-                ["id"] = (long)Id, ["type"] = Type, ["status"] = Status, ["stops"] = JW.Arr(Stops), ["path"] = JW.Arr(Path), ["path_km"] = PathKm,
-                ["pos"] = PathPos, ["target"] = (long)Target, ["at"] = (long)AtNode, ["load"] = JW.Arr(Load), ["left"] = TimeLeft, ["resume"] = ResumeStatus,
-                ["auto"] = Auto, ["voucher"] = Voucher, ["km"] = KmToday, ["trips"] = (long)Trips,
+                ["id"] = (long)Id, ["cust"] = (long)Cust, ["pre"] = Pre, ["flag"] = Flag, ["ready"] = Ready, ["dup"] = Dup, ["arr"] = Arrived, ["due"] = Due,
+                ["ready_at"] = ReadyAt, ["items"] = it,
             };
         }
 
-        public static TruckState Read(object o)
+        public static TicketState Read(object o)
         {
-            var t = new TruckState
+            var t = new TicketState
             {
-                Id = J.I(o, "id"), Type = J.S(o, "type", "van"), Status = J.S(o, "status", TruckStatus.Idle), Stops = JW.Ints(o, "stops"), Path = JW.Ints(o, "path"),
-                PathKm = JW.D(o, "path_km"), PathPos = JW.D(o, "pos"), Target = J.I(o, "target", -1), AtNode = J.I(o, "at"), Load = JW.Dbl(o, "load", Mats.N),
-                TimeLeft = JW.D(o, "left"), ResumeStatus = J.S(o, "resume"), Auto = J.B(o, "auto"), Voucher = J.B(o, "voucher"), KmToday = JW.D(o, "km"), Trips = J.I(o, "trips"),
+                Id = J.I(o, "id"), Cust = J.I(o, "cust"), Pre = J.B(o, "pre"), Flag = J.B(o, "flag"), Ready = J.B(o, "ready"), Dup = J.B(o, "dup"),
+                Arrived = JW.D(o, "arr"), Due = JW.D(o, "due"), ReadyAt = JW.D(o, "ready_at"),
             };
-            if (!TruckStatus.Valid(t.Status)) t.Status = TruckStatus.Idle;
+            foreach (var i in J.Arr(o, "items") ?? new List<object>()) t.Items.Add(ItemState.Read(i));
             return t;
         }
     }
 
-    public sealed class TechJob
+    public sealed class StaffState
     {
-        public string Kind = "point";   // point | baler | truck
-        public int Target;
-        public double DoneAt;           // day minute the fix lands
-        public double FreeAt;           // day minute the technician is back
-        public JObj ToJson() => new JObj { ["kind"] = Kind, ["target"] = (long)Target, ["done"] = DoneAt, ["free"] = FreeAt };
-        public static TechJob Read(object o) => new TechJob { Kind = J.S(o, "kind", "point"), Target = J.I(o, "target"), DoneAt = JW.D(o, "done"), FreeAt = JW.D(o, "free") };
+        public int Id;
+        public string Role = Roles.Barista, Station = Stations.Any, Trait = "steady", Venue = "cart";
+        public int Level = 1;
+        public JObj ToJson() => new JObj { ["id"] = (long)Id, ["role"] = Role, ["station"] = Station, ["trait"] = Trait, ["venue"] = Venue, ["level"] = (long)Level };
+        public static StaffState Read(object o)
+        {
+            var s = new StaffState { Id = J.I(o, "id"), Role = J.S(o, "role", Roles.Barista), Station = J.S(o, "station", Stations.Any), Trait = J.S(o, "trait", "steady"), Venue = J.S(o, "venue", "cart"), Level = J.I(o, "level", 1) };
+            if (!Stations.Valid(s.Station)) s.Station = Stations.Any;
+            if (s.Level < 1) s.Level = 1;
+            return s;
+        }
     }
 
-    public sealed class DepotState
+    /// <summary>An owned branch (no-reset rule: it keeps its equipment when the player works another venue).</summary>
+    public sealed class VenueState
     {
-        public double[] Intake = new double[Mats.N];      // containers waiting for the count line
-        public double[] BalerIn = new double[Mats.N];     // kg sorted, waiting for the baler (pet, alu); glass index = bay kg
-        public double[] Press = new double[Mats.N];       // kg in the bale being pressed
-        public int[] Bales = new int[Mats.N];             // finished bales in the yard (glass = tonnes in the bay)
-        public double Till;                               // counted fees not banked yet (tap the coins)
-        public int Lines = 1, YardCap = 12, IntakeCap = 2500;
-        public bool BalerDown, Centre, Dispatcher;
-        public int Yard => Bales[Mats.Pet] + Bales[Mats.Alu];
-        public double IntakeTotal => Intake[0] + Intake[1] + Intake[2];
+        public string Id = "cart";
+        public int Heads = 1, Wands = 1, Grinder = 1, Ice, Rail, Seats, Decor;
+        public double Tune = 100, Wear, JamUntil = -1;
+        public bool Jammed;
+        public double BestNet;
+        public int DaysRun;
 
-        public JObj ToJson()
+        public JObj ToJson() => new JObj
         {
-            var b = new List<object> { (long)Bales[0], (long)Bales[1], (long)Bales[2] };
-            return new JObj
-            {
-                ["intake"] = JW.Arr(Intake), ["baler_in"] = JW.Arr(BalerIn), ["press"] = JW.Arr(Press), ["bales"] = b, ["till"] = Till,
-                ["lines"] = (long)Lines, ["yard_cap"] = (long)YardCap, ["intake_cap"] = (long)IntakeCap, ["baler_down"] = BalerDown, ["centre"] = Centre, ["dispatcher"] = Dispatcher,
-            };
-        }
+            ["id"] = Id, ["heads"] = (long)Heads, ["wands"] = (long)Wands, ["grinder"] = (long)Grinder, ["ice"] = (long)Ice, ["rail"] = (long)Rail, ["seats"] = (long)Seats,
+            ["decor"] = (long)Decor, ["tune"] = Tune, ["wear"] = Wear, ["jam_until"] = JamUntil, ["jammed"] = Jammed, ["best_net"] = BestNet, ["days"] = (long)DaysRun,
+        };
 
-        public static DepotState Read(object o, GameData gd)
+        public static VenueState Read(object o) => new VenueState
         {
-            var d = new DepotState
-            {
-                Intake = JW.Dbl(o, "intake", Mats.N), BalerIn = JW.Dbl(o, "baler_in", Mats.N), Press = JW.Dbl(o, "press", Mats.N), Till = JW.D(o, "till"),
-                Lines = J.I(o, "lines", gd.LinesStart), YardCap = J.I(o, "yard_cap", gd.YardCap), IntakeCap = J.I(o, "intake_cap", gd.IntakeCap),
-                BalerDown = J.B(o, "baler_down"), Centre = J.B(o, "centre"), Dispatcher = J.B(o, "dispatcher"),
-            };
-            var b = J.Arr(o, "bales");
-            if (b != null) for (int i = 0; i < Mats.N && i < b.Count; i++) d.Bales[i] = Math.Max(0, J.I(b[i]));
-            return d;
+            Id = J.S(o, "id", "cart"), Heads = J.I(o, "heads", 1), Wands = J.I(o, "wands", 1), Grinder = J.I(o, "grinder", 1), Ice = J.I(o, "ice"), Rail = J.I(o, "rail"),
+            Seats = J.I(o, "seats"), Decor = J.I(o, "decor"), Tune = JW.D(o, "tune", 100), Wear = JW.D(o, "wear"), JamUntil = JW.D(o, "jam_until", -1), Jammed = J.B(o, "jammed"),
+            BestNet = JW.D(o, "best_net"), DaysRun = J.I(o, "days"),
+        };
+    }
+
+    /// <summary>A roast batch: in the drum (Progress 0..1, real seconds), then resting (ReadyDay), then blended.</summary>
+    public sealed class BatchState
+    {
+        public string Origin = "", Profile = Profiles.Medium;
+        public double Kg, Progress, Q;
+        public int ReadyDay;
+        public JObj ToJson() => new JObj { ["origin"] = Origin, ["profile"] = Profile, ["kg"] = Kg, ["progress"] = Progress, ["q"] = Q, ["ready"] = (long)ReadyDay };
+        public static BatchState Read(object o)
+        {
+            var b = new BatchState { Origin = J.S(o, "origin"), Profile = J.S(o, "profile", Profiles.Medium), Kg = JW.D(o, "kg"), Progress = JW.D(o, "progress"), Q = JW.D(o, "q"), ReadyDay = J.I(o, "ready") };
+            if (!Profiles.Valid(b.Profile)) b.Profile = Profiles.Medium;
+            return b;
         }
+    }
+
+    public sealed class ContractState
+    {
+        public string Id = "";
+        public bool Active;
+        public int NextDay;
+        public double PayMult = 1;
+        public int Delivered, Missed;
+        public JObj ToJson() => new JObj { ["id"] = Id, ["active"] = Active, ["next"] = (long)NextDay, ["pay"] = PayMult, ["ok"] = (long)Delivered, ["miss"] = (long)Missed };
+        public static ContractState Read(object o) => new ContractState { Id = J.S(o, "id"), Active = J.B(o, "active"), NextDay = J.I(o, "next"), PayMult = JW.D(o, "pay", 1), Delivered = J.I(o, "ok"), Missed = J.I(o, "miss") };
     }
 
     public sealed class ActiveEvent
     {
         public string Id;
         public int UntilDay;          // last day it applies (inclusive)
-        public int Target = -1;       // point / truck / material index
+        public int Target = -1;       // origin index (frost)
         public double Mult = 1;
-        public double From, To;       // day minutes (match day window)
-        public JObj ToJson() => new JObj { ["id"] = Id, ["until"] = (long)UntilDay, ["target"] = (long)Target, ["mult"] = Mult, ["from"] = From, ["to"] = To };
-        public static ActiveEvent Read(object o) => new ActiveEvent { Id = J.S(o, "id"), UntilDay = J.I(o, "until"), Target = J.I(o, "target", -1), Mult = JW.D(o, "mult", 1), From = JW.D(o, "from"), To = JW.D(o, "to") };
+        public JObj ToJson() => new JObj { ["id"] = Id, ["until"] = (long)UntilDay, ["target"] = (long)Target, ["mult"] = Mult };
+        public static ActiveEvent Read(object o) => new ActiveEvent { Id = J.S(o, "id"), UntilDay = J.I(o, "until"), Target = J.I(o, "target", -1), Mult = JW.D(o, "mult", 1) };
     }
 
-    public sealed class PlannedEvent
+    /// <summary>A card on the Review Wall (no names, no free text: a customer type, stars and a reason key).</summary>
+    public sealed class ReviewCard
     {
-        public string Id;
-        public double At;             // day minute
-        public JObj ToJson() => new JObj { ["id"] = Id, ["at"] = At };
-        public static PlannedEvent Read(object o) => new PlannedEvent { Id = J.S(o, "id"), At = JW.D(o, "at") };
+        public int Day, Cust, Stars;
+        public string Reason = "";
+        public JObj ToJson() => new JObj { ["day"] = (long)Day, ["cust"] = (long)Cust, ["stars"] = (long)Stars, ["why"] = Reason };
+        public static ReviewCard Read(object o) => new ReviewCard { Day = J.I(o, "day"), Cust = J.I(o, "cust"), Stars = J.I(o, "stars", 3), Reason = J.S(o, "why") };
     }
 
     public sealed class DayStats
     {
         public int Day;
-        public int Arrivals, Turned, Deposited, Collected, Counted;
-        public double Km, Fuel, Wages, Leases, Power, ShopFees, Fees, Sales, Bonus, Fines, FullMin, BacklogEnd, CountCap;
-        public int StarService, StarEfficiency, StarThroughput;
-        public double Income => Fees + Sales + Bonus;
-        public double Costs => Fuel + Wages + Leases + Power + ShopFees + Fines;
+        public string Venue = "", Weather = "";
+        public int Customers, Served, Walked, Balked, Items, Failed, PreOrders, Late, Shots, ReviewN;
+        public double ReviewSum, WaitSum, QSum, MilkUsedW, MilkUsedO;
+        public double Revenue, Tips, Wholesale, Branches, Bonus, BeansCost, MilkCost, PastryCost, IceCost, Wages, Rent, Fees, Waste;
+        public double Income => Revenue + Tips + Wholesale + Branches + Bonus;
+        public double Costs => BeansCost + MilkCost + PastryCost + IceCost + Wages + Rent + Fees;
         public double Net => Income - Costs;
-        public int Stars => StarService + StarEfficiency + StarThroughput;
-        public double TurnedRate => Arrivals <= 0 ? 0 : (double)Turned / Arrivals;
-        public double PerKm => Km <= 0.01 ? (Collected > 0 ? 99 : 0) : Collected / Km;
+        public double AvgReview => ReviewN <= 0 ? 0 : ReviewSum / ReviewN;
+        public double WalkRate => Customers <= 0 ? 0 : (double)(Walked + Balked) / Customers;
+        public double AvgQ => Items - Failed <= 0 ? 0 : QSum / Math.Max(1, Items - Failed);
+        public double OnTime => PreOrders <= 0 ? 1 : 1.0 - (double)Late / PreOrders;
+        /// <summary>The report's day stars (1-5): the rounded average review, 0 when nobody was served.</summary>
+        public int Stars => ReviewN <= 0 ? 0 : Math.Max(1, Math.Min(5, (int)Math.Round(AvgReview)));
 
-        public JObj ToJson()
+        public JObj ToJson() => new JObj
         {
-            return new JObj
-            {
-                ["day"] = (long)Day, ["arr"] = (long)Arrivals, ["turned"] = (long)Turned, ["dep"] = (long)Deposited, ["coll"] = (long)Collected, ["counted"] = (long)Counted,
-                ["km"] = Km, ["fuel"] = Fuel, ["wages"] = Wages, ["leases"] = Leases, ["power"] = Power, ["shop"] = ShopFees, ["fees"] = Fees, ["sales"] = Sales,
-                ["bonus"] = Bonus, ["fines"] = Fines, ["full_min"] = FullMin, ["backlog"] = BacklogEnd, ["count_cap"] = CountCap,
-                ["s1"] = (long)StarService, ["s2"] = (long)StarEfficiency, ["s3"] = (long)StarThroughput,
-            };
-        }
+            ["day"] = (long)Day, ["venue"] = Venue, ["weather"] = Weather, ["cust"] = (long)Customers, ["served"] = (long)Served, ["walked"] = (long)Walked, ["balked"] = (long)Balked,
+            ["items"] = (long)Items, ["failed"] = (long)Failed, ["pre"] = (long)PreOrders, ["late"] = (long)Late, ["shots"] = (long)Shots, ["rev_n"] = (long)ReviewN,
+            ["rev_sum"] = ReviewSum, ["wait_sum"] = WaitSum, ["q_sum"] = QSum, ["milk_w"] = MilkUsedW, ["milk_o"] = MilkUsedO, ["revenue"] = Revenue, ["tips"] = Tips, ["wholesale"] = Wholesale, ["branches"] = Branches,
+            ["bonus"] = Bonus, ["beans"] = BeansCost, ["milk"] = MilkCost, ["pastry"] = PastryCost, ["ice"] = IceCost, ["wages"] = Wages, ["rent"] = Rent, ["fees"] = Fees, ["waste"] = Waste,
+        };
 
-        public static DayStats Read(object o)
+        public static DayStats Read(object o) => new DayStats
         {
-            return new DayStats
-            {
-                Day = J.I(o, "day"), Arrivals = J.I(o, "arr"), Turned = J.I(o, "turned"), Deposited = J.I(o, "dep"), Collected = J.I(o, "coll"), Counted = J.I(o, "counted"),
-                Km = JW.D(o, "km"), Fuel = JW.D(o, "fuel"), Wages = JW.D(o, "wages"), Leases = JW.D(o, "leases"), Power = JW.D(o, "power"), ShopFees = JW.D(o, "shop"),
-                Fees = JW.D(o, "fees"), Sales = JW.D(o, "sales"), Bonus = JW.D(o, "bonus"), Fines = JW.D(o, "fines"), FullMin = JW.D(o, "full_min"),
-                BacklogEnd = JW.D(o, "backlog"), CountCap = JW.D(o, "count_cap"), StarService = J.I(o, "s1"), StarEfficiency = J.I(o, "s2"), StarThroughput = J.I(o, "s3"),
-            };
-        }
+            Day = J.I(o, "day"), Venue = J.S(o, "venue"), Weather = J.S(o, "weather"), Customers = J.I(o, "cust"), Served = J.I(o, "served"), Walked = J.I(o, "walked"),
+            Balked = J.I(o, "balked"), Items = J.I(o, "items"), Failed = J.I(o, "failed"), PreOrders = J.I(o, "pre"), Late = J.I(o, "late"), Shots = J.I(o, "shots"),
+            ReviewN = J.I(o, "rev_n"), ReviewSum = JW.D(o, "rev_sum"), WaitSum = JW.D(o, "wait_sum"), QSum = JW.D(o, "q_sum"), MilkUsedW = JW.D(o, "milk_w"), MilkUsedO = JW.D(o, "milk_o"), Revenue = JW.D(o, "revenue"), Tips = JW.D(o, "tips"),
+            Wholesale = JW.D(o, "wholesale"), Branches = JW.D(o, "branches"), Bonus = JW.D(o, "bonus"), BeansCost = JW.D(o, "beans"), MilkCost = JW.D(o, "milk"),
+            PastryCost = JW.D(o, "pastry"), IceCost = JW.D(o, "ice"), Wages = JW.D(o, "wages"), Rent = JW.D(o, "rent"), Fees = JW.D(o, "fees"), Waste = JW.D(o, "waste"),
+        };
     }
 
     public sealed class RewardUse
@@ -244,61 +227,95 @@ namespace PourAndRoast.Sim
         public static RewardUse Read(object o) => new RewardUse { UtcDay = J.L(o, "day"), Count = J.I(o, "n"), LastAt = J.L(o, "at") };
     }
 
-    /// <summary>The saved career.</summary>
+    /// <summary>The saved career. Arrays indexed by data order (menu, origins) are written as id-keyed objects.</summary>
     public sealed class State
     {
         public const int Version = 1;
         public long Seed = 1, RngState = 1;
         public int Day = 1;
-        public double Minute = 540;
+        public double Minute = 420;
         public string Phase = Phases.Plan;
         public int Speed = 1;
-        public bool Paused;
-        public double Cash;
-        public double Rating = 50;
-        public int Drivers = 1, Techs;
-        public List<string> Districts = new List<string>();
+        public bool Paused, Tutorial = true;
+        public double Cash, Rating = 2.5;
+        // business
+        public string Venue = "cart";
+        public List<VenueState> Venues = new List<VenueState>();
+        public List<StaffState> Staff = new List<StaffState>();
+        public int NextStaffId, NextTicketId = 1;
+        public List<TicketState> Tickets = new List<TicketState>();
+        public string Rule = Rules.Fifo;
+        public bool Batch;
+        public List<string> Menu = new List<string>();
+        public int[] Par = new int[0];            // per menu item (pastries)
+        public int[] Pastry = new int[0];         // pastry stock per menu item
+        // stocks
+        public double[] Milk = { 0, 0 }, MilkOrder = { 18, 6 }, MilkPending = { 0, 0 };
+        public double MilkArriveAt = -1, RunArriveAt = -1;
+        public double[] RunPending = { 0, 0 };
+        public string Supplier = "regular";
+        public double Ice;
+        public int PrepHot;
+        public bool AutoBeans = true;
+        public double BeanKg, BeanQ = 52;
+        // roastery
+        public double[] Green = new double[0], Market = new double[0];
+        public int Drum = 1;
+        public BatchState Roast;
+        public List<BatchState> Resting = new List<BatchState>();
+        public List<ContractState> Contracts = new List<ContractState>();
+        // world
+        public List<string> Forecast = new List<string>();
+        public List<ActiveEvent> Events = new List<ActiveEvent>();
+        public List<ReviewCard> Reviews = new List<ReviewCard>();
+        public int LowStreak;
+        public DayStats Today = new DayStats { Day = 1 };
+        public List<DayStats> History = new List<DayStats>();
+        // research
         public List<string> Research = new List<string>();
         public string Researching = "";
         public double ResearchLeftS;
-        public List<PointState> Points = new List<PointState>();
-        public List<TruckState> Trucks = new List<TruckState>();
-        public List<TechJob> TechJobs = new List<TechJob>();
-        public DepotState Depot = new DepotState();
-        public double[] Market = { 1, 1, 1 };
-        public List<ActiveEvent> Events = new List<ActiveEvent>();
-        public List<PlannedEvent> Planned = new List<PlannedEvent>();
-        public DayStats Today = new DayStats { Day = 1 };
-        public List<DayStats> History = new List<DayStats>();
-        public double NextDispatchAt;
-        public bool Tutorial = true;      // guide running: no crises, no penalties
-        public bool FuelVoucher;          // rewarded voucher waiting for the next dispatch
+        // rewards / offline
         public Dictionary<string, RewardUse> Rewards = new Dictionary<string, RewardUse>();
-        public double OfflinePending;     // offline pay shown but not doubled yet (offline_x2)
-        public long LastSeen;             // unix seconds of the last save
-        public int BestDayStars, ThreeStarDays;
-        public long Containers;           // career total collected
-        public int Bales;                 // career total pressed
-        public List<string> Seen = new List<string>(); // first-time tips shown (sim side markers)
+        public double OfflinePending, HelperUntil = -1, AutoTuneUntil = -1;
+        public long LastSeen;
+        public int BestDayStars, FiveStarDays;
+        public long Served;               // career total
+        public List<string> Seen = new List<string>();
 
-        public JObj ToJson()
+        public VenueState Active => Venues.Find(v => v.Id == Venue) ?? (Venues.Count > 0 ? Venues[0] : null);
+        public VenueState VenueOf(string id) => Venues.Find(v => v.Id == id);
+
+        public JObj ToJson(GameData gd)
         {
-            var pts = new List<object>(); foreach (var p in Points) pts.Add(p.ToJson());
-            var trs = new List<object>(); foreach (var t in Trucks) trs.Add(t.ToJson());
-            var tj = new List<object>(); foreach (var j in TechJobs) tj.Add(j.ToJson());
+            var vs = new List<object>(); foreach (var v in Venues) vs.Add(v.ToJson());
+            var st = new List<object>(); foreach (var s in Staff) st.Add(s.ToJson());
+            var tk = new List<object>(); foreach (var t in Tickets) tk.Add(t.ToJson());
+            var rs = new List<object>(); foreach (var b in Resting) rs.Add(b.ToJson());
+            var ct = new List<object>(); foreach (var c in Contracts) ct.Add(c.ToJson());
             var ev = new List<object>(); foreach (var e in Events) ev.Add(e.ToJson());
-            var pl = new List<object>(); foreach (var e in Planned) pl.Add(e.ToJson());
+            var rv = new List<object>(); foreach (var r in Reviews) rv.Add(r.ToJson());
             var hi = new List<object>(); foreach (var h in History) hi.Add(h.ToJson());
             var rw = new JObj(); foreach (var kv in Rewards) rw[kv.Key] = kv.Value.ToJson();
+            var par = new JObj(); var pastry = new JObj();
+            for (int i = 0; i < gd.Menu.Count; i++)
+                if (gd.Menu[i].IsPastry) { par[gd.Menu[i].Id] = (long)(i < Par.Length ? Par[i] : 0); pastry[gd.Menu[i].Id] = (long)(i < Pastry.Length ? Pastry[i] : 0); }
+            var green = new JObj(); var market = new JObj();
+            for (int i = 0; i < gd.Origins.Count; i++) { green[gd.Origins[i].Id] = i < Green.Length ? Green[i] : 0.0; market[gd.Origins[i].Id] = i < Market.Length ? Market[i] : 1.0; }
             return new JObj
             {
                 ["game"] = "pour-and-roast", ["v"] = (long)Version, ["seed"] = Seed, ["rng"] = RngState, ["day"] = (long)Day, ["minute"] = Minute, ["phase"] = Phase,
-                ["speed"] = (long)Speed, ["paused"] = Paused, ["cash"] = Cash, ["rating"] = Rating, ["drivers"] = (long)Drivers, ["techs"] = (long)Techs,
-                ["districts"] = JW.Arr(Districts), ["research"] = JW.Arr(Research), ["researching"] = Researching, ["research_left"] = ResearchLeftS,
-                ["points"] = pts, ["trucks"] = trs, ["tech_jobs"] = tj, ["depot"] = Depot.ToJson(), ["market"] = JW.Arr(Market), ["events"] = ev, ["planned"] = pl,
-                ["today"] = Today.ToJson(), ["history"] = hi, ["next_dispatch"] = NextDispatchAt, ["tutorial"] = Tutorial, ["voucher"] = FuelVoucher,
-                ["rewards"] = rw, ["offline_pending"] = OfflinePending, ["last_seen"] = LastSeen, ["best_stars"] = (long)BestDayStars,
-                ["three_star_days"] = (long)ThreeStarDays, ["containers"] = Containers, ["bales"] = (long)Bales, ["seen"] = JW.Arr(Seen),
+                ["speed"] = (long)Speed, ["paused"] = Paused, ["tutorial"] = Tutorial, ["cash"] = Cash, ["rating"] = Rating,
+                ["venue"] = Venue, ["venues"] = vs, ["staff"] = st, ["next_staff"] = (long)NextStaffId, ["next_ticket"] = (long)NextTicketId, ["tickets"] = tk,
+                ["rule"] = Rule, ["batch"] = Batch, ["menu"] = JW.Arr(Menu), ["par"] = par, ["pastry"] = pastry,
+                ["milk"] = JW.Arr(Milk), ["milk_order"] = JW.Arr(MilkOrder), ["milk_pending"] = JW.Arr(MilkPending), ["milk_at"] = MilkArriveAt,
+                ["run_at"] = RunArriveAt, ["run_pending"] = JW.Arr(RunPending), ["supplier"] = Supplier, ["ice"] = Ice, ["prep_hot"] = (long)PrepHot,
+                ["auto_beans"] = AutoBeans, ["bean_kg"] = BeanKg, ["bean_q"] = BeanQ,
+                ["green"] = green, ["market"] = market, ["drum"] = (long)Drum, ["roast"] = Roast != null ? Roast.ToJson() : null, ["resting"] = rs, ["contracts"] = ct,
+                ["forecast"] = JW.Arr(Forecast), ["events"] = ev, ["reviews"] = rv, ["low_streak"] = (long)LowStreak, ["today"] = Today.ToJson(), ["history"] = hi,
+                ["research"] = JW.Arr(Research), ["researching"] = Researching, ["research_left"] = ResearchLeftS,
+                ["rewards"] = rw, ["offline_pending"] = OfflinePending, ["helper_until"] = HelperUntil, ["autotune_until"] = AutoTuneUntil, ["last_seen"] = LastSeen,
+                ["best_stars"] = (long)BestDayStars, ["five_star_days"] = (long)FiveStarDays, ["served"] = Served, ["seen"] = JW.Arr(Seen),
             };
         }
     }

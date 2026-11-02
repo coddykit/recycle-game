@@ -1,7 +1,8 @@
 // Grill Convoy sim core — save codec (fleet §14). Encode = canonical JSON of the whole career (a live day included:
-// trucks mid-road, a jammed machine, the report screen, the guide). Decode never throws and never touches a running game;
-// it accepts every state the sim can produce (negative cash after a bad day, a waiting truck, an empty yard) and refuses
-// only what the sim can never write (unknown nodes / vehicle types, indices out of range, another game's file).
+// trucks mid-road or mid-restock, a line at the window, a flare-up, the report screen, the guide's hand-cooked ticket).
+// Decode never throws and never touches a running game; it accepts every state the sim can produce (negative cash after a
+// bad day, an empty commissary, a truck with no pitch) and refuses only what the sim can never write (unknown nodes /
+// truck types / stations / roles / cards, indices out of range, another game's file).
 // Keeping unreadable files (.unreadable copies, .bak fallback) is CoddyKit.SaveRepository's job.
 using System;
 using System.Collections.Generic;
@@ -39,16 +40,18 @@ namespace GrillConvoy.Sim
             {
                 Seed = J.L(o, "seed", 1), RngState = J.L(o, "rng", 1), Day = J.I(o, "day", 1), Minute = J.D(o, "minute", gd.DayStart),
                 Phase = J.S(o, "phase", Phases.Plan), Speed = J.I(o, "speed", 1), Paused = J.B(o, "paused"), Cash = J.D(o, "cash"),
-                Rating = J.D(o, "rating", 50), Drivers = J.I(o, "drivers", 1), Techs = J.I(o, "techs"), Researching = J.S(o, "researching"),
-                ResearchLeftS = J.D(o, "research_left"), NextDispatchAt = J.D(o, "next_dispatch", gd.DayStart), Tutorial = J.B(o, "tutorial"),
-                FuelVoucher = J.B(o, "voucher"), OfflinePending = J.D(o, "offline_pending"), LastSeen = J.L(o, "last_seen"),
-                BestDayStars = J.I(o, "best_stars"), ThreeStarDays = J.I(o, "three_star_days"), Containers = J.L(o, "containers"), Bales = J.I(o, "bales"),
+                Fame = J.D(o, "fame", 30), Researching = J.S(o, "researching"), ResearchLeftS = J.D(o, "research_left"),
+                Weather = J.S(o, "weather", "sunny"), Forecast = J.S(o, "forecast", "sunny"), Tutorial = J.B(o, "tutorial"),
+                HandStage = J.I(o, "hand"), HandTimer = J.D(o, "hand_timer"), PropaneKits = J.I(o, "kits"),
+                OfflinePending = J.D(o, "offline_pending"), LastSeen = J.L(o, "last_seen"), BestDayStars = J.I(o, "best_stars"),
+                ThreeStarDays = J.I(o, "three_star_days"), Burgers = J.L(o, "burgers"),
             };
-            if (!Finite(s.Minute) || !Finite(s.Cash) || !Finite(s.Rating) || !Finite(s.ResearchLeftS) || !Finite(s.OfflinePending)) return Fail("not_finite");
+            if (!Finite(s.Minute) || !Finite(s.Cash) || !Finite(s.Fame) || !Finite(s.ResearchLeftS) || !Finite(s.OfflinePending) || !Finite(s.HandTimer)) return Fail("not_finite");
             if (s.Day < 1 || s.Day > 1000000) return Fail("day");
             if (!Phases.Valid(s.Phase)) return Fail("phase");
             if (s.Minute < gd.DayStart - 1 || s.Minute > gd.DayEnd + 1) return Fail("minute");
-            if (s.Drivers < 0 || s.Techs < 0 || s.Speed < 1 || s.Speed > 8) return Fail("counts");
+            if (s.Speed < 1 || s.Speed > 8 || s.HandStage < 0 || s.HandStage > 6 || s.PropaneKits < 0) return Fail("counts");
+            if (Array.IndexOf(gd.WeatherIds, s.Weather) < 0 || Array.IndexOf(gd.WeatherIds, s.Forecast) < 0) return Fail("weather");
             s.Districts = J.StrList(o, "districts");
             foreach (var d in s.Districts) if (gd.District(d) == null) return Fail("district");
             if (s.Districts.Count == 0) return Fail("district");
@@ -57,34 +60,60 @@ namespace GrillConvoy.Sim
             if (s.Researching != "" && !gd.ResearchById.ContainsKey(s.Researching)) return Fail("research");
             s.Seen = J.StrList(o, "seen");
 
-            foreach (var p in J.Arr(o, "points") ?? new List<object>())
+            foreach (var x in J.Arr(o, "trucks") ?? new List<object>())
             {
-                var ps = PointState.Read(p);
-                if (ps.Node < 0 || ps.Node >= gd.Nodes.Count || gd.Nodes[ps.Node].Kind != "site") return Fail("point_node");
-                if (!gd.PointKinds.ContainsKey(ps.Kind)) return Fail("point_kind");
-                s.Points.Add(ps);
+                var t = TruckState.Read(x);
+                string bad = CheckTruck(t, gd);
+                if (bad != "") return Fail(bad);
+                s.Trucks.Add(t);
             }
-            foreach (var t in J.Arr(o, "trucks") ?? new List<object>())
+            if (s.Trucks.Count == 0) return Fail("no_trucks");
+            s.Commissary = CommissaryState.Read(J.Obj(o, "commissary"));
+            foreach (var q in s.Commissary.Queue) if (Stock.Index(q) < 0) return Fail("prep_item");
+            if (!Finite(s.Commissary.PrepLeft)) return Fail("not_finite");
+            foreach (var p in J.Arr(o, "pitches") ?? new List<object>())
             {
-                var ts = TruckState.Read(t);
-                if (!gd.Vehicles.ContainsKey(ts.Type)) return Fail("truck_type");
-                if (ts.AtNode < 0 || ts.AtNode >= gd.Nodes.Count) return Fail("truck_node");
-                foreach (int n in ts.Path) if (n < 0 || n >= gd.Nodes.Count) return Fail("truck_path");
-                foreach (int i in ts.Stops) if (i < 0 || i >= s.Points.Count) return Fail("truck_stop");
-                if (ts.Target < -1 || ts.Target >= s.Points.Count) return Fail("truck_target");
-                if (!Finite(ts.PathPos) || !Finite(ts.PathKm) || !Finite(ts.TimeLeft)) return Fail("not_finite");
-                s.Trucks.Add(ts);
+                var ps = PitchState.Read(p);
+                if (ps.Node < 0 || ps.Node >= gd.Nodes.Count || !gd.Nodes[ps.Node].IsPitch) return Fail("pitch_node");
+                s.Pitches.Add(ps);
             }
-            foreach (var j in J.Arr(o, "tech_jobs") ?? new List<object>()) s.TechJobs.Add(TechJob.Read(j));
-            s.Depot = DepotState.Read(J.Obj(o, "depot"), gd);
-            var mk = JW.Dbl(o, "market", Mats.N);
-            for (int m = 0; m < Mats.N; m++) s.Market[m] = mk[m] > 0 ? mk[m] : 1;
             foreach (var e in J.Arr(o, "events") ?? new List<object>()) s.Events.Add(ActiveEvent.Read(e));
             foreach (var e in J.Arr(o, "planned") ?? new List<object>()) s.Planned.Add(PlannedEvent.Read(e));
             s.Today = DayStats.Read(J.Obj(o, "today"));
             foreach (var h in J.Arr(o, "history") ?? new List<object>()) s.History.Add(DayStats.Read(h));
             if (J.Obj(o, "rewards") is JObj rw) foreach (var kv in rw) s.Rewards[kv.Key] = RewardUse.Read(kv.Value);
             return new DecodeResult { Ok = true, Sim = new Simulation(gd, s) };
+        }
+
+        static string CheckTruck(TruckState t, GameData gd)
+        {
+            if (!gd.Vehicles.TryGetValue(t.Type, out var v)) return "truck_type";
+            int n = gd.Nodes.Count;
+            if (t.AtNode < 0 || t.AtNode >= n) return "truck_node";
+            if (t.Pitch < -1 || t.Pitch >= n || (t.Pitch >= 0 && !gd.Nodes[t.Pitch].IsPitch)) return "truck_pitch";
+            if (t.Target < -1 || t.Target >= n) return "truck_target";
+            foreach (int p in t.Path) if (p < 0 || p >= n) return "truck_path";
+            if (!Finite(t.PathPos) || !Finite(t.PathKm) || !Finite(t.TimeLeft) || !Finite(t.Work) || !Finite(t.Grease)) return "not_finite";
+            foreach (var c in t.Crew) if (!Roles.Valid(c)) return "crew_role";
+            if (t.Crew.Count > v.Crew) return "crew_count";
+            foreach (var m in t.Menu) if (gd.Card(m) == null) return "menu_card";
+            int w = t.Extended ? v.WExt : v.W, h = t.Extended ? v.HExt : v.H;
+            if (!LayoutOk(t.Layout, w, h)) return "layout";
+            if (t.Undo != null && !LayoutOk(t.Undo, w, h)) return "layout";
+            foreach (var p in t.Presets) if (!LayoutOk(p, Math.Max(w, v.WExt), Math.Max(h, v.HExt))) return "layout";
+            foreach (var c in t.Queue) if (c.Card < 0 || c.Card >= gd.Cards.Count || c.Arch < 0 || c.Arch >= gd.Archetypes.Count || !Finite(c.At)) return "queue";
+            return "";
+        }
+
+        static bool LayoutOk(List<StationTile> l, int w, int h)
+        {
+            var seen = new HashSet<int>();
+            foreach (var s in l)
+            {
+                if (!Stations.Valid(s.Type) || s.X < 0 || s.Y < 0 || s.X >= w || s.Y >= h) return false;
+                if (!seen.Add(s.Y * 100 + s.X)) return false;
+            }
+            return true;
         }
 
         static bool Finite(double d) => !double.IsNaN(d) && !double.IsInfinity(d);

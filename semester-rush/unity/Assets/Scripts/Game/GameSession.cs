@@ -2,7 +2,7 @@
 // / save-safety tests run under plain .NET and in the Unity EditMode runner.
 //   * file: <persistentDataPath>/semesterrush/career.json through CoddyKit.SaveRepository (tmp -> main, last GOOD save in
 //     .bak, unreadable copies kept as .unreadable(.1-.7), never deleted) with SaveCodec.Decode as the validator;
-//   * saves: every day end, after purchases / sales / rewards, every balance autosave_s of live play, on pause / quit;
+//   * saves: every day / week end, after purchases / timetable edits / rewards, every autosave_s of live play, on pause / quit;
 //   * `save_unreadable` analytics event per rejected candidate (code + recovered 0/1, no PII) — fleet §14.
 using System;
 using System.Collections.Generic;
@@ -83,7 +83,7 @@ namespace SemesterRush.Game
             Sim.Advance(realDt);
             var ev = Sim.DrainEvents();
             bool dayDone = false;
-            foreach (var e in ev) if (e.Type == "day_done" || e.Type == "research_done") dayDone = true;
+            foreach (var e in ev) if (e.Type == "day_done" || e.Type == "week_done" || e.Type == "research_done" || e.Type == "built") dayDone = true;
             if (dayDone) Save();
             else if (Sim.Phase == Phases.Live && !Sim.S.Paused)
             {
@@ -96,7 +96,7 @@ namespace SemesterRush.Game
         /// <summary>App going to the background / quitting.</summary>
         public void Pause() => Save();
 
-        /// <summary>App back (or the first frame after load): the network's pay for the time away. Null = nothing earned.</summary>
+        /// <summary>App back (or the first frame after load): the campus's pay for the time away. Null = nothing earned.</summary>
         public OfflineSummary Resume()
         {
             var o = Sim.Offline(Now());
@@ -110,6 +110,7 @@ namespace SemesterRush.Game
             var p = new Dictionary<string, bool>();
             foreach (var id in Commerce.PerkEntitlements) p[id] = has != null && has(id);
             Sim.SetPerks(p);
+            Sim.AutoRepairOn = Settings.AutoRepair;
         }
     }
 }

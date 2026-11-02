@@ -19,8 +19,8 @@ namespace DocketDay.Game
             // shop
             "purchase_start", "purchase_success", "purchase_cancel", "purchase_fail", "restore_result", "offer_shown",
             // game
-            "br_session", "br_day_done", "route_dispatch", "sim_purchase", "research_start", "district_unlock", "bale_sold",
-            "crisis", "tip_shown", "settings_change", "review_moment", "gpu_shader_crash",
+            "dd_session", "dd_day_done", "matter_accept", "matter_refer", "matter_settle", "hearing_result", "bill_run", "room_build",
+            "staff_hire", "chapter_unlock", "crisis", "tip_shown", "settings_change", "review_moment", "gpu_shader_crash",
         };
 
         static readonly Regex Name = new Regex("^[a-z][a-z0-9_]{0,39}$");

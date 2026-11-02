@@ -1,10 +1,13 @@
 // Pour & Roast sim core — engine independent (no UnityEngine). C# 9 / .NET Standard 2.1.
-// One career: a coastal region's deposit-return network. A work day runs 09:00-19:00 game time (~4 real minutes at 1x).
-//   plan  (09:00, paused)  — routes, policies, purchases;
-//   live                   — citizens bring bottles to return points, trucks drive routes, the depot counts and bales;
-//   report (19:00)         — trucks come home, the depot wraps up, costs are paid, stars + Green Rating; NextDay().
-// Partial class: this file = construction, time, demand (citizens); Fleet.cs = trucks, routes, technicians;
-// Depot.cs = count line, baler, market; Economy.cs = day end, purchases, research, offline, rewards; Crises.cs = events.
+// One career: a harbour-town coffee business that grows from a quayside cart. A service day runs 07:00-18:00 game time
+// (~3.7 real minutes at 1x):
+//   plan   (07:00, paused) — forecast, menu, milk order, pastries, green coffee, roasting, purchases;
+//   live                   — customers order (walk-ins + pre-orders with a pickup time), tickets stream onto the rail,
+//                            baristas work them at the espresso group heads and the steam wands by the player's rule;
+//   report (18:00)         — open tickets close, milk spoils, wages + rent, reviews -> stars; NextDay().
+// Partial class: this file = construction, queries, time, demand; Bar.cs = tickets, stations, staff, reviews;
+// Roastery.cs = green market, roasting, resting, blending, wholesale; Economy.cs = day cycle, purchases, research,
+// offline, rewards; Crises.cs = weather + crises.
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +15,7 @@ namespace PourAndRoast.Sim
 {
     public sealed class SimEvent
     {
-        public string Type;     // deposit, turned, jam, serviced, unloaded, bale, sold, crisis, research_done, district, day_done, day_start, ...
+        public string Type;     // order, balk, served, walked, ready, crisis, roast_done, blended, research_done, venue, day_done, day_start, ...
         public int A = -1, B = -1;
         public double V;
         public string Text = "";
@@ -26,9 +29,10 @@ namespace PourAndRoast.Sim
         public readonly Rng Rng;
         readonly List<SimEvent> events = new List<SimEvent>();
         readonly Dictionary<string, bool> perks = new Dictionary<string, bool>();
-        double[] litresPerContainer;  // per point node: expected litres per deposited container (estimate model)
-        /// <summary>Emit deposit / turned events for the diorama's walkers (off in balance bots).</summary>
+        /// <summary>Emit order / balk / served events for the diorama's customers (off in balance bots).</summary>
         public bool EmitCrowd = true;
+        /// <summary>The guide holds finished cups on the shelf until the player hands them over (never saved).</summary>
+        public bool HoldShelf;
 
         public Simulation(GameData gd, long seed)
         {
@@ -50,7 +54,7 @@ namespace PourAndRoast.Sim
         public JObj Snapshot()
         {
             S.RngState = Rng.State;
-            return S.ToJson();
+            return S.ToJson(Gd);
         }
 
         void NewCareer()
@@ -60,35 +64,38 @@ namespace PourAndRoast.Sim
             S.Phase = Phases.Plan;
             S.Cash = Gd.StartCash;
             S.Rating = Gd.StartRating;
-            S.Drivers = Gd.StartDrivers;
-            S.Techs = Gd.StartTechs;
-            S.Districts.Add(Gd.Districts.Count > 0 ? Gd.Districts[0].Id : "harbour");
-            S.Depot = new DepotState { Lines = Gd.LinesStart, YardCap = Gd.YardCap, IntakeCap = Gd.IntakeCap };
-            S.Depot.BalerIn[Mats.Pet] = Gd.StartBalerPetKg;
-            foreach (var id in Gd.StartMachines)
-            {
-                int node = Gd.Node(id);
-                var p = new PointState { Node = node, Kind = "machine_s", LastServiceDay = 0 };
-                S.Points.Add(p);
-                if (Gd.StartFill.TryGetValue(id, out double pct)) FillTo(p, pct);
-            }
-            int tid = 0;
-            foreach (var type in Gd.StartTrucks) S.Trucks.Add(new TruckState { Id = tid++, Type = type, AtNode = Gd.DepotNode });
-            S.Today = new DayStats { Day = 1 };
-            S.NextDispatchAt = Gd.DayStart;
+            S.Venue = Gd.StartVenue;
+            S.Venues.Add(NewVenue(Gd.Venue(Gd.StartVenue)));
+            foreach (var role in Gd.StartStaff) Hire(role, Stations.Any);
+            S.Menu.AddRange(Gd.StartMenu);
+            S.Par = new int[Gd.Menu.Count];
+            S.Pastry = new int[Gd.Menu.Count];
+            for (int i = 0; i < Gd.Menu.Count; i++) if (Gd.Menu[i].IsPastry) S.Par[i] = Gd.PastryParDefault;
+            S.Milk = new[] { Gd.StartMilk[0], Gd.StartMilk.Length > 1 ? Gd.StartMilk[1] : 0 };
+            S.MilkOrder = new[] { Gd.StartMilkOrder[0], Gd.StartMilkOrder.Length > 1 ? Gd.StartMilkOrder[1] : 0 };
+            S.Supplier = Gd.StartSupplier;
+            S.Ice = Gd.StartIce;
+            S.BeanKg = Gd.StartBeansKg;
+            S.BeanQ = Gd.StartBeansQ;
+            S.Green = new double[Gd.Origins.Count];
+            S.Market = new double[Gd.Origins.Count];
+            for (int i = 0; i < S.Market.Length; i++) S.Market[i] = 1;
+            foreach (var c in Gd.Contracts) S.Contracts.Add(new ContractState { Id = c.Id });
+            for (int d = 0; d < 4; d++) S.Forecast.Add(ForecastFor(1 + d));
+            S.Today = new DayStats { Day = 1, Venue = S.Venue, Weather = Weather };
         }
 
-        /// <summary>Fills a point to pct of its capacity with the district's usual mix (start state, tests).</summary>
-        public void FillTo(PointState p, double pct)
+        VenueState NewVenue(VenueDef d) => new VenueState { Id = d.Id, Heads = d.Heads0, Wands = d.Wands0, Ice = d.Ice0, Grinder = 1, Tune = 100 };
+
+        StaffState Hire(string role, string station)
         {
-            var mix = ExpectedMix(p);
-            double target = Cap(p) * Math.Max(0, pct);
-            double perContainer = 0;
-            for (int m = 0; m < Mats.N; m++) perContainer += mix[m] * VolInPoint(p, m);
-            if (perContainer <= 0) return;
-            double n = Math.Floor(target / perContainer);
-            for (int m = 0; m < Mats.N; m++) p.Fill[m] = Math.Floor(n * mix[m]);
-            p.EstVol = Volume(p);
+            var s = new StaffState
+            {
+                Id = S.NextStaffId++, Role = role, Station = station, Venue = S.Venue,
+                Trait = S.Staff.Count == 0 || Gd.TraitOrder.Count == 0 ? (Gd.TraitOrder.Count > 0 ? Gd.TraitOrder[0] : "steady") : Gd.TraitOrder[Rng.RangeI(0, Gd.TraitOrder.Count - 1)],
+            };
+            S.Staff.Add(s);
+            return s;
         }
 
         // ------------------------------------------------------------------------------------------------ queries
@@ -103,113 +110,56 @@ namespace PourAndRoast.Sim
         void Emit(string type, int a = -1, int b = -1, double v = 0, string text = "") => events.Add(new SimEvent { Type = type, A = a, B = b, V = v, Text = text ?? "" });
 
         public string Phase => S.Phase;
-        public NodeDef NodeOf(PointState p) => Gd.Nodes[p.Node];
-        public PointKindDef KindOf(PointState p) => Gd.PointKinds.TryGetValue(p.Kind, out var k) ? k : Gd.PointKinds["machine_s"];
-        public VehicleDef VehicleOf(TruckState t) => Gd.Vehicles.TryGetValue(t.Type, out var v) ? v : Gd.Vehicles["van"];
         public bool Has(string research) => S.Research.Contains(research);
-        public bool Unlocked(string district) => S.Districts.Contains(district);
+        public bool Owns(string venue) => S.Venues.Exists(v => v.Id == venue);
         public bool Perk(string id) => perks.TryGetValue(id, out bool b) && b;
+        public VenueState Venue => S.Active;
+        public VenueDef VenueDef => Gd.Venue(S.Venue) ?? Gd.Venues[0];
+        /// <summary>The menu tier the active venue can serve (its chapter).</summary>
+        public int Tier => VenueDef.Chapter;
         public int Chapter
         {
             get
             {
                 int c = 1;
-                foreach (var d in Gd.Districts) if (Unlocked(d.Id)) c = Math.Max(c, d.Chapter);
+                foreach (var v in S.Venues) { var d = Gd.Venue(v.Id); if (d != null) c = Math.Max(c, d.Chapter); }
                 return c;
             }
         }
+        public bool RoasteryOpen => Owns("roastery");
         public int MaxSpeed => Perk("speed") ? Gd.PaidMaxSpeed : Gd.FreeMaxSpeed;
-        public double FeeMult => (Gd.FeeRatingMin + Gd.FeeRatingSpan * Math.Max(0, Math.Min(100, S.Rating)) / 100.0) * (Perk("route_pass") ? 1.10 : 1.0);
-        public int HourIndex => Math.Max(0, Math.Min(Gd.HourCurve.Length - 1, (int)((S.Minute - Gd.DayStart) / 60.0)));
         public bool Weekend => (S.Day - 1) % 7 >= 5;
-        public int PointAt(int node) => S.Points.FindIndex(p => p.Node == node);
+        public string Weather => S.Forecast.Count > 0 ? S.Forecast[0] : Weathers.Sunny;
+        public WeatherDef WeatherDef => Gd.Weather.TryGetValue(Weather, out var w) ? w : new WeatherDef { Id = Weathers.Sunny };
+        /// <summary>Days of the forecast strip the player sees beyond today (the forecast board research shows 3).</summary>
+        public int ForecastDays => Has("forecast_board") ? 3 : 1;
+        public int HourIndex => Math.Max(0, Math.Min(Gd.HourCurve.Length - 1, (int)((S.Minute - Gd.DayStart) / 60.0)));
 
-        /// <summary>Litres one container of material m takes inside this point (compactor squeezes PET).</summary>
-        public double VolInPoint(PointState p, int m) => Gd.Materials[m].VolL / (m == Mats.Pet && p.Compactor ? Gd.CompactorPet : 1.0);
-        public double Cap(PointState p) => KindOf(p).CapL;
-        public double Volume(PointState p)
+        public bool Available(MenuItemDef m) => m != null && m.Tier <= Tier;
+        public bool OnMenu(MenuItemDef m) => Available(m) && S.Menu.Contains(m.Id);
+        public int MenuCount { get { int n = 0; foreach (var m in Gd.Menu) if (!m.IsPastry && OnMenu(m)) n++; return n; } }
+        public int RailCap => Gd.RailBase + Gd.RailPerLevel * (Venue != null ? Venue.Rail : 0) + (Has("rail_tablet") ? 2 : 0);
+        public double IceCap => Venue != null && Venue.Ice < Gd.IceCap.Length ? Gd.IceCap[Venue.Ice] : 0;
+        public double IcePerHour => Venue != null && Venue.Ice < Gd.IcePerHour.Length ? Gd.IcePerHour[Venue.Ice] : 0;
+        public double DrumKg => S.Drum >= 0 && S.Drum < Gd.DrumKg.Length ? Gd.DrumKg[S.Drum] : 0;
+        public bool CrisesAllowed => !S.Tutorial && S.Day > Gd.EventFreeDays;
+
+        /// <summary>Footfall multiplier from the reputation stars (2.5★ = 1.0).</summary>
+        public double Footfall => Math.Max(0.3, Gd.FootfallMin + Gd.FootfallPerStar * Math.Max(0, Math.Min(5, S.Rating)));
+
+        public double EventMult(string id)
         {
-            double v = 0;
-            for (int m = 0; m < Mats.N; m++) v += p.Fill[m] * VolInPoint(p, m);
-            return v;
-        }
-        public double FillPct(PointState p) => Math.Min(1.0, Volume(p) / Math.Max(1, Cap(p)));
-        public double Containers(PointState p) => p.Fill[0] + p.Fill[1] + p.Fill[2];
-        public bool IsFull(PointState p) => FillPct(p) >= 0.97;
-
-        /// <summary>What the map shows: live with a working sensor, a frozen number when the sensor / app is wrong, an
-        /// estimate from history (no events, no weekend) without a sensor — the "fuzzy" bar of the design.</summary>
-        public double DisplayPct(PointState p)
-        {
-            if (p.SensorOffline) return p.FrozenPct;
-            if (p.Sensor) return FillPct(p);
-            return Math.Min(1.0, Math.Max(0, p.EstVol) / Math.Max(1, Cap(p)));
-        }
-        public bool DisplayIsLive(PointState p) => p.Sensor && !p.SensorOffline;
-
-        double[] ExpectedMix(PointState p)
-        {
-            var k = KindOf(p);
-            if (!k.Citizens) return k.Mix;
-            var mix = new double[Mats.N];
-            var w = DistrictWeights(NodeOf(p).District, false);
-            double tw = 0;
-            for (int a = 0; a < Gd.Archetypes.Count; a++)
-            {
-                double ww = w[a] * Gd.Archetypes[a].Mean;
-                tw += ww;
-                for (int m = 0; m < Mats.N; m++) mix[m] += ww * Gd.Archetypes[a].Mix[m];
-            }
-            if (tw > 0) for (int m = 0; m < Mats.N; m++) mix[m] /= tw;
-            return mix;
-        }
-
-        double LitresPerContainer(PointState p)
-        {
-            if (litresPerContainer == null) litresPerContainer = new double[Gd.Nodes.Count];
-            int key = p.Node;
-            // recomputed when 0 (compactor upgrades reset it)
-            if (litresPerContainer[key] <= 0)
-            {
-                var mix = ExpectedMix(p);
-                double l = 0;
-                for (int m = 0; m < Mats.N; m++) l += mix[m] * VolInPoint(p, m);
-                litresPerContainer[key] = Math.Max(0.1, l);
-            }
-            return litresPerContainer[key];
-        }
-        void ResetLitreCache() => litresPerContainer = null;
-
-        double[] DistrictWeights(string district, bool timeAdjusted)
-        {
-            var d = Gd.District(district);
-            var w = new double[Gd.Archetypes.Count];
-            for (int a = 0; a < w.Length; a++)
-            {
-                double x = d != null && a < d.Archetypes.Length ? d.Archetypes[a] : 1.0 / w.Length;
-                if (timeAdjusted)
-                {
-                    if (Weekend) x *= Gd.Archetypes[a].Weekend;
-                    if (S.Minute >= 1020) x *= Gd.Archetypes[a].Evening;   // from 17:00
-                }
-                w[a] = x;
-            }
-            return w;
-        }
-
-        /// <summary>Base containers per hour at a point now (site rate × hour curve), without events or weekend.</summary>
-        public double BaseRate(PointState p) => NodeOf(p).Rate * Gd.HourCurve[HourIndex];
-
-        /// <summary>Event multiplier for a point now (heat wave, match day window).</summary>
-        public double DemandMult(PointState p)
-        {
-            double m = Weekend ? Gd.WeekendMult : 1.0;
-            foreach (var e in S.Events)
-            {
-                if (e.Id == "heat_wave") m *= e.Mult;
-                else if (e.Id == "match_day" && NodeOf(p).EventSite && S.Minute >= e.From && S.Minute < e.To) m *= e.Mult;
-            }
+            double m = 1;
+            foreach (var e in S.Events) if (e.Id == id) m *= e.Mult;
             return m;
+        }
+
+        /// <summary>Customers per hour now at the active venue (before the weather's walk-in share).</summary>
+        public double ArrivalsPerHour()
+        {
+            var d = VenueDef;
+            double seats = 1 + Gd.SeatFootfall * (Venue != null ? Venue.Seats : 0) + (Has("window_seats") ? 0.06 : 0);
+            return d.PerHour * Gd.HourCurve[HourIndex] * Footfall * (Weekend ? Gd.WeekendMult : 1.0) * seats * EventMult("review_spree");
         }
 
         // ------------------------------------------------------------------------------------------------ time
@@ -217,28 +167,26 @@ namespace PourAndRoast.Sim
         public void SetSpeed(int speed) => S.Speed = Math.Max(1, Math.Min(MaxSpeed, speed));
         public void SetPaused(bool paused) => S.Paused = paused;
 
-        /// <summary>Store perks (never saved): premium, route_pass, dispatcher_plus, offline_plus, speed.</summary>
+        /// <summary>Store perks (never saved): speed, automation, roast_pass, offline_plus, gold_trim, slots.</summary>
         public void SetPerks(Dictionary<string, bool> p)
         {
             perks.Clear();
             if (p != null) foreach (var kv in p) perks[kv.Key] = kv.Value;
             if (S.Speed > MaxSpeed) S.Speed = MaxSpeed;
-            int slots = AutoSlots;
-            int n = 0;
-            foreach (var t in S.Trucks) if (t.Auto && ++n > slots) t.Auto = false;
         }
 
-        /// <summary>Every frame with real seconds. Research runs on real time in every phase; the day only while live.</summary>
+        /// <summary>Every frame with real seconds. Research and the roaster run on real time in every phase; the day only while live.</summary>
         public void Advance(double realDt)
         {
             if (realDt <= 0 || double.IsNaN(realDt)) return;
             realDt = Math.Min(realDt, 1.0);   // a hitch never jumps the sim
             TickResearch(realDt);
+            TickRoast(realDt);
             if (S.Phase != Phases.Live || S.Paused) return;
             double gm = realDt * Gd.GameMinPerRealS * Math.Max(1, S.Speed);
             while (gm > 1e-9 && S.Phase == Phases.Live)
             {
-                double step = Math.Min(1.0, gm);
+                double step = Math.Min(0.5, gm);
                 Step(step);
                 gm -= step;
             }
@@ -249,7 +197,7 @@ namespace PourAndRoast.Sim
         {
             while (minutes > 1e-9 && S.Phase == Phases.Live)
             {
-                double step = Math.Min(1.0, minutes);
+                double step = Math.Min(0.5, minutes);
                 Step(step);
                 minutes -= step;
             }
@@ -257,14 +205,9 @@ namespace PourAndRoast.Sim
 
         void Step(double dt)
         {
-            RunPlanned();
+            StepSupplies(dt);
             Demand(dt);
-            StepTrucks(dt);
-            StepTechs();
-            StepDepot(dt);
-            foreach (var p in S.Points)
-                if (IsFull(p) || p.Jammed) { p.FullMin += dt; S.Today.FullMin += dt; }
-            Dispatcher();
+            StepBar(dt);
             S.Minute += dt;
             if (S.Minute >= Gd.DayEnd - 1e-9) EndDay();
         }
@@ -273,35 +216,37 @@ namespace PourAndRoast.Sim
 
         void Demand(double dt)
         {
-            for (int i = 0; i < S.Points.Count; i++)
+            if (S.Tutorial) return;   // the guide places its own orders (TutorialOrder)
+            double expected = ArrivalsPerHour() * dt / 60.0;
+            int n = Sample(expected);
+            var d = VenueDef;
+            var w = WeatherDef;
+            var weights = new double[Gd.Customers.Count];
+            for (int c = 0; c < weights.Length; c++)
             {
-                var p = S.Points[i];
-                var kind = KindOf(p);
-                double baseRate = BaseRate(p);
-                double lpc = LitresPerContainer(p);
-                p.EstVol += baseRate * dt / 60.0 * lpc;
-                double lambda = baseRate * DemandMult(p) * dt / 60.0;   // containers this step
-                if (!kind.Citizens)
+                var cd = Gd.Customers[c];
+                double x = c < d.Weights.Length ? d.Weights[c] : 0;
+                if (S.Rating < cd.RatingMin) x = 0;
+                if (Weekend) x *= cd.Weekend;
+                if (cd.Id == "regular" && Has("loyalty_cards")) x *= 1.5;
+                weights[c] = x;
+            }
+            for (int k = 0; k < n; k++)
+            {
+                int c = Rng.PickWeighted(weights);
+                if (c < 0) continue;
+                var cd = Gd.Customers[c];
+                double pre = Math.Min(0.8, cd.Pre * w.Pre * (Has("pickup_app") ? 1.5 : 1.0) * (Tier <= 1 ? 0.6 : 1.0));
+                bool isPre = Rng.Frand() < pre;
+                if (!isPre && Rng.Frand() >= w.Walk) continue;   // the weather kept them at home
+                S.Today.Customers++;
+                if (!isPre && OpenTickets() >= RailCap)
                 {
-                    // HoReCa: staff drop bags of ~10 into the back room
-                    double bags = lambda / 10.0;
-                    int k = Sample(bags);
-                    for (int b = 0; b < k; b++) Deposit(i, Rng.RangeI(8, 14), kind.Mix, -1);
+                    S.Today.Balked++;
+                    if (EmitCrowd) Emit("balk", -1, c);
                     continue;
                 }
-                var w = DistrictWeights(NodeOf(p).District, true);
-                double tw = 0, mean = 0;
-                for (int a = 0; a < w.Length; a++) { tw += w[a]; mean += w[a] * Gd.Archetypes[a].Mean; }
-                if (tw <= 0) continue;
-                mean /= tw;
-                int citizens = Sample(lambda / Math.Max(1, mean));
-                for (int c = 0; c < citizens; c++)
-                {
-                    int a = Rng.PickWeighted(w);
-                    if (a < 0) continue;
-                    var ar = Gd.Archetypes[a];
-                    Deposit(i, Rng.RangeI(ar.Min, ar.Max), ar.Mix, a);
-                }
+                NewTicket(c, isPre);
             }
         }
 
@@ -313,56 +258,119 @@ namespace PourAndRoast.Sim
             return k;
         }
 
-        /// <summary>One citizen (or a HoReCa bag) at point i with n containers. Returns accepted containers.</summary>
-        public int Deposit(int i, int n, double[] mix, int archetype)
+        /// <summary>Tickets on the rail that are not finished yet (the rail's capacity counts these).</summary>
+        public int OpenTickets()
         {
-            var p = S.Points[i];
-            p.Arrivals++;
-            S.Today.Arrivals++;
-            if (p.Jammed || p.BusyUntil > S.Minute)
-            {
-                Turn(i, archetype);
-                return 0;
-            }
-            double free = Cap(p) - Volume(p);
-            int accepted = 0, rejected = 0;
-            for (int c = 0; c < n; c++)
-            {
-                int m = Rng.PickWeighted(mix);
-                if (m < 0) m = 0;
-                double v = VolInPoint(p, m);
-                if (v <= free) { p.Fill[m] += 1; free -= v; accepted++; }
-                else rejected++;
-            }
-            p.Deposited += accepted;
-            S.Today.Deposited += accepted;
-            if (rejected > 0) Turn(i, archetype);
-            else if (EmitCrowd) Emit("deposit", i, archetype, accepted);
-            if (accepted > 0 && p.IsMachine && !p.Jammed && JamAllowed)
-            {
-                double q = KindOf(p).JamPer1000 / 1000.0 * (p.Compactor ? Gd.CompactorJamMult : 1.0) * (Has("jam_guard") ? 0.6 : 1.0);
-                if (Rng.Frand() < q * accepted) Jam(i, "random");
-            }
-            return accepted;
+            int n = 0;
+            foreach (var t in S.Tickets) if (!t.Ready) n++;
+            return n;
         }
 
-        void Turn(int i, int archetype)
+        TicketState NewTicket(int cust, bool pre)
         {
-            S.Points[i].Turned++;
-            S.Today.Turned++;
-            Emit("turned", i, archetype);
+            var cd = Gd.Customers[cust];
+            var t = new TicketState { Id = S.NextTicketId++, Cust = cust, Pre = pre, Arrived = S.Minute };
+            t.Due = pre ? S.Minute + Rng.RangeI(Gd.PreLeadMin, Gd.PreLeadMax) : S.Minute + cd.Patience;
+            int items = Rng.RangeI(cd.ItemsMin, cd.ItemsMax);
+            bool drink = false;
+            for (int i = 0; i < items; i++)
+            {
+                int m = -1;
+                if (drink && Rng.Frand() < cd.Pastry) m = PickPastry();
+                if (m < 0) { m = PickDrink(cd); drink = true; }
+                if (m < 0) continue;
+                AddItem(t, m, cd);
+            }
+            if (t.Items.Count == 0) return null;
+            if (pre) S.Today.PreOrders++;
+            S.Tickets.Add(t);
+            if (EmitCrowd || S.Tutorial) Emit("order", t.Id, cust, pre ? 1 : 0);
+            return t;
         }
 
-        /// <summary>Random breakdowns / jams only after the guide and the forgiving first days.</summary>
-        bool JamAllowed => !S.Tutorial && S.Day > Gd.EventFreeDays;
-
-        public void Jam(int i, string why)
+        void AddItem(TicketState t, int m, CustomerDef cd)
         {
-            var p = S.Points[i];
-            if (p.Jammed) return;
-            p.Jammed = true;
-            p.TechCalled = false;
-            Emit("jam", i, -1, 0, why);
+            var def = Gd.Menu[m];
+            var it = new ItemState { M = m, Q = def.IsPastry ? PastryQuality : S.BeanQ };
+            if (def.Milk) it.Milk = Rng.Frand() < cd.Oat ? 2 : 1;
+            // the pre-brew urn serves simple hot coffee at once (forecast prep)
+            if (def.Prep && S.PrepHot > 0) { S.PrepHot--; it.Stage = def.Tasks.Length; it.Q = S.BeanQ - 2; }
+            t.Items.Add(it);
+            S.Today.Items++;
         }
+
+        public double PastryQuality => Has("pastry_oven") ? Gd.OvenQ : Gd.PastryQ;
+
+        int PickPastry()
+        {
+            var w = new double[Gd.Menu.Count];
+            bool any = false;
+            for (int i = 0; i < w.Length; i++)
+            {
+                var m = Gd.Menu[i];
+                if (!m.IsPastry || !OnMenu(m) || S.Pastry[i] <= ReservedPastry(i)) continue;
+                w[i] = m.Pop; any = true;
+            }
+            return any ? Rng.PickWeighted(w) : -1;
+        }
+
+        int ReservedPastry(int m)
+        {
+            int n = 0;
+            foreach (var t in S.Tickets) foreach (var it in t.Items) if (it.M == m && it.Stage == 0 && !it.Failed) n++;
+            return n;
+        }
+
+        int PickDrink(CustomerDef cd)
+        {
+            double iced = Math.Min(0.9, cd.Iced * WeatherDef.Iced);
+            bool wantIced = Rng.Frand() < iced;
+            var w = new double[Gd.Menu.Count];
+            bool any = false;
+            for (int pass = 0; pass < 2 && !any; pass++)
+            {
+                for (int i = 0; i < w.Length; i++)
+                {
+                    var m = Gd.Menu[i];
+                    w[i] = 0;
+                    if (m.IsPastry || !OnMenu(m) || m.Iced != wantIced) continue;
+                    w[i] = m.Pop; any = true;
+                }
+                if (!any) wantIced = !wantIced;
+            }
+            return any ? Rng.PickWeighted(w) : -1;
+        }
+
+        /// <summary>The guide's scripted orders (no random customers while the guide runs): espresso | latte | americano | preorder.</summary>
+        public TicketState TutorialOrder(string kind)
+        {
+            int commuter = Math.Max(0, Gd.CustomerIndex("commuter"));
+            int regular = Math.Max(0, Gd.CustomerIndex("regular"));
+            var cd = Gd.Customers[commuter];
+            var t = new TicketState { Id = S.NextTicketId++, Cust = commuter, Arrived = S.Minute, Due = S.Minute + cd.Patience * 3 };
+            switch (kind)
+            {
+                case "espresso": t.Items.Add(new ItemState { M = Gd.MenuIndex("espresso"), Q = S.BeanQ }); break;
+                case "latte": t.Items.Add(new ItemState { M = Gd.MenuIndex("latte"), Milk = 1, Q = S.BeanQ }); break;
+                case "americano": t.Items.Add(new ItemState { M = Gd.MenuIndex("americano"), Q = S.BeanQ }); break;
+                case "preorder":
+                    t.Cust = regular; t.Pre = true; t.Due = S.Minute + 30;
+                    t.Items.Add(new ItemState { M = Gd.MenuIndex("cappuccino"), Milk = 1, Q = S.BeanQ });
+                    S.Today.PreOrders++;
+                    break;
+                default: return null;
+            }
+            foreach (var it in t.Items) if (it.M < 0) return null;
+            S.Today.Customers++;
+            S.Today.Items += t.Items.Count;
+            S.Tickets.Add(t);
+            Emit("order", t.Id, t.Cust, t.Pre ? 1 : 0);
+            return t;
+        }
+
+        public TicketState Ticket(int id) => S.Tickets.Find(t => t.Id == id);
+        public MenuItemDef ItemDef(ItemState it) => it.M >= 0 && it.M < Gd.Menu.Count ? Gd.Menu[it.M] : null;
+        public bool ItemDone(ItemState it) { var d = ItemDef(it); return it.Failed || d == null || it.Stage >= d.Tasks.Length; }
+        public string NextTask(ItemState it) { var d = ItemDef(it); return d == null || it.Failed || it.Stage >= d.Tasks.Length ? "" : d.Tasks[it.Stage]; }
     }
 }

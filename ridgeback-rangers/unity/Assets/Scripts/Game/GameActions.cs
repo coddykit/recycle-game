@@ -1,18 +1,17 @@
 // Ridgeback Rangers — every player action goes through here (UI buttons, world taps, the guide's checks, tests). Engine-free.
 // Action ids (the guide's targets use the same names):
-//   select_point:<i>   tap a return point (with a truck selected = add / remove it on the route draft)
-//   select_truck:<i>   tap a truck (starts a route draft for it)
-//   go                 dispatch the selected truck along the draft (or add the draft stops to a truck on the road)
-//   suggest            fill the draft with the planner's route
-//   clear              clear the draft / deselect
-//   recall:<t>         call a truck home
-//   depot | baler | till | sell:<m> | fuel_info
-//   policy:<i>:<threshold|fixed|call>:<value>
-//   buy:<id>           sim purchase (machine:<node>, bin_m:<i>, driver, …)
-//   research:<id>
-//   tech:<point|baler|truck>:<i>
-//   auto:<t>:<0|1>
-//   start_day | next_day | speed:<n> | pause | resume
+//   badge | camera | open | clear | pause | resume       harmless UI (the Chief's badge, the camera moved, a sheet opened)
+//   pin:<id>                select a pin (the pin card lists the rangers who can take it)
+//   send:<pin>:<ranger>     send that ranger (index) to the pin
+//   fed_ok                  the "Fed!" toast was tapped (guide)
+//   gate | tram_go | tram_policy:<full|interval>:<min>
+//   animal:<i>              tap an animal: the first tap picks it, the second opens the Compatibility card for the pair
+//   move:<animal>:<paddock> rehome an animal (-1 = nursery)
+//   feed:<zone>:<crates>    the feed board's morning delivery for a zone
+//   buy:<id>                sim purchase (paddock:<node>, fence:<p>, hire:<role>, tram_car, …)
+//   dig:<site>              send a dig crew   ·   temp:<slot>:<0..100>   the incubator's temperature check
+//   chief:<0|1>             the Chief Ranger automation on / off
+//   start_day | next_day | speed:<n>
 using System;
 using System.Collections.Generic;
 using RidgebackRangers.Sim;
@@ -32,9 +31,10 @@ namespace RidgebackRangers.Game
     {
         public readonly GameSession Session;
         public Simulation Sim => Session.Sim;
-        public int SelectedTruck { get; private set; } = -1;
-        public int SelectedPoint { get; private set; } = -1;
-        public readonly List<int> Draft = new List<int>();
+        public int SelectedPin { get; private set; } = -1;
+        /// <summary>The Compatibility card's pair (animal indices); -1 = not picked.</summary>
+        public int CompareFirst { get; private set; } = -1;
+        public int CompareSecond { get; private set; } = -1;
         /// <summary>The guide / UI may forbid actions (spotlight on another target). Null = everything allowed.</summary>
         public Func<string, bool> Allowed;
         /// <summary>(action id, result) after every action — the guide advances on these.</summary>
@@ -42,8 +42,6 @@ namespace RidgebackRangers.Game
         public Action<string, Dictionary<string, object>> Analytics = (n, p) => { };
 
         public GameActions(GameSession session) { Session = session; }
-
-        public RouteEstimate DraftEstimate => SelectedTruck >= 0 && Draft.Count > 0 ? Sim.Estimate(SelectedTruck, Draft) : null;
 
         public ActionResult Run(string id)
         {
@@ -62,6 +60,10 @@ namespace RidgebackRangers.Game
         }
 
         static int Int(string[] a, int i, int def = -1) => a.Length > i && int.TryParse(a[i], out int v) ? v : def;
+        static ActionResult Of(string err, double v = 0) => err == "" ? ActionResult.Done(v) : ActionResult.Fail(err);
+
+        /// <summary>Clears the Compatibility pair (the card was closed).</summary>
+        public void ClearCompare() { CompareFirst = -1; CompareSecond = -1; }
 
         ActionResult Do(string id)
         {
@@ -69,86 +71,62 @@ namespace RidgebackRangers.Game
             var sim = Sim;
             switch (a[0])
             {
-                case "select_point":
+                case "badge":
+                case "camera":
+                case "open":
+                case "fed_ok":
+                    return ActionResult.Done();
+                case "clear":
+                    SelectedPin = -1;
+                    ClearCompare();
+                    return ActionResult.Done();
+                case "pin":
+                {
+                    var p = sim.Pin(Int(a, 1));
+                    if (p == null) return ActionResult.Fail("gone");
+                    SelectedPin = p.Id;
+                    return ActionResult.Done(p.Id);
+                }
+                case "send":
+                {
+                    int pin = Int(a, 1), ranger = Int(a, 2);
+                    var p = sim.Pin(pin);
+                    string kind = p?.Kind ?? "";
+                    string e = sim.Send(pin, ranger);
+                    if (e != "") return ActionResult.Fail(e);
+                    Analytics("pin_dispatch", new Dictionary<string, object> { { "kind", kind }, { "role", sim.S.Rangers[ranger].Role } });
+                    SelectedPin = -1;
+                    return ActionResult.Done();
+                }
+                case "gate": return Of(sim.OpenGate());
+                case "tram_go": return Of(sim.TramGo());
+                case "tram_policy":
+                {
+                    string e = sim.SetTramPolicy(a.Length > 1 ? a[1] : "", Int(a, 2, 20));
+                    if (e == "") Session.Save();
+                    return Of(e);
+                }
+                case "animal":
                 {
                     int i = Int(a, 1);
-                    if (i < 0 || i >= sim.S.Points.Count) return ActionResult.Fail("invalid");
-                    SelectedPoint = i;
-                    if (SelectedTruck >= 0)
-                    {
-                        if (Draft.Contains(i)) Draft.Remove(i);
-                        else
-                        {
-                            if (!sim.CanServe(sim.S.Trucks[SelectedTruck], sim.S.Points[i])) return ActionResult.Fail("unreachable");
-                            Draft.Add(i);
-                        }
-                    }
-                    return ActionResult.Done(i);
+                    if (i < 0 || i >= sim.S.Animals.Count) return ActionResult.Fail("invalid");
+                    if (CompareFirst < 0 || CompareSecond >= 0 || CompareFirst == i) { CompareFirst = i; CompareSecond = -1; return ActionResult.Done(-1); }
+                    CompareSecond = i;
+                    var x = sim.S.Animals[CompareFirst];
+                    var y = sim.S.Animals[CompareSecond];
+                    return ActionResult.Done(sim.Harmony(x, y));
                 }
-                case "select_truck":
+                case "move":
                 {
-                    int t = Int(a, 1);
-                    if (t < 0 || t >= sim.S.Trucks.Count) return ActionResult.Fail("invalid");
-                    if (SelectedTruck != t) Draft.Clear();
-                    SelectedTruck = t;
-                    SelectedPoint = -1;
-                    return ActionResult.Done(t);
+                    string e = sim.MoveAnimal(Int(a, 1), Int(a, 2, -2));
+                    if (e == "") Session.Save();
+                    return Of(e);
                 }
-                case "clear":
-                    Draft.Clear(); SelectedTruck = -1; SelectedPoint = -1;
-                    return ActionResult.Done();
-                case "suggest":
+                case "feed":
                 {
-                    if (SelectedTruck < 0) return ActionResult.Fail("no_truck");
-                    var r = sim.SuggestRoute(SelectedTruck, true);
-                    Draft.Clear();
-                    Draft.AddRange(r);
-                    return r.Count > 0 ? ActionResult.Done(r.Count) : ActionResult.Fail("nothing_due");
-                }
-                case "go":
-                {
-                    if (SelectedTruck < 0) return ActionResult.Fail("no_truck");
-                    if (Draft.Count == 0) return ActionResult.Fail("no_stops");
-                    var t = sim.S.Trucks[SelectedTruck];
-                    string err;
-                    if (t.Busy)
-                    {
-                        err = "";
-                        foreach (int i in Draft) { string e = sim.AddStop(SelectedTruck, i); if (e != "") err = e; }
-                    }
-                    else err = sim.Dispatch(SelectedTruck, new List<int>(Draft));
-                    if (err != "") return ActionResult.Fail(err);
-                    Analytics("route_dispatch", new Dictionary<string, object> { { "stops", (long)Draft.Count }, { "truck", t.Type } });
-                    Draft.Clear();
-                    SelectedTruck = -1;
-                    Session.Save();
-                    return ActionResult.Done();
-                }
-                case "recall":
-                {
-                    string e = sim.Recall(Int(a, 1, SelectedTruck));
-                    return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
-                }
-                case "depot":
-                case "baler":
-                case "fuel_info":
-                case "open":
-                    return ActionResult.Done();
-                case "till":
-                    return ActionResult.Done(sim.CollectTill());
-                case "sell":
-                {
-                    double got = sim.Sell(Int(a, 1, 0));
-                    if (got <= 0) return ActionResult.Fail("nothing");
-                    Session.Save();
-                    return ActionResult.Done(got);
-                }
-                case "policy":
-                {
-                    string e = sim.SetPolicy(Int(a, 1), a.Length > 2 ? a[2] : "", Int(a, 3, 0));
-                    if (e != "") return ActionResult.Fail(e);
-                    Session.Save();
-                    return ActionResult.Done();
+                    string e = sim.SetFeedPlan(a.Length > 1 ? a[1] : "", Int(a, 2, 0));
+                    if (e == "") Session.Save();
+                    return Of(e);
                 }
                 case "buy":
                 {
@@ -159,23 +137,19 @@ namespace RidgebackRangers.Game
                     Session.Save();
                     return ActionResult.Done();
                 }
-                case "research":
+                case "dig":
                 {
-                    string e = sim.StartResearch(a.Length > 1 ? a[1] : "");
-                    if (e != "") return ActionResult.Fail(e);
-                    Session.Save();
-                    return ActionResult.Done();
+                    string e = sim.Dig(Int(a, 1));
+                    if (e == "") { Analytics("dig_start", new Dictionary<string, object> { { "site", (long)Int(a, 1) } }); Session.Save(); }
+                    return Of(e);
                 }
-                case "tech":
+                case "temp":
                 {
-                    string e = sim.SendTech(a.Length > 1 ? a[1] : "", Int(a, 2, 0));
-                    return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
+                    string e = sim.CheckTemp(Int(a, 1), Int(a, 2, -1));
+                    if (e == "") Session.Save();
+                    return Of(e);
                 }
-                case "auto":
-                {
-                    string e = sim.SetAuto(Int(a, 1), Int(a, 2, 0) == 1);
-                    return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
-                }
+                case "chief": return Of(sim.SetChief(Int(a, 1, 0) == 1));
                 case "start_day":
                     if (!sim.StartDay()) return ActionResult.Fail("phase");
                     sim.SetSpeed(Math.Max(1, Session.Settings.SpeedDefault));
@@ -183,7 +157,8 @@ namespace RidgebackRangers.Game
                     return ActionResult.Done();
                 case "next_day":
                     if (!sim.NextDay()) return ActionResult.Fail("phase");
-                    Draft.Clear(); SelectedTruck = -1;
+                    SelectedPin = -1;
+                    ClearCompare();
                     Session.Save();
                     return ActionResult.Done();
                 case "speed":

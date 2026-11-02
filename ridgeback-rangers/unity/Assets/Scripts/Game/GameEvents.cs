@@ -19,7 +19,7 @@ namespace RidgebackRangers.Game
             // shop
             "purchase_start", "purchase_success", "purchase_cancel", "purchase_fail", "restore_result", "offer_shown",
             // game
-            "br_session", "br_day_done", "route_dispatch", "sim_purchase", "research_start", "district_unlock", "bale_sold",
+            "rr_session", "rr_day_done", "pin_dispatch", "pin_failed", "sim_purchase", "zone_unlock", "dig_start", "animal_hatched",
             "crisis", "tip_shown", "settings_change", "review_moment", "gpu_shader_crash",
         };
 

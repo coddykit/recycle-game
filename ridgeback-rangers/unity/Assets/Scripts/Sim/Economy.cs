@@ -1,5 +1,6 @@
-// Ridgeback Rangers sim core — the day cycle, the economy, purchases, research, districts, offline pay and the sim side of
-// rewarded placements (caps + cooldowns persisted in the career; the kit's RewardedController enforces its own too).
+// Ridgeback Rangers sim core — the day cycle, the economy, purchases (instant: no builder timers, plan §3 originality),
+// offline pay and the sim side of rewarded placements (caps + cooldowns persisted in the career; the kit's
+// RewardedController enforces its own too).
 using System;
 using System.Collections.Generic;
 
@@ -14,87 +15,61 @@ namespace RidgebackRangers.Sim
     {
         // ------------------------------------------------------------------------------------------------ day cycle
 
-        /// <summary>Plan -> live (09:00 dispatch).</summary>
+        /// <summary>Plan -> live (08:00): the feed board's crates go out, the gate opens (after the guide).</summary>
         public bool StartDay()
         {
             if (S.Phase != Phases.Plan) return false;
             S.Phase = Phases.Live;
             S.Paused = false;
+            if (!S.Tutorial) S.GateOpen = true;
+            if (!(S.Tutorial && S.Day == 1)) DeliverFeed(false);   // day 1 of the guide: the Feeder is the lesson
+            S.Tram.BoardSince = S.Minute;
             Emit("day_live", S.Day);
             return true;
+        }
+
+        /// <summary>The gate (guide step: open it by hand; afterwards it opens every morning).</summary>
+        public string OpenGate()
+        {
+            if (S.Phase != Phases.Live) return "phase";
+            if (S.GateOpen) return "open";
+            S.GateOpen = true;
+            Emit("gate", 1);
+            return "";
         }
 
         void EndDay()
         {
             S.Minute = Gd.DayEnd;
-            // every truck comes home (remaining km charged), loads go to the intake
-            for (int ti = 0; ti < S.Trucks.Count; ti++)
-            {
-                var t = S.Trucks[ti];
-                if (!t.Busy) continue;
-                if (t.Status == TruckStatus.Drive || t.Status == TruckStatus.Broken)
-                {
-                    int from = t.Path.Count > 0 ? t.Path[t.Path.Count - 1] : t.AtNode;
-                    double rest = Math.Max(0, t.PathKm - t.PathPos) + (t.Target >= 0 ? Gd.Graph.Km(from, Gd.DepotNode, VehicleOf(t).Alley) : 0);
-                    if (rest < RoadGraph.Inf) ChargeKm(t, rest);
-                }
-                else if (t.Status == TruckStatus.Service && t.AtNode != Gd.DepotNode)
-                {
-                    if (t.Target >= 0 && t.Target < S.Points.Count) Pick(ti, t.Target);
-                    double back = Gd.Graph.Km(t.AtNode, Gd.DepotNode, VehicleOf(t).Alley);
-                    if (back < RoadGraph.Inf) ChargeKm(t, back);
-                }
-                for (int m = 0; m < Mats.N; m++) { S.Depot.Intake[m] += t.Load[m]; t.Load[m] = 0; }
-                if (t.Status != TruckStatus.Idle) t.Trips++;
-                t.Status = TruckStatus.Idle; t.AtNode = Gd.DepotNode; t.Target = -1; t.Stops.Clear(); t.Path.Clear(); t.PathKm = t.PathPos = 0;
-                t.Voucher = false; t.ResumeStatus = "";
-            }
-            // the depot keeps counting / baling for the wrap-up (second shift research: one more hour)
-            int wrap = Gd.DepotWrapupMin + (Has("second_shift") ? 60 : 0);
-            for (int k = 0; k < wrap; k++) StepDepot(1.0);
-            // technicians finish what lands before they clock off; open calls stay for tomorrow
-            foreach (var j in S.TechJobs) if (j.Kind != "done" && j.DoneAt <= Gd.DayEnd + wrap) FinishTech(j);
-            S.TechJobs.Clear();
-            foreach (var p in S.Points) p.TechCalled = false;
-            CollectTill();
-
+            // the last riders finish their loop, the queue walks the paths
+            if (S.Tram.Running || S.Tram.Riders > 0) Arrive();
+            foreach (var g in S.Queue) Walk(g.N);
+            S.Queue.Clear();
+            CloseDayPins();
+            SampleCare();
             var td = S.Today;
-            td.Wages = S.Drivers * Gd.DriverWage + S.Techs * Gd.TechWage;
-            foreach (var p in S.Points) td.Leases += KindOf(p).LeaseDay;
-            td.Power = Gd.DepotPower + Math.Max(0, S.Depot.Lines - 1) * Gd.LinePower;
-            S.Cash -= td.Wages + td.Leases + td.Power;
-            td.BacklogEnd = S.Depot.IntakeTotal;
-            td.CountCap = CountPerMinute * (Gd.DayMinutes + wrap);
-            if (!S.Tutorial && S.Day > Gd.EventFreeDays && td.BacklogEnd > td.CountCap * 0.8)
-            {
-                // the audit: an overloaded count line produces count mismatches
-                double fine = Math.Round(Math.Max(100, DayIncome() * 0.1));
-                td.Fines += fine;
-                S.Cash -= fine;
-                Emit("crisis", -1, -1, fine, "audit");
-            }
-            td.StarService = StarsBelow(td.Arrivals <= 0 ? 0 : td.TurnedRate, Gd.StarService);
-            td.StarEfficiency = td.Collected <= 0 ? 0 : StarsAbove(td.PerKm, Gd.StarEfficiency);
-            td.StarThroughput = StarsBelow(td.CountCap <= 0 ? 0 : td.BacklogEnd / td.CountCap, Gd.StarThroughput);
+            foreach (var r in S.Rangers) td.Wages += Gd.RoleDefs.TryGetValue(r.Role, out var d) ? d.Wage : 0;
+            td.Upkeep = S.Paddocks.Count * Gd.PaddockUpkeep + Gd.TramUpkeep + S.Tram.Cars * Gd.TramUpkeepCar;
+            S.Cash -= td.Wages + td.Upkeep;
+            double cpCare = Math.Round(td.Care * Gd.CpPerCare);
+            td.CpEarned += cpCare;
+            S.Cp += cpCare;
+            td.StarCare = StarsAbove(td.Care, Gd.StarCare);
+            td.StarVisitors = td.SatN <= 0 ? 0 : StarsAbove(td.Satisfaction, Gd.StarVisitors);
+            td.StarCalm = StarsAbove(td.Calm, Gd.StarCalm);
             double score = td.Stars / 9.0 * 100.0;
             double next = S.Rating + Gd.RatingAlpha * (score - S.Rating);
             // forgiving start: the guide and the first days can only raise the rating
-            if (S.Tutorial || S.Day <= Gd.TurnedRatingFreeDays) next = Math.Max(S.Rating, next);
+            if (S.Tutorial || S.Day <= Gd.RatingFreeDays) next = Math.Max(S.Rating, next);
             S.Rating = Math.Max(0, Math.Min(100, next));
             if (td.Stars > S.BestDayStars) S.BestDayStars = td.Stars;
             if (td.Stars >= 8) S.ThreeStarDays++;
             S.History.Add(td);
             while (S.History.Count > 14) S.History.RemoveAt(0);
+            S.Tram.Running = false; S.Tram.Pos = 0; S.Tram.NextStop = 1; S.Tram.Dwell = 0;
+            S.Events.RemoveAll(e => e.Until > 0);
             S.Phase = Phases.Report;
             Emit("day_done", S.Day, td.Stars, td.Net);
-        }
-
-        static int StarsBelow(double x, double[] th)
-        {
-            // th = [1 star, 2 stars, 3 stars] upper bounds, decreasing
-            int s = 0;
-            for (int i = 0; i < th.Length; i++) if (x <= th[i] + 1e-12) s = i + 1;
-            return s;
         }
 
         static int StarsAbove(double x, double[] th)
@@ -111,12 +86,9 @@ namespace RidgebackRangers.Sim
             S.Day++;
             S.Minute = Gd.DayStart;
             S.Today = new DayStats { Day = S.Day };
-            foreach (var p in S.Points) { p.FullMin = 0; p.Arrivals = p.Turned = p.Deposited = p.Picked = 0; p.BusyUntil = 0; }
-            foreach (var t in S.Trucks) { t.KmToday = 0; t.Trips = 0; }
             S.Events.RemoveAll(e => e.UntilDay < S.Day);
-            UpdateMarket();
+            GrowUp();
             PlanDay();
-            S.NextDispatchAt = Gd.DayStart;
             S.Phase = Phases.Plan;
             S.Paused = false;
             Emit("day_start", S.Day);
@@ -141,7 +113,7 @@ namespace RidgebackRangers.Sim
             return n > 0 ? sum / n : 0;
         }
 
-        /// <summary>Consumable cash pack: days × the usual day income. Returns the amount.</summary>
+        /// <summary>Consumable coin pack: days × the usual day income. Returns the amount.</summary>
         public double GrantCash(double days)
         {
             double a = Math.Round(Math.Max(0, days) * DayIncome());
@@ -150,90 +122,108 @@ namespace RidgebackRangers.Sim
             return a;
         }
 
+        /// <summary>Starter offer: one extra incubator slot (kept in the career; consumables are never restored).</summary>
+        public void GrantIncubator() { if (S.Incubators < IncubatorCap) S.Incubators++; }
+
         // ------------------------------------------------------------------------------------------------ purchases
 
-        /// <summary>Price + whether it can be bought now. Ids: machine:&lt;node&gt;, shop:&lt;node&gt;, horeca:&lt;node&gt;,
-        /// bin_m:&lt;point&gt;, compactor:&lt;point&gt;, sensor:&lt;point&gt;, truck:&lt;type&gt;, driver, tech, line, yard, intake,
-        /// centre, dispatcher, district:&lt;id&gt;.</summary>
+        static (string kind, string arg) Split(string id)
+        {
+            int c = id.IndexOf(':');
+            return c < 0 ? (id, "") : (id.Substring(0, c), id.Substring(c + 1));
+        }
+
+        int PaddockArg(string arg) => int.TryParse(arg, out int p) && p >= 0 && p < S.Paddocks.Count ? p : -1;
+
+        /// <summary>Price + whether it can be bought now. Ids: paddock:&lt;node&gt;, fence:&lt;p&gt;, water:&lt;p&gt;, shade:&lt;p&gt;,
+        /// expand:&lt;p&gt;, zone:&lt;id&gt;, hire:&lt;role&gt;, tram_car, lane, vet_beds, cafe, gift, incubator, hatch_tech, chief,
+        /// cooler:&lt;zone&gt;, feed_run2.</summary>
         public BuyInfo CanBuy(string id)
         {
             var r = new BuyInfo();
             if (string.IsNullOrEmpty(id)) { r.Reason = "invalid"; return r; }
-            string kind = id, arg = "";
-            int c = id.IndexOf(':');
-            if (c >= 0) { kind = id.Substring(0, c); arg = id.Substring(c + 1); }
-            var d = S.Depot;
+            var (kind, arg) = Split(id);
             switch (kind)
             {
-                case "machine":
-                case "shop":
-                case "horeca":
+                case "paddock":
                 {
                     int node = Gd.Node(arg);
-                    if (node < 0 || Gd.Nodes[node].Kind != "site" || Gd.Nodes[node].Site != kind) { r.Reason = "invalid"; return r; }
-                    if (PointAt(node) >= 0) { r.Reason = "owned"; return r; }
-                    if (!Unlocked(Gd.Nodes[node].District)) { r.Reason = "locked"; return r; }
-                    if (kind == "shop" && !Has("shop_points")) { r.Reason = "research"; return r; }
-                    if (kind == "horeca" && !Has("horeca")) { r.Reason = "research"; return r; }
-                    r.Cost = Gd.Price(kind == "machine" ? "machine_s" : kind);
+                    if (node < 0 || Gd.Nodes[node].Kind != "paddock") { r.Reason = "invalid"; return r; }
+                    if (PaddockAt(node) >= 0) { r.Reason = "owned"; return r; }
+                    if (!Unlocked(Gd.Nodes[node].Zone)) { r.Reason = "locked"; return r; }
+                    r.Cost = Gd.Price("paddock");
                     break;
                 }
-                case "bin_m":
-                case "compactor":
-                case "sensor":
+                case "fence":
                 {
-                    if (!int.TryParse(arg, out int pi) || pi < 0 || pi >= S.Points.Count) { r.Reason = "invalid"; return r; }
-                    var p = S.Points[pi];
-                    if (!p.IsMachine) { r.Reason = "invalid"; return r; }
-                    if (kind == "bin_m" && p.Kind == "machine_m") { r.Reason = "owned"; return r; }
-                    if (kind == "compactor" && p.Compactor) { r.Reason = "owned"; return r; }
-                    if (kind == "sensor" && p.Sensor) { r.Reason = "owned"; return r; }
-                    if (kind == "compactor" && !Has("compactor")) { r.Reason = "research"; return r; }
-                    if (kind == "sensor" && !Has("sensors")) { r.Reason = "research"; return r; }
+                    int p = PaddockArg(arg);
+                    if (p < 0) { r.Reason = "invalid"; return r; }
+                    if (S.Paddocks[p].Fence >= 3) { r.Reason = "max"; return r; }
+                    r.Cost = Gd.Price(S.Paddocks[p].Fence == 1 ? "fence2" : "fence3");
+                    break;
+                }
+                case "water":
+                case "shade":
+                {
+                    int p = PaddockArg(arg);
+                    if (p < 0) { r.Reason = "invalid"; return r; }
+                    if (kind == "water" ? S.Paddocks[p].Water : S.Paddocks[p].Shade) { r.Reason = "owned"; return r; }
                     r.Cost = Gd.Price(kind);
                     break;
                 }
-                case "truck":
+                case "expand":
                 {
-                    if (!Gd.Vehicles.TryGetValue(arg, out var v)) { r.Reason = "invalid"; return r; }
-                    if (v.Research != "" && !Has(v.Research)) { r.Reason = "research"; return r; }
-                    if (S.Trucks.Count >= 8) { r.Reason = "max"; return r; }
-                    r.Cost = v.Price;
+                    int p = PaddockArg(arg);
+                    if (p < 0) { r.Reason = "invalid"; return r; }
+                    if (S.Paddocks[p].Expand >= Gd.ExpandMax) { r.Reason = "max"; return r; }
+                    r.Cost = Gd.Price("expand");
                     break;
                 }
-                case "driver":
-                    if (S.Drivers >= S.Trucks.Count) { r.Reason = "max"; return r; }
-                    r.Cost = Gd.Price("driver"); break;
-                case "tech":
-                    if (S.Techs >= 4) { r.Reason = "max"; return r; }
-                    r.Cost = Gd.Price("tech"); break;
-                case "line":
-                    if (d.Lines >= Gd.LinesMax) { r.Reason = "max"; return r; }
-                    r.Cost = Gd.Price("line"); break;
-                case "yard":
-                    if (d.YardCap >= Gd.YardCap * (Has("yard_plus") ? 4 : 2)) { r.Reason = Has("yard_plus") ? "max" : "research"; return r; }
-                    r.Cost = Gd.Price("yard"); break;
-                case "intake":
-                    if (d.IntakeCap >= Gd.IntakeCap * (Has("intake_plus") ? 4 : 2)) { r.Reason = Has("intake_plus") ? "max" : "research"; return r; }
-                    r.Cost = Gd.Price("intake"); break;
-                case "centre":
-                    if (d.Centre) { r.Reason = "owned"; return r; }
-                    if (!Has("counting_centre")) { r.Reason = "research"; return r; }
-                    r.Cost = Gd.Price("centre"); break;
-                case "dispatcher":
-                    if (d.Dispatcher) { r.Reason = "owned"; return r; }
-                    if (!Has("dispatcher")) { r.Reason = "research"; return r; }
-                    r.Cost = Gd.Price("dispatcher"); break;
-                case "district":
+                case "zone":
                 {
-                    var dd = Gd.District(arg);
-                    if (dd == null) { r.Reason = "invalid"; return r; }
+                    var z = Gd.Zone(arg);
+                    if (z == null) { r.Reason = "invalid"; return r; }
                     if (Unlocked(arg)) { r.Reason = "owned"; return r; }
-                    if (dd.Chapter > Chapter + 1) { r.Reason = "locked"; return r; }
-                    if (S.Rating < dd.Rating) { r.Reason = "rating"; return r; }
-                    r.Cost = dd.Cost;
+                    if (z.Chapter > Chapter + 1) { r.Reason = "locked"; return r; }
+                    if (S.Rating < z.Rating) { r.Reason = "rating"; return r; }
+                    r.Cost = z.Cost;
                     break;
                 }
+                case "hire":
+                    if (!Roles.Valid(arg)) { r.Reason = "invalid"; return r; }
+                    if (CountRole(arg) >= RangerCap) { r.Reason = "max"; return r; }
+                    r.Cost = Gd.Price("hire");
+                    break;
+                case "tram_car":
+                    if (S.Tram.Cars >= Gd.TramCarsMax) { r.Reason = "max"; return r; }
+                    r.Cost = Gd.Price("tram_car");
+                    break;
+                case "cafe":
+                    if (S.Cafe >= 2) { r.Reason = "max"; return r; }
+                    r.Cost = Gd.Price(S.Cafe == 0 ? "cafe1" : "cafe2");
+                    break;
+                case "incubator":
+                    if (S.Incubators >= IncubatorCap) { r.Reason = "max"; return r; }
+                    r.Cost = Gd.Price("incubator");
+                    break;
+                case "cooler":
+                    if (!S.Stations.TryGetValue(arg, out var st)) { r.Reason = Gd.Zone(arg) == null ? "invalid" : "locked"; return r; }
+                    if (st.Cooler) { r.Reason = "owned"; return r; }
+                    r.Cost = Gd.Price("cooler");
+                    break;
+                case "chief":
+                    if (ChiefAvailable) { r.Reason = "owned"; return r; }
+                    if (S.Rating < Gd.ChiefRating) { r.Reason = "rating"; return r; }
+                    r.Cost = Gd.Price("chief");
+                    break;
+                case "lane":
+                case "vet_beds":
+                case "gift":
+                case "hatch_tech":
+                case "feed_run2":
+                    if (Has(kind)) { r.Reason = "owned"; return r; }
+                    r.Cost = Gd.Price(kind);
+                    break;
                 default: r.Reason = "invalid"; return r;
             }
             if (S.Cash < r.Cost) { r.Reason = "cash"; return r; }
@@ -247,97 +237,32 @@ namespace RidgebackRangers.Sim
             var info = CanBuy(id);
             if (!info.Ok) return info.Reason;
             S.Cash -= info.Cost;
-            string kind = id, arg = "";
-            int c = id.IndexOf(':');
-            if (c >= 0) { kind = id.Substring(0, c); arg = id.Substring(c + 1); }
-            var d = S.Depot;
+            var (kind, arg) = Split(id);
             switch (kind)
             {
-                case "machine": case "shop": case "horeca":
-                {
-                    int node = Gd.Node(arg);
-                    var p = new PointState { Node = node, Kind = kind == "machine" ? "machine_s" : kind, LastServiceDay = S.Day, LastServiceMin = S.Minute };
-                    if (kind != "machine") { p.Policy = Policies.Fixed; p.FixedEvery = 1; }
-                    S.Points.Add(p);
-                    Emit("point_new", S.Points.Count - 1);
-                    break;
-                }
-                case "bin_m": S.Points[int.Parse(arg)].Kind = "machine_m"; ResetLitreCache(); break;
-                case "compactor": S.Points[int.Parse(arg)].Compactor = true; ResetLitreCache(); break;
-                case "sensor": S.Points[int.Parse(arg)].Sensor = true; break;
-                case "truck":
-                {
-                    int id2 = 0;
-                    foreach (var t in S.Trucks) id2 = Math.Max(id2, t.Id + 1);
-                    S.Trucks.Add(new TruckState { Id = id2, Type = arg, AtNode = Gd.DepotNode });
-                    break;
-                }
-                case "driver": S.Drivers++; break;
-                case "tech": S.Techs++; break;
-                case "line": d.Lines++; break;
-                case "yard": d.YardCap += Gd.YardCap / 2; break;
-                case "intake": d.IntakeCap += Gd.IntakeCap / 2; break;
-                case "centre": d.Centre = true; break;
-                case "dispatcher":
-                    d.Dispatcher = true;
-                    for (int i = 0; i < S.Trucks.Count && AutoCount < AutoSlots; i++) S.Trucks[i].Auto = true;
-                    break;
-                case "district": S.Districts.Add(arg); Emit("district", -1, -1, 0, arg); break;
+                case "paddock": S.Paddocks.Add(new PaddockState { Node = Gd.Node(arg) }); Emit("paddock_new", S.Paddocks.Count - 1); break;
+                case "fence": S.Paddocks[PaddockArg(arg)].Fence++; S.Paddocks[PaddockArg(arg)].Integrity = 1; break;
+                case "water": S.Paddocks[PaddockArg(arg)].Water = true; break;
+                case "shade": S.Paddocks[PaddockArg(arg)].Shade = true; break;
+                case "expand": S.Paddocks[PaddockArg(arg)].Expand++; break;
+                case "zone": UnlockZone(arg, true); break;
+                case "hire": AddRanger(arg, false); break;
+                case "tram_car": S.Tram.Cars++; break;
+                case "cafe": S.Cafe++; break;
+                case "incubator": S.Incubators++; break;
+                case "cooler": S.Stations[arg].Cooler = true; break;
+                case "chief": S.Upgrades.Add("chief"); S.ChiefOn = true; break;
+                default: S.Upgrades.Add(kind); break;
             }
             Emit("bought", -1, -1, info.Cost, id);
             return "";
         }
 
-        public string SetPolicy(int point, string policy, int value)
+        public string SetChief(bool on)
         {
-            if (point < 0 || point >= S.Points.Count || !Policies.Valid(policy)) return "invalid";
-            var p = S.Points[point];
-            p.Policy = policy;
-            if (policy == Policies.Threshold) p.Threshold = Math.Max(30, Math.Min(100, value <= 0 ? 80 : value));
-            if (policy == Policies.Fixed) p.FixedEvery = Math.Max(1, Math.Min(7, value <= 0 ? 1 : value));
-            Emit("policy", point, -1, value, policy);
+            if (!ChiefAvailable) return "locked";
+            S.ChiefOn = on;
             return "";
-        }
-
-        // ------------------------------------------------------------------------------------------------ research
-
-        public string CanResearch(string id)
-        {
-            if (!Gd.ResearchById.TryGetValue(id ?? "", out var r)) return "invalid";
-            if (Has(id)) return "owned";
-            if (S.Researching != "") return S.Researching == id ? "running" : "busy";
-            foreach (var q in r.Requires) if (!Has(q)) return "requires";
-            if (!string.IsNullOrEmpty(r.District) && !Unlocked(r.District)) return "locked";
-            if (S.Cash < r.Cost) return "cash";
-            return "";
-        }
-
-        public string StartResearch(string id)
-        {
-            string why = CanResearch(id);
-            if (why != "") return why;
-            var r = Gd.ResearchById[id];
-            S.Cash -= r.Cost;
-            S.Researching = id;
-            S.ResearchLeftS = r.Minutes * 60.0;
-            Emit("research_start", -1, -1, r.Cost, id);
-            return "";
-        }
-
-        /// <summary>Real seconds pass for the research timer only (balance bot / tests that advance game minutes directly).</summary>
-        public void AdvanceResearch(double realS) { if (realS > 0) TickResearch(realS); }
-
-        void TickResearch(double realS)
-        {
-            if (S.Researching == "") return;
-            S.ResearchLeftS -= realS;
-            if (S.ResearchLeftS > 0) return;
-            string id = S.Researching;
-            S.Researching = "";
-            S.ResearchLeftS = 0;
-            if (!S.Research.Contains(id)) S.Research.Add(id);
-            ResetLitreCache();
-            Emit("research_done", -1, -1, 0, id);
         }
 
         // ------------------------------------------------------------------------------------------------ offline
@@ -345,22 +270,19 @@ namespace RidgebackRangers.Sim
         /// <summary>The time a save was written (unix seconds).</summary>
         public void Touch(long now) { S.LastSeen = now; }
 
-        /// <summary>Back from away: research catches up; the network keeps earning by its service policies (rate 50 %,
-        /// cap 4 h; Offline Plus 75 % / 10 h). Null when nothing was earned.</summary>
+        /// <summary>Back from away: eggs catch up; the sanctuary keeps earning by its plans (rate 50 %, cap 4 h; Night Shift
+        /// 75 % / 10 h). Null when nothing was earned.</summary>
         public OfflineSummary Offline(long now)
         {
             if (S.LastSeen <= 0) { S.LastSeen = now; return null; }
             double away = now - S.LastSeen;
             S.LastSeen = now;
             if (away < Gd.OfflineMinS) return null;
-            TickResearch(away);
+            TickEggs(Math.Min(away, 6 * 3600));
             bool plus = Perk("offline_plus");
             double capH = plus ? Gd.OfflineCapHPlus : Gd.OfflineCapH;
             double hours = Math.Min(away / 3600.0, capH);
-            int auto = 0;
-            foreach (var p in S.Points) if (p.Policy != Policies.Call) auto++;
-            double share = S.Points.Count == 0 ? 0 : Math.Max(0.25, (double)auto / S.Points.Count);
-            double amount = Math.Round(Math.Max(0, AvgNet()) * hours * Gd.OfflineDaysPerHour * (plus ? Gd.OfflineRatePlus : Gd.OfflineRate) * share);
+            double amount = Math.Round(Math.Max(0, AvgNet()) * hours * Gd.OfflineDaysPerHour * (plus ? Gd.OfflineRatePlus : Gd.OfflineRate));
             if (amount <= 0) return null;
             S.Cash += amount;
             S.OfflinePending = amount;
@@ -369,20 +291,33 @@ namespace RidgebackRangers.Sim
 
         // ------------------------------------------------------------------------------------------------ rewards (sim side)
 
-        public static readonly string[] RewardPlacements = { "offline_x2", "emergency_empty", "fuel_voucher", "baler_rescue", "daily_bonus" };
-        public static bool RewardIsCash(string placement) => placement == "offline_x2" || placement == "daily_bonus";
+        public static readonly string[] RewardPlacements = { "dawn_double", "borrow_ranger", "warm_incubator", "storm_shelter", "scout_tip" };
+        public static bool RewardIsCash(string placement) => placement == "dawn_double";
 
-        int FullestFullPoint()
+        int OldestOpenPin()
         {
-            int best = -1; double bp = 0;
-            for (int i = 0; i < S.Points.Count; i++)
-            {
-                double f = FillPct(S.Points[i]);
-                if (f >= 0.95 && f > bp) { bp = f; best = i; }
-            }
+            PinState best = null;
+            foreach (var p in S.Pins) if (p.Ranger < 0 && (best == null || p.Deadline < best.Deadline)) best = p;
+            return best?.Id ?? -1;
+        }
+
+        bool FenceTrouble() => S.Paddocks.Exists(p => p.Integrity < 0.999) || S.Pins.Exists(p => p.Kind == PinKinds.Fence || p.Kind == PinKinds.Escape);
+
+        int HiddenSite()
+        {
+            for (int i = 0; i < Gd.DigSites.Count; i++)
+                if (Unlocked(Gd.DigSites[i].Zone) && Gd.DigSites[i].Species.Count > 2 && !DigRevealed(i, 2)) return i;
+            return -1;
+        }
+
+        int ColdestEgg()
+        {
+            int best = -1;
+            for (int i = 0; i < S.Eggs.Count; i++) if (best < 0 || S.Eggs[i].LeftS > S.Eggs[best].LeftS) best = i;
             return best;
         }
 
+        /// <summary>target: borrow_ranger = pin id, warm_incubator = egg slot, scout_tip = dig site index (-1 = pick one).</summary>
         public RewardOfferInfo RewardOffer(string placement, long now, int target = -1)
         {
             var o = new RewardOfferInfo();
@@ -394,24 +329,28 @@ namespace RidgebackRangers.Sim
                 if (u.UtcDay == day && u.Count >= def.PerDay) { o.Reason = "cap"; return o; }
                 if (def.CooldownS > 0 && now - u.LastAt < def.CooldownS) { o.Reason = "cooldown"; return o; }
             }
-            double single = Gd.RewardSingleMaxDays * DayIncome();
+            double single = Math.Min(Gd.RewardSingleMaxDays, def.Days) * DayIncome();
             switch (placement)
             {
-                case "offline_x2":
+                case "dawn_double":
                     if (S.OfflinePending <= 0) { o.Reason = "context"; return o; }
                     o.Amount = Math.Round(Math.Min(S.OfflinePending, single)); break;
-                case "emergency_empty":
-                    if (S.Phase == Phases.Report) { o.Reason = "context"; return o; }
-                    if (target >= 0 ? (target >= S.Points.Count || FillPct(S.Points[target]) < 0.95) : FullestFullPoint() < 0) { o.Reason = "context"; return o; }
+                case "borrow_ranger":
+                {
+                    if (S.Phase != Phases.Live) { o.Reason = "context"; return o; }
+                    var p = target >= 0 ? Pin(target) : Pin(OldestOpenPin());
+                    if (p == null || p.Ranger >= 0) { o.Reason = "context"; return o; }
                     break;
-                case "fuel_voucher":
-                    if (S.FuelVoucher || S.Phase == Phases.Report) { o.Reason = "context"; return o; }
+                }
+                case "warm_incubator":
+                    if (target >= S.Eggs.Count || (target < 0 && ColdestEgg() < 0)) { o.Reason = "context"; return o; }
                     break;
-                case "baler_rescue":
-                    if (!S.Depot.BalerDown) { o.Reason = "context"; return o; }
+                case "storm_shelter":
+                    if (!FenceTrouble()) { o.Reason = "context"; return o; }
                     break;
-                case "daily_bonus":
-                    o.Amount = Math.Round(Math.Min(def.Days * DayIncome(), single)); break;
+                case "scout_tip":
+                    if (target >= 0 ? target >= Gd.DigSites.Count || DigRevealed(target, 2) : HiddenSite() < 0) { o.Reason = "context"; return o; }
+                    break;
             }
             o.Ok = true;
             return o;
@@ -424,23 +363,41 @@ namespace RidgebackRangers.Sim
             if (!o.Ok) { r.Reason = o.Reason; return r; }
             switch (placement)
             {
-                case "offline_x2": S.Cash += o.Amount; S.OfflinePending = 0; r.Amount = o.Amount; break;
-                case "daily_bonus": S.Cash += o.Amount; r.Amount = o.Amount; break;
-                case "fuel_voucher": S.FuelVoucher = true; break;
-                case "baler_rescue":
-                    S.Depot.BalerDown = false;
-                    S.TechJobs.RemoveAll(j => j.Kind == "baler");
-                    break;
-                case "emergency_empty":
+                case "dawn_double": S.Cash += o.Amount; S.OfflinePending = 0; r.Amount = o.Amount; break;
+                case "borrow_ranger":
                 {
-                    int i = target >= 0 ? target : FullestFullPoint();
-                    var p = S.Points[i];
-                    double n = 0;
-                    for (int m = 0; m < Mats.N; m++) { S.Depot.Intake[m] += p.Fill[m]; n += p.Fill[m]; p.Fill[m] = 0; }
-                    p.EstVol = 0; p.LastServiceDay = S.Day; p.LastServiceMin = S.Minute;
-                    S.Today.Collected += (int)n; S.Containers += (long)n;
-                    r.Amount = n;
-                    Emit("serviced", -1, i, n, "emergency");
+                    var p = target >= 0 ? Pin(target) : Pin(OldestOpenPin());
+                    var b = AddRanger(RoleFor(p.Kind), true);
+                    b.AtNode = p.Node;
+                    b.Pin = p.Id;
+                    b.Leg = 2;
+                    b.Status = RangerStatus.Work;
+                    b.TimeLeft = 2 + WorkMin(b, p) * 0.5;   // a ranger from the next ridge, already on site in ~2 minutes
+                    p.Ranger = b.Id;
+                    r.Amount = p.Id;
+                    break;
+                }
+                case "warm_incubator":
+                {
+                    var e = S.Eggs[target >= 0 ? target : ColdestEgg()];
+                    e.LeftS = Math.Max(1, e.LeftS - Gd.WarmS);
+                    break;
+                }
+                case "storm_shelter":
+                    foreach (var pd in S.Paddocks) pd.Integrity = 1;
+                    foreach (var p in new List<PinState>(S.Pins))
+                        if (p.Kind == PinKinds.Fence || p.Kind == PinKinds.Escape)
+                        {
+                            int ri = RangerIndex(p.Ranger);
+                            Resolve(p);
+                            if (ri >= 0) GoHome(S.Rangers[ri]);
+                        }
+                    break;
+                case "scout_tip":
+                {
+                    int site = target >= 0 ? target : HiddenSite();
+                    S.Scouted.Add(Gd.DigSites[site].Id);
+                    r.Amount = site;
                     break;
                 }
             }
@@ -454,7 +411,13 @@ namespace RidgebackRangers.Sim
             return r;
         }
 
-        /// <summary>The guide finished or was skipped: crises and penalties may start (after the free days).</summary>
-        public void EndTutorial() { S.Tutorial = false; }
+        /// <summary>The guide finished or was skipped: pins may fail, island events may start (after the free days).</summary>
+        public void EndTutorial()
+        {
+            S.Tutorial = false;
+            if (S.Phase == Phases.Live) S.GateOpen = true;
+            // pins opened in the guide get a fresh deadline (no instant failure)
+            foreach (var p in S.Pins) p.Deadline = Math.Max(p.Deadline, S.Minute + Gd.Pins[p.Kind].Deadline);
+        }
     }
 }

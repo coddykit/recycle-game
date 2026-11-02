@@ -1,14 +1,14 @@
-// Charge Nurse — opt-in rewarded videos (design §10, fleet §4): AdMob rewarded ONLY, through the kit's RewardedController
+// Charge Nurse — opt-in rewarded videos (plan §10, fleet §4): AdMob rewarded ONLY, through the kit's RewardedController
 // (UMP consent -> the one MobileAds.Initialize -> load; caps + cooldowns in coddyads/rewarded.json) AND the sim's own
 // reward state (caps, cooldowns, context, cash caps — persisted in the career save). Both must allow it.
-//   offline_x2        ×2 offline pay (bounded)          1/day            cash   (welcome-back card)
-//   emergency_empty   one full machine emptied now      3/day, 10 min    —      (full machine card; "last resort")
-//   fuel_voucher      one route at half fuel cost       2/day, 15 min    —      (route editor)
-//   baler_rescue      baler repaired now                1/day            —      (baler down card; crisis last resort)
-//   daily_bonus       small cash                        1/day            cash   (morning plan)
+//   offline_x2      ×2 night-shift pay on return (bounded)       1/day            cash   (welcome-back card)
+//   float_nurse     +1 float staff on the busiest team, 60 min    3/day, 15 min    —      (HUD during a busy shift)
+//   call_neighbor   the neighbour hospital takes ≤ 5 waiting      2/day, 10 min    —      (crisis last resort, once per crisis)
+//   daily_bonus     small supplies money                         1/day            cash   (morning board)
 // Units for the kit budget = milli-days of income (cash_s = 1 day = 1000): single ≤ 200 (1/5 of the cheapest pack),
 // daily ≤ 500 (1/2). Cash rewards ask for their real size; non-cash ones for 1 unit. ad_free players get the same capped
-// reward WITHOUT a video (rewarded_skipped_paid_user). Never offered in the guide (sim side). Nothing sold is given here.
+// reward WITHOUT a video (rewarded_skipped_paid_user). Never offered in the guide (sim side). Nothing sold is given here
+// (no permanent speed, no cosmetics, no ad removal). No interstitial runs during a crisis (NurseMain).
 using System;
 using System.Collections.Generic;
 using CoddyKit.Ads;
@@ -35,9 +35,8 @@ namespace ChargeNurse.Game
         public static Dictionary<string, RewardedLimit> KitLimits() => new Dictionary<string, RewardedLimit>
         {
             { "offline_x2", new RewardedLimit(1, 0) },
-            { "emergency_empty", new RewardedLimit(3, 600) },
-            { "fuel_voucher", new RewardedLimit(2, 900) },
-            { "baler_rescue", new RewardedLimit(1, 0) },
+            { "float_nurse", new RewardedLimit(3, 900) },
+            { "call_neighbor", new RewardedLimit(2, 600) },
             { "daily_bonus", new RewardedLimit(1, 0) },
         };
 
@@ -61,12 +60,12 @@ namespace ChargeNurse.Game
         }
 
         /// <summary>Whether the button may be shown now, what it gives and whether a video plays.</summary>
-        public RewardOffer Get(string placement, int target = -1)
+        public RewardOffer Get(string placement)
         {
             var o = new RewardOffer();
             var s = sim();
             if (s == null || Ctl == null) return o;
-            var off = s.RewardOffer(placement, Now(), target);
+            var off = s.RewardOffer(placement, Now());
             if (!off.Ok) return o;
             int units = UnitsFor(placement, off.Amount);
             if (Ctl.Rules.Amount(units) < units) return o;   // the kit's daily budget would cut it: do not offer a smaller one
@@ -79,26 +78,25 @@ namespace ChargeNurse.Game
         }
 
         /// <summary>Starts the flow (video, or at once for ad_free). False = not available now.</summary>
-        public bool Claim(string placement, int target = -1)
+        public bool Claim(string placement)
         {
-            var o = Get(placement, target);
+            var o = Get(placement);
             if (!o.Show) return false;
             return Ctl.Show(placement, o.Units, _ =>
             {
-                var r = sim().GrantReward(placement, Now(), target);
+                var r = sim().GrantReward(placement, Now());
                 Granted?.Invoke(placement, r);
             });
         }
 
         /// <summary>Toast text for a granted reward.</summary>
-        public static string GrantedText(string placement, RewardResult r, Loc loc)
+        public static string GrantedText(string placement, RewardResult r, Loc loc, Simulation sim = null)
         {
             if (r == null || !r.Ok) return loc.T("reward.unavailable");
             switch (placement)
             {
-                case "emergency_empty": return loc.T("reward.done_empty");
-                case "fuel_voucher": return loc.T("reward.done_fuel");
-                case "baler_rescue": return loc.T("reward.done_baler");
+                case "float_nurse": return loc.F("reward.done_float", "team", loc.T("team." + (sim != null && sim.S.FloatTeam != "" ? sim.S.FloatTeam : "nurse")));
+                case "call_neighbor": return loc.F("reward.done_neighbor", "n", (long)Math.Round(r.Amount));
             }
             return loc.F("reward.done_cash", "cash", Fmt.Money((long)Math.Round(r.Amount), loc.Lang));
         }

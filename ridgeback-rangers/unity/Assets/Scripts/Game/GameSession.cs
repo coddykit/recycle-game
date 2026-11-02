@@ -83,7 +83,7 @@ namespace RidgebackRangers.Game
             Sim.Advance(realDt);
             var ev = Sim.DrainEvents();
             bool dayDone = false;
-            foreach (var e in ev) if (e.Type == "day_done" || e.Type == "research_done") dayDone = true;
+            foreach (var e in ev) if (e.Type == "day_done" || e.Type == "hatched") dayDone = true;
             if (dayDone) Save();
             else if (Sim.Phase == Phases.Live && !Sim.S.Paused)
             {
@@ -96,7 +96,7 @@ namespace RidgebackRangers.Game
         /// <summary>App going to the background / quitting.</summary>
         public void Pause() => Save();
 
-        /// <summary>App back (or the first frame after load): the network's pay for the time away. Null = nothing earned.</summary>
+        /// <summary>App back (or the first frame after load): the sanctuary's pay for the time away. Null = nothing earned.</summary>
         public OfflineSummary Resume()
         {
             var o = Sim.Offline(Now());

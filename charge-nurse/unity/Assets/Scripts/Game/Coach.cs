@@ -1,16 +1,14 @@
-// Charge Nurse — the 14-step show-and-do guide (design §9, fleet §9). One thing per step; the target is spotlit; the step
-// advances ONLY when the player really does that action; a wrong tap repeats the hint (no penalty); time is paused while
-// the guide waits for the player, and runs fast while the guide waits for the world (the van driving, the count line,
-// the baler). Safe: the sim is in tutorial mode (no crises, no rating loss). Skip + Settings -> "Replay the guide".
-// Volt City lesson (11-01, 1★ "guide error"): every step is recoverable — leaving the screen / relaunching mid-step
-// re-derives the step from the career (Sync), never locks the player.
-//   1 tap the machine (fill bar)        8 tap the coins (fee per bottle)
-//   2 tap the van                       9 tap the baler
-//   3 tap the machine (add to route)   10 sell the first bale
-//   4 add the second machine           11 tap the fuel badge (km cost)
-//   5 Go                               12 set a rule: empty at 80 %
-//   6 watch the van (sped up)          13 buy a bigger bin
-//   7 tap the depot                    14 hire a second driver
+// Charge Nurse — the 10-step show-and-do guide (plan §9, fleet §9). One thing per step; the target is spotlit; the step
+// advances ONLY when the player really does that action; a wrong tap repeats the hint (a wrong colour explains why); time
+// is paused while the guide waits for the player and runs fast while it waits for the world (the treatment, the shift
+// running to the handover window). Safe: the sim is in tutorial mode (nobody worsens or leaves, no crises). Skip +
+// Settings → "Replay the guide". Every step is recoverable: leaving the screen / relaunching mid-step re-derives the step
+// from the career (Sync), never locks the player (Volt City lesson, 11-01).
+//   1 tap the waiting patient          6 an ambulance: Accept (red goes first)
+//   2 tap Green (mild)                 7 open the X-ray room
+//   3 send them to the free bay        8 hire a second porter
+//   4 (treated) tap Discharge          9 tap the red line: the bottleneck lens (discharge)
+//   5 tap the dirty bed to clean it   10 the shift is ending: tap Handover
 using System;
 using System.Collections.Generic;
 using ChargeNurse.Sim;
@@ -19,21 +17,22 @@ namespace ChargeNurse.Game
 {
     public sealed class Coach
     {
-        public const int Steps = 14;
-        public const int Done = 15;
+        public const int Steps = 10;
+        public const int Done = 11;
+        /// <summary>The guide's first patient (the career's patient #1).</summary>
+        public const int FirstPatient = 1;
 
-        /// <summary>What the UI spotlights per step (world: point:i / truck:i / depot / baler / coins; HUD: go / fuel; sheets:
-        /// policy / upgrade / hire). Step 6 has no tap target (the guide waits for the van).</summary>
+        /// <summary>What the UI spotlights per step (world markers: patient:1 / bay:free / discharge:1 / clean; sheet pills:
+        /// tag:0 / room:xray / hire:porter; HUD: ambulance / lens / handover).</summary>
         public static readonly string[] Targets =
         {
-            "", "point:0", "truck:0", "point:0", "point:1", "go", "truck:0", "depot", "coins", "baler", "sell:0", "fuel", "policy:1", "upgrade:1", "hire",
+            "", "patient:1", "tag:0", "bay:free", "discharge:1", "clean", "ambulance", "room:xray", "hire:porter", "lens", "handover",
         };
 
         /// <summary>The action id (prefix) that completes each step.</summary>
         public static readonly string[] Need =
         {
-            "", "select_point:0", "select_truck:0", "select_point:0", "select_point:1", "go", "", "depot", "till", "baler", "sell:0", "fuel_info",
-            "policy:", "buy:bin_m:", "buy:driver",
+            "", "select_patient:1", "tag:1:0", "assign:", "discharge:1", "clean:", "ambulance:accept", "buy:room:xray", "buy:hire:porter", "lens", "handover",
         };
 
         public int Step { get; private set; }
@@ -41,18 +40,19 @@ namespace ChargeNurse.Game
         public int WrongTaps { get; private set; }
         /// <summary>Increments on a wrong tap: the UI pulses the hint again.</summary>
         public int Flash { get; private set; }
+        /// <summary>A step-specific "not quite" hint after a wrong tap ("" = the step's own text).</summary>
+        public string WrongKey { get; private set; } = "";
         public Action<string, Dictionary<string, object>> Analytics = (n, p) => { };
         public Action<int, bool> Persist = (step, done) => { };
         public string Target => Active && Step >= 1 && Step <= Steps ? Targets[Step] : "";
-        public string BubbleKey => Active && Step >= 1 && Step <= Steps ? "coach." + Step : "";
+        public string BubbleKey => !Active || Step < 1 || Step > Steps ? "" : WrongKey != "" ? WrongKey : "coach." + Step;
 
         /// <summary>True while the guide waits for the world, not the player: the sim runs fast.</summary>
         public bool FastForward(Simulation sim)
         {
-            if (!Active) return false;
-            if (Step == 6) return true;
-            if (Step == 8) return sim.S.Depot.Till < 1;
-            if (Step == 10) return sim.S.Depot.Bales[Mats.Pet] <= 0;
+            if (!Active || sim.Phase != Phases.Live) return false;
+            if (Step == 4) { var p = sim.P(FirstPatient); return p != null && p.Stage != Stage.Ready; }
+            if (Step == 10) return sim.S.Minute < sim.Gd.HandoverFrom;
             return false;
         }
 
@@ -62,10 +62,11 @@ namespace ChargeNurse.Game
         public void Begin(Simulation sim, GameActions actions, int resumeStep = 0)
         {
             Active = true;
+            WrongKey = "";
             Step = Math.Max(1, Math.Min(Steps, resumeStep));
             if (Step == 1) Analytics("onboarding_begin", new Dictionary<string, object>());
             Sync(sim, actions);
-            Persist(Step, false);
+            if (Active) Persist(Step, false);
         }
 
         public void Skip(Simulation sim)
@@ -82,6 +83,7 @@ namespace ChargeNurse.Game
             sim.SetPaused(false);
             if (completed) Analytics("onboarding_complete", new Dictionary<string, object> { { "wrong_taps", (long)WrongTaps } });
             Step = Done;
+            WrongKey = "";
             Persist(Done, true);
         }
 
@@ -90,8 +92,7 @@ namespace ChargeNurse.Game
         {
             if (!Active) return true;
             if (action == "open" || action == "pause" || action == "resume") return true;
-            string need = Step >= 1 && Step <= Steps ? Need[Step] : "";
-            return need != "" && action.StartsWith(need, StringComparison.Ordinal);
+            return Matches(action);
         }
 
         public bool Matches(string action)
@@ -101,20 +102,22 @@ namespace ChargeNurse.Game
         }
 
         /// <summary>A tap the guide did not ask for: hint again, no penalty.</summary>
-        public void WrongTap()
+        public void WrongTap(string action = "")
         {
             if (!Active) return;
             WrongTaps++;
             Flash++;
+            WrongKey = Step == 2 && action != null && action.StartsWith("tag:", StringComparison.Ordinal) ? "coach.2.wrong" : "";
         }
 
         /// <summary>GameActions.Ran listener.</summary>
         public void OnAction(Simulation sim, GameActions actions, string id, ActionResult r)
         {
             if (!Active) return;
-            if (r.Error == "blocked") { WrongTap(); return; }
+            if (r.Error == "blocked") { WrongTap(id); return; }
             if (!r.Ok || !Matches(id)) return;
-            if (Step == 5 && sim.Phase == Phases.Plan) sim.StartDay();
+            if (Step == 7) sim.StartArrivals();     // walk-ins start once the X-ray room is open
+            if (Step == 9) sim.ReleaseGuided();     // the nurses take the two discharges now
             Advance(sim, actions);
         }
 
@@ -122,30 +125,24 @@ namespace ChargeNurse.Game
         {
             Analytics("onboarding_step", new Dictionary<string, object> { { "step", (long)Step } });
             Step++;
-            if (Step > Steps) { Finish(sim, true); return; }
+            WrongKey = "";
+            if (Step > Steps || sim.Phase == Phases.Report) { Finish(sim, true); return; }
             Sync(sim, actions);
-            Persist(Step, false);
+            if (Active) Persist(Step, false);
         }
 
-        /// <summary>Every frame: runs the world while the guide waits for it, advances step 6, keeps the day alive.</summary>
+        /// <summary>Every frame: runs the world while the guide waits for it, keeps the shift alive.</summary>
         public void Drive(Simulation sim, GameActions actions, double realDt)
         {
             if (!Active) return;
-            if (sim.Phase == Phases.Report) { sim.NextDay(); }
-            if (sim.Phase == Phases.Plan && Step >= 6) sim.StartDay();
+            if (sim.Phase == Phases.Plan && Step >= 4) sim.StartDay();
             if (FastForward(sim))
             {
                 sim.SetPaused(false);
-                sim.AdvanceMinutes(Math.Max(0, realDt) * 40.0);   // ~100 game minutes per real second
+                sim.AdvanceMinutes(Math.Max(0, realDt) * 40.0);   // ~120 game minutes per real second
             }
             else sim.SetPaused(true);
-            if (Step == 6)
-            {
-                var t = sim.S.Trucks[0];
-                bool heading = t.Stops.Count == 0 && t.Target < 0;
-                if (heading || !t.Busy) Advance(sim, actions);
-            }
-            else Sync(sim, actions);
+            Sync(sim, actions);
         }
 
         /// <summary>Recovery: re-derives a step whose preconditions are gone (relaunch, the screen was left, the day moved
@@ -153,54 +150,58 @@ namespace ChargeNurse.Game
         public void Sync(Simulation sim, GameActions actions)
         {
             if (!Active) return;
-            var t0 = sim.S.Trucks.Count > 0 ? sim.S.Trucks[0] : null;
+            var p1 = sim.P(FirstPatient);
+            bool selected = actions != null && actions.SelectedPatient == FirstPatient;
             int guard = 0;
-            while (guard++ < Steps)
+            while (guard++ < Steps * 2 && Active)
             {
                 int before = Step;
                 switch (Step)
                 {
+                    case 1:
+                        if (p1 == null) Step = 5;
+                        else if (p1.Stage == Stage.Treat || p1.Stage == Stage.Ready || p1.Stage == Stage.Discharge) Step = 4;
+                        break;
+                    case 2:
+                        if (p1 == null || p1.Seen || p1.Stage == Stage.Treat) Step = 1;
+                        else if (!selected) Step = 1;
+                        else if (p1.Tag == Sev.Green && p1.Stage == Stage.Bay) Step = 3;
+                        break;
                     case 3:
+                        if (p1 == null || p1.Stage == Stage.Treat || p1.Stage == Stage.Ready) Step = p1 == null ? 5 : 4;
+                        else if (!selected || p1.Tag < 0) Step = 1;
+                        break;
                     case 4:
+                        if (p1 == null) Step = 5;
+                        break;
                     case 5:
-                        if (t0 != null && t0.Busy) { Step = 6; break; }            // already sent (relaunch after Go)
-                        if (actions == null || actions.SelectedTruck != 0) Step = 2;    // the draft is UI state: pick the van again
-                        else if (Step == 4 && !actions.Draft.Contains(0)) Step = 3;
-                        else if (Step == 5 && actions.Draft.Count == 0) Step = 3;
+                        if (!sim.S.Beds.Exists(b => b.Guided && (b.State == BedState.Dirty || b.State == BedState.Cleaning))) Step = 6;
                         break;
                     case 6:
-                        if (t0 != null && !t0.Busy)
+                        if (sim.S.Ambulance == null)
                         {
-                            bool served = sim.S.Points.Count > 0 && sim.S.Points[0].LastServiceDay == sim.S.Day && sim.S.Points[0].Picked > 0;
-                            Step = served ? 7 : 2;
+                            if (sim.S.Today.Ambulances > 0 || sim.Built("xray") || sim.S.Day > 1) Step = 7;
+                            else sim.GuideAmbulance();
                         }
                         break;
+                    case 7:
+                        if (sim.Built("xray")) { sim.StartArrivals(); Step = 8; }
+                        break;
                     case 8:
-                        // nothing will ever reach the till (fees banked at a day end meanwhile): let the tap pass
-                        if (sim.S.Depot.Till < 1 && sim.S.Depot.IntakeTotal <= 0 && (t0 == null || !t0.Busy)) sim.S.Depot.Till = Math.Max(sim.S.Depot.Till, 1);
+                    {
+                        var c = sim.CanBuy("hire:porter");
+                        if (sim.Team(Teams.Porter) >= 2 || c.Reason == "cash" || c.Reason == "max") Step = 9;
+                        break;
+                    }
+                    case 9:
+                        sim.GuideDischargeSetup();
                         break;
                     case 10:
-                        if (sim.S.Depot.Bales[Mats.Pet] <= 0 && !PetComing(sim)) Step = 11;
-                        break;
-                    case 13:
-                        if (sim.S.Points.Exists(p => p.Kind == "machine_m")) Step = 14;
-                        else if (!sim.CanBuy("bin_m:1").Ok && sim.CanBuy("bin_m:1").Reason == "cash") Step = 14;
-                        break;
-                    case 14:
-                        if (sim.S.Drivers >= 2 || sim.CanBuy("driver").Reason == "cash") { Finish(sim, true); return; }
+                        if (sim.Phase == Phases.Report) { Finish(sim, true); return; }
                         break;
                 }
                 if (Step == before) break;
             }
-        }
-
-        static bool PetComing(Simulation sim)
-        {
-            var d = sim.S.Depot;
-            if (d.Intake[Mats.Pet] > 0) return true;
-            if (d.BalerIn[Mats.Pet] + d.Press[Mats.Pet] >= sim.Gd.Materials[Mats.Pet].BaleKg - 1e-6 && !d.BalerDown) return true;
-            foreach (var t in sim.S.Trucks) if (t.Load[Mats.Pet] > 0) return true;
-            return false;
         }
 
         /// <summary>First-time context tips after the guide (each once): the event -> tip key, "" = none.</summary>
@@ -208,25 +209,28 @@ namespace ChargeNurse.Game
         {
             switch (e.Type)
             {
-                case "jam": return "tip.jam";
-                case "yard_full": return "tip.yard";
-                case "baler_down": return "tip.baler_down";
-                case "gate_queue": return "tip.gate";
-                case "district": return e.Text == "oldtown" ? "tip.oldtown" : e.Text == "university" ? "tip.university" : e.Text == "stadium" ? "tip.stadium" : "";
+                case "ambulance_call": return "tip.ambulance";
+                case "worsened": return "tip.worsened";
+                case "lwbs": return "tip.lwbs";
+                case "transfer": return "tip.transfer";
+                case "notes_lost": return "tip.rushed";
+                case "treated": return e.Text == Stage.Board ? "tip.board" : "";
+                case "wing": return e.Text == "town" ? "tip.town" : e.Text == "city" ? "tip.city" : "";
+                case "room": return e.Text == "or" ? "tip.or" : e.Text == "lab" ? "tip.lab" : e.Text == "ct" ? "tip.ct" : "";
                 case "research_done":
-                    return e.Text == "sensors" ? "tip.sensors" : e.Text == "dispatcher" ? "tip.dispatcher" : e.Text == "counting_centre" ? "tip.centre"
-                        : e.Text == "horeca" ? "tip.horeca" : e.Text == "shop_points" ? "tip.shops" : "";
+                    return e.Text == "discharge_lounge" ? "tip.lounge" : e.Text == "fast_track" ? "tip.fast_track" : e.Text == "diversion_rules" ? "tip.diversion"
+                        : e.Text == "specialist_track" ? "tip.specialist" : "";
                 case "crisis":
                     switch (e.Text)
                     {
-                        case "heat_wave": return "tip.heat";
-                        case "match_day": return "tip.match";
-                        case "sensor_offline": return "tip.sensor_offline";
-                        case "bulk_returner": return "tip.bulk";
-                        case "breakdown": return "tip.breakdown";
-                        case "fuel_spike": return "tip.fuel";
-                        case "bale_crash": return "tip.market";
-                        case "audit": return "tip.audit";
+                        case "flu_surge": return "tip.surge";
+                        case "crash": return "tip.crash";
+                        case "power_outage": return "tip.power";
+                        case "scanner_down": return "tip.scanner";
+                        case "sick_calls": return "tip.sick";
+                        case "norovirus": return "tip.norovirus";
+                        case "supply_delay": return "tip.supply";
+                        case "inspection": return "tip.inspection";
                     }
                     return "";
                 case "day_done": return sim.S.Day == 1 ? "tip.report" : "";

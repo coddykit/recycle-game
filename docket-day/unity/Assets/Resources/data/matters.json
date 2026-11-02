@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "areas": [
+    { "id": "traffic",      "chapter": 1, "fee": "hourly",      "success": 180, "value": 0,    "retainer": 0,    "file": 3, "evidence": 3, "prep": 2,   "hearing_h": 2,   "after": [2, 4], "claims": 2, "titles": 4, "weight": 1.2 },
+    { "id": "small_claims", "chapter": 1, "fee": "contingency", "success": 0,   "value": 2400, "retainer": 0,    "file": 4, "evidence": 4, "prep": 3,   "hearing_h": 2,   "after": [3, 5], "claims": 3, "titles": 4, "weight": 1.0 },
+    { "id": "tenancy",      "chapter": 2, "fee": "retainer",    "success": 250, "value": 0,    "retainer": 700,  "file": 4, "evidence": 3, "prep": 4,   "hearing_h": 2.5, "after": [4, 6], "claims": 3, "titles": 4, "weight": 1.0 },
+    { "id": "family",       "chapter": 2, "fee": "retainer",    "success": 350, "value": 0,    "retainer": 1000, "file": 5, "evidence": 3, "prep": 5,   "hearing_h": 3,   "after": [5, 7], "claims": 3, "titles": 4, "weight": 0.9 },
+    { "id": "contract",     "chapter": 3, "fee": "hourly",      "success": 600, "value": 0,    "retainer": 0,    "file": 6, "evidence": 5, "prep": 6,   "hearing_h": 3,   "after": [5, 8], "claims": 4, "titles": 4, "weight": 1.0 }
+  ],
+  "tiers": {
+    "S": { "hours": 1.0, "fee": 1.0, "diff": 0.00, "min_standing": 0.0 },
+    "M": { "hours": 1.5, "fee": 2.0, "diff": 0.07, "min_standing": 1.5 },
+    "L": { "hours": 2.2, "fee": 3.6, "diff": 0.14, "min_standing": 3.0 }
+  },
+  "twists": [-0.05, 0.0, 0.0, 0.08, 0.12],
+  "judges": [
+    { "id": "kindlebrook", "chapter": 1, "kind": "small_claimant", "mod": 0.08 },
+    { "id": "mendwell",    "chapter": 1, "kind": "peacemaker",     "mod": 0.04, "settle": 1.2 },
+    { "id": "quillby",     "chapter": 2, "kind": "strict",         "mod": 0.10 },
+    { "id": "dozewell",    "chapter": 3, "kind": "friday",         "mod": 0.08 }
+  ],
+  "parties": ["tumble", "gullwing_bakery", "rivet_garage", "cycle_club", "harbor_flats", "pickle_deli", "marlow_florist", "dockside_gym",
+              "lantern_books", "copper_kettle", "brightwave_tech", "saltmarsh_farm", "ferry_coop", "quayside_hotel", "pebble_school",
+              "mosswood_vet", "anchor_laundry", "tidewater_taxi", "beacon_press", "kelp_kitchen", "ironbridge_builders", "seagull_scooters",
+              "maple_dental", "starling_studio", "city_parking"]
+}

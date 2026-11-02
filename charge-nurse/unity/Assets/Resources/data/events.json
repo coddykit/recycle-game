@@ -1,15 +1,14 @@
 {
   "version": 1,
+  "_doc": "Crises (plan §7). Never in the guide or the first free days; short (<= 3 days); no game over; no gore. announced = shown in the morning plan.",
   "events": [
-    { "id": "heat_wave",      "weight": 1.0, "min_day": 4, "days": 2, "mult": 1.6 },
-    { "id": "match_day",      "weight": 1.4, "min_day": 4, "district": "stadium", "from": 960, "to": 1080, "mult": 4.0 },
-    { "id": "jam",            "weight": 2.0, "min_day": 4 },
-    { "id": "sensor_offline", "weight": 1.0, "min_day": 5 },
-    { "id": "bulk_returner",  "weight": 1.4, "min_day": 4, "busy_min": 40, "min": 150, "max": 300 },
-    { "id": "breakdown",      "weight": 1.0, "min_day": 5, "broken_min": 90 },
-    { "id": "fuel_spike",     "weight": 0.7, "min_day": 6, "days": 5, "mult": 1.5 },
-    { "id": "bale_crash",     "weight": 0.7, "min_day": 6, "days": 3, "mult": 0.6 },
-    { "id": "baler_down",     "weight": 0.8, "min_day": 6 },
-    { "id": "glass_break",    "weight": 0.6, "min_day": 5 }
+    { "id": "flu_surge",    "weight": 1.0, "min_day": 4, "days": 2, "mult": 1.4, "announced": true },
+    { "id": "crash",        "weight": 0.8, "min_day": 4, "min": 8, "max": 12 },
+    { "id": "power_outage", "weight": 0.8, "min_day": 5, "minutes": 45 },
+    { "id": "scanner_down", "weight": 1.0, "min_day": 4, "minutes": 120 },
+    { "id": "sick_calls",   "weight": 1.0, "min_day": 4 },
+    { "id": "norovirus",    "weight": 0.7, "min_day": 6, "days": 2, "beds": 2 },
+    { "id": "supply_delay", "weight": 0.8, "min_day": 5, "days": 2, "mult": 1.5, "announced": true },
+    { "id": "inspection",   "weight": 0.7, "min_day": 6, "announced": true, "bonus": 400 }
   ]
 }

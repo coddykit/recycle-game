@@ -1,16 +1,16 @@
-// Ridgeback Rangers — the 14-step show-and-do guide (design §9, fleet §9). One thing per step; the target is spotlit; the step
+// Ridgeback Rangers — the 12-step show-and-do guide (plan §9, fleet §9). One thing per step; the target is spotlit; the step
 // advances ONLY when the player really does that action; a wrong tap repeats the hint (no penalty); time is paused while
-// the guide waits for the player, and runs fast while the guide waits for the world (the van driving, the count line,
-// the baler). Safe: the sim is in tutorial mode (no crises, no rating loss). Skip + Settings -> "Replay the guide".
+// the guide waits for the player, and runs fast while the guide waits for the world (the Feeder driving the crate, the first
+// visitors walking in, the rest of the first day). Safe: the sim is in tutorial mode (no pin ever fails, no island events,
+// no animal can leave a paddock, no ranger can be lost). Skip + Settings -> "Replay the guide".
 // Volt City lesson (11-01, 1★ "guide error"): every step is recoverable — leaving the screen / relaunching mid-step
 // re-derives the step from the career (Sync), never locks the player.
-//   1 tap the machine (fill bar)        8 tap the coins (fee per bottle)
-//   2 tap the van                       9 tap the baler
-//   3 tap the machine (add to route)   10 sell the first bale
-//   4 add the second machine           11 tap the fuel badge (km cost)
-//   5 Go                               12 set a rule: empty at 80 %
-//   6 watch the van (sped up)          13 buy a bigger bin
-//   7 tap the depot                    14 hire a second driver
+//   1 tap the Chief's badge              7 send the tram out
+//   2 pan / zoom the island              8 a squabble: send the Handler
+//   3 tap the hungry herd's pin          9 compare two animals (harmony bar)
+//   4 send a Feeder                     10 build a steel fence post
+//   5 watch the crate arrive -> "Fed!"  11 the day report -> Next day
+//   6 open the gate                     12 the hatchery: check an egg's temperature
 using System;
 using System.Collections.Generic;
 using RidgebackRangers.Sim;
@@ -19,21 +19,24 @@ namespace RidgebackRangers.Game
 {
     public sealed class Coach
     {
-        public const int Steps = 14;
-        public const int Done = 15;
+        public const int Steps = 12;
+        public const int Done = 13;
+        /// <summary>The guide's two animals for the Compatibility card (a triceratops and the maiasaura).</summary>
+        public const int CompareA = 0, CompareB = 2;
+        public const int SquabblePaddock = 1;
+        public const string GiftEgg = "maiasaura";
 
-        /// <summary>What the UI spotlights per step (world: point:i / truck:i / depot / baler / coins; HUD: go / fuel; sheets:
-        /// policy / upgrade / hire). Step 6 has no tap target (the guide waits for the van).</summary>
+        /// <summary>What the UI spotlights per step (world: pin:&lt;kind&gt; / gate / tram; HUD: badge / camera; sheets: ranger:&lt;role&gt;,
+        /// fed, animal:&lt;i&gt;, fence:&lt;p&gt;, next_day, temp:&lt;slot&gt;). Steps 4, 8 and 9 change their target as the player goes.</summary>
         public static readonly string[] Targets =
         {
-            "", "point:0", "truck:0", "point:0", "point:1", "go", "truck:0", "depot", "coins", "baler", "sell:0", "fuel", "policy:1", "upgrade:1", "hire",
+            "", "badge", "camera", "pin:hungry", "ranger:feeder", "fed", "gate", "tram", "pin:squabble", "animal:" + CompareA, "fence:" + SquabblePaddock, "next_day", "temp:0",
         };
 
         /// <summary>The action id (prefix) that completes each step.</summary>
         public static readonly string[] Need =
         {
-            "", "select_point:0", "select_truck:0", "select_point:0", "select_point:1", "go", "", "depot", "till", "baler", "sell:0", "fuel_info",
-            "policy:", "buy:bin_m:", "buy:driver",
+            "", "badge", "camera", "pin:", "send:", "fed_ok", "gate", "tram_go", "send:", "animal:", "buy:fence:" + SquabblePaddock, "next_day", "temp:",
         };
 
         public int Step { get; private set; }
@@ -43,61 +46,116 @@ namespace RidgebackRangers.Game
         public int Flash { get; private set; }
         public Action<string, Dictionary<string, object>> Analytics = (n, p) => { };
         public Action<int, bool> Persist = (step, done) => { };
-        public string Target => Active && Step >= 1 && Step <= Steps ? Targets[Step] : "";
+        Simulation sim;
+        GameActions actions;
+
         public string BubbleKey => Active && Step >= 1 && Step <= Steps ? "coach." + Step : "";
 
-        /// <summary>True while the guide waits for the world, not the player: the sim runs fast.</summary>
-        public bool FastForward(Simulation sim)
+        public string Target
         {
-            if (!Active) return false;
-            if (Step == 6) return true;
-            if (Step == 8) return sim.S.Depot.Till < 1;
-            if (Step == 10) return sim.S.Depot.Bales[Mats.Pet] <= 0;
+            get
+            {
+                if (!Active || Step < 1 || Step > Steps) return "";
+                switch (Step)
+                {
+                    case 8:
+                    {
+                        var p = TutorialPin(PinKinds.Squabble);
+                        return p != null && actions != null && actions.SelectedPin == p.Id ? "ranger:handler" : "pin:squabble";
+                    }
+                    case 9: return actions != null && actions.CompareFirst == CompareA ? "animal:" + CompareB : "animal:" + CompareA;
+                    case 5: return HungryOpen() ? "" : "fed";
+                    case 7: return FastForward(sim) ? "" : "tram";
+                    case 11: return sim != null && sim.Phase == Phases.Report ? "next_day" : "";
+                }
+                return Targets[Step];
+            }
+        }
+
+        PinState TutorialPin(string kind) => sim?.S.Pins.Find(p => p.Kind == kind);
+        bool HungryOpen() => TutorialPin(PinKinds.Hungry) != null;
+
+        /// <summary>True while the guide waits for the world, not the player: the sim runs fast.</summary>
+        public bool FastForward(Simulation s)
+        {
+            if (!Active || s == null) return false;
+            switch (Step)
+            {
+                case 5: return s.S.Pins.Exists(p => p.Kind == PinKinds.Hungry);
+                case 7: return s.Phase == Phases.Live && !s.S.Tram.Running && s.Queued == 0 && s.S.Tram.Riders == 0;
+                case 11: return s.Phase == Phases.Live;
+            }
             return false;
         }
 
-        /// <summary>True while the guide waits for the player: the sim is paused.</summary>
-        public bool WantsPause(Simulation sim) => Active && !FastForward(sim);
+        double FastRate => Step == 5 ? 8.0 : Step == 7 ? 10.0 : 60.0;   // game minutes per real second
 
-        public void Begin(Simulation sim, GameActions actions, int resumeStep = 0)
+        /// <summary>True while the guide waits for the player: the sim is paused.</summary>
+        public bool WantsPause(Simulation s) => Active && !FastForward(s);
+
+        public void Begin(Simulation s, GameActions a, int resumeStep = 0)
         {
+            sim = s;
+            actions = a;
             Active = true;
             Step = Math.Max(1, Math.Min(Steps, resumeStep));
             if (Step == 1) Analytics("onboarding_begin", new Dictionary<string, object>());
-            Sync(sim, actions);
+            if (s.Phase == Phases.Plan && Step <= 11 && s.S.Day == 1) s.StartDay();
+            Sync(s, a);
             Persist(Step, false);
         }
 
-        public void Skip(Simulation sim)
+        public void Skip(Simulation s)
         {
             if (!Active) return;
             Analytics("onboarding_skip", new Dictionary<string, object> { { "step", (long)Step } });
-            Finish(sim, false);
+            Finish(s, false);
         }
 
-        void Finish(Simulation sim, bool completed)
+        void Finish(Simulation s, bool completed)
         {
             Active = false;
-            sim.EndTutorial();
-            sim.SetPaused(false);
+            s.EndTutorial();
+            s.SetPaused(false);
             if (completed) Analytics("onboarding_complete", new Dictionary<string, object> { { "wrong_taps", (long)WrongTaps } });
             Step = Done;
             Persist(Done, true);
         }
 
+        static bool Harmless(string action) => action == "open" || action == "pause" || action == "resume" || action == "camera" || action == "clear";
+
         /// <summary>GameActions.Allowed: during the guide only the step's action (and harmless UI) may run.</summary>
         public bool Allows(string action)
         {
             if (!Active) return true;
-            if (action == "open" || action == "pause" || action == "resume") return true;
+            if (Harmless(action)) return true;
+            if ((Step == 4 || Step == 8) && action.StartsWith("pin:", StringComparison.Ordinal)) return true;   // (re)select the pin
             string need = Step >= 1 && Step <= Steps ? Need[Step] : "";
             return need != "" && action.StartsWith(need, StringComparison.Ordinal);
         }
 
-        public bool Matches(string action)
+        bool Matches(Simulation s, GameActions a, string action)
         {
             string need = Step >= 1 && Step <= Steps ? Need[Step] : "";
-            return need != "" && action != null && action.StartsWith(need, StringComparison.Ordinal);
+            if (need == "" || action == null || !action.StartsWith(need, StringComparison.Ordinal)) return false;
+            var parts = action.Split(':');
+            switch (Step)
+            {
+                case 3:
+                {
+                    var p = parts.Length > 1 && int.TryParse(parts[1], out int id) ? s.Pin(id) : null;
+                    return p != null && p.Kind == PinKinds.Hungry;
+                }
+                case 4:
+                case 8:
+                {
+                    // send:<pin>:<ranger> ran OK = the right role was sent (the sim checks the role); step 8 = the squabble
+                    var p = parts.Length > 1 && int.TryParse(parts[1], out int id) ? s.Pin(id) : null;
+                    return p != null && p.Kind == (Step == 4 ? PinKinds.Hungry : PinKinds.Squabble);
+                }
+                case 9: return a != null && a.CompareFirst >= 0 && a.CompareSecond >= 0;
+            }
+            return true;
         }
 
         /// <summary>A tap the guide did not ask for: hint again, no penalty.</summary>
@@ -109,51 +167,52 @@ namespace RidgebackRangers.Game
         }
 
         /// <summary>GameActions.Ran listener.</summary>
-        public void OnAction(Simulation sim, GameActions actions, string id, ActionResult r)
+        public void OnAction(Simulation s, GameActions a, string id, ActionResult r)
         {
             if (!Active) return;
+            sim = s;
+            actions = a;
             if (r.Error == "blocked") { WrongTap(); return; }
-            if (!r.Ok || !Matches(id)) return;
-            if (Step == 5 && sim.Phase == Phases.Plan) sim.StartDay();
-            Advance(sim, actions);
+            if (!r.Ok) { if (Step == 4 || Step == 8) WrongTap(); return; }   // e.g. sent the wrong role: hint again
+            if (!Matches(s, a, id)) return;
+            Advance(s, a);
         }
 
-        void Advance(Simulation sim, GameActions actions)
+        void Advance(Simulation s, GameActions a)
         {
             Analytics("onboarding_step", new Dictionary<string, object> { { "step", (long)Step } });
             Step++;
-            if (Step > Steps) { Finish(sim, true); return; }
-            Sync(sim, actions);
+            if (Step > Steps) { Finish(s, true); return; }
+            Sync(s, a);
             Persist(Step, false);
         }
 
-        /// <summary>Every frame: runs the world while the guide waits for it, advances step 6, keeps the day alive.</summary>
-        public void Drive(Simulation sim, GameActions actions, double realDt)
+        /// <summary>Every frame: runs the world while the guide waits for it, keeps the first day alive.</summary>
+        public void Drive(Simulation s, GameActions a, double realDt)
         {
             if (!Active) return;
-            if (sim.Phase == Phases.Report) { sim.NextDay(); }
-            if (sim.Phase == Phases.Plan && Step >= 6) sim.StartDay();
-            if (FastForward(sim))
+            sim = s;
+            actions = a;
+            if (s.Phase == Phases.Plan && Step <= 11 && s.S.Day == 1) s.StartDay();
+            if (s.Phase == Phases.Report && Step < 11) Step = 11;   // the day ended under the guide (relaunch): straight to the report step
+            Sync(s, a);
+            if (!Active) return;
+            if (FastForward(s))
             {
-                sim.SetPaused(false);
-                sim.AdvanceMinutes(Math.Max(0, realDt) * 40.0);   // ~100 game minutes per real second
+                s.SetPaused(false);
+                s.AdvanceMinutes(Math.Max(0, Math.Min(0.25, realDt)) * FastRate);
             }
-            else sim.SetPaused(true);
-            if (Step == 6)
-            {
-                var t = sim.S.Trucks[0];
-                bool heading = t.Stops.Count == 0 && t.Target < 0;
-                if (heading || !t.Busy) Advance(sim, actions);
-            }
-            else Sync(sim, actions);
+            else s.SetPaused(true);
         }
 
         /// <summary>Recovery: re-derives a step whose preconditions are gone (relaunch, the screen was left, the day moved
-        /// on). Never sends the player forward past an action they still have to learn, never locks them.</summary>
-        public void Sync(Simulation sim, GameActions actions)
+        /// on) and puts the guide's pins / egg in place. Never sends the player forward past an action they still have to
+        /// learn, never locks them.</summary>
+        public void Sync(Simulation s, GameActions a)
         {
             if (!Active) return;
-            var t0 = sim.S.Trucks.Count > 0 ? sim.S.Trucks[0] : null;
+            sim = s;
+            actions = a;
             int guard = 0;
             while (guard++ < Steps)
             {
@@ -161,75 +220,77 @@ namespace RidgebackRangers.Game
                 switch (Step)
                 {
                     case 3:
-                    case 4:
-                    case 5:
-                        if (t0 != null && t0.Busy) { Step = 6; break; }            // already sent (relaunch after Go)
-                        if (actions == null || actions.SelectedTruck != 0) Step = 2;    // the draft is UI state: pick the van again
-                        else if (Step == 4 && !actions.Draft.Contains(0)) Step = 3;
-                        else if (Step == 5 && actions.Draft.Count == 0) Step = 3;
+                        if (s.Phase == Phases.Live && TutorialPin(PinKinds.Hungry) == null) s.ForcePin(PinKinds.Hungry, 0);
                         break;
+                    case 4:
+                    {
+                        var p = TutorialPin(PinKinds.Hungry);
+                        if (p == null || p.Ranger >= 0) Step = 5;                       // already sent / already fed (relaunch)
+                        else if (a == null || a.SelectedPin != p.Id) Step = 3;          // the selection is UI state: tap the pin again
+                        break;
+                    }
                     case 6:
-                        if (t0 != null && !t0.Busy)
-                        {
-                            bool served = sim.S.Points.Count > 0 && sim.S.Points[0].LastServiceDay == sim.S.Day && sim.S.Points[0].Picked > 0;
-                            Step = served ? 7 : 2;
-                        }
+                        if (s.S.GateOpen) Step = 7;
+                        break;
+                    case 7:
+                        if (s.S.Tram.Running) Step = 8;
                         break;
                     case 8:
-                        // nothing will ever reach the till (fees banked at a day end meanwhile): let the tap pass
-                        if (sim.S.Depot.Till < 1 && sim.S.Depot.IntakeTotal <= 0 && (t0 == null || !t0.Busy)) sim.S.Depot.Till = Math.Max(sim.S.Depot.Till, 1);
+                    {
+                        if (s.Phase != Phases.Live) break;
+                        var p = TutorialPin(PinKinds.Squabble);
+                        if (p == null) s.ForcePin(PinKinds.Squabble, SquabblePaddock);
+                        else if (p.Ranger >= 0) Step = 9;
                         break;
+                    }
                     case 10:
-                        if (sim.S.Depot.Bales[Mats.Pet] <= 0 && !PetComing(sim)) Step = 11;
+                        if (s.S.Paddocks.Count > SquabblePaddock && s.S.Paddocks[SquabblePaddock].Fence >= 2) Step = 11;
+                        else if (s.CanBuy("fence:" + SquabblePaddock).Reason == "cash") Step = 11;
                         break;
-                    case 13:
-                        if (sim.S.Points.Exists(p => p.Kind == "machine_m")) Step = 14;
-                        else if (!sim.CanBuy("bin_m:1").Ok && sim.CanBuy("bin_m:1").Reason == "cash") Step = 14;
+                    case 11:
+                        if (s.Phase == Phases.Plan && s.S.Day > 1) Step = 12;
                         break;
-                    case 14:
-                        if (sim.S.Drivers >= 2 || sim.CanBuy("driver").Reason == "cash") { Finish(sim, true); return; }
+                    case 12:
+                        if (s.S.Eggs.Count == 0) s.PlaceEgg(GiftEgg);
+                        if (s.S.Eggs.Count > 0 && s.S.Eggs[0].Checked) { Finish(s, true); return; }
                         break;
                 }
                 if (Step == before) break;
             }
         }
 
-        static bool PetComing(Simulation sim)
-        {
-            var d = sim.S.Depot;
-            if (d.Intake[Mats.Pet] > 0) return true;
-            if (d.BalerIn[Mats.Pet] + d.Press[Mats.Pet] >= sim.Gd.Materials[Mats.Pet].BaleKg - 1e-6 && !d.BalerDown) return true;
-            foreach (var t in sim.S.Trucks) if (t.Load[Mats.Pet] > 0) return true;
-            return false;
-        }
-
         /// <summary>First-time context tips after the guide (each once): the event -> tip key, "" = none.</summary>
-        public static string TipFor(SimEvent e, Simulation sim)
+        public static string TipFor(SimEvent e, Simulation s)
         {
             switch (e.Type)
             {
-                case "jam": return "tip.jam";
-                case "yard_full": return "tip.yard";
-                case "baler_down": return "tip.baler_down";
-                case "gate_queue": return "tip.gate";
-                case "district": return e.Text == "oldtown" ? "tip.oldtown" : e.Text == "university" ? "tip.university" : e.Text == "stadium" ? "tip.stadium" : "";
-                case "research_done":
-                    return e.Text == "sensors" ? "tip.sensors" : e.Text == "dispatcher" ? "tip.dispatcher" : e.Text == "counting_centre" ? "tip.centre"
-                        : e.Text == "horeca" ? "tip.horeca" : e.Text == "shop_points" ? "tip.shops" : "";
+                case "pin":
+                    switch (e.Text)
+                    {
+                        case PinKinds.Sick: return "tip.vet";
+                        case PinKinds.Fence: return "tip.fence";
+                        case PinKinds.Escape: return "tip.escape";
+                        case PinKinds.Flood: return "tip.flood";
+                        case PinKinds.Squabble: return "tip.squabble";
+                    }
+                    return "";
+                case "zone": return e.Text == "fern" ? "tip.fern" : e.Text == "dune" ? "tip.dune" : "";
+                case "egg": return "tip.egg";
+                case "egg_cold": return "tip.egg_cold";
+                case "hatched": return e.B < 0 ? "tip.nursery" : "tip.hatched";
+                case "dig_start": return "tip.dig";
+                case "pin_failed": return "tip.failed";
                 case "crisis":
                     switch (e.Text)
                     {
                         case "heat_wave": return "tip.heat";
-                        case "match_day": return "tip.match";
-                        case "sensor_offline": return "tip.sensor_offline";
-                        case "bulk_returner": return "tip.bulk";
-                        case "breakdown": return "tip.breakdown";
-                        case "fuel_spike": return "tip.fuel";
-                        case "bale_crash": return "tip.market";
-                        case "audit": return "tip.audit";
+                        case "school_trip": return "tip.school";
+                        case "supply_late": return "tip.supply";
+                        case "dust_storm": return "tip.dust";
+                        case "rain_squall": return "tip.rain";
                     }
                     return "";
-                case "day_done": return sim.S.Day == 1 ? "tip.report" : "";
+                case "day_done": return s.S.Day <= 2 ? "tip.report" : "";
             }
             return "";
         }

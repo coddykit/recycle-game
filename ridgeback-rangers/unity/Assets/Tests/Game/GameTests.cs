@@ -37,7 +37,7 @@ namespace RidgebackRangers.Game.Tests
             return (s, a, c);
         }
 
-        /// <summary>Lets the world catch up for a guide step that waits for it (van driving, count line, baler).</summary>
+        /// <summary>Lets the world catch up for a guide step that waits for it (the Feeder driving, visitors, the rest of the day).</summary>
         public static void Run(Coach c, GameSession s, GameActions a, int frames = 400)
         {
             for (int i = 0; i < frames && c.Active && c.FastForward(s.Sim); i++) c.Drive(s.Sim, a, 0.1);
@@ -49,7 +49,40 @@ namespace RidgebackRangers.Game.Tests
 
     public class GuideTests
     {
-        static readonly string[] Right = { "", "select_point:0", "select_truck:0", "select_point:0", "select_point:1", "go", "", "depot", "till", "baler", "sell:0", "fuel_info", "policy:1:threshold:80", "buy:bin_m:1", "buy:driver" };
+        /// <summary>The right action for the guide's current step (ids are live: pins, rangers).</summary>
+        static string[] Right(GameSession s, GameActions a, Coach c)
+        {
+            var sim = s.Sim;
+            PinState Pin(string k) => sim.S.Pins.Find(p => p.Kind == k);
+            int R(string role) => sim.S.Rangers.FindIndex(r => r.Role == role && !r.Busy);
+            switch (c.Step)
+            {
+                case 1: return new[] { "badge" };
+                case 2: return new[] { "camera" };
+                case 3: return new[] { "pin:" + Pin(PinKinds.Hungry).Id };
+                case 4: return new[] { "send:" + Pin(PinKinds.Hungry).Id + ":" + R(Roles.Feeder) };
+                case 5: return new[] { "fed_ok" };
+                case 6: return new[] { "gate" };
+                case 7: return new[] { "tram_go" };
+                case 8: return new[] { "pin:" + Pin(PinKinds.Squabble).Id, "send:" + Pin(PinKinds.Squabble).Id + ":" + R(Roles.Handler) };
+                case 9: return new[] { "animal:" + Coach.CompareA, "animal:" + Coach.CompareB };
+                case 10: return new[] { "buy:fence:" + Coach.SquabblePaddock };
+                case 11: return new[] { "next_day" };
+                case 12: return new[] { "temp:0:50" };
+            }
+            return new string[0];
+        }
+
+        static void Do(GameSession s, GameActions a, Coach c)
+        {
+            G.Run(c, s, a);
+            int step = c.Step;
+            foreach (var id in Right(s, a, c))
+            {
+                var r = a.Run(id);
+                Assert.IsTrue(r.Ok, "step " + step + " action " + id + " failed: " + r.Error);
+            }
+        }
 
         [Test]
         public void TheWholeGuideCompletesWithTheRightActions()
@@ -57,26 +90,21 @@ namespace RidgebackRangers.Game.Tests
             var (s, a, c) = G.NewGuide();
             var events = new List<string>();
             c.Analytics = (n, p) => events.Add(n);
-            for (int step = 1; step <= Coach.Steps; step++)
+            for (int step = 1; step <= Coach.Steps && c.Active; step++)
             {
-                if (!c.Active) break;
-                if (step == 6)   // the guide waits for the van, no tap; the world runs fast
-                {
-                    G.Run(c, s, a);
-                    continue;
-                }
+                G.Run(c, s, a);
                 Assert.AreEqual(step, c.Step, "step order");
-                var r = a.Run(Right[step]);
-                Assert.IsTrue(r.Ok, "step " + step + " action " + Right[step] + " failed: " + r.Error);
-                if (c.Step != 6) G.Run(c, s, a);
+                Do(s, a, c);
+                if (c.Active) Assert.AreEqual(step + 1, c.Step, "step " + step + " advanced");
             }
-            G.Run(c, s, a);
             Assert.IsFalse(c.Active, "guide finished at step " + c.Step);
-            Assert.IsFalse(s.Sim.S.Tutorial, "crises may start after the guide");
+            Assert.IsFalse(s.Sim.S.Tutorial, "pins may fail and events may start after the guide");
             Assert.IsTrue(s.Settings.CoachDone);
-            Assert.AreEqual(2, s.Sim.S.Drivers);
-            Assert.IsTrue(s.Sim.S.Points.Exists(p => p.Kind == "machine_m"));
+            Assert.AreEqual(2, s.Sim.S.Day, "the guide ran the whole first day");
+            Assert.AreEqual(2, s.Sim.S.Paddocks[Coach.SquabblePaddock].Fence);
+            Assert.IsTrue(s.Sim.S.Eggs.Count > 0 && s.Sim.S.Eggs[0].Checked, "the gift egg is warming");
             Assert.Contains("onboarding_complete", events);
+            Assert.AreEqual(Coach.Steps, events.Count(e => e == "onboarding_step"));
         }
 
         [Test]
@@ -84,16 +112,31 @@ namespace RidgebackRangers.Game.Tests
         {
             var (s, a, c) = G.NewGuide();
             Assert.AreEqual(1, c.Step);
-            var r = a.Run("select_point:2");
+            var r = a.Run("gate");
             Assert.IsFalse(r.Ok);
             Assert.AreEqual("blocked", r.Error);
             Assert.AreEqual(1, c.Step);
             Assert.AreEqual(1, c.WrongTaps);
             Assert.AreEqual(1, c.Flash);
-            Assert.IsFalse(a.Run("buy:driver").Ok, "no shortcuts during the guide");
+            Assert.IsFalse(a.Run("buy:hire:vet").Ok, "no shortcuts during the guide");
             Assert.AreEqual(1, c.Step);
-            Assert.IsTrue(a.Run("select_point:0").Ok);
+            Assert.IsTrue(a.Run("camera").Ok, "panning is always fine");
+            Assert.AreEqual(1, c.Step);
+            Assert.IsTrue(a.Run("badge").Ok);
             Assert.AreEqual(2, c.Step);
+        }
+
+        [Test]
+        public void SendingTheWrongRoleRepeatsTheHint()
+        {
+            var (s, a, c) = G.NewGuide();
+            Do(s, a, c); Do(s, a, c); Do(s, a, c);
+            Assert.AreEqual(4, c.Step);
+            var pin = s.Sim.S.Pins.Find(p => p.Kind == PinKinds.Hungry);
+            int vet = s.Sim.S.Rangers.FindIndex(x => x.Role == Roles.Vet);
+            Assert.IsFalse(a.Run("send:" + pin.Id + ":" + vet).Ok);
+            Assert.AreEqual(4, c.Step);
+            Assert.Greater(c.WrongTaps, 0);
         }
 
         [Test]
@@ -111,11 +154,12 @@ namespace RidgebackRangers.Game.Tests
         public void TimeIsPausedWhileTheGuideWaitsForThePlayer()
         {
             var (s, a, c) = G.NewGuide();
-            for (int i = 1; i <= 5; i++) a.Run(Right[i]);
-            Assert.AreEqual(6, c.Step);
-            Assert.IsTrue(c.FastForward(s.Sim));
+            for (int i = 1; i <= 4; i++) Do(s, a, c);
+            Assert.AreEqual(5, c.Step);
+            Assert.IsTrue(c.FastForward(s.Sim), "the world runs while the Feeder drives the crate");
             G.Run(c, s, a);
-            Assert.AreEqual(7, c.Step);
+            Assert.IsFalse(c.FastForward(s.Sim));
+            Assert.AreEqual("fed", c.Target);
             double m = s.Sim.S.Minute;
             c.Drive(s.Sim, a, 1.0);
             s.Sim.Advance(1.0);
@@ -128,12 +172,14 @@ namespace RidgebackRangers.Game.Tests
             var (s, a, c) = G.NewGuide();
             var events = new List<string>();
             c.Analytics = (n, p) => events.Add(n);
-            a.Run("select_point:0");
+            a.Run("badge");
             c.Skip(s.Sim);
             Assert.IsFalse(c.Active);
             Assert.IsTrue(s.Settings.CoachDone);
             Assert.Contains("onboarding_skip", events);
-            Assert.IsTrue(a.Run("buy:driver").Ok || a.Run("buy:driver").Error == "cash", "everything is allowed after a skip");
+            Assert.IsTrue(s.Sim.S.GateOpen, "a skipped guide leaves the park open");
+            var hire = a.Run("buy:hire:vet");
+            Assert.IsTrue(hire.Ok || hire.Error == "cash", "everything is allowed after a skip");
             s.Settings.ReplayGuide();
             Assert.IsFalse(s.Settings.CoachDone);
             Assert.AreEqual(0, s.Settings.CoachStep);
@@ -145,38 +191,57 @@ namespace RidgebackRangers.Game.Tests
         }
 
         [Test]
-        public void RelaunchMidRouteDraftGoesBackToPickingTheVan()
+        public void RelaunchAfterSelectingThePinGoesBackToTappingIt()
         {
             string dir = G.TempDir();
             var (s, a, c) = G.NewGuide(dir);
-            a.Run(Right[1]); a.Run(Right[2]); a.Run(Right[3]);
+            Do(s, a, c); Do(s, a, c); Do(s, a, c);
             Assert.AreEqual(4, c.Step);
             s.Save();
-            var (s2, a2, c2) = G.NewGuide(dir);   // relaunch: the draft (UI state) is gone
-            Assert.AreEqual(2, c2.Step, "pick the van again, never stuck at 'add the second machine'");
-            Assert.IsTrue(a2.Run("select_truck:0").Ok);
-            Assert.AreEqual(3, c2.Step);
+            var (s2, a2, c2) = G.NewGuide(dir);   // relaunch: the selection (UI state) is gone
+            Assert.AreEqual(3, c2.Step, "tap the pin again, never stuck at 'send a Feeder'");
+            Do(s2, a2, c2);
+            Assert.AreEqual(4, c2.Step);
         }
 
         [Test]
-        public void RelaunchAfterGoContinuesWithTheVanOnTheRoad()
+        public void RelaunchAfterSendingTheFeederContinuesWithTheCrate()
         {
             string dir = G.TempDir();
             var (s, a, c) = G.NewGuide(dir);
-            for (int i = 1; i <= 5; i++) a.Run(Right[i]);
+            for (int i = 1; i <= 4; i++) Do(s, a, c);
             s.Save();
             var (s2, a2, c2) = G.NewGuide(dir);
-            Assert.AreEqual(6, c2.Step);
+            Assert.AreEqual(5, c2.Step);
             G.Run(c2, s2, a2);
-            Assert.AreEqual(7, c2.Step);
+            Assert.IsTrue(a2.Run("fed_ok").Ok);
+            Assert.AreEqual(6, c2.Step);
         }
 
         [Test]
-        public void NoRewardsAndNoCrisesInTheGuide()
+        public void RelaunchAfterTheDayEndedLandsOnTheReportStep()
+        {
+            string dir = G.TempDir();
+            var (s, a, c) = G.NewGuide(dir);
+            for (int i = 1; i <= 10; i++) Do(s, a, c);
+            Assert.AreEqual(11, c.Step);
+            G.Run(c, s, a);
+            Assert.AreEqual(Phases.Report, s.Sim.Phase);
+            s.Save();
+            var (s2, a2, c2) = G.NewGuide(dir);
+            Assert.AreEqual(11, c2.Step);
+            Assert.AreEqual("next_day", c2.Target);
+        }
+
+        [Test]
+        public void NoRewardsNoFailedPinsAndNoEventsInTheGuide()
         {
             var (s, a, c) = G.NewGuide();
             Assert.IsTrue(s.Sim.S.Tutorial);
-            Assert.IsFalse(s.Sim.RewardOffer("daily_bonus", 1_800_000_000).Ok);
+            foreach (var p in Simulation.RewardPlacements) Assert.IsFalse(s.Sim.RewardOffer(p, 1_800_000_000).Ok, p);
+            for (int i = 1; i <= 11; i++) Do(s, a, c);
+            Assert.AreEqual(0, s.Sim.S.History[0].PinsFailed);
+            Assert.AreEqual(0, s.Sim.S.Events.Count);
         }
     }
 
@@ -223,7 +288,7 @@ namespace RidgebackRangers.Game.Tests
             var s = new GameSession(TestData.Gd(), dir) { Now = () => now };
             s.LoadOrNew(3);
             s.Sim.EndTutorial();
-            s.Sim.S.History.Add(new DayStats { Fees = 2000 });
+            s.Sim.S.History.Add(new DayStats { Tickets = 2000 });
             s.Save();
             now += 3 * 3600;
             var o = s.Resume();
@@ -257,8 +322,8 @@ namespace RidgebackRangers.Game.Tests
         {
             var cat = IapCatalog.Parse(TestData.Read("Assets/Resources/data/iap.json"));
             var adFree = cat.Order.Where(cat.GrantsAdFree).OrderBy(x => x).ToArray();
-            CollectionAssert.AreEqual(new[] { "bundle", "noads", "premium", "route_pass" }, adFree, "fleet §3/§8 table");
-            foreach (var cheap in new[] { "cash_s", "cash_xl", "starter", "speed", "dispatcher_plus", "offline_plus", "cosmetics_all", "livery_sunset" })
+            CollectionAssert.AreEqual(new[] { "bundle", "noads", "premium", "ranger_pass" }, adFree, "plan §10 / fleet §3/§8 table");
+            foreach (var cheap in new[] { "cash_s", "cash_xl", "starter", "storm_kit", "speed", "offline_plus", "cosmetics_all", "skin_tram_sunset" })
                 Assert.IsFalse(cat.GrantsAdFree(cheap), cheap);
         }
 
@@ -359,6 +424,7 @@ namespace RidgebackRangers.Game.Tests
             var sim = TestData.NewSim();
             var h = new ReviewHook();
             var good = new SimEvent { Type = "day_done", B = 7 };
+            Assert.AreEqual("zone", ReviewHook.Moment(new SimEvent { Type = "zone", Text = "fern" }, sim));
             Assert.AreEqual("", h.Check(good, sim, inGuide: true));
             Assert.AreEqual("good_day", h.TakeDeferred(false));
             Assert.AreEqual("", h.TakeDeferred(false));
@@ -399,13 +465,19 @@ namespace RidgebackRangers.Game.Tests
         {
             var loc = G.Loc();
             var gd = TestData.Gd();
-            foreach (var n in gd.Nodes) if (n.Kind == "site" || n.Kind == "depot") Assert.IsTrue(loc.Has("place." + n.Id), n.Id);
-            foreach (var d in gd.Districts) Assert.IsTrue(loc.Has("district." + d.Id), d.Id);
-            foreach (var r in gd.Research) { Assert.IsTrue(loc.Has("research." + r.Id + ".t"), r.Id); Assert.IsTrue(loc.Has("research." + r.Id + ".d"), r.Id); }
-            foreach (var e in gd.Events) Assert.IsTrue(loc.Has("crisis." + e.Id + ".t"), e.Id);
-            foreach (var v in gd.Vehicles.Keys) Assert.IsTrue(loc.Has("truck." + v), v);
-            foreach (var k in gd.PointKinds.Keys) Assert.IsTrue(loc.Has("kind." + k), k);
-            foreach (var s in new[] { "idle", "drive", "service", "unload", "wait", "broken" }) Assert.IsTrue(loc.Has("truck.status." + s), s);
+            foreach (var n in gd.Nodes) if (n.Kind == "paddock" || n.Kind == "dig") Assert.IsTrue(loc.Has("place." + n.Id), n.Id);
+            foreach (var z in gd.Zones) { Assert.IsTrue(loc.Has("zone." + z.Id), z.Id); Assert.IsTrue(loc.Has("zone." + z.Id + ".d"), z.Id); }
+            foreach (var sp in gd.Species) { Assert.IsTrue(loc.Has("sp." + sp.Id), sp.Id); Assert.IsTrue(loc.Has("sp." + sp.Id + ".d"), sp.Id); }
+            foreach (var e in gd.Events) { Assert.IsTrue(loc.Has("crisis." + e.Id + ".t"), e.Id); Assert.IsTrue(loc.Has("crisis." + e.Id + ".b"), e.Id); }
+            Assert.IsTrue(loc.Has("crisis.escape.t"));
+            foreach (var k in PinKinds.All) { Assert.IsTrue(loc.Has("pin." + k), k); Assert.IsTrue(loc.Has("pin." + k + ".d"), k); Assert.IsTrue(loc.Has("tip." + (k == PinKinds.Sick ? "vet" : k == PinKinds.Hungry ? "report" : k)), k); }
+            foreach (var r in Roles.All) { Assert.IsTrue(loc.Has("role." + r), r); Assert.IsTrue(loc.Has("role." + r + ".d"), r); }
+            foreach (var st in new[] { "idle", "travel", "work", "back", "dig" }) Assert.IsTrue(loc.Has("ranger.status." + st), st);
+            foreach (var t in new[] { "calm", "skittish", "bossy" }) Assert.IsTrue(loc.Has("temper." + t), t);
+            foreach (var d in new[] { "fern", "fruit" }) Assert.IsTrue(loc.Has("diet." + d), d);
+            foreach (var b in new[] { "forest", "dune" }) Assert.IsTrue(loc.Has("biome." + b), b);
+            foreach (var h in new[] { "ok", "green", "yellow", "red", "off" }) Assert.IsTrue(loc.Has("health." + h), h);
+            foreach (var p in Simulation.RewardPlacements) { Assert.IsTrue(loc.Has("reward." + p + ".t"), p); Assert.IsTrue(loc.Has("reward." + p + ".b"), p); }
         }
 
         [Test]
@@ -444,7 +516,7 @@ namespace RidgebackRangers.Game.Tests
         {
             // overflow guard for the 48 dp pills (fleet §9 "10 dilde metin taşmaz"; de / ru run longest)
             var loc = G.Loc();
-            var shortKeys = loc.Keys.Where(k => k.StartsWith("tab.") || k == "truck.go" || k == "hud.start_day" || k == "hud.next_day" || k == "coach.skip" || k == "intro.start" || k.StartsWith("shop.group.")).ToList();
+            var shortKeys = loc.Keys.Where(k => k.StartsWith("tab.") || k == "pin.send" || k == "hud.start_day" || k == "hud.next_day" || k == "coach.skip" || k == "intro.start" || k.StartsWith("shop.group.")).ToList();
             var bad = new List<string>();
             foreach (var k in shortKeys)
                 foreach (var l in Loc.Languages)

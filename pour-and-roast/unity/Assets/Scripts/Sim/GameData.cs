@@ -1,28 +1,83 @@
 // Pour & Roast sim core — engine independent (no UnityEngine). C# 9 / .NET Standard 2.1.
-// Typed view of the data files in Assets/Resources/data (balance.json, map.json, research.json, events.json).
+// Typed view of the data files in Assets/Resources/data (balance.json, venues.json, menu.json, research.json, events.json).
 // The Unity layer passes a loader (name -> text); tests read the files from disk. Errors are collected, never thrown.
 using System;
 using System.Collections.Generic;
 
 namespace PourAndRoast.Sim
 {
-    public static class Mats
+    public static class Tasks
     {
-        public const int Pet = 0, Alu = 1, Glass = 2, N = 3;
-        public static readonly string[] Ids = { "pet", "alu", "glass" };
-        public static int Index(string id) => Array.IndexOf(Ids, id);
+        public const string Shot = "shot", Steam = "steam", Pour = "pour", Pastry = "pastry";
+        public static bool Valid(string t) => t == Shot || t == Steam || t == Pour || t == Pastry;
     }
 
-    public sealed class MaterialDef { public string Id; public double VolL, Kg, BaleKg, BalePrice; }
-    public sealed class ArchetypeDef { public string Id; public int Min, Max; public double[] Mix; public double Weekend, Evening; public double Mean => (Min + Max) * 0.5; }
-    public sealed class PointKindDef { public string Id; public double CapL, LeaseDay, JamPer1000, ShopFee, PickupBonus; public bool Citizens; public double[] Mix; }
-    public sealed class VehicleDef { public string Id; public double VolL, Kg, SpeedKmh, CostKm, ServiceMin, PetCompress, Price; public bool Alley; public string Research; }
-    public sealed class DistrictDef { public string Id; public int Chapter; public double Rating, Cost; public double[] Archetypes; }
-    public sealed class NodeDef { public int Index; public string Id, District, Kind, Site; public double X, Y, Rate; public bool Alley, EventSite; }
-    public sealed class EdgeDef { public int A, B; public double Km; public bool Alley; }
-    public sealed class ResearchDef { public string Id, Branch, District; public double Cost, Minutes; public List<string> Requires = new List<string>(); }
-    public sealed class EventDef { public string Id, District; public double Weight, Mult; public int MinDay, Days, From, To, BusyMin, Min, Max, BrokenMin; }
-    public sealed class RewardDef { public string Id; public int PerDay; public long CooldownS; public double Days; }
+    public static class Stations
+    {
+        public const string Espresso = "espresso", Milk = "milk", Any = "any";
+        public static readonly string[] All = { Espresso, Milk, Any };
+        public static bool Valid(string s) => s == Espresso || s == Milk || s == Any;
+    }
+
+    public static class Roles
+    {
+        public const string Barista = "barista", Cashier = "cashier", Runner = "runner", Roaster = "roaster";
+        public static readonly string[] All = { Barista, Cashier, Runner, Roaster };
+        public static bool Valid(string r) => Array.IndexOf(All, r) >= 0;
+    }
+
+    public static class Profiles
+    {
+        public const string Light = "light", Medium = "medium", Dark = "dark";
+        public static readonly string[] All = { Light, Medium, Dark };
+        public static bool Valid(string p) => Array.IndexOf(All, p) >= 0;
+        public static int Index(string p) => Array.IndexOf(All, p);
+    }
+
+    public static class Weathers
+    {
+        public const string Sunny = "sunny", Rain = "rain", Heat = "heat", Fog = "fog";
+        public static readonly string[] All = { Sunny, Rain, Heat, Fog };
+        public static bool Valid(string w) => Array.IndexOf(All, w) >= 0;
+    }
+
+    public sealed class MenuItemDef
+    {
+        public int Index;
+        public string Id, Kind;
+        public int Tier;
+        public double Price, Beans, Pop, PourMin;
+        public string[] Tasks = new string[0];
+        public bool Milk, Iced, Prep, Showcase;
+        public bool IsPastry => Kind == "pastry";
+        public bool HasShot => Array.IndexOf(Tasks, Sim.Tasks.Shot) >= 0;
+    }
+
+    public sealed class CustomerDef
+    {
+        public string Id;
+        public int ItemsMin, ItemsMax;
+        public double Patience, Oat, Iced, Pastry, Pre, Tip, RatingMin, Weekend;
+        public bool Vip;
+    }
+
+    public sealed class VenueDef
+    {
+        public string Id;
+        public int Chapter, Heads0, HeadsMax, Wands0, WandsMax, SeatsMax, Ice0;
+        public double Rating, Cost, PerHour, PriceMult, Rent, AutoFloor;
+        public double[] Weights = new double[0];
+    }
+
+    public sealed class RoleDef { public string Id, Research = ""; public double Wage, Price; public int Max; }
+    public sealed class TraitDef { public string Id; public double Speed = 1, Q, Tip; }
+    public sealed class OriginDef { public int Index; public string Id, Best, Research = ""; public double Q, Price; }
+    public sealed class ContractDef { public string Id, Research = ""; public double Kg, Pay, MinQ, Rating; public int Every; }
+    public sealed class SupplierDef { public string Id; public double Price, Late, Q; }
+    public sealed class WeatherDef { public string Id; public double Weight, Walk = 1, Pre = 1, Iced = 1, Tune = 1; }
+    public sealed class ResearchDef { public string Id, Branch, Venue = ""; public double Cost, Minutes; public List<string> Requires = new List<string>(); }
+    public sealed class EventDef { public string Id, Trigger; public double Weight, Mult; public int MinDay, Days; }
+    public sealed class RewardDef { public string Id; public int PerDay; public long CooldownS; public double Days, Minutes; }
 
     public sealed class GameData
     {
@@ -30,73 +85,97 @@ namespace PourAndRoast.Sim
         public bool Ok => Errors.Count == 0;
 
         // time
-        public int DayStart = 540, DayEnd = 1140, FreeMaxSpeed = 2, PaidMaxSpeed = 4, DepotWrapupMin = 60;
-        public double GameMinPerRealS = 2.5, AutosaveS = 30;
+        public int DayStart = 420, DayEnd = 1080, FreeMaxSpeed = 2, PaidMaxSpeed = 4;
+        public double GameMinPerRealS = 3, AutosaveS = 30;
         // start
-        public double StartCash, StartRating, StartBalerPetKg;
-        public int StartDrivers, StartTechs;
-        public List<string> StartTrucks = new List<string>();
-        public List<string> StartMachines = new List<string>();
-        public Dictionary<string, double> StartFill = new Dictionary<string, double>();
+        public double StartCash = 420, StartRating = 2.5, StartBeansKg = 6, StartBeansQ = 52, StartIce;
+        public string StartVenue = "cart", StartSupplier = "regular";
+        public List<string> StartStaff = new List<string>();
+        public List<string> StartMenu = new List<string>();
+        public List<string> StartForecast = new List<string>();
+        public double[] StartMilk = { 16, 5 }, StartMilkOrder = { 18, 6 };
 
-        public readonly MaterialDef[] Materials = new MaterialDef[Mats.N];
-        public readonly List<ArchetypeDef> Archetypes = new List<ArchetypeDef>();
+        public readonly List<CustomerDef> Customers = new List<CustomerDef>();
         public double[] HourCurve = { 1 };
-        public double WeekendMult = 1.25;
-        public readonly Dictionary<string, PointKindDef> PointKinds = new Dictionary<string, PointKindDef>();
-        public double CompactorPet = 2.5, CompactorJamMult = 1.6;
-        public readonly Dictionary<string, VehicleDef> Vehicles = new Dictionary<string, VehicleDef>();
-        public readonly List<string> VehicleOrder = new List<string>();
-        public double UnloadBaseMin = 8, UnloadPerContainerMin = 0.0025, BreakdownPerKm = 0.0015, GlassBreakPerKm = 0.0006;
+        public double WeekendMult = 1.2;
+        // work
+        public double ShotMin = 1.1, SteamMin = 0.9, PourMin = 0.35, PastryMin = 0.2, BatchMult = 1.5, MenuSlow = 0.03, HandoverMin = 1.5, HandoverHostMin = 0.4, PreGrace = 15;
+        public int BatchLook = 3, MenuFree = 5, PreLeadMin = 20, PreLeadMax = 40;
+        // stocks
+        public double SupplierQ = 52, SupplierPrice = 15, SupplierLot = 5, BeanParKg = 4;
+        public double MilkPerDrink = 0.2, MilkSpoil = 0.5, MilkLateMin = 180, RunMult = 2, RunMin = 15, RunMinRunner = 5, OatPriceMult = 1.6;
+        public double[] RunL = { 10, 4 };
+        public readonly Dictionary<string, SupplierDef> Suppliers = new Dictionary<string, SupplierDef>();
+        public readonly List<string> SupplierOrder = new List<string>();
+        public double IcePerDrink = 0.3, IceBagKg = 10, IceBagPrice = 8;
+        public double[] IcePerHour = { 0, 6, 10, 16 }, IceCap = { 0, 24, 40, 60 };
+        public double PastryCostShare = 0.45, OvenCostShare = 0.35;
+        public int PastryParDefault = 6, PastryParMax = 30;
+        // quality
+        public double TuneDriftH = 7, TuneOff = 60, TuneBad = 35, TuneAutoFloor = 85, TunePenalty = 0.6, TuneScaleMult = 0.6;
+        public double WearPerShot = 0.05, JamFrom = 80, JamPerShot = 0.01, JamAutoFixMin = 25, GrinderServicePrice = 60;
+        public double PriceQMin = 0.8, PriceQSpan = 0.4, LevelQ = 2, PourOverBonus = 8, PastryQ = 70, OvenQ = 80;
+        // reviews
+        public double[] ReviewWait = { 0.5, 0.8, 1.0 }, ReviewWaitPen = { 0, 0.5, 1.0, 1.6 }, ReviewQ = { 75, 60, 45 }, ReviewQPen = { 0, 0.5, 1.2, 2.0 };
+        public double LatePen = 1.5, FailPen = 1.2, SubPen = 0.4, DecorReview = 0.1, MusicReview = 0.15;
+        public int WallSize = 12, SpreeCount = 3;
+        // staff
+        public readonly Dictionary<string, RoleDef> Roles = new Dictionary<string, RoleDef>();
+        public readonly Dictionary<string, TraitDef> Traits = new Dictionary<string, TraitDef>();
+        public readonly List<string> TraitOrder = new List<string>();
+        public double LevelSpeed = 0.08;
+        public int LevelMax = 5;
+        public double[] TrainPrice = { 0, 90, 180, 360, 650 };
         // economy
-        public double Fee = 1, BulkFee = 0.5, FeeRatingMin = 0.85, FeeRatingSpan = 0.3, DriverWage = 110, TechWage = 90,
-            DepotPower = 35, LinePower = 15, RatingAlpha = 0.3, DayIncomeFloor = 600;
-        public int TurnedRatingFreeDays = 3;
-        // depot
-        public double CountPerHour = 420, BalerKgPerHour = 90, BalerJamPerBale = 0.02, GlassBayT = 3, TechSpeedKmh = 30, TechFixMin = 20;
-        public int LinesStart = 1, LinesMax = 3, YardCap = 12, IntakeCap = 2500;
-        public readonly Dictionary<string, double> Prices = new Dictionary<string, double>();
-        // dispatcher
-        public int DispatcherSlots = 3, PassSlots = 1, PlusSlots = 3, DispatchEveryMin = 15, MaxStops = 8;
-        // stars
-        public double[] StarService = { 0.12, 0.06, 0.02 }, StarEfficiency = { 12, 25, 40 }, StarThroughput = { 0.7, 0.35, 0.1 };
-        // events
+        public double RatingAlpha = 0.3, FootfallMin = 0.6, FootfallPerStar = 0.16, DayIncomeFloor = 250, BranchShare = 0.5, SeatFootfall = 0.05, TapTip = 0.05;
+        public int RatingFreeDays = 3;
+        public readonly Dictionary<string, double[]> Prices = new Dictionary<string, double[]>();
+        public int RailBase = 6, RailPerLevel = 2;
+        // roastery
+        public double RoastRealS = 30, RoastLoss = 0.15, SweetFrom = 0.7, SweetTo = 0.86, RoastEarly = 0.6, AssistAt = 0.78, BonusSweet = 10, BonusAssist = 6, BonusPass = 4,
+            PenEarly = -15, PenLate = -4, PenAuto = -6, ProfileMatch = 6, LabBonus = 4, LotKg = 10, LotKgStorage = 20, StorageDiscount = 0.9, MarketDrift = 0.05, MarketRevert = 0.3;
+        public int RestDays = 1;
+        public double[] DrumKg = { 0, 5, 10, 15 };
+        public readonly List<OriginDef> Origins = new List<OriginDef>();
+        public readonly List<ContractDef> Contracts = new List<ContractDef>();
+        public double ContractMissFee = 0.2, ContractMissMult = 0.9, ContractPayFloor = 0.7, PassWholesale = 1.1;
+        // weather / prep / events / offline / rewards
+        public readonly Dictionary<string, WeatherDef> Weather = new Dictionary<string, WeatherDef>();
+        public int PrepHotCups = 12;
+        public double PrepHotPrice = 12, PrepIceKg = 10, PrepIcePrice = 8;
         public int EventFreeDays = 3;
-        public double[] EventsPerDay = { 0, 0.6, 1, 1.4, 1.7 };
-        // offline
         public double OfflineMinS = 120, OfflineCapH = 4, OfflineCapHPlus = 10, OfflineRate = 0.5, OfflineRatePlus = 0.75, OfflineDaysPerHour = 0.5;
         public readonly Dictionary<string, RewardDef> Rewards = new Dictionary<string, RewardDef>();
         public double RewardSingleMaxDays = 0.2;
 
-        // map
-        public double RoadFactor = 1.2;
-        public readonly List<DistrictDef> Districts = new List<DistrictDef>();
-        public readonly List<NodeDef> Nodes = new List<NodeDef>();
-        public readonly List<EdgeDef> Edges = new List<EdgeDef>();
-        public readonly Dictionary<string, int> NodeIndex = new Dictionary<string, int>();
-        public int DepotNode = -1;
-        public RoadGraph Graph;
-
+        public readonly List<VenueDef> Venues = new List<VenueDef>();
+        public readonly List<MenuItemDef> Menu = new List<MenuItemDef>();
         public readonly List<ResearchDef> Research = new List<ResearchDef>();
         public readonly Dictionary<string, ResearchDef> ResearchById = new Dictionary<string, ResearchDef>();
         public readonly List<EventDef> Events = new List<EventDef>();
 
-        public double Price(string id) => Prices.TryGetValue(id, out var p) ? p : 0;
-        public DistrictDef District(string id) => Districts.Find(d => d.Id == id);
-        public int Node(string id) => NodeIndex.TryGetValue(id ?? "", out int i) ? i : -1;
+        public VenueDef Venue(string id) => Venues.Find(v => v.Id == id);
+        public int MenuIndex(string id) => Menu.FindIndex(m => m.Id == id);
+        public MenuItemDef Item(string id) { int i = MenuIndex(id); return i >= 0 ? Menu[i] : null; }
+        public int OriginIndex(string id) => Origins.FindIndex(o => o.Id == id);
+        public ContractDef Contract(string id) => Contracts.Find(c => c.Id == id);
+        public int CustomerIndex(string id) => Customers.FindIndex(c => c.Id == id);
         public double DayMinutes => DayEnd - DayStart;
-        /// <summary>Real seconds of one work day at 1x.</summary>
+        /// <summary>Real seconds of one service day at 1x.</summary>
         public double RealSecondsPerDay => DayMinutes / Math.Max(0.01, GameMinPerRealS);
+        /// <summary>Price of level `level` of an upgrade (0 when the table has no such level).</summary>
+        public double Price(string id, int level) => Prices.TryGetValue(id, out var a) && level >= 0 && level < a.Length ? a[level] : 0;
+        public int MaxLevel(string id) => Prices.TryGetValue(id, out var a) ? a.Length - 1 : 0;
 
         public static GameData FromTexts(Func<string, string> load)
         {
             var gd = new GameData();
             gd.ReadBalance(Parse(gd, load, "balance"));
-            gd.ReadMap(Parse(gd, load, "map"));
+            gd.ReadVenues(Parse(gd, load, "venues"));
+            gd.ReadMenu(Parse(gd, load, "menu"));
             gd.ReadResearch(Parse(gd, load, "research"));
             gd.ReadEvents(Parse(gd, load, "events"));
             gd.Validate();
-            if (gd.Ok) gd.Graph = new RoadGraph(gd);
             return gd;
         }
 
@@ -120,123 +199,154 @@ namespace PourAndRoast.Sim
         {
             if (b == null) return;
             var t = J.Obj(b, "time");
-            DayStart = J.I(t, "day_start", 540); DayEnd = J.I(t, "day_end", 1140);
-            GameMinPerRealS = J.D(t, "game_min_per_real_s", 2.5); AutosaveS = J.D(t, "autosave_s", 30);
+            DayStart = J.I(t, "day_start", 420); DayEnd = J.I(t, "day_end", 1080);
+            GameMinPerRealS = J.D(t, "game_min_per_real_s", 3); AutosaveS = J.D(t, "autosave_s", 30);
             FreeMaxSpeed = J.I(t, "free_max_speed", 2); PaidMaxSpeed = J.I(t, "paid_max_speed", 4);
-            DepotWrapupMin = J.I(t, "depot_wrapup_min", 60);
 
             var s = J.Obj(b, "start");
-            StartCash = J.D(s, "cash", 2000); StartRating = J.D(s, "rating", 50);
-            StartDrivers = J.I(s, "drivers", 1); StartTechs = J.I(s, "techs", 0);
-            StartTrucks = J.StrList(s, "trucks") ?? new List<string>();
-            StartMachines = J.StrList(s, "machines") ?? new List<string>();
-            StartBalerPetKg = J.D(s, "baler_pet_kg", 0);
-            if (J.Obj(s, "fill_pct") is JObj fp) foreach (var kv in fp) StartFill[kv.Key] = J.D(kv.Value);
+            StartCash = J.D(s, "cash", 420); StartRating = J.D(s, "rating", 2.5); StartVenue = J.S(s, "venue", "cart");
+            StartStaff = J.StrList(s, "staff"); StartMenu = J.StrList(s, "menu"); StartForecast = J.StrList(s, "forecast");
+            StartBeansKg = J.D(s, "beans_kg", 6); StartBeansQ = J.D(s, "beans_q", 52); StartIce = J.D(s, "ice", 0);
+            StartMilk = Dbl(s, "milk", StartMilk); StartMilkOrder = Dbl(s, "milk_order", StartMilkOrder);
+            StartSupplier = J.S(s, "supplier", "regular");
 
-            var m = J.Obj(b, "materials");
-            for (int i = 0; i < Mats.N; i++)
+            foreach (var c in J.Arr(b, "customers") ?? new List<object>())
             {
-                var o = J.Obj(m, Mats.Ids[i]);
-                if (o == null) { Errors.Add("balance: material " + Mats.Ids[i]); continue; }
-                Materials[i] = new MaterialDef { Id = Mats.Ids[i], VolL = J.D(o, "vol_l"), Kg = J.D(o, "kg"), BaleKg = J.D(o, "bale_kg"), BalePrice = J.D(o, "bale_price") };
-            }
-            foreach (var a in J.Arr(b, "archetypes") ?? new List<object>())
-                Archetypes.Add(new ArchetypeDef
+                var items = J.IntArr(c, "items");
+                Customers.Add(new CustomerDef
                 {
-                    Id = J.S(a, "id"), Min = J.I(a, "min"), Max = J.I(a, "max"), Mix = Dbl(a, "mix", new[] { 1.0, 0, 0 }),
-                    Weekend = J.D(a, "weekend", 1), Evening = J.D(a, "evening", 1),
+                    Id = J.S(c, "id"), ItemsMin = items.Length > 0 ? items[0] : 1, ItemsMax = items.Length > 1 ? items[1] : 1,
+                    Patience = J.D(c, "patience", 10), Oat = J.D(c, "oat"), Iced = J.D(c, "iced"), Pastry = J.D(c, "pastry"), Pre = J.D(c, "pre"),
+                    Tip = J.D(c, "tip"), Vip = J.B(c, "vip"), RatingMin = J.D(c, "rating_min"), Weekend = J.D(c, "weekend", 1),
                 });
+            }
             HourCurve = Dbl(b, "hour_curve", HourCurve);
-            WeekendMult = J.D(b, "weekend_mult", 1.25);
-            if (J.Obj(b, "points") is JObj pk)
-                foreach (var kv in pk)
-                    PointKinds[kv.Key] = new PointKindDef
-                    {
-                        Id = kv.Key, CapL = J.D(kv.Value, "cap_l"), LeaseDay = J.D(kv.Value, "lease_day"), JamPer1000 = J.D(kv.Value, "jam_per_1000"),
-                        Citizens = J.B(kv.Value, "citizens"), ShopFee = J.D(kv.Value, "shop_fee"), PickupBonus = J.D(kv.Value, "pickup_bonus"),
-                        Mix = Dbl(kv.Value, "mix", new[] { 0.6, 0.25, 0.15 }),
-                    };
-            CompactorPet = J.D(b, "compactor_pet", 2.5);
-            CompactorJamMult = J.D(b, "compactor_jam_mult", 1.6);
-            if (J.Obj(b, "vehicles") is JObj vs)
-                foreach (var kv in vs)
+            WeekendMult = J.D(b, "weekend_mult", 1.2);
+
+            var w = J.Obj(b, "work");
+            ShotMin = J.D(w, "shot_min", 1.1); SteamMin = J.D(w, "steam_min", 0.9); PourMin = J.D(w, "pour_min", 0.35); PastryMin = J.D(w, "pastry_min", 0.2);
+            BatchMult = J.D(w, "batch_mult", 1.5); BatchLook = J.I(w, "batch_look", 3); MenuFree = J.I(w, "menu_free", 5); MenuSlow = J.D(w, "menu_slow", 0.03);
+            HandoverMin = J.D(w, "handover_min", 1.5); HandoverHostMin = J.D(w, "handover_host_min", 0.4); PreGrace = J.D(w, "pre_grace", 15);
+            var lead = J.IntArr(w, "pre_lead");
+            if (lead.Length >= 2) { PreLeadMin = lead[0]; PreLeadMax = lead[1]; }
+
+            var be = J.Obj(b, "beans");
+            SupplierQ = J.D(be, "supplier_q", 52); SupplierPrice = J.D(be, "supplier_price", 15); SupplierLot = J.D(be, "supplier_lot", 5); BeanParKg = J.D(be, "par_kg", 4);
+            var mk = J.Obj(b, "milk");
+            MilkPerDrink = J.D(mk, "per_drink", 0.2); MilkSpoil = J.D(mk, "spoil", 0.5); MilkLateMin = J.D(mk, "late_min", 180);
+            RunMult = J.D(mk, "run_mult", 2); RunL = Dbl(mk, "run_l", RunL); RunMin = J.D(mk, "run_min", 15); RunMinRunner = J.D(mk, "run_min_runner", 5);
+            OatPriceMult = J.D(b, "oat_price_mult", 1.6);
+            if (J.Obj(b, "suppliers") is JObj sp)
+                foreach (var kv in sp)
                 {
-                    Vehicles[kv.Key] = new VehicleDef
-                    {
-                        Id = kv.Key, VolL = J.D(kv.Value, "vol_l"), Kg = J.D(kv.Value, "kg"), SpeedKmh = J.D(kv.Value, "speed_kmh", 30),
-                        CostKm = J.D(kv.Value, "cost_km"), ServiceMin = J.D(kv.Value, "service_min", 6), Alley = J.B(kv.Value, "alley"),
-                        PetCompress = J.D(kv.Value, "pet_compress", 1), Price = J.D(kv.Value, "price"), Research = J.S(kv.Value, "research"),
-                    };
-                    VehicleOrder.Add(kv.Key);
+                    Suppliers[kv.Key] = new SupplierDef { Id = kv.Key, Price = J.D(kv.Value, "price", 1), Late = J.D(kv.Value, "late"), Q = J.D(kv.Value, "q") };
+                    SupplierOrder.Add(kv.Key);
                 }
-            var u = J.Obj(b, "unload");
-            UnloadBaseMin = J.D(u, "base_min", 8); UnloadPerContainerMin = J.D(u, "per_container_min", 0.0025);
-            BreakdownPerKm = J.D(b, "breakdown_per_km", 0.0015);
-            GlassBreakPerKm = J.D(b, "glass_break_per_km", 0.0006);
+            var ic = J.Obj(b, "ice");
+            IcePerDrink = J.D(ic, "per_drink", 0.3); IcePerHour = Dbl(ic, "per_hour", IcePerHour); IceCap = Dbl(ic, "cap", IceCap);
+            IceBagKg = J.D(ic, "bag_kg", 10); IceBagPrice = J.D(ic, "bag_price", 8);
+            var pa = J.Obj(b, "pastry");
+            PastryCostShare = J.D(pa, "cost_share", 0.45); OvenCostShare = J.D(pa, "oven_cost_share", 0.35);
+            PastryParDefault = J.I(pa, "par_default", 6); PastryParMax = J.I(pa, "par_max", 30);
+
+            var tu = J.Obj(b, "tune");
+            TuneDriftH = J.D(tu, "drift_h", 7); TuneOff = J.D(tu, "off", 60); TuneBad = J.D(tu, "bad", 35); TuneAutoFloor = J.D(tu, "auto_floor", 85);
+            TunePenalty = J.D(tu, "penalty", 0.6); TuneScaleMult = J.D(tu, "scale_mult", 0.6);
+            var gr = J.Obj(b, "grinder");
+            WearPerShot = J.D(gr, "wear_per_shot", 0.05); JamFrom = J.D(gr, "jam_from", 80); JamPerShot = J.D(gr, "jam_per_shot", 0.01);
+            JamAutoFixMin = J.D(gr, "auto_fix_min", 25); GrinderServicePrice = J.D(gr, "service_price", 60);
+            var q = J.Obj(b, "quality");
+            PriceQMin = J.D(q, "price_min", 0.8); PriceQSpan = J.D(q, "price_span", 0.4); LevelQ = J.D(q, "level_q", 2);
+            PourOverBonus = J.D(q, "pourover_bonus", 8); PastryQ = J.D(q, "pastry_q", 70); OvenQ = J.D(q, "oven_q", 80);
+            var rv = J.Obj(b, "reviews");
+            ReviewWait = Dbl(rv, "wait", ReviewWait); ReviewWaitPen = Dbl(rv, "wait_pen", ReviewWaitPen); ReviewQ = Dbl(rv, "q", ReviewQ); ReviewQPen = Dbl(rv, "q_pen", ReviewQPen);
+            LatePen = J.D(rv, "late_pen", 1.5); FailPen = J.D(rv, "fail_pen", 1.2); SubPen = J.D(rv, "sub_pen", 0.4);
+            DecorReview = J.D(rv, "decor", 0.1); MusicReview = J.D(rv, "music", 0.15); WallSize = J.I(rv, "wall", 12); SpreeCount = J.I(rv, "spree", 3);
+
+            var st = J.Obj(b, "staff");
+            if (J.Obj(st, "roles") is JObj ro)
+                foreach (var kv in ro)
+                    Roles[kv.Key] = new RoleDef { Id = kv.Key, Wage = J.D(kv.Value, "wage"), Price = J.D(kv.Value, "price"), Max = J.I(kv.Value, "max", 1), Research = J.S(kv.Value, "research") };
+            if (J.Obj(st, "traits") is JObj tr)
+                foreach (var kv in tr)
+                {
+                    Traits[kv.Key] = new TraitDef { Id = kv.Key, Speed = J.D(kv.Value, "speed", 1), Q = J.D(kv.Value, "q"), Tip = J.D(kv.Value, "tip") };
+                    TraitOrder.Add(kv.Key);
+                }
+            LevelSpeed = J.D(st, "level_speed", 0.08); LevelMax = J.I(st, "level_max", 5); TrainPrice = Dbl(st, "train_price", TrainPrice);
 
             var e = J.Obj(b, "economy");
-            Fee = J.D(e, "fee", 1); BulkFee = J.D(e, "bulk_fee", 0.5);
-            FeeRatingMin = J.D(e, "fee_rating_min", 0.85); FeeRatingSpan = J.D(e, "fee_rating_span", 0.3);
-            DriverWage = J.D(e, "driver_wage", 110); TechWage = J.D(e, "tech_wage", 90);
-            DepotPower = J.D(e, "depot_power", 35); LinePower = J.D(e, "line_power", 15);
-            RatingAlpha = J.D(e, "rating_alpha", 0.3); TurnedRatingFreeDays = J.I(e, "turned_rating_free_days", 3);
+            RatingAlpha = J.D(e, "rating_alpha", 0.3); RatingFreeDays = J.I(e, "rating_free_days", 3);
+            FootfallMin = J.D(e, "footfall_min", 0.6); FootfallPerStar = J.D(e, "footfall_per_star", 0.16);
+            BranchShare = J.D(e, "branch_share", 0.5); SeatFootfall = J.D(e, "seat_footfall", 0.05); TapTip = J.D(e, "tap_tip", 0.05);
+            if (J.Obj(b, "prices") is JObj pr) foreach (var kv in pr) Prices[kv.Key] = J.DblArr(pr, kv.Key);
+            var ra = J.Obj(b, "rail");
+            RailBase = J.I(ra, "base", 6); RailPerLevel = J.I(ra, "per_level", 2);
 
-            var d = J.Obj(b, "depot");
-            CountPerHour = J.D(d, "count_per_hour", 420); LinesStart = J.I(d, "lines_start", 1); LinesMax = J.I(d, "lines_max", 3);
-            BalerKgPerHour = J.D(d, "baler_kg_per_hour", 90); BalerJamPerBale = J.D(d, "baler_jam_per_bale", 0.02);
-            YardCap = J.I(d, "yard_cap", 12); IntakeCap = J.I(d, "intake_cap", 2500); GlassBayT = J.D(d, "glass_bay_t", 3);
-            TechSpeedKmh = J.D(d, "tech_speed_kmh", 30); TechFixMin = J.D(d, "tech_fix_min", 20);
+            var r = J.Obj(b, "roast");
+            RoastRealS = J.D(r, "real_s", 30); RoastLoss = J.D(r, "loss", 0.15);
+            var sw = J.DblArr(r, "sweet");
+            if (sw.Length >= 2) { SweetFrom = sw[0]; SweetTo = sw[1]; }
+            RoastEarly = J.D(r, "early", 0.6); AssistAt = J.D(r, "assist_at", 0.78);
+            BonusSweet = J.D(r, "bonus_sweet", 10); BonusAssist = J.D(r, "bonus_assist", 6); BonusPass = J.D(r, "bonus_pass", 4);
+            PenEarly = J.D(r, "pen_early", -15); PenLate = J.D(r, "pen_late", -4); PenAuto = J.D(r, "pen_auto", -6);
+            ProfileMatch = J.D(r, "profile_match", 6); LabBonus = J.D(r, "lab_bonus", 4); RestDays = J.I(r, "rest_days", 1);
+            DrumKg = Dbl(r, "drum_kg", DrumKg); LotKg = J.D(r, "lot_kg", 10); LotKgStorage = J.D(r, "lot_kg_storage", 20); StorageDiscount = J.D(r, "storage_discount", 0.9);
+            MarketDrift = J.D(r, "market_drift", 0.05); MarketRevert = J.D(r, "market_revert", 0.3);
+            foreach (var o in J.Arr(b, "origins") ?? new List<object>())
+                Origins.Add(new OriginDef { Index = Origins.Count, Id = J.S(o, "id"), Q = J.D(o, "q"), Price = J.D(o, "price"), Best = J.S(o, "best", "medium"), Research = J.S(o, "research") });
+            foreach (var c in J.Arr(b, "contracts") ?? new List<object>())
+                Contracts.Add(new ContractDef { Id = J.S(c, "id"), Kg = J.D(c, "kg"), Every = Math.Max(1, J.I(c, "every", 3)), Pay = J.D(c, "pay"), MinQ = J.D(c, "min_q"), Rating = J.D(c, "rating"), Research = J.S(c, "research") });
+            ContractMissFee = J.D(b, "contract_miss_fee", 0.2); ContractMissMult = J.D(b, "contract_miss_mult", 0.9);
+            ContractPayFloor = J.D(b, "contract_pay_floor", 0.7); PassWholesale = J.D(b, "pass_wholesale", 1.1);
 
-            if (J.Obj(b, "prices") is JObj pr) foreach (var kv in pr) Prices[kv.Key] = J.D(kv.Value);
-
-            var dp = J.Obj(b, "dispatcher");
-            DispatcherSlots = J.I(dp, "slots", 3); PassSlots = J.I(dp, "pass_slots", 1); PlusSlots = J.I(dp, "plus_slots", 3);
-            DispatchEveryMin = J.I(dp, "every_min", 15); MaxStops = J.I(dp, "max_stops", 8);
-
-            var st = J.Obj(b, "stars");
-            StarService = Dbl(st, "service", StarService); StarEfficiency = Dbl(st, "efficiency", StarEfficiency); StarThroughput = Dbl(st, "throughput", StarThroughput);
-
-            var ev = J.Obj(b, "events");
-            EventFreeDays = J.I(ev, "free_days", 3); EventsPerDay = Dbl(ev, "per_day", EventsPerDay);
-
+            if (J.Obj(b, "weather") is JObj we)
+                foreach (var kv in we)
+                    Weather[kv.Key] = new WeatherDef { Id = kv.Key, Weight = J.D(kv.Value, "weight"), Walk = J.D(kv.Value, "walk", 1), Pre = J.D(kv.Value, "pre", 1), Iced = J.D(kv.Value, "iced", 1), Tune = J.D(kv.Value, "tune", 1) };
+            var pp = J.Obj(b, "prep");
+            PrepHotCups = J.I(pp, "hot_cups", 12); PrepHotPrice = J.D(pp, "hot_price", 12); PrepIceKg = J.D(pp, "ice_kg", 10); PrepIcePrice = J.D(pp, "ice_price", 8);
+            EventFreeDays = J.I(J.Obj(b, "events"), "free_days", 3);
             var of = J.Obj(b, "offline");
             OfflineMinS = J.D(of, "min_s", 120); OfflineCapH = J.D(of, "cap_h", 4); OfflineCapHPlus = J.D(of, "cap_h_plus", 10);
             OfflineRate = J.D(of, "rate", 0.5); OfflineRatePlus = J.D(of, "rate_plus", 0.75); OfflineDaysPerHour = J.D(of, "days_per_hour", 0.5);
-
             if (J.Obj(b, "rewards") is JObj rw)
                 foreach (var kv in rw)
                 {
                     if (!(kv.Value is JObj)) { if (kv.Key == "single_max_days") RewardSingleMaxDays = J.D(kv.Value, 0.2); continue; }
-                    Rewards[kv.Key] = new RewardDef { Id = kv.Key, PerDay = J.I(kv.Value, "per_day", 1), CooldownS = J.L(kv.Value, "cooldown_s"), Days = J.D(kv.Value, "days") };
+                    Rewards[kv.Key] = new RewardDef { Id = kv.Key, PerDay = J.I(kv.Value, "per_day", 1), CooldownS = J.L(kv.Value, "cooldown_s"), Days = J.D(kv.Value, "days"), Minutes = J.D(kv.Value, "minutes") };
                 }
-            DayIncomeFloor = J.D(b, "day_income_floor", 600);
+            DayIncomeFloor = J.D(b, "day_income_floor", 250);
         }
 
-        void ReadMap(object m)
+        void ReadVenues(object v)
+        {
+            if (v == null) return;
+            foreach (var o in J.Arr(v, "venues") ?? new List<object>())
+            {
+                var h = J.IntArr(o, "heads"); var w = J.IntArr(o, "wands");
+                Venues.Add(new VenueDef
+                {
+                    Id = J.S(o, "id"), Chapter = J.I(o, "chapter", 1), Rating = J.D(o, "rating"), Cost = J.D(o, "cost"), PerHour = J.D(o, "per_hour"),
+                    PriceMult = J.D(o, "price_mult", 1), Rent = J.D(o, "rent"), Heads0 = h.Length > 0 ? h[0] : 1, HeadsMax = h.Length > 1 ? h[1] : 1,
+                    Wands0 = w.Length > 0 ? w[0] : 1, WandsMax = w.Length > 1 ? w[1] : 1, SeatsMax = J.I(o, "seats_max", 2), Ice0 = J.I(o, "ice0"),
+                    AutoFloor = J.D(o, "auto_floor"), Weights = Dbl(o, "weights", new double[0]),
+                });
+            }
+        }
+
+        void ReadMenu(object m)
         {
             if (m == null) return;
-            RoadFactor = J.D(m, "road_factor", 1.2);
-            foreach (var d in J.Arr(m, "districts") ?? new List<object>())
-                Districts.Add(new DistrictDef { Id = J.S(d, "id"), Chapter = J.I(d, "chapter"), Rating = J.D(d, "rating"), Cost = J.D(d, "cost"), Archetypes = Dbl(d, "archetypes", new[] { 1.0 }) });
-            foreach (var n in J.Arr(m, "nodes") ?? new List<object>())
+            foreach (var o in J.Arr(m, "items") ?? new List<object>())
             {
-                var nd = new NodeDef
+                var it = new MenuItemDef
                 {
-                    Index = Nodes.Count, Id = J.S(n, "id"), X = J.D(n, "x"), Y = J.D(n, "y"), District = J.S(n, "district"), Kind = J.S(n, "kind"),
-                    Site = J.S(n, "site"), Rate = J.D(n, "rate"), Alley = J.B(n, "alley"), EventSite = J.B(n, "event"),
+                    Index = Menu.Count, Id = J.S(o, "id"), Kind = J.S(o, "kind", "drink"), Tier = J.I(o, "tier", 1), Price = J.D(o, "price"), Beans = J.D(o, "beans"),
+                    Pop = J.D(o, "pop", 1), PourMin = J.D(o, "pour_min"), Tasks = J.StrList(o, "tasks").ToArray(), Milk = J.B(o, "milk"), Iced = J.B(o, "iced"),
+                    Prep = J.B(o, "prep"), Showcase = J.B(o, "showcase"),
                 };
-                if (NodeIndex.ContainsKey(nd.Id)) { Errors.Add("map: duplicate node " + nd.Id); continue; }
-                NodeIndex[nd.Id] = nd.Index;
-                Nodes.Add(nd);
-                if (nd.Kind == "depot") DepotNode = nd.Index;
-            }
-            foreach (var e in J.Arr(m, "edges") ?? new List<object>())
-            {
-                if (!(e is List<object> l) || l.Count < 2) { Errors.Add("map: bad edge"); continue; }
-                int a = Node(J.Str(l[0])), b = Node(J.Str(l[1]));
-                if (a < 0 || b < 0) { Errors.Add("map: edge to unknown node " + J.Str(l[0]) + "-" + J.Str(l[1])); continue; }
-                double dx = Nodes[a].X - Nodes[b].X, dy = Nodes[a].Y - Nodes[b].Y;
-                Edges.Add(new EdgeDef { A = a, B = b, Km = Math.Sqrt(dx * dx + dy * dy) * RoadFactor, Alley = l.Count > 2 && J.Str(l[2]) == "alley" });
+                if (MenuIndex(it.Id) >= 0) { Errors.Add("menu: duplicate " + it.Id); continue; }
+                Menu.Add(it);
             }
         }
 
@@ -245,7 +355,7 @@ namespace PourAndRoast.Sim
             if (r == null) return;
             foreach (var n in J.Arr(r, "nodes") ?? new List<object>())
             {
-                var d = new ResearchDef { Id = J.S(n, "id"), Branch = J.S(n, "branch"), Cost = J.D(n, "cost"), Minutes = J.D(n, "min"), District = J.S(n, "district"), Requires = J.StrList(n, "requires") ?? new List<string>() };
+                var d = new ResearchDef { Id = J.S(n, "id"), Branch = J.S(n, "branch"), Cost = J.D(n, "cost"), Minutes = J.D(n, "min"), Venue = J.S(n, "venue"), Requires = J.StrList(n, "requires") };
                 Research.Add(d);
                 ResearchById[d.Id] = d;
             }
@@ -257,33 +367,44 @@ namespace PourAndRoast.Sim
             foreach (var n in J.Arr(r, "events") ?? new List<object>())
                 Events.Add(new EventDef
                 {
-                    Id = J.S(n, "id"), Weight = J.D(n, "weight", 1), MinDay = J.I(n, "min_day", 1), District = J.S(n, "district"), Days = J.I(n, "days", 1),
-                    Mult = J.D(n, "mult", 1), From = J.I(n, "from"), To = J.I(n, "to"), BusyMin = J.I(n, "busy_min", 40), Min = J.I(n, "min", 100),
-                    Max = J.I(n, "max", 200), BrokenMin = J.I(n, "broken_min", 90),
+                    Id = J.S(n, "id"), Trigger = J.S(n, "trigger"), Weight = J.D(n, "weight", 1), MinDay = J.I(n, "min_day", 1), Days = J.I(n, "days", 1), Mult = J.D(n, "mult", 1),
                 });
         }
 
         void Validate()
         {
-            if (DepotNode < 0) Errors.Add("map: no depot");
-            if (Archetypes.Count == 0) Errors.Add("balance: no archetypes");
-            foreach (var d in Districts) if (d.Archetypes.Length != Archetypes.Count) Errors.Add("map: district " + d.Id + " archetype weights");
-            foreach (var n in Nodes)
+            if (Customers.Count == 0) Errors.Add("balance: no customers");
+            if (Venues.Count == 0) Errors.Add("venues: none");
+            if (Venue(StartVenue) == null) Errors.Add("balance: start venue " + StartVenue);
+            foreach (var v in Venues) if (v.Weights.Length != Customers.Count) Errors.Add("venues: " + v.Id + " customer weights");
+            foreach (var id in StartMenu) if (MenuIndex(id) < 0) Errors.Add("balance: start menu " + id);
+            foreach (var id in StartStaff) if (!Roles.ContainsKey(id)) Errors.Add("balance: start staff " + id);
+            foreach (var f in StartForecast) if (!Weather.ContainsKey(f)) Errors.Add("balance: forecast " + f);
+            foreach (var w in Weathers.All) if (!Weather.ContainsKey(w)) Errors.Add("balance: weather " + w);
+            foreach (var r in Sim.Roles.All) if (!Roles.ContainsKey(r)) Errors.Add("balance: role " + r);
+            if (!Suppliers.ContainsKey(StartSupplier)) Errors.Add("balance: supplier " + StartSupplier);
+            if (Traits.Count == 0) Errors.Add("balance: traits");
+            foreach (var m in Menu)
             {
-                if (District(n.District) == null) Errors.Add("map: node " + n.Id + " unknown district");
-                if (n.Kind == "site" && !PointKinds.ContainsKey(n.Site == "machine" ? "machine_s" : n.Site)) Errors.Add("map: node " + n.Id + " site kind");
+                if (m.Tasks.Length == 0) Errors.Add("menu: " + m.Id + " no tasks");
+                foreach (var t in m.Tasks) if (!Sim.Tasks.Valid(t)) Errors.Add("menu: " + m.Id + " task " + t);
+                if (m.Price <= 0) Errors.Add("menu: " + m.Id + " price");
+                if (m.Tier < 1 || m.Tier > Venues.Count) Errors.Add("menu: " + m.Id + " tier");
             }
-            foreach (var id in StartMachines) if (Node(id) < 0) Errors.Add("balance: start machine " + id);
-            foreach (var t in StartTrucks) if (!Vehicles.ContainsKey(t)) Errors.Add("balance: start truck " + t);
             foreach (var r in Research)
             {
                 foreach (var q in r.Requires) if (!ResearchById.ContainsKey(q)) Errors.Add("research: " + r.Id + " requires unknown " + q);
                 if (r.Minutes > 20) Errors.Add("research: " + r.Id + " longer than 20 min");
+                if (r.Venue != "" && Venue(r.Venue) == null) Errors.Add("research: " + r.Id + " venue " + r.Venue);
             }
-            foreach (var v in Vehicles.Values) if (v.Research != "" && !ResearchById.ContainsKey(v.Research)) Errors.Add("vehicle " + v.Id + " research " + v.Research);
-            foreach (var id in new[] { "offline_x2", "emergency_empty", "fuel_voucher", "baler_rescue", "daily_bonus" })
-                if (!Rewards.ContainsKey(id)) Errors.Add("balance: reward " + id);
-            foreach (var mat in Materials) if (mat == null || mat.BaleKg <= 0 || mat.VolL <= 0) { Errors.Add("balance: materials"); break; }
+            foreach (var o in Origins) { if (o.Research != "" && !ResearchById.ContainsKey(o.Research)) Errors.Add("origin " + o.Id + " research"); if (!Profiles.Valid(o.Best)) Errors.Add("origin " + o.Id + " profile"); }
+            foreach (var c in Contracts) if (c.Research != "" && !ResearchById.ContainsKey(c.Research)) Errors.Add("contract " + c.Id + " research");
+            foreach (var r in Roles.Values) if (r.Research != "" && !ResearchById.ContainsKey(r.Research)) Errors.Add("role " + r.Id + " research");
+            foreach (var id in new[] { "heads", "wands", "grinder", "ice", "rail", "seats", "decor", "drum" }) if (!Prices.ContainsKey(id)) Errors.Add("balance: price " + id);
+            foreach (var id in RewardIds) if (!Rewards.ContainsKey(id)) Errors.Add("balance: reward " + id);
+            if (HourCurve.Length == 0) Errors.Add("balance: hour curve");
         }
+
+        public static readonly string[] RewardIds = { "offline_x2", "extra_barista", "auto_dialin", "emergency_stock", "crisis_halve", "daily_bonus" };
     }
 }

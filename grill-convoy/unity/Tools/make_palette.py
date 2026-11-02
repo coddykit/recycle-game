@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """Grill Convoy — writes Assets/Resources/materials/palette.png (8×8 px). Swatch order = GrillConvoy.World.Pal (MeshKit.cs)
-and the Blender kit (tools/art/kit.py). Bright, clean civic palette (design §8); the brand is a fresh mint green — no
-government green-white scheme colours (impersonation rule)."""
+and the Blender kit (tools/art/kit.py). Saturated street-food poster palette (design §8): convoy red-orange brand, cream
+and teal trucks, warm harbour-town walls, bun / patty / cheese food colours. No real chain's brand colours or marks."""
 import os, sys
 from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(os.path.dirname(HERE), "Assets/Resources/materials/palette.png")
 SW = [
-    "#8CC970", "#6FAF57", "#5A6270", "#F2F0E6", "#C9CDD2", "#F4E7C9", "#E3926B", "#8FB7D9",   # 0-7
-    "#C9574A", "#7D8792", "#2FB89A", "#F7F9F8", "#FAFAF7", "#3E9C6E", "#9EA7AE", "#4FA3C7",   # 8-15
-    "#EBD9A6", "#4E9F4C", "#7A5434", "#B9BEC2", "#33414E", "#8ED3F0", "#C7CDD3", "#5BB178",   # 16-23
-    "#E0533F", "#F2C744", "#8A6A4A", "#E7B93B", "#F08A5D", "#2F6E46", "#22A6A1", "#D9C7A0",   # 24-31
-    "#E8B894", "#4C7FD1", "#E57A3C", "#9B59B6", "#3FB0AC", "#F2C744", "#3B4A5A", "#FFFFFF",   # 32-39
+    "#9BC46A", "#76A24E", "#4F5562", "#F3E9C8", "#D8CDBB", "#F6E3C0", "#D9774B", "#5FA8A0",   # 0-7   grass … teal wall
+    "#C2443A", "#6E7480", "#E8542F", "#D6DADF", "#FFF4DC", "#2D8C8A", "#B7A58C", "#3E93C2",   # 8-15  roofs, brand, steel, trucks, commissary, sea
+    "#F0D9A0", "#4F9A4A", "#7A5434", "#B4B6B8", "#2E3A46", "#E3A857", "#6B3A26", "#F6C443",   # 16-23 sand, tree, trunk, locked, glass, bun, patty, cheese
+    "#E0533F", "#F5C842", "#7CC24C", "#E7B93B", "#F08A5D", "#E24CC0", "#2FA8C8", "#B8875A",   # 24-31 warning, yellow, lettuce, gold, sunset, neon, retro, wood
+    "#E8B894", "#4C7FD1", "#E57A3C", "#9B59B6", "#3FB0AC", "#F2C744", "#3B4A5A", "#FFFFFF",   # 32-39 skin, shirts, trousers, white
+    "#F2F2F2", "#FF8A1F", "#FFE08A", "#5A6E8C",                                                 # 40-43 steam, flame, string lights, stadium
 ]
 while len(SW) < 64: SW.append("#FF00FF")
 img = Image.new("RGB", (8, 8))

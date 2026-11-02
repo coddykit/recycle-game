@@ -1,62 +1,61 @@
 {
   "version": 1,
-  "time": { "day_start": 540, "day_end": 1140, "game_min_per_real_s": 2.5, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "depot_wrapup_min": 60 },
-  "start": { "cash": 2000, "rating": 50, "drivers": 1, "techs": 0, "trucks": ["van", "van"], "machines": ["h_fish", "h_ferry", "h_corner"], "fill_pct": { "h_fish": 0.86, "h_ferry": 0.62, "h_corner": 0.35 }, "baler_pet_kg": 58.5 },
-  "materials": {
-    "pet":   { "vol_l": 1.6,  "kg": 0.03,  "bale_kg": 60,   "bale_price": 420 },
-    "alu":   { "vol_l": 0.45, "kg": 0.015, "bale_kg": 30,   "bale_price": 1300 },
-    "glass": { "vol_l": 0.9,  "kg": 0.38,  "bale_kg": 1000, "bale_price": 160 }
+  "_doc": "Ridgeback Rangers balance (numbers out of code). Times in game minutes unless _s (real seconds) / _min_real. Money = coins; cp = Conservation Points.",
+  "time": { "day_start": 480, "day_end": 1080, "game_min_per_real_s": 2.2, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 3, "gate_close_before_end": 40 },
+  "start": {
+    "cash": 1500, "cp": 20, "rating": 50, "zones": ["cove"],
+    "rangers": { "feeder": 2, "vet": 1, "handler": 1, "tech": 1 },
+    "paddocks": [ { "node": "c_p1", "animals": ["triceratops", "triceratops"] }, { "node": "c_p2", "animals": ["maiasaura"] } ],
+    "hunger": 0.45, "feed_plan": 8, "incubators": 2, "tram_cars": 1
   },
-  "archetypes": [
-    { "id": "commuter", "min": 2,  "max": 5,  "mix": [0.70, 0.25, 0.05], "weekend": 0.6, "evening": 1.0 },
-    { "id": "family",   "min": 12, "max": 30, "mix": [0.55, 0.20, 0.25], "weekend": 2.2, "evening": 0.8 },
-    { "id": "student",  "min": 4,  "max": 10, "mix": [0.35, 0.60, 0.05], "weekend": 0.8, "evening": 2.0 },
-    { "id": "eco",      "min": 6,  "max": 15, "mix": [0.40, 0.30, 0.30], "weekend": 1.2, "evening": 1.0 },
-    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 }
-  ],
-  "hour_curve": [0.7, 0.8, 0.9, 1.0, 1.1, 0.9, 0.9, 1.1, 1.4, 1.2],
-  "weekend_mult": 1.25,
-  "points": {
-    "machine_s": { "cap_l": 240, "lease_day": 14, "jam_per_1000": 1.2, "citizens": true },
-    "machine_m": { "cap_l": 480, "lease_day": 22, "jam_per_1000": 1.0, "citizens": true },
-    "shop":      { "cap_l": 160, "lease_day": 0,  "jam_per_1000": 0,   "citizens": true, "shop_fee": 0.3 },
-    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] }
+  "roles": {
+    "feeder":  { "wage": 90, "work_min": 6 },
+    "vet":     { "wage": 120, "work_min": 20 },
+    "handler": { "wage": 100, "work_min": 12 },
+    "tech":    { "wage": 100, "work_min": 15 }
   },
-  "compactor_pet": 2.5,
-  "compactor_jam_mult": 1.6,
-  "vehicles": {
-    "van":       { "vol_l": 1800, "kg": 700,  "speed_kmh": 30, "cost_km": 1.4, "service_min": 6, "alley": true,  "pet_compress": 1.0, "price": 2500, "research": "" },
-    "bike":      { "vol_l": 450,  "kg": 90,   "speed_kmh": 16, "cost_km": 0.1, "service_min": 4, "alley": true,  "pet_compress": 1.0, "price": 900,  "research": "cargo_bike" },
-    "compactor": { "vol_l": 2600, "kg": 3000, "speed_kmh": 26, "cost_km": 2.6, "service_min": 7, "alley": false, "pet_compress": 2.5, "price": 6500, "research": "compactor_truck" }
+  "rangers": { "speed_kmh": 9, "lane_mult": 1.3, "cap": 4, "cap_pass": 5, "feeder_carry": 6, "vet_beds_work_min": 12, "chief_delay_min": 6 },
+  "pins": {
+    "hungry":   { "role": "feeder",  "deadline": 90,  "fine": 40 },
+    "squabble": { "role": "handler", "deadline": 75,  "fine": 30 },
+    "sick":     { "role": "vet",     "deadline": 150, "fine": 60 },
+    "fence":    { "role": "tech",    "deadline": 120, "fine": 40 },
+    "escape":   { "role": "handler", "deadline": 60,  "fine": 150 },
+    "flood":    { "role": "tech",    "deadline": 120, "fine": 30 }
   },
-  "unload": { "base_min": 8, "per_container_min": 0.0025 },
-  "breakdown_per_km": 0.0015,
-  "glass_break_per_km": 0.0006,
-  "economy": {
-    "fee": 1.0, "bulk_fee": 0.5, "fee_rating_min": 0.85, "fee_rating_span": 0.30,
-    "driver_wage": 110, "tech_wage": 90, "depot_power": 35, "line_power": 15,
-    "rating_alpha": 0.3, "turned_rating_free_days": 3
+  "sick": { "per_h": 0.012, "stress_mult": 3.0, "severity": [0.6, 0.3, 0.1], "deadline": [240, 150, 60] },
+  "squabble": { "per_h": 1.2, "crowd_per_slot": 0.25 },
+  "fence": { "wear_h": 0.04, "bossy_mult": 1.0, "pin_below": 0.6, "escape_chance": 0.6 },
+  "feeding": { "eat_at": 0.35, "eat_gain": 0.6, "hungry_pin_at": 0.7, "crate_cost": 10, "station_cap": 12, "station_cap_plus": 8, "spoil_h": 0.1, "eat_show_min": 25, "midday": 780 },
+  "mood": { "rate_h": 0.12, "base": 0.35, "harmony": 0.25, "fed": 0.2, "crowd": 0.2, "biome": 0.25, "heat": 0.2, "water": 0.15, "young_days": 2 },
+  "appeal": { "young": 0.6, "school_young": 1.5, "sick": 0.5, "show": 1.3, "variety": [0.8, 1.0, 1.15, 1.25] },
+  "visitors": {
+    "base_per_h": 22, "hour_curve": [0.6, 0.9, 1.1, 1.2, 1.1, 1.0, 1.1, 1.2, 1.0, 0.7],
+    "rating_min": 0.6, "rating_span": 0.8, "appeal_base": 0.5, "appeal_div": 40, "appeal_max": 2.5,
+    "ticket": 3.5, "ticket_rating_min": 0.85, "ticket_rating_span": 0.3, "patience": 40,
+    "snack": 0.8, "cafe_per_level": 0.35, "gift": 1.5, "donation": 0.6, "cp_per_joy": 0.001, "joy_target": 55, "walk_joy": 0.4, "walk_sat": 0.25
   },
-  "depot": { "count_per_hour": 420, "lines_start": 1, "lines_max": 3, "baler_kg_per_hour": 90, "baler_jam_per_bale": 0.02, "yard_cap": 12, "intake_cap": 2500, "glass_bay_t": 3, "tech_speed_kmh": 30, "tech_fix_min": 20 },
+  "tram": { "seats": 16, "speed_kmh": 14, "dwell_min": 3, "max_wait": 12, "cars_max": 4, "upkeep": 60, "upkeep_car": 40 },
+  "economy": { "paddock_upkeep": 40, "rating_alpha": 0.3, "rating_free_days": 3, "cp_per_care": 20, "day_income_floor": 1000 },
+  "stars": { "care": [0.55, 0.72, 0.86], "visitors": [0.45, 0.6, 0.75], "calm": [0.5, 0.75, 0.9] },
+  "paddock": { "slots": 6, "expand_slots": 3, "expand_max": 2 },
+  "dig": { "cp": 15, "work_min": 100, "shards": 50 },
+  "incubator": { "max": 6, "band_lo": 40, "band_hi": 60, "tutorial_lo": 10, "tutorial_hi": 90, "warm_s": 600 },
   "prices": {
-    "machine_s": 600, "bin_m": 700, "compactor": 900, "sensor": 250, "shop": 150, "horeca": 300,
-    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000
+    "paddock": 2000, "fence2": 300, "fence3": 1200, "water": 500, "shade": 400, "expand": 900, "hire": 400,
+    "tram_car": 2000, "lane": 3000, "vet_beds": 1500, "cafe1": 1500, "cafe2": 3500, "gift": 2500, "incubator": 1000,
+    "hatch_tech": 2000, "chief": 3000, "cooler": 800, "feed_run2": 1800
   },
-  "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
-  "stars": {
-    "service": [0.12, 0.06, 0.02],
-    "efficiency": [12, 25, 40],
-    "throughput": [0.70, 0.35, 0.10]
-  },
-  "events": { "free_days": 3, "per_day": [0.0, 0.6, 1.0, 1.4, 1.7] },
+  "chief": { "rating": 55 },
+  "calls": { "per_day": [2, 3, 3, 4], "kinds": ["fence", "sick", "squabble"] },
+  "events": { "free_days": 3, "per_day": [0, 0, 0.6, 1.0, 1.2] },
   "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
   "rewards": {
-    "offline_x2":      { "per_day": 1, "cooldown_s": 0 },
-    "emergency_empty": { "per_day": 3, "cooldown_s": 600 },
-    "fuel_voucher":    { "per_day": 2, "cooldown_s": 900 },
-    "baler_rescue":    { "per_day": 1, "cooldown_s": 0 },
-    "daily_bonus":     { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
+    "dawn_double":    { "per_day": 2, "cooldown_s": 600, "days": 0.08 },
+    "borrow_ranger":  { "per_day": 3, "cooldown_s": 600, "days": 0.04 },
+    "warm_incubator": { "per_day": 2, "cooldown_s": 600, "days": 0.05 },
+    "storm_shelter":  { "per_day": 1, "cooldown_s": 600, "days": 0.10 },
+    "scout_tip":      { "per_day": 2, "cooldown_s": 600, "days": 0.0 },
     "single_max_days": 0.2
-  },
-  "day_income_floor": 600
+  }
 }

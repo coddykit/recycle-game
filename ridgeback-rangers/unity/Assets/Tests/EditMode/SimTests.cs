@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using RidgebackRangers.Sim;
 
@@ -42,6 +43,16 @@ namespace RidgebackRangers.Sim.Tests
             if (!tutorial) s.EndTutorial();
             return s;
         }
+
+        /// <summary>A live day with everything quiet (no random pins from hunger: stations full).</summary>
+        public static Simulation Live(long seed = 7)
+        {
+            var s = NewSim(seed);
+            s.StartDay();
+            return s;
+        }
+
+        public static int Ranger(Simulation s, string role) => s.S.Rangers.FindIndex(r => r.Role == role && !r.Busy);
     }
 
     public class DataTests
@@ -51,54 +62,63 @@ namespace RidgebackRangers.Sim.Tests
         {
             var gd = TestData.Gd();
             Assert.IsTrue(gd.Ok, string.Join("; ", gd.Errors));
-            Assert.AreEqual(4, gd.Districts.Count);
-            Assert.GreaterOrEqual(gd.Research.Count, 20);
+            Assert.AreEqual(3, gd.Zones.Count, "MVP: Landing Cove, Fern Valley, Dune Mesa");
+            Assert.AreEqual(8, gd.Species.Count, "MVP species");
+            Assert.AreEqual(2, gd.Species.Select(s => s.Biome).Distinct().Count(), "MVP: 2 biomes");
+            Assert.AreEqual(4, gd.Species.Select(s => s.Family).Distinct().Count(), "4 shared model families");
         }
 
         [Test]
-        public void EverySiteReachableFromDepotByVan_AndAlleysBlockTheCompactor()
+        public void EveryNodeReachableFromTheHq()
         {
             var gd = TestData.Gd();
-            foreach (var n in gd.Nodes)
-            {
-                Assert.Less(gd.Graph.Km(gd.DepotNode, n.Index, true), RoadGraph.Inf, n.Id);
-                if (n.Kind == "site" && n.Alley)
-                    Assert.IsFalse(gd.Graph.Reachable(gd.DepotNode, n.Index, false) && !n.Alley, n.Id);
-            }
-            int church = gd.Node("o_church");
-            Assert.AreEqual(RoadGraph.Inf, gd.Graph.Km(gd.DepotNode, church, false), "the church alley is van/bike only");
+            foreach (var n in gd.Nodes) Assert.Less(gd.Graph.Km(gd.HqNode, n.Index), RoadGraph.Inf, n.Id);
+            var p = gd.Graph.Path(gd.HqNode, gd.Node("d_p2"));
+            Assert.AreEqual(gd.HqNode, p[0]);
+            Assert.AreEqual(gd.Node("d_p2"), p[p.Count - 1]);
+            Assert.AreEqual(gd.Graph.Km(gd.HqNode, gd.Node("d_p2")), gd.Graph.PathKm(p), 1e-6);
         }
 
         [Test]
-        public void PathsAreConnectedAndMatchKm()
+        public void HatchingNeverLongerThanTwentyMinutes_AndDigSitesNameRealSpecies()
         {
             var gd = TestData.Gd();
-            int a = gd.DepotNode, b = gd.Node("u_dorms");
-            var p = gd.Graph.Path(a, b);
-            Assert.AreEqual(a, p[0]);
-            Assert.AreEqual(b, p[p.Count - 1]);
-            Assert.AreEqual(gd.Graph.Km(a, b), gd.Graph.PathKm(p), 1e-6);
+            foreach (var s in gd.Species) Assert.LessOrEqual(s.HatchMin, 20, s.Id);
+            foreach (var d in gd.DigSites) { Assert.GreaterOrEqual(d.Species.Count, 2, d.Id); foreach (var s in d.Species) Assert.IsNotNull(gd.Sp(s), s); }
         }
 
         [Test]
-        public void ResearchNeverLongerThanTwentyMinutes()
+        public void HarmonyIsSymmetricAndBossySkittishIsTheWorst()
         {
-            foreach (var r in TestData.Gd().Research) Assert.LessOrEqual(r.Minutes, 20, r.Id);
+            var gd = TestData.Gd();
+            foreach (var a in new[] { "calm", "skittish", "bossy" })
+                foreach (var b in new[] { "calm", "skittish", "bossy" })
+                    Assert.AreEqual(gd.Harmony(a, b), gd.Harmony(b, a), 1e-9, a + "-" + b);
+            Assert.Less(gd.Harmony("bossy", "skittish"), gd.Harmony("calm", "calm"));
+            var sim = TestData.NewSim();
+            var ken = new AnimalState { Species = "kentrosaurus" };
+            var para = new AnimalState { Species = "parasaurolophus" };
+            var tri = new AnimalState { Species = "triceratops" };
+            Assert.Less(sim.Harmony(ken, para, "forest"), 0.3, "a bossy and a skittish species squabble");
+            Assert.Greater(sim.Harmony(tri, tri, "forest"), 0.95, "a herd of its own kind gets on");
+            Assert.Less(sim.Harmony(tri, tri, "dune"), sim.Harmony(tri, tri, "forest"), "the wrong biome hurts");
         }
     }
 
     public class CoreTests
     {
         [Test]
-        public void NewCareerStartsInThePlanWithThreeMachinesTwoVansOneDriver()
+        public void NewCareerStartsInThePlanWithThreeAnimalsTwoPaddocksFiveRangers()
         {
             var sim = TestData.NewSim(1, tutorial: true);
             Assert.AreEqual(Phases.Plan, sim.Phase);
-            Assert.AreEqual(3, sim.S.Points.Count);
-            Assert.AreEqual(2, sim.S.Trucks.Count);
-            Assert.AreEqual(1, sim.S.Drivers);
+            Assert.AreEqual(2, sim.S.Paddocks.Count);
+            Assert.AreEqual(3, sim.S.Animals.Count);
+            Assert.AreEqual(5, sim.S.Rangers.Count);
+            foreach (var r in Roles.All) Assert.GreaterOrEqual(sim.CountRole(r), 1, r);
             Assert.IsTrue(sim.S.Tutorial);
-            Assert.Greater(sim.FillPct(sim.S.Points[0]), 0.75, "the first machine starts almost full (guide step 2)");
+            Assert.AreEqual("triceratops", sim.S.Animals[0].Species, "the guide's hungry triceratops");
+            CollectionAssert.AreEquivalent(new[] { "triceratops", "maiasaura" }, sim.S.Found);
         }
 
         [Test]
@@ -117,275 +137,249 @@ namespace RidgebackRangers.Sim.Tests
         }
 
         [Test]
-        public void MachineFillsThenTurnsCitizensAway()
+        public void VisitorsArrivePayTicketsAndRideTheTram()
         {
-            var sim = TestData.NewSim();
-            var p = sim.S.Points[0];
-            sim.FillTo(p, 1.0);
-            sim.StartDay();
-            int turned = p.Turned;
-            for (int i = 0; i < 40; i++) sim.Deposit(0, 20, new[] { 1.0, 0, 0 }, 0);
-            Assert.Greater(p.Turned, turned);
-            Assert.IsTrue(sim.IsFull(p) || sim.FillPct(p) > 0.95);
-        }
-
-        [Test]
-        public void EstimateWithoutSensorDiffersFromLiveSensor()
-        {
-            var sim = TestData.NewSim();
-            var p = sim.S.Points[1];
-            sim.StartDay();
-            sim.Fire("heat_wave");
-            sim.AdvanceMinutes(120);
-            double est = sim.DisplayPct(p);
-            p.Sensor = true;
-            Assert.AreEqual(sim.FillPct(p), sim.DisplayPct(p), 1e-9, "a sensor shows the real bar");
-            Assert.AreNotEqual(sim.FillPct(p), est, "without a sensor the bar is an estimate (heat wave not in it)");
-        }
-
-        [Test]
-        public void JammedMachineTurnsEveryoneAwayUntilATechnicianFixesIt()
-        {
-            var sim = TestData.NewSim();
-            sim.S.Techs = 1;
-            sim.StartDay();
-            sim.Jam(0, "test");
-            int t0 = sim.S.Points[0].Turned;
-            Assert.AreEqual(0, sim.Deposit(0, 3, new[] { 1.0, 0, 0 }, 0));
-            Assert.AreEqual(t0 + 1, sim.S.Points[0].Turned);
-            Assert.AreEqual("", sim.SendTech("point", 0));
-            Assert.AreEqual("already", sim.SendTech("point", 0));
-            sim.AdvanceMinutes(90);
-            Assert.IsFalse(sim.S.Points[0].Jammed);
-        }
-    }
-
-    public class FleetTests
-    {
-        [Test]
-        public void TheCrewClearsAJamWhenTheyEmptyTheMachine()
-        {
-            var sim = TestData.NewSim();
-            sim.Jam(0, "t");
-            Assert.Contains(0, sim.SuggestRoute(0), "a jammed machine is always due");
-            sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0 });
-            for (int i = 0; i < 200 && sim.S.Points[0].Jammed; i++) sim.AdvanceMinutes(1);
-            Assert.IsFalse(sim.S.Points[0].Jammed);
-        }
-
-        [Test]
-        public void DispatchNeedsAFreeDriver()
-        {
-            var sim = TestData.NewSim();
-            Assert.AreEqual("", sim.Dispatch(0, new List<int> { 0 }));
-            Assert.AreEqual("no_driver", sim.Dispatch(1, new List<int> { 1 }));
-            sim.S.Cash = 10000;
-            Assert.AreEqual("", sim.Buy("driver"));
-            Assert.AreEqual("", sim.Dispatch(1, new List<int> { 1 }));
-        }
-
-        [Test]
-        public void TruckEmptiesMachinesUnloadsAndTheDepotEarnsFees()
-        {
-            var sim = TestData.NewSim();
-            double before = sim.FillPct(sim.S.Points[0]);
-            Assert.Greater(before, 0.5);
-            sim.StartDay();
-            Assert.AreEqual("", sim.Dispatch(0, new List<int> { 0, 1 }));
-            bool serviced = false, unloaded = false;
-            for (int i = 0; i < 300 && !unloaded; i++)
-            {
-                sim.AdvanceMinutes(1);
-                foreach (var e in sim.DrainEvents())
-                {
-                    if (e.Type == "serviced" && e.B == 0) serviced = true;
-                    if (e.Type == "unloaded") unloaded = true;
-                }
-            }
-            Assert.IsTrue(serviced && unloaded);
-            Assert.Less(sim.FillPct(sim.S.Points[0]), before);
-            Assert.Greater(sim.S.Today.Km, 0);
-            Assert.Greater(sim.S.Today.Fuel, 0);
-            sim.AdvanceMinutes(120);
-            Assert.Greater(sim.S.Depot.Till + sim.S.Today.Fees, 0, "the count line earned handling fees");
-            Assert.Greater(sim.CollectTill(), 0);
-        }
-
-        [Test]
-        public void GlassFillsTheTruckByWeightBeforeVolume()
-        {
-            var sim = TestData.NewSim();
-            var t = sim.S.Trucks[0];
-            t.Load[Mats.Glass] = 1700;  // 646 kg of 700, only 1530 l of 1800
-            Assert.IsTrue(sim.LoadLimitedByWeight(t));
-            Assert.Greater(sim.LoadPct(t), 0.9);
-        }
-
-        [Test]
-        public void CompactorTruckCannotServeAlleyPoints()
-        {
-            var sim = TestData.NewSim();
-            sim.S.Cash = 1e6;
-            sim.S.Districts.Add("oldtown");
-            sim.S.Research.Add("compactor_truck");
-            sim.S.Research.Add("fuel_saver");
-            Assert.AreEqual("", sim.Buy("machine:o_church"));
-            Assert.AreEqual("", sim.Buy("truck:compactor"));
-            int church = sim.S.Points.Count - 1, comp = sim.S.Trucks.Count - 1;
-            Assert.IsFalse(sim.CanServe(sim.S.Trucks[comp], sim.S.Points[church]));
-            Assert.IsTrue(sim.CanServe(sim.S.Trucks[0], sim.S.Points[church]));
-        }
-
-        [Test]
-        public void SuggestRouteServesDuePointsOnlyAndRespectsPolicies()
-        {
-            var sim = TestData.NewSim();
-            foreach (var p in sim.S.Points) p.Sensor = true;
-            sim.FillTo(sim.S.Points[0], 0.9);
-            sim.FillTo(sim.S.Points[1], 0.2);
-            sim.FillTo(sim.S.Points[2], 0.85);
-            sim.SetPolicy(2, Policies.Call, 0);
-            var r = sim.SuggestRoute(0);
-            CollectionAssert.Contains(r, 0);
-            CollectionAssert.DoesNotContain(r, 1);
-            CollectionAssert.DoesNotContain(r, 2, "on-call points wait for a manual route");
-            sim.SetPolicy(1, Policies.Threshold, 60);
-            sim.FillTo(sim.S.Points[1], 0.65);
-            CollectionAssert.Contains(sim.SuggestRoute(0), 1);
-        }
-
-        [Test]
-        public void EstimateGivesKmCostAndLoad()
-        {
-            var sim = TestData.NewSim();
-            var e = sim.Estimate(0, new List<int> { 0, 1, 2 });
-            Assert.IsTrue(e.Ok);
-            Assert.Greater(e.Km, 1);
-            Assert.Greater(e.Cost, 0);
-            Assert.Greater(e.Minutes, 10);
-            Assert.Greater(e.LoadPct, 0);
-        }
-
-        [Test]
-        public void RecallSendsTheTruckHome()
-        {
-            var sim = TestData.NewSim();
-            sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
-            sim.AdvanceMinutes(2);
-            Assert.AreEqual("", sim.Recall(0));
-            for (int i = 0; i < 200 && sim.S.Trucks[0].Busy; i++) sim.AdvanceMinutes(1);
-            Assert.IsFalse(sim.S.Trucks[0].Busy);
-        }
-
-        [Test]
-        public void DispatcherDrivesAutoTrucksByPolicy()
-        {
-            var sim = TestData.NewSim();
-            sim.S.Cash = 1e5;
-            sim.S.Research.Add("route_optimizer");
-            sim.S.Research.Add("dispatcher");
-            Assert.AreEqual("", sim.Buy("dispatcher"));
-            Assert.IsTrue(sim.S.Trucks[0].Auto);
-            foreach (var p in sim.S.Points) p.Sensor = true;
-            sim.FillTo(sim.S.Points[0], 0.95);
-            sim.StartDay();
-            sim.AdvanceMinutes(2);
-            Assert.IsTrue(sim.S.Trucks[0].Busy, "the Dispatcher sent the auto truck to the full machine");
-        }
-
-        [Test]
-        public void AutoSlotsAreCapped()
-        {
-            var sim = TestData.NewSim();
-            Assert.AreEqual("no_dispatcher", sim.SetAuto(0, true));
-            sim.S.Depot.Dispatcher = true;
-            for (int i = 0; i < 4; i++) { sim.S.Trucks.Add(new TruckState { Id = 10 + i, Type = "van", AtNode = sim.Gd.DepotNode }); }
-            int ok = 0;
-            for (int i = 0; i < sim.S.Trucks.Count; i++) if (sim.SetAuto(i, true) == "") ok++;
-            Assert.AreEqual(sim.Gd.DispatcherSlots, ok);
-            sim.SetPerks(new Dictionary<string, bool> { { "dispatcher_plus", true } });
-            Assert.AreEqual(sim.Gd.DispatcherSlots + sim.Gd.PlusSlots, sim.AutoSlots);
-        }
-    }
-
-    public class DepotTests
-    {
-        [Test]
-        public void CountLineThenBalerMakesBalesAndTheyCanBeSold()
-        {
-            var sim = TestData.NewSim();
-            sim.S.Depot.Intake[Mats.Pet] = 2500;   // 75 kg PET
-            sim.S.Depot.Intake[Mats.Alu] = 2500;   // 37.5 kg alu
-            sim.StartDay();
-            sim.AdvanceMinutes(400);
-            Assert.Greater(sim.S.Depot.Bales[Mats.Pet] + sim.S.Depot.Bales[Mats.Alu], 0);
+            var sim = TestData.Live(3);
+            Assert.IsTrue(sim.S.GateOpen, "after the guide the gate opens every morning");
             double cash = sim.S.Cash;
-            double got = sim.Sell(Mats.Pet) + sim.Sell(Mats.Alu);
-            Assert.Greater(got, 0);
-            Assert.AreEqual(cash + got, sim.S.Cash, 1e-6);
-            Assert.AreEqual(0, sim.Sell(Mats.Pet));
+            sim.AdvanceMinutes(120);
+            Assert.Greater(sim.S.Today.Visitors, 10);
+            Assert.Greater(sim.S.Today.Tickets, 0);
+            Assert.Greater(sim.S.Today.Rides, 0, "the tram ran loops by its timetable");
+            Assert.Greater(sim.S.Today.Joy, 0);
+            Assert.Greater(sim.S.Cash, cash - sim.S.Today.Feed - 1);
         }
 
         [Test]
-        public void FullYardStopsTheBaler_AndBalerDownStopsIt()
+        public void ATooSmallTramMakesVisitorsWalk()
+        {
+            var a = TestData.Live(5);
+            var b = TestData.Live(5);
+            b.S.Tram.Cars = 4;
+            a.SetTramPolicy(TramPolicy.Interval, 30);
+            a.S.Rating = b.S.Rating = 90;
+            a.AdvanceMinutes(400);
+            b.AdvanceMinutes(400);
+            Assert.Greater(a.S.Today.Walked, b.S.Today.Walked, "queues outgrow one slow tram car");
+        }
+
+        [Test]
+        public void VarietyBeatsAMonoHerd()
         {
             var sim = TestData.NewSim();
-            sim.S.Depot.Bales[Mats.Pet] = sim.S.Depot.YardCap;
-            sim.S.Depot.BalerIn[Mats.Pet] = 500;
+            foreach (var x in sim.S.Animals) { x.Mood = 0.6; x.Health = Health.Ok; }
+            double mixed = sim.ZoneAppeal("cove");
+            sim.S.Animals[2].Species = "triceratops";
+            double mono = sim.ZoneAppeal("cove");
+            Assert.Greater(mixed, mono, "two species beat three of one kind (visitors score variety)");
+            Assert.AreEqual(sim.Gd.Variety[0], 0.8, 1e-9);
+        }
+
+        [Test]
+        public void EscapeAlarmHaltsTheTramUntilAHandlerEscortsTheAnimalBack()
+        {
+            var sim = TestData.Live(9);
+            sim.AdvanceMinutes(30);
+            int pin = sim.ForcePin(PinKinds.Escape, 0);
+            Assert.Greater(pin, 0);
+            Assert.IsTrue(sim.TramHalted);
+            double pos = sim.S.Tram.Pos;
+            bool run = sim.S.Tram.Running;
+            sim.AdvanceMinutes(5);
+            Assert.AreEqual(pos, sim.S.Tram.Pos, 1e-9, "no tram movement during an escape alarm");
+            Assert.AreEqual(run, sim.S.Tram.Running);
+            Assert.AreEqual("", sim.Send(pin, TestData.Ranger(sim, Roles.Handler)));
+            for (int i = 0; i < 120 && sim.Pin(pin) != null; i++) sim.AdvanceMinutes(1);
+            Assert.IsNull(sim.Pin(pin));
+            Assert.IsFalse(sim.TramHalted);
+        }
+    }
+
+    public class PinTests
+    {
+        [Test]
+        public void EmptyStationAndAHungryHerdOpenAPinAndAFeederFixesIt()
+        {
+            var sim = TestData.Live(2);
+            int pin = sim.ForcePin(PinKinds.Hungry, 0);
+            var p = sim.Pin(pin);
+            Assert.AreEqual(PinKinds.Hungry, p.Kind);
+            Assert.AreEqual("role", sim.Send(pin, TestData.Ranger(sim, Roles.Vet)), "only a Feeder takes a hungry herd");
+            int f = TestData.Ranger(sim, Roles.Feeder);
+            double eta = sim.EtaMin(f, pin);
+            Assert.Greater(eta, 1);
+            Assert.AreEqual("", sim.Send(pin, f));
+            Assert.AreEqual(sim.Gd.BarnNode, sim.S.Rangers[f].Path[sim.S.Rangers[f].Path.Count - 1], "the Feeder fetches crates at the barn first");
+            int guard = 0;
+            while (sim.Pin(pin) != null && guard++ < 200) sim.AdvanceMinutes(1);
+            Assert.IsNull(sim.Pin(pin));
+            Assert.Greater(sim.S.Stations["cove"].Crates, 0);
+            Assert.Less(sim.S.Animals[0].Hunger, sim.Gd.HungryPinAt);
+            Assert.AreEqual(1, sim.S.Today.PinsResolved);
+        }
+
+        [Test]
+        public void AnIgnoredPinFailsAtItsDeadlineAndCostsCoinsNotProgress()
+        {
+            var sim = TestData.Live(4);
+            int pin = sim.ForcePin(PinKinds.Sick, 0);
+            var p = sim.Pin(pin);
+            int animal = p.Animal;
+            double cash = sim.S.Cash;
+            sim.AdvanceMinutes(p.Deadline - sim.S.Minute + 1);
+            Assert.IsNull(sim.Pin(pin));
+            Assert.AreEqual(1, sim.S.Today.PinsFailed);
+            Assert.Contains(PinKinds.Sick, sim.S.Today.Failed);
+            Assert.AreEqual(Health.Off, sim.S.Animals[animal].Health, "off exhibit for the day — never hurt");
+            Assert.Less(sim.S.Cash, cash + sim.S.Today.Income);
+            Assert.AreEqual(3, sim.S.Animals.Count, "no animal is ever lost");
+            sim.AdvanceMinutes(sim.Gd.DayMinutes);
+            sim.NextDay();
+            Assert.AreEqual(Health.Ok, sim.S.Animals[animal].Health, "back on exhibit the next morning");
+        }
+
+        [Test]
+        public void APinWithARangerOnTheWayNeverFails()
+        {
+            var sim = TestData.Live(6);
+            int pin = sim.ForcePin(PinKinds.Fence, 1);
+            Assert.AreEqual("", sim.Send(pin, TestData.Ranger(sim, Roles.Tech)));
+            sim.Pin(pin).Deadline = sim.S.Minute + 1;
+            sim.AdvanceMinutes(5);
+            Assert.AreEqual(0, sim.S.Today.PinsFailed);
+        }
+
+        [Test]
+        public void PinsAreDeduplicatedPerPaddockAndKind()
+        {
+            var sim = TestData.Live(8);
+            Assert.Greater(sim.OpenPin(PinKinds.Squabble, 1, -1), 0);
+            Assert.AreEqual(-1, sim.OpenPin(PinKinds.Squabble, 1, -1));
+        }
+
+        [Test]
+        public void LowHarmonyPaddocksSquabbleMore()
+        {
+            int Count(string a, string b)
+            {
+                var sim = TestData.Live(12);
+                sim.S.Animals[0].Species = a;
+                sim.S.Animals[1].Species = b;
+                sim.S.Paddocks[0].Fence = 3;
+                int n = 0;
+                for (int m = 0; m < 500; m++)
+                {
+                    sim.AdvanceMinutes(1);
+                    foreach (var p in sim.S.Pins.ToList()) if (p.Kind == PinKinds.Squabble && p.Paddock == 0) { n++; sim.S.Pins.Remove(p); }
+                    foreach (var x in sim.S.Animals) { x.Hunger = 0.1; x.Health = Health.Ok; }
+                    sim.S.Paddocks[0].Integrity = 1;
+                    if (sim.Phase != Phases.Live) break;
+                }
+                return n;
+            }
+            Assert.Greater(Count("kentrosaurus", "parasaurolophus"), Count("triceratops", "triceratops"));
+        }
+
+        [Test]
+        public void ChiefRangerAnswersPinsLateButByItself()
+        {
+            var sim = TestData.Live(13);
+            sim.S.Rating = 80;
+            sim.S.Cash = 50000;
+            Assert.AreEqual("", sim.Buy("chief"));
+            int pin = sim.ForcePin(PinKinds.Fence, 0);
+            sim.AdvanceMinutes(2);
+            Assert.AreEqual(-1, sim.Pin(pin).Ranger, "the Chief waits a few minutes");
+            sim.AdvanceMinutes(sim.Gd.ChiefDelayMin + 1);
+            Assert.GreaterOrEqual(sim.Pin(pin)?.Ranger ?? 1, 0, "the Chief sent someone");
+        }
+
+        [Test]
+        public void NoPinFailsDuringTheGuide()
+        {
+            var sim = TestData.NewSim(14, tutorial: true);
             sim.StartDay();
-            sim.AdvanceMinutes(60);
-            Assert.AreEqual(500, sim.S.Depot.BalerIn[Mats.Pet], 1e-9);
-            sim.Sell(Mats.Pet);
-            sim.BalerDown("test");
-            sim.AdvanceMinutes(60);
-            Assert.AreEqual(500, sim.S.Depot.BalerIn[Mats.Pet], 1e-9);
+            int pin = sim.ForcePin(PinKinds.Hungry, 0);
+            sim.AdvanceMinutes(300);
+            Assert.IsNotNull(sim.Pin(pin));
+            Assert.AreEqual(0, sim.S.Today.PinsFailed);
+            Assert.IsFalse(sim.S.GateOpen, "the guide opens the gate by hand");
+        }
+    }
+
+    public class HatcheryTests
+    {
+        [Test]
+        public void DigTripsBringShardsAndAFullSetBecomesAnEgg()
+        {
+            var sim = TestData.Live(15);
+            sim.S.Cp = 500;
+            string target = sim.DigTarget(0);
+            Assert.AreEqual("parasaurolophus", target, "the chart is deterministic: the first species not in the log yet");
+            int trips = 0;
+            while (sim.S.Eggs.Count == 0 && trips < 6)
+            {
+                Assert.AreEqual("", sim.Dig(0), "trip " + trips);
+                for (int m = 0; m < 400 && sim.S.Rangers.Exists(r => r.Dig >= 0); m++) sim.AdvanceMinutes(1);
+                trips++;
+                if (sim.Phase != Phases.Live) { sim.NextDay(); sim.StartDay(); }
+            }
+            Assert.AreEqual(2, trips, "50 % per trip");
+            Assert.AreEqual(target, sim.S.Eggs[0].Species);
+            Assert.Contains(target, sim.S.Found);
         }
 
         [Test]
-        public void BaleCrashLowersOnlyThatMaterial()
+        public void EggsWarmOnRealTimeTwiceAsFastWhenTheTemperatureIsChecked()
         {
-            var sim = TestData.NewSim();
-            double[] before = { sim.BalePrice(0), sim.BalePrice(1), sim.BalePrice(2) };
-            sim.Fire("bale_crash");
-            var e = sim.S.Events.Find(x => x.Id == "bale_crash");
-            for (int m = 0; m < Mats.N; m++)
-                if (m == e.Target) Assert.Less(sim.BalePrice(m), before[m]);
-                else Assert.AreEqual(before[m], sim.BalePrice(m), 1e-9);
+            var a = TestData.NewSim(16);
+            var b = TestData.NewSim(16);
+            a.PlaceEgg("maiasaura");
+            b.PlaceEgg("maiasaura");
+            Assert.AreEqual("too_cold", b.CheckTemp(0, 5));
+            Assert.AreEqual("", b.CheckTemp(0, 50));
+            a.Advance(1.0); b.Advance(1.0);
+            Assert.Greater(a.S.Eggs[0].LeftS, b.S.Eggs[0].LeftS);
+            for (int i = 0; i < 3000 && b.S.Eggs.Count > 0; i++) { b.Advance(1.0); if (b.S.Eggs.Count > 0 && !b.S.Eggs[0].Checked) b.CheckTemp(0, 50); }
+            Assert.AreEqual(0, b.S.Eggs.Count);
+            var baby = b.S.Animals[b.S.Animals.Count - 1];
+            Assert.IsTrue(baby.Young);
+            Assert.AreEqual("maiasaura", baby.Species);
+            Assert.AreEqual(1, b.S.Hatched);
         }
 
         [Test]
-        public void CountingCentreTakesBulkHaulsWithoutBlockingAMachine()
+        public void HatchlingsGoToAPaddockWithRoomOrTheNursery()
         {
-            var sim = TestData.NewSim();
-            sim.StartDay();
-            sim.Fire("bulk_returner");
-            bool blocked = sim.S.Points.Exists(p => p.BusyUntil > sim.S.Minute);
-            Assert.IsTrue(blocked);
-            var sim2 = TestData.NewSim();
-            sim2.S.Depot.Centre = true;
-            sim2.StartDay();
-            double cash = sim2.S.Cash;
-            sim2.Fire("bulk_returner");
-            Assert.IsFalse(sim2.S.Points.Exists(p => p.BusyUntil > sim2.S.Minute));
-            Assert.Greater(sim2.S.Cash, cash);
+            var sim = TestData.NewSim(17);
+            Assert.AreEqual(1, sim.SuggestPaddock("maiasaura"), "joins its own kind");
+            for (int i = 0; i < 6; i++) sim.AddAnimal("camarasaurus", 0, false);
+            for (int i = 0; i < 6; i++) sim.AddAnimal("camarasaurus", 1, false);
+            Assert.AreEqual(-1, sim.SuggestPaddock("camarasaurus"), "no room anywhere -> the nursery");
+        }
+
+        [Test]
+        public void YoungAnimalsGrowUpAfterTwoDays()
+        {
+            var sim = TestData.NewSim(18);
+            var a = sim.AddAnimal("maiasaura", 1, true);
+            for (int d = 0; d < 2; d++) { sim.StartDay(); sim.AdvanceMinutes(sim.Gd.DayMinutes + 1); sim.NextDay(); }
+            Assert.IsFalse(a.Young);
         }
     }
 
     public class EconomyTests
     {
-        static void PlayDay(Simulation sim) => BalanceRunner.PlayDay(sim, new BalanceReport());
-
         [Test]
         public void DayEndsWithAReportStarsAndCosts()
         {
-            var sim = TestData.NewSim();
-            PlayDay(sim);
+            var sim = TestData.Live(19);
+            sim.AdvanceMinutes(sim.Gd.DayMinutes + 1);
             Assert.AreEqual(Phases.Report, sim.Phase);
-            var d = sim.S.History[sim.S.History.Count - 1];
+            var d = sim.S.History.Last();
             Assert.Greater(d.Wages, 0);
-            Assert.Greater(d.Collected, 0);
+            Assert.Greater(d.Upkeep, 0);
+            Assert.Greater(d.CpEarned, 0, "Care Score earns Conservation Points");
             Assert.That(d.Stars, Is.InRange(0, 9));
             Assert.IsTrue(sim.NextDay());
             Assert.AreEqual(2, sim.S.Day);
@@ -393,165 +387,171 @@ namespace RidgebackRangers.Sim.Tests
         }
 
         [Test]
-        public void TrucksComeHomeAtDayEnd()
+        public void FeedBoardDeliversInTheMorningAndCostsCrates()
         {
-            var sim = TestData.NewSim();
+            var sim = TestData.NewSim(20);
+            sim.SetFeedPlan("cove", 9);
             sim.StartDay();
-            sim.AdvanceMinutes(sim.Gd.DayMinutes - 3);
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
-            sim.AdvanceMinutes(10);
-            Assert.AreEqual(Phases.Report, sim.Phase);
-            foreach (var t in sim.S.Trucks) Assert.IsFalse(t.Busy);
+            Assert.AreEqual(9, sim.S.Stations["cove"].Crates, 1e-9);
+            Assert.AreEqual(9 * sim.Gd.CrateCost, sim.S.Today.Feed, 1e-9);
+            Assert.Greater(sim.FeedNeed("cove"), 2);
         }
 
         [Test]
         public void FirstDaysAndTheGuideNeverLowerTheRating()
         {
-            var sim = TestData.NewSim(3, tutorial: true);
-            double r0 = sim.S.Rating;
-            sim.StartDay();
-            sim.AdvanceMinutes(sim.Gd.DayMinutes + 5);   // nobody empties anything
-            Assert.GreaterOrEqual(sim.S.Rating, r0);
+            var sim = TestData.Live(21);
+            double r = sim.S.Rating;
+            foreach (var p in sim.S.Pins.ToList()) sim.S.Pins.Remove(p);
+            sim.S.Animals.ForEach(a => { a.Hunger = 1; a.Mood = 0; });
+            sim.AdvanceMinutes(sim.Gd.DayMinutes + 1);
+            Assert.GreaterOrEqual(sim.S.Rating, r);
         }
 
         [Test]
-        public void NoCrisesDuringTheGuideOrTheFirstDays()
+        public void NoIslandEventsDuringTheGuideOrTheFirstDays()
         {
-            var sim = TestData.NewSim(5);
+            var sim = TestData.NewSim(22);
             for (int d = 0; d < sim.Gd.EventFreeDays; d++)
             {
-                PlayDay(sim);
-                foreach (var e in sim.DrainEvents()) Assert.AreNotEqual("crisis", e.Type);
+                sim.StartDay(); sim.AdvanceMinutes(sim.Gd.DayMinutes + 1);
+                Assert.IsFalse(sim.S.Events.Any(), "day " + sim.S.Day);
                 sim.NextDay();
+                Assert.IsFalse(sim.S.Planned.Any(p => !p.Call), "day " + sim.S.Day);
             }
-            Assert.AreEqual(sim.Gd.EventFreeDays + 1, sim.S.Day);
         }
 
         [Test]
-        public void PurchasesCheckCashResearchAndDistricts()
+        public void PurchasesCheckCashRatingAndZones()
         {
-            var sim = TestData.NewSim();
-            sim.S.Cash = 100;
-            Assert.AreEqual("cash", sim.Buy("machine:h_quay"));
-            sim.S.Cash = 1e6;
-            Assert.AreEqual("", sim.Buy("machine:h_quay"));
-            Assert.AreEqual("owned", sim.Buy("machine:h_quay"));
-            Assert.AreEqual("locked", sim.Buy("machine:o_square"));
-            Assert.AreEqual("research", sim.Buy("sensor:0"));
-            Assert.AreEqual("", sim.Buy("bin_m:0"), "the bigger bin needs no research (guide step 13)");
-            sim.S.Rating = 10;
-            Assert.AreEqual("rating", sim.Buy("district:oldtown"));
+            var sim = TestData.NewSim(23);
+            sim.S.Rating = 30;
+            Assert.AreEqual("locked", sim.CanBuy("paddock:f_p1").Reason);
+            Assert.AreEqual("rating", sim.CanBuy("zone:fern").Reason);
+            Assert.AreEqual("locked", sim.CanBuy("zone:dune").Reason, "chapters open in order");
             sim.S.Rating = 60;
-            Assert.AreEqual("", sim.Buy("district:oldtown"));
-            Assert.AreEqual("", sim.Buy("machine:o_square"));
-            Assert.AreEqual("locked", sim.Buy("district:stadium"), "chapters unlock in order");
+            Assert.AreEqual("cash", sim.CanBuy("zone:fern").Reason);
+            sim.S.Cash = 100000;
+            Assert.AreEqual("", sim.Buy("zone:fern"));
+            Assert.IsTrue(sim.S.Stations.ContainsKey("fern"));
+            Assert.AreEqual("", sim.Buy("paddock:f_p1"));
+            Assert.AreEqual("owned", sim.CanBuy("paddock:f_p1").Reason);
+            Assert.AreEqual("", sim.Buy("fence:0"));
+            Assert.AreEqual(2, sim.S.Paddocks[0].Fence);
+            for (int i = sim.CountRole(Roles.Vet); i < sim.RangerCap; i++) Assert.AreEqual("", sim.Buy("hire:vet"));
+            Assert.AreEqual("max", sim.CanBuy("hire:vet").Reason);
+            Assert.AreEqual(2, sim.Chapter, "Fern Valley = chapter 2");
         }
 
         [Test]
-        public void ResearchRunsOnRealTimeAndCatchesUpOffline()
+        public void OfflinePayIsCappedAndScalesWithNightShift()
         {
-            var sim = TestData.NewSim();
-            sim.S.Cash = 1e5;
-            Assert.AreEqual("", sim.StartResearch("sensors"));
-            Assert.AreEqual("busy", sim.StartResearch("route_optimizer"));
-            sim.Advance(1.0);
-            Assert.IsFalse(sim.Has("sensors"));
-            sim.Touch(1000);
-            sim.Offline(1000 + 3600);
-            Assert.IsTrue(sim.Has("sensors"));
-            Assert.AreEqual("requires", sim.CanResearch("jam_guard"));
-        }
-
-        [Test]
-        public void OfflinePayIsCappedAndScalesWithOfflinePlus()
-        {
-            var sim = TestData.NewSim();
-            sim.S.History.Add(new DayStats { Fees = 1000 });
-            const long t0 = 1_800_000_000;
-            sim.Touch(t0);
-            Assert.IsNull(sim.Offline(t0 + 30), "short absence pays nothing");
-            sim.Touch(t0);
-            var a = sim.Offline(t0 + 100 * 3600);
-            Assert.IsTrue(a.Capped);
-            Assert.AreEqual(sim.Gd.OfflineCapH, a.Hours, 1e-9);
-            sim.SetPerks(new Dictionary<string, bool> { { "offline_plus", true } });
-            sim.Touch(t0);
-            var b = sim.Offline(t0 + 100 * 3600);
-            Assert.Greater(b.Amount, a.Amount);
+            var sim = TestData.NewSim(24);
+            sim.S.History.Add(new DayStats { Tickets = 3000 });
+            sim.Touch(1_000_000);
+            var o = sim.Offline(1_000_000 + 3600 * 20);
+            Assert.IsTrue(o.Capped);
+            Assert.AreEqual(sim.Gd.OfflineCapH, o.Hours, 1e-9);
+            var sim2 = TestData.NewSim(24);
+            sim2.S.History.Add(new DayStats { Tickets = 3000 });
+            sim2.SetPerks(new Dictionary<string, bool> { { "offline_plus", true } });
+            sim2.Touch(1_000_000);
+            var o2 = sim2.Offline(1_000_000 + 3600 * 20);
+            Assert.Greater(o2.Amount, o.Amount);
         }
 
         [Test]
         public void GrantCashUsesTheUsualDayIncome()
         {
-            var sim = TestData.NewSim();
-            double floor = sim.Gd.DayIncomeFloor;
-            Assert.AreEqual(floor, sim.DayIncome());
-            Assert.AreEqual(floor * 2.5, sim.GrantCash(2.5), 1e-9);
+            var sim = TestData.NewSim(25);
+            Assert.AreEqual(sim.Gd.DayIncomeFloor, sim.DayIncome(), 1e-9);
+            double c = sim.S.Cash;
+            sim.GrantCash(2.5);
+            Assert.AreEqual(c + 2.5 * sim.Gd.DayIncomeFloor, sim.S.Cash, 1e-6);
         }
     }
 
     public class RewardTests
     {
+        const long Now = 1_800_000_000;
+
         [Test]
         public void RewardsAreNeverOfferedDuringTheGuide()
         {
-            var sim = TestData.NewSim(1, tutorial: true);
-            Assert.AreEqual("tutorial", sim.RewardOffer("daily_bonus", 100000).Reason);
+            var sim = TestData.NewSim(26, tutorial: true);
+            foreach (var p in Simulation.RewardPlacements) Assert.IsFalse(sim.RewardOffer(p, Now).Ok, p);
         }
 
         [Test]
         public void DailyCapAndCooldownPersistInTheCareer()
         {
-            var sim = TestData.NewSim();
-            long now = 86400L * 20000 + 100;
-            Assert.IsTrue(sim.GrantReward("fuel_voucher", now).Ok);
-            Assert.AreEqual("context", sim.RewardOffer("fuel_voucher", now + 5000).Reason, "a voucher is waiting");
-            sim.S.FuelVoucher = false;
-            Assert.AreEqual("cooldown", sim.RewardOffer("fuel_voucher", now + 10).Reason);
-            Assert.IsTrue(sim.GrantReward("fuel_voucher", now + 1000).Ok);
-            sim.S.FuelVoucher = false;
-            Assert.AreEqual("cap", sim.RewardOffer("fuel_voucher", now + 5000).Reason);
+            var sim = TestData.Live(27);
+            for (int i = 0; i < 3; i++) sim.ForcePin(PinKinds.Fence, i % 2);
+            sim.ForcePin(PinKinds.Squabble, 1);
+            sim.ForcePin(PinKinds.Sick, 0);
+            long t = Now;
+            Assert.IsTrue(sim.GrantReward("borrow_ranger", t).Ok);
+            Assert.AreEqual("cooldown", sim.RewardOffer("borrow_ranger", t + 10).Reason);
+            Assert.IsTrue(sim.GrantReward("borrow_ranger", t + 700).Ok);
+            Assert.IsTrue(sim.GrantReward("borrow_ranger", t + 1400).Ok);
+            Assert.AreEqual("cap", sim.RewardOffer("borrow_ranger", t + 2100).Reason);
             var back = SaveCodec.Decode(SaveCodec.Encode(sim), sim.Gd).Sim;
-            back.S.FuelVoucher = false;
-            Assert.AreEqual("cap", back.RewardOffer("fuel_voucher", now + 5000).Reason, "caps survive a relaunch");
-            Assert.IsTrue(back.RewardOffer("fuel_voucher", now + 86400).Ok, "a new UTC day resets the cap");
+            Assert.AreEqual("cap", back.RewardOffer("borrow_ranger", t + 2100).Reason, "a relaunch does not reset the cap");
         }
 
         [Test]
-        public void CashRewardsStayUnderOneFifthOfTheCheapestPack()
+        public void CashRewardsStayUnderTheirShareOfTheCheapestPack()
         {
-            var sim = TestData.NewSim();
+            var sim = TestData.NewSim(28);
             sim.S.OfflinePending = 1e6;
-            long now = 86400L * 20000;
-            double single = sim.Gd.RewardSingleMaxDays * sim.DayIncome();
-            Assert.LessOrEqual(sim.RewardOffer("offline_x2", now).Amount, single + 1e-9);
-            Assert.LessOrEqual(sim.RewardOffer("daily_bonus", now).Amount, single + 1e-9);
-            Assert.LessOrEqual(sim.Gd.RewardSingleMaxDays, 0.2 + 1e-9);
+            var o = sim.RewardOffer("dawn_double", Now);
+            Assert.IsTrue(o.Ok);
+            Assert.LessOrEqual(o.Amount, sim.Gd.Rewards["dawn_double"].Days * sim.DayIncome() + 0.5);
+            double daily = 0;
+            foreach (var r in sim.Gd.Rewards.Values) { Assert.LessOrEqual(r.Days, sim.Gd.RewardSingleMaxDays + 1e-9, r.Id); daily += r.Days * r.PerDay; }
+            Assert.LessOrEqual(daily, 0.5, "all rewards of a UTC day ≤ 1/2 of the cheapest pack (1 day)");
         }
 
         [Test]
-        public void EmergencyEmptyNeedsAFullMachineAndEmptiesIt()
+        public void BorrowedRangerTakesThePinAndLeaves()
         {
-            var sim = TestData.NewSim();
-            long now = 86400L * 20000;
-            foreach (var p in sim.S.Points) sim.FillTo(p, 0.3);
-            Assert.AreEqual("context", sim.RewardOffer("emergency_empty", now).Reason);
-            sim.FillTo(sim.S.Points[1], 1.0);
-            var r = sim.GrantReward("emergency_empty", now);
-            Assert.IsTrue(r.Ok);
-            Assert.AreEqual(0, sim.Containers(sim.S.Points[1]), 1e-9);
-            Assert.Greater(sim.S.Depot.IntakeTotal, 0);
+            var sim = TestData.Live(29);
+            int pin = sim.ForcePin(PinKinds.Sick, 0);
+            int before = sim.S.Rangers.Count;
+            Assert.IsTrue(sim.GrantReward("borrow_ranger", Now, pin).Ok);
+            Assert.AreEqual(before + 1, sim.S.Rangers.Count);
+            for (int i = 0; i < 60 && sim.Pin(pin) != null; i++) sim.AdvanceMinutes(1);
+            Assert.IsNull(sim.Pin(pin));
+            Assert.AreEqual(before, sim.S.Rangers.Count, "the borrowed ranger went home");
         }
 
         [Test]
-        public void BalerRescueOnlyWhenTheBalerIsDown()
+        public void StormShelterOnlyWithFenceTroubleAndRepairsEverything()
         {
-            var sim = TestData.NewSim();
-            long now = 86400L * 20000;
-            Assert.IsFalse(sim.RewardOffer("baler_rescue", now).Ok);
-            sim.BalerDown("t");
-            Assert.IsTrue(sim.GrantReward("baler_rescue", now).Ok);
-            Assert.IsFalse(sim.S.Depot.BalerDown);
+            var sim = TestData.Live(30);
+            Assert.AreEqual("context", sim.RewardOffer("storm_shelter", Now).Reason);
+            sim.ForcePin(PinKinds.Fence, 0);
+            sim.ForcePin(PinKinds.Escape, 1);
+            Assert.IsTrue(sim.GrantReward("storm_shelter", Now).Ok);
+            Assert.IsFalse(sim.S.Pins.Any(p => p.Kind == PinKinds.Fence || p.Kind == PinKinds.Escape));
+            Assert.IsTrue(sim.S.Paddocks.All(p => p.Integrity >= 1));
+        }
+
+        [Test]
+        public void ScoutTipRevealsAHiddenSpeciesAndWarmCutsTenMinutes()
+        {
+            var sim = TestData.NewSim(31);
+            Assert.IsTrue(sim.DigRevealed(0, 2), "Landing Cove: its first two species are already in the log");
+            Assert.AreEqual("context", sim.RewardOffer("scout_tip", Now).Reason, "Fern Valley is still closed");
+            sim.S.Zones.Add("fern");
+            Assert.IsFalse(sim.DigRevealed(1, 2));
+            Assert.IsTrue(sim.GrantReward("scout_tip", Now).Ok);
+            Assert.IsTrue(sim.DigRevealed(1, 2));
+            Assert.AreEqual("context", sim.RewardOffer("warm_incubator", Now + 9999).Reason);
+            sim.PlaceEgg("triceratops");
+            double left = sim.S.Eggs[0].LeftS;
+            Assert.IsTrue(sim.GrantReward("warm_incubator", Now + 9999).Ok);
+            Assert.AreEqual(Math.Max(1, left - sim.Gd.WarmS), sim.S.Eggs[0].LeftS, 1e-9);
         }
     }
 
@@ -560,11 +560,13 @@ namespace RidgebackRangers.Sim.Tests
         [Test]
         public void RoundTripMidDayIsIdenticalAndKeepsPlaying()
         {
-            var sim = TestData.NewSim(11);
-            sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
+            var sim = TestData.Live(32);
             sim.AdvanceMinutes(37);
-            sim.Jam(2, "t");
+            int pin = sim.ForcePin(PinKinds.Hungry, 0);
+            sim.Send(pin, TestData.Ranger(sim, Roles.Feeder));
+            sim.ForcePin(PinKinds.Escape, 1);
+            sim.PlaceEgg("maiasaura");
+            sim.AdvanceMinutes(3);
             string a = SaveCodec.Encode(sim);
             var r = SaveCodec.Decode(a, sim.Gd);
             Assert.IsTrue(r.Ok, r.Error);
@@ -580,19 +582,21 @@ namespace RidgebackRangers.Sim.Tests
         {
             var gd = TestData.Gd();
             Assert.IsFalse(SaveCodec.Decode("", gd).Ok);
-            Assert.IsFalse(SaveCodec.Decode("{\"game\":\"volt-city\",\"v\":1}", gd).Ok);
+            Assert.IsFalse(SaveCodec.Decode("{\"game\":\"bottle-route\",\"v\":1}", gd).Ok);
             var sim = TestData.NewSim();
             string ok = SaveCodec.Encode(sim);
-            Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"type\":\"van\"", "\"type\":\"ufo\""), gd).Ok);
+            Assert.IsTrue(SaveCodec.Decode(ok, gd).Ok);
+            Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"sp\":\"maiasaura\"", "\"sp\":\"unicorn\""), gd).Ok);
+            Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"role\":\"vet\"", "\"role\":\"pilot\""), gd).Ok);
             Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"phase\":\"plan\"", "\"phase\":\"party\""), gd).Ok);
         }
 
         [Test]
-        public void DecoderAcceptsNegativeCashAndTheReportScreen()
+        public void DecoderAcceptsNegativeCashTheNurseryAndTheReportScreen()
         {
-            var sim = TestData.NewSim();
+            var sim = TestData.Live(33);
             sim.S.Cash = -1234.5;
-            sim.StartDay();
+            sim.MoveAnimal(2, -1);
             sim.AdvanceMinutes(sim.Gd.DayMinutes + 1);
             Assert.AreEqual(Phases.Report, sim.Phase);
             var r = SaveCodec.Decode(SaveCodec.Encode(sim), sim.Gd);
@@ -603,21 +607,26 @@ namespace RidgebackRangers.Sim.Tests
         [Test]
         public void FuzzEveryMinuteOfADayDecodes()
         {
-            // fleet §14 save fuzz: guide phase, purchase moment, mid-route, unloading, report — 0 unreadable saves
-            var sim = TestData.NewSim(21, tutorial: true);
+            // fleet §14 save fuzz: guide phase, purchase moment, rangers mid-road, tram mid-loop, an egg, the report — 0 unreadable saves
+            var sim = TestData.NewSim(34, tutorial: true);
             sim.S.Cash = 1e5;
+            sim.S.Cp = 200;
             sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
             int bad = 0;
             for (int m = 0; m < sim.Gd.DayMinutes + 2; m++)
             {
-                if (m == 30) sim.Buy("machine:h_quay");
-                if (m == 60) sim.Buy("driver");
-                if (m == 61) sim.Dispatch(1, sim.SuggestRoute(1, true));
-                if (m == 200) sim.EndTutorial();
+                if (m == 5) sim.Send(sim.ForcePin(PinKinds.Hungry, 0), TestData.Ranger(sim, Roles.Feeder));
+                if (m == 10) sim.OpenGate();
+                if (m == 30) sim.Buy("tram_car");
+                if (m == 60) sim.EndTutorial();
+                if (m == 61) sim.Dig(0);
+                if (m == 90) sim.PlaceEgg("triceratops");
+                if (m == 120) sim.ForcePin(PinKinds.Escape, 1);
+                if (m == 200) sim.Fire("rain_squall");
+                if (m % 40 == 0) foreach (var p in sim.S.Pins.ToList()) { int r = sim.FreeRanger(sim.RoleFor(p.Kind), p.Node); if (r >= 0 && p.Ranger < 0) sim.Send(p.Id, r); }
                 sim.AdvanceMinutes(1);
-                var r = SaveCodec.Decode(SaveCodec.Encode(sim), sim.Gd);
-                if (!r.Ok) bad++;
+                var res = SaveCodec.Decode(SaveCodec.Encode(sim), sim.Gd);
+                if (!res.Ok) bad++;
             }
             Assert.AreEqual(0, bad);
         }
@@ -629,14 +638,15 @@ namespace RidgebackRangers.Sim.Tests
         public void SevenDaysStayFiniteProfitableAndNeverStuck()
         {
             var rep = BalanceRunner.Run(TestData.Gd(), 42, 7);
-            TestContext.Progress.WriteLine("BALANCE 7 days seed 42\n" + rep.Table());
+            TestContext.Progress.WriteLine("BALANCE 7 days seed 42\n" + rep.Table() + string.Join("\n", rep.Log));
             Assert.IsTrue(rep.Finite);
             Assert.AreEqual(7, rep.Days.Count);
             double week = 0;
-            foreach (var d in rep.Days) { Assert.Greater(d.Collected, 0, "day " + d.Day); week += d.Net; }
-            Assert.Greater(week, 0, "a sensible player earns over a week (money also went into research / machines)");
-            Assert.Greater(rep.Days[6].Net, rep.Days[0].Net, "the network grows: day 7 earns more than day 1");
-            Assert.Less(rep.Days[6].TurnedRate, 0.15, "no wall of turned-away citizens after the forgiving days");
+            foreach (var d in rep.Days) { Assert.Greater(d.Rides, 0, "day " + d.Day); week += d.Net; }
+            Assert.Greater(week, 0, "a sensible player earns over a week (money also went into paddocks / zones)");
+            Assert.Greater(rep.Days[6].Income, rep.Days[0].Income, "the sanctuary grows: day 7 takes more than day 1");
+            Assert.Greater(rep.Days.Sum(d => d.PinsOpened), 7, "there is something to do every day");
+            Assert.Greater(rep.Animals, 3, "the hatchery grew the herd");
         }
 
         [Test]
@@ -645,16 +655,17 @@ namespace RidgebackRangers.Sim.Tests
             var rep = BalanceRunner.Run(TestData.Gd(), 3, 1);
             var d = rep.Days[0];
             Assert.Greater(d.Net, 0, "day 1 earns money");
-            Assert.Less(d.TurnedRate, 0.25, "day 1 is not a wall of turned-away citizens");
+            Assert.Less((double)d.Walked / Math.Max(1, d.Visitors), 0.25, "day 1 is not a wall of walking visitors");
+            Assert.GreaterOrEqual(d.Stars, 5);
         }
 
         [Test]
-        public void TwentyDaysReachOldTownAndMore()
+        public void TwentyDaysReachFernValleyAndMore()
         {
             var rep = BalanceRunner.Run(TestData.Gd(), 9, 20);
             TestContext.Progress.WriteLine("BALANCE 20 days seed 9\n" + rep.Table() + string.Join("\n", rep.Log));
-            Assert.GreaterOrEqual(rep.Chapter, 2, "Old Town unlocked within 20 days (~80 min of play)");
-            Assert.Greater(rep.Points, 3);
+            Assert.GreaterOrEqual(rep.Chapter, 2, "Fern Valley open within 20 days (~90 min of play)");
+            Assert.GreaterOrEqual(rep.Species, 4);
         }
     }
 }

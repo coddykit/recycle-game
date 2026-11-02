@@ -39,8 +39,8 @@ namespace RidgebackRangers.Game
         public string ReviewDeferred { get => S("review_deferred", ""); set => D["review_deferred"] = value ?? ""; }
         /// <summary>Speed Pack owners: skip the day report by itself.</summary>
         public bool AutoSkipReport { get => B("auto_report", false); set => D["auto_report"] = value; }
-        /// <summary>Equipped truck livery ("" = default; premium gold / cosmetic liveries).</summary>
-        public string Livery { get => S("livery", ""); set => D["livery"] = value ?? ""; }
+        /// <summary>Equipped tram skin ("" = default; the Edition's golden tram / cosmetic skins).</summary>
+        public string TramSkin { get => S("tram_skin", ""); set => D["tram_skin"] = value ?? ""; }
 
         public bool Flag(string id) => MiniJson.Arr(D, "flags") is List<object> l && l.Contains(id);
 

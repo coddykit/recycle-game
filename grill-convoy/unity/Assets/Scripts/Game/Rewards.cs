@@ -1,11 +1,12 @@
 // Grill Convoy — opt-in rewarded videos (design §10, fleet §4): AdMob rewarded ONLY, through the kit's RewardedController
 // (UMP consent -> the one MobileAds.Initialize -> load; caps + cooldowns in coddyads/rewarded.json) AND the sim's own
 // reward state (caps, cooldowns, context, cash caps — persisted in the career save). Both must allow it.
-//   offline_x2        ×2 offline pay (bounded)          1/day            cash   (welcome-back card)
-//   emergency_empty   one full machine emptied now      3/day, 10 min    —      (full machine card; "last resort")
-//   fuel_voucher      one route at half fuel cost       2/day, 15 min    —      (route editor)
-//   baler_rescue      baler repaired now                1/day            —      (baler down card; crisis last resort)
-//   daily_bonus       small cash                        1/day            cash   (morning plan)
+//   offline_x2      ×2 offline pay (bounded)                1/day            cash   (welcome-back card)
+//   extra_runner    a helper on one truck for 60 game min    3/day, 15 min    —      (truck sheet, live)
+//   bonus_patties   +20 patties on one truck                 3/day, 10 min    —      (truck sheet)
+//   quick_prep      the commissary batch in progress done    2/day, 20 min    —      (commissary sheet)
+//   crisis_rescue   flare-up out / propane back on a truck   2/day, 20 min    —      (truck sheet; crisis last resort)
+//   daily_bonus     small cash                               1/day            cash   (morning plan)
 // Units for the kit budget = milli-days of income (cash_s = 1 day = 1000): single ≤ 200 (1/5 of the cheapest pack),
 // daily ≤ 500 (1/2). Cash rewards ask for their real size; non-cash ones for 1 unit. ad_free players get the same capped
 // reward WITHOUT a video (rewarded_skipped_paid_user). Never offered in the guide (sim side). Nothing sold is given here.
@@ -35,9 +36,10 @@ namespace GrillConvoy.Game
         public static Dictionary<string, RewardedLimit> KitLimits() => new Dictionary<string, RewardedLimit>
         {
             { "offline_x2", new RewardedLimit(1, 0) },
-            { "emergency_empty", new RewardedLimit(3, 600) },
-            { "fuel_voucher", new RewardedLimit(2, 900) },
-            { "baler_rescue", new RewardedLimit(1, 0) },
+            { "extra_runner", new RewardedLimit(3, 900) },
+            { "bonus_patties", new RewardedLimit(3, 600) },
+            { "quick_prep", new RewardedLimit(2, 1200) },
+            { "crisis_rescue", new RewardedLimit(2, 1200) },
             { "daily_bonus", new RewardedLimit(1, 0) },
         };
 
@@ -96,9 +98,10 @@ namespace GrillConvoy.Game
             if (r == null || !r.Ok) return loc.T("reward.unavailable");
             switch (placement)
             {
-                case "emergency_empty": return loc.T("reward.done_empty");
-                case "fuel_voucher": return loc.T("reward.done_fuel");
-                case "baler_rescue": return loc.T("reward.done_baler");
+                case "extra_runner": return loc.T("reward.done_runner");
+                case "bonus_patties": return loc.F("reward.done_patties", "n", (long)Math.Round(r.Amount));
+                case "quick_prep": return loc.T("reward.done_prep");
+                case "crisis_rescue": return loc.T("reward.done_rescue");
             }
             return loc.F("reward.done_cash", "cash", Fmt.Money((long)Math.Round(r.Amount), loc.Lang));
         }

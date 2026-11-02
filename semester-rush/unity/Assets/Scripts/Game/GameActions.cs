@@ -1,18 +1,16 @@
 // Semester Rush — every player action goes through here (UI buttons, world taps, the guide's checks, tests). Engine-free.
 // Action ids (the guide's targets use the same names):
-//   select_point:<i>   tap a return point (with a truck selected = add / remove it on the route draft)
-//   select_truck:<i>   tap a truck (starts a route draft for it)
-//   go                 dispatch the selected truck along the draft (or add the draft stops to a truck on the road)
-//   suggest            fill the draft with the planner's route
-//   clear              clear the draft / deselect
-//   recall:<t>         call a truck home
-//   depot | baler | till | sell:<m> | fuel_info
-//   policy:<i>:<threshold|fixed|call>:<value>
-//   buy:<id>           sim purchase (machine:<node>, bin_m:<i>, driver, …)
-//   research:<id>
-//   tech:<point|baler|truck>:<i>
-//   auto:<t>:<0|1>
-//   start_day | next_day | speed:<n> | pause | resume
+//   hall:<node>                 tap a lecture hall / lab (opens its timetable board)
+//   building:<node> | site:<node> | open | coins_info     harmless UI (info cards)
+//   cell:<day>:<slot>           tap a board cell of the open hall: empty + a class picked -> move it there; a class in
+//                               the cell -> pick it; empty -> choose a course for it
+//   course:<c>                  put course c in the chosen cell
+//   prof:<c>:<p>                assign professor p to course c
+//   move:<i>:<day>:<slot>:<node>   move class i      remove:<i>      auto_fill      clear_sel
+//   gate:<edge>                 open a gate (a shortcut)
+//   buy:<id>                    sim purchase (build:<site>, widen:<edge>, professor:<faculty>, staff:<dept>, zone:<id>)
+//   dismiss:<dept> | research:<id> | till | staggered:<0|1> | decide:<option> | intake:<choice>
+//   start_week | report | next_week | speed:<n> | pause | resume
 using System;
 using System.Collections.Generic;
 using SemesterRush.Sim;
@@ -32,9 +30,12 @@ namespace SemesterRush.Game
     {
         public readonly GameSession Session;
         public Simulation Sim => Session.Sim;
-        public int SelectedTruck { get; private set; } = -1;
-        public int SelectedPoint { get; private set; } = -1;
-        public readonly List<int> Draft = new List<int>();
+        /// <summary>The room whose board is open (-1 none).</summary>
+        public int BoardHall { get; private set; } = -1;
+        public int SelectedDay { get; private set; } = -1;
+        public int SelectedSlot { get; private set; } = -1;
+        public int SelectedPlacement { get; private set; } = -1;
+        public bool CellChosen => SelectedDay >= 0 && SelectedSlot >= 0;
         /// <summary>The guide / UI may forbid actions (spotlight on another target). Null = everything allowed.</summary>
         public Func<string, bool> Allowed;
         /// <summary>(action id, result) after every action — the guide advances on these.</summary>
@@ -42,8 +43,6 @@ namespace SemesterRush.Game
         public Action<string, Dictionary<string, object>> Analytics = (n, p) => { };
 
         public GameActions(GameSession session) { Session = session; }
-
-        public RouteEstimate DraftEstimate => SelectedTruck >= 0 && Draft.Count > 0 ? Sim.Estimate(SelectedTruck, Draft) : null;
 
         public ActionResult Run(string id)
         {
@@ -63,133 +62,129 @@ namespace SemesterRush.Game
 
         static int Int(string[] a, int i, int def = -1) => a.Length > i && int.TryParse(a[i], out int v) ? v : def;
 
+        public void ClearSelection() { SelectedDay = SelectedSlot = SelectedPlacement = -1; }
+
+        /// <summary>The UI picks a class directly (the guide's lunch step, a session card).</summary>
+        public void SelectPlacement(int i) { SelectedPlacement = i; SelectedDay = SelectedSlot = -1; }
+
+        ActionResult Saved(string err, double v = 0)
+        {
+            if (err != "") return ActionResult.Fail(err);
+            Session.Save();
+            return ActionResult.Done(v);
+        }
+
         ActionResult Do(string id)
         {
             var a = id.Split(':');
             var sim = Sim;
             switch (a[0])
             {
-                case "select_point":
+                case "hall":
                 {
-                    int i = Int(a, 1);
-                    if (i < 0 || i >= sim.S.Points.Count) return ActionResult.Fail("invalid");
-                    SelectedPoint = i;
-                    if (SelectedTruck >= 0)
-                    {
-                        if (Draft.Contains(i)) Draft.Remove(i);
-                        else
-                        {
-                            if (!sim.CanServe(sim.S.Trucks[SelectedTruck], sim.S.Points[i])) return ActionResult.Fail("unreachable");
-                            Draft.Add(i);
-                        }
-                    }
-                    return ActionResult.Done(i);
+                    int node = Int(a, 1);
+                    var b = sim.BuildingAt(node);
+                    if (b == null || !b.Built || !sim.DefOf(b).Teaching) return ActionResult.Fail("not_room");
+                    if (BoardHall != node) ClearSelection();
+                    BoardHall = node;
+                    return ActionResult.Done(node);
                 }
-                case "select_truck":
-                {
-                    int t = Int(a, 1);
-                    if (t < 0 || t >= sim.S.Trucks.Count) return ActionResult.Fail("invalid");
-                    if (SelectedTruck != t) Draft.Clear();
-                    SelectedTruck = t;
-                    SelectedPoint = -1;
-                    return ActionResult.Done(t);
-                }
-                case "clear":
-                    Draft.Clear(); SelectedTruck = -1; SelectedPoint = -1;
-                    return ActionResult.Done();
-                case "suggest":
-                {
-                    if (SelectedTruck < 0) return ActionResult.Fail("no_truck");
-                    var r = sim.SuggestRoute(SelectedTruck, true);
-                    Draft.Clear();
-                    Draft.AddRange(r);
-                    return r.Count > 0 ? ActionResult.Done(r.Count) : ActionResult.Fail("nothing_due");
-                }
-                case "go":
-                {
-                    if (SelectedTruck < 0) return ActionResult.Fail("no_truck");
-                    if (Draft.Count == 0) return ActionResult.Fail("no_stops");
-                    var t = sim.S.Trucks[SelectedTruck];
-                    string err;
-                    if (t.Busy)
-                    {
-                        err = "";
-                        foreach (int i in Draft) { string e = sim.AddStop(SelectedTruck, i); if (e != "") err = e; }
-                    }
-                    else err = sim.Dispatch(SelectedTruck, new List<int>(Draft));
-                    if (err != "") return ActionResult.Fail(err);
-                    Analytics("route_dispatch", new Dictionary<string, object> { { "stops", (long)Draft.Count }, { "truck", t.Type } });
-                    Draft.Clear();
-                    SelectedTruck = -1;
-                    Session.Save();
-                    return ActionResult.Done();
-                }
-                case "recall":
-                {
-                    string e = sim.Recall(Int(a, 1, SelectedTruck));
-                    return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
-                }
-                case "depot":
-                case "baler":
-                case "fuel_info":
+                case "building":
+                case "site":
                 case "open":
+                case "coins_info":
                     return ActionResult.Done();
-                case "till":
-                    return ActionResult.Done(sim.CollectTill());
-                case "sell":
+                case "cell":
                 {
-                    double got = sim.Sell(Int(a, 1, 0));
-                    if (got <= 0) return ActionResult.Fail("nothing");
-                    Session.Save();
-                    return ActionResult.Done(got);
+                    int day = Int(a, 1), slot = Int(a, 2);
+                    if (BoardHall < 0) return ActionResult.Fail("no_board");
+                    if (day < 0 || day >= sim.Gd.DaysPerWeek || slot < 0 || slot >= sim.Gd.SlotCount) return ActionResult.Fail("invalid");
+                    int here = sim.At(day, slot, BoardHall);
+                    if (here >= 0) { SelectPlacement(here); return ActionResult.Done(here); }
+                    if (SelectedPlacement >= 0 && SelectedPlacement < sim.ActivePlan.Count)
+                    {
+                        string err = sim.Move(SelectedPlacement, day, slot, BoardHall);
+                        if (err != "") return ActionResult.Fail(err);
+                        ClearSelection();
+                        Session.Save();
+                        return ActionResult.Done();
+                    }
+                    if (sim.Past(day, slot)) return ActionResult.Fail("past");
+                    SelectedDay = day; SelectedSlot = slot; SelectedPlacement = -1;
+                    return ActionResult.Done();
                 }
-                case "policy":
+                case "course":
                 {
-                    string e = sim.SetPolicy(Int(a, 1), a.Length > 2 ? a[2] : "", Int(a, 3, 0));
-                    if (e != "") return ActionResult.Fail(e);
-                    Session.Save();
-                    return ActionResult.Done();
+                    int c = Int(a, 1);
+                    if (BoardHall < 0 || !CellChosen) return ActionResult.Fail("no_cell");
+                    string err = sim.Place(c, SelectedDay, SelectedSlot, BoardHall);
+                    if (err != "") return ActionResult.Fail(err);
+                    ClearSelection();
+                    return Saved("");
+                }
+                case "prof": return Saved(sim.AssignProf(Int(a, 1), Int(a, 2)));
+                case "move":
+                {
+                    string err = sim.Move(Int(a, 1), Int(a, 2), Int(a, 3), Int(a, 4));
+                    if (err == "") ClearSelection();
+                    return Saved(err);
+                }
+                case "remove":
+                {
+                    string err = sim.Remove(Int(a, 1));
+                    if (err == "") ClearSelection();
+                    return Saved(err);
+                }
+                case "auto_fill":
+                {
+                    int n = sim.AutoFill(sim.SmartFill);
+                    Analytics("timetable_auto_fill", new Dictionary<string, object> { { "placed", (long)n }, { "smart", sim.SmartFill ? 1L : 0L } });
+                    if (n <= 0) return ActionResult.Fail(sim.Missing > 0 ? "no_room_left" : "nothing_missing");
+                    return Saved("", n);
+                }
+                case "clear_sel": ClearSelection(); return ActionResult.Done();
+                case "gate":
+                {
+                    string e = sim.Buy("gate:" + Int(a, 1));
+                    if (e == "") Analytics("sim_purchase", new Dictionary<string, object> { { "item", "gate" } });
+                    return Saved(e);
                 }
                 case "buy":
                 {
                     string item = id.Substring(4);
                     string e = sim.Buy(item);
-                    if (e != "") return ActionResult.Fail(e);
-                    Analytics("sim_purchase", new Dictionary<string, object> { { "item", item.Split(':')[0] } });
-                    Session.Save();
-                    return ActionResult.Done();
+                    if (e == "") Analytics("sim_purchase", new Dictionary<string, object> { { "item", item.Split(':')[0] } });
+                    return Saved(e);
                 }
+                case "dismiss": return Saved(sim.Dismiss(a.Length > 1 ? a[1] : ""));
                 case "research":
                 {
                     string e = sim.StartResearch(a.Length > 1 ? a[1] : "");
-                    if (e != "") return ActionResult.Fail(e);
-                    Session.Save();
-                    return ActionResult.Done();
+                    if (e == "") Analytics("research_start", new Dictionary<string, object> { { "id", a[1] } });
+                    return Saved(e);
                 }
-                case "tech":
+                case "till": return ActionResult.Done(sim.CollectTill());
+                case "staggered": return Saved(sim.SetStaggered(Int(a, 1, 0) == 1));
+                case "decide":
                 {
-                    string e = sim.SendTech(a.Length > 1 ? a[1] : "", Int(a, 2, 0));
-                    return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
+                    if (sim.S.Pending == null) return ActionResult.Fail("invalid");
+                    return Saved(sim.Decide(sim.S.Pending.Id, a.Length > 1 ? a[1] : ""));
                 }
-                case "auto":
-                {
-                    string e = sim.SetAuto(Int(a, 1), Int(a, 2, 0) == 1);
-                    return e == "" ? ActionResult.Done() : ActionResult.Fail(e);
-                }
-                case "start_day":
-                    if (!sim.StartDay()) return ActionResult.Fail("phase");
+                case "intake": return Saved(sim.SetIntake(a.Length > 1 ? a[1] : ""));
+                case "start_week":
+                    if (!sim.StartWeek()) return ActionResult.Fail("phase");
                     sim.SetSpeed(Math.Max(1, Session.Settings.SpeedDefault));
-                    Session.Save();
-                    return ActionResult.Done();
-                case "next_day":
-                    if (!sim.NextDay()) return ActionResult.Fail("phase");
-                    Draft.Clear(); SelectedTruck = -1;
-                    Session.Save();
-                    return ActionResult.Done();
+                    ClearSelection();
+                    return Saved("");
+                case "report":
+                    return sim.Phase == Phases.Report ? ActionResult.Done() : ActionResult.Fail("phase");
+                case "next_week":
+                    if (!sim.NextWeek()) return ActionResult.Fail("phase");
+                    ClearSelection();
+                    return Saved("");
                 case "speed":
                 {
-                    int s = Int(a, 1, 1);
-                    sim.SetSpeed(s);
+                    sim.SetSpeed(Int(a, 1, 1));
                     Session.Settings.SpeedDefault = sim.S.Speed;
                     return ActionResult.Done(sim.S.Speed);
                 }

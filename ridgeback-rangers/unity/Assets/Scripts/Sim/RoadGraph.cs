@@ -1,4 +1,4 @@
-// Ridgeback Rangers sim core — engine independent. Road network: all-pairs shortest paths (Floyd–Warshall; the map has ~30
+// Ridgeback Rangers sim core — engine independent. The service road network: all-pairs shortest paths (Floyd–Warshall; the map has ~20
 // nodes) in two variants: every road, and big-vehicle roads only (alleys closed). Computed once from the data, never per
 // frame (fleet perf rule: route planning runs when the plan changes).
 using System;
@@ -89,7 +89,7 @@ namespace RidgebackRangers.Sim
         /// <summary>Position along a path at km from its start (for the diorama's trucks).</summary>
         public (double x, double y, double heading) PointAt(List<int> path, double km)
         {
-            if (path == null || path.Count == 0) { var dep = Gd.Nodes[Math.Max(0, Gd.DepotNode)]; return (dep.X, dep.Y, 0); }
+            if (path == null || path.Count == 0) { var hq = Gd.Nodes[Math.Max(0, Gd.HqNode)]; return (hq.X, hq.Y, 0); }
             if (path.Count == 1) { var only = Gd.Nodes[path[0]]; return (only.X, only.Y, 0); }
             double left = Math.Max(0, km);
             for (int i = 1; i < path.Count; i++)

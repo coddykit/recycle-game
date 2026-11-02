@@ -1,6 +1,7 @@
-// Semester Rush sim core — crises (design §7). Short (≤ 2 days), never game over; never during the guide or the first
-// forgiving days. Day-wide ones (heat wave, match day, fuel spike, bale crash) are announced in the morning plan so the
-// player can prepare (pre-position a truck at the stadium); the others land at a random minute of the live day.
+// Semester Rush sim core — crises (plan section 7). Short (a day or two), never game over, light satire; never during the
+// guide or the first week. Snow and open days are known in the morning (plan around them); the others land at a random
+// minute of the day. Two ask the dean to choose (protest, a poached professor) with a sensible default at the deadline.
+// "Call the city for help" (rewarded, one per day) ends a running one.
 using System;
 using System.Collections.Generic;
 
@@ -8,167 +9,202 @@ namespace SemesterRush.Sim
 {
     public sealed partial class Simulation
     {
-        static readonly HashSet<string> Announced = new HashSet<string> { "heat_wave", "match_day", "fuel_spike", "bale_crash" };
-
         bool EventEligible(EventDef e)
         {
-            if (S.Day < e.MinDay) return false;
-            if (!string.IsNullOrEmpty(e.District) && !Unlocked(e.District)) return false;
+            if (S.Week < e.MinWeek) return false;
+            if (e.Exam != ExamWeek && e.Exam) return false;
+            if (e.Id == "dorm_flu" && Beds <= 0) return false;
+            if (e.Id == "poached" && S.Profs.Count < 2) return false;
+            if (e.Decision && S.Pending != null) return false;
             if (S.Events.Exists(a => a.Id == e.Id)) return false;
             if (S.Planned.Exists(a => a.Id == e.Id)) return false;
             return true;
         }
 
+        public bool CrisesAllowed => !S.Tutorial && S.Week > Gd.EventFreeWeeks;
+
         void PlanDay()
         {
             S.Planned.Clear();
-            if (S.Tutorial || S.Day <= Gd.EventFreeDays) return;
+            if (!CrisesAllowed) return;
             double expected = Gd.EventsPerDay[Math.Min(Chapter, Gd.EventsPerDay.Length - 1)];
-            int n = Sample(expected);
+            if (ExamWeek) expected += 0.3;
+            int n = (int)Math.Floor(expected);
+            if (Rng.Frand() < expected - n) n++;
             for (int k = 0; k < n; k++)
             {
                 var pool = Gd.Events.FindAll(EventEligible);
                 if (pool.Count == 0) break;
                 var w = new double[pool.Count];
-                for (int i = 0; i < w.Length; i++) w[i] = pool[i].Weight;
+                for (int i = 0; i < w.Length; i++) w[i] = pool[i].Weight * (pool[i].Exam ? 3 : 1);
                 var e = pool[Rng.PickWeighted(w)];
-                if (Announced.Contains(e.Id)) Fire(e.Id);
-                else S.Planned.Add(new PlannedEvent { Id = e.Id, At = Gd.DayStart + 60 + Rng.Frand() * (Gd.DayMinutes - 120) });
+                if (e.Announce) Fire(e.Id);
+                else S.Planned.Add(new PlannedEvent { Id = e.Id, At = Gd.Slots[0] + Rng.Frand() * (Gd.Slots[Gd.SlotCount - 1] - Gd.Slots[0]) });
             }
         }
 
-        void RunPlanned()
+        void RunPlanned(double upTo)
         {
             for (int i = S.Planned.Count - 1; i >= 0; i--)
             {
-                if (S.Planned[i].At > S.Minute) continue;
+                if (S.Planned[i].At > upTo) continue;
                 string id = S.Planned[i].Id;
                 S.Planned.RemoveAt(i);
                 Fire(id);
             }
         }
 
-        EventDef Def(string id) => Gd.Events.Find(e => e.Id == id) ?? new EventDef { Id = id, Mult = 1, Days = 1 };
+        EventDef Def(string id) => Gd.Events.Find(e => e.Id == id) ?? new EventDef { Id = id, Mult = 1, Days = 1, ClosedMin = 300 };
 
-        int RandomPoint(Predicate<PointState> ok)
-        {
-            var idx = new List<int>();
-            for (int i = 0; i < S.Points.Count; i++) if (ok(S.Points[i])) idx.Add(i);
-            return idx.Count == 0 ? -1 : idx[Rng.RangeI(0, idx.Count - 1)];
-        }
+        int Pick(List<int> idx) => idx.Count == 0 ? -1 : idx[Rng.RangeI(0, idx.Count - 1)];
 
-        /// <summary>Applies a crisis now (also used by tests and the balance bot). Returns false when it found no target.</summary>
+        /// <summary>Applies a crisis now (also used by tests and the balance bot). False when it found no target.</summary>
         public bool Fire(string id)
         {
             var e = Def(id);
             switch (id)
             {
-                case "heat_wave":
-                case "fuel_spike":
-                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day + Math.Max(1, e.Days) - 1, Mult = e.Mult });
-                    Emit("crisis", -1, -1, e.Mult, id);
-                    return true;
-                case "bale_crash":
-                {
-                    int m = Rng.RangeI(0, Mats.N - 1);
-                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day + Math.Max(1, e.Days) - 1, Mult = e.Mult, Target = m });
-                    Emit("crisis", m, -1, e.Mult, id);
-                    return true;
-                }
-                case "match_day":
-                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day, Mult = e.Mult, From = e.From, To = e.To });
-                    Emit("crisis", -1, -1, e.From, id);
-                    return true;
-                case "jam":
-                {
-                    int i = RandomPoint(p => p.IsMachine && !p.Jammed);
-                    if (i < 0) return false;
-                    Jam(i, "crisis");
-                    Emit("crisis", i, -1, 0, id);
-                    return true;
-                }
-                case "sensor_offline":
-                {
-                    int i = RandomPoint(p => p.IsMachine && !p.SensorOffline && !(Has("sensor_redundancy") && p.Sensor));
-                    if (i < 0) return false;
-                    var p = S.Points[i];
-                    p.SensorOffline = true;
-                    p.FrozenPct = Math.Min(0.4, DisplayPct(p));   // "the app says available"
-                    Emit("crisis", i, -1, 0, id);
-                    return true;
-                }
-                case "bulk_returner":
-                {
-                    int i = RandomPoint(p => p.IsMachine && !p.Jammed);
-                    if (i < 0) return false;
-                    int n = Rng.RangeI(e.Min, e.Max);
-                    if (S.Depot.Centre)
-                    {
-                        // the counting centre takes big hauls: no blocked machine, it counts them itself at the lower
-                        // bulk fee and sends the sorted material straight to the baler / glass bay
-                        double[] split = { Math.Round(n * 0.6), Math.Round(n * 0.3), 0 };
-                        split[Mats.Glass] = n - split[Mats.Pet] - split[Mats.Alu];
-                        for (int m = 0; m < Mats.N; m++) S.Depot.BalerIn[m] += split[m] * Gd.Materials[m].Kg;
-                        double fee = n * Gd.BulkFee * FeeMult;
-                        S.Cash += fee;
-                        S.Today.Fees += fee;
-                        Emit("crisis", i, -1, n, "bulk_centre");
-                        return true;
-                    }
-                    Deposit(i, n, new[] { 0.6, 0.3, 0.1 }, -1);
-                    S.Points[i].BusyUntil = S.Minute + e.BusyMin;
-                    Emit("crisis", i, -1, n, id);
-                    return true;
-                }
-                case "breakdown":
-                {
-                    int ti = S.Trucks.FindIndex(t => t.Status == TruckStatus.Drive);
-                    if (ti < 0) return false;
-                    Breakdown(ti, e.BrokenMin);
-                    return true;
-                }
-                case "baler_down":
-                    if (S.Depot.BalerDown) return false;
-                    BalerDown("crisis");
+                case "snow_day":
+                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = AbsDay, Mult = Gd.SnowSpeed });
                     Emit("crisis", -1, -1, 0, id);
                     return true;
-                case "glass_break":
+                case "open_day":
+                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = AbsDay, Mult = e.Bonus });
+                    Emit("crisis", -1, -1, 0, id);
+                    return true;
+                case "dorm_flu":
+                    if (Beds <= 0) return false;
+                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = AbsDay + Math.Max(1, e.Days) - 1, Mult = e.Mult });
+                    Emit("crisis", -1, -1, 0, id);
+                    return true;
+                case "fire_drill":
+                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = AbsDay });
+                    Emit("crisis", -1, -1, 0, id);
+                    return true;
+                case "sick_prof":
                 {
-                    int ti = S.Trucks.FindIndex(t => t.Load[Mats.Glass] > 0);
-                    if (ti < 0) return false;
-                    GlassBreak(ti);
+                    var idx = new List<int>();
+                    for (int p = 0; p < S.Profs.Count; p++)
+                        if (S.Profs[p].OffDay != AbsDay && ActivePlan.Exists(x => x.Day == S.Day && S.CourseProf[x.Course] == p && !Past(x.Day, x.Slot))) idx.Add(p);
+                    int pi = Pick(idx);
+                    if (pi < 0) return false;
+                    S.Profs[pi].OffDay = AbsDay;
+                    Emit("crisis", pi, -1, 0, id);
+                    return true;
+                }
+                case "burst_pipe":
+                {
+                    var idx = new List<int>();
+                    foreach (var b in S.Buildings)
+                        if (b.Built && DefOf(b).Teaching && ActivePlan.Exists(x => x.Day == S.Day && x.Node == b.Node && !Past(x.Day, x.Slot))) idx.Add(b.Node);
+                    int node = Pick(idx);
+                    if (node < 0) return false;
+                    BuildingAt(node).ClosedUntil = S.Minute + e.ClosedMin / (1.0 + 0.5 * Staff(Depts.Maintenance));
+                    Emit("crisis", node, -1, BuildingAt(node).ClosedUntil, id);
+                    return true;
+                }
+                case "protest":
+                    S.Pending = new Decision { Id = id, Deadline = S.Minute + Gd.DecisionMin };
+                    Emit("crisis", -1, -1, 0, id);
+                    Emit("decision", -1, -1, 0, id);
+                    return true;
+                case "poached":
+                {
+                    var idx = new List<int>();
+                    for (int p = 0; p < S.Profs.Count; p++) if (!S.Profs[p].Leaving) idx.Add(p);
+                    int pi = Pick(idx);
+                    if (pi < 0) return false;
+                    S.Pending = new Decision { Id = id, Target = pi, Deadline = S.Minute + Gd.DecisionMin };
+                    Emit("crisis", pi, -1, 0, id);
+                    Emit("decision", pi, -1, 0, id);
+                    return true;
+                }
+                case "power_outage":
+                {
+                    var slots = new List<int>();
+                    for (int k = 0; k < Gd.SlotCount; k++)
+                        if (!Past(S.Day, k) && ActivePlan.Exists(x => x.Day == S.Day && x.Slot == k)) slots.Add(k);
+                    int slot = Pick(slots);
+                    if (slot < 0) return false;
+                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = AbsDay, Target = slot });
+                    Emit("crisis", slot, -1, 0, id);
                     return true;
                 }
             }
             return false;
         }
 
-        void Breakdown(int ti, double minutes)
+        /// <summary>Options of the open decision: protest -> concede | talk; poached -> retain | let_go.</summary>
+        public static string[] Options(string decision) => decision == "protest" ? new[] { "concede", "talk" } : decision == "poached" ? new[] { "retain", "let_go" } : new string[0];
+
+        /// <summary>The cost of an option in $ (for the card).</summary>
+        public double OptionCost(string option) => option == "concede" ? Math.Round(0.5 * DayIncome()) : option == "retain" ? 2 * Gd.ProfWage : 0;
+
+        string DefaultOption(Decision d) => d.Id == "poached" ? (S.Cash >= OptionCost("retain") ? "retain" : "let_go") : "talk";
+
+        public string Decide(string id, string option)
         {
-            var t = S.Trucks[ti];
-            if (t.Status == TruckStatus.Broken) return;
-            t.ResumeStatus = t.Status;
-            t.Status = TruckStatus.Broken;
-            t.TimeLeft = minutes;
-            Emit("crisis", ti, -1, minutes, "breakdown");
+            var d = S.Pending;
+            if (d == null || d.Id != id) return "invalid";
+            if (Array.IndexOf(Options(id), option) < 0) return "invalid";
+            double cost = OptionCost(option);
+            switch (option)
+            {
+                case "concede": S.Cash -= cost; S.ThisWeek.Concessions += cost; break;
+                case "talk": S.Events.Add(new ActiveEvent { Id = "protest", UntilDay = AbsDay, Mult = Def("protest").Mult }); Rewalk(); break;
+                case "retain": S.Cash -= cost; S.ThisWeek.Concessions += cost; break;
+                case "let_go": if (d.Target >= 0 && d.Target < S.Profs.Count) S.Profs[d.Target].Leaving = true; break;
+            }
+            S.Pending = null;
+            Emit("decided", d.Target, -1, cost, id + ":" + option);
+            return "";
         }
 
-        void GlassBreak(int ti)
+        void EveningEvents()
         {
-            var t = S.Trucks[ti];
-            double lost = t.Load[Mats.Glass];
-            t.Load[Mats.Glass] = 0;
-            Emit("crisis", ti, -1, lost, "glass_break");
+            foreach (var e in S.Events)
+            {
+                if (e.Id != "open_day") continue;
+                double rate = S.TripsToday <= 0 ? 0 : (double)S.LateToday / S.TripsToday;
+                double bonus = Math.Round(e.Mult * DayIncome() * Math.Max(0, 1 - rate * 2));
+                S.Cash += bonus;
+                S.ThisWeek.EventIncome += bonus;
+                if (rate < 0.1) S.Prestige = Math.Min(Gd.PrestigeMax, S.Prestige + 2);
+                Emit("open_day_done", -1, -1, bonus);
+            }
         }
 
-        /// <summary>Crises active today (for the morning plan card and the HUD chips).</summary>
+        /// <summary>The crisis "Call the city for help" would end now ("" = none).</summary>
+        public string HelpableCrisis()
+        {
+            foreach (var id in new[] { "snow_day", "dorm_flu", "power_outage", "protest" }) if (Active(id)) return id;
+            foreach (var b in S.Buildings) if (b.ClosedUntil > S.Minute) return "burst_pipe";
+            foreach (var p in S.Profs) if (p.OffDay == AbsDay) return "sick_prof";
+            if (S.Pending != null && S.Pending.Id == "protest") return "protest";
+            return "";
+        }
+
+        void EndCrisis(string id)
+        {
+            switch (id)
+            {
+                case "burst_pipe": foreach (var b in S.Buildings) b.ClosedUntil = 0; break;
+                case "sick_prof": foreach (var p in S.Profs) if (p.OffDay == AbsDay) p.OffDay = -1; break;
+                case "protest": if (S.Pending != null && S.Pending.Id == "protest") S.Pending = null; S.Events.RemoveAll(e => e.Id == "protest"); break;
+                default: S.Events.RemoveAll(e => e.Id == id); break;
+            }
+            Rewalk();
+            Emit("crisis_end", -1, -1, 0, id);
+        }
+
+        /// <summary>Crises active now (HUD chips).</summary>
         public List<string> ActiveCrises()
         {
             var o = new List<string>();
-            foreach (var e in S.Events) o.Add(e.Id);
-            if (S.Depot.BalerDown) o.Add("baler_down");
-            foreach (var p in S.Points) { if (p.Jammed) { o.Add("jam"); break; } }
-            foreach (var t in S.Trucks) { if (t.Status == TruckStatus.Broken) { o.Add("breakdown"); break; } }
+            foreach (var e in S.Events) if (!o.Contains(e.Id)) o.Add(e.Id);
+            foreach (var b in S.Buildings) if (b.ClosedUntil > S.Minute) { o.Add("burst_pipe"); break; }
+            foreach (var p in S.Profs) if (p.OffDay == AbsDay) { o.Add("sick_prof"); break; }
+            if (S.Pending != null && !o.Contains(S.Pending.Id)) o.Add(S.Pending.Id);
             return o;
         }
     }

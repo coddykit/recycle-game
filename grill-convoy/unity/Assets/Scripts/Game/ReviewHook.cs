@@ -2,7 +2,7 @@
 // session ok, ≥ 240 s real play, never in the guide / a window / the background, ≤ 3 asks ≥ 30 days apart, OS sheet only,
 // no "do you like it" card, nothing given for a rating). This class only says WHICH moments are wow moments:
 //   * the first good day report (≥ 6 of 9 stars) — ~4 minutes into the first session, right after the guide;
-//   * the first bale sold for ≥ 1.1 × the base price;   * a new district unlocked.
+//   * a new pitch unlocked (Boardwalk, Stadium);   * a halftime stampede beaten (≥ 85 % of the day's customers served).
 // A moment that happens inside the guide is deferred to the first moment after it (Deferred, kept in settings).
 using GrillConvoy.Sim;
 
@@ -17,8 +17,12 @@ namespace GrillConvoy.Game
         {
             switch (e.Type)
             {
-                case "day_done": return e.B >= 6 ? "good_day" : "";
-                case "sold": return e.A >= 0 && e.A < Mats.N && sim.MarketMult(e.A) >= 1.1 ? "good_sale" : "";
+                case "day_done":
+                {
+                    if (e.B >= 6) return "good_day";
+                    var d = sim.S.History.Count > 0 ? sim.S.History[sim.S.History.Count - 1] : null;
+                    return d != null && sim.MatchDay(d.Day) && d.Arrivals > 0 && d.LostRate <= 0.15 && sim.PitchOpen(sim.Gd.Pitches.Find(n => sim.Gd.Nodes[n].Match)) ? "rush_beaten" : "";
+                }
                 case "district": return "district";
             }
             return "";

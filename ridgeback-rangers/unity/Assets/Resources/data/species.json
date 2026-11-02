@@ -1,0 +1,18 @@
+{
+  "_doc": "MVP species (8 of the full release's 28-32). Public scientific names only. family = the shared model (horned, plated, duckbill, longneck); scale + tint = the colour morph. diet fern|fruit (both from the Fodder Barn in the MVP). temperament calm|skittish|bossy. space = paddock slots one animal takes. appeal = visitor joy per adult at full mood. crates = feed crates per meal; hunger_h = hunger gained per game hour (0 full .. 1 starving). hatch_min = real minutes in the incubator (<= 20). fence = minimum fence tier.",
+  "temperament": {
+    "calm-calm": 0.92, "calm-skittish": 0.72, "calm-bossy": 0.5,
+    "skittish-skittish": 0.62, "skittish-bossy": 0.15, "bossy-bossy": 0.3
+  },
+  "harmony": { "same_species": 0.15, "other_diet": 0.08, "biome_mismatch": -0.25 },
+  "species": [
+    { "id": "triceratops",     "family": "horned",   "biome": "forest", "diet": "fern",  "temperament": "calm",     "space": 2, "appeal": 10, "crates": 1.0, "hunger_h": 0.085, "hatch_min": 6,  "fence": 1, "scale": 1.0,  "tint": "#C9B48A" },
+    { "id": "protoceratops",   "family": "horned",   "biome": "dune",   "diet": "fern",  "temperament": "skittish", "space": 1, "appeal": 7,  "crates": 0.5, "hunger_h": 0.095, "hatch_min": 7,  "fence": 1, "scale": 0.6,  "tint": "#E2B07A" },
+    { "id": "kentrosaurus",    "family": "plated",   "biome": "forest", "diet": "fern",  "temperament": "bossy",    "space": 2, "appeal": 13, "crates": 1.0, "hunger_h": 0.09,  "hatch_min": 9,  "fence": 2, "scale": 0.8,  "tint": "#9FB572" },
+    { "id": "miragaia",        "family": "plated",   "biome": "dune",   "diet": "fern",  "temperament": "calm",     "space": 2, "appeal": 12, "crates": 1.0, "hunger_h": 0.08,  "hatch_min": 10, "fence": 1, "scale": 1.0,  "tint": "#D89A6A" },
+    { "id": "maiasaura",       "family": "duckbill", "biome": "forest", "diet": "fern",  "temperament": "calm",     "space": 2, "appeal": 9,  "crates": 1.0, "hunger_h": 0.085, "hatch_min": 6,  "fence": 1, "scale": 1.0,  "tint": "#B7C48E" },
+    { "id": "parasaurolophus", "family": "duckbill", "biome": "forest", "diet": "fruit", "temperament": "skittish", "space": 2, "appeal": 12, "crates": 1.0, "hunger_h": 0.09,  "hatch_min": 8,  "fence": 1, "scale": 1.1,  "tint": "#8FB0C9" },
+    { "id": "camarasaurus",    "family": "longneck", "biome": "forest", "diet": "fruit", "temperament": "calm",     "space": 3, "appeal": 17, "crates": 2.0, "hunger_h": 0.075, "hatch_min": 12, "fence": 1, "scale": 1.0,  "tint": "#A8A9B5" },
+    { "id": "saltasaurus",     "family": "longneck", "biome": "dune",   "diet": "fern",  "temperament": "calm",     "space": 3, "appeal": 16, "crates": 2.0, "hunger_h": 0.075, "hatch_min": 14, "fence": 1, "scale": 0.85, "tint": "#C79A78" }
+  ]
+}

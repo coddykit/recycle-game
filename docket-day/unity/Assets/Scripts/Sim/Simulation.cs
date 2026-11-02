@@ -1,10 +1,14 @@
 // Docket Day sim core — engine independent (no UnityEngine). C# 9 / .NET Standard 2.1.
-// One career: a coastal region's deposit-return network. A work day runs 09:00-19:00 game time (~4 real minutes at 1x).
-//   plan  (09:00, paused)  — routes, policies, purchases;
-//   live                   — citizens bring bottles to return points, trucks drive routes, the depot counts and bales;
-//   report (19:00)         — trucks come home, the depot wraps up, costs are paid, stars + Green Rating; NextDay().
-// Partial class: this file = construction, time, demand (citizens); Fleet.cs = trucks, routes, technicians;
-// Depot.cs = count line, baler, market; Economy.cs = day end, purchases, research, offline, rewards; Crises.cs = events.
+// One career: a small law firm in the fictional harbour city of Calderport. A work day runs 09:00-18:00 game time
+// (3 real minutes at 1x). The job is not waiting for timers: it is fitting people-hours into a calendar of dated
+// milestones (filing windows, evidence, prep, court dates) that collides with itself.
+//   plan  (09:00, paused)  — intake decisions, who works on what (the Docket Rail), settle or litigate;
+//   live                   — staff burn their daily hours on their tasks (earliest deadline first), clients walk in,
+//                            hearings start at 10:00 / 14:00 and end in a verdict;
+//   report (18:00)         — late filings are sanctioned, salaries + rent paid, stars; the billing run turns the day's
+//                            work into invoices; NextDay().
+// Partial class: this file = construction, queries, time, work; Matters.cs = intake, matters, hearings, odds,
+// collisions, assignment; Economy.cs = day end, billing, hiring, rooms, chapters, offline, rewards; Crises.cs = events.
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +16,8 @@ namespace DocketDay.Sim
 {
     public sealed class SimEvent
     {
-        public string Type;     // deposit, turned, jam, serviced, unloaded, bale, sold, crisis, research_done, district, day_done, day_start, ...
+        public string Type;     // walkin, walked_out, accepted, declined, referred, task_done, revealed, hearing_start, verdict, settled,
+                                // continued, late, crisis, room_done, chapter, hired, fired, billed, day_live, day_done, day_start, reward, ...
         public int A = -1, B = -1;
         public double V;
         public string Text = "";
@@ -21,14 +26,13 @@ namespace DocketDay.Sim
 
     public sealed partial class Simulation
     {
+        public const int NamePool = 24;
         public readonly GameData Gd;
         public State S;
         public readonly Rng Rng;
         readonly List<SimEvent> events = new List<SimEvent>();
         readonly Dictionary<string, bool> perks = new Dictionary<string, bool>();
-        double[] litresPerContainer;  // per point node: expected litres per deposited container (estimate model)
-        /// <summary>Emit deposit / turned events for the diorama's walkers (off in balance bots).</summary>
-        public bool EmitCrowd = true;
+        int lastAutoMinute = -1;
 
         public Simulation(GameData gd, long seed)
         {
@@ -45,6 +49,12 @@ namespace DocketDay.Sim
             Gd = gd ?? throw new ArgumentNullException(nameof(gd));
             S = s;
             Rng = new Rng(1) { State = s.RngState <= 0 ? 1 : s.RngState };
+            if (S.Standing == null || S.Standing.Length != Gd.Areas.Count)
+            {
+                var st = new double[Gd.Areas.Count];
+                for (int i = 0; i < st.Length; i++) st[i] = S.Standing != null && i < S.Standing.Length ? S.Standing[i] : Gd.StartStanding;
+                S.Standing = st;
+            }
         }
 
         public JObj Snapshot()
@@ -59,36 +69,37 @@ namespace DocketDay.Sim
             S.Minute = Gd.DayStart;
             S.Phase = Phases.Plan;
             S.Cash = Gd.StartCash;
-            S.Rating = Gd.StartRating;
-            S.Drivers = Gd.StartDrivers;
-            S.Techs = Gd.StartTechs;
-            S.Districts.Add(Gd.Districts.Count > 0 ? Gd.Districts[0].Id : "harbour");
-            S.Depot = new DepotState { Lines = Gd.LinesStart, YardCap = Gd.YardCap, IntakeCap = Gd.IntakeCap };
-            S.Depot.BalerIn[Mats.Pet] = Gd.StartBalerPetKg;
-            foreach (var id in Gd.StartMachines)
+            S.Chapter = 1;
+            S.Standing = new double[Gd.Areas.Count];
+            for (int i = 0; i < S.Standing.Length; i++) S.Standing[i] = Gd.StartStanding;
+            var usedNames = new List<int>();
+            foreach (var role in Gd.StartStaff)
             {
-                int node = Gd.Node(id);
-                var p = new PointState { Node = node, Kind = "machine_s", LastServiceDay = 0 };
-                S.Points.Add(p);
-                if (Gd.StartFill.TryGetValue(id, out double pct)) FillTo(p, pct);
+                var st = AddStaff(role, usedNames);
+                st.HoursLeft = RoleOf(st).Hours;
             }
-            int tid = 0;
-            foreach (var type in Gd.StartTrucks) S.Trucks.Add(new TruckState { Id = tid++, Type = type, AtNode = Gd.DepotNode });
             S.Today = new DayStats { Day = 1 };
-            S.NextDispatchAt = Gd.DayStart;
+            S.Tutorial = true;
+            FillUpcoming();
+            SeedTutorial();
         }
 
-        /// <summary>Fills a point to pct of its capacity with the district's usual mix (start state, tests).</summary>
-        public void FillTo(PointState p, double pct)
+        StaffState AddStaff(string role, List<int> usedNames = null)
         {
-            var mix = ExpectedMix(p);
-            double target = Cap(p) * Math.Max(0, pct);
-            double perContainer = 0;
-            for (int m = 0; m < Mats.N; m++) perContainer += mix[m] * VolInPoint(p, m);
-            if (perContainer <= 0) return;
-            double n = Math.Floor(target / perContainer);
-            for (int m = 0; m < Mats.N; m++) p.Fill[m] = Math.Floor(n * mix[m]);
-            p.EstVol = Volume(p);
+            int name = 0;
+            if (S.NextStaff > 0)
+            {
+                // a free name from the pool (0 is the founder's "You")
+                for (int k = 0; k < 40; k++)
+                {
+                    name = 1 + Rng.RangeI(0, NamePool - 2);
+                    if (!S.Staff.Exists(x => x.Name == name) && (usedNames == null || !usedNames.Contains(name))) break;
+                }
+            }
+            usedNames?.Add(name);
+            var st = new StaffState { Id = S.NextStaff++, Role = role, Name = name };
+            S.Staff.Add(st);
+            return st;
         }
 
         // ------------------------------------------------------------------------------------------------ queries
@@ -103,113 +114,96 @@ namespace DocketDay.Sim
         void Emit(string type, int a = -1, int b = -1, double v = 0, string text = "") => events.Add(new SimEvent { Type = type, A = a, B = b, V = v, Text = text ?? "" });
 
         public string Phase => S.Phase;
-        public NodeDef NodeOf(PointState p) => Gd.Nodes[p.Node];
-        public PointKindDef KindOf(PointState p) => Gd.PointKinds.TryGetValue(p.Kind, out var k) ? k : Gd.PointKinds["machine_s"];
-        public VehicleDef VehicleOf(TruckState t) => Gd.Vehicles.TryGetValue(t.Type, out var v) ? v : Gd.Vehicles["van"];
-        public bool Has(string research) => S.Research.Contains(research);
-        public bool Unlocked(string district) => S.Districts.Contains(district);
+        public int Chapter => S.Chapter;
         public bool Perk(string id) => perks.TryGetValue(id, out bool b) && b;
-        public int Chapter
+        public int MaxSpeed => Perk("speed") ? Gd.PaidMaxSpeed : Gd.FreeMaxSpeed;
+        public int Weekday => (S.Day - 1) % Gd.WeekDays;
+        public int WeekdayOf(int day) => (Math.Max(1, day) - 1) % Gd.WeekDays;
+        public int Week => (S.Day - 1) / Gd.WeekDays + 1;
+        public int RailDays => Perk("partner_pass") ? Gd.RailDaysPass : Gd.RailDays;
+        public RoleDef RoleOf(StaffState s) => Gd.Role(s.Role) ?? Gd.Roles["intern"];
+        public StaffState StaffById(int id) => S.Staff.Find(x => x.Id == id);
+        public MatterState MatterById(int id) => S.Matters.Find(m => m.Id == id);
+        public bool IsFounder(StaffState s) => s.Id == 0;
+        public AreaDef AreaOf(MatterState m) => Gd.Area(m.Area) ?? Gd.Areas[0];
+        public TierDef TierOf(MatterState m) => Gd.Tier(m.Tier) ?? Gd.Tiers["S"];
+        public JudgeDef JudgeOf(MatterState m) => Gd.Judges[Math.Max(0, Math.Min(Gd.Judges.Count - 1, m.Judge))];
+        public bool AreaUnlocked(string area) { var a = Gd.Area(area); return a != null && a.Chapter <= S.Chapter; }
+        public double AreaStanding(string area) { int i = Gd.AreaIndex(area); return i >= 0 && i < S.Standing.Length ? S.Standing[i] : 0; }
+        public double FeeMult(string area) => 1.0 + Gd.StandingFee * AreaStanding(area);
+
+        /// <summary>Firm Standing = the sum over the practice areas the firm has opened (chapter gates).</summary>
+        public double FirmStanding
         {
             get
             {
-                int c = 1;
-                foreach (var d in Gd.Districts) if (Unlocked(d.Id)) c = Math.Max(c, d.Chapter);
-                return c;
+                double s = 0;
+                for (int i = 0; i < Gd.Areas.Count; i++) if (Gd.Areas[i].Chapter <= S.Chapter) s += S.Standing[i];
+                return s;
             }
         }
-        public int MaxSpeed => Perk("speed") ? Gd.PaidMaxSpeed : Gd.FreeMaxSpeed;
-        public double FeeMult => (Gd.FeeRatingMin + Gd.FeeRatingSpan * Math.Max(0, Math.Min(100, S.Rating)) / 100.0) * (Perk("route_pass") ? 1.10 : 1.0);
-        public int HourIndex => Math.Max(0, Math.Min(Gd.HourCurve.Length - 1, (int)((S.Minute - Gd.DayStart) / 60.0)));
-        public bool Weekend => (S.Day - 1) % 7 >= 5;
-        public int PointAt(int node) => S.Points.FindIndex(p => p.Node == node);
 
-        /// <summary>Litres one container of material m takes inside this point (compactor squeezes PET).</summary>
-        public double VolInPoint(PointState p, int m) => Gd.Materials[m].VolL / (m == Mats.Pet && p.Compactor ? Gd.CompactorPet : 1.0);
-        public double Cap(PointState p) => KindOf(p).CapL;
-        public double Volume(PointState p)
+        public double AvgStanding
         {
-            double v = 0;
-            for (int m = 0; m < Mats.N; m++) v += p.Fill[m] * VolInPoint(p, m);
-            return v;
-        }
-        public double FillPct(PointState p) => Math.Min(1.0, Volume(p) / Math.Max(1, Cap(p)));
-        public double Containers(PointState p) => p.Fill[0] + p.Fill[1] + p.Fill[2];
-        public bool IsFull(PointState p) => FillPct(p) >= 0.97;
-
-        /// <summary>What the map shows: live with a working sensor, a frozen number when the sensor / app is wrong, an
-        /// estimate from history (no events, no weekend) without a sensor — the "fuzzy" bar of the design.</summary>
-        public double DisplayPct(PointState p)
-        {
-            if (p.SensorOffline) return p.FrozenPct;
-            if (p.Sensor) return FillPct(p);
-            return Math.Min(1.0, Math.Max(0, p.EstVol) / Math.Max(1, Cap(p)));
-        }
-        public bool DisplayIsLive(PointState p) => p.Sensor && !p.SensorOffline;
-
-        double[] ExpectedMix(PointState p)
-        {
-            var k = KindOf(p);
-            if (!k.Citizens) return k.Mix;
-            var mix = new double[Mats.N];
-            var w = DistrictWeights(NodeOf(p).District, false);
-            double tw = 0;
-            for (int a = 0; a < Gd.Archetypes.Count; a++)
+            get
             {
-                double ww = w[a] * Gd.Archetypes[a].Mean;
-                tw += ww;
-                for (int m = 0; m < Mats.N; m++) mix[m] += ww * Gd.Archetypes[a].Mix[m];
+                double s = 0; int n = 0;
+                for (int i = 0; i < Gd.Areas.Count; i++) if (Gd.Areas[i].Chapter <= S.Chapter) { s += S.Standing[i]; n++; }
+                return n > 0 ? s / n : 0;
             }
-            if (tw > 0) for (int m = 0; m < Mats.N; m++) mix[m] /= tw;
-            return mix;
         }
 
-        double LitresPerContainer(PointState p)
-        {
-            if (litresPerContainer == null) litresPerContainer = new double[Gd.Nodes.Count];
-            int key = p.Node;
-            // recomputed when 0 (compactor upgrades reset it)
-            if (litresPerContainer[key] <= 0)
-            {
-                var mix = ExpectedMix(p);
-                double l = 0;
-                for (int m = 0; m < Mats.N; m++) l += mix[m] * VolInPoint(p, m);
-                litresPerContainer[key] = Math.Max(0.1, l);
-            }
-            return litresPerContainer[key];
-        }
-        void ResetLitreCache() => litresPerContainer = null;
+        public IEnumerable<MatterState> Intakes { get { foreach (var m in S.Matters) if (m.Status == MatterStatus.Intake) yield return m; } }
+        public IEnumerable<MatterState> Upcoming { get { foreach (var m in S.Matters) if (m.Status == MatterStatus.Upcoming) yield return m; } }
+        public IEnumerable<MatterState> Active { get { foreach (var m in S.Matters) if (m.Active) yield return m; } }
+        public int IntakeCount { get { int n = 0; foreach (var _ in Intakes) n++; return n; } }
+        public int ActiveCount { get { int n = 0; foreach (var _ in Active) n++; return n; } }
+        public double TrustTotal { get { double t = 0; foreach (var m in S.Matters) t += m.Trust; return t; } }
+        public int CountRole(string role) => S.Staff.FindAll(x => x.Role == role).Count;
+        public bool HasRole(string role) => S.Staff.Exists(x => x.Role == role);
 
-        double[] DistrictWeights(string district, bool timeAdjusted)
+        public int RoomCount(string id) { var r = S.Rooms.Find(x => x.Id == id); return r == null ? 0 : r.Count; }
+        public bool RoomBuilt(string id) => RoomCount(id) > 0;
+        double RoomMult(Func<RoomDef, double> f)
         {
-            var d = Gd.District(district);
-            var w = new double[Gd.Archetypes.Count];
-            for (int a = 0; a < w.Length; a++)
-            {
-                double x = d != null && a < d.Archetypes.Length ? d.Archetypes[a] : 1.0 / w.Length;
-                if (timeAdjusted)
-                {
-                    if (Weekend) x *= Gd.Archetypes[a].Weekend;
-                    if (S.Minute >= 1020) x *= Gd.Archetypes[a].Evening;   // from 17:00
-                }
-                w[a] = x;
-            }
-            return w;
-        }
-
-        /// <summary>Base containers per hour at a point now (site rate × hour curve), without events or weekend.</summary>
-        public double BaseRate(PointState p) => NodeOf(p).Rate * Gd.HourCurve[HourIndex];
-
-        /// <summary>Event multiplier for a point now (heat wave, match day window).</summary>
-        public double DemandMult(PointState p)
-        {
-            double m = Weekend ? Gd.WeekendMult : 1.0;
-            foreach (var e in S.Events)
-            {
-                if (e.Id == "heat_wave") m *= e.Mult;
-                else if (e.Id == "match_day" && NodeOf(p).EventSite && S.Minute >= e.From && S.Minute < e.To) m *= e.Mult;
-            }
+            double m = 1;
+            foreach (var r in S.Rooms) { var d = Gd.Room(r.Id); if (d != null && r.Count > 0) m *= f(d); }
             return m;
+        }
+        public double WorkMult(string kind)
+        {
+            switch (Kinds.Skill(kind))
+            {
+                case Kinds.File: return RoomMult(d => d.File);
+                case Kinds.Evidence: return RoomMult(d => d.Evidence);
+                case Kinds.Prep: return RoomMult(d => d.Prep);
+            }
+            return 1;
+        }
+        public double FatigueGainMult => RoomMult(d => d.Fatigue);
+        public double SettleRoomMult => RoomMult(d => d.Settle);
+        public double RoomOdds { get { double o = 0; foreach (var r in S.Rooms) { var d = Gd.Room(r.Id); if (d != null && r.Count > 0) o += d.Odds; } return o; } }
+
+        public int DeskCap
+        {
+            get
+            {
+                var c = Gd.ChapterOf(S.Chapter);
+                int desks = c != null ? c.Desks : 5;
+                foreach (var r in S.Rooms) { var d = Gd.Room(r.Id); if (d != null) desks += d.Desks * r.Count; }
+                return desks;
+            }
+        }
+
+        public double FatigueMult(StaffState s) => s.Fatigue >= Gd.FatSpent ? Gd.FatSpentMult : s.Fatigue >= Gd.FatTired ? Gd.FatTiredMult : 1.0;
+        public bool Tired(StaffState s) => s.Fatigue >= Gd.FatTired;
+
+        /// <summary>Is this staff member in a hearing right now (the court takes their time)?</summary>
+        public bool InSession(int staffId)
+        {
+            foreach (var m in S.Matters)
+                if (m.Status == MatterStatus.Hearing) { var h = m.HearingTask; if (h != null && h.Staff == staffId) return true; }
+            return false;
         }
 
         // ------------------------------------------------------------------------------------------------ time
@@ -217,23 +211,21 @@ namespace DocketDay.Sim
         public void SetSpeed(int speed) => S.Speed = Math.Max(1, Math.Min(MaxSpeed, speed));
         public void SetPaused(bool paused) => S.Paused = paused;
 
-        /// <summary>Store perks (never saved): premium, route_pass, dispatcher_plus, offline_plus, speed.</summary>
+        /// <summary>Store perks (never saved): speed, automation, overnight_plus, extra_rule, partner_pass.</summary>
         public void SetPerks(Dictionary<string, bool> p)
         {
             perks.Clear();
             if (p != null) foreach (var kv in p) perks[kv.Key] = kv.Value;
             if (S.Speed > MaxSpeed) S.Speed = MaxSpeed;
-            int slots = AutoSlots;
-            int n = 0;
-            foreach (var t in S.Trucks) if (t.Auto && ++n > slots) t.Auto = false;
+            while (S.Rules.Count > MaxRules) S.Rules.RemoveAt(S.Rules.Count - 1);
         }
 
-        /// <summary>Every frame with real seconds. Research runs on real time in every phase; the day only while live.</summary>
+        /// <summary>Every frame with real seconds. Room builds run on real time in every phase; the day only while live.</summary>
         public void Advance(double realDt)
         {
             if (realDt <= 0 || double.IsNaN(realDt)) return;
             realDt = Math.Min(realDt, 1.0);   // a hitch never jumps the sim
-            TickResearch(realDt);
+            TickBuild(realDt);
             if (S.Phase != Phases.Live || S.Paused) return;
             double gm = realDt * Gd.GameMinPerRealS * Math.Max(1, S.Speed);
             while (gm > 1e-9 && S.Phase == Phases.Live)
@@ -244,7 +236,7 @@ namespace DocketDay.Sim
             }
         }
 
-        /// <summary>Advances game minutes directly (tests, guide fast-forward). Stops at the day end.</summary>
+        /// <summary>Advances game minutes directly (tests, guide fast-forward, fast-forward to the next decision). Stops at the day end.</summary>
         public void AdvanceMinutes(double minutes)
         {
             while (minutes > 1e-9 && S.Phase == Phases.Live)
@@ -258,111 +250,102 @@ namespace DocketDay.Sim
         void Step(double dt)
         {
             RunPlanned();
-            Demand(dt);
-            StepTrucks(dt);
-            StepTechs();
-            StepDepot(dt);
-            foreach (var p in S.Points)
-                if (IsFull(p) || p.Jammed) { p.FullMin += dt; S.Today.FullMin += dt; }
-            Dispatcher();
+            ExpireIntakes();
+            StartHearings();
+            EndSessions();
+            Work(dt);
+            int minute = (int)S.Minute;
+            if (minute / 10 != lastAutoMinute / 10) { lastAutoMinute = minute; AutoStaff(); }
             S.Minute += dt;
             if (S.Minute >= Gd.DayEnd - 1e-9) EndDay();
         }
 
-        // ------------------------------------------------------------------------------------------------ demand
+        // ------------------------------------------------------------------------------------------------ work
 
-        void Demand(double dt)
+        bool PowerCut()
         {
-            for (int i = 0; i < S.Points.Count; i++)
+            foreach (var e in S.Events) if (e.Id == "power_cut" && e.UntilDay >= S.Day && S.Minute >= e.From && S.Minute < e.To) return true;
+            return false;
+        }
+
+        /// <summary>The task a person works on next: their assigned open work task with the earliest deadline.</summary>
+        public (MatterState m, int task) NextTaskOf(int staffId)
+        {
+            MatterState best = null; int bt = -1; int bdue = int.MaxValue;
+            foreach (var m in S.Matters)
             {
-                var p = S.Points[i];
-                var kind = KindOf(p);
-                double baseRate = BaseRate(p);
-                double lpc = LitresPerContainer(p);
-                p.EstVol += baseRate * dt / 60.0 * lpc;
-                double lambda = baseRate * DemandMult(p) * dt / 60.0;   // containers this step
-                if (!kind.Citizens)
+                if (m.Status != MatterStatus.Open) continue;
+                for (int i = 0; i < m.Tasks.Count; i++)
                 {
-                    // HoReCa: staff drop bags of ~10 into the back room
-                    double bags = lambda / 10.0;
-                    int k = Sample(bags);
-                    for (int b = 0; b < k; b++) Deposit(i, Rng.RangeI(8, 14), kind.Mix, -1);
-                    continue;
-                }
-                var w = DistrictWeights(NodeOf(p).District, true);
-                double tw = 0, mean = 0;
-                for (int a = 0; a < w.Length; a++) { tw += w[a]; mean += w[a] * Gd.Archetypes[a].Mean; }
-                if (tw <= 0) continue;
-                mean /= tw;
-                int citizens = Sample(lambda / Math.Max(1, mean));
-                for (int c = 0; c < citizens; c++)
-                {
-                    int a = Rng.PickWeighted(w);
-                    if (a < 0) continue;
-                    var ar = Gd.Archetypes[a];
-                    Deposit(i, Rng.RangeI(ar.Min, ar.Max), ar.Mix, a);
+                    var t = m.Tasks[i];
+                    if (t.Staff != staffId || t.Finished || !Kinds.Work(t.Kind)) continue;
+                    if (t.Due < bdue || (t.Due == bdue && best != null && m.Id < best.Id)) { best = m; bt = i; bdue = t.Due; }
                 }
             }
+            return (best, bt);
         }
 
-        int Sample(double expected)
+        /// <summary>Hours of assigned, unfinished work queued on a person (at their skill).</summary>
+        public double QueuedHours(StaffState s)
         {
-            if (expected <= 0) return 0;
-            int k = (int)Math.Floor(expected);
-            if (Rng.Frand() < expected - k) k++;
-            return k;
-        }
-
-        /// <summary>One citizen (or a HoReCa bag) at point i with n containers. Returns accepted containers.</summary>
-        public int Deposit(int i, int n, double[] mix, int archetype)
-        {
-            var p = S.Points[i];
-            p.Arrivals++;
-            S.Today.Arrivals++;
-            if (p.Jammed || p.BusyUntil > S.Minute)
+            double h = 0;
+            var role = RoleOf(s);
+            foreach (var m in S.Matters)
             {
-                Turn(i, archetype);
-                return 0;
+                if (m.Status != MatterStatus.Open) continue;
+                foreach (var t in m.Tasks)
+                {
+                    if (t.Staff != s.Id || t.Finished || !Kinds.Work(t.Kind)) continue;
+                    double sk = role.Skill(t.Kind) * WorkMult(t.Kind);
+                    h += sk > 0 ? t.Left / sk : 0;
+                }
             }
-            double free = Cap(p) - Volume(p);
-            int accepted = 0, rejected = 0;
-            for (int c = 0; c < n; c++)
-            {
-                int m = Rng.PickWeighted(mix);
-                if (m < 0) m = 0;
-                double v = VolInPoint(p, m);
-                if (v <= free) { p.Fill[m] += 1; free -= v; accepted++; }
-                else rejected++;
-            }
-            p.Deposited += accepted;
-            S.Today.Deposited += accepted;
-            if (rejected > 0) Turn(i, archetype);
-            else if (EmitCrowd) Emit("deposit", i, archetype, accepted);
-            if (accepted > 0 && p.IsMachine && !p.Jammed && JamAllowed)
-            {
-                double q = KindOf(p).JamPer1000 / 1000.0 * (p.Compactor ? Gd.CompactorJamMult : 1.0) * (Has("jam_guard") ? 0.6 : 1.0);
-                if (Rng.Frand() < q * accepted) Jam(i, "random");
-            }
-            return accepted;
+            return h;
         }
 
-        void Turn(int i, int archetype)
+        void Work(double dt)
         {
-            S.Points[i].Turned++;
-            S.Today.Turned++;
-            Emit("turned", i, archetype);
+            bool cut = PowerCut();
+            foreach (var st in S.Staff)
+            {
+                if (st.Sick || st.HoursLeft <= 1e-9 || InSession(st.Id)) continue;
+                var (m, ti) = NextTaskOf(st.Id);
+                if (m == null) continue;
+                var t = m.Tasks[ti];
+                var role = RoleOf(st);
+                double h = Math.Min(dt / 60.0, st.HoursLeft);
+                double eff = role.Skill(t.Kind) * WorkMult(t.Kind) * FatigueMult(st);
+                if (cut && Kinds.Skill(t.Kind) == Kinds.File) eff = 0;   // no printers, no filings this hour
+                st.HoursLeft -= h;
+                st.HoursWorked += h;
+                S.Today.HoursWorked += h;
+                st.Fatigue = Math.Min(100, st.Fatigue + h * Gd.FatPerHour * FatigueGainMult);
+                BillHours(m, h * role.Rate);
+                t.Done += h * eff;
+                if (t.Done >= t.Need - 1e-9)
+                {
+                    t.Done = t.Need;
+                    t.Finished = true;
+                    Emit("task_done", m.Id, ti, 0, t.Kind);
+                    if (t.Kind == Kinds.Evidence && !m.Revealed) { m.Revealed = true; Emit("revealed", m.Id, -1, m.Twist); }
+                }
+            }
         }
 
-        /// <summary>Random breakdowns / jams only after the guide and the forgiving first days.</summary>
-        bool JamAllowed => !S.Tutorial && S.Day > Gd.EventFreeDays;
-
-        public void Jam(int i, string why)
+        /// <summary>Hourly work goes on today's invoices; retainer work is drawn from the client's trust money first (only
+        /// fees ever move to the operating account); contingency work is not billed (the fee comes with the result).</summary>
+        void BillHours(MatterState m, double amount)
         {
-            var p = S.Points[i];
-            if (p.Jammed) return;
-            p.Jammed = true;
-            p.TechCalled = false;
-            Emit("jam", i, -1, 0, why);
+            if (amount <= 0 || m.Fee == Fees.Contingency) return;
+            amount *= FeeMult(m.Area);
+            if (m.Fee == Fees.Retainer)
+            {
+                double draw = Math.Min(m.Trust, amount);
+                m.Trust -= draw;
+            }
+            S.Wip += amount;
+            m.Billed += amount;
+            S.Today.Billed += amount;
         }
     }
 }

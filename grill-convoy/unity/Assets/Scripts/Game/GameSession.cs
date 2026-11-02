@@ -1,6 +1,7 @@
 // Grill Convoy — one running career: data + Simulation + the kit save repository + autosave. Engine-free, so the relaunch
 // / save-safety tests run under plain .NET and in the Unity EditMode runner.
-//   * file: <persistentDataPath>/grillconvoy/career.json through CoddyKit.SaveRepository (tmp -> main, last GOOD save in
+//   * file: <persistentDataPath>/grillconvoy/career.json (slot 1; career_<n>.json for the extra slots of Extra Saves /
+//     the Edition) through CoddyKit.SaveRepository (tmp -> main, last GOOD save in
 //     .bak, unreadable copies kept as .unreadable(.1-.7), never deleted) with SaveCodec.Decode as the validator;
 //   * saves: every day end, after purchases / sales / rewards, every balance autosave_s of live play, on pause / quit;
 //   * `save_unreadable` analytics event per rejected candidate (code + recovered 0/1, no PII) — fleet §14.
@@ -27,7 +28,24 @@ namespace GrillConvoy.Game
         public int SaveCount { get; private set; }
         double autosaveAcc;
 
-        public string SavePath => Path.Combine(Dir, SaveFile);
+        public string SavePath => SlotPath(Settings.Slot);
+        public string SlotPath(int slot) => Path.Combine(Dir, slot <= 0 ? SaveFile : "career_" + (slot + 1) + ".json");
+        public bool SlotUsed(int slot) => File.Exists(SlotPath(slot)) || File.Exists(SlotPath(slot) + ".bak");
+
+        /// <summary>Career slots owned: 1 + Edition's extra slot + Extra Saves (+3).</summary>
+        public static int SlotCount(Func<string, bool> has) => 1 + (has != null && has("extra_slot") ? 1 : 0) + (has != null && has("slots") ? 3 : 0);
+
+        /// <summary>Saves the running career and opens (or starts) the career in another slot. "" = ok.</summary>
+        public string SwitchSlot(int slot, int owned, long seedIfNew)
+        {
+            if (slot < 0 || slot >= owned) return "locked";
+            if (slot == Settings.Slot) return "";
+            Save();
+            Settings.Slot = slot;
+            Settings.Save();
+            LoadOrNew(seedIfNew);
+            return "";
+        }
 
         public static long UnixNow() => (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
 

@@ -1,15 +1,15 @@
 // Grill Convoy — the shop: catalogue (IapCatalog, Resources/data/iap.json) + the kit's purchase layer (CoddyPurchases on
 // RevenueCat) + the career. Engine-free (CoddyPurchases lives in CoddyKit.Core) so EditMode tests drive the real flow
 // with FakePurchases.
-//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / route_pass / bundle) —
+//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / convoy_pass / bundle) —
 //     never from "bought anything" (fleet §3). House banner / interstitial and the rewarded "no video" path all read
 //     CoddyPurchases.AdFree. Legacy buyers: not applicable (new game, no earlier purchases).
 //   * permanent rights = RC entitlements (cached offline; Restore = a fresh CustomerInfo, idempotent);
 //   * consumables: the store confirms -> CoddyPurchases.Deliver(storeId, txn) -> sim.GrantCash(days) once per transaction
 //     (txn remembered in settings) -> save. ≤ 3 packs per UTC day is a PRE-purchase gate. Never restored.
 //   * prices only from the store (displayPrice), "…" until they arrive; no trial, no subscription (fleet §1).
-//   * offers: starter (day 3-7 after a day report, once), event kit (match day), comeback (≥ 3 days away); one per session,
-//     3 days apart; never in the guide.
+//   * offers: starter (day 3-7 after a day report, once), crisis (propane out), comeback (≥ 3 days away), milestone (a new
+//     truck); one per session, 3 days apart; never in the guide. Event packs auto-dismiss (no modal can block play).
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -21,7 +21,7 @@ namespace GrillConvoy.Game
     {
         public const string Loading = "…";
         /// <summary>RC entitlements the sim turns into perks (never saved in the career).</summary>
-        public static readonly string[] PerkEntitlements = { "route_pass", "dispatcher_plus", "offline_plus", "speed", "gold_livery" };
+        public static readonly string[] PerkEntitlements = { "convoy_pass", "automation", "offline_plus", "speed" };
         public static readonly string[] AdFreeEntitlements = { "noads" };
 
         public readonly IapCatalog Cat;
@@ -146,22 +146,21 @@ namespace GrillConvoy.Game
             if (p == null || !p.Consumable || Sim == null) return false;
             if (!string.IsNullOrEmpty(txn) && session.Settings.Delivered(txn)) return true;
             lastFunds = Sim.GrantCash(p.DaysX10 / 10.0);
-            if (p.Slug == "starter" && Sim.CanBuy("truck:van").Reason != "max")
-            {
-                int id = 0;
-                foreach (var t in Sim.S.Trucks) id = Math.Max(id, t.Id + 1);
-                Sim.S.Trucks.Add(new TruckState { Id = id, Type = "van", AtNode = Sim.Gd.DepotNode });
-            }
+            if (p.Slug == "starter" && Sim.S.Trucks.Count > 0 && Sim.S.Trucks[0].Crew.Count < Sim.VehicleOf(Sim.S.Trucks[0]).Crew) Sim.S.Trucks[0].Crew.Add(Roles.Runner);
+            if (p.Slug == "crisis") Sim.S.PropaneKits += 3;
+            if (p.Slug == "milestone")
+                for (int i = 0; i < Stock.N; i++) Sim.S.Commissary.Stock[i] = Math.Min(Sim.Gd.StockDefs[i].Cap, Sim.S.Commissary.Stock[i] + Sim.Gd.StockDefs[i].Batch * 2);
             if (!string.IsNullOrEmpty(txn)) session.Settings.MarkDelivered(txn);
             session.Settings.Save();
             session.Save();
             return true;
         }
 
-        /// <summary>The Edition's starter cash, once per device (the entitlement may arrive by purchase or restore).</summary>
+        /// <summary>The Edition's starter pack (2 days of income), once per device (the entitlement may arrive by purchase or
+        /// restore).</summary>
         void GrantOneTimeBonuses()
         {
-            if (Sim == null || !Has("gold_livery") || session.Settings.Flag("premium_cash")) return;
+            if (Sim == null || !Has("gold_trim") || session.Settings.Flag("premium_cash")) return;
             session.Settings.SetFlag("premium_cash");
             Sim.GrantCash(2.0);
             session.Settings.Save();
@@ -185,7 +184,7 @@ namespace GrillConvoy.Game
 
         // ------------------------------------------------------------------------------------------------ offers
 
-        /// <summary>ev = day_report | match_day | resume. Returns the offer slug shown now, or "".</summary>
+        /// <summary>ev = day_report | propane | truck_new | resume. Returns the offer slug shown now, or "".</summary>
         public string TryOffer(string ev, bool tutorial, int awayDays = 0)
         {
             if (tutorial || ActiveOffer != "" || offersThisSession >= Math.Max(1, Cat.OffersPerSession)) return "";

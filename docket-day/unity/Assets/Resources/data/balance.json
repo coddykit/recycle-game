@@ -1,62 +1,30 @@
 {
   "version": 1,
-  "time": { "day_start": 540, "day_end": 1140, "game_min_per_real_s": 2.5, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "depot_wrapup_min": 60 },
-  "start": { "cash": 2000, "rating": 50, "drivers": 1, "techs": 0, "trucks": ["van", "van"], "machines": ["h_fish", "h_ferry", "h_corner"], "fill_pct": { "h_fish": 0.86, "h_ferry": 0.62, "h_corner": 0.35 }, "baler_pet_kg": 58.5 },
-  "materials": {
-    "pet":   { "vol_l": 1.6,  "kg": 0.03,  "bale_kg": 60,   "bale_price": 420 },
-    "alu":   { "vol_l": 0.45, "kg": 0.015, "bale_kg": 30,   "bale_price": 1300 },
-    "glass": { "vol_l": 0.9,  "kg": 0.38,  "bale_kg": 1000, "bale_price": 160 }
-  },
-  "archetypes": [
-    { "id": "commuter", "min": 2,  "max": 5,  "mix": [0.70, 0.25, 0.05], "weekend": 0.6, "evening": 1.0 },
-    { "id": "family",   "min": 12, "max": 30, "mix": [0.55, 0.20, 0.25], "weekend": 2.2, "evening": 0.8 },
-    { "id": "student",  "min": 4,  "max": 10, "mix": [0.35, 0.60, 0.05], "weekend": 0.8, "evening": 2.0 },
-    { "id": "eco",      "min": 6,  "max": 15, "mix": [0.40, 0.30, 0.30], "weekend": 1.2, "evening": 1.0 },
-    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 }
-  ],
-  "hour_curve": [0.7, 0.8, 0.9, 1.0, 1.1, 0.9, 0.9, 1.1, 1.4, 1.2],
-  "weekend_mult": 1.25,
-  "points": {
-    "machine_s": { "cap_l": 240, "lease_day": 14, "jam_per_1000": 1.2, "citizens": true },
-    "machine_m": { "cap_l": 480, "lease_day": 22, "jam_per_1000": 1.0, "citizens": true },
-    "shop":      { "cap_l": 160, "lease_day": 0,  "jam_per_1000": 0,   "citizens": true, "shop_fee": 0.3 },
-    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] }
-  },
-  "compactor_pet": 2.5,
-  "compactor_jam_mult": 1.6,
-  "vehicles": {
-    "van":       { "vol_l": 1800, "kg": 700,  "speed_kmh": 30, "cost_km": 1.4, "service_min": 6, "alley": true,  "pet_compress": 1.0, "price": 2500, "research": "" },
-    "bike":      { "vol_l": 450,  "kg": 90,   "speed_kmh": 16, "cost_km": 0.1, "service_min": 4, "alley": true,  "pet_compress": 1.0, "price": 900,  "research": "cargo_bike" },
-    "compactor": { "vol_l": 2600, "kg": 3000, "speed_kmh": 26, "cost_km": 2.6, "service_min": 7, "alley": false, "pet_compress": 2.5, "price": 6500, "research": "compactor_truck" }
-  },
-  "unload": { "base_min": 8, "per_container_min": 0.0025 },
-  "breakdown_per_km": 0.0015,
-  "glass_break_per_km": 0.0006,
+  "time": { "day_start": 540, "day_end": 1080, "game_min_per_real_s": 3.0, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4,
+            "hearing_slots": [600, 840], "hearing_session_min": 45, "rail_days": 10, "rail_days_pass": 14, "week_days": 5 },
+  "start": { "cash": 1500, "standing": 1.0, "staff": ["partner", "associate", "paralegal", "intern"] },
   "economy": {
-    "fee": 1.0, "bulk_fee": 0.5, "fee_rating_min": 0.85, "fee_rating_span": 0.30,
-    "driver_wage": 110, "tech_wage": 90, "depot_power": 35, "line_power": 15,
-    "rating_alpha": 0.3, "turned_rating_free_days": 3
+    "rent": [50, 220, 480], "sanction": 60, "visiting_fee": 240, "visiting_trial": 0.03, "referral_fee": 70, "wall_cost": 300,
+    "continuance_days": 3, "no_lawyer_penalty": 0.25, "auto_continuance_fee": 100, "day_income_floor": 500,
+    "settle_factor": 0.6, "contingency_share": 0.3333, "lesson_share": 0.15, "lesson_value_share": 0.05,
+    "puzzle_fallback": 0.6, "standing_fee": 0.05, "forgiving_days": 2
   },
-  "depot": { "count_per_hour": 420, "lines_start": 1, "lines_max": 3, "baler_kg_per_hour": 90, "baler_jam_per_bale": 0.02, "yard_cap": 12, "intake_cap": 2500, "glass_bay_t": 3, "tech_speed_kmh": 30, "tech_fix_min": 20 },
-  "prices": {
-    "machine_s": 600, "bin_m": 700, "compactor": 900, "sensor": 250, "shop": 150, "horeca": 300,
-    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000
-  },
-  "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
-  "stars": {
-    "service": [0.12, 0.06, 0.02],
-    "efficiency": [12, 25, 40],
-    "throughput": [0.70, 0.35, 0.10]
-  },
-  "events": { "free_days": 3, "per_day": [0.0, 0.6, 1.0, 1.4, 1.7] },
-  "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
+  "odds": { "base": 0.35, "prep": 0.25, "puzzle": 0.15, "standing": 0.02, "file_missing": 0.12, "evidence_missing": 0.08,
+            "objection": 0.05, "min": 0.05, "max": 0.95 },
+  "standing": { "win": 0.12, "settle": 0.06, "loss": -0.08, "late": -0.12, "walked_out": -0.04, "no_lawyer": -0.20,
+                "continuance": -0.06, "referral": 0.03, "max": 5.0 },
+  "fatigue": { "per_hour": 3.5, "overtime_mult": 2.0, "recover": 25, "recover_per_free_hour": 5, "tired": 70, "tired_mult": 0.8, "spent": 90, "spent_mult": 0.55 },
+  "intake": { "walkins": [2.4, 3.2, 4.0], "per_standing": 0.15, "per_receptionist": 0.8, "max_receptionists": 2, "patience_min": 150,
+              "patience_per_receptionist": 90, "queue_max": 4, "morning": 1, "conflict_chance": 0.15, "conflict_chapter": 2,
+              "tier_m_chance": 0.35, "tier_l_chance": 0.2, "upcoming": 3 },
+  "stars": { "billing": [0.4, 0.6, 0.8], "clients": [0.6, 0.75, 0.9] },
+  "events": { "free_days": 3, "per_day": [0.0, 0.5, 0.8, 1.0] },
+  "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 8, "rate": 0.5, "days_per_hour": 0.5 },
   "rewards": {
-    "offline_x2":      { "per_day": 1, "cooldown_s": 0 },
-    "emergency_empty": { "per_day": 3, "cooldown_s": 600 },
-    "fuel_voucher":    { "per_day": 2, "cooldown_s": 900 },
-    "baler_rescue":    { "per_day": 1, "cooldown_s": 0 },
-    "daily_bonus":     { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
+    "billing_boost": { "per_day": 1, "cooldown_s": 0, "share": 0.15 },
+    "case_preview":  { "per_day": 2, "cooldown_s": 600 },
+    "offline_x2":    { "per_day": 1, "cooldown_s": 0 },
     "single_max_days": 0.2
   },
-  "day_income_floor": 600
+  "rules": { "free": 1, "premium": 1, "pass": 1, "automation": 2 }
 }

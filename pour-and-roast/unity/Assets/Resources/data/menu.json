@@ -1,0 +1,20 @@
+{
+  "_doc": "Pour & Roast menu (MVP: 10 drinks + 5 pastries). tasks: shot = espresso group head, steam = steam wand, pour = any hand (filter, cold assembly), pastry = plating. tier = the venue chapter that serves it.",
+  "items": [
+    { "id": "espresso",       "kind": "drink",  "tier": 1, "price": 2.5, "tasks": ["shot"],                  "beans": 0.018, "pop": 0.8 },
+    { "id": "americano",      "kind": "drink",  "tier": 1, "price": 3.0, "tasks": ["shot", "pour"],          "beans": 0.018, "pop": 1.2, "prep": true },
+    { "id": "cappuccino",     "kind": "drink",  "tier": 1, "price": 3.8, "tasks": ["shot", "steam"],         "beans": 0.018, "pop": 1.3, "milk": true },
+    { "id": "latte",          "kind": "drink",  "tier": 1, "price": 4.0, "tasks": ["shot", "steam"],         "beans": 0.018, "pop": 1.5, "milk": true },
+    { "id": "flat_white",     "kind": "drink",  "tier": 2, "price": 4.2, "tasks": ["shot", "steam"],         "beans": 0.020, "pop": 0.9, "milk": true },
+    { "id": "mocha",          "kind": "drink",  "tier": 2, "price": 4.6, "tasks": ["shot", "steam", "pour"], "beans": 0.018, "pop": 0.8, "milk": true },
+    { "id": "filter",         "kind": "drink",  "tier": 2, "price": 2.6, "tasks": ["pour"], "pour_min": 0.45, "beans": 0.015, "pop": 0.9, "prep": true },
+    { "id": "iced_latte",     "kind": "drink",  "tier": 2, "price": 4.4, "tasks": ["shot", "pour"],          "beans": 0.018, "pop": 1.2, "milk": true, "iced": true },
+    { "id": "iced_americano", "kind": "drink",  "tier": 2, "price": 3.5, "tasks": ["shot", "pour"],          "beans": 0.018, "pop": 1.0, "iced": true },
+    { "id": "pour_over",      "kind": "drink",  "tier": 3, "price": 6.5, "tasks": ["pour"], "pour_min": 2.5, "beans": 0.020, "pop": 0.6, "showcase": true },
+    { "id": "croissant",      "kind": "pastry", "tier": 2, "price": 3.0, "tasks": ["pastry"], "pop": 1.3 },
+    { "id": "muffin",         "kind": "pastry", "tier": 2, "price": 2.8, "tasks": ["pastry"], "pop": 1.0 },
+    { "id": "cookie",         "kind": "pastry", "tier": 2, "price": 2.0, "tasks": ["pastry"], "pop": 1.0 },
+    { "id": "cinnamon_bun",   "kind": "pastry", "tier": 3, "price": 3.4, "tasks": ["pastry"], "pop": 1.1 },
+    { "id": "banana_bread",   "kind": "pastry", "tier": 3, "price": 3.2, "tasks": ["pastry"], "pop": 0.8 }
+  ]
+}

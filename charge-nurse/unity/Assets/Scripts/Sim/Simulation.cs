@@ -1,10 +1,14 @@
 // Charge Nurse sim core — engine independent (no UnityEngine). C# 9 / .NET Standard 2.1.
-// One career: a coastal region's deposit-return network. A work day runs 09:00-19:00 game time (~4 real minutes at 1x).
-//   plan  (09:00, paused)  — routes, policies, purchases;
-//   live                   — citizens bring bottles to return points, trucks drive routes, the depot counts and bales;
-//   report (19:00)         — trucks come home, the depot wraps up, costs are paid, stars + Green Rating; NextDay().
-// Partial class: this file = construction, time, demand (citizens); Fleet.cs = trucks, routes, technicians;
-// Depot.cs = count line, baler, market; Economy.cs = day end, purchases, research, offline, rewards; Crises.cs = events.
+// One career: a small-town clinic that grows into a city hospital (plan §3-§6). A shift runs 07:00-19:00 game time
+// (~4 real minutes at 1x):
+//   plan   (07:00, paused) — the morning board: forecast, staffing, rules, purchases;
+//   live                   — patients arrive, the teams triage / scan / treat / admit / discharge / clean by the rules,
+//                            the player overrides (tags, bays, discharge, clean, ambulances) and finds the bottleneck;
+//   handover (18:30-19:00) — a calm handover resets the teams' fatigue; none = rushed (lost notes, tired teams);
+//   night  (19:00-07:00)   — the night team runs the hospital by itself at reduced capacity (no player, no crises);
+//   report                 — stars, reputation, money; NextDay().
+// Partial class: this file = construction, queries, time, arrivals; Flow.cs = the patient pipeline + staff + bottleneck;
+// Economy.cs = day end, purchases, research, offline, rewards; Crises.cs = events; Guide.cs = the guide's scripted moments.
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +16,7 @@ namespace ChargeNurse.Sim
 {
     public sealed class SimEvent
     {
-        public string Type;     // deposit, turned, jam, serviced, unloaded, bale, sold, crisis, research_done, district, day_done, day_start, ...
+        public string Type;     // arrive, triaged, treated, admitted, discharged, lwbs, worsened, transfer, ambulance, crisis, day_done, ...
         public int A = -1, B = -1;
         public double V;
         public string Text = "";
@@ -26,8 +30,8 @@ namespace ChargeNurse.Sim
         public readonly Rng Rng;
         readonly List<SimEvent> events = new List<SimEvent>();
         readonly Dictionary<string, bool> perks = new Dictionary<string, bool>();
-        double[] litresPerContainer;  // per point node: expected litres per deposited container (estimate model)
-        /// <summary>Emit deposit / turned events for the diorama's walkers (off in balance bots).</summary>
+        bool night;   // inside EndDay's night shift (atomic: never saved mid-night)
+        /// <summary>Emit per-patient movement events for the diorama (off in balance bots).</summary>
         public bool EmitCrowd = true;
 
         public Simulation(GameData gd, long seed)
@@ -59,36 +63,19 @@ namespace ChargeNurse.Sim
             S.Minute = Gd.DayStart;
             S.Phase = Phases.Plan;
             S.Cash = Gd.StartCash;
-            S.Rating = Gd.StartRating;
-            S.Drivers = Gd.StartDrivers;
-            S.Techs = Gd.StartTechs;
-            S.Districts.Add(Gd.Districts.Count > 0 ? Gd.Districts[0].Id : "harbour");
-            S.Depot = new DepotState { Lines = Gd.LinesStart, YardCap = Gd.YardCap, IntakeCap = Gd.IntakeCap };
-            S.Depot.BalerIn[Mats.Pet] = Gd.StartBalerPetKg;
-            foreach (var id in Gd.StartMachines)
-            {
-                int node = Gd.Node(id);
-                var p = new PointState { Node = node, Kind = "machine_s", LastServiceDay = 0 };
-                S.Points.Add(p);
-                if (Gd.StartFill.TryGetValue(id, out double pct)) FillTo(p, pct);
-            }
-            int tid = 0;
-            foreach (var type in Gd.StartTrucks) S.Trucks.Add(new TruckState { Id = tid++, Type = type, AtNode = Gd.DepotNode });
+            S.Reputation = Gd.StartReputation;
+            foreach (var t in Teams.Pool) S.Teams[t] = Gd.StartTeams.TryGetValue(t, out int n) ? n : 0;
+            foreach (var t in Teams.All) S.Fatigue[t] = 0;
+            S.Wings.Add(Gd.Wings.Count > 0 ? Gd.Wings[0].Id : "clinic");
+            foreach (var kv in Gd.StartBeds) for (int i = 0; i < kv.Value; i++) AddBed(Gd.Zone(kv.Key));
             S.Today = new DayStats { Day = 1 };
-            S.NextDispatchAt = Gd.DayStart;
-        }
-
-        /// <summary>Fills a point to pct of its capacity with the district's usual mix (start state, tests).</summary>
-        public void FillTo(PointState p, double pct)
-        {
-            var mix = ExpectedMix(p);
-            double target = Cap(p) * Math.Max(0, pct);
-            double perContainer = 0;
-            for (int m = 0; m < Mats.N; m++) perContainer += mix[m] * VolInPoint(p, m);
-            if (perContainer <= 0) return;
-            double n = Math.Floor(target / perContainer);
-            for (int m = 0; m < Mats.N; m++) p.Fill[m] = Math.Floor(n * mix[m]);
-            p.EstVol = Volume(p);
+            // the guide's first patient: registered, waiting in the hall for a colour (plan §9 step 1)
+            S.ArrivalsOn = false;
+            var p = NewPatient(Sev.Green, false);
+            p.Stage = Stage.Triage;
+            p.Test = "";
+            p.Admit = false;
+            p.Guided = true;
         }
 
         // ------------------------------------------------------------------------------------------------ queries
@@ -103,113 +90,68 @@ namespace ChargeNurse.Sim
         void Emit(string type, int a = -1, int b = -1, double v = 0, string text = "") => events.Add(new SimEvent { Type = type, A = a, B = b, V = v, Text = text ?? "" });
 
         public string Phase => S.Phase;
-        public NodeDef NodeOf(PointState p) => Gd.Nodes[p.Node];
-        public PointKindDef KindOf(PointState p) => Gd.PointKinds.TryGetValue(p.Kind, out var k) ? k : Gd.PointKinds["machine_s"];
-        public VehicleDef VehicleOf(TruckState t) => Gd.Vehicles.TryGetValue(t.Type, out var v) ? v : Gd.Vehicles["van"];
+        public bool Night => night;
         public bool Has(string research) => S.Research.Contains(research);
-        public bool Unlocked(string district) => S.Districts.Contains(district);
+        public bool Unlocked(string wing) => S.Wings.Contains(wing);
+        public bool ZoneOpen(int zone) => zone >= 0 && zone < Gd.Zones.Count && Unlocked(Gd.Zones[zone].Wing);
         public bool Perk(string id) => perks.TryGetValue(id, out bool b) && b;
         public int Chapter
         {
             get
             {
                 int c = 1;
-                foreach (var d in Gd.Districts) if (Unlocked(d.Id)) c = Math.Max(c, d.Chapter);
+                foreach (var w in Gd.Wings) if (Unlocked(w.Id)) c = Math.Max(c, w.Chapter);
                 return c;
             }
         }
         public int MaxSpeed => Perk("speed") ? Gd.PaidMaxSpeed : Gd.FreeMaxSpeed;
-        public double FeeMult => (Gd.FeeRatingMin + Gd.FeeRatingSpan * Math.Max(0, Math.Min(100, S.Rating)) / 100.0) * (Perk("route_pass") ? 1.10 : 1.0);
+        /// <summary>Case payment multiplier from reputation (referrals and insurer contracts follow outcomes).</summary>
+        public double PayMult => Gd.PayRepMin + Gd.PayRepSpan * Math.Max(0, Math.Min(100, S.Reputation)) / 100.0;
         public int HourIndex => Math.Max(0, Math.Min(Gd.HourCurve.Length - 1, (int)((S.Minute - Gd.DayStart) / 60.0)));
-        public bool Weekend => (S.Day - 1) % 7 >= 5;
-        public int PointAt(int node) => S.Points.FindIndex(p => p.Node == node);
+        public bool HandoverWindow => S.Phase == Phases.Live && S.Minute >= Gd.HandoverFrom && S.Minute < Gd.DayEnd;
+        public int Team(string id) => S.Teams.TryGetValue(id ?? "", out int n) ? n : 0;
+        public Patient P(int id) => S.Patients.Find(p => p.Id == id);
+        public int PatientIndex(int id) => S.Patients.FindIndex(p => p.Id == id);
+        public ZoneDef ZoneOf(Bed b) => Gd.Zones[b.Zone];
+        public string WardOf(Bed b) => b.Bay ? "" : Gd.Zones[b.Zone].Ward;
+        public Room RoomOf(string kind) => S.Rooms.Find(r => r.Kind == kind);
+        public bool Built(string room) => RoomOf(room) != null;
+        public int Bays => S.Beds.FindAll(b => b.Bay).Count;
+        public int BedsIn(string ward) => S.Beds.FindAll(b => !b.Bay && WardOf(b) == ward).Count;
+        public int WardBeds => S.Beds.FindAll(b => !b.Bay).Count;
 
-        /// <summary>Litres one container of material m takes inside this point (compactor squeezes PET).</summary>
-        public double VolInPoint(PointState p, int m) => Gd.Materials[m].VolL / (m == Mats.Pet && p.Compactor ? Gd.CompactorPet : 1.0);
-        public double Cap(PointState p) => KindOf(p).CapL;
-        public double Volume(PointState p)
+        /// <summary>Where a patient is in the world: bed / room zone, else the zone of the queue they wait in.</summary>
+        public int ZoneOfPatient(Patient p)
         {
-            double v = 0;
-            for (int m = 0; m < Mats.N; m++) v += p.Fill[m] * VolInPoint(p, m);
-            return v;
-        }
-        public double FillPct(PointState p) => Math.Min(1.0, Volume(p) / Math.Max(1, Cap(p)));
-        public double Containers(PointState p) => p.Fill[0] + p.Fill[1] + p.Fill[2];
-        public bool IsFull(PointState p) => FillPct(p) >= 0.97;
-
-        /// <summary>What the map shows: live with a working sensor, a frozen number when the sensor / app is wrong, an
-        /// estimate from history (no events, no weekend) without a sensor — the "fuzzy" bar of the design.</summary>
-        public double DisplayPct(PointState p)
-        {
-            if (p.SensorOffline) return p.FrozenPct;
-            if (p.Sensor) return FillPct(p);
-            return Math.Min(1.0, Math.Max(0, p.EstVol) / Math.Max(1, Cap(p)));
-        }
-        public bool DisplayIsLive(PointState p) => p.Sensor && !p.SensorOffline;
-
-        double[] ExpectedMix(PointState p)
-        {
-            var k = KindOf(p);
-            if (!k.Citizens) return k.Mix;
-            var mix = new double[Mats.N];
-            var w = DistrictWeights(NodeOf(p).District, false);
-            double tw = 0;
-            for (int a = 0; a < Gd.Archetypes.Count; a++)
+            if (p.Bed >= 0 && p.Bed < S.Beds.Count) return S.Beds[p.Bed].Zone;
+            if (p.Room >= 0 && p.Room < S.Rooms.Count) return S.Rooms[p.Room].Zone;
+            switch (p.Stage)
             {
-                double ww = w[a] * Gd.Archetypes[a].Mean;
-                tw += ww;
-                for (int m = 0; m < Mats.N; m++) mix[m] += ww * Gd.Archetypes[a].Mix[m];
+                case Stage.Reg: case Stage.Registering: return Gd.Zone("reception");
+                case Stage.Triaging: return Gd.Zone("triage");
+                case Stage.Test: return p.Test != "" ? Gd.TestZone(p.Test) : Gd.Zone("waiting");
+                case Stage.Lounge: return Gd.Zone("lounge");
+                case Stage.Fast: return Gd.Zone("triage");
+                case Stage.Move: return p.Dest >= 0 && p.Dest < S.Beds.Count ? S.Beds[p.Dest].Zone : Gd.Zone("hall_c2");
             }
-            if (tw > 0) for (int m = 0; m < Mats.N; m++) mix[m] /= tw;
-            return mix;
+            return Gd.Zone("waiting");
         }
 
-        double LitresPerContainer(PointState p)
+        /// <summary>Patients the waiting hall shows (registered, not with a doctor yet, not in a room), oldest first.</summary>
+        public List<Patient> Waiting()
         {
-            if (litresPerContainer == null) litresPerContainer = new double[Gd.Nodes.Count];
-            int key = p.Node;
-            // recomputed when 0 (compactor upgrades reset it)
-            if (litresPerContainer[key] <= 0)
-            {
-                var mix = ExpectedMix(p);
-                double l = 0;
-                for (int m = 0; m < Mats.N; m++) l += mix[m] * VolInPoint(p, m);
-                litresPerContainer[key] = Math.Max(0.1, l);
-            }
-            return litresPerContainer[key];
-        }
-        void ResetLitreCache() => litresPerContainer = null;
-
-        double[] DistrictWeights(string district, bool timeAdjusted)
-        {
-            var d = Gd.District(district);
-            var w = new double[Gd.Archetypes.Count];
-            for (int a = 0; a < w.Length; a++)
-            {
-                double x = d != null && a < d.Archetypes.Length ? d.Archetypes[a] : 1.0 / w.Length;
-                if (timeAdjusted)
-                {
-                    if (Weekend) x *= Gd.Archetypes[a].Weekend;
-                    if (S.Minute >= 1020) x *= Gd.Archetypes[a].Evening;   // from 17:00
-                }
-                w[a] = x;
-            }
-            return w;
+            var l = new List<Patient>();
+            foreach (var p in S.Patients) if ((p.Stage == Stage.Triage || p.Stage == Stage.Bay || p.Stage == Stage.Reg) && p.Bed < 0) l.Add(p);
+            return l;
         }
 
-        /// <summary>Base containers per hour at a point now (site rate × hour curve), without events or weekend.</summary>
-        public double BaseRate(PointState p) => NodeOf(p).Rate * Gd.HourCurve[HourIndex];
-
-        /// <summary>Event multiplier for a point now (heat wave, match day window).</summary>
-        public double DemandMult(PointState p)
+        /// <summary>ED load for the diversion rule and the HUD: occupied bays + patients waiting for one, over the bays.</summary>
+        public double EdLoad()
         {
-            double m = Weekend ? Gd.WeekendMult : 1.0;
-            foreach (var e in S.Events)
-            {
-                if (e.Id == "heat_wave") m *= e.Mult;
-                else if (e.Id == "match_day" && NodeOf(p).EventSite && S.Minute >= e.From && S.Minute < e.To) m *= e.Mult;
-            }
-            return m;
+            int bays = 0, used = 0;
+            foreach (var b in S.Beds) if (b.Bay && b.State != BedState.Closed) { bays++; if (b.State != BedState.Clean) used++; }
+            foreach (var p in S.Patients) if (p.Stage == Stage.Bay) used++;
+            return bays == 0 ? 1 : (double)used / bays;
         }
 
         // ------------------------------------------------------------------------------------------------ time
@@ -217,31 +159,21 @@ namespace ChargeNurse.Sim
         public void SetSpeed(int speed) => S.Speed = Math.Max(1, Math.Min(MaxSpeed, speed));
         public void SetPaused(bool paused) => S.Paused = paused;
 
-        /// <summary>Store perks (never saved): premium, route_pass, dispatcher_plus, offline_plus, speed.</summary>
+        /// <summary>Store perks (never saved): premium, speed, gold_theme …</summary>
         public void SetPerks(Dictionary<string, bool> p)
         {
             perks.Clear();
             if (p != null) foreach (var kv in p) perks[kv.Key] = kv.Value;
             if (S.Speed > MaxSpeed) S.Speed = MaxSpeed;
-            int slots = AutoSlots;
-            int n = 0;
-            foreach (var t in S.Trucks) if (t.Auto && ++n > slots) t.Auto = false;
         }
 
-        /// <summary>Every frame with real seconds. Research runs on real time in every phase; the day only while live.</summary>
+        /// <summary>Every frame with real seconds. The shift runs only while live and not paused.</summary>
         public void Advance(double realDt)
         {
             if (realDt <= 0 || double.IsNaN(realDt)) return;
             realDt = Math.Min(realDt, 1.0);   // a hitch never jumps the sim
-            TickResearch(realDt);
             if (S.Phase != Phases.Live || S.Paused) return;
-            double gm = realDt * Gd.GameMinPerRealS * Math.Max(1, S.Speed);
-            while (gm > 1e-9 && S.Phase == Phases.Live)
-            {
-                double step = Math.Min(1.0, gm);
-                Step(step);
-                gm -= step;
-            }
+            AdvanceMinutes(realDt * Gd.GameMinPerRealS * Math.Max(1, S.Speed));
         }
 
         /// <summary>Advances game minutes directly (tests, guide fast-forward). Stops at the day end.</summary>
@@ -257,53 +189,21 @@ namespace ChargeNurse.Sim
 
         void Step(double dt)
         {
-            RunPlanned();
-            Demand(dt);
-            StepTrucks(dt);
-            StepTechs();
-            StepDepot(dt);
-            foreach (var p in S.Points)
-                if (IsFull(p) || p.Jammed) { p.FullMin += dt; S.Today.FullMin += dt; }
-            Dispatcher();
-            S.Minute += dt;
-            if (S.Minute >= Gd.DayEnd - 1e-9) EndDay();
-        }
-
-        // ------------------------------------------------------------------------------------------------ demand
-
-        void Demand(double dt)
-        {
-            for (int i = 0; i < S.Points.Count; i++)
+            if (!night) RunPlanned();
+            TickEvents(dt);
+            Arrivals(dt);
+            Flow(dt);
+            Account(dt);
+            if (!night)
             {
-                var p = S.Points[i];
-                var kind = KindOf(p);
-                double baseRate = BaseRate(p);
-                double lpc = LitresPerContainer(p);
-                p.EstVol += baseRate * dt / 60.0 * lpc;
-                double lambda = baseRate * DemandMult(p) * dt / 60.0;   // containers this step
-                if (!kind.Citizens)
-                {
-                    // HoReCa: staff drop bags of ~10 into the back room
-                    double bags = lambda / 10.0;
-                    int k = Sample(bags);
-                    for (int b = 0; b < k; b++) Deposit(i, Rng.RangeI(8, 14), kind.Mix, -1);
-                    continue;
-                }
-                var w = DistrictWeights(NodeOf(p).District, true);
-                double tw = 0, mean = 0;
-                for (int a = 0; a < w.Length; a++) { tw += w[a]; mean += w[a] * Gd.Archetypes[a].Mean; }
-                if (tw <= 0) continue;
-                mean /= tw;
-                int citizens = Sample(lambda / Math.Max(1, mean));
-                for (int c = 0; c < citizens; c++)
-                {
-                    int a = Rng.PickWeighted(w);
-                    if (a < 0) continue;
-                    var ar = Gd.Archetypes[a];
-                    Deposit(i, Rng.RangeI(ar.Min, ar.Max), ar.Mix, a);
-                }
+                TickResearch(dt);
+                if (S.FloatLeft > 0) { S.FloatLeft -= dt; if (S.FloatLeft <= 0) { S.FloatLeft = 0; S.FloatTeam = ""; } }
+                S.Minute += dt;
+                if (S.Minute >= Gd.DayEnd - 1e-9) EndDay();
             }
         }
+
+        // ------------------------------------------------------------------------------------------------ arrivals
 
         int Sample(double expected)
         {
@@ -313,56 +213,110 @@ namespace ChargeNurse.Sim
             return k;
         }
 
-        /// <summary>One citizen (or a HoReCa bag) at point i with n containers. Returns accepted containers.</summary>
-        public int Deposit(int i, int n, double[] mix, int archetype)
+        double WingArrivals()
         {
-            var p = S.Points[i];
-            p.Arrivals++;
+            double m = 0;
+            foreach (var w in Gd.Wings) if (Unlocked(w.Id)) m = Math.Max(m, w.Arrivals);
+            return Math.Max(0.5, m);
+        }
+
+        /// <summary>Walk-ins per game minute now (hour curve × reputation × wings × flu week; the night is quieter).</summary>
+        public double ArrivalRate()
+        {
+            double rep = Gd.RepMin + Gd.RepSpan * Math.Max(0, Math.Min(100, S.Reputation)) / 100.0;
+            double r = Gd.ArrivalsPerHour / 60.0 * rep * WingArrivals() * (night ? Gd.NightMult : Gd.HourCurve[HourIndex]);
+            foreach (var e in S.Events) if (e.Id == "flu_surge") r *= e.Mult;
+            return r;
+        }
+
+        void Arrivals(double dt)
+        {
+            if (!S.ArrivalsOn) return;
+            int n = Sample(ArrivalRate() * dt);
+            for (int k = 0; k < n; k++) NewPatient(PickSev(Gd.Mix), false);
+            // ambulance calls (the guide makes its own)
+            if (!S.Tutorial && S.Ambulance == null)
+            {
+                double perDay = Gd.AmbulancePerDay[Math.Min(Chapter, Gd.AmbulancePerDay.Length - 1)];
+                if (Rng.Frand() < perDay / Gd.DayMinutes * dt * (night ? Gd.NightMult : 1))
+                {
+                    S.Ambulance = new AmbulanceCall { Sev = PickSev(Gd.AmbulanceSev), Left = Gd.AmbulanceAnswerMin };
+                    if (night) DecideAmbulance(DefaultAccept());
+                    else Emit("ambulance_call", -1, S.Ambulance.Sev);
+                }
+            }
+            if (S.Ambulance != null && !S.Ambulance.Guided)
+            {
+                S.Ambulance.Left -= dt;
+                if (S.Ambulance.Left <= 0) DecideAmbulance(DefaultAccept());
+            }
+        }
+
+        int PickSev(double[] w)
+        {
+            int s = Rng.PickWeighted(w);
+            return s < 0 ? Sev.Green : s;
+        }
+
+        /// <summary>Unanswered call: accepted, unless the diversion rule (research) says the ED is too full.</summary>
+        bool DefaultAccept() => !(Has("diversion_rules") && S.DivertAt > 0 && EdLoad() * 100 >= S.DivertAt);
+
+        /// <summary>A new patient at the door (walk-in: registration first; ambulance: tagged by the crew, straight in).</summary>
+        Patient NewPatient(int sev, bool ambulance)
+        {
+            var p = new Patient { Id = S.NextPatient++, Sev = sev, Amb = ambulance, Stage = Stage.Reg };
+            if (Rng.Frand() < Gd.TestP[sev]) p.Test = PickTest(sev);
+            p.Admit = Rng.Frand() < Gd.AdmitP[sev];
+            if (p.Admit)
+            {
+                p.Ward = PickWard(sev);
+                p.NeedsOr = Built("or") && Rng.Frand() < Gd.OrP[sev];
+                if (p.NeedsOr) p.Ward = sev >= Sev.Red && Unlocked("city") ? "icu" : "surgical";
+            }
+            if (ambulance) { p.Tag = sev; p.Stage = p.Test != "" ? Stage.Test : Stage.Bay; S.Today.Ambulances++; }
+            S.Patients.Add(p);
             S.Today.Arrivals++;
-            if (p.Jammed || p.BusyUntil > S.Minute)
-            {
-                Turn(i, archetype);
-                return 0;
-            }
-            double free = Cap(p) - Volume(p);
-            int accepted = 0, rejected = 0;
-            for (int c = 0; c < n; c++)
-            {
-                int m = Rng.PickWeighted(mix);
-                if (m < 0) m = 0;
-                double v = VolInPoint(p, m);
-                if (v <= free) { p.Fill[m] += 1; free -= v; accepted++; }
-                else rejected++;
-            }
-            p.Deposited += accepted;
-            S.Today.Deposited += accepted;
-            if (rejected > 0) Turn(i, archetype);
-            else if (EmitCrowd) Emit("deposit", i, archetype, accepted);
-            if (accepted > 0 && p.IsMachine && !p.Jammed && JamAllowed)
-            {
-                double q = KindOf(p).JamPer1000 / 1000.0 * (p.Compactor ? Gd.CompactorJamMult : 1.0) * (Has("jam_guard") ? 0.6 : 1.0);
-                if (Rng.Frand() < q * accepted) Jam(i, "random");
-            }
-            return accepted;
+            if (EmitCrowd) Emit("arrive", p.Id, sev, 0, ambulance ? "amb" : "walk");
+            return p;
         }
 
-        void Turn(int i, int archetype)
+        string PickTest(int sev)
         {
-            S.Points[i].Turned++;
-            S.Today.Turned++;
-            Emit("turned", i, archetype);
+            var opts = new List<string>();
+            foreach (var r in S.Rooms) if (r.Kind != "or" && (r.Kind != "ct" || sev >= Sev.Orange)) opts.Add(r.Kind);
+            return opts.Count == 0 ? "" : opts[Rng.RangeI(0, opts.Count - 1)];
         }
 
-        /// <summary>Random breakdowns / jams only after the guide and the forgiving first days.</summary>
-        bool JamAllowed => !S.Tutorial && S.Day > Gd.EventFreeDays;
-
-        public void Jam(int i, string why)
+        string PickWard(int sev)
         {
-            var p = S.Points[i];
-            if (p.Jammed) return;
-            p.Jammed = true;
-            p.TechCalled = false;
-            Emit("jam", i, -1, 0, why);
+            if (Unlocked("city") && sev >= Sev.Red && BedsIn("icu") > 0) return "icu";
+            if (Unlocked("city") && sev >= Sev.Orange && BedsIn("surgical") > 0 && Rng.Frand() < 0.35) return "surgical";
+            if (Unlocked("town") && sev >= Sev.Yellow && BedsIn("general") > 0) return "general";
+            return BedsIn("obs") > 0 || !Unlocked("town") ? "obs" : "general";
+        }
+
+        /// <summary>The player's (or the default's) answer to the ambulance call.</summary>
+        public string DecideAmbulance(bool accept)
+        {
+            var c = S.Ambulance;
+            if (c == null) return "none";
+            S.Ambulance = null;
+            if (!accept)
+            {
+                S.Today.Diverted++;
+                Emit("diverted", -1, c.Sev);
+                return "";
+            }
+            var p = NewPatient(c.Sev, true);
+            if (c.Guided)
+            {
+                // the guide's red patient needs the X-ray the player opens next (plan §9 steps 6-7)
+                p.Test = "xray";
+                p.Admit = false;
+                p.Stage = Stage.Test;
+            }
+            Emit("ambulance", p.Id, c.Sev);
+            return "";
         }
     }
 }

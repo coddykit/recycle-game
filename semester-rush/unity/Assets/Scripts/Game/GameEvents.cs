@@ -19,8 +19,8 @@ namespace SemesterRush.Game
             // shop
             "purchase_start", "purchase_success", "purchase_cancel", "purchase_fail", "restore_result", "offer_shown",
             // game
-            "br_session", "br_day_done", "route_dispatch", "sim_purchase", "research_start", "district_unlock", "bale_sold",
-            "crisis", "tip_shown", "settings_change", "review_moment", "gpu_shader_crash",
+            "sr_session", "sr_week_done", "sr_semester_done", "timetable_auto_fill", "sim_purchase", "research_start", "zone_unlock",
+            "crisis", "crisis_decision", "tip_shown", "settings_change", "review_moment", "gpu_shader_crash",
         };
 
         static readonly Regex Name = new Regex("^[a-z][a-z0-9_]{0,39}$");

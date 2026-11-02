@@ -1,6 +1,7 @@
 // Grill Convoy sim core — headless balance bot (design §15 P1: 30 min / 2 h / 7 days). Plays like a sensible new player:
-// suggested routes for idle trucks, sells bales when the yard fills or the price is good, banks the till, sends
-// technicians, buys machines / upgrades / research / districts when it can afford a buffer. Deterministic per seed.
+// sends each truck to the busiest free pitch, packs by the forecast, keeps the commissary prepped, restocks before selling
+// out, puts out flare-ups, swaps propane, uses All hands when the line is long, hires, buys stations where the line is
+// slowest (auto-arranged), researches and unlocks pitches when it can afford a buffer. Deterministic per seed.
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,8 +11,8 @@ namespace GrillConvoy.Sim
     public sealed class BalanceReport
     {
         public readonly List<DayStats> Days = new List<DayStats>();
-        public double Cash, Rating;
-        public int Chapter, Points, Trucks, ResearchDone;
+        public double Cash, Fame;
+        public int Chapter, Trucks, ResearchDone, Stations;
         public double MinCash = double.MaxValue;
         public bool Finite = true;
         public readonly List<string> Log = new List<string>();
@@ -19,13 +20,13 @@ namespace GrillConvoy.Sim
         public string Table()
         {
             var sb = new StringBuilder();
-            sb.AppendLine("day  arr  turned%  coll   km   perKm  fees  sales  costs   net   stars  rating");
+            sb.AppendLine("day weather  arr served lost%  burgers  wait sellout waste  sales  costs    net  stars  fame");
             foreach (var d in Days)
                 sb.AppendLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    "{0,3} {1,5} {2,7:0.0} {3,5} {4,5:0} {5,6:0.0} {6,5:0} {7,6:0} {8,6:0} {9,6:0}   {10}/9",
-                    d.Day, d.Arrivals, d.TurnedRate * 100, d.Collected, d.Km, d.PerKm, d.Fees, d.Sales, d.Costs, d.Net, d.Stars));
-            sb.AppendLine(string.Format(System.Globalization.CultureInfo.InvariantCulture, "cash {0:0} rating {1:0.0} chapter {2} points {3} trucks {4} research {5} minCash {6:0}",
-                Cash, Rating, Chapter, Points, Trucks, ResearchDone, MinCash));
+                    "{0,3} {1,-7} {2,4} {3,6} {4,5:0.0} {5,8} {6,5:0.0} {7,7:0} {8,5} {9,6:0} {10,6:0} {11,6:0}   {12}/9",
+                    d.Day, d.Weather, d.Arrivals, d.Served, d.LostRate * 100, d.Items, d.AvgWait, d.SelloutMin, d.Waste, d.Sales, d.Costs, d.Net, d.Stars));
+            sb.AppendLine(string.Format(System.Globalization.CultureInfo.InvariantCulture, "cash {0:0} fame {1:0.0} chapter {2} trucks {3} stations {4} research {5} minCash {6:0}",
+                Cash, Fame, Chapter, Trucks, Stations, ResearchDone, MinCash));
             return sb.ToString();
         }
     }
@@ -45,8 +46,9 @@ namespace GrillConvoy.Sim
                 if (sim.S.Day >= days) break;
                 sim.NextDay();
             }
-            rep.Cash = sim.S.Cash; rep.Rating = sim.S.Rating; rep.Chapter = sim.Chapter; rep.Points = sim.S.Points.Count;
-            rep.Trucks = sim.S.Trucks.Count; rep.ResearchDone = sim.S.Research.Count;
+            rep.Cash = sim.S.Cash; rep.Fame = sim.S.Fame; rep.Chapter = sim.Chapter; rep.Trucks = sim.S.Trucks.Count;
+            rep.ResearchDone = sim.S.Research.Count;
+            foreach (var t in sim.S.Trucks) rep.Stations += t.Layout.Count;
             return rep;
         }
 
@@ -65,54 +67,106 @@ namespace GrillConvoy.Sim
                 rep.MinCash = Math.Min(rep.MinCash, sim.S.Cash);
             }
             sim.DrainEvents();
-            Manage(sim, rep, true);
         }
 
-        static void Manage(Simulation sim, BalanceReport rep, bool calm)
+        static void Manage(Simulation sim, BalanceReport rep, bool morning)
         {
             var s = sim.S;
-            // dispatch idle trucks
+            if (morning) Morning(sim, rep);
+            else Live(sim);
+            // the commissary keeps one more day of patties / buns ready
+            double need = 0;
+            for (int ti = 0; ti < s.Trucks.Count; ti++) need += Math.Max(80, sim.SuggestPack(ti)[Stock.Patty]);
+            for (int item = 0; item < Stock.N; item++)
+            {
+                double want = item == Stock.Side ? need * 0.4 : item == Stock.Bun ? need * 0.95 : need;
+                if (item == Stock.Side && !HasSides(sim)) continue;
+                int guard = 0;
+                while (s.Commissary.Stock[item] + sim.Queued(item) < want && s.Cash > 300 && guard++ < 4)
+                    if (sim.Prep(item) != "") break;
+            }
+        }
+
+        static bool HasSides(Simulation sim)
+        {
+            foreach (var t in sim.S.Trucks) if (sim.Line(t).SideChance > 0) return true;
+            return false;
+        }
+
+        static void Morning(Simulation sim, BalanceReport rep)
+        {
+            var s = sim.S;
+            double buffer = Math.Max(600, sim.DayIncome() * 0.6);
+            // pitches (the chapter goal), the second truck, research
+            foreach (var d in sim.Gd.Districts)
+                if (sim.CanBuy("pitch:" + d.Id).Ok && s.Cash - d.Cost > buffer) { sim.Buy("pitch:" + d.Id); rep.Log.Add("day " + s.Day + " pitch " + d.Id); }
+            foreach (var v in sim.Gd.VehicleOrder)
+                if (sim.CanBuy("truck:" + v).Ok && s.Cash - sim.CanBuy("truck:" + v).Cost > buffer) { sim.Buy("truck:" + v); rep.Log.Add("day " + s.Day + " truck " + v); }
+            double baseBuffer = buffer;
+            // saving up for the next pitch once Fame allows it (the chapter goal comes first)
+            foreach (var d in sim.Gd.Districts)
+                { var why = sim.CanBuy("pitch:" + d.Id).Reason; if (!sim.Unlocked(d.Id) && (why == "cash" || why == "")) { buffer += d.Cost; break; } }
+            if (s.Researching == "")
+                foreach (var r in Priority(sim))
+                    if (sim.CanResearch(r) == "" && s.Cash - sim.Gd.ResearchById[r].Cost > buffer * 1.2) { sim.StartResearch(r); rep.Log.Add("day " + s.Day + " research " + r); break; }
+            // each truck: the busiest pitch nobody else takes, crew, stations, menu, pack
+            var taken = new HashSet<int>();
             for (int ti = 0; ti < s.Trucks.Count; ti++)
             {
-                if (s.Trucks[ti].Busy || s.Trucks[ti].Auto || sim.FreeDrivers <= 0 || s.Phase == Phases.Report) continue;
-                var r = sim.SuggestRoute(ti);
-                if (r.Count == 0 && s.Phase == Phases.Live) r = sim.SuggestRoute(ti, true);
-                if (r.Count > 0) sim.Dispatch(ti, r);
+                var t = s.Trucks[ti];
+                int best = -1; double bestC = -1;
+                foreach (int p in sim.Gd.Pitches)
+                {
+                    if (!sim.PitchOpen(p) || taken.Contains(p)) continue;
+                    double c = sim.ForecastCustomers(p) - sim.NodeAt(p).Permit / 4.0;
+                    if (c > bestC) { bestC = c; best = p; }
+                }
+                if (best >= 0) { taken.Add(best); sim.AssignPitch(ti, best); }
+                for (int k = 0; k < 4 && sim.CanBuy("hire:" + ti + ":runner").Ok && s.Cash - sim.Gd.HirePrice > baseBuffer; k++)
+                {
+                    var L = sim.Line(t);
+                    string role = t.Crew.Contains(Roles.Cashier) ? (L.Bottleneck == Stations.Grill ? Roles.Griller : L.Bottleneck == Stations.Assembly ? Roles.Assembler : Roles.Runner) : Roles.Cashier;
+                    sim.Buy("hire:" + ti + ":" + role);
+                }
+                foreach (var st in new[] { Stations.Toaster, Stations.Fryer, Stations.Fridge, Stations.Sauce })
+                    if (sim.CanBuy("station:" + ti + ":" + st).Ok && s.Cash - sim.Gd.StationDefs[st].Price > buffer * 1.3) { sim.Buy("station:" + ti + ":" + st); sim.AutoLayout(ti); }
+                for (int k = 0; k < 2; k++)
+                {
+                    var L = sim.Line(t);
+                    string st = L.Bottleneck;
+                    var b = sim.CanBuy("station:" + ti + ":" + st);
+                    if (b.Ok && s.Cash - b.Cost > baseBuffer * 1.2) { sim.Buy("station:" + ti + ":" + st); sim.AutoLayout(ti); rep.Log.Add("day " + s.Day + " station " + st); }
+                }
+                sim.AutoLayout(ti);
+                foreach (var c in sim.Gd.Cards)
+                    if (!t.Menu.Contains(c.Id) && sim.CardAvailable(c) && t.Menu.Count < sim.MenuSlots && c.Until == 0) sim.ToggleCard(ti, c.Id);
+                sim.ApplySuggestedPack(ti);
             }
-            // technicians
-            for (int i = 0; i < s.Points.Count; i++) if (s.Points[i].Jammed && !s.Points[i].TechCalled) sim.SendTech("point", i);
-            if (s.Depot.BalerDown) sim.SendTech("baler", 0);
-            // till + bales
-            if (s.Depot.Till > 200) sim.CollectTill();
-            for (int m = 0; m < Mats.N; m++)
-                if (s.Depot.Bales[m] > 0 && (sim.MarketMult(m) >= 1.05 || s.Depot.Yard >= s.Depot.YardCap - 2 || (m == Mats.Glass && sim.GlassBayFull))) sim.Sell(m);
-            if (!calm) return;
-            double buffer = Math.Max(800, sim.DayIncome() * 0.8);
-            // districts first (the chapter goal), then research, then the network
-            foreach (var d in sim.Gd.Districts) if (sim.CanBuy("district:" + d.Id).Ok && s.Cash - d.Cost > buffer) { sim.Buy("district:" + d.Id); rep.Log.Add("day " + s.Day + " district " + d.Id); }
-            if (s.Researching == "")
-                foreach (var r in sim.Gd.Research)
-                    if (sim.CanResearch(r.Id) == "" && s.Cash - r.Cost > buffer * 1.5) { sim.StartResearch(r.Id); rep.Log.Add("day " + s.Day + " research " + r.Id); break; }
-            if (sim.CanBuy("dispatcher").Ok && s.Cash - sim.Gd.Price("dispatcher") > buffer) sim.Buy("dispatcher");
-            if (s.Drivers < s.Trucks.Count && sim.CanBuy("driver").Ok && s.Cash - 300 > buffer) sim.Buy("driver");
-            // overflowing points: bigger bin, then a new machine nearby
-            for (int i = 0; i < s.Points.Count; i++)
+        }
+
+        static IEnumerable<string> Priority(Simulation sim)
+        {
+            foreach (var id in new[] { "fryer", "card_double", "grill_plus", "drink_fridge", "fire_drill", "second_window", "commissary_plus", "crew_training",
+                "par_levels", "order_ahead", "sauce_rail", "card_spicy", "menu_board_plus", "card_kids", "propane_gauge", "fuel_saver", "premium_tier",
+                "dispatcher", "rival_scout", "card_veggie", "card_breakfast", "wrap_bench", "body_extension", "card_premium" })
+                yield return id;
+        }
+
+        static void Live(Simulation sim)
+        {
+            var s = sim.S;
+            for (int ti = 0; ti < s.Trucks.Count; ti++)
             {
-                var p = s.Points[i];
-                if (p.Turned > 8 && sim.CanBuy("bin_m:" + i).Ok && s.Cash - 700 > buffer) sim.Buy("bin_m:" + i);
-                if (p.Turned > 8 && sim.CanBuy("sensor:" + i).Ok && s.Cash - 250 > buffer) sim.Buy("sensor:" + i);
+                var t = s.Trucks[ti];
+                if (t.Flaring) sim.Extinguish(ti);
+                if (t.Propane <= sim.Gd.Svc.PropaneLow) sim.SwapPropane(ti);
+                if (!t.Open) continue;
+                if (t.Queue.Count >= 8) sim.AllHands(ti);
+                if (t.Grease > sim.Gd.Svc.GreaseSafe && t.Queue.Count <= 2) sim.Clean(ti);
+                bool low = t.Load[Stock.Patty] < 15 || t.Load[Stock.Bun] < 15;
+                if (low && s.Commissary.Stock[Stock.Patty] >= 40 && s.Minute < sim.Gd.DayEnd - 90) sim.Restock(ti);
+                if (sim.RivalMult(t.AtNode, null) < 1.0 && !t.Promo) sim.Promo(ti);
             }
-            foreach (var n in sim.Gd.Nodes)
-            {
-                if (n.Kind != "site") continue;
-                string id = (n.Site == "machine" ? "machine:" : n.Site + ":") + n.Id;
-                var c = sim.CanBuy(id);
-                if (c.Ok && s.Cash - c.Cost > buffer * 1.5) { sim.Buy(id); rep.Log.Add("day " + s.Day + " bought " + id); }
-            }
-            if (s.Depot.IntakeTotal > sim.CountPerMinute * 120 && sim.CanBuy("line").Ok && s.Cash - sim.Gd.Price("line") > buffer) sim.Buy("line");
-            int pointsPerTruck = s.Points.Count / Math.Max(1, s.Trucks.Count);
-            if (pointsPerTruck > 4 && sim.CanBuy("truck:van").Ok && s.Cash - 2500 > buffer * 2) sim.Buy("truck:van");
-            if (s.Techs == 0 && s.Day > 3 && sim.CanBuy("tech").Ok && s.Cash - 300 > buffer) sim.Buy("tech");
         }
     }
 }

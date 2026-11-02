@@ -1,4 +1,4 @@
-// Grill Convoy (from Volt City) — the strings table (P3). Every UI text has a key in Assets/Resources/i18n/strings.csv:
+// Grill Convoy (from the fleet template) — the strings table (P3). Every UI text has a key in Assets/Resources/i18n/strings.csv:
 //   key,en,tr,de,es,fr,pt,ru,ja,ko,hi        (pt = pt-BR, hi = the 10th language; DESIGN section 10)
 // Named placeholders in braces: "Short {mw}" -> F("hud.short", "mw", "4 MW"). Missing cell -> English -> the key itself
 // (a visible key is a test failure, never a crash). Engine-free (GrillConvoy.Game, noEngineReferences): the Unity layer

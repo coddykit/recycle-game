@@ -1,14 +1,14 @@
 // Semester Rush — the shop: catalogue (IapCatalog, Resources/data/iap.json) + the kit's purchase layer (CoddyPurchases on
 // RevenueCat) + the career. Engine-free (CoddyPurchases lives in CoddyKit.Core) so EditMode tests drive the real flow
 // with FakePurchases.
-//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / route_pass / bundle) —
+//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / bundle) —
 //     never from "bought anything" (fleet §3). House banner / interstitial and the rewarded "no video" path all read
 //     CoddyPurchases.AdFree. Legacy buyers: not applicable (new game, no earlier purchases).
 //   * permanent rights = RC entitlements (cached offline; Restore = a fresh CustomerInfo, idempotent);
 //   * consumables: the store confirms -> CoddyPurchases.Deliver(storeId, txn) -> sim.GrantCash(days) once per transaction
 //     (txn remembered in settings) -> save. ≤ 3 packs per UTC day is a PRE-purchase gate. Never restored.
 //   * prices only from the store (displayPrice), "…" until they arrive; no trial, no subscription (fleet §1).
-//   * offers: starter (day 3-7 after a day report, once), event kit (match day), comeback (≥ 3 days away); one per session,
+//   * offers: starter (day 3-7 after a week report, once), exam kit (exam week), comeback (≥ 3 days away); one per session,
 //     3 days apart; never in the guide.
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace SemesterRush.Game
     {
         public const string Loading = "…";
         /// <summary>RC entitlements the sim turns into perks (never saved in the career).</summary>
-        public static readonly string[] PerkEntitlements = { "route_pass", "dispatcher_plus", "offline_plus", "speed", "gold_livery" };
+        public static readonly string[] PerkEntitlements = { "speed", "automation", "offline_plus", "gold_trim", "theme_ivy", "theme_modern", "theme_desert" };
         public static readonly string[] AdFreeEntitlements = { "noads" };
 
         public readonly IapCatalog Cat;
@@ -145,13 +145,10 @@ namespace SemesterRush.Game
             var p = Cat.ByStoreId(storeId);
             if (p == null || !p.Consumable || Sim == null) return false;
             if (!string.IsNullOrEmpty(txn) && session.Settings.Delivered(txn)) return true;
-            lastFunds = Sim.GrantCash(p.DaysX10 / 10.0);
-            if (p.Slug == "starter" && Sim.CanBuy("truck:van").Reason != "max")
-            {
-                int id = 0;
-                foreach (var t in Sim.S.Trucks) id = Math.Max(id, t.Id + 1);
-                Sim.S.Trucks.Add(new TruckState { Id = id, Type = "van", AtNode = Sim.Gd.DepotNode });
-            }
+            lastFunds = p.DaysX10 > 0 ? Sim.GrantCash(p.DaysX10 / 10.0) : 0;
+            // starter: one extra marshal on the payroll ("extra crew"); exam kit: invigilators + a backup generator this exam week
+            if (p.Slug == "starter" && Sim.CanBuy("staff:" + Depts.Marshals).Reason != "max") Sim.S.Staff[Depts.Marshals] = Sim.Staff(Depts.Marshals) + 1;
+            if (p.Slug == "exam_kit") Sim.S.ExamKit = true;
             if (!string.IsNullOrEmpty(txn)) session.Settings.MarkDelivered(txn);
             session.Settings.Save();
             session.Save();
@@ -161,7 +158,7 @@ namespace SemesterRush.Game
         /// <summary>The Edition's starter cash, once per device (the entitlement may arrive by purchase or restore).</summary>
         void GrantOneTimeBonuses()
         {
-            if (Sim == null || !Has("gold_livery") || session.Settings.Flag("premium_cash")) return;
+            if (Sim == null || !Has("gold_trim") || session.Settings.Flag("premium_cash")) return;
             session.Settings.SetFlag("premium_cash");
             Sim.GrantCash(2.0);
             session.Settings.Save();
@@ -185,7 +182,7 @@ namespace SemesterRush.Game
 
         // ------------------------------------------------------------------------------------------------ offers
 
-        /// <summary>ev = day_report | match_day | resume. Returns the offer slug shown now, or "".</summary>
+        /// <summary>ev = week_report | exam_week | resume. Returns the offer slug shown now, or "".</summary>
         public string TryOffer(string ev, bool tutorial, int awayDays = 0)
         {
             if (tutorial || ActiveOffer != "" || offersThisSession >= Math.Max(1, Cat.OffersPerSession)) return "";

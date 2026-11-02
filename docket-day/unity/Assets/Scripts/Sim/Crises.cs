@@ -1,6 +1,6 @@
-// Docket Day sim core — crises (design §7). Short (≤ 2 days), never game over; never during the guide or the first
-// forgiving days. Day-wide ones (heat wave, match day, fuel spike, bale crash) are announced in the morning plan so the
-// player can prepare (pre-position a truck at the stadium); the others land at a random minute of the live day.
+// Docket Day sim core — the day plan: walk-in minutes and crises (design §7, MVP four: surprise motion, power cut, sick
+// day, substitute judge). Crises are short (today only), never game over, never during the guide or the first forgiving
+// days; each one has a lever (reassign, visiting counsel, continuance, settle).
 using System;
 using System.Collections.Generic;
 
@@ -8,32 +8,40 @@ namespace DocketDay.Sim
 {
     public sealed partial class Simulation
     {
-        static readonly HashSet<string> Announced = new HashSet<string> { "heat_wave", "match_day", "fuel_spike", "bale_crash" };
-
-        bool EventEligible(EventDef e)
+        int Sample(double expected)
         {
-            if (S.Day < e.MinDay) return false;
-            if (!string.IsNullOrEmpty(e.District) && !Unlocked(e.District)) return false;
-            if (S.Events.Exists(a => a.Id == e.Id)) return false;
-            if (S.Planned.Exists(a => a.Id == e.Id)) return false;
-            return true;
+            if (expected <= 0) return 0;
+            int k = (int)Math.Floor(expected);
+            if (Rng.Frand() < expected - k) k++;
+            return k;
+        }
+
+        public double WalkinRate
+        {
+            get
+            {
+                double b = Gd.Walkins[Math.Max(0, Math.Min(Gd.Walkins.Length - 1, S.Chapter - 1))];
+                return b + Gd.WalkinPerStanding * AvgStanding + Gd.WalkinPerReceptionist * Math.Min(Gd.MaxReceptionists, CountRole("receptionist"));
+            }
         }
 
         void PlanDay()
         {
             S.Planned.Clear();
-            if (S.Tutorial || S.Day <= Gd.EventFreeDays) return;
-            double expected = Gd.EventsPerDay[Math.Min(Chapter, Gd.EventsPerDay.Length - 1)];
+            if (S.Tutorial) return;
+            int walkins = Sample(WalkinRate);
+            for (int i = 0; i < walkins; i++) S.Planned.Add(new PlannedEvent { Id = "walkin", At = Gd.DayStart + 20 + Rng.Frand() * (Gd.DayMinutes - 110) });
+            if (S.Day <= Gd.EventFreeDays) return;
+            double expected = Gd.EventsPerDay[Math.Min(S.Chapter, Gd.EventsPerDay.Length - 1)];
             int n = Sample(expected);
             for (int k = 0; k < n; k++)
             {
-                var pool = Gd.Events.FindAll(EventEligible);
+                var pool = Gd.Events.FindAll(e => S.Day >= e.MinDay && !S.Planned.Exists(p => p.Id == e.Id));
                 if (pool.Count == 0) break;
                 var w = new double[pool.Count];
                 for (int i = 0; i < w.Length; i++) w[i] = pool[i].Weight;
-                var e = pool[Rng.PickWeighted(w)];
-                if (Announced.Contains(e.Id)) Fire(e.Id);
-                else S.Planned.Add(new PlannedEvent { Id = e.Id, At = Gd.DayStart + 60 + Rng.Frand() * (Gd.DayMinutes - 120) });
+                var ev = pool[Math.Max(0, Rng.PickWeighted(w))];
+                S.Planned.Add(new PlannedEvent { Id = ev.Id, At = Gd.DayStart + 30 + Rng.Frand() * (Gd.DayMinutes - 150) });
             }
         }
 
@@ -41,135 +49,70 @@ namespace DocketDay.Sim
         {
             for (int i = S.Planned.Count - 1; i >= 0; i--)
             {
-                if (S.Planned[i].At > S.Minute) continue;
+                if (i >= S.Planned.Count || S.Planned[i].At > S.Minute) continue;
                 string id = S.Planned[i].Id;
                 S.Planned.RemoveAt(i);
-                Fire(id);
+                if (id == "walkin") Walkin();
+                else Fire(id);
             }
         }
 
-        EventDef Def(string id) => Gd.Events.Find(e => e.Id == id) ?? new EventDef { Id = id, Mult = 1, Days = 1 };
+        EventDef Def(string id) => Gd.Events.Find(e => e.Id == id) ?? new EventDef { Id = id, Hours = 1.5, Minutes = 60 };
 
-        int RandomPoint(Predicate<PointState> ok)
-        {
-            var idx = new List<int>();
-            for (int i = 0; i < S.Points.Count; i++) if (ok(S.Points[i])) idx.Add(i);
-            return idx.Count == 0 ? -1 : idx[Rng.RangeI(0, idx.Count - 1)];
-        }
+        T Pick<T>(List<T> l) => l.Count == 0 ? default : l[Rng.RangeI(0, l.Count - 1)];
 
-        /// <summary>Applies a crisis now (also used by tests and the balance bot). Returns false when it found no target.</summary>
+        /// <summary>Applies a crisis now (also used by tests and the balance bot). False when it found no target.</summary>
         public bool Fire(string id)
         {
             var e = Def(id);
             switch (id)
             {
-                case "heat_wave":
-                case "fuel_spike":
-                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day + Math.Max(1, e.Days) - 1, Mult = e.Mult });
-                    Emit("crisis", -1, -1, e.Mult, id);
-                    return true;
-                case "bale_crash":
+                case "surprise_motion":
                 {
-                    int m = Rng.RangeI(0, Mats.N - 1);
-                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day + Math.Max(1, e.Days) - 1, Mult = e.Mult, Target = m });
-                    Emit("crisis", m, -1, e.Mult, id);
+                    var l = S.Matters.FindAll(m => m.Status == MatterStatus.Open && !m.Tutorial && m.HearingTask != null && m.HearingTask.Due > S.Day);
+                    var m = Pick(l);
+                    if (m == null) return false;
+                    m.Tasks.Insert(m.Tasks.Count - 1, new TaskState { Kind = Kinds.Motion, Need = Math.Round(e.Hours * TierOf(m).Hours, 2), Due = Math.Min(S.Day + 1, m.HearingTask.Due) });
+                    Emit("crisis", m.Id, -1, 0, id);
                     return true;
                 }
-                case "match_day":
-                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day, Mult = e.Mult, From = e.From, To = e.To });
-                    Emit("crisis", -1, -1, e.From, id);
+                case "power_cut":
+                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day, From = S.Minute, To = S.Minute + e.Minutes });
+                    Emit("crisis", -1, -1, e.Minutes, id);
                     return true;
-                case "jam":
+                case "sick_day":
                 {
-                    int i = RandomPoint(p => p.IsMachine && !p.Jammed);
-                    if (i < 0) return false;
-                    Jam(i, "crisis");
-                    Emit("crisis", i, -1, 0, id);
+                    var s = Pick(S.Staff.FindAll(x => !IsFounder(x) && !x.Sick && x.TempUntil <= 0 && !InSession(x.Id)));
+                    if (s == null) return false;
+                    s.Sick = true;
+                    s.HoursLeft = 0;
+                    S.Events.Add(new ActiveEvent { Id = id, UntilDay = S.Day, Target = s.Id });
+                    Emit("crisis", s.Id, -1, 0, id);
                     return true;
                 }
-                case "sensor_offline":
+                case "substitute_judge":
                 {
-                    int i = RandomPoint(p => p.IsMachine && !p.SensorOffline && !(Has("sensor_redundancy") && p.Sensor));
-                    if (i < 0) return false;
-                    var p = S.Points[i];
-                    p.SensorOffline = true;
-                    p.FrozenPct = Math.Min(0.4, DisplayPct(p));   // "the app says available"
-                    Emit("crisis", i, -1, 0, id);
-                    return true;
-                }
-                case "bulk_returner":
-                {
-                    int i = RandomPoint(p => p.IsMachine && !p.Jammed);
-                    if (i < 0) return false;
-                    int n = Rng.RangeI(e.Min, e.Max);
-                    if (S.Depot.Centre)
-                    {
-                        // the counting centre takes big hauls: no blocked machine, it counts them itself at the lower
-                        // bulk fee and sends the sorted material straight to the baler / glass bay
-                        double[] split = { Math.Round(n * 0.6), Math.Round(n * 0.3), 0 };
-                        split[Mats.Glass] = n - split[Mats.Pet] - split[Mats.Alu];
-                        for (int m = 0; m < Mats.N; m++) S.Depot.BalerIn[m] += split[m] * Gd.Materials[m].Kg;
-                        double fee = n * Gd.BulkFee * FeeMult;
-                        S.Cash += fee;
-                        S.Today.Fees += fee;
-                        Emit("crisis", i, -1, n, "bulk_centre");
-                        return true;
-                    }
-                    Deposit(i, n, new[] { 0.6, 0.3, 0.1 }, -1);
-                    S.Points[i].BusyUntil = S.Minute + e.BusyMin;
-                    Emit("crisis", i, -1, n, id);
-                    return true;
-                }
-                case "breakdown":
-                {
-                    int ti = S.Trucks.FindIndex(t => t.Status == TruckStatus.Drive);
-                    if (ti < 0) return false;
-                    Breakdown(ti, e.BrokenMin);
-                    return true;
-                }
-                case "baler_down":
-                    if (S.Depot.BalerDown) return false;
-                    BalerDown("crisis");
-                    Emit("crisis", -1, -1, 0, id);
-                    return true;
-                case "glass_break":
-                {
-                    int ti = S.Trucks.FindIndex(t => t.Load[Mats.Glass] > 0);
-                    if (ti < 0) return false;
-                    GlassBreak(ti);
+                    if (Gd.Judges.Count < 2) return false;
+                    var m = Pick(S.Matters.FindAll(x => x.Status == MatterStatus.Open && !x.Tutorial && x.HearingTask != null && x.HearingTask.Due <= S.Day + 3));
+                    if (m == null) return false;
+                    int j = m.Judge;
+                    for (int k = 0; k < 10 && j == m.Judge; k++) j = Rng.RangeI(0, Gd.Judges.Count - 1);
+                    if (j == m.Judge) j = (m.Judge + 1) % Gd.Judges.Count;
+                    m.Judge = j;
+                    Emit("crisis", m.Id, j, 0, id);
                     return true;
                 }
             }
             return false;
         }
 
-        void Breakdown(int ti, double minutes)
-        {
-            var t = S.Trucks[ti];
-            if (t.Status == TruckStatus.Broken) return;
-            t.ResumeStatus = t.Status;
-            t.Status = TruckStatus.Broken;
-            t.TimeLeft = minutes;
-            Emit("crisis", ti, -1, minutes, "breakdown");
-        }
-
-        void GlassBreak(int ti)
-        {
-            var t = S.Trucks[ti];
-            double lost = t.Load[Mats.Glass];
-            t.Load[Mats.Glass] = 0;
-            Emit("crisis", ti, -1, lost, "glass_break");
-        }
-
-        /// <summary>Crises active today (for the morning plan card and the HUD chips).</summary>
+        /// <summary>Crisis chips for the HUD (today).</summary>
         public List<string> ActiveCrises()
         {
-            var o = new List<string>();
-            foreach (var e in S.Events) o.Add(e.Id);
-            if (S.Depot.BalerDown) o.Add("baler_down");
-            foreach (var p in S.Points) { if (p.Jammed) { o.Add("jam"); break; } }
-            foreach (var t in S.Trucks) { if (t.Status == TruckStatus.Broken) { o.Add("breakdown"); break; } }
-            return o;
+            var l = new List<string>();
+            foreach (var e in S.Events)
+                if (e.UntilDay >= S.Day && !l.Contains(e.Id) && (e.Id != "power_cut" || (S.Minute >= e.From && S.Minute < e.To))) l.Add(e.Id);
+            return l;
         }
     }
 }

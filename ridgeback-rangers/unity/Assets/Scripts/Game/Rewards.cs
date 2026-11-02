@@ -1,14 +1,15 @@
-// Ridgeback Rangers — opt-in rewarded videos (design §10, fleet §4): AdMob rewarded ONLY, through the kit's RewardedController
+// Ridgeback Rangers — opt-in rewarded videos (plan §10, fleet §4): AdMob rewarded ONLY, through the kit's RewardedController
 // (UMP consent -> the one MobileAds.Initialize -> load; caps + cooldowns in coddyads/rewarded.json) AND the sim's own
 // reward state (caps, cooldowns, context, cash caps — persisted in the career save). Both must allow it.
-//   offline_x2        ×2 offline pay (bounded)          1/day            cash   (welcome-back card)
-//   emergency_empty   one full machine emptied now      3/day, 10 min    —      (full machine card; "last resort")
-//   fuel_voucher      one route at half fuel cost       2/day, 15 min    —      (route editor)
-//   baler_rescue      baler repaired now                1/day            —      (baler down card; crisis last resort)
-//   daily_bonus       small cash                        1/day            cash   (morning plan)
+//   dawn_double     ×2 overnight donations (bounded, ≤ 0.08 day)    2/day, 10 min   cash   (welcome-back card)
+//   borrow_ranger   a ranger from the next ridge takes one pin      3/day, 10 min   0.04   (pin card, no free ranger)
+//   warm_incubator  an egg hatches 10 minutes sooner                2/day, 10 min   0.05   (hatchery)
+//   storm_shelter   every fence tile repaired once ("last resort")  1/day, 10 min   0.10   (fence / escape pin card)
+//   scout_tip       reveals a dig site's hidden species (info)      2/day, 10 min   —      (hatchery dig chart)
 // Units for the kit budget = milli-days of income (cash_s = 1 day = 1000): single ≤ 200 (1/5 of the cheapest pack),
-// daily ≤ 500 (1/2). Cash rewards ask for their real size; non-cash ones for 1 unit. ad_free players get the same capped
-// reward WITHOUT a video (rewarded_skipped_paid_user). Never offered in the guide (sim side). Nothing sold is given here.
+// daily ≤ 500 (1/2): 2×80 + 3×40 + 2×50 + 1×100 + 2×1 = 482. Cash rewards ask for their real size, the others for their
+// balance.json value. ad_free players get the same capped reward WITHOUT a video (rewarded_skipped_paid_user). Never offered
+// in the guide (sim side). Nothing sold is given here (no cosmetics, no permanent slots, no speed, no ad-free).
 using System;
 using System.Collections.Generic;
 using CoddyKit.Ads;
@@ -34,11 +35,11 @@ namespace RidgebackRangers.Game
         /// <summary>The kit's per-placement caps (= balance.json rewards; test-checked). Passed to the kit at boot.</summary>
         public static Dictionary<string, RewardedLimit> KitLimits() => new Dictionary<string, RewardedLimit>
         {
-            { "offline_x2", new RewardedLimit(1, 0) },
-            { "emergency_empty", new RewardedLimit(3, 600) },
-            { "fuel_voucher", new RewardedLimit(2, 900) },
-            { "baler_rescue", new RewardedLimit(1, 0) },
-            { "daily_bonus", new RewardedLimit(1, 0) },
+            { "dawn_double", new RewardedLimit(2, 600) },
+            { "borrow_ranger", new RewardedLimit(3, 600) },
+            { "warm_incubator", new RewardedLimit(2, 600) },
+            { "storm_shelter", new RewardedLimit(1, 600) },
+            { "scout_tip", new RewardedLimit(2, 600) },
         };
 
         readonly Func<Simulation> sim;
@@ -55,8 +56,10 @@ namespace RidgebackRangers.Game
 
         int UnitsFor(string placement, double amount)
         {
-            if (!Simulation.RewardIsCash(placement)) return 1;
-            double day = Math.Max(1, sim().DayIncome());
+            var s = sim();
+            if (!Simulation.RewardIsCash(placement))
+                return s != null && s.Gd.Rewards.TryGetValue(placement, out var def) ? Math.Max(1, (int)Math.Round(def.Days * UnitsPerDay)) : 1;
+            double day = Math.Max(1, s.DayIncome());
             return (int)Math.Max(1, Math.Min(int.MaxValue, Math.Ceiling(amount * UnitsPerDay / day)));
         }
 
@@ -96,9 +99,10 @@ namespace RidgebackRangers.Game
             if (r == null || !r.Ok) return loc.T("reward.unavailable");
             switch (placement)
             {
-                case "emergency_empty": return loc.T("reward.done_empty");
-                case "fuel_voucher": return loc.T("reward.done_fuel");
-                case "baler_rescue": return loc.T("reward.done_baler");
+                case "borrow_ranger": return loc.T("reward.done_borrow");
+                case "warm_incubator": return loc.T("reward.done_warm");
+                case "storm_shelter": return loc.T("reward.done_shelter");
+                case "scout_tip": return loc.T("reward.done_scout");
             }
             return loc.F("reward.done_cash", "cash", Fmt.Money((long)Math.Round(r.Amount), loc.Lang));
         }

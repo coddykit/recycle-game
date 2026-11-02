@@ -1,8 +1,8 @@
 // Docket Day — wow moments for the in-app review ask (fleet §12; the kit's CoddyReview / ReviewGate decide WHEN: first
 // session ok, ≥ 240 s real play, never in the guide / a window / the background, ≤ 3 asks ≥ 30 days apart, OS sheet only,
 // no "do you like it" card, nothing given for a rating). This class only says WHICH moments are wow moments:
-//   * the first good day report (≥ 6 of 9 stars) — ~4 minutes into the first session, right after the guide;
-//   * the first bale sold for ≥ 1.1 × the base price;   * a new district unlocked.
+//   * a won hearing (the guide's first hearing is a sure win at ~3-4 minutes: deferred to the moment the guide ends);
+//   * a great day report (≥ 7 of 9 stars);   * the firm moved up a chapter.
 // A moment that happens inside the guide is deferred to the first moment after it (Deferred, kept in settings).
 using DocketDay.Sim;
 
@@ -17,9 +17,9 @@ namespace DocketDay.Game
         {
             switch (e.Type)
             {
-                case "day_done": return e.B >= 6 ? "good_day" : "";
-                case "sold": return e.A >= 0 && e.A < Mats.N && sim.MarketMult(e.A) >= 1.1 ? "good_sale" : "";
-                case "district": return "district";
+                case "verdict": return e.B == 1 ? "won_hearing" : "";
+                case "day_done": return e.B >= 7 ? "good_day" : "";
+                case "chapter": return "chapter";
             }
             return "";
         }

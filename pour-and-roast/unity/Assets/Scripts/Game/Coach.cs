@@ -1,16 +1,18 @@
-// Pour & Roast — the 14-step show-and-do guide (design §9, fleet §9). One thing per step; the target is spotlit; the step
-// advances ONLY when the player really does that action; a wrong tap repeats the hint (no penalty); time is paused while
-// the guide waits for the player, and runs fast while the guide waits for the world (the van driving, the count line,
-// the baler). Safe: the sim is in tutorial mode (no crises, no rating loss). Skip + Settings -> "Replay the guide".
+// Pour & Roast — the show-and-do guide (design §9, fleet §9). One thing per step; the target is spotlit; the step advances
+// ONLY when the player really does that action; a wrong tap repeats the hint (no penalty); time is paused while the guide
+// waits for the player, and runs fast while the guide waits for the world (the shot being pulled, the latte, the batch,
+// the pre-order). Safe: the sim is in tutorial mode (no random customers, no walk-outs, no crises, no rating loss). The
+// guide places its own orders. Skip + Settings -> "How to play" replays it.
 // Volt City lesson (11-01, 1★ "guide error"): every step is recoverable — leaving the screen / relaunching mid-step
 // re-derives the step from the career (Sync), never locks the player.
-//   1 tap the machine (fill bar)        8 tap the coins (fee per bottle)
-//   2 tap the van                       9 tap the baler
-//   3 tap the machine (add to route)   10 sell the first bale
-//   4 add the second machine           11 tap the fuel badge (km cost)
-//   5 Go                               12 set a rule: empty at 80 %
-//   6 watch the van (sped up)          13 buy a bigger bin
-//   7 tap the depot                    14 hire a second driver
+//    1 Open the cart                       7 two same drinks: turn on Batch
+//    2 tap the first ticket on the rail    8 a pre-order with a pickup time: tap Priority
+//    3 tap the espresso machine (brew)     9 the shots taste bitter: hold the grinder (dial-in)
+//    4 tap the pickup shelf (hand over)   10 buy a table (layout)
+//    5 a latte: tap the milk fridge       11 rain tomorrow: prep hot drinks (forecast strip)
+//    6 hire a second barista (steam wand) 12 set the house rule: deadline first
+// The plan's steps 12-13 (the roastery cards, the Settings replay) are the first-time roastery tips (TipFor: market ->
+// roast -> rest -> blend, shown when the Roastery Hall opens) and Settings -> "How to play".
 using System;
 using System.Collections.Generic;
 using PourAndRoast.Sim;
@@ -19,21 +21,21 @@ namespace PourAndRoast.Game
 {
     public sealed class Coach
     {
-        public const int Steps = 14;
-        public const int Done = 15;
+        public const int Steps = 12;
+        public const int Done = 13;
+        public const double FastMinPerRealS = 40.0;
 
-        /// <summary>What the UI spotlights per step (world: point:i / truck:i / depot / baler / coins; HUD: go / fuel; sheets:
-        /// policy / upgrade / hire). Step 6 has no tap target (the guide waits for the van).</summary>
+        /// <summary>What the UI spotlights per step (HUD: open / batch; rail: ticket:first; world markers: station:espresso /
+        /// shelf / fridge / grinder; ticket bar: flag; sheets: hire:barista / buy:seats / prep:hot / rule:deadline).</summary>
         public static readonly string[] Targets =
         {
-            "", "point:0", "truck:0", "point:0", "point:1", "go", "truck:0", "depot", "coins", "baler", "sell:0", "fuel", "policy:1", "upgrade:1", "hire",
+            "", "open", "ticket:first", "station:espresso", "shelf", "fridge", "hire:barista", "batch", "flag", "grinder", "buy:seats", "prep:hot", "rule:deadline",
         };
 
         /// <summary>The action id (prefix) that completes each step.</summary>
         public static readonly string[] Need =
         {
-            "", "select_point:0", "select_truck:0", "select_point:0", "select_point:1", "go", "", "depot", "till", "baler", "sell:0", "fuel_info",
-            "policy:", "buy:bin_m:", "buy:driver",
+            "", "start_day", "select_ticket:", "brew", "handover", "fridge", "buy:staff:barista", "batch:on", "flag:", "dial_in", "buy:seats", "prep:hot", "rule:deadline",
         };
 
         public int Step { get; private set; }
@@ -46,13 +48,24 @@ namespace PourAndRoast.Game
         public string Target => Active && Step >= 1 && Step <= Steps ? Targets[Step] : "";
         public string BubbleKey => Active && Step >= 1 && Step <= Steps ? "coach." + Step : "";
 
+        static bool IsMilk(Simulation sim, TicketState t)
+        {
+            foreach (var it in t.Items) { var d = sim.ItemDef(it); if (d != null && d.Milk) return true; }
+            return false;
+        }
+
         /// <summary>True while the guide waits for the world, not the player: the sim runs fast.</summary>
         public bool FastForward(Simulation sim)
         {
-            if (!Active) return false;
-            if (Step == 6) return true;
-            if (Step == 8) return sim.S.Depot.Till < 1;
-            if (Step == 10) return sim.S.Depot.Bales[Mats.Pet] <= 0;
+            if (!Active || sim.Phase != Phases.Live) return false;
+            var tk = sim.S.Tickets;
+            switch (Step)
+            {
+                case 4: return tk.Exists(t => !t.Ready);                         // the first shot is being pulled
+                case 7: return tk.Exists(t => IsMilk(sim, t));                  // the new barista steams the latte
+                case 8: return tk.Exists(t => !t.Pre);                          // the batched americanos go out
+                case 9: return tk.Count > 0;                                    // the flagged pre-order is picked up
+            }
             return false;
         }
 
@@ -89,9 +102,8 @@ namespace PourAndRoast.Game
         public bool Allows(string action)
         {
             if (!Active) return true;
-            if (action == "open" || action == "pause" || action == "resume") return true;
-            string need = Step >= 1 && Step <= Steps ? Need[Step] : "";
-            return need != "" && action.StartsWith(need, StringComparison.Ordinal);
+            if (action == "open" || action == "pause" || action == "resume" || action == "deselect") return true;
+            return Matches(action);
         }
 
         public bool Matches(string action)
@@ -114,7 +126,6 @@ namespace PourAndRoast.Game
             if (!Active) return;
             if (r.Error == "blocked") { WrongTap(); return; }
             if (!r.Ok || !Matches(id)) return;
-            if (Step == 5 && sim.Phase == Phases.Plan) sim.StartDay();
             Advance(sim, actions);
         }
 
@@ -127,106 +138,119 @@ namespace PourAndRoast.Game
             Persist(Step, false);
         }
 
-        /// <summary>Every frame: runs the world while the guide waits for it, advances step 6, keeps the day alive.</summary>
+        /// <summary>Every frame: runs the world while the guide waits for it, keeps the day alive, places the guide's orders.</summary>
         public void Drive(Simulation sim, GameActions actions, double realDt)
         {
             if (!Active) return;
-            if (sim.Phase == Phases.Report) { sim.NextDay(); }
-            if (sim.Phase == Phases.Plan && Step >= 6) sim.StartDay();
+            sim.HoldShelf = Step <= 4;
+            if (sim.Phase == Phases.Report) sim.NextDay();
+            if (sim.Phase == Phases.Plan && Step >= 2) sim.StartDay();
             if (FastForward(sim))
             {
                 sim.SetPaused(false);
-                sim.AdvanceMinutes(Math.Max(0, realDt) * 40.0);   // ~100 game minutes per real second
+                sim.AdvanceMinutes(Math.Max(0, Math.Min(0.25, realDt)) * FastMinPerRealS);
             }
             else sim.SetPaused(true);
-            if (Step == 6)
-            {
-                var t = sim.S.Trucks[0];
-                bool heading = t.Stops.Count == 0 && t.Target < 0;
-                if (heading || !t.Busy) Advance(sim, actions);
-            }
-            else Sync(sim, actions);
+            Sync(sim, actions);
         }
 
-        /// <summary>Recovery: re-derives a step whose preconditions are gone (relaunch, the screen was left, the day moved
-        /// on). Never sends the player forward past an action they still have to learn, never locks them.</summary>
+        /// <summary>Recovery + the guide's orders: re-derives a step whose preconditions are gone (relaunch, the screen was
+        /// left, the day moved on). Never sends the player forward past an action they still have to learn, never locks them.</summary>
         public void Sync(Simulation sim, GameActions actions)
         {
             if (!Active) return;
-            var t0 = sim.S.Trucks.Count > 0 ? sim.S.Trucks[0] : null;
+            sim.HoldShelf = Step <= 4;
+            var s = sim.S;
             int guard = 0;
-            while (guard++ < Steps)
+            while (guard++ < Steps + 2)
             {
                 int before = Step;
+                bool live = sim.Phase == Phases.Live;
                 switch (Step)
                 {
-                    case 3:
-                    case 4:
-                    case 5:
-                        if (t0 != null && t0.Busy) { Step = 6; break; }            // already sent (relaunch after Go)
-                        if (actions == null || actions.SelectedTruck != 0) Step = 2;    // the draft is UI state: pick the van again
-                        else if (Step == 4 && !actions.Draft.Contains(0)) Step = 3;
-                        else if (Step == 5 && actions.Draft.Count == 0) Step = 3;
+                    case 1:
+                        if (sim.Phase != Phases.Plan) Step = 2;
                         break;
-                    case 6:
-                        if (t0 != null && !t0.Busy)
+                    case 2:
+                        if (live && s.Tickets.Count == 0)
                         {
-                            bool served = sim.S.Points.Count > 0 && sim.S.Points[0].LastServiceDay == sim.S.Day && sim.S.Points[0].Picked > 0;
-                            Step = served ? 7 : 2;
+                            if (s.Today.Served > 0) Step = 5;                  // relaunch after the first hand-over
+                            else sim.TutorialOrder("espresso");
                         }
                         break;
+                    case 3:
+                    {
+                        var t = actions?.Selected;
+                        if (t != null && (t.Items[0].Worker != -1 || t.Items[0].Stage > 0 || t.Ready)) Step = 4;
+                        else if (s.Tickets.Exists(x => x.Items[0].Worker != -1 || x.Items[0].Stage > 0 || x.Ready)) Step = 4;
+                        else if (t == null) Step = 2;                          // the selection is UI state: pick the ticket again
+                        break;
+                    }
+                    case 4:
+                        if (s.Tickets.Count == 0 && s.Today.Served > 0) Step = 5;
+                        else if (s.Tickets.Count == 0) Step = 2;
+                        break;
+                    case 5:
+                        if (live && !s.Tickets.Exists(t => IsMilk(sim, t)) && sim.CountRole(Roles.Barista) < 2) sim.TutorialOrder("latte");
+                        break;
+                    case 6:
+                        if (sim.CountRole(Roles.Barista, s.Venue) >= 2 || sim.CanBuy("staff:barista").Reason == "cash") Step = 7;
+                        break;
+                    case 7:
+                        if (s.Batch) Step = 8;
+                        else if (live && s.Tickets.Count == 0) { sim.TutorialOrder("americano"); sim.TutorialOrder("americano"); }
+                        break;
                     case 8:
-                        // nothing will ever reach the till (fees banked at a day end meanwhile): let the tap pass
-                        if (sim.S.Depot.Till < 1 && sim.S.Depot.IntakeTotal <= 0 && (t0 == null || !t0.Busy)) sim.S.Depot.Till = Math.Max(sim.S.Depot.Till, 1);
+                    {
+                        var pre = s.Tickets.Find(t => t.Pre);
+                        if (pre != null && pre.Flag) { Step = 9; break; }
+                        if (live && s.Tickets.Count == 0) pre = sim.TutorialOrder("preorder");
+                        if (pre != null && actions != null && actions.SelectedTicket != pre.Id && !s.Tickets.Exists(t => !t.Pre)) actions.Select(pre.Id);
+                        break;
+                    }
+                    case 9:
+                        if (s.Tickets.Count == 0 && sim.Venue != null && sim.Venue.Tune > sim.Gd.TuneOff - 1) sim.Venue.Tune = 40;   // the grind has drifted
                         break;
                     case 10:
-                        if (sim.S.Depot.Bales[Mats.Pet] <= 0 && !PetComing(sim)) Step = 11;
+                        if (sim.Venue != null && sim.Venue.Seats >= 1 || sim.CanBuy("seats").Reason == "cash" || sim.CanBuy("seats").Reason == "max") Step = 11;
                         break;
-                    case 13:
-                        if (sim.S.Points.Exists(p => p.Kind == "machine_m")) Step = 14;
-                        else if (!sim.CanBuy("bin_m:1").Ok && sim.CanBuy("bin_m:1").Reason == "cash") Step = 14;
+                    case 11:
+                        if (s.PrepHot > 0 || s.Cash < sim.Gd.PrepHotPrice) Step = 12;
                         break;
-                    case 14:
-                        if (sim.S.Drivers >= 2 || sim.CanBuy("driver").Reason == "cash") { Finish(sim, true); return; }
+                    case 12:
+                        if (s.Rule == Rules.Deadline) { Finish(sim, true); return; }
                         break;
                 }
                 if (Step == before) break;
             }
         }
 
-        static bool PetComing(Simulation sim)
-        {
-            var d = sim.S.Depot;
-            if (d.Intake[Mats.Pet] > 0) return true;
-            if (d.BalerIn[Mats.Pet] + d.Press[Mats.Pet] >= sim.Gd.Materials[Mats.Pet].BaleKg - 1e-6 && !d.BalerDown) return true;
-            foreach (var t in sim.S.Trucks) if (t.Load[Mats.Pet] > 0) return true;
-            return false;
-        }
-
-        /// <summary>First-time context tips after the guide (each once): the event -> tip key, "" = none.</summary>
+        /// <summary>First-time context tips after the guide (each once): the event -> tip key, "" = none. The roastery cards
+        /// (market -> roast -> rest -> blend) are the plan's onboarding step 12.</summary>
         public static string TipFor(SimEvent e, Simulation sim)
         {
             switch (e.Type)
             {
-                case "jam": return "tip.jam";
-                case "yard_full": return "tip.yard";
-                case "baler_down": return "tip.baler_down";
-                case "gate_queue": return "tip.gate";
-                case "district": return e.Text == "oldtown" ? "tip.oldtown" : e.Text == "university" ? "tip.university" : e.Text == "stadium" ? "tip.stadium" : "";
+                case "venue": return e.Text == "corner" ? "tip.corner" : e.Text == "roastery" ? "tip.roastery" : "";
+                case "green_bought": return "tip.roast";
+                case "roast_done": return "tip.rest";
+                case "day_start": return sim.ReadyToBlendKg > 0 ? "tip.blend" : sim.S.Day == 2 ? "tip.plan" : "";
+                case "balk": return "tip.rail_full";
+                case "walked": return "tip.walked";
+                case "item_failed":
+                    return e.Text == "milk" ? "tip.milk_out" : e.Text == "beans" ? "tip.beans_out" : e.Text == "ice" ? "tip.ice_out" : e.Text == "sold_out" ? "tip.sold_out" : "";
                 case "research_done":
-                    return e.Text == "sensors" ? "tip.sensors" : e.Text == "dispatcher" ? "tip.dispatcher" : e.Text == "counting_centre" ? "tip.centre"
-                        : e.Text == "horeca" ? "tip.horeca" : e.Text == "shop_points" ? "tip.shops" : "";
+                    return e.Text == "head_barista" ? "tip.head_barista" : e.Text == "roast_assistant" ? "tip.assistant" : e.Text == "forecast_board" ? "tip.forecast" : "";
                 case "crisis":
                     switch (e.Text)
                     {
-                        case "heat_wave": return "tip.heat";
-                        case "match_day": return "tip.match";
-                        case "sensor_offline": return "tip.sensor_offline";
-                        case "bulk_returner": return "tip.bulk";
-                        case "breakdown": return "tip.breakdown";
-                        case "fuel_spike": return "tip.fuel";
-                        case "bale_crash": return "tip.market";
-                        case "audit": return "tip.audit";
+                        case "rain": return "tip.rain";
+                        case "heat": return "tip.heat";
+                        case "milk_late": return "tip.milk_late";
+                        case "grinder_jam": return "tip.jam";
+                        case "frost": return "tip.frost";
+                        case "review_spree": return "tip.spree";
+                        case "wholesale_short": return "tip.wholesale";
                     }
                     return "";
                 case "day_done": return sim.S.Day == 1 ? "tip.report" : "";

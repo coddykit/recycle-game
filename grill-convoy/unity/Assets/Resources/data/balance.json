@@ -1,62 +1,93 @@
 {
   "version": 1,
-  "time": { "day_start": 540, "day_end": 1140, "game_min_per_real_s": 2.5, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "depot_wrapup_min": 60 },
-  "start": { "cash": 2000, "rating": 50, "drivers": 1, "techs": 0, "trucks": ["van", "van"], "machines": ["h_fish", "h_ferry", "h_corner"], "fill_pct": { "h_fish": 0.86, "h_ferry": 0.62, "h_corner": 0.35 }, "baler_pet_kg": 58.5 },
-  "materials": {
-    "pet":   { "vol_l": 1.6,  "kg": 0.03,  "bale_kg": 60,   "bale_price": 420 },
-    "alu":   { "vol_l": 0.45, "kg": 0.015, "bale_kg": 30,   "bale_price": 1300 },
-    "glass": { "vol_l": 0.9,  "kg": 0.38,  "bale_kg": 1000, "bale_price": 160 }
+  "time": { "day_start": 600, "day_end": 1200, "game_min_per_real_s": 2.5, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "night_prep_min": 240 },
+  "start": {
+    "cash": 1500, "fame": 30, "pitch": "p_plaza",
+    "truck": "starter", "crew": ["griller", "assembler"], "menu": ["classic", "cheese"],
+    "load": [120, 140, 0],
+    "commissary": [160, 200, 60],
+    "layout": [ ["window", 1, 0], ["assembly", 1, 1], ["grill", 1, 2], ["toaster", 3, 2] ]
+  },
+  "stock": {
+    "patty": { "batch": 60, "cost": 60, "prep_min": 40, "spoil": 0.25, "cap": 600 },
+    "bun":   { "batch": 80, "cost": 28, "prep_min": 20, "spoil": 0.10, "cap": 800 },
+    "side":  { "batch": 60, "cost": 30, "prep_min": 30, "spoil": 0.25, "cap": 400 }
   },
   "archetypes": [
-    { "id": "commuter", "min": 2,  "max": 5,  "mix": [0.70, 0.25, 0.05], "weekend": 0.6, "evening": 1.0 },
-    { "id": "family",   "min": 12, "max": 30, "mix": [0.55, 0.20, 0.25], "weekend": 2.2, "evening": 0.8 },
-    { "id": "student",  "min": 4,  "max": 10, "mix": [0.35, 0.60, 0.05], "weekend": 0.8, "evening": 2.0 },
-    { "id": "eco",      "min": 6,  "max": 15, "mix": [0.40, 0.30, 0.30], "weekend": 1.2, "evening": 1.0 },
-    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 }
+    { "id": "office",  "min": 1, "max": 1, "patience": 7,  "side": 0.35 },
+    { "id": "fan",     "min": 1, "max": 3, "patience": 5,  "side": 0.60 },
+    { "id": "beach",   "min": 2, "max": 4, "patience": 9,  "side": 0.50 },
+    { "id": "tourist", "min": 1, "max": 2, "patience": 8,  "side": 0.45 },
+    { "id": "regular", "min": 1, "max": 1, "patience": 12, "side": 0.30 }
   ],
-  "hour_curve": [0.7, 0.8, 0.9, 1.0, 1.1, 0.9, 0.9, 1.1, 1.4, 1.2],
-  "weekend_mult": 1.25,
-  "points": {
-    "machine_s": { "cap_l": 240, "lease_day": 14, "jam_per_1000": 1.2, "citizens": true },
-    "machine_m": { "cap_l": 480, "lease_day": 22, "jam_per_1000": 1.0, "citizens": true },
-    "shop":      { "cap_l": 160, "lease_day": 0,  "jam_per_1000": 0,   "citizens": true, "shop_fee": 0.3 },
-    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] }
+  "curves": {
+    "lunch":   [0.4, 0.9, 2.6, 2.2, 0.8, 0.5, 0.6, 0.7, 0.5, 0.3],
+    "beach":   [0.3, 0.6, 1.0, 1.4, 1.7, 1.8, 1.5, 1.2, 0.8, 0.5],
+    "stadium": [0.2, 0.3, 0.4, 0.4, 0.5, 0.6, 0.9, 1.0, 0.6, 0.3]
   },
-  "compactor_pet": 2.5,
-  "compactor_jam_mult": 1.6,
+  "menu": [
+    { "id": "classic",   "price": 5.0,  "work": 1.00, "patties": 1, "appeal": [1.0, 1.0, 1.0, 0.8, 1.0], "research": "" },
+    { "id": "cheese",    "price": 6.0,  "work": 1.05, "patties": 1, "appeal": [1.1, 1.1, 1.0, 0.9, 1.1], "research": "" },
+    { "id": "double",    "price": 8.0,  "work": 1.25, "patties": 2, "appeal": [0.8, 1.5, 0.7, 0.8, 1.0], "research": "card_double" },
+    { "id": "spicy",     "price": 6.5,  "work": 1.10, "patties": 1, "appeal": [0.9, 1.2, 0.6, 1.0, 1.0], "research": "card_spicy" },
+    { "id": "veggie",    "price": 6.0,  "work": 1.10, "patties": 1, "appeal": [1.0, 0.4, 0.9, 1.0, 0.8], "research": "card_veggie" },
+    { "id": "breakfast", "price": 5.5,  "work": 1.00, "patties": 1, "appeal": [1.3, 0.3, 0.8, 1.0, 1.0], "research": "card_breakfast", "until": 720 },
+    { "id": "kids",      "price": 4.0,  "work": 0.85, "patties": 1, "appeal": [0.2, 0.3, 1.6, 0.6, 0.4], "research": "card_kids" },
+    { "id": "premium",   "price": 10.0, "work": 1.40, "patties": 1, "appeal": [0.7, 0.8, 0.6, 1.5, 1.2], "research": "card_premium" }
+  ],
+  "side_price": 2.5,
+  "tiers": { "cost": [0.2, 0.5, 1.1], "appeal": [0.92, 1.0, 1.12], "rating": [-0.4, 0.0, 0.5] },
+  "stations": {
+    "grill":    { "price": 900,  "max": 3, "rate": 1.0, "research": "" },
+    "assembly": { "price": 800,  "max": 2, "rate": 1.2, "research": "" },
+    "window":   { "price": 1200, "max": 2, "rate": 1.6, "research": "second_window" },
+    "toaster":  { "price": 300,  "max": 1, "rate": 0,   "research": "" },
+    "fryer":    { "price": 700,  "max": 1, "rate": 0,   "research": "fryer" },
+    "sauce":    { "price": 350,  "max": 1, "rate": 0,   "research": "sauce_rail" },
+    "fridge":   { "price": 600,  "max": 1, "rate": 0,   "research": "drink_fridge" },
+    "wrap":     { "price": 500,  "max": 1, "rate": 0,   "research": "wrap_bench" }
+  },
+  "service": {
+    "unstaffed": 0.5, "extra_staff": 0.3, "runner_boost": 0.25, "walk_per_tile": 0.08,
+    "toaster_adj": 1.15, "sauce_adj": 1.10, "fridge_adj": 1.10, "wrap_adj": 1.25, "fryer_adj": 1.20,
+    "menu_penalty": 0.05, "side_work": 0.25, "queue_cap": 14, "queue_cap_window": 6,
+    "order_ahead_share": 0.3, "order_ahead_patience": 3.0,
+    "all_hands_mult": 1.5, "all_hands_min": 12, "all_hands_cooldown": 90,
+    "grease_safe": 160, "flare_per_patty": 0.00004, "flare_min": 20, "flare_waste_per_min": 0.4,
+    "propane_per_patty": 0.0025, "propane_low": 0.15, "propane_swap": 40, "propane_price": 30, "clean_min": 4,
+    "restock_min": 10, "conv_base": 0.45, "conv_appeal": 0.35, "conv_card": 0.05,
+    "helper_min": 60, "first_days_demand": 0.9
+  },
   "vehicles": {
-    "van":       { "vol_l": 1800, "kg": 700,  "speed_kmh": 30, "cost_km": 1.4, "service_min": 6, "alley": true,  "pet_compress": 1.0, "price": 2500, "research": "" },
-    "bike":      { "vol_l": 450,  "kg": 90,   "speed_kmh": 16, "cost_km": 0.1, "service_min": 4, "alley": true,  "pet_compress": 1.0, "price": 900,  "research": "cargo_bike" },
-    "compactor": { "vol_l": 2600, "kg": 3000, "speed_kmh": 26, "cost_km": 2.6, "service_min": 7, "alley": false, "pet_compress": 2.5, "price": 6500, "research": "compactor_truck" }
+    "starter": { "w": 4, "h": 3, "w_ext": 5, "h_ext": 4, "crew": 3, "speed_kmh": 22, "cost_km": 1.2, "price": 0,    "cap": [220, 260, 150] },
+    "box":     { "w": 5, "h": 4, "w_ext": 5, "h_ext": 4, "crew": 4, "speed_kmh": 20, "cost_km": 1.6, "price": 5000, "cap": [320, 380, 220] }
   },
-  "unload": { "base_min": 8, "per_container_min": 0.0025 },
-  "breakdown_per_km": 0.0015,
-  "glass_break_per_km": 0.0006,
   "economy": {
-    "fee": 1.0, "bulk_fee": 0.5, "fee_rating_min": 0.85, "fee_rating_span": 0.30,
-    "driver_wage": 110, "tech_wage": 90, "depot_power": 35, "line_power": 15,
-    "rating_alpha": 0.3, "turned_rating_free_days": 3
+    "wage": 70, "hire": 300, "extend": 3000, "fame_alpha": 0.3, "fame_free_days": 3, "max_trucks": 2,
+    "rep_start": 30, "rep_gain": 8, "rep_rating": 3
   },
-  "depot": { "count_per_hour": 420, "lines_start": 1, "lines_max": 3, "baler_kg_per_hour": 90, "baler_jam_per_bale": 0.02, "yard_cap": 12, "intake_cap": 2500, "glass_bay_t": 3, "tech_speed_kmh": 30, "tech_fix_min": 20 },
-  "prices": {
-    "machine_s": 600, "bin_m": 700, "compactor": 900, "sensor": 250, "shop": 150, "horeca": 300,
-    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000
-  },
-  "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
   "stars": {
-    "service": [0.12, 0.06, 0.02],
-    "efficiency": [12, 25, 40],
-    "throughput": [0.70, 0.35, 0.10]
+    "service": [0.25, 0.12, 0.05],
+    "stock":   [0.20, 0.08, 0.02],
+    "speed":   [9, 6, 3.5]
   },
-  "events": { "free_days": 3, "per_day": [0.0, 0.6, 1.0, 1.4, 1.7] },
+  "weather": {
+    "ids": ["sunny", "cloudy", "hot", "rain"],
+    "weights": [0.45, 0.25, 0.15, 0.15],
+    "min_day": [1, 1, 4, 4]
+  },
+  "match": { "every": 3, "from": 1020, "to": 1110, "mult": 2.2, "halftime_from": 1065, "halftime_to": 1080, "halftime_mult": 5.0, "patience": 0.6 },
+  "events": { "free_days": 3, "per_day": [0.0, 0.5, 0.8, 1.1] },
   "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
   "rewards": {
-    "offline_x2":      { "per_day": 1, "cooldown_s": 0 },
-    "emergency_empty": { "per_day": 3, "cooldown_s": 600 },
-    "fuel_voucher":    { "per_day": 2, "cooldown_s": 900 },
-    "baler_rescue":    { "per_day": 1, "cooldown_s": 0 },
-    "daily_bonus":     { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
+    "offline_x2":     { "per_day": 1, "cooldown_s": 0 },
+    "extra_runner":   { "per_day": 3, "cooldown_s": 900 },
+    "bonus_patties":  { "per_day": 3, "cooldown_s": 600, "amount": 20 },
+    "quick_prep":     { "per_day": 2, "cooldown_s": 1200 },
+    "crisis_rescue":  { "per_day": 2, "cooldown_s": 1200 },
+    "daily_bonus":    { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
     "single_max_days": 0.2
   },
+  "rules": { "slots": 1, "pass_slots": 1, "plus_slots": 2, "presets": 1, "pass_presets": 1 },
   "day_income_floor": 600
 }

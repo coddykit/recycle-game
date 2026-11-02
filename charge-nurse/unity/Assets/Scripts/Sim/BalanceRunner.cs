@@ -1,8 +1,10 @@
-// Charge Nurse sim core — headless balance bot (design §15 P1: 30 min / 2 h / 7 days). Plays like a sensible new player:
-// suggested routes for idle trucks, sells bales when the yard fills or the price is good, banks the till, sends
-// technicians, buys machines / upgrades / research / districts when it can afford a buffer. Deterministic per seed.
+// Charge Nurse sim core — headless balance bot (plan §15 P1: 30 min / 2 h / 7 days, no wall). Plays like a sensible new
+// player who does not micro-manage: answers ambulances, hands over in the window, and between shifts spends on what the
+// bottleneck lens named most often today (the right team, beds, bays, a technician), opens rooms / wings / upgrades when
+// it can keep a buffer. Deterministic per seed.
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace ChargeNurse.Sim
@@ -10,22 +12,20 @@ namespace ChargeNurse.Sim
     public sealed class BalanceReport
     {
         public readonly List<DayStats> Days = new List<DayStats>();
-        public double Cash, Rating;
-        public int Chapter, Points, Trucks, ResearchDone;
-        public double MinCash = double.MaxValue;
+        public double Cash, Reputation, MinCash = double.MaxValue;
+        public int Chapter, Beds, Staff, ResearchDone;
         public bool Finite = true;
         public readonly List<string> Log = new List<string>();
 
         public string Table()
         {
             var sb = new StringBuilder();
-            sb.AppendLine("day  arr  turned%  coll   km   perKm  fees  sales  costs   net   stars  rating");
+            sb.AppendLine("day  arr treat bad  wait blk%   fees  ward  costs    net stars   rep");
             foreach (var d in Days)
-                sb.AppendLine(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-                    "{0,3} {1,5} {2,7:0.0} {3,5} {4,5:0} {5,6:0.0} {6,5:0} {7,6:0} {8,6:0} {9,6:0}   {10}/9",
-                    d.Day, d.Arrivals, d.TurnedRate * 100, d.Collected, d.Km, d.PerKm, d.Fees, d.Sales, d.Costs, d.Net, d.Stars));
-            sb.AppendLine(string.Format(System.Globalization.CultureInfo.InvariantCulture, "cash {0:0} rating {1:0.0} chapter {2} points {3} trucks {4} research {5} minCash {6:0}",
-                Cash, Rating, Chapter, Points, Trucks, ResearchDone, MinCash));
+                sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "{0,3} {1,4} {2,5} {3,3} {4,5:0} {5,4:0} {6,6:0} {7,5:0} {8,6:0} {9,6:0}   {10}/9",
+                    d.Day, d.Arrivals, d.Treated, d.Bad, d.AvgWait, d.BlockedShare * 100, d.Fees, d.Ward, d.Costs, d.Net, d.Stars));
+            sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "cash {0:0} reputation {1:0.0} chapter {2} beds {3} staff {4} upgrades {5} minCash {6:0}",
+                Cash, Reputation, Chapter, Beds, Staff, ResearchDone, MinCash));
             return sb.ToString();
         }
     }
@@ -45,74 +45,83 @@ namespace ChargeNurse.Sim
                 if (sim.S.Day >= days) break;
                 sim.NextDay();
             }
-            rep.Cash = sim.S.Cash; rep.Rating = sim.S.Rating; rep.Chapter = sim.Chapter; rep.Points = sim.S.Points.Count;
-            rep.Trucks = sim.S.Trucks.Count; rep.ResearchDone = sim.S.Research.Count;
+            rep.Cash = sim.S.Cash; rep.Reputation = sim.S.Reputation; rep.Chapter = sim.Chapter; rep.Beds = sim.S.Beds.Count;
+            foreach (var kv in sim.S.Teams) rep.Staff += kv.Value;
+            foreach (var r in sim.S.Rooms) rep.Staff += r.Techs;
+            rep.ResearchDone = sim.S.Research.Count;
             return rep;
         }
 
         public static void PlayDay(Simulation sim, BalanceReport rep)
         {
-            Manage(sim, rep, true);
+            var seen = new Dictionary<string, int>();
+            Spend(sim, rep, seen);
             sim.StartDay();
             int guard = 0;
             while (sim.Phase == Phases.Live && guard++ < 100000)
             {
                 sim.AdvanceMinutes(5);
-                sim.AdvanceResearch(5 / sim.Gd.GameMinPerRealS);   // research runs on real time: 5 game min = 2 s at 1×
                 sim.DrainEvents();
-                Manage(sim, rep, false);
+                if (sim.Phase != Phases.Live) break;
+                if (sim.S.Ambulance != null) sim.DecideAmbulance(sim.EdLoad() < 1.3);
+                var b = sim.FindBottleneck();
+                if (b.Key != "smooth") seen[b.Key + "|" + Detail(sim, b)] = (seen.TryGetValue(b.Key + "|" + Detail(sim, b), out int n) ? n : 0) + 1;
+                if (sim.SurgeDay && !sim.S.Surge) Try(sim, rep, "surge", 0);
+                if (sim.HandoverWindow) sim.Handover();
                 if (double.IsNaN(sim.S.Cash) || double.IsInfinity(sim.S.Cash)) rep.Finite = false;
                 rep.MinCash = Math.Min(rep.MinCash, sim.S.Cash);
             }
             sim.DrainEvents();
-            Manage(sim, rep, true);
+            Spend(sim, rep, seen);
         }
 
-        static void Manage(Simulation sim, BalanceReport rep, bool calm)
+        static string Detail(Simulation sim, Bottleneck b)
+        {
+            if (b.Key == "beds" && b.Zone >= 0) return sim.Gd.Zones[b.Zone].Ward;
+            if (b.Key == "tests" && b.Zone >= 0) return sim.Gd.Zones[b.Zone].Test;
+            return "";
+        }
+
+        static bool Try(Simulation sim, BalanceReport rep, string id, double buffer)
+        {
+            var c = sim.CanBuy(id);
+            if (!c.Ok || sim.S.Cash - c.Cost < buffer) return false;
+            sim.Buy(id);
+            rep.Log.Add("day " + sim.S.Day + " " + id);
+            return true;
+        }
+
+        static void Spend(Simulation sim, BalanceReport rep, Dictionary<string, int> seen)
         {
             var s = sim.S;
-            // dispatch idle trucks
-            for (int ti = 0; ti < s.Trucks.Count; ti++)
+            double buffer = Math.Max(500, sim.DayIncome() * 0.4);
+            // the chapter goal first, then the rooms a new player opens on the way
+            if (sim.SurgeDay) Try(sim, rep, "surge", 0);
+            foreach (var w in sim.Gd.Wings) Try(sim, rep, "wing:" + w.Id, buffer);
+            Try(sim, rep, "room:xray", buffer * 0.5);
+            Try(sim, rep, "room:lab", buffer * 1.5);
+            if (sim.Unlocked("city")) { Try(sim, rep, "room:ct", buffer * 1.5); Try(sim, rep, "room:or", buffer * 2); }
+            // what blocked the flow most today
+            var keys = new List<KeyValuePair<string, int>>(seen);
+            keys.Sort((a, b) => b.Value.CompareTo(a.Value));
+            int bought = 0;
+            foreach (var kv in keys)
             {
-                if (s.Trucks[ti].Busy || s.Trucks[ti].Auto || sim.FreeDrivers <= 0 || s.Phase == Phases.Report) continue;
-                var r = sim.SuggestRoute(ti);
-                if (r.Count == 0 && s.Phase == Phases.Live) r = sim.SuggestRoute(ti, true);
-                if (r.Count > 0) sim.Dispatch(ti, r);
+                if (bought >= 3 || kv.Value < 4) break;
+                var parts = kv.Key.Split('|');
+                string id = parts[0] switch
+                {
+                    "discharge" => "hire:nurse", "triage" => "hire:nurse", "dirty" => "hire:cleaner", "porters" => "hire:porter",
+                    "doctors" => "hire:doctor", "reception" => "hire:clerk", "bays" => "bay",
+                    "beds" => "bed:" + (parts[1] != "" ? parts[1] : "obs"), "tests" => "tech:" + parts[1], _ => "",
+                };
+                if (id == "bay" && sim.CanBuy("bay").Reason == "max") id = "hire:doctor";
+                if (id == "bed:obs" && sim.CanBuy(id).Reason == "max") id = sim.Unlocked("town") ? "bed:general" : "hire:nurse";
+                if (id != "" && Try(sim, rep, id, buffer)) bought++;
             }
-            // technicians
-            for (int i = 0; i < s.Points.Count; i++) if (s.Points[i].Jammed && !s.Points[i].TechCalled) sim.SendTech("point", i);
-            if (s.Depot.BalerDown) sim.SendTech("baler", 0);
-            // till + bales
-            if (s.Depot.Till > 200) sim.CollectTill();
-            for (int m = 0; m < Mats.N; m++)
-                if (s.Depot.Bales[m] > 0 && (sim.MarketMult(m) >= 1.05 || s.Depot.Yard >= s.Depot.YardCap - 2 || (m == Mats.Glass && sim.GlassBayFull))) sim.Sell(m);
-            if (!calm) return;
-            double buffer = Math.Max(800, sim.DayIncome() * 0.8);
-            // districts first (the chapter goal), then research, then the network
-            foreach (var d in sim.Gd.Districts) if (sim.CanBuy("district:" + d.Id).Ok && s.Cash - d.Cost > buffer) { sim.Buy("district:" + d.Id); rep.Log.Add("day " + s.Day + " district " + d.Id); }
             if (s.Researching == "")
                 foreach (var r in sim.Gd.Research)
-                    if (sim.CanResearch(r.Id) == "" && s.Cash - r.Cost > buffer * 1.5) { sim.StartResearch(r.Id); rep.Log.Add("day " + s.Day + " research " + r.Id); break; }
-            if (sim.CanBuy("dispatcher").Ok && s.Cash - sim.Gd.Price("dispatcher") > buffer) sim.Buy("dispatcher");
-            if (s.Drivers < s.Trucks.Count && sim.CanBuy("driver").Ok && s.Cash - 300 > buffer) sim.Buy("driver");
-            // overflowing points: bigger bin, then a new machine nearby
-            for (int i = 0; i < s.Points.Count; i++)
-            {
-                var p = s.Points[i];
-                if (p.Turned > 8 && sim.CanBuy("bin_m:" + i).Ok && s.Cash - 700 > buffer) sim.Buy("bin_m:" + i);
-                if (p.Turned > 8 && sim.CanBuy("sensor:" + i).Ok && s.Cash - 250 > buffer) sim.Buy("sensor:" + i);
-            }
-            foreach (var n in sim.Gd.Nodes)
-            {
-                if (n.Kind != "site") continue;
-                string id = (n.Site == "machine" ? "machine:" : n.Site + ":") + n.Id;
-                var c = sim.CanBuy(id);
-                if (c.Ok && s.Cash - c.Cost > buffer * 1.5) { sim.Buy(id); rep.Log.Add("day " + s.Day + " bought " + id); }
-            }
-            if (s.Depot.IntakeTotal > sim.CountPerMinute * 120 && sim.CanBuy("line").Ok && s.Cash - sim.Gd.Price("line") > buffer) sim.Buy("line");
-            int pointsPerTruck = s.Points.Count / Math.Max(1, s.Trucks.Count);
-            if (pointsPerTruck > 4 && sim.CanBuy("truck:van").Ok && s.Cash - 2500 > buffer * 2) sim.Buy("truck:van");
-            if (s.Techs == 0 && s.Day > 3 && sim.CanBuy("tech").Ok && s.Cash - 300 > buffer) sim.Buy("tech");
+                    if (sim.CanResearch(r.Id) == "" && s.Cash - r.Cost > buffer * 1.3) { sim.StartResearch(r.Id); rep.Log.Add("day " + s.Day + " upgrade " + r.Id); break; }
         }
     }
 }

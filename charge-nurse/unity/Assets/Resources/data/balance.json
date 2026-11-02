@@ -1,62 +1,55 @@
 {
   "version": 1,
-  "time": { "day_start": 540, "day_end": 1140, "game_min_per_real_s": 2.5, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "depot_wrapup_min": 60 },
-  "start": { "cash": 2000, "rating": 50, "drivers": 1, "techs": 0, "trucks": ["van", "van"], "machines": ["h_fish", "h_ferry", "h_corner"], "fill_pct": { "h_fish": 0.86, "h_ferry": 0.62, "h_corner": 0.35 }, "baler_pet_kg": 58.5 },
-  "materials": {
-    "pet":   { "vol_l": 1.6,  "kg": 0.03,  "bale_kg": 60,   "bale_price": 420 },
-    "alu":   { "vol_l": 0.45, "kg": 0.015, "bale_kg": 30,   "bale_price": 1300 },
-    "glass": { "vol_l": 0.9,  "kg": 0.38,  "bale_kg": 1000, "bale_price": 160 }
+  "time": { "day_start": 420, "day_end": 1140, "handover_from": 1110, "game_min_per_real_s": 3.0, "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4, "night_min": 720 },
+  "start": {
+    "cash": 1500, "reputation": 50,
+    "teams": { "nurse": 2, "doctor": 1, "porter": 1, "cleaner": 1, "clerk": 1 },
+    "beds": { "bays_c": 2, "obs": 4 }
   },
-  "archetypes": [
-    { "id": "commuter", "min": 2,  "max": 5,  "mix": [0.70, 0.25, 0.05], "weekend": 0.6, "evening": 1.0 },
-    { "id": "family",   "min": 12, "max": 30, "mix": [0.55, 0.20, 0.25], "weekend": 2.2, "evening": 0.8 },
-    { "id": "student",  "min": 4,  "max": 10, "mix": [0.35, 0.60, 0.05], "weekend": 0.8, "evening": 2.0 },
-    { "id": "eco",      "min": 6,  "max": 15, "mix": [0.40, 0.30, 0.30], "weekend": 1.2, "evening": 1.0 },
-    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 }
-  ],
-  "hour_curve": [0.7, 0.8, 0.9, 1.0, 1.1, 0.9, 0.9, 1.1, 1.4, 1.2],
-  "weekend_mult": 1.25,
-  "points": {
-    "machine_s": { "cap_l": 240, "lease_day": 14, "jam_per_1000": 1.2, "citizens": true },
-    "machine_m": { "cap_l": 480, "lease_day": 22, "jam_per_1000": 1.0, "citizens": true },
-    "shop":      { "cap_l": 160, "lease_day": 0,  "jam_per_1000": 0,   "citizens": true, "shop_fee": 0.3 },
-    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] }
+  "severity": {
+    "mix":        [0.45, 0.32, 0.17, 0.06],
+    "pay":        [60, 120, 220, 380],
+    "supplies":   [8, 16, 34, 60],
+    "treat_min":  [12, 22, 34, 48],
+    "safe_wait":  [240, 120, 45, 15],
+    "test_p":     [0.12, 0.45, 0.70, 0.80],
+    "admit_p":    [0.02, 0.12, 0.45, 0.85],
+    "stay_min":   [180, 300, 420, 600],
+    "or_p":       [0.0, 0.0, 0.30, 0.45],
+    "lwbs_wait":  [260, 320]
   },
-  "compactor_pet": 2.5,
-  "compactor_jam_mult": 1.6,
-  "vehicles": {
-    "van":       { "vol_l": 1800, "kg": 700,  "speed_kmh": 30, "cost_km": 1.4, "service_min": 6, "alley": true,  "pet_compress": 1.0, "price": 2500, "research": "" },
-    "bike":      { "vol_l": 450,  "kg": 90,   "speed_kmh": 16, "cost_km": 0.1, "service_min": 4, "alley": true,  "pet_compress": 1.0, "price": 900,  "research": "cargo_bike" },
-    "compactor": { "vol_l": 2600, "kg": 3000, "speed_kmh": 26, "cost_km": 2.6, "service_min": 7, "alley": false, "pet_compress": 2.5, "price": 6500, "research": "compactor_truck" }
+  "arrivals": { "per_hour": 2.0, "hour_curve": [0.8, 1.1, 1.2, 1.1, 1.0, 0.9, 1.0, 1.1, 1.2, 1.1, 1.0, 0.8], "night_mult": 0.3, "rep_min": 0.7, "rep_span": 0.6 },
+  "ambulance": { "per_day": [0, 1.2, 2.5, 4.0], "answer_min": 12, "pay_mult": 1.5, "divert_rep": 0.6, "sev": [0.0, 0.0, 0.55, 0.45] },
+  "tasks": { "register_min": 2, "triage_min": 4, "discharge_min": 6, "clean_bay_min": 12, "clean_bed_min": 20, "porter_base_min": 4, "walk_m_per_min": 40, "lift_min": 6, "or_min": 90, "fast_track_min": 10 },
+  "triage_accuracy": 0.82,
+  "fatigue": { "busy_per_min": 0.11, "idle_per_min": 0.05, "max_slow": 0.35, "rushed_keep": 0.5, "rushed_notes": 2, "note_delay_min": 45 },
+  "burnout": { "busy_line": 0.85, "rise": 12, "fall": 8, "slow_at": 60, "slow": 0.10 },
+  "night": { "eff": 0.5, "eff_team": 0.8 },
+  "teams": {
+    "nurse":  { "wage": 90,  "price": 300, "max": 12 },
+    "doctor": { "wage": 220, "price": 650, "max": 10 },
+    "porter": { "wage": 70,  "price": 250, "max": 8 },
+    "cleaner":{ "wage": 60,  "price": 200, "max": 8 },
+    "clerk":  { "wage": 60,  "price": 200, "max": 4 },
+    "tech":   { "wage": 100, "price": 350, "max": 3 }
   },
-  "unload": { "base_min": 8, "per_container_min": 0.0025 },
-  "breakdown_per_km": 0.0015,
-  "glass_break_per_km": 0.0006,
-  "economy": {
-    "fee": 1.0, "bulk_fee": 0.5, "fee_rating_min": 0.85, "fee_rating_span": 0.30,
-    "driver_wage": 110, "tech_wage": 90, "depot_power": 35, "line_power": 15,
-    "rating_alpha": 0.3, "turned_rating_free_days": 3
+  "rooms": {
+    "xray": { "cost": 400,  "scan_min": 14, "upkeep": 35 },
+    "lab":  { "cost": 1500, "scan_min": 22, "upkeep": 45 },
+    "ct":   { "cost": 4500, "scan_min": 18, "upkeep": 90 },
+    "or":   { "cost": 6000, "scan_min": 0,  "upkeep": 140 }
   },
-  "depot": { "count_per_hour": 420, "lines_start": 1, "lines_max": 3, "baler_kg_per_hour": 90, "baler_jam_per_bale": 0.02, "yard_cap": 12, "intake_cap": 2500, "glass_bay_t": 3, "tech_speed_kmh": 30, "tech_fix_min": 20 },
-  "prices": {
-    "machine_s": 600, "bin_m": 700, "compactor": 900, "sensor": 250, "shop": 150, "horeca": 300,
-    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000
-  },
-  "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
-  "stars": {
-    "service": [0.12, 0.06, 0.02],
-    "efficiency": [12, 25, 40],
-    "throughput": [0.70, 0.35, 0.10]
-  },
-  "events": { "free_days": 3, "per_day": [0.0, 0.6, 1.0, 1.4, 1.7] },
-  "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
+  "prices": { "bay": 800, "bed": 450, "bed_icu": 1300, "surge": 450 },
+  "upkeep": { "bay": 15, "bed": 8, "bed_icu": 30 },
+  "economy": { "ward_night": 70, "rep_alpha": 0.25, "rep_free_days": 3, "pay_rep_min": 0.85, "pay_rep_span": 0.3, "bad_rep": [0.4, 0.8, 1.5], "day_income_floor": 700 },
+  "stars": { "care": [0.15, 0.08, 0.03], "waits": [90, 45, 20], "flow": [0.30, 0.15, 0.06] },
+  "events": { "free_days": 3, "per_day": [0, 0.6, 1.0, 1.4] },
+  "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 12, "rate": 0.5, "rate_plus": 0.8, "days_per_hour": 0.5 },
   "rewards": {
-    "offline_x2":      { "per_day": 1, "cooldown_s": 0 },
-    "emergency_empty": { "per_day": 3, "cooldown_s": 600 },
-    "fuel_voucher":    { "per_day": 2, "cooldown_s": 900 },
-    "baler_rescue":    { "per_day": 1, "cooldown_s": 0 },
-    "daily_bonus":     { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
+    "offline_x2":    { "per_day": 1, "cooldown_s": 0 },
+    "float_nurse":   { "per_day": 3, "cooldown_s": 900, "minutes": 60 },
+    "call_neighbor": { "per_day": 2, "cooldown_s": 600, "patients": 5 },
+    "daily_bonus":   { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
     "single_max_days": 0.2
-  },
-  "day_income_floor": 600
+  }
 }

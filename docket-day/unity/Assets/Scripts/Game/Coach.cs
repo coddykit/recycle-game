@@ -1,16 +1,14 @@
-// Docket Day — the 14-step show-and-do guide (design §9, fleet §9). One thing per step; the target is spotlit; the step
+// Docket Day — the 9-step show-and-do guide (plan §9, fleet §9). One thing per step; the target is spotlit; the step
 // advances ONLY when the player really does that action; a wrong tap repeats the hint (no penalty); time is paused while
-// the guide waits for the player, and runs fast while the guide waits for the world (the van driving, the count line,
-// the baler). Safe: the sim is in tutorial mode (no crises, no rating loss). Skip + Settings -> "Replay the guide".
-// Volt City lesson (11-01, 1★ "guide error"): every step is recoverable — leaving the screen / relaunching mid-step
-// re-derives the step from the career (Sync), never locks the player.
-//   1 tap the machine (fill bar)        8 tap the coins (fee per bottle)
-//   2 tap the van                       9 tap the baler
-//   3 tap the machine (add to route)   10 sell the first bale
-//   4 add the second machine           11 tap the fuel badge (km cost)
-//   5 Go                               12 set a rule: empty at 80 %
-//   6 watch the van (sped up)          13 buy a bigger bin
-//   7 tap the depot                    14 hire a second driver
+// the guide waits for the player and runs fast while it waits for the world (the day passing, the filing, the hearing).
+// Safe: the sim is in tutorial mode (no crises, no sanctions, no Standing loss, the first hearing cannot be lost).
+// Skip + Settings -> "Replay the guide". Every step is recoverable: leaving the screen / relaunching mid-step re-derives
+// the step from the career (Sync), never locks the player (Volt City lesson 11-01).
+//   1 tap the client at reception            6 the prep table: match two exhibit cards
+//   2 Accept the parking-ticket matter       7 watch the hearing, then the billing run
+//   3 drag the intern onto the evidence task 8 build the library
+//   4 fast-forward one day (the clock)       9 the first collision: drag the associate onto one hearing
+//   5 drag the paralegal onto the filing (amber)
 using System;
 using System.Collections.Generic;
 using DocketDay.Sim;
@@ -19,40 +17,66 @@ namespace DocketDay.Game
 {
     public sealed class Coach
     {
-        public const int Steps = 14;
-        public const int Done = 15;
-
-        /// <summary>What the UI spotlights per step (world: point:i / truck:i / depot / baler / coins; HUD: go / fuel; sheets:
-        /// policy / upgrade / hire). Step 6 has no tap target (the guide waits for the van).</summary>
-        public static readonly string[] Targets =
-        {
-            "", "point:0", "truck:0", "point:0", "point:1", "go", "truck:0", "depot", "coins", "baler", "sell:0", "fuel", "policy:1", "upgrade:1", "hire",
-        };
-
-        /// <summary>The action id (prefix) that completes each step.</summary>
-        public static readonly string[] Need =
-        {
-            "", "select_point:0", "select_truck:0", "select_point:0", "select_point:1", "go", "", "depot", "till", "baler", "sell:0", "fuel_info",
-            "policy:", "buy:bin_m:", "buy:driver",
-        };
+        public const int Steps = 9;
+        public const int Done = 10;
 
         public int Step { get; private set; }
         public bool Active { get; private set; }
         public int WrongTaps { get; private set; }
         /// <summary>Increments on a wrong tap: the UI pulses the hint again.</summary>
         public int Flash { get; private set; }
+        /// <summary>Step 4: the clock was tapped, the day is running fast.</summary>
+        public bool Waiting { get; private set; }
+        int waitDay;
         public Action<string, Dictionary<string, object>> Analytics = (n, p) => { };
         public Action<int, bool> Persist = (step, done) => { };
-        public string Target => Active && Step >= 1 && Step <= Steps ? Targets[Step] : "";
-        public string BubbleKey => Active && Step >= 1 && Step <= Steps ? "coach." + Step : "";
+        public string BubbleKey => Active && Step >= 1 && Step <= Steps ? (Step == 4 && Waiting ? "coach.4w" : Step == 7 && preBill ? "coach.7w" : "coach." + Step) : "";
+        bool preBill;
+
+        /// <summary>What the UI spotlights now: reception, accept:&lt;m&gt;, task:&lt;m&gt;:&lt;i&gt;, staff:&lt;id&gt;, ff, prep:&lt;m&gt;, bill,
+        /// build:library. "" = nothing (the guide waits for the world).</summary>
+        public string Target(Simulation sim)
+        {
+            if (!Active || sim == null) return "";
+            int t = sim.S.TutorialMatter;
+            switch (Step)
+            {
+                case 1: return "reception";
+                case 2: return "accept:" + t;
+                case 3: return "task:" + t + ":0";
+                case 4: return Waiting ? "" : "ff";
+                case 5: return "task:" + t + ":1";
+                case 6: return "prep:" + t;
+                case 7: return sim.Phase == Phases.Report ? "bill" : "";
+                case 8: return "build:library";
+                case 9:
+                    foreach (int id in sim.S.TutorialCollision)
+                    {
+                        var m = sim.MatterById(id);
+                        if (m != null && m.Status == MatterStatus.Open) return "task:" + id + ":" + (m.Tasks.Count - 1);
+                    }
+                    return "";
+            }
+            return "";
+        }
+
+        /// <summary>The person card the step suggests (glows next to the task): intern / paralegal / associate.</summary>
+        public int SuggestedStaff(Simulation sim)
+        {
+            if (!Active || sim == null) return -1;
+            string role = Step == 3 ? "intern" : Step == 5 ? "paralegal" : Step == 9 ? "associate" : "";
+            if (role == "") return -1;
+            var s = sim.S.Staff.Find(x => x.Role == role);
+            if (s == null && Step == 9) s = sim.S.Staff.Find(x => x.Id != 0 && sim.RoleOf(x).Lawyer);
+            return s != null ? s.Id : -1;
+        }
 
         /// <summary>True while the guide waits for the world, not the player: the sim runs fast.</summary>
         public bool FastForward(Simulation sim)
         {
             if (!Active) return false;
-            if (Step == 6) return true;
-            if (Step == 8) return sim.S.Depot.Till < 1;
-            if (Step == 10) return sim.S.Depot.Bales[Mats.Pet] <= 0;
+            if (Step == 4) return Waiting;
+            if (Step == 7) return sim.Phase != Phases.Report;
             return false;
         }
 
@@ -62,10 +86,12 @@ namespace DocketDay.Game
         public void Begin(Simulation sim, GameActions actions, int resumeStep = 0)
         {
             Active = true;
+            Waiting = false;
             Step = Math.Max(1, Math.Min(Steps, resumeStep));
+            sim.BeginTutorial(Step <= 1);
             if (Step == 1) Analytics("onboarding_begin", new Dictionary<string, object>());
             Sync(sim, actions);
-            Persist(Step, false);
+            if (Active) Persist(Step, false);
         }
 
         public void Skip(Simulation sim)
@@ -78,26 +104,48 @@ namespace DocketDay.Game
         void Finish(Simulation sim, bool completed)
         {
             Active = false;
-            sim.EndTutorial();
+            Waiting = false;
+            sim.EndTutorial();   // a skipped guide leaves an ordinary first client
             sim.SetPaused(false);
             if (completed) Analytics("onboarding_complete", new Dictionary<string, object> { { "wrong_taps", (long)WrongTaps } });
             Step = Done;
             Persist(Done, true);
         }
 
-        /// <summary>GameActions.Allowed: during the guide only the step's action (and harmless UI) may run.</summary>
-        public bool Allows(string action)
+        static string[] Parts(string a) => (a ?? "").Split(':');
+
+        /// <summary>Would this action complete (or be part of) the current step? Wrong targets are blocked, not run.</summary>
+        bool Shape(Simulation sim, string action)
         {
-            if (!Active) return true;
-            if (action == "open" || action == "pause" || action == "resume") return true;
-            string need = Step >= 1 && Step <= Steps ? Need[Step] : "";
-            return need != "" && action.StartsWith(need, StringComparison.Ordinal);
+            var p = Parts(action);
+            string t = sim.S.TutorialMatter.ToString();
+            switch (Step)
+            {
+                case 1: return action == "reception";
+                case 2: return action == "accept:" + t;
+                case 3: return p[0] == "assign" && p.Length == 4 && p[2] == t && p[3] == "0";
+                case 4: return action == "ff" && !Waiting;
+                case 5: return p[0] == "assign" && p.Length == 4 && p[2] == t && p[3] == "1";
+                case 6: return p[0] == "prep_match" && p.Length == 4 && p[1] == t;
+                case 7: return action == "bill";
+                case 8: return action == "build:library";
+                case 9:
+                    if (p[0] != "assign" || p.Length != 4 || !int.TryParse(p[2], out int mid) || !sim.S.TutorialCollision.Contains(mid)) return false;
+                    var m = sim.MatterById(mid);
+                    return m != null && p[3] == (m.Tasks.Count - 1).ToString();
+            }
+            return false;
         }
 
-        public bool Matches(string action)
+        /// <summary>GameActions.Allowed: during the guide only the step's action (and harmless UI) may run.</summary>
+        public Func<string, bool> AllowsFor(Func<Simulation> sim) => action => Allows(sim(), action);
+
+        public bool Allows(Simulation sim, string action)
         {
-            string need = Step >= 1 && Step <= Steps ? Need[Step] : "";
-            return need != "" && action != null && action.StartsWith(need, StringComparison.Ordinal);
+            if (!Active) return true;
+            var p = Parts(action);
+            if (GameActions.UiOnly.Contains(p[0]) || p[0] == "matter" || p[0] == "select_staff") return true;
+            return Shape(sim, action);
         }
 
         /// <summary>A tap the guide did not ask for: hint again, no penalty.</summary>
@@ -112,39 +160,59 @@ namespace DocketDay.Game
         public void OnAction(Simulation sim, GameActions actions, string id, ActionResult r)
         {
             if (!Active) return;
-            if (r.Error == "blocked") { WrongTap(); return; }
-            if (!r.Ok || !Matches(id)) return;
-            if (Step == 5 && sim.Phase == Phases.Plan) sim.StartDay();
+            if (r.Error == "blocked" || r.Error == "wrong") { WrongTap(); return; }
+            if (!r.Ok || !Shape(sim, id)) return;
+            switch (Step)
+            {
+                case 4:
+                    Waiting = true;
+                    var tm = sim.MatterById(sim.S.TutorialMatter);
+                    waitDay = (tm != null && tm.Status == MatterStatus.Open ? tm.AcceptDay : sim.S.Day) + 1;
+                    if (sim.Phase == Phases.Plan) sim.StartDay();
+                    return;
+                case 6:
+                    var m = sim.MatterById(sim.S.TutorialMatter);
+                    if (m != null && !m.PuzzleSolved) return;   // one card matched: the next one
+                    break;
+                case 9:
+                    if (CollisionLeft(sim)) return;
+                    break;
+            }
             Advance(sim, actions);
+        }
+
+        static bool CollisionLeft(Simulation sim)
+        {
+            var c = sim.Collisions();
+            foreach (int id in sim.S.TutorialCollision) if (c.Exists(x => x.Matter == id)) return true;
+            return false;
         }
 
         void Advance(Simulation sim, GameActions actions)
         {
             Analytics("onboarding_step", new Dictionary<string, object> { { "step", (long)Step } });
             Step++;
+            Waiting = false;
             if (Step > Steps) { Finish(sim, true); return; }
             Sync(sim, actions);
-            Persist(Step, false);
+            if (Active) Persist(Step, false);
         }
 
-        /// <summary>Every frame: runs the world while the guide waits for it, advances step 6, keeps the day alive.</summary>
-        public void Drive(Simulation sim, GameActions actions, double realDt)
+        /// <summary>Every frame: runs the world while the guide waits for it, keeps the days moving, ends the waits.
+        /// holdWorld = the hearing scene (or an ad) is on screen: the world waits for it.</summary>
+        public void Drive(Simulation sim, GameActions actions, double realDt, bool holdWorld = false)
         {
             if (!Active) return;
-            if (sim.Phase == Phases.Report) { sim.NextDay(); }
-            if (sim.Phase == Phases.Plan && Step >= 6) sim.StartDay();
-            if (FastForward(sim))
+            preBill = Step == 7 && sim.Phase != Phases.Report;
+            if (sim.Phase == Phases.Report && Step != 7) { sim.Bill(); sim.NextDay(); }
+            if (sim.Phase == Phases.Plan && Step == 7) sim.StartDay();
+            if (FastForward(sim) && !holdWorld)
             {
                 sim.SetPaused(false);
-                sim.AdvanceMinutes(Math.Max(0, realDt) * 40.0);   // ~100 game minutes per real second
+                sim.AdvanceMinutes(Math.Max(0, realDt) * 120.0);   // ~2 game hours per real second
             }
             else sim.SetPaused(true);
-            if (Step == 6)
-            {
-                var t = sim.S.Trucks[0];
-                bool heading = t.Stops.Count == 0 && t.Target < 0;
-                if (heading || !t.Busy) Advance(sim, actions);
-            }
+            if (Step == 4 && Waiting && sim.S.Day >= waitDay && sim.Phase == Phases.Plan) Advance(sim, actions);
             else Sync(sim, actions);
         }
 
@@ -153,54 +221,49 @@ namespace DocketDay.Game
         public void Sync(Simulation sim, GameActions actions)
         {
             if (!Active) return;
-            var t0 = sim.S.Trucks.Count > 0 ? sim.S.Trucks[0] : null;
             int guard = 0;
-            while (guard++ < Steps)
+            while (guard++ < Steps + 2 && Active)
             {
                 int before = Step;
+                var tm = sim.S.TutorialMatter > 0 ? sim.MatterById(sim.S.TutorialMatter) : null;
+                bool closed = sim.S.Seen.Contains("tut_matter_closed");
+                if (tm == null && !closed && Step <= 7) { sim.S.TutorialMatter = 0; tm = sim.SeedTutorial(); Step = 1; }
+                if (closed && Step <= 6) Step = 7;
                 switch (Step)
                 {
+                    case 1:
+                    case 2:
+                        if (tm != null && tm.Active) Step = 3;
+                        break;
                     case 3:
+                        if (tm != null && tm.Tasks.Count > 0 && (tm.Tasks[0].Staff != Attend.None || tm.Tasks[0].Finished)) Step = 4;
+                        break;
                     case 4:
+                        if (tm != null && sim.S.Day > tm.AcceptDay && sim.Phase == Phases.Plan) Step = 5;
+                        else if (!Waiting && sim.Phase == Phases.Live) { Waiting = true; waitDay = (tm != null ? tm.AcceptDay : sim.S.Day) + 1; }
+                        break;
                     case 5:
-                        if (t0 != null && t0.Busy) { Step = 6; break; }            // already sent (relaunch after Go)
-                        if (actions == null || actions.SelectedTruck != 0) Step = 2;    // the draft is UI state: pick the van again
-                        else if (Step == 4 && !actions.Draft.Contains(0)) Step = 3;
-                        else if (Step == 5 && actions.Draft.Count == 0) Step = 3;
+                        if (tm != null && tm.Tasks.Count > 1 && (tm.Tasks[1].Staff != Attend.None || tm.Tasks[1].Finished)) Step = 6;
                         break;
                     case 6:
-                        if (t0 != null && !t0.Busy)
-                        {
-                            bool served = sim.S.Points.Count > 0 && sim.S.Points[0].LastServiceDay == sim.S.Day && sim.S.Points[0].Picked > 0;
-                            Step = served ? 7 : 2;
-                        }
+                        if (tm == null || tm.PuzzleSolved || tm.Status == MatterStatus.Hearing) Step = 7;
+                        break;
+                    case 7:
+                        if (closed && (sim.Phase != Phases.Report || sim.S.Billed)) Step = 8;
                         break;
                     case 8:
-                        // nothing will ever reach the till (fees banked at a day end meanwhile): let the tap pass
-                        if (sim.S.Depot.Till < 1 && sim.S.Depot.IntakeTotal <= 0 && (t0 == null || !t0.Busy)) sim.S.Depot.Till = Math.Max(sim.S.Depot.Till, 1);
+                    {
+                        var b = sim.CanBuild("library");
+                        if (sim.RoomBuilt("library") || sim.S.Building == "library" || (!b.Ok && b.Reason != "")) Step = 9;
                         break;
-                    case 10:
-                        if (sim.S.Depot.Bales[Mats.Pet] <= 0 && !PetComing(sim)) Step = 11;
-                        break;
-                    case 13:
-                        if (sim.S.Points.Exists(p => p.Kind == "machine_m")) Step = 14;
-                        else if (!sim.CanBuy("bin_m:1").Ok && sim.CanBuy("bin_m:1").Reason == "cash") Step = 14;
-                        break;
-                    case 14:
-                        if (sim.S.Drivers >= 2 || sim.CanBuy("driver").Reason == "cash") { Finish(sim, true); return; }
+                    }
+                    case 9:
+                        sim.SpawnTutorialCollision();
+                        if (!CollisionLeft(sim)) { Finish(sim, true); return; }
                         break;
                 }
                 if (Step == before) break;
             }
-        }
-
-        static bool PetComing(Simulation sim)
-        {
-            var d = sim.S.Depot;
-            if (d.Intake[Mats.Pet] > 0) return true;
-            if (d.BalerIn[Mats.Pet] + d.Press[Mats.Pet] >= sim.Gd.Materials[Mats.Pet].BaleKg - 1e-6 && !d.BalerDown) return true;
-            foreach (var t in sim.S.Trucks) if (t.Load[Mats.Pet] > 0) return true;
-            return false;
         }
 
         /// <summary>First-time context tips after the guide (each once): the event -> tip key, "" = none.</summary>
@@ -208,28 +271,28 @@ namespace DocketDay.Game
         {
             switch (e.Type)
             {
-                case "jam": return "tip.jam";
-                case "yard_full": return "tip.yard";
-                case "baler_down": return "tip.baler_down";
-                case "gate_queue": return "tip.gate";
-                case "district": return e.Text == "oldtown" ? "tip.oldtown" : e.Text == "university" ? "tip.university" : e.Text == "stadium" ? "tip.stadium" : "";
-                case "research_done":
-                    return e.Text == "sensors" ? "tip.sensors" : e.Text == "dispatcher" ? "tip.dispatcher" : e.Text == "counting_centre" ? "tip.centre"
-                        : e.Text == "horeca" ? "tip.horeca" : e.Text == "shop_points" ? "tip.shops" : "";
+                case "walkin":
+                {
+                    var m = sim.MatterById(e.A);
+                    if (m != null && sim.Conflict(m)) return "tip.conflict";
+                    return "";
+                }
+                case "trust_in": return "tip.trust";
+                case "late": return "tip.late";
+                case "continued": return e.B == 1 ? "tip.auto_continuance" : "";
+                case "revealed": return "tip.twist";
+                case "chapter": return e.A == 2 ? "tip.chapter2" : e.A == 3 ? "tip.chapter3" : "";
+                case "hearing_start": return "tip.judges";
                 case "crisis":
                     switch (e.Text)
                     {
-                        case "heat_wave": return "tip.heat";
-                        case "match_day": return "tip.match";
-                        case "sensor_offline": return "tip.sensor_offline";
-                        case "bulk_returner": return "tip.bulk";
-                        case "breakdown": return "tip.breakdown";
-                        case "fuel_spike": return "tip.fuel";
-                        case "bale_crash": return "tip.market";
-                        case "audit": return "tip.audit";
+                        case "surprise_motion": return "tip.motion";
+                        case "power_cut": return "tip.power_cut";
+                        case "sick_day": return "tip.sick";
+                        case "substitute_judge": return "tip.substitute";
                     }
                     return "";
-                case "day_done": return sim.S.Day == 1 ? "tip.report" : "";
+                case "day_done": return sim.S.Day <= 2 ? "tip.report" : "";
             }
             return "";
         }

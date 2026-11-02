@@ -39,8 +39,11 @@ namespace GrillConvoy.Game
         public string ReviewDeferred { get => S("review_deferred", ""); set => D["review_deferred"] = value ?? ""; }
         /// <summary>Speed Pack owners: skip the day report by itself.</summary>
         public bool AutoSkipReport { get => B("auto_report", false); set => D["auto_report"] = value; }
-        /// <summary>Equipped truck livery ("" = default; premium gold / cosmetic liveries).</summary>
+        /// <summary>Equipped truck livery ("" = default; the Edition's gold trim / cosmetic liveries).</summary>
         public string Livery { get => S("livery", ""); set => D["livery"] = value ?? ""; }
+
+        /// <summary>The career slot in use (0 = the first; extra slots come from Extra Saves / the Edition).</summary>
+        public int Slot { get => I("slot", 0); set => D["slot"] = (long)value; }
 
         public bool Flag(string id) => MiniJson.Arr(D, "flags") is List<object> l && l.Contains(id);
 
