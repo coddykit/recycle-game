@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "바쁜 항구 카페 운영",
+   "sub": "전표, 바리스타, 카운터 앞 줄",
+   "scene": "Corner Cafe at the morning peak (~08:00): 6+ tickets on the rail, 3 baristas on espresso and steam, a queue at the counter, HUD visible, guide finished, Medium tier"
+  },
+  {
+   "id": "s2",
+   "headline": "다음 전표 고르기",
+   "sub": "마감 순, 먼저 온 순, 단골 순",
+   "scene": "House rule sheet open over the bar: Deadline first selected, one ticket flagged Priority, a pre-order with its pickup time on the rail"
+  },
+  {
+   "id": "s3",
+   "headline": "완벽한 샷 맞추기",
+   "sub": "쓴 샷은 나쁜 리뷰로 돌아옵니다",
+   "scene": "Grinder held mid dial-in: the tune meter climbing back into the green, 'Grinder dialled in' toast, espresso machine pulling a shot"
+  },
+  {
+   "id": "s4",
+   "headline": "비나 더위에 대비",
+   "sub": "문 열기 전에 뜨거운 커피나 얼음 준비",
+   "scene": "Morning plan with the forecast strip showing rain tomorrow and the Prep hot drinks card (urn) open; the cart under its awning in the background"
+  },
+  {
+   "id": "s5",
+   "headline": "원두 직접 볶기",
+   "sub": "첫 크랙의 달콤한 지점에서 드롭",
+   "scene": "Roastery tab: drum roaster running, the progress bar inside the 70-86 % sweet spot, 'First crack! Drop now' marker, green coffee market below"
+  },
+  {
+   "id": "s6",
+   "headline": "도매로 원두 팔기",
+   "sub": "하버 비스트로와 페리 키오스크 계약",
+   "scene": "Wholesale list with the Harbour Bistro contract signed (kg / every N days / quality), house beans quality 85+, resting racks filled"
+  },
+  {
+   "id": "s7",
+   "headline": "수레에서 로스터리까지",
+   "sub": "예전 매장은 지점으로 계속 벌어요",
+   "scene": "Grow tab: Quayside Cart and Corner Cafe owned as branches with their daily income, Roastery Hall open; the roastery diorama behind"
+  },
+  {
+   "id": "s8",
+   "headline": "별 다섯 리뷰 받기",
+   "sub": "좋은 원두와 빠른 서비스가 벽을 채웁니다",
+   "scene": "Day report after a strong roastery day: average review near 5 stars, served / walk-out numbers, sales and net, Collect button (no reward-video button in frame)"
+  }
+ ],
+ "feature": "바를 운영하고 원두를 볶으세요"
+}

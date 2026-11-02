@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Dirige tu propio bufete",
+   "sub": "De un local a la Hilera del Juzgado",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "Encaja a tu equipo",
+   "sub": "Arrastra a tu equipo a cada tarea a tiempo",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "Dos vistas, un abogado",
+   "sub": "Cúbrelas, llama a un invitado o pide tiempo",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "Elige a tus clientes",
+   "sub": "Acepta, deriva o levanta un muro ético",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "La preparación gana casos",
+   "sub": "Empareja cada reclamación con su prueba",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "Negocia o ve a juicio",
+   "sub": "Cada juez tiene costumbres. Planifica.",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "Factura el día, gana estrellas",
+   "sub": "Las horas se convierten en facturas",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "Construye un bufete activo",
+   "sub": "Biblioteca, sala de pruebas y más",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "Dirige el bufete más ocupado"
+}

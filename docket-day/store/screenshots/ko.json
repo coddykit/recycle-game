@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "나만의 법률사무소 운영",
+   "sub": "차고 앞 사무실에서 법원 거리까지",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "사람들을 일정표에 맞추기",
+   "sub": "마감 전에 모든 업무에 팀을 배치",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "변호사 한 명, 기일 두 건",
+   "sub": "맡기, 외부 변호사, 기일 연기 중 선택",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "의뢰인을 고르세요",
+   "sub": "수락, 거절, 소개, 또는 윤리적 장벽",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "준비가 사건을 이깁니다",
+   "sub": "주장마다 증거를 짝지으세요",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "합의할까, 법정에 갈까",
+   "sub": "판사마다 성향이 있으니 미리 준비",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "청구하고 별 받기",
+   "sub": "근무가 청구서가 되고, 신탁금은 안전하게",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "바쁜 사무소 키우기",
+   "sub": "자료실, 증거실, 작전실과 더 많은 것",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "가장 바쁜 법률사무소를 운영하세요"
+}

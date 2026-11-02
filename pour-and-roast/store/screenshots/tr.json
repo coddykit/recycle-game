@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Yoğun bir liman kafesi işlet",
+   "sub": "Fişler, baristalar ve tezgâhta sıra",
+   "scene": "Corner Cafe at the morning peak (~08:00): 6+ tickets on the rail, 3 baristas on espresso and steam, a queue at the counter, HUD visible, guide finished, Medium tier"
+  },
+  {
+   "id": "s2",
+   "headline": "Sıradaki fişi seç",
+   "sub": "Son tarih, ilk gelen ya da düzenli müşteri",
+   "scene": "House rule sheet open over the bar: Deadline first selected, one ticket flagged Priority, a pre-order with its pickup time on the rail"
+  },
+  {
+   "id": "s3",
+   "headline": "Mükemmel espressoyu ayarla",
+   "sub": "Acı espresso kötü yorum demektir",
+   "scene": "Grinder held mid dial-in: the tune meter climbing back into the green, 'Grinder dialled in' toast, espresso machine pulling a shot"
+  },
+  {
+   "id": "s4",
+   "headline": "Yağmur mu, sıcak mı?",
+   "sub": "Kapı açılmadan sıcak içecek ya da buz hazırla",
+   "scene": "Morning plan with the forecast strip showing rain tomorrow and the Prep hot drinks card (urn) open; the cart under its awning in the background"
+  },
+  {
+   "id": "s5",
+   "headline": "Çekirdeklerini kendin kavur",
+   "sub": "İlk çatlakta tatlı noktada Bırak'a dokun",
+   "scene": "Roastery tab: drum roaster running, the progress bar inside the 70-86 % sweet spot, 'First crack! Drop now' marker, green coffee market below"
+  },
+  {
+   "id": "s6",
+   "headline": "Toptan çekirdek sat",
+   "sub": "Liman Bistrosu ve Feribot Kiyoski sözleşmeleri",
+   "scene": "Wholesale list with the Harbour Bistro contract signed (kg / every N days / quality), house beans quality 85+, resting racks filled"
+  },
+  {
+   "id": "s7",
+   "headline": "Kafeden kavurhaneye",
+   "sub": "Eski mekânlar şube olarak kazanmaya devam eder",
+   "scene": "Grow tab: Quayside Cart and Corner Cafe owned as branches with their daily income, Roastery Hall open; the roastery diorama behind"
+  },
+  {
+   "id": "s8",
+   "headline": "Beş yıldızlık yorumlar kazan",
+   "sub": "Harika çekirdek ve hızlı servis duvarı doldurur",
+   "scene": "Day report after a strong roastery day: average review near 5 stars, served / walk-out numbers, sales and net, Collect button (no reward-video button in frame)"
+  }
+ ],
+ "feature": "Barı işlet. Çekirdeği kavur."
+}

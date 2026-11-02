@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Führe das Flaschennetz",
+   "sub": "Automaten, Transporter und Depot in einer Stadt",
+   "scene": "Harbour Quarter mid-day (~13:00), Medium tier, guide finished: 5 machines with in-world fill bars, a van on its route, citizens with bags walking to a machine, depot at the edge, HUD with cash, Green Rating and day clock"
+  },
+  {
+   "id": "s2",
+   "headline": "Leeren, bevor sie überlaufen",
+   "sub": "Jeder Automat zeigt, wie voll er ist",
+   "scene": "Point sheet open on a machine at 92 % (red bar, 'Full — citizens are turned away' about to show), a citizen turning back with a bag beside it, other bars green/amber"
+  },
+  {
+   "id": "s3",
+   "headline": "Spritsparende Routen planen",
+   "sub": "Jeder Kilometer kostet. Plane den Ring.",
+   "scene": "Route being built: three machines tapped (numbered stops), route line on the roads, fuel badge showing the trip cost, Go button highlighted"
+  },
+  {
+   "id": "s4",
+   "headline": "Lege die Serviceregel fest",
+   "sub": "Leeren bei 60, 80 oder 95 %, oder nur auf Abruf",
+   "scene": "Service rule sheet on a busy corner machine with 'Empty at 80 %' selected, Dispatcher hint line below"
+  },
+  {
+   "id": "s5",
+   "headline": "Zählen, pressen, verkaufen",
+   "sub": "Verkaufe, wenn der Ballenpreis stimmt",
+   "scene": "Depot tab: count line queue, baler with a PET bale, yard with stacked PET and aluminium bales, Sell button with today's price"
+  },
+  {
+   "id": "s6",
+   "headline": "Meistere die Hitzewelle",
+   "sub": "Spieltage, Staus, Pannen und mehr",
+   "scene": "Heat wave event card on screen, machines filling fast (several amber bars), a second truck heading out, technician on the way to a jammed machine"
+  },
+  {
+   "id": "s7",
+   "headline": "Öffne neue Stadtteile",
+   "sub": "Altstadtgassen, Universitätshügel, Stadion",
+   "scene": "Old Town just opened: narrow lanes with a cargo bike on an alley, café pickup point, toast 'Next district: University Hill'"
+  },
+  {
+   "id": "s8",
+   "headline": "Verdiene Drei-Sterne-Tage",
+   "sub": "Service, Effizienz und Depotfluss",
+   "scene": "Day report with 3 stars, bottles collected, bottles per km, profit and Green Rating up (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Halte die Flaschen in Bewegung"
+}

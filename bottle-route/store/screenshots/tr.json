@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Şişe iade ağını yönet",
+   "sub": "Makineler, kamyonlar ve bir depo tek kasabada",
+   "scene": "Harbour Quarter mid-day (~13:00), Medium tier, guide finished: 5 machines with in-world fill bars, a van on its route, citizens with bags walking to a machine, depot at the edge, HUD with cash, Green Rating and day clock"
+  },
+  {
+   "id": "s2",
+   "headline": "Taşmadan önce boşalt",
+   "sub": "Her makine ne kadar dolu olduğunu gösterir",
+   "scene": "Point sheet open on a machine at 92 % (red bar, 'Full — citizens are turned away' about to show), a citizen turning back with a bag beside it, other bars green/amber"
+  },
+  {
+   "id": "s3",
+   "headline": "Yakıtı koruyan rotalar çiz",
+   "sub": "Her kilometre maliyet. Halkayı iyi planla.",
+   "scene": "Route being built: three machines tapped (numbered stops), route line on the roads, fuel badge showing the trip cost, Go button highlighted"
+  },
+  {
+   "id": "s4",
+   "headline": "Servis kuralını belirle",
+   "sub": "%60, %80 ya da %95'te, ya da yalnız çağrıyla",
+   "scene": "Service rule sheet on a busy corner machine with 'Empty at 80 %' selected, Dispatcher hint line below"
+  },
+  {
+   "id": "s5",
+   "headline": "Say, balyala ve sat",
+   "sub": "Balya fiyatı uygun olunca sat",
+   "scene": "Depot tab: count line queue, baler with a PET bale, yard with stacked PET and aluminium bales, Sell button with today's price"
+  },
+  {
+   "id": "s6",
+   "headline": "Sıcak dalgasıyla başa çık",
+   "sub": "Maç günleri, tıkanmalar, arızalar ve daha fazlası",
+   "scene": "Heat wave event card on screen, machines filling fast (several amber bars), a second truck heading out, technician on the way to a jammed machine"
+  },
+  {
+   "id": "s7",
+   "headline": "Yeni bölgeleri aç",
+   "sub": "Eski Şehir sokakları, Üniversite Tepesi, stadyum",
+   "scene": "Old Town just opened: narrow lanes with a cargo bike on an alley, café pickup point, toast 'Next district: University Hill'"
+  },
+  {
+   "id": "s8",
+   "headline": "Üç yıldızlı günler kazan",
+   "sub": "Servis, verimlilik ve depo akışı için",
+   "scene": "Day report with 3 stars, bottles collected, bottles per km, profit and Green Rating up (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Kasabanın şişelerini hareket ettir"
+}

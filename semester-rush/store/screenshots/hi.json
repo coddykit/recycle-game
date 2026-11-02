@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "घंटी से आगे रहें",
+   "sub": "हर कक्षा दस मिनट में शुरू होती है",
+   "scene": "Monday 08:50 bell change on the Community College: students in faculty colours streaming along the paths to the main hall, the clock running, HUD visible, autumn trees and lamps on Medium"
+  },
+  {
+   "id": "s2",
+   "headline": "पूरा हफ़्ता तय करें",
+   "sub": "कोर्स, कमरे, प्रोफ़ेसर और समय स्लॉट",
+   "scene": "Sunday timetable board open (auto-filled, one class being placed), the valid cell highlighted green and one clash shown red with its reason"
+  },
+  {
+   "id": "s3",
+   "headline": "शॉर्टकट खोलें",
+   "sub": "एक गेट रास्ता और देर का आंकड़ा घटाता है",
+   "scene": "The guide's gate step: the gold gate just opened between the bus stop and the main hall, the heat ribbon on that path turning from red to green, late chip dropping"
+  },
+  {
+   "id": "s4",
+   "headline": "लंच की भीड़ सुलझाएं",
+   "sub": "12:00 और 13:30 पर सबको खिलाएं",
+   "scene": "Lunch wave at 12:00: queue at the canteen, the hungry counter in the HUD and the board's lunch card (canteen too small at lunch, 'Move to …' a later slot); no purchase in frame"
+  },
+  {
+   "id": "s5",
+   "headline": "कैंपस की उथल-पुथल संभालें",
+   "sub": "बर्फ़ के दिन, फटी पाइप, फ़ीस का प्रदर्शन",
+   "scene": "A crisis card on the live day (fee protest on the quad with its two choices), students gathered on the quad behind it"
+  },
+  {
+   "id": "s6",
+   "headline": "असली कैंपस बढ़ाएं",
+   "sub": "चौक और साइंस कैंपस खोलें",
+   "scene": "Zoomed-out diorama after the Liberal Arts Quad opened: new halls on scaffolding, a second canteen, a dorm, lamps and benches along the paths, the Science Campus plots still locked"
+  },
+  {
+   "id": "s7",
+   "headline": "भर्ती, निर्माण, अपग्रेड",
+   "sub": "पांच विभाग और 18 अपग्रेड",
+   "scene": "Staff sheet open with professors and departments (marshals, canteen crew, registry), an upgrade running in the corner, a hall being built in parallel"
+  },
+  {
+   "id": "s8",
+   "headline": "अंकों को प्रतिष्ठा में बदलें",
+   "sub": "सेमेस्टर बंद करें, दाखिला चुनें",
+   "scene": "Exam week closed: semester report with grades, prestige rising and the next-intake choice (Keep / Grow / Be selective); no rewarded-ad button in frame"
+  }
+ ],
+ "feature": "हफ़्ता तय करें। घंटी को मात दें।"
+}

@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "डायनासोर अभयारण्य चलाएं",
+   "sub": "झुंडों को खिलाएं, रेंजर भेजें, द्वीप शांत रखें",
+   "scene": "Live day ~11:00 at Medium tier, Landing Cove + Fern Valley open, mixed herds grazing, safari tram between stops, HUD (day, coins, rating) visible, 1-2 pins on the diorama, guide finished, no purchase owned"
+  },
+  {
+   "id": "s2",
+   "headline": "सही रेंजर भेजें",
+   "sub": "फ़ीडर, वेट, हैंडलर, फ़ेंस टेक",
+   "scene": "A hungry-herd pin tapped: send sheet open with the Feeder highlighted and the route drawn along the service road, ETA shown"
+  },
+  {
+   "id": "s3",
+   "headline": "हर सुबह की योजना बनाएं",
+   "sub": "चारा बोर्ड और ट्राम का समय-सारणी",
+   "scene": "Morning plan screen (paused): feed board with crates per station and the 'needs ~n a day' hint, tram timetable with 2 cars, 'Open the park' button"
+  },
+  {
+   "id": "s4",
+   "headline": "झुंडों की जोड़ी चुनें",
+   "sub": "आहार, बायोम और स्वभाव से सामंजस्य तय होता है",
+   "scene": "Harmony card open after tapping two animals in one paddock (e.g. Triceratops + Maiasaura, green harmony bar), paddock behind it"
+  },
+  {
+   "id": "s5",
+   "headline": "खोदें और नई प्रजातियां सेएं",
+   "sub": "हर खुदाई स्थल बताता है कि उससे क्या निकलेगा",
+   "scene": "Hatchery sheet: dig site chart with the exact species per site, one egg in the incubator with the temperature slider in the warm band, 'Hatches in' timer"
+  },
+  {
+   "id": "s6",
+   "headline": "द्वीप की उथल-पुथल झेलें",
+   "sub": "बारिश, गर्मी और धूल भरी आंधी, कोई घायल नहीं",
+   "scene": "A real rain squall day: flooded-path pin on the tram line, a Fence Tech on the way, tram waiting at the station, overcast light"
+  },
+  {
+   "id": "s7",
+   "headline": "नए इलाके खोलें",
+   "sub": "Fern Valley और Dune Mesa के गर्म टीले",
+   "scene": "Dune Mesa freshly opened (bot or real save past ~2.5 h): water point and shade sail in a dune paddock, Miragaia and Protoceratops, longer tram loop"
+  },
+  {
+   "id": "s8",
+   "headline": "अभयारण्य रेटिंग बढ़ाएं",
+   "sub": "दिन की रिपोर्ट बताती है क्या चला और क्या नहीं",
+   "scene": "Day report with the stars row, Sanctuary Rating, visitors, tram riders, animal care and profit, 'Next day' button; no rewarded-ad button in the frame"
+  }
+ ],
+ "feature": "दिन चलाएं। द्वीप को शांत रखें।"
+}

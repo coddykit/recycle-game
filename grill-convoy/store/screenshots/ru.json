@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Управляйте фудтраками",
+   "sub": "Выберите точку, загрузите, справьтесь с очередью",
+   "scene": "City map at ~12:10 on a weekday: the first truck serving at the Office Plaza with a long lunch line wrapping the planter, customers with patience bars, HUD (cash, Fame, clock) visible, Boardwalk and Stadium pitches in the background"
+  },
+  {
+   "id": "s2",
+   "headline": "Продумайте кухню",
+   "sub": "Короткие пути дают быструю линию",
+   "scene": "Layout editor of the starter truck (4x3): grill, bench with toaster and sauce rail next to it, window with the fryer beside it, adjacency bonus chips shown, 'Slowest: Window' hint"
+  },
+  {
+   "id": "s3",
+   "headline": "Переживите перерыв на матче",
+   "sub": "Два окна и «Все на подмогу» в день матча",
+   "scene": "Stadium match day 17:50: halftime stampede banner, crowd packed at a truck with two windows, All hands active, queue counter high, fans in team colours (no real club marks)"
+  },
+  {
+   "id": "s4",
+   "headline": "Загружайте по прогнозу",
+   "sub": "Мало — распродадите, много — испортится",
+   "scene": "Morning dispatch: pitch card with tomorrow's forecast (hot, Boardwalk busy), pack list with patties / buns / sides sliders near the suggested amounts, commissary stock bar"
+  },
+  {
+   "id": "s5",
+   "headline": "Любой кризис под контролем",
+   "sub": "Вспышки жира, дождь, пропан и конкуренты",
+   "scene": "Boardwalk afternoon: a grease flare-up pulse over the grill with the Extinguish button, a rival truck awning parked nearby, 'Counter-offer' chip visible"
+  },
+  {
+   "id": "s6",
+   "headline": "Растите меню",
+   "sub": "8 бургеров и 24 исследовательских проекта",
+   "scene": "Research sheet open on the Menu branch: Double and Spicy done, Premium fixings in progress with time left, the Kitchen branch tab visible"
+  },
+  {
+   "id": "s7",
+   "headline": "Постройте колонну",
+   "sub": "Два грузовика, три точки, один город",
+   "scene": "Wide city map at golden hour: Old Faithful at the Office Plaza and the Box Truck at the Boardwalk, both serving, the stadium bowl and commissary in frame"
+  },
+  {
+   "id": "s8",
+   "headline": "Три звезды за день",
+   "sub": "Каждое число подсказывает, что исправить",
+   "scene": "Day report with 3 stars for service / stock / speed, sales, costs and profit lines, a hint line and the Continue button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Выберите точку. Переживите наплыв."
+}

@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "बर्गर ट्रक चलाएं",
+   "sub": "जगह चुनें, ट्रक भरें, भीड़ को मात दें",
+   "scene": "City map at ~12:10 on a weekday: the first truck serving at the Office Plaza with a long lunch line wrapping the planter, customers with patience bars, HUD (cash, Fame, clock) visible, Boardwalk and Stadium pitches in the background"
+  },
+  {
+   "id": "s2",
+   "headline": "किचन डिज़ाइन करें",
+   "sub": "छोटी दूरी से लाइन तेज़ चलती है",
+   "scene": "Layout editor of the starter truck (4x3): grill, bench with toaster and sauce rail next to it, window with the fryer beside it, adjacency bonus chips shown, 'Slowest: Window' hint"
+  },
+  {
+   "id": "s3",
+   "headline": "हाफ़टाइम की भीड़ को मात दें",
+   "sub": "दो खिड़कियां और मैच के दिन सबकी मदद",
+   "scene": "Stadium match day 17:50: halftime stampede banner, crowd packed at a truck with two windows, All hands active, queue counter high, fans in team colours (no real club marks)"
+  },
+  {
+   "id": "s4",
+   "headline": "पूर्वानुमान देखकर भरें",
+   "sub": "कम भरा तो जल्दी बिकेगा, ज़्यादा भरा तो खराब",
+   "scene": "Morning dispatch: pitch card with tomorrow's forecast (hot, Boardwalk busy), pack list with patties / buns / sides sliders near the suggested amounts, commissary stock bar"
+  },
+  {
+   "id": "s5",
+   "headline": "हर संकट संभालें",
+   "sub": "ग्रीस की आग, बारिश, प्रोपेन और प्रतिस्पर्धी ट्रक",
+   "scene": "Boardwalk afternoon: a grease flare-up pulse over the grill with the Extinguish button, a rival truck awning parked nearby, 'Counter-offer' chip visible"
+  },
+  {
+   "id": "s6",
+   "headline": "मेन्यू बढ़ाएं",
+   "sub": "8 बर्गर और 24 रिसर्च प्रोजेक्ट",
+   "scene": "Research sheet open on the Menu branch: Double and Spicy done, Premium fixings in progress with time left, the Kitchen branch tab visible"
+  },
+  {
+   "id": "s7",
+   "headline": "कारवां बनाएं",
+   "sub": "दो ट्रक, तीन जगह, एक शहर",
+   "scene": "Wide city map at golden hour: Old Faithful at the Office Plaza and the Box Truck at the Boardwalk, both serving, the stadium bowl and commissary in frame"
+  },
+  {
+   "id": "s8",
+   "headline": "तीन सितारों वाले दिन कमाएं",
+   "sub": "हर आंकड़ा किसी सुधार की ओर इशारा करता है",
+   "scene": "Day report with 3 stars for service / stock / speed, sales, costs and profit lines, a hint line and the Continue button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "जगह चुनें। भीड़ को मात दें।"
+}

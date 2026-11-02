@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "व्यस्त बंदरगाह कैफ़े चलाएं",
+   "sub": "टिकट, बरिस्ता और काउंटर पर लाइन",
+   "scene": "Corner Cafe at the morning peak (~08:00): 6+ tickets on the rail, 3 baristas on espresso and steam, a queue at the counter, HUD visible, guide finished, Medium tier"
+  },
+  {
+   "id": "s2",
+   "headline": "अगला टिकट चुनें",
+   "sub": "पहले डेडलाइन, पहले आए या नियमित पहले",
+   "scene": "House rule sheet open over the bar: Deadline first selected, one ticket flagged Priority, a pre-order with its pickup time on the rail"
+  },
+  {
+   "id": "s3",
+   "headline": "सही शॉट बनाएं",
+   "sub": "कड़वे शॉट मतलब खराब समीक्षाएं",
+   "scene": "Grinder held mid dial-in: the tune meter climbing back into the green, 'Grinder dialled in' toast, espresso machine pulling a shot"
+  },
+  {
+   "id": "s4",
+   "headline": "बारिश या गर्मी? पहले से तैयारी",
+   "sub": "खुलने से पहले गर्म पेय या अतिरिक्त बर्फ़ रखें",
+   "scene": "Morning plan with the forecast strip showing rain tomorrow and the Prep hot drinks card (urn) open; the cart under its awning in the background"
+  },
+  {
+   "id": "s5",
+   "headline": "अपनी कॉफ़ी खुद भूनें",
+   "sub": "फ़र्स्ट-क्रैक के सही समय पर Drop दबाएं",
+   "scene": "Roastery tab: drum roaster running, the progress bar inside the 70-86 % sweet spot, 'First crack! Drop now' marker, green coffee market below"
+  },
+  {
+   "id": "s6",
+   "headline": "थोक में बीन्स बेचें",
+   "sub": "Harbour Bistro और Ferry Kiosk के अनुबंध",
+   "scene": "Wholesale list with the Harbour Bistro contract signed (kg / every N days / quality), house beans quality 85+, resting racks filled"
+  },
+  {
+   "id": "s7",
+   "headline": "ठेले से रोस्टरी तक बढ़ें",
+   "sub": "पुराने ठिकाने शाखाओं के रूप में कमाते रहते हैं",
+   "scene": "Grow tab: Quayside Cart and Corner Cafe owned as branches with their daily income, Roastery Hall open; the roastery diorama behind"
+  },
+  {
+   "id": "s8",
+   "headline": "पांच सितारा समीक्षाएं कमाएं",
+   "sub": "बढ़िया बीन्स और तेज़ सेवा से दीवार भरती है",
+   "scene": "Day report after a strong roastery day: average review near 5 stars, served / walk-out numbers, sales and net, Collect button (no reward-video button in frame)"
+  }
+ ],
+ "feature": "बार चलाएं। कॉफ़ी भूनें।"
+}

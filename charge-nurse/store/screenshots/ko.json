@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "병원이 움직이게",
+   "sub": "정문에서 병동 침대까지 환자 흐름",
+   "scene": "Town Hospital mid-shift (~11:00), Medium tier, campus cutaway with walking staff, bays and general ward busy, corridors mostly calm, HUD with stars and cash"
+  },
+  {
+   "id": "s2",
+   "headline": "도착마다 색 붙이기",
+   "sub": "녹색, 노랑, 주황, 빨강: 색과 모양",
+   "scene": "Triage card open on a new walk-in: the four colour buttons with their shapes, a short queue at the front desk behind"
+  },
+  {
+   "id": "s3",
+   "headline": "진짜 병목 찾기",
+   "sub": "돋보기를 대고 원인을 한 줄로",
+   "scene": "Bottleneck lens sheet open naming 'Discharges wait'; the matching corridor glows red in the diorama"
+  },
+  {
+   "id": "s4",
+   "headline": "구급차 수락 또는 전원",
+   "sub": "보너스를 받거나 꽉 찬 응급실 보호",
+   "scene": "Ambulance call banner with Accept / Divert and the minutes-to-answer counter, ambulance at the bay, red-tag shape icon"
+  },
+  {
+   "id": "s5",
+   "headline": "돌발 상황 대응",
+   "sub": "독감 주간, 연쇄 충돌, 정전 등",
+   "scene": "Announced crisis running (flu week or highway crash): crisis card, busy orange/red corridors, surge team called (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s6",
+   "headline": "알맞은 팀 고용",
+   "sub": "간호사, 의사, 이송, 청소 등",
+   "scene": "Teams sheet open with all six teams, their counts and hire buttons; the lens chip above names the team that is short"
+  },
+  {
+   "id": "s7",
+   "headline": "시립 종합병원까지",
+   "sub": "진료소에서 도시 병원까지 성장",
+   "scene": "Wide zoom-out of all three wings open: operating room, ICU, surgical ward and lift lit; 'City General is open!' toast"
+  },
+  {
+   "id": "s8",
+   "headline": "인수인계, 별 받기",
+   "sub": "교대마다 돌봄, 대기, 흐름 별 9개",
+   "scene": "Shift report after a good day: star rows for care / waits / flow, treated count, net cash and the next-shift button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "병목을 찾고 병상을 움직이세요"
+}

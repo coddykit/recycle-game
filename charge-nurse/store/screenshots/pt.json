@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Mantenha o hospital andando",
+   "sub": "Do guichê de entrada até o leito da enfermaria",
+   "scene": "Town Hospital mid-shift (~11:00), Medium tier, campus cutaway with walking staff, bays and general ward busy, corridors mostly calm, HUD with stars and cash"
+  },
+  {
+   "id": "s2",
+   "headline": "Classifique cada chegada",
+   "sub": "Verde, amarelo, laranja, vermelho: cor + forma",
+   "scene": "Triage card open on a new walk-in: the four colour buttons with their shapes, a short queue at the front desk behind"
+  },
+  {
+   "id": "s3",
+   "headline": "Encontre o gargalo real",
+   "sub": "Toque na lupa e leia a causa em uma linha",
+   "scene": "Bottleneck lens sheet open naming 'Discharges wait'; the matching corridor glows red in the diorama"
+  },
+  {
+   "id": "s4",
+   "headline": "Aceite ou desvie ambulâncias",
+   "sub": "Pegue o bônus ou proteja um PS lotado",
+   "scene": "Ambulance call banner with Accept / Divert and the minutes-to-answer counter, ambulance at the bay, red-tag shape icon"
+  },
+  {
+   "id": "s5",
+   "headline": "Enfrente o caos",
+   "sub": "Semana de gripe, batidas, quedas de energia",
+   "scene": "Announced crisis running (flu week or highway crash): crisis card, busy orange/red corridors, surge team called (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s6",
+   "headline": "Contrate as equipes certas",
+   "sub": "Enfermeiros, médicos, maqueiros e mais",
+   "scene": "Teams sheet open with all six teams, their counts and hire buttons; the lens chip above names the team that is short"
+  },
+  {
+   "id": "s7",
+   "headline": "Cresça até o Hospital Geral",
+   "sub": "Da clínica da vila ao hospital da cidade",
+   "scene": "Wide zoom-out of all three wings open: operating room, ICU, surgical ward and lift lit; 'City General is open!' toast"
+  },
+  {
+   "id": "s8",
+   "headline": "Passe o plantão com estrelas",
+   "sub": "Nove estrelas por turno: cuidado, espera e fluxo",
+   "scene": "Shift report after a good day: star rows for care / waits / flow, treated count, net cash and the next-shift button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Encontre o gargalo. Mantenha os leitos."
+}

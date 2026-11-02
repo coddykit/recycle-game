@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Dirigez votre cabinet",
+   "sub": "Du bureau du garage à la Rangée du Tribunal",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "Répartissez l'équipe",
+   "sub": "Glissez votre équipe sur chaque tâche",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "Deux audiences, un avocat",
+   "sub": "Couvrez, faites venir un confrère, reportez",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "Choisissez vos clients",
+   "sub": "Acceptez, orientez ou dressez une muraille",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "La préparation fait gagner",
+   "sub": "Reliez chaque allégation à sa pièce",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "Transigez ou plaidez",
+   "sub": "Chaque juge a ses habitudes. Planifiez-les.",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "Facturez et gagnez des étoiles",
+   "sub": "Les heures deviennent des factures",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "Développez un cabinet actif",
+   "sub": "Bibliothèque, salle des pièces, salle de crise",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "Le cabinet le plus actif de la ville"
+}

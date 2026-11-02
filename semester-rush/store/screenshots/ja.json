@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "チャイムに間に合え",
+   "sub": "どの授業も10分前に始まる",
+   "scene": "Monday 08:50 bell change on the Community College: students in faculty colours streaming along the paths to the main hall, the clock running, HUD visible, autumn trees and lamps on Medium"
+  },
+  {
+   "id": "s2",
+   "headline": "一週間まるごと計画",
+   "sub": "講座、教室、教授、時間枠",
+   "scene": "Sunday timetable board open (auto-filled, one class being placed), the valid cell highlighted green and one clash shown red with its reason"
+  },
+  {
+   "id": "s3",
+   "headline": "近道を開く",
+   "sub": "ゲートで移動と遅刻を減らす",
+   "scene": "The guide's gate step: the gold gate just opened between the bus stop and the main hall, the heat ribbon on that path turning from red to green, late chip dropping"
+  },
+  {
+   "id": "s4",
+   "headline": "昼食の混雑を解消",
+   "sub": "12時と13時30分に全員へ食事を",
+   "scene": "Lunch wave at 12:00: queue at the canteen, the hungry counter in the HUD and the board's lunch card (canteen too small at lunch, 'Move to …' a later slot); no purchase in frame"
+  },
+  {
+   "id": "s5",
+   "headline": "キャンパスの騒動に対応",
+   "sub": "雪の日、配管の破裂、学費抗議",
+   "scene": "A crisis card on the live day (fee protest on the quad with its two choices), students gathered on the quad behind it"
+  },
+  {
+   "id": "s6",
+   "headline": "本物のキャンパスを育てる",
+   "sub": "リベラルアーツとサイエンスを開放",
+   "scene": "Zoomed-out diorama after the Liberal Arts Quad opened: new halls on scaffolding, a second canteen, a dorm, lamps and benches along the paths, the Science Campus plots still locked"
+  },
+  {
+   "id": "s7",
+   "headline": "採用、建設、強化",
+   "sub": "5部門と18のアップグレード",
+   "scene": "Staff sheet open with professors and departments (marshals, canteen crew, registry), an upgrade running in the corner, a hall being built in parallel"
+  },
+  {
+   "id": "s8",
+   "headline": "成績を名声に変える",
+   "sub": "学期を締め、次の入学者を選ぶ",
+   "scene": "Exam week closed: semester report with grades, prestige rising and the next-intake choice (Keep / Grow / Be selective); no rewarded-ad button in frame"
+  }
+ ],
+ "feature": "計画しよう。チャイムに勝とう。"
+}

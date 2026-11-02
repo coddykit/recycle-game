@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "बोतल वापसी नेटवर्क चलाएं",
+   "sub": "एक शहर में मशीनें, ट्रक और एक डिपो",
+   "scene": "Harbour Quarter mid-day (~13:00), Medium tier, guide finished: 5 machines with in-world fill bars, a van on its route, citizens with bags walking to a machine, depot at the edge, HUD with cash, Green Rating and day clock"
+  },
+  {
+   "id": "s2",
+   "headline": "ओवरफ़्लो से पहले खाली करें",
+   "sub": "हर मशीन दिखाती है कि वह कितनी भरी है",
+   "scene": "Point sheet open on a machine at 92 % (red bar, 'Full — citizens are turned away' about to show), a citizen turning back with a bag beside it, other bars green/amber"
+  },
+  {
+   "id": "s3",
+   "headline": "ईंधन बचाने वाले रूट बनाएं",
+   "sub": "हर किलोमीटर का खर्च होता है। घेरा सोच-समझकर बनाएं।",
+   "scene": "Route being built: three machines tapped (numbered stops), route line on the roads, fuel badge showing the trip cost, Go button highlighted"
+  },
+  {
+   "id": "s4",
+   "headline": "सर्विस नियम तय करें",
+   "sub": "60, 80 या 95 % पर, या सिर्फ़ बुलाने पर खाली करें",
+   "scene": "Service rule sheet on a busy corner machine with 'Empty at 80 %' selected, Dispatcher hint line below"
+  },
+  {
+   "id": "s5",
+   "headline": "गिनें, दबाएं और गांठें बेचें",
+   "sub": "गांठ का दाम सही हो तब बेचें",
+   "scene": "Depot tab: count line queue, baler with a PET bale, yard with stacked PET and aluminium bales, Sell button with today's price"
+  },
+  {
+   "id": "s6",
+   "headline": "लू की लहर से निपटें",
+   "sub": "मैच के दिन, जाम, खराबी और भी बहुत कुछ",
+   "scene": "Heat wave event card on screen, machines filling fast (several amber bars), a second truck heading out, technician on the way to a jammed machine"
+  },
+  {
+   "id": "s7",
+   "headline": "नए इलाके खोलें",
+   "sub": "पुराने शहर की गलियां, यूनिवर्सिटी हिल, स्टेडियम",
+   "scene": "Old Town just opened: narrow lanes with a cargo bike on an alley, café pickup point, toast 'Next district: University Hill'"
+  },
+  {
+   "id": "s8",
+   "headline": "तीन सितारों वाले दिन कमाएं",
+   "sub": "सर्विस, दक्षता और डिपो का प्रवाह",
+   "scene": "Day report with 3 stars, bottles collected, bottles per km, profit and Green Rating up (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "शहर की बोतलों को चलते रहने दें"
+}

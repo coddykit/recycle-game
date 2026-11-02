@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Dirigez les food trucks",
+   "sub": "Emplacement, chargement, rush du midi",
+   "scene": "City map at ~12:10 on a weekday: the first truck serving at the Office Plaza with a long lunch line wrapping the planter, customers with patience bars, HUD (cash, Fame, clock) visible, Boardwalk and Stadium pitches in the background"
+  },
+  {
+   "id": "s2",
+   "headline": "Aménagez la cuisine",
+   "sub": "Des trajets courts font une file rapide",
+   "scene": "Layout editor of the starter truck (4x3): grill, bench with toaster and sauce rail next to it, window with the fryer beside it, adjacency bonus chips shown, 'Slowest: Window' hint"
+  },
+  {
+   "id": "s3",
+   "headline": "Battez la ruée de mi-temps",
+   "sub": "Deux guichets et Tout le monde le jour de match",
+   "scene": "Stadium match day 17:50: halftime stampede banner, crowd packed at a truck with two windows, All hands active, queue counter high, fans in team colours (no real club marks)"
+  },
+  {
+   "id": "s4",
+   "headline": "Chargez selon la météo",
+   "sub": "Trop peu, rupture ; trop, les restes se gâtent",
+   "scene": "Morning dispatch: pitch card with tomorrow's forecast (hot, Boardwalk busy), pack list with patties / buns / sides sliders near the suggested amounts, commissary stock bar"
+  },
+  {
+   "id": "s5",
+   "headline": "Gérez chaque crise",
+   "sub": "Flambées de graisse, pluie, propane, rivaux",
+   "scene": "Boardwalk afternoon: a grease flare-up pulse over the grill with the Extinguish button, a rival truck awning parked nearby, 'Counter-offer' chip visible"
+  },
+  {
+   "id": "s6",
+   "headline": "Faites grandir votre menu",
+   "sub": "8 burgers et 24 projets de recherche",
+   "scene": "Research sheet open on the Menu branch: Double and Spicy done, Premium fixings in progress with time left, the Kitchen branch tab visible"
+  },
+  {
+   "id": "s7",
+   "headline": "Montez un convoi",
+   "sub": "Deux camions, trois emplacements, une ville",
+   "scene": "Wide city map at golden hour: Old Faithful at the Office Plaza and the Box Truck at the Boardwalk, both serving, the stadium bowl and commissary in frame"
+  },
+  {
+   "id": "s8",
+   "headline": "Journées à trois étoiles",
+   "sub": "Chaque chiffre indique une solution",
+   "scene": "Day report with 3 stars for service / stock / speed, sales, costs and profit lines, a hint line and the Continue button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Choisissez le lieu. Battez le rush."
+}

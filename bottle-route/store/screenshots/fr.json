@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Gérez le réseau de consigne",
+   "sub": "Machines, camions et un centre de tri en ville",
+   "scene": "Harbour Quarter mid-day (~13:00), Medium tier, guide finished: 5 machines with in-world fill bars, a van on its route, citizens with bags walking to a machine, depot at the edge, HUD with cash, Green Rating and day clock"
+  },
+  {
+   "id": "s2",
+   "headline": "Videz avant le débordement",
+   "sub": "Chaque machine affiche son niveau de remplissage",
+   "scene": "Point sheet open on a machine at 92 % (red bar, 'Full — citizens are turned away' about to show), a citizen turning back with a bag beside it, other bars green/amber"
+  },
+  {
+   "id": "s3",
+   "headline": "Tracez des tournées économes",
+   "sub": "Chaque kilomètre coûte. Planifiez la boucle.",
+   "scene": "Route being built: three machines tapped (numbered stops), route line on the roads, fuel badge showing the trip cost, Go button highlighted"
+  },
+  {
+   "id": "s4",
+   "headline": "Réglez la règle d'entretien",
+   "sub": "Vider à 60, 80 ou 95 %, ou seulement sur appel",
+   "scene": "Service rule sheet on a busy corner machine with 'Empty at 80 %' selected, Dispatcher hint line below"
+  },
+  {
+   "id": "s5",
+   "headline": "Comptez, pressez, vendez",
+   "sub": "Vendez quand le prix des balles est bon",
+   "scene": "Depot tab: count line queue, baler with a PET bale, yard with stacked PET and aluminium bales, Sell button with today's price"
+  },
+  {
+   "id": "s6",
+   "headline": "Gérez la vague de chaleur",
+   "sub": "Jours de match, bouchons, pannes et plus",
+   "scene": "Heat wave event card on screen, machines filling fast (several amber bars), a second truck heading out, technician on the way to a jammed machine"
+  },
+  {
+   "id": "s7",
+   "headline": "Ouvrez de nouveaux quartiers",
+   "sub": "Ruelles du Vieux Quartier, université, stade",
+   "scene": "Old Town just opened: narrow lanes with a cargo bike on an alley, café pickup point, toast 'Next district: University Hill'"
+  },
+  {
+   "id": "s8",
+   "headline": "Gagnez 3 étoiles par jour",
+   "sub": "Service, efficacité et flux au centre de tri",
+   "scene": "Day report with 3 stars, bottles collected, bottles per km, profit and Green Rating up (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Gardez les bouteilles en mouvement"
+}

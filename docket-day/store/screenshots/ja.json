@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "自分の法律事務所を経営",
+   "sub": "ガレージ前の事務所から裁判所通りまで",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "時間割に人を当てはめる",
+   "sub": "期限前に、全タスクへチームをドラッグ",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "二件の審理、弁護士は一人",
+   "sub": "代行、ゲスト弁護士、期日延期から選ぶ",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "依頼人を選ぶ",
+   "sub": "受任、紹介、またはエシカルウォール",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "準備が事件を勝たせる",
+   "sub": "主張ごとに証拠を一つずつ対応させる",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "示談か法廷か",
+   "sub": "裁判官には癖がある。見越して計画",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "仕事を請求し、星を得る",
+   "sub": "時間は請求書に。預り金は安全に",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "忙しい事務所を築く",
+   "sub": "図書室、証拠保管室、作戦室など",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "忙しい法律事務所を回そう"
+}

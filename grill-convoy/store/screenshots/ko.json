@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "버거 트럭 운영하기",
+   "sub": "자리를 고르고, 싣고, 러시를 이기세요",
+   "scene": "City map at ~12:10 on a weekday: the first truck serving at the Office Plaza with a long lunch line wrapping the planter, customers with patience bars, HUD (cash, Fame, clock) visible, Boardwalk and Stadium pitches in the background"
+  },
+  {
+   "id": "s2",
+   "headline": "주방을 설계하세요",
+   "sub": "짧은 동선이 빠른 줄을 만듭니다",
+   "scene": "Layout editor of the starter truck (4x3): grill, bench with toaster and sauce rail next to it, window with the fryer beside it, adjacency bonus chips shown, 'Slowest: Window' hint"
+  },
+  {
+   "id": "s3",
+   "headline": "하프타임 러시 이기기",
+   "sub": "경기 날에는 창구 두 개와 전원 출동",
+   "scene": "Stadium match day 17:50: halftime stampede banner, crowd packed at a truck with two windows, All hands active, queue counter high, fans in team colours (no real club marks)"
+  },
+  {
+   "id": "s4",
+   "headline": "예보에 맞춰 싣기",
+   "sub": "적게 싣으면 품절, 많이 싣으면 상함",
+   "scene": "Morning dispatch: pitch card with tomorrow's forecast (hot, Boardwalk busy), pack list with patties / buns / sides sliders near the suggested amounts, commissary stock bar"
+  },
+  {
+   "id": "s5",
+   "headline": "모든 위기 대응",
+   "sub": "기름 화재, 비, 프로판, 경쟁 트럭",
+   "scene": "Boardwalk afternoon: a grease flare-up pulse over the grill with the Extinguish button, a rival truck awning parked nearby, 'Counter-offer' chip visible"
+  },
+  {
+   "id": "s6",
+   "headline": "메뉴 키우기",
+   "sub": "버거 8종과 연구 프로젝트 24개",
+   "scene": "Research sheet open on the Menu branch: Double and Spicy done, Premium fixings in progress with time left, the Kitchen branch tab visible"
+  },
+  {
+   "id": "s7",
+   "headline": "선단 만들기",
+   "sub": "트럭 두 대, 자리 세 곳, 도시 하나",
+   "scene": "Wide city map at golden hour: Old Faithful at the Office Plaza and the Box Truck at the Boardwalk, both serving, the stadium bowl and commissary in frame"
+  },
+  {
+   "id": "s8",
+   "headline": "별 3개짜리 날 얻기",
+   "sub": "모든 숫자가 고칠 곳을 가리킵니다",
+   "scene": "Day report with 3 stars for service / stock / speed, sales, costs and profit lines, a hint line and the Continue button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "자리를 고르고 러시를 이기세요"
+}

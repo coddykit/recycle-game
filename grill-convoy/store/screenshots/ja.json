@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "バーガートラックを運営",
+   "sub": "場所を選び、積み込み、昼の混雑に勝つ",
+   "scene": "City map at ~12:10 on a weekday: the first truck serving at the Office Plaza with a long lunch line wrapping the planter, customers with patience bars, HUD (cash, Fame, clock) visible, Boardwalk and Stadium pitches in the background"
+  },
+  {
+   "id": "s2",
+   "headline": "厨房をデザイン",
+   "sub": "短い移動で、列はすばやく進む",
+   "scene": "Layout editor of the starter truck (4x3): grill, bench with toaster and sauce rail next to it, window with the fryer beside it, adjacency bonus chips shown, 'Slowest: Window' hint"
+  },
+  {
+   "id": "s3",
+   "headline": "ハーフタイムの混雑に勝つ",
+   "sub": "2つの窓と、試合日の全員集合",
+   "scene": "Stadium match day 17:50: halftime stampede banner, crowd packed at a truck with two windows, All hands active, queue counter high, fans in team colours (no real club marks)"
+  },
+  {
+   "id": "s4",
+   "headline": "天気予報に合わせて積む",
+   "sub": "少なすぎれば売り切れ、多すぎれば傷む",
+   "scene": "Morning dispatch: pitch card with tomorrow's forecast (hot, Boardwalk busy), pack list with patties / buns / sides sliders near the suggested amounts, commissary stock bar"
+  },
+  {
+   "id": "s5",
+   "headline": "あらゆるトラブルに対応",
+   "sub": "油火災、雨、プロパンガス、ライバル",
+   "scene": "Boardwalk afternoon: a grease flare-up pulse over the grill with the Extinguish button, a rival truck awning parked nearby, 'Counter-offer' chip visible"
+  },
+  {
+   "id": "s6",
+   "headline": "メニューを広げる",
+   "sub": "8種のバーガーと24の研究プロジェクト",
+   "scene": "Research sheet open on the Menu branch: Double and Spicy done, Premium fixings in progress with time left, the Kitchen branch tab visible"
+  },
+  {
+   "id": "s7",
+   "headline": "コンボイを作る",
+   "sub": "2台のトラック、3か所、1つの街",
+   "scene": "Wide city map at golden hour: Old Faithful at the Office Plaza and the Box Truck at the Boardwalk, both serving, the stadium bowl and commissary in frame"
+  },
+  {
+   "id": "s8",
+   "headline": "3つ星の日を目指す",
+   "sub": "数字はすべて、改善点を指している",
+   "scene": "Day report with 3 stars for service / stock / speed, sales, costs and profit lines, a hint line and the Continue button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "場所を選び、混雑に勝とう"
+}

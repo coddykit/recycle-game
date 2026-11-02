@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "अपनी लॉ फ़र्म चलाएं",
+   "sub": "गैराज वाले दफ़्तर से कोर्टहाउस रो तक",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "लोगों को कैलेंडर में बिठाएं",
+   "sub": "समय-सीमा से पहले हर काम पर अपनी टीम लगाएं",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "दो सुनवाई, एक वकील",
+   "sub": "कवर करें, बाहर से वकील बुलाएं या समय मांगें",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "अपने मुवक्किल चुनें",
+   "sub": "स्वीकार करें, भेजें या नैतिक दीवार बनाएं",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "तैयारी से केस जीतें",
+   "sub": "हर दावे को उसे साबित करने वाले सबूत से मिलाएं",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "समझौता या अदालत",
+   "sub": "हर जज की अपनी आदत होती है, उसी के हिसाब से योजना",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "दिन का बिल बनाएं, सितारे कमाएं",
+   "sub": "घंटे इनवॉइस बनते हैं, ट्रस्ट का पैसा सुरक्षित",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "व्यस्त प्रैक्टिस बनाएं",
+   "sub": "लाइब्रेरी, सबूत कक्ष, वॉर रूम और भी",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "शहर की सबसे व्यस्त लॉ फ़र्म चलाएं"
+}

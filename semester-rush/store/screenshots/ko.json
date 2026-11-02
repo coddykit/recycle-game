@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "종이 울리기 전에",
+   "sub": "모든 수업은 10분 안에 시작",
+   "scene": "Monday 08:50 bell change on the Community College: students in faculty colours streaming along the paths to the main hall, the clock running, HUD visible, autumn trees and lamps on Medium"
+  },
+  {
+   "id": "s2",
+   "headline": "한 주 전체 계획",
+   "sub": "과목, 강의실, 교수, 시간대",
+   "scene": "Sunday timetable board open (auto-filled, one class being placed), the valid cell highlighted green and one clash shown red with its reason"
+  },
+  {
+   "id": "s3",
+   "headline": "지름길 열기",
+   "sub": "문 하나가 길과 지각을 줄입니다",
+   "scene": "The guide's gate step: the gold gate just opened between the bus stop and the main hall, the heat ribbon on that path turning from red to green, late chip dropping"
+  },
+  {
+   "id": "s4",
+   "headline": "점심 대란 해결",
+   "sub": "12:00, 13:30에 모두 먹이기",
+   "scene": "Lunch wave at 12:00: queue at the canteen, the hungry counter in the HUD and the board's lunch card (canteen too small at lunch, 'Move to …' a later slot); no purchase in frame"
+  },
+  {
+   "id": "s5",
+   "headline": "캠퍼스 위기 대응",
+   "sub": "휴교, 파이프 파열, 등록금 시위",
+   "scene": "A crisis card on the live day (fee protest on the quad with its two choices), students gathered on the quad behind it"
+  },
+  {
+   "id": "s6",
+   "headline": "진짜 캠퍼스 키우기",
+   "sub": "교양 광장과 과학 캠퍼스 열기",
+   "scene": "Zoomed-out diorama after the Liberal Arts Quad opened: new halls on scaffolding, a second canteen, a dorm, lamps and benches along the paths, the Science Campus plots still locked"
+  },
+  {
+   "id": "s7",
+   "headline": "채용, 건설, 업그레이드",
+   "sub": "부서 다섯 개와 업그레이드 18개",
+   "scene": "Staff sheet open with professors and departments (marshals, canteen crew, registry), an upgrade running in the corner, a hall being built in parallel"
+  },
+  {
+   "id": "s8",
+   "headline": "성적을 명성으로",
+   "sub": "학기를 마치고 입학 정원 고르기",
+   "scene": "Exam week closed: semester report with grades, prestige rising and the next-intake choice (Keep / Grow / Be selective); no rewarded-ad button in frame"
+  }
+ ],
+ "feature": "한 주를 짜고 종을 이기세요"
+}

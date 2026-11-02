@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Hastaneyi hareket ettir",
+   "sub": "Ön kapıdan servis yatağına hasta akışı",
+   "scene": "Town Hospital mid-shift (~11:00), Medium tier, campus cutaway with walking staff, bays and general ward busy, corridors mostly calm, HUD with stars and cash"
+  },
+  {
+   "id": "s2",
+   "headline": "Her girişi etiketle",
+   "sub": "Yeşil, sarı, turuncu, kırmızı: renk + şekil",
+   "scene": "Triage card open on a new walk-in: the four colour buttons with their shapes, a short queue at the front desk behind"
+  },
+  {
+   "id": "s3",
+   "headline": "Asıl darboğazı bul",
+   "sub": "Merceğe dokun, nedeni tek satırda oku",
+   "scene": "Bottleneck lens sheet open naming 'Discharges wait'; the matching corridor glows red in the diorama"
+  },
+  {
+   "id": "s4",
+   "headline": "Ambulans kararı ver",
+   "sub": "Bonusu al ya da dolu acili koru",
+   "scene": "Ambulance call banner with Accept / Divert and the minutes-to-answer counter, ambulance at the bay, red-tag shape icon"
+  },
+  {
+   "id": "s5",
+   "headline": "Zorluklarla başa çık",
+   "sub": "Grip haftası, kazalar, elektrik kesintisi",
+   "scene": "Announced crisis running (flu week or highway crash): crisis card, busy orange/red corridors, surge team called (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s6",
+   "headline": "Doğru ekipleri kur",
+   "sub": "Hemşire, doktor, hamal, temizlikçi ve daha fazlası",
+   "scene": "Teams sheet open with all six teams, their counts and hire buttons; the lens chip above names the team that is short"
+  },
+  {
+   "id": "s7",
+   "headline": "City General'a büyü",
+   "sub": "Kliniğden şehir kampüsüne",
+   "scene": "Wide zoom-out of all three wings open: operating room, ICU, surgical ward and lift lit; 'City General is open!' toast"
+  },
+  {
+   "id": "s8",
+   "headline": "Devret, yıldızını kazan",
+   "sub": "Vardiyada bakım, bekleme ve akış için dokuz yıldız",
+   "scene": "Shift report after a good day: star rows for care / waits / flow, treated count, net cash and the next-shift button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Darboğazı bul. Yatakları hareket ettir."
+}

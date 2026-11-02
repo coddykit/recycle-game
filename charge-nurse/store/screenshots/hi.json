@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "अस्पताल चलते रहने दें",
+   "sub": "दरवाज़े से वार्ड बेड तक मरीज़ों की आवाजाही",
+   "scene": "Town Hospital mid-shift (~11:00), Medium tier, campus cutaway with walking staff, bays and general ward busy, corridors mostly calm, HUD with stars and cash"
+  },
+  {
+   "id": "s2",
+   "headline": "हर आने वाले को टैग करें",
+   "sub": "हरा, पीला, नारंगी, लाल: रंग के साथ आकार",
+   "scene": "Triage card open on a new walk-in: the four colour buttons with their shapes, a short queue at the front desk behind"
+  },
+  {
+   "id": "s3",
+   "headline": "असली रुकावट ढूंढें",
+   "sub": "लेंस पर टैप करें, कारण एक पंक्ति में पढ़ें",
+   "scene": "Bottleneck lens sheet open naming 'Discharges wait'; the matching corridor glows red in the diorama"
+  },
+  {
+   "id": "s4",
+   "headline": "एम्बुलेंस स्वीकार या मोड़ें",
+   "sub": "बोनस लें या भरी इमरजेंसी को बचाएं",
+   "scene": "Ambulance call banner with Accept / Divert and the minutes-to-answer counter, ambulance at the bay, red-tag shape icon"
+  },
+  {
+   "id": "s5",
+   "headline": "उथल-पुथल संभालें",
+   "sub": "फ़्लू का हफ़्ता, दुर्घटनाएं, बिजली कटौती और भी",
+   "scene": "Announced crisis running (flu week or highway crash): crisis card, busy orange/red corridors, surge team called (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s6",
+   "headline": "सही टीमें रखें",
+   "sub": "नर्स, डॉक्टर, वार्ड बॉय, सफ़ाईकर्मी और भी",
+   "scene": "Teams sheet open with all six teams, their counts and hire buttons; the lens chip above names the team that is short"
+  },
+  {
+   "id": "s7",
+   "headline": "सिटी जनरल तक बढ़ें",
+   "sub": "क्लिनिक से टाउन अस्पताल, फिर शहर का परिसर",
+   "scene": "Wide zoom-out of all three wings open: operating room, ICU, surgical ward and lift lit; 'City General is open!' toast"
+  },
+  {
+   "id": "s8",
+   "headline": "हैंडओवर करें, सितारे कमाएं",
+   "sub": "हर शिफ़्ट नौ सितारे: देखभाल, प्रतीक्षा, प्रवाह",
+   "scene": "Shift report after a good day: star rows for care / waits / flow, treated count, net cash and the next-shift button (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "रुकावट ढूंढें। बिस्तर चलते रहने दें।"
+}

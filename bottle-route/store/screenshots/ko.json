@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "병 회수 네트워크 운영",
+   "sub": "한 마을의 회수기, 트럭, 집하장",
+   "scene": "Harbour Quarter mid-day (~13:00), Medium tier, guide finished: 5 machines with in-world fill bars, a van on its route, citizens with bags walking to a machine, depot at the edge, HUD with cash, Green Rating and day clock"
+  },
+  {
+   "id": "s2",
+   "headline": "넘치기 전에 비우기",
+   "sub": "모든 회수기에 차오른 정도가 보여요",
+   "scene": "Point sheet open on a machine at 92 % (red bar, 'Full — citizens are turned away' about to show), a citizen turning back with a bag beside it, other bars green/amber"
+  },
+  {
+   "id": "s3",
+   "headline": "연료를 아끼는 경로",
+   "sub": "킬로미터마다 비용이 드는 순환 노선",
+   "scene": "Route being built: three machines tapped (numbered stops), route line on the roads, fuel badge showing the trip cost, Go button highlighted"
+  },
+  {
+   "id": "s4",
+   "headline": "서비스 규칙 정하기",
+   "sub": "60, 80, 95 %에 비우거나 호출 시에만",
+   "scene": "Service rule sheet on a busy corner machine with 'Empty at 80 %' selected, Dispatcher hint line below"
+  },
+  {
+   "id": "s5",
+   "headline": "계수하고 압축해 팔기",
+   "sub": "묶음 가격이 좋을 때 파세요",
+   "scene": "Depot tab: count line queue, baler with a PET bale, yard with stacked PET and aluminium bales, Sell button with today's price"
+  },
+  {
+   "id": "s6",
+   "headline": "폭염 대응하기",
+   "sub": "경기 날, 막힘, 고장 등 더 많은 사건",
+   "scene": "Heat wave event card on screen, machines filling fast (several amber bars), a second truck heading out, technician on the way to a jammed machine"
+  },
+  {
+   "id": "s7",
+   "headline": "새 지구 열기",
+   "sub": "올드타운 골목, 대학 언덕, 경기장",
+   "scene": "Old Town just opened: narrow lanes with a cargo bike on an alley, café pickup point, toast 'Next district: University Hill'"
+  },
+  {
+   "id": "s8",
+   "headline": "별 3개짜리 하루",
+   "sub": "서비스, 효율, 집하장 흐름",
+   "scene": "Day report with 3 stars, bottles collected, bottles per km, profit and Green Rating up (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "마을의 병을 계속 움직이세요"
+}
