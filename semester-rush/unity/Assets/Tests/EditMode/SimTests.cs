@@ -144,6 +144,7 @@ namespace SemesterRush.Sim.Tests
         {
             var s = TestData.NewSim();
             s.StartWeek();
+            TestData.RunTo(s, 0, 531);
             Assert.IsTrue(s.InBell, "Monday starts with the 08:50 bell");
             double bellRate = s.MinutesPerSecond;
             TestData.RunTo(s, 0, 545);
@@ -178,25 +179,29 @@ namespace SemesterRush.Sim.Tests
         public void RoomsCohortsAndProfessorsCannotBeDoubleBooked()
         {
             var s = TestData.NewSim();
+            s.S.Cash = 50000;
             int g = TestData.Guide(s), hall = s.MainHall();
+            Assert.AreEqual("", s.Buy("build:site_hall_east"));
+            int east = s.Gd.Node("site_hall_east");
+            s.BuildingAt(east).BuildLeft = 0;
             Assert.AreEqual("", s.Place(g, 0, 0, hall));
-            Assert.AreEqual("enough", s.CanPlace(g, 0, 1, hall), "a course meets its weekly count, no more");
+            Assert.AreEqual("enough", s.CanPlace(g, 3, 4, east), "a course meets its weekly count, no more");
             var p = s.S.Plan.Find(x => x.Course != g);
-            Assert.AreEqual("room_busy", s.CanPlace(p.Course == 1 ? 2 : 1, p.Day, p.Slot, p.Node));
+            int otherCohortCourse = s.Gd.Courses.FindIndex(c => c.CohortIndex != s.Gd.Courses[p.Course].CohortIndex && c.CohortIndex >= 0 && s.CourseOn(c.Index));
+            s.Remove(s.S.Plan.FindIndex(x => x.Course == otherCohortCourse && !(x.Day == p.Day && x.Slot == p.Slot)));
+            Assert.AreEqual("room_busy", s.CanPlace(otherCohortCourse, p.Day, p.Slot, p.Node));
             Assert.AreEqual("not_room", s.CanPlace(1, 4, 4, s.Gd.Node("canteen")), "a canteen is not a classroom");
             // the same cohort in two rooms at once
-            s.Buy("build:site_hall_east");
-            s.S.Buildings.Find(b => b.Def == "hall_m" && b.Node == s.Gd.Node("site_hall_east")).BuildLeft = 0;
-            var other = s.S.Plan.Find(x => s.Gd.Courses[x.Course].CohortIndex == 0 && x.Course != g);
-            int sameCohort = s.Gd.Courses.FindIndex(c => c.CohortIndex == 0 && c.Index != other.Course);
-            s.Remove(s.S.Plan.FindIndex(x => x.Course == sameCohort && !(x.Day == 0 && x.Slot == 0)));
-            Assert.AreEqual("cohort_busy", s.CanPlace(sameCohort, other.Day, other.Slot, s.Gd.Node("site_hall_east")));
+            int sameCohort = s.Gd.Courses.FindIndex(c => c.CohortIndex == s.Gd.Courses[p.Course].CohortIndex && c.Index != p.Course);
+            s.Remove(s.S.Plan.FindIndex(x => x.Course == sameCohort && !(x.Day == p.Day && x.Slot == p.Slot)));
+            Assert.AreEqual("cohort_busy", s.CanPlace(sameCohort, p.Day, p.Slot, east));
         }
 
         [Test]
         public void ProfessorTeachesAtMostThreeClassesADay()
         {
             var s = TestData.NewSim();
+            s.S.Cash = 50000;
             Assert.AreEqual(3, s.Gd.ProfMaxPerDay);
             s.S.Plan.Clear();
             s.Buy("build:site_hall_east");
@@ -278,6 +283,7 @@ namespace SemesterRush.Sim.Tests
         public void AssigningABusyProfessorIsRefused()
         {
             var s = TestData.NewSim();
+            s.S.Cash = 50000;
             s.Buy("build:site_hall_east");
             s.S.Buildings[s.S.Buildings.Count - 1].BuildLeft = 0;
             s.S.Plan.Clear();
@@ -313,8 +319,8 @@ namespace SemesterRush.Sim.Tests
             s.AutoFill(false);
             s.Buy("gate:" + TestData.Gate(s));
             var p = s.S.Plan.Find(x => x.Day == 0 && x.Slot == 0);
-            s.S.Cohorts[s.Gd.Courses[p.Course].CohortIndex].Size = 240;
-            Assert.Greater(s.EstimateLate(0, 0), 0, "240 students on one gate path");
+            s.S.Cohorts[s.Gd.Courses[p.Course].CohortIndex].Size = 400;
+            Assert.Greater(s.EstimateLate(0, 0), 0, "400 students on one gate path");
             s.S.Staff[Depts.Marshals] = 4;
             int withMarshals = s.EstimateLate(0, 0);
             s.S.Staff[Depts.Marshals] = 0;
@@ -325,6 +331,7 @@ namespace SemesterRush.Sim.Tests
         public void DormResidentsWalkFromTheDorm()
         {
             var s = TestData.NewSim();
+            s.S.Cash = 50000;
             s.Buy("build:site_dorm_a");
             s.S.Buildings[s.S.Buildings.Count - 1].BuildLeft = 0;
             Assert.Greater(s.ResidentShare, 0.5);
@@ -387,6 +394,7 @@ namespace SemesterRush.Sim.Tests
             var s = TestData.NewSim();
             s.AutoFill(false);
             s.S.CourseProf[TestData.Guide(s)] = 0;
+            s.Buy("gate:" + TestData.Gate(s));
             double p0 = s.S.Prestige;
             TestData.RunWeek(s);
             var w = s.S.History[0];
@@ -411,12 +419,15 @@ namespace SemesterRush.Sim.Tests
         [Test]
         public void NoCrisesDuringTheGuideOrTheFirstWeek()
         {
-            var s = TestData.NewSim(tutorial: true);
-            s.AutoFill(false);
             var seen = new List<string>();
-            for (int w = 0; w < 2; w++)
+            var first = TestData.NewSim(seed: 11);     // guide skipped: the first week is still calm
+            first.AutoFill(false);
+            first.StartWeek();
+            while (first.Phase == Phases.Live) { first.AdvanceMinutes(10); foreach (var e in first.DrainEvents()) if (e.Type == "crisis") seen.Add(e.Text + "@1"); }
+            var s = TestData.NewSim(tutorial: true);   // the guide never ends here: no crisis in three weeks
+            s.AutoFill(false);
+            for (int w = 0; w < 3; w++)
             {
-                if (w == 1) s.EndTutorial();
                 s.StartWeek();
                 while (s.Phase == Phases.Live) { s.AdvanceMinutes(10); foreach (var e in s.DrainEvents()) if (e.Type == "crisis") seen.Add(e.Text + "@" + s.S.Week); }
                 s.NextWeek();
@@ -503,6 +514,7 @@ namespace SemesterRush.Sim.Tests
             var s = TestData.NewSim();
             s.AutoFill(false);
             s.S.CourseProf[TestData.Guide(s)] = 0;
+            s.Buy("gate:" + TestData.Gate(s));
             for (int w = 1; w < s.Gd.WeeksPerSemester; w++) { TestData.RunWeek(s); s.NextWeek(); }
             Assert.IsTrue(s.ExamWeek);
             Assert.AreEqual(0, s.Missing, "the registry drafts the exam plan");

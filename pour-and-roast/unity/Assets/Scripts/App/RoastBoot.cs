@@ -1,6 +1,6 @@
 // Pour & Roast — boot scene: the game's own curtain (no Unity / engine logo; splash background #0F3B2E) on the first
 // frame, then the kit (CoddyKitHost: tiers before any 3D, cached purchase rights, house ads, consent -> rewarded), then
-// the Region scene loads async under the curtain. No house banner over the curtain (KitConfig.Loading).
+// the Cafe scene loads async under the curtain. No house banner over the curtain (KitConfig.Loading).
 using System.Collections;
 using CoddyKit;
 using CoddyKit.Ui;
@@ -12,7 +12,7 @@ namespace PourAndRoast.App
 {
     public sealed class RoastBoot : MonoBehaviour
     {
-        public const string RegionScene = "Region";
+        public const string RegionScene = "Cafe";
 
         public PanelSettings panelSettings;
         public Texture2D curtainArt;
@@ -36,7 +36,7 @@ namespace PourAndRoast.App
             if (!Application.CanStreamedLevelBeLoaded(RegionScene))
             {
                 SetProgress(1f);
-                Debug.Log("[PourAndRoast] BOOT_OK: kit up, no Region scene in the build yet");
+                Debug.Log("[PourAndRoast] BOOT_OK: kit up, no Cafe scene in the build yet");
                 yield break;
             }
             var op = SceneManager.LoadSceneAsync(RegionScene, LoadSceneMode.Single);
@@ -47,7 +47,7 @@ namespace PourAndRoast.App
             }
         }
 
-        /// <summary>The Region scene calls this once its first frame is drawn (banner allowed from then on).</summary>
+        /// <summary>The Cafe scene calls this once its first frame is drawn (banner allowed from then on).</summary>
         public static void Ready() { Loading = false; }
 
         void BuildCurtain()
@@ -56,7 +56,7 @@ namespace PourAndRoast.App
             var root = curtainDocument.rootVisualElement;
             var curtain = new VisualElement { name = "Curtain" };
             curtain.AddToClassList("coddy-curtain");
-            curtain.style.backgroundColor = new Color(0.059f, 0.231f, 0.180f);
+            curtain.style.backgroundColor = new Color(0.290f, 0.231f, 0.196f);
             if (curtainArt != null)
             {
                 var art = new VisualElement { name = "CurtainArt", pickingMode = PickingMode.Ignore };

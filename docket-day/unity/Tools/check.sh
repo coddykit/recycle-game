@@ -21,11 +21,11 @@ grep -rn -E "InterstitialAd\b|BannerView\b|AdView\b" "$A" --include=*.cs | grep 
 grep -rn "PlayerPrefs" "$A/Scripts" --include=*.cs && bad "PlayerPrefs (saves go through SaveRepository, §14)"
 grep -rn -E "purchased_any|has_purchased|HasPurchased" "$A/Scripts" --include=*.cs && bad "'bought anything' must not decide ads (§3)"
 grep -rn -i -E "free trial|try free|subscription" "$A/Resources" "$UNITY/Tools/i18n" && bad "trial / subscription wording (§1)"
-grep -rn -w -E "DOA|TÜÇA|TUCA|Sıfır Atık|BİM|Carrefour|Return and Earn" "$A/Resources" "$UNITY/Tools/i18n" "$A/Scripts" && bad "real scheme / brand names (impersonation rule)"
+grep -rn -i -E "Codigames|Law Empire|Justice Empire|Idle Law Firm|Ace Attorney|Supreme Court|Baker McKenzie|Kirkland|Skadden|Latham" "$A/Resources" "$UNITY/Tools/i18n" "$A/Scripts" && bad "reference-game / real firm or court names (plan originality rules)"
 grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY" "$UNITY" --include=*.cs --include=*.json --include=*.md --include=*.py --include=*.sh && bad "a secret in the repo"
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
-for f in coach_operator intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
-for f in machine_s machine_m shop horeca van bike compactor bale_pet_lod1 bale_alu_lod1; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in coach_counsel hearing_judge hearing_client intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
+for f in desk reception bookshelf coffee cabinet conference boxes board courthouse lamp bench office_cat_lod1 office_cat_lod2; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
 
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
@@ -39,5 +39,5 @@ if [ "${1:-}" != "--fast" ]; then
 fi
 
 echo
-if [ $fail -eq 0 ]; then echo "BOTTLE_ROUTE_CHECK: PASS"; else echo "BOTTLE_ROUTE_CHECK: FAIL"; fi
+if [ $fail -eq 0 ]; then echo "DOCKET_DAY_CHECK: PASS"; else echo "DOCKET_DAY_CHECK: FAIL"; fi
 exit $fail

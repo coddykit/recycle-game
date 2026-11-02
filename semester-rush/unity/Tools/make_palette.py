@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """Semester Rush — writes Assets/Resources/materials/palette.png (8×8 px). Swatch order = SemesterRush.World.Pal (MeshKit.cs)
-and the Blender kit (tools/art/kit.py). Bright, clean civic palette (design §8); the brand is a fresh mint green — no
-government green-white scheme colours (impersonation rule)."""
+and the Blender kit (tools/art/kit.py). Warm collegiate palette (plan section 8): brick, ivy, faculty colours; brand maroon —
+no real university colours or crests (originality rule)."""
 import os, sys
 from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(os.path.dirname(HERE), "Assets/Resources/materials/palette.png")
 SW = [
-    "#8CC970", "#6FAF57", "#5A6270", "#F2F0E6", "#C9CDD2", "#F4E7C9", "#E3926B", "#8FB7D9",   # 0-7
-    "#C9574A", "#7D8792", "#2FB89A", "#F7F9F8", "#FAFAF7", "#3E9C6E", "#9EA7AE", "#4FA3C7",   # 8-15
-    "#EBD9A6", "#4E9F4C", "#7A5434", "#B9BEC2", "#33414E", "#8ED3F0", "#C7CDD3", "#5BB178",   # 16-23
-    "#E0533F", "#F2C744", "#8A6A4A", "#E7B93B", "#F08A5D", "#2F6E46", "#22A6A1", "#D9C7A0",   # 24-31
-    "#E8B894", "#4C7FD1", "#E57A3C", "#9B59B6", "#3FB0AC", "#F2C744", "#3B4A5A", "#FFFFFF",   # 32-39
+    "#8CC970", "#6FAF57", "#D9CDB4", "#F2EBDD", "#B9B3A8", "#F1E4CC", "#B5523B", "#8FB7D9",   # 0-7   grass, grass dark, path, path line, stone, cream wall, brick, blue wall
+    "#8C3B30", "#5E6670", "#8E2A3A", "#F4EEDF", "#FAFAF7", "#3F7A3A", "#9EC9E2", "#4FA3C7",   # 8-15  roof red, slate, brand maroon, trim, white, ivy, window light, water
+    "#EBD9A6", "#4E9F4C", "#7A5434", "#A9ADB2", "#33414E", "#7CCB6B", "#F2C744", "#E0533F",   # 16-23 sand, tree, trunk, locked, window dark, heat ok, heat busy, heat jam
+    "#E0533F", "#F2C744", "#9A6B43", "#E7B93B", "#5FA35A", "#2E8C8A", "#D8B27A", "#B87333",   # 24-31 warning, yellow, bench wood, gold, theme ivy, theme modern, theme desert, copper
+    "#E8B894", "#3B5BA9", "#7D4FA8", "#B83A4B", "#2F9E96", "#E5813A", "#3B4A5A", "#FFFFFF",   # 32-39 skin, business, literature, law, philosophy, physics, trousers, white
+    "#4CAF6A", "#D9A520",                                                                     # 40-41 chemistry, maths
 ]
 while len(SW) < 64: SW.append("#FF00FF")
 img = Image.new("RGB", (8, 8))

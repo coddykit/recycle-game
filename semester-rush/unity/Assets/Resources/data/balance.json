@@ -2,12 +2,12 @@
   "version": 1,
   "_doc": "Semester Rush: Campus Dean balance (UNIVERSITY_GAME_PLAN.md sections 4-10). Times are game minutes; a week = Mon-Fri, five slots a day, a 10-minute bell change before every slot. Money in $.",
   "time": {
-    "day_start": 530, "slots": [540, 630, 720, 810, 900], "class_min": 80, "bell_min": 10, "lunch_slots": [2, 3],
+    "day_start": 528, "slots": [540, 630, 720, 810, 900], "class_min": 80, "bell_min": 10, "lunch_slots": [2, 3],
     "game_min_per_real_s": 12, "bell_min_per_real_s": 2.5, "days_per_week": 5, "weeks_per_semester": 6,
     "autosave_s": 30, "free_max_speed": 2, "paid_max_speed": 4
   },
   "walk": {
-    "speed_m_per_min": 80, "path_factor": 1.1, "congestion": 1.4, "spread": 0.2, "late_credit": 0.4,
+    "speed_m_per_min": 90, "path_factor": 1.1, "congestion": 1.4, "spread": 0.2, "late_credit": 0.5,
     "snow_speed": 0.6, "bike_lanes_speed": 1.15, "signposts_time": 0.92, "shuttle_speed": 3.0,
     "marshal_cap": 0.6, "path_cap": 30, "gate_cap": 20, "shuttle_cap": 8, "widen_mult": 2, "drill_time": 1.35, "open_day_load": 1.4, "staggered_cost_day": 60
   },

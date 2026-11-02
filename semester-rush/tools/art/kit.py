@@ -3,7 +3,7 @@ whose UVs point at swatches of the game palette (unity/Assets/Resources/material
 so the whole town shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot bottom-centre, front = -Y in
 Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
   blender -b --python semester-rush/tools/art/kit.py -- <unity dir> [<sheet.png>]
-Budget (Low draws: one material, one mesh per prop): machine ≤ 400 tris, vehicle ≤ 900, building ≤ 600.
+Budget (Low draws: one material, one mesh per prop): building ≤ 1500 tris, small prop ≤ 600.
 """
 import math
 import os
@@ -19,8 +19,8 @@ OUT = os.path.join(UNITY, "Assets/Resources/kit")
 PALETTE = os.path.join(UNITY, "Assets/Resources/materials/palette.png")
 
 # swatches (SemesterRush.World.Pal)
-GRASS, ROAD, CONCRETE, CREAM, TERRA, BLUEWALL, ROOFRED, ROOFGREY = 0, 2, 4, 5, 6, 7, 8, 9
-BRAND, PANEL, WHITE, TGREEN, DEPOT, WINDOW, PET, ALU, GLASS, WARN, YELLOW, SUNSET, TRUNK, TREE = 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 28, 18, 17
+GRASS, PATH, STONE, CREAM, BRICK, BLUEWALL, ROOFRED, SLATE = 0, 2, 4, 5, 6, 7, 8, 9
+BRAND, TRIM, WHITE, IVY, WINLIGHT, SAND, TREE, TRUNK, WINDOW, YELLOW, WOOD, GOLD, COPPER = 10, 11, 12, 13, 14, 16, 17, 18, 20, 25, 26, 27, 31
 
 
 def uv_of(sw):
@@ -98,86 +98,140 @@ class Prop:
         return ob
 
 
-def machine(big):
-    p = Prop("machine_m" if big else "machine_s")
-    w, h = (2.0, 2.3) if big else (1.4, 2.0)
-    p.box((0, 0, 0), (w, 1.0, h), BRAND, top=PANEL, bevel=0.06)
-    p.box((0, -0.52, h * 0.30), (w * 0.72, 0.06, h * 0.30), PANEL, bevel=0.02)       # bottle door
-    p.cyl((0, -0.56, h * 0.45), 0.16, 0.06, WINDOW, segs=12, axis="Y")               # the bottle hole
-    p.box((0, -0.52, h * 0.78), (w * 0.5, 0.06, h * 0.14), WINDOW)                  # screen
-    p.box((0, 0, h), (w + 0.25, 1.25, 0.12), PANEL)                                  # canopy
-    for i, sw in enumerate((PET, ALU, GLASS)):                                       # three material stripes
-        p.box(((i - 1) * w * 0.28, -0.53, h * 0.06), (w * 0.22, 0.04, 0.12), sw)
+def gable(p, cx, cy, z, w, d, h, sw):
+    """A gable roof as a thin rotated box pair (two slopes) over a w x d footprint at height z."""
+    import math as m
+    ang = m.degrees(m.atan2(h, d / 2))
+    slope = m.hypot(h, d / 2)
+    for side in (-1, 1):
+        f = p.box((cx, cy + side * d / 4, z + h / 2 - 0.1), (w + 0.4, slope, 0.18), sw)
+        import mathutils
+        verts = list({v for face in f for v in face.verts})
+        bmesh.ops.rotate(p.bm, verts=verts, cent=(cx, cy + side * d / 4, z + h / 2), matrix=mathutils.Matrix.Rotation(m.radians(-side * ang), 3, "X"))
+
+
+def windows(p, w, d, h, sw=WINDOW, step=2.4, start=1.4):
+    x = -w / 2 + 1.6
+    while x < w / 2 - 1.0:
+        y = start
+        while y < h - 1.0:
+            p.box((x, -d / 2 - 0.03, y), (1.1, 0.08, 1.5), sw)
+            y += 2.6
+        x += step
+
+
+def hall(name, w, d, h, wall, roof, extra=None):
+    p = Prop(name)
+    p.box((0, 0, 0), (w, d, h), wall, top=SLATE, bevel=0.06)
+    gable(p, 0, 0, h, w, d + 0.6, h * 0.32, roof)
+    windows(p, w, d, h)
+    p.box((0, -d / 2 - 0.8, 0), (w * 0.32, 1.6, 0.45), STONE, bevel=0.04)          # steps
+    p.box((0, -d / 2 - 0.25, 0.45), (w * 0.22, 0.5, h * 0.55), TRIM, bevel=0.04)   # portal
+    p.box((0, -d / 2 - 0.52, 0.5), (w * 0.12, 0.05, h * 0.38), WINDOW)            # door
+    if extra:
+        extra(p)
     return p.build()
 
 
-def shop():
-    p = Prop("shop")
-    p.box((0, 0, 0), (5.5, 4.5, 3.6), CREAM, top=ROOFRED, bevel=0.05)
-    p.box((0, -2.6, 2.5), (5.8, 1.4, 0.18), BRAND)                                     # awning
-    p.box((-1.4, -2.4, 0), (1.6, 0.8, 1.0), PANEL)                                     # bag counter
-    p.box((1.3, -2.27, 0.4), (1.8, 0.05, 1.6), WINDOW)
-    p.box((-1.4, -2.4, 1.0), (1.2, 0.6, 0.6), PET)
+def amphitheatre(p):
+    p.box((0, 0, 9.0), (5, 5, 2.6), TRIM, top=COPPER, bevel=0.08)
+    for x in (-5.0, -1.7, 1.7, 5.0):
+        p.cyl((x, -7.2, 3.2), 0.45, 6.4, TRIM, segs=8)
+
+
+def lab():
+    p = Prop("lab")
+    p.box((0, 0, 0), (14, 10, 7), BLUEWALL, top=SLATE, bevel=0.06)
+    x = -5.5
+    while x <= 5.6:
+        p.box((x, -5.03, 1.8), (1.6, 0.08, 3.8), WINLIGHT)
+        x += 2.2
+    p.cyl((4.0, 2.0, 8.5), 0.6, 3.0, STONE, segs=8)                                  # fume stack
+    p.cyl((-4.0, 2.0, 7.6), 1.4, 1.2, WHITE, segs=10)                                # tank
+    p.box((0, -5.6, 0), (3.5, 1.2, 0.4), STONE)
     return p.build()
 
 
-def horeca():
-    p = Prop("horeca")
-    p.box((0, 0, 0), (6.5, 5.5, 4.0), TERRA, top=ROOFGREY, bevel=0.05)
-    p.box((0, -2.78, 1.3), (4.2, 0.05, 1.8), WINDOW)
-    for x in (-2.0, 2.0):
-        p.cyl((x, -4.4, 1.2), 0.07, 2.4, TRUNK, segs=6)
-        p.cyl((x, -4.4, 2.45), 1.2, 0.18, SUNSET, segs=8)
-        p.cyl((x, -4.4, 0.55), 0.55, 0.08, PANEL, segs=8)
-    p.box((3.6, 0.8, 0), (1.2, 1.6, 1.3), GLASS, bevel=0.04)                            # glass bags crate
+def library():
+    def cols(p):
+        for x in (-4.5, -1.5, 1.5, 4.5):
+            p.cyl((x, -6.0, 3.25), 0.4, 6.5, TRIM, segs=8)
+        p.box((0, -6.0, 6.6), (11, 1.4, 0.6), TRIM)
+    return hall("library", 13, 10, 7, CREAM, SLATE, cols)
+
+
+def canteen():
+    p = Prop("canteen")
+    p.box((0, 0, 0), (12, 9, 5), CREAM, top=ROOFRED, bevel=0.06)
+    p.box((0, -5.2, 3.6), (12.4, 1.8, 0.3), BRAND)                                   # awning
+    p.box((0, -4.53, 1.0), (9, 0.08, 2.4), WINLIGHT)
+    for x in (-3.5, 0.0, 3.5):
+        p.cyl((x, -7.5, 0.4), 0.9, 0.08, WOOD, segs=8)                               # terrace tables
+        p.cyl((x, -7.5, 0.2), 0.08, 0.4, SLATE, segs=6)
     return p.build()
 
 
-def van():
-    p = Prop("van")
-    p.box((0, -1.55, 0.35), (2.0, 1.2, 1.7), WHITE, bevel=0.12)                        # cab
-    p.box((0, 0.45, 0.35), (2.1, 3.0, 2.15), WHITE, bevel=0.08)                        # box
-    p.box((0, -2.16, 1.25), (1.7, 0.04, 0.6), WINDOW)                                  # windscreen
-    p.box((0, 0.45, 1.25), (2.14, 2.6, 0.45), BRAND)                                   # brand stripe
-    for x in (-0.95, 0.95):
-        for y in (-1.5, 1.3):
-            p.wheel(x, y)
+def dorm():
+    p = Prop("dorm")
+    p.box((0, 0, 0), (9, 9, 12), BRICK, top=SLATE, bevel=0.06)
+    y = 1.5
+    while y < 11:
+        x = -3.0
+        while x <= 3.0:
+            p.box((x, -4.53, y), (1.0, 0.08, 1.3), WINDOW)
+            x += 2.0
+        y += 2.4
+    p.box((0, -4.9, 0), (2.4, 0.8, 2.6), TRIM)
+    p.box((3.0, 1.0, 12.0), (1.0, 1.0, 1.5), BRICK)                                  # chimney
     return p.build()
 
 
-def bike():
-    p = Prop("bike")
-    p.box((0, -0.7, 0.55), (1.2, 1.1, 1.0), WHITE, bevel=0.06)                         # cargo box in front
-    p.box((0, -0.7, 1.05), (1.24, 1.14, 0.12), BRAND)
-    p.box((0, 0.55, 0.35), (0.12, 1.4, 0.1), WINDOW)                                   # frame
-    p.box((0, 0.9, 0.35), (0.1, 0.1, 0.9), WINDOW)                                     # seat post
-    p.box((0, 0.9, 1.25), (0.3, 0.45, 0.08), WINDOW)
-    for y in (-1.2, 1.25):
-        p.cyl((0, y, 0.34), 0.34, 0.1, WINDOW, segs=12, axis="X")
-    for x in (-0.55, 0.55):
-        p.cyl((x, -1.0, 0.3), 0.3, 0.1, WINDOW, segs=10, axis="X")
+def admin():
+    def tower(p):
+        p.box((0, 0, 7.0), (2.6, 2.6, 4.0), TRIM, bevel=0.04)
+        p.cyl((0, -1.33, 9.4), 0.7, 0.1, WHITE, segs=12, axis="Y")                    # clock face (no digits)
+        p.box((0, 0, 11.0), (2.9, 2.9, 0.3), COPPER)
+        p.cyl((0, 0, 12.0), 0.9, 1.8, COPPER, segs=8)
+    return hall("admin", 11, 9, 7, CREAM, SLATE, tower)
+
+
+def plot():
+    p = Prop("plot")
+    p.box((0, 0, 0), (11, 8, 0.25), SAND)
+    for x in (-5.3, 5.3):
+        for y in (-3.8, 3.8):
+            p.box((x, y, 0), (0.25, 0.25, 1.2), WOOD)
+    p.box((0, -3.8, 0.9), (10.6, 0.06, 0.12), YELLOW)
     return p.build()
 
 
-def compactor():
-    p = Prop("compactor")
-    p.box((0, -2.4, 0.5), (2.4, 1.6, 2.3), WHITE, bevel=0.12)
-    p.box((0, 0.6, 0.5), (2.5, 4.4, 2.8), TGREEN, bevel=0.1)
-    p.box((0, 3.0, 0.6), (2.3, 0.6, 2.4), PANEL, bevel=0.06)                           # rear loader
-    p.box((0, -3.21, 1.7), (2.0, 0.04, 0.8), WINDOW)
-    p.box((0, 0.6, 2.2), (2.54, 3.6, 0.3), PANEL)
-    for x in (-1.15, 1.15):
-        for y in (-2.2, 0.0, 1.6):
-            p.wheel(x, y, r=0.5, w=0.35)
+def scaffold():
+    p = Prop("scaffold")
+    p.box((0, 0, 0), (12, 9, 0.4), STONE)
+    p.box((-2, 0, 0.4), (5, 4, 3), BRICK, bevel=0.03)
+    for x in (-5.5, 5.5):
+        for y in (-4, 4):
+            p.box((x, y, 0), (0.3, 0.3, 7), YELLOW)
+    for z in (3.5, 6.8):
+        p.box((0, -4, z), (11.4, 0.3, 0.3), YELLOW)
+        p.box((0, 4, z), (11.4, 0.3, 0.3), YELLOW)
+    p.box((4.0, 2.0, 0.4), (0.4, 0.4, 9), YELLOW)                                    # crane mast
+    p.box((2.0, 2.0, 9.2), (6, 0.4, 0.4), YELLOW)
     return p.build()
 
 
-def depot_baler():
-    p = Prop("baler")
-    p.box((0, 0, 0), (4.0, 3.0, 3.2), BRAND, top=ROOFGREY, bevel=0.05)
-    p.box((0, -1.55, 0.2), (2.4, 0.1, 2.0), WINDOW)
-    p.box((0, 0, 3.2), (1.0, 1.0, 1.6), PANEL)                                        # press cylinder housing
-    p.box((2.4, 0, 0), (1.0, 2.2, 1.6), YELLOW, bevel=0.04)                            # feed hopper
+def bus_stop():
+    p = Prop("bus_stop")
+    p.box((0, 0, 0), (6, 2.4, 0.2), STONE)
+    for x in (-2.7, 2.7):
+        p.box((x, 0.8, 0.2), (0.2, 0.2, 2.6), SLATE)
+    p.box((0, 0.2, 2.8), (6.2, 2.2, 0.2), BRAND)
+    p.box((0, 1.0, 0.2), (5.4, 0.08, 2.2), WINLIGHT)
+    p.box((0, 0.4, 0.2), (4.0, 0.6, 0.5), WOOD)                                      # bench
+    p.box((-7.0, -1.2, 0.3), (8, 2.6, 2.8), YELLOW, bevel=0.15)                      # a parked bus
+    p.box((-7.0, -2.52, 1.7), (7.2, 0.06, 0.9), WINDOW)
+    for x in (-9.5, -4.5):
+        p.wheel(x, -1.2 - 1.2, r=0.45)
     return p.build()
 
 
@@ -209,18 +263,18 @@ def sheet(objs):
     import mathutils
     scene = bpy.context.scene
     scene.render.engine = "BLENDER_EEVEE"
-    scene.render.resolution_x, scene.render.resolution_y = 1600, 400
+    scene.render.resolution_x, scene.render.resolution_y = 2000, 500
     scene.render.film_transparent = False
     world = bpy.data.worlds.new("w"); world.color = (0.85, 0.9, 0.92); scene.world = world
-    x = -20.0
+    x = -10.0
     for ob in objs:
         ob.location = (x, 0, 0)
-        x += 6.0 if ob.name not in ("compactor", "horeca", "shop") else 8.5
+        x += max(ob.dimensions.x, 6.0) + 3.0
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
-    cam.data.ortho_scale = 56
-    cam.location = (8, -40, 22)
+    cam.data.ortho_scale = 190
+    cam.location = (60, -120, 70)
     cam.rotation_euler = mathutils.Euler((math.radians(62), 0, 0))
     scene.camera = cam
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
@@ -236,7 +290,8 @@ def main():
     reset()
     os.makedirs(OUT, exist_ok=True)
     mat = material()
-    objs = [machine(False), machine(True), shop(), horeca(), van(), bike(), compactor(), depot_baler()]
+    objs = [hall("hall_s", 10, 8, 6, BRICK, ROOFRED), hall("hall_m", 14, 10, 8, BRICK, ROOFRED), hall("hall_l", 18, 13, 9, CREAM, SLATE, amphitheatre),
+            lab(), library(), canteen(), dorm(), admin(), plot(), scaffold(), bus_stop()]
     total = 0
     for ob in objs:
         ob.data.materials.append(mat)

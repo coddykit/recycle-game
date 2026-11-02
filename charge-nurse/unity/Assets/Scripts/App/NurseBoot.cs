@@ -1,6 +1,6 @@
 // Charge Nurse — boot scene: the game's own curtain (no Unity / engine logo; splash background #0F3B2E) on the first
 // frame, then the kit (CoddyKitHost: tiers before any 3D, cached purchase rights, house ads, consent -> rewarded), then
-// the Region scene loads async under the curtain. No house banner over the curtain (KitConfig.Loading).
+// the Hospital scene loads async under the curtain. No house banner over the curtain (KitConfig.Loading).
 using System.Collections;
 using CoddyKit;
 using CoddyKit.Ui;
@@ -12,7 +12,7 @@ namespace ChargeNurse.App
 {
     public sealed class NurseBoot : MonoBehaviour
     {
-        public const string RegionScene = "Region";
+        public const string HospitalScene = "Hospital";
 
         public PanelSettings panelSettings;
         public Texture2D curtainArt;
@@ -33,13 +33,13 @@ namespace ChargeNurse.App
             CoddyKitHost.Boot(cfg, panelSettings);
             SetProgress(0.2f);
             yield return null;
-            if (!Application.CanStreamedLevelBeLoaded(RegionScene))
+            if (!Application.CanStreamedLevelBeLoaded(HospitalScene))
             {
                 SetProgress(1f);
-                Debug.Log("[ChargeNurse] BOOT_OK: kit up, no Region scene in the build yet");
+                Debug.Log("[ChargeNurse] BOOT_OK: kit up, no Hospital scene in the build yet");
                 yield break;
             }
-            var op = SceneManager.LoadSceneAsync(RegionScene, LoadSceneMode.Single);
+            var op = SceneManager.LoadSceneAsync(HospitalScene, LoadSceneMode.Single);
             while (!op.isDone)
             {
                 SetProgress(0.2f + 0.8f * Mathf.Clamp01(op.progress / 0.9f));
@@ -47,7 +47,7 @@ namespace ChargeNurse.App
             }
         }
 
-        /// <summary>The Region scene calls this once its first frame is drawn (banner allowed from then on).</summary>
+        /// <summary>The Hospital scene calls this once its first frame is drawn (banner allowed from then on).</summary>
         public static void Ready() { Loading = false; }
 
         void BuildCurtain()

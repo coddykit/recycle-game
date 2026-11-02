@@ -28,7 +28,7 @@ namespace ChargeNurse.EditorTools
         void OnPreprocessTexture()
         {
             if (!(assetImporter is TextureImporter t)) return;
-            if (assetPath.EndsWith("materials/palette.png"))
+            if (assetPath.Contains("/materials/palette") && assetPath.EndsWith(".png"))
             {
                 t.filterMode = FilterMode.Point;
                 t.mipmapEnabled = false;

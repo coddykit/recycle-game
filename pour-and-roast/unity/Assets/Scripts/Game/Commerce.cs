@@ -1,15 +1,16 @@
 // Pour & Roast — the shop: catalogue (IapCatalog, Resources/data/iap.json) + the kit's purchase layer (CoddyPurchases on
 // RevenueCat) + the career. Engine-free (CoddyPurchases lives in CoddyKit.Core) so EditMode tests drive the real flow
 // with FakePurchases.
-//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / route_pass / bundle) —
+//   * ad_free comes ONLY from the kit's EntitlementCache (`noads`, granted by noads / premium / roast_pass / bundle) —
 //     never from "bought anything" (fleet §3). House banner / interstitial and the rewarded "no video" path all read
 //     CoddyPurchases.AdFree. Legacy buyers: not applicable (new game, no earlier purchases).
 //   * permanent rights = RC entitlements (cached offline; Restore = a fresh CustomerInfo, idempotent);
 //   * consumables: the store confirms -> CoddyPurchases.Deliver(storeId, txn) -> sim.GrantCash(days) once per transaction
-//     (txn remembered in settings) -> save. ≤ 3 packs per UTC day is a PRE-purchase gate. Never restored.
+//     (txn remembered in settings) -> save. ≤ 3 packs per UTC day is a PRE-purchase gate. Never restored. The starter adds
+//     a barista, the Milk Run Kit refills milk + ice (a crisis kit, never the only answer to a crisis).
 //   * prices only from the store (displayPrice), "…" until they arrive; no trial, no subscription (fleet §1).
-//   * offers: starter (day 3-7 after a day report, once), event kit (match day), comeback (≥ 3 days away); one per session,
-//     3 days apart; never in the guide.
+//   * offers: starter (day 3-7 after a day report, once), Milk Run Kit (a late milk van), comeback (≥ 3 days away),
+//     New-Venue Pack (a venue unlock); one per session, 3 days apart; never in the guide.
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -21,7 +22,7 @@ namespace PourAndRoast.Game
     {
         public const string Loading = "…";
         /// <summary>RC entitlements the sim turns into perks (never saved in the career).</summary>
-        public static readonly string[] PerkEntitlements = { "route_pass", "dispatcher_plus", "offline_plus", "speed", "gold_livery" };
+        public static readonly string[] PerkEntitlements = { "speed", "automation", "roast_pass", "offline_plus", "gold_trim", "slot_plus", "slots" };
         public static readonly string[] AdFreeEntitlements = { "noads" };
 
         public readonly IapCatalog Cat;
@@ -63,6 +64,9 @@ namespace PourAndRoast.Game
         public bool Has(string entitlement) => Purchases.Has(entitlement);
         public bool AdFree => Purchases.AdFree;
         public bool Owned(string slug) => Cat.Owned(slug, Has);
+        /// <summary>Career save slots: 1 free, the Head Roaster Edition +1, Extra Saves +3.</summary>
+        public int SaveSlots => 1 + (Has("slot_plus") ? 1 : 0) + (Has("slots") ? 3 : 0);
+
         public string Price(string slug) => Cat.Products.TryGetValue(slug, out var p) && prices.TryGetValue(p.Id, out var s) && !string.IsNullOrEmpty(s) ? s : "";
 
         public void LoadPrices(Action<string> done = null)
@@ -146,11 +150,16 @@ namespace PourAndRoast.Game
             if (p == null || !p.Consumable || Sim == null) return false;
             if (!string.IsNullOrEmpty(txn) && session.Settings.Delivered(txn)) return true;
             lastFunds = Sim.GrantCash(p.DaysX10 / 10.0);
-            if (p.Slug == "starter" && Sim.CanBuy("truck:van").Reason != "max")
+            if (p.Slug == "starter" && Sim.CanBuy("staff:barista").Reason != "max" && Sim.CanBuy("staff:barista").Reason != "invalid")
             {
-                int id = 0;
-                foreach (var t in Sim.S.Trucks) id = Math.Max(id, t.Id + 1);
-                Sim.S.Trucks.Add(new TruckState { Id = id, Type = "van", AtNode = Sim.Gd.DepotNode });
+                Sim.S.Cash += Sim.CanBuy("staff:barista").Cost;   // the barista is part of the pack
+                Sim.Buy("staff:barista");
+            }
+            if (p.Slug == "crisis")
+            {
+                Sim.S.Milk[0] += Sim.Gd.RunL[0];
+                Sim.S.Milk[1] += Sim.Gd.RunL.Length > 1 ? Sim.Gd.RunL[1] : 0;
+                if (Sim.IceCap > 0) Sim.S.Ice += Sim.Gd.IceBagKg;
             }
             if (!string.IsNullOrEmpty(txn)) session.Settings.MarkDelivered(txn);
             session.Settings.Save();
@@ -158,12 +167,17 @@ namespace PourAndRoast.Game
             return true;
         }
 
-        /// <summary>The Edition's starter cash, once per device (the entitlement may arrive by purchase or restore).</summary>
+        /// <summary>The Edition's starter beans (a sack of good roast + a day of cash), once per device (the entitlement may
+        /// arrive by purchase or restore).</summary>
         void GrantOneTimeBonuses()
         {
-            if (Sim == null || !Has("gold_livery") || session.Settings.Flag("premium_cash")) return;
-            session.Settings.SetFlag("premium_cash");
-            Sim.GrantCash(2.0);
+            if (Sim == null || !Has("gold_trim") || session.Settings.Flag("premium_beans")) return;
+            session.Settings.SetFlag("premium_beans");
+            var st = Sim.S;
+            double kg = 10, q = 80, total = st.BeanKg + kg;
+            st.BeanQ = System.Math.Round((st.BeanQ * System.Math.Max(0, st.BeanKg) + q * kg) / total, 2);
+            st.BeanKg = total;
+            Sim.GrantCash(1.0);
             session.Settings.Save();
             session.Save();
         }
@@ -185,7 +199,7 @@ namespace PourAndRoast.Game
 
         // ------------------------------------------------------------------------------------------------ offers
 
-        /// <summary>ev = day_report | match_day | resume. Returns the offer slug shown now, or "".</summary>
+        /// <summary>ev = day_report | milk_late | resume | venue. Returns the offer slug shown now, or "".</summary>
         public string TryOffer(string ev, bool tutorial, int awayDays = 0)
         {
             if (tutorial || ActiveOffer != "" || offersThisSession >= Math.Max(1, Cat.OffersPerSession)) return "";

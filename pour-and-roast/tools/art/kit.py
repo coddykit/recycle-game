@@ -1,9 +1,10 @@
-"""Pour & Roast — Blender kit (fleet: buildings / machines / vehicles = Blender, characters = Meshy). Builds low-poly props
-whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png, order = PourAndRoast.World.Pal),
-so the whole town shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot bottom-centre, front = -Y in
-Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
+"""Pour & Roast — Blender kit (fleet: buildings / machines / furniture = Blender, characters + organic hero props = Meshy).
+Builds low-poly cafe props whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png,
+order = PourAndRoast.World.Pal), so the whole venue shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot
+bottom-centre, front = -Y in Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resources/kit/ and a
+contact sheet. Same shapes as the procedural fallbacks in PourAndRoast.World.MeshKit (the game uses the kit when present).
   blender -b --python pour-and-roast/tools/art/kit.py -- <unity dir> [<sheet.png>]
-Budget (Low draws: one material, one mesh per prop): machine ≤ 400 tris, vehicle ≤ 900, building ≤ 600.
+Budget (Low draws: one material, one mesh per prop): machine ≤ 600 tris, furniture ≤ 500, cart ≤ 900. No text anywhere.
 """
 import math
 import os
@@ -19,8 +20,8 @@ OUT = os.path.join(UNITY, "Assets/Resources/kit")
 PALETTE = os.path.join(UNITY, "Assets/Resources/materials/palette.png")
 
 # swatches (PourAndRoast.World.Pal)
-GRASS, ROAD, CONCRETE, CREAM, TERRA, BLUEWALL, ROOFRED, ROOFGREY = 0, 2, 4, 5, 6, 7, 8, 9
-BRAND, PANEL, WHITE, TGREEN, DEPOT, WINDOW, PET, ALU, GLASS, WARN, YELLOW, SUNSET, TRUNK, TREE = 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 28, 18, 17
+FLOOR, QUAY, CREAM, TRIM, TOP, WALNUT, BRAND, STEEL, STEELD, BLACK, COPPER = 0, 2, 4, 7, 8, 9, 10, 11, 12, 13, 14
+AWNING, TEAL, PLANT, WINDOW, COFFEE, MILK, GREENB, SACK, PASTRY, CHALK, CUP, WHITE = 16, 17, 18, 20, 21, 22, 23, 26, 27, 28, 45, 47
 
 
 def uv_of(sw):
@@ -98,86 +99,137 @@ class Prop:
         return ob
 
 
-def machine(big):
-    p = Prop("machine_m" if big else "machine_s")
-    w, h = (2.0, 2.3) if big else (1.4, 2.0)
-    p.box((0, 0, 0), (w, 1.0, h), BRAND, top=PANEL, bevel=0.06)
-    p.box((0, -0.52, h * 0.30), (w * 0.72, 0.06, h * 0.30), PANEL, bevel=0.02)       # bottle door
-    p.cyl((0, -0.56, h * 0.45), 0.16, 0.06, WINDOW, segs=12, axis="Y")               # the bottle hole
-    p.box((0, -0.52, h * 0.78), (w * 0.5, 0.06, h * 0.14), WINDOW)                  # screen
-    p.box((0, 0, h), (w + 0.25, 1.25, 0.12), PANEL)                                  # canopy
-    for i, sw in enumerate((PET, ALU, GLASS)):                                       # three material stripes
-        p.box(((i - 1) * w * 0.28, -0.53, h * 0.06), (w * 0.22, 0.04, 0.12), sw)
+def cart():
+    p = Prop("cart")
+    p.box((0, 0, 0.35), (2.6, 1.1, 0.75), WALNUT, top=TOP, bevel=0.04)
+    for x in (-1.0, 1.0):
+        p.cyl((x, -0.56, 0.32), 0.32, 0.08, BLACK, segs=12, axis="Y")
+        p.cyl((x, -0.6, 0.32), 0.12, 0.02, STEELD, segs=8, axis="Y")
+    for x in (-1.2, 1.2):
+        p.box((x, 0.45, 1.1), (0.08, 0.08, 1.4), TRIM)
+    p.box((0, 0.1, 2.5), (3.0, 1.6, 0.08), BRAND, top=AWNING)                         # awning
+    for i in range(6):                                                               # awning stripes
+        p.box((-1.25 + i * 0.5, -0.71, 2.38), (0.25, 0.04, 0.2), AWNING if i % 2 else BRAND)
+    p.box((0, -0.57, 0.45), (1.6, 0.04, 0.4), CHALK)                                 # chalk board (blank)
+    p.box((1.45, 0, 0.45), (0.3, 0.6, 0.06), TRIM)                                   # push handle
     return p.build()
 
 
-def shop():
-    p = Prop("shop")
-    p.box((0, 0, 0), (5.5, 4.5, 3.6), CREAM, top=ROOFRED, bevel=0.05)
-    p.box((0, -2.6, 2.5), (5.8, 1.4, 0.18), BRAND)                                     # awning
-    p.box((-1.4, -2.4, 0), (1.6, 0.8, 1.0), PANEL)                                     # bag counter
-    p.box((1.3, -2.27, 0.4), (1.8, 0.05, 1.6), WINDOW)
-    p.box((-1.4, -2.4, 1.0), (1.2, 0.6, 0.6), PET)
+def counter():
+    p = Prop("counter")
+    p.box((0, 0, 0), (5.0, 0.8, 1.0), WALNUT, top=TOP, bevel=0.03)
+    p.box((0, -0.41, 0.05), (4.8, 0.02, 0.12), COPPER)
+    for i in range(5):
+        p.box((-2.0 + i * 1.0, -0.41, 0.35), (0.7, 0.02, 0.5), TRIM)                # panels
     return p.build()
 
 
-def horeca():
-    p = Prop("horeca")
-    p.box((0, 0, 0), (6.5, 5.5, 4.0), TERRA, top=ROOFGREY, bevel=0.05)
-    p.box((0, -2.78, 1.3), (4.2, 0.05, 1.8), WINDOW)
-    for x in (-2.0, 2.0):
-        p.cyl((x, -4.4, 1.2), 0.07, 2.4, TRUNK, segs=6)
-        p.cyl((x, -4.4, 2.45), 1.2, 0.18, SUNSET, segs=8)
-        p.cyl((x, -4.4, 0.55), 0.55, 0.08, PANEL, segs=8)
-    p.box((3.6, 0.8, 0), (1.2, 1.6, 1.3), GLASS, bevel=0.04)                            # glass bags crate
+def back_bar():
+    p = Prop("back_bar")
+    p.box((0, 0, 0), (5.0, 0.6, 0.9), TRIM, top=TOP, bevel=0.03)
+    p.box((0, 0.2, 1.7), (5.0, 0.3, 0.06), WALNUT)
+    for i in range(10):
+        p.cyl((-2.2 + i * 0.48, 0.2, 1.81), 0.05, 0.1, CUP if i % 3 else BRAND, segs=6)   # cups on the shelf
     return p.build()
 
 
-def van():
-    p = Prop("van")
-    p.box((0, -1.55, 0.35), (2.0, 1.2, 1.7), WHITE, bevel=0.12)                        # cab
-    p.box((0, 0.45, 0.35), (2.1, 3.0, 2.15), WHITE, bevel=0.08)                        # box
-    p.box((0, -2.16, 1.25), (1.7, 0.04, 0.6), WINDOW)                                  # windscreen
-    p.box((0, 0.45, 1.25), (2.14, 2.6, 0.45), BRAND)                                   # brand stripe
-    for x in (-0.95, 0.95):
-        for y in (-1.5, 1.3):
-            p.wheel(x, y)
+def espresso(heads):
+    p = Prop("espresso_%d" % heads)
+    w = 0.5 + 0.35 * heads
+    p.box((0, 0, 0), (w, 0.5, 0.45), BLACK, top=STEEL, bevel=0.03)
+    p.box((0, 0.05, 0.45), (w - 0.1, 0.4, 0.12), STEEL, bevel=0.02)
+    p.box((0, -0.26, 0.02), (w - 0.1, 0.02, 0.08), STEELD)                           # drip tray
+    for h in range(heads):
+        x = -w / 2 + 0.42 + h * 0.35
+        p.box((x, -0.28, 0.2), (0.12, 0.12, 0.08), STEELD)
+        p.box((x, -0.36, 0.22), (0.03, 0.14, 0.02), BLACK)                           # portafilter handle
+        p.cyl((x, -0.3, 0.06), 0.045, 0.08, CUP, segs=8)
+    p.box((w / 2 + 0.04, -0.15, 0.25), (0.04, 0.04, 0.25), STEEL)                    # steam wand
+    p.cyl((-w / 2 + 0.2, 0.1, 0.62), 0.05, 0.06, COPPER, segs=8)                       # pressure gauge
     return p.build()
 
 
-def bike():
-    p = Prop("bike")
-    p.box((0, -0.7, 0.55), (1.2, 1.1, 1.0), WHITE, bevel=0.06)                         # cargo box in front
-    p.box((0, -0.7, 1.05), (1.24, 1.14, 0.12), BRAND)
-    p.box((0, 0.55, 0.35), (0.12, 1.4, 0.1), WINDOW)                                   # frame
-    p.box((0, 0.9, 0.35), (0.1, 0.1, 0.9), WINDOW)                                     # seat post
-    p.box((0, 0.9, 1.25), (0.3, 0.45, 0.08), WINDOW)
-    for y in (-1.2, 1.25):
-        p.cyl((0, y, 0.34), 0.34, 0.1, WINDOW, segs=12, axis="X")
-    for x in (-0.55, 0.55):
-        p.cyl((x, -1.0, 0.3), 0.3, 0.1, WINDOW, segs=10, axis="X")
+def grinder():
+    p = Prop("grinder")
+    p.box((0, 0, 0), (0.22, 0.28, 0.35), BLACK, bevel=0.02)
+    p.cyl((0, 0, 0.46), 0.11, 0.22, WINDOW, segs=10)
+    p.cyl((0, 0, 0.42), 0.1, 0.12, COFFEE, segs=10)
     return p.build()
 
 
-def compactor():
-    p = Prop("compactor")
-    p.box((0, -2.4, 0.5), (2.4, 1.6, 2.3), WHITE, bevel=0.12)
-    p.box((0, 0.6, 0.5), (2.5, 4.4, 2.8), TGREEN, bevel=0.1)
-    p.box((0, 3.0, 0.6), (2.3, 0.6, 2.4), PANEL, bevel=0.06)                           # rear loader
-    p.box((0, -3.21, 1.7), (2.0, 0.04, 0.8), WINDOW)
-    p.box((0, 0.6, 2.2), (2.54, 3.6, 0.3), PANEL)
-    for x in (-1.15, 1.15):
-        for y in (-2.2, 0.0, 1.6):
-            p.wheel(x, y, r=0.5, w=0.35)
+def fridge():
+    p = Prop("fridge")
+    p.box((0, 0, 0), (0.7, 0.55, 0.85), STEEL, top=TOP, bevel=0.02)
+    p.box((0, -0.28, 0.12), (0.55, 0.02, 0.6), WINDOW)
+    for i in range(3):
+        p.box((-0.15 + i * 0.15, -0.18, 0.2), (0.1, 0.1, 0.22), MILK)
     return p.build()
 
 
-def depot_baler():
-    p = Prop("baler")
-    p.box((0, 0, 0), (4.0, 3.0, 3.2), BRAND, top=ROOFGREY, bevel=0.05)
-    p.box((0, -1.55, 0.2), (2.4, 0.1, 2.0), WINDOW)
-    p.box((0, 0, 3.2), (1.0, 1.0, 1.6), PANEL)                                        # press cylinder housing
-    p.box((2.4, 0, 0), (1.0, 2.2, 1.6), YELLOW, bevel=0.04)                            # feed hopper
+def pastry_case():
+    p = Prop("pastry_case")
+    p.box((0, 0, 0), (1.0, 0.7, 1.0), WALNUT, top=TOP, bevel=0.03)
+    p.box((0, 0, 1.0), (0.95, 0.6, 0.4), WINDOW)
+    for i in range(3):
+        p.box((-0.3 + i * 0.3, 0, 1.05), (0.18, 0.14, 0.08), PASTRY, bevel=0.03, rot=20 * i)
+    return p.build()
+
+
+def pickup_shelf():
+    p = Prop("pickup_shelf")
+    p.box((0, 0, 0), (0.8, 0.35, 0.05), WALNUT)
+    p.box((0, 0, 0.3), (0.8, 0.35, 0.04), WALNUT)
+    for x in (-0.38, 0.38):
+        p.box((x, 0, 0), (0.04, 0.35, 0.35), TRIM)
+    return p.build()
+
+
+def ice_maker():
+    p = Prop("ice_maker")
+    p.box((0, 0, 0), (0.6, 0.6, 0.9), STEEL, top=STEELD, bevel=0.02)
+    p.box((0, -0.31, 0.55), (0.4, 0.02, 0.2), WINDOW)
+    return p.build()
+
+
+def roaster():
+    p = Prop("roaster")
+    p.box((0, 0, 0), (1.1, 0.9, 0.7), BLACK, bevel=0.03)
+    p.cyl((0, 0.05, 0.98), 0.42, 0.55, BRAND, segs=14, axis="Y")                      # drum (on its side)
+    p.cyl((0, -0.25, 0.98), 0.3, 0.04, COPPER, segs=14, axis="Y")                     # drum door
+    p.box((0, 0.05, 1.25), (0.36, 0.36, 0.25), COPPER, bevel=0.02)                    # hopper
+    p.cyl((0.75, -0.1, 0.2), 0.45, 0.35, STEELD, segs=14)                             # cooling tray
+    p.cyl((0.75, -0.1, 0.36), 0.4, 0.04, COFFEE, segs=14)
+    p.cyl((-0.2, 0.3, 1.85), 0.07, 1.2, STEELD, segs=8)                               # chimney
+    return p.build()
+
+
+def table():
+    p = Prop("table")
+    p.cyl((0, 0, 0.36), 0.06, 0.72, TRIM, segs=8)
+    p.cyl((0, 0, 0.745), 0.45, 0.05, TOP, segs=14)
+    for x in (-0.7, 0.7):
+        p.box((x, 0, 0), (0.4, 0.4, 0.45), TRIM, top=WALNUT, bevel=0.02)
+        p.box((x * 1.26, 0, 0.45), (0.05, 0.4, 0.45), TRIM)
+    p.cyl((0.12, 0, 0.815), 0.05, 0.09, CUP, segs=8)
+    return p.build()
+
+
+def rest_rack():
+    p = Prop("rest_rack")
+    for i in range(3):
+        p.box((0, 0, i * 0.55), (1.2, 0.45, 0.04), STEELD)
+    for x in (-0.58, 0.58):
+        p.box((x, 0, 0), (0.04, 0.45, 1.2), STEEL)
+    for i in range(4):
+        p.box((-0.42 + i * 0.28, 0, 0.6), (0.2, 0.18, 0.3), SACK, top=COFFEE, bevel=0.03)
+    return p.build()
+
+
+def packing_bench():
+    p = Prop("packing_bench")
+    p.box((0, 0, 0), (1.4, 0.6, 0.85), WALNUT, top=TOP, bevel=0.03)
+    p.box((-0.3, 0, 0.85), (0.3, 0.2, 0.35), SACK, top=COFFEE, bevel=0.03)
+    p.box((0.25, 0, 0.85), (0.35, 0.3, 0.12), STEEL, bevel=0.02)                      # scale
     return p.build()
 
 
@@ -215,12 +267,12 @@ def sheet(objs):
     x = -20.0
     for ob in objs:
         ob.location = (x, 0, 0)
-        x += 6.0 if ob.name not in ("compactor", "horeca", "shop") else 8.5
+        x += 5.5 if ob.name not in ("counter", "cart") else 7.0
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
-    cam.data.ortho_scale = 56
-    cam.location = (8, -40, 22)
+    cam.data.ortho_scale = 62
+    cam.location = (8, -30, 16)
     cam.rotation_euler = mathutils.Euler((math.radians(62), 0, 0))
     scene.camera = cam
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
@@ -236,14 +288,15 @@ def main():
     reset()
     os.makedirs(OUT, exist_ok=True)
     mat = material()
-    objs = [machine(False), machine(True), shop(), horeca(), van(), bike(), compactor(), depot_baler()]
+    objs = [cart(), counter(), back_bar()] + [espresso(h) for h in range(1, 7)] + [grinder(), fridge(), pastry_case(), pickup_shelf(),
+                                                                                  ice_maker(), roaster(), table(), rest_rack(), packing_bench()]
     total = 0
     for ob in objs:
         ob.data.materials.append(mat)
         total += export(ob)
     print("KIT_DONE props", len(objs), "tris", total)
     if SHEET:
-        sheet(objs)
+        sheet([o for o in objs if o.name in ("cart", "counter", "espresso_3", "grinder", "fridge", "pastry_case", "roaster", "table", "rest_rack", "packing_bench")])
 
 
 main()

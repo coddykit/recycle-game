@@ -1,94 +1,104 @@
-// Semester Rush — citizens walking to return points with bags (design §4 step 2, §8). Chunky canonical figures (the fleet
-// lesson: Meshy figures read worse at ~25 px), one instanced draw per archetype colour, no GameObjects. A deposit event
-// spawns a walker from a nearby street spot to the machine and back; a "turned away" walker turns red-capped and walks
-// off without stopping — the visible cost of a full machine. Low: ≤ 50 % walkers, updated at 15 Hz by the caller.
+// Semester Rush — the bell-change crowd + the path heat ribbon (plan section 8, the signature view). Drawn from the sim's
+// cached BellResult (no agents): every trip is a short train of students along its path, its lead walkers chunky canonical
+// figures in the faculty colour (the fleet lesson: Meshy figures read worse at ~25 px), the rest instanced dots; late
+// trains turn red-dotted. Each path under load gets a ribbon: green (fine), yellow (busy), red (jam). One instanced draw
+// per colour, no GameObjects. Low: ≤ 50 % walkers and dots (15 Hz by the caller), max 15 animated figures.
 using System.Collections.Generic;
 using UnityEngine;
+using SemesterRush.Sim;
 
 namespace SemesterRush.World
 {
     public sealed class Crowd
     {
-        struct Walker
-        {
-            public Vector3 From, To;
-            public float T, Speed;
-            public int Shirt;
-            public bool Turned, Back;
-        }
-
-        static readonly int[] Shirts = { Pal.ShirtA, Pal.ShirtB, Pal.ShirtC, Pal.ShirtD, Pal.ShirtE, Pal.Warning };
-        readonly RegionWorld world;
+        readonly CampusWorld world;
         readonly Material mat;
-        readonly Mesh[] meshes = new Mesh[Shirts.Length];
-        readonly List<Matrix4x4>[] batches = new List<Matrix4x4>[Shirts.Length];
-        readonly List<Walker> walkers = new List<Walker>();
-        readonly System.Random rng = new System.Random(11);
-        int max;
-        int skip;
+        readonly Mesh[] figures = new Mesh[Pal.Faculty.Length];
+        readonly List<Matrix4x4>[] figureBatches = new List<Matrix4x4>[Pal.Faculty.Length];
+        readonly Mesh dotOk, dotLate;
+        readonly List<Matrix4x4> dotsOk = new List<Matrix4x4>(256), dotsLate = new List<Matrix4x4>(128);
+        readonly Mesh[] ribbons = new Mesh[3];
+        readonly List<Matrix4x4>[] ribbonBatches = { new List<Matrix4x4>(32), new List<Matrix4x4>(32), new List<Matrix4x4>(32) };
+        bool low;
+        public int Walkers { get; private set; }
 
-        public int Count => walkers.Count;
-
-        public Crowd(RegionWorld world, Material mat, bool low)
+        public Crowd(CampusWorld world, Material mat, bool low)
         {
             this.world = world;
             this.mat = mat;
-            for (int i = 0; i < Shirts.Length; i++) { meshes[i] = MeshKit.Figure(Shirts[i]); batches[i] = new List<Matrix4x4>(64); }
+            for (int i = 0; i < figures.Length; i++) { figures[i] = MeshKit.Figure(Pal.Faculty[i]); figureBatches[i] = new List<Matrix4x4>(16); }
+            dotOk = MeshKit.Dot(Pal.White, 0.9f);
+            dotLate = MeshKit.Dot(Pal.Warning, 0.9f);
+            ribbons[0] = MeshKit.Ribbon(Pal.HeatOk);
+            ribbons[1] = MeshKit.Ribbon(Pal.HeatBusy);
+            ribbons[2] = MeshKit.Ribbon(Pal.HeatJam);
             SetLow(low);
         }
 
-        public void SetLow(bool low)
-        {
-            max = low ? 24 : 48;   // Low: half the crowd (fleet §10)
-            while (walkers.Count > max) walkers.RemoveAt(walkers.Count - 1);
-        }
+        public void SetLow(bool l) => low = l;
 
-        /// <summary>archetype -1 = HoReCa staff bag drop (no walker).</summary>
-        public void Spawn(int point, int archetype, bool turned)
+        public void Tick()
         {
-            if (archetype < 0 || point < 0 || point >= world.Sim.S.Points.Count) return;
-            if (walkers.Count >= max) { if (!turned && (++skip % 2) == 0) return; walkers.RemoveAt(0); }
-            var to = world.PointPos(point) + new Vector3(0, 0, -3f);
-            float a = (float)(rng.NextDouble() * Mathf.PI * 2);
-            var from = to + new Vector3(Mathf.Cos(a), 0, Mathf.Sin(a)) * (28f + (float)rng.NextDouble() * 18f);
-            walkers.Add(new Walker
+            for (int s = 0; s < figureBatches.Length; s++) figureBatches[s].Clear();
+            dotsOk.Clear(); dotsLate.Clear();
+            foreach (var r in ribbonBatches) r.Clear();
+            Walkers = 0;
+            var sim = world.Sim;
+            if (sim == null || !sim.InBell) return;
+            var bell = sim.Bell;
+            if (bell == null) return;
+            var gd = sim.Gd;
+            // heat ribbons
+            for (int e = 0; e < bell.Heat.Length && e < gd.Edges.Count; e++)
             {
-                From = from, To = to, T = 0, Speed = 0.22f + (float)rng.NextDouble() * 0.1f,
-                Shirt = turned ? Shirts.Length - 1 : Mathf.Clamp(archetype, 0, Shirts.Length - 2), Turned = turned,
-            });
-        }
-
-        public void Tick(float dt)
-        {
-            for (int i = walkers.Count - 1; i >= 0; i--)
-            {
-                var w = walkers[i];
-                w.T += w.Speed * dt * (w.Turned && !w.Back ? 1.6f : 1f);
-                if (w.T >= 1f)
-                {
-                    if (w.Back) { walkers.RemoveAt(i); continue; }
-                    w.Back = true;
-                    w.T = 0f;
-                    (w.From, w.To) = (w.To, w.From);
-                }
-                walkers[i] = w;
+                double h = bell.Heat[e];
+                if (h < 0.05) continue;
+                int level = h <= 0.7 ? 0 : h <= 1.0 ? 1 : 2;
+                Vector3 a = world.NodePos(gd.Edges[e].A), b = world.NodePos(gd.Edges[e].B);
+                var d = b - a;
+                float len = d.magnitude;
+                if (len < 0.1f) continue;
+                float width = 2.5f + Mathf.Min(4f, (float)h * 3f);
+                ribbonBatches[level].Add(Matrix4x4.TRS(a, Quaternion.LookRotation(d / len), new Vector3(width, 1, len)));
             }
-            for (int s = 0; s < batches.Length; s++) batches[s].Clear();
-            foreach (var w in walkers)
+            // walkers
+            int slot = bell.Slot;
+            double elapsed = sim.S.Minute - (gd.Slots[slot] - gd.BellMin);
+            int maxFigures = low ? 15 : 30, figuresUsed = 0;
+            float share = low ? 0.5f : 1f;
+            foreach (var t in bell.Trips)
             {
-                float t = w.Turned && !w.Back ? Mathf.Min(w.T, 0.75f) : w.T;
-                var p = Vector3.Lerp(w.From, w.To, t);
-                p.y = Mathf.Abs(Mathf.Sin(w.T * 40f)) * 0.25f;   // a little bob = walking
-                var dir = w.To - w.From;
-                var rot = dir.sqrMagnitude > 0.01f ? Quaternion.LookRotation(dir) : Quaternion.identity;
-                batches[w.Shirt].Add(Matrix4x4.TRS(p, rot, Vector3.one * 1.6f));
+                if (t.Path.Count < 2) continue;
+                int dots = Mathf.Clamp(Mathf.RoundToInt(t.Count / 10f * share), 1, low ? 4 : 8);
+                int fac = gd.Faculty(gd.Cohorts[t.Cohort].Faculty).Index % figures.Length;
+                double total = System.Math.Max(0.5, t.Minutes);
+                for (int k = 0; k < dots; k++)
+                {
+                    // the train spreads out: the last walkers are the slow ones (and the late ones)
+                    double speedK = 1.0 + (dots <= 1 ? 0 : (double)k / (dots - 1)) * 0.4 - 0.2;
+                    float f = Mathf.Clamp01((float)(elapsed / (total * speedK)));
+                    var p = world.PathPoint(t.Path, f) + new Vector3((k % 3 - 1) * 0.9f, 0, (k / 3 % 2) * 0.9f);
+                    bool late = t.Late > 0 && (double)k / dots >= 1 - t.Late;
+                    Vector3 dir = world.PathDir(t.Path, f);
+                    if (k == 0 && figuresUsed < maxFigures)
+                    {
+                        figuresUsed++;
+                        float bob = Mathf.Abs(Mathf.Sin((float)elapsed * 6f + t.Cohort)) * 0.25f;
+                        figureBatches[fac].Add(Matrix4x4.TRS(p + Vector3.up * bob, dir.sqrMagnitude > 0 ? Quaternion.LookRotation(dir) : Quaternion.identity, Vector3.one * 1.3f));
+                    }
+                    else (late ? dotsLate : dotsOk).Add(Matrix4x4.TRS(p, Quaternion.identity, Vector3.one));
+                    Walkers++;
+                }
             }
         }
 
         public void Draw()
         {
-            for (int s = 0; s < batches.Length; s++)
-                if (batches[s].Count > 0) Graphics.RenderMeshInstanced(new RenderParams(mat), meshes[s], 0, batches[s]);
+            var rp = new RenderParams(mat);
+            for (int i = 0; i < ribbons.Length; i++) if (ribbonBatches[i].Count > 0) Graphics.RenderMeshInstanced(rp, ribbons[i], 0, ribbonBatches[i]);
+            for (int s = 0; s < figureBatches.Length; s++) if (figureBatches[s].Count > 0) Graphics.RenderMeshInstanced(rp, figures[s], 0, figureBatches[s]);
+            if (dotsOk.Count > 0) Graphics.RenderMeshInstanced(rp, dotOk, 0, dotsOk);
+            if (dotsLate.Count > 0) Graphics.RenderMeshInstanced(rp, dotLate, 0, dotsLate);
         }
     }
 }

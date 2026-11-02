@@ -14,7 +14,7 @@ namespace ChargeNurse.App
     {
         public const string AppId = "charge-nurse";                 // ads-config X-App-ID, house-ad host id
         public const string Package = "com.coddykit.chargenurse";
-        public const string ProductName = "Charge Nurse";           // store title "Charge Nurse: Recycling Tycoon" (30 chars)
+        public const string ProductName = "Charge Nurse";           // store title "Charge Nurse: Hospital Manager" (29 chars)
         public const string PrivacyUrl = "https://www.coddykit.com/pages/privacy-policy";
 
         // ---- P8 (Patron): real ids. Keep the constant names (a preflight reads them). ----

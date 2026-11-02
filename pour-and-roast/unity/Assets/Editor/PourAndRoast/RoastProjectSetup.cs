@@ -1,8 +1,8 @@
 // Pour & Roast — editor setup: applies the CoddyKit fleet policy with this game's values (ProjectSetup: Android IL2CPP
 // ARM64, minSdk 25, targetSdk 36, Vulkan + GLES3, URP tier assets, no Unity splash), creates the palette materials, the
-// Boot scene (camera + curtain UIDocument + RoastBoot) and the Region scene (camera rig, sun, RegionWorld, TapInput, UI
+// Boot scene (camera + curtain UIDocument + RoastBoot) and the Cafe scene (camera rig, sun, CafeWorld, TapInput, UI
 // document + RoastMain), and registers both build scenes. Runs once on the first editor open (when
-// Assets/Settings/URP-Medium.asset or the Region scene is missing), from "Coddy/Pour & Roast/Apply Project Setup" and from
+// Assets/Settings/URP-Medium.asset or the Cafe scene is missing), from "Coddy/Pour & Roast/Apply Project Setup" and from
 // CI before every build (RoastAndroidBuild). After the first open commit ProjectSettings/*, Assets/Settings/*,
 // Assets/Scenes/*, Assets/Resources/materials/*.mat, the PanelSettings asset and ALL generated .meta files in one commit.
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace PourAndRoast.EditorTools
     public static class RoastProjectSetup
     {
         public const string BootScene = "Assets/Scenes/Boot.unity";
-        public const string RegionScene = "Assets/Scenes/Region.unity";
+        public const string RegionScene = "Assets/Scenes/Cafe.unity";
         public const string PaletteTex = "Assets/Resources/materials/palette.png";
         public const string PaletteMat = "Assets/Resources/materials/palette.mat";
         public const string PaletteLowMat = "Assets/Resources/materials/palette_low.mat";
@@ -37,7 +37,7 @@ namespace PourAndRoast.EditorTools
             Product = RoastGameConfig.ProductName,
             Package = RoastGameConfig.Package,
             Version = "0.1.0",
-            SplashBackground = new Color(0.059f, 0.231f, 0.180f, 1f), // #0F3B2E
+            SplashBackground = new Color(0.290f, 0.231f, 0.196f, 1f), // #4A3B32 (walnut)
         };
 
         static RoastProjectSetup()
@@ -120,7 +120,7 @@ namespace PourAndRoast.EditorTools
         {
             if (File.Exists(RegionScene)) return;
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
-            var camGo = Cam(new Color(0.55f, 0.78f, 0.86f), false);
+            var camGo = Cam(new Color(0.72f, 0.82f, 0.86f), false);
             var cam = camGo.GetComponent<Camera>();
             cam.fieldOfView = CameraRig.Fov;
             var rig = camGo.AddComponent<CameraRig>();
@@ -136,7 +136,7 @@ namespace PourAndRoast.EditorTools
             RenderSettings.ambientLight = new Color(0.62f, 0.66f, 0.70f);
 
             var worldGo = new GameObject("World");
-            var world = worldGo.AddComponent<RegionWorld>();
+            var world = worldGo.AddComponent<CafeWorld>();
             world.cam = cam;
             world.rig = rig;
             world.sun = sun;

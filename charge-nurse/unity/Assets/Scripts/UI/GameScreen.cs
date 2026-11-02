@@ -1,9 +1,10 @@
-// Charge Nurse — the Region screen (UI Toolkit, CoddyKit theme). Layout (portrait):
-//   top    HUD: day + phase, clock, cash, Green Rating; speed buttons; today's crisis chips; the main action (Start the day
-//          in the morning plan, Next day on the report)
-//   middle the diorama + markers (a fill gauge over every return point, ≥ 48 dp tap target; the depot's coins / baler buttons)
-//   bottom the route bar (while a truck is selected: stops, predicted km · fuel · minutes · load, Suggest / Clear / Go) and
-//          the tab bar: Network · Fleet · Depot · Research · Shop · ⚙ — each opens a bottom sheet (Sheets.cs)
+// Charge Nurse — the hospital screen (UI Toolkit, CoddyKit theme). Layout (portrait):
+//   top    HUD: day + phase, clock, cash, reputation; the lens pill (the bottleneck in a few words — tap = the red line +
+//          one sentence), crisis chips, speed buttons; the main action (Start shift on the morning board, Hand over in the
+//          handover window, Report); the ambulance call card (Accept / Divert, countdown)
+//   middle the cut-away campus + markers: a status badge over every bay / ward bed (tag colour of the patient, ✓ ready to
+//          go, ⇢ waiting for a ward bed, broom = dirty), a chip over every waiting patient (tag colour + shape, "?" untriaged)
+//   bottom the tab bar: Board · Staff · Build · Upgrades · Shop · ⚙ — each opens a bottom sheet (Sheets.cs)
 // Text is set only when it changed (UiKit.SetText, LESSONS A10); lists are rebuilt on events, never under a finger
 // (UiKit.Held, fleet §16); markers move at 30 Hz (Low 10 Hz) with style.translate (no layout pass).
 using System;
@@ -20,27 +21,29 @@ namespace ChargeNurse.UI
 {
     public sealed partial class GameScreen
     {
+        /// <summary>Colour-blind safe severity shapes (plan §8): ● green, ▲ yellow, ◆ orange, ■ red.</summary>
+        public static readonly string[] TagShape = { "●", "▲", "◆", "■" };
+        static readonly Color[] TagColor = { new Color(0.30f, 0.72f, 0.38f), new Color(0.95f, 0.78f, 0.27f), new Color(0.94f, 0.54f, 0.24f), new Color(0.88f, 0.33f, 0.25f) };
+
         readonly VisualElement root;
         readonly NurseMain main;
         Loc L => main.Loc;
         Simulation Sim => main.Session.Sim;
         GameActions Act => main.Actions;
-        RegionWorld World => main.world;
+        HospitalWorld World => main.world;
 
         // HUD
-        Label dayLabel, clockLabel, cashLabel, ratingLabel;
-        VisualElement crisesRow, speedRow, hud;
-        Button mainAction;
+        Label dayLabel, clockLabel, cashLabel, repLabel, lensLabel, ambText;
+        VisualElement crisesRow, speedRow, hud, ambCard;
+        Button mainAction, lensBtn, ambAccept, ambDivert;
         readonly List<Button> speedButtons = new List<Button>();
         // bottom
-        VisualElement bottom, routeBar, tabsRow;
-        Label routeTitle, routeEst, fuelLabel;
-        Button goBtn, suggestBtn, clearBtn, fuelBadge;
+        VisualElement bottom, tabsRow;
         readonly Dictionary<string, Button> tabs = new Dictionary<string, Button>();
         // markers
-        VisualElement markerLayer, depotMarker;
-        Button coinsBtn, balerBtn, depotBtn;
-        readonly List<Marker> markers = new List<Marker>();
+        VisualElement markerLayer;
+        readonly List<Marker> bedMarkers = new List<Marker>();
+        readonly List<Marker> waitMarkers = new List<Marker>();
         float markerAcc;
         // state
         string openTab = "";
@@ -53,11 +56,10 @@ namespace ChargeNurse.UI
         sealed class Marker
         {
             public Button Root;
-            public VisualElement Fill;
             public Label Badge;
-            public string LastBadge = "";
-            public float LastPct = -1;
+            public string LastText = "";
             public string LastClass = "";
+            public int Id = -1;
         }
 
         public GameScreen(VisualElement root, NurseMain main)
@@ -66,7 +68,7 @@ namespace ChargeNurse.UI
             this.main = main;
             var uss = Resources.Load<StyleSheet>("ui/ChargeNurse");
             if (uss != null) root.styleSheets.Add(uss);
-            root.AddToClassList("br-root");
+            root.AddToClassList("cn-root");
             BuildMarkers();
             BuildHud();
             BuildBottom();
@@ -80,36 +82,36 @@ namespace ChargeNurse.UI
         void BuildHud()
         {
             hud = new VisualElement { name = "Hud" };
-            hud.AddToClassList("br-hud");
+            hud.AddToClassList("cn-hud");
             hud.pickingMode = PickingMode.Ignore;
-            var row = Row("br-hud__row");
-            var left = Row("br-hud__row");
+            var row = Row("cn-hud__row");
+            var left = Row("cn-hud__row");
             dayLabel = ChipLabel(left, "", out _);
             clockLabel = ChipLabel(left, "", out _);
             row.Add(left);
-            var right = Row("br-hud__row");
+            var right = Row("cn-hud__row");
             cashLabel = ChipLabel(right, "", out var cashChip);
-            cashChip.AddToClassList("br-chip--money");
-            ratingLabel = ChipLabel(right, "", out var ratingChip);
-            ratingChip.RegisterCallback<ClickEvent>(_ => OpenSheet("report_last"));
+            cashChip.AddToClassList("cn-chip--money");
+            repLabel = ChipLabel(right, "", out var repChip);
+            repChip.RegisterCallback<ClickEvent>(_ => OpenSheet("report_last"));
             row.Add(right);
             hud.Add(row);
 
-            var row2 = Row("br-hud__row");
-            crisesRow = Row("br-crises");
-            fuelBadge = new Button(() => main.Run("fuel_info")) { name = "FuelBadge" };
-            fuelBadge.AddToClassList("br-fuel");
-            fuelBadge.focusable = false;
-            fuelLabel = UiKit.Text("", "coddy-caption-muted");
-            fuelBadge.Add(fuelLabel);
-            row2.Add(fuelBadge);
+            var row2 = Row("cn-hud__row");
+            lensBtn = new Button(() => main.Run("lens")) { name = "Lens" };
+            lensBtn.AddToClassList("cn-lens");
+            lensBtn.focusable = false;
+            lensLabel = UiKit.Text("", "cn-lens__label");
+            lensBtn.Add(lensLabel);
+            row2.Add(lensBtn);
+            crisesRow = Row("cn-crises");
             row2.Add(crisesRow);
-            speedRow = Row("br-speed");
+            speedRow = Row("cn-speed");
             for (int s = 1; s <= 4; s++)
             {
                 int sp = s;
                 var b = new Button(() => OnSpeed(sp)) { text = L.F("hud.speed", "n", sp) };
-                b.AddToClassList("br-speed__btn");
+                b.AddToClassList("cn-speed__btn");
                 b.focusable = false;
                 speedButtons.Add(b);
                 speedRow.Add(b);
@@ -118,43 +120,37 @@ namespace ChargeNurse.UI
             hud.Add(row2);
 
             mainAction = UiKit.PrimaryButton("", OnMainAction);
-            mainAction.AddToClassList("br-main-action");
+            mainAction.AddToClassList("cn-main-action");
             mainAction.name = "MainAction";
             hud.Add(mainAction);
+
+            ambCard = new VisualElement { name = "Ambulance" };
+            ambCard.AddToClassList("cn-amb");
+            ambText = UiKit.Text("", "cn-amb__text");
+            ambCard.Add(ambText);
+            var ambRow = Row("cn-hud__row");
+            ambRow.pickingMode = PickingMode.Position;
+            ambDivert = UiKit.ActionPill("", () => main.Run("ambulance:divert"), true, "tonal");
+            ambAccept = UiKit.ActionPill("", () => main.Run("ambulance:accept"));
+            ambAccept.name = "AmbAccept";
+            ambRow.Add(ambDivert);
+            ambRow.Add(ambAccept);
+            ambCard.Add(ambRow);
+            hud.Add(ambCard);
             root.Add(hud);
         }
 
         void BuildBottom()
         {
             bottom = new VisualElement { name = "Bottom" };
-            bottom.AddToClassList("br-bottom");
+            bottom.AddToClassList("cn-bottom");
             bottom.pickingMode = PickingMode.Ignore;
-
-            routeBar = new VisualElement { name = "RouteBar" };
-            routeBar.AddToClassList("br-route");
-            var top = Row("br-route__row");
-            routeTitle = UiKit.Text("", "coddy-label-strong");
-            top.Add(routeTitle);
-            routeBar.Add(top);
-            routeEst = UiKit.Text("", "br-route__est");
-            routeBar.Add(routeEst);
-            var actions = Row("br-route__row");
-            suggestBtn = UiKit.ActionPill("", () => main.Run("suggest"), true, "tonal");
-            clearBtn = UiKit.ActionPill("", () => main.Run("clear"), true, "tonal");
-            goBtn = UiKit.ActionPill("", () => main.Run("go"));
-            goBtn.name = "Go";
-            actions.Add(suggestBtn);
-            actions.Add(clearBtn);
-            actions.Add(goBtn);
-            routeBar.Add(actions);
-            bottom.Add(routeBar);
-
-            tabsRow = Row("br-tabs");
-            foreach (var id in new[] { "network", "fleet", "depot", "research", "shop", "settings" })
+            tabsRow = Row("cn-tabs");
+            foreach (var id in new[] { "board", "staff", "build", "research", "shop", "settings" })
             {
                 string tid = id;
                 var b = new Button(() => OnTab(tid)) { name = "Tab_" + id };
-                b.AddToClassList("br-tab");
+                b.AddToClassList("cn-tab");
                 b.focusable = false;
                 tabs[id] = b;
                 tabsRow.Add(b);
@@ -166,51 +162,38 @@ namespace ChargeNurse.UI
         void BuildMarkers()
         {
             markerLayer = new VisualElement { name = "Markers" };
-            markerLayer.AddToClassList("br-markers");
+            markerLayer.AddToClassList("cn-markers");
             markerLayer.pickingMode = PickingMode.Ignore;
-            depotMarker = new VisualElement { name = "DepotMarker" };
-            depotMarker.AddToClassList("br-depot-marker");
-            depotBtn = DepotButton("", () => main.Run("depot"), "Depot");
-            coinsBtn = DepotButton("", () => main.Run("till"), "Coins");
-            coinsBtn.AddToClassList("br-depot-btn--coins");
-            balerBtn = DepotButton("", () => main.Run("baler"), "Baler");
-            depotMarker.Add(depotBtn);
-            depotMarker.Add(coinsBtn);
-            depotMarker.Add(balerBtn);
-            markerLayer.Add(depotMarker);
             root.Add(markerLayer);
         }
 
-        Button DepotButton(string text, Action a, string name)
+        Marker NewMarker(string cls, Action click, string name)
         {
-            var b = new Button(a) { text = text, name = name };
-            b.AddToClassList("br-depot-btn");
-            b.focusable = false;
-            return b;
+            var m = new Marker { Root = new Button(click) { name = name } };
+            m.Root.AddToClassList(cls);
+            m.Root.focusable = false;
+            m.Badge = UiKit.Text("", cls + "__badge");
+            m.Badge.pickingMode = PickingMode.Ignore;
+            m.Root.Add(m.Badge);
+            markerLayer.Add(m.Root);
+            return m;
         }
 
         void SyncMarkers()
         {
-            while (markers.Count < Sim.S.Points.Count)
+            while (bedMarkers.Count < Sim.S.Beds.Count)
             {
-                int i = markers.Count;
-                var m = new Marker { Root = new Button(() => main.Run("select_point:" + i)) { name = "Point_" + i } };
-                m.Root.AddToClassList("br-marker");
-                m.Root.focusable = false;
-                m.Root.style.backgroundColor = new Color(0, 0, 0, 0);
-                m.Root.style.borderTopWidth = m.Root.style.borderBottomWidth = m.Root.style.borderLeftWidth = m.Root.style.borderRightWidth = 0;
-                var gauge = new VisualElement { pickingMode = PickingMode.Ignore };
-                gauge.AddToClassList("br-marker__gauge");
-                m.Fill = new VisualElement { pickingMode = PickingMode.Ignore };
-                m.Fill.AddToClassList("br-marker__fill");
-                gauge.Add(m.Fill);
-                m.Root.Add(gauge);
-                m.Badge = UiKit.Text("", "br-marker__badge");
-                m.Root.Add(m.Badge);
-                markerLayer.Insert(0, m.Root);
-                markers.Add(m);
+                int i = bedMarkers.Count;
+                bedMarkers.Add(NewMarker("cn-bed", () => BedTap(i), "Bed_" + i));
             }
-            while (markers.Count > Sim.S.Points.Count) { markers[markers.Count - 1].Root.RemoveFromHierarchy(); markers.RemoveAt(markers.Count - 1); }
+            while (bedMarkers.Count > Sim.S.Beds.Count) { bedMarkers[bedMarkers.Count - 1].Root.RemoveFromHierarchy(); bedMarkers.RemoveAt(bedMarkers.Count - 1); }
+            while (waitMarkers.Count < 10)
+            {
+                var m = NewMarker("cn-wait", null, "Wait_" + waitMarkers.Count);
+                var mm = m;
+                m.Root.clicked += () => { if (mm.Id >= 0) main.Run("select_patient:" + mm.Id); };
+                waitMarkers.Add(m);
+            }
         }
 
         // ------------------------------------------------------------------ helpers
@@ -226,8 +209,8 @@ namespace ChargeNurse.UI
         static Label ChipLabel(VisualElement parent, string text, out VisualElement chip)
         {
             chip = new VisualElement();
-            chip.AddToClassList("br-chip");
-            var l = UiKit.Text(text, "br-chip__label");
+            chip.AddToClassList("cn-chip");
+            var l = UiKit.Text(text, "cn-chip__label");
             chip.Add(l);
             parent.Add(chip);
             return l;
@@ -240,6 +223,7 @@ namespace ChargeNurse.UI
         }
 
         string Money(double v) => Fmt.Money((long)Math.Round(v), L.Lang);
+        public string TagText(int tag) => tag < 0 ? "?" : TagShape[tag];
 
         /// <summary>A UI point (top-left screen px) lies on a pickable UI element (camera pan / world taps must not start there).</summary>
         public bool OverUi(Vector2 screenTopLeft)
@@ -263,32 +247,46 @@ namespace ChargeNurse.UI
         void OnMainAction()
         {
             if (Sim.Phase == Phases.Plan) main.Run("start_day");
+            else if (Sim.HandoverWindow) main.Run("handover");
             else if (Sim.Phase == Phases.Report) OpenSheet("report");
         }
 
         void OnTab(string id)
         {
-            if (main.Coach.Active && main.Coach.Target != "tab." + id) { main.Coach.WrongTap(); return; }
+            if (main.Coach.Active) { main.Coach.WrongTap(); return; }
             if (openTab == id && sheet != null && sheet.IsOpen) { CloseSheet(); return; }
             OpenSheet(id);
         }
 
-        /// <summary>A world tap (RegionWorld.Picked).</summary>
+        /// <summary>A bay / bed badge: send the selected patient there, clean it, sign the discharge, or open its card.</summary>
+        void BedTap(int b)
+        {
+            if (b < 0 || b >= Sim.S.Beds.Count) return;
+            var bed = Sim.S.Beds[b];
+            var sel = Act.SelectedPatient >= 0 ? Sim.P(Act.SelectedPatient) : null;
+            if (bed.Bay && sel != null && sel.Stage == Stage.Bay && bed.State == BedState.Clean && bed.Patient < 0) { main.Run("assign:" + b); return; }
+            if (bed.State == BedState.Dirty || bed.State == BedState.Cleaning) { main.Run("clean:" + b); return; }
+            var p = bed.Patient >= 0 ? Sim.P(bed.Patient) : null;
+            if (p != null && (p.Stage == Stage.Ready || p.Stage == Stage.WardReady)) { main.Run("discharge:" + p.Id); return; }
+            if (main.Coach.Active) { main.Coach.WrongTap(); return; }
+            main.Run("select_bed:" + b);
+        }
+
+        /// <summary>A world tap (HospitalWorld.Picked).</summary>
         public void WorldPick(WorldHit hit)
         {
             switch (hit.Kind)
             {
-                case "point": main.Run("select_point:" + hit.Index); break;
-                case "truck": main.Run("select_truck:" + hit.Index); break;
-                case "depot": main.Run("depot"); break;
+                case "patient": main.Run("select_patient:" + hit.Index); break;
+                case "bed": BedTap(hit.Index); break;
                 default:
                     if (main.Coach.Active) main.Coach.WrongTap();
-                    else if (Act.SelectedTruck < 0) main.Run("clear");
+                    else main.Run("clear");
                     break;
             }
         }
 
-        /// <summary>After an action ran (NurseMain): open the right sheet, refresh.</summary>
+        /// <summary>After an action ran (NurseMain): open the right sheet, toast, refresh.</summary>
         public void AfterAction(string id, ActionResult r)
         {
             var a = id.Split(':');
@@ -296,38 +294,31 @@ namespace ChargeNurse.UI
             {
                 switch (a[0])
                 {
-                    case "select_point":
-                        if (Act.SelectedTruck < 0) OpenSheet("point", int.Parse(a[1]));
-                        break;
-                    case "select_truck":
-                    case "go":
-                    case "clear":
-                        if (sheet != null && sheet.IsOpen && sheetKind != "depot") CloseSheet();
-                        break;
-                    case "depot":
-                    case "baler":
-                        OpenSheet("depot");
-                        break;
-                    case "till":
-                        if (r.Value > 0) Toast(L.F("toast.till", "cash", Money(r.Value)), ToastKind.Success);
-                        break;
-                    case "fuel_info":
-                        Toast(L.T("hud.fuel_info"), ToastKind.Info);
-                        break;
-                    case "start_day":
-                    case "next_day":
+                    case "select_patient": OpenSheet("patient", int.Parse(a[1])); break;
+                    case "select_bed": OpenSheet("bed", int.Parse(a[1])); break;
+                    case "tag":
+                        if (main.Coach.Active || sheetKind != "patient") break;
                         CloseSheet();
                         break;
+                    case "assign": case "clear": case "handover": case "start_day": case "next_day":
+                        if (sheet != null && sheet.IsOpen && sheetKind != "report") CloseSheet();
+                        break;
+                    case "discharge": Toast(L.T("toast.discharged"), ToastKind.Success); break;
+                    case "lens":
+                        Toast(L.T("lens." + r.Text), r.Text == "smooth" ? ToastKind.Success : ToastKind.Warning);
+                        if (World != null && Act.LastLens != null) World.ShowLens(Act.LastLens.Zone);
+                        break;
+                    case "ambulance": Toast(L.T(r.Value > 0 ? "toast.amb_accept" : "toast.amb_divert"), ToastKind.Info); break;
                 }
                 sheetDirty = true;
             }
             else if (r.Error != "blocked") Toast(L.T("err." + r.Error), ToastKind.Warning);
-            Refresh(false);
+            Refresh(true);
         }
 
         public void Toast(string text, ToastKind kind)
         {
-            if (!string.IsNullOrEmpty(text) && !text.StartsWith("err.")) UiToastHost.Show(text, kind);
+            if (!string.IsNullOrEmpty(text) && !text.StartsWith("err.") && !text.StartsWith("lens.")) UiToastHost.Show(text, kind);
         }
 
         // ------------------------------------------------------------------ frame
@@ -341,7 +332,8 @@ namespace ChargeNurse.UI
             if (sheetDirty && sheet != null && sheet.IsOpen && !UiKit.Held(sheet.Body)) { sheetDirty = false; FillSheet(); }
         }
 
-        float hudAcc;
+        float hudAcc, lensAcc;
+        string lensKey = "";
 
         public void Refresh(bool force)
         {
@@ -349,19 +341,42 @@ namespace ChargeNurse.UI
             if (!force && hudAcc < 0.2f) return;   // 5 Hz HUD text
             hudAcc = 0;
             var s = Sim.S;
-            UiKit.SetText(dayLabel, L.F("hud.day", "n", s.Day) + " · " + L.T("phase." + s.Phase));
+            UiKit.SetText(dayLabel, L.F("hud.day", "n", s.Day) + " · " + L.T(Sim.HandoverWindow ? "phase.handover" : "phase." + s.Phase));
             UiKit.SetText(clockLabel, Fmt.ClockMin(s.Minute));
             UiKit.SetText(cashLabel, Money(s.Cash));
-            UiKit.SetText(ratingLabel, L.F("hud.rating", "r", Fmt.Rating(s.Rating)));
+            UiKit.SetText(repLabel, L.F("hud.reputation", "r", Fmt.Rating(s.Reputation)));
             for (int i = 0; i < speedButtons.Count; i++)
             {
-                speedButtons[i].EnableInClassList("br-speed__btn--on", s.Speed == i + 1);
+                speedButtons[i].EnableInClassList("cn-speed__btn--on", s.Speed == i + 1);
                 speedButtons[i].style.display = Sim.Phase == Phases.Live ? DisplayStyle.Flex : DisplayStyle.None;
             }
-            bool showMain = Sim.Phase != Phases.Live && !(main.Coach.Active && main.Coach.Step < 6);
+            // main action: Start shift / Hand over / Report (the guide shows Hand over only at its last step)
+            bool guide = main.Coach.Active;
+            bool showMain = (Sim.Phase == Phases.Plan && !guide) || Sim.HandoverWindow || Sim.Phase == Phases.Report;
             mainAction.style.display = showMain ? DisplayStyle.Flex : DisplayStyle.None;
-            UiKit.SetText(mainAction, Sim.Phase == Phases.Plan ? L.T("hud.start_day") : L.T("phase.report"));
-            UiKit.SetText(fuelLabel, L.F("hud.fuel", "cost", Money(s.Today.Fuel)));
+            UiKit.SetText(mainAction, Sim.Phase == Phases.Plan ? L.T("hud.start_day") : Sim.HandoverWindow ? L.T("hud.handover") : L.T("phase.report"));
+            mainAction.EnableInClassList("cn-main-action--handover", Sim.HandoverWindow);
+            // the lens pill: the current bottleneck in a few words (1 Hz)
+            lensAcc += 0.2f;
+            if (force || lensAcc >= 1f)
+            {
+                lensAcc = 0;
+                lensKey = Sim.Phase == Phases.Live ? Sim.FindBottleneck().Key : "smooth";
+            }
+            bool showLens = Sim.Phase == Phases.Live && (!guide || main.Coach.Step >= 9);
+            lensBtn.style.display = showLens ? DisplayStyle.Flex : DisplayStyle.None;
+            UiKit.SetText(lensLabel, L.T("lens.short." + lensKey));
+            lensBtn.EnableInClassList("cn-lens--bad", lensKey != "smooth");
+            // ambulance call
+            var call = s.Ambulance;
+            ambCard.style.display = call != null && Sim.Phase == Phases.Live ? DisplayStyle.Flex : DisplayStyle.None;
+            if (call != null)
+            {
+                UiKit.SetText(ambText, L.F("amb.call", "tag", L.T("tag." + Sev.Ids[call.Sev]), "shape", TagShape[call.Sev]) + (call.Guided ? "" : " · " + L.F("amb.left", "min", (long)Math.Ceiling(call.Left))));
+                UiKit.SetText(ambAccept, L.T("amb.accept"));
+                UiKit.SetText(ambDivert, L.T("amb.divert"));
+                ambDivert.style.display = guide ? DisplayStyle.None : DisplayStyle.Flex;
+            }
             // crisis chips
             var crises = Sim.ActiveCrises();
             string key = string.Join(",", crises);
@@ -372,78 +387,93 @@ namespace ChargeNurse.UI
                 foreach (var c in crises)
                 {
                     var chip = new VisualElement();
-                    chip.AddToClassList("br-chip");
-                    chip.AddToClassList("br-chip--warn");
-                    chip.Add(UiKit.Text(L.T("crisis." + c + ".t"), "br-chip__label"));
+                    chip.AddToClassList("cn-chip");
+                    chip.AddToClassList("cn-chip--warn");
+                    chip.Add(UiKit.Text(L.T("crisis." + c + ".t"), "cn-chip__label"));
+                    chip.RegisterCallback<ClickEvent>(_ => OpenSheet("board"));
                     crisesRow.Add(chip);
                 }
             }
-            // route bar
-            bool route = Act.SelectedTruck >= 0;
-            routeBar.style.display = route ? DisplayStyle.Flex : DisplayStyle.None;
-            if (route)
-            {
-                var t = Sim.S.Trucks[Act.SelectedTruck];
-                UiKit.SetText(routeTitle, L.F("truck.name", "type", L.T("truck." + t.Type), "n", Act.SelectedTruck + 1) + " · " + L.F("route.draft", "n", Act.Draft.Count));
-                var e = Act.DraftEstimate;
-                UiKit.SetText(routeEst, e != null && e.Ok
-                    ? L.F("route.est", "km", Fmt.Km(e.Km, L.Lang), "cost", Money(e.Cost), "min", (long)Math.Round(e.Minutes), "pct", Fmt.Pct(e.LoadPct, L.Lang))
-                    : (Sim.FreeDrivers <= 0 && !t.Busy ? L.T("truck.no_driver") : L.T("route.hint")));
-                goBtn.SetEnabled(Act.Draft.Count > 0);
-            }
-            UiKit.SetText(suggestBtn, L.T("truck.suggest"));
-            UiKit.SetText(clearBtn, L.T("truck.clear"));
-            UiKit.SetText(goBtn, L.T("truck.go"));
             foreach (var kv in tabs)
             {
                 UiKit.SetText(kv.Value, kv.Key == "settings" ? "⚙" : L.T("tab." + kv.Key));
-                kv.Value.EnableInClassList("br-tab--on", openTab == kv.Key && sheet != null && sheet.IsOpen);
+                kv.Value.EnableInClassList("cn-tab--on", openTab == kv.Key && sheet != null && sheet.IsOpen);
             }
-            // depot marker
-            UiKit.SetText(depotBtn, L.T("depot.title"));
-            double till = Math.Floor(s.Depot.Till);
-            coinsBtn.style.display = till >= 1 || main.Coach.Target == "coins" ? DisplayStyle.Flex : DisplayStyle.None;
-            UiKit.SetText(coinsBtn, "+" + Money(till));
-            UiKit.SetText(balerBtn, s.Depot.BalerDown ? "⚠ " + L.T("depot.baler") : L.T("depot.baler"));
             SyncMarkers();
+        }
+
+        void Place(Marker m, Vector3 world, float lift)
+        {
+            var sp = World.ScreenOf(world + Vector3.up * lift);
+            if (sp == null) { m.Root.style.display = DisplayStyle.None; return; }
+            m.Root.style.display = DisplayStyle.Flex;
+            var pp = ToPanel(sp.Value);
+            m.Root.style.translate = new Translate(pp.x, pp.y);
+        }
+
+        static void SetClass(Marker m, string cls)
+        {
+            if (cls == m.LastClass) return;
+            if (m.LastClass != "") m.Root.RemoveFromClassList(m.LastClass);
+            if (cls != "") m.Root.AddToClassList(cls);
+            m.LastClass = cls;
         }
 
         void PlaceMarkers()
         {
             if (World == null) return;
-            for (int i = 0; i < markers.Count && i < Sim.S.Points.Count; i++)
+            for (int i = 0; i < bedMarkers.Count && i < Sim.S.Beds.Count; i++)
             {
-                var m = markers[i];
-                var p = Sim.S.Points[i];
-                var sp = World.ScreenOf(World.PointPos(i) + Vector3.up * 8f);
-                if (sp == null) { m.Root.style.display = DisplayStyle.None; continue; }
-                m.Root.style.display = DisplayStyle.Flex;
-                var pp = ToPanel(sp.Value);
-                m.Root.style.translate = new Translate(pp.x, pp.y);
-                float pct = (float)Sim.DisplayPct(p);
-                if (Mathf.Abs(pct - m.LastPct) > 0.01f) { m.LastPct = pct; m.Fill.style.height = Length.Percent(pct * 100f); }
-                string cls = p.Jammed || Sim.IsFull(p) ? "br-marker__fill--full" : pct >= p.Threshold / 100f - 0.0001f ? "br-marker__fill--warn" : "";
-                if (cls != m.LastClass)
+                var m = bedMarkers[i];
+                var b = Sim.S.Beds[i];
+                Place(m, World.BedPos(i), 1.6f);
+                var p = b.Patient >= 0 ? Sim.P(b.Patient) : null;
+                string text, cls;
+                switch (b.State)
                 {
-                    m.Fill.EnableInClassList("br-marker__fill--full", cls == "br-marker__fill--full");
-                    m.Fill.EnableInClassList("br-marker__fill--warn", cls == "br-marker__fill--warn");
-                    m.LastClass = cls;
+                    case BedState.Dirty: text = "!"; cls = "cn-bed--dirty"; break;
+                    case BedState.Cleaning: text = "…"; cls = "cn-bed--cleaning"; break;
+                    case BedState.Closed: text = "✕"; cls = "cn-bed--closed"; break;
+                    default:
+                        if (p == null) { text = b.Bay ? "+" : ""; cls = b.Bay ? "cn-bed--free" : "cn-bed--empty"; break; }
+                        if (p.Stage == Stage.Ready || p.Stage == Stage.WardReady) { text = "✓"; cls = "cn-bed--ready"; break; }
+                        if (p.Stage == Stage.Board) { text = "→"; cls = "cn-bed--board"; break; }
+                        text = TagText(Math.Max(p.Tag, 0)); cls = "cn-bed--tag" + Math.Max(p.Tag, 0); break;
                 }
-                m.Fill.EnableInClassList("br-marker__fill--estimate", !Sim.DisplayIsLive(p));
-                int stop = Act.Draft.IndexOf(i);
-                string badge = p.Jammed ? "!" : stop >= 0 ? (stop + 1).ToString() : Fmt.Pct(pct, L.Lang);
-                if (badge != m.LastBadge) { m.LastBadge = badge; UiKit.SetText(m.Badge, badge); }
-                m.Root.EnableInClassList("br-marker--route", stop >= 0);
-                m.Root.EnableInClassList("br-marker--jam", p.Jammed);
-                m.Root.EnableInClassList("br-marker--selected", Act.SelectedPoint == i);
+                if (text != m.LastText) { m.LastText = text; UiKit.SetText(m.Badge, text); }
+                SetClass(m, cls);
+                bool spot = Act.SelectedPatient >= 0 && b.Bay && b.State == BedState.Clean && b.Patient < 0;
+                m.Root.EnableInClassList("cn-bed--target", spot);
             }
-            var dp = World.ScreenOf(World.DepotPos + Vector3.up * 14f);
-            if (dp != null) { var pp = ToPanel(dp.Value); depotMarker.style.translate = new Translate(pp.x, pp.y); }
+            var waiting = Sim.Waiting();
+            for (int k = 0; k < waitMarkers.Count; k++)
+            {
+                var m = waitMarkers[k];
+                if (k >= waiting.Count || k >= 8) { m.Id = -1; m.Root.style.display = DisplayStyle.None; continue; }
+                var p = waiting[k];
+                m.Id = p.Id;
+                Place(m, World.PatientWorld(p.Id, k), 2.9f);
+                string text = TagText(p.Tag);
+                if (text != m.LastText) { m.LastText = text; UiKit.SetText(m.Badge, text); }
+                SetClass(m, p.Tag < 0 ? "cn-wait--new" : "cn-wait--tag" + p.Tag);
+                m.Root.EnableInClassList("cn-wait--selected", Act.SelectedPatient == p.Id);
+            }
+            // overflow count on the 9th chip
+            if (waiting.Count > 8 && waitMarkers.Count > 8)
+            {
+                var m = waitMarkers[8];
+                m.Id = -1;
+                Place(m, World.WaitSpot(8), 2.9f);
+                string t = "+" + (waiting.Count - 8);
+                if (t != m.LastText) { m.LastText = t; UiKit.SetText(m.Badge, t); }
+                SetClass(m, "cn-wait--more");
+            }
         }
 
         void Relocalise()
         {
-            foreach (var m in markers) { m.LastBadge = ""; }
+            foreach (var m in bedMarkers) m.LastText = "";
+            foreach (var m in waitMarkers) m.LastText = "";
             for (int s = 0; s < speedButtons.Count; s++) speedButtons[s].text = L.F("hud.speed", "n", s + 1);
             crisesRow.userData = null;
             Refresh(true);
@@ -455,17 +485,29 @@ namespace ChargeNurse.UI
         {
             VisualElement e = target switch
             {
-                "go" => goBtn,
-                "fuel" => fuelBadge,
-                "depot" => depotBtn,
-                "coins" => coinsBtn,
-                "baler" => balerBtn,
+                "lens" => lensBtn,
+                "handover" => mainAction,
+                "ambulance" => ambAccept,
                 _ => null,
             };
-            if (e == null && target.StartsWith("point:") && int.TryParse(target.Substring(6), out int pi) && pi < markers.Count) e = markers[pi].Root;
+            if (e == null && target.StartsWith("patient:") && int.TryParse(target.Substring(8), out int pid))
+                foreach (var m in waitMarkers) if (m.Id == pid) e = m.Root;
+            if (e == null && target == "bay:free")
+                for (int i = 0; i < Sim.S.Beds.Count && i < bedMarkers.Count; i++)
+                    if (Sim.S.Beds[i].Bay && Sim.S.Beds[i].State == BedState.Clean && Sim.S.Beds[i].Patient < 0) { e = bedMarkers[i].Root; break; }
+            if (e == null && target.StartsWith("discharge:") && int.TryParse(target.Substring(10), out int did))
+            {
+                var p = Sim.P(did);
+                if (p != null && p.Bed >= 0 && p.Bed < bedMarkers.Count) e = bedMarkers[p.Bed].Root;
+            }
+            if (e == null && target == "clean")
+                for (int i = 0; i < Sim.S.Beds.Count && i < bedMarkers.Count; i++)
+                    if (Sim.S.Beds[i].State == BedState.Dirty) { e = bedMarkers[i].Root; break; }
             if (e == null && sheet != null && sheet.IsOpen) e = sheet.Panel.Q<VisualElement>("Target_" + target.Replace(':', '_'));
             if (e == null || e.panel == null || e.resolvedStyle.display == DisplayStyle.None) return null;
             return e.worldBound;
         }
+
+        public static Color ColorOfTag(int tag) => tag >= 0 && tag < TagColor.Length ? TagColor[tag] : Color.white;
     }
 }

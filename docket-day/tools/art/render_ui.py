@@ -1,8 +1,9 @@
-"""Docket Day — renders the UI art from the repo's own models (Meshy characters in unity/Assets/Art/Meshy + bales and the
-Blender kit in unity/Assets/Resources/kit): the coach portrait, the three intro pager images, the boot curtain and a
-placeholder app icon set (the owner picks the final icon at P7). EEVEE, headless.
+"""Docket Day — renders the UI art from the repo's own models (Meshy characters in unity/Assets/Art/Meshy + the Blender
+kit in unity/Assets/Resources/kit): the coach portrait, the hearing-scene portraits, the three intro pager images, the
+boot curtain and a placeholder app icon set (the owner picks the final icon at P7). EEVEE, headless.
   blender -b --python docket-day/tools/art/render_ui.py -- <unity dir>
-Outputs: Assets/Resources/ui/{coach_operator,intro_1,intro_2,intro_3,curtain}.png, Assets/Art/Icon/icon_*.png
+Outputs: Assets/Resources/ui/{coach_counsel,hearing_judge,hearing_client,intro_1,intro_2,intro_3,curtain}.png,
+Assets/Art/Icon/icon_*.png
 """
 import math
 import os
@@ -16,7 +17,7 @@ UNITY = argv[0]
 A = os.path.join(UNITY, "Assets")
 UI = os.path.join(A, "Resources/ui")
 ICON = os.path.join(A, "Art/Icon")
-MINT = (0.62, 0.86, 0.78)
+MINT = (0.80, 0.86, 0.93)   # pale harbour blue
 
 
 def reset(bg=MINT, transparent=False):
@@ -80,10 +81,6 @@ def kit(name, loc, yaw=0.0, scale=1.0):
     return load(os.path.join(A, "Resources/kit/%s.fbx" % name), os.path.join(A, "Resources/materials/palette.png"), loc, yaw, scale, "Closest")
 
 
-def bale(mat, loc, yaw=0.0):
-    return load(os.path.join(A, "Resources/kit/bale_%s_lod1.fbx" % mat), os.path.join(A, "Resources/kit/bale_%s_base.png" % mat), loc, yaw)
-
-
 def ground(size=40, color=(0.55, 0.78, 0.48)):
     bpy.ops.mesh.primitive_plane_add(size=size)
     p = bpy.context.active_object
@@ -123,56 +120,59 @@ def main():
     os.makedirs(ICON, exist_ok=True)
     # coach portrait (head + shoulders, transparent; the bubble crops it into a circle)
     reset(transparent=True)
-    char("operator", (0, 0, 0))
-    camera((0.15, -1.55, 1.58), (0, 0, 1.5), lens=85)
-    render(os.path.join(UI, "coach_operator.png"), 256, 256)
-    # intro 1: a citizen brings bottles to a machine
+    char("counsel", (0, 0, 0))
+    camera((0.1, -1.6, 1.55), (0, 0, 1.47), lens=85)
+    render(os.path.join(UI, "coach_counsel.png"), 256, 256)
+    # hearing-scene portraits (full figure, transparent)
+    for name, h in (("judge", 1.72), ("client", 1.75)):
+        reset(transparent=True)
+        char(name, (0, 0, 0), yaw=8 if name == "judge" else -10)
+        camera((0.0, -4.6, 1.0), (0, 0, h * 0.5), lens=55)
+        render(os.path.join(UI, "hearing_%s.png" % name), 384, 576)
+    # intro 1: your own firm — the counsel at the reception desk, the office cat on the counter's step
     reset()
-    ground()
-    char("citizen", (-0.9, 0, 0), yaw=25)
-    kit("machine_s", (0.7, 0.4, 0), yaw=-15)
-    camera((0.4, -5.2, 2.0), (0, 0, 1.0), lens=45)
+    ground(color=(0.56, 0.24, 0.27))
+    kit("reception", (0.9, 1.4, 0), yaw=0)
+    kit("bookshelf", (1.2, 3.0, 0))
+    char("counsel", (-0.6, 0.2, 0), yaw=12)
+    char("office_cat", (0.6, -0.3, 0), yaw=-25, scale=1.8)
+    camera((0.0, -3.9, 1.5), (0.1, 0.6, 0.95), lens=40)
     render(os.path.join(UI, "intro_1.png"), 720, 720)
-    # intro 2: machines fill up, the van comes
+    # intro 2: fit people into the calendar — the associate and the worried client by a desk
     reset()
-    ground()
-    kit("machine_s", (-1.2, 1.0, 0), yaw=10)
-    kit("machine_m", (1.4, 1.2, 0), yaw=-10)
-    kit("van", (0.2, -1.6, 0), yaw=90)
-    char("operator", (2.6, -0.6, 0), yaw=-30)
-    camera((2.5, -9.5, 5.0), (0.4, 0, 1.0), lens=40)
+    ground(color=(0.56, 0.24, 0.27))
+    kit("desk", (0.2, 1.4, 0), yaw=180)
+    kit("cabinet", (-1.9, 2.4, 0))
+    char("associate", (-0.9, 0.3, 0), yaw=20)
+    char("client", (1.0, 0.1, 0), yaw=-25)
+    camera((0.0, -4.2, 1.6), (0.0, 0.6, 0.95), lens=40)
     render(os.path.join(UI, "intro_2.png"), 720, 720)
-    # intro 3: bales make money
+    # intro 3: settle or go to court — the judge on the courthouse steps
     reset()
-    ground(color=(0.75, 0.77, 0.78))
-    for i in range(3):
-        bale("pet", (-1.2 + i * 1.15, 0.6, 0))
-    bale("alu", (-0.6, 0.6, 1.05))
-    bale("pet", (0.55, 0.6, 1.05))
-    char("technician", (1.9, -0.6, 0), yaw=-25)
-    camera((1.0, -6.5, 2.8), (0.2, 0, 1.0), lens=45)
+    ground(color=(0.72, 0.72, 0.70))
+    kit("courthouse", (0, 5.0, 0), scale=0.45)
+    char("judge", (-0.6, 0.2, 0), yaw=10)
+    char("counsel", (0.7, -0.1, 0), yaw=-15)
+    camera((0.1, -4.6, 1.5), (0.0, 1.0, 1.25), lens=38)
     render(os.path.join(UI, "intro_3.png"), 720, 720)
-    # boot curtain (portrait): the whole cast
-    reset(bg=(0.06, 0.23, 0.18))
-    ground(color=(0.2, 0.45, 0.35))
-    kit("van", (-1.0, 1.5, 0), yaw=70)
-    kit("machine_s", (1.6, 2.5, 0), yaw=-20)
-    bale("pet", (2.2, 0.6, 0))
-    char("operator", (0.2, -0.4, 0), yaw=10)
-    char("citizen", (-1.6, -0.9, 0), yaw=30)
-    camera((0.3, -8.0, 3.2), (0.2, 0.6, 1.4), lens=38)
+    # boot curtain (portrait): the whole cast in front of the courthouse
+    reset(bg=(0.09, 0.15, 0.27))
+    ground(color=(0.30, 0.33, 0.38))
+    kit("courthouse", (0, 7.0, 0), scale=0.5)
+    char("judge", (0.0, 0.6, 0), yaw=0)
+    char("counsel", (-1.2, -0.2, 0), yaw=15)
+    char("associate", (1.2, -0.1, 0), yaw=-15)
+    char("client", (2.3, -0.9, 0), yaw=-30)
+    char("office_cat", (-2.2, -1.0, 0), yaw=25)
+    camera((0.1, -6.4, 1.4), (0.1, 0.8, 1.9), lens=30)
     render(os.path.join(UI, "curtain.png"), 720, 1280)
-    # placeholder icon set: a deposit machine with a PET bale, mint field
-    reset()
-    kit("machine_m", (0.35, 0.2, 0), yaw=-20)
-    bale("pet", (-1.1, -0.2, 0), yaw=15)
-    camera((0, -6.0, 2.6), (-0.3, 0, 1.15), ortho=3.6)
-    render(os.path.join(ICON, "icon_full.png"), 1024, 1024)
-    reset(transparent=True)
-    kit("machine_m", (0.35, 0.2, 0), yaw=-20)
-    bale("pet", (-1.1, -0.2, 0), yaw=15)
-    camera((0, -6.0, 2.6), (-0.3, 0, 1.15), ortho=5.4)   # inside the 66 dp adaptive safe zone
-    render(os.path.join(ICON, "icon_adaptive_fg.png"), 432, 432)
+    # placeholder icon set: the counsel with the office cat
+    for path, size, transparent, ortho in ((os.path.join(ICON, "icon_full.png"), 1024, False, 1.9), (os.path.join(ICON, "icon_adaptive_fg.png"), 432, True, 2.9)):
+        reset(transparent=transparent)
+        char("counsel", (0.3, 0.3, 0), yaw=-12)
+        char("office_cat", (-0.45, -0.4, 0), yaw=20, scale=2.0)
+        camera((0, -6.0, 1.4), (-0.05, 0, 1.05), ortho=ortho)   # adaptive: inside the 66 dp safe zone
+        render(path, size, size)
     print("RENDER_DONE")
 
 

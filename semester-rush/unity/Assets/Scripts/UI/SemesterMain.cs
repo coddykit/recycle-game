@@ -1,16 +1,17 @@
-// Semester Rush — the Region scene's entry point. Wires the engine-free game layer (GameSession + GameActions + Coach +
-// Commerce + SemesterRewards + ReviewHook) to the diorama (RegionWorld), the UI (GameScreen) and the CoddyUnityKit (tiers,
+// Semester Rush — the Campus scene's entry point. Wires the engine-free game layer (GameSession + GameActions + Coach +
+// Commerce + SemesterRewards + ReviewHook) to the diorama (CampusWorld), the UI (GameScreen) and the CoddyUnityKit (tiers,
 // purchases cache, house ads, rewarded, review, toasts):
 //   * data from Resources/data, strings from Resources/i18n/strings.csv, the career from
 //     persistentDataPath/semesterrush/career.json through the kit SaveRepository (GameSession);
-//   * time: the sim advances with real unscaled time; the guide pauses it while it waits for the player and runs it fast
-//     while it waits for the world; full-screen ads pause it;
-//   * events -> world walkers / toasts / first-time tips / review moments / offers;
+//   * time: the sim advances with real unscaled time; the guide pauses it while it waits for the player and runs it while
+//     it waits for the world; full-screen ads pause it;
+//   * events -> world rebuilds / toasts / first-time tips / review moments / offers;
 //   * house banner: only after the pager + guide, never over a sheet with a purchase, the pager or the loading curtain
 //     (kit rule: hidden for ad_free); the screen's bottom bar is lifted by the banner height (SafeAreaPadding);
-//   * house interstitial: only at "Next day" after a report, never in session 1 or the guide (kit pacing decides);
+//   * house interstitial: only at "Next week" after a week report (never in a live bell change or an exam), never in
+//     session 1 or the guide (kit pacing decides);
 //   * save on pause / quit, offline pay on resume (welcome-back card with the ×2 rewarded opt-in).
-// Opening the Region scene directly in the editor boots the kit itself.
+// Opening the Campus scene directly in the editor boots the kit itself.
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace SemesterRush.UI
     public sealed class SemesterMain : MonoBehaviour
     {
         public UIDocument uiDocument;
-        public RegionWorld world;
+        public CampusWorld world;
 
         public GameSession Session { get; private set; }
         public Loc Loc { get; private set; }
@@ -86,7 +87,7 @@ namespace SemesterRush.UI
             };
             Shop.LoadPrices();
             Session.ApplyPerks(kit.Purchases.Has);
-            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplyLivery(); Screen?.Refresh(true); };
+            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplyTheme(); Screen?.Refresh(true); };
             kit.Purchases.Changed += perksChanged;
             Rewards = new SemesterRewards(() => Session.Sim, kit.Rewarded) { AdFree = () => kit.Purchases.AdFree };
             Rewards.Granted += (placement, r) =>
@@ -94,6 +95,7 @@ namespace SemesterRush.UI
                 UiToastHost.Show(SemesterRewards.GrantedText(placement, r, Loc), r != null && r.Ok ? ToastKind.Success : ToastKind.Warning);
                 Session.Save();
                 world.MarkDirty();
+                Screen?.Refresh(true);
             };
 
             // actions + guide
@@ -111,9 +113,9 @@ namespace SemesterRush.UI
             UiKit.TapSound = () => Audio.Play("ui_tap");
 
             // the first 3D frame runs inside the GPU breadcrumb (a shader-compiler crash -> safe shaders next launch)
-            kit.Tiers.BeginShaderWork("region_first_frame");
+            kit.Tiers.BeginShaderWork("campus_first_frame");
             world.Init(Session.Sim, low);
-            ApplyLivery();
+            ApplyTheme();
             world.Picked += hit => Screen?.WorldPick(hit);
             tierChanged = t => { low = t == Tier.Low; UiKit.Low = low; world.SetLow(low); };
             kit.Tiers.Changed += tierChanged;
@@ -136,7 +138,7 @@ namespace SemesterRush.UI
             yield return null;
             kit.Tiers.EndShaderWork();
             SemesterBoot.Ready();
-            Track("br_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
+            Track("sr_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
 
             // onboarding: pager (once) -> guide (until done or skipped)
             if (!st.IntroDone) Screen.ShowPager(() => { st.IntroDone = true; st.Save(); BeginGuideIfNeeded(); });
@@ -155,8 +157,7 @@ namespace SemesterRush.UI
         {
             if (!Ready || Screen == null) return false;
             if (Coach.Active || Screen.PagerOpen || !Session.Settings.IntroDone) return false;
-            string k = Screen.SheetKind;
-            return k != "shop";
+            return Screen.SheetKind != "shop";
         }
 
         void Update()
@@ -165,7 +166,7 @@ namespace SemesterRush.UI
             float dt = Time.unscaledDeltaTime;
             var sim = Session.Sim;
             if (Coach.Active && !Screen.PagerOpen) Coach.Drive(sim, Actions, dt);
-            sim.SetPaused(adPause || Screen.PagerOpen || (Coach.Active && Coach.WantsPause(sim)));
+            sim.SetPaused(adPause || Screen.PagerOpen || Screen.DecisionOpen || (Coach.Active && Coach.WantsPause(sim)));
             List<SimEvent> events = Session.Tick(dt);
             foreach (var e in events) OnEvent(e);
             Screen.Tick(dt, low);
@@ -177,34 +178,39 @@ namespace SemesterRush.UI
         void OnEvent(SimEvent e)
         {
             world.OnSimEvent(e);
-            if (e.Type == "deposit" || e.Type == "turned") return;
             var sim = Session.Sim;
             switch (e.Type)
             {
-                case "day_done":
-                    Track("br_day_done", new Dictionary<string, object> { { "day", (long)e.A }, { "stars", (long)e.B } });
-                    if (!Coach.Active) Screen.OpenSheet("report");
-                    Shop.TryOffer("day_report", Coach.Active);
+                case "bell":
+                    Audio.Play("bell");
+                    if (e.B > 0 && !Coach.Active) Screen.LateFlash();
                     break;
-                case "bale": Audio.Play("baler_press"); break;
-                case "sold":
-                    Audio.Play("sold");
-                    UiToastHost.Show(Loc.F("toast.sold", "n", e.B, "cash", Fmt.Money((long)e.V, Loc.Lang)), ToastKind.Success);
-                    Track("bale_sold", new Dictionary<string, object> { { "mat", Mats.Ids[Math.Max(0, Math.Min(2, e.A))] }, { "n", (long)e.B } });
+                case "lunch": if (e.B > 0 && !Coach.Active) UiToastHost.Show(Loc.F("toast.hungry", "n", e.B), ToastKind.Warning); break;
+                case "week_done":
+                    Track("sr_week_done", new Dictionary<string, object> { { "week", (long)e.A }, { "late", (long)e.B }, { "grade_pct", (long)Math.Round(e.V * 100) } });
+                    if (e.Text == "exam") Track("sr_semester_done", new Dictionary<string, object> { { "semester", (long)sim.Semester } });
+                    if (!Coach.Active)
+                    {
+                        if (Shop.Has("speed") && Session.Settings.AutoSkipReport && e.Text != "exam") Run("next_week");
+                        else Screen.OpenSheet("report");
+                    }
+                    Shop.TryOffer("week_report", Coach.Active);
                     break;
+                case "week_start": if (e.B == 1) Shop.TryOffer("exam_week", Coach.Active); break;
+                case "built": UiToastHost.Show(Loc.F("toast.built", "name", Loc.T("building." + e.Text)), ToastKind.Success); Audio.Play("success"); break;
                 case "research_done": UiToastHost.Show(Loc.F("research.finished", "name", Loc.T("research." + e.Text + ".t")), ToastKind.Success); break;
-                case "district":
-                    UiToastHost.Show(Loc.F("toast.district", "name", Loc.T("district." + e.Text)), ToastKind.Success);
-                    Track("district_unlock", new Dictionary<string, object> { { "district", e.Text } });
+                case "zone":
+                    UiToastHost.Show(Loc.F("toast.zone", "name", Loc.T("zone." + e.Text)), ToastKind.Success);
+                    Track("zone_unlock", new Dictionary<string, object> { { "zone", e.Text } });
                     break;
                 case "crisis":
                     UiToastHost.Show(Loc.T("crisis." + e.Text + ".t") + " — " + Loc.T("crisis." + e.Text + ".b"), ToastKind.Warning);
                     Audio.Play("warning");
                     Track("crisis", new Dictionary<string, object> { { "id", e.Text } });
-                    if (e.Text == "match_day") Shop.TryOffer("match_day", Coach.Active);
                     break;
-                case "jam": Audio.Play("warning"); break;
-                case "serviced": Audio.Play("machine_crunch"); break;
+                case "decision": if (!Coach.Active) Screen.OpenSheet("decision"); break;
+                case "decided": Track("crisis_decision", new Dictionary<string, object> { { "choice", e.Text.Replace(':', '_') } }); break;
+                case "open_day_done": if (e.V > 0) UiToastHost.Show(Loc.F("toast.open_day", "cash", Fmt.Money((long)e.V, Loc.Lang)), ToastKind.Success); break;
             }
             if (!Coach.Active)
             {
@@ -219,7 +225,7 @@ namespace SemesterRush.UI
             }
             string m = review.Check(e, sim, Coach.Active);
             if (m != "") Wow(m);
-            if (Coach.Active) { Session.Settings.ReviewDeferred = review.Deferred; }
+            if (Coach.Active) Session.Settings.ReviewDeferred = review.Deferred;
         }
 
         void Wow(string moment)
@@ -229,9 +235,9 @@ namespace SemesterRush.UI
 
         static string SoundFor(string action)
         {
-            if (action.StartsWith("go")) return "truck";
             if (action.StartsWith("till")) return "coins";
-            if (action.StartsWith("buy:") || action.StartsWith("research:")) return "success";
+            if (action.StartsWith("course:") || action.StartsWith("move:") || action.StartsWith("cell:")) return "place";
+            if (action.StartsWith("buy:") || action.StartsWith("gate:") || action.StartsWith("research:")) return "success";
             return "";
         }
 
@@ -240,16 +246,16 @@ namespace SemesterRush.UI
         public ActionResult Run(string id)
         {
             var r = Actions.Run(id);
-            if (id == "next_day" && r.Ok && !Coach.Active && Session.Settings.Sessions > 1) kit.Ads?.Interstitial("day_report");
+            if (id == "next_week" && r.Ok && !Coach.Active && Session.Settings.Sessions > 1) kit.Ads?.Interstitial("week_report");
             return r;
         }
 
         public void SheetOpened(string kind) { }
         public void SheetClosed(string kind) { if (kind == "offline") LastOffline = null; }
 
-        public void ClaimReward(string placement, int target)
+        public void ClaimReward(string placement)
         {
-            if (!Rewards.Claim(placement, target)) UiToastHost.Show(Loc.T("reward.unavailable"), ToastKind.Info);
+            if (!Rewards.Claim(placement)) UiToastHost.Show(Loc.T("reward.unavailable"), ToastKind.Info);
         }
 
         public void SkipGuide()
@@ -290,14 +296,34 @@ namespace SemesterRush.UI
             Screen.OpenSheet("settings");
         }
 
+        public void SetTheme(string theme)
+        {
+            Session.Settings.Theme = theme;
+            Session.Settings.Save();
+            ApplyTheme();
+        }
+
+        public void SetAutoRepair(bool on)
+        {
+            Session.Settings.AutoRepair = on;
+            Session.Settings.Save();
+            Session.Sim.AutoRepairOn = on;
+        }
+
+        public void SetAutoSkip(bool on)
+        {
+            Session.Settings.AutoSkipReport = on;
+            Session.Settings.Save();
+        }
+
         public void ShowPrivacyOptions() => CoddyServices.Consent.ShowPrivacyOptions(_ => { });
 
-        void ApplyLivery()
+        void ApplyTheme()
         {
-            string l = Session.Settings.Livery;
-            if (l == "" && kit.Purchases.Has("gold_livery")) l = "gold_livery";
-            if (l != "" && !kit.Purchases.Has(l)) l = "";
-            world.SetLivery(l);
+            string t = Session.Settings.Theme;
+            if (t == "" && kit.Purchases.Has("gold_trim")) t = "gold_trim";
+            if (t != "" && !kit.Purchases.Has(t)) t = "";
+            world.SetTheme(t);
         }
 
         void Track(string name, Dictionary<string, object> p)

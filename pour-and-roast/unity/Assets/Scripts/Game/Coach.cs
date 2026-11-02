@@ -75,6 +75,7 @@ namespace PourAndRoast.Game
         public void Begin(Simulation sim, GameActions actions, int resumeStep = 0)
         {
             Active = true;
+            sim.S.Tutorial = true;   // safe mode (also on a replay from Settings): no random customers, no walk-outs, no crises
             Step = Math.Max(1, Math.Min(Steps, resumeStep));
             if (Step == 1) Analytics("onboarding_begin", new Dictionary<string, object>());
             Sync(sim, actions);

@@ -1,7 +1,8 @@
 // Charge Nurse — the diorama's procedural geometry. Everything in the world shares ONE material (URP Simple Lit on the
 // 8×8 palette texture Resources/materials/palette.png): a model picks colours by pointing its UVs at palette swatches, so
-// the SRP batcher draws the whole town with a handful of batches (fleet §10: Low ≤ 150 draws, the plan targets ≤ 120).
-// Builders merge many boxes into one mesh per district; nothing here runs per frame.
+// the SRP batcher draws the whole campus with a handful of batches (fleet §10: Low ≤ 150 draws, the plan targets ≤ 120).
+// A hospital theme swaps the palette texture (zero extra draws). Builders merge many boxes into one mesh per room;
+// nothing here runs per frame.
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -11,11 +12,14 @@ namespace ChargeNurse.World
     /// <summary>Palette swatch indices (Tools/make_palette.py writes the same order).</summary>
     public static class Pal
     {
-        public const int Grass = 0, GrassDark = 1, Road = 2, RoadLine = 3, Concrete = 4, WallCream = 5, WallTerracotta = 6, WallBlue = 7,
-            RoofRed = 8, RoofGrey = 9, Brand = 10, Panel = 11, TruckWhite = 12, TruckGreen = 13, Depot = 14, Water = 15, Sand = 16,
-            Tree = 17, Trunk = 18, Locked = 19, Window = 20, Pet = 21, Alu = 22, Glass = 23, Warning = 24, Yellow = 25, Litter = 26,
-            Gold = 27, Sunset = 28, Forest = 29, Tropic = 30, Retro = 31, SkinTone = 32, ShirtA = 33, ShirtB = 34, ShirtC = 35, ShirtD = 36, ShirtE = 37, Trousers = 38;
+        public const int Grass = 0, GrassDark = 1, Paving = 2, Floor = 3, Concrete = 4, WallCream = 5, WallMint = 6, WallBlue = 7,
+            Roof = 8, RoofGrey = 9, Brand = 10, Panel = 11, Sheet = 12, Curtain = 13, Corridor = 14, Glass = 15,
+            Wood = 16, Tree = 17, Trunk = 18, Locked = 19, Window = 20, TagGreen = 21, TagYellow = 22, TagOrange = 23,
+            TagRed = 24, Siren = 25, OrFloor = 26, Gold = 27, Lavender = 28, Forest = 29, TealDark = 30, Retro = 31,
+            Skin = 32, Gown = 33, Nurse = 34, Doctor = 35, Porter = 36, Cleaner = 37, Trousers = 38, Clerk = 39,
+            Tech = 40, Mattress = 41, Machine = 42, Screen = 43, Rubber = 44, White = 45;
         public const int Size = 8;
+        public static readonly int[] Tags = { TagGreen, TagYellow, TagOrange, TagRed };
 
         public static Vector2 Uv(int swatch)
         {
@@ -43,7 +47,7 @@ namespace ChargeNurse.World
             t.Add(i); t.Add(i + 3); t.Add(i + 2);
         }
 
-        /// <summary>Axis box on the ground rotated by yaw (degrees). top swatch may differ (roofs).</summary>
+        /// <summary>Axis box on the ground rotated by yaw (degrees). top swatch may differ (roofs, sheets).</summary>
         public void Box(Vector3 bottomCenter, Vector3 size, float yaw, int side, int top = -1, bool bottom = false)
         {
             if (top < 0) top = side;
@@ -60,7 +64,7 @@ namespace ChargeNurse.World
             if (bottom) Quad(p000, p100, p101, p001, side);
         }
 
-        /// <summary>A flat strip on the ground from a to b (roads), y lifted a little to avoid z-fighting.</summary>
+        /// <summary>A flat strip on the ground from a to b (corridors), y lifted a little to avoid z-fighting.</summary>
         public void Strip(Vector3 a, Vector3 b, float width, float y, int swatch)
         {
             var dir = (b - a); dir.y = 0;
@@ -70,26 +74,32 @@ namespace ChargeNurse.World
             Quad(a - side, b - side, b + side, a + side, swatch);
         }
 
-        /// <summary>A flat disc (crossings, plazas) with segs segments.</summary>
-        public void Disc(Vector3 c, float r, float y, int swatch, int segs = 10)
+        /// <summary>A flat rectangle (room floors) centred at c.</summary>
+        public void Floor(Vector3 c, float w, float d, float y, int swatch)
         {
-            var u = Pal.Uv(swatch);
-            int i0 = v.Count;
-            v.Add(new Vector3(c.x, y, c.z)); n.Add(Vector3.up); uv.Add(u);
-            for (int s = 0; s <= segs; s++)
-            {
-                float a = s * Mathf.PI * 2f / segs;
-                v.Add(new Vector3(c.x + Mathf.Cos(a) * r, y, c.z + Mathf.Sin(a) * r)); n.Add(Vector3.up); uv.Add(u);
-            }
-            for (int s = 0; s < segs; s++) { t.Add(i0); t.Add(i0 + 2 + s); t.Add(i0 + 1 + s); }
+            float x = w * 0.5f, z = d * 0.5f;
+            Quad(new Vector3(c.x - x, y, c.z - z), new Vector3(c.x - x, y, c.z + z), new Vector3(c.x + x, y, c.z + z), new Vector3(c.x + x, y, c.z - z), swatch);
         }
 
         /// <summary>A low-poly tree (trunk + two stacked boxes).</summary>
         public void Tree(Vector3 at, float s, float yaw)
         {
-            Box(at, new Vector3(0.6f, 2.2f, 0.6f) * s, yaw, Pal.Trunk);
-            Box(at + Vector3.up * 2f * s, new Vector3(3.2f, 2.4f, 3.2f) * s, yaw + 15f, Pal.Tree);
-            Box(at + Vector3.up * 4.2f * s, new Vector3(2f, 1.6f, 2f) * s, yaw + 40f, Pal.Tree);
+            Box(at, new Vector3(0.3f, 1.4f, 0.3f) * s, yaw, Pal.Trunk);
+            Box(at + Vector3.up * 1.2f * s, new Vector3(1.8f, 1.5f, 1.8f) * s, yaw + 15f, Pal.Tree);
+            Box(at + Vector3.up * 2.6f * s, new Vector3(1.1f, 1.0f, 1.1f) * s, yaw + 40f, Pal.Tree);
+        }
+
+        /// <summary>Cut-away room: floor, tall back + side walls, a knee-high front wall (the camera looks in from the south).</summary>
+        public void Room(Vector3 c, float w, float d, int floor, int wall, bool open)
+        {
+            Floor(c, w, d, 0.06f, floor);
+            if (!open) { Box(c, new Vector3(w, 3.2f, d), 0, Pal.Locked, Pal.RoofGrey); return; }
+            float x = w * 0.5f, z = d * 0.5f, th = 0.25f;
+            Box(c + new Vector3(0, 0, z), new Vector3(w, 2.6f, th), 0, wall, Pal.Panel);
+            Box(c + new Vector3(-x, 0, 0), new Vector3(th, 2.6f, d), 0, wall, Pal.Panel);
+            Box(c + new Vector3(x, 0, 0), new Vector3(th, 2.6f, d), 0, wall, Pal.Panel);
+            Box(c + new Vector3(-x * 0.55f, 0, -z), new Vector3(w * 0.45f, 0.5f, th), 0, wall, Pal.Panel);   // door gap in the middle
+            Box(c + new Vector3(x * 0.55f, 0, -z), new Vector3(w * 0.45f, 0.5f, th), 0, wall, Pal.Panel);
         }
 
         public Mesh Build(string name)
@@ -105,77 +115,108 @@ namespace ChargeNurse.World
             return m;
         }
 
+        /// <summary>A mesh whose UVs change later (the corridor heat map): keeps the CPU copy.</summary>
+        public Mesh BuildDynamic(string name, out List<Vector2> uvs)
+        {
+            var m = new Mesh { name = name };
+            m.MarkDynamic();
+            m.SetVertices(v);
+            m.SetNormals(n);
+            m.SetUVs(0, uv);
+            m.SetTriangles(t, 0);
+            m.RecalculateBounds();
+            uvs = new List<Vector2>(uv);
+            return m;
+        }
+
         // ------------------------------------------------------------------ props (fallbacks when the Blender kit is absent)
 
-        public static Mesh Machine(bool big)
+        public static Mesh Bed(bool bay)
         {
             var k = new MeshKit();
-            float h = big ? 5.2f : 4.2f, w = big ? 4.4f : 3.2f;
-            k.Box(Vector3.zero, new Vector3(w, h, 2.4f), 0, Pal.Brand, Pal.Brand);
-            k.Box(new Vector3(0, h * 0.45f, -1.25f), new Vector3(w * 0.7f, h * 0.35f, 0.1f), 0, Pal.Panel);
-            k.Box(new Vector3(0, h * 0.82f, -1.25f), new Vector3(w * 0.45f, h * 0.12f, 0.1f), 0, Pal.Window);
-            k.Box(new Vector3(0, h, 0), new Vector3(w + 0.4f, 0.35f, 2.8f), 0, Pal.Panel);
-            return k.Build(big ? "machine_m" : "machine_s");
-        }
-
-        public static Mesh Shop()
-        {
-            var k = new MeshKit();
-            k.Box(Vector3.zero, new Vector3(6f, 4f, 5f), 0, Pal.WallCream, Pal.RoofRed);
-            k.Box(new Vector3(0, 2.6f, -2.7f), new Vector3(6.4f, 0.3f, 1.6f), 0, Pal.Brand);
-            k.Box(new Vector3(-1.5f, 0, -3f), new Vector3(1.4f, 1.2f, 1f), 0, Pal.Pet);
-            return k.Build("shop");
-        }
-
-        public static Mesh Horeca()
-        {
-            var k = new MeshKit();
-            k.Box(Vector3.zero, new Vector3(7f, 4.5f, 6f), 0, Pal.WallTerracotta, Pal.RoofGrey);
-            for (int i = -1; i <= 1; i += 2)
+            k.Box(new Vector3(0, 0, 0), new Vector3(1.0f, 0.55f, 2.1f), 0, Pal.Panel, Pal.Mattress);
+            k.Box(new Vector3(0, 0.55f, 0.15f), new Vector3(0.95f, 0.12f, 1.6f), 0, Pal.Sheet);
+            k.Box(new Vector3(0, 0.55f, 0.85f), new Vector3(0.7f, 0.18f, 0.35f), 0, Pal.White);    // pillow
+            k.Box(new Vector3(0, 0, 1.05f), new Vector3(1.05f, 1.0f, 0.08f), 0, Pal.Panel);       // headboard
+            if (bay)
             {
-                k.Box(new Vector3(i * 2.4f, 0, -5f), new Vector3(0.2f, 2.6f, 0.2f), 0, Pal.Trunk);
-                k.Box(new Vector3(i * 2.4f, 2.6f, -5f), new Vector3(2.6f, 0.25f, 2.6f), 45, Pal.Sunset);
+                k.Box(new Vector3(-0.8f, 0, 0), new Vector3(0.05f, 2.0f, 2.2f), 0, Pal.Curtain);    // curtain
+                k.Box(new Vector3(0.75f, 0, 0.8f), new Vector3(0.35f, 1.2f, 0.35f), 0, Pal.Machine);  // monitor stand
+                k.Box(new Vector3(0.75f, 1.2f, 0.8f), new Vector3(0.45f, 0.35f, 0.1f), 0, Pal.Screen);
             }
-            k.Box(new Vector3(3.6f, 0, 1f), new Vector3(1.2f, 1.4f, 1.6f), 0, Pal.Glass);
-            return k.Build("horeca");
+            return k.Build(bay ? "bay" : "bed");
         }
 
-        public static Mesh Truck(string type)
+        public static Mesh Desk()
         {
             var k = new MeshKit();
-            switch (type)
+            k.Box(Vector3.zero, new Vector3(2.6f, 1.05f, 0.8f), 0, Pal.Brand, Pal.Wood);
+            k.Box(new Vector3(-0.6f, 1.05f, 0.1f), new Vector3(0.5f, 0.35f, 0.08f), 0, Pal.Screen);
+            return k.Build("desk");
+        }
+
+        public static Mesh Chairs(int n)
+        {
+            var k = new MeshKit();
+            for (int i = 0; i < n; i++)
             {
-                case "bike":
-                    k.Box(new Vector3(0, 0.5f, 0.8f), new Vector3(1.4f, 1.3f, 1.8f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0, -1.2f), new Vector3(0.3f, 1.6f, 0.3f), 0, Pal.Window);
-                    k.Box(new Vector3(0, 0, 0), new Vector3(0.25f, 0.6f, 3.2f), 0, Pal.Window);
-                    break;
-                case "compactor":
-                    k.Box(new Vector3(0, 0.6f, 2.6f), new Vector3(2.6f, 2.6f, 1.8f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0.6f, -0.8f), new Vector3(2.8f, 3.2f, 5f), 0, Pal.TruckGreen);
-                    k.Box(new Vector3(0, 1.6f, 3.52f), new Vector3(2.2f, 1f, 0.05f), 0, Pal.Window);
-                    for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * 1.3f, 0, j * 2f), new Vector3(0.5f, 1.1f, 1.1f), 0, Pal.Window);
-                    break;
-                default:
-                    k.Box(new Vector3(0, 0.5f, 1.6f), new Vector3(2.2f, 2f, 1.4f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0.5f, -0.6f), new Vector3(2.3f, 2.5f, 3.2f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 1.4f, 2.32f), new Vector3(1.9f, 0.8f, 0.05f), 0, Pal.Window);
-                    k.Box(new Vector3(0, 1.2f, -0.6f), new Vector3(2.35f, 0.5f, 3f), 0, Pal.Brand);
-                    for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * 1.1f, 0, j * 1.4f), new Vector3(0.4f, 0.9f, 0.9f), 0, Pal.Window);
-                    break;
+                float x = (i - (n - 1) * 0.5f) * 0.9f;
+                k.Box(new Vector3(x, 0, 0), new Vector3(0.7f, 0.45f, 0.65f), 0, Pal.Machine, Pal.Brand);
+                k.Box(new Vector3(x, 0.45f, 0.28f), new Vector3(0.7f, 0.5f, 0.1f), 0, Pal.Brand);
             }
-            return k.Build("truck_" + type);
+            return k.Build("chairs" + n);
         }
 
-        /// <summary>The chunky canonical walker (crowd), ~2.6 units tall so it reads at map zoom. shirt = archetype colour.</summary>
-        public static Mesh Figure(int shirt)
+        public static Mesh Machine(string kind)
         {
             var k = new MeshKit();
-            k.Box(new Vector3(-0.35f, 0, 0), new Vector3(0.5f, 1.1f, 0.6f), 0, Pal.Trousers);
-            k.Box(new Vector3(0.35f, 0, 0), new Vector3(0.5f, 1.1f, 0.6f), 0, Pal.Trousers);
-            k.Box(new Vector3(0, 1.1f, 0), new Vector3(1.4f, 1.1f, 0.8f), 0, shirt);
-            k.Box(new Vector3(0, 2.2f, 0), new Vector3(0.8f, 0.7f, 0.8f), 0, Pal.SkinTone);
-            k.Box(new Vector3(0.95f, 0.7f, 0), new Vector3(0.6f, 0.8f, 0.6f), 0, Pal.Pet);   // the bottle bag
+            switch (kind)
+            {
+                case "ct":
+                    k.Box(new Vector3(0, 0, 0.6f), new Vector3(2.4f, 2.2f, 0.9f), 0, Pal.White, Pal.Panel);
+                    k.Box(new Vector3(0, 0.9f, 0.08f), new Vector3(0.9f, 0.9f, 0.1f), 0, Pal.Window);
+                    k.Box(new Vector3(0, 0, -0.8f), new Vector3(0.7f, 0.75f, 2.0f), 0, Pal.Machine, Pal.Sheet);
+                    break;
+                case "lab":
+                    k.Box(Vector3.zero, new Vector3(3.0f, 0.95f, 0.8f), 0, Pal.Panel, Pal.White);
+                    for (int i = 0; i < 3; i++) k.Box(new Vector3(-1 + i, 0.95f, 0), new Vector3(0.45f, 0.5f, 0.45f), 0, Pal.Machine, Pal.Screen);
+                    break;
+                case "or":
+                    k.Box(Vector3.zero, new Vector3(0.9f, 0.9f, 2.0f), 0, Pal.Machine, Pal.Curtain);
+                    k.Box(new Vector3(0, 2.4f, 0), new Vector3(1.2f, 0.2f, 1.2f), 0, Pal.Panel, Pal.Screen);   // lamp
+                    k.Box(new Vector3(1.2f, 0, 0.6f), new Vector3(0.6f, 1.3f, 0.5f), 0, Pal.Machine, Pal.Screen);
+                    break;
+                default: // xray
+                    k.Box(new Vector3(0, 0, 0), new Vector3(0.8f, 0.8f, 2.0f), 0, Pal.Machine, Pal.Sheet);
+                    k.Box(new Vector3(0, 0, 1.2f), new Vector3(0.35f, 2.4f, 0.35f), 0, Pal.Panel);
+                    k.Box(new Vector3(0, 1.8f, 0.6f), new Vector3(0.6f, 0.4f, 1.2f), 0, Pal.Panel, Pal.Brand);
+                    break;
+            }
+            return k.Build("machine_" + kind);
+        }
+
+        public static Mesh Ambulance()
+        {
+            var k = new MeshKit();
+            k.Box(new Vector3(0, 0.35f, 1.6f), new Vector3(2.0f, 1.6f, 1.3f), 0, Pal.White);
+            k.Box(new Vector3(0, 0.35f, -0.6f), new Vector3(2.1f, 2.2f, 3.2f), 0, Pal.White);
+            k.Box(new Vector3(0, 1.2f, -0.6f), new Vector3(2.14f, 0.35f, 3.0f), 0, Pal.TagRed);
+            k.Box(new Vector3(0, 1.3f, 2.27f), new Vector3(1.7f, 0.6f, 0.05f), 0, Pal.Window);
+            k.Box(new Vector3(0, 2.55f, 0.6f), new Vector3(1.2f, 0.18f, 0.3f), 0, Pal.Siren);
+            for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * 1.0f, 0, j * 1.3f), new Vector3(0.35f, 0.8f, 0.8f), 0, Pal.Rubber);
+            return k.Build("ambulance");
+        }
+
+        /// <summary>The chunky canonical figure (people), ~1.8 m; drawn ×1.4 so it reads at campus zoom. shirt = role colour.</summary>
+        public static Mesh Figure(int shirt, int legs = Pal.Trousers)
+        {
+            var k = new MeshKit();
+            k.Box(new Vector3(-0.17f, 0, 0), new Vector3(0.26f, 0.8f, 0.3f), 0, legs);
+            k.Box(new Vector3(0.17f, 0, 0), new Vector3(0.26f, 0.8f, 0.3f), 0, legs);
+            k.Box(new Vector3(0, 0.8f, 0), new Vector3(0.7f, 0.65f, 0.4f), 0, shirt);
+            k.Box(new Vector3(-0.45f, 0.85f, 0), new Vector3(0.18f, 0.55f, 0.22f), 0, shirt);
+            k.Box(new Vector3(0.45f, 0.85f, 0), new Vector3(0.18f, 0.55f, 0.22f), 0, shirt);
+            k.Box(new Vector3(0, 1.45f, 0), new Vector3(0.42f, 0.4f, 0.42f), 0, Pal.Skin);
             return k.Build("figure_" + shirt);
         }
     }

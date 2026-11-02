@@ -1,14 +1,16 @@
 // Charge Nurse — bottom sheets (CoddyKit BottomSheet: content-sized, finger scroll with inertia, no visible scrollbar,
 // one action pill per card, fleet §16 / §17). Every sheet is rebuilt from the sim when something changed, never under a
 // finger. Guide targets inside a sheet are named "Target_<target>" so the spotlight can find them.
-//   point     fill + estimate/live, today's numbers, service rule chips, upgrades, technician, emergency empty (rewarded)
-//   depot     till, count lines, baler, yard / glass bay, sell buttons (today's price), depot upgrades, baler rescue (rewarded)
-//   fleet     trucks (status, load, auto), drivers / technicians, buy trucks, fuel voucher (rewarded)
-//   network   districts (unlock), free sites to build on (machines / shops / café contracts), dispatch office, counting centre
-//   research  three branches, one project at a time, ≤ 20 min
+//   patient   the card: symptoms, the colour buttons (shape + colour), send to a free bay, discharge
+//   bed       a bay / ward bed: who is in it, discharge, clean
+//   board     the capacity board (plan §4): the bottleneck sentence, beds by ward, boarders, next discharges, queue rule,
+//             diversion rule, surge team, float staff / neighbour hospital (rewarded), daily bonus
+//   staff     six teams: size, how busy, fatigue, hire; technicians per room; burnout
+//   build     wings, rooms (X-ray / lab / CT / OR), bays, ward beds
+//   research  upgrades on shift time (care · flow · comfort · resilience), one at a time
 //   shop      offer, ad-free & packs, upgrades, looks, cash (store prices only), Restore
-//   settings  language, music / effects, graphics tier, replay the guide, privacy options (UMP) + policy link, restore
-//   report    the day report: stars, numbers, Green Rating, Next day   ·   offline  the welcome-back card (×2 rewarded)
+//   settings  language, music / effects, graphics tier, hospital theme, replay the guide, privacy options (UMP) + policy
+//   report    the shift report: stars, numbers, reputation, Next day   ·   offline  the welcome-back card (×2 rewarded)
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -50,10 +52,11 @@ namespace ChargeNurse.UI
             sheet.Actions.Clear();
             switch (sheetKind)
             {
-                case "point": FillPoint(sheetArg); break;
-                case "depot": FillDepot(); break;
-                case "fleet": FillFleet(); break;
-                case "network": FillNetwork(); break;
+                case "patient": FillPatient(sheetArg); break;
+                case "bed": FillBed(sheetArg); break;
+                case "board": FillBoard(); break;
+                case "staff": FillStaff(); break;
+                case "build": FillBuild(); break;
                 case "research": FillResearch(); break;
                 case "shop": FillShop(); break;
                 case "settings": FillSettings(); break;
@@ -88,199 +91,226 @@ namespace ChargeNurse.UI
         VisualElement KV(string k, string v, string cls = "")
         {
             var r = new VisualElement();
-            r.AddToClassList("br-row");
-            r.Add(UiKit.Text(k, "br-row__k"));
-            var vl = UiKit.Text(v, "br-row__v");
+            r.AddToClassList("cn-row");
+            r.Add(UiKit.Text(k, "cn-row__k"));
+            var vl = UiKit.Text(v, "cn-row__v");
             if (cls != "") vl.AddToClassList(cls);
             r.Add(vl);
             Add(r);
             return r;
         }
 
-        string BuyLabel(BuyInfo b) => b.Ok ? Money(b.Cost) : b.Reason == "cash" ? Money(b.Cost) : L.T("err." + b.Reason);
+        VisualElement ChipRow() => new VisualElement { style = { flexDirection = FlexDirection.Row, flexWrap = Wrap.Wrap } };
+
+        string BuyLabel(BuyInfo b) => b.Ok || b.Reason == "cash" ? Money(b.Cost) : L.T("err." + b.Reason);
 
         void Buy(string item) => main.Run("buy:" + item);
 
-        void RewardCard(string placement, string key, int target = -1)
+        void RewardCard(string placement)
         {
-            var o = main.Rewards?.Get(placement, target);
+            var o = main.Rewards?.Get(placement);
             if (o == null || !o.Show) return;
             string label = Simulation.RewardIsCash(placement)
                 ? L.F(o.Video ? "reward.video_cash" : "reward.free_cash", "cash", Money(o.Amount))
                 : L.T(o.Video ? "reward.video" : "reward.claim");
-            Card(L.T("reward." + key + ".t"), o.Video ? L.T("reward." + key + ".b") : L.T("reward.free.b"), label, () => main.ClaimReward(placement, target), true, "tonal");
+            string body = placement == "call_neighbor" ? L.F("reward.call_neighbor.b", "n", (long)o.Amount)
+                : placement == "float_nurse" ? L.F("reward.float_nurse.b", "team", L.T("team." + Sim.FloatTarget()))
+                : L.T("reward." + placement + ".b");
+            Card(L.T("reward." + placement + ".t"), o.Video ? body : body + " " + L.T("reward.free.b"), label, () => main.ClaimReward(placement), true, "tonal");
         }
 
-        // ------------------------------------------------------------------ point
+        string WardName(Bed b) => b.Bay ? L.T("zone.bays") : L.T("ward." + Sim.WardOf(b));
 
-        void FillPoint(int i)
+        int BayNumber(int bed)
         {
-            if (i < 0 || i >= Sim.S.Points.Count) { CloseSheet(); return; }
-            var p = Sim.S.Points[i];
-            var node = Sim.NodeOf(p);
-            Title(L.T("place." + node.Id), L.T("kind." + p.Kind) + " · " + L.T("district." + node.District));
-            double pct = Sim.DisplayPct(p);
-            KV(L.F("point.fill", "pct", Fmt.Pct(pct, L.Lang)), Sim.DisplayIsLive(p) ? L.T("point.live") : p.SensorOffline ? L.T("point.offline") : L.T("point.estimate"),
-                Sim.IsFull(p) ? "br-row__v--bad" : "");
-            if (p.Jammed) Add(UiKit.Text(L.T("point.jammed"), "coddy-body"));
-            else if (p.BusyUntil > Sim.S.Minute) Add(UiKit.Text(L.T("point.busy"), "coddy-body"));
-            else if (Sim.IsFull(p)) Add(UiKit.Text(L.T("point.full"), "coddy-body"));
-            if (node.Alley) Add(UiKit.Text(L.T("point.alley"), "coddy-caption-muted"));
-            Add(UiKit.Text(L.F("point.today", "dep", p.Deposited, "turned", p.Turned), "coddy-caption-muted"));
-
-            if (p.Jammed || p.SensorOffline)
-                Card(L.T("point.send_tech"), L.F("fleet.techs", "n", Sim.FreeTechs), p.TechCalled ? L.T("point.tech_on_way") : L.T("point.send_tech"),
-                    () => main.Run("tech:point:" + i), !p.TechCalled && Sim.FreeTechs > 0);
-            RewardCard("emergency_empty", "empty", i);
-
-            Section(L.T("policy.title"));
-            Add(UiKit.Text(L.T("policy.help"), "coddy-caption-muted"));
-            var chips = new VisualElement { style = { flexDirection = FlexDirection.Row, flexWrap = Wrap.Wrap } };
-            void Chip(string text, string action, bool on, string target)
-            {
-                var b = UiKit.ActionPill(text, () => main.Run(action), true, on ? "primary" : "tonal");
-                if (target != null) b.name = "Target_" + target;
-                chips.Add(b);
-            }
-            foreach (int th in Policies.Thresholds)
-                Chip(L.F("policy.threshold", "pct", Fmt.Pct(th / 100.0, L.Lang)), "policy:" + i + ":threshold:" + th, p.Policy == Policies.Threshold && p.Threshold == th,
-                    th == 80 ? "policy_" + i : null);
-            foreach (int d in Policies.FixedDays)
-                Chip(d == 1 ? L.T("policy.fixed1") : L.F("policy.fixed", "n", d), "policy:" + i + ":fixed:" + d, p.Policy == Policies.Fixed && p.FixedEvery == d, null);
-            Chip(L.T("policy.call"), "policy:" + i + ":call:0", p.Policy == Policies.Call, null);
-            Add(chips);
-
-            if (p.IsMachine)
-            {
-                Section(L.T("upgrade.title"));
-                var bin = Sim.CanBuy("bin_m:" + i);
-                if (bin.Reason != "owned") Card(L.T("upgrade.bin_m"), L.T("upgrade.bin_m.d"), BuyLabel(bin), () => Buy("bin_m:" + i), bin.Ok, "primary", "upgrade:" + i);
-                var comp = Sim.CanBuy("compactor:" + i);
-                if (comp.Reason != "owned") Card(L.T("upgrade.compactor"), L.T("upgrade.compactor.d"), BuyLabel(comp), () => Buy("compactor:" + i), comp.Ok);
-                var sen = Sim.CanBuy("sensor:" + i);
-                if (sen.Reason != "owned") Card(L.T("upgrade.sensor"), L.T("upgrade.sensor.d"), BuyLabel(sen), () => Buy("sensor:" + i), sen.Ok);
-            }
+            int n = 0;
+            for (int i = 0; i <= bed && i < Sim.S.Beds.Count; i++) if (Sim.S.Beds[i].Bay == Sim.S.Beds[bed].Bay && (Sim.S.Beds[bed].Bay || Sim.WardOf(Sim.S.Beds[i]) == Sim.WardOf(Sim.S.Beds[bed]))) n++;
+            return n;
         }
 
-        // ------------------------------------------------------------------ depot
+        // ------------------------------------------------------------------ patient
 
-        void FillDepot()
+        void FillPatient(int id)
         {
-            var d = Sim.S.Depot;
-            Title(L.T("depot.title"), L.F("depot.lines", "n", d.Lines, "rate", (long)Math.Round(Sim.CountPerMinute * 60)));
-            double till = Math.Floor(d.Till);
-            Card(till >= 1 ? L.F("depot.till", "cash", Money(till)) : L.T("depot.till_empty"), L.F("depot.intake", "n", (long)Math.Round(d.IntakeTotal)),
-                L.T("common.ok"), () => main.Run("till"), till >= 1, "primary", "coins");
-            int gate = 0;
-            foreach (var t in Sim.S.Trucks) if (t.Status == TruckStatus.Wait) gate++;
-            if (gate > 0) Add(UiKit.Text(L.F("depot.gate", "n", gate), "coddy-body"));
+            var p = Sim.P(id);
+            if (p == null) { CloseSheet(); return; }
+            Title(L.F("patient.title", "n", p.Id), L.T("stage." + p.Stage) + (p.Amb ? " · " + L.T("patient.ambulance") : ""));
+            Add(UiKit.Text(L.T("clue." + p.Sev + "." + (p.Id % 3)), "coddy-body"));
+            if (!p.Seen) Add(UiKit.Text(L.F("patient.waited", "min", (long)Math.Round(p.Wait)), "coddy-caption-muted"));
+            if (p.Test != "") Add(UiKit.Text(L.F("patient.test", "room", L.T("room." + p.Test)), "coddy-caption-muted"));
+            if (p.Stage == Stage.Board) Add(UiKit.Text(L.F("patient.board", "ward", L.T("ward." + p.Ward)), "coddy-caption-muted"));
+            if (p.NoteLost) Add(UiKit.Text(L.T("patient.note_lost"), "coddy-caption-muted"));
 
-            Section(L.T("depot.baler"), d.BalerDown ? L.T("depot.baler_down") : "");
-            int pressing = d.Press[Mats.Alu] > d.Press[Mats.Pet] ? Mats.Alu : Mats.Pet;
-            double press = d.Press[pressing] / Sim.Gd.Materials[pressing].BaleKg;
-            Add(UiKit.Text(d.BalerDown ? L.T("depot.baler_down") : press > 0 ? L.F("depot.baler_ok", "mat", L.T("mat." + Mats.Ids[pressing]), "pct", Fmt.Pct(press, L.Lang)) : L.T("depot.baler_idle"), "coddy-body"));
-            if (d.BalerDown)
+            if (!p.Seen && Stage.PreDoctor(p.Stage))
             {
-                Card(L.T("point.send_tech"), L.F("fleet.techs", "n", Sim.FreeTechs), L.T("point.send_tech"), () => main.Run("tech:baler:0"), Sim.FreeTechs > 0);
-                RewardCard("baler_rescue", "baler");
-            }
-            Add(UiKit.Text(Sim.YardFull ? L.T("depot.yard_full") : L.F("depot.yard", "n", d.Yard, "cap", d.YardCap), "coddy-caption-muted"));
-            Add(UiKit.Text(L.F("depot.glass", "n", d.Bales[Mats.Glass], "cap", Sim.GlassBayCap), "coddy-caption-muted"));
-            for (int m = 0; m < Mats.N; m++)
-            {
-                int mm = m;
-                int n = d.Bales[m];
-                double price = Sim.BalePrice(m);
-                Card(L.T("mat." + Mats.Ids[m]), L.F("depot.price", "pct", Fmt.Pct(Sim.MarketMult(m), L.Lang)),
-                    n > 0 ? L.F("depot.sell", "n", n, "cash", Money(Math.Round(n * price))) : L.T("depot.none"), () => main.Run("sell:" + mm), n > 0, "primary", "sell:" + m);
-            }
-            Section(L.T("upgrade.title"));
-            foreach (var item in new[] { "line", "intake", "yard", "centre" })
-            {
-                var b = Sim.CanBuy(item);
-                if (b.Reason == "owned" || b.Reason == "max") continue;
-                string it = item;
-                Card(L.T("buy." + item), L.T("buy." + item + ".d"), BuyLabel(b), () => Buy(it), b.Ok);
-            }
-        }
-
-        // ------------------------------------------------------------------ fleet
-
-        void FillFleet()
-        {
-            Title(L.T("tab.fleet"), L.F("fleet.drivers", "n", Sim.S.Drivers, "m", Sim.S.Trucks.Count) + " · " + L.F("fleet.techs", "n", Sim.S.Techs));
-            for (int i = 0; i < Sim.S.Trucks.Count; i++)
-            {
-                int ti = i;
-                var t = Sim.S.Trucks[i];
-                string sub = L.T("truck.status." + t.Status) + " · " + L.F("truck.load", "pct", Fmt.Pct(Sim.LoadPct(t), L.Lang))
-                    + (t.Stops.Count > 0 ? " · " + L.F("truck.stops", "n", t.Stops.Count) : "") + (Sim.LoadLimitedByWeight(t) && Sim.LoadPct(t) > 0.5 ? " · " + L.T("truck.weight") : "");
-                if (t.Busy && (t.Status == TruckStatus.Drive || t.Status == TruckStatus.Service))
-                    Card(L.F("truck.name", "type", L.T("truck." + t.Type), "n", i + 1), sub, L.T("truck.recall"), () => main.Run("recall:" + ti), true, "tonal");
-                else if (t.Status == TruckStatus.Broken)
-                    Card(L.F("truck.name", "type", L.T("truck." + t.Type), "n", i + 1), sub, L.T("point.send_tech"), () => main.Run("tech:truck:" + ti), Sim.FreeTechs > 0, "tonal");
-                else
-                    Card(L.F("truck.name", "type", L.T("truck." + t.Type), "n", i + 1), sub, L.T("truck.suggest"), () => { CloseSheet(); main.Run("select_truck:" + ti); main.Run("suggest"); }, !t.Busy, "tonal");
-                if (Sim.S.Depot.Dispatcher)
+                Section(L.T("patient.tag"), p.Tag >= 0 ? TagShape[p.Tag] + " " + L.T("tag." + Sev.Ids[p.Tag]) : "");
+                Add(UiKit.Text(L.T("patient.tag_help"), "coddy-caption-muted"));
+                var row = ChipRow();
+                for (int t = 0; t < Sev.N; t++)
                 {
-                    var tog = UiKit.ActionPill(L.T("truck.auto"), () => main.Run("auto:" + ti + ":" + (t.Auto ? 0 : 1)), true, t.Auto ? "primary" : "tonal");
-                    Add(tog);
+                    int tt = t;
+                    var b = UiKit.ActionPill(TagShape[t] + " " + L.T("tag." + Sev.Ids[t]), () => main.Run("tag:" + p.Id + ":" + tt), true, p.Tag == t ? "primary" : "tonal");
+                    b.name = "Target_tag_" + t;
+                    b.style.borderLeftColor = ColorOfTag(t);
+                    b.style.borderLeftWidth = 6;
+                    row.Add(b);
                 }
+                Add(row);
             }
-            RewardCard("fuel_voucher", "fuel");
-            Section(L.T("upgrade.title"));
-            var drv = Sim.CanBuy("driver");
-            if (drv.Reason != "max") Card(L.T("buy.driver"), L.T("buy.driver.d"), BuyLabel(drv), () => Buy("driver"), drv.Ok, "primary", "hire");
-            var tech = Sim.CanBuy("tech");
-            if (tech.Reason != "max") Card(L.T("buy.tech"), L.T("buy.tech.d"), BuyLabel(tech), () => Buy("tech"), tech.Ok);
-            foreach (var type in Sim.Gd.VehicleOrder)
+            if (p.Stage == Stage.Bay)
             {
-                var b = Sim.CanBuy("truck:" + type);
-                if (b.Reason == "max") continue;
-                string tt = type;
-                Card(L.T("truck." + type), L.T("truck." + type + ".d"), b.Reason == "research" ? L.T("err.research") : BuyLabel(b), () => Buy("truck:" + tt), b.Ok);
+                int bay = -1;
+                for (int i = 0; i < Sim.S.Beds.Count; i++) if (Sim.S.Beds[i].Bay && Sim.S.Beds[i].State == BedState.Clean && Sim.S.Beds[i].Patient < 0) { bay = i; break; }
+                Card(L.T("patient.send"), bay >= 0 ? L.T("patient.send.d") : L.T("err.bay_busy"), bay >= 0 ? L.F("patient.send_to", "n", BayNumber(bay)) : L.T("err.bay_busy"),
+                    () => main.Run("assign:" + bay), bay >= 0, "primary", "send");
+            }
+            if (p.Stage == Stage.Ready || p.Stage == Stage.WardReady || p.Stage == Stage.Lounge)
+                Card(L.T("patient.discharge"), L.T("patient.discharge.d"), L.T("patient.discharge"), () => main.Run("discharge:" + p.Id));
+        }
+
+        // ------------------------------------------------------------------ bed
+
+        void FillBed(int b)
+        {
+            if (b < 0 || b >= Sim.S.Beds.Count) { CloseSheet(); return; }
+            var bed = Sim.S.Beds[b];
+            Title(L.F(bed.Bay ? "bed.bay" : "bed.ward", "n", BayNumber(b), "ward", WardName(bed)), L.T("bedstate." + bed.State));
+            var p = bed.Patient >= 0 ? Sim.P(bed.Patient) : null;
+            if (p != null)
+            {
+                Card(L.F("patient.title", "n", p.Id), (p.Tag >= 0 ? TagShape[p.Tag] + " " + L.T("tag." + Sev.Ids[p.Tag]) + " · " : "") + L.T("stage." + p.Stage), L.T("common.open"),
+                    () => OpenSheet("patient", p.Id), true, "tonal");
+                if (p.Stage == Stage.Stay) Add(UiKit.Text(L.F("bed.stay_left", "time", Fmt.ClockMin(Math.Min(Sim.Gd.DayEnd, Sim.S.Minute + p.Left))), "coddy-caption-muted"));
+                if (p.Stage == Stage.Ready || p.Stage == Stage.WardReady) Card(L.T("patient.discharge"), L.T("patient.discharge.d"), L.T("patient.discharge"), () => main.Run("discharge:" + p.Id));
+            }
+            if (bed.State == BedState.Dirty || bed.State == BedState.Cleaning)
+                Card(L.T("bed.clean"), L.T("bed.clean.d"), L.T("bed.clean"), () => main.Run("clean:" + b));
+        }
+
+        // ------------------------------------------------------------------ board
+
+        void FillBoard()
+        {
+            var s = Sim.S;
+            Title(L.T("tab.board"), L.F("board.sub", "r", Fmt.Rating(s.Reputation), "pct", Fmt.Pct(Math.Min(9.99, Sim.EdLoad()), L.Lang)));
+            var bn = Sim.FindBottleneck();
+            Card(L.T("lens.short." + bn.Key), L.T("lens." + bn.Key), L.T("board.show"), () => { CloseSheet(); main.Run("lens"); }, true, "tonal");
+            if (s.Phase == Phases.Plan)
+            {
+                var crises = Sim.ActiveCrises();
+                Add(UiKit.Text(crises.Count == 0 ? L.T("board.forecast_calm") : L.F("board.forecast", "list", string.Join(", ", crises.ConvertAll(c => L.T("crisis." + c + ".t")))), "coddy-body"));
+                RewardCard("daily_bonus");
+            }
+            RewardCard("call_neighbor");
+            RewardCard("float_nurse");
+            var surge = Sim.CanBuy("surge");
+            if (Sim.SurgeDay && surge.Reason != "context")
+                Card(L.T("board.surge"), L.T("board.surge.d"), surge.Reason == "owned" ? L.T("board.surge_on") : BuyLabel(surge), () => Buy("surge"), surge.Ok, "primary");
+
+            Section(L.T("board.capacity"));
+            int bays = 0, baysUsed = 0, board = 0;
+            foreach (var b in s.Beds) if (b.Bay) { bays++; if (b.State != BedState.Clean) baysUsed++; }
+            foreach (var p in s.Patients) if (p.Stage == Stage.Board) board++;
+            KV(L.T("zone.bays"), L.F("board.used", "n", baysUsed, "m", bays));
+            KV(L.T("board.boarding"), Fmt.Int(board, L.Lang), board > 0 ? "cn-row__v--bad" : "");
+            foreach (var w in new[] { "obs", "general", "surgical", "icu" })
+            {
+                int n = Sim.BedsIn(w);
+                if (n == 0) continue;
+                int busy = 0, dirty = 0, closed = 0, soon = 0;
+                foreach (var b in s.Beds)
+                {
+                    if (b.Bay || Sim.WardOf(b) != w) continue;
+                    if (b.State == BedState.Busy) busy++;
+                    else if (b.State == BedState.Dirty || b.State == BedState.Cleaning) dirty++;
+                    else if (b.State == BedState.Closed) closed++;
+                    var p = b.Patient >= 0 ? Sim.P(b.Patient) : null;
+                    if (p != null && (p.Stage == Stage.WardReady || (p.Stage == Stage.Stay && p.Left <= 60))) soon++;
+                }
+                KV(L.T("ward." + w), L.F("board.ward", "busy", busy, "n", n, "dirty", dirty, "soon", soon) + (closed > 0 ? " · " + L.F("board.closed", "n", closed) : ""), busy + closed >= n ? "cn-row__v--bad" : "");
+            }
+
+            Section(L.T("rule.queue"));
+            Add(UiKit.Text(L.T("rule.queue.help"), "coddy-caption-muted"));
+            var row = ChipRow();
+            foreach (var q in QueueRules.All)
+            {
+                string qq = q;
+                row.Add(UiKit.ActionPill(L.T("rule." + q), () => main.Run("queue:" + qq), true, s.Queue == q ? "primary" : "tonal"));
+            }
+            Add(row);
+            Section(L.T("rule.divert"));
+            if (!Sim.Has("diversion_rules")) Add(UiKit.Text(L.T("rule.divert.locked"), "coddy-caption-muted"));
+            else
+            {
+                var dr = ChipRow();
+                foreach (int pct in new[] { 0, 80, 90, 100 })
+                {
+                    int pp = pct;
+                    dr.Add(UiKit.ActionPill(pct == 0 ? L.T("rule.divert.never") : L.F("rule.divert.at", "pct", Fmt.Pct(pct / 100.0, L.Lang)), () => main.Run("divert:" + pp), true, s.DivertAt == pct ? "primary" : "tonal"));
+                }
+                Add(dr);
             }
         }
 
-        // ------------------------------------------------------------------ network
+        // ------------------------------------------------------------------ staff
 
-        void FillNetwork()
+        void FillStaff()
         {
-            Title(L.T("tab.network"), L.F("hud.rating", "r", Fmt.Rating(Sim.S.Rating)));
-            foreach (var dd in Sim.Gd.Districts)
+            var s = Sim.S;
+            Title(L.T("tab.staff"), L.F("staff.burnout", "pct", Fmt.Pct(s.Burnout / 100.0, L.Lang)));
+            if (s.Burnout >= Sim.Gd.BurnoutSlowAt) Add(UiKit.Text(L.T("staff.burnout_high"), "coddy-body"));
+            for (int t = 0; t < Teams.Pool.Length; t++)
             {
-                if (Sim.Unlocked(dd.Id)) continue;
-                var b = Sim.CanBuy("district:" + dd.Id);
+                string id = Teams.Pool[t];
+                double fat = s.Fatigue.TryGetValue(id, out var f) ? f : 0;
+                string sub = L.F("staff.line", "n", Sim.Team(id), "busy", Fmt.Pct(Sim.Utilisation(id), L.Lang), "tired", Fmt.Pct(fat / 100.0, L.Lang))
+                    + (s.SickTeam == id ? " · " + L.T("staff.sick") : "") + (s.FloatTeam == id && s.FloatLeft > 0 ? " · " + L.T("staff.float") : "");
+                var b = Sim.CanBuy("hire:" + id);
+                Card(L.T("team." + id), sub + "\n" + L.T("team." + id + ".d"), b.Reason == "max" ? L.T("err.max") : L.F("staff.hire", "cost", Money(b.Cost)), () => Buy("hire:" + id), b.Ok, "primary", "hire:" + id);
+            }
+            Section(L.T("team.tech"));
+            Add(UiKit.Text(L.T("team.tech.d"), "coddy-caption-muted"));
+            foreach (var r in s.Rooms)
+            {
+                if (r.Kind == "or") continue;
+                string k = r.Kind;
+                var b = Sim.CanBuy("tech:" + k);
+                Card(L.T("room." + k), L.F("staff.techs", "n", r.Techs) + (r.Down > 0 ? " · " + L.T("room.down") : ""), b.Reason == "max" ? L.T("err.max") : L.F("staff.hire", "cost", Money(b.Cost)), () => Buy("tech:" + k), b.Ok, "primary", "tech:" + k);
+            }
+        }
+
+        // ------------------------------------------------------------------ build
+
+        void FillBuild()
+        {
+            Title(L.T("tab.build"), L.F("hud.reputation", "r", Fmt.Rating(Sim.S.Reputation)));
+            foreach (var w in Sim.Gd.Wings)
+            {
+                if (Sim.Unlocked(w.Id)) continue;
+                var b = Sim.CanBuy("wing:" + w.Id);
                 if (b.Reason == "locked") continue;
-                Card(L.T("district." + dd.Id), L.F("district.needs", "r", (long)dd.Rating), L.F("district.unlock", "cost", Money(dd.Cost)), () => Buy("district:" + dd.Id), b.Ok);
+                Card(L.T("wing." + w.Id), L.T("wing." + w.Id + ".d") + " · " + L.F("wing.needs", "r", (long)w.Reputation),
+                    b.Reason == "reputation" ? L.T("err.reputation") : L.F("wing.open", "cost", Money(w.Cost)), () => Buy("wing:" + w.Id), b.Ok, "primary", "wing:" + w.Id);
                 break;
             }
-            foreach (var item in new[] { "dispatcher", "centre" })
+            Section(L.T("build.rooms"));
+            foreach (var kind in new[] { "xray", "lab", "ct", "or" })
             {
-                var b = Sim.CanBuy(item);
-                if (b.Reason == "owned") continue;
-                string it = item;
-                Card(L.T("buy." + item), L.T("buy." + item + ".d"), b.Reason == "research" ? L.T("err.research") : BuyLabel(b), () => Buy(it), b.Ok);
+                var b = Sim.CanBuy("room:" + kind);
+                if (b.Reason == "owned") { Card(L.T("room." + kind), L.T("room." + kind + ".d"), L.T("shop.owned"), null, false, "tonal"); continue; }
+                string k = kind;
+                Card(L.T("room." + kind), L.T("room." + kind + ".d"), b.Reason == "wing" ? L.T("err.wing") : BuyLabel(b), () => Buy("room:" + k), b.Ok, "primary", "room:" + kind);
             }
-            foreach (var dd in Sim.Gd.Districts)
+            Section(L.T("build.beds"));
+            var bay = Sim.CanBuy("bay");
+            if (bay.Reason != "max") Card(L.T("build.bay"), L.F("build.bay.d", "n", Sim.Bays), bay.Reason == "wing" ? L.T("err.wing") : BuyLabel(bay), () => Buy("bay"), bay.Ok);
+            foreach (var w in new[] { "obs", "general", "surgical", "icu" })
             {
-                if (!Sim.Unlocked(dd.Id)) continue;
-                Section(L.T("district." + dd.Id));
-                foreach (var n in Sim.Gd.Nodes)
-                {
-                    if (n.District != dd.Id || n.Kind != "site") continue;
-                    int pi = Sim.PointAt(n.Index);
-                    if (pi >= 0)
-                    {
-                        var p = Sim.S.Points[pi];
-                        Card(L.T("place." + n.Id), L.T("kind." + p.Kind) + " · " + L.F("point.fill", "pct", Fmt.Pct(Sim.DisplayPct(p), L.Lang)), L.T("common.ok"), () => OpenSheet("point", pi), true, "tonal");
-                        continue;
-                    }
-                    string id = (n.Site == "machine" ? "machine:" : n.Site + ":") + n.Id;
-                    var b = Sim.CanBuy(id);
-                    string key = n.Site == "machine" ? "machine" : n.Site;
-                    Card(L.T("place." + n.Id), L.T("buy." + key) + " — " + L.T("buy." + key + ".d"), b.Reason == "research" ? L.T("err.research") : BuyLabel(b), () => Buy(id), b.Ok);
-                }
+                var b = Sim.CanBuy("bed:" + w);
+                if (b.Reason == "wing" || b.Reason == "invalid") continue;
+                string ww = w;
+                Card(L.F("build.bed", "ward", L.T("ward." + w)), L.F("build.bed.d", "n", Sim.BedsIn(w)), b.Reason == "max" ? L.T("err.max") : BuyLabel(b), () => Buy("bed:" + ww), b.Ok);
             }
         }
 
@@ -289,8 +319,8 @@ namespace ChargeNurse.UI
         void FillResearch()
         {
             string running = Sim.S.Researching;
-            Title(L.T("tab.research"), running != "" ? L.T("research." + running + ".t") + " · " + L.F("research.left", "time", Fmt.Dur(Sim.S.ResearchLeftS, L)) : "");
-            foreach (var branch in new[] { "network", "fleet", "depot" })
+            Title(L.T("tab.research"), running != "" ? L.T("research." + running + ".t") + " · " + L.F("research.left", "min", (long)Math.Ceiling(Sim.S.ResearchLeft)) : L.T("research.help"));
+            foreach (var branch in new[] { "care", "flow", "comfort", "resilience" })
             {
                 Section(L.T("research.branch." + branch));
                 foreach (var r in Sim.Gd.Research)
@@ -298,9 +328,10 @@ namespace ChargeNurse.UI
                     if (r.Branch != branch) continue;
                     string why = Sim.CanResearch(r.Id);
                     string id = r.Id;
-                    string action = why == "owned" ? L.T("research.done") : why == "running" ? L.F("research.left", "time", Fmt.Dur(Sim.S.ResearchLeftS, L))
-                        : why == "requires" ? L.F("research.requires", "name", L.T("research." + r.Requires[0] + ".t")) : L.F("research.start", "cost", Money(r.Cost));
-                    Card(L.T("research." + id + ".t"), L.T("research." + id + ".d") + " · " + Fmt.Dur(r.Minutes * 60, L), action, () => main.Run("research:" + id), why == "", "primary");
+                    string action = why == "owned" ? L.T("research.done") : why == "running" ? L.F("research.left", "min", (long)Math.Ceiling(Sim.S.ResearchLeft))
+                        : why == "requires" ? L.F("research.requires", "name", L.T("research." + r.Requires[0] + ".t"))
+                        : why == "wing" ? L.F("research.wing", "name", L.T("wing." + r.Wing)) : L.F("research.start", "cost", Money(r.Cost));
+                    Card(L.T("research." + id + ".t"), L.T("research." + id + ".d") + " · " + L.F("research.shift_min", "min", (long)r.Minutes), action, () => main.Run("research:" + id), why == "", "primary");
                 }
             }
         }
@@ -337,28 +368,37 @@ namespace ChargeNurse.UI
             var st = main.Session.Settings;
             Title(L.T("settings.title"), L.F("settings.version", "v", Application.version));
             Section(L.T("settings.language"));
-            var langs = new VisualElement { style = { flexDirection = FlexDirection.Row, flexWrap = Wrap.Wrap } };
+            var langs = ChipRow();
             for (int i = 0; i < Loc.Languages.Length; i++)
             {
                 string code = Loc.Languages[i];
                 langs.Add(UiKit.ActionPill(Loc.NativeNames[i], () => main.SetLanguage(code), true, L.Lang == code ? "primary" : "tonal"));
             }
             Add(langs);
-            Section(L.T("settings.title"));
+            Section(L.T("settings.sound"));
             Card(L.T("settings.music"), "", L.T(st.Music ? "settings.on" : "settings.off"), () => main.SetAudio(!st.Music, st.Effects), true, st.Music ? "primary" : "tonal");
             Card(L.T("settings.effects"), "", L.T(st.Effects ? "settings.on" : "settings.off"), () => main.SetAudio(st.Music, !st.Effects), true, st.Effects ? "primary" : "tonal");
             Section(L.T("settings.graphics"));
-            var tiers = new VisualElement { style = { flexDirection = FlexDirection.Row } };
+            var tiers = ChipRow();
             foreach (var t in new[] { Tier.Low, Tier.Medium, Tier.High })
             {
                 var tt = t;
                 tiers.Add(UiKit.ActionPill(L.T("graphics." + t.ToString().ToLowerInvariant()), () => main.SetTier(tt), true, main.CurrentTier == t ? "primary" : "tonal"));
             }
             Add(tiers);
+            Section(L.T("settings.theme"));
+            var themes = ChipRow();
+            foreach (var th in new[] { "", "gold_theme", "theme_modern", "theme_retro", "theme_pediatric" })
+            {
+                if (th != "" && (main.Shop == null || !main.Shop.Has(th))) continue;
+                string t2 = th;
+                themes.Add(UiKit.ActionPill(L.T(th == "" ? "theme.default" : "theme." + th), () => main.SetTheme(t2), true, st.Theme == th ? "primary" : "tonal"));
+            }
+            Add(themes);
             Section(L.T("settings.privacy"));
             Card(L.T("settings.guide"), "", L.T("intro.start"), main.ReplayGuide, true, "tonal");
-            Card(L.T("settings.privacy"), "", L.T("common.ok"), main.ShowPrivacyOptions, true, "tonal");
-            Card(L.T("settings.policy"), "", L.T("common.ok"), () => Application.OpenURL(ChargeNurse.App.NurseGameConfig.PrivacyUrl), true, "tonal");
+            Card(L.T("settings.privacy_options"), "", L.T("common.open"), main.ShowPrivacyOptions, true, "tonal");
+            Card(L.T("settings.policy"), "", L.T("common.open"), () => Application.OpenURL(ChargeNurse.App.NurseGameConfig.PrivacyUrl), true, "tonal");
             Card(L.T("settings.restore"), "", L.T("common.ok"), () => main.Shop?.Restore(), true, "tonal");
         }
 
@@ -367,34 +407,37 @@ namespace ChargeNurse.UI
         void FillReport(DayStats d, bool withNext)
         {
             if (d == null) { Title(L.T("phase.report")); return; }
-            Title(L.F("report.title", "n", d.Day), L.F("report.rating", "r", Fmt.Rating(Sim.S.Rating)));
+            Title(L.F("report.title", "n", d.Day), L.F("report.reputation", "r", Fmt.Rating(Sim.S.Reputation)));
             var stars = new VisualElement();
-            stars.AddToClassList("br-report__stars");
+            stars.AddToClassList("cn-report__stars");
             void Star(string key, int n)
             {
                 var c = new VisualElement();
-                c.AddToClassList("br-report__star");
-                c.Add(UiKit.Text(new string('★', n) + new string('☆', 3 - n), "br-report__star-value"));
+                c.AddToClassList("cn-report__star");
+                c.Add(UiKit.Text(new string('★', n) + new string('☆', 3 - n), "cn-report__star-value"));
                 c.Add(UiKit.Text(L.T(key), "coddy-caption-muted"));
                 stars.Add(c);
             }
-            Star("report.service", d.StarService);
-            Star("report.efficiency", d.StarEfficiency);
-            Star("report.throughput", d.StarThroughput);
+            Star("report.care", d.StarCare);
+            Star("report.waits", d.StarWaits);
+            Star("report.flow", d.StarFlow);
             Add(stars);
-            KV(L.T("report.collected"), Fmt.Int(d.Collected, L.Lang));
-            KV(L.T("report.km"), Fmt.Km(d.Km, L.Lang));
-            KV(L.T("report.perkm"), d.PerKm.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture));
-            KV(L.T("report.turned"), Fmt.Int(d.Turned, L.Lang), d.TurnedRate > 0.06 ? "br-row__v--bad" : "");
+            Add(UiKit.Text(L.T(d.Rushed ? "report.rushed" : "report.calm"), "coddy-caption-muted"));
+            KV(L.T("report.arrivals"), Fmt.Int(d.Arrivals, L.Lang));
+            KV(L.T("report.treated"), Fmt.Int(d.Treated, L.Lang));
+            KV(L.T("report.wait"), L.F("report.minutes", "n", (long)Math.Round(d.AvgWait)), d.AvgWait > Sim.Gd.StarWaits[1] ? "cn-row__v--bad" : "");
+            KV(L.T("report.bad"), L.F("report.bad_v", "lwbs", d.Lwbs, "worse", d.Worsened, "transfer", d.Transferred), d.Bad > 0 ? "cn-row__v--bad" : "");
+            KV(L.T("report.blocked"), Fmt.Pct(d.BlockedShare, L.Lang), d.BlockedShare > Sim.Gd.StarFlow[1] ? "cn-row__v--bad" : "");
+            if (d.Diverted > 0) KV(L.T("report.diverted"), Fmt.Int(d.Diverted, L.Lang));
+            KV(L.T("report.night"), L.F("report.night_v", "n", d.NightTreated, "cash", Money(d.NightFees)));
             KV(L.T("report.fees"), Money(d.Fees));
-            KV(L.T("report.sales"), Money(d.Sales));
+            if (d.Ward > 0) KV(L.T("report.ward"), Money(d.Ward));
             if (d.Bonus > 0) KV(L.T("report.bonus"), Money(d.Bonus));
-            KV(L.T("report.fuel"), "−" + Money(d.Fuel));
             KV(L.T("report.wages"), "−" + Money(d.Wages));
-            KV(L.T("report.leases"), "−" + Money(d.Leases));
-            KV(L.T("report.power"), "−" + Money(d.Power));
-            if (d.Fines > 0) KV(L.T("report.fines"), "−" + Money(d.Fines), "br-row__v--bad");
-            KV(L.T("report.net"), Money(d.Net), d.Net >= 0 ? "br-row__v--good" : "br-row__v--bad");
+            KV(L.T("report.supplies"), "−" + Money(d.Supplies));
+            KV(L.T("report.upkeep"), "−" + Money(d.Upkeep));
+            if (d.Fines > 0) KV(L.T("report.fines"), "−" + Money(d.Fines), "cn-row__v--bad");
+            KV(L.T("report.net"), Money(d.Net), d.Net >= 0 ? "cn-row__v--good" : "cn-row__v--bad");
             if (withNext && Sim.Phase == Phases.Report)
             {
                 var next = UiKit.PrimaryButton(L.T("hud.next_day"), () => main.Run("next_day"));
@@ -410,7 +453,7 @@ namespace ChargeNurse.UI
             if (o == null) return;
             Add(UiKit.Text(L.F("offline.body", "cash", Money(o.Amount), "time", Fmt.Dur(o.Seconds, L)), "coddy-body"));
             if (o.Capped) Add(UiKit.Text(L.F("offline.capped", "h", (long)Math.Round(o.Hours)), "coddy-caption-muted"));
-            RewardCard("offline_x2", "offline");
+            RewardCard("offline_x2");
             sheet.Actions.Add(UiKit.PrimaryButton(L.T("common.ok"), CloseSheet));
         }
     }

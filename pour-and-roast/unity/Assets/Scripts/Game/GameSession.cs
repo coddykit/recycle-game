@@ -1,5 +1,7 @@
 // Pour & Roast — one running career: data + Simulation + the kit save repository + autosave. Engine-free, so the relaunch
 // / save-safety tests run under plain .NET and in the Unity EditMode runner.
+//   * save slots: slot 0 = career.json, slot n = career_<n+1>.json (1 slot free; the Edition +1, Extra Saves +3 —
+//     Commerce.SaveSlots); the active slot lives in settings;
 //   * file: <persistentDataPath>/pourandroast/career.json through CoddyKit.SaveRepository (tmp -> main, last GOOD save in
 //     .bak, unreadable copies kept as .unreadable(.1-.7), never deleted) with SaveCodec.Decode as the validator;
 //   * saves: every day end, after purchases / sales / rewards, every balance autosave_s of live play, on pause / quit;
@@ -15,6 +17,7 @@ namespace PourAndRoast.Game
     public sealed class GameSession
     {
         public const string SaveFile = "career.json";
+        public static string SlotFile(int slot) => slot <= 0 ? SaveFile : "career_" + (slot + 1) + ".json";
 
         public readonly GameData Gd;
         public readonly string Dir;
@@ -27,17 +30,23 @@ namespace PourAndRoast.Game
         public int SaveCount { get; private set; }
         double autosaveAcc;
 
-        public string SavePath => Path.Combine(Dir, SaveFile);
+        public readonly int Slot;
+        public string SavePath => Path.Combine(Dir, SlotFile(Slot));
 
         public static long UnixNow() => (long)(DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
 
-        public GameSession(GameData gd, string dir)
+        /// <summary>slot -1 = the slot chosen in settings.</summary>
+        public GameSession(GameData gd, string dir, int slot = -1)
         {
             Gd = gd ?? throw new ArgumentNullException(nameof(gd));
             Dir = dir;
             Directory.CreateDirectory(dir);
             Settings = GameSettings.Load(dir);
+            Slot = slot >= 0 ? slot : Math.Max(0, Settings.Slot);
         }
+
+        /// <summary>Whether a save exists in a slot (the settings slot list).</summary>
+        public bool SlotUsed(int slot) => File.Exists(Path.Combine(Dir, SlotFile(slot))) || File.Exists(Path.Combine(Dir, SlotFile(slot)) + ".bak");
 
         /// <summary>SaveRepository validator: null = a save the sim accepts, else the decoder's error code.</summary>
         public string Validate(string text)
@@ -60,7 +69,7 @@ namespace PourAndRoast.Game
                 return true;
             }
             Sim = new Simulation(Gd, seedIfNew);
-            if (Settings.CoachDone) Sim.EndTutorial();   // guide already done on this device: a fresh career starts without it
+            if (Settings.CoachDone || Slot > 0) Sim.EndTutorial();   // guide already done on this device: a fresh career starts without it
             return false;
         }
 

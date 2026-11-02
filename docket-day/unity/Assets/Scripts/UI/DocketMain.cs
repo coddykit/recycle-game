@@ -1,16 +1,17 @@
-// Docket Day — the Region scene's entry point. Wires the engine-free game layer (GameSession + GameActions + Coach +
+// Docket Day — the firm scene's entry point. Wires the engine-free game layer (GameSession + GameActions + Coach +
 // Commerce + DocketRewards + ReviewHook) to the diorama (RegionWorld), the UI (GameScreen) and the CoddyUnityKit (tiers,
 // purchases cache, house ads, rewarded, review, toasts):
 //   * data from Resources/data, strings from Resources/i18n/strings.csv, the career from
 //     persistentDataPath/docketday/career.json through the kit SaveRepository (GameSession);
 //   * time: the sim advances with real unscaled time; the guide pauses it while it waits for the player and runs it fast
-//     while it waits for the world; full-screen ads pause it;
-//   * events -> world walkers / toasts / first-time tips / review moments / offers;
-//   * house banner: only after the pager + guide, never over a sheet with a purchase, the pager or the loading curtain
-//     (kit rule: hidden for ad_free); the screen's bottom bar is lifted by the banner height (SafeAreaPadding);
-//   * house interstitial: only at "Next day" after a report, never in session 1 or the guide (kit pacing decides);
+//     while it waits for the world; the hearing scene and full-screen ads pause it; "skip ahead" runs the day fast until
+//     the next decision (a walk-in, a hearing, a crisis, the report);
+//   * events -> world walkers / toasts / the hearing scene / first-time tips / review moments / offers;
+//   * house banner: only after the pager + guide, never over the shop, the pager, the hearing scene or the curtain (kit
+//     rule: hidden for ad_free); the screen's bottom bar is lifted by the banner height (SafeAreaPadding);
+//   * house interstitial: only at "Next day" after the billing run, never in session 1, the guide or a hearing (kit pacing);
 //   * save on pause / quit, offline pay on resume (welcome-back card with the ×2 rewarded opt-in).
-// Opening the Region scene directly in the editor boots the kit itself.
+// Opening the scene directly in the editor boots the kit itself.
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace DocketDay.UI
 {
     public sealed class DocketMain : MonoBehaviour
     {
+        const int FastForwardSpeed = 8;
+
         public UIDocument uiDocument;
         public RegionWorld world;
 
@@ -82,18 +85,18 @@ namespace DocketDay.UI
                 Analytics = Track,
                 Toast = (t, k) => UiToastHost.Show(t, k == "success" ? ToastKind.Success : k == "warning" ? ToastKind.Warning : ToastKind.Info),
                 LocSource = () => Loc,
-                Cue = id => Audio?.Play(id),
+                Cue = id => Audio?.Play(id == "purchase" ? "success" : id),
             };
             Shop.LoadPrices();
             Session.ApplyPerks(kit.Purchases.Has);
-            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplyLivery(); Screen?.Refresh(true); };
+            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplyLooks(); Screen?.Refresh(true); Screen?.MarkSheetDirty(); };
             kit.Purchases.Changed += perksChanged;
             Rewards = new DocketRewards(() => Session.Sim, kit.Rewarded) { AdFree = () => kit.Purchases.AdFree };
             Rewards.Granted += (placement, r) =>
             {
                 UiToastHost.Show(DocketRewards.GrantedText(placement, r, Loc), r != null && r.Ok ? ToastKind.Success : ToastKind.Warning);
                 Session.Save();
-                world.MarkDirty();
+                Screen?.MarkSheetDirty();
             };
 
             // actions + guide
@@ -103,7 +106,7 @@ namespace DocketDay.UI
                 Analytics = Track,
                 Persist = (step, done) => { st.CoachStep = step; st.CoachDone = done; st.Save(); },
             };
-            Actions.Allowed = Coach.Allows;
+            Actions.Allowed = Coach.AllowsFor(() => Session.Sim);
             Actions.Ran += (id, r) => Coach.OnAction(Session.Sim, Actions, id, r);
             Actions.Ran += (id, r) => { Screen?.AfterAction(id, r); if (r.Ok) Audio?.Play(SoundFor(id)); };
 
@@ -111,9 +114,9 @@ namespace DocketDay.UI
             UiKit.TapSound = () => Audio.Play("ui_tap");
 
             // the first 3D frame runs inside the GPU breadcrumb (a shader-compiler crash -> safe shaders next launch)
-            kit.Tiers.BeginShaderWork("region_first_frame");
+            kit.Tiers.BeginShaderWork("firm_first_frame");
             world.Init(Session.Sim, low);
-            ApplyLivery();
+            ApplyLooks();
             world.Picked += hit => Screen?.WorldPick(hit);
             tierChanged = t => { low = t == Tier.Low; UiKit.Low = low; world.SetLow(low); };
             kit.Tiers.Changed += tierChanged;
@@ -128,6 +131,8 @@ namespace DocketDay.UI
             }
             if (world.rig != null)
             {
+                world.rig.TopUi = 0.16f;
+                world.rig.BottomUi = 0.42f;   // the Docket Rail + people row + tabs
                 world.rig.OverUi = p => Screen.OverUi(p);
                 world.rig.Enabled = () => !Screen.WindowOpen;
             }
@@ -136,7 +141,7 @@ namespace DocketDay.UI
             yield return null;
             kit.Tiers.EndShaderWork();
             DocketBoot.Ready();
-            Track("br_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
+            Track("dd_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
 
             // onboarding: pager (once) -> guide (until done or skipped)
             if (!st.IntroDone) Screen.ShowPager(() => { st.IntroDone = true; st.Save(); BeginGuideIfNeeded(); });
@@ -154,9 +159,8 @@ namespace DocketDay.UI
         bool BannerAllowed()
         {
             if (!Ready || Screen == null) return false;
-            if (Coach.Active || Screen.PagerOpen || !Session.Settings.IntroDone) return false;
-            string k = Screen.SheetKind;
-            return k != "shop";
+            if (Coach.Active || Screen.PagerOpen || Screen.HearingOpen || !Session.Settings.IntroDone) return false;
+            return Screen.SheetKind != "shop";
         }
 
         void Update()
@@ -164,9 +168,16 @@ namespace DocketDay.UI
             if (!Ready) return;
             float dt = Time.unscaledDeltaTime;
             var sim = Session.Sim;
-            if (Coach.Active && !Screen.PagerOpen) Coach.Drive(sim, Actions, dt);
-            sim.SetPaused(adPause || Screen.PagerOpen || (Coach.Active && Coach.WantsPause(sim)));
+            bool hold = adPause || Screen.PagerOpen || Screen.HearingOpen;
+            if (Coach.Active && !Screen.PagerOpen) Coach.Drive(sim, Actions, dt, hold);
+            sim.SetPaused(hold || (Coach.Active && Coach.WantsPause(sim)));
+            // skip ahead: the day runs fast until the next decision (speed ≤ 8: the codec's range, saves stay valid)
+            if (Coach.Active || sim.Phase != Phases.Live) Actions.FastForwarding = false;
+            bool ff = Actions.FastForwarding && sim.Phase == Phases.Live;
+            int keep = sim.S.Speed;
+            if (ff) sim.S.Speed = FastForwardSpeed;
             List<SimEvent> events = Session.Tick(dt);
+            if (ff) sim.S.Speed = keep;
             foreach (var e in events) OnEvent(e);
             Screen.Tick(dt, low);
             if (!Coach.Active && !Screen.WindowOpen && sim.Phase == Phases.Live) kit.Review.TickPlay(dt);
@@ -174,38 +185,49 @@ namespace DocketDay.UI
             if (deferred != "") Wow(deferred);
         }
 
+        static readonly HashSet<string> StopsFastForward = new HashSet<string> { "walkin", "hearing_start", "crisis", "day_done", "late" };
+
         void OnEvent(SimEvent e)
         {
             world.OnSimEvent(e);
-            if (e.Type == "deposit" || e.Type == "turned") return;
             var sim = Session.Sim;
+            if (StopsFastForward.Contains(e.Type)) Actions.FastForwarding = false;
             switch (e.Type)
             {
                 case "day_done":
-                    Track("br_day_done", new Dictionary<string, object> { { "day", (long)e.A }, { "stars", (long)e.B } });
+                    Track("dd_day_done", new Dictionary<string, object> { { "day", (long)e.A }, { "stars", (long)e.B } });
                     if (!Coach.Active) Screen.OpenSheet("report");
                     Shop.TryOffer("day_report", Coach.Active);
+                    if (sim.S.Cash < 0) Shop.TryOffer("cash_dip", Coach.Active);
+                    Audio.PlayMusic("music_calm");
                     break;
-                case "bale": Audio.Play("baler_press"); break;
-                case "sold":
-                    Audio.Play("sold");
-                    UiToastHost.Show(Loc.F("toast.sold", "n", e.B, "cash", Fmt.Money((long)e.V, Loc.Lang)), ToastKind.Success);
-                    Track("bale_sold", new Dictionary<string, object> { { "mat", Mats.Ids[Math.Max(0, Math.Min(2, e.A))] }, { "n", (long)e.B } });
+                case "day_live": Audio.PlayMusic("music_busy"); break;
+                case "walkin": if (!Coach.Active) UiToastHost.Show(Loc.T("toast.walkin"), ToastKind.Info); Audio.Play("door"); break;
+                case "walked_out": UiToastHost.Show(Loc.T("toast.walked_out"), ToastKind.Warning); break;
+                case "hearing_start": Screen.QueueHearing(e.A); break;
+                case "verdict":
+                    Track("hearing_result", new Dictionary<string, object> { { "won", (long)e.B }, { "area", e.Text } });
                     break;
-                case "research_done": UiToastHost.Show(Loc.F("research.finished", "name", Loc.T("research." + e.Text + ".t")), ToastKind.Success); break;
-                case "district":
-                    UiToastHost.Show(Loc.F("toast.district", "name", Loc.T("district." + e.Text)), ToastKind.Success);
-                    Track("district_unlock", new Dictionary<string, object> { { "district", e.Text } });
+                case "task_done": Audio.Play("paper"); break;
+                case "room_done": UiToastHost.Show(Loc.F("toast.room_done", "name", Loc.T("room." + e.Text)), ToastKind.Success); break;
+                case "chapter": UiToastHost.Show(Loc.F("toast.chapter", "name", Loc.T("chapter." + e.Text)), ToastKind.Success); break;
+                case "hired":
+                {
+                    var s = sim.StaffById(e.A);
+                    if (s != null) UiToastHost.Show(Loc.F("toast.hired", "name", Loc.T("staff.name." + s.Name), "role", Loc.T("role." + s.Role)), ToastKind.Success);
                     break;
+                }
+                case "billed": Audio.Play("coins"); break;
+                case "late": UiToastHost.Show(Loc.F("toast.late", "kind", Loc.T("kind." + e.Text)), ToastKind.Warning); break;
+                case "continued": UiToastHost.Show(Loc.F("toast.continued", "n", (long)e.V), ToastKind.Info); break;
+                case "referred": UiToastHost.Show(Loc.F("toast.referred", "cash", Fmt.Money((long)e.V, Loc.Lang)), ToastKind.Success); break;
                 case "crisis":
                     UiToastHost.Show(Loc.T("crisis." + e.Text + ".t") + " — " + Loc.T("crisis." + e.Text + ".b"), ToastKind.Warning);
                     Audio.Play("warning");
                     Track("crisis", new Dictionary<string, object> { { "id", e.Text } });
-                    if (e.Text == "match_day") Shop.TryOffer("match_day", Coach.Active);
                     break;
-                case "jam": Audio.Play("warning"); break;
-                case "serviced": Audio.Play("machine_crunch"); break;
             }
+            if (e.Type != "task_done" && e.Type != "assigned") Screen.MarkSheetDirty();
             if (!Coach.Active)
             {
                 string tip = Coach.TipFor(e, sim);
@@ -229,9 +251,9 @@ namespace DocketDay.UI
 
         static string SoundFor(string action)
         {
-            if (action.StartsWith("go")) return "truck";
-            if (action.StartsWith("till")) return "coins";
-            if (action.StartsWith("buy:") || action.StartsWith("research:")) return "success";
+            if (action.StartsWith("assign:")) return "paper";
+            if (action.StartsWith("bill")) return "coins";
+            if (action.StartsWith("build:") || action.StartsWith("hire:") || action.StartsWith("accept:") || action.StartsWith("move_up")) return "success";
             return "";
         }
 
@@ -247,9 +269,9 @@ namespace DocketDay.UI
         public void SheetOpened(string kind) { }
         public void SheetClosed(string kind) { if (kind == "offline") LastOffline = null; }
 
-        public void ClaimReward(string placement, int target)
+        public void ClaimReward(string placement)
         {
-            if (!Rewards.Claim(placement, target)) UiToastHost.Show(Loc.T("reward.unavailable"), ToastKind.Info);
+            if (!Rewards.Claim(placement)) UiToastHost.Show(Loc.T("reward.unavailable"), ToastKind.Info);
         }
 
         public void SkipGuide()
@@ -284,20 +306,40 @@ namespace DocketDay.UI
             Screen.OpenSheet("settings");
         }
 
+        public void SetObjection(bool on)
+        {
+            Session.Settings.ObjectionTap = on;
+            Session.Settings.Save();
+            Screen.OpenSheet("settings");
+        }
+
         public void SetTier(Tier t)
         {
             kit.Tiers.Choose(t);
             Screen.OpenSheet("settings");
         }
 
+        public void SetLooks(string officeTheme, bool courtTheme, bool outfits)
+        {
+            var st = Session.Settings;
+            st.OfficeTheme = officeTheme;
+            st.CourtTheme = courtTheme;
+            st.Outfits = outfits;
+            st.Save();
+            ApplyLooks();
+            Screen.MarkSheetDirty();
+        }
+
         public void ShowPrivacyOptions() => CoddyServices.Consent.ShowPrivacyOptions(_ => { });
 
-        void ApplyLivery()
+        /// <summary>Equipped cosmetics, only while owned (an Edition owner gets the gold nameplate by default).</summary>
+        void ApplyLooks()
         {
-            string l = Session.Settings.Livery;
-            if (l == "" && kit.Purchases.Has("gold_livery")) l = "gold_livery";
-            if (l != "" && !kit.Purchases.Has(l)) l = "";
-            world.SetLivery(l);
+            var st = Session.Settings;
+            string theme = st.OfficeTheme;
+            if (theme == "" && kit.Purchases.Has("gold_nameplate")) theme = "gold_nameplate";
+            if (theme != "" && !kit.Purchases.Has(theme)) theme = "";
+            world.SetLooks(theme, st.CourtTheme && kit.Purchases.Has("court_themes"), st.Outfits && kit.Purchases.Has("outfits"));
         }
 
         void Track(string name, Dictionary<string, object> p)

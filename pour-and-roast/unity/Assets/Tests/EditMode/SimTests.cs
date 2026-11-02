@@ -258,9 +258,11 @@ namespace PourAndRoast.Sim.Tests
         public void FullRailTurnsWalkInsAway()
         {
             var sim = TestData.NewSim(4);
+            sim.S.Cash = 10000; sim.S.Rating = 4.5;
+            sim.Buy("venue:corner");
             sim.StartDay();
             sim.S.Staff.Clear();
-            sim.AdvanceMinutes(30);
+            sim.AdvanceMinutes(40);
             Assert.Greater(sim.S.Today.Balked, 0);
             Assert.LessOrEqual(sim.S.Tickets.Count(t => !t.Pre && !t.Ready), sim.RailCap);
         }
@@ -406,12 +408,13 @@ namespace PourAndRoast.Sim.Tests
             Assert.AreEqual("", sim.ToggleContract("bistro"));
             var c = sim.ContractOf("bistro");
             sim.S.BeanKg = 50; sim.S.BeanQ = 80;
-            for (int d = 0; d < 3; d++) { sim.StartDay(); sim.AdvanceMinutes(sim.Gd.DayMinutes + 1); if (d < 2) sim.NextDay(); }
+            int every = sim.Gd.Contract("bistro").Every;
+            for (int d = 0; d <= every; d++) { if (d > 0) sim.NextDay(); sim.StartDay(); sim.AdvanceMinutes(sim.Gd.DayMinutes + 1); }
             Assert.AreEqual(1, c.Delivered);
             Assert.Greater(sim.S.History.Last().Wholesale, 0);
             sim.S.BeanKg = 0;
-            sim.S.Day = 10;   // after the free days
-            for (int d = 0; d < 3; d++) { sim.NextDay(); sim.StartDay(); sim.AdvanceMinutes(sim.Gd.DayMinutes + 1); }
+            sim.S.AutoBeans = false;
+            for (int d = 0; d < every; d++) { sim.NextDay(); sim.StartDay(); sim.S.BeanKg = 0; sim.AdvanceMinutes(sim.Gd.DayMinutes + 1); }
             Assert.AreEqual(1, c.Missed);
             Assert.Less(c.PayMult, 1);
         }

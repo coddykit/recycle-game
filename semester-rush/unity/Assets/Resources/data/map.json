@@ -3,7 +3,7 @@
   "_doc": "Campus path graph. x / y in hectometres (100 m), +y = north. kind: entrance (bus stop, commuters arrive here) | junction | building (built at start) | site (a plot for the named building). Edges: [a, b, type]; type path (default) | gate (closed until opened) | shuttle (needs the shuttle upgrade, fast, few seats).",
   "zones": [
     { "id": "college", "chapter": 1, "prestige": 0,   "cost": 0 },
-    { "id": "quad",    "chapter": 2, "prestige": 220, "cost": 9000 },
+    { "id": "quad",    "chapter": 2, "prestige": 220, "cost": 7000 },
     { "id": "science", "chapter": 3, "prestige": 480, "cost": 30000 }
   ],
   "nodes": [

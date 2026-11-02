@@ -231,6 +231,12 @@ namespace ChargeNurse.Sim
 
         void Arrivals(double dt)
         {
+            // an unanswered call runs out: the default answer (accept, or the diversion rule)
+            if (S.Ambulance != null && !S.Ambulance.Guided)
+            {
+                S.Ambulance.Left -= dt;
+                if (S.Ambulance.Left <= 0) DecideAmbulance(DefaultAccept());
+            }
             if (!S.ArrivalsOn) return;
             int n = Sample(ArrivalRate() * dt);
             for (int k = 0; k < n; k++) NewPatient(PickSev(Gd.Mix), false);
@@ -244,11 +250,6 @@ namespace ChargeNurse.Sim
                     if (night) DecideAmbulance(DefaultAccept());
                     else Emit("ambulance_call", -1, S.Ambulance.Sev);
                 }
-            }
-            if (S.Ambulance != null && !S.Ambulance.Guided)
-            {
-                S.Ambulance.Left -= dt;
-                if (S.Ambulance.Left <= 0) DecideAmbulance(DefaultAccept());
             }
         }
 

@@ -14,14 +14,14 @@ namespace PourAndRoast.App
     {
         public const string AppId = "pour-and-roast";                 // ads-config X-App-ID, house-ad host id
         public const string Package = "com.coddykit.pourandroast";
-        public const string ProductName = "Pour & Roast";           // store title "Pour & Roast: Recycling Tycoon" (30 chars)
+        public const string ProductName = "Pour & Roast";           // store title "Pour & Roast: Cafe Manager" (26 chars)
         public const string PrivacyUrl = "https://www.coddykit.com/pages/privacy-policy";
 
         // ---- P8 (Patron): real ids. Keep the constant names (a preflight reads them). ----
         public const string AdMobRewardedAndroid = "";   // ADMOB_REWARDED_POURANDROAST_ANDROID (store-automation/.env)
         public const string RevenueCatAndroidKey = "";   // RC public SDK key goog_… (project Pour & Roast)
 
-        /// <summary>RC entitlements that remove forced ads (fleet §3/§8): noads, granted by noads / premium / route_pass / bundle.</summary>
+        /// <summary>RC entitlements that remove forced ads (fleet §3/§8): noads, granted by noads / premium / roast_pass / bundle.</summary>
         public static readonly string[] AdFreeEntitlements = Commerce.AdFreeEntitlements;
 
         public static Dictionary<string, RewardedLimit> RewardedLimits() => RoastRewards.KitLimits();

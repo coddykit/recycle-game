@@ -1,11 +1,12 @@
-// Docket Day — the 2.5D diorama of the coastal region (design §8). Built ONCE from the map data (ground, sea, roads,
-// district blocks, trees), rebuilt only when something structural changes (district unlocked, point bought, Green Rating
-// day change); trucks / walkers / bale stacks update from the sim each frame (Low: 15 Hz).
-//   * 1 km of map = 100 world units; props are drawn larger than life so they read at map zoom.
-//   * one palette material for everything (MeshKit) + instanced draws for walkers, bales and litter.
-//   * the town visibly gets cleaner as the Green Rating rises: fewer litter bits (the plan's cheap "wow").
-//   * Low tier: no shadows (QualityTiers), walkers ≤ 50 % at 15 Hz, litter ≤ 50 %, no baler press animation.
-//   * picking: a tap ray-casts the ground plane (no physics module) and picks the nearest truck / point / depot.
+// Docket Day — the 2.5D diorama of the firm's street in Calderport (plan §8): the office tower cutaway on the left (one
+// open floor per chapter: the Garage Front, then Main Street Suite, then Courthouse Row; the front wall is cut away so the
+// desks, the people and the rooms you build are visible), the street, and the courthouse across it on the right.
+//   * built ONCE from the sim (floors, desks, rooms), rebuilt only when something structural changes (chapter, hire / fire,
+//     a room finished, a cosmetic); people update from the sim at 30 Hz (Low: 15 Hz, ≤ 30 people, half the walkers);
+//   * one palette material for everything (MeshKit / Blender kit) + instanced people; the Meshy office cat is the one
+//     textured hero prop (sitting on the front step; LOD1 / 512 texture on Low);
+//   * Low tier: no shadows (QualityTiers), only the active floor's people animated, no street props beyond lamps;
+//   * picking: a tap ray-casts the ground plane (no physics module) and picks reception / the courthouse / the office.
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -16,14 +17,19 @@ namespace DocketDay.World
 {
     public struct WorldHit
     {
-        public string Kind;   // point | truck | depot | none
+        public string Kind;   // reception | courthouse | office | cat | none
         public int Index;
         public override string ToString() => Kind + ":" + Index;
     }
 
     public sealed class RegionWorld : MonoBehaviour
     {
-        public const float Scale = 100f;   // world units per map km
+        public const float FloorH = 6f;
+        public static readonly Vector3 ReceptionPos = new Vector3(-12f, 0f, 9f);
+        public static readonly Vector3 CourtDoor = new Vector3(22f, 0f, 9f);
+        public static readonly Vector3 TowerCenter = new Vector3(-20f, 0f, 16f);
+        public static readonly Vector3 CourtCenter = new Vector3(22f, 0f, 16f);
+        public static readonly Vector3 StreetWest = new Vector3(-48f, 0f, 2f), StreetEast = new Vector3(52f, 0f, 2f);
 
         public Camera cam;
         public CameraRig rig;
@@ -33,27 +39,18 @@ namespace DocketDay.World
         public event Action<WorldHit> Picked;
         public Simulation Sim { get; private set; }
         public bool Low { get; private set; }
-        public string Livery = "";
 
-        Material mat, matInst, matBalePet, matBaleAlu;
-        readonly Dictionary<string, GameObject> districtObjs = new Dictionary<string, GameObject>();
-        readonly List<GameObject> pointObjs = new List<GameObject>();
-        readonly List<Transform> truckObjs = new List<Transform>();
-        readonly List<string> truckTypes = new List<string>();
+        Material mat, matInst, matCat;
+        GameObject towerObj, courtObj, propsObj, catObj;
+        readonly List<GameObject> roomObjs = new List<GameObject>();
         Crowd crowd;
-        Mesh baleMeshPet, baleMeshAlu, litterMesh, glassMesh;
-        readonly List<Matrix4x4> litter = new List<Matrix4x4>();
-        readonly List<Matrix4x4> balesPet = new List<Matrix4x4>(), balesAlu = new List<Matrix4x4>(), glassPiles = new List<Matrix4x4>();
-        int builtPoints = -1, builtDistricts = -1, builtYard = -1, builtGlass = -1;
-        double builtRating = -1;
+        int builtChapter = -1, builtStaff = -1, builtRooms = -1, builtIntake = -1, builtSession = -1;
+        string builtTheme = "~", builtCourt = "~";
         bool dirty = true;
         float slowAcc;
         MaterialPropertyBlock mpb;
-
-        public static Vector3 ToWorld(double x, double y) => new Vector3((float)(x * Scale), 0f, (float)(y * Scale));
-        public Vector3 NodePos(int node) { var n = Sim.Gd.Nodes[node]; return ToWorld(n.X, n.Y); }
-        public Vector3 PointPos(int i) => NodePos(Sim.S.Points[i].Node);
-        public Vector3 DepotPos => NodePos(Sim.Gd.DepotNode);
+        public string OfficeTheme = "";
+        public bool CourtTheme, Outfits;
 
         public void Init(Simulation sim, bool low)
         {
@@ -63,18 +60,10 @@ namespace DocketDay.World
             mat = Resources.Load<Material>(low ? "materials/palette_low" : "materials/palette") ?? Resources.Load<Material>("materials/palette");
             if (mat == null) { mat = new Material(Shader.Find("Universal Render Pipeline/Simple Lit")); mat.mainTexture = Resources.Load<Texture2D>("materials/palette"); }
             matInst = new Material(mat) { enableInstancing = true, name = "palette_instanced" };
-            baleMeshPet = KitMesh("kit/bale_pet_lod" + (low ? "2" : "1"));
-            baleMeshAlu = KitMesh("kit/bale_alu_lod" + (low ? "2" : "1"));
-            matBalePet = BaleMaterial("kit/bale_pet_base" + (low ? "_low" : ""), baleMeshPet != null);
-            matBaleAlu = BaleMaterial("kit/bale_alu_base" + (low ? "_low" : ""), baleMeshAlu != null);
-            baleMeshPet ??= BoxMesh(Pal.Pet);
-            baleMeshAlu ??= BoxMesh(Pal.Alu);
-            litterMesh = FlatMesh(Pal.Litter, 1.2f);
-            glassMesh = BoxMesh(Pal.Glass);
-            BuildStatic();
-            crowd = new Crowd(this, matInst, low);
+            BuildStreet();
+            crowd = new Crowd(matInst, low);
             if (tap != null) tap.Tapped += OnTap;
-            if (rig != null) rig.Fit(UnlockedBounds(), true);
+            if (rig != null) rig.Fit(ViewBounds(), true);
             MarkDirty();
         }
 
@@ -83,40 +72,55 @@ namespace DocketDay.World
             if (low == Low) return;
             Low = low;
             crowd?.SetLow(low);
+            builtChapter = -1;
             MarkDirty();
         }
 
         public void MarkDirty() => dirty = true;
 
-        // ------------------------------------------------------------------ static scene
-
-        void BuildStatic()
+        /// <summary>Cosmetics (office style, courtroom theme, suits & gowns) — owned + equipped, from the screen.</summary>
+        public void SetLooks(string officeTheme, bool courtTheme, bool outfits)
         {
-            var gd = Sim.Gd;
-            // ground + sea (two big quads)
-            var k = new MeshKit();
-            k.Quad(new Vector3(-150, 0, -40), new Vector3(-150, 0, 650), new Vector3(850, 0, 650), new Vector3(850, 0, -40), Pal.Grass);
-            k.Quad(new Vector3(-400, -0.5f, -400), new Vector3(-400, -0.5f, -40), new Vector3(1100, -0.5f, -40), new Vector3(1100, -0.5f, -400), Pal.Water);
-            k.Strip(new Vector3(-150, 0, -40), new Vector3(850, 0, -40), 16f, 0.05f, Pal.Sand);
-            // roads: one strip per edge, discs on the nodes
-            foreach (var e in gd.Edges)
-                k.Strip(ToWorld(gd.Nodes[e.A].X, gd.Nodes[e.A].Y), ToWorld(gd.Nodes[e.B].X, gd.Nodes[e.B].Y), e.Alley ? 6f : 11f, 0.1f, e.Alley ? Pal.Concrete : Pal.Road);
-            foreach (var n in gd.Nodes) k.Disc(ToWorld(n.X, n.Y), n.Kind == "site" ? 9f : 7f, 0.11f, n.Kind == "site" ? Pal.Concrete : Pal.Road);
-            Spawn("Ground", k.Build("ground"), Vector3.zero);
-            // depot compound
-            var d = new MeshKit();
-            var dp = DepotPos;
-            d.Box(dp + new Vector3(-14, 0, -6), new Vector3(26, 11, 18), 0, Pal.Depot, Pal.RoofGrey);
-            d.Box(dp + new Vector3(10, 0, -10), new Vector3(10, 7, 9), 0, Pal.Brand, Pal.RoofGrey);       // baler house
-            d.Box(dp + new Vector3(-14, 0, 6), new Vector3(20, 0.4f, 8), 0, Pal.Concrete);             // intake apron
-            d.Box(dp + new Vector3(-2, 11, -6), new Vector3(6, 3, 4), 0, Pal.Panel);                  // count line roof unit
-            Spawn("Depot", d.Build("depot"), Vector3.zero);
+            OfficeTheme = officeTheme ?? "";
+            CourtTheme = courtTheme;
+            Outfits = outfits;
+            MarkDirty();
         }
 
-        GameObject Spawn(string name, Mesh mesh, Vector3 pos, Transform parent = null)
+        // ------------------------------------------------------------------ static scene
+
+        void BuildStreet()
+        {
+            var k = new MeshKit();
+            k.Quad(new Vector3(-70, 0, -40), new Vector3(-70, 0, 60), new Vector3(80, 0, 60), new Vector3(80, 0, -40), Pal.Grass);
+            k.Strip(new Vector3(-70, 0, 0), new Vector3(80, 0, 0), 10f, 0.05f, Pal.Road);
+            for (float x = -66; x < 78; x += 8) k.Strip(new Vector3(x, 0, 0), new Vector3(x + 3.5f, 0, 0), 0.35f, 0.07f, Pal.RoadLine);
+            k.Strip(new Vector3(-70, 0, 6.5f), new Vector3(80, 0, 6.5f), 3f, 0.08f, Pal.Concrete);
+            k.Strip(new Vector3(-70, 0, -6.5f), new Vector3(80, 0, -6.5f), 3f, 0.08f, Pal.Concrete);
+            k.Strip(new Vector3(4, 0, -4.5f), new Vector3(4, 0, 4.5f), 3.2f, 0.09f, Pal.RoadLine);   // the crossing between the firm and the court
+            // a row of harbour houses behind (scenery, one mesh)
+            var rng = new System.Random(7);
+            int[] walls = { Pal.WallCream, Pal.WallBrick, Pal.WallBlue, Pal.WallCream };
+            for (float x = -64; x < 76; x += 10)
+            {
+                if (x > -36 && x < 40) continue;   // the firm + the courthouse plots
+                float h = 7 + (float)rng.NextDouble() * 9;
+                k.Box(new Vector3(x, 0, 16), new Vector3(8.5f, h, 12), 0, walls[rng.Next(walls.Length)], rng.NextDouble() < 0.5 ? Pal.RoofRed : Pal.RoofGrey);
+                k.Box(new Vector3(x, h * 0.55f, 9.95f), new Vector3(5.5f, 1.4f, 0.1f), 0, Pal.Window);
+            }
+            for (float x = -60; x < 76; x += 14) k.Tree(new Vector3(x, 0, -11f), 1.3f, x * 7);
+            Spawn("Street", k.Build("street"), Vector3.zero, transform);
+            propsObj = new GameObject("StreetProps");
+            propsObj.transform.SetParent(transform, false);
+            for (float x = -40; x <= 44; x += 14) Prop("lamp", MeshKit.Lamp, new Vector3(x, 0, 5.4f), 0, propsObj.transform);
+            Prop("bench", MeshKit.Bench, new Vector3(-30, 0, -6.8f), 180, propsObj.transform);
+            Prop("bench", MeshKit.Bench, new Vector3(10, 0, 6.8f), 0, propsObj.transform);
+        }
+
+        GameObject Spawn(string name, Mesh mesh, Vector3 pos, Transform parent)
         {
             var go = new GameObject(name);
-            go.transform.SetParent(parent != null ? parent : transform, false);
+            go.transform.SetParent(parent, false);
             go.transform.localPosition = pos;
             go.AddComponent<MeshFilter>().sharedMesh = mesh;
             var r = go.AddComponent<MeshRenderer>();
@@ -126,178 +130,172 @@ namespace DocketDay.World
             return go;
         }
 
-        /// <summary>Blender-kit model when present (Resources/kit/<name>), else the procedural fallback.</summary>
-        GameObject Prop(string kitName, Func<Mesh> fallback, Vector3 pos, float yaw)
+        /// <summary>Blender-kit model when present (Resources/kit/&lt;name&gt;), else the procedural fallback.</summary>
+        GameObject Prop(string kitName, Func<Mesh> fallback, Vector3 pos, float yaw, Transform parent)
         {
             var prefab = Resources.Load<GameObject>("kit/" + kitName);
             GameObject go;
             if (prefab != null)
             {
-                go = Instantiate(prefab, transform);
-                foreach (var r in go.GetComponentsInChildren<Renderer>()) { r.sharedMaterial = mat; r.shadowCastingMode = Low ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On; }
+                go = Instantiate(prefab, parent);
+                foreach (var r in go.GetComponentsInChildren<Renderer>())
+                {
+                    r.sharedMaterial = mat;
+                    r.shadowCastingMode = Low ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On;
+                }
                 go.transform.localPosition = pos;
             }
-            else go = Spawn(kitName, fallback(), pos);
+            else go = Spawn(kitName, fallback(), pos, parent);
             go.transform.localRotation = Quaternion.Euler(0, yaw, 0);
             return go;
         }
 
-        /// <summary>The Meshy bales keep their own 1024 / 512 texture (not the palette): an instanced clone of the palette material.</summary>
-        Material BaleMaterial(string texPath, bool meshy)
+        int Floors => Mathf.Clamp(Sim.Chapter, 1, 3);
+
+        int WallSwatch()
         {
-            var m = new Material(mat) { enableInstancing = true, name = texPath };
-            var tex = meshy ? Resources.Load<Texture2D>(texPath) : null;
-            if (tex != null) { m.mainTexture = tex; if (m.HasProperty("_BaseMap")) m.SetTexture("_BaseMap", tex); }
-            return m;
+            switch (OfficeTheme)
+            {
+                case "theme_classic": return Pal.Classic;
+                case "theme_loft": return Pal.Loft;
+                case "theme_deco": return Pal.Deco;
+                case "gold_nameplate": return Pal.Brand;
+            }
+            return Pal.WallCream;
         }
 
-        static Mesh KitMesh(string path)
+        void BuildTower()
         {
-            var go = Resources.Load<GameObject>(path);
-            var mf = go != null ? go.GetComponentInChildren<MeshFilter>() : null;
-            return mf != null ? mf.sharedMesh : null;
-        }
-
-        static Mesh BoxMesh(int swatch) { var k = new MeshKit(); k.Box(Vector3.zero, Vector3.one, 0, swatch); return k.Build("box_" + swatch); }
-        static Mesh FlatMesh(int swatch, float s) { var k = new MeshKit(); k.Quad(new Vector3(-s, 0.15f, -s), new Vector3(-s, 0.15f, s), new Vector3(s, 0.15f, s), new Vector3(s, 0.15f, -s), swatch); return k.Build("flat_" + swatch); }
-
-        void BuildDistrict(DistrictDef dd)
-        {
-            if (districtObjs.TryGetValue(dd.Id, out var old)) Destroy(old);
-            bool open = Sim.Unlocked(dd.Id);
-            var gd = Sim.Gd;
-            var rng = new System.Random(dd.Id.GetHashCode() & 0x7fffffff);
+            if (towerObj != null) Destroy(towerObj);
+            towerObj = new GameObject("Tower");
+            towerObj.transform.SetParent(transform, false);
             var k = new MeshKit();
-            int[] walls = { Pal.WallCream, Pal.WallTerracotta, Pal.WallBlue, Pal.WallCream };
-            foreach (var e in gd.Edges)
+            int wall = WallSwatch();
+            int trim = OfficeTheme == "theme_deco" || OfficeTheme == "gold_nameplate" ? Pal.Gold : Pal.Wood;
+            float x0 = -34f, x1 = -6f, z0 = 9.5f, z1 = 24f;
+            for (int f = 0; f < Floors; f++)
             {
-                var na = gd.Nodes[e.A]; var nb = gd.Nodes[e.B];
-                if (na.District != dd.Id && nb.District != dd.Id) continue;
-                Vector3 a = ToWorld(na.X, na.Y), b = ToWorld(nb.X, nb.Y);
-                var dir = b - a; float len = dir.magnitude; if (len < 30f) continue;
-                dir /= len;
-                var side = Vector3.Cross(Vector3.up, dir);
-                float yaw = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-                for (float s = 22f; s < len - 22f; s += 17f + (float)rng.NextDouble() * 6f)
-                    for (int sd = -1; sd <= 1; sd += 2)
-                    {
-                        if (rng.NextDouble() < 0.18) { k.Tree(a + dir * s + side * sd * 16f, 1.4f, yaw); continue; }
-                        float w = 10f + (float)rng.NextDouble() * 6f, h = (dd.Id == "oldtown" ? 9f : 7f) + (float)rng.NextDouble() * (dd.Id == "university" ? 22f : 14f);
-                        int wall = open ? walls[rng.Next(walls.Length)] : Pal.Locked;
-                        int roof = open ? (rng.NextDouble() < 0.5 ? Pal.RoofRed : Pal.RoofGrey) : Pal.Locked;
-                        var c = a + dir * s + side * sd * (w * 0.5f + 9f);
-                        k.Box(c, new Vector3(w, h, 10f), yaw, wall, roof);
-                        if (open && !Low) k.Box(c + Vector3.up * h * 0.55f - side * sd * 5.05f, new Vector3(w * 0.7f, 1.2f, 0.1f), yaw, Pal.Window);
-                    }
+                float y = f * FloorH;
+                k.Box(new Vector3((x0 + x1) * 0.5f, y, (z0 + z1) * 0.5f), new Vector3(x1 - x0, 0.4f, z1 - z0), 0, Pal.Carpet, f == 0 ? Pal.Wood : Pal.Carpet);   // floor slab
+                k.Box(new Vector3((x0 + x1) * 0.5f, y, z1), new Vector3(x1 - x0, FloorH, 0.6f), 0, wall);                                            // back wall
+                k.Box(new Vector3(x0, y, (z0 + z1) * 0.5f), new Vector3(0.6f, FloorH, z1 - z0), 0, wall);                                            // side walls
+                k.Box(new Vector3(x1, y, (z0 + z1) * 0.5f), new Vector3(0.6f, FloorH, z1 - z0), 0, wall);
+                k.Box(new Vector3((x0 + x1) * 0.5f, y + FloorH * 0.55f, z1 - 0.35f), new Vector3((x1 - x0) * 0.7f, 1.6f, 0.1f), 0, Pal.Window);   // back windows
+                k.Box(new Vector3((x0 + x1) * 0.5f, y + FloorH - 0.6f, z0), new Vector3(x1 - x0, 0.6f, 0.4f), 0, trim);                             // cut-away lintel
             }
-            if (dd.Id == "stadium")
+            k.Box(new Vector3((x0 + x1) * 0.5f, Floors * FloorH, (z0 + z1) * 0.5f), new Vector3(x1 - x0 + 1, 0.6f, z1 - z0 + 1), 0, Pal.RoofGrey);   // roof
+            k.Box(new Vector3((x0 + x1) * 0.5f, Floors * FloorH + 0.6f, z0 + 0.6f), new Vector3(10f, 1.6f, 0.3f), 0, OfficeTheme == "gold_nameplate" ? Pal.Gold : Pal.Brand);   // sign board (no text)
+            k.Box(new Vector3(-12f, 0, 8.4f), new Vector3(4f, 0.25f, 2.2f), 0, Pal.Concrete);   // front step
+            Spawn("TowerShell", k.Build("tower"), Vector3.zero, towerObj.transform);
+            Prop("reception", MeshKit.Reception, ReceptionPos + new Vector3(0, 0.4f, 2.5f), 180, towerObj.transform);
+            for (int i = 0; i < DeskCount; i++) Prop("desk", MeshKit.Desk, DeskPos(i) + new Vector3(0, 0, 1.2f), 180, towerObj.transform);
+            if (catObj == null) BuildCat();
+            builtTheme = OfficeTheme;
+        }
+
+        int DeskCount => Mathf.Min(Floors * 6, Math.Max(Sim.DeskCap, Sim.S.Staff.Count));
+
+        /// <summary>Desk i: six per floor in two rows (front row nearer the camera).</summary>
+        public Vector3 DeskPos(int i)
+        {
+            int f = Mathf.Clamp(i / 6, 0, 2), j = i % 6;
+            return new Vector3(-30f + (j % 3) * 7f, f * FloorH + 0.4f, 12.5f + (j / 3) * 5f);
+        }
+
+        void BuildRooms()
+        {
+            foreach (var go in roomObjs) Destroy(go);
+            roomObjs.Clear();
+            void R(string id, string kit, Func<Mesh> fb, Vector3 pos, float yaw = 0)
             {
-                var st = ToWorld(6.3, 1.25);
-                k.Box(st, new Vector3(60, 14, 40), 0, open ? Pal.Panel : Pal.Locked, open ? Pal.Grass : Pal.Locked);
+                if (!Sim.RoomBuilt(id)) return;
+                roomObjs.Add(Prop(kit, fb, pos, yaw, transform));
             }
-            districtObjs[dd.Id] = Spawn("District_" + dd.Id, k.Build("district_" + dd.Id), Vector3.zero);
+            float top = (Floors - 1) * FloorH + 0.4f;
+            R("library", "bookshelf", MeshKit.Bookshelf, new Vector3(-31f, 0.4f, 22.8f));
+            R("coffee", "coffee", MeshKit.Coffee, new Vector3(-8.5f, 0.4f, 22.5f));
+            R("docroom", "cabinet", MeshKit.Cabinet, new Vector3(-26f, 0.4f, 22.8f));
+            R("evidence", "boxes", MeshKit.Boxes, new Vector3(-9f, Mathf.Min(top, FloorH + 0.4f), 21f));
+            R("conference", "conference", MeshKit.Conference, new Vector3(-16f, Mathf.Min(top, FloorH + 0.4f), 21f));
+            R("war_room", "board", MeshKit.Board, new Vector3(-20f, top, 23.4f));
+            builtRooms = RoomKey();
         }
 
-        void BuildPoints()
+        int RoomKey() { int n = 0; foreach (var r in Sim.S.Rooms) n = n * 7 + r.Count + 1; return n + Sim.S.Rooms.Count * 1000; }
+
+        void BuildCourt()
         {
-            foreach (var go in pointObjs) Destroy(go);
-            pointObjs.Clear();
-            for (int i = 0; i < Sim.S.Points.Count; i++)
+            if (courtObj != null) Destroy(courtObj);
+            courtObj = Prop("courthouse", MeshKit.Courthouse, new Vector3(22f, 0, 8.2f), 0, transform);
+            courtObj.name = "Courthouse";
+            // courtroom theme: a warmer, grander stone (MaterialPropertyBlock tint, same material = same batch)
+            Color tint = CourtTheme ? new Color(1f, 0.93f, 0.8f) : Color.white;
+            foreach (var r in courtObj.GetComponentsInChildren<Renderer>())
             {
-                var p = Sim.S.Points[i];
-                var pos = PointPos(i) + new Vector3(0, 0.2f, 4f);
-                // fronts face the camera (south, -Z). Blender kit: front = -Y, exported with axis_forward -Z (verify in the editor)
-                GameObject go = p.Kind == "shop" ? Prop("shop", MeshKit.Shop, pos, 0)
-                    : p.Kind == "horeca" ? Prop("horeca", MeshKit.Horeca, pos, 0)
-                    : Prop(p.Kind == "machine_m" ? "machine_m" : "machine_s", () => MeshKit.Machine(p.Kind == "machine_m"), pos, 0);
-                go.name = "Point_" + i;
-                pointObjs.Add(go);
+                r.GetPropertyBlock(mpb);
+                mpb.SetColor("_BaseColor", tint);
+                r.SetPropertyBlock(mpb);
             }
+            builtCourt = CourtTheme ? "on" : "off";
         }
 
-        void SyncTrucks()
+        void BuildCat()
         {
-            while (truckObjs.Count > Sim.S.Trucks.Count) { Destroy(truckObjs[truckObjs.Count - 1].gameObject); truckObjs.RemoveAt(truckObjs.Count - 1); truckTypes.RemoveAt(truckTypes.Count - 1); }
-            for (int i = 0; i < Sim.S.Trucks.Count; i++)
+            var cat = Resources.Load<GameObject>("kit/office_cat_lod" + (Low ? "2" : "1"));
+            if (cat == null) return;
+            catObj = Instantiate(cat, transform);
+            catObj.name = "OfficeCat";
+            catObj.transform.localPosition = new Vector3(-9.6f, 0.25f, 8.2f);
+            catObj.transform.localRotation = Quaternion.Euler(0, 200, 0);
+            catObj.transform.localScale = Vector3.one * 1.6f;   // drawn larger than life so it reads at diorama zoom
+            matCat = new Material(mat) { name = "office_cat" };
+            var tex = Resources.Load<Texture2D>("kit/office_cat_base" + (Low ? "_low" : ""));
+            if (tex != null) { matCat.mainTexture = tex; if (matCat.HasProperty("_BaseMap")) matCat.SetTexture("_BaseMap", tex); }
+            foreach (var r in catObj.GetComponentsInChildren<Renderer>()) { r.sharedMaterial = matCat; r.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off; }
+        }
+
+        public List<Bounds> ViewBounds()
+        {
+            var b = new Bounds(new Vector3(0, 0, 12), new Vector3(80, 10, 34));
+            return new List<Bounds> { b };
+        }
+
+        // ------------------------------------------------------------------ people
+
+        public Vector3 StaffPos(int index)
+        {
+            var s = index >= 0 && index < Sim.S.Staff.Count ? Sim.S.Staff[index] : null;
+            if (s != null && Sim.InSession(s.Id)) return CourtDoor + new Vector3(-3f + (index % 3) * 3f, 2.2f, 2.5f);
+            if (s != null && s.Role == "receptionist") return ReceptionPos + new Vector3(Sim.CountRole("receptionist") > 1 && index % 2 == 1 ? 1.6f : -1.2f, 0.4f, 4f);
+            return DeskPos(index) + new Vector3(0, 0, 2.2f);   // behind the desk (the desk faces the camera), facing the street
+        }
+
+        void SyncPeople()
+        {
+            crowd.ClearStanding();
+            int lowFloor = Floors - 1;
+            for (int i = 0; i < Sim.S.Staff.Count; i++)
             {
-                string type = Sim.S.Trucks[i].Type;
-                if (i < truckObjs.Count && truckTypes[i] == type) continue;
-                var go = Prop(type, () => MeshKit.Truck(type), DepotPos, 0);
-                go.name = "Truck_" + i;
-                if (i < truckObjs.Count) { Destroy(truckObjs[i].gameObject); truckObjs[i] = go.transform; truckTypes[i] = type; }
-                else { truckObjs.Add(go.transform); truckTypes.Add(type); }
+                var s = Sim.S.Staff[i];
+                if (s.Sick) continue;
+                bool busy = Sim.Phase == Phases.Live && s.HoursLeft > 0 && Sim.NextTaskOf(s.Id).m != null;
+                if (Low && DeskPos(i).y > lowFloor * FloorH + 1f) busy = false;   // Low: only the active (top) floor animates
+                crowd.Stand(StaffPos(i), 180f, Crowd.RoleMesh(s.Role, Outfits), busy);
             }
-            ApplyLivery();
-        }
-
-        public void SetLivery(string livery) { Livery = livery ?? ""; ApplyLivery(); }
-
-        void ApplyLivery()
-        {
-            Color tint = Livery switch
+            int q = 0;
+            foreach (var m in Sim.Intakes)
             {
-                "gold_livery" => new Color(1f, 0.84f, 0.35f),
-                "livery_sunset" => new Color(1f, 0.62f, 0.5f),
-                "livery_forest" => new Color(0.55f, 0.85f, 0.6f),
-                _ => Color.white,
-            };
-            foreach (var t in truckObjs)
-                foreach (var r in t.GetComponentsInChildren<Renderer>())
-                {
-                    r.GetPropertyBlock(mpb);
-                    mpb.SetColor("_BaseColor", tint);
-                    r.SetPropertyBlock(mpb);
-                }
-        }
-
-        void BuildLitter()
-        {
-            litter.Clear();
-            int max = Low ? 120 : 260;
-            int n = (int)(max * Math.Max(0, 1.0 - Sim.S.Rating / 100.0) * 1.4);
-            var rng = new System.Random(Sim.S.Day * 31 + 7);
-            var gd = Sim.Gd;
-            for (int i = 0; i < n && gd.Edges.Count > 0; i++)
-            {
-                var e = gd.Edges[rng.Next(gd.Edges.Count)];
-                if (!Sim.Unlocked(gd.Nodes[e.A].District)) continue;
-                Vector3 a = NodePos(e.A), b = NodePos(e.B);
-                var p = Vector3.Lerp(a, b, (float)rng.NextDouble()) + new Vector3((float)rng.NextDouble() * 14f - 7f, 0, (float)rng.NextDouble() * 14f - 7f);
-                litter.Add(Matrix4x4.TRS(p, Quaternion.Euler(0, rng.Next(360), 0), Vector3.one * (0.6f + (float)rng.NextDouble())));
+                if (q >= 4) break;
+                crowd.Stand(ReceptionPos + new Vector3(-1.5f + q * 1.6f, 0.4f, 0.4f - q * 0.2f), 0f, Crowd.ClientA + m.Id % 3, false);
+                q++;
             }
-            builtRating = Sim.S.Rating;
+            builtStaff = StaffKey();
+            builtIntake = Sim.IntakeCount;
+            builtSession = SessionKey();
         }
 
-        void BuildYard()
-        {
-            balesPet.Clear(); balesAlu.Clear(); glassPiles.Clear();
-            var basePos = DepotPos + new Vector3(18, 0, 10);
-            int k = 0;
-            void Stack(List<Matrix4x4> list, int count, Vector3 size)
-            {
-                for (int i = 0; i < count; i++, k++)
-                {
-                    int col = k % 6, row = (k / 6) % 4, lay = k / 24;
-                    list.Add(Matrix4x4.TRS(basePos + new Vector3(col * 4.4f, lay * 3.6f, row * 4.4f), Quaternion.identity, size));
-                }
-            }
-            Stack(balesPet, Math.Min(48, Sim.S.Depot.Bales[Mats.Pet]), Vector3.one * 3.6f);
-            Stack(balesAlu, Math.Min(48, Sim.S.Depot.Bales[Mats.Alu]), Vector3.one * 3.6f);
-            for (int i = 0; i < Math.Min(8, Sim.S.Depot.Bales[Mats.Glass]); i++)
-                glassPiles.Add(Matrix4x4.TRS(DepotPos + new Vector3(-30 - i * 5f, 0, 14), Quaternion.identity, new Vector3(4.5f, 2f, 4.5f)));
-            builtYard = Sim.S.Depot.Yard;
-            builtGlass = Sim.S.Depot.Bales[Mats.Glass];
-        }
-
-        public List<Bounds> UnlockedBounds()
-        {
-            var o = new List<Bounds>();
-            var b = new Bounds(DepotPos, Vector3.one * 60f);
-            foreach (var n in Sim.Gd.Nodes) if (Sim.Unlocked(n.District)) b.Encapsulate(ToWorld(n.X, n.Y));
-            b.Expand(new Vector3(40, 0, 40));
-            o.Add(b);
-            return o;
-        }
+        int StaffKey() { int k = Sim.S.Staff.Count; foreach (var s in Sim.S.Staff) k = k * 31 + s.Id * 3 + (s.Sick ? 1 : 0); return k; }
+        int SessionKey() { int k = 0; foreach (var m in Sim.S.Matters) if (m.Status == MatterStatus.Hearing) k = k * 17 + m.Id; return k; }
 
         // ------------------------------------------------------------------ frame
 
@@ -307,69 +305,59 @@ namespace DocketDay.World
             if (dirty)
             {
                 dirty = false;
-                int dCount = Sim.S.Districts.Count;
-                if (dCount != builtDistricts)
+                if (builtChapter != Sim.Chapter || builtTheme != OfficeTheme || builtStaff != StaffKey())
                 {
-                    foreach (var dd in Sim.Gd.Districts) BuildDistrict(dd);
-                    if (builtDistricts >= 0 && rig != null) rig.Fit(UnlockedBounds(), false);
-                    builtDistricts = dCount;
-                    BuildLitter();
+                    bool grew = builtChapter >= 0 && builtChapter != Sim.Chapter;
+                    BuildTower();
+                    BuildRooms();
+                    if (grew && rig != null) rig.Fit(ViewBounds(), false);
+                    builtChapter = Sim.Chapter;
                 }
-                if (Sim.S.Points.Count != builtPoints || PointKindsChanged()) { BuildPoints(); builtPoints = Sim.S.Points.Count; }
-                if (Math.Abs(builtRating - Sim.S.Rating) > 2) BuildLitter();
-                SyncTrucks();
+                if (builtRooms != RoomKey()) BuildRooms();
+                if (courtObj == null || builtCourt != (CourtTheme ? "on" : "off")) BuildCourt();
+                SyncPeople();
             }
-            if (Sim.S.Depot.Yard != builtYard || Sim.S.Depot.Bales[Mats.Glass] != builtGlass) BuildYard();
-
             float dt = Time.deltaTime;
             slowAcc += dt;
-            bool tick = !Low || slowAcc >= 1f / 15f;
+            bool tick = slowAcc >= (Low ? 1f / 15f : 1f / 30f);
             if (tick)
             {
-                float step = Low ? slowAcc : dt;
+                float step = slowAcc;
                 slowAcc = 0f;
-                MoveTrucks(step);
+                if (builtIntake != Sim.IntakeCount || builtSession != SessionKey() || Sim.Phase == Phases.Live) SyncPeople();
                 crowd.Tick(step);
             }
-            // instanced draws (no GameObjects)
-            if (litter.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), litterMesh, 0, litter);
-            if (balesPet.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matBalePet), baleMeshPet, 0, balesPet);
-            if (balesAlu.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matBaleAlu), baleMeshAlu, 0, balesAlu);
-            if (glassPiles.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), glassMesh, 0, glassPiles);
             crowd.Draw();
         }
 
-        readonly List<string> lastKinds = new List<string>();
-        bool PointKindsChanged()
-        {
-            bool changed = lastKinds.Count != Sim.S.Points.Count;
-            for (int i = 0; i < Sim.S.Points.Count && !changed; i++) changed = lastKinds[i] != Sim.S.Points[i].Kind;
-            if (!changed) return false;
-            lastKinds.Clear();
-            foreach (var p in Sim.S.Points) lastKinds.Add(p.Kind);
-            return true;
-        }
-
-        void MoveTrucks(float dt)
-        {
-            for (int i = 0; i < truckObjs.Count && i < Sim.S.Trucks.Count; i++)
-            {
-                var t = Sim.S.Trucks[i];
-                var (x, y, heading) = Sim.TruckPos(t);
-                var target = ToWorld(x, y) + new Vector3(0, 0.2f, 0);
-                if (!t.Busy) target = DepotPos + new Vector3(-20 + i * 6f, 0.2f, 14f);   // parked in a row at the depot
-                var tr = truckObjs[i];
-                float k = 1f - Mathf.Exp(-12f * dt);   // smooth the 15 Hz / step jumps
-                tr.localPosition = Vector3.Lerp(tr.localPosition, target, k);
-                if (t.Status == TruckStatus.Drive) tr.localRotation = Quaternion.Slerp(tr.localRotation, Quaternion.Euler(0, (float)(heading * Mathf.Rad2Deg), 0), k);
-            }
-        }
-
-        /// <summary>Sim events -> walkers (deposit / turned away).</summary>
+        /// <summary>Sim events -> walkers (clients arriving / leaving, a lawyer crossing to court) and rebuilds.</summary>
         public void OnSimEvent(SimEvent e)
         {
-            if (e.Type == "deposit" || e.Type == "turned") crowd.Spawn(e.A, e.B, e.Type == "turned");
-            else if (e.Type == "district" || e.Type == "point_new" || e.Type == "bought" || e.Type == "day_start") MarkDirty();
+            switch (e.Type)
+            {
+                case "walkin":
+                    crowd.Walk(StreetWest + new Vector3(0, 0, 5f), ReceptionPos + new Vector3(0, 0.4f, 0.4f), Crowd.ClientA + Math.Abs(e.A) % 3);
+                    break;
+                case "walked_out":
+                case "declined":
+                case "referred":
+                    crowd.Walk(ReceptionPos + new Vector3(0, 0.4f, 0.4f), StreetWest + new Vector3(0, 0, 5f), Crowd.ClientB);
+                    break;
+                case "hearing_start":
+                {
+                    int idx = e.B >= 0 ? Sim.S.Staff.FindIndex(s => s.Id == e.B) : -1;
+                    var from = idx >= 0 ? DeskPos(idx) : ReceptionPos;
+                    crowd.Walk(from, CourtDoor + new Vector3(0, 2.2f, 2.5f), idx >= 0 ? Crowd.RoleMesh(Sim.S.Staff[idx].Role, Outfits) : Crowd.Suit);
+                    break;
+                }
+                case "verdict":
+                case "settled":
+                    crowd.Walk(CourtDoor + new Vector3(0, 0, 0), StreetEast + new Vector3(0, 0, 5f), Crowd.ClientC);
+                    break;
+                case "hired": case "fired": case "temp_left": case "room_done": case "chapter": case "day_start": case "crisis":
+                    MarkDirty();
+                    break;
+            }
         }
 
         // ------------------------------------------------------------------ picking
@@ -380,33 +368,33 @@ namespace DocketDay.World
             Picked?.Invoke(hit);
         }
 
-        /// <summary>Screen px (bottom-left origin) -> what is there. Trucks win over points, points over the depot.</summary>
+        /// <summary>Screen px (bottom-left origin) -> what is there. Reception wins over the office, the court over the street.</summary>
         public WorldHit Pick(Vector2 screen)
         {
             var none = new WorldHit { Kind = "none", Index = -1 };
             if (cam == null || Sim == null) return none;
             var ray = cam.ScreenPointToRay(screen);
-            if (Mathf.Abs(ray.direction.y) < 1e-4f) return none;
-            float dist = -ray.origin.y / ray.direction.y;
-            if (dist < 0) return none;
-            var g = ray.origin + ray.direction * dist;
-            float pickR = 22f * Mathf.Max(0.6f, rig != null ? rig.Zoom : 1f);
-            float best = pickR * pickR;
-            var res = none;
-            for (int i = 0; i < truckObjs.Count; i++)
+            // test a few heights: the ground and each floor of the tower (cutaway floors are tapped from above)
+            for (int f = Floors - 1; f >= -1; f--)
             {
-                float d = (truckObjs[i].localPosition - g).sqrMagnitude;
-                if (d < best * 0.8f) { best = d; res = new WorldHit { Kind = "truck", Index = i }; }
+                float y = f < 0 ? 0f : f * FloorH + 0.4f;
+                if (Mathf.Abs(ray.direction.y) < 1e-4f) break;
+                float dist = (y - ray.origin.y) / ray.direction.y;
+                if (dist < 0) continue;
+                var g = ray.origin + ray.direction * dist;
+                if (f < 0)
+                {
+                    if ((g - ReceptionPos).sqrMagnitude < 8f * 8f) return new WorldHit { Kind = "reception", Index = 0 };
+                    if (catObj != null && (g - catObj.transform.localPosition).sqrMagnitude < 3f * 3f) return new WorldHit { Kind = "cat", Index = 0 };
+                    if (g.x > 8f && g.x < 36f && g.z > 4f && g.z < 28f) return new WorldHit { Kind = "courthouse", Index = 0 };
+                    if (g.x > -36f && g.x < -4f && g.z > 8f && g.z < 26f) return new WorldHit { Kind = "office", Index = 0 };
+                }
+                else if (g.x > -34f && g.x < -6f && g.z > 9.5f && g.z < 24f)
+                {
+                    if (f == 0 && (g - ReceptionPos).sqrMagnitude < 8f * 8f) return new WorldHit { Kind = "reception", Index = 0 };
+                    return new WorldHit { Kind = "office", Index = f };
+                }
             }
-            if (res.Kind == "truck") return res;
-            best = pickR * pickR;
-            for (int i = 0; i < Sim.S.Points.Count; i++)
-            {
-                float d = (PointPos(i) - g).sqrMagnitude;
-                if (d < best) { best = d; res = new WorldHit { Kind = "point", Index = i }; }
-            }
-            if (res.Kind == "point") return res;
-            if ((DepotPos - g).sqrMagnitude < 45f * 45f) return new WorldHit { Kind = "depot", Index = 0 };
             return none;
         }
 
@@ -419,6 +407,6 @@ namespace DocketDay.World
             return new Vector2(s.x, Screen.height - s.y);
         }
 
-        public Vector3 TruckWorld(int i) => i >= 0 && i < truckObjs.Count ? truckObjs[i].localPosition : DepotPos;
+        public Vector3 BuildingMarkerPos => TowerCenter + new Vector3(0, Floors * FloorH + 4f, -4f);
     }
 }

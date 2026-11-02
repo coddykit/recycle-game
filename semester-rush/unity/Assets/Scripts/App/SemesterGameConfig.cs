@@ -14,7 +14,7 @@ namespace SemesterRush.App
     {
         public const string AppId = "semester-rush";                 // ads-config X-App-ID, house-ad host id
         public const string Package = "com.coddykit.semesterrush";
-        public const string ProductName = "Semester Rush";           // store title "Semester Rush: Recycling Tycoon" (30 chars)
+        public const string ProductName = "Semester Rush";           // store title "Semester Rush: Campus Dean" (26 chars)
         public const string PrivacyUrl = "https://www.coddykit.com/pages/privacy-policy";
 
         // ---- P8 (Patron): real ids. Keep the constant names (a preflight reads them). ----

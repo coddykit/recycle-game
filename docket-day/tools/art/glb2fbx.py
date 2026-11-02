@@ -1,6 +1,6 @@
 """Blender headless: optimised GLB (tools/meshy/optimize.py output) -> FBX for Unity (Unity has no built-in glTF importer;
 the project must not install one, docs/UNITY.md). Texture is NOT embedded: the PNG next to it is the material's map
-(Unity: Editor/BottleArtImport assigns <name>_base.png / _base_low.png by tier).
+(Unity: Editor/DocketArtImport assigns <name>_base.png / _base_low.png by tier).
   blender -b --python docket-day/tools/art/glb2fbx.py -- <in.glb> <out.fbx>
 """
 import sys

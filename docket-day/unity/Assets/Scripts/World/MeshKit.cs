@@ -1,7 +1,7 @@
 // Docket Day — the diorama's procedural geometry. Everything in the world shares ONE material (URP Simple Lit on the
 // 8×8 palette texture Resources/materials/palette.png): a model picks colours by pointing its UVs at palette swatches, so
-// the SRP batcher draws the whole town with a handful of batches (fleet §10: Low ≤ 150 draws, the plan targets ≤ 120).
-// Builders merge many boxes into one mesh per district; nothing here runs per frame.
+// the SRP batcher draws the office tower, the street and the courthouse with a handful of batches (fleet §10: Low ≤ 150
+// draws, the plan targets ≤ 120). Builders merge many boxes into one mesh per floor; nothing here runs per frame.
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -11,10 +11,11 @@ namespace DocketDay.World
     /// <summary>Palette swatch indices (Tools/make_palette.py writes the same order).</summary>
     public static class Pal
     {
-        public const int Grass = 0, GrassDark = 1, Road = 2, RoadLine = 3, Concrete = 4, WallCream = 5, WallTerracotta = 6, WallBlue = 7,
-            RoofRed = 8, RoofGrey = 9, Brand = 10, Panel = 11, TruckWhite = 12, TruckGreen = 13, Depot = 14, Water = 15, Sand = 16,
-            Tree = 17, Trunk = 18, Locked = 19, Window = 20, Pet = 21, Alu = 22, Glass = 23, Warning = 24, Yellow = 25, Litter = 26,
-            Gold = 27, Sunset = 28, Forest = 29, Tropic = 30, Retro = 31, SkinTone = 32, ShirtA = 33, ShirtB = 34, ShirtC = 35, ShirtD = 36, ShirtE = 37, Trousers = 38;
+        public const int Grass = 0, GrassDark = 1, Road = 2, RoadLine = 3, Concrete = 4, WallCream = 5, WallBrick = 6, WallBlue = 7,
+            RoofRed = 8, RoofGrey = 9, Brand = 10, Wood = 11, Paper = 12, Teal = 13, Stone = 14, Window = 15, Carpet = 16,
+            Tree = 17, Trunk = 18, Locked = 19, Dark = 20, Folder = 21, Metal = 22, Lamp = 23, Warning = 24, Amber = 25, Robe = 26,
+            Gold = 27, Loft = 28, Classic = 29, Deco = 30, Sand = 31, SkinTone = 32, ShirtA = 33, ShirtB = 34, ShirtC = 35, ShirtD = 36, ShirtE = 37,
+            Trousers = 38, White = 39;
         public const int Size = 8;
 
         public static Vector2 Uv(int swatch)
@@ -107,76 +108,115 @@ namespace DocketDay.World
 
         // ------------------------------------------------------------------ props (fallbacks when the Blender kit is absent)
 
-        public static Mesh Machine(bool big)
+        public static Mesh Desk()
         {
             var k = new MeshKit();
-            float h = big ? 5.2f : 4.2f, w = big ? 4.4f : 3.2f;
-            k.Box(Vector3.zero, new Vector3(w, h, 2.4f), 0, Pal.Brand, Pal.Brand);
-            k.Box(new Vector3(0, h * 0.45f, -1.25f), new Vector3(w * 0.7f, h * 0.35f, 0.1f), 0, Pal.Panel);
-            k.Box(new Vector3(0, h * 0.82f, -1.25f), new Vector3(w * 0.45f, h * 0.12f, 0.1f), 0, Pal.Window);
-            k.Box(new Vector3(0, h, 0), new Vector3(w + 0.4f, 0.35f, 2.8f), 0, Pal.Panel);
-            return k.Build(big ? "machine_m" : "machine_s");
+            k.Box(Vector3.zero, new Vector3(2.4f, 1.0f, 1.2f), 0, Pal.Wood, Pal.Wood);
+            k.Box(new Vector3(0, 1.0f, 0.3f), new Vector3(0.9f, 0.6f, 0.08f), 0, Pal.Dark);           // monitor
+            k.Box(new Vector3(0.7f, 1.0f, -0.2f), new Vector3(0.5f, 0.12f, 0.4f), 0, Pal.Folder);   // file stack
+            k.Box(new Vector3(0, 0, -1.0f), new Vector3(0.8f, 0.6f, 0.8f), 0, Pal.Brand);             // chair
+            return k.Build("desk");
         }
 
-        public static Mesh Shop()
+        public static Mesh Reception()
         {
             var k = new MeshKit();
-            k.Box(Vector3.zero, new Vector3(6f, 4f, 5f), 0, Pal.WallCream, Pal.RoofRed);
-            k.Box(new Vector3(0, 2.6f, -2.7f), new Vector3(6.4f, 0.3f, 1.6f), 0, Pal.Brand);
-            k.Box(new Vector3(-1.5f, 0, -3f), new Vector3(1.4f, 1.2f, 1f), 0, Pal.Pet);
-            return k.Build("shop");
+            k.Box(Vector3.zero, new Vector3(4.2f, 1.2f, 1.2f), 0, Pal.Brand, Pal.Wood);
+            k.Box(new Vector3(-1.2f, 1.2f, 0), new Vector3(0.6f, 0.7f, 0.5f), 0, Pal.Lamp);
+            k.Box(new Vector3(1f, 1.2f, 0.2f), new Vector3(0.9f, 0.55f, 0.08f), 0, Pal.Dark);
+            return k.Build("reception");
         }
 
-        public static Mesh Horeca()
+        public static Mesh Bookshelf()
         {
             var k = new MeshKit();
-            k.Box(Vector3.zero, new Vector3(7f, 4.5f, 6f), 0, Pal.WallTerracotta, Pal.RoofGrey);
-            for (int i = -1; i <= 1; i += 2)
-            {
-                k.Box(new Vector3(i * 2.4f, 0, -5f), new Vector3(0.2f, 2.6f, 0.2f), 0, Pal.Trunk);
-                k.Box(new Vector3(i * 2.4f, 2.6f, -5f), new Vector3(2.6f, 0.25f, 2.6f), 45, Pal.Sunset);
-            }
-            k.Box(new Vector3(3.6f, 0, 1f), new Vector3(1.2f, 1.4f, 1.6f), 0, Pal.Glass);
-            return k.Build("horeca");
+            k.Box(Vector3.zero, new Vector3(3f, 3.4f, 0.8f), 0, Pal.Wood, Pal.Wood);
+            for (int r = 0; r < 3; r++) k.Box(new Vector3(0, 0.3f + r * 1.05f, -0.42f), new Vector3(2.6f, 0.7f, 0.05f), 0, r % 2 == 0 ? Pal.Carpet : Pal.Classic);
+            return k.Build("bookshelf");
         }
 
-        public static Mesh Truck(string type)
+        public static Mesh Coffee()
         {
             var k = new MeshKit();
-            switch (type)
-            {
-                case "bike":
-                    k.Box(new Vector3(0, 0.5f, 0.8f), new Vector3(1.4f, 1.3f, 1.8f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0, -1.2f), new Vector3(0.3f, 1.6f, 0.3f), 0, Pal.Window);
-                    k.Box(new Vector3(0, 0, 0), new Vector3(0.25f, 0.6f, 3.2f), 0, Pal.Window);
-                    break;
-                case "compactor":
-                    k.Box(new Vector3(0, 0.6f, 2.6f), new Vector3(2.6f, 2.6f, 1.8f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0.6f, -0.8f), new Vector3(2.8f, 3.2f, 5f), 0, Pal.TruckGreen);
-                    k.Box(new Vector3(0, 1.6f, 3.52f), new Vector3(2.2f, 1f, 0.05f), 0, Pal.Window);
-                    for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * 1.3f, 0, j * 2f), new Vector3(0.5f, 1.1f, 1.1f), 0, Pal.Window);
-                    break;
-                default:
-                    k.Box(new Vector3(0, 0.5f, 1.6f), new Vector3(2.2f, 2f, 1.4f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 0.5f, -0.6f), new Vector3(2.3f, 2.5f, 3.2f), 0, Pal.TruckWhite);
-                    k.Box(new Vector3(0, 1.4f, 2.32f), new Vector3(1.9f, 0.8f, 0.05f), 0, Pal.Window);
-                    k.Box(new Vector3(0, 1.2f, -0.6f), new Vector3(2.35f, 0.5f, 3f), 0, Pal.Brand);
-                    for (int i = -1; i <= 1; i += 2) for (int j = -1; j <= 1; j += 2) k.Box(new Vector3(i * 1.1f, 0, j * 1.4f), new Vector3(0.4f, 0.9f, 0.9f), 0, Pal.Window);
-                    break;
-            }
-            return k.Build("truck_" + type);
+            k.Box(Vector3.zero, new Vector3(2f, 1.0f, 1f), 0, Pal.Wood, Pal.Concrete);
+            k.Box(new Vector3(-0.4f, 1f, 0), new Vector3(0.7f, 0.9f, 0.6f), 0, Pal.Metal, Pal.Dark);
+            k.Box(new Vector3(0.5f, 1f, 0), new Vector3(0.25f, 0.3f, 0.25f), 0, Pal.White);
+            return k.Build("coffee");
         }
 
-        /// <summary>The chunky canonical walker (crowd), ~2.6 units tall so it reads at map zoom. shirt = archetype colour.</summary>
-        public static Mesh Figure(int shirt)
+        public static Mesh Cabinet()
+        {
+            var k = new MeshKit();
+            for (int i = -1; i <= 1; i++) k.Box(new Vector3(i * 0.95f, 0, 0), new Vector3(0.85f, 2.2f, 0.9f), 0, Pal.Metal, Pal.Metal);
+            return k.Build("cabinet");
+        }
+
+        public static Mesh Conference()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(4.6f, 0.95f, 2f), 0, Pal.Wood, Pal.Wood);
+            for (int i = -1; i <= 1; i++) for (int s = -1; s <= 1; s += 2) k.Box(new Vector3(i * 1.4f, 0, s * 1.5f), new Vector3(0.7f, 0.6f, 0.7f), 0, Pal.Dark);
+            return k.Build("conference");
+        }
+
+        public static Mesh Boxes()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(1.2f, 0.8f, 0.9f), 10, Pal.Folder);
+            k.Box(new Vector3(1.1f, 0, 0.2f), new Vector3(1f, 0.8f, 0.9f), -8, Pal.Sand);
+            k.Box(new Vector3(0.5f, 0.8f, 0.1f), new Vector3(1f, 0.7f, 0.8f), 4, Pal.Folder);
+            return k.Build("boxes");
+        }
+
+        public static Mesh Board()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(3.2f, 2.6f, 0.2f), 0, Pal.White);
+            k.Box(new Vector3(-0.6f, 1.2f, -0.12f), new Vector3(0.8f, 0.6f, 0.02f), 0, Pal.Folder);
+            k.Box(new Vector3(0.7f, 1.6f, -0.12f), new Vector3(0.7f, 0.5f, 0.02f), 0, Pal.Warning);
+            return k.Build("board");
+        }
+
+        public static Mesh Courthouse()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(26f, 1.2f, 4f), 0, Pal.Stone);                                  // steps
+            k.Box(new Vector3(0, 0, 3.5f), new Vector3(24f, 2.0f, 3f), 0, Pal.Stone);
+            k.Box(new Vector3(0, 2f, 9f), new Vector3(24f, 11f, 12f), 0, Pal.Stone, Pal.RoofGrey);          // hall
+            for (int i = 0; i < 6; i++) k.Box(new Vector3(-10f + i * 4f, 2f, 3.6f), new Vector3(1.4f, 10f, 1.4f), 0, Pal.White);   // columns
+            k.Box(new Vector3(0, 12f, 4f), new Vector3(25f, 1.4f, 3.2f), 0, Pal.Stone);                      // architrave
+            k.Box(new Vector3(0, 13.4f, 4.5f), new Vector3(20f, 2.4f, 2.4f), 0, Pal.Stone, Pal.RoofGrey);    // pediment block
+            k.Box(new Vector3(0, 2f, 2.9f), new Vector3(3.2f, 5f, 0.2f), 0, Pal.Wood);                       // door
+            return k.Build("courthouse");
+        }
+
+        public static Mesh Lamp()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(0.25f, 4.2f, 0.25f), 0, Pal.Dark);
+            k.Box(new Vector3(0, 4.2f, 0), new Vector3(0.7f, 0.6f, 0.7f), 0, Pal.Amber);
+            return k.Build("lamp");
+        }
+
+        public static Mesh Bench()
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(2.2f, 0.5f, 0.7f), 0, Pal.Wood);
+            k.Box(new Vector3(0, 0.5f, 0.3f), new Vector3(2.2f, 0.7f, 0.12f), 0, Pal.Wood);
+            return k.Build("bench");
+        }
+
+        /// <summary>The chunky canonical person (staff + clients), ~2.6 units tall so it reads at diorama zoom. shirt = role colour.
+        /// folder: carries a manila folder (staff) instead of nothing (clients).</summary>
+        public static Mesh Figure(int shirt, bool folder = true)
         {
             var k = new MeshKit();
             k.Box(new Vector3(-0.35f, 0, 0), new Vector3(0.5f, 1.1f, 0.6f), 0, Pal.Trousers);
             k.Box(new Vector3(0.35f, 0, 0), new Vector3(0.5f, 1.1f, 0.6f), 0, Pal.Trousers);
             k.Box(new Vector3(0, 1.1f, 0), new Vector3(1.4f, 1.1f, 0.8f), 0, shirt);
             k.Box(new Vector3(0, 2.2f, 0), new Vector3(0.8f, 0.7f, 0.8f), 0, Pal.SkinTone);
-            k.Box(new Vector3(0.95f, 0.7f, 0), new Vector3(0.6f, 0.8f, 0.6f), 0, Pal.Pet);   // the bottle bag
-            return k.Build("figure_" + shirt);
+            if (folder) k.Box(new Vector3(0.95f, 0.8f, 0), new Vector3(0.2f, 0.8f, 0.7f), 0, Pal.Folder);
+            return k.Build("figure_" + shirt + (folder ? "_f" : ""));
         }
     }
 }

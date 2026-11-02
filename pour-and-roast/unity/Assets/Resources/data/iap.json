@@ -15,19 +15,22 @@
  ],
  "order": [
   "starter",
-  "event_kit",
+  "crisis",
   "comeback",
+  "milestone",
   "noads",
   "premium",
-  "route_pass",
+  "roast_pass",
   "bundle",
   "speed",
-  "dispatcher_plus",
+  "automation",
+  "slots",
   "offline_plus",
-  "livery_sunset",
-  "livery_forest",
-  "skin_retro",
-  "depot_tropic",
+  "theme_nordic",
+  "theme_artdeco",
+  "cups",
+  "latte_art",
+  "aprons",
   "cosmetics_all",
   "cash_s",
   "cash_m",
@@ -40,19 +43,22 @@
  "ad_free_products": [
   "noads",
   "premium",
-  "route_pass",
+  "roast_pass",
   "bundle"
  ],
  "entitlements": [
   "noads",
-  "gold_livery",
-  "route_pass",
+  "gold_trim",
+  "slot_plus",
+  "roast_pass",
   "speed",
-  "dispatcher_plus",
-  "livery_sunset",
-  "livery_forest",
-  "skin_retro",
-  "depot_tropic",
+  "automation",
+  "theme_nordic",
+  "theme_artdeco",
+  "cups",
+  "latte_art",
+  "aprons",
+  "slots",
   "offline_plus"
  ],
  "groups": [
@@ -137,72 +143,73 @@
    "id": "com.coddykit.pourandroast.starter",
    "kind": "consumable",
    "group": "offer",
-   "icon": "truck",
+   "icon": "barista",
    "usd": 1.99,
    "grants": [],
    "ad_free": false,
    "title": {
-    "en": "Starter Fleet",
-    "tr": "Başlangıç Filosu",
-    "de": "Starter-Flotte",
-    "es": "Flota inicial",
-    "fr": "Flotte de départ",
-    "pt": "Frota Inicial",
-    "ru": "Стартовый парк",
-    "ja": "スターター車両",
-    "ko": "스타터 차량",
-    "hi": "स्टार्टर फ़्लीट"
+    "en": "Quick Start",
+    "tr": "Quick Start",
+    "de": "Quick Start",
+    "es": "Quick Start",
+    "fr": "Quick Start",
+    "pt": "Quick Start",
+    "ru": "Quick Start",
+    "ja": "Quick Start",
+    "ko": "Quick Start",
+    "hi": "Quick Start"
    },
    "desc": {
-    "en": "Cash and one more van for a fast start.",
-    "tr": "Hızlı bir başlangıç için para ve bir kamyonet daha.",
-    "de": "Geld und ein weiterer Transporter für einen schnellen Start.",
-    "es": "Dinero y una furgoneta más para empezar rápido.",
-    "fr": "Des pièces et une camionnette de plus pour bien démarrer.",
-    "pt": "Dinheiro e mais uma van para um começo rápido.",
-    "ru": "Деньги и ещё один фургон для быстрого старта.",
-    "ja": "すばやいスタートのためのお金とバン1台。",
-    "ko": "빠른 시작을 위한 자금과 밴 한 대 더.",
-    "hi": "तेज़ शुरुआत के लिए पैसे और एक और वैन।"
+    "en": "Two days of cash and a free extra barista. One time only.",
+    "tr": "Two days of cash and a free extra barista. One time only.",
+    "de": "Two days of cash and a free extra barista. One time only.",
+    "es": "Two days of cash and a free extra barista. One time only.",
+    "fr": "Two days of cash and a free extra barista. One time only.",
+    "pt": "Two days of cash and a free extra barista. One time only.",
+    "ru": "Two days of cash and a free extra barista. One time only.",
+    "ja": "Two days of cash and a free extra barista. One time only.",
+    "ko": "Two days of cash and a free extra barista. One time only.",
+    "hi": "Two days of cash and a free extra barista. One time only."
    },
    "days_x10": 20,
    "offer_only": true,
-   "van": true
+   "barista": true
   },
-  "event_kit": {
-   "id": "com.coddykit.pourandroast.event_kit",
+  "crisis": {
+   "id": "com.coddykit.pourandroast.crisis",
    "kind": "consumable",
    "group": "offer",
-   "icon": "star",
+   "icon": "milk",
    "usd": 2.99,
    "grants": [],
    "ad_free": false,
    "title": {
-    "en": "Match-Day Kit",
-    "tr": "Maç Günü Seti",
-    "de": "Spieltag-Set",
-    "es": "Kit de día de partido",
-    "fr": "Kit jour de match",
-    "pt": "Kit Dia de Jogo",
-    "ru": "Набор для матч-дня",
-    "ja": "試合日キット",
-    "ko": "경기 날 키트",
-    "hi": "मैच-डे किट"
+    "en": "Milk Run Kit",
+    "tr": "Milk Run Kit",
+    "de": "Milk Run Kit",
+    "es": "Milk Run Kit",
+    "fr": "Milk Run Kit",
+    "pt": "Milk Run Kit",
+    "ru": "Milk Run Kit",
+    "ja": "Milk Run Kit",
+    "ko": "Milk Run Kit",
+    "hi": "Milk Run Kit"
    },
    "desc": {
-    "en": "Extra cash for a busy match day.",
-    "tr": "Yoğun bir maç günü için ekstra para.",
-    "de": "Extra Geld für einen vollen Spieltag.",
-    "es": "Dinero extra para un día de partido lleno de gente.",
-    "fr": "De l'argent en plus pour un jour de match animé.",
-    "pt": "Dinheiro extra para um dia de jogo movimentado.",
-    "ru": "Дополнительные деньги в день большого матча.",
-    "ja": "混みあう試合の日のための追加のお金。",
-    "ko": "바쁜 경기 날을 위한 추가 자금.",
-    "hi": "भीड़ वाले मैच के दिन के लिए अतिरिक्त पैसे।"
+    "en": "Fills the fridge with milk and ice right now, plus some cash.",
+    "tr": "Fills the fridge with milk and ice right now, plus some cash.",
+    "de": "Fills the fridge with milk and ice right now, plus some cash.",
+    "es": "Fills the fridge with milk and ice right now, plus some cash.",
+    "fr": "Fills the fridge with milk and ice right now, plus some cash.",
+    "pt": "Fills the fridge with milk and ice right now, plus some cash.",
+    "ru": "Fills the fridge with milk and ice right now, plus some cash.",
+    "ja": "Fills the fridge with milk and ice right now, plus some cash.",
+    "ko": "Fills the fridge with milk and ice right now, plus some cash.",
+    "hi": "Fills the fridge with milk and ice right now, plus some cash."
    },
-   "days_x10": 30,
-   "offer_only": true
+   "days_x10": 15,
+   "offer_only": true,
+   "refill": true
   },
   "comeback": {
    "id": "com.coddykit.pourandroast.comeback",
@@ -225,18 +232,53 @@
     "hi": "वापसी की पेटी"
    },
    "desc": {
-    "en": "Cash to get the network going again.",
-    "tr": "Ağı yeniden çalıştırmak için para.",
-    "de": "Geld, damit das Netz wieder läuft.",
-    "es": "Dinero para volver a poner la red en marcha.",
-    "fr": "De l'argent pour relancer le réseau.",
-    "pt": "Dinheiro para colocar a rede para funcionar de novo.",
-    "ru": "Деньги, чтобы снова запустить сеть.",
-    "ja": "ネットワークを再び動かすためのお金。",
-    "ko": "네트워크를 다시 돌리기 위한 자금이에요.",
-    "hi": "नेटवर्क फिर से चलाने के लिए पैसे।"
+    "en": "Two days of cash to get the cafe going again.",
+    "tr": "Two days of cash to get the cafe going again.",
+    "de": "Two days of cash to get the cafe going again.",
+    "es": "Two days of cash to get the cafe going again.",
+    "fr": "Two days of cash to get the cafe going again.",
+    "pt": "Two days of cash to get the cafe going again.",
+    "ru": "Two days of cash to get the cafe going again.",
+    "ja": "Two days of cash to get the cafe going again.",
+    "ko": "Two days of cash to get the cafe going again.",
+    "hi": "Two days of cash to get the cafe going again."
    },
    "days_x10": 20,
+   "offer_only": true
+  },
+  "milestone": {
+   "id": "com.coddykit.pourandroast.milestone",
+   "kind": "consumable",
+   "group": "offer",
+   "icon": "star",
+   "usd": 3.99,
+   "grants": [],
+   "ad_free": false,
+   "title": {
+    "en": "New-Venue Pack",
+    "tr": "New-Venue Pack",
+    "de": "New-Venue Pack",
+    "es": "New-Venue Pack",
+    "fr": "New-Venue Pack",
+    "pt": "New-Venue Pack",
+    "ru": "New-Venue Pack",
+    "ja": "New-Venue Pack",
+    "ko": "New-Venue Pack",
+    "hi": "New-Venue Pack"
+   },
+   "desc": {
+    "en": "Four days of cash for your new venue.",
+    "tr": "Four days of cash for your new venue.",
+    "de": "Four days of cash for your new venue.",
+    "es": "Four days of cash for your new venue.",
+    "fr": "Four days of cash for your new venue.",
+    "pt": "Four days of cash for your new venue.",
+    "ru": "Four days of cash for your new venue.",
+    "ja": "Four days of cash for your new venue.",
+    "ko": "Four days of cash for your new venue.",
+    "hi": "Four days of cash for your new venue."
+   },
+   "days_x10": 40,
    "offer_only": true
   },
   "noads": {
@@ -262,16 +304,16 @@
     "hi": "विज्ञापन हटाओ"
    },
    "desc": {
-    "en": "No more forced ads or banner. Rewards without videos (same limits).",
-    "tr": "Zorunlu reklam ya da banner yok. Ödüller videosuz (aynı sınırlarla).",
-    "de": "Keine Zwangswerbung und kein Banner mehr. Belohnungen ohne Videos (gleiche Grenzen).",
-    "es": "Sin anuncios obligatorios ni banners. Recompensas sin vídeos (con los mismos límites).",
-    "fr": "Plus de pubs imposées ni de bannière. Récompenses sans vidéos (mêmes limites).",
-    "pt": "Sem mais anúncios forçados nem banner. Recompensas sem vídeos (mesmos limites).",
-    "ru": "Больше никакой навязчивой рекламы и баннеров. Награды без видео (те же лимиты).",
-    "ja": "強制広告もバナーもなし。動画なしでごほうびを受け取れます（上限は同じ）。",
-    "ko": "강제 광고와 배너가 없어요. 영상 없이 받는 보상 (같은 한도).",
-    "hi": "अब कोई ज़बरदस्ती विज्ञापन या बैनर नहीं। वीडियो के बिना इनाम (वही सीमा)।"
+    "en": "No more ad breaks between days. Rewards without videos.",
+    "tr": "No more ad breaks between days. Rewards without videos.",
+    "de": "No more ad breaks between days. Rewards without videos.",
+    "es": "No more ad breaks between days. Rewards without videos.",
+    "fr": "No more ad breaks between days. Rewards without videos.",
+    "pt": "No more ad breaks between days. Rewards without videos.",
+    "ru": "No more ad breaks between days. Rewards without videos.",
+    "ja": "No more ad breaks between days. Rewards without videos.",
+    "ko": "No more ad breaks between days. Rewards without videos.",
+    "hi": "No more ad breaks between days. Rewards without videos."
    }
   },
   "premium": {
@@ -282,69 +324,71 @@
    "usd": 9.99,
    "grants": [
     "noads",
-    "gold_livery"
+    "gold_trim",
+    "slot_plus"
    ],
    "ad_free": true,
    "title": {
-    "en": "Chief Operator Edition",
-    "tr": "Şef Operatör Sürümü",
-    "de": "Chef-Edition",
-    "es": "Edición Jefe de Operaciones",
-    "fr": "Édition Chef d'exploitation",
-    "pt": "Edição Chefe de Operações",
-    "ru": "Версия «Главный оператор»",
-    "ja": "チーフオペレーター・エディション",
-    "ko": "책임자 에디션",
-    "hi": "चीफ़ ऑपरेटर एडिशन"
+    "en": "Head Roaster Edition",
+    "tr": "Head Roaster Edition",
+    "de": "Head Roaster Edition",
+    "es": "Head Roaster Edition",
+    "fr": "Head Roaster Edition",
+    "pt": "Head Roaster Edition",
+    "ru": "Head Roaster Edition",
+    "ja": "Head Roaster Edition",
+    "ko": "Head Roaster Edition",
+    "hi": "Head Roaster Edition"
    },
    "desc": {
-    "en": "No forced ads, a gold truck livery and starter cash.",
-    "tr": "Zorunlu reklam yok, altın bir kamyon rengi ve başlangıç parası.",
-    "de": "Keine Zwangswerbung, goldene Lkw-Lackierung und Startgeld.",
-    "es": "Sin anuncios obligatorios, un camión con librea dorada y dinero inicial.",
-    "fr": "Pas de pubs imposées, un camion doré et des pièces de départ.",
-    "pt": "Sem anúncios forçados, uma pintura dourada de caminhão e dinheiro inicial.",
-    "ru": "Без навязчивой рекламы, золотая окраска машин и стартовые деньги.",
-    "ja": "強制広告なし、金色のトラック・カラー、スターターのお金つき。",
-    "ko": "강제 광고 없음, 금색 트럭 도장, 시작 자금.",
-    "hi": "कोई ज़बरदस्ती विज्ञापन नहीं, सुनहरा ट्रक रंग और शुरुआती पैसे।"
+    "en": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "tr": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "de": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "es": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "fr": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "pt": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "ru": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "ja": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "ko": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",
+    "hi": "Ad-free, a gold espresso machine, a sack of great beans and one extra save slot."
    },
-   "bonus_days_x10": 20
+   "bonus_beans_kg": 10,
+   "bonus_days_x10": 10
   },
-  "route_pass": {
-   "id": "com.coddykit.pourandroast.route_pass",
+  "roast_pass": {
+   "id": "com.coddykit.pourandroast.roast_pass",
    "kind": "permanent",
    "group": "adfree",
-   "icon": "route",
+   "icon": "roast",
    "usd": 4.99,
    "grants": [
-    "route_pass",
+    "roast_pass",
     "noads"
    ],
    "ad_free": true,
    "title": {
-    "en": "Network Pass",
-    "tr": "Ağ Geçişi",
-    "de": "Netzwerk-Pass",
-    "es": "Pase de Red",
-    "fr": "Pass Réseau",
-    "pt": "Passe da Rede",
-    "ru": "Сетевой пропуск",
-    "ja": "ネットワークパス",
-    "ko": "네트워크 패스",
-    "hi": "नेटवर्क पास"
+    "en": "Roaster's Pass",
+    "tr": "Roaster's Pass",
+    "de": "Roaster's Pass",
+    "es": "Roaster's Pass",
+    "fr": "Roaster's Pass",
+    "pt": "Roaster's Pass",
+    "ru": "Roaster's Pass",
+    "ja": "Roaster's Pass",
+    "ko": "Roaster's Pass",
+    "hi": "Roaster's Pass"
    },
    "desc": {
-    "en": "Forever: +1 Dispatcher truck, +10 % handling fees. Includes Remove Ads.",
-    "tr": "Sonsuza kadar: +1 sevk kamyonu, +%10 işlem ücreti. Reklamları Kaldır dahil.",
-    "de": "Für immer: +1 Leitstellen-Lkw, +10 % Gebühren. Enthält Werbung entfernen.",
-    "es": "Para siempre: +1 camión del Despachador, +10 % en tarifas de gestión. Incluye Quitar anuncios.",
-    "fr": "Pour toujours : +1 camion du dispatch, +10 % sur les frais de traitement. Inclut Retirer les pubs.",
-    "pt": "Para sempre: +1 caminhão do Despachante, +10 % nas taxas. Inclui Remover Anúncios.",
-    "ru": "Навсегда: +1 машина диспетчера, +10 % к сборам. Включает «Убрать рекламу».",
-    "ja": "ずっと有効：配車トラック+1、手数料+10 %。広告を削除を含みます。",
-    "ko": "영구: 배차 트럭 +1, 처리 수수료 +10 %. 광고 제거 포함.",
-    "hi": "हमेशा के लिए: डिस्पैचर का +1 ट्रक, +10 % हैंडलिंग शुल्क। इसमें विज्ञापन हटाओ भी है।"
+    "en": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "tr": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "de": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "es": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "fr": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "pt": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "ru": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "ja": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "ko": "Ad-free, a better roaster assistant and 10 % more for wholesale.",
+    "hi": "Ad-free, a better roaster assistant and 10 % more for wholesale."
    }
   },
   "bundle": {
@@ -355,14 +399,16 @@
    "usd": 19.99,
    "grants": [
     "noads",
-    "gold_livery",
-    "route_pass",
+    "gold_trim",
+    "slot_plus",
+    "roast_pass",
     "speed",
-    "dispatcher_plus",
-    "livery_sunset",
-    "livery_forest",
-    "skin_retro",
-    "depot_tropic"
+    "automation",
+    "theme_nordic",
+    "theme_artdeco",
+    "cups",
+    "latte_art",
+    "aprons"
    ],
    "ad_free": true,
    "title": {
@@ -378,22 +424,22 @@
     "hi": "पूरा Pour & Roast"
    },
    "desc": {
-    "en": "Edition, Network Pass, Speed Pack, Dispatcher+ and every look. No forced ads.",
-    "tr": "Sürüm, Ağ Geçişi, Hız Paketi, Sevk Ofisi+ ve tüm görünümler. Zorunlu reklam yok.",
-    "de": "Edition, Netzwerk-Pass, Tempo-Paket, Leitstelle+ und alle Looks. Keine Zwangswerbung.",
-    "es": "Edición, Pase de Red, Pack de Velocidad, Despachador+ y todos los estilos. Sin anuncios obligatorios.",
-    "fr": "Édition, Pass Réseau, Pack Vitesse, Dispatch+ et tous les styles. Sans pubs imposées.",
-    "pt": "Edição, Passe da Rede, Pacote de Velocidade, Despachante+ e todos os visuais. Sem anúncios forçados.",
-    "ru": "Версия, Сетевой пропуск, Пакет скорости, Диспетчер+ и все оформления. Без навязчивой рекламы.",
-    "ja": "エディション、ネットワークパス、スピードパック、配車オフィス+、すべての見た目が入ります。強制広告なし。",
-    "ko": "에디션, 네트워크 패스, 속도 팩, 배차+ 및 모든 외형 포함. 강제 광고 없음.",
-    "hi": "एडिशन, नेटवर्क पास, स्पीड पैक, डिस्पैचर+ और हर लुक। कोई ज़बरदस्ती के विज्ञापन नहीं।"
+    "en": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "tr": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "de": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "es": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "fr": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "pt": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "ru": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "ja": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "ko": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",
+    "hi": "Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free."
    },
    "parts": [
     "premium",
-    "route_pass",
+    "roast_pass",
     "speed",
-    "dispatcher_plus",
+    "automation",
     "cosmetics_all"
    ]
   },
@@ -420,51 +466,86 @@
     "hi": "स्पीड पैक"
    },
    "desc": {
-    "en": "3× and 4× speed, and skip the day report.",
-    "tr": "3× ve 4× hız, ve gün raporunu atla.",
-    "de": "3× und 4× Tempo, und der Tagesbericht wird übersprungen.",
-    "es": "Velocidad 3× y 4×, y saltar el informe del día.",
-    "fr": "Vitesse 3× et 4×, et passer le rapport de journée.",
-    "pt": "Velocidade 3× e 4×, e pule o relatório do dia.",
-    "ru": "Скорости 3× и 4×, и пропуск отчёта дня.",
-    "ja": "3×と4×の速度、さらに日報のスキップ。",
-    "ko": "3× 및 4× 속도, 그리고 하루 보고서 건너뛰기.",
-    "hi": "3× और 4× चाल, और दिन की रिपोर्ट छोड़ो।"
+    "en": "3× and 4× speed and an option to skip the day report.",
+    "tr": "3× and 4× speed and an option to skip the day report.",
+    "de": "3× and 4× speed and an option to skip the day report.",
+    "es": "3× and 4× speed and an option to skip the day report.",
+    "fr": "3× and 4× speed and an option to skip the day report.",
+    "pt": "3× and 4× speed and an option to skip the day report.",
+    "ru": "3× and 4× speed and an option to skip the day report.",
+    "ja": "3× and 4× speed and an option to skip the day report.",
+    "ko": "3× and 4× speed and an option to skip the day report.",
+    "hi": "3× and 4× speed and an option to skip the day report."
    }
   },
-  "dispatcher_plus": {
-   "id": "com.coddykit.pourandroast.dispatcher_plus",
+  "automation": {
+   "id": "com.coddykit.pourandroast.automation",
    "kind": "permanent",
    "group": "boost",
-   "icon": "route",
+   "icon": "barista",
    "usd": 3.99,
    "grants": [
-    "dispatcher_plus"
+    "automation"
    ],
    "ad_free": false,
    "title": {
-    "en": "Dispatcher+",
-    "tr": "Sevk Ofisi+",
-    "de": "Leitstelle+",
-    "es": "Despachador+",
-    "fr": "Dispatch+",
-    "pt": "Despachante+",
-    "ru": "Диспетчер+",
-    "ja": "配車オフィス+",
-    "ko": "배차+",
-    "hi": "डिस्पैचर+"
+    "en": "Head Barista+",
+    "tr": "Head Barista+",
+    "de": "Head Barista+",
+    "es": "Head Barista+",
+    "fr": "Head Barista+",
+    "pt": "Head Barista+",
+    "ru": "Head Barista+",
+    "ja": "Head Barista+",
+    "ko": "Head Barista+",
+    "hi": "Head Barista+"
    },
    "desc": {
-    "en": "3 more trucks the Dispatcher can drive.",
-    "tr": "Sevk ofisinin sürebileceği 3 kamyon daha.",
-    "de": "3 weitere Lkw, die die Leitstelle fahren kann.",
-    "es": "3 camiones más que puede conducir el Despachador.",
-    "fr": "3 camions de plus que le dispatch peut conduire.",
-    "pt": "Mais 3 caminhões para a central despachar.",
-    "ru": "Ещё 3 машины, которыми может управлять диспетчер.",
-    "ja": "配車オフィスが運転できるトラックが3台増えます。",
-    "ko": "배차 사무소가 몰 수 있는 트럭 3대 추가.",
-    "hi": "डिस्पैचर के चलाने के लिए 3 और ट्रक।"
+    "en": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "tr": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "de": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "es": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "fr": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "pt": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "ru": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "ja": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "ko": "The grinder stays dialled in and pre-orders are flagged by themselves.",
+    "hi": "The grinder stays dialled in and pre-orders are flagged by themselves."
+   }
+  },
+  "slots": {
+   "id": "com.coddykit.pourandroast.slots",
+   "kind": "permanent",
+   "group": "boost",
+   "icon": "save",
+   "usd": 1.99,
+   "grants": [
+    "slots"
+   ],
+   "ad_free": false,
+   "title": {
+    "en": "Extra Saves",
+    "tr": "Extra Saves",
+    "de": "Extra Saves",
+    "es": "Extra Saves",
+    "fr": "Extra Saves",
+    "pt": "Extra Saves",
+    "ru": "Extra Saves",
+    "ja": "Extra Saves",
+    "ko": "Extra Saves",
+    "hi": "Extra Saves"
+   },
+   "desc": {
+    "en": "Three more save slots for more cafes.",
+    "tr": "Three more save slots for more cafes.",
+    "de": "Three more save slots for more cafes.",
+    "es": "Three more save slots for more cafes.",
+    "fr": "Three more save slots for more cafes.",
+    "pt": "Three more save slots for more cafes.",
+    "ru": "Three more save slots for more cafes.",
+    "ja": "Three more save slots for more cafes.",
+    "ko": "Three more save slots for more cafes.",
+    "hi": "Three more save slots for more cafes."
    }
   },
   "offline_plus": {
@@ -490,156 +571,191 @@
     "hi": "ऑफ़लाइन प्लस"
    },
    "desc": {
-    "en": "Away pay for up to 10 hours at 75 %.",
-    "tr": "Uzaktayken 10 saate kadar %75 ücret.",
-    "de": "Lohn für Abwesenheit bis 10 Stunden zu 75 %.",
-    "es": "Pago mientras estás fuera, hasta 10 horas al 75 %.",
-    "fr": "Gains d'absence jusqu'à 10 heures à 75 %.",
-    "pt": "Ganhe enquanto está fora por até 10 horas, a 75 %.",
-    "ru": "Оплата за отсутствие до 10 часов в размере 75 %.",
-    "ja": "離れている間も最大10時間、75 %の収入。",
-    "ko": "최대 10시간 동안 75 %로 부재 중 수입을 받아요.",
-    "hi": "10 घंटे तक, 75 % पर, दूर रहने की कमाई।"
+    "en": "Earn for up to 10 hours away, at a better rate.",
+    "tr": "Earn for up to 10 hours away, at a better rate.",
+    "de": "Earn for up to 10 hours away, at a better rate.",
+    "es": "Earn for up to 10 hours away, at a better rate.",
+    "fr": "Earn for up to 10 hours away, at a better rate.",
+    "pt": "Earn for up to 10 hours away, at a better rate.",
+    "ru": "Earn for up to 10 hours away, at a better rate.",
+    "ja": "Earn for up to 10 hours away, at a better rate.",
+    "ko": "Earn for up to 10 hours away, at a better rate.",
+    "hi": "Earn for up to 10 hours away, at a better rate."
    }
   },
-  "livery_sunset": {
-   "id": "com.coddykit.pourandroast.livery_sunset",
-   "kind": "permanent",
-   "group": "looks",
-   "icon": "truck",
-   "usd": 1.49,
-   "grants": [
-    "livery_sunset"
-   ],
-   "ad_free": false,
-   "title": {
-    "en": "Sunset Livery",
-    "tr": "Gün Batımı Renk Düzeni",
-    "de": "Sunset-Lackierung",
-    "es": "Librea Atardecer",
-    "fr": "Livrée Coucher de soleil",
-    "pt": "Pintura Pôr do Sol",
-    "ru": "Закатная окраска",
-    "ja": "サンセット・カラー",
-    "ko": "노을 도장",
-    "hi": "सनसेट रंग"
-   },
-   "desc": {
-    "en": "Orange-pink trucks. Looks only.",
-    "tr": "Turuncu-pembe kamyonlar. Sadece görünüm.",
-    "de": "Orange-rosa Lkw. Nur Optik.",
-    "es": "Camiones naranja y rosa. Solo es estético.",
-    "fr": "Camions orange et rose. Esthétique uniquement.",
-    "pt": "Caminhões laranja-rosados. Só visual.",
-    "ru": "Оранжево-розовые машины. Только внешний вид.",
-    "ja": "オレンジピンクのトラック。見た目だけの変更です。",
-    "ko": "주황-분홍 트럭. 외형만 바뀌어요.",
-    "hi": "नारंगी-गुलाबी ट्रक। सिर्फ़ दिखावट।"
-   }
-  },
-  "livery_forest": {
-   "id": "com.coddykit.pourandroast.livery_forest",
-   "kind": "permanent",
-   "group": "looks",
-   "icon": "truck",
-   "usd": 1.49,
-   "grants": [
-    "livery_forest"
-   ],
-   "ad_free": false,
-   "title": {
-    "en": "Forest Livery",
-    "tr": "Orman Renk Düzeni",
-    "de": "Waldlackierung",
-    "es": "Librea Bosque",
-    "fr": "Livrée Forêt",
-    "pt": "Pintura Floresta",
-    "ru": "Лесная окраска",
-    "ja": "フォレスト・カラー",
-    "ko": "숲 도장",
-    "hi": "फ़ॉरेस्ट रंग"
-   },
-   "desc": {
-    "en": "Deep green trucks. Looks only.",
-    "tr": "Koyu yeşil kamyonlar. Sadece görünüm.",
-    "de": "Dunkelgrüne Lkw. Nur Optik.",
-    "es": "Camiones verde oscuro. Solo es estético.",
-    "fr": "Camions vert forêt. Esthétique uniquement.",
-    "pt": "Caminhões verde-escuros. Só visual.",
-    "ru": "Тёмно-зелёные машины. Только внешний вид.",
-    "ja": "深緑のトラック。見た目だけの変更です。",
-    "ko": "짙은 초록 트럭. 외형만 바뀌어요.",
-    "hi": "गहरे हरे ट्रक। सिर्फ़ दिखावट।"
-   }
-  },
-  "skin_retro": {
-   "id": "com.coddykit.pourandroast.skin_retro",
-   "kind": "permanent",
-   "group": "looks",
-   "icon": "machine",
-   "usd": 1.99,
-   "grants": [
-    "skin_retro"
-   ],
-   "ad_free": false,
-   "title": {
-    "en": "Retro Machines",
-    "tr": "Retro Makineler",
-    "de": "Retro-Automaten",
-    "es": "Máquinas retro",
-    "fr": "Machines rétro",
-    "pt": "Máquinas Retrô",
-    "ru": "Ретро-автоматы",
-    "ja": "レトロ回収機",
-    "ko": "레트로 회수기",
-    "hi": "रेट्रो मशीनें"
-   },
-   "desc": {
-    "en": "Machines in a retro style. Looks only.",
-    "tr": "Makineler retro tarzda. Sadece görünüm.",
-    "de": "Automaten im Retro-Stil. Nur Optik.",
-    "es": "Máquinas con estilo retro. Solo es estético.",
-    "fr": "Machines au style rétro. Esthétique uniquement.",
-    "pt": "Máquinas em estilo retrô. Só visual.",
-    "ru": "Автоматы в ретро-стиле. Только внешний вид.",
-    "ja": "レトロなデザインの回収機。見た目だけの変更です。",
-    "ko": "레트로 스타일 회수기. 외형만 바뀌어요.",
-    "hi": "रेट्रो स्टाइल में मशीनें। सिर्फ़ दिखावट।"
-   }
-  },
-  "depot_tropic": {
-   "id": "com.coddykit.pourandroast.depot_tropic",
+  "theme_nordic": {
+   "id": "com.coddykit.pourandroast.theme_nordic",
    "kind": "permanent",
    "group": "looks",
    "icon": "home",
-   "usd": 1.99,
+   "usd": 1.49,
    "grants": [
-    "depot_tropic"
+    "theme_nordic"
    ],
    "ad_free": false,
    "title": {
-    "en": "Tropical Depot",
-    "tr": "Tropikal Depo",
-    "de": "Tropen-Depot",
-    "es": "Planta tropical",
-    "fr": "Dépôt tropical",
-    "pt": "Depósito Tropical",
-    "ru": "Тропический склад",
-    "ja": "トロピカル・デポ",
-    "ko": "열대 집하장",
-    "hi": "ट्रॉपिकल डिपो"
+    "en": "Nordic Look",
+    "tr": "Nordic Look",
+    "de": "Nordic Look",
+    "es": "Nordic Look",
+    "fr": "Nordic Look",
+    "pt": "Nordic Look",
+    "ru": "Nordic Look",
+    "ja": "Nordic Look",
+    "ko": "Nordic Look",
+    "hi": "Nordic Look"
    },
    "desc": {
-    "en": "Palm trees and bright colours at the depot. Looks only.",
-    "tr": "Depoda palmiyeler ve canlı renkler. Sadece görünüm.",
-    "de": "Palmen und bunte Farben am Depot. Nur Optik.",
-    "es": "Palmeras y colores vivos en la planta. Solo es estético.",
-    "fr": "Palmiers et couleurs vives au dépôt. Esthétique uniquement.",
-    "pt": "Palmeiras e cores vivas no depósito. Só visual.",
-    "ru": "Пальмы и яркие цвета на складе. Только внешний вид.",
-    "ja": "デポにヤシの木と明るい色。見た目だけの変更です。",
-    "ko": "집하장에 야자수와 밝은 색. 외형만 바뀌어요.",
-    "hi": "डिपो में ताड़ के पेड़ और चमकीले रंग। सिर्फ़ दिखावट।"
+    "en": "Pale wood and soft white walls.",
+    "tr": "Pale wood and soft white walls.",
+    "de": "Pale wood and soft white walls.",
+    "es": "Pale wood and soft white walls.",
+    "fr": "Pale wood and soft white walls.",
+    "pt": "Pale wood and soft white walls.",
+    "ru": "Pale wood and soft white walls.",
+    "ja": "Pale wood and soft white walls.",
+    "ko": "Pale wood and soft white walls.",
+    "hi": "Pale wood and soft white walls."
+   }
+  },
+  "theme_artdeco": {
+   "id": "com.coddykit.pourandroast.theme_artdeco",
+   "kind": "permanent",
+   "group": "looks",
+   "icon": "home",
+   "usd": 1.49,
+   "grants": [
+    "theme_artdeco"
+   ],
+   "ad_free": false,
+   "title": {
+    "en": "Art Deco Look",
+    "tr": "Art Deco Look",
+    "de": "Art Deco Look",
+    "es": "Art Deco Look",
+    "fr": "Art Deco Look",
+    "pt": "Art Deco Look",
+    "ru": "Art Deco Look",
+    "ja": "Art Deco Look",
+    "ko": "Art Deco Look",
+    "hi": "Art Deco Look"
+   },
+   "desc": {
+    "en": "Deep blue walls with gold trim.",
+    "tr": "Deep blue walls with gold trim.",
+    "de": "Deep blue walls with gold trim.",
+    "es": "Deep blue walls with gold trim.",
+    "fr": "Deep blue walls with gold trim.",
+    "pt": "Deep blue walls with gold trim.",
+    "ru": "Deep blue walls with gold trim.",
+    "ja": "Deep blue walls with gold trim.",
+    "ko": "Deep blue walls with gold trim.",
+    "hi": "Deep blue walls with gold trim."
+   }
+  },
+  "cups": {
+   "id": "com.coddykit.pourandroast.cups",
+   "kind": "permanent",
+   "group": "looks",
+   "icon": "cup",
+   "usd": 1.99,
+   "grants": [
+    "cups"
+   ],
+   "ad_free": false,
+   "title": {
+    "en": "Teal Cups",
+    "tr": "Teal Cups",
+    "de": "Teal Cups",
+    "es": "Teal Cups",
+    "fr": "Teal Cups",
+    "pt": "Teal Cups",
+    "ru": "Teal Cups",
+    "ja": "Teal Cups",
+    "ko": "Teal Cups",
+    "hi": "Teal Cups"
+   },
+   "desc": {
+    "en": "Teal takeaway cups on the pickup shelf.",
+    "tr": "Teal takeaway cups on the pickup shelf.",
+    "de": "Teal takeaway cups on the pickup shelf.",
+    "es": "Teal takeaway cups on the pickup shelf.",
+    "fr": "Teal takeaway cups on the pickup shelf.",
+    "pt": "Teal takeaway cups on the pickup shelf.",
+    "ru": "Teal takeaway cups on the pickup shelf.",
+    "ja": "Teal takeaway cups on the pickup shelf.",
+    "ko": "Teal takeaway cups on the pickup shelf.",
+    "hi": "Teal takeaway cups on the pickup shelf."
+   }
+  },
+  "latte_art": {
+   "id": "com.coddykit.pourandroast.latte_art",
+   "kind": "permanent",
+   "group": "looks",
+   "icon": "cup",
+   "usd": 1.99,
+   "grants": [
+    "latte_art"
+   ],
+   "ad_free": false,
+   "title": {
+    "en": "Latte Art Set",
+    "tr": "Latte Art Set",
+    "de": "Latte Art Set",
+    "es": "Latte Art Set",
+    "fr": "Latte Art Set",
+    "pt": "Latte Art Set",
+    "ru": "Latte Art Set",
+    "ja": "Latte Art Set",
+    "ko": "Latte Art Set",
+    "hi": "Latte Art Set"
+   },
+   "desc": {
+    "en": "Fancy latte art patterns on your cups.",
+    "tr": "Fancy latte art patterns on your cups.",
+    "de": "Fancy latte art patterns on your cups.",
+    "es": "Fancy latte art patterns on your cups.",
+    "fr": "Fancy latte art patterns on your cups.",
+    "pt": "Fancy latte art patterns on your cups.",
+    "ru": "Fancy latte art patterns on your cups.",
+    "ja": "Fancy latte art patterns on your cups.",
+    "ko": "Fancy latte art patterns on your cups.",
+    "hi": "Fancy latte art patterns on your cups."
+   }
+  },
+  "aprons": {
+   "id": "com.coddykit.pourandroast.aprons",
+   "kind": "permanent",
+   "group": "looks",
+   "icon": "barista",
+   "usd": 1.99,
+   "grants": [
+    "aprons"
+   ],
+   "ad_free": false,
+   "title": {
+    "en": "Wine Aprons",
+    "tr": "Wine Aprons",
+    "de": "Wine Aprons",
+    "es": "Wine Aprons",
+    "fr": "Wine Aprons",
+    "pt": "Wine Aprons",
+    "ru": "Wine Aprons",
+    "ja": "Wine Aprons",
+    "ko": "Wine Aprons",
+    "hi": "Wine Aprons"
+   },
+   "desc": {
+    "en": "Wine-red aprons for the whole team.",
+    "tr": "Wine-red aprons for the whole team.",
+    "de": "Wine-red aprons for the whole team.",
+    "es": "Wine-red aprons for the whole team.",
+    "fr": "Wine-red aprons for the whole team.",
+    "pt": "Wine-red aprons for the whole team.",
+    "ru": "Wine-red aprons for the whole team.",
+    "ja": "Wine-red aprons for the whole team.",
+    "ko": "Wine-red aprons for the whole team.",
+    "hi": "Wine-red aprons for the whole team."
    }
   },
   "cosmetics_all": {
@@ -649,41 +765,43 @@
    "icon": "star",
    "usd": 4.99,
    "grants": [
-    "livery_sunset",
-    "livery_forest",
-    "skin_retro",
-    "depot_tropic"
+    "theme_nordic",
+    "theme_artdeco",
+    "cups",
+    "latte_art",
+    "aprons"
    ],
    "ad_free": false,
    "title": {
-    "en": "Look Collection",
-    "tr": "Görünüm Koleksiyonu",
-    "de": "Look-Sammlung",
-    "es": "Colección de estilos",
-    "fr": "Collection de looks",
-    "pt": "Coleção de Visuais",
-    "ru": "Коллекция стилей",
-    "ja": "見た目コレクション",
-    "ko": "외형 컬렉션",
-    "hi": "लुक कलेक्शन"
+    "en": "Looks Collection",
+    "tr": "Looks Collection",
+    "de": "Looks Collection",
+    "es": "Looks Collection",
+    "fr": "Looks Collection",
+    "pt": "Looks Collection",
+    "ru": "Looks Collection",
+    "ja": "Looks Collection",
+    "ko": "Looks Collection",
+    "hi": "Looks Collection"
    },
    "desc": {
-    "en": "Every livery, machine style and depot theme.",
-    "tr": "Her renk düzeni, makine stili ve depo teması.",
-    "de": "Jede Lackierung, jeder Automatenstil und jedes Depot-Thema.",
-    "es": "Todos los colores de camión, estilos de máquina y temas de planta.",
-    "fr": "Toutes les livrées, tous les styles de machines et tous les thèmes de dépôt.",
-    "pt": "Todas as pinturas, estilos de máquina e temas de depósito.",
-    "ru": "Все окраски, стили автоматов и темы склада.",
-    "ja": "すべてのカラーリング、回収機のデザイン、デポのテーマ。",
-    "ko": "모든 도장, 회수기 스타일, 집하장 테마.",
-    "hi": "हर रंग-रूप, मशीन स्टाइल और डिपो थीम।"
+    "en": "Every look in the shop, for less.",
+    "tr": "Every look in the shop, for less.",
+    "de": "Every look in the shop, for less.",
+    "es": "Every look in the shop, for less.",
+    "fr": "Every look in the shop, for less.",
+    "pt": "Every look in the shop, for less.",
+    "ru": "Every look in the shop, for less.",
+    "ja": "Every look in the shop, for less.",
+    "ko": "Every look in the shop, for less.",
+    "hi": "Every look in the shop, for less."
    },
    "parts": [
-    "livery_sunset",
-    "livery_forest",
-    "skin_retro",
-    "depot_tropic"
+    "theme_nordic",
+    "theme_artdeco",
+    "cups",
+    "latte_art",
+    "aprons"
    ]
   },
   "cash_s": {
@@ -695,16 +813,16 @@
    "grants": [],
    "ad_free": false,
    "title": {
-    "en": "Pocket of Coins",
-    "tr": "Madeni para cebi",
-    "de": "Tasche voller Münzen",
-    "es": "Bolsillo de monedas",
-    "fr": "Poche de pièces",
-    "pt": "Bolso de Moedas",
-    "ru": "Горсть монет",
-    "ja": "コインのポーチ",
-    "ko": "동전 주머니",
-    "hi": "सिक्कों की जेब"
+    "en": "Tip Jar",
+    "tr": "Tip Jar",
+    "de": "Tip Jar",
+    "es": "Tip Jar",
+    "fr": "Tip Jar",
+    "pt": "Tip Jar",
+    "ru": "Tip Jar",
+    "ja": "Tip Jar",
+    "ko": "Tip Jar",
+    "hi": "Tip Jar"
    },
    "desc": {
     "en": "About one day of income.",
@@ -729,28 +847,28 @@
    "grants": [],
    "ad_free": false,
    "title": {
-    "en": "Bag of Coins",
-    "tr": "Madeni para torbası",
-    "de": "Beutel voller Münzen",
-    "es": "Bolsa de monedas",
-    "fr": "Sac de pièces",
-    "pt": "Saco de Moedas",
-    "ru": "Мешок монет",
-    "ja": "コインの袋",
-    "ko": "동전 자루",
-    "hi": "सिक्कों का थैला"
+    "en": "Cash Register",
+    "tr": "Cash Register",
+    "de": "Cash Register",
+    "es": "Cash Register",
+    "fr": "Cash Register",
+    "pt": "Cash Register",
+    "ru": "Cash Register",
+    "ja": "Cash Register",
+    "ko": "Cash Register",
+    "hi": "Cash Register"
    },
    "desc": {
-    "en": "About 2.5 days of income.",
-    "tr": "Yaklaşık 2,5 günlük gelir.",
-    "de": "Etwa 2,5 Tage Einnahmen.",
-    "es": "Unos 2,5 días de ingresos.",
-    "fr": "Environ 2,5 jours de revenus.",
-    "pt": "Cerca de 2,5 dias de renda.",
-    "ru": "Примерно 2,5 дня дохода.",
-    "ja": "約2.5日分の収入。",
-    "ko": "수입 약 2.5일 치예요.",
-    "hi": "लगभग 2.5 दिन की कमाई।"
+    "en": "About two and a half days of income.",
+    "tr": "About two and a half days of income.",
+    "de": "About two and a half days of income.",
+    "es": "About two and a half days of income.",
+    "fr": "About two and a half days of income.",
+    "pt": "About two and a half days of income.",
+    "ru": "About two and a half days of income.",
+    "ja": "About two and a half days of income.",
+    "ko": "About two and a half days of income.",
+    "hi": "About two and a half days of income."
    },
    "days_x10": 25
   },
@@ -763,28 +881,28 @@
    "grants": [],
    "ad_free": false,
    "title": {
-    "en": "Crate of Coins",
-    "tr": "Madeni para sandığı",
-    "de": "Kiste voller Münzen",
-    "es": "Caja de monedas",
-    "fr": "Caisse de pièces",
-    "pt": "Caixa de Moedas",
-    "ru": "Ящик монет",
-    "ja": "コインの木箱",
-    "ko": "동전 상자",
-    "hi": "सिक्कों की पेटी"
+    "en": "Strongbox",
+    "tr": "Strongbox",
+    "de": "Strongbox",
+    "es": "Strongbox",
+    "fr": "Strongbox",
+    "pt": "Strongbox",
+    "ru": "Strongbox",
+    "ja": "Strongbox",
+    "ko": "Strongbox",
+    "hi": "Strongbox"
    },
    "desc": {
-    "en": "About 5 days of income.",
-    "tr": "Yaklaşık 5 günlük gelir.",
-    "de": "Etwa 5 Tage Einnahmen.",
-    "es": "Unos 5 días de ingresos.",
-    "fr": "Environ 5 jours de revenus.",
-    "pt": "Cerca de 5 dias de renda.",
-    "ru": "Примерно на 5 дней дохода.",
-    "ja": "約5日分の収入。",
-    "ko": "수입 약 5일 치예요.",
-    "hi": "लगभग 5 दिन की कमाई।"
+    "en": "About five days of income.",
+    "tr": "About five days of income.",
+    "de": "About five days of income.",
+    "es": "About five days of income.",
+    "fr": "About five days of income.",
+    "pt": "About five days of income.",
+    "ru": "About five days of income.",
+    "ja": "About five days of income.",
+    "ko": "About five days of income.",
+    "hi": "About five days of income."
    },
    "days_x10": 50
   },
@@ -797,28 +915,28 @@
    "grants": [],
    "ad_free": false,
    "title": {
-    "en": "Vault of Coins",
-    "tr": "Madeni para kasası",
-    "de": "Tresor voller Münzen",
-    "es": "Bóveda de monedas",
-    "fr": "Coffre de pièces",
-    "pt": "Cofre de Moedas",
-    "ru": "Хранилище монет",
-    "ja": "コインの金庫",
-    "ko": "동전 금고",
-    "hi": "सिक्कों का खज़ाना"
+    "en": "Vault",
+    "tr": "Vault",
+    "de": "Vault",
+    "es": "Vault",
+    "fr": "Vault",
+    "pt": "Vault",
+    "ru": "Vault",
+    "ja": "Vault",
+    "ko": "Vault",
+    "hi": "Vault"
    },
    "desc": {
-    "en": "About 10 days of income.",
-    "tr": "Yaklaşık 10 günlük gelir.",
-    "de": "Etwa 10 Tage Einnahmen.",
-    "es": "Unos 10 días de ingresos.",
-    "fr": "Environ 10 jours de revenus.",
-    "pt": "Cerca de 10 dias de renda.",
-    "ru": "Примерно 10 дней дохода.",
-    "ja": "約10日分の収入。",
-    "ko": "수입 약 10일 치예요.",
-    "hi": "लगभग 10 दिन की कमाई।"
+    "en": "About ten days of income.",
+    "tr": "About ten days of income.",
+    "de": "About ten days of income.",
+    "es": "About ten days of income.",
+    "fr": "About ten days of income.",
+    "pt": "About ten days of income.",
+    "ru": "About ten days of income.",
+    "ja": "About ten days of income.",
+    "ko": "About ten days of income.",
+    "hi": "About ten days of income."
    },
    "days_x10": 100
   }
@@ -832,14 +950,19 @@
    "day_max": 7,
    "per_game": 1
   },
-  "event_kit": {
-   "event": "match_day",
-   "day_min": 3,
+  "crisis": {
+   "event": "milk_late",
+   "day_min": 0,
    "per_game": 99
   },
   "comeback": {
    "event": "resume",
    "away_days_min": 3,
+   "per_game": 99
+  },
+  "milestone": {
+   "event": "venue",
+   "day_min": 0,
    "per_game": 99
   }
  },

@@ -1,349 +1,435 @@
 key,en,tr,de,es,fr,pt,ru,ja,ko,hi
-app.tagline,Run the recycling network,Geri dönüşüm ağını yönet,Führe das Recycling-Netz,Dirige la red de reciclaje,Fais tourner le réseau de recyclage,Gerencie a rede de reciclagem,Управляй сетью переработки,リサイクル網を運営しよう,재활용 네트워크를 운영하세요,रीसायकल नेटवर्क चलाओ
+app.tagline,"Run the bar, roast the beans",,,,,,,,,
 app.title,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast
-buy.centre,Counting centre,Sayım merkezi,Zählzentrum,Centro de conteo,Centre de comptage,Centro de contagem,Центр подсчёта,カウントセンター,계수 센터,गिनती केंद्र
-buy.centre.d,"Big hauls go here instead of blocking machines. Lower fee, no daily cap.","Büyük yüklerin buraya gelir, makineleri tıkamaz. Daha düşük ücret, günlük sınır yok.","Große Mengen landen hier statt bei den Automaten. Niedrigere Gebühr, kein Tageslimit.","Las grandes entregas van aquí en vez de bloquear las máquinas. Tarifa más baja, sin límite diario.","Les gros apports vont ici au lieu de bloquer les machines. Frais plus bas, sans plafond quotidien.","Grandes lotes vão para cá, sem travar as máquinas. Taxa menor, sem limite diário.","Большие сдачи идут сюда, а не блокируют автоматы. Меньше сбор, без дневного лимита.",大量のボトルはここへ。回収機を塞がず、手数料は安め。1日の上限もありません。,많은 양은 회수기를 막지 않도록 여기로 가져와요. 수수료는 낮고 하루 한도도 없어요.,"बड़ी खेप मशीनों को रोकने के बजाय यहाँ जाती है। कम शुल्क, रोज़ की कोई सीमा नहीं।"
-buy.cost,{cost},{cost},{cost},{cost},{cost},{cost},{cost},{cost},{cost},{cost}
-buy.dispatcher,Dispatch office,Sevk ofisi,Leitstelle,Oficina de envíos,Bureau de dispatch,Central de despacho,Диспетчерская,配車オフィス,배차 사무소,डिस्पैच ऑफिस
-buy.dispatcher.d,Plans routes by your rules and sends trucks by itself.,Rotaları kurallarına göre planlar ve kamyonları kendi kendine gönderir.,Plant Routen nach deinen Regeln und schickt Lkw von allein los.,Planifica rutas según tus reglas y envía los camiones solo.,Prévoit les trajets selon tes règles et envoie les camions tout seul.,Planeja as rotas com suas regras e manda os caminhões sozinha.,Строит маршруты по твоим правилам и сама отправляет машины.,ルールに沿ってルートを組み、トラックを自動で出発させます。,정한 규칙대로 경로를 짜고 트럭을 스스로 보내요.,आपके नियमों से रूट तय करता है और ट्रक खुद भेजता है।
-buy.driver,Hire a driver,Sürücü işe al,Fahrer einstellen,Contrata un conductor,Engager un chauffeur,Contratar motorista,Нанять водителя,運転手を雇う,기사 고용,ड्राइवर रखो
-buy.driver.d,One more truck on the road at the same time.,Aynı anda yolda bir kamyon daha.,Ein Lkw mehr gleichzeitig unterwegs.,Un camión más en la calle al mismo tiempo.,Un camion de plus sur la route en même temps.,Mais um caminhão na estrada ao mesmo tempo.,Ещё одна машина на дороге одновременно.,同時に走れるトラックが1台増えます。,동시에 한 대 더 도로를 달릴 수 있어요.,एक और ट्रक एक साथ सड़क पर।
-buy.horeca,Pickup contract,Toplama anlaşması,Abholvertrag,Contrato de recogida,Contrat de collecte,Contrato de coleta,Контракт на вывоз,回収契約,수거 계약,पिकअप अनुबंध
-buy.horeca.d,Cafés fill a back room with glass. Bonus per pickup.,Kafeler arka odalarını camla doldurur. Her toplamada bonus.,Cafés füllen einen Hinterraum mit Glas. Bonus pro Abholung.,Los cafés llenan una trastienda de vidrio. Bonificación por cada recogida.,Les cafés remplissent une réserve de verre. Bonus à chaque collecte.,Cafés enchem um depósito nos fundos com vidro. Bônus por coleta.,Кафе заполняют подсобку стеклом. Бонус за каждый вывоз.,カフェが裏部屋にガラスをためます。回収のたびにボーナス。,카페는 뒷방을 유리병으로 가득 채워요. 수거할 때마다 보너스가 있어요.,कैफे अपने पिछले कमरे में कांच भरते हैं। हर पिकअप पर बोनस।
-buy.intake,Bigger intake,Daha büyük kabul alanı,Größere Annahme,Entrada más grande,Entrée plus grande,Entrada maior,Большая приёмка,受け入れ口を拡張,더 큰 반입구,बड़ा इनटेक
-buy.intake.d,Fewer trucks waiting at the gate.,Kapıda bekleyen kamyon sayısı azalır.,Weniger Lkw warten an der Einfahrt.,Menos camiones esperando en la puerta.,Moins de camions qui attendent à la porte.,Menos caminhões esperando no portão.,Меньше машин ждут у ворот.,ゲートで待つトラックが減ります。,입구에서 기다리는 트럭이 줄어요.,गेट पर कम ट्रक इंतज़ार करेंगे।
-buy.line,Add a count line,Sayım hattı ekle,Zähllinie hinzufügen,Añade una línea de conteo,Ajouter une ligne de comptage,Adicionar linha de contagem,Добавить счётную линию,カウントラインを追加,계수 라인 추가,गिनती लाइन जोड़ो
-buy.line.d,Counts more bottles per hour. Fees come in faster.,Saatte daha çok şişe sayar. Ücretler daha hızlı gelir.,Zählt pro Stunde mehr Flaschen. Gebühren kommen schneller.,Cuenta más botellas por hora. Las tarifas llegan más rápido.,Compte plus de bouteilles par heure. Les frais rentrent plus vite.,Conta mais garrafas por hora. As taxas chegam mais rápido.,Считает больше бутылок в час. Сборы поступают быстрее.,1時間あたりのカウント数が増えます。手数料が早く入ります。,한 시간에 더 많은 병을 세요. 수수료가 더 빨리 들어와요.,एक घंटे में ज़्यादा बोतलें गिनती है। शुल्क जल्दी आता है।
-buy.machine,New machine,Yeni makine,Neuer Automat,Máquina nueva,Nouvelle machine,Nova máquina,Новый автомат,新しい回収機,새 회수기,नई मशीन
-buy.machine.d,Citizens near here bring their bottles.,Buradaki vatandaşlar şişelerini getirir.,Leute aus der Nähe bringen ihre Flaschen.,Los vecinos de la zona traen sus botellas.,Les habitants du coin apportent leurs bouteilles.,Moradores daqui trazem suas garrafas.,Жители рядом приносят сюда бутылки.,近くの住民がボトルを持ってきます。,근처 주민들이 병을 가져와요.,पास के लोग यहाँ अपनी बोतलें लाते हैं।
-buy.shop,Sign up this shop,Bu dükkanı kaydet,Laden anmelden,Registra esta tienda,Inscrire ce magasin,Cadastrar esta loja,Подключить этот магазин,この店を登録,이 가게 등록,इस दुकान को जोड़ो
-buy.shop.d,No machine: the shop collects bags. You pay it a small fee per bottle.,Makine yok: dükkan poşetleri toplar. Şişe başına küçük bir ücret ödersin.,Kein Automat: Der Laden sammelt Beutel. Du zahlst ihm eine kleine Gebühr pro Flasche.,Sin máquina: la tienda recoge bolsas. Le pagas una pequeña tarifa por botella.,Pas de machine : le magasin collecte les sacs. Tu lui verses un petit frais par bouteille.,Sem máquina: a loja recolhe sacos. Você paga uma pequena taxa por garrafa.,Без автомата: магазин собирает пакеты. Ты платишь ему небольшой сбор за бутылку.,回収機はなし。店がボトルを袋にまとめて集めます。ボトル1本ごとに少額の手数料を店に払います。,회수기 없이 가게가 봉투를 모아요. 병 하나당 작은 수수료를 가게에 줘요.,कोई मशीन नहीं: दुकान थैले जमा करती है। आप उसे हर बोतल पर थोड़ा शुल्क देते हैं।
-buy.tech,Hire a technician,Teknisyen işe al,Techniker einstellen,Contrata un técnico,Engager un technicien,Contratar técnico,Нанять техника,技術者を雇う,정비사 고용,तकनीशियन रखो
-buy.tech.d,"Fixes jams, sensors, the baler and broken trucks.","Sıkışmaları, sensörleri, balya presini ve arızalı kamyonları onarır.","Behebt Staus, Sensoren, die Ballenpresse und kaputte Lkw.","Arregla atascos, sensores, la prensa y los camiones averiados.","Répare les blocages, les capteurs, la presse et les camions en panne.","Conserta travamentos, sensores, a prensa e caminhões quebrados.","Чинит заклинивания, датчики, пресс и сломанные машины.",詰まり、センサー、圧縮機、故障したトラックを直します。,"걸림, 센서, 압축기, 고장 난 트럭을 고쳐요.","जाम, सेंसर, बेलर और खराब ट्रक ठीक करता है।"
-buy.truck,Buy · {cost},Satın al · {cost},Kaufen · {cost},Comprar · {cost},Acheter · {cost},Comprar · {cost},Купить · {cost},購入 · {cost},구매 · {cost},खरीदो · {cost}
-buy.yard,Bigger bale yard,Daha büyük balya alanı,Größeres Ballenlager,Patio de pacas más grande,Plus grand parc à balles,Pátio de fardos maior,Большая площадка для тюков,ベール置き場を拡張,더 넓은 베일 야적장,बड़ा गट्ठर यार्ड
-buy.yard.d,Room for more bales.,Daha fazla balya için yer.,Platz für mehr Ballen.,Espacio para más pacas.,De la place pour plus de balles.,Espaço para mais fardos.,Место для большего числа тюков.,ベールを置くスペースが増えます。,베일을 더 많이 쌓을 공간이 생겨요.,ज़्यादा गट्ठरों के लिए जगह।
-coach.1,This machine collects bottles. The bar shows how full it is. Tap the machine.,Bu makine şişeleri toplar. Çubuk ne kadar dolu olduğunu gösterir. Makineye dokun.,"Dieser Automat sammelt Flaschen. Die Leiste zeigt, wie voll er ist. Tippe auf den Automaten.",Esta máquina recoge botellas. La barra muestra cuánto está llena. Toca la máquina.,Cette machine récupère les bouteilles. La barre montre son niveau de remplissage. Touche la machine.,Esta máquina recolhe garrafas. A barra mostra o quanto ela está cheia. Toque na máquina.,"Этот автомат собирает бутылки. Полоска показывает, насколько он полон. Нажми на автомат.",この回収機はボトルを集めます。バーで満杯の度合いがわかります。回収機をタップしてください。,이 회수기는 병을 모아요. 막대는 얼마나 찼는지 보여줘요. 회수기를 눌러 보세요.,यह मशीन बोतलें जमा करती है। बार बताता है कि यह कितनी भरी है। मशीन पर टैप करो।
-coach.10,Your first bale is ready. Sell it.,İlk balyan hazır. Sat onu.,Dein erster Ballen ist fertig. Verkaufe ihn.,Tu primera paca está lista. Véndela.,Ta première balle est prête. Vends-la.,Seu primeiro fardo está pronto. Venda-o.,Первый тюк готов. Продай его.,最初のベールができました。売りましょう。,첫 베일이 완성됐어요. 판매해 보세요.,तुम्हारा पहला गट्ठर तैयार है। उसे बेचो।
-coach.11,Driving far costs fuel. Look at this number. Tap it.,Uzağa sürmek yakıt harcar. Bu sayıya bak. Ona dokun.,Weite Fahrten kosten Sprit. Schau auf diese Zahl. Tippe darauf.,Conducir lejos gasta combustible. Mira este número. Tócalo.,Rouler loin coûte du carburant. Regarde ce chiffre. Touche-le.,Dirigir longe gasta combustível. Olhe este número. Toque nele.,Дальняя поездка стоит топлива. Посмотри на это число. Нажми на него.,遠くまで走ると燃料がかかります。この数字を見て。タップしてください。,먼 곳까지 가면 연료가 들어요. 이 숫자를 보세요. 눌러 보세요.,दूर जाने में ईंधन लगता है। इस नंबर को देखो। इस पर टैप करो।
-coach.12,Set a rule: empty this machine when it's 80 % full.,Bir kural koy: bu makine %80 dolunca boşalt.,"Lege eine Regel fest: Leere diesen Automaten, wenn er zu 80 % voll ist.",Pon una regla: vacía esta máquina cuando esté al 80 % de su capacidad.,Fixe une règle : vide cette machine quand elle est pleine à 80 %.,Crie uma regra: esvazie esta máquina quando estiver 80 % cheia.,"Задай правило: опустошай этот автомат, когда он заполнен на 80 %.",ルールを決めましょう：この回収機が80 %たまったら空にします。,규칙을 정해 보세요: 80 % 찼을 때 이 회수기를 비우기.,नियम बनाओ: जब यह मशीन 80 % भर जाए तब इसे खाली करो।
-coach.13,Buy a bigger bin for the busy corner.,Kalabalık köşe için daha büyük bir kutu al.,Kaufe einen größeren Behälter für die belebte Ecke.,Compra un contenedor más grande para la esquina concurrida.,Achète un bac plus grand pour le coin très fréquenté.,Compre um recipiente maior para a esquina movimentada.,Купи бак побольше для загруженного угла.,混みあう角に、もっと大きなボックスを買いましょう。,바쁜 모퉁이에 더 큰 통을 사세요.,भीड़ वाले कोने के लिए बड़ा बिन खरीदो।
-coach.14,Hire a second driver. Now two trucks can drive at once.,İkinci bir sürücü işe al. Artık iki kamyon aynı anda sürebilir.,Stelle einen zweiten Fahrer ein. Jetzt können zwei Lkw gleichzeitig fahren.,Contrata un segundo conductor. Así dos camiones pueden salir a la vez.,Engage un deuxième chauffeur. Deux camions peuvent rouler en même temps.,Contrate um segundo motorista. Agora dois caminhões podem rodar ao mesmo tempo.,Найми второго водителя. Теперь могут ехать сразу две машины.,2人目の運転手を雇いましょう。これで2台のトラックが同時に走れます。,기사를 한 명 더 고용하세요. 이제 트럭 두 대가 동시에 달릴 수 있어요.,दूसरा ड्राइवर रखो। अब दो ट्रक एक साथ चल सकते हैं।
-coach.2,It's almost full. Let's empty it. Tap the van.,Neredeyse dolu. Hadi boşaltalım. Kamyonete dokun.,Er ist fast voll. Leeren wir ihn. Tippe auf den Transporter.,Casi está llena. Vamos a vaciarla. Toca la furgoneta.,Elle est presque pleine. Vide-la. Touche la camionnette.,Está quase cheia. Vamos esvaziá-la. Toque na van.,Почти полон. Опустошим его. Нажми на фургон.,もうすぐ満杯です。空にしましょう。バンをタップしてください。,거의 찼어요. 비워 볼까요? 밴을 눌러 보세요.,यह लगभग भर गई है। इसे खाली करते हैं। वैन पर टैप करो।
-coach.3,Tap the machine to add it to the van's route.,Kamyonun rotasına eklemek için makineye dokun.,"Tippe auf den Automaten, um ihn zur Route des Transporters hinzuzufügen.",Toca la máquina para añadirla a la ruta de la furgoneta.,Touche la machine pour l'ajouter au trajet de la camionnette.,Toque na máquina para incluí-la na rota da van.,"Нажми на автомат, чтобы добавить его в маршрут фургона.",回収機をタップして、バンのルートに追加しましょう。,회수기를 눌러 밴 경로에 추가하세요.,वैन के रूट में जोड़ने के लिए मशीन पर टैप करो।
-coach.4,Add the second machine too.,İkinci makineyi de ekle.,Füge auch den zweiten Automaten hinzu.,Añade también la segunda máquina.,Ajoute aussi la deuxième machine.,Inclua também a segunda máquina.,Добавь и второй автомат.,2台目の回収機も追加しましょう。,두 번째 회수기도 추가하세요.,दूसरी मशीन भी जोड़ो।
-coach.5,Send the van. Tap Go.,Kamyonu gönder. Başlat'a dokun.,Schick den Transporter los. Tippe auf Los.,Envía la furgoneta. Toca Ir.,Envoie la camionnette. Touche Partir.,Mande a van. Toque em Ir.,Отправь фургон. Нажми «Поехали».,バンを出発させましょう。「出発」をタップ。,밴을 보내세요. 출발을 누르세요.,वैन भेजो। चलो पर टैप करो।
-coach.6,Watch the van's load bar fill up.,Kamyonun yük çubuğunun dolmasını izle.,"Sieh zu, wie die Ladeleiste des Transporters voll wird.",Mira cómo se llena la barra de carga de la furgoneta.,Regarde la barre de charge de la camionnette se remplir.,Veja a barra de carga da van encher.,"Смотри, как заполняется полоска загрузки фургона.",バンの積載バーがたまっていくのを見ましょう。,밴의 적재 막대가 차오르는 것을 보세요.,वैन का लोड बार भरते हुए देखो।
-coach.7,Now the van drives back to the depot. Tap the depot.,Şimdi kamyon depoya dönüyor. Depoya dokun.,Jetzt fährt der Transporter zum Depot zurück. Tippe auf das Depot.,Ahora la furgoneta vuelve a la planta. Toca la planta.,Maintenant la camionnette retourne au dépôt. Touche le dépôt.,Agora a van volta para o depósito. Toque no depósito.,Теперь фургон едет обратно на склад. Нажми на склад.,バンがデポに戻ります。デポをタップしてください。,이제 밴이 집하장으로 돌아가요. 집하장을 눌러 보세요.,अब वैन डिपो लौटती है। डिपो पर टैप करो।
-coach.8,The count line counts the bottles. You earn a fee for each one. Tap the coins.,Sayım hattı şişeleri sayar. Her biri için ücret kazanırsın. Madeni paralara dokun.,Die Zähllinie zählt die Flaschen. Für jede bekommst du eine Gebühr. Tippe auf die Münzen.,La línea de conteo cuenta las botellas. Ganas una tarifa por cada una. Toca las monedas.,La ligne de comptage compte les bouteilles. Tu gagnes des frais pour chacune. Touche les pièces.,A linha de contagem conta as garrafas. Você ganha uma taxa por cada uma. Toque nas moedas.,Счётная линия считает бутылки. За каждую ты получаешь сбор. Нажми на монеты.,カウントラインがボトルを数えます。1本ごとに手数料がもらえます。コインをタップしてください。,계수 라인이 병을 세요. 병 하나마다 수수료를 받아요. 동전을 눌러 보세요.,गिनती लाइन बोतलें गिनती है। हर बोतल पर तुम्हें शुल्क मिलता है। सिक्कों पर टैप करो।
-coach.9,Plastic goes to the baler. Tap the baler.,Plastik balya presine gider. Balya presine dokun.,Plastik geht zur Ballenpresse. Tippe auf die Ballenpresse.,El plástico va a la prensa. Toca la prensa.,Le plastique va à la presse. Touche la presse.,O plástico vai para a prensa. Toque na prensa.,Пластик идёт на пресс. Нажми на пресс.,プラスチックは圧縮機へ。圧縮機をタップしてください。,플라스틱은 압축기로 가요. 압축기를 눌러 보세요.,प्लास्टिक बेलर के पास जाता है। बेलर पर टैप करो।
-coach.done,You're ready! Keep the machines from overflowing and the trucks from driving empty.,Hazırsın! Makinelerin taşmasına ve kamyonların boş dönmesine izin verme.,"Du bist bereit! Sorge dafür, dass die Automaten nicht überlaufen und die Lkw nicht leer fahren.",¡Listo! Evita que las máquinas se desborden y que los camiones vayan vacíos.,Tu es prêt ! Évite que les machines débordent et que les camions roulent à vide.,Pronto! Evite que as máquinas transbordem e que os caminhões rodem vazios.,"Ты готов! Не дай автоматам переполниться, а машинам ехать пустыми.",準備完了！回収機があふれないように、トラックが空っぽで走らないようにしましょう。,"준비됐어요! 회수기가 넘치지 않게, 트럭이 빈 채로 달리지 않게 관리하세요.","तुम तैयार हो! मशीनों को छलकने मत दो, और ट्रकों को खाली मत चलाओ।"
+bar.batch,Batch same drinks,,,,,,,,,
+bar.batch.d,"Two cups of the same drink in one go. Faster, but a pre-order may wait.",,,,,,,,,
+bar.dial_in,Dial in,,,,,,,,,
+bar.dial_in.d,Tune the grind: shots stop tasting bitter.,,,,,,,,,
+bar.grinder,Grinder,,,,,,,,,
+bar.hire,Hire,,,,,,,,,
+bar.hire_role,Hire a {role},,,,,,,,,
+bar.level,Level {n},,,,,,,,,
+bar.max_level,Top level,,,,,,,,,
+bar.repair,Unjam,,,,,,,,,
+bar.repair.d,Clear the jammed grinder now.,,,,,,,,,
+bar.rule,House rule,,,,,,,,,
+bar.team,Your team,,,,,,,,,
+bar.train,Train · {cost},,,,,,,,,
+bar.tune,Dial-in,,,,,,,,,
+bar.wear,Wear,,,,,,,,,
+buy.beans,Supplier beans,,,,,,,,,
+buy.beans.d,5 kg of ready-roasted beans. Average quality.,,,,,,,,,
+buy.decor,Plants and lights,,,,,,,,,
+buy.decor.d,A cosier cafe: a little better reviews.,,,,,,,,,
+buy.drum,Bigger roaster drum,,,,,,,,,
+buy.drum.d,Roast more beans in one batch.,,,,,,,,,
+buy.grinder,Better grinder,,,,,,,,,
+buy.grinder.d,Faster shots and less wear.,,,,,,,,,
+buy.heads,Espresso group head,,,,,,,,,
+buy.heads.d,One more shot at the same time.,,,,,,,,,
+buy.ice,Ice maker,,,,,,,,,
+buy.ice.d,Makes more ice for iced drinks.,,,,,,,,,
+buy.ice_bag,Bag of ice,,,,,,,,,
+buy.ice_bag.d,10 kg of ice right now.,,,,,,,,,
+buy.milk_run,Emergency milk run,,,,,,,,,
+buy.milk_run.d,"Extra whole and oat milk, here in a few minutes.",,,,,,,,,
+buy.rail,Longer ticket rail,,,,,,,,,
+buy.rail.d,More orders can wait before people walk away.,,,,,,,,,
+buy.seats,Table and chairs,,,,,,,,,
+buy.seats.d,More people stop by when they can sit.,,,,,,,,,
+buy.service_grinder,Service the grinder,,,,,,,,,
+buy.service_grinder.d,Resets the wear. A worn grinder can jam.,,,,,,,,,
+buy.staff.barista.d,Makes drinks at the espresso machine or the steam wand.,,,,,,,,,
+buy.staff.cashier.d,Hands cups over fast and plates the pastries.,,,,,,,,,
+buy.staff.roaster.d,Drops your roasts at a good point and blends rested beans each morning.,,,,,,,,,
+buy.staff.runner.d,"Faster, cheaper milk runs when stock is low.",,,,,,,,,
+buy.wands,Steam wand,,,,,,,,,
+buy.wands.d,Steam more milk at once.,,,,,,,,,
+coach.1,Welcome to the Quayside Cart! Tap Open to start your first day.,,,,,,,,,
+coach.10,People like to sit. Buy a table.,,,,,,,,,
+coach.11,Rain tomorrow! Rain brings hot drinks and pre-orders. Tap Prep hot drinks.,,,,,,,,,
+coach.12,Last one: set the house rule to Deadline first. Pre-orders are never late.,,,,,,,,,
+coach.2,A customer ordered. Their ticket is on the rail. Tap the ticket.,,,,,,,,,
+coach.3,Now tap the espresso machine. Your barista makes the coffee.,,,,,,,,,
+coach.4,The cup is on the pickup shelf. Tap the shelf to hand it over.,,,,,,,,,
+coach.5,This order is a latte. Lattes need milk. Tap the milk fridge.,,,,,,,,,
+coach.6,Hire a second barista. They will work the steam wand.,,,,,,,,,
+coach.7,Two people want the same drink. Turn on Batch to make them together.,,,,,,,,,
+coach.8,This is a pre-order with a pickup time. Tap Priority so it is ready on time.,,,,,,,,,
+coach.9,The coffee tastes bitter. Press and hold the grinder to dial it in.,,,,,,,,,
+coach.done,You're ready! Keep the rail moving and the shots sweet. Settings → How to play shows this again.,,,,,,,,,
 coach.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 coach.step,Step {n} of {m},Adım {n} / {m},Schritt {n} von {m},Paso {n} de {m},Étape {n} sur {m},Passo {n} de {m},Шаг {n} из {m},ステップ {n} / {m},{m}단계 중 {n}단계,चरण {n} / {m}
 common.back,Back,Geri,Zurück,Atrás,Retour,Voltar,Назад,戻る,뒤로,वापस
 common.cancel,Cancel,İptal,Abbrechen,Cancelar,Annuler,Cancelar,Отмена,キャンセル,취소,रद्द करो
-common.locked,Locked,Kilitli,Gesperrt,Bloqueado,Verrouillé,Bloqueado,Закрыто,ロック中,잠김,बंद
 common.ok,OK,Tamam,OK,OK,OK,OK,OK,OK,확인,ठीक है
-common.owned,Owned,Sende,Gekauft,Comprado,Acquis,Comprado,Куплено,所持済み,보유 중,आपके पास
-crisis.audit.b,The count line was overloaded and counts did not match. Fine paid.,Sayım hattı aşırı yüklendi ve sayılar tutmadı. Ceza ödendi.,"Die Zähllinie war überlastet, die Zahlen stimmten nicht. Strafe gezahlt.",La línea de conteo se saturó y los recuentos no coincidieron. Se pagó una multa.,La ligne de comptage était surchargée et les comptes ne correspondaient pas. Amende payée.,A linha de contagem ficou sobrecarregada e as contagens não bateram. Multa paga.,"Счётная линия была перегружена, и подсчёт не сошёлся. Штраф уплачен.",カウントラインが過負荷になり、数が合わなくなりました。罰金を支払いました。,계수 라인이 과부하되어 개수가 맞지 않았어요. 벌금을 냈어요.,गिनती लाइन पर ज़्यादा बोझ था और गिनती मेल नहीं खाई। जुर्माना भरा गया।
-crisis.audit.t,Count audit,Sayım denetimi,Zählprüfung,Auditoría de conteo,Contrôle du comptage,Auditoria de contagem,Проверка подсчёта,カウント監査,계수 점검,गिनती की जाँच
-crisis.bale_crash.b,One material sells for much less. Store bales if you have room.,Bir malzeme çok daha az satılıyor. Yerin varsa balyaları sakla.,"Ein Material bringt viel weniger Geld. Lagere Ballen, wenn du Platz hast.",Un material se vende por mucho menos. Guarda pacas si tienes espacio.,Un matériau se vend beaucoup moins cher. Stocke les balles si tu as de la place.,Um material vende por muito menos. Guarde fardos se tiver espaço.,"Один материал продаётся заметно дешевле. Придержи тюки, если есть место.",ある素材が大きく値下がりしました。スペースがあればベールを保管しておきましょう。,한 재료의 가격이 많이 떨어졌어요. 자리가 있다면 베일을 보관하세요.,एक सामग्री का दाम बहुत गिर गया। जगह हो तो गट्ठर रख लो।
-crisis.bale_crash.t,Bale price down,Balya fiyatı düştü,Ballenpreis gefallen,Bajan los precios de las pacas,Prix des balles en baisse,Preço do fardo caiu,Цена на тюки упала,ベール価格が下落,베일 가격 하락,गट्ठर का दाम गिरा
-crisis.baler_down.b,The baler stopped. Bales are waiting.,Balya presi durdu. Balyalar bekliyor.,Die Ballenpresse steht still. Ballen warten.,La prensa se ha parado. Hay pacas esperando.,La presse s'est arrêtée. Des balles attendent.,A prensa parou. Há fardos esperando.,Пресс остановился. Тюки ждут.,圧縮機が止まりました。ベールが待っています。,압축기가 멈췄어요. 베일이 기다리고 있어요.,बेलर रुक गया है। गट्ठर इंतज़ार कर रहे हैं।
-crisis.baler_down.t,Baler down,Balya presi arızalı,Ballenpresse defekt,Prensa averiada,Presse en panne,Prensa parada,Пресс сломан,圧縮機が停止,압축기 고장,बेलर बंद
-crisis.breakdown.b,A truck stopped on the road. A technician can get it going sooner.,Bir kamyon yolda kaldı. Bir teknisyen onu daha çabuk çalıştırabilir.,Ein Lkw ist liegen geblieben. Ein Techniker bringt ihn schneller wieder zum Laufen.,Un camión se paró en la carretera. Un técnico puede ponerlo en marcha antes.,Un camion s'est arrêté sur la route. Un technicien peut le remettre en route plus vite.,Um caminhão parou na estrada. Um técnico pode fazê-lo voltar mais rápido.,Машина встала на дороге. Техник поможет быстрее её запустить.,トラックが道路で止まりました。技術者を向かわせると早く再出発できます。,트럭 한 대가 도로에서 멈췄어요. 정비사가 더 빨리 고칠 수 있어요.,एक ट्रक सड़क पर रुक गया। तकनीशियन उसे जल्दी चालू कर सकता है।
-crisis.breakdown.t,Truck broke down,Kamyon arıza yaptı,Lkw liegen geblieben,Camión averiado,Camion en panne,Caminhão quebrou,Машина сломалась,トラックが故障,트럭 고장,ट्रक खराब हुआ
-crisis.bulk_centre.b,The counting centre took a big haul. No machine was blocked.,Sayım merkezi büyük bir yük aldı. Hiçbir makine tıkanmadı.,Das Zählzentrum hat eine große Menge angenommen. Kein Automat war blockiert.,El centro de conteo recibió una gran entrega. Ninguna máquina quedó bloqueada.,Le centre de comptage a reçu un gros apport. Aucune machine n'a été bloquée.,O centro de contagem recebeu um grande lote. Nenhuma máquina foi travada.,Центр подсчёта принял большую сдачу. Ни один автомат не заблокирован.,カウントセンターが大量のボトルを受け付けました。回収機は塞がれていません。,계수 센터가 많은 양을 받았어요. 막힌 회수기는 없어요.,गिनती केंद्र ने बड़ी खेप ले ली। कोई मशीन नहीं रुकी।
-crisis.bulk_centre.t,Bulk return counted,Toplu iade sayıldı,Große Menge gezählt,Entrega grande contada,Gros apport compté,Grande lote contado,Большая сдача подсчитана,大量返却をカウント,대량 반납 계수 완료,बड़ी वापसी गिनी गई
-crisis.bulk_returner.b,Someone brought hundreds of bottles and is blocking a machine.,Biri yüzlerce şişe getirdi ve bir makineyi tıkıyor.,Jemand hat hunderte Flaschen gebracht und blockiert einen Automaten.,Alguien trajo cientos de botellas y está bloqueando una máquina.,Quelqu'un a apporté des centaines de bouteilles et bloque une machine.,Alguém trouxe centenas de garrafas e está travando uma máquina.,Кто-то принёс сотни бутылок и блокирует автомат.,誰かが何百本ものボトルを持ち込み、回収機を塞いでいます。,누군가 병 수백 개를 가져와서 회수기 하나를 막고 있어요.,कोई सैकड़ों बोतलें लाया है और एक मशीन रोक रहा है।
-crisis.bulk_returner.t,Big bulk return,Büyük toplu iade,Große Rückgabe,Gran entrega masiva,Gros apport,Grande devolução,Большая сдача,大量返却,대량 반납,बड़ी थोक वापसी
-crisis.fuel_spike.b,Fuel costs 50 % more for a few days. Keep routes short.,Yakıt birkaç gün boyunca %50 pahalı. Rotaları kısa tut.,Sprit kostet einige Tage 50 % mehr. Halte die Routen kurz.,El combustible cuesta un 50 % más durante unos días. Haz rutas cortas.,Le carburant coûte 50 % de plus pendant quelques jours. Garde les trajets courts.,O combustível fica 50 % mais caro por alguns dias. Faça rotas curtas.,Несколько дней топливо стоит на 50 % дороже. Делай маршруты короче.,数日間、燃料代が50 %高くなります。ルートは短くしましょう。,며칠 동안 연료비가 50 % 올라요. 경로를 짧게 유지하세요.,कुछ दिनों के लिए ईंधन 50 % महँगा है। रूट छोटे रखो।
-crisis.fuel_spike.t,Fuel price up,Yakıt fiyatı yükseldi,Spritpreis gestiegen,Sube el combustible,Carburant plus cher,Combustível mais caro,Топливо подорожало,燃料価格が上昇,연료 가격 상승,ईंधन महँगा हुआ
-crisis.glass_break.b,A truck lost its glass load.,Bir kamyon cam yükünü kaybetti.,Ein Lkw hat seine Glasladung verloren.,Un camión perdió su carga de vidrio.,Un camion a perdu sa charge de verre.,Um caminhão perdeu a carga de vidro.,Машина потеряла груз стекла.,トラックがガラスの積荷を落としました。,트럭 한 대가 유리 적재물을 잃었어요.,एक ट्रक का कांच का माल टूट गया।
-crisis.glass_break.t,Glass broke,Cam kırıldı,Glas zerbrochen,Se rompió el vidrio,Verre cassé,Vidro quebrado,Стекло разбито,ガラスが割れた,유리 파손,कांच टूटा
-crisis.heat_wave.b,Everyone is drinking more. Machines fill 60 % faster for two days.,Herkes daha çok içecek içiyor. Makineler iki gün boyunca %60 daha hızlı doluyor.,Alle trinken mehr. Automaten füllen sich zwei Tage lang 60 % schneller.,Todos beben más. Las máquinas se llenan un 60 % más rápido durante dos días.,Tout le monde boit plus. Les machines se remplissent 60 % plus vite pendant deux jours.,Todo mundo está bebendo mais. As máquinas enchem 60 % mais rápido por dois dias.,Все пьют больше. Два дня автоматы заполняются на 60 % быстрее.,みんながたくさん飲んでいます。2日間、回収機が60 %速くたまります。,모두 음료를 더 많이 마셔요. 이틀 동안 회수기가 60 % 더 빨리 차요.,सब ज़्यादा पी रहे हैं। दो दिन तक मशीनें 60 % तेज़ी से भरेंगी।
-crisis.heat_wave.t,Heat wave,Sıcak dalgası,Hitzewelle,Ola de calor,Vague de chaleur,Onda de calor,Жара,猛暑,폭염,गर्मी की लहर
-crisis.jam.b,"A bottle is stuck. Send a technician, or a truck crew clears it when they empty it.",Bir şişe sıkıştı. Bir teknisyen gönder ya da kamyon ekibi boşaltırken temizler.,"Eine Flasche steckt fest. Schick einen Techniker, oder das Transportteam befreit sie beim Leeren.","Una botella se ha atascado. Envía a un técnico, o el equipo del camión la desatasca al vaciar la máquina.","Une bouteille est coincée. Envoie un technicien, ou l'équipe du camion la dégage en vidant la machine.","Uma garrafa ficou presa. Mande um técnico, ou a equipe do caminhão desatola ao esvaziar a máquina.","Бутылка застряла. Вызови техника, или экипаж фургона вытащит её, когда будет опустошать автомат.",ボトルが詰まりました。技術者を向かわせるか、回収車のスタッフが回収時に取り除きます。,병이 끼었어요. 정비사를 보내세요. 아니면 수거 트럭 팀이 회수기를 비울 때 치워 줘요.,"एक बोतल फँस गई है। तकनीशियन भेजो, या ट्रक वाली टीम खाली करते समय उसे निकाल देगी।"
-crisis.jam.t,Machine jammed,Makine sıkıştı,Automat verklemmt,Máquina atascada,Machine bloquée,Máquina travada,Автомат заклинило,回収機が詰まった,회수기 걸림,मशीन जाम
-crisis.match_day.b,The stadium fills up from 16:00 to 18:00. Have a truck nearby.,Stat 16:00 ile 18:00 arası doluyor. Yakınında bir kamyon bulundur.,Das Stadion füllt sich von 16:00 bis 18:00 Uhr. Halte einen Lkw in der Nähe bereit.,El estadio se llena de 16:00 a 18:00. Ten un camión cerca.,Le stade se remplit de 16 h à 18 h. Garde un camion à proximité.,O estádio lota das 16:00 às 18:00. Tenha um caminhão por perto.,Стадион заполняется с 16:00 до 18:00. Держи машину поблизости.,16:00〜18:00はスタジアムが混みます。近くにトラックを待機させましょう。,16:00부터 18:00까지 경기장이 가득 차요. 근처에 트럭을 대기시키세요.,16:00 से 18:00 तक स्टेडियम भर जाता है। पास में एक ट्रक रखो।
-crisis.match_day.t,Match day,Maç günü,Spieltag,Día de partido,Jour de match,Dia de jogo,День матча,試合の日,경기 날,मैच का दिन
-crisis.sensor_offline.b,"The app says a machine has room, but it may be full.",Uygulama bir makinede yer olduğunu söylüyor ama dolu olabilir.,"Die App zeigt, dass ein Automat Platz hat, er ist aber vielleicht voll.","La app dice que una máquina tiene espacio, pero puede estar llena.","L'appli indique qu'une machine a de la place, mais elle est peut-être pleine.","O app diz que a máquina tem espaço, mas ela pode estar cheia.","Приложение говорит, что в автомате есть место, но он может быть полон.",アプリでは空きがあると表示されていますが、実際は満杯かもしれません。,"앱은 회수기에 여유가 있다고 하지만, 가득 찼을 수도 있어요.","ऐप कहता है मशीन में जगह है, पर वह भरी हो सकती है।"
-crisis.sensor_offline.t,Sensor offline,Sensör çevrimdışı,Sensor offline,Sensor sin conexión,Capteur hors ligne,Sensor fora do ar,Датчик не в сети,センサーがオフライン,센서 연결 끊김,सेंसर बंद
-depot.baler,Baler,Balya presi,Ballenpresse,Prensa,Presse,Prensa,Пресс,圧縮機,압축기,बेलर
-depot.baler_down,Baler down,Balya presi arızalı,Ballenpresse defekt,Prensa averiada,Presse en panne,Prensa parada,Пресс сломан,圧縮機が停止,압축기 고장,बेलर बंद
-depot.baler_idle,Waiting for material,Malzeme bekleniyor,Wartet auf Material,Esperando material,En attente de matière,Esperando material,Ждёт материал,素材を待っています,재료를 기다리는 중,सामग्री का इंतज़ार
-depot.baler_ok,Pressing {mat} · {pct},{mat} presleniyor · {pct},Presst {mat} · {pct},Prensando {mat} · {pct},Compacte {mat} · {pct},Prensando {mat} · {pct},Прессует: {mat} · {pct},{mat} を圧縮中 · {pct},{mat} 압축 중 · {pct},{mat} दबाया जा रहा है · {pct}
-depot.gate,Trucks waiting at the gate: {n},Kapıda bekleyen kamyonlar: {n},Lkw warten an der Einfahrt: {n},Camiones esperando en la puerta: {n},Camions qui attendent à la porte : {n},Caminhões esperando no portão: {n},Машины у ворот: {n},ゲートで待つトラック: {n},입구에서 기다리는 트럭: {n},गेट पर इंतज़ार करते ट्रक: {n}
-depot.glass,Glass bay {n} / {cap} t,Cam bölmesi {n} / {cap} t,Glasbucht {n} / {cap} t,Zona de vidrio {n} / {cap} t,Quai verre {n} / {cap} t,Baia de vidro {n} / {cap} t,Отсек стекла {n} / {cap} т,ガラス置き場 {n} / {cap} t,유리 칸 {n} / {cap} t,कांच बे {n} / {cap} टन
-depot.intake,Waiting to be counted: {n},Sayılmayı bekleyen: {n},Wartet auf Zählung: {n},Esperando para contar: {n},À compter : {n},Esperando para ser contado: {n},В очереди на подсчёт: {n},カウント待ち: {n},계수 대기 중: {n},गिनती का इंतज़ार: {n}
-depot.lines,Count lines: {n} · {rate}/h,Sayım hatları: {n} · {rate}/sa,Zähllinien: {n} · {rate}/h,Líneas de conteo: {n} · {rate}/h,Lignes de comptage : {n} · {rate}/h,Linhas de contagem: {n} · {rate}/h,Линии подсчёта: {n} · {rate}/ч,カウントライン: {n} · {rate}/時,계수 라인: {n} · 시간당 {rate},गिनती लाइनें: {n} · {rate}/घंटा
-depot.none,Nothing to sell yet,Henüz satılacak bir şey yok,Noch nichts zu verkaufen,Aún no hay nada que vender,Rien à vendre pour l'instant,Nada para vender ainda,Пока нечего продавать,まだ売るものがありません,아직 팔 것이 없어요,अभी बेचने को कुछ नहीं
-depot.price,Price today: {pct} of usual,Bugünkü fiyat: normalin {pct},Heutiger Preis: {pct} vom Üblichen,Precio de hoy: {pct} del normal,Prix du jour : {pct} du prix habituel,Preço hoje: {pct} do normal,Цена сегодня: {pct} от обычной,今日の価格: いつもの {pct},오늘 시세: 평소의 {pct},आज का दाम: आम दाम का {pct}
-depot.sell,Sell {n} for {cash},{n} tanesini {cash} karşılığında sat,{n} verkaufen für {cash},Vender {n} por {cash},Vendre {n} pour {cash},Vender {n} por {cash},Продать {n} за {cash},{n} ベールを {cash} で売る,{n}개를 {cash}에 팔기,"{n} बेचो, {cash} में"
-depot.till,Collect {cash},{cash} topla,{cash} abholen,Cobrar {cash},Encaisser {cash},Recolher {cash},Забрать {cash},{cash} を受け取る,{cash} 받기,{cash} लो
-depot.till_empty,No fees waiting,Bekleyen ücret yok,Keine Gebühren offen,No hay tarifas pendientes,Aucun frais en attente,Nenhuma taxa esperando,Сборов пока нет,受け取る手数料はありません,대기 중인 수수료가 없어요,कोई शुल्क इंतज़ार में नहीं
-depot.title,Depot,Depo,Depot,Planta,Dépôt,Depósito,Склад,デポ,집하장,डिपो
-depot.yard,Bale yard {n} / {cap},Balya alanı {n} / {cap},Ballenlager {n} / {cap},Patio de pacas {n} / {cap},Parc à balles {n} / {cap},Pátio de fardos {n} / {cap},Площадка для тюков: {n} / {cap},ベール置き場 {n} / {cap},베일 야적장 {n} / {cap},गट्ठर यार्ड {n} / {cap}
-depot.yard_full,Yard full — the baler has stopped,Alan dolu — balya presi durdu,Lager voll — die Presse steht still,Patio lleno: la prensa se ha parado,Parc plein — la presse s'est arrêtée,Pátio cheio — a prensa parou,Площадка полна — пресс остановился,置き場がいっぱい — 圧縮機が止まりました,야적장이 가득 찼어요 — 압축기가 멈췄어요,यार्ड भर गया — बेलर रुक गया है
-district.done,All districts open,Tüm bölgeler açık,Alle Viertel offen,Todos los barrios abiertos,Tous les quartiers sont ouverts,Todos os bairros abertos,Все районы открыты,全地区が開放されました,모든 구역이 열렸어요,सारे इलाके खुल गए
-district.harbour,Harbour Quarter,Liman Mahallesi,Hafenviertel,Barrio del puerto,Quartier du port,Bairro do Porto,Портовый квартал,港地区,항구 구역,हार्बर इलाका
-district.needs,Needs Green Rating {r},Yeşil Puan {r} gerekli,Braucht Grün-Wertung {r},Necesita Calificación Verde {r},Demande une Note verte de {r},Precisa de Nota Verde {r},Нужен зелёный рейтинг {r},グリーン評価 {r} が必要,그린 등급 {r} 필요,ग्रीन रेटिंग {r} चाहिए
-district.next,Next district: {name},Sonraki bölge: {name},Nächstes Viertel: {name},Próximo barrio: {name},Prochain quartier : {name},Próximo bairro: {name},Следующий район: {name},次の地区: {name},다음 구역: {name},अगला इलाका: {name}
-district.oldtown,Old Town,Eski Şehir,Altstadt,Casco antiguo,Vieille ville,Centro Antigo,Старый город,旧市街,구시가지,पुराना शहर
-district.stadium,Stadium & Fairground,Stat ve Panayır,Stadion & Festplatz,Estadio y recinto ferial,Stade et foire,Estádio e Parque de Exposições,Стадион и ярмарка,スタジアム・遊園地,경기장 & 축제장,स्टेडियम और मेला मैदान
-district.university,University Hill,Üniversite Tepesi,Uni-Hügel,Colina universitaria,Colline universitaire,Colina Universitária,Студенческий холм,大学の丘,대학 언덕,यूनिवर्सिटी हिल
-district.unlock,Unlock · {cost},Aç · {cost},Freischalten · {cost},Desbloquear · {cost},Débloquer · {cost},Desbloquear · {cost},Открыть · {cost},開放 · {cost},열기 · {cost},खोलो · {cost}
-err.already,Already on the way.,Zaten yolda.,Ist schon unterwegs.,Ya está en camino.,Déjà en route.,Já está a caminho.,Уже в пути.,すでに向かっています。,이미 가는 중이에요.,पहले से रास्ते में है।
-err.busy,Busy right now.,Şu an meşgul.,Gerade beschäftigt.,Ocupado ahora mismo.,Occupé pour le moment.,Ocupado agora.,Сейчас занято.,ただいま手が離せません。,지금은 바빠요.,अभी व्यस्त है।
-err.cash,Not enough money.,Yeterli paran yok.,Nicht genug Geld.,No tienes suficiente dinero.,Pas assez d'argent.,Dinheiro insuficiente.,Недостаточно денег.,お金が足りません。,돈이 부족해요.,पैसे कम हैं।
-err.failed,That didn't work.,Olmadı.,Das hat nicht geklappt.,Eso no funcionó.,Ça n'a pas marché.,Não deu certo.,Не получилось.,うまくいきませんでした。,실패했어요.,यह नहीं हुआ।
-err.invalid,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
-err.locked,Unlock this district first.,Önce bu bölgeyi aç.,Schalte zuerst dieses Viertel frei.,Primero desbloquea este barrio.,Débloque d'abord ce quartier.,Desbloqueie este bairro primeiro.,Сначала открой этот район.,先にこの地区を開放してください。,이 구역을 먼저 여세요.,पहले यह इलाका खोलो।
-err.max,Maximum reached.,En fazlaya ulaşıldı.,Maximum erreicht.,Límite alcanzado.,Maximum atteint.,Limite máximo atingido.,Достигнут максимум.,上限に達しました。,최대치에 도달했어요.,सीमा पूरी हो गई।
-err.no_dispatcher,Build the dispatch office first.,Önce sevk ofisini kur.,Baue zuerst die Leitstelle.,Primero construye la oficina de envíos.,Construis d'abord le bureau de dispatch.,Construa a central de despacho primeiro.,Сначала построй диспетчерскую.,先に配車オフィスを建ててください。,먼저 배차 사무소를 지으세요.,पहले डिस्पैच ऑफिस बनाओ।
-err.no_driver,No free driver — hire one or wait.,Boş sürücü yok — birini işe al ya da bekle.,Kein Fahrer frei — stelle einen ein oder warte.,No hay conductor libre: contrata uno o espera.,Aucun chauffeur libre — engage-en un ou attends.,Nenhum motorista livre — contrate um ou espere.,Нет свободного водителя — найми или подожди.,空いている運転手がいません。雇うか待ってください。,빈 기사가 없어요 — 고용하거나 기다리세요.,कोई खाली ड्राइवर नहीं — एक रखो या इंतज़ार करो।
-err.no_stops,Add a stop first.,Önce bir durak ekle.,Füge zuerst einen Halt hinzu.,Primero añade una parada.,Ajoute d'abord un arrêt.,Adicione uma parada primeiro.,Сначала добавь остановку.,先に立ち寄り先を追加してください。,먼저 정차지를 추가하세요.,पहले एक स्टॉप जोड़ो।
-err.no_tech,No free technician.,Boş teknisyen yok.,Kein Techniker frei.,No hay técnico libre.,Aucun technicien libre.,Nenhum técnico livre.,Нет свободного техника.,空いている技術者がいません。,빈 정비사가 없어요.,कोई खाली तकनीशियन नहीं।
-err.no_truck,Pick a truck first.,Önce bir kamyon seç.,Wähle zuerst einen Lkw.,Primero elige un camión.,Choisis d'abord un camion.,Escolha um caminhão primeiro.,Сначала выбери машину.,先にトラックを選んでください。,먼저 트럭을 고르세요.,पहले एक ट्रक चुनो।
-err.nothing,Nothing to do here.,Burada yapacak bir şey yok.,Hier gibt es nichts zu tun.,No hay nada que hacer aquí.,Rien à faire ici.,Nada para fazer aqui.,Здесь нечего делать.,ここでできることはありません。,여기서 할 일이 없어요.,यहाँ करने को कुछ नहीं।
-err.nothing_due,No machine needs emptying by your rules.,Kurallarına göre boşaltılması gereken makine yok.,Nach deinen Regeln muss kein Automat geleert werden.,Ninguna máquina necesita vaciarse según tus reglas.,Aucune machine à vider selon tes règles.,Nenhuma máquina precisa ser esvaziada pelas suas regras.,По твоим правилам ни один автомат не нужно опустошать.,ルールに合う、空にすべき回収機はありません。,정한 규칙에 따라 비워야 할 회수기가 없어요.,तुम्हारे नियमों से कोई मशीन खाली होने वाली नहीं।
-err.owned,Already yours.,Zaten senin.,Gehört dir schon.,Ya es tuyo.,Déjà à toi.,Já é seu.,Уже твоё.,すでに持っています。,이미 보유 중이에요.,यह पहले से तुम्हारा है।
-err.phase,Not now.,Şimdi değil.,Nicht jetzt.,Ahora no.,Pas maintenant.,Não agora.,Не сейчас.,今はできません。,지금은 안 돼요.,अभी नहीं।
-err.rating,Green Rating too low.,Yeşil Puan çok düşük.,Grün-Wertung zu niedrig.,Calificación Verde demasiado baja.,Note verte trop basse.,Nota Verde baixa demais.,Зелёный рейтинг слишком низкий.,グリーン評価が低すぎます。,그린 등급이 너무 낮아요.,ग्रीन रेटिंग बहुत कम है।
-err.report,The day is over.,Gün bitti.,Der Tag ist vorbei.,El día ha terminado.,La journée est terminée.,O dia acabou.,День окончен.,今日の営業は終わりました。,하루가 끝났어요.,दिन खत्म हो गया।
-err.requires,Research the earlier step first.,Önce bir önceki adımı araştır.,Erforsche zuerst den vorherigen Schritt.,Investiga antes el paso anterior.,Recherche d'abord l'étape précédente.,Pesquise a etapa anterior primeiro.,Сначала исследуй предыдущий шаг.,先に前の研究を終えてください。,앞 단계를 먼저 연구하세요.,पहले पिछला चरण रिसर्च करो।
-err.research,Research it first.,Önce bunu araştır.,Erforsche es zuerst.,Investígalo primero.,Recherche-le d'abord.,Pesquise primeiro.,Сначала исследуй это.,先に研究してください。,먼저 연구하세요.,पहले इसकी रिसर्च करो।
-err.slots,No free Dispatcher slot.,Boş sevk ofisi yuvası yok.,Kein freier Leitstellen-Platz.,No hay ranura libre de la oficina de envíos.,Aucune place libre au dispatch.,Nenhuma vaga livre na central.,Нет свободного места для диспетчера.,配車オフィスの空き枠がありません。,빈 배차 슬롯이 없어요.,डिस्पैचर की कोई खाली जगह नहीं।
-err.unknown,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
-err.unreachable,This truck can't get there.,Bu kamyon oraya ulaşamaz.,Dieser Lkw kommt dort nicht hin.,Este camión no puede llegar allí.,Ce camion ne peut pas y aller.,Este caminhão não consegue chegar lá.,Эта машина туда не доедет.,このトラックはそこへ行けません。,이 트럭은 거기 갈 수 없어요.,यह ट्रक वहाँ नहीं जा सकता।
-fleet.drivers,Drivers {n} / trucks {m},Sürücüler {n} / kamyonlar {m},Fahrer {n} / Lkw {m},Conductores {n} / camiones {m},Chauffeurs {n} / camions {m},Motoristas {n} / caminhões {m},Водители: {n} / машины: {m},運転手 {n} / トラック {m},기사 {n} / 트럭 {m},ड्राइवर {n} / ट्रक {m}
-fleet.techs,Technicians {n},Teknisyenler {n},Techniker {n},Técnicos {n},Techniciens {n},Técnicos {n},Техники: {n},技術者 {n},정비사 {n}명,तकनीशियन {n}
-goal.district,Unlock {name} (Green Rating {r}),{name} bölgesini aç (Yeşil Puan {r}),{name} freischalten (Grün-Wertung {r}),Desbloquear {name} (Calificación Verde {r}),Débloquer {name} (Note verte {r}),Desbloquear {name} (Nota Verde {r}),Открыть {name} (зелёный рейтинг {r}),{name} を開放（グリーン評価 {r}）,{name} 열기 (그린 등급 {r}),{name} खोलो (ग्रीन रेटिंग {r})
-goal.endless,Keep every machine flowing,Her makineyi akışta tut,Halte jeden Automaten am Laufen,Mantén todas las máquinas en marcha,Garde toutes les machines en marche,Mantenha todas as máquinas funcionando,"Следи, чтобы все автоматы работали",すべての回収機をスムーズに回そう,모든 회수기를 원활하게 유지하기,हर मशीन चालू रखो
-goal.machine,Place a new machine,Yeni bir makine yerleştir,Stelle einen neuen Automaten auf,Coloca una máquina nueva,Installe une nouvelle machine,Instale uma nova máquina,Поставь новый автомат,新しい回収機を置く,새 회수기 설치하기,एक नई मशीन लगाओ
-goal.stars,Get a 3-star day,3 yıldızlı bir gün kazan,Schaffe einen 3-Sterne-Tag,Consigue un día de 3 estrellas,Obtiens une journée à 3 étoiles,Consiga um dia de 3 estrelas,Получи день на 3 звезды,3つ星の1日を達成,3성 하루 달성하기,3 स्टार वाला दिन पाओ
+common.open,Open,,,,,,,,,
+contract.bistro,Harbour Bistro,,,,,,,,,
+contract.bistro.d,A small bistro by the ferry wants your house beans.,,,,,,,,,
+contract.ferry,Ferry Kiosk,,,,,,,,,
+contract.ferry.d,The ferry kiosk serves your coffee on every crossing.,,,,,,,,,
+contract.needs,Needs ★ {r},,,,,,,,,
+contract.next,next on day {n},,,,,,,,,
+contract.pause,Pause,,,,,,,,,
+contract.sign,Sign,,,,,,,,,
+contract.terms,{kg} every {days} days · quality {q}+ · {cash},,,,,,,,,
+crisis.frost.b,One green coffee costs 50 % more for a few days.,,,,,,,,,
+crisis.frost.t,Frost at origin,,,,,,,,,
+crisis.grinder_jam.b,No shots until it's fixed. Hold the grinder to unjam it.,,,,,,,,,
+crisis.grinder_jam.t,Grinder jammed,,,,,,,,,
+crisis.heat.b,Iced drinks flood the rail. Watch the ice.,,,,,,,,,
+crisis.heat.t,Heat,,,,,,,,,
+crisis.milk_late.b,Today's milk comes 3 hours late. Order a milk run or pause lattes.,,,,,,,,,
+crisis.milk_late.t,Milk van late,,,,,,,,,
+crisis.rain.b,"Benches empty, pre-orders stack up. Prep hot drinks.",,,,,,,,,
+crisis.rain.t,Rain,,,,,,,,,
+crisis.review_spree.b,Three bad reviews in a row. Fewer people come by until tomorrow.,,,,,,,,,
+crisis.review_spree.t,Bad reviews,,,,,,,,,
+crisis.wholesale_short.b,Not enough good beans for a wholesale order. A small fee was paid.,,,,,,,,,
+crisis.wholesale_short.t,Delivery short,,,,,,,,,
+cust.commuter,Commuter,,,,,,,,,
+cust.influencer,Influencer,,,,,,,,,
+cust.regular,Regular,,,,,,,,,
+cust.student,Student,,,,,,,,,
+cust.tourist,Tourist,,,,,,,,,
+err.blocked,Follow the guide,,,,,,,,,
+err.busy,Busy right now,,,,,,,,,
+err.cash,Not enough money,,,,,,,,,
+err.invalid,Not possible,,,,,,,,,
+err.last,Keep at least one drink,,,,,,,,,
+err.locked,Not open yet,,,,,,,,,
+err.max,Maxed out,,,,,,,,,
+err.no_green,No green coffee,,,,,,,,,
+err.no_stops,Nothing to do,,,,,,,,,
+err.no_ticket,Tap a ticket first,,,,,,,,,
+err.nothing,Nothing to do,,,,,,,,,
+err.nothing_ready,Nothing on the shelf yet,,,,,,,,,
+err.nothing_rested,Nothing has rested yet,,,,,,,,,
+err.owned,Already yours,,,,,,,,,
+err.phase,Not right now,,,,,,,,,
+err.rating,You need more stars,,,,,,,,,
+err.ready,Already done,,,,,,,,,
+err.requires,Needs research first,,,,,,,,,
+err.research,Needs research,,,,,,,,,
+err.role,Only baristas work stations,,,,,,,,,
+err.running,Already running,,,,,,,,,
+err.started,Already being made,,,,,,,,,
+err.unknown,Not possible,,,,,,,,,
+err.unreachable,Not possible,,,,,,,,,
+forecast.board_help,The forecast board (research) shows three days ahead.,,,,,,,,,
+forecast.day,Day {n},,,,,,,,,
+forecast.fog,"Quiet street, more pre-orders.",,,,,,,,,
+forecast.heat,Iced drinks everywhere. Ice runs out fast.,,,,,,,,,
+forecast.prep,Prepare,,,,,,,,,
+forecast.prep_hot,Prep hot drinks,,,,,,,,,
+forecast.prep_hot.d,Pre-brew {n} cups of americano and filter. Served at once. In the urn: {left}.,,,,,,,,,
+forecast.prep_ice,Make extra ice,,,,,,,,,
+forecast.prep_ice.d,Add {kg} of ice to the bin.,,,,,,,,,
+forecast.rain,"Fewer walk-ins, more pre-orders, more hot drinks.",,,,,,,,,
+forecast.sunny,Normal day. Walk-ins as usual.,,,,,,,,,
+forecast.title,Forecast,,,,,,,,,
+forecast.today,Today,,,,,,,,,
+forecast.tomorrow,Tomorrow,,,,,,,,,
 graphics.dropped,Graphics lowered to keep the game smooth. You can change it in Settings.,Oyun akıcı kalsın diye grafikler düşürüldü. Ayarlar'dan değiştirebilirsin.,"Grafik gesenkt, damit das Spiel flüssig läuft. Du kannst es in den Einstellungen ändern.",Gráficos reducidos para mantener el juego fluido. Puedes cambiarlo en Ajustes.,Graphismes baissés pour garder le jeu fluide. Tu peux les changer dans les Réglages.,Gráficos reduzidos para manter o jogo suave. Você pode mudar isso em Configurações.,"Графика снижена, чтобы игра шла плавно. Это можно поменять в настройках.",ゲームを滑らかにするため画質を下げました。設定で変更できます。,게임을 부드럽게 하려고 그래픽을 낮췄어요. 설정에서 바꿀 수 있어요.,गेम चिकना चलाने के लिए ग्राफ़िक्स घटाया गया। इसे सेटिंग्स में बदल सकते हो।
 graphics.high,High,Yüksek,Hoch,Alta,Élevée,Alta,Высокая,高,높음,ऊँचा
 graphics.low,Low,Düşük,Niedrig,Baja,Basse,Baixa,Низкая,低,낮음,कम
 graphics.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
-hud.crises,Today: {list},Bugün: {list},Heute: {list},Hoy: {list},Aujourd'hui : {list},Hoje: {list},Сегодня: {list},今日: {list},오늘: {list},आज: {list}
+grow.branch_income,Runs itself · about {cash} a day,,,,,,,,,
+grow.branches,Branches,,,,,,,,,
+grow.here,You are working here today.,,,,,,,,,
+grow.here_short,Here,,,,,,,,,
+grow.needs,Needs ★ {r}.,,,,,,,,,
+grow.needs_short,★ {r},,,,,,,,,
+grow.switch,Work here,,,,,,,,,
+grow.switch_help,Switch branches in the morning plan.,,,,,,,,,
+hud.batch_off,Batch off,,,,,,,,,
+hud.batch_on,Batch on,,,,,,,,,
 hud.day,Day {n},Gün {n},Tag {n},Día {n},Jour {n},Dia {n},День {n},{n}日目,{n}일차,दिन {n}
-hud.fuel,Fuel {cost},Yakıt {cost},Sprit {cost},Combustible {cost},Carburant {cost},Combustível {cost},Топливо {cost},燃料 {cost},연료 {cost},ईंधन {cost}
-hud.fuel_info,Every kilometre costs fuel. Long trips to half-empty machines eat your profit.,Her kilometre yakıt harcar. Yarı boş makinelere uzun yolculuklar kârını yer.,Jeder Kilometer kostet Sprit. Lange Fahrten zu halb leeren Automaten fressen deinen Gewinn.,Cada kilómetro cuesta combustible. Los viajes largos a máquinas medio vacías se comen tu beneficio.,Chaque kilomètre coûte du carburant. Les longs trajets vers des machines à moitié vides grignotent tes gains.,Cada quilômetro gasta combustível. Viagens longas até máquinas quase vazias comem seu lucro.,Каждый километр стоит топлива. Долгие поездки к полупустым автоматам съедают прибыль.,1 kmごとに燃料がかかります。半分しか入っていない回収機への長旅は利益を減らします。,1 km마다 연료가 들어요. 반쯤 빈 회수기까지 멀리 가면 이익이 줄어요.,हर किलोमीटर में ईंधन लगता है। आधी खाली मशीनों तक लंबे सफ़र तुम्हारा मुनाफ़ा खा जाते हैं।
-hud.goal,Goal: {text},Hedef: {text},Ziel: {text},Objetivo: {text},Objectif : {text},Meta: {text},Цель: {text},目標: {text},목표: {text},लक्ष्य: {text}
+hud.hold_grinder,Hold the grinder to dial it in.,,,,,,,,,
 hud.next_day,Next day,Sonraki gün,Nächster Tag,Día siguiente,Jour suivant,Próximo dia,Следующий день,次の日へ,다음 날,अगला दिन
-hud.paused,Paused,Duraklatıldı,Pause,En pausa,En pause,Pausado,Пауза,一時停止中,일시정지,रुका हुआ
-hud.rating,Green {r},Yeşil {r},Grün {r},Verde {r},Vert {r},Verde {r},Рейтинг {r},グリーン {r},그린 {r},ग्रीन {r}
+hud.open,Open the doors,,,,,,,,,
 hud.speed,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×
-hud.speed_guide,Speed-up unlocks after the guide.,"Hızlandırma, rehberden sonra açılır.",Schneller stellen schaltet sich nach der Anleitung frei.,La velocidad rápida se desbloquea al terminar la guía.,L'accélération se débloque après le guide.,A velocidade maior libera depois do tutorial.,Ускорение откроется после обучения.,スピードアップはガイドの後に解放されます。,가이드를 마치면 빨리 감기가 열려요.,गाइड के बाद तेज़ चाल खुलेगी।
-hud.speed_locked,Faster speeds come with the Speed Pack.,Daha hızlı modlar Hız Paketi ile gelir.,Schnellere Geschwindigkeit gibt es mit dem Tempo-Paket.,Las velocidades rápidas vienen con el Pack de Velocidad.,Les vitesses rapides sont dans le Pack Vitesse.,Velocidades maiores vêm com o Pacote de Velocidade.,Быстрые скорости идут с пакетом скорости.,より速い速度はスピードパックに含まれます。,더 빠른 속도는 속도 팩에 포함돼요.,तेज़ चाल स्पीड पैक के साथ मिलती है।
-hud.start_day,Start the day,Güne başla,Tag starten,Empezar el día,Commencer la journée,Começar o dia,Начать день,営業開始,하루 시작,दिन शुरू करो
-iap.bundle.d,"Edition, Network Pass, Speed Pack, Dispatcher+ and every look. No forced ads.","Sürüm, Ağ Geçişi, Hız Paketi, Sevk Ofisi+ ve tüm görünümler. Zorunlu reklam yok.","Edition, Netzwerk-Pass, Tempo-Paket, Leitstelle+ und alle Looks. Keine Zwangswerbung.","Edición, Pase de Red, Pack de Velocidad, Despachador+ y todos los estilos. Sin anuncios obligatorios.","Édition, Pass Réseau, Pack Vitesse, Dispatch+ et tous les styles. Sans pubs imposées.","Edição, Passe da Rede, Pacote de Velocidade, Despachante+ e todos os visuais. Sem anúncios forçados.","Версия, Сетевой пропуск, Пакет скорости, Диспетчер+ и все оформления. Без навязчивой рекламы.",エディション、ネットワークパス、スピードパック、配車オフィス+、すべての見た目が入ります。強制広告なし。,"에디션, 네트워크 패스, 속도 팩, 배차+ 및 모든 외형 포함. 강제 광고 없음.","एडिशन, नेटवर्क पास, स्पीड पैक, डिस्पैचर+ और हर लुक। कोई ज़बरदस्ती के विज्ञापन नहीं।"
+hud.speed_guide,Speed opens after the guide.,,,,,,,,,
+hud.speed_locked,3× and 4× come with the Speed Pack.,,,,,,,,,
+iap.aprons.d,Wine-red aprons for the whole team.,,,,,,,,,
+iap.aprons.t,Wine Aprons,,,,,,,,,
+iap.automation.d,The grinder stays dialled in and pre-orders are flagged by themselves.,,,,,,,,,
+iap.automation.t,Head Barista+,,,,,,,,,
+iap.bundle.d,"Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",,,,,,,,,
 iap.bundle.t,Complete Pour & Roast,Pour & Roast'un tamamı,Komplettes Pour & Roast,Pour & Roast completo,Pour & Roast complet,Pour & Roast Completo,Полная версия Pour & Roast,Pour & Roast 完全版,Pour & Roast 완전판,पूरा Pour & Roast
-iap.cash_l.d,About 5 days of income.,Yaklaşık 5 günlük gelir.,Etwa 5 Tage Einnahmen.,Unos 5 días de ingresos.,Environ 5 jours de revenus.,Cerca de 5 dias de renda.,Примерно на 5 дней дохода.,約5日分の収入。,수입 약 5일 치예요.,लगभग 5 दिन की कमाई।
-iap.cash_l.t,Crate of Coins,Madeni para sandığı,Kiste voller Münzen,Caja de monedas,Caisse de pièces,Caixa de Moedas,Ящик монет,コインの木箱,동전 상자,सिक्कों की पेटी
-iap.cash_m.d,About 2.5 days of income.,"Yaklaşık 2,5 günlük gelir.","Etwa 2,5 Tage Einnahmen.","Unos 2,5 días de ingresos.","Environ 2,5 jours de revenus.","Cerca de 2,5 dias de renda.","Примерно 2,5 дня дохода.",約2.5日分の収入。,수입 약 2.5일 치예요.,लगभग 2.5 दिन की कमाई।
-iap.cash_m.t,Bag of Coins,Madeni para torbası,Beutel voller Münzen,Bolsa de monedas,Sac de pièces,Saco de Moedas,Мешок монет,コインの袋,동전 자루,सिक्कों का थैला
+iap.cash_l.d,About five days of income.,,,,,,,,,
+iap.cash_l.t,Strongbox,,,,,,,,,
+iap.cash_m.d,About two and a half days of income.,,,,,,,,,
+iap.cash_m.t,Cash Register,,,,,,,,,
 iap.cash_s.d,About one day of income.,Yaklaşık bir günlük gelir.,Etwa ein Tag Einnahmen.,Aproximadamente un día de ingresos.,Environ un jour de revenus.,Cerca de um dia de renda.,Примерно один день дохода.,約1日分の収入。,수입 약 하루 치예요.,लगभग एक दिन की कमाई।
-iap.cash_s.t,Pocket of Coins,Madeni para cebi,Tasche voller Münzen,Bolsillo de monedas,Poche de pièces,Bolso de Moedas,Горсть монет,コインのポーチ,동전 주머니,सिक्कों की जेब
-iap.cash_xl.d,About 10 days of income.,Yaklaşık 10 günlük gelir.,Etwa 10 Tage Einnahmen.,Unos 10 días de ingresos.,Environ 10 jours de revenus.,Cerca de 10 dias de renda.,Примерно 10 дней дохода.,約10日分の収入。,수입 약 10일 치예요.,लगभग 10 दिन की कमाई।
-iap.cash_xl.t,Vault of Coins,Madeni para kasası,Tresor voller Münzen,Bóveda de monedas,Coffre de pièces,Cofre de Moedas,Хранилище монет,コインの金庫,동전 금고,सिक्कों का खज़ाना
-iap.comeback.d,Cash to get the network going again.,Ağı yeniden çalıştırmak için para.,"Geld, damit das Netz wieder läuft.",Dinero para volver a poner la red en marcha.,De l'argent pour relancer le réseau.,Dinheiro para colocar a rede para funcionar de novo.,"Деньги, чтобы снова запустить сеть.",ネットワークを再び動かすためのお金。,네트워크를 다시 돌리기 위한 자금이에요.,नेटवर्क फिर से चलाने के लिए पैसे।
+iap.cash_s.t,Tip Jar,,,,,,,,,
+iap.cash_xl.d,About ten days of income.,,,,,,,,,
+iap.cash_xl.t,Vault,,,,,,,,,
+iap.comeback.d,Two days of cash to get the cafe going again.,,,,,,,,,
 iap.comeback.t,Welcome-back Crate,Hoş geldin sandığı,Willkommen-zurück-Kiste,Caja de bienvenida,Caisse de retour,Caixa de Boas-vindas,Ящик «С возвращением»,おかえり木箱,환영 상자,वापसी की पेटी
-iap.cosmetics_all.d,"Every livery, machine style and depot theme.","Her renk düzeni, makine stili ve depo teması.","Jede Lackierung, jeder Automatenstil und jedes Depot-Thema.","Todos los colores de camión, estilos de máquina y temas de planta.","Toutes les livrées, tous les styles de machines et tous les thèmes de dépôt.","Todas as pinturas, estilos de máquina e temas de depósito.","Все окраски, стили автоматов и темы склада.",すべてのカラーリング、回収機のデザイン、デポのテーマ。,"모든 도장, 회수기 스타일, 집하장 테마.","हर रंग-रूप, मशीन स्टाइल और डिपो थीम।"
-iap.cosmetics_all.t,Look Collection,Görünüm Koleksiyonu,Look-Sammlung,Colección de estilos,Collection de looks,Coleção de Visuais,Коллекция стилей,見た目コレクション,외형 컬렉션,लुक कलेक्शन
-iap.depot_tropic.d,Palm trees and bright colours at the depot. Looks only.,Depoda palmiyeler ve canlı renkler. Sadece görünüm.,Palmen und bunte Farben am Depot. Nur Optik.,Palmeras y colores vivos en la planta. Solo es estético.,Palmiers et couleurs vives au dépôt. Esthétique uniquement.,Palmeiras e cores vivas no depósito. Só visual.,Пальмы и яркие цвета на складе. Только внешний вид.,デポにヤシの木と明るい色。見た目だけの変更です。,집하장에 야자수와 밝은 색. 외형만 바뀌어요.,डिपो में ताड़ के पेड़ और चमकीले रंग। सिर्फ़ दिखावट।
-iap.depot_tropic.t,Tropical Depot,Tropikal Depo,Tropen-Depot,Planta tropical,Dépôt tropical,Depósito Tropical,Тропический склад,トロピカル・デポ,열대 집하장,ट्रॉपिकल डिपो
-iap.dispatcher_plus.d,3 more trucks the Dispatcher can drive.,Sevk ofisinin sürebileceği 3 kamyon daha.,"3 weitere Lkw, die die Leitstelle fahren kann.",3 camiones más que puede conducir el Despachador.,3 camions de plus que le dispatch peut conduire.,Mais 3 caminhões para a central despachar.,"Ещё 3 машины, которыми может управлять диспетчер.",配車オフィスが運転できるトラックが3台増えます。,배차 사무소가 몰 수 있는 트럭 3대 추가.,डिस्पैचर के चलाने के लिए 3 और ट्रक।
-iap.dispatcher_plus.t,Dispatcher+,Sevk Ofisi+,Leitstelle+,Despachador+,Dispatch+,Despachante+,Диспетчер+,配車オフィス+,배차+,डिस्पैचर+
-iap.event_kit.d,Extra cash for a busy match day.,Yoğun bir maç günü için ekstra para.,Extra Geld für einen vollen Spieltag.,Dinero extra para un día de partido lleno de gente.,De l'argent en plus pour un jour de match animé.,Dinheiro extra para um dia de jogo movimentado.,Дополнительные деньги в день большого матча.,混みあう試合の日のための追加のお金。,바쁜 경기 날을 위한 추가 자금.,भीड़ वाले मैच के दिन के लिए अतिरिक्त पैसे।
-iap.event_kit.t,Match-Day Kit,Maç Günü Seti,Spieltag-Set,Kit de día de partido,Kit jour de match,Kit Dia de Jogo,Набор для матч-дня,試合日キット,경기 날 키트,मैच-डे किट
-iap.livery_forest.d,Deep green trucks. Looks only.,Koyu yeşil kamyonlar. Sadece görünüm.,Dunkelgrüne Lkw. Nur Optik.,Camiones verde oscuro. Solo es estético.,Camions vert forêt. Esthétique uniquement.,Caminhões verde-escuros. Só visual.,Тёмно-зелёные машины. Только внешний вид.,深緑のトラック。見た目だけの変更です。,짙은 초록 트럭. 외형만 바뀌어요.,गहरे हरे ट्रक। सिर्फ़ दिखावट।
-iap.livery_forest.t,Forest Livery,Orman Renk Düzeni,Waldlackierung,Librea Bosque,Livrée Forêt,Pintura Floresta,Лесная окраска,フォレスト・カラー,숲 도장,फ़ॉरेस्ट रंग
-iap.livery_sunset.d,Orange-pink trucks. Looks only.,Turuncu-pembe kamyonlar. Sadece görünüm.,Orange-rosa Lkw. Nur Optik.,Camiones naranja y rosa. Solo es estético.,Camions orange et rose. Esthétique uniquement.,Caminhões laranja-rosados. Só visual.,Оранжево-розовые машины. Только внешний вид.,オレンジピンクのトラック。見た目だけの変更です。,주황-분홍 트럭. 외형만 바뀌어요.,नारंगी-गुलाबी ट्रक। सिर्फ़ दिखावट।
-iap.livery_sunset.t,Sunset Livery,Gün Batımı Renk Düzeni,Sunset-Lackierung,Librea Atardecer,Livrée Coucher de soleil,Pintura Pôr do Sol,Закатная окраска,サンセット・カラー,노을 도장,सनसेट रंग
-iap.noads.d,No more forced ads or banner. Rewards without videos (same limits).,Zorunlu reklam ya da banner yok. Ödüller videosuz (aynı sınırlarla).,Keine Zwangswerbung und kein Banner mehr. Belohnungen ohne Videos (gleiche Grenzen).,Sin anuncios obligatorios ni banners. Recompensas sin vídeos (con los mismos límites).,Plus de pubs imposées ni de bannière. Récompenses sans vidéos (mêmes limites).,Sem mais anúncios forçados nem banner. Recompensas sem vídeos (mesmos limites).,Больше никакой навязчивой рекламы и баннеров. Награды без видео (те же лимиты).,強制広告もバナーもなし。動画なしでごほうびを受け取れます（上限は同じ）。,강제 광고와 배너가 없어요. 영상 없이 받는 보상 (같은 한도).,अब कोई ज़बरदस्ती विज्ञापन या बैनर नहीं। वीडियो के बिना इनाम (वही सीमा)।
+iap.cosmetics_all.d,"Every look in the shop, for less.",,,,,,,,,
+iap.cosmetics_all.t,Looks Collection,,,,,,,,,
+iap.crisis.d,"Fills the fridge with milk and ice right now, plus some cash.",,,,,,,,,
+iap.crisis.t,Milk Run Kit,,,,,,,,,
+iap.cups.d,Teal takeaway cups on the pickup shelf.,,,,,,,,,
+iap.cups.t,Teal Cups,,,,,,,,,
+iap.latte_art.d,Fancy latte art patterns on your cups.,,,,,,,,,
+iap.latte_art.t,Latte Art Set,,,,,,,,,
+iap.milestone.d,Four days of cash for your new venue.,,,,,,,,,
+iap.milestone.t,New-Venue Pack,,,,,,,,,
+iap.noads.d,No more ad breaks between days. Rewards without videos.,,,,,,,,,
 iap.noads.t,Remove Ads,Reklamları Kaldır,Werbung entfernen,Quitar anuncios,Retirer les pubs,Remover Anúncios,Убрать рекламу,広告を削除,광고 제거,विज्ञापन हटाओ
-iap.offline_plus.d,Away pay for up to 10 hours at 75 %.,Uzaktayken 10 saate kadar %75 ücret.,Lohn für Abwesenheit bis 10 Stunden zu 75 %.,"Pago mientras estás fuera, hasta 10 horas al 75 %.",Gains d'absence jusqu'à 10 heures à 75 %.,"Ganhe enquanto está fora por até 10 horas, a 75 %.",Оплата за отсутствие до 10 часов в размере 75 %.,離れている間も最大10時間、75 %の収入。,최대 10시간 동안 75 %로 부재 중 수입을 받아요.,"10 घंटे तक, 75 % पर, दूर रहने की कमाई।"
+iap.offline_plus.d,"Earn for up to 10 hours away, at a better rate.",,,,,,,,,
 iap.offline_plus.t,Offline Plus,Çevrimdışı Artı,Offline-Plus,Sin conexión Plus,Hors ligne Plus,Offline Plus,Офлайн+,オフラインプラス,오프라인 플러스,ऑफ़लाइन प्लस
-iap.premium.d,"No forced ads, a gold truck livery and starter cash.","Zorunlu reklam yok, altın bir kamyon rengi ve başlangıç parası.","Keine Zwangswerbung, goldene Lkw-Lackierung und Startgeld.","Sin anuncios obligatorios, un camión con librea dorada y dinero inicial.","Pas de pubs imposées, un camion doré et des pièces de départ.","Sem anúncios forçados, uma pintura dourada de caminhão e dinheiro inicial.","Без навязчивой рекламы, золотая окраска машин и стартовые деньги.",強制広告なし、金色のトラック・カラー、スターターのお金つき。,"강제 광고 없음, 금색 트럭 도장, 시작 자금.","कोई ज़बरदस्ती विज्ञापन नहीं, सुनहरा ट्रक रंग और शुरुआती पैसे।"
-iap.premium.t,Chief Operator Edition,Şef Operatör Sürümü,Chef-Edition,Edición Jefe de Operaciones,Édition Chef d'exploitation,Edição Chefe de Operações,Версия «Главный оператор»,チーフオペレーター・エディション,책임자 에디션,चीफ़ ऑपरेटर एडिशन
-iap.route_pass.d,"Forever: +1 Dispatcher truck, +10 % handling fees. Includes Remove Ads.","Sonsuza kadar: +1 sevk kamyonu, +%10 işlem ücreti. Reklamları Kaldır dahil.","Für immer: +1 Leitstellen-Lkw, +10 % Gebühren. Enthält Werbung entfernen.","Para siempre: +1 camión del Despachador, +10 % en tarifas de gestión. Incluye Quitar anuncios.","Pour toujours : +1 camion du dispatch, +10 % sur les frais de traitement. Inclut Retirer les pubs.","Para sempre: +1 caminhão do Despachante, +10 % nas taxas. Inclui Remover Anúncios.","Навсегда: +1 машина диспетчера, +10 % к сборам. Включает «Убрать рекламу».",ずっと有効：配車トラック+1、手数料+10 %。広告を削除を含みます。,"영구: 배차 트럭 +1, 처리 수수료 +10 %. 광고 제거 포함.","हमेशा के लिए: डिस्पैचर का +1 ट्रक, +10 % हैंडलिंग शुल्क। इसमें विज्ञापन हटाओ भी है।"
-iap.route_pass.t,Network Pass,Ağ Geçişi,Netzwerk-Pass,Pase de Red,Pass Réseau,Passe da Rede,Сетевой пропуск,ネットワークパス,네트워크 패스,नेटवर्क पास
-iap.skin_retro.d,Machines in a retro style. Looks only.,Makineler retro tarzda. Sadece görünüm.,Automaten im Retro-Stil. Nur Optik.,Máquinas con estilo retro. Solo es estético.,Machines au style rétro. Esthétique uniquement.,Máquinas em estilo retrô. Só visual.,Автоматы в ретро-стиле. Только внешний вид.,レトロなデザインの回収機。見た目だけの変更です。,레트로 스타일 회수기. 외형만 바뀌어요.,रेट्रो स्टाइल में मशीनें। सिर्फ़ दिखावट।
-iap.skin_retro.t,Retro Machines,Retro Makineler,Retro-Automaten,Máquinas retro,Machines rétro,Máquinas Retrô,Ретро-автоматы,レトロ回収機,레트로 회수기,रेट्रो मशीनें
-iap.speed.d,"3× and 4× speed, and skip the day report.","3× ve 4× hız, ve gün raporunu atla.","3× und 4× Tempo, und der Tagesbericht wird übersprungen.","Velocidad 3× y 4×, y saltar el informe del día.","Vitesse 3× et 4×, et passer le rapport de journée.","Velocidade 3× e 4×, e pule o relatório do dia.","Скорости 3× и 4×, и пропуск отчёта дня.",3×と4×の速度、さらに日報のスキップ。,"3× 및 4× 속도, 그리고 하루 보고서 건너뛰기.","3× और 4× चाल, और दिन की रिपोर्ट छोड़ो।"
+iap.premium.d,"Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",,,,,,,,,
+iap.premium.t,Head Roaster Edition,,,,,,,,,
+iap.roast_pass.d,"Ad-free, a better roaster assistant and 10 % more for wholesale.",,,,,,,,,
+iap.roast_pass.t,Roaster's Pass,,,,,,,,,
+iap.slots.d,Three more save slots for more cafes.,,,,,,,,,
+iap.slots.t,Extra Saves,,,,,,,,,
+iap.speed.d,3× and 4× speed and an option to skip the day report.,,,,,,,,,
 iap.speed.t,Speed Pack,Hız Paketi,Tempo-Paket,Pack de Velocidad,Pack Vitesse,Pacote de Velocidade,Пакет скорости,スピードパック,속도 팩,स्पीड पैक
-iap.starter.d,Cash and one more van for a fast start.,Hızlı bir başlangıç için para ve bir kamyonet daha.,Geld und ein weiterer Transporter für einen schnellen Start.,Dinero y una furgoneta más para empezar rápido.,Des pièces et une camionnette de plus pour bien démarrer.,Dinheiro e mais uma van para um começo rápido.,Деньги и ещё один фургон для быстрого старта.,すばやいスタートのためのお金とバン1台。,빠른 시작을 위한 자금과 밴 한 대 더.,तेज़ शुरुआत के लिए पैसे और एक और वैन।
-iap.starter.t,Starter Fleet,Başlangıç Filosu,Starter-Flotte,Flota inicial,Flotte de départ,Frota Inicial,Стартовый парк,スターター車両,스타터 차량,स्टार्टर फ़्लीट
-intro.1.b,The town just started a bottle deposit. People bring their bottles to machines.,Kasaba yeni bir şişe depozitosu başlattı. İnsanlar şişelerini makinelere getiriyor.,Die Stadt hat gerade ein Flaschenpfand eingeführt. Leute bringen ihre Flaschen zu den Automaten.,El pueblo acaba de empezar un sistema de depósito de botellas. La gente lleva sus botellas a las máquinas.,La ville vient de lancer la consigne des bouteilles. Les habitants les apportent aux machines.,A cidade acabou de começar um depósito de garrafas. As pessoas levam suas garrafas às máquinas.,В городе только запустили залог за бутылки. Люди несут бутылки к автоматам.,町でボトルのデポジット制度が始まりました。住民がボトルを回収機に持ってきます。,마을에서 막 병 보증금제를 시작했어요. 사람들이 병을 회수기로 가져와요.,शहर में अभी बोतल जमा योजना शुरू हुई है। लोग अपनी बोतलें मशीनों तक लाते हैं।
-intro.1.t,Bottles come back,Şişeler geri dönüyor,Flaschen kommen zurück,Las botellas vuelven,Les bouteilles reviennent,As garrafas voltam,Бутылки возвращаются,ボトルが戻ってくる,병이 돌아와요,बोतलें वापस आती हैं
-intro.2.b,Empty them before they overflow — but every trip costs fuel.,Taşmadan boşalt — ama her yolculuk yakıt harcar.,"Leere sie, bevor sie überlaufen — aber jede Fahrt kostet Sprit.","Vacíalas antes de que se desborden, pero cada viaje cuesta combustible.",Vide-les avant qu'elles débordent — mais chaque trajet coûte du carburant.,Esvazie-as antes que transbordem — mas cada viagem gasta combustível.,Опустошай их до переполнения — но каждая поездка стоит топлива.,あふれる前に空にしましょう。ただし、移動のたびに燃料がかかります。,넘치기 전에 비우세요 — 하지만 이동할 때마다 연료가 들어요.,छलकने से पहले उन्हें खाली करो — पर हर सफ़र में ईंधन लगता है।
-intro.2.t,Machines fill up,Makineler doluyor,Automaten füllen sich,Las máquinas se llenan,Les machines se remplissent,As máquinas enchem,Автоматы заполняются,回収機がたまる,회수기가 차요,मशीनें भरती हैं
-intro.3.b,"Count, press and sell. Build the cleanest network on the coast.","Say, presle ve sat. Kıyıdaki en temiz ağı kur.","Zählen, pressen, verkaufen. Baue das sauberste Netz an der Küste.","Cuenta, prensa y vende. Crea la red más limpia de la costa.","Compte, compacte et vends. Construis le réseau le plus propre de la côte.","Conte, prense e venda. Monte a rede mais limpa da costa.","Считай, прессуй и продавай. Построй самую чистую сеть на побережье.",数えて、圧縮して、売りましょう。海岸一きれいな回収網を作ろう。,"세고, 압축하고, 파세요. 해안에서 가장 깨끗한 네트워크를 만드세요.","गिनो, दबाओ और बेचो। तट का सबसे साफ़ नेटवर्क बनाओ।"
-intro.3.t,Bales make money,Balyalar para kazandırır,Ballen machen Geld,Las pacas dan dinero,Les balles rapportent,Fardos geram dinheiro,Тюки приносят деньги,ベールがお金になる,베일이 돈이 돼요,गट्ठर पैसे देते हैं
+iap.starter.d,Two days of cash and a free extra barista. One time only.,,,,,,,,,
+iap.starter.t,Quick Start,,,,,,,,,
+iap.theme_artdeco.d,Deep blue walls with gold trim.,,,,,,,,,
+iap.theme_artdeco.t,Art Deco Look,,,,,,,,,
+iap.theme_nordic.d,Pale wood and soft white walls.,,,,,,,,,
+iap.theme_nordic.t,Nordic Look,,,,,,,,,
+intro.1.b,A little coffee cart on the rainy Brindle Quay. Your uncle left it to you.,,,,,,,,,
+intro.1.t,Uncle's cart is yours,,,,,,,,,
+intro.2.b,"Every order is a ticket. Choose what's next, who works where, and keep everyone happy.",,,,,,,,,
+intro.2.t,"Tickets, not chaos",,,,,,,,,
+intro.3.b,Grow into a corner cafe and a roastery. Great beans make great reviews.,,,,,,,,,
+intro.3.t,Roast your own beans,,,,,,,,,
 intro.next,Next,İleri,Weiter,Siguiente,Suivant,Próximo,Дальше,次へ,다음,आगे
 intro.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
-intro.start,Let's go,Hadi başlayalım,Los geht's,Vamos,C'est parti,Vamos lá,Поехали,はじめよう,시작해요,चलो शुरू करें
-kind.horeca,Café & hotel pickup,Kafe ve otel toplaması,Café- & Hotel-Abholung,Recogida en cafés y hoteles,Collecte cafés et hôtels,Coleta em café e hotel,Вывоз из кафе и отелей,カフェ・ホテル回収,카페 & 호텔 수거,कैफे और होटल पिकअप
-kind.machine_m,Big deposit machine,Büyük depozito makinesi,Großer Pfand-Automat,Máquina de depósito grande,Grande machine de consigne,Máquina grande de depósito,Большой автомат,大型のデポジット回収機,대형 보증금 회수기,बड़ी जमा मशीन
-kind.machine_s,Deposit machine,Depozito makinesi,Pfand-Automat,Máquina de depósito,Machine de consigne,Máquina de depósito,Автомат,デポジット回収機,보증금 회수기,जमा मशीन
-kind.shop,Shop return point,Dükkan iade noktası,Laden-Rückgabestelle,Punto de devolución en tienda,Point de retour en magasin,Ponto de devolução em loja,Пункт приёма в магазине,店舗の返却場所,가게 반납 지점,दुकान वापसी पॉइंट
-loading.text,Loading…,Yükleniyor…,Lädt…,Cargando…,Chargement…,Carregando…,Загрузка…,読み込み中…,불러오는 중…,लोड हो रहा है…
-mat.alu,Cans,Teneke,Dosen,Latas,Canettes,Latas,Банки,缶,캔,कैन
-mat.glass,Glass,Cam,Glas,Vidrio,Verre,Vidro,Стекло,ガラス,유리,कांच
-mat.pet,Plastic,Plastik,Plastik,Plástico,Plastique,Plástico,Пластик,プラスチック,플라스틱,प्लास्टिक
-offline.body,Your network earned {cash} in {time}.,Ağın {time} içinde {cash} kazandı.,Dein Netz hat in {time} {cash} verdient.,Tu red ganó {cash} en {time}.,Ton réseau a gagné {cash} en {time}.,Sua rede ganhou {cash} em {time}.,Твоя сеть заработала {cash} за {time}.,{time} で、あなたのネットワークは {cash} 稼ぎました。,네트워크가 {time} 동안 {cash}을(를) 벌었어요.,तुम्हारे नेटवर्क ने {time} में {cash} कमाए।
-offline.capped,Pay stops after {h} hours away.,{h} saat uzakta kaldıktan sonra ücret durur.,Die Auszahlung stoppt nach {h} Stunden Abwesenheit.,Los pagos se detienen tras {h} horas fuera.,Les gains s'arrêtent après {h} heures d'absence.,O pagamento para após {h} horas fora.,Оплата прекращается после {h} ч отсутствия.,{h} 時間離れると収入は止まります。,{h}시간 넘게 자리를 비우면 수입이 멈춰요.,{h} घंटे दूर रहने के बाद कमाई रुक जाती है।
+intro.start,Let's brew,,,,,,,,,
+marker.bitter,Bitter!,,,,,,,,,
+marker.brew_here,Brew here,,,,,,,,,
+marker.drop_now,Drop now!,,,,,,,,,
+marker.heads,Shots {n}/{m},,,,,,,,,
+marker.jam,Jammed!,,,,,,,,,
+marker.ready,{n} ready,,,,,,,,,
+marker.roaster,Roaster,,,,,,,,,
+marker.shelf,Pickup,,,,,,,,,
+menu.add,Add,,,,,,,,,
+menu.americano,Americano,,,,,,,,,
+menu.americano.short,Ame,,,,,,,,,
+menu.banana_bread,Banana bread,,,,,,,,,
+menu.banana_bread.short,Ban,,,,,,,,,
+menu.board,Menu board,,,,,,,,,
+menu.cappuccino,Cappuccino,,,,,,,,,
+menu.cappuccino.short,Cap,,,,,,,,,
+menu.cinnamon_bun,Cinnamon bun,,,,,,,,,
+menu.cinnamon_bun.short,Bun,,,,,,,,,
+menu.cookie,Cookie,,,,,,,,,
+menu.cookie.short,Coo,,,,,,,,,
+menu.count,{n} drinks on the board,,,,,,,,,
+menu.croissant,Croissant,,,,,,,,,
+menu.croissant.short,Cro,,,,,,,,,
+menu.espresso,Espresso,,,,,,,,,
+menu.espresso.short,Esp,,,,,,,,,
+menu.filter,Filter coffee,,,,,,,,,
+menu.filter.short,Fil,,,,,,,,,
+menu.flat_white,Flat white,,,,,,,,,
+menu.flat_white.short,FW,,,,,,,,,
+menu.help,Fewer drinks = a faster bar. More drinks = bigger tickets.,,,,,,,,,
+menu.iced_americano,Iced americano,,,,,,,,,
+menu.iced_americano.short,IAme,,,,,,,,,
+menu.iced_latte,Iced latte,,,,,,,,,
+menu.iced_latte.short,ILat,,,,,,,,,
+menu.latte,Latte,,,,,,,,,
+menu.latte.short,Lat,,,,,,,,,
+menu.mocha,Mocha,,,,,,,,,
+menu.mocha.short,Moc,,,,,,,,,
+menu.muffin,Muffin,,,,,,,,,
+menu.muffin.short,Muf,,,,,,,,,
+menu.off,Not on the menu,,,,,,,,,
+menu.par,Bake {n} · in case {stock},,,,,,,,,
+menu.par_help,Baked each morning up to this number. Leftovers are wasted.,,,,,,,,,
+menu.pastries,Pastries,,,,,,,,,
+menu.pour_over,Pour-over,,,,,,,,,
+menu.pour_over.short,PO,,,,,,,,,
+menu.remove,Remove,,,,,,,,,
+offline.body,Your cafe earned {cash} in {time}.,,,,,,,,,
+offline.capped,Away pay stops after {h} hours.,,,,,,,,,
+offline.help,Auto top-up and a cashier make the cafe earn more while you're away.,,,,,,,,,
 offline.title,While you were away,Sen yokken,Während du weg warst,Mientras estabas fuera,Pendant ton absence,Enquanto você estava fora,Пока тебя не было,留守の間に,자리를 비운 사이,तुम्हारे दूर रहने के दौरान
-phase.live,On shift,Vardiyada,Im Einsatz,En turno,En service,Em turno,Смена идёт,営業中,근무 중,काम चालू
+origin.highland,Highland Washed,,,,,,,,,
+origin.highland.d,Bright and floral. Shines as a light roast.,,,,,,,,,
+origin.lowland,Lowland Natural,,,,,,,,,
+origin.lowland.d,Fruity and round. A safe medium roast.,,,,,,,,,
+origin.valley,Valley Classic,,,,,,,,,
+origin.valley.d,"Cheap, chocolatey, made for dark roasts.",,,,,,,,,
+origin.volcanic,Volcanic Honey,,,,,,,,,
+origin.volcanic.d,Sweet and rare. The best beans on the market.,,,,,,,,,
+phase.live,Open,,,,,,,,,
 phase.plan,Morning plan,Sabah planı,Morgenplan,Plan de la mañana,Planification du matin,Plano da manhã,План на утро,朝の計画,아침 계획,सुबह की योजना
 phase.report,Day report,Gün raporu,Tagesbericht,Informe del día,Rapport de la journée,Relatório do dia,Отчёт дня,日報,하루 보고서,दिन की रिपोर्ट
-place.depot,Depot,Depo,Depot,Planta,Dépôt,Depósito,Склад,デポ,집하장,डिपो
-place.h_corner,Corner Shop,Köşe Dükkanı,Eckladen,Tienda de la esquina,Épicerie du coin,Mercadinho da Esquina,Магазинчик на углу,角の店,동네 가게,कोने की दुकान
-place.h_ferry,Ferry Pier,Vapur İskelesi,Fähranleger,Muelle del ferry,Quai du ferry,Píer da Balsa,Паромный причал,フェリー乗り場,페리 부두,फेरी घाट
-place.h_fish,Fish Market,Balık Pazarı,Fischmarkt,Mercado de pescado,Marché aux poissons,Mercado de Peixe,Рыбный рынок,魚市場,수산 시장,मछली बाज़ार
-place.h_market,Mini Market,Mini Market,Minimarkt,Minimercado,Supérette,Minimercado,Мини-маркет,ミニマーケット,미니 마트,मिनी मार्केट
-place.h_quay,Quay Steps,Rıhtım Basamakları,Kaitreppe,Escalinata del muelle,Escalier du quai,Escadaria do Cais,Ступени набережной,波止場の階段,선착장 계단,घाट की सीढ़ियाँ
-place.o_bakery,Bakery,Fırın,Bäckerei,Panadería,Boulangerie,Padaria,Пекарня,パン屋,빵집,बेकरी
-place.o_cafe,Café Terrace,Kafe Terası,Café-Terrasse,Terraza del café,Terrasse du café,Terraço do Café,Терраса кафе,カフェのテラス,카페 테라스,कैफे टेरेस
-place.o_church,Church Lane,Kilise Sokağı,Kirchgasse,Calle de la iglesia,Ruelle de l'église,Rua da Igreja,Церковный переулок,教会通り,교회 골목,चर्च गली
-place.o_hotel,Harbour Hotel,Liman Oteli,Hafenhotel,Hotel del puerto,Hôtel du port,Hotel do Porto,Портовый отель,港のホテル,항구 호텔,हार्बर होटल
-place.o_kiosk,Kiosk,Büfe,Kiosk,Quiosco,Kiosque,Quiosque,Киоск,キオスク,키오스크,किओस्क
-place.o_square,Old Square,Eski Meydan,Alter Platz,Plaza Vieja,Vieille place,Praça Velha,Старая площадь,旧広場,옛 광장,पुराना चौक
-place.s_bus,Bus Stop,Otobüs Durağı,Bushaltestelle,Parada de autobús,Arrêt de bus,Ponto de Ônibus,Автобусная остановка,バス停,버스 정류장,बस स्टॉप
-place.s_fair,Fairground,Panayır Alanı,Festplatz,Recinto ferial,Foire,Parque de Exposições,Ярмарочная площадь,遊園地,축제장,मेला मैदान
-place.s_food,Food Court,Yemek Meydanı,Imbisshof,Zona de comidas,Aire de restauration,Praça de Alimentação,Фуд-корт,フードコート,푸드코트,फ़ूड कोर्ट
-place.s_gate,Stadium Gate,Stat Kapısı,Stadiontor,Puerta del estadio,Porte du stade,Portão do Estádio,Ворота стадиона,スタジアムの入口,경기장 입구,स्टेडियम गेट
-place.u_canteen,Canteen,Kantin,Mensa,Cantina,Cantine,Refeitório,Столовая,食堂,구내식당,कैंटीन
-place.u_dorms,Dorms,Yurtlar,Wohnheim,Residencias,Résidences,Alojamentos,Общежитие,寮,기숙사,हॉस्टल
-place.u_gym,Sports Hall,Spor Salonu,Sporthalle,Polideportivo,Salle de sport,Ginásio,Спортзал,体育館,체육관,स्पोर्ट्स हॉल
-place.u_library,Library,Kütüphane,Bibliothek,Biblioteca,Bibliothèque,Biblioteca,Библиотека,図書館,도서관,लाइब्रेरी
-place.u_station,Station,İstasyon,Bahnhof,Estación,Gare,Estação,Вокзал,駅,역,स्टेशन
-point.add,Add to route,Rotaya ekle,Zur Route hinzufügen,Añadir a la ruta,Ajouter au trajet,Adicionar à rota,Добавить в маршрут,ルートに追加,경로에 추가,रूट में जोड़ो
-point.alley,Narrow lane: vans and cargo bikes only,Dar sokak: sadece kamyonet ve yük bisikletleri,Enge Gasse: nur Transporter und Lastenräder,Callejón estrecho: solo furgonetas y bicis de carga,Ruelle étroite : camionnettes et vélos cargo seulement,Viela estreita: só vans e bicicletas de carga,Узкий проезд: только фургоны и грузовые велосипеды,狭い路地：バンと荷物用自転車のみ,좁은 골목: 밴과 화물 자전거만 가능,संकरी गली: सिर्फ़ वैन और कार्गो बाइक
-point.busy,A big bulk return is blocking it,Büyük bir toplu iade onu tıkıyor,Eine große Rückgabe blockiert ihn,Una gran entrega lo está bloqueando,Un gros apport le bloque,Um grande lote está bloqueando,Большая сдача блокирует автомат,大量返却で塞がっています,대량 반납이 막고 있어요,एक बड़ी थोक वापसी इसे रोक रही है
-point.estimate,Estimate — no sensor,Tahmin — sensör yok,Schätzung — kein Sensor,Estimación: sin sensor,Estimation — pas de capteur,Estimativa — sem sensor,Оценка — датчика нет,推定値 — センサーなし,추정치 — 센서 없음,अनुमान — कोई सेंसर नहीं
-point.fill,{pct} full,{pct} dolu,{pct} voll,{pct} lleno,{pct} plein,{pct} cheia,Заполнено на {pct},{pct} たまっています,{pct} 참,{pct} भरा
-point.full,Full — citizens are turned away,Dolu — vatandaşlar geri çevriliyor,Voll — Leute werden abgewiesen,Lleno: no se aceptan más botellas,Plein — les habitants sont refoulés,Cheia — os moradores são mandados embora,Полный — людям отказывают,満杯 — 住民は持ち込めません,가득 참 — 주민들이 돌아가요,भरा — लोगों को लौटाया जा रहा है
-point.jammed,Jammed — citizens are turned away,Sıkıştı — vatandaşlar geri çevriliyor,Verklemmt — Leute werden abgewiesen,Atascada: no se aceptan botellas,Bloquée — les habitants sont refoulés,Travada — os moradores são mandados embora,Заклинило — людям отказывают,詰まり — 住民は持ち込めません,걸림 — 주민들이 돌아가요,जाम — लोगों को लौटाया जा रहा है
-point.live,Live sensor,Canlı sensör,Live-Sensor,Sensor en vivo,Capteur en direct,Sensor ao vivo,Датчик работает,リアルタイムセンサー,실시간 센서,लाइव सेंसर
-point.offline,Sensor offline — the number may be wrong,Sensör çevrimdışı — sayı yanlış olabilir,Sensor offline — die Zahl kann falsch sein,Sensor sin conexión: el número puede ser incorrecto,Capteur hors ligne — le chiffre peut être faux,Sensor fora do ar — o número pode estar errado,Датчик не в сети — число может быть неверным,センサーがオフライン — 数字が正しくないかもしれません,센서 연결 끊김 — 숫자가 틀릴 수 있어요,सेंसर बंद — नंबर गलत हो सकता है
-point.remove,Remove from route,Rotadan çıkar,Von der Route entfernen,Quitar de la ruta,Retirer du trajet,Remover da rota,Убрать из маршрута,ルートから外す,경로에서 빼기,रूट से हटाओ
-point.send_tech,Send a technician,Teknisyen gönder,Techniker schicken,Enviar un técnico,Envoyer un technicien,Mandar um técnico,Вызвать техника,技術者を向かわせる,정비사 보내기,तकनीशियन भेजो
-point.tech_on_way,Technician on the way,Teknisyen yolda,Techniker unterwegs,Técnico en camino,Technicien en route,Técnico a caminho,Техник уже едет,技術者が向かっています,정비사가 가는 중,तकनीशियन रास्ते में है
-point.today,Today: {dep} bottles in · {turned} people turned away,Bugün: {dep} şişe geldi · {turned} kişi geri çevrildi,Heute: {dep} Flaschen rein · {turned} Leute abgewiesen,Hoy: {dep} botellas dentro · {turned} personas rechazadas,Aujourd'hui : {dep} bouteilles entrées · {turned} personnes refoulées,Hoje: {dep} garrafas · {turned} pessoas recusadas,Сегодня: сдано бутылок {dep} · людям отказано: {turned},今日: {dep} 本回収 · {turned} 人が持ち込めず,오늘: 병 {dep}개 들어옴 · 돌아간 사람 {turned}명,आज: {dep} बोतलें जमा · {turned} लोग लौटाए गए
-policy.call,Only when I send a truck,Sadece ben kamyon gönderdiğimde,Nur wenn ich einen Lkw schicke,Solo cuando envíe un camión,Seulement quand j'envoie un camion,Só quando eu mandar um caminhão,Только когда я отправляю машину,トラックを送るときだけ,트럭을 보낼 때만,सिर्फ़ जब मैं ट्रक भेजूँ
-policy.fixed,Every {n} days,Her {n} günde bir,Alle {n} Tage,Cada {n} días,Tous les {n} jours,A cada {n} dias,Каждые {n} дн.,{n} 日ごと,{n}일마다,हर {n} दिन
-policy.fixed1,Every day,Her gün,Jeden Tag,Cada día,Tous les jours,Todo dia,Каждый день,毎日,매일,हर दिन
-policy.help,"The Dispatcher and the Suggest button follow these rules. Low = safe but costly, high = cheap but risky.","Sevk ofisi ve Öner düğmesi bu kurallara uyar. Düşük = güvenli ama pahalı, yüksek = ucuz ama riskli.","Die Leitstelle und der Vorschlag-Knopf halten sich an diese Regeln. Niedrig = sicher, aber teuer. Hoch = günstig, aber riskant.",El Despachador y el botón Sugerir siguen estas reglas. Baja = segura pero cara; alta = barata pero arriesgada.,"Le dispatch et le bouton Suggérer suivent ces règles. Bas = sûr mais coûteux, haut = pas cher mais risqué.","A central de despacho e o botão Sugerir seguem estas regras. Baixo = seguro, mas caro; alto = barato, mas arriscado.","Диспетчер и кнопка «Предложить» следуют этим правилам. Низко — надёжно, но дорого. Высоко — дёшево, но рискованно.",配車オフィスと「提案」ボタンはこのルールに従います。低い = 安全だけど費用がかかる、高い = 安く済むけど危険。,"배차 사무소와 추천 버튼은 이 규칙을 따라요. 낮으면 안전하지만 비용이 들고, 높으면 저렴하지만 위험해요.","डिस्पैचर और सुझाव बटन इन नियमों को मानते हैं। कम = सुरक्षित पर महँगा, ज़्यादा = सस्ता पर जोखिम वाला।"
-policy.threshold,Empty at {pct},{pct} olunca boşalt,Leeren bei {pct},Vaciar al {pct},Vider à {pct},Esvaziar com {pct},Опорожнять при {pct},{pct} で空にする,{pct}에서 비우기,{pct} पर खाली करो
-policy.title,Service rule,Servis kuralı,Service-Regel,Regla de servicio,Règle d'entretien,Regra de coleta,Правило обслуживания,回収ルール,관리 규칙,सेवा नियम
-report.bonus,Bonuses,Bonuslar,Boni,Bonificaciones,Bonus,Bônus,Бонусы,ボーナス,보너스,बोनस
-report.collected,Bottles collected,Toplanan şişeler,Gesammelte Flaschen,Botellas recogidas,Bouteilles récupérées,Garrafas recolhidas,Собрано бутылок,回収したボトル,모은 병,जमा हुई बोतलें
-report.costs,Costs,Giderler,Kosten,Gastos,Coûts,Custos,Расходы,費用,비용,खर्च
-report.efficiency,Efficiency,Verimlilik,Effizienz,Eficiencia,Efficacité,Eficiência,Эффективность,効率,효율,कुशलता
-report.fees,Handling fees,İşlem ücretleri,Gebühren,Tarifas de gestión,Frais de traitement,Taxas,Сборы за приём,手数料,처리 수수료,हैंडलिंग शुल्क
-report.fines,Fines,Cezalar,Strafen,Multas,Amendes,Multas,Штрафы,罰金,벌금,जुर्माने
-report.fuel,Fuel,Yakıt,Sprit,Combustible,Carburant,Combustível,Топливо,燃料,연료,ईंधन
-report.km,Kilometres,Kilometre,Kilometer,Kilómetros,Kilomètres,Quilômetros,Километры,走行距離,이동 거리,किलोमीटर
-report.leases,Machine rent,Makine kirası,Automaten-Miete,Alquiler de máquinas,Location des machines,Aluguel das máquinas,Аренда автоматов,回収機のレンタル料,회수기 임대료,मशीन किराया
+profile.dark,Dark,,,,,,,,,
+profile.light,Light,,,,,,,,,
+profile.medium,Medium,,,,,,,,,
+report.beans,Beans,,,,,,,,,
+report.bonus,Bonus,,,,,,,,,
+report.branches,Branches,,,,,,,,,
+report.fees,Fees,,,,,,,,,
+report.milk,Milk and ice,,,,,,,,,
+report.minutes,{n} min,,,,,,,,,
 report.net,Profit,Kâr,Gewinn,Beneficio,Bénéfice,Lucro,Прибыль,利益,이익,मुनाफ़ा
-report.perkm,Bottles per km,Kilometre başına şişe,Flaschen pro km,Botellas por km,Bouteilles par km,Garrafas por km,Бутылок на км,1 kmあたりのボトル数,km당 병 수,प्रति किमी बोतलें
-report.power,Depot power,Depo elektriği,Depot-Strom,Energía de la planta,Électricité du dépôt,Energia do depósito,Энергия склада,デポの電気代,집하장 전기,डिपो बिजली
-report.rating,Green Rating {r},Yeşil Puan {r},Grün-Wertung {r},Calificación Verde {r},Note verte {r},Nota Verde {r},Зелёный рейтинг {r},グリーン評価 {r},그린 등급 {r},ग्रीन रेटिंग {r}
-report.rating_down,Green Rating down to {r},Yeşil Puan {r} seviyesine düştü,Grün-Wertung gesunken auf {r},Calificación Verde baja a {r},Note verte baissée à {r},Nota Verde caiu para {r},Зелёный рейтинг упал до {r},グリーン評価が {r} に下がりました,그린 등급 하락: {r},ग्रीन रेटिंग घटकर {r}
-report.rating_up,Green Rating up to {r},Yeşil Puan {r} seviyesine çıktı,Grün-Wertung gestiegen auf {r},Calificación Verde sube a {r},Note verte montée à {r},Nota Verde subiu para {r},Зелёный рейтинг вырос до {r},グリーン評価が {r} に上がりました,그린 등급 상승: {r},ग्रीन रेटिंग बढ़कर {r}
-report.sales,Bale sales,Balya satışları,Ballen-Verkäufe,Venta de pacas,Ventes de balles,Vendas de fardos,Продажа тюков,ベールの売上,베일 판매,गट्ठर की बिक्री
-report.service,Service,Servis,Service,Servicio,Service,Atendimento,Обслуживание,回収サービス,서비스,सेवा
-report.throughput,Depot flow,Depo akışı,Depot-Durchsatz,Flujo de la planta,Flux du dépôt,Fluxo do depósito,Поток на складе,デポの処理量,집하장 처리량,डिपो प्रवाह
+report.on_time,Pre-orders on time,,,,,,,,,
+report.pastry,Pastries,,,,,,,,,
+report.quality,Cup quality,,,,,,,,,
+report.rent,Rent,,,,,,,,,
+report.revenue,Sales,,,,,,,,,
+report.reviews,Reviews {avg} ★ ({n}) · reputation {rating} ★,,,,,,,,,
+report.served,Served,,,,,,,,,
+report.tips,Tips,,,,,,,,,
 report.title,Day {n} report,{n}. gün raporu,Bericht Tag {n},Informe del día {n},Rapport du jour {n},Relatório do dia {n},Отчёт за день {n},{n}日目のレポート,{n}일차 보고서,दिन {n} की रिपोर्ट
-report.turned,People turned away,Geri çevrilen kişiler,Abgewiesene Leute,Personas rechazadas,Personnes refoulées,Pessoas recusadas,Людям отказано,持ち込めなかった住民,돌아간 사람,लौटाए गए लोग
 report.wages,Wages,Ücretler,Löhne,Salarios,Salaires,Salários,Зарплаты,給料,임금,वेतन
-research.baler_speed.d,The baler works 40 % faster.,Balya presi %40 daha hızlı çalışır.,Die Ballenpresse arbeitet 40 % schneller.,La prensa trabaja un 40 % más rápido.,La presse travaille 40 % plus vite.,A prensa trabalha 40 % mais rápido.,Пресс работает на 40 % быстрее.,圧縮機が40 %速く動きます。,압축기가 40 % 더 빨리 일해요.,बेलर 40 % तेज़ काम करता है।
-research.baler_speed.t,Faster baler,Daha hızlı balya presi,Schnellere Presse,Prensa más rápida,Presse plus rapide,Prensa mais rápida,Быстрый пресс,高速圧縮機,빠른 압축기,तेज़ बेलर
-research.branch.depot,Depot,Depo,Depot,Planta,Dépôt,Depósito,Склад,デポ,집하장,डिपो
-research.branch.fleet,Fleet,Filo,Flotte,Flota,Flotte,Frota,Парк,車両,차량,फ़्लीट
-research.branch.network,Network,Ağ,Netz,Red,Réseau,Rede,Сеть,ネットワーク,네트워크,नेटवर्क
-research.busy,Another project is running,Başka bir proje çalışıyor,Ein anderes Projekt läuft,Otro proyecto está en marcha,Un autre projet est en cours,Outro projeto está em andamento,Идёт другой проект,別の研究が進行中です,다른 프로젝트가 진행 중이에요,एक और प्रोजेक्ट चल रहा है
-research.cargo_bike.d,Buy bikes for the narrow lanes.,Dar sokaklar için bisiklet al.,Kaufe Lastenräder für die engen Gassen.,Compra bicis para los callejones estrechos.,Achète des vélos pour les ruelles étroites.,Compre bicicletas para as vielas estreitas.,Купи велосипеды для узких проездов.,狭い路地用の自転車を買えます。,좁은 골목을 위한 자전거를 사요.,संकरी गलियों के लिए बाइक खरीदो।
-research.cargo_bike.t,Cargo bikes,Yük bisikletleri,Lastenräder,Bicis de carga,Vélos cargo,Bicicletas de carga,Грузовые велосипеды,荷物用自転車,화물 자전거,कार्गो बाइक
-research.compactor.d,Machines can squeeze plastic.,Makineler plastiği sıkıştırabilir.,Automaten können Plastik pressen.,Las máquinas pueden aplastar el plástico.,Les machines peuvent compacter le plastique.,As máquinas podem espremer o plástico.,Автоматы смогут сжимать пластик.,回収機がプラスチックを圧縮できます。,회수기가 플라스틱을 압착할 수 있어요.,मशीनें प्लास्टिक दबा सकती हैं।
-research.compactor.t,Compactors,Sıkıştırıcılar,Pressen,Compactadores,Compacteurs,Compactadores,Компакторы,コンパクター,압축 회수기,कॉम्पैक्टर
-research.compactor_truck.d,Buy big trucks that squeeze plastic.,Plastiği sıkıştıran büyük kamyonlar al.,"Kaufe große Lkw, die Plastik pressen.",Compra camiones grandes que aplastan el plástico.,Achète de gros camions qui compactent le plastique.,Compre caminhões grandes que espremem o plástico.,"Покупай большие машины, которые сжимают пластик.",プラスチックを圧縮する大型トラックを買えます。,플라스틱을 압착하는 큰 트럭을 사요.,प्लास्टिक दबाने वाले बड़े ट्रक खरीदो।
-research.compactor_truck.t,Compactor trucks,Sıkıştırmalı kamyonlar,Press-Lkw,Camiones compactadores,Camions compacteurs,Caminhões compactadores,Машины-компакторы,コンパクタートラック,압축 트럭,कॉम्पैक्टर ट्रक
-research.count_speed.d,Count lines work 25 % faster.,Sayım hatları %25 daha hızlı çalışır.,Zähllinien arbeiten 25 % schneller.,Las líneas de conteo trabajan un 25 % más rápido.,Les lignes de comptage travaillent 25 % plus vite.,As linhas de contagem trabalham 25 % mais rápido.,Счётные линии работают на 25 % быстрее.,カウントラインが25 %速く動きます。,계수 라인이 25 % 더 빨리 일해요.,गिनती लाइनें 25 % तेज़ काम करती हैं।
-research.count_speed.t,Faster counting,Daha hızlı sayım,Schnelleres Zählen,Conteo más rápido,Comptage plus rapide,Contagem mais rápida,Быстрый подсчёт,高速カウント,빠른 계수,तेज़ गिनती
-research.counting_centre.d,Unlocks a place for big hauls.,Büyük yükler için bir yer açar.,Schaltet einen Platz für große Mengen frei.,Abre un sitio para las grandes entregas.,Ouvre un lieu pour les gros apports.,Libera um lugar para grandes lotes.,Открывает место для больших сдач.,大量のボトル用の場所を開放します。,많은 양을 위한 자리를 열어요.,बड़ी खेप के लिए जगह खोलता है।
-research.counting_centre.t,Counting centre,Sayım merkezi,Zählzentrum,Centro de conteo,Centre de comptage,Centro de contagem,Центр подсчёта,カウントセンター,계수 센터,गिनती केंद्र
-research.dispatcher.d,Unlocks the dispatch office.,Sevk ofisini açar.,Schaltet die Leitstelle frei.,Abre la oficina de envíos.,Débloque le bureau de dispatch.,Libera a central de despacho.,Открывает диспетчерскую.,配車オフィスを開放します。,배차 사무소를 열어요.,डिस्पैच ऑफिस खोलता है।
-research.dispatcher.t,Dispatching,Sevk,Leitstelle,Envíos,Dispatch,Despacho,Диспетчеризация,配車,배차,डिस्पैचिंग
+report.wait,Average wait,,,,,,,,,
+report.walked,Walked away,,,,,,,,,
+report.waste,Wasted (spoiled),,,,,,,,,
+report.wholesale,Wholesale,,,,,,,,,
+research.branch.bar,Bar craft,,,,,,,,,
+research.branch.cafe,Cafe,,,,,,,,,
+research.branch.roastery,Roastery,,,,,,,,,
+research.burr_set.d,Half the grinder wear.,,,,,,,,,
+research.burr_set.t,Hard burrs,,,,,,,,,
+research.cupping_lab.d,Every roast tastes better.,,,,,,,,,
+research.cupping_lab.t,Cupping lab,,,,,,,,,
+research.dial_scale.d,The grind drifts 40 % slower.,,,,,,,,,
+research.dial_scale.t,Dose scale,,,,,,,,,
 research.done,Done,Tamam,Fertig,Hecho,Terminé,Concluído,Готово,完了,완료,हो गया
-research.fast_service.d,Stops take 30 % less time.,Duraklar %30 daha az zaman alır.,Halte dauern 30 % weniger Zeit.,Las paradas tardan un 30 % menos.,Les arrêts prennent 30 % de temps en moins.,As paradas levam 30 % menos tempo.,Остановки занимают на 30 % меньше времени.,立ち寄りの時間が30 %短くなります。,정차 시간이 30 % 줄어요.,स्टॉप में 30 % कम समय लगता है।
-research.fast_service.t,Quick emptying,Hızlı boşaltma,Schnelles Leeren,Vaciado rápido,Vidage rapide,Esvaziamento rápido,Быстрое опустошение,素早い回収,빠른 비우기,जल्दी खाली करना
-research.finished,Research done: {name},Araştırma bitti: {name},Forschung fertig: {name},Investigación terminada: {name},Recherche terminée : {name},Pesquisa concluída: {name},Исследование готово: {name},研究完了: {name},연구 완료: {name},रिसर्च पूरी: {name}
-research.fuel_saver.d,15 % less fuel per km.,Kilometre başına %15 daha az yakıt.,15 % weniger Sprit pro km.,Un 15 % menos de combustible por km.,15 % de carburant en moins par km.,15 % menos combustível por km.,На 15 % меньше топлива на км.,1 kmあたりの燃料が15 %減ります。,km당 연료가 15 % 덜 들어요.,प्रति किमी 15 % कम ईंधन।
-research.fuel_saver.t,Fuel saver,Yakıt tasarrufu,Spritsparer,Ahorro de combustible,Économie de carburant,Economizador de combustível,Экономия топлива,省燃費,연료 절약,ईंधन बचत
-research.glass_crusher.d,Twice the glass bay space.,Cam bölmesinin alanı iki katına çıkar.,Doppelt so viel Platz in der Glasbucht.,El doble de espacio para vidrio.,Deux fois plus de place au quai verre.,O dobro de espaço para vidro.,Вдвое больше места для стекла.,ガラス置き場の広さが2倍になります。,유리 칸 공간이 두 배가 돼요.,कांच बे की जगह दोगुनी।
-research.glass_crusher.t,Glass crusher,Cam kırıcı,Glasbrecher,Trituradora de vidrio,Broyeur de verre,Triturador de vidro,Дробилка стекла,ガラス破砕機,유리 파쇄기,कांच क्रशर
-research.horeca.d,Contracts with cafés and hotels.,Kafeler ve otellerle anlaşmalar.,Verträge mit Cafés und Hotels.,Contratos con cafés y hoteles.,Contrats avec les cafés et hôtels.,Contratos com cafés e hotéis.,Контракты с кафе и отелями.,カフェやホテルとの契約ができます。,카페와 호텔과 계약해요.,कैफे और होटलों के साथ अनुबंध।
-research.horeca.t,Café pickups,Kafe toplamaları,Café-Abholung,Recogidas en cafés,Collectes cafés,Coletas em cafés,Вывоз из кафе,カフェ回収,카페 수거,कैफे पिकअप
-research.intake_plus.d,The intake can grow bigger.,Kabul alanı daha da büyüyebilir.,Die Annahme kann größer werden.,La entrada puede crecer más.,L'entrée peut devenir plus grande.,A entrada pode crescer.,Приёмку можно расширить.,受け入れ口を大きくできます。,반입구를 더 크게 키울 수 있어요.,इनटेक और बड़ा हो सकता है।
-research.intake_plus.t,Intake planning,Kabul planlaması,Annahmeplanung,Planificación de entrada,Planification de l'entrée,Planejamento da entrada,Планирование приёмки,受け入れ計画,반입 계획,इनटेक योजना
-research.jam_guard.d,40 % fewer jams.,Sıkışmalar %40 azalır.,40 % weniger Staus.,Un 40 % menos de atascos.,40 % de blocages en moins.,40 % menos travamentos.,На 40 % меньше заклиниваний.,詰まりが40 %減ります。,걸림이 40 % 줄어요.,40 % कम जाम।
-research.jam_guard.t,Jam guard,Sıkışma koruması,Stau-Schutz,Protección anti-atascos,Anti-blocage,Proteção anti-travamento,Защита от заклинивания,詰まり防止,걸림 방지,जाम गार्ड
-research.left,{time} left,{time} kaldı,Noch {time},Quedan {time},Reste {time},Faltam {time},Осталось {time},残り {time},{time} 남음,{time} बाकी
-research.maint_plan.d,60 % fewer breakdowns.,Arızalar %60 azalır.,60 % weniger Pannen.,Un 60 % menos de averías.,60 % de pannes en moins.,60 % menos quebras.,На 60 % меньше поломок.,故障が60 %減ります。,고장이 60 % 줄어요.,60 % कम खराबी।
-research.maint_plan.t,Maintenance plan,Bakım planı,Wartungsplan,Plan de mantenimiento,Plan d'entretien,Plano de manutenção,План обслуживания,保守計画,정비 계획,रखरखाव योजना
-research.requires,Needs: {name},Gerekli: {name},Braucht: {name},Necesita: {name},Demande : {name},Precisa de: {name},Нужно: {name},必要: {name},필요: {name},चाहिए: {name}
-research.route_optimizer.d,Suggested routes get shorter.,Önerilen rotalar kısalır.,Vorgeschlagene Routen werden kürzer.,Las rutas sugeridas serán más cortas.,Les trajets suggérés sont plus courts.,As rotas sugeridas ficam mais curtas.,Предложенные маршруты станут короче.,提案されるルートが短くなります。,추천 경로가 더 짧아져요.,सुझाए गए रूट छोटे होंगे।
-research.route_optimizer.t,Route optimiser,Rota optimizasyonu,Routenoptimierer,Optimizador de rutas,Optimiseur de trajets,Otimizador de rotas,Оптимизатор маршрутов,ルート最適化,경로 최적화,रूट ऑप्टिमाइज़र
-research.second_shift.d,The depot works one more hour.,Depo bir saat daha çalışır.,Das Depot arbeitet eine Stunde länger.,La planta trabaja una hora más.,Le dépôt travaille une heure de plus.,O depósito funciona mais uma hora.,Склад работает ещё один час.,デポが1時間長く稼働します。,집하장이 한 시간 더 일해요.,डिपो एक घंटा और काम करेगा।
-research.second_shift.t,Evening shift,Akşam vardiyası,Abendschicht,Turno de tarde,Équipe du soir,Turno da noite,Вечерняя смена,夕方のシフト,저녁 근무,शाम की शिफ़्ट
-research.sensor_redundancy.d,Sensor machines stop showing wrong numbers.,Sensörlü makineler yanlış sayılar göstermeyi bırakır.,Automaten mit Sensor zeigen keine falschen Zahlen mehr.,Las máquinas con sensor dejan de mostrar números incorrectos.,Les machines à capteur n'affichent plus de faux chiffres.,Máquinas com sensor param de mostrar números errados.,Автоматы с датчиками перестанут показывать неверные числа.,センサー付きの回収機が間違った数字を表示しなくなります。,센서 회수기가 잘못된 숫자를 보여주지 않게 돼요.,सेंसर वाली मशीनें गलत नंबर दिखाना बंद कर देंगी।
-research.sensor_redundancy.t,Backup sensors,Yedek sensörler,Reserve-Sensoren,Sensores de respaldo,Capteurs de secours,Sensores de reserva,Резервные датчики,予備センサー,예비 센서,बैकअप सेंसर
-research.sensors.d,Machines can get a live fill bar.,Makineler canlı doluluk çubuğu alabilir.,Automaten können eine Live-Füllleiste bekommen.,Las máquinas pueden tener una barra de llenado en vivo.,Les machines peuvent afficher une barre de remplissage en direct.,As máquinas podem ganhar uma barra de nível ao vivo.,Автоматы смогут показывать живую полоску заполнения.,回収機にリアルタイムの満杯バーをつけられます。,회수기가 실시간 채움 막대를 가질 수 있어요.,मशीनों में लाइव भराव बार लग सकता है।
-research.sensors.t,Fill sensors,Doluluk sensörleri,Füllsensoren,Sensores de llenado,Capteurs de remplissage,Sensores de nível,Датчики заполнения,満杯センサー,채움 센서,भराव सेंसर
-research.shop_points.d,Sign up shops as cheap return points.,Dükkanları ucuz iade noktası olarak kaydet.,Melde Läden als günstige Rückgabestellen an.,Registra tiendas como puntos de devolución baratos.,Inscris des magasins comme points de retour peu coûteux.,Cadastre lojas como pontos de devolução baratos.,Подключай магазины как недорогие пункты приёма.,店を安く使える返却場所として登録できます。,가게를 저렴한 반납 지점으로 등록해요.,दुकानों को सस्ते वापसी पॉइंट के रूप में जोड़ो।
-research.shop_points.t,Shop return points,Dükkan iade noktaları,Laden-Rückgabestellen,Puntos en tiendas,Points de retour en magasin,Pontos em lojas,Пункты приёма в магазинах,店舗の返却場所,가게 반납 지점,दुकान वापसी पॉइंट
+research.double_boiler.d,Steaming 10 % faster again.,,,,,,,,,
+research.double_boiler.t,Double boiler,,,,,,,,,
+research.finished,{name} is ready!,,,,,,,,,
+research.forecast_board.d,See the weather three days ahead.,,,,,,,,,
+research.forecast_board.t,Forecast board,,,,,,,,,
+research.green_storage.d,Buy 20 kg lots at 10 % off.,,,,,,,,,
+research.green_storage.t,Green storage,,,,,,,,,
+research.head_barista.d,Pre-orders close to pickup are flagged by themselves.,,,,,,,,,
+research.head_barista.t,Head barista,,,,,,,,,
+research.loyalty_cards.d,More regulars come back.,,,,,,,,,
+research.loyalty_cards.t,Loyalty cards,,,,,,,,,
+research.milk_pitchers.d,Steaming 10 % faster.,,,,,,,,,
+research.milk_pitchers.t,Milk pitchers,,,,,,,,,
+research.music_system.d,Cosier vibes: better reviews.,,,,,,,,,
+research.music_system.t,Music system,,,,,,,,,
+research.needs_venue,Needs {name},,,,,,,,,
+research.origin_trip.d,Unlocks Volcanic Honey on the green market.,,,,,,,,,
+research.origin_trip.t,Origin trip,,,,,,,,,
+research.packing_bench.d,Unlocks the second wholesale contract.,,,,,,,,,
+research.packing_bench.t,Packing bench,,,,,,,,,
+research.pastry_oven.d,Better pastries that cost less to bake.,,,,,,,,,
+research.pastry_oven.t,Pastry oven,,,,,,,,,
+research.pickup_app.d,More pre-orders from the town's app.,,,,,,,,,
+research.pickup_app.t,Pickup app,,,,,,,,,
+research.rail_tablet.d,Two more tickets fit on the rail.,,,,,,,,,
+research.rail_tablet.t,Rail tablet,,,,,,,,,
+research.requires,Needs {name},,,,,,,,,
+research.roast_assistant.d,You can hire a roaster assistant.,,,,,,,,,
+research.roast_assistant.t,Roaster training,,,,,,,,,
+research.roast_profiles.d,"Roast light and dark, not only medium.",,,,,,,,,
+research.roast_profiles.t,Roast profiles,,,,,,,,,
+research.shot_timer.d,Every shot tastes a little better.,,,,,,,,,
+research.shot_timer.t,Shot timer,,,,,,,,,
 research.start,Start · {cost},Başlat · {cost},Starten · {cost},Empezar · {cost},Lancer · {cost},Começar · {cost},Начать · {cost},開始 · {cost},시작 · {cost},शुरू करो · {cost}
-research.tech_van.d,Technicians travel 50 % faster.,Teknisyenler %50 daha hızlı yolculuk yapar.,Techniker fahren 50 % schneller.,Los técnicos viajan un 50 % más rápido.,Les techniciens se déplacent 50 % plus vite.,Os técnicos viajam 50 % mais rápido.,Техники ездят на 50 % быстрее.,技術者の移動が50 %速くなります。,정비사가 50 % 더 빨리 이동해요.,तकनीशियन 50 % तेज़ जाते हैं।
-research.tech_van.t,Technician van,Teknisyen kamyoneti,Technikerwagen,Furgoneta de técnicos,Camionnette technicien,Van do técnico,Фургон техников,技術者バン,정비 밴,तकनीशियन वैन
-research.yard_plus.d,The bale yard can grow bigger.,Balya alanı daha da büyüyebilir.,Das Ballenlager kann größer werden.,El patio de pacas puede crecer más.,Le parc à balles peut devenir plus grand.,O pátio de fardos pode crescer.,Площадку для тюков можно расширить.,ベール置き場を広げられます。,베일 야적장을 더 크게 키울 수 있어요.,गट्ठर यार्ड और बड़ा हो सकता है।
-research.yard_plus.t,Yard planning,Alan planlaması,Lagerplanung,Planificación del patio,Planification du parc,Planejamento do pátio,Планирование площадки,置き場の計画,야적장 계획,यार्ड योजना
-reward.baler.b,Get the baler running again at once.,Balya presini hemen yeniden çalıştır.,Bring die Ballenpresse sofort wieder zum Laufen.,Pon la prensa en marcha otra vez al instante.,Remets la presse en marche tout de suite.,Coloque a prensa para funcionar de novo agora.,Сразу запусти пресс снова.,圧縮機をすぐに動かし直します。,압축기를 바로 다시 돌려요.,बेलर को तुरंत फिर से चालू करो।
-reward.baler.t,Fix the baler now,Balya presini şimdi onar,Presse jetzt reparieren,Arregla la prensa ya,Répare la presse maintenant,Conserte a prensa agora,Почини пресс сейчас,今すぐ圧縮機を直す,지금 압축기 고치기,अभी बेलर ठीक करो
-reward.bonus.b,A little cash to start the day.,Güne başlamak için biraz para.,Ein bisschen Geld für den Start in den Tag.,Un poco de dinero para empezar el día.,Un peu d'argent pour commencer la journée.,Um pouco de dinheiro para começar o dia.,"Немного денег, чтобы начать день.",営業のスタートに少しお金を。,하루를 시작하는 약간의 자금이에요.,दिन शुरू करने के लिए थोड़े पैसे।
-reward.bonus.t,Morning bonus,Sabah bonusu,Morgenbonus,Bonificación de la mañana,Bonus du matin,Bônus da manhã,Утренний бонус,朝のボーナス,아침 보너스,सुबह का बोनस
+research.tamping_mat.d,Steady tamps: shots 8 % faster.,,,,,,,,,
+research.tamping_mat.t,Tamping mat,,,,,,,,,
+research.window_seats.d,6 % more people stop by.,,,,,,,,,
+research.window_seats.t,Window seats,,,,,,,,,
+review.bitter,Bitter coffee. Dial it in!,,,,,,,,,
+review.good,Nice coffee.,,,,,,,,,
+review.great,"Perfect cup, really quick!",,,,,,,,,
+review.late,My pre-order was late.,,,,,,,,,
+review.no_oat,No oat milk left.,,,,,,,,,
+review.slow,Waited too long.,,,,,,,,,
+review.sold_out,They ran out of what I ordered.,,,,,,,,,
+review.walked,Gave up and left.,,,,,,,,,
+review.weak,The coffee was just OK.,,,,,,,,,
+reviews.empty.b,Serve your first customer.,,,,,,,,,
+reviews.empty.t,No reviews yet,,,,,,,,,
+reviews.help,"Every customer leaves a review. The average sets your stars, and stars bring people in.",,,,,,,,,
+reviews.title,Review wall,,,,,,,,,
+reward.auto_dialin.b,Watch a short video: the grinder stays tuned for 90 minutes.,,,,,,,,,
+reward.auto_dialin.t,Auto dial-in,,,,,,,,,
 reward.claim,Claim,Al,Abholen,Reclamar,Récupérer,Resgatar,Забрать,受け取る,받기,लो
-reward.done_baler,Baler fixed,Balya presi onarıldı,Presse repariert,Prensa arreglada,Presse réparée,Prensa consertada,Пресс починен,圧縮機を修理しました,압축기 수리 완료,बेलर ठीक हुआ
+reward.crisis_halve.b,Watch a short video to soften today's problem.,,,,,,,,,
+reward.crisis_halve.t,Last resort,,,,,,,,,
+reward.daily_bonus.b,A little cash to start the day.,,,,,,,,,
+reward.daily_bonus.t,Morning bonus,,,,,,,,,
 reward.done_cash,+{cash} added,+{cash} eklendi,+{cash} gutgeschrieben,+{cash} añadidos,+{cash} ajoutés,+{cash} recebidos,+{cash} начислено,+{cash} を受け取りました,+{cash} 들어옴,+{cash} जुड़े
-reward.done_empty,Machine emptied,Makine boşaltıldı,Automat geleert,Máquina vaciada,Machine vidée,Máquina esvaziada,Автомат опустошён,回収機を空にしました,회수기를 비웠어요,मशीन खाली हुई
-reward.done_fuel,Fuel voucher ready for your next route,Yakıt kuponu bir sonraki rotan için hazır,Sprit-Gutschein für deine nächste Route bereit,Vale de combustible listo para tu próxima ruta,Bon de carburant prêt pour ton prochain trajet,Vale-combustível pronto para sua próxima rota,Талон на топливо готов для следующего маршрута,次のルート用の燃料券を準備しました,다음 경로에 쓸 연료 쿠폰 준비 완료,अगले रूट के लिए ईंधन वाउचर तैयार
-reward.empty.b,Empty this full machine right now.,Bu dolu makineyi hemen boşalt.,Leere diesen vollen Automaten sofort.,Vacía ya esta máquina llena.,Vide cette machine pleine tout de suite.,Esvazie esta máquina cheia agora.,Опустоши этот полный автомат прямо сейчас.,満杯のこの回収機を今すぐ空にします。,가득 찬 이 회수기를 지금 비워요.,इस भरी मशीन को अभी खाली करो।
-reward.empty.t,Emergency empty,Acil boşaltma,Notfall-Leerung,Vaciado de emergencia,Vidage d'urgence,Esvaziamento de emergência,Срочное опустошение,緊急回収,긴급 비우기,तुरंत खाली करो
+reward.done_crisis,That problem is sorted.,,,,,,,,,
+reward.done_helper,A helper joins the bar for an hour.,,,,,,,,,
+reward.done_stock,Milk and ice topped up.,,,,,,,,,
+reward.done_tune,The grinder stays tuned for a while.,,,,,,,,,
+reward.emergency_stock.b,Watch a short video: milk (and ice) topped up now.,,,,,,,,,
+reward.emergency_stock.t,Emergency stock,,,,,,,,,
+reward.extra_barista.b,Watch a short video: a helper works the bar for an hour.,,,,,,,,,
+reward.extra_barista.t,Extra barista,,,,,,,,,
 reward.free.b,Included with your ad-free pack — no video.,Reklamsız paketinle birlikte geliyor — video yok.,Im Werbefrei-Paket enthalten — ohne Video.,Incluido con tu pack sin anuncios: sin vídeo.,Inclus avec ton pack sans pub — pas de vidéo.,Incluído no seu pacote sem anúncios — sem vídeo.,Входит в пакет без рекламы — без видео.,広告なしパックに含まれています。動画は不要です。,광고 제거 팩에 포함돼요 — 영상 없음.,तुम्हारे विज्ञापन-मुक्त पैक में शामिल — कोई वीडियो नहीं।
 reward.free_cash,Claim +{cash},+{cash} al,+{cash} abholen,Reclamar +{cash},Récupérer +{cash},Resgatar +{cash},Забрать +{cash},+{cash} を受け取る,{cash} 받기,+{cash} लो
-reward.fuel.b,Your next route costs half the fuel.,Bir sonraki rotan yarı yakıtla gider.,Deine nächste Route kostet nur halb so viel Sprit.,Tu próxima ruta cuesta la mitad de combustible.,Ton prochain trajet coûte deux fois moins de carburant.,Sua próxima rota gasta metade do combustível.,Следующий маршрут будет стоить вдвое меньше топлива.,次のルートの燃料代が半分になります。,다음 경로의 연료가 절반만 들어요.,तुम्हारे अगले रूट में आधा ईंधन लगेगा।
-reward.fuel.t,Fuel voucher,Yakıt kuponu,Sprit-Gutschein,Vale de combustible,Bon de carburant,Vale-combustível,Талон на топливо,燃料券,연료 쿠폰,ईंधन वाउचर
-reward.offline.b,Watch a short video to get it twice.,"Kısa bir video izle, iki katını al.","Sieh dir ein kurzes Video an, um es doppelt zu bekommen.",Mira un vídeo corto para cobrarlo el doble.,Regarde une courte vidéo pour le recevoir deux fois.,Assista a um vídeo curto para receber o dobro.,"Посмотри короткое видео, чтобы получить вдвое больше.",短い動画を見ると2倍になります。,짧은 영상을 보면 두 배로 받아요.,दोगुना पाने के लिए एक छोटा वीडियो देखो।
-reward.offline.t,Double the away pay,Uzaktayken ücreti ikiye katla,Abwesenheitslohn verdoppeln,Duplicar lo ganado fuera,Double les gains d'absence,Dobrar o pagamento de fora,Удвоить оплату за отсутствие,留守中の収入を2倍に,부재 중 수입 두 배,दूर रहने की कमाई दोगुनी
+reward.offline_x2.b,Watch a short video to get it twice.,,,,,,,,,
+reward.offline_x2.t,Double the away pay,,,,,,,,,
 reward.unavailable,Not available right now,Şu an kullanılamıyor,Gerade nicht verfügbar,No disponible ahora mismo,Indisponible pour le moment,Indisponível agora,Сейчас недоступно,ただいま利用できません,지금은 사용할 수 없어요,अभी उपलब्ध नहीं
 reward.video,Watch video,Video izle,Video ansehen,Ver vídeo,Regarder la vidéo,Assistir vídeo,Смотреть видео,動画を見る,영상 보기,वीडियो देखो
 reward.video_cash,Watch · +{cash},İzle · +{cash},Ansehen · +{cash},Ver · +{cash},Regarder · +{cash},Assistir · +{cash},Смотреть · +{cash},見る · +{cash},보기 · +{cash},देखो · +{cash}
-route.draft,Route: {n} stops,Rota: {n} durak,Route: {n} Halte,Ruta: {n} paradas,Trajet : {n} arrêts,Rota: {n} paradas,Маршрут: остановок {n},ルート: {n} か所,경로: 정차 {n}곳,रूट: {n} स्टॉप
-route.est,{km} · fuel {cost} · {min} min · load {pct},{km} · yakıt {cost} · {min} dk · yük {pct},{km} · Sprit {cost} · {min} min · Ladung {pct},{km} · combustible {cost} · {min} min · carga {pct},{km} · carburant {cost} · {min} min · charge {pct},{km} · combustível {cost} · {min} min · carga {pct},{km} · топливо {cost} · {min} мин · загрузка {pct},{km} · 燃料 {cost} · {min} 分 · 積載 {pct},{km} · 연료 {cost} · {min}분 · 적재 {pct},{km} · ईंधन {cost} · {min} मिनट · लोड {pct}
-route.hint,Tap machines on the map to add stops.,Haritadaki makinelere dokunarak durak ekle.,"Tippe auf der Karte auf Automaten, um Halte hinzuzufügen.",Toca las máquinas del mapa para añadir paradas.,Touche les machines sur la carte pour ajouter des arrêts.,Toque nas máquinas no mapa para adicionar paradas.,"Нажимай на автоматы на карте, чтобы добавить остановки.",地図上の回収機をタップして立ち寄り先を追加しましょう。,지도에서 회수기를 눌러 정차지를 추가하세요.,स्टॉप जोड़ने के लिए नक्शे पर मशीनों पर टैप करो।
+roast.assist_help,Your assistant will drop it at a good point.,,,,,,,,,
+roast.best,best: {p},,,,,,,,,
+roast.blend,Blend,,,,,,,,,
+roast.blend.d,Fold {kg} of rested beans into the house beans.,,,,,,,,,
+roast.buy_lot,Buy {kg} · {cost},,,,,,,,,
+roast.contracts,Wholesale,,,,,,,,,
+roast.drop,Drop,,,,,,,,,
+roast.drop_help,Tap Drop in the first-crack sweet spot (70–86 %) for the best beans.,,,,,,,,,
+roast.drum,Drum roaster,,,,,,,,,
+roast.house,House beans {kg} · quality {q},,,,,,,,,
+roast.in_stock,stock {kg},,,,,,,,,
+roast.locked.b,The drum roaster opens with the {name}.,,,,,,,,,
+roast.locked.t,No roaster yet,,,,,,,,,
+roast.market,Green coffee market,,,,,,,,,
+roast.price,price {pct},,,,,,,,,
+roast.rest_help,Fresh roasts rest one day before they taste right.,,,,,,,,,
+roast.rested,rested,,,,,,,,,
+roast.resting,Resting racks,,,,,,,,,
+roast.resting_until,resting until tomorrow,,,,,,,,,
+roast.roasting,Roasting…,,,,,,,,,
+roast.start_help,Pick green coffee and a roast profile.,,,,,,,,,
+roast.sweet,First crack! Drop now,,,,,,,,,
+role.barista,Barista,,,,,,,,,
+role.cashier,Cashier,,,,,,,,,
+role.roaster,Roaster assistant,,,,,,,,,
+role.runner,Runner,,,,,,,,,
+rule.deadline,Deadline first,,,,,,,,,
+rule.deadline.d,The ticket that is due soonest is made first. Pre-orders stay on time.,,,,,,,,,
+rule.fifo,First come,,,,,,,,,
+rule.fifo.d,Tickets are made in the order they arrive.,,,,,,,,,
+rule.vip,Regulars first,,,,,,,,,
+rule.vip.d,Regulars and special guests are served first.,,,,,,,,,
+settings.auto_report,Skip the day report,,,,,,,,,
+settings.auto_report.d,Go straight to the next morning (Speed Pack).,,,,,,,,,
 settings.effects,Sound effects,Ses efektleri,Soundeffekte,Efectos de sonido,Effets sonores,Efeitos sonoros,Звуковые эффекты,効果音,효과음,ध्वनि प्रभाव
 settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Графика,画質,그래픽,ग्राफ़िक्स
-settings.guide,How to play / Replay the guide,Nasıl oynanır / Rehberi tekrar oynat,Spielanleitung / Anleitung wiederholen,Cómo jugar / Repetir la guía,Comment jouer / Revoir le guide,Como jogar / Rever o tutorial,Как играть / Повторить обучение,遊び方 / ガイドをもう一度見る,플레이 방법 / 가이드 다시 보기,कैसे खेलें / गाइड फिर से देखो
+settings.guide,How to play,,,,,,,,,
+settings.guide.d,Replay the step-by-step guide.,,,,,,,,,
+settings.help,Help,,,,,,,,,
 settings.language,Language,Dil,Sprache,Idioma,Langue,Idioma,Язык,言語,언어,भाषा
+settings.looks,Cafe look,,,,,,,,,
 settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,음악,संगीत
 settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
 settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चालू
 settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
-settings.privacy,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
+settings.privacy,Privacy,,,,,,,,,
+settings.privacy_options,Privacy options,,,,,,,,,
+settings.privacy_options.d,Change your ad and data choices.,,,,,,,,,
+settings.replay,Replay,,,,,,,,,
 settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
+settings.slot,Slot {n},,,,,,,,,
+settings.slots,Save slots,,,,,,,,,
+settings.slots_help,Each slot is a separate cafe. More slots come with the Edition or Extra Saves.,,,,,,,,,
+settings.slots_n,{n} open,,,,,,,,,
+settings.sound,Sound,,,,,,,,,
+settings.theme_default,Classic,,,,,,,,,
 settings.title,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
 settings.version,Version {v},Sürüm {v},Version {v},Versión {v},Version {v},Versão {v},Версия {v},バージョン {v},버전 {v},वर्शन {v}
 sheet.close,Close,Kapat,Schließen,Cerrar,Fermer,Fechar,Закрыть,閉じる,닫기,बंद करो
@@ -357,74 +443,95 @@ shop.group.budget,Cash,Para,Geld,Dinero,Argent,Dinheiro,Деньги,お金,자�
 shop.group.looks,Looks,Görünümler,Optik,Estilos,Esthétique,Visuais,Внешний вид,見た目,외형,लुक
 shop.group.offer,Offers,Teklifler,Angebote,Ofertas,Offres,Ofertas,Предложения,特別オファー,특가,ऑफ़र
 shop.offer,Special offer,Özel teklif,Sonderangebot,Oferta especial,Offre spéciale,Oferta especial,Специальное предложение,特別オファー,특별 제안,खास ऑफ़र
-shop.offer_close,No thanks,"Hayır, teşekkürler",Nein danke,"No, gracias",Non merci,"Não, obrigado","Нет, спасибо",いいえ、結構です,괜찮아요,"नहीं, धन्यवाद"
 shop.owned,Owned,Sende,Gekauft,Comprado,Acquis,Comprado,Куплено,所持済み,보유 중,आपके पास
 shop.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
 shop.restore_failed,Could not restore. Try again later.,Geri yüklenemedi. Daha sonra tekrar dene.,Konnte nicht wiederherstellen. Versuche es später noch einmal.,No se pudo restaurar. Inténtalo más tarde.,Impossible de restaurer. Réessaie plus tard.,Não foi possível restaurar. Tente de novo mais tarde.,Не удалось восстановить. Попробуй позже.,復元できませんでした。あとでもう一度お試しください。,복원할 수 없어요. 나중에 다시 해 보세요.,वापस नहीं ला सके। बाद में फिर कोशिश करो।
 shop.restored,Purchases restored,Satın alımlar geri yüklendi,Käufe wiederhergestellt,Compras restauradas,Achats restaurés,Compras restauradas,Покупки восстановлены,購入を復元しました,구매를 복원했어요,खरीदारी वापस आ गई
 shop.title,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
 shop.unavailable,The store is not available right now,Mağaza şu an kullanılamıyor,Der Shop ist gerade nicht verfügbar,La tienda no está disponible ahora mismo,La boutique n'est pas disponible pour le moment,A loja não está disponível agora,Магазин сейчас недоступен,ストアは現在ご利用いただけません,지금은 상점을 사용할 수 없어요,स्टोर अभी उपलब्ध नहीं है
-tab.depot,Depot,Depo,Depot,Planta,Dépôt,Depósito,Склад,デポ,집하장,डिपो
-tab.fleet,Fleet,Filo,Flotte,Flota,Flotte,Frota,Парк,車両,차량,फ़्लीट
-tab.map,Map,Harita,Karte,Mapa,Carte,Mapa,Карта,地図,지도,नक्शा
-tab.network,Network,Ağ,Netz,Red,Réseau,Rede,Сеть,ネットワーク,네트워크,नेटवर्क
+station.any,All-round,,,,,,,,,
+station.espresso,Espresso,,,,,,,,,
+station.milk,Steam wand,,,,,,,,,
+stock.auto_beans,Auto top-up,,,,,,,,,
+stock.auto_beans.d,Buy supplier beans when the hopper runs low.,,,,,,,,,
+stock.beans,Coffee beans,,,,,,,,,
+stock.house_beans,House beans,,,,,,,,,
+stock.ice,Ice,,,,,,,,,
+stock.milk,Milk,,,,,,,,,
+stock.milk_eta,van at {time},,,,,,,,,
+stock.milk_help,The supplier delivers your order each morning. Half of what's left spoils overnight.,,,,,,,,,
+stock.oat,Oat milk,,,,,,,,,
+stock.order,Daily order {n},,,,,,,,,
+stock.q,quality {q},,,,,,,,,
+stock.whole,Whole milk,,,,,,,,,
+supplier.cheap,Cheap supplier,,,,,,,,,
+supplier.premium,Premium supplier,,,,,,,,,
+supplier.regular,Regular supplier,,,,,,,,,
+tab.bar,Bar,,,,,,,,,
+tab.grow,Grow,,,,,,,,,
+tab.menu,Menu,,,,,,,,,
 tab.research,Research,Araştırma,Forschung,Investigación,Recherche,Pesquisa,Исследования,研究,연구,रिसर्च
+tab.roastery,Roastery,,,,,,,,,
+tab.settings,Settings,,,,,,,,,
 tab.shop,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
-tip.audit,"Too many bottles waited at the count line, so you were fined.","Sayım hattında çok fazla şişe bekledi, bu yüzden ceza kesildi.","Zu viele Flaschen haben an der Zähllinie gewartet, deshalb wurde dir eine Strafe berechnet.","Esperaron demasiadas botellas en la línea de conteo, así que te multaron.","Trop de bouteilles ont attendu à la ligne de comptage, tu as donc été amendé.","Muitas garrafas esperaram na linha de contagem, então você foi multado.","У счётной линии ждало слишком много бутылок, поэтому тебя оштрафовали.",カウントラインで待つボトルが多すぎたため、罰金が科されました。,계수 라인에서 병이 너무 많이 기다려서 벌금을 냈어요.,"गिनती लाइन पर बहुत सारी बोतलें इंतज़ार में थीं, इसलिए जुर्माना लगा।"
-tip.baler_down,The baler is down. A technician can fix it.,Balya presi arızalı. Bir teknisyen onarabilir.,Die Ballenpresse steht still. Ein Techniker kann sie reparieren.,La prensa está averiada. Un técnico puede arreglarla.,La presse est en panne. Un technicien peut la réparer.,A prensa parou. Um técnico pode consertá-la.,Пресс сломан. Техник может его починить.,圧縮機が止まっています。技術者が直せます。,압축기가 고장 났어요. 정비사가 고칠 수 있어요.,बेलर बंद है। तकनीशियन इसे ठीक कर सकता है।
-tip.breakdown,A truck broke down. Send a technician or wait.,Bir kamyon arıza yaptı. Bir teknisyen gönder ya da bekle.,Ein Lkw ist liegen geblieben. Schick einen Techniker oder warte.,Un camión se averió. Envía un técnico o espera.,Un camion est tombé en panne. Envoie un technicien ou attends.,Um caminhão quebrou. Mande um técnico ou espere.,Машина сломалась. Вызови техника или подожди.,トラックが故障しました。技術者を向かわせるか、待ちましょう。,트럭이 고장 났어요. 정비사를 보내거나 기다리세요.,एक ट्रक खराब हो गया। तकनीशियन भेजो या इंतज़ार करो।
-tip.bulk,Big haul: a machine is blocked for a while.,Büyük yük: bir makine bir süre tıkalı.,Große Menge: ein Automat ist eine Weile blockiert.,Gran entrega: una máquina queda bloqueada un rato.,Gros apport : une machine est bloquée un moment.,Grande lote: uma máquina fica travada por um tempo.,Большая сдача: автомат какое-то время заблокирован.,大量返却：回収機がしばらく塞がれます。,대량 반납: 회수기가 잠시 막혀요.,बड़ी खेप: एक मशीन कुछ देर के लिए रुकी है।
-tip.centre,Build the counting centre so big hauls stop blocking machines.,Büyük yükler makineleri tıkamasın diye sayım merkezi kur.,"Baue das Zählzentrum, damit große Mengen keine Automaten mehr blockieren.",Construye el centro de conteo para que las grandes entregas no bloqueen las máquinas.,Construis le centre de comptage pour que les gros apports ne bloquent plus les machines.,Construa o centro de contagem para que grandes lotes parem de travar as máquinas.,"Построй центр подсчёта, чтобы большие сдачи не блокировали автоматы.",カウントセンターを建てると、大量返却で回収機が塞がれなくなります。,계수 센터를 지으면 대량 반납이 회수기를 막지 않아요.,"गिनती केंद्र बनाओ, ताकि बड़ी खेपें मशीनों को न रोकें।"
-tip.dispatcher,Build the dispatch office: it plans routes from your service rules.,Sevk ofisi kur: rotaları servis kurallarına göre planlar.,Baue die Leitstelle: Sie plant Routen nach deinen Service-Regeln.,Construye la oficina de envíos: planifica las rutas según tus reglas de servicio.,Construis le bureau de dispatch : il prévoit les trajets selon tes règles de service.,Construa a central de despacho: ela planeja as rotas com base nas suas regras de coleta.,Построй диспетчерскую: она строит маршруты по твоим правилам обслуживания.,配車オフィスを建てましょう。回収ルールに沿ってルートを組みます。,배차 사무소를 지으세요: 서비스 규칙에 따라 경로를 짜요.,डिस्पैच ऑफिस बनाओ: यह तुम्हारे सेवा नियमों से रूट तय करता है।
-tip.fuel,Fuel is expensive today. Short routes save money.,Bugün yakıt pahalı. Kısa rotalar para tasarrufu sağlar.,Sprit ist heute teuer. Kurze Routen sparen Geld.,El combustible está caro hoy. Las rutas cortas ahorran dinero.,Le carburant est cher aujourd'hui. Des trajets courts font économiser.,O combustível está caro hoje. Rotas curtas economizam dinheiro.,Топливо сегодня дорогое. Короткие маршруты экономят деньги.,今日は燃料が高いです。短いルートでお金を節約しましょう。,오늘은 연료가 비싸요. 짧은 경로가 돈을 아껴줘요.,आज ईंधन महँगा है। छोटे रूट पैसे बचाते हैं।
-tip.gate,The intake is full and trucks wait at the gate. Add a count line or a bigger intake.,"Kabul alanı dolu, kamyonlar kapıda bekliyor. Bir sayım hattı ya da daha büyük bir kabul alanı ekle.",Die Annahme ist voll und Lkw warten an der Einfahrt. Füge eine Zähllinie oder eine größere Annahme hinzu.,La entrada está llena y los camiones esperan en la puerta. Añade una línea de conteo o una entrada más grande.,L'entrée est pleine et les camions attendent à la porte. Ajoute une ligne de comptage ou une entrée plus grande.,A entrada está cheia e os caminhões esperam no portão. Adicione uma linha de contagem ou uma entrada maior.,"Приёмка переполнена, и машины ждут у ворот. Добавь счётную линию или расширь приёмку.",受け入れ口がいっぱいで、トラックがゲートで待っています。カウントラインを追加するか、受け入れ口を広げましょう。,반입구가 가득 차서 트럭이 입구에서 기다려요. 계수 라인이나 더 큰 반입구를 추가하세요.,इनटेक भर गया है और ट्रक गेट पर इंतज़ार कर रहे हैं। गिनती लाइन या बड़ा इनटेक जोड़ो।
-tip.heat,Heat wave: machines fill much faster than the guess shows.,Sıcak dalgası: makineler tahminden çok daha hızlı doluyor.,Hitzewelle: Automaten füllen sich viel schneller als geschätzt.,Ola de calor: las máquinas se llenan mucho más rápido de lo que indica la estimación.,Vague de chaleur : les machines se remplissent bien plus vite que l'estimation.,Onda de calor: as máquinas enchem muito mais rápido do que a estimativa mostra.,"Жара: автоматы заполняются намного быстрее, чем показывает оценка.",猛暑：回収機は見込みよりずっと速くたまります。,폭염: 회수기가 예상보다 훨씬 빨리 차요.,गर्मी की लहर: मशीनें अनुमान से कहीं तेज़ भर रही हैं।
-tip.horeca,Cafés fill their back room with glass bags. Sign a contract and pick them up.,Kafeler arka odalarını cam torbalarla doldurur. Anlaşma imzala ve onları topla.,Cafés füllen ihren Hinterraum mit Glastüten. Schließe einen Vertrag ab und hole sie ab.,Los cafés llenan su trastienda con bolsas de vidrio. Firma un contrato y recógelas.,Les cafés remplissent leur réserve de sacs de verre. Signe un contrat et viens les chercher.,Cafés enchem o depósito dos fundos com sacos de vidro. Feche um contrato e faça as coletas.,Кафе заполняют подсобку мешками со стеклом. Заключи контракт и забирай их.,カフェは裏部屋がガラス袋でいっぱいです。契約して回収しましょう。,카페는 뒷방을 유리병 봉투로 채워요. 계약하고 수거하세요.,कैफे अपने पिछले कमरे में कांच के थैले भरते हैं। अनुबंध करो और उन्हें उठाओ।
-tip.jam,A jammed machine turns everyone away. Tap it and send a technician.,Sıkışan bir makine herkesi geri çevirir. Ona dokun ve bir teknisyen gönder.,Ein verklemmter Automat weist alle ab. Tippe darauf und schick einen Techniker.,Una máquina atascada no acepta a nadie. Tócala y envía un técnico.,Une machine bloquée refoule tout le monde. Touche-la et envoie un technicien.,Uma máquina travada manda todo mundo embora. Toque nela e mande um técnico.,Заклиненный автомат отказывает всем. Нажми на него и вызови техника.,詰まった回収機では誰も持ち込めません。タップして技術者を向かわせましょう。,걸린 회수기는 모든 사람을 돌려보내요. 눌러서 정비사를 보내세요.,जाम मशीन सबको लौटा देती है। उस पर टैप करो और तकनीशियन भेजो।
-tip.market,A bale price fell. You can keep bales and sell later.,Bir balya fiyatı düştü. Balyaları saklayıp sonra satabilirsin.,Der Ballenpreis ist gefallen. Du kannst Ballen behalten und später verkaufen.,El precio de las pacas bajó. Puedes guardarlas y venderlas después.,Le prix des balles a baissé. Tu peux garder les balles et vendre plus tard.,O preço de um fardo caiu. Você pode guardar os fardos e vender depois.,Цена на тюки упала. Можно придержать тюки и продать позже.,ベールの価格が下がりました。ベールは取っておいて、あとで売ることもできます。,베일 가격이 떨어졌어요. 베일을 보관했다가 나중에 팔 수 있어요.,गट्ठर का दाम गिरा। तुम गट्ठर रखकर बाद में बेच सकते हो।
-tip.match,Match day today: the stadium machines will fill up in two hours.,Bugün maç günü: stat makineleri iki saat içinde dolacak.,Heute ist Spieltag: Die Stadionautomaten füllen sich in zwei Stunden.,Hoy es día de partido: las máquinas del estadio se llenarán en dos horas.,Jour de match : les machines du stade vont se remplir en deux heures.,Dia de jogo hoje: as máquinas do estádio vão encher em duas horas.,Сегодня матч: автоматы у стадиона заполнятся через два часа.,今日は試合の日です。スタジアムの回収機は2時間でいっぱいになります。,오늘은 경기 날: 경기장 회수기가 두 시간 안에 찰 거예요.,आज मैच का दिन है: स्टेडियम की मशीनें दो घंटे में भर जाएँगी।
-tip.oldtown,Old Town has narrow lanes. Big trucks can't get in — use vans or cargo bikes.,Eski Şehir'in dar sokakları var. Büyük kamyonlar giremez — kamyonet ya da yük bisikleti kullan.,Die Altstadt hat enge Gassen. Große Lkw kommen nicht rein — nimm Transporter oder Lastenräder.,El casco antiguo tiene callejones estrechos. Los camiones grandes no entran: usa furgonetas o bicis de carga.,La vieille ville a des ruelles étroites. Les gros camions n'y passent pas — prends une camionnette ou un vélo cargo.,O Centro Antigo tem vielas estreitas. Caminhões grandes não entram — use vans ou bicicletas de carga.,В Старом городе узкие проезды. Большие машины не проедут — используй фургоны или грузовые велосипеды.,旧市街は狭い路地があります。大きなトラックは入れません。バンか荷物用自転車を使いましょう。,구시가지는 골목이 좁아요. 큰 트럭은 못 들어가요 — 밴이나 화물 자전거를 쓰세요.,पुराने शहर में संकरी गलियाँ हैं। बड़े ट्रक नहीं जा सकते — वैन या कार्गो बाइक इस्तेमाल करो।
-tip.report,"Each day you get stars for service, efficiency and depot flow. Stars raise your Green Rating.","Her gün servis, verimlilik ve depo akışı için yıldız kazanırsın. Yıldızlar Yeşil Puanını yükseltir.","Jeden Tag bekommst du Sterne für Service, Effizienz und Depot-Durchsatz. Sterne erhöhen deine Grün-Wertung.","Cada día ganas estrellas por servicio, eficiencia y flujo en la planta. Las estrellas suben tu Calificación Verde.","Chaque jour, tu gagnes des étoiles pour le service, l'efficacité et le flux du dépôt. Les étoiles font monter ta Note verte.","Todo dia você ganha estrelas por atendimento, eficiência e fluxo do depósito. As estrelas aumentam sua Nota Verde.","Каждый день ты получаешь звёзды за обслуживание, эффективность и поток на складе. Звёзды поднимают зелёный рейтинг.",毎日、回収サービス・効率・デポの処理量で星がもらえます。星はグリーン評価を上げます。,"매일 서비스, 효율, 집하장 처리량으로 별을 받아요. 별은 그린 등급을 올려요.","हर दिन तुम्हें सेवा, कुशलता और डिपो प्रवाह के लिए स्टार मिलते हैं। स्टार तुम्हारी ग्रीन रेटिंग बढ़ाते हैं।"
-tip.sensor_offline,A sensor is wrong. The number on the map may be too low.,Bir sensör yanlış. Haritadaki sayı çok düşük olabilir.,Ein Sensor liegt falsch. Die Zahl auf der Karte ist vielleicht zu niedrig.,Un sensor da un dato erróneo. El número del mapa puede ser demasiado bajo.,Un capteur se trompe. Le chiffre sur la carte est peut-être trop bas.,Um sensor está errado. O número no mapa pode estar baixo demais.,Датчик врёт. Число на карте может быть занижено.,センサーが誤作動しています。地図の数字は少なすぎるかもしれません。,센서가 틀렸어요. 지도의 숫자가 너무 낮을 수 있어요.,एक सेंसर गलत है। नक्शे का नंबर शायद कम है।
-tip.sensors,"Sensors show the real fill. Without one, the bar is only a guess.",Sensörler gerçek doluluğu gösterir. Sensör olmadan çubuk sadece bir tahmindir.,Sensoren zeigen die echte Füllung. Ohne Sensor ist die Leiste nur eine Schätzung.,"Los sensores muestran el llenado real. Sin uno, la barra solo es una estimación.","Les capteurs montrent le vrai remplissage. Sans capteur, la barre n'est qu'une estimation.","Os sensores mostram o nível real. Sem um, a barra é só uma estimativa.",Датчики показывают реальное заполнение. Без них полоска — просто оценка.,センサーは本当のたまり具合を表示します。センサーがないと、バーは推測にすぎません。,센서는 실제 채움을 보여줘요. 센서가 없으면 막대는 추측일 뿐이에요.,सेंसर असली भराव दिखाते हैं। इनके बिना बार सिर्फ़ अनुमान है।
-tip.shops,Shops can collect bottles without a machine.,Dükkanlar makine olmadan şişe toplayabilir.,Läden können Flaschen auch ohne Automaten sammeln.,Las tiendas pueden recoger botellas sin máquina.,Les magasins peuvent collecter des bouteilles sans machine.,Lojas podem recolher garrafas sem máquina.,Магазины могут собирать бутылки без автомата.,店は回収機がなくてもボトルを集められます。,가게는 회수기 없이도 병을 모을 수 있어요.,दुकानें बिना मशीन के बोतलें जमा कर सकती हैं।
-tip.stadium,On match days the stadium fills fast. Park a truck nearby before 16:00.,Maç günlerinde stat hızla dolar. 16:00'dan önce yakınına bir kamyon park et.,An Spieltagen füllt sich das Stadion schnell. Stell vor 16:00 Uhr einen Lkw in der Nähe ab.,En días de partido el estadio se llena rápido. Aparca un camión cerca antes de las 16:00.,"Les jours de match, le stade se remplit vite. Gare un camion à proximité avant 16 h.",Em dias de jogo o estádio lota rápido. Estacione um caminhão por perto antes das 16:00.,В дни матчей стадион заполняется быстро. Поставь машину рядом до 16:00.,試合の日はスタジアムがすぐにいっぱいになります。16:00より前に近くにトラックを止めておきましょう。,경기 날에는 경기장이 빨리 차요. 16:00 전에 근처에 트럭을 대세요.,मैच के दिनों में स्टेडियम जल्दी भरता है। 16:00 से पहले पास में ट्रक खड़ा करो।
-tip.university,Students bring lots of cans in the evening.,Öğrenciler akşamları çok sayıda teneke getirir.,Studierende bringen abends viele Dosen.,Los estudiantes traen muchas latas por la tarde.,Les étudiants apportent beaucoup de canettes le soir.,Estudantes trazem muitas latas à noite.,Вечером студенты приносят много банок.,夕方、学生がたくさんの缶を持ってきます。,학생들은 저녁에 캔을 많이 가져와요.,छात्र शाम को बहुत सारे कैन लाते हैं।
-tip.yard,"The bale yard is full, so the baler stopped. Sell bales or build a bigger yard.","Balya alanı dolu, bu yüzden balya presi durdu. Balyaları sat ya da daha büyük bir alan kur.","Das Ballenlager ist voll, deshalb steht die Presse still. Verkaufe Ballen oder baue ein größeres Lager.","El patio de pacas está lleno, así que la prensa se ha parado. Vende pacas o construye un patio más grande.","Le parc à balles est plein, donc la presse s'est arrêtée. Vends des balles ou construis un parc plus grand.","O pátio de fardos está cheio, então a prensa parou. Venda os fardos ou construa um pátio maior.","Площадка для тюков полна, поэтому пресс остановился. Продай тюки или построй большую площадку.",ベール置き場がいっぱいなので、圧縮機が止まりました。ベールを売るか、置き場を広げましょう。,베일 야적장이 가득 차서 압축기가 멈췄어요. 베일을 팔거나 더 큰 야적장을 지으세요.,"गट्ठर यार्ड भर गया है, इसलिए बेलर रुक गया। गट्ठर बेचो या बड़ा यार्ड बनाओ।"
-toast.bale,New bale: {mat},Yeni balya: {mat},Neuer Ballen: {mat},Nueva paca: {mat},Nouvelle balle : {mat},Novo fardo: {mat},Новый тюк: {mat},新しいベール: {mat},새 베일: {mat},नया गट्ठर: {mat}
-toast.bought,Bought: {name},Satın alındı: {name},Gekauft: {name},Comprado: {name},Acheté : {name},Comprado: {name},Куплено: {name},購入しました: {name},구매함: {name},खरीदा: {name}
-toast.district,{name} is now open!,{name} artık açık!,{name} ist jetzt offen!,¡{name} ya está abierto!,{name} est maintenant ouvert !,{name} foi aberto!,Открыто: {name}!,{name} が開放されました！,{name} 열림!,{name} अब खुल गया है!
-toast.sold,Sold {n} bales for {cash},{n} balya {cash} karşılığında satıldı,{n} Ballen für {cash} verkauft,Vendidas {n} pacas por {cash},{n} balles vendues pour {cash},{n} fardos vendidos por {cash},Продано тюков: {n} на {cash},{n} ベールを {cash} で売りました,베일 {n}개 판매 · {cash},{n} गट्ठर {cash} में बेचे
-toast.till,+{cash} fees,+{cash} ücret,+{cash} Gebühren,+{cash} de tarifas,+{cash} de frais,+{cash} em taxas,+{cash} сборов,手数料 +{cash},+{cash} 수수료,+{cash} शुल्क
-truck.auto,Dispatcher drives this truck,Sevk ofisi bu kamyonu sürüyor,Die Leitstelle fährt diesen Lkw,El Despachador conduce este camión,Le dispatch conduit ce camion,O despachante dirige este caminhão,Машиной управляет диспетчер,このトラックは配車オフィスが運転,배차 사무소가 이 트럭을 몰아요,डिस्पैचर यह ट्रक चलाता है
-truck.bike,Cargo bike,Yük bisikleti,Lastenrad,Bici de carga,Vélo cargo,Bicicleta de carga,Грузовой велосипед,荷物用自転車,화물 자전거,कार्गो बाइक
-truck.bike.d,"Tiny load, almost no fuel. Fits narrow lanes.","Küçük yük, neredeyse hiç yakıt. Dar sokaklara sığar.","Winzige Ladung, fast kein Sprit. Passt in enge Gassen.","Carga pequeña, casi nada de combustible. Cabe en callejones estrechos.","Très petite charge, presque pas de carburant. Passe dans les ruelles étroites.","Carga pequena, quase nenhum combustível. Passa nas vielas estreitas.","Совсем небольшой груз, почти без топлива. Пройдёт в узкие проезды.",積載は少なめ、燃料はほぼ不要。狭い路地にも入れます。,적재량은 적지만 연료는 거의 안 들어요. 좁은 골목에 맞아요.,"छोटा माल, लगभग कोई ईंधन नहीं। संकरी गलियों में चलती है।"
-truck.clear,Clear,Temizle,Leeren,Borrar,Effacer,Limpar,Очистить,消去,지우기,हटाओ
-truck.compactor,Compactor truck,Sıkıştırmalı kamyon,Press-Lkw,Camión compactador,Camion compacteur,Caminhão compactador,Машина-компактор,コンパクタートラック,압축 트럭,कॉम्पैक्टर ट्रक
-truck.compactor.d,"Squeezes plastic, carries a lot. Main roads only.","Plastiği sıkıştırır, çok taşır. Sadece ana yollar.","Presst Plastik, lädt viel. Nur Hauptstraßen.",Aplasta el plástico y lleva mucho. Solo calles principales.,"Compacte le plastique, transporte beaucoup. Grandes routes seulement.",Espreme o plástico e leva muito. Só em vias principais.,"Сжимает пластик, везёт много. Только по главным дорогам.",プラスチックを圧縮して大量に運べます。大通りのみ。,플라스틱을 압착해 많이 실어요. 큰길만 다녀요.,"प्लास्टिक दबाता है, बहुत माल ढोता है। सिर्फ़ मुख्य सड़कों पर।"
-truck.go,Go,Başlat,Los,Ir,Partir,Ir,Поехали,出発,출발,चलो
-truck.load,Load {pct},Yük {pct},Ladung {pct},Carga {pct},Charge {pct},Carga {pct},Загрузка {pct},積載 {pct},적재 {pct},लोड {pct}
-truck.name,{type} {n},{type} {n},{type} {n},{type} {n},{type} {n},{type} {n},{type} {n},{type} {n}号,{type} {n}번,{type} {n}
-truck.no_driver,No driver free,Boş sürücü yok,Kein Fahrer frei,No hay conductor libre,Aucun chauffeur libre,Nenhum motorista livre,Нет свободного водителя,空いている運転手がいません,빈 기사가 없어요,कोई ड्राइवर खाली नहीं
-truck.recall,Call home,Depoya çağır,Zurückrufen,Volver a casa,Rentrer au dépôt,Chamar de volta,Вернуть на склад,デポに戻す,본부로 복귀,वापस बुलाओ
-truck.status.broken,Broken down,Arızalı,Liegengeblieben,Averiado,En panne,Quebrado,Сломалась,故障中,고장 남,खराब
-truck.status.drive,Driving,Yolda,Unterwegs,Conduciendo,En route,Dirigindo,Едет,走行中,이동 중,चल रहा है
-truck.status.idle,At the depot,Depoda,Am Depot,En la planta,Au dépôt,No depósito,На складе,デポで待機中,집하장에 대기 중,डिपो पर
-truck.status.service,Emptying,Boşaltıyor,Leert,Vaciando,Vidage en cours,Esvaziando,Опустошает,回収中,비우는 중,खाली हो रहा है
-truck.status.unload,Unloading,Yük indiriyor,Entlädt,Descargando,Déchargement,Descarregando,Разгружается,荷下ろし中,내리는 중,माल उतर रहा है
-truck.status.wait,Waiting at the gate,Kapıda bekliyor,Wartet an der Einfahrt,Esperando en la puerta,Attend à la porte,Esperando no portão,Ждёт у ворот,ゲートで待機中,입구에서 대기 중,गेट पर इंतज़ार
-truck.stops,{n} stops left,{n} durak kaldı,Noch {n} Halte,Quedan {n} paradas,Il reste {n} arrêts,Faltam {n} paradas,Остановок: {n},残り {n} か所,정차 {n}곳 남음,{n} स्टॉप बाकी
-truck.suggest,Suggest route,Rota öner,Route vorschlagen,Sugerir ruta,Suggérer un trajet,Sugerir rota,Предложить маршрут,ルートを提案,추천 경로,रूट सुझाओ
-truck.van,Van,Kamyonet,Transporter,Furgoneta,Camionnette,Van,Фургон,バン,밴,वैन
-truck.van.d,Room for about 7 full machines. Fits narrow lanes.,Yaklaşık 7 dolu makine için yer var. Dar sokaklara sığar.,Platz für etwa 7 volle Automaten. Passt in enge Gassen.,Espacio para unas 7 máquinas llenas. Cabe en callejones estrechos.,Place pour environ 7 machines pleines. Passe dans les ruelles étroites.,Espaço para cerca de 7 máquinas cheias. Passa nas vielas estreitas.,Место примерно для 7 полных автоматов. Пройдёт в узкие проезды.,満杯の回収機およそ7台分の積載。狭い路地にも入れます。,가득 찬 회수기 약 7곳을 실을 수 있어요. 좁은 골목에 맞아요.,लगभग 7 भरी मशीनों की जगह। संकरी गलियों में चलती है।
-truck.weight,Full by weight — glass is heavy,Ağırlıkça dolu — cam ağırdır,Voll nach Gewicht — Glas ist schwer,Lleno por peso: el vidrio pesa mucho,Plein en poids — le verre est lourd,Cheio pelo peso — vidro é pesado,Полная по весу — стекло тяжёлое,重さで満載 — ガラスは重いです,무게로 가득 참 — 유리는 무거워요,वज़न से भरा — कांच भारी है
+ticket.brew,Brew next,,,,,,,,,
+ticket.cancel,Cancel,,,,,,,,,
+ticket.dup,duplicate,,,,,,,,,
+ticket.flag,Priority,,,,,,,,,
+ticket.oat,oat,,,,,,,,,
+ticket.oat_long,oat milk,,,,,,,,,
+ticket.pickup,{who} · pickup at {time},,,,,,,,,
+ticket.unflag,Unflag,,,,,,,,,
+ticket.waiting,{who} · waiting {min} min,,,,,,,,,
+tip.assistant,Hire a roaster assistant in the Bar tab: he drops and blends by himself.,,,,,,,,,
+tip.beans_out,Out of beans! Turn on auto top-up or roast more.,,,,,,,,,
+tip.blend,Your roast has rested. Open the Roastery tab and tap Blend.,,,,,,,,,
+tip.corner,"The Corner Cafe is open! Pastries, iced drinks and tables. The cart keeps running as a branch.",,,,,,,,,
+tip.forecast,The forecast board shows three days ahead.,,,,,,,,,
+tip.frost,Frost at origin: buy a different green coffee for a few days.,,,,,,,,,
+tip.head_barista,Your head barista now flags pre-orders that are close to their pickup time.,,,,,,,,,
+tip.heat,Heat: iced drinks everywhere. Buy ice or make extra in the forecast.,,,,,,,,,
+tip.ice_out,Out of ice! Buy a bag or a bigger ice maker.,,,,,,,,,
+tip.jam,"A worn grinder jammed. Hold it to unjam, and service it in the Bar tab.",,,,,,,,,
+tip.milk_late,The milk van is late. A milk run or fewer milk drinks helps.,,,,,,,,,
+tip.milk_out,Out of milk! Order more for tomorrow or send a milk run.,,,,,,,,,
+tip.plan,"Each morning: check the forecast, the milk order and the menu, then open.",,,,,,,,,
+tip.rail_full,"The rail was full, so someone walked away. Add a barista or a longer rail.",,,,,,,,,
+tip.rain,Rain day: more pre-orders and hot drinks. Prep the urn in the forecast.,,,,,,,,,
+tip.report,"That was your first day! Stars come from reviews: fast, tasty and on time.",,,,,,,,,
+tip.rest,Fresh beans rest until tomorrow. Then blend them into the house beans.,,,,,,,,,
+tip.roast,Now roast it: pick a profile and tap Drop in the sweet spot.,,,,,,,,,
+tip.roastery,The Roastery Hall is open! Buy green coffee in the Roastery tab.,,,,,,,,,
+tip.sold_out,A pastry sold out. Bake more in the Menu tab.,,,,,,,,,
+tip.spree,Bad reviews hurt footfall. Check the dial-in and the wait times.,,,,,,,,,
+tip.walked,"A customer gave up waiting. Hire, add a group head, or set a house rule.",,,,,,,,,
+tip.wholesale,Wholesale needs enough beans of good quality on the delivery day.,,,,,,,,,
+toast.blended,{kg} blended into the house beans.,,,,,,,,,
+toast.dialed,Grinder dialled in. Shots taste sweet again.,,,,,,,,,
+toast.drop,Batch dropped. It rests until tomorrow.,,,,,,,,,
+toast.drop_sweet,Right in the sweet spot! A great batch.,,,,,,,,,
+toast.fridge,"Milk in the fridge: whole {whole}, oat {oat}.",,,,,,,,,
+toast.handover,{n} orders handed over. Smiles all round!,,,,,,,,,
+toast.milk_run,The emergency milk is here.,,,,,,,,,
+toast.repaired,Grinder unjammed.,,,,,,,,,
+toast.roast_done,Roast done · quality {q},,,,,,,,,
+toast.venue,{name} is open!,,,,,,,,,
+toast.wholesale,Wholesale delivery paid: {cash},,,,,,,,,
+trait.chatty,Chatty,,,,,,,,,
+trait.perfectionist,Perfectionist,,,,,,,,,
+trait.quick,Quick,,,,,,,,,
+trait.steady,Steady,,,,,,,,,
 unit.h,h,sa,h,h,h,h,ч,時,시간,घं
 unit.min,min,dk,min,min,min,min,мин,分,분,मि
 unit.s,s,sn,s,s,s,s,с,秒,초,से
-upgrade.bin_m,Bigger bin,Daha büyük kutu,Größerer Behälter,Contenedor más grande,Bac plus grand,Recipiente maior,Большой бак,大きなボックス,더 큰 통,बड़ा बिन
-upgrade.bin_m.d,Twice the space. Fewer trips.,İki kat yer. Daha az yolculuk.,Doppelt so viel Platz. Weniger Fahrten.,El doble de espacio. Menos viajes.,Deux fois plus de place. Moins de trajets.,O dobro de espaço. Menos viagens.,Вдвое больше места. Меньше поездок.,2倍の容量。回収の回数が減ります。,두 배 공간. 이동 횟수가 줄어요.,दोगुनी जगह। कम चक्कर।
-upgrade.compactor,Compactor,Sıkıştırıcı,Presse,Compactador,Compacteur,Compactador,Компактор,コンパクター,압축 회수기,कॉम्पैक्टर
-upgrade.compactor.d,Squeezes plastic 2.5×. Jams a bit more often.,"Plastiği 2,5× sıkıştırır. Biraz daha sık sıkışır.","Presst Plastik 2,5×. Verklemmt etwas öfter.","Aplasta el plástico 2,5×. Se atasca un poco más a menudo.","Compacte le plastique 2,5×. Bloque un peu plus souvent.","Espreme o plástico 2,5×. Trava um pouco mais.","Сжимает пластик в 2,5×. Заклинивает чуть чаще.",プラスチックを2.5×に圧縮。詰まりがやや増えます。,플라스틱을 2.5배로 압축해요. 걸림이 조금 더 자주 생겨요.,प्लास्टिक 2.5× दबाता है। थोड़ा ज़्यादा जाम होता है।
-upgrade.sensor,Fill sensor,Doluluk sensörü,Füllsensor,Sensor de llenado,Capteur de remplissage,Sensor de nível,Датчик заполнения,満杯センサー,채움 센서,भराव सेंसर
-upgrade.sensor.d,Live fill bar instead of a guess.,Tahmin yerine canlı doluluk çubuğu.,Live-Füllleiste statt Schätzung.,Barra de llenado en vivo en vez de una estimación.,Barre de remplissage en direct au lieu d'une estimation.,Barra de nível ao vivo em vez de um palpite.,Живая полоска заполнения вместо догадки.,推測ではなく、リアルタイムの満杯バーを表示。,추측 대신 실시간 채움 막대.,अनुमान की जगह लाइव भराव बार।
 upgrade.title,Upgrades,Geliştirmeler,Verbesserungen,Mejoras,Améliorations,Melhorias,Улучшения,アップグレード,업그레이드,अपग्रेड
+venue.cart,Quayside Cart,,,,,,,,,
+venue.cart.d,A coffee cart under a striped awning on the quay.,,,,,,,,,
+venue.corner,Corner Cafe,,,,,,,,,
+venue.corner.d,"Seats, a pastry case, iced drinks and more customers.",,,,,,,,,
+venue.roastery,Roastery Hall,,,,,,,,,
+venue.roastery.d,A big hall with a drum roaster. Roast your own beans and sell wholesale.,,,,,,,,,
+weather.fog,☁ Fog,,,,,,,,,
+weather.heat,☀ Heat,,,,,,,,,
+weather.rain,☂ Rain,,,,,,,,,
+weather.sunny,☀ Clear,,,,,,,,,

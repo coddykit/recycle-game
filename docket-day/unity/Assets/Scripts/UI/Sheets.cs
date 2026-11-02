@@ -1,14 +1,13 @@
 // Docket Day — bottom sheets (CoddyKit BottomSheet: content-sized, finger scroll with inertia, no visible scrollbar,
 // one action pill per card, fleet §16 / §17). Every sheet is rebuilt from the sim when something changed, never under a
 // finger. Guide targets inside a sheet are named "Target_<target>" so the spotlight can find them.
-//   point     fill + estimate/live, today's numbers, service rule chips, upgrades, technician, emergency empty (rewarded)
-//   depot     till, count lines, baler, yard / glass bay, sell buttons (today's price), depot upgrades, baler rescue (rewarded)
-//   fleet     trucks (status, load, auto), drivers / technicians, buy trucks, fuel voucher (rewarded)
-//   network   districts (unlock), free sites to build on (machines / shops / café contracts), dispatch office, counting centre
-//   research  three branches, one project at a time, ≤ 20 min
-//   shop      offer, ad-free & packs, upgrades, looks, cash (store prices only), Restore
-//   settings  language, music / effects, graphics tier, replay the guide, privacy options (UMP) + policy link, restore
-//   report    the day report: stars, numbers, Green Rating, Next day   ·   offline  the welcome-back card (×2 rewarded)
+//   intake    reception: waiting clients (area, fee model, judge, court window, conflict badge) -> Accept / Decline /
+//             Refer / Ethical wall; who is coming next (case preview, rewarded); standing instructions (auto-intake)
+//   matter    the matter card: parties, judge habit, odds (± until the twist is known), trust held, tasks (who, progress,
+//             due), the prep table, levers (settle, visiting counsel, continuance), collision warning
+//   prep      the prep table: match each claim with its exhibit (hints on in the guide)
+//   matters   every open matter by court date · team  people, hours, hire / let go · office  chapter, rooms, looks
+//   court     today's hearings · shop · settings · report (stars, numbers, billing boost, Billing run, Next day) · offline
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -31,7 +30,7 @@ namespace DocketDay.UI
             sheetKind = kind;
             sheetArg = arg;
             openTab = kind;
-            sheet = UiKit.BottomSheet("", "", null, 0.78f, L.T("sheet.close"));
+            sheet = UiKit.BottomSheet("", "", null, kind == "intake" || kind == "matter" ? 0.7f : 0.78f, L.T("sheet.close"));
             sheet.Closed += () => { openTab = ""; main.SheetClosed(sheetKind); };
             FillSheet();
             sheet.Open(root);
@@ -50,11 +49,13 @@ namespace DocketDay.UI
             sheet.Actions.Clear();
             switch (sheetKind)
             {
-                case "point": FillPoint(sheetArg); break;
-                case "depot": FillDepot(); break;
-                case "fleet": FillFleet(); break;
-                case "network": FillNetwork(); break;
-                case "research": FillResearch(); break;
+                case "intake": FillIntake(); break;
+                case "matter": FillMatter(sheetArg); break;
+                case "prep": FillPrep(sheetArg); break;
+                case "matters": FillMatters(); break;
+                case "team": FillTeam(); break;
+                case "office": FillOffice(); break;
+                case "court": FillCourt(); break;
                 case "shop": FillShop(); break;
                 case "settings": FillSettings(); break;
                 case "report": FillReport(Sim.S.History.Count > 0 ? Sim.S.History[Sim.S.History.Count - 1] : null, true); break;
@@ -71,6 +72,7 @@ namespace DocketDay.UI
 
         void Add(VisualElement e) => sheet.Body.Add(e);
         void Section(string text, string trailing = "") => Add(UiKit.SectionHeader(text, trailing));
+        void Line(string text, string cls = "coddy-body") => Add(UiKit.Text(text, cls));
 
         UiKit.ListCard Card(string title, string sub, string actionText, Action onAction, bool enabled = true, string kind = "primary", string target = null, string badge = "")
         {
@@ -85,224 +87,293 @@ namespace DocketDay.UI
             return c;
         }
 
+        VisualElement Pills()
+        {
+            var r = new VisualElement();
+            r.AddToClassList("dd-pills");
+            Add(r);
+            return r;
+        }
+
+        Button Pill(VisualElement row, string text, Action a, bool enabled = true, string kind = "tonal", string target = null)
+        {
+            var b = UiKit.ActionPill(text, a, enabled, kind);
+            if (target != null) b.name = "Target_" + target.Replace(':', '_');
+            row.Add(b);
+            return b;
+        }
+
         VisualElement KV(string k, string v, string cls = "")
         {
             var r = new VisualElement();
-            r.AddToClassList("br-row");
-            r.Add(UiKit.Text(k, "br-row__k"));
-            var vl = UiKit.Text(v, "br-row__v");
+            r.AddToClassList("dd-row");
+            r.Add(UiKit.Text(k, "dd-row__k"));
+            var vl = UiKit.Text(v, "dd-row__v");
             if (cls != "") vl.AddToClassList(cls);
             r.Add(vl);
             Add(r);
             return r;
         }
 
-        string BuyLabel(BuyInfo b) => b.Ok ? Money(b.Cost) : b.Reason == "cash" ? Money(b.Cost) : L.T("err." + b.Reason);
+        string BuyLabel(BuyInfo b, string key = "office.build") => b.Ok || b.Reason == "cash" ? L.F(key, "cost", Money(b.Cost)) : L.T("err." + b.Reason);
+        string Pct(double p) => Fmt.Pct(p, L.Lang);
+        string MatterTitle(MatterState m) => L.T("matter." + m.Area + "." + m.Title);
+        string Party(int i) => i >= 0 && i < Sim.Gd.Parties.Count ? L.T("party." + Sim.Gd.Parties[i]) : "?";
 
-        void Buy(string item) => main.Run("buy:" + item);
-
-        void RewardCard(string placement, string key, int target = -1)
+        void RewardCard(string placement)
         {
-            var o = main.Rewards?.Get(placement, target);
+            var o = main.Rewards?.Get(placement);
             if (o == null || !o.Show) return;
             string label = Simulation.RewardIsCash(placement)
                 ? L.F(o.Video ? "reward.video_cash" : "reward.free_cash", "cash", Money(o.Amount))
                 : L.T(o.Video ? "reward.video" : "reward.claim");
-            Card(L.T("reward." + key + ".t"), o.Video ? L.T("reward." + key + ".b") : L.T("reward.free.b"), label, () => main.ClaimReward(placement, target), true, "tonal");
+            Card(L.T("reward." + placement + ".t"), o.Video ? L.T("reward." + placement + ".b") : L.T("reward.free.b"), label, () => main.ClaimReward(placement), true, "tonal");
         }
 
-        // ------------------------------------------------------------------ point
-
-        void FillPoint(int i)
+        string FeeLine(MatterState m)
         {
-            if (i < 0 || i >= Sim.S.Points.Count) { CloseSheet(); return; }
-            var p = Sim.S.Points[i];
-            var node = Sim.NodeOf(p);
-            Title(L.T("place." + node.Id), L.T("kind." + p.Kind) + " · " + L.T("district." + node.District));
-            double pct = Sim.DisplayPct(p);
-            KV(L.F("point.fill", "pct", Fmt.Pct(pct, L.Lang)), Sim.DisplayIsLive(p) ? L.T("point.live") : p.SensorOffline ? L.T("point.offline") : L.T("point.estimate"),
-                Sim.IsFull(p) ? "br-row__v--bad" : "");
-            if (p.Jammed) Add(UiKit.Text(L.T("point.jammed"), "coddy-body"));
-            else if (p.BusyUntil > Sim.S.Minute) Add(UiKit.Text(L.T("point.busy"), "coddy-body"));
-            else if (Sim.IsFull(p)) Add(UiKit.Text(L.T("point.full"), "coddy-body"));
-            if (node.Alley) Add(UiKit.Text(L.T("point.alley"), "coddy-caption-muted"));
-            Add(UiKit.Text(L.F("point.today", "dep", p.Deposited, "turned", p.Turned), "coddy-caption-muted"));
-
-            if (p.Jammed || p.SensorOffline)
-                Card(L.T("point.send_tech"), L.F("fleet.techs", "n", Sim.FreeTechs), p.TechCalled ? L.T("point.tech_on_way") : L.T("point.send_tech"),
-                    () => main.Run("tech:point:" + i), !p.TechCalled && Sim.FreeTechs > 0);
-            RewardCard("emergency_empty", "empty", i);
-
-            Section(L.T("policy.title"));
-            Add(UiKit.Text(L.T("policy.help"), "coddy-caption-muted"));
-            var chips = new VisualElement { style = { flexDirection = FlexDirection.Row, flexWrap = Wrap.Wrap } };
-            void Chip(string text, string action, bool on, string target)
-            {
-                var b = UiKit.ActionPill(text, () => main.Run(action), true, on ? "primary" : "tonal");
-                if (target != null) b.name = "Target_" + target;
-                chips.Add(b);
-            }
-            foreach (int th in Policies.Thresholds)
-                Chip(L.F("policy.threshold", "pct", Fmt.Pct(th / 100.0, L.Lang)), "policy:" + i + ":threshold:" + th, p.Policy == Policies.Threshold && p.Threshold == th,
-                    th == 80 ? "policy_" + i : null);
-            foreach (int d in Policies.FixedDays)
-                Chip(d == 1 ? L.T("policy.fixed1") : L.F("policy.fixed", "n", d), "policy:" + i + ":fixed:" + d, p.Policy == Policies.Fixed && p.FixedEvery == d, null);
-            Chip(L.T("policy.call"), "policy:" + i + ":call:0", p.Policy == Policies.Call, null);
-            Add(chips);
-
-            if (p.IsMachine)
-            {
-                Section(L.T("upgrade.title"));
-                var bin = Sim.CanBuy("bin_m:" + i);
-                if (bin.Reason != "owned") Card(L.T("upgrade.bin_m"), L.T("upgrade.bin_m.d"), BuyLabel(bin), () => Buy("bin_m:" + i), bin.Ok, "primary", "upgrade:" + i);
-                var comp = Sim.CanBuy("compactor:" + i);
-                if (comp.Reason != "owned") Card(L.T("upgrade.compactor"), L.T("upgrade.compactor.d"), BuyLabel(comp), () => Buy("compactor:" + i), comp.Ok);
-                var sen = Sim.CanBuy("sensor:" + i);
-                if (sen.Reason != "owned") Card(L.T("upgrade.sensor"), L.T("upgrade.sensor.d"), BuyLabel(sen), () => Buy("sensor:" + i), sen.Ok);
-            }
+            var a = Sim.AreaOf(m);
+            string money = m.Fee == Fees.Contingency ? L.F("intake.value", "cash", Money(a.Value * Sim.TierOf(m).Fee))
+                : m.Fee == Fees.Retainer ? L.F("intake.retainer", "cash", Money(a.Retainer * Sim.TierOf(m).Fee)) : L.F("intake.win_fee", "cash", Money(Sim.WinFee(m)));
+            return L.T("area." + m.Area) + " · " + L.T("tier." + m.Tier) + " · " + L.T("fee." + m.Fee) + " · " + money;
         }
 
-        // ------------------------------------------------------------------ depot
+        string TwistLine(MatterState m) => !m.Revealed ? L.T("intake.twist_hidden") : m.Twist > 0.001 ? L.T("intake.twist_hard") : m.Twist < -0.001 ? L.T("intake.twist_easy") : L.T("intake.twist_none");
 
-        void FillDepot()
+        // ------------------------------------------------------------------ intake (reception)
+
+        void FillIntake()
         {
-            var d = Sim.S.Depot;
-            Title(L.T("depot.title"), L.F("depot.lines", "n", d.Lines, "rate", (long)Math.Round(Sim.CountPerMinute * 60)));
-            double till = Math.Floor(d.Till);
-            Card(till >= 1 ? L.F("depot.till", "cash", Money(till)) : L.T("depot.till_empty"), L.F("depot.intake", "n", (long)Math.Round(d.IntakeTotal)),
-                L.T("common.ok"), () => main.Run("till"), till >= 1, "primary", "coins");
-            int gate = 0;
-            foreach (var t in Sim.S.Trucks) if (t.Status == TruckStatus.Wait) gate++;
-            if (gate > 0) Add(UiKit.Text(L.F("depot.gate", "n", gate), "coddy-body"));
-
-            Section(L.T("depot.baler"), d.BalerDown ? L.T("depot.baler_down") : "");
-            int pressing = d.Press[Mats.Alu] > d.Press[Mats.Pet] ? Mats.Alu : Mats.Pet;
-            double press = d.Press[pressing] / Sim.Gd.Materials[pressing].BaleKg;
-            Add(UiKit.Text(d.BalerDown ? L.T("depot.baler_down") : press > 0 ? L.F("depot.baler_ok", "mat", L.T("mat." + Mats.Ids[pressing]), "pct", Fmt.Pct(press, L.Lang)) : L.T("depot.baler_idle"), "coddy-body"));
-            if (d.BalerDown)
+            Title(L.T("intake.title"), L.F("intake.waiting", "n", Sim.IntakeCount));
+            bool any = false;
+            foreach (var m in new List<MatterState>(Sim.Intakes))
             {
-                Card(L.T("point.send_tech"), L.F("fleet.techs", "n", Sim.FreeTechs), L.T("point.send_tech"), () => main.Run("tech:baler:0"), Sim.FreeTechs > 0);
-                RewardCard("baler_rescue", "baler");
+                any = true;
+                int id = m.Id;
+                var a = Sim.AreaOf(m);
+                bool conflict = Sim.Conflict(m);
+                var c = UiKit.Card(MatterTitle(m), L.F("matter.parties", "client", Party(m.Client), "opponent", Party(m.Opponent)), null, false, false, conflict ? L.T("rail.collision") : L.T("tier." + m.Tier));
+                if (conflict) c.Root.AddToClassList("dd-card--conflict");
+                Add(c.Root);
+                Line(FeeLine(m), "coddy-caption-muted");
+                Line(L.T("judge." + Sim.Gd.Judges[m.Judge].Id) + " — " + L.T("judge." + Sim.Gd.Judges[m.Judge].Id + ".d") + " · " + L.F("intake.hearing_in", "a", a.AfterMin, "b", a.AfterMax), "coddy-caption-muted");
+                Line(TwistLine(m) + (m.Tutorial ? "" : " · " + L.F("intake.patience", "time", Fmt.ClockMin(m.Expires))), "coddy-caption-muted");
+                if (conflict) Line(L.T("intake.conflict"), "dd-warn");
+                var row = Pills();
+                Pill(row, L.T("intake.accept"), () => main.Run("accept:" + id), !conflict, "primary", "accept:" + id);
+                if (conflict) Pill(row, L.F("intake.wall", "cost", Money(Sim.Gd.WallCost)), () => main.Run("wall:" + id), Sim.CanAccept(id, true) == "");
+                if (!m.Tutorial)
+                {
+                    Pill(row, L.T("intake.refer"), () => main.Run("refer:" + id));
+                    Pill(row, L.T("intake.decline"), () => main.Run("decline:" + id));
+                }
             }
-            Add(UiKit.Text(Sim.YardFull ? L.T("depot.yard_full") : L.F("depot.yard", "n", d.Yard, "cap", d.YardCap), "coddy-caption-muted"));
-            Add(UiKit.Text(L.F("depot.glass", "n", d.Bales[Mats.Glass], "cap", Sim.GlassBayCap), "coddy-caption-muted"));
-            for (int m = 0; m < Mats.N; m++)
+            if (!any) Line(L.T("intake.empty"), "coddy-caption-muted");
+            if (main.Coach.Active) return;
+            Section(L.T("intake.upcoming"));
+            foreach (var m in Sim.Upcoming) Line(MatterTitle(m) + " · " + L.T("area." + m.Area) + " · " + TwistLine(m), "coddy-caption-muted");
+            RewardCard("case_preview");
+            Section(L.T("intake.rules"));
+            Line(L.F("intake.rules_help", "n", Sim.S.Rules.Count, "m", Sim.MaxRules), "coddy-caption-muted");
+            var rules = Pills();
+            foreach (var a in Sim.Gd.Areas)
             {
-                int mm = m;
-                int n = d.Bales[m];
-                double price = Sim.BalePrice(m);
-                Card(L.T("mat." + Mats.Ids[m]), L.F("depot.price", "pct", Fmt.Pct(Sim.MarketMult(m), L.Lang)),
-                    n > 0 ? L.F("depot.sell", "n", n, "cash", Money(Math.Round(n * price))) : L.T("depot.none"), () => main.Run("sell:" + mm), n > 0, "primary", "sell:" + m);
-            }
-            Section(L.T("upgrade.title"));
-            foreach (var item in new[] { "line", "intake", "yard", "centre" })
-            {
-                var b = Sim.CanBuy(item);
-                if (b.Reason == "owned" || b.Reason == "max") continue;
-                string it = item;
-                Card(L.T("buy." + item), L.T("buy." + item + ".d"), BuyLabel(b), () => Buy(it), b.Ok);
+                if (!Sim.AreaUnlocked(a.Id)) continue;
+                bool on = Sim.S.Rules.Contains(a.Id);
+                string aid = a.Id;
+                Pill(rules, L.T("area." + a.Id) + " · " + L.T(on ? "intake.rule_on" : "intake.rule_off"), () => main.Run("rule:" + aid + ":" + (on ? 0 : 1)), true, on ? "primary" : "tonal");
             }
         }
 
-        // ------------------------------------------------------------------ fleet
+        // ------------------------------------------------------------------ matter card
 
-        void FillFleet()
+        void FillMatter(int id)
         {
-            Title(L.T("tab.fleet"), L.F("fleet.drivers", "n", Sim.S.Drivers, "m", Sim.S.Trucks.Count) + " · " + L.F("fleet.techs", "n", Sim.S.Techs));
-            for (int i = 0; i < Sim.S.Trucks.Count; i++)
+            var m = Sim.MatterById(id);
+            if (m == null) { CloseSheet(); return; }
+            if (m.Status == MatterStatus.Intake) { sheetKind = "intake"; FillIntake(); return; }
+            var j = Sim.Gd.Judges[m.Judge];
+            Title(MatterTitle(m), L.F("matter.parties", "client", Party(m.Client), "opponent", Party(m.Opponent)));
+            Line(FeeLine(m), "coddy-caption-muted");
+            if (m.Wall) Line(L.T("matter.wall"), "coddy-caption-muted");
+            KV(L.T("judge." + j.Id), L.T("judge." + j.Id + ".d"));
+            KV(L.T("matter.twist_label"), TwistLine(m));
+            KV(L.T("matter.odds_label"), m.Revealed ? Pct(Sim.ShownOdds(m)) : Pct(Sim.ShownOdds(m)) + " ±?", Sim.ShownOdds(m) >= 0.7 ? "dd-row__v--good" : Sim.ShownOdds(m) < 0.5 ? "dd-row__v--bad" : "");
+            if (m.Trust > 0) KV(L.T("matter.trust_label"), Money(m.Trust));
+            if (m.Status == MatterStatus.Hearing) { Line(L.T("matter.in_session"), "dd-warn"); return; }
+            var col = Sim.Collisions().Find(c => c.Matter == m.Id);
+            if (col != null) Line(L.T(col.Kind == "double" ? "matter.collision" : "matter.uncovered"), "dd-warn");
+
+            Section(L.T("matter.tasks"));
+            for (int i = 0; i < m.Tasks.Count; i++)
             {
+                var t = m.Tasks[i];
                 int ti = i;
-                var t = Sim.S.Trucks[i];
-                string sub = L.T("truck.status." + t.Status) + " · " + L.F("truck.load", "pct", Fmt.Pct(Sim.LoadPct(t), L.Lang))
-                    + (t.Stops.Count > 0 ? " · " + L.F("truck.stops", "n", t.Stops.Count) : "") + (Sim.LoadLimitedByWeight(t) && Sim.LoadPct(t) > 0.5 ? " · " + L.T("truck.weight") : "");
-                if (t.Busy && (t.Status == TruckStatus.Drive || t.Status == TruckStatus.Service))
-                    Card(L.F("truck.name", "type", L.T("truck." + t.Type), "n", i + 1), sub, L.T("truck.recall"), () => main.Run("recall:" + ti), true, "tonal");
-                else if (t.Status == TruckStatus.Broken)
-                    Card(L.F("truck.name", "type", L.T("truck." + t.Type), "n", i + 1), sub, L.T("point.send_tech"), () => main.Run("tech:truck:" + ti), Sim.FreeTechs > 0, "tonal");
+                string who = t.Staff == Attend.None ? L.T("matter.nobody") : StaffName(t.Staff);
+                string sub;
+                if (t.Kind == Kinds.Hearing)
+                    sub = L.F("matter.hearing_line", "day", DayLabel(t.Due), "time", Fmt.ClockMin(Sim.Gd.HearingSlots[Math.Min(t.Slot, Sim.Gd.HearingSlots.Length - 1)])) + " · "
+                        + (t.Staff == Attend.Visiting ? L.T("matter.visiting") : L.F("matter.attends", "name", who));
                 else
-                    Card(L.F("truck.name", "type", L.T("truck." + t.Type), "n", i + 1), sub, L.T("truck.suggest"), () => { CloseSheet(); main.Run("select_truck:" + ti); main.Run("suggest"); }, !t.Busy, "tonal");
-                if (Sim.S.Depot.Dispatcher)
-                {
-                    var tog = UiKit.ActionPill(L.T("truck.auto"), () => main.Run("auto:" + ti + ":" + (t.Auto ? 0 : 1)), true, t.Auto ? "primary" : "tonal");
-                    Add(tog);
-                }
+                    sub = (t.Finished ? L.T("matter.done") : t.Late ? L.T("matter.late") : t.Due <= Sim.S.Day ? L.T("matter.due_today") : L.F("matter.due", "day", DayLabel(t.Due)))
+                        + " · " + L.F("matter.progress", "done", t.Done.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture), "need", t.Need.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture)) + " · " + who;
+                bool canRemove = !t.Finished && t.Staff >= 0;
+                Card(L.T("kind." + t.Kind), sub, canRemove ? L.T("matter.unassign") : null, () => main.Run("unassign:" + m.Id + ":" + ti), canRemove, "tonal");
             }
-            RewardCard("fuel_voucher", "fuel");
-            Section(L.T("upgrade.title"));
-            var drv = Sim.CanBuy("driver");
-            if (drv.Reason != "max") Card(L.T("buy.driver"), L.T("buy.driver.d"), BuyLabel(drv), () => Buy("driver"), drv.Ok, "primary", "hire");
-            var tech = Sim.CanBuy("tech");
-            if (tech.Reason != "max") Card(L.T("buy.tech"), L.T("buy.tech.d"), BuyLabel(tech), () => Buy("tech"), tech.Ok);
-            foreach (var type in Sim.Gd.VehicleOrder)
+            Line(L.T("rail.drag_hint"), "coddy-caption-muted");
+
+            Section(L.T("matter.prep_open"));
+            if (m.PuzzleSolved) Line(L.T("matter.prep_done"), "coddy-caption-muted");
+            else if (!Sim.PrepOpen(m)) Line(L.T("matter.prep_locked"), "coddy-caption-muted");
+            else Card(L.T("prep.title"), L.T("prep.help"), L.T("settings.open"), () => OpenSheet("prep", m.Id), true, "primary", "prep:" + m.Id);
+
+            Section(L.T("matter.levers"));
+            double settle = Sim.SettleFee(m);
+            Card(L.F("matter.settle", "cash", Money(settle)), L.T("matter.settle_d") + " " + L.F("matter.litigate_d", "win", Money(Sim.WinFee(m)), "loss", Money(Sim.LossFee(m))),
+                L.T("lever.settle"), () => main.Run("settle:" + m.Id), !main.Coach.Active, "primary");
+            var h = m.HearingTask;
+            if (h != null && h.Staff != Attend.Visiting)
+                Card(L.F("matter.visiting_btn", "cash", Money(Sim.VisitingCost(m.Id))), L.T("matter.visiting_d"), L.T("lever.visiting"), () => main.Run("visiting:" + m.Id), Sim.S.Cash >= Sim.VisitingCost(m.Id) && !main.Coach.Active, "tonal");
+            if (!m.Continued) Card(L.T("matter.continuance"), L.T("matter.continuance_d"), L.T("lever.continue"), () => main.Run("continuance:" + m.Id), !main.Coach.Active && !m.Tutorial, "tonal");
+        }
+
+        // ------------------------------------------------------------------ prep table
+
+        void FillPrep(int id)
+        {
+            var m = Sim.MatterById(id);
+            if (m == null || m.Status != MatterStatus.Open) { CloseSheet(); return; }
+            Title(L.T("prep.title"), MatterTitle(m));
+            Line(L.T("prep.help"), "coddy-caption-muted");
+            if (m.PuzzleSolved) { Line(L.T("prep.done"), "dd-good"); sheet.Actions.Add(UiKit.PrimaryButton(L.T("common.ok"), () => OpenSheet("matter", id))); return; }
+            int claim = 0;
+            while (m.Matched.Contains(claim)) claim++;
+            bool hints = main.Coach.Active;
+            for (int c = 0; c < m.Claims; c++)
             {
-                var b = Sim.CanBuy("truck:" + type);
-                if (b.Reason == "max") continue;
-                string tt = type;
-                Card(L.T("truck." + type), L.T("truck." + type + ".d"), b.Reason == "research" ? L.T("err.research") : BuyLabel(b), () => Buy("truck:" + tt), b.Ok);
+                bool done = m.Matched.Contains(c);
+                var card = UiKit.Card(L.F("prep.claim", "n", c + 1, "text", L.T("claim." + c)), done ? "✓ " + L.T("exhibit." + c) : "", null, false, c == claim, "");
+                Add(card.Root);
+            }
+            Section(L.T("prep.title"));
+            var row = Pills();
+            int cl = claim;
+            foreach (int e in m.Exhibits)
+            {
+                if (e < m.Claims && m.Matched.Contains(e)) continue;
+                int ex = e;
+                var b = Pill(row, e >= m.Claims ? L.T("exhibit.decoy") : L.T("exhibit." + e), () => main.Run("prep_match:" + id + ":" + cl + ":" + ex), true, hints && ex == cl ? "primary" : "tonal");
+                if (ex == cl) b.name = "Target_prep_" + id;
+            }
+            if (hints) Line(L.T("prep.hint"), "coddy-caption-muted");
+        }
+
+        // ------------------------------------------------------------------ matters / court
+
+        void FillMatters()
+        {
+            var list = new List<MatterState>();
+            foreach (var m in Sim.S.Matters) if (m.Active) list.Add(m);
+            list.Sort((a, b) => a.HearingTask.Due.CompareTo(b.HearingTask.Due));
+            int coll = Sim.Collisions().Count;
+            Title(L.T("matters.title"), coll > 0 ? L.F("matters.collisions", "n", coll) : "");
+            if (list.Count == 0) Line(L.T("matters.empty"), "coddy-caption-muted");
+            foreach (var m in list)
+            {
+                int id = m.Id;
+                string sub = FeeLine(m) + " · " + L.F("matter.hearing_line", "day", DayLabel(m.HearingTask.Due), "time", Fmt.ClockMin(Sim.Gd.HearingSlots[Math.Min(m.HearingTask.Slot, Sim.Gd.HearingSlots.Length - 1)]));
+                Card(MatterTitle(m), sub, L.F(m.Revealed ? "matter.odds" : "matter.odds_hidden", "pct", Pct(Sim.ShownOdds(m))), () => OpenSheet("matter", id), true, "tonal", null, Sim.InCollision(id) ? L.T("rail.collision") : "");
             }
         }
 
-        // ------------------------------------------------------------------ network
-
-        void FillNetwork()
+        void FillCourt()
         {
-            Title(L.T("tab.network"), L.F("hud.rating", "r", Fmt.Rating(Sim.S.Rating)));
-            foreach (var dd in Sim.Gd.Districts)
+            Title(L.T("court.title"), L.T("court.today"));
+            bool any = false;
+            foreach (var m in Sim.S.Matters)
             {
-                if (Sim.Unlocked(dd.Id)) continue;
-                var b = Sim.CanBuy("district:" + dd.Id);
+                if (!m.Active || m.HearingTask.Due != Sim.S.Day) continue;
+                any = true;
+                int id = m.Id;
+                Card(MatterTitle(m), L.T("judge." + Sim.Gd.Judges[m.Judge].Id) + " · " + Fmt.ClockMin(Sim.Gd.HearingSlots[Math.Min(m.HearingTask.Slot, Sim.Gd.HearingSlots.Length - 1)]),
+                    L.F("matter.odds", "pct", Pct(Sim.ShownOdds(m))), () => OpenSheet("matter", id), true, "tonal");
+            }
+            if (!any) Line(L.T("court.none"), "coddy-caption-muted");
+        }
+
+        // ------------------------------------------------------------------ team
+
+        void FillTeam()
+        {
+            Title(L.T("team.title"), L.F("team.sub", "n", Sim.S.Staff.Count, "d", Sim.S.Staff.FindAll(x => x.TempUntil <= 0).Count, "m", Sim.DeskCap));
+            Section(L.T("team.roster"));
+            foreach (var s in Sim.S.Staff)
+            {
+                var r = Sim.RoleOf(s);
+                int id = s.Id;
+                string state = s.Sick ? L.T("staff.sick") : Sim.InSession(id) ? L.T("staff.in_court") : Sim.Tired(s) ? L.T("staff.tired") : "";
+                string sub = L.T("role." + s.Role) + " · " + L.F("staff.hours", "left", s.HoursLeft.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture), "total", r.Hours)
+                    + " · " + L.F("staff.queue", "h", Sim.QueuedHours(s).ToString("0.#", System.Globalization.CultureInfo.InvariantCulture)) + (state != "" ? " · " + state : "") + (s.TempUntil > 0 ? " · " + L.T("staff.day_pass") : "");
+                string name = Sim.IsFounder(s) ? L.T("staff.founder") : L.T("staff.name." + s.Name);
+                if (Sim.IsFounder(s) || s.TempUntil > 0) Card(name, sub, null, null);
+                else Card(name, sub, L.T("team.fire"), () => main.Run("fire:" + id), !main.Coach.Active, "tonal");
+            }
+            Section(L.T("team.hire"));
+            foreach (var role in Sim.Gd.RoleOrder)
+            {
+                var b = Sim.CanHire(role);
+                if (b.Reason == "locked" || b.Reason == "max") continue;
+                var d = Sim.Gd.Roles[role];
+                string rr = role;
+                Card(L.T("role." + role), L.T("role." + role + ".d") + " · " + L.F("team.rate", "rate", Money(d.Rate), "salary", Money(d.Salary)), BuyLabel(b, "team.hire_cost"), () => main.Run("hire:" + rr), b.Ok);
+            }
+        }
+
+        // ------------------------------------------------------------------ office
+
+        void FillOffice()
+        {
+            var ch = Sim.Gd.ChapterOf(Sim.Chapter);
+            Title(L.T("office.title"), L.F("office.chapter", "n", Sim.Chapter, "name", L.T("chapter." + ch.Id)));
+            if (Sim.S.Building != "") Line(L.F("office.building", "name", L.T("room." + Sim.S.Building), "time", Fmt.Dur(Sim.BuildLeftS, L)), "dd-good");
+            var next = Sim.NextChapter;
+            if (next != null)
+            {
+                string why = Sim.CanMoveUp();
+                Card(L.F("office.move_up", "name", L.T("chapter." + next.Id)),
+                    L.F("office.needs", "s", next.Standing.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture), "n", next.Closed,
+                        "have", Sim.FirmStanding.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture), "closed", Sim.S.Closed),
+                    why == "" || why == "cash" ? L.F("office.move_cost", "cost", Money(next.Cost)) : L.T("err." + why), () => main.Run("move_up"), why == "" && !main.Coach.Active);
+            }
+            else Line(L.T("office.max"), "coddy-caption-muted");
+            Section(L.T("office.rooms"), L.F("office.desks", "n", Sim.S.Staff.FindAll(x => x.TempUntil <= 0).Count, "m", Sim.DeskCap));
+            foreach (var r in Sim.Gd.Rooms)
+            {
+                var b = Sim.CanBuild(r.Id);
                 if (b.Reason == "locked") continue;
-                Card(L.T("district." + dd.Id), L.F("district.needs", "r", (long)dd.Rating), L.F("district.unlock", "cost", Money(dd.Cost)), () => Buy("district:" + dd.Id), b.Ok);
-                break;
+                string id = r.Id;
+                string label = b.Reason == "owned" ? L.T("office.built") : b.Reason == "building" ? L.T("err.building") : BuyLabel(b);
+                bool allowed = b.Ok && (!main.Coach.Active || id == "library");
+                Card(L.T("room." + r.Id), L.T("room." + r.Id + ".d") + (r.Max > 1 ? " · " + Sim.RoomCount(r.Id) + "/" + r.Max : "") + " · " + Fmt.Dur(r.BuildS, L), label, () => main.Run("build:" + id), allowed, "primary", "build:" + id);
             }
-            foreach (var item in new[] { "dispatcher", "centre" })
+            if (main.Coach.Active) return;
+            // looks (owned cosmetics; never sold by ads)
+            var shop = main.Shop;
+            if (shop == null) return;
+            var themes = new List<string>();
+            foreach (var t in new[] { "gold_nameplate", "theme_classic", "theme_loft", "theme_deco" }) if (shop.Has(t)) themes.Add(t);
+            if (themes.Count == 0 && !shop.Has("court_themes") && !shop.Has("outfits")) return;
+            Section(L.T("office.looks"));
+            var st = main.Session.Settings;
+            var row = Pills();
+            Pill(row, L.T("looks.default"), () => main.SetLooks("", st.CourtTheme, st.Outfits), true, st.OfficeTheme == "" ? "primary" : "tonal");
+            foreach (var t in themes)
             {
-                var b = Sim.CanBuy(item);
-                if (b.Reason == "owned") continue;
-                string it = item;
-                Card(L.T("buy." + item), L.T("buy." + item + ".d"), b.Reason == "research" ? L.T("err.research") : BuyLabel(b), () => Buy(it), b.Ok);
+                string tt = t;
+                Pill(row, t == "gold_nameplate" ? L.T("iap.premium.t") : L.T("iap." + t + ".t"), () => main.SetLooks(tt, st.CourtTheme, st.Outfits), true, st.OfficeTheme == t ? "primary" : "tonal");
             }
-            foreach (var dd in Sim.Gd.Districts)
-            {
-                if (!Sim.Unlocked(dd.Id)) continue;
-                Section(L.T("district." + dd.Id));
-                foreach (var n in Sim.Gd.Nodes)
-                {
-                    if (n.District != dd.Id || n.Kind != "site") continue;
-                    int pi = Sim.PointAt(n.Index);
-                    if (pi >= 0)
-                    {
-                        var p = Sim.S.Points[pi];
-                        Card(L.T("place." + n.Id), L.T("kind." + p.Kind) + " · " + L.F("point.fill", "pct", Fmt.Pct(Sim.DisplayPct(p), L.Lang)), L.T("common.ok"), () => OpenSheet("point", pi), true, "tonal");
-                        continue;
-                    }
-                    string id = (n.Site == "machine" ? "machine:" : n.Site + ":") + n.Id;
-                    var b = Sim.CanBuy(id);
-                    string key = n.Site == "machine" ? "machine" : n.Site;
-                    Card(L.T("place." + n.Id), L.T("buy." + key) + " — " + L.T("buy." + key + ".d"), b.Reason == "research" ? L.T("err.research") : BuyLabel(b), () => Buy(id), b.Ok);
-                }
-            }
-        }
-
-        // ------------------------------------------------------------------ research
-
-        void FillResearch()
-        {
-            string running = Sim.S.Researching;
-            Title(L.T("tab.research"), running != "" ? L.T("research." + running + ".t") + " · " + L.F("research.left", "time", Fmt.Dur(Sim.S.ResearchLeftS, L)) : "");
-            foreach (var branch in new[] { "network", "fleet", "depot" })
-            {
-                Section(L.T("research.branch." + branch));
-                foreach (var r in Sim.Gd.Research)
-                {
-                    if (r.Branch != branch) continue;
-                    string why = Sim.CanResearch(r.Id);
-                    string id = r.Id;
-                    string action = why == "owned" ? L.T("research.done") : why == "running" ? L.F("research.left", "time", Fmt.Dur(Sim.S.ResearchLeftS, L))
-                        : why == "requires" ? L.F("research.requires", "name", L.T("research." + r.Requires[0] + ".t")) : L.F("research.start", "cost", Money(r.Cost));
-                    Card(L.T("research." + id + ".t"), L.T("research." + id + ".d") + " · " + Fmt.Dur(r.Minutes * 60, L), action, () => main.Run("research:" + id), why == "", "primary");
-                }
-            }
+            if (shop.Has("court_themes")) Card(L.T("iap.court_themes.t"), "", L.T(st.CourtTheme ? "settings.on" : "settings.off"), () => main.SetLooks(st.OfficeTheme, !st.CourtTheme, st.Outfits), true, st.CourtTheme ? "primary" : "tonal");
+            if (shop.Has("outfits")) Card(L.T("iap.outfits.t"), "", L.T(st.Outfits ? "settings.on" : "settings.off"), () => main.SetLooks(st.OfficeTheme, st.CourtTheme, !st.Outfits), true, st.Outfits ? "primary" : "tonal");
         }
 
         // ------------------------------------------------------------------ shop
@@ -337,69 +408,84 @@ namespace DocketDay.UI
             var st = main.Session.Settings;
             Title(L.T("settings.title"), L.F("settings.version", "v", Application.version));
             Section(L.T("settings.language"));
-            var langs = new VisualElement { style = { flexDirection = FlexDirection.Row, flexWrap = Wrap.Wrap } };
+            var langs = Pills();
             for (int i = 0; i < Loc.Languages.Length; i++)
             {
                 string code = Loc.Languages[i];
-                langs.Add(UiKit.ActionPill(Loc.NativeNames[i], () => main.SetLanguage(code), true, L.Lang == code ? "primary" : "tonal"));
+                Pill(langs, Loc.NativeNames[i], () => main.SetLanguage(code), true, L.Lang == code ? "primary" : "tonal");
             }
-            Add(langs);
-            Section(L.T("settings.title"));
+            Section(L.T("settings.sound"));
             Card(L.T("settings.music"), "", L.T(st.Music ? "settings.on" : "settings.off"), () => main.SetAudio(!st.Music, st.Effects), true, st.Music ? "primary" : "tonal");
             Card(L.T("settings.effects"), "", L.T(st.Effects ? "settings.on" : "settings.off"), () => main.SetAudio(st.Music, !st.Effects), true, st.Effects ? "primary" : "tonal");
+            Card(L.T("settings.objection"), "", L.T(st.ObjectionTap ? "settings.on" : "settings.off"), () => main.SetObjection(!st.ObjectionTap), true, st.ObjectionTap ? "primary" : "tonal");
             Section(L.T("settings.graphics"));
-            var tiers = new VisualElement { style = { flexDirection = FlexDirection.Row } };
+            var tiers = Pills();
             foreach (var t in new[] { Tier.Low, Tier.Medium, Tier.High })
             {
                 var tt = t;
-                tiers.Add(UiKit.ActionPill(L.T("graphics." + t.ToString().ToLowerInvariant()), () => main.SetTier(tt), true, main.CurrentTier == t ? "primary" : "tonal"));
+                Pill(tiers, L.T("graphics." + t.ToString().ToLowerInvariant()), () => main.SetTier(tt), true, main.CurrentTier == t ? "primary" : "tonal");
             }
-            Add(tiers);
-            Section(L.T("settings.privacy"));
+            Section(L.T("settings.help"));
             Card(L.T("settings.guide"), "", L.T("intro.start"), main.ReplayGuide, true, "tonal");
-            Card(L.T("settings.privacy"), "", L.T("common.ok"), main.ShowPrivacyOptions, true, "tonal");
-            Card(L.T("settings.policy"), "", L.T("common.ok"), () => Application.OpenURL(DocketDay.App.DocketGameConfig.PrivacyUrl), true, "tonal");
-            Card(L.T("settings.restore"), "", L.T("common.ok"), () => main.Shop?.Restore(), true, "tonal");
+            Section(L.T("settings.privacy"));
+            Card(L.T("settings.privacy"), "", L.T("settings.open"), main.ShowPrivacyOptions, true, "tonal");
+            Card(L.T("settings.policy"), "", L.T("settings.open"), () => Application.OpenURL(DocketDay.App.DocketGameConfig.PrivacyUrl), true, "tonal");
+            Card(L.T("settings.restore"), "", L.T("shop.restore"), () => main.Shop?.Restore(), true, "tonal");
+            Section(L.T("settings.about"));
+            Line(L.T("settings.about_text"), "coddy-caption-muted");
         }
 
         // ------------------------------------------------------------------ report / offline
 
-        void FillReport(DayStats d, bool withNext)
+        void FillReport(DayStats d, bool withActions)
         {
             if (d == null) { Title(L.T("phase.report")); return; }
-            Title(L.F("report.title", "n", d.Day), L.F("report.rating", "r", Fmt.Rating(Sim.S.Rating)));
+            Title(L.F("report.title", "n", d.Day), L.F("report.standing", "s", Sim.FirmStanding.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture)));
             var stars = new VisualElement();
-            stars.AddToClassList("br-report__stars");
+            stars.AddToClassList("dd-report__stars");
             void Star(string key, int n)
             {
                 var c = new VisualElement();
-                c.AddToClassList("br-report__star");
-                c.Add(UiKit.Text(new string('★', n) + new string('☆', 3 - n), "br-report__star-value"));
+                c.AddToClassList("dd-report__star");
+                c.Add(UiKit.Text(new string('★', n) + new string('☆', 3 - n), "dd-report__star-value"));
                 c.Add(UiKit.Text(L.T(key), "coddy-caption-muted"));
                 stars.Add(c);
             }
-            Star("report.service", d.StarService);
-            Star("report.efficiency", d.StarEfficiency);
-            Star("report.throughput", d.StarThroughput);
+            Star("report.deadlines", d.StarDeadlines);
+            Star("report.clients", d.StarClients);
+            Star("report.billing", d.StarBilling);
             Add(stars);
-            KV(L.T("report.collected"), Fmt.Int(d.Collected, L.Lang));
-            KV(L.T("report.km"), Fmt.Km(d.Km, L.Lang));
-            KV(L.T("report.perkm"), d.PerKm.ToString("0.0", System.Globalization.CultureInfo.InvariantCulture));
-            KV(L.T("report.turned"), Fmt.Int(d.Turned, L.Lang), d.TurnedRate > 0.06 ? "br-row__v--bad" : "");
+            KV(L.T("report.worked"), d.HoursWorked.ToString("0.#", System.Globalization.CultureInfo.InvariantCulture) + " h · " + Pct(d.Utilization));
+            KV(L.T("report.wins") + " / " + L.T("report.losses") + " / " + L.T("report.settles"), d.Wins + " / " + d.Losses + " / " + d.Settles);
+            if (d.WalkedOut > 0) KV(L.T("report.walked_out"), Fmt.Int(d.WalkedOut, L.Lang), "dd-row__v--bad");
+            if (d.Late > 0) KV(L.T("report.late"), Fmt.Int(d.Late, L.Lang), "dd-row__v--bad");
+            KV(L.T("report.billed"), Money(d.Billed));
             KV(L.T("report.fees"), Money(d.Fees));
-            KV(L.T("report.sales"), Money(d.Sales));
-            if (d.Bonus > 0) KV(L.T("report.bonus"), Money(d.Bonus));
-            KV(L.T("report.fuel"), "−" + Money(d.Fuel));
-            KV(L.T("report.wages"), "−" + Money(d.Wages));
-            KV(L.T("report.leases"), "−" + Money(d.Leases));
-            KV(L.T("report.power"), "−" + Money(d.Power));
-            if (d.Fines > 0) KV(L.T("report.fines"), "−" + Money(d.Fines), "br-row__v--bad");
-            KV(L.T("report.net"), Money(d.Net), d.Net >= 0 ? "br-row__v--good" : "br-row__v--bad");
-            if (withNext && Sim.Phase == Phases.Report)
+            if (d.Boost > 0) KV(L.T("report.boost"), Money(d.Boost), "dd-row__v--good");
+            KV(L.T("report.salaries"), "−" + Money(d.Salaries));
+            KV(L.T("report.rent"), "−" + Money(d.Rent));
+            if (d.Visiting > 0) KV(L.T("report.visiting"), "−" + Money(d.Visiting));
+            if (d.Walls > 0) KV(L.T("report.walls"), "−" + Money(d.Walls));
+            if (d.Sanctions > 0) KV(L.T("report.sanctions"), "−" + Money(d.Sanctions), "dd-row__v--bad");
+            KV(L.T("report.net"), Money(d.Net), d.Net >= 0 ? "dd-row__v--good" : "dd-row__v--bad");
+            if (!withActions || Sim.Phase != Phases.Report) return;
+            if (!Sim.S.Billed)
             {
-                var next = UiKit.PrimaryButton(L.T("hud.next_day"), () => main.Run("next_day"));
-                next.name = "Target_next_day";
-                sheet.Actions.Add(next);
+                Line(L.F("report.invoices", "cash", Money(Sim.S.Wip)), "dd-good");
+                RewardCard("billing_boost");
+                var bill = UiKit.PrimaryButton(L.T("hud.bill"), () => main.Run("bill"));
+                bill.name = "Target_bill";
+                sheet.Actions.Add(bill);
+            }
+            else
+            {
+                Line(L.F("report.billed_done", "cash", Money(d.Invoiced)), "dd-good");
+                if (!main.Coach.Active)
+                {
+                    var next = UiKit.PrimaryButton(L.T("hud.next_day"), () => main.Run("next_day"));
+                    next.name = "Target_next_day";
+                    sheet.Actions.Add(next);
+                }
             }
         }
 
@@ -408,9 +494,9 @@ namespace DocketDay.UI
             var o = main.LastOffline;
             Title(L.T("offline.title"));
             if (o == null) return;
-            Add(UiKit.Text(L.F("offline.body", "cash", Money(o.Amount), "time", Fmt.Dur(o.Seconds, L)), "coddy-body"));
-            if (o.Capped) Add(UiKit.Text(L.F("offline.capped", "h", (long)Math.Round(o.Hours)), "coddy-caption-muted"));
-            RewardCard("offline_x2", "offline");
+            Line(L.F("offline.body", "cash", Money(o.Amount), "time", Fmt.Dur(o.Seconds, L)));
+            if (o.Capped) Line(L.F("offline.capped", "h", (long)Math.Round(o.Hours)), "coddy-caption-muted");
+            RewardCard("offline_x2");
             sheet.Actions.Add(UiKit.PrimaryButton(L.T("common.ok"), CloseSheet));
         }
     }

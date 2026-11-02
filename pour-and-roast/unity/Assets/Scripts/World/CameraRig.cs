@@ -1,4 +1,4 @@
-// Pour & Roast — tilt-shift diorama camera: fitted to the unlocked districts (portrait), then clamped pan (one finger /
+// Pour & Roast — tilt-shift diorama camera: fitted to the active venue (portrait, metres), then clamped pan (one finger /
 // mouse drag) and pinch / wheel zoom. Pan and pinch never select (the kit TapInput cancels a tap after 12 dp of travel or
 // a second finger). A press that starts on a pickable UI element never pans (OverUi). The transform is written only when
 // the view changed (no per-frame work while idle).
@@ -18,14 +18,14 @@ namespace PourAndRoast.World
         public Func<Vector2, bool> OverUi = _ => false;
         public Func<bool> Enabled = () => true;
         /// <summary>Share of the screen the HUD + bottom bar cover (the fit keeps the town in the free band).</summary>
-        public float TopUi = 0.12f, BottomUi = 0.22f;
+        public float TopUi = 0.24f, BottomUi = 0.2f;
 
-        public const float Pitch = 52f, Fov = 32f, MinZoom = 0.35f, MaxZoom = 1.3f, PanStartDp = 12f;
+        public const float Pitch = 50f, Fov = 30f, MinZoom = 0.45f, MaxZoom = 1.35f, PanStartDp = 12f;
         public float Zoom => zoom;
 
         Vector3 center;
-        float fitDist = 900f;
-        Vector2 pan, panLimit = new Vector2(300, 300);
+        float fitDist = 25f;
+        Vector2 pan, panLimit = new Vector2(4, 4);
         float zoom = 1f;
         bool dirty = true, dragging, pressBlocked;
         Vector2 pressPos, lastPos;
@@ -47,9 +47,9 @@ namespace PourAndRoast.World
             float hHalf = Mathf.Atan(Mathf.Tan(vHalf) * aspect);
             float byWidth = b.extents.x / Mathf.Tan(hHalf);
             float byDepth = b.extents.z * Mathf.Sin(Pitch * Mathf.Deg2Rad) / (Mathf.Tan(vHalf) * freeShare);
-            fitDist = Mathf.Clamp(Mathf.Max(byWidth, byDepth) * 1.05f, 150f, 3000f);
-            panLimit = new Vector2(b.extents.x + 40f, b.extents.z + 40f);
-            if (resetView) { pan = Vector2.zero; zoom = resetView ? 0.75f : zoom; }
+            fitDist = Mathf.Clamp(Mathf.Max(byWidth, byDepth) * 1.05f, 8f, 400f);
+            panLimit = new Vector2(b.extents.x * 0.6f + 1f, b.extents.z * 0.6f + 1f);
+            if (resetView) { pan = Vector2.zero; zoom = 0.9f; }
             dirty = true;
         }
 
@@ -75,8 +75,8 @@ namespace PourAndRoast.World
             float shift = (BottomUi - TopUi) * 0.5f * dist * Mathf.Tan(Fov * 0.5f * Mathf.Deg2Rad) * 2f;
             var target = center + new Vector3(pan.x, 0, pan.y - shift);
             cam.transform.SetPositionAndRotation(target - rot * Vector3.forward * dist, rot);
-            cam.nearClipPlane = Mathf.Max(1f, dist * 0.05f);
-            cam.farClipPlane = dist * 3f + 500f;
+            cam.nearClipPlane = Mathf.Max(0.3f, dist * 0.05f);
+            cam.farClipPlane = dist * 3f + 60f;
         }
 
         float UnitsPerPixel() => 2f * fitDist * zoom * Mathf.Tan(Fov * 0.5f * Mathf.Deg2Rad) / Mathf.Max(1, Screen.height);

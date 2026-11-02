@@ -1,54 +1,42 @@
-# Semester Rush: Recycling Tycoon (Unity 6)
+# Semester Rush: Campus Dean (Unity 6)
 
-Plan: kökteki `RECYCLING_GAME_PLAN.md`. Filo kuralları: kökteki `CLAUDE.md`. Örnek alınan oyunlar: `smuggler/`
-(Borderline Empire, Godot) ve monorepodaki `games/volt-city` (Grid Keeper, filonun ilk Unity oyunu; CoddyUnityKit
-oradan kopyalandı).
+Plan: kökteki `UNIVERSITY_GAME_PLAN.md` (oyun planı #184). Filo kuralları: kökteki `CLAUDE.md`. Şablon: `bottle-route/`
+(`GAME_TEMPLATE.md`); altyapı (CoddyKit, açılış, mağaza, kayıt) oradan, alan kodu baştan yazıldı.
 
-**Oyun:** Kıyıdaki bir bölge depozito sistemini yeni açtı. Vatandaşlar şişe/kutu/camı makinelere getiriyor, makineler
-doluyor; sen kamyonlara rota çiziyorsun (her km yakıt), boşaltma kuralı koyuyorsun (%60/%80/%95, her gün, çağrılınca),
-depoda sayım hattı ücret kazandırıyor, pres balya yapıyor, balyayı günün fiyatından satıyorsun. Az boşaltırsan makine
-taşar, insanlar geri döner, Yeşil Puan düşer; çok boşaltırsan yarı boş kamyonlar yakıt yakar. Krizler: sıcak hava,
-maç günü, sıkışma, sensör arızası, toplu iade, arıza, yakıt zammı, balya fiyatı çöküşü, pres arızası, cam kırılması.
-Gerçek DOA / TÜÇA / bakanlık / market adı yok (taklit kuralı).
+**Oyun:** Genç bir kampüsün dekanısın. Pazar günü haftalık ders programını kurarsın (ders × gün × saat × salon; salon
+türü, hoca aynı anda tek ders ve günde en çok 3 ders, grup aynı anda tek ders). Hafta başlayınca her ders zilinden 10 dk
+önce öğrenciler bir önceki salondan / kantinden / kütüphaneden / yurttan ya da otobüs durağından yürür: aynı patikada
+kalabalık yavaşlatır, uzun yol geç kaldırır. Kısayol kapısı aç, yurdu salonlara yakın kur, görevli işe al, zilleri
+kaydır. 12:00 / 13:30 öğle yemeğinde kantin koltuğu yetmezse aç kalanlar sonraki dersten az öğrenir. Ders bitince harç
+gelir (veznedeki paraya dokun), cuma akşamı notlar prestije döner. 6. hafta sınav haftası: dönem kapanır, hibe gelir,
+yeni dönem kaydını seçersin (aynı / büyüt / seçici ol). Krizler: hasta hoca, patlayan boru, kar, yurt gribi, harç
+protestosu (seçim), yangın tatbikatı, açık gün, hoca transferi (seçim), sınavda elektrik kesintisi. Gerçek üniversite,
+marka ya da referans oyunun adı / görseli / metni yok (plan §3 özgünlük kuralı).
+
+MVP kapsamı (plan §14): bölüm 1–3 (Community College, Liberal Arts Quad, Science Campus), program tahtası + otomatik
+doldurma, zil değişimi akışı (patika, kapı, kaydırmalı zil, geniş patika, servis), 6 personel grubu, öğle + yurt
+kapasitesi, sınav haftası, 9 kriz, çevrimdışı mola, 11 adımlı rehber, mağaza, 4 ödüllü yerleşim, house reklam.
 
 ## Klasörler
 
 | Yol | Ne |
 |---|---|
-| `unity/` | Unity 6 projesi (URP, Android, portre). `unity/Assets/CoddyKit` = filo Unity kiti (volt-city'den) |
-| `unity/Assets/Scripts/Sim` | `SemesterRush.Sim` — motordan bağımsız simülasyon (yol ağı, makineler, kamyonlar, depo, pazar, krizler, ekonomi, kayıt) |
-| `unity/Assets/Scripts/Game` | `SemesterRush.Game` — motordan bağımsız oyun katmanı (oturum/kayıt, eylemler, 14 adımlı rehber, mağaza, ödüllü reklam, yorum anı, analitik, 10 dil) |
-| `unity/Assets/Scripts/{App,World,UI}` | Unity katmanı: açılış, diorama, UI Toolkit ekranları |
-| `unity/Assets/Editor/SemesterRush` | proje kurulumu (sahneler, malzemeler, Android politikası), Android derleme, font, ikon, içe aktarma |
-| `unity/Assets/Resources` | veri (`data/*.json`), metinler (`i18n/strings.csv`), kit modelleri, palet, arayüz görselleri, fontlar |
-| `unity/Assets/Tests` | NUnit testleri (EditMode) — aynı dosyalar .NET ile de koşar |
-| `unity/Tools` | `check.sh` (tüm kapılar), `dotnet_check.sh`, `unity_ref_check.sh`, `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/*.json` |
-| `tools/meshy`, `tools/art` | Meshy istemcisi + optimizer (filo aracı), Blender kiti, arayüz render'ları |
-| `docs/` | `UNITY.md` (editörde ilk açılış), `ART.md`, `BALANCE.md`, `MONETIZATION_PARITY.md` |
+| `unity/Assets/Scripts/Sim` | `SemesterRush.Sim` — motordan bağımsız simülasyon (program, yol grafiği + zil akışı, öğle, dersler, ekonomi, krizler, kayıt, denge botu) |
+| `unity/Assets/Scripts/Game` | oturum/kayıt, eylemler, 11 adımlı rehber, mağaza, ödüllü reklam, yorum anı, analitik, metinler |
+| `unity/Assets/Scripts/{App,World,UI}` | açılış, kampüs dioraması (`CampusWorld`, zil kalabalığı + ısı şeridi), UI Toolkit ekranları |
+| `unity/Assets/Resources` | veri (`data/*.json`), metinler (`i18n/strings.csv`), Blender kiti + Meshy meşe, palet, arayüz görselleri |
+| `unity/Tools` | `check.sh` (tüm kapılar), `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/en.json` (kaynak) |
+| `tools/art`, `tools/meshy` | Blender kiti (`kit.py`), UI render (`render_ui.py`), Meshy istemcisi + optimizer |
+| `docs/` | `UNITY.md`, `BALANCE.md`, `MONETIZATION_PARITY.md`, `ART.md` |
 
 ## Durum (2026-11-02)
 
-- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → `BOTTLE_ROUTE_CHECK: PASS`
-  - 125 NUnit testi (sim 43, oyun katmanı 27, CoddyKit 55): rehberin 14 adımı baştan sona, yanlış dokunuş, atla/tekrar,
-    yarıda bırakıp yeniden açma, kayıt güvenliği (fuzz, `.unreadable` saklanır), mağaza kuralları (`ad_free` yalnız
-    noads/premium/route_pass/bundle), ödül tavanları, 10 dil eksiksiz + yer tutucular, denge botu 7/20 gün.
-  - Unity'ye bağlı kod (kit Runtime + App + World + UI) UnityEngine 2021.3 referanslarına karşı derleniyor (yalnız 2
-    Unity-6 API'si farklı); 83 C# dosyası iki tanım kümesinde sözdizimi hatasız.
-- **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, performans ölçümü (perf_gate), emülatör
-  smoke, AAB. → `docs/UNITY.md` §2: ilk açılış adımları (Mac Mini / sahibin Unity'si).
-- **Boş bırakılan kimlikler (P8, Patron):** AdMob ödüllü birim, AdMob uygulama kimliği, RevenueCat anahtarı, Firebase
-  config. Uydurma kimlik yok (§5).
-
-## Komutlar
+- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → yalnız beklenen `EveryLanguageIsComplete` kırmızı (9 dil merkezi
+  çeviriyi bekliyor). 133 NUnit testi (sim 48, oyun katmanı 30, CoddyKit 55), `UNITY_REF_CHECK: PASS`.
+- **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, perf_gate, emülatör smoke, AAB → `docs/UNITY.md` §2.
+- **Bekleyen:** 9 dilin çevirisi (fleet §9, Haiku), ses (ElevenLabs, sahip onayı), P8 kimlikleri (boş bırakıldı), §8 `ad_free` satırının sahip onayı.
 
 ```bash
 sh semester-rush/unity/Tools/check.sh
-```
-
-```bash
 python3 semester-rush/unity/Tools/i18n_merge.py && python3 semester-rush/unity/Tools/build_iap.py
-```
-
-```bash
-blender -b --python semester-rush/tools/art/kit.py -- semester-rush/unity
 ```

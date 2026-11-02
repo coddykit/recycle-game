@@ -1,9 +1,11 @@
-"""Charge Nurse — Blender kit (fleet: buildings / machines / vehicles = Blender, characters = Meshy). Builds low-poly props
-whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png, order = ChargeNurse.World.Pal),
-so the whole town shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot bottom-centre, front = -Y in
-Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
+"""Charge Nurse — Blender kit (fleet: buildings / furniture / machines / vehicles = Blender, characters = Meshy). Builds
+low-poly hospital props whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png,
+order = ChargeNurse.World.Pal), so the whole campus shares ONE material (a theme = a palette swap). Bevelled boxes +
+cylinders, 1 unit = 1 m, pivot bottom-centre, front = -Y in Blender (Unity -Z after the FBX axis swap: the side the
+camera sees), head of a bed at +Y. Exports FBX into unity/Assets/Resources/kit/ and a contact sheet. No text, no logos,
+no real brand or emergency-service emblems (the ambulance carries plain stripes only).
   blender -b --python charge-nurse/tools/art/kit.py -- <unity dir> [<sheet.png>]
-Budget (Low draws: one material, one mesh per prop): machine ≤ 400 tris, vehicle ≤ 900, building ≤ 600.
+Budget (Low draws: one material, one mesh per prop): furniture ≤ 500 tris, machine ≤ 700, vehicle ≤ 900.
 """
 import math
 import os
@@ -19,8 +21,9 @@ OUT = os.path.join(UNITY, "Assets/Resources/kit")
 PALETTE = os.path.join(UNITY, "Assets/Resources/materials/palette.png")
 
 # swatches (ChargeNurse.World.Pal)
-GRASS, ROAD, CONCRETE, CREAM, TERRA, BLUEWALL, ROOFRED, ROOFGREY = 0, 2, 4, 5, 6, 7, 8, 9
-BRAND, PANEL, WHITE, TGREEN, DEPOT, WINDOW, PET, ALU, GLASS, WARN, YELLOW, SUNSET, TRUNK, TREE = 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 28, 18, 17
+GRASS, PAVING, FLOOR, CONCRETE, CREAM, MINT, BLUEWALL, ROOF, ROOFGREY = 0, 2, 3, 4, 5, 6, 7, 8, 9
+BRAND, PANEL, LINEN, CURTAIN, GLASS, WOOD, WINDOW = 10, 11, 12, 13, 15, 16, 20
+TAGRED, SIREN, MATTRESS, MACHINE, SCREEN, RUBBER, WHITE = 24, 25, 41, 42, 43, 44, 45
 
 
 def uv_of(sw):
@@ -98,86 +101,93 @@ class Prop:
         return ob
 
 
-def machine(big):
-    p = Prop("machine_m" if big else "machine_s")
-    w, h = (2.0, 2.3) if big else (1.4, 2.0)
-    p.box((0, 0, 0), (w, 1.0, h), BRAND, top=PANEL, bevel=0.06)
-    p.box((0, -0.52, h * 0.30), (w * 0.72, 0.06, h * 0.30), PANEL, bevel=0.02)       # bottle door
-    p.cyl((0, -0.56, h * 0.45), 0.16, 0.06, WINDOW, segs=12, axis="Y")               # the bottle hole
-    p.box((0, -0.52, h * 0.78), (w * 0.5, 0.06, h * 0.14), WINDOW)                  # screen
-    p.box((0, 0, h), (w + 0.25, 1.25, 0.12), PANEL)                                  # canopy
-    for i, sw in enumerate((PET, ALU, GLASS)):                                       # three material stripes
-        p.box(((i - 1) * w * 0.28, -0.53, h * 0.06), (w * 0.22, 0.04, 0.12), sw)
+def bed(bay):
+    p = Prop("bay" if bay else "bed")
+    p.box((0, 0, 0.18), (0.95, 2.05, 0.32), PANEL, top=MATTRESS, bevel=0.04)          # frame + mattress
+    p.box((0, -0.15, 0.5), (0.9, 1.5, 0.1), LINEN, bevel=0.03)                         # blanket
+    p.box((0, 0.78, 0.52), (0.62, 0.32, 0.14), WHITE, bevel=0.05)                      # pillow
+    p.box((0, 1.0, 0.0), (1.0, 0.07, 1.0), PANEL, bevel=0.02)                          # headboard
+    for x in (-0.4, 0.4):
+        for y in (-0.9, 0.9):
+            p.cyl((x, y, 0.09), 0.08, 0.06, RUBBER, segs=8, axis="X")
+    if bay:
+        p.box((-0.78, 0, 0), (0.04, 2.2, 2.0), CURTAIN)                                # curtain
+        p.box((0.75, 0.75, 0), (0.3, 0.3, 1.15), MACHINE, bevel=0.03)                  # monitor stand
+        p.box((0.75, 0.75, 1.15), (0.45, 0.12, 0.34), MACHINE, bevel=0.02)
+        p.box((0.75, 0.68, 1.19), (0.38, 0.02, 0.26), SCREEN)
     return p.build()
 
 
-def shop():
-    p = Prop("shop")
-    p.box((0, 0, 0), (5.5, 4.5, 3.6), CREAM, top=ROOFRED, bevel=0.05)
-    p.box((0, -2.6, 2.5), (5.8, 1.4, 0.18), BRAND)                                     # awning
-    p.box((-1.4, -2.4, 0), (1.6, 0.8, 1.0), PANEL)                                     # bag counter
-    p.box((1.3, -2.27, 0.4), (1.8, 0.05, 1.6), WINDOW)
-    p.box((-1.4, -2.4, 1.0), (1.2, 0.6, 0.6), PET)
+def desk():
+    p = Prop("desk")
+    p.box((0, 0, 0), (2.6, 0.8, 1.05), BRAND, top=WOOD, bevel=0.04)
+    p.box((0, -0.42, 0.15), (2.4, 0.04, 0.6), PANEL)
+    p.box((-0.6, 0.1, 1.05), (0.5, 0.06, 0.35), MACHINE)
+    p.box((-0.6, 0.06, 1.1), (0.44, 0.02, 0.27), SCREEN)
+    p.box((0.7, 0.05, 1.05), (0.35, 0.25, 0.06), WHITE)                                # papers
     return p.build()
 
 
-def horeca():
-    p = Prop("horeca")
-    p.box((0, 0, 0), (6.5, 5.5, 4.0), TERRA, top=ROOFGREY, bevel=0.05)
-    p.box((0, -2.78, 1.3), (4.2, 0.05, 1.8), WINDOW)
-    for x in (-2.0, 2.0):
-        p.cyl((x, -4.4, 1.2), 0.07, 2.4, TRUNK, segs=6)
-        p.cyl((x, -4.4, 2.45), 1.2, 0.18, SUNSET, segs=8)
-        p.cyl((x, -4.4, 0.55), 0.55, 0.08, PANEL, segs=8)
-    p.box((3.6, 0.8, 0), (1.2, 1.6, 1.3), GLASS, bevel=0.04)                            # glass bags crate
+def chairs():
+    p = Prop("chairs")
+    for i in range(4):
+        x = (i - 1.5) * 0.9
+        p.box((x, 0, 0.0), (0.06, 0.06, 0.42), MACHINE)
+        p.box((x, 0, 0.42), (0.7, 0.62, 0.08), BRAND, bevel=0.03)
+        p.box((x, 0.28, 0.5), (0.7, 0.08, 0.5), BRAND, bevel=0.03)
+    p.box((0, 0, 0.0), (3.4, 0.12, 0.08), MACHINE)
     return p.build()
 
 
-def van():
-    p = Prop("van")
-    p.box((0, -1.55, 0.35), (2.0, 1.2, 1.7), WHITE, bevel=0.12)                        # cab
-    p.box((0, 0.45, 0.35), (2.1, 3.0, 2.15), WHITE, bevel=0.08)                        # box
-    p.box((0, -2.16, 1.25), (1.7, 0.04, 0.6), WINDOW)                                  # windscreen
-    p.box((0, 0.45, 1.25), (2.14, 2.6, 0.45), BRAND)                                   # brand stripe
+def ambulance():
+    p = Prop("ambulance")
+    p.box((0, -1.6, 0.35), (1.95, 1.2, 1.55), WHITE, bevel=0.12)                       # cab
+    p.box((0, 0.5, 0.35), (2.1, 3.2, 2.2), WHITE, bevel=0.08)                         # box
+    p.box((0, 0.5, 1.15), (2.14, 3.0, 0.3), TAGRED)                                    # plain stripe, no emblem
+    p.box((0, -2.21, 1.2), (1.6, 0.04, 0.55), WINDOW)
+    p.box((0, -0.6, 2.55), (1.1, 0.3, 0.16), SIREN, bevel=0.03)                        # light bar
     for x in (-0.95, 0.95):
-        for y in (-1.5, 1.3):
+        for y in (-1.55, 1.35):
             p.wheel(x, y)
     return p.build()
 
 
-def bike():
-    p = Prop("bike")
-    p.box((0, -0.7, 0.55), (1.2, 1.1, 1.0), WHITE, bevel=0.06)                         # cargo box in front
-    p.box((0, -0.7, 1.05), (1.24, 1.14, 0.12), BRAND)
-    p.box((0, 0.55, 0.35), (0.12, 1.4, 0.1), WINDOW)                                   # frame
-    p.box((0, 0.9, 0.35), (0.1, 0.1, 0.9), WINDOW)                                     # seat post
-    p.box((0, 0.9, 1.25), (0.3, 0.45, 0.08), WINDOW)
-    for y in (-1.2, 1.25):
-        p.cyl((0, y, 0.34), 0.34, 0.1, WINDOW, segs=12, axis="X")
-    for x in (-0.55, 0.55):
-        p.cyl((x, -1.0, 0.3), 0.3, 0.1, WINDOW, segs=10, axis="X")
+def xray():
+    p = Prop("xray")
+    p.box((0, 0, 0), (0.8, 2.0, 0.75), MACHINE, top=LINEN, bevel=0.04)                # table
+    p.box((0, 1.15, 0), (0.35, 0.35, 2.4), PANEL, bevel=0.03)                          # column
+    p.box((0, 0.55, 1.75), (0.55, 1.2, 0.35), PANEL, top=BRAND, bevel=0.04)            # arm
+    p.box((0, 0.1, 1.55), (0.45, 0.45, 0.2), MACHINE)                                  # tube head
     return p.build()
 
 
-def compactor():
-    p = Prop("compactor")
-    p.box((0, -2.4, 0.5), (2.4, 1.6, 2.3), WHITE, bevel=0.12)
-    p.box((0, 0.6, 0.5), (2.5, 4.4, 2.8), TGREEN, bevel=0.1)
-    p.box((0, 3.0, 0.6), (2.3, 0.6, 2.4), PANEL, bevel=0.06)                           # rear loader
-    p.box((0, -3.21, 1.7), (2.0, 0.04, 0.8), WINDOW)
-    p.box((0, 0.6, 2.2), (2.54, 3.6, 0.3), PANEL)
-    for x in (-1.15, 1.15):
-        for y in (-2.2, 0.0, 1.6):
-            p.wheel(x, y, r=0.5, w=0.35)
+def lab():
+    p = Prop("lab")
+    p.box((0, 0, 0), (3.0, 0.8, 0.92), PANEL, top=WHITE, bevel=0.03)
+    for i in range(3):
+        p.box((-1 + i, 0.05, 0.92), (0.5, 0.5, 0.45), MACHINE, bevel=0.03)
+        p.box((-1 + i, -0.21, 1.1), (0.34, 0.02, 0.18), SCREEN)
+    p.box((1.2, 0.2, 0.92), (0.3, 0.2, 0.25), GLASS)                                   # sample rack
     return p.build()
 
 
-def depot_baler():
-    p = Prop("baler")
-    p.box((0, 0, 0), (4.0, 3.0, 3.2), BRAND, top=ROOFGREY, bevel=0.05)
-    p.box((0, -1.55, 0.2), (2.4, 0.1, 2.0), WINDOW)
-    p.box((0, 0, 3.2), (1.0, 1.0, 1.6), PANEL)                                        # press cylinder housing
-    p.box((2.4, 0, 0), (1.0, 2.2, 1.6), YELLOW, bevel=0.04)                            # feed hopper
+def ct():
+    p = Prop("ct")
+    p.box((0, 0.65, 0), (2.4, 0.9, 2.2), WHITE, bevel=0.1)                            # gantry
+    p.cyl((0, 0.65, 1.15), 0.48, 0.95, WINDOW, segs=16, axis="Y")                      # the ring opening
+    p.box((0, -0.8, 0), (0.7, 2.0, 0.72), MACHINE, top=LINEN, bevel=0.04)             # couch
+    return p.build()
+
+
+def or_table():
+    p = Prop("or_table")
+    p.box((0, 0, 0), (0.35, 0.35, 0.75), MACHINE)
+    p.box((0, 0, 0.75), (0.85, 2.0, 0.15), MACHINE, top=CURTAIN, bevel=0.03)
+    p.box((0, 0, 0), (0.75, 0.75, 0.08), MACHINE)
+    p.box((0, 0, 2.1), (0.08, 0.08, 0.5), PANEL)                                       # lamp arm
+    p.cyl((0, 0, 2.05), 0.55, 0.12, PANEL, segs=14)                                    # lamp
+    p.box((1.2, 0.6, 0), (0.6, 0.5, 1.3), MACHINE, bevel=0.03)                         # anaesthesia cart
+    p.box((1.2, 0.33, 1.0), (0.45, 0.02, 0.25), SCREEN)
     return p.build()
 
 
@@ -212,14 +222,14 @@ def sheet(objs):
     scene.render.resolution_x, scene.render.resolution_y = 1600, 400
     scene.render.film_transparent = False
     world = bpy.data.worlds.new("w"); world.color = (0.85, 0.9, 0.92); scene.world = world
-    x = -20.0
+    x = -10.0
     for ob in objs:
         ob.location = (x, 0, 0)
-        x += 6.0 if ob.name not in ("compactor", "horeca", "shop") else 8.5
+        x += 4.5
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
-    cam.data.ortho_scale = 56
+    cam.data.ortho_scale = 44
     cam.location = (8, -40, 22)
     cam.rotation_euler = mathutils.Euler((math.radians(62), 0, 0))
     scene.camera = cam
@@ -236,7 +246,7 @@ def main():
     reset()
     os.makedirs(OUT, exist_ok=True)
     mat = material()
-    objs = [machine(False), machine(True), shop(), horeca(), van(), bike(), compactor(), depot_baler()]
+    objs = [bed(True), bed(False), desk(), chairs(), ambulance(), xray(), lab(), ct(), or_table()]
     total = 0
     for ob in objs:
         ob.data.materials.append(mat)

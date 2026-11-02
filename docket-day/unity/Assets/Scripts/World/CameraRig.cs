@@ -1,4 +1,4 @@
-// Docket Day — tilt-shift diorama camera: fitted to the unlocked districts (portrait), then clamped pan (one finger /
+// Docket Day — tilt-shift diorama camera: fitted to the firm's street (portrait), then clamped pan (one finger /
 // mouse drag) and pinch / wheel zoom. Pan and pinch never select (the kit TapInput cancels a tap after 12 dp of travel or
 // a second finger). A press that starts on a pickable UI element never pans (OverUi). The transform is written only when
 // the view changed (no per-frame work while idle).

@@ -1,9 +1,10 @@
-"""Docket Day — Blender kit (fleet: buildings / machines / vehicles = Blender, characters = Meshy). Builds low-poly props
-whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png, order = DocketDay.World.Pal),
-so the whole town shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot bottom-centre, front = -Y in
-Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
+"""Docket Day — Blender kit (fleet: buildings / furniture = Blender, characters = Meshy). Builds low-poly office and
+courthouse props whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png, order =
+DocketDay.World.Pal), so the whole street shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot
+bottom-centre, front = -Y in Blender (Unity -Z after the FBX axis swap). No text, crests or real court symbols.
+Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
   blender -b --python docket-day/tools/art/kit.py -- <unity dir> [<sheet.png>]
-Budget (Low draws: one material, one mesh per prop): machine ≤ 400 tris, vehicle ≤ 900, building ≤ 600.
+Budget (Low draws: one material, one mesh per prop): furniture ≤ 400 tris, the courthouse ≤ 1500.
 """
 import math
 import os
@@ -19,8 +20,9 @@ OUT = os.path.join(UNITY, "Assets/Resources/kit")
 PALETTE = os.path.join(UNITY, "Assets/Resources/materials/palette.png")
 
 # swatches (DocketDay.World.Pal)
-GRASS, ROAD, CONCRETE, CREAM, TERRA, BLUEWALL, ROOFRED, ROOFGREY = 0, 2, 4, 5, 6, 7, 8, 9
-BRAND, PANEL, WHITE, TGREEN, DEPOT, WINDOW, PET, ALU, GLASS, WARN, YELLOW, SUNSET, TRUNK, TREE = 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 28, 18, 17
+GRASS, ROAD, CONCRETE, CREAM, BRICK, BLUEWALL, ROOFRED, ROOFGREY = 0, 2, 4, 5, 6, 7, 8, 9
+BRAND, WOOD, PAPER, TEAL, STONE, WINDOW, CARPET, TREE, TRUNK = 10, 11, 12, 13, 14, 15, 16, 17, 18
+DARK, FOLDER, METAL, LAMP, WARN, AMBER, ROBE, GOLD, CLASSIC, SAND, WHITE = 20, 21, 22, 23, 24, 25, 26, 27, 29, 31, 39
 
 
 def uv_of(sw):
@@ -98,86 +100,144 @@ class Prop:
         return ob
 
 
-def machine(big):
-    p = Prop("machine_m" if big else "machine_s")
-    w, h = (2.0, 2.3) if big else (1.4, 2.0)
-    p.box((0, 0, 0), (w, 1.0, h), BRAND, top=PANEL, bevel=0.06)
-    p.box((0, -0.52, h * 0.30), (w * 0.72, 0.06, h * 0.30), PANEL, bevel=0.02)       # bottle door
-    p.cyl((0, -0.56, h * 0.45), 0.16, 0.06, WINDOW, segs=12, axis="Y")               # the bottle hole
-    p.box((0, -0.52, h * 0.78), (w * 0.5, 0.06, h * 0.14), WINDOW)                  # screen
-    p.box((0, 0, h), (w + 0.25, 1.25, 0.12), PANEL)                                  # canopy
-    for i, sw in enumerate((PET, ALU, GLASS)):                                       # three material stripes
-        p.box(((i - 1) * w * 0.28, -0.53, h * 0.06), (w * 0.22, 0.04, 0.12), sw)
+def desk():
+    p = Prop("desk")
+    p.box((0, 0, 0.72), (2.4, 1.2, 0.08), WOOD, bevel=0.02)                       # top
+    for x in (-1.1, 1.1):
+        p.box((x, 0, 0), (0.08, 1.1, 0.72), WOOD)                                    # side panels
+    p.box((0.75, 0.05, 0.0), (0.7, 1.0, 0.68), WOOD, bevel=0.02)                    # drawer block
+    p.box((-0.2, 0.3, 0.8), (0.9, 0.06, 0.55), DARK, bevel=0.02)                    # monitor
+    p.box((-0.2, 0.36, 0.8), (0.12, 0.12, 0.08), DARK)
+    p.box((0.75, -0.15, 0.8), (0.45, 0.35, 0.1), FOLDER)                            # file stack
+    p.box((0.75, -0.15, 0.9), (0.42, 0.32, 0.06), PAPER)
+    p.cyl((-0.85, -0.25, 0.86), 0.08, 0.12, PAPER, segs=8)                           # coffee cup
+    p.box((0, -0.95, 0.0), (0.7, 0.7, 0.48), BRAND, bevel=0.05)                      # chair seat (front, -Y; the world turns the desk 180°)
+    p.box((0, -1.25, 0.48), (0.7, 0.12, 0.7), BRAND, bevel=0.04)                     # chair back
     return p.build()
 
 
-def shop():
-    p = Prop("shop")
-    p.box((0, 0, 0), (5.5, 4.5, 3.6), CREAM, top=ROOFRED, bevel=0.05)
-    p.box((0, -2.6, 2.5), (5.8, 1.4, 0.18), BRAND)                                     # awning
-    p.box((-1.4, -2.4, 0), (1.6, 0.8, 1.0), PANEL)                                     # bag counter
-    p.box((1.3, -2.27, 0.4), (1.8, 0.05, 1.6), WINDOW)
-    p.box((-1.4, -2.4, 1.0), (1.2, 0.6, 0.6), PET)
+def reception():
+    p = Prop("reception")
+    p.box((0, 0, 0), (4.2, 1.1, 1.05), BRAND, top=WOOD, bevel=0.05)
+    p.box((0, -0.58, 0.2), (3.8, 0.04, 0.5), GOLD)                                    # brass kick strip
+    p.box((-1.3, 0.1, 1.05), (0.12, 0.12, 0.5), DARK)                                 # lamp stand
+    p.cyl((-1.3, 0.1, 1.6), 0.22, 0.2, LAMP, segs=10)                                 # green banker's lamp shade
+    p.box((0.9, 0.25, 1.05), (0.85, 0.06, 0.5), DARK)                                 # screen
+    p.box((0.2, -0.2, 1.05), (0.5, 0.35, 0.05), PAPER)                                # sign-in sheet
     return p.build()
 
 
-def horeca():
-    p = Prop("horeca")
-    p.box((0, 0, 0), (6.5, 5.5, 4.0), TERRA, top=ROOFGREY, bevel=0.05)
-    p.box((0, -2.78, 1.3), (4.2, 0.05, 1.8), WINDOW)
-    for x in (-2.0, 2.0):
-        p.cyl((x, -4.4, 1.2), 0.07, 2.4, TRUNK, segs=6)
-        p.cyl((x, -4.4, 2.45), 1.2, 0.18, SUNSET, segs=8)
-        p.cyl((x, -4.4, 0.55), 0.55, 0.08, PANEL, segs=8)
-    p.box((3.6, 0.8, 0), (1.2, 1.6, 1.3), GLASS, bevel=0.04)                            # glass bags crate
+def bookshelf():
+    p = Prop("bookshelf")
+    p.box((0, 0, 0), (3.0, 0.8, 3.4), WOOD, bevel=0.03)
+    cols = (CARPET, CLASSIC, BRAND, FOLDER, TEAL)
+    for r in range(3):
+        x = -1.25
+        i = r
+        while x < 1.2:
+            w = 0.16 + 0.06 * ((i * 7) % 3)
+            h = 0.6 + 0.08 * ((i * 5) % 3)
+            p.box((x + w / 2, -0.38, 0.25 + r * 1.05), (w, 0.1, h), cols[i % len(cols)])
+            x += w + 0.03
+            i += 1
     return p.build()
 
 
-def van():
-    p = Prop("van")
-    p.box((0, -1.55, 0.35), (2.0, 1.2, 1.7), WHITE, bevel=0.12)                        # cab
-    p.box((0, 0.45, 0.35), (2.1, 3.0, 2.15), WHITE, bevel=0.08)                        # box
-    p.box((0, -2.16, 1.25), (1.7, 0.04, 0.6), WINDOW)                                  # windscreen
-    p.box((0, 0.45, 1.25), (2.14, 2.6, 0.45), BRAND)                                   # brand stripe
-    for x in (-0.95, 0.95):
-        for y in (-1.5, 1.3):
-            p.wheel(x, y)
+def coffee():
+    p = Prop("coffee")
+    p.box((0, 0, 0), (2.0, 0.9, 0.95), WOOD, top=CONCRETE, bevel=0.04)
+    p.box((-0.45, 0.05, 0.95), (0.7, 0.55, 0.85), METAL, top=DARK, bevel=0.05)        # the machine
+    p.box((-0.45, -0.24, 1.15), (0.3, 0.06, 0.12), DARK)
+    for i in range(3):
+        p.cyl((0.35 + i * 0.22, -0.1, 1.01), 0.07, 0.12, PAPER, segs=8)               # cups
     return p.build()
 
 
-def bike():
-    p = Prop("bike")
-    p.box((0, -0.7, 0.55), (1.2, 1.1, 1.0), WHITE, bevel=0.06)                         # cargo box in front
-    p.box((0, -0.7, 1.05), (1.24, 1.14, 0.12), BRAND)
-    p.box((0, 0.55, 0.35), (0.12, 1.4, 0.1), WINDOW)                                   # frame
-    p.box((0, 0.9, 0.35), (0.1, 0.1, 0.9), WINDOW)                                     # seat post
-    p.box((0, 0.9, 1.25), (0.3, 0.45, 0.08), WINDOW)
-    for y in (-1.2, 1.25):
-        p.cyl((0, y, 0.34), 0.34, 0.1, WINDOW, segs=12, axis="X")
-    for x in (-0.55, 0.55):
-        p.cyl((x, -1.0, 0.3), 0.3, 0.1, WINDOW, segs=10, axis="X")
+def cabinet():
+    p = Prop("cabinet")
+    for i in (-1, 0, 1):
+        p.box((i * 0.95, 0, 0), (0.85, 0.9, 2.2), METAL, bevel=0.03)
+        for d in range(4):
+            p.box((i * 0.95, -0.47, 0.25 + d * 0.5), (0.3, 0.04, 0.06), DARK)        # handles
+    p.box((0.95, -0.2, 2.2), (0.5, 0.4, 0.25), FOLDER)
     return p.build()
 
 
-def compactor():
-    p = Prop("compactor")
-    p.box((0, -2.4, 0.5), (2.4, 1.6, 2.3), WHITE, bevel=0.12)
-    p.box((0, 0.6, 0.5), (2.5, 4.4, 2.8), TGREEN, bevel=0.1)
-    p.box((0, 3.0, 0.6), (2.3, 0.6, 2.4), PANEL, bevel=0.06)                           # rear loader
-    p.box((0, -3.21, 1.7), (2.0, 0.04, 0.8), WINDOW)
-    p.box((0, 0.6, 2.2), (2.54, 3.6, 0.3), PANEL)
-    for x in (-1.15, 1.15):
-        for y in (-2.2, 0.0, 1.6):
-            p.wheel(x, y, r=0.5, w=0.35)
+def conference():
+    p = Prop("conference")
+    p.box((0, 0, 0.72), (4.6, 2.0, 0.1), WOOD, bevel=0.04)
+    p.box((0, 0, 0), (0.6, 1.2, 0.72), WOOD)
+    for x in (-1.4, 0.0, 1.4):
+        for y in (-1.4, 1.4):
+            p.box((x, y, 0), (0.6, 0.6, 0.45), DARK, bevel=0.04)
+            p.box((x, y + (0.28 if y > 0 else -0.28), 0.45), (0.6, 0.1, 0.6), DARK)
+    p.box((-0.8, 0.2, 0.82), (0.5, 0.35, 0.04), PAPER)
+    p.box((0.9, -0.3, 0.82), (0.45, 0.3, 0.06), FOLDER)
     return p.build()
 
 
-def depot_baler():
-    p = Prop("baler")
-    p.box((0, 0, 0), (4.0, 3.0, 3.2), BRAND, top=ROOFGREY, bevel=0.05)
-    p.box((0, -1.55, 0.2), (2.4, 0.1, 2.0), WINDOW)
-    p.box((0, 0, 3.2), (1.0, 1.0, 1.6), PANEL)                                        # press cylinder housing
-    p.box((2.4, 0, 0), (1.0, 2.2, 1.6), YELLOW, bevel=0.04)                            # feed hopper
+def boxes():
+    p = Prop("boxes")
+    p.box((0, 0, 0), (1.2, 0.9, 0.8), FOLDER, bevel=0.03, rot=8)
+    p.box((1.15, 0.2, 0), (1.0, 0.9, 0.8), SAND, bevel=0.03, rot=-6)
+    p.box((0.5, 0.1, 0.8), (1.0, 0.8, 0.7), FOLDER, bevel=0.03, rot=3)
+    p.box((0.5, -0.32, 1.05), (0.4, 0.04, 0.25), PAPER)                                # label card (blank)
+    return p.build()
+
+
+def board():
+    p = Prop("board")
+    p.box((0, 0, 0.9), (3.2, 0.12, 2.0), WHITE, bevel=0.03)
+    p.box((0, 0.06, 0.9), (3.3, 0.14, 0.08), METAL)
+    for x in (-1.4, 1.4):
+        p.box((x, 0, 0), (0.08, 0.3, 0.9), METAL)
+    p.box((-0.8, -0.08, 1.6), (0.7, 0.02, 0.5), FOLDER)
+    p.box((0.2, -0.08, 1.9), (0.6, 0.02, 0.45), WARN)
+    p.box((0.9, -0.08, 1.3), (0.6, 0.02, 0.45), TEAL)
+    return p.build()
+
+
+def courthouse():
+    p = Prop("courthouse")
+    # stepped plinth
+    for i, (d, h) in enumerate(((4.0, 0.4), (3.2, 0.8), (2.4, 1.2))):
+        p.box((0, -1.0 + i * 0.4, 0), (26.0 - i * 0.8, d, h), STONE)
+    p.box((0, 3.5, 0), (24.0, 3.0, 2.0), STONE)
+    p.box((0, 9.0, 2.0), (24.0, 12.0, 11.0), STONE, top=ROOFGREY, bevel=0.1)       # the hall
+    for i in range(6):                                                              # columns
+        x = -10.0 + i * 4.0
+        p.cyl((x, 3.6, 7.0), 0.65, 10.0, WHITE, segs=12)
+        p.box((x, 3.6, 2.0), (1.6, 1.6, 0.4), STONE)
+        p.box((x, 3.6, 11.6), (1.6, 1.6, 0.4), STONE)
+    p.box((0, 4.0, 12.0), (25.0, 3.2, 1.4), STONE, bevel=0.05)                     # architrave
+    # pediment: a low triangle prism made of stacked slabs (no crest, no inscription)
+    for k in range(5):
+        w = 22.0 - k * 4.2
+        p.box((0, 4.3, 13.4 + k * 0.5), (w, 2.6, 0.5), STONE)
+    p.box((0, 2.9, 2.0), (3.2, 0.2, 5.0), WOOD)                                     # the door
+    for x in (-7.0, 7.0):
+        p.box((x, 2.95, 4.0), (2.4, 0.1, 3.0), WINDOW)                              # tall windows behind the columns
+    for x in (-13.5, 13.5):                                                        # lamps by the steps
+        p.cyl((x, -1.6, 1.2), 0.12, 2.4, DARK, segs=6)
+        p.cyl((x, -1.6, 2.55), 0.3, 0.4, AMBER, segs=8)
+    return p.build()
+
+
+def lamp():
+    p = Prop("lamp")
+    p.cyl((0, 0, 2.1), 0.12, 4.2, DARK, segs=8)
+    p.box((0, 0, 0), (0.5, 0.5, 0.3), DARK)
+    p.cyl((0, 0, 4.4), 0.35, 0.5, AMBER, segs=8)
+    p.box((0, 0, 4.65), (0.7, 0.7, 0.12), DARK)
+    return p.build()
+
+
+def bench():
+    p = Prop("bench")
+    for x in (-0.9, 0.9):
+        p.box((x, 0, 0), (0.12, 0.6, 0.45), DARK)
+    p.box((0, 0, 0.45), (2.2, 0.6, 0.08), WOOD)
+    p.box((0, 0.3, 0.55), (2.2, 0.08, 0.5), WOOD)
     return p.build()
 
 
@@ -215,12 +275,12 @@ def sheet(objs):
     x = -20.0
     for ob in objs:
         ob.location = (x, 0, 0)
-        x += 6.0 if ob.name not in ("compactor", "horeca", "shop") else 8.5
+        x += 28.0 if ob.name == "courthouse" else 5.0
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
-    cam.data.ortho_scale = 56
-    cam.location = (8, -40, 22)
+    cam.data.ortho_scale = 90
+    cam.location = (30, -60, 34)
     cam.rotation_euler = mathutils.Euler((math.radians(62), 0, 0))
     scene.camera = cam
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
@@ -236,7 +296,7 @@ def main():
     reset()
     os.makedirs(OUT, exist_ok=True)
     mat = material()
-    objs = [machine(False), machine(True), shop(), horeca(), van(), bike(), compactor(), depot_baler()]
+    objs = [desk(), reception(), bookshelf(), coffee(), cabinet(), conference(), boxes(), board(), courthouse(), lamp(), bench()]
     total = 0
     for ob in objs:
         ob.data.materials.append(mat)

@@ -14,14 +14,14 @@ namespace DocketDay.App
     {
         public const string AppId = "docket-day";                 // ads-config X-App-ID, house-ad host id
         public const string Package = "com.coddykit.docketday";
-        public const string ProductName = "Docket Day";           // store title "Docket Day: Recycling Tycoon" (30 chars)
+        public const string ProductName = "Docket Day";           // store title "Docket Day: Law Firm Rush" (25 chars)
         public const string PrivacyUrl = "https://www.coddykit.com/pages/privacy-policy";
 
         // ---- P8 (Patron): real ids. Keep the constant names (a preflight reads them). ----
         public const string AdMobRewardedAndroid = "";   // ADMOB_REWARDED_DOCKETDAY_ANDROID (store-automation/.env)
         public const string RevenueCatAndroidKey = "";   // RC public SDK key goog_… (project Docket Day)
 
-        /// <summary>RC entitlements that remove forced ads (fleet §3/§8): noads, granted by noads / premium / route_pass / bundle.</summary>
+        /// <summary>RC entitlements that remove forced ads (fleet §3/§8): noads, granted by noads / premium / partner_pass / bundle.</summary>
         public static readonly string[] AdFreeEntitlements = Commerce.AdFreeEntitlements;
 
         public static Dictionary<string, RewardedLimit> RewardedLimits() => DocketRewards.KitLimits();

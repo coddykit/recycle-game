@@ -20,7 +20,7 @@ namespace ChargeNurse.Sim
         public string Table()
         {
             var sb = new StringBuilder();
-            sb.AppendLine("day  arr treat bad  wait blk%   fees  ward  costs    net stars   rep");
+            sb.AppendLine("day  arr treat bad  wait blk%   fees  ward  costs    net stars");
             foreach (var d in Days)
                 sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "{0,3} {1,4} {2,5} {3,3} {4,5:0} {5,4:0} {6,6:0} {7,5:0} {8,6:0} {9,6:0}   {10}/9",
                     d.Day, d.Arrivals, d.Treated, d.Bad, d.AvgWait, d.BlockedShare * 100, d.Fees, d.Ward, d.Costs, d.Net, d.Stars));

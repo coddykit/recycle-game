@@ -28,7 +28,6 @@ namespace SemesterRush.Game.Tests
         {
             var s = new GameSession(TestData.Gd(), dir ?? TempDir()) { Now = () => 1_800_000_000 };
             s.LoadOrNew(5);
-            s.Sim.EmitCrowd = false;
             var a = new GameActions(s);
             var c = new Coach { Persist = (step, done) => { s.Settings.CoachStep = step; s.Settings.CoachDone = done; s.Settings.Save(); } };
             a.Allowed = c.Allows;
@@ -37,8 +36,8 @@ namespace SemesterRush.Game.Tests
             return (s, a, c);
         }
 
-        /// <summary>Lets the world catch up for a guide step that waits for it (van driving, count line, baler).</summary>
-        public static void Run(Coach c, GameSession s, GameActions a, int frames = 400)
+        /// <summary>Lets the world catch up for a guide step that waits for it (the first bell, the first class, the week).</summary>
+        public static void Run(Coach c, GameSession s, GameActions a, int frames = 2000)
         {
             for (int i = 0; i < frames && c.Active && c.FastForward(s.Sim); i++) c.Drive(s.Sim, a, 0.1);
             c.Drive(s.Sim, a, 0.05);
@@ -49,33 +48,53 @@ namespace SemesterRush.Game.Tests
 
     public class GuideTests
     {
-        static readonly string[] Right = { "", "select_point:0", "select_truck:0", "select_point:0", "select_point:1", "go", "", "depot", "till", "baler", "sell:0", "fuel_info", "policy:1:threshold:80", "buy:bin_m:1", "buy:driver" };
+        /// <summary>The right action for each step (filled from the career: hall node, guide course, gate edge, lunch fix).</summary>
+        static string Right(int step, GameSession s, Coach c)
+        {
+            var sim = s.Sim;
+            int hall = sim.MainHall(), g = sim.Gd.CourseIndex(sim.Gd.GuideCourse);
+            switch (step)
+            {
+                case 1: return "hall:" + hall;
+                case 2: return "cell:0:0";
+                case 3: return "course:" + g;
+                case 4: return "prof:" + g + ":0";
+                case 5: return "start_week";
+                case 7: return "gate:" + Coach.GuideGate(sim);
+                case 8: return "till";
+                case 9: return "buy:build:" + Coach.LibrarySite(sim);
+                case 10: { var f = c.Fix; return f == null ? "" : "move:" + f.Placement + ":" + f.Day + ":" + f.Slot + ":" + f.Node; }
+                case 11: return "report";
+            }
+            return "";
+        }
 
         [Test]
         public void TheWholeGuideCompletesWithTheRightActions()
         {
             var (s, a, c) = G.NewGuide();
             var events = new List<string>();
-            c.Analytics = (n, p) => events.Add(n);
-            for (int step = 1; step <= Coach.Steps; step++)
+            var steps = new List<int>();
+            c.Analytics = (n, p) => { events.Add(n); if (n == "onboarding_step") steps.Add((int)(long)p["step"]); };
+            int guard = 0;
+            while (c.Active && guard++ < 40)
             {
-                if (!c.Active) break;
-                if (step == 6)   // the guide waits for the van, no tap; the world runs fast
-                {
-                    G.Run(c, s, a);
-                    continue;
-                }
-                Assert.AreEqual(step, c.Step, "step order");
-                var r = a.Run(Right[step]);
-                Assert.IsTrue(r.Ok, "step " + step + " action " + Right[step] + " failed: " + r.Error);
-                if (c.Step != 6) G.Run(c, s, a);
+                int step = c.Step;
+                if (c.FastForward(s.Sim) || step == 6) { G.Run(c, s, a); continue; }
+                string act = Right(step, s, c);
+                Assert.AreNotEqual("", act, "step " + step + " has an action");
+                var r = a.Run(act);
+                Assert.IsTrue(r.Ok, "step " + step + " action " + act + " failed: " + r.Error);
+                G.Run(c, s, a);
             }
-            G.Run(c, s, a);
             Assert.IsFalse(c.Active, "guide finished at step " + c.Step);
+            CollectionAssert.AreEqual(Enumerable.Range(1, Coach.Steps).ToArray(), steps.ToArray(), "every step, in order, none skipped");
             Assert.IsFalse(s.Sim.S.Tutorial, "crises may start after the guide");
             Assert.IsTrue(s.Settings.CoachDone);
-            Assert.AreEqual(2, s.Sim.S.Drivers);
-            Assert.IsTrue(s.Sim.S.Points.Exists(p => p.Kind == "machine_m"));
+            Assert.AreEqual(Phases.Report, s.Sim.Phase, "the guide ends on the first week's grades");
+            Assert.IsTrue(s.Sim.S.OpenGates.Contains(Coach.GuideGate(s.Sim)));
+            Assert.IsNotNull(s.Sim.BuildingAt(s.Sim.Gd.Node(Coach.LibrarySite(s.Sim))));
+            Assert.Greater(s.Sim.S.Prestige, s.Gd.StartPrestige, "the first rise of prestige");
             Assert.Contains("onboarding_complete", events);
         }
 
@@ -84,15 +103,18 @@ namespace SemesterRush.Game.Tests
         {
             var (s, a, c) = G.NewGuide();
             Assert.AreEqual(1, c.Step);
-            var r = a.Run("select_point:2");
+            var r = a.Run("start_week");
             Assert.IsFalse(r.Ok);
             Assert.AreEqual("blocked", r.Error);
             Assert.AreEqual(1, c.Step);
             Assert.AreEqual(1, c.WrongTaps);
             Assert.AreEqual(1, c.Flash);
-            Assert.IsFalse(a.Run("buy:driver").Ok, "no shortcuts during the guide");
+            Assert.IsFalse(a.Run("buy:staff:marshals").Ok, "no shortcuts during the guide");
+            Assert.IsTrue(a.Run("site:" + s.Sim.Gd.Node("site_library")).Ok, "info cards stay open to look at");
             Assert.AreEqual(1, c.Step);
-            Assert.IsTrue(a.Run("select_point:0").Ok);
+            Assert.IsTrue(a.Run(Right(1, s, c)).Ok);
+            Assert.AreEqual(2, c.Step);
+            Assert.IsFalse(a.Run("cell:2:3").Ok, "only Monday 9:00");
             Assert.AreEqual(2, c.Step);
         }
 
@@ -111,15 +133,15 @@ namespace SemesterRush.Game.Tests
         public void TimeIsPausedWhileTheGuideWaitsForThePlayer()
         {
             var (s, a, c) = G.NewGuide();
-            for (int i = 1; i <= 5; i++) a.Run(Right[i]);
+            for (int i = 1; i <= 5; i++) a.Run(Right(i, s, c));
             Assert.AreEqual(6, c.Step);
-            Assert.IsTrue(c.FastForward(s.Sim));
+            Assert.IsTrue(c.FastForward(s.Sim), "the first bell is watched");
             G.Run(c, s, a);
             Assert.AreEqual(7, c.Step);
             double m = s.Sim.S.Minute;
             c.Drive(s.Sim, a, 1.0);
             s.Sim.Advance(1.0);
-            Assert.AreEqual(m, s.Sim.S.Minute, 1e-9, "paused at a tap step");
+            Assert.AreEqual(m, s.Sim.S.Minute, 1e-9, "paused at the gate step");
         }
 
         [Test]
@@ -128,12 +150,12 @@ namespace SemesterRush.Game.Tests
             var (s, a, c) = G.NewGuide();
             var events = new List<string>();
             c.Analytics = (n, p) => events.Add(n);
-            a.Run("select_point:0");
+            a.Run(Right(1, s, c));
             c.Skip(s.Sim);
             Assert.IsFalse(c.Active);
             Assert.IsTrue(s.Settings.CoachDone);
             Assert.Contains("onboarding_skip", events);
-            Assert.IsTrue(a.Run("buy:driver").Ok || a.Run("buy:driver").Error == "cash", "everything is allowed after a skip");
+            Assert.IsTrue(a.Run("buy:staff:marshals").Ok, "everything is allowed after a skip");
             s.Settings.ReplayGuide();
             Assert.IsFalse(s.Settings.CoachDone);
             Assert.AreEqual(0, s.Settings.CoachStep);
@@ -145,25 +167,25 @@ namespace SemesterRush.Game.Tests
         }
 
         [Test]
-        public void RelaunchMidRouteDraftGoesBackToPickingTheVan()
+        public void RelaunchWithTheBoardClosedGoesBackToTheHall()
         {
             string dir = G.TempDir();
             var (s, a, c) = G.NewGuide(dir);
-            a.Run(Right[1]); a.Run(Right[2]); a.Run(Right[3]);
-            Assert.AreEqual(4, c.Step);
+            a.Run(Right(1, s, c)); a.Run(Right(2, s, c));
+            Assert.AreEqual(3, c.Step);
             s.Save();
-            var (s2, a2, c2) = G.NewGuide(dir);   // relaunch: the draft (UI state) is gone
-            Assert.AreEqual(2, c2.Step, "pick the van again, never stuck at 'add the second machine'");
-            Assert.IsTrue(a2.Run("select_truck:0").Ok);
-            Assert.AreEqual(3, c2.Step);
+            var (s2, a2, c2) = G.NewGuide(dir);   // relaunch: the open board (UI state) is gone
+            Assert.AreEqual(1, c2.Step, "tap the hall again, never stuck at 'pick Business 101'");
+            Assert.IsTrue(a2.Run(Right(1, s2, c2)).Ok);
+            Assert.AreEqual(2, c2.Step);
         }
 
         [Test]
-        public void RelaunchAfterGoContinuesWithTheVanOnTheRoad()
+        public void RelaunchAfterStartContinuesWithTheWeekRunning()
         {
             string dir = G.TempDir();
             var (s, a, c) = G.NewGuide(dir);
-            for (int i = 1; i <= 5; i++) a.Run(Right[i]);
+            for (int i = 1; i <= 5; i++) a.Run(Right(i, s, c));
             s.Save();
             var (s2, a2, c2) = G.NewGuide(dir);
             Assert.AreEqual(6, c2.Step);
@@ -172,10 +194,25 @@ namespace SemesterRush.Game.Tests
         }
 
         [Test]
+        public void TheGateLowersTheLateCounterInTheGuide()
+        {
+            var (s, a, c) = G.NewGuide();
+            for (int i = 1; i <= 5; i++) a.Run(Right(i, s, c));
+            G.Run(c, s, a);
+            Assert.AreEqual(7, c.Step);
+            Assert.Greater(s.Sim.S.LateToday, 0, "the first bell: commuters walk the long way and are late");
+            int next = s.Sim.S.Plan.Find(p => p.Day == 0 && p.Slot > 0).Slot;
+            int before = s.Sim.EstimateLate(0, next);
+            Assert.IsTrue(a.Run(Right(7, s, c)).Ok);
+            Assert.Less(s.Sim.EstimateLate(0, next), Math.Max(1, before));
+        }
+
+        [Test]
         public void NoRewardsAndNoCrisesInTheGuide()
         {
             var (s, a, c) = G.NewGuide();
             Assert.IsTrue(s.Sim.S.Tutorial);
+            Assert.IsFalse(s.Sim.CrisesAllowed);
             Assert.IsFalse(s.Sim.RewardOffer("daily_bonus", 1_800_000_000).Ok);
         }
     }
@@ -223,7 +260,7 @@ namespace SemesterRush.Game.Tests
             var s = new GameSession(TestData.Gd(), dir) { Now = () => now };
             s.LoadOrNew(3);
             s.Sim.EndTutorial();
-            s.Sim.S.History.Add(new DayStats { Fees = 2000 });
+            s.Sim.S.History.Add(new WeekStats { Tuition = 8000 });
             s.Save();
             now += 3 * 3600;
             var o = s.Resume();
@@ -257,8 +294,8 @@ namespace SemesterRush.Game.Tests
         {
             var cat = IapCatalog.Parse(TestData.Read("Assets/Resources/data/iap.json"));
             var adFree = cat.Order.Where(cat.GrantsAdFree).OrderBy(x => x).ToArray();
-            CollectionAssert.AreEqual(new[] { "bundle", "noads", "premium", "route_pass" }, adFree, "fleet §3/§8 table");
-            foreach (var cheap in new[] { "cash_s", "cash_xl", "starter", "speed", "dispatcher_plus", "offline_plus", "cosmetics_all", "livery_sunset" })
+            CollectionAssert.AreEqual(new[] { "bundle", "noads", "premium" }, adFree, "fleet §3/§8 table (plan: + dean_pass in v1.1)");
+            foreach (var cheap in new[] { "cash_s", "cash_xl", "starter", "exam_kit", "comeback", "speed", "automation", "offline_plus", "cosmetics_all", "theme_ivy" })
                 Assert.IsFalse(cat.GrantsAdFree(cheap), cheap);
         }
 
@@ -290,12 +327,38 @@ namespace SemesterRush.Game.Tests
         public void OffersAreNeverShownInTheGuideAndOnlyOnTheirDays()
         {
             var (shop, fake, s) = Shop();
-            Assert.AreEqual("", shop.TryOffer("day_report", tutorial: true));
-            Assert.AreEqual("", shop.TryOffer("day_report", tutorial: false), "day 0 is too early for the starter");
+            Assert.AreEqual("", shop.TryOffer("week_report", tutorial: true));
+            Assert.AreEqual("", shop.TryOffer("week_report", tutorial: false), "day 0 is too early for the starter");
             Assert.AreEqual("offer_only", shop.WhyNot("starter"));
             Assert.AreEqual("comeback", shop.TryOffer("resume", false, awayDays: 4));
             Assert.AreEqual("", shop.WhyNot("comeback"));
             Assert.AreEqual("", shop.TryOffer("resume", false, awayDays: 5), "one offer per session");
+        }
+
+        [Test]
+        public void ExamKitArmsTheExamWeek()
+        {
+            var (shop, fake, s) = Shop();
+            s.Settings.FirstSeen = 1_800_000_000 - 2 * 86400;
+            Assert.AreEqual("offer_only", shop.WhyNot("exam_kit"));
+            Assert.AreEqual("exam_kit", shop.TryOffer("exam_week", false));
+            Assert.IsTrue(shop.Buy("exam_kit"));
+            Assert.IsTrue(s.Sim.S.ExamKit, "invigilators + backup generator this exam week");
+            Assert.IsFalse(shop.AdFree);
+        }
+
+        [Test]
+        public void StarterGivesFundsAndOneMarshalButNotAdFree()
+        {
+            var (shop, fake, s) = Shop();
+            s.Settings.FirstSeen = 1_800_000_000 - 4 * 86400;
+            int marshals = s.Sim.Staff(Depts.Marshals);
+            double cash = s.Sim.S.Cash;
+            Assert.AreEqual("starter", shop.TryOffer("week_report", false));
+            Assert.IsTrue(shop.Buy("starter"));
+            Assert.AreEqual(marshals + 1, s.Sim.Staff(Depts.Marshals));
+            Assert.Greater(s.Sim.S.Cash, cash);
+            Assert.IsFalse(shop.AdFree);
         }
 
         [Test]
@@ -358,12 +421,14 @@ namespace SemesterRush.Game.Tests
         {
             var sim = TestData.NewSim();
             var h = new ReviewHook();
-            var good = new SimEvent { Type = "day_done", B = 7 };
+            var good = new SimEvent { Type = "week_done", A = 2, B = 4, V = 0.85 };
             Assert.AreEqual("", h.Check(good, sim, inGuide: true));
-            Assert.AreEqual("good_day", h.TakeDeferred(false));
+            Assert.AreEqual("good_week", h.TakeDeferred(false));
             Assert.AreEqual("", h.TakeDeferred(false));
-            Assert.AreEqual("good_day", h.Check(good, sim, false));
-            Assert.AreEqual("", h.Check(new SimEvent { Type = "day_done", B = 3 }, sim, false));
+            Assert.AreEqual("good_week", h.Check(good, sim, false));
+            Assert.AreEqual("", h.Check(new SimEvent { Type = "week_done", A = 3, B = 9, V = 0.5 }, sim, false));
+            sim.S.History.Add(new WeekStats { Trips = 400, Late = 0 });
+            Assert.AreEqual("zero_late_week", h.Check(new SimEvent { Type = "week_done", A = 1, B = 0, V = 0.7 }, sim, false), "plan: first week with zero late students");
         }
     }
 
@@ -399,13 +464,26 @@ namespace SemesterRush.Game.Tests
         {
             var loc = G.Loc();
             var gd = TestData.Gd();
-            foreach (var n in gd.Nodes) if (n.Kind == "site" || n.Kind == "depot") Assert.IsTrue(loc.Has("place." + n.Id), n.Id);
-            foreach (var d in gd.Districts) Assert.IsTrue(loc.Has("district." + d.Id), d.Id);
+            foreach (var n in gd.Nodes) if (n.Kind != "junction") Assert.IsTrue(loc.Has("place." + n.Id), n.Id);
+            foreach (var z in gd.Zones) Assert.IsTrue(loc.Has("zone." + z.Id), z.Id);
             foreach (var r in gd.Research) { Assert.IsTrue(loc.Has("research." + r.Id + ".t"), r.Id); Assert.IsTrue(loc.Has("research." + r.Id + ".d"), r.Id); }
-            foreach (var e in gd.Events) Assert.IsTrue(loc.Has("crisis." + e.Id + ".t"), e.Id);
-            foreach (var v in gd.Vehicles.Keys) Assert.IsTrue(loc.Has("truck." + v), v);
-            foreach (var k in gd.PointKinds.Keys) Assert.IsTrue(loc.Has("kind." + k), k);
-            foreach (var s in new[] { "idle", "drive", "service", "unload", "wait", "broken" }) Assert.IsTrue(loc.Has("truck.status." + s), s);
+            foreach (var b in new[] { "learning", "life", "mobility", "admin" }) Assert.IsTrue(loc.Has("research.branch." + b), b);
+            foreach (var e in gd.Events) { Assert.IsTrue(loc.Has("crisis." + e.Id + ".t"), e.Id); Assert.IsTrue(loc.Has("crisis." + e.Id + ".b"), e.Id); }
+            foreach (var f in gd.Faculties) { Assert.IsTrue(loc.Has("faculty." + f.Id), f.Id); foreach (var p in f.Profs) Assert.IsTrue(loc.Has("prof." + p), p); }
+            foreach (var c in gd.Courses) { Assert.IsTrue(loc.Has("course." + c.Id), c.Id); Assert.IsTrue(loc.Has("course." + c.Id + ".code"), c.Id); }
+            foreach (var c in gd.Cohorts) Assert.IsTrue(loc.Has("cohort." + c.Id), c.Id);
+            foreach (var b in gd.Buildings.Keys) { Assert.IsTrue(loc.Has("building." + b), b); Assert.IsTrue(loc.Has("building." + b + ".d"), b); }
+            foreach (var d in Depts.All) { Assert.IsTrue(loc.Has("staff." + d), d); Assert.IsTrue(loc.Has("staff." + d + ".d"), d); }
+            foreach (var o in new[] { "concede", "talk", "retain", "let_go" }) Assert.IsTrue(loc.Has("decision." + o), o);
+            foreach (var i in new[] { Intakes.Keep, Intakes.Grow, Intakes.Select }) { Assert.IsTrue(loc.Has("intake." + i), i); Assert.IsTrue(loc.Has("intake." + i + ".d"), i); }
+            for (int d = 0; d < gd.DaysPerWeek; d++) Assert.IsTrue(loc.Has("day." + d) && loc.Has("day.short." + d), "day " + d);
+            foreach (var p in Simulation.RewardPlacements) Assert.IsTrue(loc.Has("reward." + p + ".t") && loc.Has("reward." + p + ".b"), p);
+            foreach (var w in new[] { "past", "room_busy", "cohort_busy", "prof_busy", "prof_tired", "enough", "needs_lab", "needs_hall", "not_room", "building", "locked",
+                "cash", "prestige", "owned", "max", "research", "invalid", "no_prof", "wrong_faculty", "no_room_left", "nothing_missing", "phase", "busy", "requires", "none", "no_cell", "no_board" })
+                Assert.IsTrue(loc.Has("err." + w), "err." + w);
+            foreach (var w in new[] { "no_prof", "prof_off", "seats", "closed", "building" }) Assert.IsTrue(loc.Has("warn." + w), "warn." + w);
+            foreach (var t in new[] { "lunch", "late", "quad", "science", "dorm", "lab", "exam", "staggered", "shuttle", "widen", "decision", "sick", "pipe", "snow", "open_day", "report" })
+                Assert.IsTrue(loc.Has("tip." + t), "tip." + t);
         }
 
         [Test]
@@ -444,7 +522,8 @@ namespace SemesterRush.Game.Tests
         {
             // overflow guard for the 48 dp pills (fleet §9 "10 dilde metin taşmaz"; de / ru run longest)
             var loc = G.Loc();
-            var shortKeys = loc.Keys.Where(k => k.StartsWith("tab.") || k == "truck.go" || k == "hud.start_day" || k == "hud.next_day" || k == "coach.skip" || k == "intro.start" || k.StartsWith("shop.group.")).ToList();
+            var shortKeys = loc.Keys.Where(k => k.StartsWith("tab.") || k.StartsWith("day.short.") || k.EndsWith(".code") || k == "hud.start_week" || k == "hud.next_week" || k == "hud.report"
+                || k == "coach.skip" || k == "intro.start" || k.StartsWith("shop.group.")).ToList();
             var bad = new List<string>();
             foreach (var k in shortKeys)
                 foreach (var l in Loc.Languages)

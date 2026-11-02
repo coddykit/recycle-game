@@ -199,6 +199,8 @@ namespace DocketDay.Sim.Tests
             var b = TestData.Open(sim, "traffic", 2);
             int para = sim.S.Staff.First(s => s.Role == "paralegal").Id;
             int fa = a.Tasks.FindIndex(t => t.Kind == Kinds.File), fb = b.Tasks.FindIndex(t => t.Kind == Kinds.File);
+            a.Tasks[fa].Due = sim.S.Day + 3;
+            b.Tasks[fb].Due = sim.S.Day + 1;
             Assert.AreEqual("", sim.Assign(para, a.Id, fa));
             Assert.AreEqual("", sim.Assign(para, b.Id, fb));
             Assert.AreEqual(b.Id, sim.NextTaskOf(para).m.Id, "earliest deadline first");
@@ -367,8 +369,8 @@ namespace DocketDay.Sim.Tests
             sim.S.Day = 5;
             var m = TestData.Open(sim, "traffic", 3);
             var f = m.Task(Kinds.File);
+            foreach (var t in m.Tasks) if (t.Kind != Kinds.Hearing) { t.Staff = Attend.None; t.Due = m.HearingTask.Due; }
             f.Due = sim.S.Day;
-            foreach (var t in m.Tasks) t.Staff = t.Kind == Kinds.Hearing ? t.Staff : Attend.None;
             double st = sim.AreaStanding("traffic");
             TestData.RunDay(sim);
             Assert.IsTrue(f.Late);

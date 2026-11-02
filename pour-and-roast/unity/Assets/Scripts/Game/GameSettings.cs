@@ -39,8 +39,10 @@ namespace PourAndRoast.Game
         public string ReviewDeferred { get => S("review_deferred", ""); set => D["review_deferred"] = value ?? ""; }
         /// <summary>Speed Pack owners: skip the day report by itself.</summary>
         public bool AutoSkipReport { get => B("auto_report", false); set => D["auto_report"] = value; }
-        /// <summary>Equipped truck livery ("" = default; premium gold / cosmetic liveries).</summary>
-        public string Livery { get => S("livery", ""); set => D["livery"] = value ?? ""; }
+        /// <summary>Equipped cafe theme ("" = default; theme_nordic / theme_artdeco).</summary>
+        public string Theme { get => S("theme", ""); set => D["theme"] = value ?? ""; }
+        /// <summary>Active career save slot (0 = the free one).</summary>
+        public int Slot { get => I("slot", 0); set => D["slot"] = (long)value; }
 
         public bool Flag(string id) => MiniJson.Arr(D, "flags") is List<object> l && l.Contains(id);
 

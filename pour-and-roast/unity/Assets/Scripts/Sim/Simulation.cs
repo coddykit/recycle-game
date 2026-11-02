@@ -360,7 +360,12 @@ namespace PourAndRoast.Sim
                     break;
                 default: return null;
             }
-            foreach (var it in t.Items) if (it.M < 0) return null;
+            foreach (var it in t.Items)
+            {
+                if (it.M < 0) return null;
+                var d = Gd.Menu[it.M];
+                if (d.Prep && S.PrepHot > 0) { S.PrepHot--; it.Stage = d.Tasks.Length; it.Q = S.BeanQ - 2; }
+            }
             S.Today.Customers++;
             S.Today.Items += t.Items.Count;
             S.Tickets.Add(t);

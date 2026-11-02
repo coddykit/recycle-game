@@ -249,7 +249,8 @@ namespace DocketDay.Game
                         if (tm == null || tm.PuzzleSolved || tm.Status == MatterStatus.Hearing) Step = 7;
                         break;
                     case 7:
-                        if (closed && (sim.Phase != Phases.Report || sim.S.Billed)) Step = 8;
+                        // the verdict is in; the step ends with the billing run (or a later morning after a relaunch)
+                        if (closed && (sim.Phase == Phases.Plan || (sim.Phase == Phases.Report && sim.S.Billed))) Step = 8;
                         break;
                     case 8:
                     {

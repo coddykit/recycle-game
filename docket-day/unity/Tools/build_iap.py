@@ -44,7 +44,7 @@ GROUPS = ["offer", "adfree", "boost", "looks", "budget"]
 OFFERS = {
     "cooldown_days": 3, "max_per_session": 1,
     "starter": {"event": "day_report", "day_min": 3, "day_max": 7, "per_game": 1},
-    "retainer_relief": {"event": "cash_dip", "day_min": 1, "per_game": 99},
+    "retainer_relief": {"event": "cash_dip", "day_min": 0, "per_game": 99},
     "comeback": {"event": "resume", "away_days_min": 3, "per_game": 99},
 }
 

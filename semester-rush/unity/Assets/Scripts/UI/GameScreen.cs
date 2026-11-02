@@ -1,11 +1,11 @@
-// Semester Rush — the Region screen (UI Toolkit, CoddyKit theme). Layout (portrait):
-//   top    HUD: day + phase, clock, cash, Green Rating; speed buttons; today's crisis chips; the main action (Start the day
-//          in the morning plan, Next day on the report)
-//   middle the diorama + markers (a fill gauge over every return point, ≥ 48 dp tap target; the depot's coins / baler buttons)
-//   bottom the route bar (while a truck is selected: stops, predicted km · fuel · minutes · load, Suggest / Clear / Go) and
-//          the tab bar: Network · Fleet · Depot · Research · Shop · ⚙ — each opens a bottom sheet (Sheets.cs)
-// Text is set only when it changed (UiKit.SetText, LESSONS A10); lists are rebuilt on events, never under a finger
-// (UiKit.Held, fleet §16); markers move at 30 Hz (Low 10 Hz) with style.translate (no layout pass).
+// Semester Rush — the Campus screen (UI Toolkit, CoddyKit theme). Layout (portrait):
+//   top    HUD: week · day, clock, cash, prestige; the late counter of the last bell change, hungry students, today's
+//          crisis chips; speed buttons; the main action (Start the week on Sunday, Open the grades on Friday evening)
+//   middle the diorama + markers (≥ 48 dp tap targets): every room shows the class in it now, plots show "+ build",
+//          closed gates "open · $", the admin building the bursar's coins
+//   bottom the tab bar: Timetable · Campus · Staff · Upgrades · Shop · ⚙ — each opens a bottom sheet (Sheets.cs)
+// Text is set only when it changed (UiKit.SetText), lists are rebuilt on events, never under a finger (UiKit.Held,
+// fleet §16); markers move at 30 Hz (Low 10 Hz) with style.translate (no layout pass).
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -25,22 +25,21 @@ namespace SemesterRush.UI
         Loc L => main.Loc;
         Simulation Sim => main.Session.Sim;
         GameActions Act => main.Actions;
-        RegionWorld World => main.world;
+        CampusWorld World => main.world;
 
         // HUD
-        Label dayLabel, clockLabel, cashLabel, ratingLabel;
-        VisualElement crisesRow, speedRow, hud;
+        Label dayLabel, clockLabel, cashLabel, prestigeLabel, lateLabel, hungryLabel;
+        VisualElement crisesRow, speedRow, hud, lateChip, hungryChip;
         Button mainAction;
         readonly List<Button> speedButtons = new List<Button>();
+        float lateFlash;
         // bottom
-        VisualElement bottom, routeBar, tabsRow;
-        Label routeTitle, routeEst, fuelLabel;
-        Button goBtn, suggestBtn, clearBtn, fuelBadge;
+        VisualElement bottom, tabsRow;
         readonly Dictionary<string, Button> tabs = new Dictionary<string, Button>();
         // markers
-        VisualElement markerLayer, depotMarker;
-        Button coinsBtn, balerBtn, depotBtn;
+        VisualElement markerLayer;
         readonly List<Marker> markers = new List<Marker>();
+        string markerKey = "";
         float markerAcc;
         // state
         string openTab = "";
@@ -49,15 +48,16 @@ namespace SemesterRush.UI
         int sheetArg = -1;
         bool sheetDirty;
         public bool WindowOpen => (sheet != null && sheet.IsOpen) || PagerOpen;
+        public bool DecisionOpen => sheet != null && sheet.IsOpen && sheetKind == "decision";
 
         sealed class Marker
         {
             public Button Root;
-            public VisualElement Fill;
-            public Label Badge;
-            public string LastBadge = "";
-            public float LastPct = -1;
-            public string LastClass = "";
+            public Label Label;
+            public string Kind;     // hall | building | site | gate | coins
+            public int Index;
+            public string Last = "";
+            public Vector3 World;
         }
 
         public GameScreen(VisualElement root, SemesterMain main)
@@ -66,8 +66,10 @@ namespace SemesterRush.UI
             this.main = main;
             var uss = Resources.Load<StyleSheet>("ui/SemesterRush");
             if (uss != null) root.styleSheets.Add(uss);
-            root.AddToClassList("br-root");
-            BuildMarkers();
+            root.AddToClassList("sr-root");
+            markerLayer = new VisualElement { name = "Markers", pickingMode = PickingMode.Ignore };
+            markerLayer.AddToClassList("sr-markers");
+            root.Add(markerLayer);
             BuildHud();
             BuildBottom();
             BuildCoach();
@@ -79,37 +81,40 @@ namespace SemesterRush.UI
 
         void BuildHud()
         {
-            hud = new VisualElement { name = "Hud" };
-            hud.AddToClassList("br-hud");
-            hud.pickingMode = PickingMode.Ignore;
-            var row = Row("br-hud__row");
-            var left = Row("br-hud__row");
-            dayLabel = ChipLabel(left, "", out _);
-            clockLabel = ChipLabel(left, "", out _);
+            hud = new VisualElement { name = "Hud", pickingMode = PickingMode.Ignore };
+            hud.AddToClassList("sr-hud");
+            var row = Row("sr-hud__row");
+            var left = Row("sr-hud__row");
+            dayLabel = ChipLabel(left, out _);
+            clockLabel = ChipLabel(left, out _);
             row.Add(left);
-            var right = Row("br-hud__row");
-            cashLabel = ChipLabel(right, "", out var cashChip);
-            cashChip.AddToClassList("br-chip--money");
-            ratingLabel = ChipLabel(right, "", out var ratingChip);
-            ratingChip.RegisterCallback<ClickEvent>(_ => OpenSheet("report_last"));
+            var right = Row("sr-hud__row");
+            cashLabel = ChipLabel(right, out var cashChip);
+            cashChip.AddToClassList("sr-chip--money");
+            prestigeLabel = ChipLabel(right, out var prestigeChip);
+            prestigeChip.AddToClassList("sr-chip--prestige");
+            prestigeChip.RegisterCallback<ClickEvent>(_ => OpenSheet("report_last"));
             row.Add(right);
             hud.Add(row);
 
-            var row2 = Row("br-hud__row");
-            crisesRow = Row("br-crises");
-            fuelBadge = new Button(() => main.Run("fuel_info")) { name = "FuelBadge" };
-            fuelBadge.AddToClassList("br-fuel");
-            fuelBadge.focusable = false;
-            fuelLabel = UiKit.Text("", "coddy-caption-muted");
-            fuelBadge.Add(fuelLabel);
-            row2.Add(fuelBadge);
-            row2.Add(crisesRow);
-            speedRow = Row("br-speed");
+            var row2 = Row("sr-hud__row");
+            var chips = Row("sr-crises");
+            lateLabel = ChipLabel(chips, out lateChip);
+            lateChip.name = "LateChip";
+            lateChip.AddToClassList("sr-chip--late");
+            lateChip.RegisterCallback<ClickEvent>(_ => OpenSheet("late"));
+            hungryLabel = ChipLabel(chips, out hungryChip);
+            hungryChip.AddToClassList("sr-chip--warn");
+            hungryChip.RegisterCallback<ClickEvent>(_ => OpenSheet("late"));
+            crisesRow = Row("sr-crises");
+            chips.Add(crisesRow);
+            row2.Add(chips);
+            speedRow = Row("sr-speed");
             for (int s = 1; s <= 4; s++)
             {
                 int sp = s;
                 var b = new Button(() => OnSpeed(sp)) { text = L.F("hud.speed", "n", sp) };
-                b.AddToClassList("br-speed__btn");
+                b.AddToClassList("sr-speed__btn");
                 b.focusable = false;
                 speedButtons.Add(b);
                 speedRow.Add(b);
@@ -118,7 +123,7 @@ namespace SemesterRush.UI
             hud.Add(row2);
 
             mainAction = UiKit.PrimaryButton("", OnMainAction);
-            mainAction.AddToClassList("br-main-action");
+            mainAction.AddToClassList("sr-main-action");
             mainAction.name = "MainAction";
             hud.Add(mainAction);
             root.Add(hud);
@@ -126,35 +131,14 @@ namespace SemesterRush.UI
 
         void BuildBottom()
         {
-            bottom = new VisualElement { name = "Bottom" };
-            bottom.AddToClassList("br-bottom");
-            bottom.pickingMode = PickingMode.Ignore;
-
-            routeBar = new VisualElement { name = "RouteBar" };
-            routeBar.AddToClassList("br-route");
-            var top = Row("br-route__row");
-            routeTitle = UiKit.Text("", "coddy-label-strong");
-            top.Add(routeTitle);
-            routeBar.Add(top);
-            routeEst = UiKit.Text("", "br-route__est");
-            routeBar.Add(routeEst);
-            var actions = Row("br-route__row");
-            suggestBtn = UiKit.ActionPill("", () => main.Run("suggest"), true, "tonal");
-            clearBtn = UiKit.ActionPill("", () => main.Run("clear"), true, "tonal");
-            goBtn = UiKit.ActionPill("", () => main.Run("go"));
-            goBtn.name = "Go";
-            actions.Add(suggestBtn);
-            actions.Add(clearBtn);
-            actions.Add(goBtn);
-            routeBar.Add(actions);
-            bottom.Add(routeBar);
-
-            tabsRow = Row("br-tabs");
-            foreach (var id in new[] { "network", "fleet", "depot", "research", "shop", "settings" })
+            bottom = new VisualElement { name = "Bottom", pickingMode = PickingMode.Ignore };
+            bottom.AddToClassList("sr-bottom");
+            tabsRow = Row("sr-tabs");
+            foreach (var id in new[] { "board", "campus", "staff", "research", "shop", "settings" })
             {
                 string tid = id;
                 var b = new Button(() => OnTab(tid)) { name = "Tab_" + id };
-                b.AddToClassList("br-tab");
+                b.AddToClassList("sr-tab");
                 b.focusable = false;
                 tabs[id] = b;
                 tabsRow.Add(b);
@@ -163,71 +147,65 @@ namespace SemesterRush.UI
             root.Add(bottom);
         }
 
-        void BuildMarkers()
-        {
-            markerLayer = new VisualElement { name = "Markers" };
-            markerLayer.AddToClassList("br-markers");
-            markerLayer.pickingMode = PickingMode.Ignore;
-            depotMarker = new VisualElement { name = "DepotMarker" };
-            depotMarker.AddToClassList("br-depot-marker");
-            depotBtn = DepotButton("", () => main.Run("depot"), "Depot");
-            coinsBtn = DepotButton("", () => main.Run("till"), "Coins");
-            coinsBtn.AddToClassList("br-depot-btn--coins");
-            balerBtn = DepotButton("", () => main.Run("baler"), "Baler");
-            depotMarker.Add(depotBtn);
-            depotMarker.Add(coinsBtn);
-            depotMarker.Add(balerBtn);
-            markerLayer.Add(depotMarker);
-            root.Add(markerLayer);
-        }
-
-        Button DepotButton(string text, Action a, string name)
-        {
-            var b = new Button(a) { text = text, name = name };
-            b.AddToClassList("br-depot-btn");
-            b.focusable = false;
-            return b;
-        }
-
+        /// <summary>Markers for every unlocked room / plot / closed gate + the bursar's coins (rebuilt when the campus changes).</summary>
         void SyncMarkers()
         {
-            while (markers.Count < Sim.S.Points.Count)
+            var gd = Sim.Gd;
+            var sb = new System.Text.StringBuilder();
+            foreach (var n in gd.Nodes)
             {
-                int i = markers.Count;
-                var m = new Marker { Root = new Button(() => main.Run("select_point:" + i)) { name = "Point_" + i } };
-                m.Root.AddToClassList("br-marker");
-                m.Root.focusable = false;
-                m.Root.style.backgroundColor = new Color(0, 0, 0, 0);
-                m.Root.style.borderTopWidth = m.Root.style.borderBottomWidth = m.Root.style.borderLeftWidth = m.Root.style.borderRightWidth = 0;
-                var gauge = new VisualElement { pickingMode = PickingMode.Ignore };
-                gauge.AddToClassList("br-marker__gauge");
-                m.Fill = new VisualElement { pickingMode = PickingMode.Ignore };
-                m.Fill.AddToClassList("br-marker__fill");
-                gauge.Add(m.Fill);
-                m.Root.Add(gauge);
-                m.Badge = UiKit.Text("", "br-marker__badge");
-                m.Root.Add(m.Badge);
-                markerLayer.Insert(0, m.Root);
-                markers.Add(m);
+                if (!Sim.Unlocked(n.Zone) || (n.Kind != "building" && n.Kind != "site")) continue;
+                var b = Sim.BuildingAt(n.Index);
+                sb.Append(n.Index).Append(b == null ? 's' : b.Built ? 'b' : 'c').Append(',');
             }
-            while (markers.Count > Sim.S.Points.Count) { markers[markers.Count - 1].Root.RemoveFromHierarchy(); markers.RemoveAt(markers.Count - 1); }
+            foreach (var e in gd.Edges) if (e.Type == "gate" && Sim.CanBuy("gate:" + e.Index).Reason != "locked" && !Sim.S.OpenGates.Contains(e.Index)) sb.Append('g').Append(e.Index);
+            string key = sb.ToString();
+            if (key == markerKey) return;
+            markerKey = key;
+            foreach (var m in markers) m.Root.RemoveFromHierarchy();
+            markers.Clear();
+            foreach (var n in gd.Nodes)
+            {
+                if (!Sim.Unlocked(n.Zone) || (n.Kind != "building" && n.Kind != "site")) continue;
+                var b = Sim.BuildingAt(n.Index);
+                string kind = b == null ? "site" : b.Built && Sim.DefOf(b).Teaching ? "hall" : "building";
+                AddMarker(kind, n.Index, World != null ? World.NodePos(n.Index) + new Vector3(0, 22f, 9f) : Vector3.zero);
+                if (b != null && b.Def == "admin") AddMarker("coins", n.Index, World != null ? World.NodePos(n.Index) + new Vector3(0, 34f, 9f) : Vector3.zero);
+            }
+            foreach (var e in gd.Edges)
+                if (e.Type == "gate" && Sim.CanBuy("gate:" + e.Index).Reason != "locked" && !Sim.S.OpenGates.Contains(e.Index))
+                    AddMarker("gate", e.Index, World != null ? World.EdgeMid(e.Index) + Vector3.up * 8f : Vector3.zero);
         }
+
+        void AddMarker(string kind, int index, Vector3 world)
+        {
+            string action = kind == "coins" ? "till" : kind + ":" + index;
+            var m = new Marker { Kind = kind, Index = index, World = world, Root = new Button(() => main.Run(action)) { name = MarkerName(kind, index) } };
+            m.Root.AddToClassList("sr-marker");
+            m.Root.AddToClassList("sr-marker--" + kind);
+            m.Root.focusable = false;
+            m.Label = UiKit.Text("", "sr-marker__label");
+            m.Root.Add(m.Label);
+            markerLayer.Add(m.Root);
+            markers.Add(m);
+        }
+
+        static string MarkerName(string kind, int index) => kind == "coins" ? "Coins" : kind == "site" ? "Site_" + index : kind == "gate" ? "Gate_" + index : "Node_" + index;
 
         // ------------------------------------------------------------------ helpers
 
         static VisualElement Row(string cls)
         {
-            var r = new VisualElement();
+            var r = new VisualElement { pickingMode = PickingMode.Ignore };
             r.AddToClassList(cls);
-            r.pickingMode = PickingMode.Ignore;
             return r;
         }
 
-        static Label ChipLabel(VisualElement parent, string text, out VisualElement chip)
+        static Label ChipLabel(VisualElement parent, out VisualElement chip)
         {
             chip = new VisualElement();
-            chip.AddToClassList("br-chip");
-            var l = UiKit.Text(text, "br-chip__label");
+            chip.AddToClassList("sr-chip");
+            var l = UiKit.Text("", "sr-chip__label");
             chip.Add(l);
             parent.Add(chip);
             return l;
@@ -240,6 +218,10 @@ namespace SemesterRush.UI
         }
 
         string Money(double v) => Fmt.Money((long)Math.Round(v), L.Lang);
+        string Place(int node) => L.T("place." + Sim.Gd.Nodes[node].Id);
+        string CourseName(int c) => L.T("course." + Sim.Gd.Courses[c].Id);
+        string CourseCode(int c) => L.T("course." + Sim.Gd.Courses[c].Id + ".code");
+        string ProfName(int p) => p >= 0 && p < Sim.S.Profs.Count ? L.T("prof." + Sim.S.Profs[p].Name) : L.T("board.no_prof");
 
         /// <summary>A UI point (top-left screen px) lies on a pickable UI element (camera pan / world taps must not start there).</summary>
         public bool OverUi(Vector2 screenTopLeft)
@@ -257,34 +239,33 @@ namespace SemesterRush.UI
             if (main.Coach.Active) { Toast(L.T("hud.speed_guide"), ToastKind.Info); return; }
             if (s > Sim.MaxSpeed) { Toast(L.T("hud.speed_locked"), ToastKind.Info); OpenSheet("shop"); return; }
             main.Run("speed:" + s);
-            Refresh(false);
+            Refresh(true);
         }
 
         void OnMainAction()
         {
-            if (Sim.Phase == Phases.Plan) main.Run("start_day");
-            else if (Sim.Phase == Phases.Report) OpenSheet("report");
+            if (Sim.Phase == Phases.Plan) main.Run("start_week");
+            else if (Sim.Phase == Phases.Report) { main.Run("report"); OpenSheet("report"); }
         }
 
         void OnTab(string id)
         {
-            if (main.Coach.Active && main.Coach.Target != "tab." + id) { main.Coach.WrongTap(); return; }
+            if (main.Coach.Active) { main.Coach.WrongTap(); return; }
             if (openTab == id && sheet != null && sheet.IsOpen) { CloseSheet(); return; }
+            if (id == "board") { int h = Act.BoardHall >= 0 ? Act.BoardHall : Sim.MainHall(); main.Run("hall:" + h); return; }
             OpenSheet(id);
         }
 
-        /// <summary>A world tap (RegionWorld.Picked).</summary>
+        /// <summary>A world tap (CampusWorld.Picked).</summary>
         public void WorldPick(WorldHit hit)
         {
             switch (hit.Kind)
             {
-                case "point": main.Run("select_point:" + hit.Index); break;
-                case "truck": main.Run("select_truck:" + hit.Index); break;
-                case "depot": main.Run("depot"); break;
-                default:
-                    if (main.Coach.Active) main.Coach.WrongTap();
-                    else if (Act.SelectedTruck < 0) main.Run("clear");
-                    break;
+                case "hall": main.Run("hall:" + hit.Index); break;
+                case "building": main.Run("building:" + hit.Index); break;
+                case "site": main.Run("site:" + hit.Index); break;
+                case "gate": OpenSheet("gate", hit.Index); break;
+                default: if (main.Coach.Active) main.Coach.WrongTap(); break;
             }
         }
 
@@ -296,33 +277,26 @@ namespace SemesterRush.UI
             {
                 switch (a[0])
                 {
-                    case "select_point":
-                        if (Act.SelectedTruck < 0) OpenSheet("point", int.Parse(a[1]));
+                    case "hall": OpenSheet("board", int.Parse(a[1])); break;
+                    case "building": OpenSheet("building", int.Parse(a[1])); break;
+                    case "site": OpenSheet("site", int.Parse(a[1])); break;
+                    case "till": if (r.Value > 0) Toast(L.F("toast.till", "cash", Money(r.Value)), ToastKind.Success); break;
+                    case "gate": Toast(L.T("toast.gate"), ToastKind.Success); if (sheetKind == "gate") CloseSheet(); break;
+                    case "buy":
+                        if (a.Length > 1 && a[1] == "build") { Toast(L.T("toast.build_start"), ToastKind.Success); if (sheetKind == "site") CloseSheet(); }
                         break;
-                    case "select_truck":
-                    case "go":
-                    case "clear":
-                        if (sheet != null && sheet.IsOpen && sheetKind != "depot") CloseSheet();
+                    case "start_week":
+                    case "next_week":
+                        CloseSheet();
                         break;
-                    case "depot":
-                    case "baler":
-                        OpenSheet("depot");
-                        break;
-                    case "till":
-                        if (r.Value > 0) Toast(L.F("toast.till", "cash", Money(r.Value)), ToastKind.Success);
-                        break;
-                    case "fuel_info":
-                        Toast(L.T("hud.fuel_info"), ToastKind.Info);
-                        break;
-                    case "start_day":
-                    case "next_day":
+                    case "decide":
                         CloseSheet();
                         break;
                 }
                 sheetDirty = true;
             }
             else if (r.Error != "blocked") Toast(L.T("err." + r.Error), ToastKind.Warning);
-            Refresh(false);
+            Refresh(true);
         }
 
         public void Toast(string text, ToastKind kind)
@@ -330,13 +304,20 @@ namespace SemesterRush.UI
             if (!string.IsNullOrEmpty(text) && !text.StartsWith("err.")) UiToastHost.Show(text, kind);
         }
 
+        /// <summary>A bell change made students late: the late chip pulses.</summary>
+        public void LateFlash() => lateFlash = 1.2f;
+
         // ------------------------------------------------------------------ frame
 
         public void Tick(float dt, bool low)
         {
             markerAcc += dt;
             if (markerAcc >= (low ? 0.1f : 1f / 30f)) { markerAcc = 0; PlaceMarkers(); }
-            Refresh(false);
+            hudAcc += dt;
+            if (hudAcc >= 0.2f) { hudAcc = 0; Refresh(false); }   // 5 Hz HUD text
+            lateFlash = Mathf.Max(0, lateFlash - dt);
+            float s = 1f + lateFlash * 0.12f * Mathf.Abs(Mathf.Sin(Time.unscaledTime * 10f));
+            lateChip.style.scale = new Scale(new Vector3(s, s, 1));
             CoachTick(dt);
             if (sheetDirty && sheet != null && sheet.IsOpen && !UiKit.Held(sheet.Body)) { sheetDirty = false; FillSheet(); }
         }
@@ -345,24 +326,28 @@ namespace SemesterRush.UI
 
         public void Refresh(bool force)
         {
-            hudAcc += Time.unscaledDeltaTime;
-            if (!force && hudAcc < 0.2f) return;   // 5 Hz HUD text
-            hudAcc = 0;
             var s = Sim.S;
-            UiKit.SetText(dayLabel, L.F("hud.day", "n", s.Day) + " · " + L.T("phase." + s.Phase));
-            UiKit.SetText(clockLabel, Fmt.ClockMin(s.Minute));
+            string day = Sim.Phase == Phases.Plan ? L.T("day.sunday") : Sim.Phase == Phases.Report ? L.T("phase.report") : L.T("day." + s.Day);
+            UiKit.SetText(dayLabel, (Sim.ExamWeek ? L.F("hud.exam_week", "n", Sim.WeekOfSemester) : L.F("hud.week", "n", Sim.WeekOfSemester, "s", Sim.Semester)) + " · " + day);
+            UiKit.SetText(clockLabel, Sim.Phase == Phases.Live ? Fmt.ClockMin(s.Minute) : "—");
             UiKit.SetText(cashLabel, Money(s.Cash));
-            UiKit.SetText(ratingLabel, L.F("hud.rating", "r", Fmt.Rating(s.Rating)));
+            UiKit.SetText(prestigeLabel, L.F("hud.prestige", "p", (long)Math.Round(s.Prestige)));
+            int late = Sim.Bell != null && Sim.Phase == Phases.Live ? Sim.Bell.Late : 0;
+            UiKit.SetText(lateLabel, L.F("hud.late", "n", late));
+            lateChip.EnableInClassList("sr-chip--warn", late > 0);
+            int hungry = 0;
+            foreach (var c in s.Cohorts) if (c.Enrolled && c.Lunch >= 0) hungry += (int)Math.Round(c.Size * c.Unfed);
+            hungryChip.style.display = hungry > 0 && Sim.Phase == Phases.Live ? DisplayStyle.Flex : DisplayStyle.None;
+            UiKit.SetText(hungryLabel, L.F("hud.hungry", "n", hungry));
             for (int i = 0; i < speedButtons.Count; i++)
             {
-                speedButtons[i].EnableInClassList("br-speed__btn--on", s.Speed == i + 1);
+                speedButtons[i].EnableInClassList("sr-speed__btn--on", s.Speed == i + 1);
                 speedButtons[i].style.display = Sim.Phase == Phases.Live ? DisplayStyle.Flex : DisplayStyle.None;
             }
-            bool showMain = Sim.Phase != Phases.Live && !(main.Coach.Active && main.Coach.Step < 6);
+            bool showMain = Sim.Phase != Phases.Live && !(main.Coach.Active && main.Coach.Step < 5);
             mainAction.style.display = showMain ? DisplayStyle.Flex : DisplayStyle.None;
-            UiKit.SetText(mainAction, Sim.Phase == Phases.Plan ? L.T("hud.start_day") : L.T("phase.report"));
-            UiKit.SetText(fuelLabel, L.F("hud.fuel", "cost", Money(s.Today.Fuel)));
-            // crisis chips
+            UiKit.SetText(mainAction, Sim.Phase == Phases.Plan ? (Sim.ExamWeek ? L.T("hud.start_exams") : L.T("hud.start_week")) : L.T("hud.report"));
+            mainAction.name = Sim.Phase == Phases.Plan ? "MainAction" : "ReportAction";
             var crises = Sim.ActiveCrises();
             string key = string.Join(",", crises);
             if ((string)crisesRow.userData != key)
@@ -372,78 +357,72 @@ namespace SemesterRush.UI
                 foreach (var c in crises)
                 {
                     var chip = new VisualElement();
-                    chip.AddToClassList("br-chip");
-                    chip.AddToClassList("br-chip--warn");
-                    chip.Add(UiKit.Text(L.T("crisis." + c + ".t"), "br-chip__label"));
+                    chip.AddToClassList("sr-chip");
+                    chip.AddToClassList("sr-chip--warn");
+                    chip.Add(UiKit.Text(L.T("crisis." + c + ".t"), "sr-chip__label"));
+                    chip.RegisterCallback<ClickEvent>(_ => OpenSheet(Sim.S.Pending != null ? "decision" : "crisis"));
                     crisesRow.Add(chip);
                 }
             }
-            // route bar
-            bool route = Act.SelectedTruck >= 0;
-            routeBar.style.display = route ? DisplayStyle.Flex : DisplayStyle.None;
-            if (route)
-            {
-                var t = Sim.S.Trucks[Act.SelectedTruck];
-                UiKit.SetText(routeTitle, L.F("truck.name", "type", L.T("truck." + t.Type), "n", Act.SelectedTruck + 1) + " · " + L.F("route.draft", "n", Act.Draft.Count));
-                var e = Act.DraftEstimate;
-                UiKit.SetText(routeEst, e != null && e.Ok
-                    ? L.F("route.est", "km", Fmt.Km(e.Km, L.Lang), "cost", Money(e.Cost), "min", (long)Math.Round(e.Minutes), "pct", Fmt.Pct(e.LoadPct, L.Lang))
-                    : (Sim.FreeDrivers <= 0 && !t.Busy ? L.T("truck.no_driver") : L.T("route.hint")));
-                goBtn.SetEnabled(Act.Draft.Count > 0);
-            }
-            UiKit.SetText(suggestBtn, L.T("truck.suggest"));
-            UiKit.SetText(clearBtn, L.T("truck.clear"));
-            UiKit.SetText(goBtn, L.T("truck.go"));
             foreach (var kv in tabs)
             {
-                UiKit.SetText(kv.Value, kv.Key == "settings" ? "⚙" : L.T("tab." + kv.Key));
-                kv.Value.EnableInClassList("br-tab--on", openTab == kv.Key && sheet != null && sheet.IsOpen);
+                UiKit.SetText(kv.Value, kv.Key == "settings" ? "⚙" : L.T("tab." + kv.Key) + (kv.Key == "board" && Sim.Missing > 0 ? " · " + Sim.Missing : ""));
+                kv.Value.EnableInClassList("sr-tab--on", openTab == kv.Key && sheet != null && sheet.IsOpen);
             }
-            // depot marker
-            UiKit.SetText(depotBtn, L.T("depot.title"));
-            double till = Math.Floor(s.Depot.Till);
-            coinsBtn.style.display = till >= 1 || main.Coach.Target == "coins" ? DisplayStyle.Flex : DisplayStyle.None;
-            UiKit.SetText(coinsBtn, "+" + Money(till));
-            UiKit.SetText(balerBtn, s.Depot.BalerDown ? "⚠ " + L.T("depot.baler") : L.T("depot.baler"));
             SyncMarkers();
+            if (force) PlaceMarkers();
+        }
+
+        string MarkerText(Marker m)
+        {
+            switch (m.Kind)
+            {
+                case "coins": { double t = Math.Floor(Sim.S.Till); return t >= 1 ? "+" + Money(t) : ""; }
+                case "site": return "+ " + L.T("building." + Sim.Gd.Nodes[m.Index].Building);
+                case "gate": return L.F("marker.gate", "cost", Money(Sim.CanBuy("gate:" + m.Index).Cost));
+                case "building":
+                {
+                    var b = Sim.BuildingAt(m.Index);
+                    if (b != null && !b.Built) return L.F("marker.building", "pct", Fmt.Pct(1 - b.BuildLeft / Math.Max(1, Sim.DefOf(b).BuildMin), L.Lang));
+                    return b != null ? L.T("building." + b.Def) : "";
+                }
+                case "hall":
+                {
+                    var b = Sim.BuildingAt(m.Index);
+                    if (b.ClosedUntil > Sim.S.Minute) return "⚠ " + L.T("marker.closed");
+                    if (Sim.Phase == Phases.Live)
+                    {
+                        int slot = Sim.ClassSlotAt(Sim.S.Minute);
+                        if (slot < 0) slot = Sim.BellSlotAt(Sim.S.Minute);
+                        int i = slot >= 0 ? Sim.At(Sim.S.Day, slot, m.Index) : -1;
+                        if (i >= 0) return CourseCode(Sim.ActivePlan[i].Course);
+                    }
+                    return Place(m.Index);
+                }
+            }
+            return "";
         }
 
         void PlaceMarkers()
         {
             if (World == null) return;
-            for (int i = 0; i < markers.Count && i < Sim.S.Points.Count; i++)
+            foreach (var m in markers)
             {
-                var m = markers[i];
-                var p = Sim.S.Points[i];
-                var sp = World.ScreenOf(World.PointPos(i) + Vector3.up * 8f);
+                string text = MarkerText(m);
+                if (text != m.Last) { m.Last = text; UiKit.SetText(m.Label, text); }
+                bool visible = text != "" && !(main.Coach.Active && m.Kind != "hall" && m.Kind != "coins" && m.Kind != "gate" && m.Kind != "site");
+                var sp = visible ? World.ScreenOf(m.World) : null;
                 if (sp == null) { m.Root.style.display = DisplayStyle.None; continue; }
                 m.Root.style.display = DisplayStyle.Flex;
                 var pp = ToPanel(sp.Value);
                 m.Root.style.translate = new Translate(pp.x, pp.y);
-                float pct = (float)Sim.DisplayPct(p);
-                if (Mathf.Abs(pct - m.LastPct) > 0.01f) { m.LastPct = pct; m.Fill.style.height = Length.Percent(pct * 100f); }
-                string cls = p.Jammed || Sim.IsFull(p) ? "br-marker__fill--full" : pct >= p.Threshold / 100f - 0.0001f ? "br-marker__fill--warn" : "";
-                if (cls != m.LastClass)
-                {
-                    m.Fill.EnableInClassList("br-marker__fill--full", cls == "br-marker__fill--full");
-                    m.Fill.EnableInClassList("br-marker__fill--warn", cls == "br-marker__fill--warn");
-                    m.LastClass = cls;
-                }
-                m.Fill.EnableInClassList("br-marker__fill--estimate", !Sim.DisplayIsLive(p));
-                int stop = Act.Draft.IndexOf(i);
-                string badge = p.Jammed ? "!" : stop >= 0 ? (stop + 1).ToString() : Fmt.Pct(pct, L.Lang);
-                if (badge != m.LastBadge) { m.LastBadge = badge; UiKit.SetText(m.Badge, badge); }
-                m.Root.EnableInClassList("br-marker--route", stop >= 0);
-                m.Root.EnableInClassList("br-marker--jam", p.Jammed);
-                m.Root.EnableInClassList("br-marker--selected", Act.SelectedPoint == i);
+                if (m.Kind == "hall") m.Root.EnableInClassList("sr-marker--selected", Act.BoardHall == m.Index && SheetKind == "board");
             }
-            var dp = World.ScreenOf(World.DepotPos + Vector3.up * 14f);
-            if (dp != null) { var pp = ToPanel(dp.Value); depotMarker.style.translate = new Translate(pp.x, pp.y); }
         }
 
         void Relocalise()
         {
-            foreach (var m in markers) { m.LastBadge = ""; }
+            foreach (var m in markers) m.Last = "";
             for (int s = 0; s < speedButtons.Count; s++) speedButtons[s].text = L.F("hud.speed", "n", s + 1);
             crisesRow.userData = null;
             Refresh(true);
@@ -453,19 +432,26 @@ namespace SemesterRush.UI
         /// <summary>The top-left screen rect of a UI target for the guide spotlight (null = not a UI target / hidden).</summary>
         Rect? UiTarget(string target)
         {
-            VisualElement e = target switch
+            VisualElement e = null;
+            if (sheet != null && sheet.IsOpen) e = sheet.Panel.Q<VisualElement>("Target_" + Safe(target));
+            if (e == null)
             {
-                "go" => goBtn,
-                "fuel" => fuelBadge,
-                "depot" => depotBtn,
-                "coins" => coinsBtn,
-                "baler" => balerBtn,
-                _ => null,
-            };
-            if (e == null && target.StartsWith("point:") && int.TryParse(target.Substring(6), out int pi) && pi < markers.Count) e = markers[pi].Root;
-            if (e == null && sheet != null && sheet.IsOpen) e = sheet.Panel.Q<VisualElement>("Target_" + target.Replace(':', '_'));
+                string[] a = target.Split(':');
+                switch (a[0])
+                {
+                    case "start_week": e = mainAction; break;
+                    case "report": e = mainAction; break;
+                    case "late": e = lateChip; break;
+                    case "coins": e = markers.Find(m => m.Kind == "coins")?.Root; break;
+                    case "hall": e = root.Q<VisualElement>("Node_" + a[1]); break;
+                    case "gate": e = root.Q<VisualElement>("Gate_" + a[1]); break;
+                    case "build": { int n = Sim.Gd.Node(a[1]); e = n >= 0 ? root.Q<VisualElement>("Site_" + n) : null; break; }
+                }
+            }
             if (e == null || e.panel == null || e.resolvedStyle.display == DisplayStyle.None) return null;
             return e.worldBound;
         }
+
+        static string Safe(string target) => target.Replace(':', '_');
     }
 }
