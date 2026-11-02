@@ -1,0 +1,14 @@
+{
+    "name": "@NS@.UI",
+    "rootNamespace": "@NS@.UI",
+    "references": ["@NS@.Sim", "@NS@.Game", "@NS@.World", "@NS@.App", "CoddyKit.Core", "CoddyKit.Runtime"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

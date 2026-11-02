@@ -6,7 +6,7 @@ taşır:
 > 🔴 **MOTOR = UNITY (sahip 2026-11-02: "unity olacak bundan sonra godot kullanmayacağız").** Bu repodaki BÜTÜN yeni
 > oyunlar (Bottle Route dahil) **Unity 6 LTS + URP** ile yapılır — Godot YOK. **Unity modeli = `volt-city/`** (Grid Keeper,
 > canlı; `volt-city/docs/UNITY.md` her filo kuralının Unity karşılığını, assembly düzenini, kit parçalarını ve Android
-> derleme girişini anlatır; ortak kit `volt-city/unity/Assets/CoddyKit/` = CoddyUnityKit). `smuggler/` (Godot) yalnız
+> derleme girişini anlatır; ortak kit tek kaynağı `coddy-unity-kit/` = CoddyUnityKit + yeni oyun iskelet üreticisi). `smuggler/` (Godot) yalnız
 > **oynanış/sistem fikri** için okunur (lojistik döngüsü, onboarding akışı, katalog); kodu kopyalanmaz.
 
 - **Unity örnek oyun (motor + kit):** `volt-city/` = **Grid Keeper: Energy Tycoon** (canlı, Unity 6000.3.27f1 + URP, Google Play).
@@ -53,7 +53,7 @@ Belgeler monorepo yollarını kullanır. Eşleme:
 | Belgede | Bu repoda |
 |---|---|
 | `games/<oyun>/` | `<oyun>/` (örnek: `volt-city/`, `smuggler/`; yeni oyun kendi klasörüne, ör. `bottle-route/`) |
-| `games/tools/unity` (CoddyUnityKit tek kaynağı, CoddyApps'te yapılıyor) | şimdilik `volt-city/unity/Assets/CoddyKit/` — yeni oyuna buradan kopyala, oyunda kit kodunu değiştirme |
+| `games/tools/unity` (CoddyUnityKit tek kaynağı: `CoddyKit/`, yeni oyun şablonu `template/` + `new_game.sh`, `sync.sh`) | `coddy-unity-kit/` (CoddyApps d68acfe22a) — yeni oyunu `coddy-unity-kit/new_game.sh` ile kur, kiti `sync.sh` ile kopyala; oyunda kit kodunu değiştirme. `volt-city/unity/Assets/CoddyKit/` eski kopyadır |
 | `games/CLAUDE.md`, `games/NEW_GAME_PLAYBOOK.md`, `games/LESSONS_LEARNED.md` | kökte aynı adla |
 | `games/tools/IAP_STANDARD.md`, `REWARDED_ADS_STRATEGY.md`, `REVENUECAT_AD_TRACKING.md` | kökte aynı adla |
 | `games/docs/next-wave-2026-10-31/<plan>.md` / `README.md` | `<PLAN>_GAME_PLAN.md` / `NEXT_WAVE_PLANS_README.md` |

@@ -1,0 +1,14 @@
+{
+    "name": "@NS@.App",
+    "rootNamespace": "@NS@.App",
+    "references": ["CoddyKit.Core", "CoddyKit.Runtime"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
