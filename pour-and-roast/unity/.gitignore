@@ -48,7 +48,7 @@ keystore.properties
 /Assets/ExternalDependencyManager/Editor/*.log
 /.utmp/
 /Packages/tarballs/
-# Firebase config is copied in only for the build (BottleAndroidBuild) — never commit it or what it generates
+# Firebase config is copied in only for the build (RoastAndroidBuild) — never commit it or what it generates
 /Assets/google-services.json*
 /Assets/StreamingAssets/google-services-desktop.json*
 /Assets/Plugins/Android/FirebaseApp.androidlib*

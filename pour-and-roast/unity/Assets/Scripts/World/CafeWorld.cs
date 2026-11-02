@@ -77,12 +77,14 @@ namespace PourAndRoast.World
             MarkDirty();
         }
 
-        public void SetLooks(string theme, bool goldTrim, bool aprons, bool cupsSkin)
+        /// <summary>Cosmetics: theme_* walls / floor, the Edition's gold machine, wine aprons, cup sleeves (cups = teal,
+        /// latte_art = gold).</summary>
+        public void SetLooks(string theme, bool goldTrim, bool aprons, string cupsLook)
         {
             Theme = theme ?? "";
             GoldTrim = goldTrim;
             ApronSwatch = aprons ? Pal.ApronWine : Pal.Apron;
-            int cs = cupsSkin ? Pal.Teal : Pal.Brand;
+            int cs = cupsLook == "latte_art" ? Pal.Gold : cupsLook == "cups" ? Pal.Teal : Pal.Brand;
             if (cs != CupSwatch && cupMesh != null) { CupSwatch = cs; cupMesh = MeshKit.CupMesh(cs); }
             crowd?.SetApron(ApronSwatch);
             builtKey = "";

@@ -330,7 +330,7 @@ namespace PourAndRoast.UI
         {
             string theme = Session.Settings.Theme;
             if (theme != "" && !kit.Purchases.Has(theme)) theme = "";
-            world.SetLooks(theme, kit.Purchases.Has("gold_trim"), kit.Purchases.Has("aprons"), kit.Purchases.Has("cups") || kit.Purchases.Has("latte_art"));
+            world.SetLooks(theme, kit.Purchases.Has("gold_trim"), kit.Purchases.Has("aprons"), kit.Purchases.Has("latte_art") ? "latte_art" : kit.Purchases.Has("cups") ? "cups" : "");
         }
 
         void Track(string name, Dictionary<string, object> p)
