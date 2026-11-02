@@ -4,8 +4,8 @@
   "districts": [
     { "id": "harbour",   "chapter": 1, "fame": 0,  "cost": 0 },
     { "id": "plaza",     "chapter": 1, "fame": 0,  "cost": 0 },
-    { "id": "boardwalk", "chapter": 2, "fame": 35, "cost": 2000 },
-    { "id": "stadium",   "chapter": 3, "fame": 50, "cost": 6000 }
+    { "id": "boardwalk", "chapter": 2, "fame": 40, "cost": 11000 },
+    { "id": "stadium",   "chapter": 3, "fame": 55, "cost": 27000 }
   ],
   "nodes": [
     { "id": "commissary", "x": 0.4, "y": 0.5, "district": "harbour", "kind": "depot" },

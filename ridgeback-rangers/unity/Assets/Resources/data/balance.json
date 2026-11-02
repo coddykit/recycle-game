@@ -35,7 +35,7 @@
     "ticket": 3.5, "ticket_rating_min": 0.85, "ticket_rating_span": 0.3, "patience": 40,
     "snack": 0.8, "cafe_per_level": 0.35, "gift": 1.5, "donation": 0.6, "cp_per_joy": 0.001, "joy_target": 55, "walk_joy": 0.4, "walk_sat": 0.25
   },
-  "tram": { "seats": 16, "speed_kmh": 14, "dwell_min": 3, "max_wait": 12, "cars_max": 4, "upkeep": 60, "upkeep_car": 40 },
+  "tram": { "seats": 20, "speed_kmh": 14, "dwell_min": 3, "max_wait": 12, "cars_max": 4, "upkeep": 60, "upkeep_car": 40 },
   "economy": { "paddock_upkeep": 40, "rating_alpha": 0.3, "rating_free_days": 3, "cp_per_care": 20, "day_income_floor": 1000 },
   "stars": { "care": [0.55, 0.72, 0.86], "visitors": [0.45, 0.6, 0.75], "calm": [0.5, 0.75, 0.9] },
   "paddock": { "slots": 6, "expand_slots": 3, "expand_max": 2 },
@@ -43,7 +43,7 @@
   "incubator": { "max": 6, "band_lo": 40, "band_hi": 60, "tutorial_lo": 10, "tutorial_hi": 90, "warm_s": 600 },
   "prices": {
     "paddock": 2000, "fence2": 300, "fence3": 1200, "water": 500, "shade": 400, "expand": 900, "hire": 400,
-    "tram_car": 2000, "lane": 3000, "vet_beds": 1500, "cafe1": 1500, "cafe2": 3500, "gift": 2500, "incubator": 1000,
+    "tram_car": 1500, "lane": 3000, "vet_beds": 1500, "cafe1": 1500, "cafe2": 3500, "gift": 2500, "incubator": 1000,
     "hatch_tech": 2000, "chief": 3000, "cooler": 800, "feed_run2": 1800
   },
   "chief": { "rating": 55 },

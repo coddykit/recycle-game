@@ -889,12 +889,49 @@ namespace GrillConvoy.Sim.Tests
         }
 
         [Test]
-        public void TwentyDaysReachTheBoardwalkAndTheStadium()
+        public void PacingMatchesThePlanChapterTimes()
         {
-            var rep = BalanceRunner.Run(TestData.Gd(), 9, 20);
-            TestContext.Progress.WriteLine("BALANCE 20 days seed 9\n" + rep.Table() + string.Join("\n", rep.Log));
-            Assert.GreaterOrEqual(rep.Chapter, 2, "the Boardwalk within 20 days (~100 min of play)");
-            Assert.Greater(rep.Stations, 4, "the truck grew");
+            // plan §6: chapter 2 (Boardwalk) at ~1:30 h, chapter 3 (Stadium) at ~3:30 h; one day ≈ 5 real minutes at 1×
+            // (4 min of service + morning / report). Accept ±25 %: Boardwalk days 15–23, Stadium days 33–53.
+            foreach (long seed in new long[] { 9, 42 })
+            {
+                var rep = BalanceRunner.Run(TestData.Gd(), seed, 55);
+                TestContext.Progress.WriteLine("BALANCE 55 days seed " + seed + "\n" + string.Join("\n", rep.Log));
+                int board = UnlockDay(rep, "pitch boardwalk"), stadium = UnlockDay(rep, "pitch stadium");
+                Assert.That(board, Is.InRange(15, 23), "seed " + seed + ": the Boardwalk at ~1:30 h");
+                Assert.That(stadium, Is.InRange(33, 53), "seed " + seed + ": the Stadium at ~3:30 h");
+                Assert.GreaterOrEqual(rep.Chapter, 3);
+                Assert.Greater(rep.Stations, 4, "the truck grew");
+                Assert.Greater(rep.MinCash, 0, "never broke");
+            }
+        }
+
+        static int UnlockDay(BalanceReport rep, string what)
+        {
+            foreach (var l in rep.Log)
+                if (l.EndsWith(what)) return int.Parse(l.Split(' ')[1]);
+            return -1;
+        }
+
+        [Test]
+        public void QuietDaysDoNotGiveTheThirdServiceStar()
+        {
+            // a quiet weekend at the offices: nobody walks away, but an idle crew earns at most 2 service stars
+            var gd = TestData.Gd();
+            Assert.Greater(gd.StarBusy, 0);
+            int capped = 0, weekends = 0;
+            var rep = BalanceRunner.Run(gd, 42, 28);
+            foreach (var d in rep.Days)
+            {
+                if (d.Day <= gd.FameFreeDays || (d.Day - 1) % 7 < 5) continue;
+                weekends++;
+                if (d.StarService <= 2) capped++;
+            }
+            Assert.Greater(weekends, 0);
+            Assert.Greater(capped, weekends / 2, "most quiet weekends stop at 2 service stars");
+            int nine = 0;
+            foreach (var d in rep.Days) if ((d.Day - 1) % 7 >= 5 && d.Stars == 9) nine++;
+            Assert.LessOrEqual(nine, 1, "9/9 weekends are rare");
         }
     }
 }

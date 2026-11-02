@@ -81,6 +81,11 @@ pitch — if the FBX axis swap flips them, rotate in `KitInto` once).
 one**; until then the build keeps the placeholder in `unity/Assets/Art/Icon`. `store/feature-graphic.png` (1024 × 500):
 lunch rush on the plaza, two trucks, crew at the hatches, a line of the game's chunky crowd figures, string lights, towers,
 a burger hero in the left third for the tagline overlay. Meshy credits this pass: **0** (game total stays 60).
+**Winding audit (lead, fleet §0, after the `Quad` fix to clockwise):** every `MeshKit` helper checked — `Box` (all six
+faces, any yaw), `Strip`, `Disc`, the ground / water quads in `RegionWorld` face outward / +Y, and `Tree`, `Umbrella`,
+`Truck`, `Commissary`, `Figure`, `Awning`, `Board`, `Puff`, `Flame` only use `Box`; `Append` keeps the FBX's own (Unity)
+order and flips only under a mirroring matrix. No helper needed a swap. Kit FBX keep their import rotation: `Prop` now
+puts the instance under a pivot (position + yaw), `KitInto` multiplies by the FBX's own transform.
 UI renders (`render_ui.py`) unchanged: they show the trucks / characters, which did not change.
 
 Still to do at P2: truck cutaway close-up view (plan §8 camera 2), steam cards as real sprites, livery / awning cosmetic

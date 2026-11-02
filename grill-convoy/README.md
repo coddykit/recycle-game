@@ -37,6 +37,10 @@ alevlenmesi, rakip kamyon — kısa, önceden duyurulur, oyun bitmez. Gerçek zi
 - **Boş kimlikler (P8, Patron):** AdMob ödüllü birim + uygulama kimliği, RevenueCat anahtarı, Firebase config.
 - **Sahip onayı bekleyen:** CLAUDE.md §8 satırı (`grill-convoy`: noads, premium, convoy_pass, bundle).
 
+- **Polish pass (2026-11-02):** `store/` (en-US listing, 8 ekran görüntüsü planı, Data safety CSV, `validate.py` →
+  check.sh), 3 ikon adayı + feature graphic (`tools/art/render_store.py`; ikon seçimi sahipte), Orta/Yüksek'te Blender
+  ilçe kiti (Düşük değişmedi), tempo plana çekildi (Boardwalk ~86 dk, Stadium ~211 dk) → `docs/ART.md`, `docs/BALANCE.md`.
+
 ## Komutlar
 
 ```bash

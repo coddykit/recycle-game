@@ -60,7 +60,7 @@
   },
   "vehicles": {
     "starter": { "w": 4, "h": 3, "w_ext": 5, "h_ext": 4, "crew": 3, "speed_kmh": 22, "cost_km": 1.2, "price": 0,    "cap": [220, 260, 150] },
-    "box":     { "w": 5, "h": 4, "w_ext": 5, "h_ext": 4, "crew": 4, "speed_kmh": 20, "cost_km": 1.6, "price": 5000, "cap": [320, 380, 220] }
+    "box":     { "w": 5, "h": 4, "w_ext": 5, "h_ext": 4, "crew": 4, "speed_kmh": 20, "cost_km": 1.6, "price": 9000, "cap": [320, 380, 220] }
   },
   "economy": {
     "wage": 70, "hire": 300, "extend": 3000, "fame_alpha": 0.3, "fame_free_days": 3, "max_trucks": 2,
@@ -69,14 +69,15 @@
   "stars": {
     "service": [0.25, 0.12, 0.05],
     "stock":   [0.20, 0.08, 0.02],
-    "speed":   [9, 6, 3.5]
+    "speed":   [9, 6, 3.5],
+    "busy":    0.3
   },
   "weather": {
     "ids": ["sunny", "cloudy", "hot", "rain"],
     "weights": [0.45, 0.25, 0.15, 0.15],
     "min_day": [1, 1, 4, 4]
   },
-  "match": { "every": 3, "from": 1020, "to": 1110, "mult": 2.2, "halftime_from": 1065, "halftime_to": 1080, "halftime_mult": 5.0, "patience": 0.6 },
+  "match": { "every": 3, "from": 960, "to": 1110, "mult": 5.0, "halftime_from": 1065, "halftime_to": 1080, "halftime_mult": 7.0, "patience": 0.9 },
   "events": { "free_days": 3, "per_day": [0.0, 0.5, 0.8, 1.1] },
   "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
   "rewards": {

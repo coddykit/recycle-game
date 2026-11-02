@@ -164,21 +164,25 @@ namespace RidgebackRangers.World
             return go;
         }
 
-        /// <summary>Blender-kit model when present (Resources/kit/&lt;name&gt;), else the procedural fallback.</summary>
+        /// <summary>Blender-kit model when present (Resources/kit/&lt;name&gt;), else the procedural fallback — under a pivot that
+        /// carries position + yaw, so the FBX keeps its importer root rotation / scale (the axis conversion; fleet note in
+        /// docs/UNITY.md). Used for the tram cars (they move: MoveTram turns the pivot) and buildings missing from the bank.</summary>
         GameObject Prop(string kitName, string fallback, Vector3 pos, float yaw, Transform parent = null)
         {
+            var pivot = new GameObject(kitName);
+            pivot.transform.SetParent(parent != null ? parent : transform, false);
+            pivot.transform.localPosition = pos;
+            pivot.transform.localRotation = Quaternion.Euler(0, yaw, 0);
             var prefab = Resources.Load<GameObject>("kit/" + kitName);
-            GameObject go;
             if (prefab != null)
             {
-                go = Instantiate(prefab, parent != null ? parent : transform);
+                var go = Instantiate(prefab, pivot.transform, false);
+                go.transform.localPosition = Vector3.zero;
+                go.transform.localScale *= KitScale;   // kit props are 1 unit = 1 m; the diorama draws them larger than life
                 foreach (var r in go.GetComponentsInChildren<Renderer>()) { r.sharedMaterial = mat; r.shadowCastingMode = Low ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On; }
-                go.transform.localPosition = pos;
-                go.transform.localScale = Vector3.one * KitScale;   // kit props are 1 unit = 1 m; the diorama draws them larger than life
             }
-            else go = Spawn(kitName, kitName == "tram_car" ? MeshKit.TramCar() : MeshKit.Building(fallback), pos, parent);
-            go.transform.localRotation = Quaternion.Euler(0, yaw, 0);
-            return go;
+            else Spawn(kitName, kitName == "tram_car" ? MeshKit.TramCar() : MeshKit.Building(fallback), Vector3.zero, pivot.transform);
+            return pivot;
         }
 
         void BuildZone(ZoneDef z)

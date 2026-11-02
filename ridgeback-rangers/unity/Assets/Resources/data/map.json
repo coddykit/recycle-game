@@ -4,7 +4,7 @@
   "zones": [
     { "id": "cove", "chapter": 1, "biome": "forest", "rating": 0,  "cost": 0 },
     { "id": "fern", "chapter": 2, "biome": "forest", "rating": 45, "cost": 5000 },
-    { "id": "dune", "chapter": 3, "biome": "dune",   "rating": 55, "cost": 14000 }
+    { "id": "dune", "chapter": 3, "biome": "dune",   "rating": 55, "cost": 26000 }
   ],
   "nodes": [
     { "id": "gate",     "kind": "gate",     "zone": "cove", "x": 1.50, "y": 0.10 },
