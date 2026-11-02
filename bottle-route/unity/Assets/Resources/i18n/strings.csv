@@ -97,6 +97,7 @@ err.already,Already on the way.,Zaten yolda.,Ist schon unterwegs.,Ya está en ca
 err.busy,Busy right now.,Şu an meşgul.,Gerade beschäftigt.,Ocupado ahora mismo.,Occupé pour le moment.,Ocupado agora.,Сейчас занято.,ただいま手が離せません。,지금은 바빠요.,अभी व्यस्त है।
 err.cash,Not enough money.,Yeterli paran yok.,Nicht genug Geld.,No tienes suficiente dinero.,Pas assez d'argent.,Dinheiro insuficiente.,Недостаточно денег.,お金が足りません。,돈이 부족해요.,पैसे कम हैं।
 err.failed,That didn't work.,Olmadı.,Das hat nicht geklappt.,Eso no funcionó.,Ça n'a pas marché.,Não deu certo.,Не получилось.,うまくいきませんでした。,실패했어요.,यह नहीं हुआ।
+err.invalid,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
 err.locked,Unlock this district first.,Önce bu bölgeyi aç.,Schalte zuerst dieses Viertel frei.,Primero desbloquea este barrio.,Débloque d'abord ce quartier.,Desbloqueie este bairro primeiro.,Сначала открой этот район.,先にこの地区を開放してください。,이 구역을 먼저 여세요.,पहले यह इलाका खोलो।
 err.max,Maximum reached.,En fazlaya ulaşıldı.,Maximum erreicht.,Límite alcanzado.,Maximum atteint.,Limite máximo atingido.,Достигнут максимум.,上限に達しました。,최대치에 도달했어요.,सीमा पूरी हो गई।
 err.no_dispatcher,Build the dispatch office first.,Önce sevk ofisini kur.,Baue zuerst die Leitstelle.,Primero construye la oficina de envíos.,Construis d'abord le bureau de dispatch.,Construa a central de despacho primeiro.,Сначала построй диспетчерскую.,先に配車オフィスを建ててください。,먼저 배차 사무소를 지으세요.,पहले डिस्पैच ऑफिस बनाओ।
@@ -113,6 +114,7 @@ err.report,The day is over.,Gün bitti.,Der Tag ist vorbei.,El día ha terminado
 err.requires,Research the earlier step first.,Önce bir önceki adımı araştır.,Erforsche zuerst den vorherigen Schritt.,Investiga antes el paso anterior.,Recherche d'abord l'étape précédente.,Pesquise a etapa anterior primeiro.,Сначала исследуй предыдущий шаг.,先に前の研究を終えてください。,앞 단계를 먼저 연구하세요.,पहले पिछला चरण रिसर्च करो।
 err.research,Research it first.,Önce bunu araştır.,Erforsche es zuerst.,Investígalo primero.,Recherche-le d'abord.,Pesquise primeiro.,Сначала исследуй это.,先に研究してください。,먼저 연구하세요.,पहले इसकी रिसर्च करो।
 err.slots,No free Dispatcher slot.,Boş sevk ofisi yuvası yok.,Kein freier Leitstellen-Platz.,No hay ranura libre de la oficina de envíos.,Aucune place libre au dispatch.,Nenhuma vaga livre na central.,Нет свободного места для диспетчера.,配車オフィスの空き枠がありません。,빈 배차 슬롯이 없어요.,डिस्पैचर की कोई खाली जगह नहीं।
+err.unknown,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
 err.unreachable,This truck can't get there.,Bu kamyon oraya ulaşamaz.,Dieser Lkw kommt dort nicht hin.,Este camión no puede llegar allí.,Ce camion ne peut pas y aller.,Este caminhão não consegue chegar lá.,Эта машина туда не доедет.,このトラックはそこへ行けません。,이 트럭은 거기 갈 수 없어요.,यह ट्रक वहाँ नहीं जा सकता।
 fleet.drivers,Drivers {n} / trucks {m},Sürücüler {n} / kamyonlar {m},Fahrer {n} / Lkw {m},Conductores {n} / camiones {m},Chauffeurs {n} / camions {m},Motoristas {n} / caminhões {m},Водители: {n} / машины: {m},運転手 {n} / トラック {m},기사 {n} / 트럭 {m},ड्राइवर {n} / ट्रक {m}
 fleet.techs,Technicians {n},Teknisyenler {n},Techniker {n},Técnicos {n},Techniciens {n},Técnicos {n},Техники: {n},技術者 {n},정비사 {n}명,तकनीशियन {n}
@@ -337,6 +339,8 @@ settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Гр�
 settings.guide,How to play / Replay the guide,Nasıl oynanır / Rehberi tekrar oynat,Spielanleitung / Anleitung wiederholen,Cómo jugar / Repetir la guía,Comment jouer / Revoir le guide,Como jogar / Rever o tutorial,Как играть / Повторить обучение,遊び方 / ガイドをもう一度見る,플레이 방법 / 가이드 다시 보기,कैसे खेलें / गाइड फिर से देखो
 settings.language,Language,Dil,Sprache,Idioma,Langue,Idioma,Язык,言語,언어,भाषा
 settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,음악,संगीत
+settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
+settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चालू
 settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
 settings.privacy,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
 settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
@@ -363,6 +367,7 @@ shop.unavailable,The store is not available right now,Mağaza şu an kullanılam
 tab.depot,Depot,Depo,Depot,Planta,Dépôt,Depósito,Склад,デポ,집하장,डिपो
 tab.fleet,Fleet,Filo,Flotte,Flota,Flotte,Frota,Парк,車両,차량,फ़्लीट
 tab.map,Map,Harita,Karte,Mapa,Carte,Mapa,Карта,地図,지도,नक्शा
+tab.network,Network,Ağ,Netz,Red,Réseau,Rede,Сеть,ネットワーク,네트워크,नेटवर्क
 tab.research,Research,Araştırma,Forschung,Investigación,Recherche,Pesquisa,Исследования,研究,연구,रिसर्च
 tab.shop,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
 tip.audit,"Too many bottles waited at the count line, so you were fined.","Sayım hattında çok fazla şişe bekledi, bu yüzden ceza kesildi.","Zu viele Flaschen haben an der Zähllinie gewartet, deshalb wurde dir eine Strafe berechnet.","Esperaron demasiadas botellas en la línea de conteo, así que te multaron.","Trop de bouteilles ont attendu à la ligne de comptage, tu as donc été amendé.","Muitas garrafas esperaram na linha de contagem, então você foi multado.","У счётной линии ждало слишком много бутылок, поэтому тебя оштрафовали.",カウントラインで待つボトルが多すぎたため、罰金が科されました。,계수 라인에서 병이 너무 많이 기다려서 벌금을 냈어요.,"गिनती लाइन पर बहुत सारी बोतलें इंतज़ार में थीं, इसलिए जुर्माना लगा।"

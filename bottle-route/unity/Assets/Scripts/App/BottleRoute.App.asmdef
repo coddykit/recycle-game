@@ -1,0 +1,14 @@
+{
+    "name": "BottleRoute.App",
+    "rootNamespace": "BottleRoute.App",
+    "references": [ "CoddyKit.Core", "CoddyKit.Runtime", "BottleRoute.Sim", "BottleRoute.Game" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,14 @@
+{
+    "name": "BottleRoute.World",
+    "rootNamespace": "BottleRoute.World",
+    "references": [ "BottleRoute.Game", "BottleRoute.Sim", "CoddyKit.Core", "CoddyKit.Runtime", "Unity.InputSystem" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
