@@ -90,6 +90,7 @@ namespace GrillConvoy.Sim
         public int FameFreeDays = 3, MaxTrucks = 2;
         // stars
         public double[] StarService = { 0.25, 0.12, 0.05 }, StarStock = { 0.2, 0.08, 0.02 }, StarSpeed = { 9, 6, 3.5 };
+        public double StarBusy;   // a 3rd service star needs the line busy at least this share of the open time (0 = off)
         // weather / match / events
         public string[] WeatherIds = { "sunny", "cloudy", "hot", "rain" };
         public double[] WeatherWeights = { 0.45, 0.25, 0.15, 0.15 };
@@ -239,7 +240,7 @@ namespace GrillConvoy.Sim
             RepStart = J.D(e, "rep_start", 30); RepGain = J.D(e, "rep_gain", 8); RepRating = J.D(e, "rep_rating", 3);
 
             var sr = J.Obj(b, "stars");
-            StarService = Dbl(sr, "service", StarService); StarStock = Dbl(sr, "stock", StarStock); StarSpeed = Dbl(sr, "speed", StarSpeed);
+            StarService = Dbl(sr, "service", StarService); StarStock = Dbl(sr, "stock", StarStock); StarSpeed = Dbl(sr, "speed", StarSpeed); StarBusy = J.D(sr, "busy", 0);
 
             var w = J.Obj(b, "weather");
             var wids = J.StrList(w, "ids");

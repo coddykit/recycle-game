@@ -55,7 +55,7 @@ Nothing in chapter 1 changed (days 1–15 are identical), so day 1 and the 7-day
 | 7 | day 23 · 103 min | day 23 · 103 min | day 33 · 149 min | **day 41 · 187 min** |
 | 11 | day 17 · 75 min | day 17 · 75 min | day 29 · 131 min | **day 40 · 182 min** |
 | 21 | day 14 · 61 min | day 14 · 61 min | day 27 · 121 min | **day 35 · 159 min** |
-| **median** | **79 min (+5 %)** | **79 min (+5 %)** | **128 min (−29 %)** | **173 min (−4 %)** |
+| **median** | **77 min (+3 %)** | **77 min (+3 %)** | **128 min (−29 %)** | **173 min (−4 %)** |
 
 Seed 7 opens slowly on the cart (corner at 103 min, +37 %): that is the cart's weather draw, not chapter 2; the median and
 5 of 6 seeds are inside ±25 %. Every seed: 0 stuck tickets, cash never below 280, rating at day 45 4.7–4.95 ★.

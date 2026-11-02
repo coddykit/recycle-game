@@ -73,6 +73,9 @@ namespace GrillConvoy.Sim
             foreach (var t in S.Trucks) if (t.OpenMin > 0 && t.Pitch >= 0 && paid.Add(t.Pitch)) td.Permits += NodeAt(t.Pitch).Permit;
             S.Cash -= td.Wages + td.Permits;
             td.StarService = StarsBelow(td.Arrivals <= 0 ? 1 : td.LostRate, Gd.StarService);
+            // a crew that idled most of the day (quiet weekend at the offices, rain on the beach) earns at most 2 service stars:
+            // nobody walked away, but the truck was in the wrong place ("try a busier pitch") — not after the forgiving start
+            if (Gd.StarBusy > 0 && !S.Tutorial && S.Day > Gd.FameFreeDays && td.StarService > 2 && BusyShare() < Gd.StarBusy) td.StarService = 2;
             double wasteRate = td.Items + td.Waste <= 0 ? 0 : (double)td.Waste / (td.Items + td.Waste);
             td.StarStock = td.Served <= 0 ? 0 : Math.Min(StarsBelow(td.SelloutRate, Gd.StarStock), StarsBelow(wasteRate, new[] { 0.35, 0.2, 0.1 }));
             td.StarSpeed = td.Served <= 0 ? 0 : StarsBelow(td.AvgWait, Gd.StarSpeed);
@@ -100,6 +103,19 @@ namespace GrillConvoy.Sim
             S.Forecast = RollWeather(S.Day + 1);
             S.Phase = Phases.Report;
             Emit("day_done", S.Day, td.Stars, td.Net);
+        }
+
+        /// <summary>Burgers made today / what the open trucks' lines could have made in their open minutes (0..1+).</summary>
+        public double BusyShare()
+        {
+            double cap = 0, made = 0;
+            foreach (var t in S.Trucks)
+            {
+                if (t.OpenMin <= 0) continue;
+                cap += Line(t).Throughput * t.OpenMin;
+                made += t.Items;
+            }
+            return cap <= 0 ? 1 : made / cap;
         }
 
         static int StarsBelow(double x, double[] th)

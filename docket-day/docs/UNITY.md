@@ -73,3 +73,11 @@ house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (ta
   horizontal ScrollViews keep sideways drags). Check on a device: a sideways swipe scrolls, an upward drag picks a person up.
 - The hearing scene is a UI overlay with pre-rendered Meshy portraits (fixed poses, no skeletons).
 - Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
+
+## First editor check: face culling of procedural meshes (2026-11-02)
+
+`MeshKit.Quad` was fixed fleet-wide to wind triangles clockwise (Unity front faces). Helpers that pass their corners in
+the opposite order (pour-and-roast's `Cyl` was one, fixed) would now show inside-out. On the first editor open, look at
+every procedural prop / building / ground strip on Medium with back-face culling on: a missing or see-through face means
+that helper's corner order must be swapped. The Blender kit FBX import with a -90° X root rotation over Z-up vertices:
+props must keep the import rotation.

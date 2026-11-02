@@ -40,5 +40,46 @@ Palette: `unity/Tools/make_palette.py` (warm walnut / cream / burnt-orange brand
 `intro_1..3.png` (pager: the cart on the quay · the bar · the roastery), `curtain.png` (boot), `Art/Icon/icon_full.png` +
 `icon_adaptive_fg.png` — a **placeholder** icon (takeaway cup + croissant); the owner picks the final icon at P7.
 
+## Polish pass (cloud, 2026-11-02): venue shells + store art
+
+**What changed.** The most placeholder part of the diorama was the shell: flat boxes for the walls, the windows, the chalk
+board and the quay. `tools/art/kit.py` now also builds one **venue shell per venue** on the palette UVs (bevelled, one
+material) — `kit/shell_cart`, `shell_corner`, `shell_roastery` + `_low` twins:
+
+| Shell | Medium/High tris | Low tris (procedural before) | What is in it |
+|---|---|---|---|
+| `shell_cart` | 1428 | 74 (46) | quay + paving, stone coping blocks, quay wall to the water, harbour, 2 bollards with caps; Medium+: lamp post, crates + a sack, milk churn, 2 flower boxes, 2 moored boats (static) |
+| `shell_corner` | 1608 | 248 (74) | floor + floorboard seams, back/left walls, panelled wainscot + dado rail, 3 framed windows (jambs, head, sill; Medium+: mullion, transom), framed chalk board (no text), runner rug + door mat; Medium+: crown moulding, 3 copper pendant lamps, jar shelf |
+| `shell_roastery` | 2022 | 268 (84) | the corner set on the wider hall + the half wall to the back room; Medium+: cap rail + posts, brick band in the back room, 5 pendants, extraction duct from the roaster chimney to the wall, bag shelf over the sacks |
+
+Pieces (Medium/High): window 204 tris, jar shelf 220, chalk board 160, wainscot (back wall) 120, pendant 80, crown 42 —
+every piece ≤ 600. Low twins: no bevels, no hidden faces (against-the-wall / bottom faces deleted), no small dressing.
+
+**Draws.** Each shell is ONE mesh that replaces the procedural shell 1:1 (`CafeWorld.KitShell`, spawned at the origin;
+the procedural `ProceduralShell` stays as the fallback) → **Low: 0 extra draws** (also 0 on Medium/High). Low prims:
+corner +174, roastery +184, cart +28 tris on a Low frame of ~5–6.5k tris (≈ +3 %, under the +5 % rule); no per-frame
+work (all at build), no new animation / particles / lights. Theme looks (Nordic, Art Deco) recolour the shell at build by
+moving the wall / floor / floor-seam / trim UVs to the theme swatches (`CafeWorld.Recolour`; the shells import readable,
+`RoastArtImport`), the themed copy is destroyed on the next rebuild (the procedural shell mesh is now destroyed too).
+**Editor check needed:** the shells are authored like the other kit props (front = Blender −Y). `KitShell` turns a shell
+180° when its bounds say it arrived the other way round (more street in front of the cafes, the harbour behind the cart);
+the first editor run should confirm the walls stand at the back + left with the props facing the camera.
+
+**UI art re-rendered** (`render_ui.py`): `intro_1` now stands the cart on the quay with the harbour and boats behind,
+`intro_3` puts the roaster in the back room (brick band, duct, pendants, bag shelf). Coach portrait, `intro_2`, curtain and
+the placeholder icon were not changed.
+
+**Store art** (`tools/art/render_store.py`, own models only, no text): `store/feature-graphic.png` (1024×500, the cart on
+the quay, Mara, a customer, the cat; the left third stays calm for the tagline) and three icon candidates (512×512, full
+bleed, checked at 48 px) for the owner to pick from — `unity/Assets/Art/Icon` keeps the placeholder until then:
+
+| Candidate | Idea |
+|---|---|
+| `store/icon-candidates/c1.png` | takeaway cup (burnt-orange sleeve) + croissant + beans on teal — the placeholder's idea, bolder |
+| `store/icon-candidates/c2.png` | the drum roaster with its orange drum and cooling tray on deep navy — the roastery hook |
+| `store/icon-candidates/c3.png` | a latte with heart art seen from above, on walnut — reads best at 48 px |
+
+Meshy: **0 credits** this pass (total stays 90).
+
 Still to do at P2: rain / steam / roaster-smoke effects (Medium/High only), harbour backdrop through the windows, latte-art
 decals for the cups cosmetic, a real art gate (Low draws / tris measured in the editor).

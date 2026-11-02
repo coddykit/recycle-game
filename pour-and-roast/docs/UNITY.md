@@ -76,3 +76,11 @@ with top-left coordinates), the ticket rail width on a 360 dp phone (5 cards + "
 - Save slots: `career.json` + `career_<n>.json` (Settings → Save slots; the Edition +1, Extra Saves +3); switching a slot
   reloads the scene.
 - Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
+
+## First editor check: face culling of procedural meshes (2026-11-02)
+
+`MeshKit.Quad` was fixed fleet-wide to wind triangles clockwise (Unity front faces). Helpers that pass their corners in
+the opposite order (pour-and-roast's `Cyl` was one, fixed) would now show inside-out. On the first editor open, look at
+every procedural prop / building / ground strip on Medium with back-face culling on: a missing or see-through face means
+that helper's corner order must be swapped. The Blender kit FBX import with a -90° X root rotation over Z-up vertices:
+props must keep the import rotation.

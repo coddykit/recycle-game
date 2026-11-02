@@ -35,6 +35,9 @@ Cafe (masalar, pastane vitrini, buzlu içecekler) → Roastery Hall** (yeşil ç
   metin var; 9 dil merkezi Haiku çevirisinde doldurulacak). 135 NUnit testi: sim 49, oyun katmanı 31, CoddyKit 55.
   Unity'ye bağlı kod UnityEngine 2021.3 referanslarına karşı derleniyor (yalnız 2 bilinen Unity-6 API'si farklı).
 - **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, perf_gate, emülatör smoke, AAB.
+- **Cilalama (bulut, 11-02):** `store/` (en-US listing, 8 ekran görüntüsü planı, data safety CSV, `validate.py` → check.sh),
+  feature graphic + 3 ikon adayı (`tools/art/render_store.py`), Blender mekân kabukları (`kit/shell_*`, Düşük'te 0 ek draw),
+  tempo: Roastery Hall ~3 sa (`docs/BALANCE.md`), `docs/ART.md`.
 - **Boş kimlikler (P8, Patron):** AdMob ödüllü birim + uygulama kimliği, RevenueCat anahtarı, Firebase config.
 
 ## Komutlar
@@ -44,4 +47,6 @@ sh pour-and-roast/unity/Tools/check.sh
 python3 pour-and-roast/unity/Tools/i18n_merge.py && python3 pour-and-roast/unity/Tools/build_iap.py
 blender -b --python pour-and-roast/tools/art/kit.py -- pour-and-roast/unity
 blender -b --python pour-and-roast/tools/art/render_ui.py -- pour-and-roast/unity
+blender -b --python pour-and-roast/tools/art/render_store.py -- pour-and-roast
+python3 pour-and-roast/store/validate.py [--all]
 ```
