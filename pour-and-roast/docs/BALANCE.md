@@ -25,8 +25,8 @@ day venue    wx     cust served walk%  items  revenue  costs    net  review rati
   7 cart     sunny   200    186   6.5    328     1089    427    662   3.62   3.58   2302
 ```
 
-30 days, seed 9: Corner Cafe opens on **day 16** (~70 min of play; plan §6: 1:15 h), Roastery Hall on **day 28** (~2 h;
-plan: 3:00 h — the bot saves rather than decorating). Supplier beans (quality 52) cap reviews near 4.0 ★; the first own
+30 days, seed 9 (P1 numbers, before the 11-02 polish tempo pass below): Corner Cafe opens on **day 16** (~70 min of play;
+plan §6: 1:15 h), Roastery Hall on **day 28** (~2 h; plan: 3:00 h — the bot saves rather than decorating). Supplier beans (quality 52) cap reviews near 4.0 ★; the first own
 roasts (quality 85–90) push the day-30 average to 4.8 ★ — the roastery is the road to 5 ★ (design §4 B). 0 stuck tickets.
 
 ```
@@ -38,6 +38,49 @@ roasts (quality 85–90) push the day-30 average to 4.8 ★ — the roastery is 
 30 roastery  revenue 4718  net 5575  review 4.79  rating 4.31   (beans quality 87, wholesale + 2 branches)
 ```
 
+## Tempo pass (cloud polish, 2026-11-02)
+
+Clock: a day = 3.7 real min of service + ~1 min of morning plan ≈ **4.7 min at 1×**; the venue time below = (day − 1) × 4.7.
+Target (plan §6): Corner Cafe at 1:15 h, Roastery Hall at 3:00 h, ±25 % (56–94 min / 135–225 min).
+
+Changes (`venues.json`): Roastery Hall `cost` 12000 → **32000**, Corner Cafe `rent` 140 → **170**. Chapter 2 was 12 days
+(~55 min) against the plan's 1:45 h: the corner earns ~2.5–3k a day, so the hall was bought after barely a week of saving.
+Nothing in chapter 1 changed (days 1–15 are identical), so day 1 and the 7-day run are untouched.
+
+| seed | Corner before | Corner after | Roastery before | Roastery after |
+|---|---|---|---|---|
+| 9 | day 16 · 70 min | day 16 · 70 min | day 28 · 126 min | **day 36 · 163 min** |
+| 42 | day 18 · 79 min | day 18 · 79 min | day 28 · 126 min | **day 38 · 173 min** |
+| 3 | day 18 · 79 min | day 18 · 79 min | day 29 · 131 min | **day 38 · 173 min** |
+| 7 | day 23 · 103 min | day 23 · 103 min | day 33 · 149 min | **day 41 · 187 min** |
+| 11 | day 17 · 75 min | day 17 · 75 min | day 29 · 131 min | **day 40 · 182 min** |
+| 21 | day 14 · 61 min | day 14 · 61 min | day 27 · 121 min | **day 35 · 159 min** |
+| **median** | **79 min (+5 %)** | **79 min (+5 %)** | **128 min (−29 %)** | **173 min (−4 %)** |
+
+Seed 7 opens slowly on the cart (corner at 103 min, +37 %): that is the cart's weather draw, not chapter 2; the median and
+5 of 6 seeds are inside ±25 %. Every seed: 0 stuck tickets, cash never below 280, rating at day 45 4.7–4.95 ★.
+
+45 days, seed 9, after:
+
+```
+day venue    wx     cust served walk%  items  revenue  costs    net  review rating   cash
+  1 cart     sunny   149    149   0.0    240      848    236    612   3.55   2.82    892
+  7 cart     sunny   253    240   4.7    416     1418    427    992   3.76   3.64   2318
+ 15 cart     sunny   221    221   0.0    355     1312    400    912   4.05   4.03   4624
+ 16 corner   heat    317    236  24.9    489     1542    644   1394   2.84   3.67   2658
+ 20 corner   sunny   460    459   0.0    792     3415    991   2919   3.85   3.75   5199
+ 25 corner   sunny   419    419   0.0    678     2957    998   2455   4.14   4.00  10584
+ 30 corner   sunny   409    408   0.0    678     2949   1064   2381   4.15   4.12  22433
+ 35 corner   sunny   494    493   0.0    838     3683   1086   3094   4.30   4.25  35311
+ 36 roastery sunny   520    438  15.4    730     3410   1337   4020   3.77   4.10   6971
+ 40 roastery rain    470    469   0.0    799     4883   1270   5638   5.00   4.66  16285
+ 45 roastery heat    618    616   0.0   1041     6551   1876   6622   5.00   4.94  42275
+```
+
+The corner now plateaus near 4.1–4.3 ★ on supplier beans for a while before the hall — the "my reviews are stuck, I need
+my own beans" moment the roastery chapter answers. Open for the owner: the move-in day of each venue still has a walk-out
+spike (corner 25 % on a heat day, hall 15 %) while the new bar is staffed — unchanged by this pass.
+
 ## What the tests hold
 
 - 7 days: finite, every day profitable, > 50 served a day, reputation grows, average walk-out rate < 10 %, 0 tickets on
@@ -45,6 +88,7 @@ roasts (quality 85–90) push the day-30 average to 4.8 ★ — the roastery is 
   closes the rail).
 - Day 1: profitable, walk-outs < 12 %, average review ≥ 3.0 ★.
 - 25 days reach the Corner Cafe.
+- Tempo (`ChapterTempoFollowsThePlan`, seed 9, 50 days): Corner Cafe at 75 min ±25 %, Roastery Hall at 180 min ±25 %.
 - Forgiving start: the guide and days 1–3 never lower the reputation; no crises, no wear jams, no milk-van rolls before day 4.
 - Research ≤ 20 min per node (data validation + test). Reward caps = data (kit limits test).
 

@@ -415,7 +415,7 @@ def rock(low=False):
     rng = random.Random(5)
     p = Prop("rock_low" if low else "rock")
     if low:
-        p.lathe((0, 0, 0), [(0.75, 0), (0.45, 0.85)], 5, ROCK, jitter=0.15, rng=rng, swatches=[ROCK, STONE])
+        p.lathe((0, 0, 0), [(0.8, 0), (0.45, 0.85)], 4, ROCK, jitter=0.15, rng=rng, swatches=[ROCK, STONE], phase=0.4)
         return p.build()
     p.ico((0, 0, 0.35), 0.75, ROCK, sub=2, scale=(1.0, 0.85, 0.7), jitter=0.12, rng=rng, top=STONE, top_dot=0.55)
     p.ico((0.75, 0.35, 0.18), 0.42, ROCK, sub=1, jitter=0.15, rng=rng, top=STONE, top_dot=0.55)
@@ -475,8 +475,8 @@ def water_point(low=False):
     p = Prop("water_point_low" if low else "water_point")
     sq = (1.0, 0.66)
     if low:
-        p.lathe((0, 0, 0), [(2.05, 0.12), (1.6, 0.12)], 6, STONE, top=False, squash=sq)
-        p.lathe((0, 0, 0), [(1.6, 0.1)], 6, WATER, top=True, squash=sq)
+        p.lathe((0, 0, 0), [(2.05, 0.12), (1.6, 0.12)], 5, STONE, top=False, squash=sq)
+        p.lathe((0, 0, 0), [(1.6, 0.1)], 5, WATER, top=True, squash=sq)
         return p.build()
     rng = random.Random(3)
     p.lathe((0, 0, 0), [(2.1, 0), (2.05, 0.18), (1.75, 0.22), (1.6, 0.12)], 12, STONE, top=False, squash=sq,

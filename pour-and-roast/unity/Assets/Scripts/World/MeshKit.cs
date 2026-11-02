@@ -75,7 +75,9 @@ namespace PourAndRoast.World
                 float a0 = s * Mathf.PI * 2f / segs, a1 = (s + 1) * Mathf.PI * 2f / segs;
                 var d0 = new Vector3(Mathf.Cos(a0), 0, Mathf.Sin(a0)) * r;
                 var d1 = new Vector3(Mathf.Cos(a1), 0, Mathf.Sin(a1)) * r;
-                Quad(bottomCenter + d1, bottomCenter + d1 + Vector3.up * h, bottomCenter + d0 + Vector3.up * h, bottomCenter + d0, side);
+                // d0 -> d1 order: with the clockwise Quad (fleet §0 fix) Cross(b - a, d - a) points outwards, so the sides stay
+                // front faces (the old d1 -> d0 order was outward only with the old counter-clockwise Quad)
+                Quad(bottomCenter + d0, bottomCenter + d0 + Vector3.up * h, bottomCenter + d1 + Vector3.up * h, bottomCenter + d1, side);
             }
             int ring = v.Count;
             for (int s = 0; s <= segs; s++)

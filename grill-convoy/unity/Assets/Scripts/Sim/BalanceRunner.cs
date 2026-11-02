@@ -144,17 +144,35 @@ namespace GrillConvoy.Sim
             }
         }
 
-        /// <summary>What a sensible player reads off the pitch card: the forecast crowd × how much that crowd orders (match fans
-        /// and beach families buy for the group), capped by what the truck's line can make in a day, minus the permit.</summary>
+        /// <summary>What a sensible player reads off the pitch card: the forecast crowd × what that crowd orders (match fans and
+        /// beach families buy for the group, each type picks the card it likes best on this truck's board), capped by what the
+        /// truck's line can make in a day, minus the permit. Dollars.</summary>
         static double PitchValue(Simulation sim, TruckState t, int p)
         {
             var n = sim.NodeAt(p);
             double per = 0, wsum = 0;
-            for (int a = 0; a < n.Arch.Length && a < sim.Gd.Archetypes.Count; a++) { per += n.Arch[a] * sim.Gd.Archetypes[a].Mean; wsum += n.Arch[a]; }
-            per = wsum > 0 ? per / wsum : 1;
-            double items = sim.ForecastCustomers(p) * per;
+            for (int a = 0; a < n.Arch.Length && a < sim.Gd.Archetypes.Count; a++)
+            {
+                double price = 5, best = -1;
+                foreach (var id in t.Menu)
+                {
+                    var c = sim.Gd.Card(id);
+                    if (c != null && a < c.Appeal.Length && c.Appeal[a] > best) { best = c.Appeal[a]; price = c.Price; }
+                }
+                per += n.Arch[a] * sim.Gd.Archetypes[a].Mean * price;
+                wsum += n.Arch[a] * sim.Gd.Archetypes[a].Mean;
+            }
+            double items = sim.ForecastCustomers(p) * (wsum > 0 ? wsum / Math.Max(1e-9, SumArch(n)) : 1);
+            double avgPrice = wsum > 0 ? per / wsum : 5;
             double cap = sim.Line(t).Throughput * (sim.Gd.DayEnd - sim.Gd.DayStart) * 0.85;
-            return Math.Min(items, cap) * 6.0 - n.Permit;
+            return Math.Min(items, cap) * avgPrice - n.Permit;
+        }
+
+        static double SumArch(NodeDef n)
+        {
+            double s = 0;
+            foreach (var x in n.Arch) s += x;
+            return s;
         }
 
         static IEnumerable<string> Priority(Simulation sim)

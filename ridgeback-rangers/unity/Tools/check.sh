@@ -21,12 +21,20 @@ grep -rn -E "InterstitialAd\b|BannerView\b|AdView\b" "$A" --include=*.cs | grep 
 grep -rn "PlayerPrefs" "$A/Scripts" --include=*.cs && bad "PlayerPrefs (saves go through SaveRepository, §14)"
 grep -rn -E "purchased_any|has_purchased|HasPurchased" "$A/Scripts" --include=*.cs && bad "'bought anything' must not decide ads (§3)"
 grep -rn -i -E "free trial|try free|subscription" "$A/Resources" "$UNITY/Tools/i18n" && bad "trial / subscription wording (§1)"
-grep -rn -i -E "jurassic|spared no expense|codigames|saurian|dinosaur park.?jurassic" "$A/Resources" "$UNITY/Tools/i18n" "$A/Scripts" && bad "franchise / reference-game names (plan #184 originality rules)"
+grep -rn -i -E "jurassic|spared no expense|codigames|saurian|dinosaur park.?jurassic" "$A/Resources" "$UNITY/Tools/i18n" "$A/Scripts" "$UNITY/../store" --include=*.json --include=*.cs --include=*.csv --include=*.uss && bad "franchise / reference-game names (plan #184 originality rules)"
 grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY" "$UNITY" --include=*.cs --include=*.json --include=*.md --include=*.py --include=*.sh && bad "a secret in the repo"
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
 for f in coach_warden intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
 for f in gate hq barn vet hatchery station view tram_car dino_horned_lod1 dino_plated_lod1 dino_duckbill_lod1 dino_longneck_lod1 dino_horned_lod2 dino_plated_lod2 dino_duckbill_lod2 dino_longneck_lod2; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+[ -f "$A/Resources/kit/props.bytes" ] || bad "missing kit/props.bytes (the merge bank, tools/art/kit.py)"
+for f in feature-graphic icon-candidates/c1 icon-candidates/c2 icon-candidates/c3; do [ -f "$UNITY/../store/$f.png" ] || bad "missing store/$f.png (tools/art/store_art.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
+
+step "Blender kit merge bank (budgets, Low twins, palette)"
+python3 "$UNITY/../tools/art/check_kit.py" | tail -3; python3 "$UNITY/../tools/art/check_kit.py" >/dev/null || fail=1
+
+step "store listing + screenshot copy (store/validate.py)"
+python3 "$UNITY/../store/validate.py" || fail=1
 
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
 out=$(sh "$HERE/dotnet_check.sh" 2>&1); echo "$out" | grep -E "Error|Passed!|Failed" ; echo "$out" | grep -q "Passed!" || fail=1

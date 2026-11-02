@@ -141,9 +141,13 @@ namespace GrillConvoy.World
             GameObject go;
             if (prefab != null)
             {
-                go = Instantiate(prefab, transform);
-                foreach (var r in go.GetComponentsInChildren<Renderer>()) { r.sharedMaterial = mat; r.shadowCastingMode = Low ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On; }
+                // a pivot carries position + yaw (trucks also turn while driving); the FBX instance under it keeps its import
+                // rotation (-90° X over Z-up vertices), which a direct localRotation write would wipe out
+                go = new GameObject(kitName);
+                go.transform.SetParent(transform, false);
                 go.transform.localPosition = pos;
+                var inst = Instantiate(prefab, go.transform, false);
+                foreach (var r in inst.GetComponentsInChildren<Renderer>()) { r.sharedMaterial = mat; r.shadowCastingMode = Low ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On; }
             }
             else go = Spawn(kitName, fallback(), pos);
             go.transform.localRotation = Quaternion.Euler(0, yaw, 0);
@@ -162,7 +166,8 @@ namespace GrillConvoy.World
             { "d_shop_a", new Vector3(12, 8, 10) }, { "d_kiosk", new Vector3(12, 6, 9) }, { "d_stand", new Vector3(22, 16, 10) },
         };
 
-        /// <summary>Resources/kit/d_* read once (the importer marks only these readable); null = missing / unreadable.</summary>
+        /// <summary>Resources/kit/d_* read once (the importer marks only these readable); null = missing / unreadable. Local =
+        /// the FBX's own import transform (root -90° X over Z-up vertices, or identity when baked) — kept, like Prop's pivot.</summary>
         KitPiece Piece(string name)
         {
             if (kitPieces.TryGetValue(name, out var p)) return p;
