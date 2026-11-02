@@ -1,157 +1,157 @@
 key,en,tr,de,es,fr,pt,ru,ja,ko,hi
-animal.fed,Fed {pct},,,,,,,,,
-animal.mood,Mood {pct},,,,,,,,,
-animal.young,baby,,,,,,,,,
-app.tagline,Run a cozy dino sanctuary,,,,,,,,,
+animal.fed,Fed {pct},Tokluk {pct},Gefüttert {pct},Alimentado {pct},Nourri {pct},Alimentado {pct},Сыт: {pct},給餌 {pct},먹이 {pct},खाना मिला {pct}
+animal.mood,Mood {pct},Ruh hali {pct},Laune {pct},Ánimo {pct},Humeur {pct},Humor {pct},Настроение: {pct},機嫌 {pct},기분 {pct},मूड {pct}
+animal.young,baby,bebek,Baby,cría,bébé,bebê,малыш,赤ちゃん,아기,बच्चा
+app.tagline,Run a cozy dino sanctuary,Sevimli bir dinozor barınağı yönet,Leite ein gemütliches Dino-Schutzgebiet,Dirige un acogedor santuario de dinosaurios,Dirige un petit sanctuaire de dinosaures,Administre um santuário de dinossauros aconchegante,Управляй уютным заповедником динозавров,居心地のよい恐竜保護区を運営しよう,아늑한 공룡 보호구역을 운영하세요,एक आरामदेह डायनासोर अभयारण्य चलाओ
 app.title,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers,Ridgeback Rangers
-biome.dune,Dunes,,,,,,,,,
-biome.forest,Forest,,,,,,,,,
-build.help,An empty spot for a new paddock. More paddocks = more room for animals.,,,,,,,,,
-buy.cafe1,Snack kiosk,,,,,,,,,
-buy.cafe1.d,Visitors spend more after the tour.,,,,,,,,,
-buy.cafe2,Picnic café,,,,,,,,,
-buy.cafe2.d,Visitors spend even more.,,,,,,,,,
-buy.cooler,Station cooler,,,,,,,,,
-buy.cooler.d,Crates never spoil in the heat. +8 crate space.,,,,,,,,,
-buy.expand,Bigger paddock,,,,,,,,,
-buy.expand.d,+3 spaces. Crowded animals squabble.,,,,,,,,,
-buy.feed_run2,Midday feed run,,,,,,,,,
-buy.feed_run2.d,The feed truck tops up every station at 13:00.,,,,,,,,,
-buy.fence2,Steel fence,,,,,,,,,
-buy.fence2.d,Lasts twice as long. Bossy animals need it.,,,,,,,,,
-buy.fence3,Double moat,,,,,,,,,
-buy.fence3.d,The strongest fence. Almost never comes loose.,,,,,,,,,
-buy.gift,Gift shop,,,,,,,,,
-buy.gift.d,Happy visitors buy souvenirs.,,,,,,,,,
-buy.hatch_tech,Hatch Tech,,,,,,,,,
-buy.hatch_tech.d,Keeps every egg at the right temperature by itself.,,,,,,,,,
-buy.hire,Hire a ranger,,,,,,,,,
-buy.hire.d,Wage {wage} a day.,,,,,,,,,
-buy.incubator,Extra incubator,,,,,,,,,
-buy.incubator.d,Warm one more egg at a time.,,,,,,,,,
-buy.lane,Second road lane,,,,,,,,,
-buy.lane.d,Rangers drive 30 % faster.,,,,,,,,,
-buy.paddock,Build a paddock,,,,,,,,,
-buy.paddock.d,Room for 6 spaces of animals.,,,,,,,,,
-buy.shade,Shade sail,,,,,,,,,
-buy.shade.d,Keeps animals cool in a heat wave.,,,,,,,,,
-buy.tram_car,Extra tram car,,,,,,,,,
-buy.tram_car.d,+16 seats per tour. Fewer visitors give up and walk.,,,,,,,,,
-buy.vet_beds,Vet bay beds,,,,,,,,,
-buy.vet_beds.d,Vets treat animals much faster.,,,,,,,,,
-buy.water,Water point,,,,,,,,,
-buy.water.d,Keeps dune animals happy.,,,,,,,,,
-chief.d,"Sends free rangers to pins by itself — a little late, and nearest first.",,,,,,,,,
-chief.title,Chief Ranger,,,,,,,,,
-coach.1,Hi Chief! This badge is you. Tap it.,,,,,,,,,
-coach.10,Bigger animals push fences. Build a stronger fence here.,,,,,,,,,
-coach.11,"That's the day! Read your report, then tap Next day.",,,,,,,,,
-coach.12,"An egg! Move the slider to the warm middle, then tap Check.",,,,,,,,,
-coach.2,"Drag a finger to move around the island. You can pinch to zoom, too.",,,,,,,,,
-coach.3,The triceratops are hungry. Tap their pin.,,,,,,,,,
-coach.4,Hungry animals need a Feeder. Send this Feeder.,,,,,,,,,
-coach.5,"She picks up crates at the barn and drives over. When they are fed, tap Fed!",,,,,,,,,
-coach.6,Time to open! Tap the gate.,,,,,,,,,
-coach.7,Visitors wait for the safari tram. Tap the tram to send it out.,,,,,,,,,
-coach.8,"Two animals are squabbling. Tap the pin, then send the Handler.",,,,,,,,,
-coach.9,"Can these two share a paddock? Tap one animal, then the other.",,,,,,,,,
-coach.done,"You're ready! Keep the herds fed, the fences tight and the tram full.",,,,,,,,,
+biome.dune,Dunes,Kumullar,Dünen,Dunas,Dunes,Dunas,Дюны,砂丘,모래 언덕,टीले
+biome.forest,Forest,Orman,Wald,Bosque,Forêt,Floresta,Лес,森,숲,जंगल
+build.help,An empty spot for a new paddock. More paddocks = more room for animals.,"Yeni bir ağıl için boş yer. Daha çok ağıl, hayvanlar için daha çok yer demek.",Ein freier Platz für ein neues Gehege. Mehr Gehege = mehr Platz für Tiere.,Un hueco libre para un nuevo recinto. Más recintos = más espacio para los animales.,Un emplacement vide pour un nouvel enclos. Plus d'enclos = plus de place pour les animaux.,Um espaço vazio para um novo cercado. Mais cercados = mais espaço para os animais.,Пустое место для нового загона. Больше загонов — больше места для животных.,新しい囲い場を作れる空き地です。囲い場が増えると動物が暮らせる場所も増えます。,새 우리를 지을 빈 땅이에요. 우리가 많을수록 동물이 살 공간이 넓어져요.,नए बाड़े के लिए एक खाली जगह। ज़्यादा बाड़े = जानवरों के लिए ज़्यादा जगह।
+buy.cafe1,Snack kiosk,Atıştırmalık kulübesi,Snack-Kiosk,Quiosco de snacks,Kiosque à snacks,Quiosque de lanches,Киоск с закусками,軽食の売店,간식 매점,स्नैक स्टॉल
+buy.cafe1.d,Visitors spend more after the tour.,Ziyaretçiler turdan sonra daha çok harcar.,Besucher geben nach der Tour mehr aus.,Los visitantes gastan más después de la visita.,Les visiteurs dépensent plus après la visite.,Os visitantes gastam mais depois do passeio.,Посетители тратят больше после экскурсии.,ツアーのあと、来園者がもっと使ってくれます。,관람객이 투어를 마치고 더 많이 써요.,टूर के बाद मेहमान ज़्यादा खर्च करते हैं।
+buy.cafe2,Picnic café,Piknik kafesi,Picknick-Café,Cafetería de picnic,Café pique-nique,Café de piquenique,Кафе для пикника,ピクニックカフェ,피크닉 카페,पिकनिक कैफ़े
+buy.cafe2.d,Visitors spend even more.,Ziyaretçiler daha da çok harcar.,Besucher geben noch mehr aus.,Los visitantes gastan aún más.,Les visiteurs dépensent encore plus.,Os visitantes gastam ainda mais.,Посетители тратят ещё больше.,来園者がさらに多く使ってくれます。,관람객이 훨씬 더 많이 써요.,मेहमान और भी ज़्यादा खर्च करते हैं।
+buy.cooler,Station cooler,İstasyon soğutucusu,Kühlbox an der Station,Enfriador de la estación,Glacière de poste,Refrigerador da estação,Холодильник на станции,乗り場の冷却機,현장 냉방기,स्टेशन कूलर
+buy.cooler.d,Crates never spoil in the heat. +8 crate space.,Sandıklar sıcakta asla bozulmaz. +8 sandık yeri.,Kisten verderben bei Hitze nicht. +8 Platz für Kisten.,Las cajas nunca se estropean con el calor. +8 espacios de caja.,Les caisses ne s'abîment jamais avec la chaleur. +8 places de caisses.,As caixas nunca estragam com o calor. +8 espaços para caixas.,Ящики с кормом не портятся в жару. +8 мест для ящиков.,暑さでも飼料箱が傷みません。箱の置き場 +8。,더위에도 상자가 상하지 않아요. 상자 공간 +8.,गर्मी में पेटियाँ कभी खराब नहीं होतीं। +8 पेटी जगह।
+buy.expand,Bigger paddock,Daha büyük ağıl,Größeres Gehege,Recinto más grande,Enclos agrandi,Cercado maior,Больший загон,囲い場を広げる,우리 넓히기,बड़ा बाड़ा
+buy.expand.d,+3 spaces. Crowded animals squabble.,+3 yer. Kalabalık hayvanlar tartışır.,+3 Plätze. Zu viele Tiere auf engem Raum streiten sich.,+3 espacios. Los animales apretados se pelean.,+3 places. Les animaux serrés se disputent.,+3 espaços. Animais apertados brigam.,+3 места. Тесные животные ссорятся.,+3 マス。混みすぎると動物同士がもめます。,칸 +3. 붐비는 동물들은 서로 다퉈요.,+3 जगह। भीड़ वाले जानवर झगड़ते हैं।
+buy.feed_run2,Midday feed run,Öğle yem turu,Mittags-Fütterungsrunde,Reparto de comida al mediodía,Tournée de midi,Entrega de ração ao meio-dia,Полуденный подвоз корма,昼の給餌便,한낮 먹이 배달,दोपहर का चारा-फेरा
+buy.feed_run2.d,The feed truck tops up every station at 13:00.,Yem kamyonu 13:00'te her istasyonu doldurur.,Der Futterwagen füllt um 13:00 jede Station nach.,El camión de pienso rellena cada estación a las 13:00.,Le camion de nourriture ravitaille chaque poste à 13 h 00.,O caminhão de ração reabastece todas as estações às 13:00.,Грузовик с кормом пополняет все станции в 13:00.,給餌トラックが13:00にすべての乗り場を補充します。,먹이 트럭이 13:00에 모든 먹이 칸을 채워요.,फ़ीड ट्रक 13:00 बजे हर स्टेशन को भर देता है।
+buy.fence2,Steel fence,Çelik çit,Stahlzaun,Valla de acero,Clôture en acier,Cerca de aço,Стальная ограда,スチールの柵,강철 울타리,स्टील की बाड़
+buy.fence2.d,Lasts twice as long. Bossy animals need it.,İki kat dayanır. Huysuz hayvanlar bunu ister.,Hält doppelt so lange. Freche Tiere brauchen ihn.,Dura el doble. Los animales mandones la necesitan.,Dure deux fois plus longtemps. Les animaux autoritaires en ont besoin.,Dura duas vezes mais. Animais mandões precisam dela.,Служит в два раза дольше. Командным животным она нужна.,2倍長持ちします。気が強い動物に必要です。,두 배 오래가요. 공격적인 동물에게 꼭 필요해요.,दोगुना टिकती है। दबंग जानवरों को इसकी ज़रूरत है।
+buy.fence3,Double moat,Çift hendek,Doppelgraben,Foso doble,Double fossé,Fosso duplo,Двойной ров,二重の堀,이중 해자,दोहरी खाई
+buy.fence3.d,The strongest fence. Almost never comes loose.,En güçlü çit. Neredeyse hiç gevşemez.,Der stärkste Zaun. Löst sich fast nie.,La valla más fuerte. Casi nunca se afloja.,La clôture la plus solide. Elle ne cède presque jamais.,A cerca mais forte. Quase nunca se solta.,Самая прочная ограда. Почти никогда не ослабевает.,いちばん丈夫な柵。ほとんどゆるみません。,가장 튼튼한 울타리예요. 거의 풀리지 않아요.,सबसे मज़बूत बाड़। लगभग कभी ढीली नहीं होती।
+buy.gift,Gift shop,Hediyelik eşya dükkânı,Geschenkeladen,Tienda de recuerdos,Boutique de souvenirs,Loja de lembranças,Сувенирная лавка,お土産屋,기념품 가게,गिफ़्ट शॉप
+buy.gift.d,Happy visitors buy souvenirs.,Mutlu ziyaretçiler hatıra alır.,Zufriedene Besucher kaufen Andenken.,Los visitantes contentos compran souvenirs.,Les visiteurs ravis achètent des souvenirs.,Visitantes felizes compram lembrancinhas.,Довольные посетители покупают сувениры.,満足した来園者がお土産を買います。,기분 좋은 관람객이 기념품을 사요.,खुश मेहमान यादगार चीज़ें खरीदते हैं।
+buy.hatch_tech,Hatch Tech,Kuluçka Teknolojisi,Brüt-Technik,Tecnología de eclosión,Techno-couveuse,Tecnologia de chocagem,Технология вылупления,孵化テック,부화 기술,हैच टेक
+buy.hatch_tech.d,Keeps every egg at the right temperature by itself.,Her yumurtayı kendi kendine doğru sıcaklıkta tutar.,Hält jedes Ei automatisch auf der richtigen Temperatur.,Mantiene cada huevo a la temperatura correcta por sí sola.,Garde chaque œuf à la bonne température toute seule.,Mantém cada ovo na temperatura certa sozinha.,Сама поддерживает нужную температуру каждого яйца.,すべての卵を自動で適温に保ちます。,모든 알을 알아서 알맞은 온도로 유지해요.,हर अंडे का तापमान अपने आप सही रखता है।
+buy.hire,Hire a ranger,Korucu işe al,Ranger einstellen,Contrata a un guardabosques,Embaucher un garde,Contratar uma guarda,Нанять смотрителя,レンジャーを雇う,레인저 고용,रेंजर रखो
+buy.hire.d,Wage {wage} a day.,Günlük {wage} ücret.,Lohn {wage} pro Tag.,Sueldo de {wage} al día.,Salaire {wage} par jour.,Salário {wage} por dia.,Зарплата {wage} в день.,日給 {wage}。,하루 임금 {wage}.,तनख्वाह {wage} रोज़।
+buy.incubator,Extra incubator,Ek kuluçka makinesi,Zusätzlicher Brutkasten,Incubadora extra,Couveuse supplémentaire,Chocadeira extra,Дополнительный инкубатор,孵卵器を増やす,추가 부화기,अतिरिक्त इन्क्यूबेटर
+buy.incubator.d,Warm one more egg at a time.,Seferde bir yumurta daha ısıt.,Wärmt ein weiteres Ei gleichzeitig.,Calienta un huevo más a la vez.,Réchauffe un œuf de plus à la fois.,Aquece mais um ovo por vez.,Греет ещё одно яйцо одновременно.,一度に温める卵が1個増えます。,한 번에 알 하나를 더 데워요.,एक बार में एक और अंडा गरम करो।
+buy.lane,Second road lane,İkinci yol şeridi,Zweite Fahrspur,Segundo carril de la carretera,Deuxième voie,Segunda faixa da estrada,Вторая полоса дороги,道路の2車線目,두 번째 도로 차선,दूसरी सड़क लेन
+buy.lane.d,Rangers drive 30 % faster.,Korucular %30 daha hızlı sürer.,Ranger fahren 30 % schneller.,Los guardabosques conducen un 30 % más rápido.,Les gardes conduisent 30 % plus vite.,As guardas dirigem 30 % mais rápido.,Смотрители ездят на 30 % быстрее.,レンジャーの移動が 30 %速くなります。,레인저들이 30% 더 빨리 달려요.,रेंजर 30 % तेज़ चलते हैं।
+buy.paddock,Build a paddock,Ağıl kur,Gehege bauen,Construir un recinto,Construire un enclos,Construir um cercado,Построить загон,囲い場を建てる,우리 짓기,बाड़ा बनाओ
+buy.paddock.d,Room for 6 spaces of animals.,6 hayvan yeri için yer.,Platz für 6 Tierplätze.,Espacio para 6 plazas de animales.,Place pour 6 emplacements d'animaux.,Espaço para 6 vagas de animais.,Место на 6 мест для животных.,動物用に6マス分の場所ができます。,동물 6칸 공간이 생겨요.,6 जगह वाले जानवरों के लिए जगह।
+buy.shade,Shade sail,Gölgelik,Schattensegel,Toldo de sombra,Voile d'ombrage,Toldo de sombra,Навес от солнца,日よけシート,그늘막,छाँव का कपड़ा
+buy.shade.d,Keeps animals cool in a heat wave.,Sıcak dalgasında hayvanları serin tutar.,Hält die Tiere bei einer Hitzewelle kühl.,Mantiene frescos a los animales en una ola de calor.,Garde les animaux au frais pendant une vague de chaleur.,Mantém os animais frescos na onda de calor.,Защищает животных от жары.,熱波のとき動物を涼しく保ちます。,폭염에도 동물이 시원하게 지내요.,लू में जानवरों को ठंडा रखता है।
+buy.tram_car,Extra tram car,Ek tramvay vagonu,Zusätzlicher Wagen,Vagón extra del tranvía,Wagon de tram en plus,Vagão extra do trenzinho,Дополнительный вагон трамвая,トラムの車両を増やす,트램 칸 추가,अतिरिक्त ट्राम डिब्बा
+buy.tram_car.d,+16 seats per tour. Fewer visitors give up and walk.,Tur başına +16 koltuk. Daha az ziyaretçi vazgeçip yürür.,+16 Sitze pro Tour. Weniger Besucher geben auf und gehen zu Fuß.,+16 plazas por visita. Menos visitantes se rinden y caminan.,+16 places par visite. Moins de visiteurs abandonnent et repartent à pied.,+16 lugares por passeio. Menos visitantes desistem e vão a pé.,+16 мест на экскурсию. Меньше посетителей уходят пешком.,1回のツアーで座席 +16。待ちきれずに歩いて帰る来園者が減ります。,투어마다 좌석 +16. 기다리다 걸어가는 관람객이 줄어요.,हर टूर में +16 सीटें। इंतज़ार छोड़कर पैदल जाने वाले मेहमान कम होंगे।
+buy.vet_beds,Vet bay beds,Veteriner bakım yatakları,Betten in der Tierarztbucht,Camas de la sala del veterinario,Lits de l'infirmerie,Leitos da enfermaria veterinária,Койки в ветбоксе,獣医の診察ベッド,수의 진료 침대,वेट के बिस्तर
+buy.vet_beds.d,Vets treat animals much faster.,Veterinerler hayvanları çok daha hızlı tedavi eder.,Tierärzte behandeln Tiere viel schneller.,Los veterinarios tratan a los animales mucho más rápido.,Les vétérinaires soignent les animaux bien plus vite.,Os veterinários tratam os animais bem mais rápido.,Ветеринары лечат животных намного быстрее.,獣医が動物をずっと速く診られます。,수의사가 동물을 훨씬 빨리 치료해요.,वेट जानवरों का इलाज बहुत तेज़ करते हैं।
+buy.water,Water point,Su noktası,Wasserstelle,Punto de agua,Point d'eau,Ponto de água,Водопой,給水所,급수 지점,पानी का स्रोत
+buy.water.d,Keeps dune animals happy.,Kumul hayvanlarını mutlu eder.,Hält die Dünentiere zufrieden.,Mantiene contentos a los animales de las dunas.,Rend les animaux des dunes heureux.,Mantém os animais das dunas felizes.,Делает дюнных животных довольными.,砂丘の動物が喜びます。,모래 언덕 동물이 행복해해요.,टीलों के जानवरों को खुश रखता है।
+chief.d,"Sends free rangers to pins by itself — a little late, and nearest first.","Boştaki korucuları işaretlere kendi kendine gönderir — biraz geç, ama en yakını önce.","Schickt freie Ranger von selbst zu den Markierungen — etwas verspätet, und immer zum nächsten.","Envía solos a los guardabosques libres a los avisos: algo tarde, y primero el más cercano.","Envoie les gardes libres sur les alertes toute seule, avec un petit retard, et le plus proche d'abord.","Envia guardas livres para os alertas automaticamente — com um pouco de atraso, e sempre o mais próximo primeiro.","Сам отправляет свободных смотрителей к меткам — немного с опозданием, сначала ближайших.",空いているレンジャーを、自動で依頼ピンに向かわせます。少し遅れますが、近い順です。,"빈 레인저를 알림 표시로 자동으로 보내요. 조금 늦고, 가까운 곳부터 가요.","खाली रेंजरों को अपने आप मामलों पर भेजता है — थोड़ी देर से, और सबसे नज़दीकी पहले।"
+chief.title,Chief Ranger,Baş Korucu,Oberranger,Jefe de guardabosques,Garde en chef,Guarda-chefe,Главный смотритель,チーフレンジャー,수석 레인저,चीफ़ रेंजर
+coach.1,Hi Chief! This badge is you. Tap it.,Merhaba Şef! Bu rozet sensin. Dokun.,"Hallo, Chef! Dieses Abzeichen bist du. Tippe darauf.","¡Hola, jefe! Esta insignia eres tú. Tócala.","Bonjour chef ! Ce badge, c'est toi. Touche-le.","Oi, chefe! Este distintivo é você. Toque nele.","Привет, главный! Это твой значок. Нажми на него.",こんにちは、チーフ！ このバッジがあなたです。タップしてください。,"안녕하세요, 대장님! 이 배지가 당신이에요. 눌러 보세요.",नमस्ते चीफ़! यह बैज तुम हो। इस पर टैप करो।
+coach.10,Bigger animals push fences. Build a stronger fence here.,Büyük hayvanlar çitleri zorlar. Buraya daha sağlam bir çit kur.,Größere Tiere drücken gegen Zäune. Bau hier einen stärkeren Zaun.,Los animales más grandes empujan las vallas. Construye aquí una valla más fuerte.,Les gros animaux poussent les clôtures. Construis ici une clôture plus solide.,Animais maiores empurram as cercas. Construa uma cerca mais forte aqui.,Крупные животные давят на ограду. Поставь здесь более прочную.,大きな動物は柵を押します。ここにはもっと丈夫な柵を建てましょう。,덩치 큰 동물이 울타리를 밀어요. 여기에는 더 튼튼한 울타리를 지으세요.,बड़े जानवर बाड़ से ज़ोर लगाते हैं। यहाँ मज़बूत बाड़ बनाओ।
+coach.11,"That's the day! Read your report, then tap Next day.","Gün bitti! Raporunu oku, sonra Sonraki gün'e dokun.",Das war der Tag! Lies deinen Bericht und tippe dann auf Nächster Tag.,¡Se acabó el día! Lee tu informe y luego toca Día siguiente.,"Fin de la journée ! Lis ton rapport, puis touche Jour suivant.",Esse foi o dia! Leia seu relatório e toque em Próximo dia.,"Это был день! Прочти отчёт, потом нажми «Следующий день».",今日はここまで！ 報告を読んでから「次の日へ」をタップしてください。,하루가 끝났어요! 보고서를 읽고 “다음 날”을 누르세요.,"दिन खत्म! अपनी रिपोर्ट पढ़ो, फिर अगला दिन पर टैप करो।"
+coach.12,"An egg! Move the slider to the warm middle, then tap Check.","Bir yumurta! Kaydırıcıyı ılık orta noktaya getir, sonra Kontrol et'e dokun.",Ein Ei! Schieb den Regler in die warme Mitte und tippe dann auf Prüfen.,¡Un huevo! Mueve el control al centro cálido y luego toca Comprobar.,"Un œuf ! Déplace le curseur vers le milieu chaud, puis touche Vérifier.",Um ovo! Deslize o marcador até o meio quente e depois toque em Verificar.,Яйцо! Передвинь ползунок в тёплую середину и нажми «Проверить».,卵です！ スライダーを温かい真ん中に動かして、「確認」をタップしてください。,알이에요! 슬라이더를 따뜻한 가운데로 옮기고 “확인”을 누르세요.,"एक अंडा! स्लाइडर को बीच के गरम हिस्से में ले जाओ, फिर जाँचो पर टैप करो।"
+coach.2,"Drag a finger to move around the island. You can pinch to zoom, too.",Adada dolaşmak için parmağını sürükle. İki parmakla yakınlaştırabilirsin de.,"Zieh mit dem Finger, um die Insel zu erkunden. Du kannst auch mit zwei Fingern zoomen.",Arrastra el dedo para moverte por la isla. También puedes pellizcar para acercar.,Fais glisser le doigt pour te déplacer sur l'île. Tu peux aussi pincer pour zoomer.,Arraste o dedo para andar pela ilha. Você também pode dar zoom com dois dedos.,"Проведи пальцем, чтобы двигаться по острову. Можно и щипком приблизить.",指でドラッグして島を移動しましょう。ピンチで拡大・縮小もできます。,손가락으로 끌어서 섬을 둘러보세요. 두 손가락으로 확대할 수도 있어요.,टापू पर घूमने के लिए उँगली खींचो। ज़ूम के लिए दो उँगलियाँ भी चला सकते हो।
+coach.3,The triceratops are hungry. Tap their pin.,Triceratopslar aç. Onların işaretine dokun.,Die Triceratopse haben Hunger. Tippe auf ihre Markierung.,Los triceratops tienen hambre. Toca su aviso.,Les tricératops ont faim. Touche leur alerte.,Os triceratops estão com fome. Toque no alerta deles.,Трицератопсы голодны. Нажми на их метку.,トリケラトプスがお腹をすかせています。そのピンをタップしてください。,트리케라톱스가 배고파해요. 그 알림 표시를 누르세요.,ट्राइसेराटॉप भूखे हैं। उनके मामले पर टैप करो।
+coach.4,Hungry animals need a Feeder. Send this Feeder.,Aç hayvanlara bir Besleyici lazım. Bu Besleyiciyi gönder.,Hungrige Tiere brauchen einen Fütterer. Schick diesen Fütterer los.,Los animales hambrientos necesitan un Alimentador. Envía a este Alimentador.,Les animaux affamés ont besoin d'un nourrisseur. Envoie ce nourrisseur.,Animais com fome precisam de um Alimentador. Envie este alimentador.,Голодным животным нужен кормилец. Отправь этого кормильца.,お腹をすかせた動物には給餌係が必要です。この給餌係を送りましょう。,배고픈 동물에게는 먹이 담당이 필요해요. 이 담당을 보내세요.,भूखे जानवरों को फ़ीडर चाहिए। यह फ़ीडर भेजो।
+coach.5,"She picks up crates at the barn and drives over. When they are fed, tap Fed!",Ahırdan yem sandıklarını alıp oraya sürer. Beslenince Beslendi'ye dokun!,"Sie holt Futterkisten aus der Scheune und fährt hin. Wenn gefüttert ist, tippe auf Gefüttert!","Ella recoge las cajas en el granero y conduce hasta allí. Cuando los hayan alimentado, toca ¡Alimentado!","Elle prend les caisses à la grange et arrive en voiture. Quand ils sont nourris, touche Nourri !","O alimentador pega as caixas no celeiro e vai até lá. Quando todos forem alimentados, toque em Alimentados!","Она забирает ящики с кормом в сарае и едет туда. Когда животных покормят, нажми «Сыт»!",彼女は納屋で飼料箱を受け取り、車で向かいます。餌をあげ終わったら「給餌完了」をタップしてください。,먹이 담당이 헛간에서 상자를 챙겨 달려가요. 먹이를 다 주면 “먹이 완료!”를 누르세요.,वह अस्तबल से पेटियाँ उठाती है और वहाँ जाती है। खाना खिल जाए तो खिलाया पर टैप करो!
+coach.6,Time to open! Tap the gate.,Açılış zamanı! Kapıya dokun.,Zeit zu öffnen! Tippe auf das Tor.,¡Hora de abrir! Toca la puerta.,C'est l'heure d'ouvrir ! Touche la grille.,Hora de abrir! Toque no portão.,Пора открываться! Нажми на ворота.,開園の時間です！ 門をタップしてください。,문을 열 시간이에요! 입구를 누르세요.,खोलने का समय! गेट पर टैप करो।
+coach.7,Visitors wait for the safari tram. Tap the tram to send it out.,Ziyaretçiler safari tramvayını bekliyor. Göndermek için tramvaya dokun.,"Besucher warten auf die Safaribahn. Tippe auf die Bahn, um sie loszuschicken.",Los visitantes esperan el tranvía safari. Toca el tranvía para enviarlo.,Les visiteurs attendent le tram safari. Touche le tram pour le faire partir.,Os visitantes esperam pelo trenzinho safári. Toque no trenzinho para mandá-lo sair.,"Посетители ждут сафари-трамвая. Нажми на трамвай, чтобы отправить его.",来園者がサファリトラムを待っています。トラムをタップして出発させてください。,관람객이 사파리 트램을 기다려요. 트램을 눌러 출발시키세요.,मेहमान सफ़ारी ट्राम का इंतज़ार कर रहे हैं। ट्राम भेजने के लिए उस पर टैप करो।
+coach.8,"Two animals are squabbling. Tap the pin, then send the Handler.","İki hayvan tartışıyor. İşaretine dokun, sonra Bakıcıyı gönder.",Zwei Tiere streiten sich. Tippe auf die Markierung und schick dann den Betreuer.,Dos animales se están peleando. Toca el aviso y luego envía al Cuidador.,"Deux animaux se disputent. Touche l'alerte, puis envoie le soigneur.",Dois animais estão brigando. Toque no alerta e depois envie o Tratador.,"Два животных ссорятся. Нажми на метку, потом отправь служителя.",2頭の動物がもめています。ピンをタップして、飼育員を送りましょう。,동물 두 마리가 다투고 있어요. 알림 표시를 누른 다음 사육사를 보내세요.,"दो जानवर झगड़ रहे हैं। मामले पर टैप करो, फिर हैंडलर भेजो।"
+coach.9,"Can these two share a paddock? Tap one animal, then the other.","Bu ikisi bir ağılı paylaşabilir mi? Bir hayvana, sonra diğerine dokun.",Können diese beiden sich ein Gehege teilen? Tippe auf ein Tier und dann auf das andere.,¿Pueden estos dos compartir un recinto? Toca un animal y luego el otro.,"Ces deux-là peuvent-ils partager un enclos ? Touche un animal, puis l'autre.",Estes dois podem dividir um cercado? Toque em um animal e depois no outro.,"Могут эти двое жить в одном загоне? Нажми на одно животное, потом на другое.",この2頭は同じ囲い場で暮らせるでしょうか？ 片方の動物をタップし、次にもう片方をタップしてください。,"이 두 동물이 같은 우리를 쓸 수 있을까요? 한 동물을 누르고, 다음에 다른 동물을 누르세요.","क्या ये दोनों एक बाड़े में रह सकते हैं? एक जानवर पर टैप करो, फिर दूसरे पर।"
+coach.done,"You're ready! Keep the herds fed, the fences tight and the tram full.","Hazırsın! Sürüleri besle, çitleri sağlam tut, tramvayı dolu tut.","Los geht's! Halte die Herden satt, die Zäune dicht und die Bahn voll.","¡Listo! Mantén alimentadas las manadas, las vallas firmes y el tranvía lleno.","Tu es prêt ! Garde les troupeaux nourris, les clôtures solides et le tram plein.","Pronto! Mantenha os rebanhos alimentados, as cercas firmes e o trenzinho cheio.","Готово! Корми стадо, держи ограды крепкими и трамвай полным.",準備完了です！ 群れにごはんを与え、柵をしっかり保ち、トラムを満席にしましょう。,"준비 끝! 무리에게 먹이를 주고, 울타리를 튼튼히, 트램은 꽉 차게 유지하세요.","तुम तैयार हो! जानवरों को खाना, बाड़ों को मज़बूत और ट्राम को भरा रखो।"
 coach.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 coach.step,Step {n} of {m},Adım {n} / {m},Schritt {n} von {m},Paso {n} de {m},Étape {n} sur {m},Passo {n} de {m},Шаг {n} из {m},ステップ {n} / {m},{m}단계 중 {n}단계,चरण {n} / {m}
 common.back,Back,Geri,Zurück,Atrás,Retour,Voltar,Назад,戻る,뒤로,वापस
 common.cancel,Cancel,İptal,Abbrechen,Cancelar,Annuler,Cancelar,Отмена,キャンセル,취소,रद्द करो
 common.locked,Locked,Kilitli,Gesperrt,Bloqueado,Verrouillé,Bloqueado,Закрыто,ロック中,잠김,बंद
 common.ok,OK,Tamam,OK,OK,OK,OK,OK,OK,확인,ठीक है
-common.open,Open,,,,,,,,,
+common.open,Open,Aç,Öffnen,Abrir,Ouvrir,Abrir,Открыть,開く,열기,खोलो
 common.owned,Owned,Sende,Gekauft,Comprado,Acquis,Comprado,Куплено,所持済み,보유 중,आपके पास
-compare.again,Compare others,,,,,,,,,
-compare.bad,Trouble! Keep these two in different paddocks.,,,,,,,,,
-compare.first,Picked,,,,,,,,,
-compare.good,Great neighbours. They will rarely squabble.,,,,,,,,,
-compare.harmony,Harmony {pct},,,,,,,,,
-compare.help,Pick two animals to compare.,,,,,,,,,
-compare.ok,"They can share, but expect a squabble now and then.",,,,,,,,,
-compare.pick,Pick,,,,,,,,,
-compare.picked,{name} picked — tap another animal to compare.,,,,,,,,,
-compare.second,{name} picked. Now pick a second animal.,,,,,,,,,
-compare.sub,Can they share a paddock?,,,,,,,,,
-compare.title,Compatibility,,,,,,,,,
-crisis.dust_storm.b,The tram drives slower today.,,,,,,,,,
-crisis.dust_storm.t,Dust storm,,,,,,,,,
-crisis.escape.b,An animal is on the path.,,,,,,,,,
-crisis.escape.t,Tram stopped,,,,,,,,,
-crisis.heat_wave.b,Crates spoil at Dune Mesa stations without a cooler; shade keeps animals calm.,,,,,,,,,
+compare.again,Compare others,Diğerlerini karşılaştır,Andere vergleichen,Comparar otros,Comparer d'autres,Comparar outros,Сравнить другие,ほかを比べる,다른 동물 비교,दूसरों से मिलाओ
+compare.bad,Trouble! Keep these two in different paddocks.,Sorun! Bu ikisini farklı ağıllarda tut.,Ärger! Halte diese beiden in verschiedenen Gehegen.,¡Problemas! Mantén a estos dos en recintos distintos.,Problème ! Garde ces deux-là dans des enclos séparés.,Problema! Mantenha esses dois em cercados diferentes.,Проблемы! Держи этих двоих в разных загонах.,トラブルです！ この2頭は別々の囲い場に入れてください。,문제가 생겨요! 이 둘은 서로 다른 우리에 두세요.,गड़बड़! इन दोनों को अलग बाड़ों में रखो।
+compare.first,Picked,Seçildi,Gewählt,Elegido,Choisi,Escolhido,Выбрано,選択済み,선택함,चुना गया
+compare.good,Great neighbours. They will rarely squabble.,Harika komşular. Nadiren tartışırlar.,Tolle Nachbarn. Sie streiten sich selten.,Grandes vecinos. Rara vez se pelean.,Excellents voisins. Ils se disputeront rarement.,Ótimos vizinhos. Quase nunca brigam.,Отличные соседи. Почти не ссорятся.,とても仲のよいご近所さんです。もめることはほとんどないでしょう。,좋은 이웃이에요. 거의 다투지 않아요.,बढ़िया पड़ोसी। ये शायद ही झगड़ेंगे।
+compare.harmony,Harmony {pct},Uyum {pct},Verträglichkeit {pct},Armonía {pct},Entente {pct},Harmonia {pct},Гармония {pct},相性 {pct},조화 {pct},मेल {pct}
+compare.help,Pick two animals to compare.,Karşılaştırmak için iki hayvan seç.,Wähle zwei Tiere zum Vergleichen.,Elige dos animales para comparar.,Choisis deux animaux à comparer.,Escolha dois animais para comparar.,Выбери двух животных для сравнения.,比べる動物を2頭選んでください。,비교할 동물 두 마리를 고르세요.,मिलाने के लिए दो जानवर चुनो।
+compare.ok,"They can share, but expect a squabble now and then.","Birlikte olabilirler, ama arada bir tartışma beklenir.","Sie können sich ein Gehege teilen, aber ab und zu wird es Streit geben.","Pueden compartir, pero espera alguna riña de vez en cuando.","Ils peuvent cohabiter, mais attends-toi à une dispute de temps en temps.","Podem dividir, mas espere uma briga de vez em quando.","Могут жить вместе, но иногда будут ссориться.",一緒に暮らせますが、たまにもめることがあります。,"같이 지낼 수는 있지만, 가끔 다툴 수 있어요.","ये साथ रह सकते हैं, पर कभी-कभी झगड़ा हो सकता है।"
+compare.pick,Pick,Seç,Wählen,Elegir,Choisir,Escolher,Выбрать,選ぶ,고르기,चुनो
+compare.picked,{name} picked — tap another animal to compare.,{name} seçildi — karşılaştırmak için başka bir hayvana dokun.,{name} gewählt — tippe auf ein anderes Tier zum Vergleichen.,{name} elegido: toca otro animal para comparar.,{name} choisi — touche un autre animal pour comparer.,{name} escolhido — toque em outro animal para comparar.,Выбрано: {name}. Нажми на другое животное для сравнения.,{name} を選びました。比べる動物をもう1頭タップしてください。,{name} 선택됨 — 비교하려면 다른 동물을 누르세요.,{name} चुना गया — मिलाने के लिए दूसरा जानवर चुनो।
+compare.second,{name} picked. Now pick a second animal.,{name} seçildi. Şimdi ikinci bir hayvan seç.,{name} gewählt. Wähle jetzt ein zweites Tier.,{name} elegido. Ahora elige un segundo animal.,{name} choisi. Choisis maintenant un deuxième animal.,{name} escolhido. Agora escolha um segundo animal.,Выбрано: {name}. Теперь выбери второе животное.,{name} を選びました。次にもう1頭を選んでください。,{name} 선택됨. 이제 두 번째 동물을 고르세요.,{name} चुना गया। अब दूसरा जानवर चुनो।
+compare.sub,Can they share a paddock?,Aynı ağılı paylaşabilirler mi?,Können sie sich ein Gehege teilen?,¿Pueden compartir un recinto?,Peuvent-ils partager un enclos ?,Eles podem dividir um cercado?,Могут ли они жить в одном загоне?,同じ囲い場で暮らせる？,같은 우리에서 지낼 수 있을까요?,क्या ये एक बाड़े में रह सकते हैं?
+compare.title,Compatibility,Uyumluluk,Verträglichkeit,Compatibilidad,Compatibilité,Compatibilidade,Совместимость,相性,궁합,मेल-जोल
+crisis.dust_storm.b,The tram drives slower today.,Tramvay bugün daha yavaş gidiyor.,Die Safaribahn fährt heute langsamer.,Hoy el tranvía va más despacio.,Le tram roule plus lentement aujourd'hui.,O trenzinho anda mais devagar hoje.,Сегодня трамвай едет медленнее.,今日はトラムがゆっくり走ります。,오늘은 트램이 더 천천히 달려요.,आज ट्राम धीमी चलेगी।
+crisis.dust_storm.t,Dust storm,Toz fırtınası,Staubsturm,Tormenta de polvo,Tempête de sable,Tempestade de poeira,Пыльная буря,砂嵐,모래폭풍,धूल भरी आँधी
+crisis.escape.b,An animal is on the path.,Bir hayvan yolda.,Ein Tier ist auf dem Weg.,Un animal está en el camino.,Un animal est sur le chemin.,Um animal está no caminho.,Животное вышло на дорожку.,動物が通路にいます。,동물 한 마리가 길에 나와 있어요.,एक जानवर रास्ते पर है।
+crisis.escape.t,Tram stopped,Tramvay durdu,Safaribahn angehalten,Tranvía detenido,Tram arrêté,Trenzinho parado,Трамвай остановлен,トラムが停止,트램 정지,ट्राम रुकी
+crisis.heat_wave.b,Crates spoil at Dune Mesa stations without a cooler; shade keeps animals calm.,Soğutucu olmadan Kum Sırtı istasyonlarında sandıklar bozulur; gölgelik hayvanları sakin tutar.,Ohne Kühlbox verderben die Kisten an den Stationen auf dem Dünen-Plateau; Schatten hält die Tiere ruhig.,En las estaciones de Meseta de Dunas las cajas se estropean sin enfriador; la sombra mantiene tranquilos a los animales.,"Sans glacière, les caisses s'abîment aux postes de Dune Mesa ; l'ombre calme les animaux.",As caixas estragam nas estações da Mesa das Dunas sem refrigerador; a sombra mantém os animais calmos.,Без холодильника на станциях в дюнах корм портится; навес успокаивает животных.,冷却機がないと砂丘台地の乗り場で飼料箱が傷みます。日よけがあると動物が落ち着きます。,냉방기가 없으면 모래 언덕 칸의 상자가 상해요. 그늘막이 동물을 진정시켜요.,कूलर के बिना टीला पठार के स्टेशनों पर पेटियाँ खराब होती हैं; छाँव जानवरों को शांत रखती है।
 crisis.heat_wave.t,Heat wave,Sıcak dalgası,Hitzewelle,Ola de calor,Vague de chaleur,Onda de calor,Жара,猛暑,폭염,गर्मी की लहर
-crisis.rain_squall.b,Paths flood and fewer visitors come for a while.,,,,,,,,,
-crisis.rain_squall.t,Rain squall,,,,,,,,,
-crisis.school_trip.b,Extra visitors today — and they love the babies.,,,,,,,,,
-crisis.school_trip.t,School trip,,,,,,,,,
-crisis.supply_late.b,Only half the morning crates; the rest come at 13:00.,,,,,,,,,
-crisis.supply_late.t,Supply boat late,,,,,,,,,
-diet.fern,Ferns,,,,,,,,,
-diet.fruit,Fruit,,,,,,,,,
-err.busy,That ranger is busy.,,,,,,,,,
-err.cash,Not enough coins.,,,,,,,,,
-err.cp,Not enough Conservation Points.,,,,,,,,,
-err.empty,No visitors waiting yet.,,,,,,,,,
+crisis.rain_squall.b,Paths flood and fewer visitors come for a while.,Yollar sular altında kalır ve bir süre daha az ziyaretçi gelir.,"Die Wege werden überflutet, und eine Weile kommen weniger Besucher.",Los caminos se inundan y durante un rato vienen menos visitantes.,Les chemins sont inondés et moins de visiteurs viennent pendant un moment.,Os caminhos alagam e menos visitantes vêm por um tempo.,"Дорожки затоплены, и какое-то время приходит меньше посетителей.",通路が水につかり、しばらく来園者が減ります。,길이 물에 잠기고 한동안 관람객이 줄어요.,रास्ते पानी में डूबते हैं और कुछ समय तक कम मेहमान आते हैं।
+crisis.rain_squall.t,Rain squall,Yağmur sağanağı,Regenschauer,Chubasco,Averse,Chuva forte,Ливень,にわか雨,소나기,बारिश का तूफ़ान
+crisis.school_trip.b,Extra visitors today — and they love the babies.,Bugün fazladan ziyaretçi — ve bebekleri çok seviyorlar.,Heute mehr Besucher — und sie lieben die Babys.,"Hoy hay visitantes extra, y les encantan las crías.","Des visiteurs en plus aujourd'hui, et ils adorent les bébés.",Visitantes extras hoje — e eles adoram os bebês.,Сегодня больше посетителей — и они обожают малышей.,今日は来園者が増えます。赤ちゃん動物が大人気です。,오늘은 관람객이 더 많아요. 아기 동물을 아주 좋아해요.,आज ज़्यादा मेहमान आएँगे — और उन्हें बच्चे बहुत पसंद हैं।
+crisis.school_trip.t,School trip,Okul gezisi,Schulausflug,Excursión escolar,Sortie scolaire,Excursão escolar,Школьная экскурсия,遠足,학교 단체 관람,स्कूल की सैर
+crisis.supply_late.b,Only half the morning crates; the rest come at 13:00.,Sabah sandıklarının yalnızca yarısı; kalanı 13:00'te gelir.,Nur die Hälfte der Futterkisten am Morgen; der Rest kommt um 13:00.,Solo llega la mitad de las cajas de la mañana; el resto llega a las 13:00.,Seulement la moitié des caisses du matin ; le reste arrive à 13 h 00.,Só metade das caixas da manhã; o resto chega às 13:00.,Утром привезли только половину ящиков; остальные — в 13:00.,午前の飼料箱は半分だけ。残りは13:00に届きます。,아침 상자는 절반만 와요. 나머지는 13:00에 와요.,सुबह की सिर्फ़ आधी पेटियाँ आईं; बाकी 13:00 बजे आएँगी।
+crisis.supply_late.t,Supply boat late,Erzak teknesi geç kaldı,Versorgungsboot verspätet,Barco de suministros retrasado,Bateau de ravitaillement en retard,Barco de suprimentos atrasado,Опоздала баржа с кормом,補給船の遅れ,보급선 지연,सामान वाली नाव लेट
+diet.fern,Ferns,Eğrelti,Farne,Helechos,Fougères,Samambaias,Папоротники,シダ,고사리,फ़र्न
+diet.fruit,Fruit,Meyve,Früchte,Fruta,Fruits,Frutas,Фрукты,果物,과일,फल
+err.busy,That ranger is busy.,O korucu meşgul.,Dieser Ranger ist beschäftigt.,Ese guardabosques está ocupado.,Ce garde est occupé.,Essa guarda está ocupada.,Этот смотритель занят.,そのレンジャーは手が離せません。,그 레인저는 지금 바빠요.,वह रेंजर व्यस्त है।
+err.cash,Not enough coins.,Yeterli madeni para yok.,Nicht genug Münzen.,No hay suficientes monedas.,Pas assez de pièces.,Moedas insuficientes.,Не хватает монет.,コインが足りません。,동전이 부족해요.,पर्याप्त सिक्के नहीं हैं।
+err.cp,Not enough Conservation Points.,Yeterli KP yok.,Nicht genug Schutzpunkte.,No hay suficientes Puntos de conservación.,Pas assez de points de conservation.,Pontos de Conservação insuficientes.,Не хватает очков сохранения.,保全ポイントが足りません。,보존 포인트가 부족해요.,पर्याप्त संरक्षण अंक नहीं हैं।
+err.empty,No visitors waiting yet.,Henüz bekleyen ziyaretçi yok.,Noch keine Besucher im Wartebereich.,Todavía no hay visitantes esperando.,Aucun visiteur n'attend encore.,Nenhum visitante esperando ainda.,Пока никто не ждёт.,まだ待っている来園者はいません。,기다리는 관람객이 아직 없어요.,अभी कोई मेहमान इंतज़ार में नहीं।
 err.failed,That didn't work.,Olmadı.,Das hat nicht geklappt.,Eso no funcionó.,Ça n'a pas marché.,Não deu certo.,Не получилось.,うまくいきませんでした。,실패했어요.,यह नहीं हुआ।
-err.full,That paddock is full.,,,,,,,,,
-err.gone,Already sorted.,,,,,,,,,
-err.halted,The tram waits: an animal is on the path.,,,,,,,,,
+err.full,That paddock is full.,Bu ağıl dolu.,Dieses Gehege ist voll.,Ese recinto está lleno.,Cet enclos est plein.,Esse cercado está cheio.,Этот загон полон.,その囲い場は満員です。,그 우리는 꽉 찼어요.,वह बाड़ा भरा है।
+err.gone,Already sorted.,Zaten halledildi.,Schon erledigt.,Ya está resuelto.,Déjà réglé.,Já resolvido.,Уже разобрано.,すでに解決済みです。,이미 처리했어요.,पहले से सुलझ चुका है।
+err.halted,The tram waits: an animal is on the path.,Tramvay bekliyor: yolda bir hayvan var.,Die Bahn wartet: Ein Tier ist auf dem Weg.,El tranvía espera: hay un animal en el camino.,Le tram attend : un animal est sur le chemin.,O trenzinho espera: há um animal no caminho.,Трамвай ждёт: животное на дорожке.,トラムは待機中です。通路に動物がいます。,트램이 기다리고 있어요: 길에 동물이 나와 있어요.,ट्राम रुकी है: एक जानवर रास्ते पर है।
 err.invalid,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
-err.locked,Open this zone first.,,,,,,,,,
+err.locked,Open this zone first.,Önce bu bölgeyi aç.,Öffne zuerst diese Zone.,Abre antes esta zona.,Ouvre d'abord cette zone.,Abra esta zona primeiro.,Сначала открой эту зону.,先にこのエリアを開いてください。,먼저 이 구역을 여세요.,पहले यह ज़ोन खोलो।
 err.max,Maximum reached.,En fazlaya ulaşıldı.,Maximum erreicht.,Límite alcanzado.,Maximum atteint.,Limite máximo atingido.,Достигнут максимум.,上限に達しました。,최대치에 도달했어요.,सीमा पूरी हो गई।
-err.no_ranger,No free Handler.,,,,,,,,,
-err.open,Already open.,,,,,,,,,
+err.no_ranger,No free Handler.,Boşta Bakıcı yok.,Kein Betreuer frei.,No hay ningún Cuidador libre.,Aucun soigneur libre.,Nenhum Tratador livre.,Нет свободного служителя.,空いている飼育員がいません。,비어 있는 사육사가 없어요.,कोई खाली हैंडलर नहीं।
+err.open,Already open.,Zaten açık.,Schon offen.,Ya está abierto.,Déjà ouvert.,Já aberto.,Уже открыто.,すでに開いています。,이미 열려 있어요.,पहले से खुला है।
 err.owned,Already yours.,Zaten senin.,Gehört dir schon.,Ya es tuyo.,Déjà à toi.,Já é seu.,Уже твоё.,すでに持っています。,이미 보유 중이에요.,यह पहले से तुम्हारा है।
 err.phase,Not now.,Şimdi değil.,Nicht jetzt.,Ahora no.,Pas maintenant.,Não agora.,Не сейчас.,今はできません。,지금은 안 돼요.,अभी नहीं।
-err.rating,Sanctuary Rating too low.,,,,,,,,,
-err.role,That ranger can't fix this. Send the right role.,,,,,,,,,
-err.running,Already on its way.,,,,,,,,,
-err.same,It's already there.,,,,,,,,,
-err.taken,Someone is already on it.,,,,,,,,,
-err.too_cold,Too cold — slide it warmer.,,,,,,,,,
-err.too_hot,Too hot — slide it cooler.,,,,,,,,,
+err.rating,Sanctuary Rating too low.,Barınak Puanı çok düşük.,Park-Bewertung zu niedrig.,La valoración del santuario es demasiado baja.,Note du sanctuaire trop basse.,Avaliação do santuário baixa demais.,Рейтинг заповедника слишком низкий.,保護区の評価が足りません。,보호구역 등급이 너무 낮아요.,अभयारण्य रेटिंग बहुत कम है।
+err.role,That ranger can't fix this. Send the right role.,Bu korucu bunu çözemez. Doğru rolü gönder.,Dieser Ranger kann das nicht richten. Schick die passende Rolle.,Ese guardabosques no puede arreglar esto. Envía el perfil adecuado.,Ce garde ne peut pas régler ça. Envoie le bon rôle.,Essa guarda não consegue resolver isso. Envie a função certa.,Этот смотритель здесь не поможет. Отправь нужную роль.,そのレンジャーでは対応できません。適切な担当を送ってください。,그 레인저로는 해결할 수 없어요. 알맞은 역할을 보내세요.,वह रेंजर यह ठीक नहीं कर सकता। सही भूमिका भेजो।
+err.running,Already on its way.,Zaten yolda.,Ist schon unterwegs.,Ya va en camino.,Déjà en route.,Já está a caminho.,Уже в пути.,すでに向かっています。,이미 가는 중이에요.,पहले से रास्ते में है।
+err.same,It's already there.,Zaten orada.,Ist schon dort.,Ya está ahí.,Il est déjà là.,Já está lá.,Он уже там.,すでにそこにいます。,이미 거기 있어요.,वह पहले से वहीं है।
+err.taken,Someone is already on it.,Biri zaten ilgileniyor.,Jemand kümmert sich schon darum.,Alguien ya se está ocupando.,Quelqu'un s'en occupe déjà.,Alguém já está cuidando disso.,Кто-то уже занимается этим.,すでに別の人が対応中です。,누군가 이미 맡고 있어요.,कोई पहले से इस पर है।
+err.too_cold,Too cold — slide it warmer.,Çok soğuk — biraz ısıt.,Zu kalt — schieb wärmer.,Hace demasiado frío: sube el control.,Trop froid — remonte le curseur.,Frio demais — deslize para mais quente.,Слишком холодно — подвинь теплее.,冷たすぎます。もっと温かくしてください。,너무 추워요. 더 따뜻하게 옮기세요.,बहुत ठंडा — इसे और गरम करो।
+err.too_hot,Too hot — slide it cooler.,Çok sıcak — biraz soğut.,Zu warm — schieb kühler.,Hace demasiado calor: baja el control.,Trop chaud — descends le curseur.,Quente demais — deslize para mais frio.,Слишком жарко — подвинь прохладнее.,熱すぎます。もっと冷たくしてください。,너무 더워요. 더 시원하게 옮기세요.,बहुत गरम — इसे ठंडा करो।
 err.unknown,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
-fence.tier1,Wood fence,,,,,,,,,
-fence.tier2,Steel fence,,,,,,,,,
-fence.tier3,Double moat,,,,,,,,,
+fence.tier1,Wood fence,Ahşap çit,Holzzaun,Valla de madera,Clôture en bois,Cerca de madeira,Деревянная ограда,木の柵,나무 울타리,लकड़ी की बाड़
+fence.tier2,Steel fence,Çelik çit,Stahlzaun,Valla de acero,Clôture en acier,Cerca de aço,Стальная ограда,スチールの柵,강철 울타리,स्टील की बाड़
+fence.tier3,Double moat,Çift hendek,Doppelgraben,Foso doble,Double fossé,Fosso duplo,Двойной ров,二重の堀,이중 해자,दोहरी खाई
 graphics.dropped,Graphics lowered to keep the game smooth. You can change it in Settings.,Oyun akıcı kalsın diye grafikler düşürüldü. Ayarlar'dan değiştirebilirsin.,"Grafik gesenkt, damit das Spiel flüssig läuft. Du kannst es in den Einstellungen ändern.",Gráficos reducidos para mantener el juego fluido. Puedes cambiarlo en Ajustes.,Graphismes baissés pour garder le jeu fluide. Tu peux les changer dans les Réglages.,Gráficos reduzidos para manter o jogo suave. Você pode mudar isso em Configurações.,"Графика снижена, чтобы игра шла плавно. Это можно поменять в настройках.",ゲームを滑らかにするため画質を下げました。設定で変更できます。,게임을 부드럽게 하려고 그래픽을 낮췄어요. 설정에서 바꿀 수 있어요.,गेम चिकना चलाने के लिए ग्राफ़िक्स घटाया गया। इसे सेटिंग्स में बदल सकते हो।
 graphics.high,High,Yüksek,Hoch,Alta,Élevée,Alta,Высокая,高,높음,ऊँचा
 graphics.low,Low,Düşük,Niedrig,Baja,Basse,Baixa,Низкая,低,낮음,कम
 graphics.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
-hatch.check,Check,,,,,,,,,
-hatch.cold,too cold — check it,,,,,,,,,
-hatch.dig,Dig sites,,,,,,,,,
-hatch.dig_help,A dig crew (one Handler) brings fossil shards. Two trips = one rescued egg. Costs {cp} CP.,,,,,,,,,
-hatch.digging,Digging…,,,,,,,,,
-hatch.egg,{name} egg,,,,,,,,,
-hatch.incubators,Incubators,,,,,,,,,
-hatch.left,Hatches in {time},,,,,,,,,
-hatch.log,Species log {n}/{m},,,,,,,,,
-hatch.none,No eggs right now. Send a dig crew to find fossil shards.,,,,,,,,,
-hatch.progress,next: {sp} {pct},,,,,,,,,
-hatch.send,Send dig crew,,,,,,,,,
-hatch.temp,Temperature,,,,,,,,,
-hatch.temp_help,"Move the slider into the warm middle, then tap Check.",,,,,,,,,
-hatch.waiting,{name} egg waits for a free incubator.,,,,,,,,,
-hatch.warm,nice and warm,,,,,,,,,
-health.green,A bit unwell,,,,,,,,,
-health.off,Resting off-exhibit,,,,,,,,,
-health.ok,Healthy,,,,,,,,,
-health.red,Very unwell,,,,,,,,,
-health.yellow,Unwell,,,,,,,,,
-hud.badge_info,You're the Chief Warden. Sanctuary Rating {r} — keep animals happy and visitors amazed.,,,,,,,,,
-hud.cp,{n} CP,,,,,,,,,
+hatch.check,Check,Kontrol et,Prüfen,Comprobar,Vérifier,Verificar,Проверить,確認,확인,जाँचो
+hatch.cold,too cold — check it,çok soğuk — kontrol et,zu kalt — bitte prüfen,demasiado frío: revísalo,trop froid — à vérifier,frio demais — verifique,слишком холодно — проверь,冷たすぎます — 確認してください,너무 차가워요. 확인하세요.,बहुत ठंडा — जाँचो
+hatch.dig,Dig sites,Kazı alanları,Grabungsstellen,Zonas de excavación,Chantiers de fouille,Locais de escavação,Раскопки,発掘地,발굴지,खुदाई की जगहें
+hatch.dig_help,A dig crew (one Handler) brings fossil shards. Two trips = one rescued egg. Costs {cp} CP.,Bir kazı ekibi (bir Bakıcı) fosil parçaları getirir. İki sefer = bir kurtarılan yumurta. {cp} KP tutar.,Ein Grabungsteam (ein Betreuer) bringt Fossilscherben. Zwei Fahrten = ein gerettetes Ei. Kostet {cp} SP.,Un equipo de excavación (un Cuidador) trae fragmentos fósiles. Dos viajes = un huevo rescatado. Cuesta {cp} PC.,Une équipe de fouille (un soigneur) rapporte des fragments de fossiles. Deux sorties = un œuf sauvé. Coûte {cp} PC.,Uma equipe de escavação (um Tratador) traz fragmentos fósseis. Duas viagens = um ovo resgatado. Custa {cp} PC.,Бригада раскопок (один служитель) привозит осколки окаменелостей. Две поездки — одно спасённое яйцо. Стоит {cp} ОС.,発掘隊（飼育員1人）が化石のかけらを持ち帰ります。2往復で卵1個を救出。費用 {cp} 保全ポイント。,발굴팀(사육사 한 명)이 화석 조각을 가져와요. 두 번 가면 알 하나를 구해요. 비용 {cp} 보존 포인트.,खुदाई दल (एक हैंडलर) जीवाश्म के टुकड़े लाता है। दो चक्कर = एक अंडा बचा। लागत {cp} CP।
+hatch.digging,Digging…,Kazılıyor…,Wird gegraben …,Excavando…,Fouille en cours…,Escavando…,Копаем…,発掘中…,발굴 중…,खुदाई हो रही है…
+hatch.egg,{name} egg,{name} yumurtası,Ei: {name},Huevo de {name},Œuf de {name},Ovo de {name},Яйцо: {name},{name} の卵,{name} 알,{name} का अंडा
+hatch.incubators,Incubators,Kuluçka makineleri,Brutkästen,Incubadoras,Couveuses,Chocadeiras,Инкубаторы,孵卵器,부화기,इन्क्यूबेटर
+hatch.left,Hatches in {time},{time} sonra çıkar,Schlüpft in {time},Eclosiona en {time},Éclosion dans {time},Choca em {time},Вылупится через {time},{time} 後に孵化,{time} 뒤 부화,{time} में निकलेगा
+hatch.log,Species log {n}/{m},Tür kaydı {n}/{m},Artenbuch {n}/{m},Registro de especies {n}/{m},Registre des espèces {n}/{m},Registro de espécies {n}/{m},Журнал видов {n}/{m},種の記録 {n}/{m},종 도감 {n}/{m},प्रजाति लॉग {n}/{m}
+hatch.none,No eggs right now. Send a dig crew to find fossil shards.,Şu an yumurta yok. Fosil parçası bulmak için bir kazı ekibi gönder.,"Gerade keine Eier. Schick ein Grabungsteam los, um Fossilscherben zu finden.",No hay huevos ahora mismo. Envía un equipo de excavación para encontrar fragmentos fósiles.,Pas d'œufs pour l'instant. Envoie une équipe de fouille pour trouver des fragments de fossiles.,Nenhum ovo agora. Envie uma equipe de escavação para achar fragmentos fósseis.,Сейчас яиц нет. Отправь бригаду раскопок за осколками окаменелостей.,今は卵がありません。発掘隊を送って化石のかけらを探しましょう。,지금은 알이 없어요. 발굴팀을 보내 화석 조각을 찾으세요.,अभी कोई अंडा नहीं। जीवाश्म खोजने के लिए खुदाई दल भेजो।
+hatch.progress,next: {sp} {pct},sonraki: {sp} {pct},nächste: {sp} {pct},siguiente: {sp} {pct},suivant : {sp} {pct},próximo: {sp} {pct},дальше: {sp} {pct},次: {sp} {pct},다음: {sp} {pct},अगला: {sp} {pct}
+hatch.send,Send dig crew,Kazı ekibi gönder,Grabungsteam schicken,Enviar equipo de excavación,Envoyer l'équipe de fouille,Enviar equipe de escavação,Отправить бригаду,発掘隊を送る,발굴팀 보내기,खुदाई दल भेजो
+hatch.temp,Temperature,Sıcaklık,Temperatur,Temperatura,Température,Temperatura,Температура,温度,온도,तापमान
+hatch.temp_help,"Move the slider into the warm middle, then tap Check.","Kaydırıcıyı ılık ortaya getir, sonra Kontrol et'e dokun.",Schieb den Regler in die warme Mitte und tippe dann auf Prüfen.,Mueve el control al centro cálido y luego toca Comprobar.,"Déplace le curseur vers le milieu chaud, puis touche Vérifier.",Deslize até o meio quente e depois toque em Verificar.,Передвинь ползунок в тёплую середину и нажми «Проверить».,スライダーを温かい真ん中に動かして、「確認」をタップしてください。,슬라이더를 따뜻한 가운데로 옮기고 “확인”을 누르세요.,"स्लाइडर को बीच के गरम हिस्से में ले जाओ, फिर जाँचो पर टैप करो।"
+hatch.waiting,{name} egg waits for a free incubator.,{name} yumurtası boş bir kuluçka makinesi bekliyor.,Das Ei {name} wartet auf einen freien Brutkasten.,El huevo de {name} espera una incubadora libre.,L'œuf de {name} attend une couveuse libre.,O ovo de {name} espera uma chocadeira livre.,Яйцо {name} ждёт свободный инкубатор.,{name} の卵が空いている孵卵器を待っています。,{name} 알이 빈 부화기를 기다리고 있어요.,{name} का अंडा खाली इन्क्यूबेटर का इंतज़ार कर रहा है।
+hatch.warm,nice and warm,güzel ve ılık,schön warm,bien y templado,bien au chaud,ótimo e quentinho,"тепло, отлично",ちょうどいい温度,딱 좋게 따뜻해요,बढ़िया और गरम
+health.green,A bit unwell,Biraz hasta,Etwas angeschlagen,Algo malito,Un peu malade,Um pouco doente,Немного нездоровится,少し体調が悪い,조금 아파요,थोड़ा अस्वस्थ
+health.off,Resting off-exhibit,Sergi dışında dinleniyor,Ruht abseits der Anlage,Descansando fuera de exhibición,Au repos hors exposition,Descansando fora da exposição,Отдыхает вне вольера,展示外で休養中,전시장 밖에서 쉬는 중,प्रदर्शनी से बाहर आराम कर रहा है
+health.ok,Healthy,Sağlıklı,Gesund,Sano,En bonne santé,Saudável,Здоров,元気,건강함,स्वस्थ
+health.red,Very unwell,Çok hasta,Sehr krank,Muy enfermo,Très malade,Muito doente,Очень плохо себя чувствует,かなり体調が悪い,많이 아파요,बहुत अस्वस्थ
+health.yellow,Unwell,Hasta,Angeschlagen,Enfermo,Malade,Doente,Нездоровится,体調が悪い,아파요,अस्वस्थ
+hud.badge_info,You're the Chief Warden. Sanctuary Rating {r} — keep animals happy and visitors amazed.,"Sen Baş Koruyucusun. Barınak Puanı {r} — hayvanları mutlu, ziyaretçileri hayran tut.",Du bist der Oberste Wildhüter. Park-Bewertung {r} — halte die Tiere zufrieden und die Besucher begeistert.,Eres el Director del santuario. Valoración {r}: mantén a los animales felices y a los visitantes asombrados.,Tu es le Chef du sanctuaire. Note du sanctuaire {r} — garde les animaux heureux et les visiteurs émerveillés.,Você é o Guarda-chefe. Avaliação do santuário {r} — mantenha os animais felizes e os visitantes encantados.,Ты главный хранитель. Рейтинг заповедника {r}: радуй животных и удивляй посетителей.,あなたはチーフ保護官です。保護区の評価 {r}。動物を幸せに、来園者を驚かせ続けましょう。,"당신은 총관리자예요. 보호구역 등급 {r}. 동물은 행복하게, 관람객은 감탄하게 해 주세요.",तुम चीफ़ वार्डन हो। अभयारण्य रेटिंग {r} — जानवरों को खुश और मेहमानों को हैरान रखो।
+hud.cp,{n} CP,{n} KP,{n} SP,{n} PC,{n} PC,{n} PC,{n} ОС,{n} CP,{n} 보존 포인트,{n} CP
 hud.day,Day {n},Gün {n},Tag {n},Día {n},Jour {n},Dia {n},День {n},{n}日目,{n}일차,दिन {n}
 hud.next_day,Next day,Sonraki gün,Nächster Tag,Día siguiente,Jour suivant,Próximo dia,Следующий день,次の日へ,다음 날,अगला दिन
-hud.rating,★ {r},,,,,,,,,
+hud.rating,★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r}
 hud.speed,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×
 hud.speed_guide,Speed-up unlocks after the guide.,"Hızlandırma, rehberden sonra açılır.",Schneller stellen schaltet sich nach der Anleitung frei.,La velocidad rápida se desbloquea al terminar la guía.,L'accélération se débloque après le guide.,A velocidade maior libera depois do tutorial.,Ускорение откроется после обучения.,スピードアップはガイドの後に解放されます。,가이드를 마치면 빨리 감기가 열려요.,गाइड के बाद तेज़ चाल खुलेगी।
-hud.speed_locked,3× speed comes with the Speed Pack.,,,,,,,,,
-hud.start_day,Open the park,,,,,,,,,
-iap.bundle.d,"Edition, Ranger Pass, Speed Pack and every tram skin. No forced ads.",,,,,,,,,
-iap.bundle.t,Complete Sanctuary Collection,,,,,,,,,
+hud.speed_locked,3× speed comes with the Speed Pack.,3× hız Hız Paketi ile gelir.,3× Tempo gibt es mit dem Tempo-Paket.,La velocidad 3× viene con el Pack de Velocidad.,La vitesse 3× vient avec le Pack Vitesse.,A velocidade 3× vem com o Pacote de Velocidade.,Скорость 3× идёт с пакетом скорости.,3×の速さはスピードパックに含まれます。,3× 속도는 속도 팩에 들어 있어요.,3× स्पीड स्पीड पैक के साथ मिलती है।
+hud.start_day,Open the park,Parkı aç,Park öffnen,Abrir el parque,Ouvrir le parc,Abrir o parque,Открыть парк,開園する,공원 열기,पार्क खोलो
+iap.bundle.d,"Edition, Ranger Pass, Speed Pack and every tram skin. No forced ads.","Sürüm, Korucu Kartı, Hız Paketi ve her tramvay kaplaması. Zorunlu reklam yok.","Edition, Ranger-Pass, Tempo-Paket und alle Safaribahn-Designs. Keine erzwungene Werbung.","Edición, Pase de guardabosques, Pack de Velocidad y todos los diseños de tranvía. Sin anuncios obligatorios.","Édition, Pass Garde, Pack Vitesse et tous les habillages de tram. Pas de pubs imposées.","Edição, Passe da Guarda, Pacote de Velocidade e todos os visuais do trenzinho. Sem anúncios forçados.","Издание, пропуск смотрителя, пакет скорости и все оформления трамвая. Без навязчивой рекламы.",エディション、レンジャーパス、スピードパック、トラムのデザインすべて。強制広告なし。,"에디션, 레인저 패스, 속도 팩, 트램 장식 전부가 들어 있어요. 강제 광고 없음.","एडिशन, रेंजर पास, स्पीड पैक और हर ट्राम स्किन। ज़बरदस्ती विज्ञापन नहीं।"
+iap.bundle.t,Complete Sanctuary Collection,Tam Barınak Koleksiyonu,Komplett-Schutzgebiet-Paket,Colección completa del santuario,Collection complète du sanctuaire,Coleção Completa do Santuário,Полная коллекция заповедника,保護区コンプリートセット,보호구역 올인원 컬렉션,पूरा अभयारण्य कलेक्शन
 iap.cash_l.d,About 5 days of income.,Yaklaşık 5 günlük gelir.,Etwa 5 Tage Einnahmen.,Unos 5 días de ingresos.,Environ 5 jours de revenus.,Cerca de 5 dias de renda.,Примерно на 5 дней дохода.,約5日分の収入。,수입 약 5일 치예요.,लगभग 5 दिन की कमाई।
 iap.cash_l.t,Crate of Coins,Madeni para sandığı,Kiste voller Münzen,Caja de monedas,Caisse de pièces,Caixa de Moedas,Ящик монет,コインの木箱,동전 상자,सिक्कों की पेटी
 iap.cash_m.d,About 2.5 days of income.,"Yaklaşık 2,5 günlük gelir.","Etwa 2,5 Tage Einnahmen.","Unos 2,5 días de ingresos.","Environ 2,5 jours de revenus.","Cerca de 2,5 dias de renda.","Примерно 2,5 дня дохода.",約2.5日分の収入。,수입 약 2.5일 치예요.,लगभग 2.5 दिन की कमाई।
@@ -160,165 +160,165 @@ iap.cash_s.d,About one day of income.,Yaklaşık bir günlük gelir.,Etwa ein Ta
 iap.cash_s.t,Pocket of Coins,Madeni para cebi,Tasche voller Münzen,Bolsillo de monedas,Poche de pièces,Bolso de Moedas,Горсть монет,コインのポーチ,동전 주머니,सिक्कों की जेब
 iap.cash_xl.d,About 10 days of income.,Yaklaşık 10 günlük gelir.,Etwa 10 Tage Einnahmen.,Unos 10 días de ingresos.,Environ 10 jours de revenus.,Cerca de 10 dias de renda.,Примерно 10 дней дохода.,約10日分の収入。,수입 약 10일 치예요.,लगभग 10 दिन की कमाई।
 iap.cash_xl.t,Vault of Coins,Madeni para kasası,Tresor voller Münzen,Bóveda de monedas,Coffre de pièces,Cofre de Moedas,Хранилище монет,コインの金庫,동전 금고,सिक्कों का खज़ाना
-iap.comeback.d,Coins to get the sanctuary going again.,,,,,,,,,
+iap.comeback.d,Coins to get the sanctuary going again.,Barınağı yeniden canlandırmak için madeni para.,"Münzen, um das Schutzgebiet wieder in Gang zu bringen.",Monedas para volver a poner en marcha el santuario.,Des pièces pour relancer le sanctuaire.,Moedas para o santuário voltar a funcionar.,"Монеты, чтобы снова запустить заповедник.",保護区をもう一度動かすためのコイン。,보호구역을 다시 살리는 데 필요한 동전이에요.,अभयारण्य दोबारा चलाने के लिए सिक्के।
 iap.comeback.t,Welcome-back Crate,Hoş geldin sandığı,Willkommen-zurück-Kiste,Caja de bienvenida,Caisse de retour,Caixa de Boas-vindas,Ящик «С возвращением»,おかえり木箱,환영 상자,वापसी की पेटी
-iap.cosmetics_all.d,All three tram skins.,,,,,,,,,
-iap.cosmetics_all.t,Tram Collection,,,,,,,,,
+iap.cosmetics_all.d,All three tram skins.,Üç tramvay kaplamasının hepsi.,Alle drei Safaribahn-Designs.,Los tres diseños de tranvía.,Les trois habillages de tram.,Todos os três visuais do trenzinho.,Все три оформления трамвая.,トラムのデザイン3種すべて。,트램 장식 3종 전부예요.,तीनों ट्राम स्किन।
+iap.cosmetics_all.t,Tram Collection,Tramvay Koleksiyonu,Bahn-Sammlung,Colección de tranvías,Collection de trams,Coleção do Trenzinho,Коллекция трамваев,トラムコレクション,트램 컬렉션,ट्राम कलेक्शन
 iap.noads.d,No more forced ads or banner. Rewards without videos (same limits).,Zorunlu reklam ya da banner yok. Ödüller videosuz (aynı sınırlarla).,Keine Zwangswerbung und kein Banner mehr. Belohnungen ohne Videos (gleiche Grenzen).,Sin anuncios obligatorios ni banners. Recompensas sin vídeos (con los mismos límites).,Plus de pubs imposées ni de bannière. Récompenses sans vidéos (mêmes limites).,Sem mais anúncios forçados nem banner. Recompensas sem vídeos (mesmos limites).,Больше никакой навязчивой рекламы и баннеров. Награды без видео (те же лимиты).,強制広告もバナーもなし。動画なしでごほうびを受け取れます（上限は同じ）。,강제 광고와 배너가 없어요. 영상 없이 받는 보상 (같은 한도).,अब कोई ज़बरदस्ती विज्ञापन या बैनर नहीं। वीडियो के बिना इनाम (वही सीमा)।
 iap.noads.t,Remove Ads,Reklamları Kaldır,Werbung entfernen,Quitar anuncios,Retirer les pubs,Remover Anúncios,Убрать рекламу,広告を削除,광고 제거,विज्ञापन हटाओ
 iap.offline_plus.d,Away pay for up to 10 hours at 75 %.,Uzaktayken 10 saate kadar %75 ücret.,Lohn für Abwesenheit bis 10 Stunden zu 75 %.,"Pago mientras estás fuera, hasta 10 horas al 75 %.",Gains d'absence jusqu'à 10 heures à 75 %.,"Ganhe enquanto está fora por até 10 horas, a 75 %.",Оплата за отсутствие до 10 часов в размере 75 %.,離れている間も最大10時間、75 %の収入。,최대 10시간 동안 75 %로 부재 중 수입을 받아요.,"10 घंटे तक, 75 % पर, दूर रहने की कमाई।"
-iap.offline_plus.t,Night Shift,,,,,,,,,
-iap.premium.d,"No forced ads, a golden tram and starter coins.",,,,,,,,,
-iap.premium.t,Chief Warden Edition,,,,,,,,,
-iap.ranger_pass.d,"Forever: +1 ranger per role, the Chief Ranger, +1 incubator. Includes Remove Ads.",,,,,,,,,
-iap.ranger_pass.t,Ranger Pass,,,,,,,,,
-iap.skin_tram_glacier.d,An icy blue safari tram. Looks only.,,,,,,,,,
-iap.skin_tram_glacier.t,Glacier Tram,,,,,,,,,
-iap.skin_tram_jungle.d,A leafy green safari tram. Looks only.,,,,,,,,,
-iap.skin_tram_jungle.t,Jungle Tram,,,,,,,,,
-iap.skin_tram_sunset.d,An orange-pink safari tram. Looks only.,,,,,,,,,
-iap.skin_tram_sunset.t,Sunset Tram,,,,,,,,,
-iap.speed.d,3× day speed.,,,,,,,,,
+iap.offline_plus.t,Night Shift,Gece Vardiyası,Nachtschicht,Turno de noche,Équipe de nuit,Turno da Noite,Ночная смена,夜間シフト,야간 교대,रात की पाली
+iap.premium.d,"No forced ads, a golden tram and starter coins.","Zorunlu reklam yok, altın tramvay ve başlangıç parası.","Keine erzwungene Werbung, eine goldene Bahn und Startmünzen.","Sin anuncios obligatorios, un tranvía dorado y monedas iniciales.","Pas de pubs imposées, un tram doré et des pièces de départ.","Sem anúncios forçados, um trenzinho dourado e moedas iniciais.","Без навязчивой рекламы, золотой трамвай и стартовые монеты.",強制広告なし、金色のトラム、スターターコイン。,"강제 광고 없음, 금색 트램, 시작 동전이 들어 있어요.","ज़बरदस्ती विज्ञापन नहीं, सुनहरी ट्राम और शुरुआती सिक्के।"
+iap.premium.t,Chief Warden Edition,Baş Koruyucu Sürümü,Oberwildhüter-Edition,Edición Director del santuario,Édition Chef du sanctuaire,Edição do Guarda-chefe,Издание «Главный хранитель»,チーフ保護官エディション,총관리자 에디션,चीफ़ वार्डन एडिशन
+iap.ranger_pass.d,"Forever: +1 ranger per role, the Chief Ranger, +1 incubator. Includes Remove Ads.","Kalıcı: her rolde +1 korucu, Baş Korucu ve +1 kuluçka makinesi. Reklamları Kaldır dahil.","Dauerhaft: +1 Ranger pro Rolle, der Oberranger, +1 Brutkasten. Enthält Werbefrei.","Para siempre: +1 guardabosques por perfil, el Jefe de guardabosques, +1 incubadora. Incluye Quitar anuncios.","À vie : +1 garde par rôle, le Garde en chef, +1 couveuse. Inclut le retrait des pubs.","Para sempre: +1 guarda por função, o Guarda-chefe, +1 chocadeira. Inclui Remover Anúncios.","Навсегда: +1 смотритель на каждую роль, главный смотритель, +1 инкубатор. Включает отключение рекламы.",永久に: 役割ごとにレンジャー +1、チーフレンジャー、孵卵器 +1。広告削除を含みます。,"영구적으로 역할마다 레인저 +1, 수석 레인저, 부화기 +1. 광고 제거 포함.","हमेशा के लिए: हर भूमिका में +1 रेंजर, चीफ़ रेंजर, +1 इन्क्यूबेटर। इसमें विज्ञापन हटाना शामिल है।"
+iap.ranger_pass.t,Ranger Pass,Korucu Kartı,Ranger-Pass,Pase de guardabosques,Pass Garde,Passe da Guarda,Пропуск смотрителя,レンジャーパス,레인저 패스,रेंजर पास
+iap.skin_tram_glacier.d,An icy blue safari tram. Looks only.,Buz mavisi bir safari tramvayı. Sadece görünüm.,Eine eisblaue Safaribahn. Nur zum Ansehen.,Un tranvía safari azul hielo. Solo es estético.,Un tram safari bleu glacier. Esthétique uniquement.,Um trenzinho safári azul-gelo. Só visual.,Сафари-трамвай ледяного синего цвета. Только внешний вид.,氷のような青いサファリトラム。見た目のみ。,얼음처럼 파란 사파리 트램이에요. 외형만 바뀌어요.,बर्फ़ीली नीली सफ़ारी ट्राम। सिर्फ़ दिखावट।
+iap.skin_tram_glacier.t,Glacier Tram,Buzul Tramvay,Gletscher-Bahn,Tranvía Glaciar,Tram Glacier,Trenzinho Geleira,Ледниковый трамвай,氷河トラム,빙하 트램,ग्लेशियर ट्राम
+iap.skin_tram_jungle.d,A leafy green safari tram. Looks only.,Yapraklı yeşil bir safari tramvayı. Sadece görünüm.,Eine grün belaubte Safaribahn. Nur zum Ansehen.,Un tranvía safari verde frondoso. Solo es estético.,Un tram safari vert feuillu. Esthétique uniquement.,Um trenzinho safári verde com folhagem. Só visual.,Сафари-трамвай в листве зелёного цвета. Только внешний вид.,葉っぱ模様の緑のサファリトラム。見た目のみ。,푸른 잎이 가득한 사파리 트램이에요. 외형만 바뀌어요.,हरी पत्तियों वाली सफ़ारी ट्राम। सिर्फ़ दिखावट।
+iap.skin_tram_jungle.t,Jungle Tram,Orman Tramvay,Dschungel-Bahn,Tranvía Selva,Tram Jungle,Trenzinho Selva,Трамвай джунглей,ジャングルトラム,정글 트램,जंगल ट्राम
+iap.skin_tram_sunset.d,An orange-pink safari tram. Looks only.,Turuncu-pembe bir safari tramvayı. Sadece görünüm.,Eine orange-rosa Safaribahn. Nur zum Ansehen.,Un tranvía safari naranja y rosa. Solo es estético.,Un tram safari orange et rose. Esthétique uniquement.,Um trenzinho safári laranja-rosado. Só visual.,Сафари-трамвай оранжево-розового цвета. Только внешний вид.,オレンジとピンクのサファリトラム。見た目のみ。,주황빛 분홍 사파리 트램이에요. 외형만 바뀌어요.,नारंगी-गुलाबी सफ़ारी ट्राम। सिर्फ़ दिखावट।
+iap.skin_tram_sunset.t,Sunset Tram,Gün Batımı Tramvay,Sonnenuntergangs-Bahn,Tranvía Atardecer,Tram Coucher de soleil,Trenzinho Pôr do Sol,Закатный трамвай,夕焼けトラム,노을 트램,सूर्यास्त ट्राम
+iap.speed.d,3× day speed.,3× gündüz hızı.,3× Tempo am Tag.,Velocidad 3× durante el día.,Vitesse 3× pendant la journée.,Velocidade 3× durante o dia.,Скорость дня 3×.,昼の3×の速さ。,낮 시간을 3× 속도로 진행해요.,दिन में 3× स्पीड।
 iap.speed.t,Speed Pack,Hız Paketi,Tempo-Paket,Pack de Velocidad,Pack Vitesse,Pacote de Velocidade,Пакет скорости,スピードパック,속도 팩,स्पीड पैक
-iap.starter.d,Coins and one extra incubator for a fast start.,,,,,,,,,
-iap.starter.t,Welcome Crate,,,,,,,,,
-iap.storm_kit.d,Extra coins to get through a stormy day.,,,,,,,,,
-iap.storm_kit.t,Storm Kit,,,,,,,,,
-intro.1.b,Rescued prehistoric animals live here. You are the new Chief Warden.,,,,,,,,,
-intro.1.t,Welcome to Ridgeback Isle,,,,,,,,,
-intro.2.b,"A hungry herd, a squabble, a loose fence. Send the right ranger team in time.",,,,,,,,,
-intro.2.t,Problems pop up as pins,,,,,,,,,
-intro.3.b,Happy animals amaze visitors. Their tickets and gifts grow your sanctuary.,,,,,,,,,
-intro.3.t,Visitors ride the safari tram,,,,,,,,,
+iap.starter.d,Coins and one extra incubator for a fast start.,Hızlı bir başlangıç için madeni para ve bir ek kuluçka makinesi.,Münzen und ein zusätzlicher Brutkasten für einen schnellen Start.,Monedas y una incubadora extra para un buen comienzo.,Des pièces et une couveuse en plus pour bien démarrer.,Moedas e uma chocadeira extra para um início rápido.,Монеты и один дополнительный инкубатор для быстрого старта.,すばやいスタートのためのコインと孵卵器1台。,동전과 부화기 하나를 더 줘서 빠르게 시작해요.,तेज़ शुरुआत के लिए सिक्के और एक अतिरिक्त इन्क्यूबेटर।
+iap.starter.t,Welcome Crate,Başlangıç Sandığı,Willkommenskiste,Caja de bienvenida,Caisse de bienvenue,Kit Inicial,Приветственный ящик,ようこそ箱,환영 상자,स्वागत पेटी
+iap.storm_kit.d,Extra coins to get through a stormy day.,Fırtınalı bir günü atlatmak için ek madeni para.,"Zusätzliche Münzen, um einen stürmischen Tag zu überstehen.",Monedas extra para aguantar un día de tormenta.,Des pièces en plus pour passer une journée orageuse.,Moedas extras para passar por um dia de tempestade.,"Дополнительные монеты, чтобы пережить штормовой день.",嵐の日を乗り切るための追加コイン。,폭풍이 부는 날을 버틸 추가 동전이에요.,तूफ़ानी दिन से निपटने के लिए अतिरिक्त सिक्के।
+iap.storm_kit.t,Storm Kit,Fırtına Seti,Sturm-Set,Kit de tormenta,Kit tempête,Kit Tempestade,Набор на шторм,嵐キット,폭풍 키트,तूफ़ान किट
+intro.1.b,Rescued prehistoric animals live here. You are the new Chief Warden.,Burada tarih öncesi hayvanlar kurtarılmış olarak yaşar. Yeni Baş Koruyucu sensin.,Hier leben gerettete Urzeittiere. Du bist der neue Oberste Wildhüter.,Aquí viven animales prehistóricos rescatados. Tú eres el nuevo Director del santuario.,Des animaux préhistoriques sauvés vivent ici. Tu es le nouveau Chef du sanctuaire.,Animais pré-históricos resgatados vivem aqui. Você é o novo Guarda-chefe.,Здесь живут спасённые доисторические животные. Ты — новый главный хранитель.,助けられた先史時代の動物たちが暮らしています。あなたは新しいチーフ保護官です。,선사시대 동물들이 살고 있는 곳이에요. 당신은 새 총관리자예요.,यहाँ बचाए गए प्रागैतिहासिक जानवर रहते हैं। तुम नए चीफ़ वार्डन हो।
+intro.1.t,Welcome to Ridgeback Isle,Ridgeback Adası'na hoş geldin,Willkommen auf der Ridgeback-Insel,Bienvenido a la Isla Ridgeback,Bienvenue sur l'île Ridgeback,Bem-vindo à Ilha Ridgeback,Добро пожаловать на остров Риджбек,リッジバック島へようこそ,리지백 섬에 오신 것을 환영해요,रिज़बैक द्वीप पर स्वागत है
+intro.2.b,"A hungry herd, a squabble, a loose fence. Send the right ranger team in time.","Aç bir sürü, bir tartışma, gevşek bir çit. Doğru korucu ekibini zamanında gönder.","Eine hungrige Herde, ein Streit, ein lockerer Zaun. Schick rechtzeitig das richtige Ranger-Team los.","Un rebaño hambriento, una pelea, una valla suelta. Envía a tiempo al equipo de guardabosques adecuado.","Un troupeau affamé, une dispute, une clôture cassée. Envoie la bonne équipe de gardes à temps.","Um rebanho com fome, uma briga, uma cerca solta. Envie a equipe certa a tempo.","Голодное стадо, ссора, сломанная ограда. Вовремя отправь нужную команду смотрителей.",お腹をすかせた群れ、もめごと、ゆるんだ柵。適切なレンジャーを間に合わせて送りましょう。,"배고픈 무리, 다툼, 헐거워진 울타리. 제때 알맞은 레인저 팀을 보내세요.","भूखा झुंड, झगड़ा, ढीली बाड़। सही रेंजर टीम समय पर भेजो।"
+intro.2.t,Problems pop up as pins,Sorunlar işaret olarak çıkar,Probleme erscheinen als Markierungen,Los problemas aparecen como avisos,Les problèmes apparaissent sous forme d'alertes,Problemas aparecem como alertas,Проблемы появляются метками,問題はピンで表示されます,문제는 알림 표시로 떠요,समस्याएँ मामलों के रूप में आती हैं
+intro.3.b,Happy animals amaze visitors. Their tickets and gifts grow your sanctuary.,Mutlu hayvanlar ziyaretçileri hayran bırakır. Biletleri ve hediyeleri barınağını büyütür.,Zufriedene Tiere begeistern die Besucher. Ihre Tickets und Geschenke lassen dein Schutzgebiet wachsen.,Los animales felices asombran a los visitantes. Sus entradas y regalos hacen crecer el santuario.,Des animaux heureux émerveillent les visiteurs. Leurs billets et leurs achats font grandir ton sanctuaire.,Animais felizes encantam os visitantes. Ingressos e lembrancinhas fazem seu santuário crescer.,Довольные животные удивляют посетителей. Их билеты и подарки растят заповедник.,元気な動物は来園者を驚かせます。チケットとお土産で保護区が大きくなります。,행복한 동물은 관람객을 감탄하게 해요. 입장권과 기념품이 보호구역을 키워요.,खुश जानवर मेहमानों को हैरान करते हैं। उनके टिकट और तोहफ़े अभयारण्य को बढ़ाते हैं।
+intro.3.t,Visitors ride the safari tram,Ziyaretçiler safari tramvayına biner,Besucher fahren mit der Safaribahn,Los visitantes viajan en el tranvía safari,Les visiteurs prennent le tram safari,Visitantes andam no trenzinho safári,Посетители едут на сафари-трамвае,来園者はサファリトラムに乗ります,관람객은 사파리 트램을 타요,मेहमान सफ़ारी ट्राम पर घूमते हैं
 intro.next,Next,İleri,Weiter,Siguiente,Suivant,Próximo,Дальше,次へ,다음,आगे
 intro.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 intro.start,Let's go,Hadi başlayalım,Los geht's,Vamos,C'est parti,Vamos lá,Поехали,はじめよう,시작해요,चलो शुरू करें
 loading.text,Loading…,Yükleniyor…,Lädt…,Cargando…,Chargement…,Carregando…,Загрузка…,読み込み中…,불러오는 중…,लोड हो रहा है…
-marker.fed,Fed!,,,,,,,,,
-marker.gate,Open the gate,,,,,,,,,
-marker.tram,Tram · {n} waiting,,,,,,,,,
-marker.tram_out,Tram on tour,,,,,,,,,
-offline.body,The sanctuary earned {cash} in {time}.,,,,,,,,,
+marker.fed,Fed!,Beslendi!,Gefüttert!,¡Alimentado!,Nourri !,Alimentados!,Сыт!,給餌完了！,먹이 완료!,खाना खिलाया!
+marker.gate,Open the gate,Kapıyı aç,Tor öffnen,Abrir la puerta,Ouvrir la grille,Abrir o portão,Открыть ворота,門を開く,입구 열기,गेट खोलो
+marker.tram,Tram · {n} waiting,Tramvay · {n} bekliyor,Bahn · {n} wartend,Tranvía · {n} esperando,Tram · {n} en attente,Trenzinho · {n} esperando,Трамвай · ждут: {n},トラム · {n} 人待ち,트램 · {n}명 대기,ट्राम · {n} इंतज़ार में
+marker.tram_out,Tram on tour,Tramvay turda,Bahn unterwegs,Tranvía de excursión,Tram en tournée,Trenzinho em passeio,Трамвай в экскурсии,ツアー中のトラム,트램 투어 중,ट्राम टूर पर
+offline.body,The sanctuary earned {cash} in {time}.,Barınak {time} içinde {cash} kazandı.,Das Schutzgebiet hat in {time} {cash} verdient.,El santuario ganó {cash} en {time}.,Le sanctuaire a gagné {cash} pendant {time}.,O santuário ganhou {cash} em {time}.,Заповедник заработал {cash} за {time}.,保護区は {time} の間に {cash} を稼ぎました。,보호구역이 {time} 동안 번 돈: {cash},अभयारण्य ने {time} में {cash} कमाए।
 offline.capped,Pay stops after {h} hours away.,{h} saat uzakta kaldıktan sonra ücret durur.,Die Auszahlung stoppt nach {h} Stunden Abwesenheit.,Los pagos se detienen tras {h} horas fuera.,Les gains s'arrêtent après {h} heures d'absence.,O pagamento para após {h} horas fora.,Оплата прекращается после {h} ч отсутствия.,{h} 時間離れると収入は止まります。,{h}시간 넘게 자리를 비우면 수입이 멈춰요.,{h} घंटे दूर रहने के बाद कमाई रुक जाती है।
 offline.title,While you were away,Sen yokken,Während du weg warst,Mientras estabas fuera,Pendant ton absence,Enquanto você estava fora,Пока тебя не было,留守の間に,자리를 비운 사이,तुम्हारे दूर रहने के दौरान
-paddock.animals,Animals,,,,,,,,,
-paddock.empty,No animals yet. Hatch or move one here.,,,,,,,,,
-paddock.fence,Fence {pct},,,,,,,,,
-paddock.harmony,Harmony {pct},,,,,,,,,
-paddock.move_here,Move here,,,,,,,,,
-paddock.needs_water,Dune animals need a water point here.,,,,,,,,,
-paddock.nursery,In the nursery,,,,,,,,,
-paddock.rehome,Move out,,,,,,,,,
-paddock.slots,{n}/{m} space,,,,,,,,,
-paddock.to_nursery,{name} to nursery,,,,,,,,,
-paddock.weak,This fence is too weak for a bossy animal — it wears out twice as fast.,,,,,,,,,
-park.animals,{n} animals,,,,,,,,,
-phase.live,Park open,,,,,,,,,
+paddock.animals,Animals,Hayvanlar,Tiere,Animales,Animaux,Animais,Животные,動物,동물,जानवर
+paddock.empty,No animals yet. Hatch or move one here.,Henüz hayvan yok. Burada yumurtadan çıkar ya da birini buraya taşı.,Noch keine Tiere. Schlüpfe eins oder setz eins hierher.,Todavía no hay animales. Haz eclosionar uno o muévelo aquí.,Pas encore d'animaux. Fais éclore ou déplace-en un ici.,Nenhum animal ainda. Choque ou mova um para cá.,Животных пока нет. Вылупи или перемести сюда одно.,まだ動物がいません。孵化させるか、ここに移しましょう。,아직 동물이 없어요. 부화시키거나 여기로 옮기세요.,अभी कोई जानवर नहीं। यहाँ एक को पैदा करो या ले आओ।
+paddock.fence,Fence {pct},Çit {pct},Zaun {pct},Valla {pct},Clôture {pct},Cerca {pct},Ограда {pct},柵 {pct},울타리 {pct},बाड़ {pct}
+paddock.harmony,Harmony {pct},Uyum {pct},Verträglichkeit {pct},Armonía {pct},Entente {pct},Harmonia {pct},Гармония {pct},相性 {pct},조화 {pct},मेल {pct}
+paddock.move_here,Move here,Buraya taşı,Hierher verlegen,Mover aquí,Déplacer ici,Mover para cá,Переместить сюда,ここへ移す,여기로 옮기기,यहाँ लाओ
+paddock.needs_water,Dune animals need a water point here.,Kumul hayvanlarının burada bir su noktasına ihtiyacı var.,Dünentiere brauchen hier eine Wasserstelle.,Los animales de las dunas necesitan un punto de agua aquí.,Les animaux des dunes ont besoin d'un point d'eau ici.,Os animais das dunas precisam de um ponto de água aqui.,Дюнным животным здесь нужен водопой.,砂丘の動物には、ここに給水所が必要です。,모래 언덕 동물에게는 여기 급수 지점이 필요해요.,टीले के जानवरों को यहाँ पानी का स्रोत चाहिए।
+paddock.nursery,In the nursery,Kreşte,Im Kinderzimmer,En la guardería,À la pouponnière,No berçário,В яслях,育児室にいます,보육실에 있어요,नर्सरी में
+paddock.rehome,Move out,Dışarı çıkar,Ausziehen lassen,Sacar,Sortir,Retirar,Переселить,移動させる,내보내기,बाहर निकालो
+paddock.slots,{n}/{m} space,{n}/{m} yer,{n}/{m} Platz,{n}/{m} plazas,{n}/{m} place,{n}/{m} vaga,{n}/{m} мест,{n}/{m} マス,{m}칸 중 {n}칸,{n}/{m} जगह
+paddock.to_nursery,{name} to nursery,{name} kreşe,{name} ins Kinderzimmer,{name} a la guardería,{name} à la pouponnière,{name} para o berçário,{name} в ясли,{name} を育児室へ,{name} → 보육실,{name} को नर्सरी भेजो
+paddock.weak,This fence is too weak for a bossy animal — it wears out twice as fast.,Bu çit huysuz bir hayvan için çok zayıf — iki kat hızlı yıpranır.,Dieser Zaun ist für ein freches Tier zu schwach — er nutzt sich doppelt so schnell ab.,Esta valla es demasiado débil para un animal mandón: se desgasta el doble de rápido.,Cette clôture est trop faible pour un animal autoritaire : elle s'use deux fois plus vite.,Esta cerca é fraca demais para um animal mandão — desgasta duas vezes mais rápido.,Эта ограда слишком слаба для командного животного — она изнашивается вдвое быстрее.,この柵は気の強い動物には弱すぎます。2倍の速さで傷みます。,이 울타리는 공격적인 동물에게 너무 약해요. 두 배 빨리 닳아요.,यह बाड़ दबंग जानवर के लिए बहुत कमज़ोर है — यह दोगुनी तेज़ी से घिसेगी।
+park.animals,{n} animals,{n} hayvan,{n} Tiere,{n} animales,{n} animaux,{n} animais,Животных: {n},動物 {n} 頭,동물 {n}마리,{n} जानवर
+phase.live,Park open,Park açık,Park geöffnet,Parque abierto,Parc ouvert,Parque aberto,Парк открыт,開園中,공원 운영 중,पार्क खुला है
 phase.plan,Morning plan,Sabah planı,Morgenplan,Plan de la mañana,Planification du matin,Plano da manhã,План на утро,朝の計画,아침 계획,सुबह की योजना
 phase.report,Day report,Gün raporu,Tagesbericht,Informe del día,Rapport de la journée,Relatório do dia,Отчёт дня,日報,하루 보고서,दिन की रिपोर्ट
-pin.escape,Animal on the path,,,,,,,,,
-pin.escape.d,An animal wandered onto a path. The tram waits until a Handler walks it home. Nobody is in danger.,,,,,,,,,
-pin.eta,{time} away,,,,,,,,,
-pin.fence,Loose fence tile,,,,,,,,,
-pin.fence.d,A Fence Tech fixes it. A broken fence can let an animal wander out.,,,,,,,,,
-pin.flood,Flooded path,,,,,,,,,
-pin.flood.d,Rain flooded the path. The tram skips this stop until a Fence Tech clears it.,,,,,,,,,
-pin.hungry,Hungry herd,,,,,,,,,
-pin.hungry.d,The feeding station is empty. A Feeder brings crates from the barn.,,,,,,,,,
-pin.left,{time} left,,,,,,,,,
-pin.on_way,A ranger is on the way.,,,,,,,,,
-pin.send,Send,,,,,,,,,
-pin.sick,Sick animal,,,,,,,,,
-pin.sick.d,"A Vet takes a look. If nobody comes, the animal rests off-exhibit until tomorrow.",,,,,,,,,
-pin.squabble,Squabble,,,,,,,,,
-pin.squabble.d,Two animals don't get along. A Handler calms them down. Better pairings mean fewer squabbles.,,,,,,,,,
-pin.who,Send a {role},,,,,,,,,
-place.c_p1,Cove Meadow,,,,,,,,,
-place.c_p2,Cove Glade,,,,,,,,,
-place.d_p1,Red Mesa,,,,,,,,,
-place.d_p2,Sunny Flats,,,,,,,,,
-place.ds_cove,Cove Cliffs dig,,,,,,,,,
-place.ds_dune,Dune Bed dig,,,,,,,,,
-place.ds_fern,Fern Gully dig,,,,,,,,,
-place.f_p1,Fern Hollow,,,,,,,,,
-place.f_p2,Mossy Bank,,,,,,,,,
-plan.cars,{n} cars,,,,,,,,,
-plan.crates,{n} crates,,,,,,,,,
-plan.every,Every {n} min,,,,,,,,,
-plan.feed,Feed board,,,,,,,,,
-plan.feed_help,Crates the feed truck brings each morning. Each crate costs {cost}. Too few = hungry herds; too many spoil in the heat.,,,,,,,,,
-plan.full,When full,,,,,,,,,
-plan.live,Changes apply from the next delivery.,,,,,,,,,
-plan.morning,"Set up the day, then open the park.",,,,,,,,,
-plan.need,needs ~{n} a day,,,,,,,,,
-plan.station,Station {n}/{cap},,,,,,,,,
-plan.suggest,Use {n},,,,,,,,,
-plan.today,Today on the island,,,,,,,,,
-plan.tram,Tram timetable,,,,,,,,,
-plan.tram_help,A tour takes {min} min. Up to {cap} visitors an hour.,,,,,,,,,
-ranger.name,{role} {n},,,,,,,,,
-ranger.status.back,Driving back,,,,,,,,,
-ranger.status.dig,Digging,,,,,,,,,
-ranger.status.idle,At the HQ,,,,,,,,,
-ranger.status.travel,On the way,,,,,,,,,
-ranger.status.work,Working,,,,,,,,,
-rangers.count,{n} rangers,,,,,,,,,
-rangers.role,{n}/{m},,,,,,,,,
-report.calm,Calm,,,,,,,,,
-report.care,Animal care,,,,,,,,,
-report.care_score,Care Score,,,,,,,,,
-report.cp,Conservation Points,,,,,,,,,
-report.donations,Donations,,,,,,,,,
-report.feed,Feed crates,,,,,,,,,
-report.fines,Missed pins,,,,,,,,,
-report.guests,Visitors,,,,,,,,,
-report.ignored,Missed today: {list},,,,,,,,,
+pin.escape,Animal on the path,Yolda bir hayvan,Tier auf dem Weg,Animal en el camino,Animal sur le chemin,Animal no caminho,Животное на дорожке,通路に動物,길에 나온 동물,रास्ते पर जानवर
+pin.escape.d,An animal wandered onto a path. The tram waits until a Handler walks it home. Nobody is in danger.,Bir hayvan yola dalmış. Bir Bakıcı onu evine götürene kadar tramvay bekler. Kimse tehlikede değil.,"Ein Tier ist auf einen Weg gelaufen. Die Bahn wartet, bis ein Betreuer es nach Hause bringt. Niemand ist in Gefahr.",Un animal se metió en un camino. El tranvía espera hasta que un Cuidador lo lleve de vuelta. Nadie corre peligro.,Un animal s'est égaré sur un chemin. Le tram attend qu'un soigneur le ramène. Personne n'est en danger.,Um animal se afastou para um caminho. O trenzinho espera até um Tratador levá-lo de volta. Ninguém corre perigo.,"Животное забрело на дорожку. Трамвай ждёт, пока служитель не отведёт его домой. Никто не в опасности.",動物が通路に出てきました。飼育員が連れ帰るまでトラムは待機します。誰も危険ではありません。,동물이 길로 돌아다니고 있어요. 사육사가 집으로 데려갈 때까지 트램이 기다려요. 누구도 위험하지 않아요.,"एक जानवर रास्ते पर भटक गया। जब तक हैंडलर उसे वापस नहीं ले जाता, ट्राम रुकी रहती है। किसी को खतरा नहीं है।"
+pin.eta,{time} away,{time} uzakta,{time} entfernt,A {time},à {time},a {time} daqui,Ещё {time},あと {time},{time} 거리,{time} दूर
+pin.fence,Loose fence tile,Gevşek çit parçası,Lockere Zaunplatte,Tramo de valla suelto,Morceau de clôture cassé,Cerca solta,Сломанная плитка ограды,ゆるんだ柵板,헐거워진 울타리,ढीली बाड़ की टाइल
+pin.fence.d,A Fence Tech fixes it. A broken fence can let an animal wander out.,Bir Çit Teknisyeni onarır. Kırık çit bir hayvanın dışarı çıkmasına yol açabilir.,Ein Zauntechniker repariert sie. Ein kaputter Zaun kann ein Tier entwischen lassen.,Un Técnico de vallas lo arregla. Una valla rota puede dejar salir a un animal.,Un technicien le répare. Une clôture cassée peut laisser un animal s'échapper.,Um Técnico de cerca conserta. Uma cerca quebrada pode deixar um animal sair.,Её чинит ремонтник. Сломанная ограда может выпустить животное.,柵の整備係が直します。壊れた柵では動物が外へ出てしまうことがあります。,울타리 정비공이 고쳐야 해요. 부서진 울타리는 동물이 밖으로 나가게 할 수 있어요.,फ़ेंस टेक इसे ठीक करता है। टूटी बाड़ से जानवर बाहर भटक सकता है।
+pin.flood,Flooded path,Sular altındaki yol,Überflutung auf dem Weg,Camino inundado,Chemin inondé,Caminho alagado,Затопленная дорожка,水につかった通路,물에 잠긴 길,पानी में डूबा रास्ता
+pin.flood.d,Rain flooded the path. The tram skips this stop until a Fence Tech clears it.,Yağmur yolu sular altında bıraktı. Bir Çit Teknisyeni temizleyene kadar tramvay bu durağı atlar.,"Regen hat den Weg überflutet. Die Bahn lässt diese Haltestelle aus, bis ein Zauntechniker sie freimacht.",La lluvia inundó el camino. El tranvía omite esta parada hasta que un Técnico de vallas lo despeje.,La pluie a inondé le chemin. Le tram saute cet arrêt tant qu'un technicien ne l'a pas dégagé.,A chuva alagou o caminho. O trenzinho pula esta parada até um Técnico de cerca limpar.,"Дождь залил дорожку. Трамвай пропускает эту остановку, пока ремонтник её не очистит.",雨で通路が水につかりました。柵の整備係が片付けるまで、トラムはこの停留所を飛ばします。,비로 길이 잠겼어요. 울타리 정비공이 치울 때까지 트램이 이 정류장을 건너뛰어요.,बारिश से रास्ता डूब गया। फ़ेंस टेक इसे साफ़ करने तक ट्राम यह स्टॉप छोड़ देती है।
+pin.hungry,Hungry herd,Aç sürü,Hungrige Herde,Rebaño hambriento,Troupeau affamé,Rebanho com fome,Голодное стадо,空腹の群れ,배고픈 무리,भूखा झुंड
+pin.hungry.d,The feeding station is empty. A Feeder brings crates from the barn.,Besleme istasyonu boş. Bir Besleyici ahırdan sandıkları getirir.,Die Futterstelle ist leer. Ein Fütterer bringt Kisten aus der Scheune.,El comedero está vacío. Un Alimentador trae las cajas desde el granero.,Le poste de nourriture est vide. Un nourrisseur apporte les caisses depuis la grange.,A estação de alimentação está vazia. Um alimentador traz as caixas do celeiro.,Кормушка пуста. Кормилец привозит ящики из сарая.,給餌場が空です。給餌係が納屋から飼料箱を運びます。,먹이 칸이 비었어요. 먹이 담당이 헛간에서 상자를 가져와야 해요.,खाने का स्टेशन खाली है। फ़ीडर अस्तबल से पेटियाँ लाता है।
+pin.left,{time} left,{time} kaldı,Noch {time},Quedan {time},Reste {time},Faltam {time},Осталось {time},残り {time},{time} 남음,{time} बाकी
+pin.on_way,A ranger is on the way.,Bir korucu yolda.,Ein Ranger ist unterwegs.,Un guardabosques va de camino.,Un garde est en route.,Uma guarda está a caminho.,Смотритель уже в пути.,レンジャーが向かっています。,레인저가 가는 중이에요.,एक रेंजर रास्ते में है।
+pin.send,Send,Gönder,Schicken,Enviar,Envoyer,Enviar,Отправить,送る,보내기,भेजो
+pin.sick,Sick animal,Hasta hayvan,Krankes Tier,Animal enfermo,Animal malade,Animal doente,Больное животное,病気の動物,아픈 동물,बीमार जानवर
+pin.sick.d,"A Vet takes a look. If nobody comes, the animal rests off-exhibit until tomorrow.",Bir Veteriner bakar. Kimse gelmezse hayvan yarına kadar sergi dışında dinlenir.,"Ein Tierarzt schaut nach. Kommt niemand, ruht das Tier bis morgen abseits der Anlage.","Un Veterinario le echa un vistazo. Si nadie viene, el animal descansa fuera de exhibición hasta mañana.","Un vétérinaire l'examine. Si personne ne vient, l'animal se repose hors exposition jusqu'à demain.","Um Veterinário dá uma olhada. Se ninguém vier, o animal descansa fora da exposição até amanhã.","Ветеринар посмотрит. Если никто не придёт, животное отдыхает вне вольера до завтра.",獣医が診察します。誰も来なければ、その動物は明日まで展示外で休みます。,수의사가 살펴봐요. 아무도 오지 않으면 그 동물은 내일까지 전시장 밖에서 쉬어요.,"वेट देखेगा। अगर कोई नहीं आया, तो जानवर कल तक प्रदर्शनी से बाहर आराम करेगा।"
+pin.squabble,Squabble,Tartışma,Streit,Pelea,Dispute,Briga,Ссора,もめごと,다툼,झगड़ा
+pin.squabble.d,Two animals don't get along. A Handler calms them down. Better pairings mean fewer squabbles.,İki hayvan anlaşamıyor. Bir Bakıcı onları sakinleştirir. Daha iyi eşleşmeler daha az tartışma demek.,Zwei Tiere kommen nicht miteinander aus. Ein Betreuer beruhigt sie. Passende Paare bedeuten weniger Streit.,Dos animales no se llevan bien. Un Cuidador los calma. Las parejas adecuadas significan menos peleas.,Deux animaux ne s'entendent pas. Un soigneur les calme. De meilleurs couples = moins de disputes.,Dois animais não se dão bem. Um Tratador os acalma. Pares melhores significam menos brigas.,Два животных не ладят. Служитель их успокаивает. Удачные пары — меньше ссор.,2頭の仲が悪くなっています。飼育員が落ち着かせます。相性のよい組み合わせなら、もめごとは減ります。,두 동물이 잘 맞지 않아요. 사육사가 진정시켜요. 더 잘 맞는 짝을 고르면 다툼이 줄어요.,दो जानवर आपस में नहीं बनते। हैंडलर उन्हें शांत करता है। अच्छा जोड़ा झगड़े कम करता है।
+pin.who,Send a {role},Bir {role} gönder,{role} schicken,Enviar a un {role},Envoie un {role},Enviar {role},Отправить: {role},{role} を送る,{role} 보내기,{role} भेजो
+place.c_p1,Cove Meadow,Koy Çayırı,Buchtwiese,Prado de la Cala,Prairie de la crique,Prado da Enseada,Луг у бухты,入り江の草地,만 초원,खाड़ी का मैदान
+place.c_p2,Cove Glade,Koy Açıklığı,Buchtlichtung,Claro de la Cala,Clairière de la crique,Clareira da Enseada,Поляна у бухты,入り江の林間地,만 빈터,खाड़ी की खुली जगह
+place.d_p1,Red Mesa,Kırmızı Sırt,Roter Tafelberg,Meseta Roja,Mesa rouge,Mesa Vermelha,Красное плато,赤い台地,붉은 고원,लाल पठार
+place.d_p2,Sunny Flats,Güneşli Düzlük,Sonnige Ebene,Llanos Soleados,Plaines ensoleillées,Planícies Ensolaradas,Солнечные равнины,日当たりの平地,햇살 평원,धूप वाले मैदान
+place.ds_cove,Cove Cliffs dig,Koy Uçurumu kazısı,Grabung Buchtklippen,Excavación en los Acantilados de la Cala,Fouille des falaises de la crique,Escavação das Falésias da Enseada,Раскопки на скалах бухты,入り江の崖の発掘地,만 절벽 발굴지,खाड़ी की चट्टानें — खुदाई
+place.ds_dune,Dune Bed dig,Kum Yatağı kazısı,Grabung Dünenbett,Excavación en el Lecho de Dunas,Fouille du lit des dunes,Escavação do Leito de Dunas,Раскопки в дюнах,砂丘の発掘地,사구 발굴지,टीले की तली — खुदाई
+place.ds_fern,Fern Gully dig,Eğrelti Oluğu kazısı,Grabung Farnschlucht,Excavación en el Barranco de Helechos,Fouille du ravin des fougères,Escavação do Vale das Samambaias,Раскопки в папоротниковом овраге,シダ谷の発掘地,고사리 골짜기 발굴지,फ़र्न घाटी — खुदाई
+place.f_p1,Fern Hollow,Eğrelti Çukuru,Farnmulde,Hondonada de Helechos,Vallon des fougères,Recanto das Samambaias,Папоротниковая низина,シダのくぼ地,고사리 웅덩이,फ़र्न का गड्ढा
+place.f_p2,Mossy Bank,Yosunlu Yamaç,Moosufer,Ribera Musgosa,Berge moussue,Barranco Musgoso,Мшистый берег,苔の土手,이끼 둑,काई वाला किनारा
+plan.cars,{n} cars,{n} vagon,{n} Wagen,{n} vagones,{n} wagons,{n} vagões,Вагонов: {n},車両 {n} 台,{n}대,{n} डिब्बे
+plan.crates,{n} crates,{n} sandık,{n} Kisten,{n} cajas,{n} caisses,{n} caixas,Ящиков: {n},飼料箱 {n} 箱,{n}상자,{n} पेटियाँ
+plan.every,Every {n} min,Her {n} dk,Alle {n} Min.,Cada {n} min,Toutes les {n} min,A cada {n} min,Каждые {n} мин,{n} 分おき,{n}분마다,हर {n} मिनट
+plan.feed,Feed board,Yem tablosu,Futterplan,Tablero de pienso,Tableau de nourriture,Quadro de ração,Доска корма,給餌ボード,먹이 계획표,चारा बोर्ड
+plan.feed_help,Crates the feed truck brings each morning. Each crate costs {cost}. Too few = hungry herds; too many spoil in the heat.,Yem kamyonunun her sabah getirdiği sandıklar. Her sandık {cost} tutar. Az olursa aç sürüler; çok olursa sıcakta bozulur.,"Kisten, die der Futterwagen jeden Morgen bringt. Jede Kiste kostet {cost}. Zu wenige = hungrige Herden; zu viele verderben bei Hitze.",Cajas que trae el camión de pienso cada mañana. Cada caja cuesta {cost}. Pocas = rebaños hambrientos; demasiadas se estropean con el calor.,Les caisses que le camion apporte chaque matin. Chaque caisse coûte {cost}. Trop peu = troupeaux affamés ; trop = caisses abîmées par la chaleur.,Caixas que o caminhão de ração traz toda manhã. Cada caixa custa {cost}. Poucas = rebanhos com fome; muitas estragam com o calor.,"Ящики, которые грузовик привозит каждое утро. Каждый ящик стоит {cost}. Мало — стадо голодно; много — портится от жары.",給餌トラックが毎朝運ぶ飼料箱です。1箱 {cost}。少なすぎると群れが空腹に、多すぎると暑さで傷みます。,"먹이 트럭이 매일 아침 가져오는 상자예요. 상자당 비용 {cost}. 너무 적으면 무리가 배고프고, 너무 많으면 더위에 상해요.",हर सुबह फ़ीड ट्रक जितनी पेटियाँ लाता है। हर पेटी की लागत {cost}। कम = भूखे झुंड; ज़्यादा = गर्मी में खराब।
+plan.full,When full,Dolunca,Wenn voll,Cuando esté lleno,Quand c'est plein,Quando lotar,Когда полон,満席のとき,꽉 찼을 때,भरने पर
+plan.live,Changes apply from the next delivery.,Değişiklikler bir sonraki teslimattan itibaren geçerli.,Änderungen gelten ab der nächsten Lieferung.,Los cambios se aplican desde el próximo reparto.,Les changements s'appliquent dès la prochaine livraison.,As mudanças valem a partir da próxima entrega.,Изменения вступят в силу со следующей доставки.,変更は次の配達から反映されます。,변경 사항은 다음 배달부터 적용돼요.,बदलाव अगली डिलीवरी से लागू होंगे।
+plan.morning,"Set up the day, then open the park.","Günü hazırla, sonra parkı aç.",Richte den Tag ein und öffne dann den Park.,Organiza el día y luego abre el parque.,"Prépare la journée, puis ouvre le parc.",Organize o dia e depois abra o parque.,"Настрой день, потом открой парк.",一日の準備をしてから、開園しましょう。,하루를 준비한 뒤 공원을 여세요.,"दिन की तैयारी करो, फिर पार्क खोलो।"
+plan.need,needs ~{n} a day,günde ~{n} gerekir,braucht etwa {n} am Tag,necesita unas {n} al día,besoin d'environ {n} par jour,precisa de cerca de {n} por dia,нужно ~{n} в день,1日に約 {n} 必要,하루 약 {n} 필요,रोज़ लगभग ~{n} चाहिए
+plan.station,Station {n}/{cap},İstasyon {n}/{cap},Station {n}/{cap},Estación {n}/{cap},Poste {n}/{cap},Estação {n}/{cap},Станция {n}/{cap},乗り場 {n}/{cap},먹이 칸 {n}/{cap},स्टेशन {n}/{cap}
+plan.suggest,Use {n},{n} kullan,{n} verwenden,Usar {n},Utiliser {n},Usar {n},Взять {n},{n} を使う,{n} 사용,{n} इस्तेमाल करो
+plan.today,Today on the island,Bugün adada,Heute auf der Insel,Hoy en la isla,Aujourd'hui sur l'île,Hoje na ilha,Сегодня на острове,今日の島,오늘의 섬,आज टापू पर
+plan.tram,Tram timetable,Tramvay saatleri,Fahrplan der Safaribahn,Horario del tranvía,Horaires du tram,Horário do trenzinho,Расписание трамвая,トラムの時刻表,트램 시간표,ट्राम समय-सारणी
+plan.tram_help,A tour takes {min} min. Up to {cap} visitors an hour.,Bir tur {min} dk sürer. Saatte en fazla {cap} ziyaretçi.,Eine Tour dauert {min} Min. Bis zu {cap} Besucher pro Stunde.,Una visita dura {min} min. Hasta {cap} visitantes por hora.,Une visite dure {min} min. Jusqu'à {cap} visiteurs par heure.,Um passeio leva {min} min. Até {cap} visitantes por hora.,Экскурсия длится {min} мин. До {cap} посетителей в час.,1回のツアーは {min} 分。1時間に最大 {cap} 人。,한 번 투어에 {min}분이 걸려요. 한 시간에 최대 {cap}명까지 탈 수 있어요.,एक टूर में {min} मिनट लगते हैं। एक घंटे में ज़्यादा से ज़्यादा {cap} मेहमान।
+ranger.name,{role} {n},{role} {n},{role} {n},{role} {n},{role} {n},{role} {n},{role} {n},{role} {n},{role} {n},{role} {n}
+ranger.status.back,Driving back,Dönüyor,Fährt zurück,Volviendo,Retour en voiture,Voltando de carro,Возвращается,戻っています,돌아가는 중,वापस लौट रहा है
+ranger.status.dig,Digging,Kazıyor,Gräbt,Excavando,En fouille,Escavando,Копает,発掘中,발굴 중,खुदाई कर रहा है
+ranger.status.idle,At the HQ,Karargâhta,Im Hauptquartier,En la sede,Au quartier général,Na sede,В штабе,本部にいます,본부에 있어요,मुख्यालय पर
+ranger.status.travel,On the way,Yolda,Unterwegs,De camino,En route,A caminho,В пути,移動中,이동 중,रास्ते में
+ranger.status.work,Working,Çalışıyor,Im Einsatz,Trabajando,Au travail,Trabalhando,Работает,作業中,작업 중,काम कर रहा है
+rangers.count,{n} rangers,{n} korucu,{n} Ranger,{n} guardabosques,{n} gardes,{n} guardas,Смотрителей: {n},レンジャー {n} 人,레인저 {n}명,{n} रेंजर
+rangers.role,{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m}
+report.calm,Calm,Sakin,Ruhig,Tranquilo,Calme,Tranquilo,Спокойно,落ち着き,평온,शांति
+report.care,Animal care,Hayvan bakımı,Tierpflege,Cuidado de animales,Soins aux animaux,Cuidado com os animais,Уход за животными,動物のお世話,동물 돌봄,जानवरों की देखभाल
+report.care_score,Care Score,Bakım Puanı,Pflege-Wertung,Puntuación de cuidado,Score de soins,Pontuação de cuidado,Оценка ухода,お世話スコア,돌봄 점수,देखभाल स्कोर
+report.cp,Conservation Points,Koruma Puanı (KP),Schutzpunkte,Puntos de conservación,Points de conservation,Pontos de Conservação,Очки сохранения,保全ポイント,보존 포인트,संरक्षण अंक
+report.donations,Donations,Bağışlar,Spenden,Donaciones,Dons,Doações,Пожертвования,寄付,기부금,दान
+report.feed,Feed crates,Yem sandıkları,Futterkisten,Cajas de pienso,Caisses de nourriture,Caixas de ração,Ящики с кормом,飼料箱,먹이 상자,चारे की पेटियाँ
+report.fines,Missed pins,Kaçan işaretler,Verpasste Markierungen,Avisos perdidos,Alertes manquées,Alertas perdidos,Пропущенные метки,対応できなかったピン,놓친 알림,छूटे मामले
+report.guests,Visitors,Ziyaretçiler,Besucher,Visitantes,Visiteurs,Visitantes,Посетители,来園者,관람객,मेहमान
+report.ignored,Missed today: {list},Bugün kaçanlar: {list},Heute verpasst: {list},Perdidos hoy: {list},Manquées aujourd'hui : {list},Perdidos hoje: {list},Пропущено сегодня: {list},今日対応できなかった: {list},오늘 놓친 것: {list},आज छूटे: {list}
 report.net,Profit,Kâr,Gewinn,Beneficio,Bénéfice,Lucro,Прибыль,利益,이익,मुनाफ़ा
-report.pins,Pins answered,,,,,,,,,
-report.pins_v,{ok} of {n},,,,,,,,,
-report.rating,Sanctuary Rating ★ {r},,,,,,,,,
-report.rides,Tram riders,,,,,,,,,
-report.satisfaction,Visitor happiness,,,,,,,,,
-report.snacks,Snacks and gifts,,,,,,,,,
-report.tickets,Tickets,,,,,,,,,
+report.pins,Pins answered,Yanıtlanan işaretler,Beantwortete Markierungen,Avisos atendidos,Alertes traitées,Alertas atendidos,Ответили на метки,対応したピン,응답한 알림,निपटाए मामले
+report.pins_v,{ok} of {n},{n} içinden {ok},{ok} von {n},{ok} de {n},{ok} sur {n},{ok} de {n},{ok} из {n},{n} 中 {ok},{n}개 중 {ok}개,{n} में से {ok}
+report.rating,Sanctuary Rating ★ {r},Barınak Puanı ★ {r},Park-Bewertung ★ {r},Valoración del santuario ★ {r},Note du sanctuaire ★ {r},Avaliação do santuário ★ {r},Рейтинг заповедника ★ {r},保護区の評価 ★ {r},보호구역 등급 ★ {r},अभयारण्य रेटिंग ★ {r}
+report.rides,Tram riders,Tramvay yolcuları,Bahnfahrende,Pasajeros del tranvía,Passagers du tram,Passageiros do trenzinho,Пассажиры трамвая,トラム利用者,트램 탑승객,ट्राम में सवार
+report.satisfaction,Visitor happiness,Ziyaretçi memnuniyeti,Zufriedenheit der Besucher,Satisfacción de los visitantes,Bonheur des visiteurs,Satisfação dos visitantes,Довольство посетителей,来園者の満足度,관람객 만족도,मेहमानों की खुशी
+report.snacks,Snacks and gifts,Atıştırmalık ve hediyeler,Snacks und Geschenke,Snacks y regalos,Snacks et souvenirs,Lanches e lembrancinhas,Закуски и подарки,軽食とお土産,간식과 기념품,स्नैक और तोहफ़े
+report.tickets,Tickets,Biletler,Tickets,Entradas,Billets,Ingressos,Билеты,チケット,입장권,टिकट
 report.title,Day {n} report,{n}. gün raporu,Bericht Tag {n},Informe del día {n},Rapport du jour {n},Relatório do dia {n},Отчёт за день {n},{n}日目のレポート,{n}일차 보고서,दिन {n} की रिपोर्ट
-report.upkeep,Upkeep,,,,,,,,,
-report.visitors,Visitors,,,,,,,,,
-report.wages,Ranger wages,,,,,,,,,
-report.walked,Gave up on the tram,,,,,,,,,
-reward.borrow_ranger.b,A ranger from the next ridge takes this pin right now.,,,,,,,,,
-reward.borrow_ranger.t,Borrow a ranger,,,,,,,,,
+report.upkeep,Upkeep,Bakım,Unterhalt,Mantenimiento,Entretien,Manutenção,Содержание,維持費,유지비,रखरखाव
+report.visitors,Visitors,Ziyaretçiler,Besucher,Visitantes,Visiteurs,Visitantes,Посетители,来園者,관람객,मेहमान
+report.wages,Ranger wages,Korucu maaşları,Lohn der Ranger,Sueldos de guardabosques,Salaires des gardes,Salários das guardas,Зарплаты смотрителей,レンジャーの給料,레인저 임금,रेंजर की तनख्वाह
+report.walked,Gave up on the tram,Tramvaydan vazgeçti,Haben auf die Bahn verzichtet,Se rindieron con el tranvía,Ont renoncé au tram,Desistiram do trenzinho,"Ушли, не дождавшись трамвая",トラムを諦めた人,트램을 포기한 사람,ट्राम का इंतज़ार छोड़ा
+reward.borrow_ranger.b,A ranger from the next ridge takes this pin right now.,Yan sıradaki bir korucu bu işareti hemen üstlenir.,Ein Ranger vom nächsten Hügel übernimmt diese Markierung sofort.,Un guardabosques de la siguiente cresta se encarga de este aviso ahora mismo.,Un garde de la crête voisine prend cette alerte tout de suite.,Uma guarda da próxima crista assume este alerta agora mesmo.,Смотритель с соседнего хребта сразу берёт эту метку.,隣の尾根のレンジャーが、今すぐこのピンを引き受けます。,옆 능선의 레인저가 지금 이 알림을 맡아요.,अगली पहाड़ी का एक रेंजर अभी यह मामला ले लेता है।
+reward.borrow_ranger.t,Borrow a ranger,Korucu ödünç al,Einen Ranger ausleihen,Pedir prestado un guardabosques,Emprunter un garde,Pedir emprestada uma guarda,Позвать смотрителя,レンジャーを借りる,레인저 빌리기,एक रेंजर उधार लो
 reward.claim,Claim,Al,Abholen,Reclamar,Récupérer,Resgatar,Забрать,受け取る,받기,लो
-reward.dawn_double.b,Watch a short video to get them twice.,,,,,,,,,
-reward.dawn_double.t,Double the overnight donations,,,,,,,,,
-reward.done_borrow,A borrowed ranger is on it,,,,,,,,,
+reward.dawn_double.b,Watch a short video to get them twice.,Bunları iki kez almak için kısa bir video izle.,"Sieh dir ein kurzes Video an, um sie zweimal zu bekommen.",Mira un vídeo corto para cobrarlas dos veces.,Regarde une courte vidéo pour les recevoir deux fois.,Assista a um vídeo curto para receber em dobro.,"Посмотри короткое видео, чтобы получить вдвое больше.",短い動画を見ると2倍もらえます。,짧은 영상을 보면 두 배로 받아요.,छोटा वीडियो देखो और ये दान दोगुने पाओ।
+reward.dawn_double.t,Double the overnight donations,Gece bağışlarını ikiye katla,Nachtspenden verdoppeln,Doble de donaciones nocturnas,Double les dons de la nuit,Dobrar as doações da noite,Удвоить ночные пожертвования,夜間の寄付を2倍に,야간 기부금 두 배,रात के दान दोगुने करो
+reward.done_borrow,A borrowed ranger is on it,Ödünç korucu işe koyuldu,Ein ausgeliehener Ranger kümmert sich darum,Un guardabosques prestado ya se está ocupando,Un garde emprunté s'en occupe,Uma guarda emprestada está cuidando disso,Помогает смотритель с соседнего хребта,借りたレンジャーが対応中です,빌린 레인저가 처리 중이에요,उधार का रेंजर काम पर है
 reward.done_cash,+{cash} added,+{cash} eklendi,+{cash} gutgeschrieben,+{cash} añadidos,+{cash} ajoutés,+{cash} recebidos,+{cash} начислено,+{cash} を受け取りました,+{cash} 들어옴,+{cash} जुड़े
-reward.done_scout,The dig site chart is complete,,,,,,,,,
-reward.done_shelter,Every fence is fixed,,,,,,,,,
-reward.done_warm,The egg is warmer — it hatches sooner,,,,,,,,,
+reward.done_scout,The dig site chart is complete,Kazı alanı haritası tamamlandı,Die Karte der Grabungsstelle ist vollständig,El mapa de la zona de excavación está completo,La carte des chantiers de fouille est complète,O mapa do local de escavação está completo,Карта раскопок готова,発掘地の図が完成しました,발굴지 지도가 완성됐어요,खुदाई की जगह का चार्ट पूरा हो गया
+reward.done_shelter,Every fence is fixed,Her çit onarıldı,Jeder Zaun ist repariert,Todas las vallas están arregladas,Toutes les clôtures sont réparées,Todas as cercas foram consertadas,Все ограды починены,すべての柵が直りました,모든 울타리를 고쳤어요,हर बाड़ ठीक हो गई
+reward.done_warm,The egg is warmer — it hatches sooner,Yumurta ısındı — daha erken çıkacak,Das Ei ist wärmer — es schlüpft früher,El huevo está más caliente: eclosionará antes,L'œuf est plus chaud — il éclora plus vite,O ovo está mais quente — choca mais cedo,Яйцо теплее — вылупится раньше,卵が温まり、早く孵化します,알이 더 따뜻해졌어요. 더 빨리 부화해요.,अंडा और गरम हो गया — जल्दी निकलेगा
 reward.free.b,Included with your ad-free pack — no video.,Reklamsız paketinle birlikte geliyor — video yok.,Im Werbefrei-Paket enthalten — ohne Video.,Incluido con tu pack sin anuncios: sin vídeo.,Inclus avec ton pack sans pub — pas de vidéo.,Incluído no seu pacote sem anúncios — sem vídeo.,Входит в пакет без рекламы — без видео.,広告なしパックに含まれています。動画は不要です。,광고 제거 팩에 포함돼요 — 영상 없음.,तुम्हारे विज्ञापन-मुक्त पैक में शामिल — कोई वीडियो नहीं।
 reward.free_cash,Claim +{cash},+{cash} al,+{cash} abholen,Reclamar +{cash},Récupérer +{cash},Resgatar +{cash},Забрать +{cash},+{cash} を受け取る,{cash} 받기,+{cash} लो
-reward.scout_tip.b,Find out which species a dig site hides.,,,,,,,,,
-reward.scout_tip.t,Scout's tip,,,,,,,,,
-reward.storm_shelter.b,Every fence on the island gets fixed at once.,,,,,,,,,
-reward.storm_shelter.t,Storm Shelter,,,,,,,,,
+reward.scout_tip.b,Find out which species a dig site hides.,Bir kazı alanının hangi türü sakladığını öğren.,"Finde heraus, welche Art eine Grabungsstelle versteckt.",Descubre qué especie esconde una zona de excavación.,Découvre quelle espèce cache un chantier de fouille.,Descubra qual espécie um local de escavação esconde.,"Узнай, какой вид прячется на раскопках.",発掘地に隠れている種を見つけましょう。,발굴지에 숨은 종이 무엇인지 알아내요.,पता करो कि खुदाई की जगह में कौन-सी प्रजाति छिपी है।
+reward.scout_tip.t,Scout's tip,Keşif ipucu,Tipp des Kundschafters,Consejo del explorador,Conseil de l'éclaireur,Dica do batedor,Подсказка разведчика,偵察のヒント,정찰대의 힌트,स्काउट की सलाह
+reward.storm_shelter.b,Every fence on the island gets fixed at once.,Adadaki her çit bir anda onarılır.,Jeder Zaun auf der Insel wird sofort repariert.,Todas las vallas de la isla se arreglan de una vez.,Toutes les clôtures de l'île sont réparées d'un coup.,Todas as cercas da ilha são consertadas de uma vez.,Все ограды на острове сразу чинятся.,島のすべての柵が一度に直ります。,섬의 모든 울타리를 한꺼번에 고쳐요.,द्वीप की हर बाड़ एक साथ ठीक हो जाएगी।
+reward.storm_shelter.t,Storm Shelter,Fırtına Sığınağı,Sturmunterstand,Refugio contra tormentas,Abri anti-tempête,Abrigo da tempestade,Укрытие от шторма,嵐のシェルター,폭풍 대피소,तूफ़ान आश्रय
 reward.unavailable,Not available right now,Şu an kullanılamıyor,Gerade nicht verfügbar,No disponible ahora mismo,Indisponible pour le moment,Indisponível agora,Сейчас недоступно,ただいま利用できません,지금은 사용할 수 없어요,अभी उपलब्ध नहीं
 reward.video,Watch video,Video izle,Video ansehen,Ver vídeo,Regarder la vidéo,Assistir vídeo,Смотреть видео,動画を見る,영상 보기,वीडियो देखो
 reward.video_cash,Watch · +{cash},İzle · +{cash},Ansehen · +{cash},Ver · +{cash},Regarder · +{cash},Assistir · +{cash},Смотреть · +{cash},見る · +{cash},보기 · +{cash},देखो · +{cash}
-reward.warm_incubator.b,This egg hatches 10 minutes sooner.,,,,,,,,,
-reward.warm_incubator.t,Warm the incubator,,,,,,,,,
-role.feeder,Feeder,,,,,,,,,
-role.feeder.d,Brings feed crates from the barn to hungry herds.,,,,,,,,,
-role.handler,Handler,,,,,,,,,
-role.handler.d,"Calms squabbles, walks wandering animals home, digs for fossils.",,,,,,,,,
-role.tech,Fence Tech,,,,,,,,,
-role.tech.d,Fixes fences and clears flooded paths.,,,,,,,,,
-role.vet,Vet,,,,,,,,,
-role.vet.d,Treats sick animals.,,,,,,,,,
+reward.warm_incubator.b,This egg hatches 10 minutes sooner.,Bu yumurta 10 dakika daha erken çıkar.,Dieses Ei schlüpft 10 Minuten früher.,Este huevo eclosiona 10 minutos antes.,Cet œuf éclot 10 minutes plus tôt.,Este ovo choca 10 minutos mais cedo.,Это яйцо вылупится на 10 минут раньше.,この卵は10分早く孵化します。,이 알은 10분 더 빨리 부화해요.,यह अंडा 10 मिनट जल्दी निकलेगा।
+reward.warm_incubator.t,Warm the incubator,Kuluçkayı ısıt,Brutkasten wärmen,Calentar la incubadora,Réchauffer la couveuse,Aquecer a chocadeira,Подогреть инкубатор,孵卵器を温める,부화기 데우기,इन्क्यूबेटर गरम करो
+role.feeder,Feeder,Besleyici,Fütterer,Alimentador,Nourrisseur,Alimentador,Кормилец,給餌係,먹이 담당,फ़ीडर
+role.feeder.d,Brings feed crates from the barn to hungry herds.,Yem sandıklarını ahırdan aç sürülere getirir.,Bringt Futterkisten aus der Scheune zu den hungrigen Herden.,Lleva cajas de pienso del granero a los rebaños hambrientos.,Apporte les caisses de nourriture de la grange aux troupeaux affamés.,Traz caixas de ração do celeiro para os rebanhos com fome.,Везёт ящики с кормом из сарая к голодным стадам.,納屋から飼料箱を運び、お腹をすかせた群れに届けます。,헛간에서 먹이 상자를 배고픈 무리에게 가져다줘요.,अस्तबल से भूखे झुंडों तक चारे की पेटियाँ लाता है।
+role.handler,Handler,Bakıcı,Betreuer,Cuidador,Soigneur,Tratador,Служитель,飼育員,사육사,हैंडलर
+role.handler.d,"Calms squabbles, walks wandering animals home, digs for fossils.","Tartışmaları yatıştırır, dolaşan hayvanları evine götürür, fosil için kazar.","Beruhigt Streit, bringt wandernde Tiere heim, gräbt nach Fossilien.","Calma las peleas, lleva de vuelta a los animales perdidos y excava en busca de fósiles.","Calme les disputes, ramène les animaux égarés, fouille pour trouver des fossiles.","Acalma brigas, leva os animais perdidos de volta para casa e escava fósseis.","Успокаивает ссоры, отводит заблудившихся животных домой, копает за окаменелостями.",もめごとを収め、迷った動物を連れ帰り、化石を掘ります。,"다툼을 진정시키고, 돌아다니는 동물을 집으로 데려가고, 화석을 발굴해요.","झगड़े शांत करता है, भटके जानवर वापस ले जाता है, जीवाश्म के लिए खुदाई करता है।"
+role.tech,Fence Tech,Çit Teknisyeni,Zauntechniker,Técnico de vallas,Technicien de clôtures,Técnico de cerca,Ремонтник,柵の整備係,울타리 정비공,फ़ेंस टेक
+role.tech.d,Fixes fences and clears flooded paths.,Çitleri onarır ve sular altındaki yolları açar.,Repariert Zäune und macht überflutete Wege frei.,Arregla las vallas y despeja los caminos inundados.,Répare les clôtures et dégage les chemins inondés.,Conserta cercas e limpa caminhos alagados.,Чинит ограды и очищает затопленные дорожки.,柵を直し、水につかった通路を片付けます。,울타리를 고치고 물에 잠긴 길을 치워요.,बाड़ें ठीक करता है और डूबे रास्ते साफ़ करता है।
+role.vet,Vet,Veteriner,Tierarzt,Veterinario,Vétérinaire,Veterinário,Ветеринар,獣医,수의사,वेट
+role.vet.d,Treats sick animals.,Hasta hayvanları tedavi eder.,Behandelt kranke Tiere.,Trata a los animales enfermos.,Soigne les animaux malades.,Trata animais doentes.,Лечит больных животных.,病気の動物を治療します。,아픈 동물을 치료해요.,बीमार जानवरों का इलाज करता है।
 settings.effects,Sound effects,Ses efektleri,Soundeffekte,Efectos de sonido,Effets sonores,Efeitos sonoros,Звуковые эффекты,効果音,효과음,ध्वनि प्रभाव
 settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Графика,画質,그래픽,ग्राफ़िक्स
 settings.guide,How to play / Replay the guide,Nasıl oynanır / Rehberi tekrar oynat,Spielanleitung / Anleitung wiederholen,Cómo jugar / Repetir la guía,Comment jouer / Revoir le guide,Como jogar / Rever o tutorial,Как играть / Повторить обучение,遊び方 / ガイドをもう一度見る,플레이 방법 / 가이드 다시 보기,कैसे खेलें / गाइड फिर से देखो
-settings.help,Help,,,,,,,,,
+settings.help,Help,Yardım,Hilfe,Ayuda,Aide,Ajuda,Помощь,ヘルプ,도움말,मदद
 settings.language,Language,Dil,Sprache,Idioma,Langue,Idioma,Язык,言語,언어,भाषा
 settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,음악,संगीत
 settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
@@ -326,19 +326,19 @@ settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चाल�
 settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
 settings.privacy,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
 settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
-settings.sound,Sound,,,,,,,,,
+settings.sound,Sound,Ses,Ton,Sonido,Son,Som,Звук,サウンド,사운드,आवाज़
 settings.title,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
 settings.version,Version {v},Sürüm {v},Version {v},Versión {v},Version {v},Versão {v},Версия {v},バージョン {v},버전 {v},वर्शन {v}
 sheet.close,Close,Kapat,Schließen,Cerrar,Fermer,Fechar,Закрыть,閉じる,닫기,बंद करो
 shop.bought,{name} is yours,{name} artık senin,{name} gehört dir,{name} ya es tuyo,{name} est à toi,{name} é seu,{name} теперь твоё,{name} を入手しました,{name} 획득 완료,{name} अब तुम्हारा है
 shop.cap,Daily pack limit reached. Come back tomorrow.,Günlük paket sınırına ulaşıldı. Yarın tekrar gel.,Tageslimit für Pakete erreicht. Komm morgen wieder.,Límite diario de packs alcanzado. Vuelve mañana.,Limite quotidienne de packs atteinte. Reviens demain.,Limite diário de pacotes atingido. Volte amanhã.,Достигнут дневной лимит пакетов. Приходи завтра.,1日のパックの上限に達しました。また明日来てください。,하루 팩 구매 한도에 도달했어요. 내일 다시 오세요.,रोज़ के पैक की सीमा पूरी हो गई। कल फिर आओ।
-shop.equip,Use this tram,,,,,,,,,
-shop.equipped,In use · tap for default,,,,,,,,,
+shop.equip,Use this tram,Bu tramvayı kullan,Diese Bahn verwenden,Usar este tranvía,Utiliser ce tram,Usar este trenzinho,Использовать этот трамвай,このトラムを使う,이 트램 사용,यह ट्राम इस्तेमाल करो
+shop.equipped,In use · tap for default,Kullanımda · varsayılan için dokun,In Benutzung · tippen für Standard,En uso · toca para el predeterminado,En service · touche pour le défaut,Em uso · toque para o padrão,"Используется · нажми, чтобы вернуть обычный",使用中 · タップで標準に戻す,사용 중 · 누르면 기본으로,इस्तेमाल में · डिफ़ॉल्ट के लिए टैप करो
 shop.failed,Purchase did not go through,Satın alma tamamlanamadı,Der Kauf hat nicht geklappt,La compra no se completó,L'achat n'a pas abouti,A compra não foi concluída,Покупка не прошла,購入できませんでした,구매가 완료되지 않았어요,खरीदारी पूरी नहीं हुई
 shop.funds,+{cash} added,+{cash} eklendi,+{cash} gutgeschrieben,+{cash} añadidos,+{cash} ajoutés,+{cash} recebidos,+{cash} начислено,+{cash} を受け取りました,+{cash} 들어옴,+{cash} जुड़े
 shop.group.adfree,Ad-free and packs,Reklamsız ve paketler,Werbefrei & Pakete,Sin anuncios y packs,Sans pub et packs,Sem anúncios e pacotes,Без рекламы и пакеты,広告なし・パック,광고 제거 & 팩,विज्ञापन-मुक्त और पैक
 shop.group.boost,Upgrades,Geliştirmeler,Verbesserungen,Mejoras,Améliorations,Melhorias,Улучшения,アップグレード,업그레이드,अपग्रेड
-shop.group.budget,Coins,,,,,,,,,
+shop.group.budget,Coins,Madeni para,Münzen,Monedas,Pièces,Moedas,Монеты,コイン,동전,सिक्के
 shop.group.looks,Looks,Görünümler,Optik,Estilos,Esthétique,Visuais,Внешний вид,見た目,외형,लुक
 shop.group.offer,Offers,Teklifler,Angebote,Ofertas,Offres,Ofertas,Предложения,特別オファー,특가,ऑफ़र
 shop.offer,Special offer,Özel teklif,Sonderangebot,Oferta especial,Offre spéciale,Oferta especial,Специальное предложение,特別オファー,특별 제안,खास ऑफ़र
@@ -349,66 +349,66 @@ shop.restore_failed,Could not restore. Try again later.,Geri yüklenemedi. Daha 
 shop.restored,Purchases restored,Satın alımlar geri yüklendi,Käufe wiederhergestellt,Compras restauradas,Achats restaurés,Compras restauradas,Покупки восстановлены,購入を復元しました,구매를 복원했어요,खरीदारी वापस आ गई
 shop.title,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
 shop.unavailable,The store is not available right now,Mağaza şu an kullanılamıyor,Der Shop ist gerade nicht verfügbar,La tienda no está disponible ahora mismo,La boutique n'est pas disponible pour le moment,A loja não está disponível agora,Магазин сейчас недоступен,ストアは現在ご利用いただけません,지금은 상점을 사용할 수 없어요,स्टोर अभी उपलब्ध नहीं है
-sp.camarasaurus,Camarasaurus,,,,,,,,,
-sp.camarasaurus.d,A towering long-neck. Needs lots of room.,,,,,,,,,
-sp.kentrosaurus,Kentrosaurus,,,,,,,,,
-sp.kentrosaurus.d,Spiky and bossy. Needs a steel fence.,,,,,,,,,
-sp.maiasaura,Maiasaura,,,,,,,,,
-sp.maiasaura.d,A gentle duckbill that looks after its young.,,,,,,,,,
-sp.miragaia,Miragaia,,,,,,,,,
-sp.miragaia.d,A long-necked plated grazer. Calm in the dunes.,,,,,,,,,
-sp.parasaurolophus,Parasaurolophus,,,,,,,,,
-sp.parasaurolophus.d,Its tube crest hoots. Skittish around bossy animals.,,,,,,,,,
-sp.protoceratops,Protoceratops,,,,,,,,,
-sp.protoceratops.d,"Small, curious and a bit jumpy. Loves dry ground.",,,,,,,,,
-sp.saltasaurus,Saltasaurus,,,,,,,,,
-sp.saltasaurus.d,A sturdy long-neck from the dry plains.,,,,,,,,,
-sp.triceratops,Triceratops,,,,,,,,,
-sp.triceratops.d,"Three horns, big heart. Calm and easy to keep.",,,,,,,,,
-tab.hatchery,Hatchery,,,,,,,,,
-tab.park,Park,,,,,,,,,
-tab.plan,Plan,,,,,,,,,
-tab.rangers,Rangers,,,,,,,,,
-temper.bossy,Bossy,,,,,,,,,
-temper.calm,Calm,,,,,,,,,
-temper.skittish,Skittish,,,,,,,,,
-tip.dig,Your dig crew is out. That Handler can't answer pins until they're back.,,,,,,,,,
-tip.dune,Dune Mesa is open! Dune animals need a water point; shade helps in a heat wave.,,,,,,,,,
-tip.dust,Dust storm: the tram is slower. Set the timetable to 'When full'.,,,,,,,,,
-tip.egg,An egg is in the incubator. Check its temperature so it warms at full speed.,,,,,,,,,
-tip.egg_cold,The egg cooled down halfway. Check its temperature again.,,,,,,,,,
-tip.escape,An animal is on the path and the tram has stopped. Send a Handler to walk it home.,,,,,,,,,
-tip.failed,A pin ran out of time. Hire more rangers if your teams are always busy.,,,,,,,,,
-tip.fence,A fence tile came loose. Send a Fence Tech before an animal wanders out.,,,,,,,,,
-tip.fern,Fern Valley is open! The tram tour is longer now — an extra car keeps the queue short.,,,,,,,,,
-tip.flood,A flooded path closes a tram stop. A Fence Tech can clear it.,,,,,,,,,
-tip.hatched,Babies are cute but shy. They grow up in two days.,,,,,,,,,
-tip.heat,Heat wave! Shade sails and coolers help at Dune Mesa.,,,,,,,,,
-tip.nursery,"No paddock has room. Build or expand a paddock, then move the baby there.",,,,,,,,,
-tip.rain,Rain! Floods close tram stops until a Fence Tech clears them.,,,,,,,,,
-tip.report,The report shows what went well. Missed pins cost coins and calm — never animals.,,,,,,,,,
-tip.school,A school trip! Babies on show make the kids happiest.,,,,,,,,,
-tip.squabble,Squabbles come from animals that don't get along. Use the Compatibility card when you pair them.,,,,,,,,,
-tip.supply,The supply boat is late. Watch for hungry herds before 13:00.,,,,,,,,,
-tip.vet,A sick animal! Send a Vet. Red cases can't wait long.,,,,,,,,,
-toast.evacuation,The tram queue went home while an animal was loose.,,,,,,,,,
-toast.failed,Nobody came in time: {name},,,,,,,,,
-toast.gate,The gate is open. Here come the first visitors!,,,,,,,,,
-toast.hatched,A baby {name} hatched!,,,,,,,,,
-toast.hatched_nursery,A baby {name} hatched — it waits in the nursery for a paddock.,,,,,,,,,
-toast.sent,Ranger on the way,,,,,,,,,
-toast.tram,The tram leaves with {n} visitors,,,,,,,,,
-toast.zone,{name} is now open!,,,,,,,,,
+sp.camarasaurus,Camarasaurus,Camarasaurus,Camarasaurus,Camarasaurus,Camarasaurus,Camarasaurus,Камаразавр,カマラサウルス,카마라사우루스,Camarasaurus
+sp.camarasaurus.d,A towering long-neck. Needs lots of room.,"Uzun boyunlu, devasa bir dinozor. Çok yer ister.",Ein hoch aufragender Langhals. Braucht viel Platz.,Un cuello largo muy alto. Necesita mucho espacio.,Un long cou imposant. A besoin de beaucoup de place.,Um pescoço longo e imponente. Precisa de muito espaço.,Высокая длинная шея. Нужно много места.,高くそびえる首長竜。広い場所が必要です。,키가 우뚝 솟은 긴 목 공룡이에요. 넓은 공간이 필요해요.,ऊँची लंबी गर्दन वाला। बहुत जगह चाहिए।
+sp.kentrosaurus,Kentrosaurus,Kentrosaurus,Kentrosaurus,Kentrosaurus,Kentrosaurus,Kentrosaurus,Кентрозавр,ケントロサウルス,켄트로사우루스,Kentrosaurus
+sp.kentrosaurus.d,Spiky and bossy. Needs a steel fence.,Dikenli ve huysuz. Çelik çit ister.,Stachelig und frech. Braucht einen Stahlzaun.,Con pinchos y mandón. Necesita una valla de acero.,Hérissé et autoritaire. A besoin d'une clôture en acier.,Espinhoso e mandão. Precisa de uma cerca de aço.,Колючий и командный. Нужна стальная ограда.,トゲだらけで気が強いです。スチールの柵が必要です。,가시가 있고 고집이 세요. 강철 울타리가 필요해요.,काँटेदार और दबंग। स्टील की बाड़ चाहिए।
+sp.maiasaura,Maiasaura,Maiasaura,Maiasaura,Maiasaura,Maiasaura,Maiasaura,Майазавра,マイアサウラ,마이아사우라,Maiasaura
+sp.maiasaura.d,A gentle duckbill that looks after its young.,Yavrularına bakan nazik bir ördek gagalı dinozor.,"Ein sanfter Entenschnabel, der sich um seine Jungen kümmert.",Un dinosaurio de pico de pato y carácter amable que cuida a sus crías.,Un doux hadrosaure qui veille sur ses petits.,Um bico de pato gentil que cuida dos filhotes.,"Добрый утконосый динозавр, заботится о малышах.",子育てをよくする、おとなしいカモノハシ竜です。,새끼를 돌보는 온순한 오리주둥이 공룡이에요.,"नरम बतख-चोंच वाला, जो अपने बच्चों की देखभाल करता है।"
+sp.miragaia,Miragaia,Miragaia,Miragaia,Miragaia,Miragaia,Miragaia,Мирагайя,ミラガイア,미라가이아,Miragaia
+sp.miragaia.d,A long-necked plated grazer. Calm in the dunes.,"Uzun boyunlu, plakalı bir otçul. Kumullarda sakin.",Ein langhalsiger Grasfresser mit Platten. Ruhig in den Dünen.,Un herbívoro de cuello largo y placas. Tranquilo en las dunas.,Un brouteur à long cou et plaques. Calme dans les dunes.,Um herbívoro de pescoço longo e placas. Calmo nas dunas.,Длинношеий панцирный травоядный. Спокойный в дюнах.,首が長く、背に板があるおとなしい草食恐竜。砂丘でも落ち着いています。,긴 목에 판이 있는 풀 뜯는 공룡이에요. 모래 언덕에서 차분해요.,लंबी गर्दन और प्लेट वाला घास खाने वाला। टीलों में शांत।
+sp.parasaurolophus,Parasaurolophus,Parasaurolophus,Parasaurolophus,Parasaurolophus,Parasaurolophus,Parasaurolophus,Паразауролоф,パラサウロロフス,파라사롤로푸스,Parasaurolophus
+sp.parasaurolophus.d,Its tube crest hoots. Skittish around bossy animals.,Boru biçimli tepe kafatası öter. Huysuz hayvanlardan ürker.,Sein Röhrenkamm tönt. Schreckhaft bei frechen Tieren.,Su cresta tubular suena como un silbido. Se asusta con los animales mandones.,Sa crête en tube émet un son. Craintif face aux animaux autoritaires.,Sua crista tubular faz um som de buzina. Assustadiço perto de animais mandões.,Его трубчатый гребень гудит. Пугается командных животных.,管状のとさかで鳴きます。気の強い動物の近くでは怖がりです。,관 모양 볏에서 소리가 나요. 공격적인 동물 옆에서는 겁이 많아요.,इसकी नली जैसी कलगी से आवाज़ निकलती है। दबंग जानवरों के आसपास डरपोक।
+sp.protoceratops,Protoceratops,Protoceratops,Protoceratops,Protoceratops,Protoceratops,Protoceratops,Протоцератопс,プロトケラトプス,프로토케라톱스,Protoceratops
+sp.protoceratops.d,"Small, curious and a bit jumpy. Loves dry ground.","Küçük, meraklı ve biraz ürkek. Kuru zemini sever.","Klein, neugierig und etwas hibbelig. Liebt trockenen Boden.","Pequeño, curioso y algo nervioso. Le encanta el suelo seco.","Petit, curieux et un peu nerveux. Adore le sol sec.","Pequeno, curioso e um pouco agitado. Adora chão seco.","Маленький, любопытный и немного прыгучий. Любит сухую землю.",小柄で好奇心旺盛、少し臆病です。乾いた地面が大好きです。,작고 호기심이 많지만 조금 깡충거려요. 마른 땅을 좋아해요.,"छोटा, जिज्ञासु और थोड़ा उछलने वाला। सूखी ज़मीन पसंद है।"
+sp.saltasaurus,Saltasaurus,Saltasaurus,Saltasaurus,Saltasaurus,Saltasaurus,Saltasaurus,Сальтазавр,サルタサウルス,살타사우루스,Saltasaurus
+sp.saltasaurus.d,A sturdy long-neck from the dry plains.,Kurak ovalardan gelen sağlam bir uzun boyunlu.,Ein kräftiger Langhals aus den trockenen Ebenen.,Un cuello largo y robusto de las llanuras secas.,Un long cou robuste des plaines sèches.,Um pescoço longo e robusto das planícies secas.,Крепкий длинношеий с сухих равнин.,乾いた平原にすむ、がっしりした首長竜です。,마른 평원에서 온 튼튼한 긴 목 공룡이에요.,सूखे मैदानों का मज़बूत लंबी गर्दन वाला।
+sp.triceratops,Triceratops,Triceratops,Triceratops,Triceratops,Tricératops,Triceratops,Трицератопс,トリケラトプス,트리케라톱스,Triceratops
+sp.triceratops.d,"Three horns, big heart. Calm and easy to keep.","Üç boynuz, büyük kalp. Sakin ve bakımı kolay.","Drei Hörner, großes Herz. Ruhig und leicht zu halten.",Tres cuernos y gran corazón. Tranquilo y fácil de cuidar.,"Trois cornes, un grand cœur. Calme et facile à garder.","Três chifres, coração grande. Calmo e fácil de manter.","Три рога, большое сердце. Спокойный и легко содержится.",3本の角、大きな心。穏やかで飼いやすいです。,"뿔이 셋, 마음은 넓어요. 차분하고 키우기 쉬워요.","तीन सींग, बड़ा दिल। शांत और पालने में आसान।"
+tab.hatchery,Hatchery,Kuluçkahane,Brüterei,Criadero,Couvoir,Chocadeira,Инкубатор,孵化場,부화장,हैचरी
+tab.park,Park,Park,Park,Parque,Parc,Parque,Парк,園内,공원,पार्क
+tab.plan,Plan,Plan,Plan,Plan,Plan,Plano,План,計画,계획,योजना
+tab.rangers,Rangers,Korucular,Ranger,Guardabosques,Gardes,Guardas,Смотрители,レンジャー,레인저,रेंजर
+temper.bossy,Bossy,Huysuz,Frech,Mandón,Autoritaire,Mandão,Командный,気が強い,고집,दबंग
+temper.calm,Calm,Sakin,Ruhig,Tranquilo,Calme,Calmo,Спокойный,穏やか,차분,शांत
+temper.skittish,Skittish,Ürkek,Schreckhaft,Asustadizo,Craintif,Assustadiço,Пугливый,臆病,겁많음,डरपोक
+tip.dig,Your dig crew is out. That Handler can't answer pins until they're back.,Kazı ekibin dışarıda. O Bakıcı geri dönene kadar işaretleri yanıtlayamaz.,"Dein Grabungsteam ist unterwegs. Dieser Betreuer kann keine Markierungen beantworten, bis es zurück ist.",Tu equipo de excavación está fuera. Ese Cuidador no puede atender avisos hasta que vuelva.,Ton équipe de fouille est sortie. Ce soigneur ne peut pas répondre aux alertes avant son retour.,Sua equipe de escavação saiu. Esse Tratador não pode atender alertas até que volte.,"Твоя бригада раскопок в поле. Этот служитель не отвечает на метки, пока не вернётся.",発掘隊が出ています。その飼育員は、戻るまでピンに対応できません。,발굴팀이 나갔어요. 그 사육사는 돌아올 때까지 알림에 응답할 수 없어요.,तुम्हारा खुदाई दल बाहर है। वह हैंडलर तब तक मामलों का जवाब नहीं दे सकता जब तक वे लौट न आएँ।
+tip.dune,Dune Mesa is open! Dune animals need a water point; shade helps in a heat wave.,Kum Sırtı açık! Kumul hayvanlarının bir su noktasına ihtiyacı var; gölgelik sıcak dalgasında yardımcı olur.,Das Dünen-Plateau ist offen! Dünentiere brauchen eine Wasserstelle; Schatten hilft bei einer Hitzewelle.,¡Meseta de Dunas abierta! Los animales de las dunas necesitan un punto de agua; la sombra ayuda en una ola de calor.,Dune Mesa est ouverte ! Les animaux des dunes ont besoin d'un point d'eau ; l'ombre aide pendant une vague de chaleur.,A Mesa das Dunas está aberta! Os animais das dunas precisam de um ponto de água; a sombra ajuda na onda de calor.,Дюнное плато открыто! Дюнным животным нужен водопой; навес помогает в жару.,砂丘の台地が開きました！ 砂丘の動物には給水所が必要です。熱波には日よけが役立ちます。,"모래 언덕 칸이 열렸어요! 이곳 동물에게는 급수 지점이 필요하고, 폭염에는 그늘막이 도움이 돼요.",टीला पठार खुल गया है! टीलों के जानवरों को पानी का स्रोत चाहिए; लू में छाँव मदद करती है।
+tip.dust,Dust storm: the tram is slower. Set the timetable to 'When full'.,Toz fırtınası: tramvay yavaş. Saatleri 'Dolunca' olarak ayarla.,Staubsturm: Die Safaribahn ist langsamer. Stell den Fahrplan auf „Wenn voll“.,Tormenta de polvo: el tranvía va más despacio. Pon el horario en 'Cuando esté lleno'.,Tempête de sable : le tram est plus lent. Mets les horaires sur « Quand c'est plein ».,Tempestade de poeira: o trenzinho anda mais devagar. Defina o horário como 'Quando lotar'.,Пыльная буря: трамвай едет медленнее. Поставь расписание «Когда полон».,砂嵐: トラムがゆっくりになります。時刻表を「満席のとき」に設定しましょう。,모래폭풍이에요. 트램이 느려져요. 시간표를 “꽉 찼을 때”로 바꿔 보세요.,धूल भरी आँधी: ट्राम धीमी है। समय-सारणी को 'भरने पर' पर रखो।
+tip.egg,An egg is in the incubator. Check its temperature so it warms at full speed.,Kuluçkada bir yumurta var. Tam hızda ısınması için sıcaklığını kontrol et.,"Ein Ei ist im Brutkasten. Prüfe seine Temperatur, damit es mit voller Kraft aufwärmt.",Hay un huevo en la incubadora. Comprueba su temperatura para que se caliente a toda velocidad.,Un œuf est dans la couveuse. Vérifie sa température pour qu'il se réchauffe à plein régime.,Um ovo está na chocadeira. Verifique a temperatura para que aqueça na velocidade máxima.,"Яйцо в инкубаторе. Проверь температуру, чтобы оно грелось на полную.",孵卵器に卵があります。温度を確認して、全速で温めましょう。,부화기에 알이 있어요. 온도를 확인하면 전속력으로 데워져요.,इन्क्यूबेटर में एक अंडा है। तापमान जाँचो ताकि वह पूरी रफ़्तार से गरम हो।
+tip.egg_cold,The egg cooled down halfway. Check its temperature again.,Yumurta yarıda soğudu. Sıcaklığını tekrar kontrol et.,Das Ei ist zur Hälfte abgekühlt. Prüfe die Temperatur noch einmal.,El huevo se enfrió a mitad de camino. Vuelve a comprobar su temperatura.,L'œuf s'est refroidi à moitié. Vérifie à nouveau sa température.,O ovo esfriou pela metade. Verifique a temperatura de novo.,Яйцо наполовину остыло. Проверь температуру ещё раз.,卵が途中で冷えてしまいました。もう一度温度を確認してください。,알이 중간에 식었어요. 온도를 다시 확인하세요.,अंडा बीच में ठंडा हो गया। तापमान फिर से जाँचो।
+tip.escape,An animal is on the path and the tram has stopped. Send a Handler to walk it home.,Yolda bir hayvan var ve tramvay durdu. Onu evine götürmesi için bir Bakıcı gönder.,"Ein Tier ist auf dem Weg und die Bahn hält. Schick einen Betreuer, der es nach Hause bringt.",Un animal está en el camino y el tranvía se ha detenido. Envía a un Cuidador para llevarlo de vuelta.,Un animal est sur le chemin et le tram s'est arrêté. Envoie un soigneur le ramener.,Um animal está no caminho e o trenzinho parou. Envie um Tratador para levá-lo de volta para casa.,"Животное на дорожке, трамвай остановлен. Отправь служителя отвести его домой.",動物が通路にいて、トラムが止まっています。飼育員を送って連れ帰りましょう。,동물이 길에 나와 트램이 멈췄어요. 사육사를 보내 집으로 데려가게 하세요.,एक जानवर रास्ते पर है और ट्राम रुकी है। उसे वापस ले जाने के लिए हैंडलर भेजो।
+tip.failed,A pin ran out of time. Hire more rangers if your teams are always busy.,Bir işaret süresini doldurdu. Ekiplerin sürekli meşgulse daha çok korucu işe al.,"Eine Markierung ist abgelaufen. Stell mehr Ranger ein, wenn deine Teams ständig beschäftigt sind.",Un aviso se quedó sin tiempo. Contrata más guardabosques si tus equipos están siempre ocupados.,Une alerte a expiré. Embauche plus de gardes si tes équipes sont toujours occupées.,Um alerta ficou sem tempo. Contrate mais guardas se suas equipes estiverem sempre ocupadas.,"Метка просрочилась. Нанимай больше смотрителей, если команды всё время заняты.",ピンの期限が切れました。チームがいつも手一杯なら、レンジャーを増やしましょう。,알림 하나의 시간이 다 됐어요. 팀이 늘 바쁘면 레인저를 더 고용하세요.,एक मामले का समय निकल गया। अगर तुम्हारी टीमें हमेशा व्यस्त हैं तो और रेंजर रखो।
+tip.fence,A fence tile came loose. Send a Fence Tech before an animal wanders out.,Bir çit parçası gevşedi. Hayvan dışarı çıkmadan bir Çit Teknisyeni gönder.,"Eine Zaunplatte hat sich gelöst. Schick einen Zauntechniker, bevor ein Tier entwischt.",Un tramo de valla se soltó. Envía a un Técnico de vallas antes de que un animal se escape.,Un morceau de clôture s'est détaché. Envoie un technicien avant qu'un animal ne s'échappe.,Uma peça da cerca se soltou. Envie um Técnico de cerca antes que um animal saia.,"Плитка ограды отвалилась. Отправь ремонтника, пока животное не вышло.",柵板がゆるみました。動物が出ていく前に柵の整備係を送りましょう。,울타리 한 칸이 헐거워졌어요. 동물이 밖으로 나가기 전에 울타리 정비공을 보내세요.,एक बाड़ की टाइल ढीली हुई। जानवर बाहर निकले उससे पहले फ़ेंस टेक भेजो।
+tip.fern,Fern Valley is open! The tram tour is longer now — an extra car keeps the queue short.,Eğrelti Vadisi açık! Tramvay turu artık daha uzun — ek bir vagon kuyruğu kısa tutar.,Das Farntal ist offen! Die Safaritour ist jetzt länger — ein zusätzlicher Wagen hält die Schlange kurz.,¡Valle de Helechos abierto! La visita en tranvía es más larga ahora: un vagón extra mantiene corta la cola.,Le Vallon des fougères est ouvert ! La visite en tram est plus longue maintenant : un wagon en plus raccourcit la file.,O Vale das Samambaias está aberto! O passeio do trenzinho agora é mais longo — um vagão extra mantém a fila curta.,Папоротниковая долина открыта! Экскурсия стала длиннее — дополнительный вагон сокращает очередь.,シダの谷が開きました！ トラムのツアーが長くなったので、車両を増やすと行列が短く保てます。,고사리 계곡이 열렸어요! 이제 트램 투어가 더 길어져요. 칸을 하나 더 두면 줄이 짧아져요.,फ़र्न घाटी खुल गई है! ट्राम का टूर अब लंबा है — एक अतिरिक्त डिब्बा कतार छोटी रखता है।
+tip.flood,A flooded path closes a tram stop. A Fence Tech can clear it.,Sular altındaki bir yol tramvay durağını kapatır. Bir Çit Teknisyeni temizleyebilir.,Ein überfluteter Weg schließt eine Bahnhaltestelle. Ein Zauntechniker kann sie frei machen.,Un camino inundado cierra una parada del tranvía. Un Técnico de vallas puede despejarlo.,Un chemin inondé ferme un arrêt de tram. Un technicien peut le dégager.,Um caminho alagado fecha uma parada do trenzinho. Um Técnico de cerca pode limpá-lo.,Затопленная дорожка закрывает остановку трамвая. Ремонтник может её очистить.,水につかった通路で、トラムの停留所が閉鎖されます。柵の整備係が片付けられます。,물에 잠긴 길은 트램 정류장을 막아요. 울타리 정비공이 치울 수 있어요.,डूबा रास्ता ट्राम स्टॉप बंद करता है। फ़ेंस टेक इसे साफ़ कर सकता है।
+tip.hatched,Babies are cute but shy. They grow up in two days.,Bebekler sevimli ama utangaç. İki günde büyürler.,"Babys sind niedlich, aber scheu. Sie werden in zwei Tagen erwachsen.",Las crías son monas pero tímidas. Crecen en dos días.,Les bébés sont mignons mais timides. Ils grandissent en deux jours.,"Os bebês são fofos, mas tímidos. Eles crescem em dois dias.","Малыши милые, но робкие. Через два дня они подрастут.",赤ちゃんはかわいいですが人見知りです。2日でおとなになります。,아기 동물은 귀엽지만 수줍어해요. 이틀이면 자라요.,बच्चे प्यारे पर शर्मीले होते हैं। दो दिन में बड़े हो जाते हैं।
+tip.heat,Heat wave! Shade sails and coolers help at Dune Mesa.,Sıcak dalgası! Kum Sırtı'nda gölgelikler ve soğutucular yardımcı olur.,Hitzewelle! Schattensegel und Kühlboxen helfen auf dem Dünen-Plateau.,¡Ola de calor! Los toldos de sombra y los enfriadores ayudan en Meseta de Dunas.,Vague de chaleur ! Les voiles d'ombrage et les glacières aident à Dune Mesa.,Onda de calor! Toldos de sombra e refrigeradores ajudam na Mesa das Dunas.,Жара! Навесы и холодильники помогают на Дюнном плато.,熱波です！ 砂丘の台地では日よけシートと冷却機が役立ちます。,폭염이에요! 그늘막과 냉방기가 모래 언덕에서 도움이 돼요.,लू! टीला पठार पर छाँव के कपड़े और कूलर मदद करते हैं।
+tip.nursery,"No paddock has room. Build or expand a paddock, then move the baby there.","Hiçbir ağılda yer yok. Bir ağıl kur ya da genişlet, sonra bebeği oraya taşı.",Kein Gehege hat Platz. Bau ein Gehege oder vergrößere eins und setz das Baby dort hinein.,Ningún recinto tiene sitio. Construye o amplía un recinto y luego lleva allí a la cría.,"Aucun enclos n'a de place. Construis ou agrandis un enclos, puis déplace le bébé là-bas.",Nenhum cercado tem espaço. Construa ou amplie um cercado e depois leve o bebê para lá.,"Ни в одном загоне нет места. Построй или расширь загон, потом перемести туда малыша.",どの囲い場にも空きがありません。囲い場を建てるか広げてから、赤ちゃんを移しましょう。,빈 우리가 없어요. 우리를 짓거나 넓힌 뒤 아기를 옮기세요.,"किसी बाड़े में जगह नहीं है। बाड़ा बनाओ या बड़ा करो, फिर बच्चे को वहाँ ले जाओ।"
+tip.rain,Rain! Floods close tram stops until a Fence Tech clears them.,"Yağmur! Sular altında kalan yollar, bir Çit Teknisyeni temizleyene kadar tramvay duraklarını kapatır.","Regen! Überflutungen schließen Bahnhaltestellen, bis ein Zauntechniker sie freimacht.",¡Lluvia! Las inundaciones cierran paradas del tranvía hasta que un Técnico de vallas las despeja.,Pluie ! Les inondations ferment les arrêts de tram jusqu'à ce qu'un technicien les dégage.,Chuva! Alagamentos fecham paradas do trenzinho até um Técnico de cerca limpá-las.,"Дождь! Наводнения закрывают остановки трамвая, пока ремонтник их не очистит.",雨です！ 柵の整備係が片付けるまで、水害でトラムの停留所が閉まります。,비가 와요! 물이 차면 울타리 정비공이 치울 때까지 트램 정류장이 막혀요.,बारिश! ट्राम स्टॉप डूब जाते हैं जब तक फ़ेंस टेक उन्हें साफ़ न करे।
+tip.report,The report shows what went well. Missed pins cost coins and calm — never animals.,Rapor neyin iyi gittiğini gösterir. Kaçan işaretler madeni para ve sakinlik kaybettirir — asla hayvanları değil.,"Der Bericht zeigt, was gut lief. Verpasste Markierungen kosten Münzen und Ruhe — niemals Tiere.","El informe muestra lo que salió bien. Los avisos perdidos cuestan monedas y calma, nunca animales.",Le rapport montre ce qui a bien marché. Les alertes manquées coûtent des pièces et du calme — jamais des animaux.,O relatório mostra o que foi bem. Alertas perdidos custam moedas e tranquilidade — nunca animais.,"В отчёте видно, что прошло хорошо. Пропущенные метки стоят монет и спокойствия — но никогда не животных.",報告では、うまくいったことがわかります。対応できなかったピンはコインと落ち着きを減らします。動物が傷つくことはありません。,보고서에는 잘한 일이 나와요. 놓친 알림은 동전과 평온을 잃게 해요. 동물은 잃지 않아요.,रिपोर्ट दिखाती है क्या अच्छा रहा। छूटे मामले सिक्के और शांति घटाते हैं — जानवर कभी नहीं।
+tip.school,A school trip! Babies on show make the kids happiest.,Okul gezisi! Gösterilen bebekler çocukları en çok mutlu eder.,Ein Schulausflug! Babys zu zeigen macht die Kinder am glücklichsten.,¡Excursión escolar! Las crías en exhibición hacen a los niños muy felices.,Une sortie scolaire ! Les bébés en vitrine rendent les enfants très contents.,Excursão escolar! Bebês em exposição deixam as crianças mais felizes.,Школьная экскурсия! Малыши на показе радуют детей больше всего.,遠足です！ 赤ちゃん動物が見られると、子どもたちがいちばん喜びます。,학교 단체 관람이에요! 아기 동물을 보여 주면 아이들이 제일 좋아해요.,स्कूल की सैर! दिखाए गए बच्चे बच्चों को सबसे ज़्यादा खुश करते हैं।
+tip.squabble,Squabbles come from animals that don't get along. Use the Compatibility card when you pair them.,Tartışmalar anlaşamayan hayvanlardan çıkar. Eşleştirirken Uyumluluk kartını kullan.,"Streit entsteht bei Tieren, die sich nicht vertragen. Nutze die Verträglichkeitskarte, wenn du sie paarst.",Las peleas surgen entre animales que no se llevan bien. Usa la tarjeta de Compatibilidad al emparejarlos.,Les disputes viennent d'animaux qui ne s'entendent pas. Utilise la carte Compatibilité quand tu les associes.,Brigas acontecem entre animais que não se dão bem. Use o cartão de Compatibilidade ao juntá-los.,"Ссоры возникают у животных, которые не ладят. Смотри карточку совместимости, когда ставишь их в пару.",もめごとは、仲の悪い動物同士から起こります。組み合わせるときは相性カードを使いましょう。,다툼은 서로 잘 맞지 않는 동물 때문에 생겨요. 짝을 지을 때 궁합 카드를 쓰세요.,झगड़े उन जानवरों से होते हैं जो आपस में नहीं बनते। जोड़ी बनाते समय मेल-जोल कार्ड इस्तेमाल करो।
+tip.supply,The supply boat is late. Watch for hungry herds before 13:00.,Erzak teknesi geç kaldı. 13:00'ten önce aç sürülere dikkat et.,Das Versorgungsboot ist spät dran. Achte vor 13:00 auf hungrige Herden.,El barco de suministros se retrasa. Vigila los rebaños hambrientos antes de las 13:00.,Le bateau de ravitaillement est en retard. Surveille les troupeaux affamés avant 13 h 00.,O barco de suprimentos está atrasado. Fique de olho nos rebanhos com fome antes das 13:00.,Баржа с кормом опаздывает. Следи за голодными стадами до 13:00.,補給船が遅れています。13:00までに、お腹をすかせた群れに注意しましょう。,보급선이 늦어요. 13:00 전에 배고픈 무리를 살펴보세요.,सामान वाली नाव लेट है। 13:00 से पहले भूखे झुंडों पर नज़र रखो।
+tip.vet,A sick animal! Send a Vet. Red cases can't wait long.,Hasta bir hayvan! Bir Veteriner gönder. Kırmızı vakalar uzun bekleyemez.,Ein krankes Tier! Schick einen Tierarzt. Rote Fälle können nicht lange warten.,¡Un animal enfermo! Envía a un Veterinario. Los casos en rojo no pueden esperar mucho.,Un animal malade ! Envoie un vétérinaire. Les cas rouges ne peuvent pas attendre longtemps.,Um animal doente! Envie um Veterinário. Casos vermelhos não podem esperar muito.,Больное животное! Отправь ветеринара. Красные случаи долго ждать не могут.,病気の動物です！ 獣医を送りましょう。赤の症例は長く待てません。,아픈 동물이 있어요! 수의사를 보내세요. 위험한 경우는 오래 기다릴 수 없어요.,एक बीमार जानवर! वेट भेजो। लाल मामले ज़्यादा देर इंतज़ार नहीं कर सकते।
+toast.evacuation,The tram queue went home while an animal was loose.,Bir hayvan başıboşken tramvay kuyruğu eve döndü.,"Die Schlange vor der Bahn ist nach Hause gegangen, während ein Tier frei herumlief.",La cola del tranvía se fue a casa mientras había un animal suelto.,La file du tram est rentrée pendant qu'un animal était échappé.,O trenzinho voltou para casa enquanto um animal estava solto.,"Очередь на трамвай разошлась по домам, пока животное было на свободе.",動物が逃げ出している間に、トラムの列の人たちは帰ってしまいました。,동물이 밖에 나와 있는 동안 트램 줄이 집으로 돌아갔어요.,"एक जानवर खुला था, इसलिए ट्राम की कतार घर लौट गई।"
+toast.failed,Nobody came in time: {name},Zamanında kimse gelmedi: {name},Niemand kam rechtzeitig: {name},Nadie llegó a tiempo: {name},Personne n'est venu à temps : {name},Ninguém chegou a tempo: {name},Никто не пришёл вовремя: {name},間に合う人が来ませんでした: {name},제때 아무도 오지 않았어요: {name},समय पर कोई नहीं पहुँचा: {name}
+toast.gate,The gate is open. Here come the first visitors!,Kapı açıldı. İlk ziyaretçiler geliyor!,Das Tor ist offen. Die ersten Besucher kommen!,La puerta está abierta. ¡Ya llegan los primeros visitantes!,La grille est ouverte. Voici les premiers visiteurs !,O portão está aberto. Aí vêm os primeiros visitantes!,Ворота открыты. Вот и первые посетители!,門が開きました。最初の来園者がやってきます！,입구가 열렸어요. 첫 관람객이 와요!,गेट खुल गया है। पहले मेहमान आ रहे हैं!
+toast.hatched,A baby {name} hatched!,Bir bebek {name} çıktı!,Ein Baby-{name} ist geschlüpft!,¡Eclosionó una cría de {name}!,Un bébé {name} est né !,Um bebê {name} nasceu!,Малыш {name} вылупился!,{name} の赤ちゃんが孵化しました！,아기 {name} 부화!,एक नन्हा {name} निकला!
+toast.hatched_nursery,A baby {name} hatched — it waits in the nursery for a paddock.,Bir bebek {name} çıktı — bir ağıl bekleyerek kreşte.,Ein Baby-{name} ist geschlüpft — es wartet im Kinderzimmer auf ein Gehege.,Eclosionó una cría de {name}: espera en la guardería a tener un recinto.,Un bébé {name} est né — il attend la pouponnière qu'un enclos se libère.,Um bebê {name} nasceu — ele espera no berçário por um cercado.,Малыш {name} вылупился — ждёт в яслях загон.,{name} の赤ちゃんが孵化しました。囲い場が空くまで育児室で待ちます。,아기 {name} 부화 — 우리가 생길 때까지 보육실에서 기다려요.,एक नन्हा {name} निकला — वह बाड़े के लिए नर्सरी में इंतज़ार करेगा।
+toast.sent,Ranger on the way,Korucu yolda,Ranger ist unterwegs,Guardabosques de camino,Garde en route,Guarda a caminho,Смотритель в пути,レンジャーが向かっています,레인저가 가는 중이에요,रेंजर रास्ते में है
+toast.tram,The tram leaves with {n} visitors,Tramvay {n} ziyaretçiyle yola çıktı,Die Bahn fährt mit {n} Besuchern los,El tranvía sale con {n} visitantes,Le tram part avec {n} visiteurs,O trenzinho sai com {n} visitantes,Трамвай уехал с посетителями: {n},トラムが来園者 {n} 人を乗せて出発しました,트램이 관람객 {n}명과 출발했어요,ट्राम {n} मेहमानों के साथ निकली
+toast.zone,{name} is now open!,{name} artık açık!,{name} ist jetzt offen!,¡{name} ya está abierto!,{name} est maintenant ouvert !,{name} foi aberto!,Открыто: {name}!,{name} が開放されました！,{name} 열림!,{name} अब खुल गया है!
 unit.h,h,sa,h,h,h,h,ч,時,시간,घं
 unit.min,min,dk,min,min,min,min,мин,分,분,मि
-unit.minutes,{n} min,,,,,,,,,
+unit.minutes,{n} min,{n} dk,{n} Min.,{n} min,{n} min,{n} min,{n} мин,{n} 分,{n}분,{n} मिनट
 unit.s,s,sn,s,s,s,s,с,秒,초,से
 upgrade.title,Upgrades,Geliştirmeler,Verbesserungen,Mejoras,Améliorations,Melhorias,Улучшения,アップグレード,업그레이드,अपग्रेड
-zone.cove,Landing Cove,,,,,,,,,
-zone.cove.d,"The gate, the HQ and the first two paddocks.",,,,,,,,,
-zone.dune,Dune Mesa,,,,,,,,,
-zone.dune.d,"Hot, dry dunes. Animals here need water points and shade.",,,,,,,,,
-zone.fern,Fern Valley,,,,,,,,,
-zone.fern.d,Lush forest for bigger herds. The tram loop gets longer — think about a second car.,,,,,,,,,
-zone.needs,needs ★ {r},,,,,,,,,
-zone.unlock,Open · {cost},,,,,,,,,
+zone.cove,Landing Cove,Koy Kıyısı,Landebucht,Cala del Desembarco,Crique d'atterrissage,Enseada Landing,Причальная бухта,ランディング入り江,착륙 만,लैंडिंग खाड़ी
+zone.cove.d,"The gate, the HQ and the first two paddocks.","Kapı, karargâh ve ilk iki ağıl.","Das Tor, das Hauptquartier und die ersten zwei Gehege.","La puerta, la sede y los dos primeros recintos.","La grille, le quartier général et les deux premiers enclos.","O portão, a sede e os dois primeiros cercados.","Ворота, штаб и первые два загона.",門、本部、最初の囲い場2つ。,"입구, 본부, 첫 우리 두 곳이 있어요.","गेट, मुख्यालय और पहले दो बाड़े।"
+zone.dune,Dune Mesa,Kum Sırtı,Dünen-Plateau,Meseta de Dunas,Dune Mesa,Mesa das Dunas,Дюнное плато,砂丘の台地,사구 고원,टीला पठार
+zone.dune.d,"Hot, dry dunes. Animals here need water points and shade.","Sıcak, kuru kumullar. Buradaki hayvanların su noktalarına ve gölgeliğe ihtiyacı var.","Heiße, trockene Dünen. Tiere hier brauchen Wasserstellen und Schatten.",Dunas calurosas y secas. Los animales de aquí necesitan puntos de agua y sombra.,Dunes chaudes et sèches. Les animaux d'ici ont besoin de points d'eau et d'ombre.,Dunas quentes e secas. Os animais aqui precisam de pontos de água e sombra.,Жаркие сухие дюны. Животным здесь нужны водопои и навесы.,暑く乾いた砂丘。ここの動物には給水所と日陰が必要です。,덥고 건조한 모래 언덕이에요. 여기 동물에게는 급수 지점과 그늘이 필요해요.,"गर्म, सूखे टीले। यहाँ के जानवरों को पानी के स्रोत और छाँव चाहिए।"
+zone.fern,Fern Valley,Eğrelti Vadisi,Farntal,Valle de Helechos,Vallon des fougères,Vale das Samambaias,Папоротниковая долина,シダの谷,고사리 계곡,फ़र्न घाटी
+zone.fern.d,Lush forest for bigger herds. The tram loop gets longer — think about a second car.,Büyük sürüler için yemyeşil orman. Tramvay turu uzuyor — ikinci bir vagon düşün.,Üppiger Wald für größere Herden. Die Bahnrunde wird länger — denk über einen zweiten Wagen nach.,Bosque frondoso para manadas más grandes. El circuito del tranvía se alarga: piensa en un segundo vagón.,Forêt luxuriante pour de plus grands troupeaux. La boucle du tram s'allonge : pense à un second wagon.,Floresta exuberante para rebanhos maiores. O circuito do trenzinho fica mais longo — pense em um segundo vagão.,Густой лес для больших стад. Трамвайный круг стал длиннее — подумай о втором вагоне.,大きな群れのための緑豊かな森。トラムの周回が長くなるので、2台目の車両を考えましょう。,커다란 무리를 위한 울창한 숲이에요. 트램 순환이 길어져서 두 번째 칸을 생각해 보세요.,बड़े झुंडों के लिए घना जंगल। ट्राम का चक्कर लंबा होगा — दूसरे डिब्बे का सोचो।
+zone.needs,needs ★ {r},★ {r} gerekli,braucht ★ {r},necesita ★ {r},demande ★ {r},precisa de ★ {r},нужно ★ {r},★ {r} が必要,★ {r} 필요,★ {r} चाहिए
+zone.unlock,Open · {cost},Aç · {cost},Öffnen · {cost},Abrir · {cost},Ouvrir · {cost},Abrir · {cost},Открыть · {cost},開く · {cost},열기 · {cost},खोलो · {cost}

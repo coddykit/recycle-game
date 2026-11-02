@@ -9,7 +9,7 @@
  "bar.info": "Cola {q} · Medallones {p} · Panecillos {b} · {rate}/h",
  "bar.open": "Camión",
  "bar.propane": "Cambiar bombona {cost}",
- "bar.propane_kit": "Usar bombona de repuesto",
+ "bar.propane_kit": "Usar bombona extra",
  "bar.restock": "Ir a reabastecer",
  "card.breakfast": "Desayuno",
  "card.cheese": "Queso",

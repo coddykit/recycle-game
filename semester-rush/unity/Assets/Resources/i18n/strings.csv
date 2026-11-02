@@ -1,526 +1,526 @@
 key,en,tr,de,es,fr,pt,ru,ja,ko,hi
-app.tagline,Plan the timetable. Beat the bell. Grow your campus.,,,,,,,,,
-app.title,Semester Rush,,,,,,,,,
-board.auto_fill,Auto-fill,,,,,,,,,
-board.auto_fill_smart,Smart auto-fill,,,,,,,,,
-board.complete,Every class has a slot.,,,,,,,,,
-board.count,{n}/{m} this week,,,,,,,,,
-board.courses,Courses and professors,,,,,,,,,
-board.exams,exam plan,,,,,,,,,
-board.lunch_b,Move {course} to {time}: its group eats later and everyone gets a seat.,,,,,,,,,
-board.lunch_t,{day}: canteen too small at lunch,,,,,,,,,
-board.missing,{n} classes still need a slot,,,,,,,,,
-board.move_hint,Tap an empty cell to move it there.,,,,,,,,,
-board.move_to,Move to {time},,,,,,,,,
-board.no_prof,no professor,,,,,,,,,
-board.nothing_to_place,Every class is placed. Tap a class on the board to move it.,,,,,,,,,
-board.pick,{day} {time}: which class?,,,,,,,,,
-board.place,Place,,,,,,,,,
-board.remove,Remove,,,,,,,,,
-board.seats,{n} seats,,,,,,,,,
-board.selected,Picked class,,,,,,,,,
-board.students,{n} students,,,,,,,,,
-building.admin,Admin building,,,,,,,,,
-building.admin.d,The dean's office and the bursar: tuition waits here.,,,,,,,,,
-building.beds,Beds,,,,,,,,,
-building.build,Build · {cost},,,,,,,,,
-building.canteen,Canteen,,,,,,,,,
-building.canteen.d,80 lunch seats per lunch hour.,,,,,,,,,
-building.collect,Collect the tuition,,,,,,,,,
-building.crews,Builders work in parallel: start as many buildings as you like. Maintenance staff build faster.,,,,,,,,,
-building.days,{n} days,,,,,,,,,
-building.dorm,Dorm,,,,,,,,,
-building.dorm.d,80 beds. Residents walk from here and pay rent.,,,,,,,,,
-building.hall_l,Amphitheatre,,,,,,,,,
-building.hall_l.d,160 seats for big lectures and exams.,,,,,,,,,
-building.hall_m,Lecture hall,,,,,,,,,
-building.hall_m.d,90 seats for lectures.,,,,,,,,,
-building.hall_s,Small hall,,,,,,,,,
-building.hall_s.d,50 seats for lectures.,,,,,,,,,
-building.lab,Lab,,,,,,,,,
-building.lab.d,50 seats for lab classes.,,,,,,,,,
-building.library,Library,,,,,,,,,
-building.library.d,Better classes and more prestige; students wait here between classes.,,,,,,,,,
-building.library.effect,"Better classes for everyone, more prestige every week, and a quiet place between classes.",,,,,,,,,
-building.meals,Lunch seats,,,,,,,,,
-building.progress,Built,,,,,,,,,
-building.residents,Students living on campus,,,,,,,,,
-building.seats,Seats,,,,,,,,,
-building.till,Tuition waiting,,,,,,,,,
-building.time,Build time,,,,,,,,,
-building.upkeep,Upkeep per week,,,,,,,,,
-campus.build,Build,,,,,,,,,
-campus.buildings,Buildings,,,,,,,,,
-campus.gate,Gate: {a} – {b},,,,,,,,,
-campus.gate.d,Opens a shortcut. Fewer students walk the long way round.,,,,,,,,,
-campus.gate_open,This gate is open.,,,,,,,,,
-campus.paths,Paths and gates,,,,,,,,,
-campus.students,{n} students,,,,,,,,,
-campus.widen,Wider path: {a} – {b},,,,,,,,,
-campus.widen.busy,Busiest this week: {pct} of capacity. Twice as many students pass at once.,,,,,,,,,
-campus.widen.d,Twice as many students pass at once.,,,,,,,,,
-campus.widen.none,No path got crowded this week.,,,,,,,,,
-coach.1,"Welcome, Dean! This is your lecture hall. Tap it.",,,,,,,,,
-coach.10,Lunch: the canteen will be full at 12:00. Move this class to 12:00 so one group eats later.,,,,,,,,,
-coach.11,That was your first week. Tap Open the grades.,,,,,,,,,
-coach.2,This is its timetable. Tap Monday 9:00.,,,,,,,,,
-coach.3,Pick Business 101 for this slot.,,,,,,,,,
-coach.4,A class needs a professor. Tap Prof. Lee.,,,,,,,,,
-coach.5,The plan is ready. Press Start the week.,,,,,,,,,
-coach.6,The bell! Students walk to class. Watch the path.,,,,,,,,,
-coach.7,Some were late: the way round is long. Tap the gate to open a shortcut.,,,,,,,,,
-coach.8,Class is over. Tap the coins to collect the tuition.,,,,,,,,,
-coach.9,Spend it: tap the plot and build the library. Builders work together.,,,,,,,,,
-coach.skip,Skip,,,,,,,,,
-coach.step,Step {n} of {m},,,,,,,,,
-cohort.bus1,"Business, year 1",,,,,,,,,
-cohort.bus2,"Business, year 2",,,,,,,,,
-cohort.che1,Chemistry,,,,,,,,,
-cohort.law1,Law,,,,,,,,,
-cohort.lit1,Literature,,,,,,,,,
-cohort.mat1,Maths,,,,,,,,,
-cohort.phi1,Philosophy,,,,,,,,,
-cohort.phy1,Physics,,,,,,,,,
-common.ok,OK,,,,,,,,,
-common.open,Open,,,,,,,,,
-course.bus101,Business 101,,,,,,,,,
-course.bus101.code,BUS101,,,,,,,,,
-course.bus110,Accounting Basics,,,,,,,,,
-course.bus110.code,BUS110,,,,,,,,,
-course.bus201,Marketing,,,,,,,,,
-course.bus201.code,BUS201,,,,,,,,,
-course.bus210,Team Leadership,,,,,,,,,
-course.bus210.code,BUS210,,,,,,,,,
-course.che101,General Chemistry,,,,,,,,,
-course.che101.code,CHE101,,,,,,,,,
-course.che150,Chemistry Lab,,,,,,,,,
-course.che150.code,CHE150,,,,,,,,,
-course.law101,Contract Law,,,,,,,,,
-course.law101.code,LAW101,,,,,,,,,
-course.law110,Legal Writing,,,,,,,,,
-course.law110.code,LAW110,,,,,,,,,
-course.lit101,World Novels,,,,,,,,,
-course.lit101.code,LIT101,,,,,,,,,
-course.lit110,Creative Writing,,,,,,,,,
-course.lit110.code,LIT110,,,,,,,,,
-course.mat101,Calculus,,,,,,,,,
-course.mat101.code,MAT101,,,,,,,,,
-course.mat110,Linear Algebra,,,,,,,,,
-course.mat110.code,MAT110,,,,,,,,,
-course.phi101,Logic,,,,,,,,,
-course.phi101.code,PHI101,,,,,,,,,
-course.phi110,Ethics,,,,,,,,,
-course.phi110.code,PHI110,,,,,,,,,
-course.phy101,Mechanics,,,,,,,,,
-course.phy101.code,PHY101,,,,,,,,,
-course.phy150,Physics Lab,,,,,,,,,
-course.phy150.code,PHY150,,,,,,,,,
-crisis.burst_pipe.b,A room is closed for a few hours.,,,,,,,,,
-crisis.burst_pipe.t,Burst pipe,,,,,,,,,
-crisis.dorm_flu.b,Fewer dorm students come to class for two days.,,,,,,,,,
-crisis.dorm_flu.t,Dorm flu,,,,,,,,,
-crisis.fire_drill.b,The next bell change takes longer.,,,,,,,,,
-crisis.fire_drill.t,Fire drill,,,,,,,,,
-crisis.none,All calm.,,,,,,,,,
-crisis.open_day.b,Visitors fill the paths and the canteen.,,,,,,,,,
-crisis.open_day.t,Open day,,,,,,,,,
-crisis.poached.b,A rival university wants one of your professors.,,,,,,,,,
-crisis.poached.t,Professor poached,,,,,,,,,
-crisis.power_outage.b,One exam slot runs without power.,,,,,,,,,
-crisis.power_outage.t,Power cut,,,,,,,,,
-crisis.protest.b,Students march on the quad.,,,,,,,,,
-crisis.protest.t,Fee protest,,,,,,,,,
-crisis.sick_prof.b,A professor stays home today.,,,,,,,,,
-crisis.sick_prof.t,Sick professor,,,,,,,,,
-crisis.snow_day.b,Everyone walks slower today.,,,,,,,,,
-crisis.snow_day.t,Snow day,,,,,,,,,
-crisis.title,Today on campus,,,,,,,,,
-day.0,Monday,,,,,,,,,
-day.1,Tuesday,,,,,,,,,
-day.2,Wednesday,,,,,,,,,
-day.3,Thursday,,,,,,,,,
-day.4,Friday,,,,,,,,,
-day.short.0,Mon,,,,,,,,,
-day.short.1,Tue,,,,,,,,,
-day.short.2,Wed,,,,,,,,,
-day.short.3,Thu,,,,,,,,,
-day.short.4,Fri,,,,,,,,,
-day.sunday,Sunday,,,,,,,,,
-decision.concede,Freeze fees this week,,,,,,,,,
-decision.concede.d,Costs half a day of income. The quad stays calm.,,,,,,,,,
-decision.let_go,Wish them well,,,,,,,,,
-decision.let_go.d,Free. They leave at the end of the week.,,,,,,,,,
-decision.paused,Time waits while you decide.,,,,,,,,,
-decision.poached.b,Another university offers {name} a job.,,,,,,,,,
-decision.protest.b,Students march across the quad: they want lower fees this week.,,,,,,,,,
-decision.retain,Retention bonus,,,,,,,,,
-decision.retain.d,Two weeks of wages. They stay.,,,,,,,,,
-decision.talk,Talk it through,,,,,,,,,
-decision.talk.d,"Free, but the paths are half blocked today.",,,,,,,,,
-err.blocked,Follow the guide.,,,,,,,,,
-err.building,Still being built.,,,,,,,,,
-err.busy,Another upgrade is running.,,,,,,,,,
-err.cash,Not enough money.,,,,,,,,,
-err.cohort_busy,That group has another class then.,,,,,,,,,
-err.context,Not available right now.,,,,,,,,,
-err.enough,That course has all its classes.,,,,,,,,,
-err.invalid,That doesn't work.,,,,,,,,,
-err.locked,Not open yet.,,,,,,,,,
-err.max,Maximum reached.,,,,,,,,,
-err.needs_hall,This course needs a lecture hall.,,,,,,,,,
-err.needs_lab,This course needs a lab.,,,,,,,,,
-err.no_board,Open a room first.,,,,,,,,,
-err.no_cell,Tap an empty cell first.,,,,,,,,,
-err.no_prof,No professor.,,,,,,,,,
-err.no_room_left,No free room fits the rest.,,,,,,,,,
-err.none,Nobody to let go.,,,,,,,,,
-err.not_room,Not a classroom.,,,,,,,,,
-err.nothing_missing,Nothing to fill.,,,,,,,,,
-err.owned,Already done.,,,,,,,,,
-err.past,That slot is over.,,,,,,,,,
-err.phase,Not now.,,,,,,,,,
-err.prestige,Needs more prestige.,,,,,,,,,
-err.prof_busy,The professor teaches another class then.,,,,,,,,,
-err.prof_tired,The professor already teaches 3 classes that day.,,,,,,,,,
-err.requires,Needs another upgrade first.,,,,,,,,,
-err.research,Needs an upgrade first.,,,,,,,,,
-err.room_busy,This room is taken then.,,,,,,,,,
-err.running,Already running.,,,,,,,,,
-err.unknown,That doesn't work.,,,,,,,,,
-err.wrong_faculty,Wrong faculty.,,,,,,,,,
-faculty.business,Business,,,,,,,,,
-faculty.chemistry,Chemistry,,,,,,,,,
-faculty.law,Law,,,,,,,,,
-faculty.literature,Literature,,,,,,,,,
-faculty.maths,Maths,,,,,,,,,
-faculty.philosophy,Philosophy,,,,,,,,,
-faculty.physics,Physics,,,,,,,,,
-graphics.dropped,Graphics lowered to keep it smooth. You can change it in Settings.,,,,,,,,,
-graphics.high,High,,,,,,,,,
-graphics.low,Low,,,,,,,,,
-graphics.medium,Medium,,,,,,,,,
-hud.exam_week,Exam week,,,,,,,,,
-hud.hungry,Hungry {n},,,,,,,,,
-hud.late,Late {n},,,,,,,,,
-hud.next_week,Next week,,,,,,,,,
-hud.prestige,★ {p},,,,,,,,,
-hud.report,Open the grades,,,,,,,,,
-hud.speed,{n}×,,,,,,,,,
-hud.speed_guide,Speed opens after the guide.,,,,,,,,,
-hud.speed_locked,3× and 4× come with the Speed pack.,,,,,,,,,
-hud.start_exams,Start the exams,,,,,,,,,
-hud.start_week,Start the week,,,,,,,,,
-hud.week,Sem {s} · Week {n},,,,,,,,,
-iap.automation.d,Smart auto-fill and a morning repair of today's classes. You can turn it off.,,,,,,,,,
-iap.automation.t,Registrar,,,,,,,,,
-iap.bundle.d,"Chancellor Edition, Speed, Registrar, Long Break and all campus themes. No ads.",,,,,,,,,
-iap.bundle.t,Complete Campus Collection,,,,,,,,,
-iap.cash_l.d,Funds for 5 days of income.,,,,,,,,,
-iap.cash_l.t,Big Funds,,,,,,,,,
-iap.cash_m.d,Funds for 2.5 days of income.,,,,,,,,,
-iap.cash_m.t,Funds,,,,,,,,,
-iap.cash_s.d,Funds for 1 day of income.,,,,,,,,,
-iap.cash_s.t,Small Funds,,,,,,,,,
-iap.cash_xl.d,Funds for 10 days of income.,,,,,,,,,
-iap.cash_xl.t,Endowment,,,,,,,,,
-iap.comeback.d,Funds for 3 days to restart the campus.,,,,,,,,,
-iap.comeback.t,Welcome Back Funds,,,,,,,,,
-iap.cosmetics_all.d,"Ivy, Modern and Desert together, at a lower price.",,,,,,,,,
-iap.cosmetics_all.t,All Campus Themes,,,,,,,,,
-iap.exam_kit.d,Two extra invigilators and a backup generator for this exam week.,,,,,,,,,
-iap.exam_kit.t,Exam Week Kit,,,,,,,,,
-iap.noads.d,No more promo screens or banners. Video rewards come without the video.,,,,,,,,,
-iap.noads.t,Remove Ads,,,,,,,,,
-iap.offline_plus.d,"The break between terms pays up to 12 hours, at 80 %.",,,,,,,,,
-iap.offline_plus.t,Long Break,,,,,,,,,
-iap.premium.d,"No ads, the gold Chancellor campus trim and 2 days of funds once.",,,,,,,,,
-iap.premium.t,Chancellor Edition,,,,,,,,,
-iap.speed.d,"Play at 3× and 4×, and skip the week summary if you like.",,,,,,,,,
-iap.speed.t,Speed Pack,,,,,,,,,
-iap.starter.d,Funds for 2 days and one extra campus marshal on the payroll. Does not remove ads.,,,,,,,,,
-iap.starter.t,Starter Campus Pack,,,,,,,,,
-iap.theme_desert.d,Warm sandstone tones.,,,,,,,,,
-iap.theme_desert.t,Desert Theme,,,,,,,,,
-iap.theme_ivy.d,Ivy-green walls all over campus.,,,,,,,,,
-iap.theme_ivy.t,Ivy Theme,,,,,,,,,
-iap.theme_modern.d,Cool glass-and-steel tones.,,,,,,,,,
-iap.theme_modern.t,Modern Theme,,,,,,,,,
-intake.choose,Choose,,,,,,,,,
-intake.chosen,Chosen,,,,,,,,,
-intake.grow,Grow,,,,,,,,,
-intake.grow.d,"About 20 % more students. More tuition, fuller rooms, slightly lower grades.",,,,,,,,,
-intake.help,Choose how many new students to accept.,,,,,,,,,
-intake.keep,Keep the size,,,,,,,,,
-intake.keep.d,"Same groups, same rooms.",,,,,,,,,
-intake.select,Be selective,,,,,,,,,
-intake.select.d,A few more students with better grades. Scholarships cost money.,,,,,,,,,
-intake.title,Next semester's intake,,,,,,,,,
-intro.1.b,"Your young campus needs a plan: which class goes in which room, and when.",,,,,,,,,
-intro.1.t,"Welcome, Dean",,,,,,,,,
-intro.2.b,"Every bell, students walk to their next class. Short paths, no crowds, nobody late.",,,,,,,,,
-intro.2.t,Beat the bell,,,,,,,,,
-intro.3.b,"Good grades raise prestige. Prestige brings new faculties, halls and students.",,,,,,,,,
-intro.3.t,Grow the campus,,,,,,,,,
-intro.next,Next,,,,,,,,,
-intro.skip,Skip,,,,,,,,,
-intro.start,Let's go,,,,,,,,,
-late.busiest,Busiest paths,,,,,,,,,
-late.flowing,Every path is flowing.,,,,,,,,,
-late.how,Fewer late students,,,,,,,,,
-late.hungry,"{n} students found no seat ({m} lunch seats). Build a canteen, hire canteen crew or move a class into the lunch hour.",,,,,,,,,
-late.late,Late,,,,,,,,,
-late.lunch,Lunch,,,,,,,,,
-late.none_now,No bell change right now. Students are in class.,,,,,,,,,
-late.tips,"Open gates, build dorms near the halls, put a group's classes in rooms close together, hire marshals, and stagger the bells.",,,,,,,,,
-late.title,Bell change,,,,,,,,,
-late.today,Late today: {n} of {m},,,,,,,,,
-late.walking,Walking now,,,,,,,,,
-marker.building,Building · {pct},,,,,,,,,
-marker.closed,Closed,,,,,,,,,
-marker.gate,Open gate · {cost},,,,,,,,,
-offline.body,Your timetable ran while you were away ({time}). The campus earned {cash}.,,,,,,,,,
-offline.capped,The break between terms pays for up to {h} hours.,,,,,,,,,
-offline.title,"Welcome back, Dean",,,,,,,,,
-phase.report,Week report,,,,,,,,,
-place.admin,Admin building,,,,,,,,,
-place.canteen,Canteen,,,,,,,,,
-place.entrance,Bus stop,,,,,,,,,
-place.gate_s,South gate,,,,,,,,,
-place.hall_main,Main Hall,,,,,,,,,
-place.j_green,College green,,,,,,,,,
-place.j_quad,The quad,,,,,,,,,
-place.j_road,Ring road,,,,,,,,,
-place.j_sci,Science square,,,,,,,,,
-place.junction,Crossing,,,,,,,,,
-place.site_canteen_q,Quad Canteen,,,,,,,,,
-place.site_canteen_s,Science Canteen,,,,,,,,,
-place.site_dorm_a,Elm House,,,,,,,,,
-place.site_dorm_b,Birch House,,,,,,,,,
-place.site_dorm_c,Cedar House,,,,,,,,,
-place.site_hall_east,East Hall,,,,,,,,,
-place.site_hall_q1,Quad Hall,,,,,,,,,
-place.site_hall_q2,Great Hall,,,,,,,,,
-place.site_hall_q3,North Hall,,,,,,,,,
-place.site_hall_s1,Science Hall,,,,,,,,,
-place.site_hall_s2,South Hall,,,,,,,,,
-place.site_lab_1,Lab One,,,,,,,,,
-place.site_lab_2,Lab Two,,,,,,,,,
-place.site_library,Library plot,,,,,,,,,
-prof.adeyemi,Prof. Adeyemi,,,,,,,,,
-prof.brandt,Prof. Brandt,,,,,,,,,
-prof.costa,Prof. Costa,,,,,,,,,
-prof.haddad,Prof. Haddad,,,,,,,,,
-prof.ibrahim,Prof. Ibrahim,,,,,,,,,
-prof.kaur,Prof. Kaur,,,,,,,,,
-prof.lee,Prof. Lee,,,,,,,,,
-prof.lindqvist,Prof. Lindqvist,,,,,,,,,
-prof.mensah,Prof. Mensah,,,,,,,,,
-prof.moreau,Prof. Moreau,,,,,,,,,
-prof.nakamura,Prof. Nakamura,,,,,,,,,
-prof.novak,Prof. Novak,,,,,,,,,
-prof.okafor,Prof. Okafor,,,,,,,,,
-prof.ortega,Prof. Ortega,,,,,,,,,
-prof.petrov,Prof. Petrov,,,,,,,,,
-prof.quinn,Prof. Quinn,,,,,,,,,
-prof.rao,Prof. Rao,,,,,,,,,
-prof.rossi,Prof. Rossi,,,,,,,,,
-prof.silva,Prof. Silva,,,,,,,,,
-prof.tanaka,Prof. Tanaka,,,,,,,,,
-prof.weber,Prof. Weber,,,,,,,,,
-report.cohorts,Grades,,,,,,,,,
-report.concessions,Concessions,,,,,,,,,
-report.events,Events,,,,,,,,,
-report.exam_fees,Exam fees,,,,,,,,,
-report.exam_title,Semester {n} closed,,,,,,,,,
-report.grade_good,Good week,,,,,,,,,
-report.grade_great,Excellent week,,,,,,,,,
-report.grade_low,A tough week,,,,,,,,,
-report.grants,Grants,,,,,,,,,
-report.held,Classes held,,,,,,,,,
-report.hungry,Hungry at lunch,,,,,,,,,
-report.late,Late arrivals,,,,,,,,,
-report.money,Money,,,,,,,,,
-report.net,Net,,,,,,,,,
-report.none,Your first report comes on Friday evening.,,,,,,,,,
-report.overtime,Overtime,,,,,,,,,
-report.prestige,Prestige {p} ({d}),,,,,,,,,
-report.rent,Dorm rent,,,,,,,,,
-report.semester,Semester,,,,,,,,,
-report.semester_grade,Semester grade,,,,,,,,,
-report.title,Week {n} report,,,,,,,,,
-report.tuition,Tuition,,,,,,,,,
-report.upkeep,Upkeep and services,,,,,,,,,
-report.wages,Wages,,,,,,,,,
-report.week,The week,,,,,,,,,
-research.auto_fill_plus.d,Auto-fill weighs walking time and lunch seats.,,,,,,,,,
-research.auto_fill_plus.t,Smart auto-fill,,,,,,,,,
-research.backup_power.d,Power cuts no longer spoil exams.,,,,,,,,,
-research.backup_power.t,Backup power,,,,,,,,,
-research.bike_lanes.d,Everyone gets around faster.,,,,,,,,,
-research.bike_lanes.t,Bike lanes,,,,,,,,,
-research.branch.admin,Administration,,,,,,,,,
-research.branch.learning,Learning,,,,,,,,,
-research.branch.life,Campus life,,,,,,,,,
-research.branch.mobility,Mobility,,,,,,,,,
-research.clubs.d,More prestige every week.,,,,,,,,,
-research.clubs.t,Student clubs,,,,,,,,,
-research.done,Done,,,,,,,,,
-research.dorm_comfort.d,Higher rent and a little prestige.,,,,,,,,,
-research.dorm_comfort.t,Cosy dorms,,,,,,,,,
-research.faculty_dev.d,Professors teach better.,,,,,,,,,
-research.faculty_dev.t,Faculty training,,,,,,,,,
-research.finished,Upgrade ready: {name},,,,,,,,,
-research.food_trucks.d,40 more lunch seats per lunch hour.,,,,,,,,,
-research.food_trucks.t,Food trucks,,,,,,,,,
-research.grant_office.d,Bigger grants when a semester closes.,,,,,,,,,
-research.grant_office.t,Grant office,,,,,,,,,
-research.gym.d,Healthy students: more prestige every week.,,,,,,,,,
-research.gym.t,Gym,,,,,,,,,
-research.lab_equipment.d,Lab classes teach better.,,,,,,,,,
-research.lab_equipment.t,Lab equipment,,,,,,,,,
-research.left,{time} left,,,,,,,,,
-research.library_hours.d,The library's bonus doubles.,,,,,,,,,
-research.library_hours.t,Late library hours,,,,,,,,,
-research.requires,Needs {name},,,,,,,,,
-research.scholarships.d,Selective intakes bring stronger students.,,,,,,,,,
-research.scholarships.t,Scholarships,,,,,,,,,
-research.shuttle.d,A fast line from the bus stop to the science campus.,,,,,,,,,
-research.shuttle.t,Campus shuttle,,,,,,,,,
-research.signposts.d,Nobody gets lost: walks are a little shorter.,,,,,,,,,
-research.signposts.t,Signposts,,,,,,,,,
-research.smart_boards.d,Every class teaches a little better.,,,,,,,,,
-research.smart_boards.t,Smart boards,,,,,,,,,
-research.staggered_bells.d,Faculties change rooms in two waves.,,,,,,,,,
-research.staggered_bells.t,Staggered bells,,,,,,,,,
-research.start,Start · {cost},,,,,,,,,
-research.tutoring.d,Late students still catch up more of the class.,,,,,,,,,
-research.tutoring.t,Tutoring,,,,,,,,,
-research.wide_paths.d,Lets you widen busy paths in Campus.,,,,,,,,,
-research.wide_paths.t,Wider paths,,,,,,,,,
-research.zone,Needs {name},,,,,,,,,
-reward.city_help.b,Last resort: the city ends today's crisis.,,,,,,,,,
-reward.city_help.t,Call the city for help,,,,,,,,,
-reward.claim,Claim,,,,,,,,,
-reward.daily_bonus.b,A small gift once a day.,,,,,,,,,
-reward.daily_bonus.t,Supplies from the alumni,,,,,,,,,
-reward.done_cash,+{cash},,,,,,,,,
-reward.done_city,The city helped: the crisis is over.,,,,,,,,,
-reward.done_marshals,Extra marshals are on the paths for the next bell.,,,,,,,,,
-reward.extra_marshals.b,Three more marshals guide the next bell change.,,,,,,,,,
-reward.extra_marshals.t,Extra marshals,,,,,,,,,
-reward.free.b,Included with your purchase: no video.,,,,,,,,,
-reward.free_cash,Claim · +{cash},,,,,,,,,
-reward.offline_x2.b,Watch a short video to get it twice.,,,,,,,,,
-reward.offline_x2.t,Double the break pay,,,,,,,,,
-reward.unavailable,Not available right now.,,,,,,,,,
-reward.video,Watch a video,,,,,,,,,
-reward.video_cash,Video · +{cash},,,,,,,,,
-settings.auto_repair,Registrar repairs today's plan,,,,,,,,,
-settings.auto_repair.d,"Each morning, classes in a closed room move to a free slot.",,,,,,,,,
-settings.auto_skip,Skip the week summary,,,,,,,,,
-settings.auto_skip.d,Goes straight to the next week (not after exams).,,,,,,,,,
-settings.effects,Effects,,,,,,,,,
-settings.graphics,Graphics,,,,,,,,,
-settings.guide,How to play: replay the guide,,,,,,,,,
-settings.help,Help,,,,,,,,,
-settings.language,Language,,,,,,,,,
-settings.music,Music,,,,,,,,,
-settings.off,Off,,,,,,,,,
-settings.on,On,,,,,,,,,
-settings.policy,Privacy policy,,,,,,,,,
-settings.privacy,Privacy,,,,,,,,,
-settings.privacy_options,Privacy options,,,,,,,,,
-settings.restore,Restore purchases,,,,,,,,,
-settings.sound,Sound,,,,,,,,,
-settings.theme,Campus theme,,,,,,,,,
-settings.title,Settings,,,,,,,,,
-settings.version,Version {v},,,,,,,,,
-sheet.close,Close,,,,,,,,,
-shop.bought,{name} is yours.,,,,,,,,,
-shop.cap,That's enough packs for today.,,,,,,,,,
-shop.failed,The purchase did not go through.,,,,,,,,,
-shop.funds,{cash} added.,,,,,,,,,
-shop.group.adfree,No ads,,,,,,,,,
-shop.group.boost,Convenience,,,,,,,,,
-shop.group.budget,Funds,,,,,,,,,
-shop.group.looks,Campus themes,,,,,,,,,
-shop.group.offer,Offers,,,,,,,,,
-shop.offer,Offer,,,,,,,,,
-shop.owned,Owned,,,,,,,,,
-shop.restore,Restore purchases,,,,,,,,,
-shop.restore_failed,Could not restore right now. Try again later.,,,,,,,,,
-shop.restored,Purchases restored.,,,,,,,,,
-shop.title,Shop,,,,,,,,,
-shop.unavailable,The store is not available right now.,,,,,,,,,
-staff.canteen_crew,Canteen crew,,,,,,,,,
-staff.canteen_crew.d,Each one adds 25 % more lunch seats.,,,,,,,,,
-staff.departments,Departments,,,,,,,,,
-staff.dismiss,Let one go,,,,,,,,,
-staff.hire,Hire · {cost},,,,,,,,,
-staff.hire_prof,Hire a professor,,,,,,,,,
-staff.lab_techs,Lab technicians,,,,,,,,,
-staff.lab_techs.d,"One per lab class at the same time, or labs run at half quality.",,,,,,,,,
-staff.leaving,leaving,,,,,,,,,
-staff.maintenance,Maintenance,,,,,,,,,
-staff.maintenance.d,Builds faster and reopens closed rooms sooner.,,,,,,,,,
-staff.marshals,Campus marshals,,,,,,,,,
-staff.marshals.d,Each one keeps a busy path flowing at the bell.,,,,,,,,,
-staff.no_prof,No professor yet: its classes cannot run.,,,,,,,,,
-staff.payroll,Payroll {cash} per week,,,,,,,,,
-staff.policies,Policies,,,,,,,,,
-staff.prof_rule,A professor teaches at most {n} classes a day. Wage {wage} per week.,,,,,,,,,
-staff.professors,Professors,,,,,,,,,
-staff.registry,Registry,,,,,,,,,
-staff.registry.d,Invigilates exams; more applicants when you grow the intake.,,,,,,,,,
-staff.sick,sick today,,,,,,,,,
-staff.staggered.d,"Faculties change rooms in two waves, 5 minutes apart. Overtime {cash} a day.",,,,,,,,,
-tab.board,Timetable,,,,,,,,,
-tab.campus,Campus,,,,,,,,,
-tab.research,Upgrades,,,,,,,,,
-tab.settings,Settings,,,,,,,,,
-tab.shop,Shop,,,,,,,,,
-tab.staff,Staff,,,,,,,,,
-theme.default,Classic,,,,,,,,,
-theme.gold_trim,Chancellor gold,,,,,,,,,
-theme.theme_desert,Desert,,,,,,,,,
-theme.theme_ivy,Ivy,,,,,,,,,
-theme.theme_modern,Modern,,,,,,,,,
-tip.decision,A decision is waiting. Time stops until you choose.,,,,,,,,,
-tip.dorm,Students in a dorm walk from it in the morning and pay rent.,,,,,,,,,
-tip.exam,Exam week: one exam per course. Big rooms and registry staff keep it fair.,,,,,,,,,
-tip.lab,"Lab classes need a lab technician each, or they run at half quality.",,,,,,,,,
-tip.late,Late students learn less. Tap the late counter to see the busiest paths.,,,,,,,,,
-tip.lunch,"Hungry students learn less after lunch. More lunch seats, or a class at 12:00, spread the queue.",,,,,,,,,
-tip.open_day,Open day: visitors crowd the paths. Few late students bring a bonus tonight.,,,,,,,,,
-tip.pipe,A burst pipe closed a room. Move its classes on the board.,,,,,,,,,
-tip.quad,"The quad is open: hire professors for Literature, Law and Philosophy, then plan their classes.",,,,,,,,,
-tip.report,Every Friday the grades come in. Good grades raise prestige.,,,,,,,,,
-tip.science,"The science campus is far: labs, a dorm and the shuttle keep walks short.",,,,,,,,,
-tip.shuttle,The shuttle runs from the bus stop to the science campus.,,,,,,,,,
-tip.sick,"A professor is sick. A free colleague of the same faculty covers, or a substitute does.",,,,,,,,,
-tip.snow,Snow day: everyone walks slower. Rooms close together help.,,,,,,,,,
-tip.staggered,Staggered bells are ready: turn them on in Staff to split the crowds.,,,,,,,,,
-tip.widen,Wider paths are ready: find them in Campus.,,,,,,,,,
-toast.build_start,The builders started.,,,,,,,,,
-toast.built,{name} is open.,,,,,,,,,
-toast.gate,Gate open: a shortcut for the next bell.,,,,,,,,,
-toast.hungry,{n} students found no seat at lunch.,,,,,,,,,
-toast.open_day,Open day went well: {cash} from visitors.,,,,,,,,,
-toast.till,Tuition collected: {cash},,,,,,,,,
-toast.zone,{name} is open: new faculties enroll!,,,,,,,,,
-unit.h,h,,,,,,,,,
-unit.min,min,,,,,,,,,
-unit.s,s,,,,,,,,,
-warn.building,being built,,,,,,,,,
-warn.closed,room closed,,,,,,,,,
-warn.no_prof,no professor,,,,,,,,,
-warn.prof_off,professor off sick,,,,,,,,,
-warn.seats,too few seats,,,,,,,,,
-zone.college,Community College,,,,,,,,,
-zone.college.d,"Business, the first hall, the canteen.",,,,,,,,,
-zone.needs,Needs prestige {p},,,,,,,,,
-zone.quad,Liberal Arts Quad,,,,,,,,,
-zone.quad.d,"Literature, Law and Philosophy. Big halls and a second canteen.",,,,,,,,,
-zone.science,Science Campus,,,,,,,,,
-zone.science.d,"Physics, Chemistry and Maths. Labs and long walks.",,,,,,,,,
-zone.unlock,Open · {cost},,,,,,,,,
+app.tagline,Plan the timetable. Beat the bell. Grow your campus.,Ders programını planla. Zilden önce yetiş. Kampüsünü büyüt.,Stundenplan planen. Vor der Klingel fertig sein. Campus ausbauen.,Organiza los horarios. Gana al timbre. Haz crecer tu campus.,Organise l'emploi du temps. Bats la sonnerie. Fais grandir ton campus.,Monte o horário. Vença o sinal. Cresça o seu campus.,Составь расписание. Опереди звонок. Расти вместе с кампусом.,時間割を組んで、チャイムに間に合わせよう。キャンパスを大きく育てよう。,"시간표를 짜고, 종이 울리기 전에 끝내고, 캠퍼스를 키워요.",टाइमटेबल बनाओ। घंटी से पहले पूरा करो। अपना कैंपस बढ़ाओ।
+app.title,Semester Rush,Semester Rush,Semester Rush,Semester Rush,Semester Rush,Semester Rush,Semester Rush,Semester Rush,Semester Rush,Semester Rush
+board.auto_fill,Auto-fill,Otomatik doldur,Auto-füllen,Autorrellenar,Remplir auto,Preencher sozinho,Авто-заполнение,自動で埋める,자동 채우기,अपने आप भरो
+board.auto_fill_smart,Smart auto-fill,Akıllı doldur,Smartes Auto-füllen,Autorrellenar inteligente,Remplissage intelligent,Preencher inteligente,Умное заполнение,賢く自動で埋める,스마트 자동 채우기,समझदारी से अपने आप भरो
+board.complete,Every class has a slot.,Her dersin bir yeri var.,Jeder Kurs hat einen Platz.,Cada clase tiene su hueco.,Chaque cours a un créneau.,Todas as aulas têm horário.,Все занятия расставлены.,すべての授業に枠が入りました。,모든 수업에 칸이 있어요.,हर क्लास का समय तय है।
+board.count,{n}/{m} this week,Bu hafta {n}/{m},{n}/{m} diese Woche,{n}/{m} esta semana,{n}/{m} cette semaine,{n}/{m} nesta semana,На неделе: {n}/{m},今週 {n}/{m},이번 주 {n}/{m},इस हफ़्ते {n}/{m}
+board.courses,Courses and professors,Dersler ve hocalar,Kurse und Professoren,Asignaturas y profesores,Cours et professeurs,Disciplinas e professores,Предметы и преподаватели,授業と教授,과목과 교수,कोर्स और प्रोफ़ेसर
+board.exams,exam plan,sınav planı,Prüfungsplan,plan de exámenes,plan d'examens,plano de provas,план экзаменов,試験予定,시험 계획,परीक्षा योजना
+board.lunch_b,Move {course} to {time}: its group eats later and everyone gets a seat.,"{course} dersini {time} saatine taşı: grubu sonra yemek yer, herkes bir koltuğa oturur.","{course} auf {time} verschieben: Die Gruppe isst später, und alle bekommen einen Platz.",Pasa {course} a las {time}: su grupo come más tarde y todos tienen sitio.,Déplace {course} à {time} : son groupe mange plus tard et tout le monde a une place.,Mova {course} para {time}: o grupo dessa turma almoça depois e todos têm lugar.,"Перенеси {course} на {time}: эта группа поест позже, и всем хватит места.",{course} を {time} に移します。そのグループは昼食が後になり、全員が席に座れます。,"{course} 수업을 {time}에 옮기세요. 그 조는 나중에 먹고, 모두 자리를 얻어요.",{course} को {time} पर ले जाओ: उसका ग्रुप बाद में खाएगा और सबको सीट मिलेगी।
+board.lunch_t,{day}: canteen too small at lunch,{day}: öğlede kantin çok küçük,{day}: Mensa zur Mittagszeit zu klein,{day}: la cantina es muy pequeña a la hora de comer,{day} : cantine trop petite à midi,{day}: refeitório pequeno demais na hora do almoço,{day}: в обед столовая слишком маленькая,{day}: 昼どきは食堂が狭すぎます,{day}: 점심에 구내식당이 너무 좁아요,{day}: दोपहर में कैंटीन छोटी पड़ रही है
+board.missing,{n} classes still need a slot,{n} dersin hâlâ yeri yok,{n} Kurse brauchen noch einen Platz,{n} clases aún necesitan hueco,{n} cours ont encore besoin d'un créneau,{n} aulas ainda precisam de horário,Без места занятий: {n},まだ枠が必要な授業が {n} 件あります,수업 {n}개에 아직 칸이 필요해요,{n} क्लास का समय अभी तय नहीं है
+board.move_hint,Tap an empty cell to move it there.,Taşımak için boş bir hücreye dokun.,"Tippe auf eine leere Zelle, um den Kurs dorthin zu legen.",Toca una casilla vacía para moverla allí.,Touche une case vide pour y déplacer le cours.,Toque numa célula vazia para mover a aula para lá.,"Нажми на пустую ячейку, чтобы перенести сюда.",空いているマスをタップすると、そこに移動します。,빈 칸을 누르면 그 칸으로 옮겨요.,"खाली खाने पर टैप करो, वहाँ ले जाने के लिए।"
+board.move_to,Move to {time},{time} saatine taşı,Auf {time} verschieben,Mover a las {time},Déplacer à {time},Mover para {time},Перенести на {time},{time} に移動,{time}에 옮기기,{time} पर ले जाओ
+board.no_prof,no professor,hoca yok,kein Professor,sin profesor,pas de professeur,sem professor,нет преподавателя,教授なし,교수 없음,कोई प्रोफ़ेसर नहीं
+board.nothing_to_place,Every class is placed. Tap a class on the board to move it.,Her ders yerleşti. Taşımak için tahtadaki bir derse dokun.,"Alle Kurse sind platziert. Tippe auf einen Kurs im Plan, um ihn zu verschieben.",Todas las clases están colocadas. Toca una clase del horario para moverla.,Tous les cours sont placés. Touche un cours sur le planning pour le déplacer.,Todas as aulas estão alocadas. Toque numa aula no quadro para movê-la.,"Все занятия на месте. Нажми на занятие в расписании, чтобы передвинуть его.",すべての授業が配置済みです。時間割の授業をタップすると移動できます。,모든 수업이 배치됐어요. 시간표에서 수업을 누르면 옮길 수 있어요.,सारी क्लास लग चुकी हैं। किसी क्लास को दूसरी जगह ले जाने के लिए बोर्ड पर उस पर टैप करो।
+board.pick,{day} {time}: which class?,{day} {time}: hangi ders?,{day} {time}: Welcher Kurs?,{day} {time}: ¿qué clase?,{day} {time} : quel cours ?,{day} {time}: qual aula?,{day} {time}: какое занятие?,{day} {time}: どの授業にしますか？,{day} {time}: 어떤 수업인가요?,{day} {time}: कौन-सी क्लास?
+board.place,Place,Yerleştir,Platzieren,Colocar,Placer,Colocar,Поставить,配置する,배치,लगाओ
+board.remove,Remove,Kaldır,Entfernen,Quitar,Retirer,Remover,Убрать,外す,빼기,हटाओ
+board.seats,{n} seats,{n} koltuk,{n} Plätze,{n} plazas,{n} places,{n} vagas,Мест: {n},座席 {n},좌석 {n}석,{n} सीटें
+board.selected,Picked class,Seçilen ders,Gewählter Kurs,Clase elegida,Cours choisi,Aula escolhida,Выбрано занятие,選んだ授業,고른 수업,चुनी हुई क्लास
+board.students,{n} students,{n} öğrenci,{n} Studierende,{n} estudiantes,{n} étudiants,{n} alunos,Студентов: {n},学生 {n} 人,학생 {n}명,{n} छात्र
+building.admin,Admin building,Yönetim binası,Verwaltungsgebäude,Edificio de administración,Bâtiment administratif,Prédio administrativo,Административный корпус,事務棟,행정동,प्रशासन भवन
+building.admin.d,The dean's office and the bursar: tuition waits here.,Dekanlık ve veznedar burada: harç burada bekler.,Das Dekanat und die Kasse: Studiengebühren warten hier.,El decanato y la tesorería: la matrícula espera aquí.,Le bureau du doyen et l'intendance : les frais de scolarité attendent ici.,A reitoria e a tesouraria: as mensalidades ficam aqui.,Деканат и бухгалтерия. Плата за учёбу ждёт здесь.,学部長室と会計課です。授業料はここに集まります。,학장실과 재무과가 있는 곳이에요. 등록금이 여기서 모여요.,डीन का दफ़्तर और अकाउंट्स। फीस यहीं इकट्ठा होती है।
+building.beds,Beds,Yataklar,Betten,Camas,Lits,Camas,Койки,ベッド数,침대,बिस्तर
+building.build,Build · {cost},İnşa et · {cost},Bauen · {cost},Construir · {cost},Construire · {cost},Construir · {cost},Построить · {cost},建設 · {cost},짓기 · {cost},बनाओ · {cost}
+building.canteen,Canteen,Kantin,Mensa,Cantina,Cantine,Refeitório,Столовая,食堂,구내식당,कैंटीन
+building.canteen.d,80 lunch seats per lunch hour.,Her öğle saatinde 80 yemek koltuğu.,80 Mittagsplätze pro Mittagspause.,80 plazas para comer en cada hora de almuerzo.,80 places au déjeuner par heure de pause.,80 lugares para almoço por horário de almoço.,80 мест в столовой на каждый обед.,昼休みに80席を提供します。,점심시간마다 80명이 앉을 수 있어요.,दोपहर के खाने के समय 80 सीटें।
+building.collect,Collect the tuition,Harcı topla,Gebühren einsammeln,Recoger la matrícula,Encaisser les frais,Recolher as mensalidades,Забрать плату за учёбу,授業料を集める,등록금 받기,फीस इकट्ठा करो
+building.crews,Builders work in parallel: start as many buildings as you like. Maintenance staff build faster.,Ekipler aynı anda çalışır: istediğin kadar bina başlatabilirsin. Bakım ekibi daha hızlı inşa eder.,"Bauteams arbeiten parallel: Starte so viele Gebäude, wie du willst. Hausmeister bauen schneller.",Los obreros trabajan a la vez: puedes empezar todos los edificios que quieras. El personal de mantenimiento construye más rápido.,Les ouvriers travaillent en parallèle : lance autant de chantiers que tu veux. Le personnel d'entretien construit plus vite.,As equipes trabalham ao mesmo tempo: comece quantos prédios quiser. A equipe de manutenção constrói mais rápido.,Строители работают сразу: можно начать сколько угодно построек. Техслужба строит быстрее.,作業員は同時に働きます。建物はいくつでも同時に建てられます。整備スタッフがいると工事が速くなります。,건설 팀은 함께 일해요. 원하는 만큼 동시에 지을 수 있어요. 시설 관리 직원이 있으면 더 빨리 지어요.,मज़दूर एक साथ काम करते हैं: जितनी चाहो इमारतें एक साथ शुरू करो। रखरखाव स्टाफ़ से काम तेज़ होता है।
+building.days,{n} days,{n} gün,{n} Tage,{n} días,{n} jours,{n} dias,Дней: {n},{n}日,{n}일,{n} दिन
+building.dorm,Dorm,Yurt,Wohnheim,Residencia,Résidence,Alojamento,Общежитие,寮,기숙사,हॉस्टल
+building.dorm.d,80 beds. Residents walk from here and pay rent.,80 yatak. Yurttakiler buradan yürür ve kira öder.,80 Betten. Bewohner laufen von hier los und zahlen Miete.,80 camas. Los residentes salen de aquí y pagan alquiler.,80 lits. Les résidents partent d'ici à pied et paient un loyer.,80 camas. Os moradores vêm daqui a pé e pagam aluguel.,80 коек. Жильцы отсюда ходят на занятия и платят аренду.,ベッド80台。住人はここから通学し、家賃を払います。,"침대 80개. 학생들이 여기서 출발하고, 기숙비를 내요.",80 बिस्तर। यहाँ रहने वाले छात्र पैदल आते हैं और किराया देते हैं।
+building.hall_l,Amphitheatre,Amfi,Amphitheater,Anfiteatro,Amphithéâtre,Anfiteatro,Амфитеатр,大講堂,대강당,एम्फ़ीथिएटर
+building.hall_l.d,160 seats for big lectures and exams.,Büyük dersler ve sınavlar için 160 koltuk.,160 Plätze für große Vorlesungen und Prüfungen.,160 plazas para grandes conferencias y exámenes.,160 places pour les grands cours magistraux et les examens.,160 lugares para grandes palestras e provas.,160 мест для больших лекций и экзаменов.,大きな講義や試験用の席が160あります。,큰 강의와 시험을 위한 160석이에요.,बड़े लेक्चर और परीक्षा के लिए 160 सीटें।
+building.hall_m,Lecture hall,Ders salonu,Hörsaal,Aula magna,Salle de cours,Auditório,Лекционный зал,講義室,강의실,लेक्चर हॉल
+building.hall_m.d,90 seats for lectures.,Dersler için 90 koltuk.,90 Plätze für Vorlesungen.,90 plazas para clases magistrales.,90 places pour les cours.,90 lugares para palestras.,90 мест для лекций.,講義用の席が90あります。,강의를 위한 90석이에요.,लेक्चर के लिए 90 सीटें।
+building.hall_s,Small hall,Küçük salon,Kleiner Saal,Aula pequeña,Petite salle,Salão pequeno,Малый зал,小講義室,소강당,छोटा हॉल
+building.hall_s.d,50 seats for lectures.,Dersler için 50 koltuk.,50 Plätze für Vorlesungen.,50 plazas para clases magistrales.,50 places pour les cours.,50 lugares para palestras.,50 мест для лекций.,講義用の席が50あります。,강의를 위한 50석이에요.,लेक्चर के लिए 50 सीटें।
+building.lab,Lab,Laboratuvar,Labor,Laboratorio,Labo,Laboratório,Лаборатория,実験室,실험실,लैब
+building.lab.d,50 seats for lab classes.,Laboratuvar dersleri için 50 koltuk.,50 Plätze für Laborkurse.,50 plazas para prácticas de laboratorio.,50 places pour les travaux pratiques.,50 lugares para aulas práticas.,50 мест для занятий в лаборатории.,実験授業用の席が50あります。,실험 수업을 위한 50석이에요.,लैब क्लास के लिए 50 सीटें।
+building.library,Library,Kütüphane,Bibliothek,Biblioteca,Bibliothèque,Biblioteca,Библиотека,図書館,도서관,लाइब्रेरी
+building.library.d,Better classes and more prestige; students wait here between classes.,Daha iyi dersler ve daha fazla itibar; öğrenciler dersler arasında burada bekler.,Bessere Kurse und mehr Prestige; Studierende warten hier zwischen den Kursen.,Mejores clases y más prestigio; los estudiantes esperan aquí entre clases.,De meilleurs cours et plus de prestige ; les étudiants attendent ici entre deux cours.,Aulas melhores e mais prestígio; os alunos esperam aqui entre as aulas.,Лучше занятия и больше престижа. Студенты ждут здесь между парами.,授業の質が上がり、名声も高まります。学生は授業の合間にここで待ちます。,수업 수준과 명성을 올려 줘요. 학생들은 수업 사이에 여기서 기다려요.,बेहतर क्लास और ज़्यादा प्रतिष्ठा; क्लास के बीच छात्र यहाँ बैठते हैं।
+building.library.effect,"Better classes for everyone, more prestige every week, and a quiet place between classes.","Herkes için daha iyi dersler, her hafta daha fazla itibar ve dersler arasında sakin bir yer.","Bessere Kurse für alle, jede Woche mehr Prestige und ein ruhiger Ort zwischen den Kursen.","Mejores clases para todos, más prestigio cada semana y un lugar tranquilo entre clases.","De meilleurs cours pour tous, plus de prestige chaque semaine, et un coin calme entre deux cours.","Aulas melhores para todos, mais prestígio a cada semana e um lugar tranquilo entre as aulas.","Лучше занятия для всех, больше престижа каждую неделю и тихое место между парами.",全員の授業の質が上がり、毎週の名声が増え、授業の合間に静かに過ごせます。,"모든 수업이 더 좋아지고, 매주 명성이 올라가요. 수업 사이에 조용히 쉴 곳도 생겨요.","सबके लिए बेहतर क्लास, हर हफ़्ते ज़्यादा प्रतिष्ठा, और क्लास के बीच शांत जगह।"
+building.meals,Lunch seats,Öğle koltukları,Mittagsplätze,Plazas de almuerzo,Places au déjeuner,Lugares no almoço,Места в столовой,昼食の席,점심 좌석,लंच की सीटें
+building.progress,Built,Tamamlandı,Fertig,Construido,Construit,Pronto,Построено,建設済み,완공,बन गया
+building.residents,Students living on campus,Kampüste kalan öğrenciler,"Studierende, die auf dem Campus wohnen",Estudiantes que viven en el campus,Étudiants logés sur le campus,Alunos morando no campus,"Студенты, живущие в кампусе",キャンパスに住む学生,기숙사에 사는 학생,कैंपस में रहने वाले छात्र
+building.seats,Seats,Koltuklar,Plätze,Plazas,Places,Vagas,Места,座席,좌석,सीटें
+building.till,Tuition waiting,Bekleyen harç,Gebühren warten,Matrícula pendiente,Frais en attente,Mensalidades a receber,Плата ждёт,授業料が待機中,받을 등록금,फीस बाकी है
+building.time,Build time,İnşa süresi,Bauzeit,Tiempo de obra,Durée des travaux,Tempo de construção,Время стройки,建設時間,건설 시간,बनने का समय
+building.upkeep,Upkeep per week,Haftalık bakım,Unterhalt pro Woche,Mantenimiento por semana,Entretien par semaine,Manutenção por semana,Содержание в неделю,週あたりの維持費,주당 유지비,हफ़्ते का रखरखाव खर्च
+campus.build,Build,İnşa et,Bauen,Construir,Construire,Construir,Строить,建てる,짓기,बनाओ
+campus.buildings,Buildings,Binalar,Gebäude,Edificios,Bâtiments,Prédios,Постройки,建物,건물,इमारतें
+campus.gate,Gate: {a} – {b},Kapı: {a} – {b},Tor: {a} – {b},Puerta: {a} – {b},Portail : {a} – {b},Portão: {a} – {b},Ворота: {a} – {b},門: {a} – {b},출입문: {a} – {b},गेट: {a} – {b}
+campus.gate.d,Opens a shortcut. Fewer students walk the long way round.,Kısa yol açar. Daha az öğrenci uzun yoldan dolanır.,Öffnet eine Abkürzung. Weniger Studierende laufen den langen Weg.,Abre un atajo. Menos estudiantes dan la vuelta larga.,Ouvre un raccourci. Moins d'étudiants font le grand tour.,Abre um atalho. Menos alunos dão a volta grande.,Открывает короткий путь. Меньше студентов идут в обход.,近道が開きます。遠回りする学生が減ります。,지름길을 열어요. 멀리 돌아가는 학생이 줄어요.,शॉर्टकट खोलता है। कम छात्र लंबा रास्ता लेंगे।
+campus.gate_open,This gate is open.,Bu kapı açık.,Dieses Tor ist offen.,Esta puerta está abierta.,Ce portail est ouvert.,Este portão está aberto.,Эти ворота открыты.,この門は開いています。,이 출입문은 열려 있어요.,यह गेट खुला है।
+campus.paths,Paths and gates,Yollar ve kapılar,Wege und Tore,Caminos y puertas,Allées et portails,Caminhos e portões,Дорожки и ворота,通路と門,길과 출입문,रास्ते और गेट
+campus.students,{n} students,{n} öğrenci,{n} Studierende,{n} estudiantes,{n} étudiants,{n} alunos,Студентов: {n},学生 {n} 人,학생 {n}명,{n} छात्र
+campus.widen,Wider path: {a} – {b},Geniş yol: {a} – {b},Breiterer Weg: {a} – {b},Camino más ancho: {a} – {b},Allée plus large : {a} – {b},Caminho mais largo: {a} – {b},Широкая дорожка: {a} – {b},通路を広げる: {a} – {b},넓은 길: {a} – {b},चौड़ा रास्ता: {a} – {b}
+campus.widen.busy,Busiest this week: {pct} of capacity. Twice as many students pass at once.,Bu hafta en yoğun: kapasitenin {pct}'i. Aynı anda iki kat daha fazla öğrenci geçer.,Am vollsten diese Woche: {pct} der Kapazität. Doppelt so viele Studierende passieren gleichzeitig.,Lo más concurrido esta semana: {pct} de la capacidad. Pasan el doble de estudiantes a la vez.,Le plus fréquenté cette semaine : {pct} de la capacité. Deux fois plus d'étudiants passent en même temps.,Mais movimentado da semana: {pct} da capacidade. O dobro de alunos passa ao mesmo tempo.,Самая загруженная на неделе: {pct} от вместимости. Вдвое больше студентов проходят сразу.,今週いちばん混んだ道: 定員の {pct}。一度に通れる学生が2倍になります。,이번 주 가장 붐볐어요: 수용량의 {pct}. 한꺼번에 두 배 많은 학생이 지나가요.,इस हफ़्ते सबसे भीड़: क्षमता का {pct}। एक साथ दोगुने छात्र निकल सकेंगे।
+campus.widen.d,Twice as many students pass at once.,Aynı anda iki kat daha fazla öğrenci geçer.,Doppelt so viele Studierende passieren gleichzeitig.,Pasan el doble de estudiantes a la vez.,Deux fois plus d'étudiants passent en même temps.,O dobro de alunos passa ao mesmo tempo.,Вдвое больше студентов проходят сразу.,一度に通れる学生が2倍になります。,한꺼번에 두 배 많은 학생이 지나가요.,एक साथ दोगुने छात्र निकल सकेंगे।
+campus.widen.none,No path got crowded this week.,Bu hafta hiçbir yol kalabalıklaşmadı.,Diese Woche war kein Weg überfüllt.,Esta semana ningún camino se llenó.,Aucune allée n'a été bondée cette semaine.,Nenhum caminho ficou lotado nesta semana.,На этой неделе ни одна дорожка не была переполнена.,今週は混雑した通路はありませんでした。,이번 주에는 붐비는 길이 없었어요.,इस हफ़्ते किसी रास्ते पर भीड़ नहीं हुई।
+coach.1,"Welcome, Dean! This is your lecture hall. Tap it.","Hoş geldin, Dekan! Burası ders salonun. Dokun.","Willkommen, Dekan! Das ist dein Hörsaal. Tippe darauf.","¡Bienvenido, decano! Este es tu aula magna. Tócala.","Bienvenue, Doyen ! Voici ton amphi. Touche-le.","Bem-vindo, Reitor! Este é o seu auditório. Toque nele.","Добро пожаловать, декан! Это твой лекционный зал. Нажми на него.",ようこそ、学部長！ こちらがあなたの講義室です。タップしてください。,"환영해요, 학장님! 이곳이 첫 강의실이에요. 눌러 보세요.","स्वागत है, डीन साहब! यह आपका लेक्चर हॉल है। इस पर टैप करो।"
+coach.10,Lunch: the canteen will be full at 12:00. Move this class to 12:00 so one group eats later.,"Öğle: kantin 12:00'de dolacak. Bu dersi 12:00'ye taşı, böylece bir grup sonra yesin.","Mittagessen: Die Mensa ist um 12:00 voll. Verschiebe diesen Kurs auf 12:00, damit eine Gruppe später isst.",Almuerzo: la cantina se llenará a las 12:00. Pasa esta clase a las 12:00 para que un grupo coma más tarde.,Déjeuner : la cantine sera pleine à 12 h 00. Déplace ce cours à 12 h 00 pour qu'un groupe mange plus tard.,Almoço: o refeitório vai lotar às 12:00. Mova esta aula para as 12:00 para que um grupo almoce depois.,"Обед: в 12:00 столовая будет полной. Перенеси это занятие на 12:00, чтобы одна группа поела позже.",昼食: 12:00には食堂が満員になります。この授業を12:00に移すと、一つのグループの昼食が後になります。,점심: 12시에는 구내식당이 꽉 차요. 이 수업을 12시로 옮기면 한 조는 나중에 먹어요.,"दोपहर का खाना: 12:00 बजे कैंटीन भर जाएगी। इस क्लास को 12:00 पर ले जाओ, ताकि एक ग्रुप बाद में खाए।"
+coach.11,That was your first week. Tap Open the grades.,İlk haftan bitti. Notları açmak için Notları aç'a dokun.,Das war deine erste Woche. Tippe auf „Noten öffnen“.,Esa fue tu primera semana. Toca Ver las notas.,C'était ta première semaine. Touche « Voir les notes ».,Essa foi a sua primeira semana. Toque em Abrir as notas.,Это была первая неделя. Нажми «Открыть оценки».,これで最初の週が終わりました。「成績を見る」をタップしてください。,첫 주를 끝냈어요. “성적 보기”를 눌러 보세요.,यह आपका पहला हफ़्ता था। ग्रेड देखने के लिए टैप करो।
+coach.2,This is its timetable. Tap Monday 9:00.,"Bu, dersin programı. Pazartesi 9:00'a dokun.",Das ist sein Stundenplan. Tippe auf Montag 9:00.,Este es su horario. Toca el lunes a las 9:00.,Voici son emploi du temps. Touche lundi 9 h 00.,Este é o horário da aula. Toque em Segunda 9:00.,Это его расписание. Нажми «Понедельник 9:00».,これがこの授業の時間割です。月曜の9:00をタップしてください。,이게 이 강의실의 시간표예요. 월요일 9:00을 눌러 보세요.,यह इसका टाइमटेबल है। सोमवार 9:00 पर टैप करो।
+coach.3,Pick Business 101 for this slot.,Bu saat için İşletme 101'i seç.,Wähle für diesen Termin Betriebswirtschaft 101.,Elige Economía 101 para este hueco.,Choisis Gestion 101 pour ce créneau.,Escolha Administração 101 para este horário.,Для этого места выбери «Введение в бизнес».,この枠には「経営学入門」を選んでください。,이 칸에는 “경영 입문”을 골라 보세요.,इस समय के लिए बिज़नेस 101 चुनो।
+coach.4,A class needs a professor. Tap Prof. Lee.,Bir dersin hocası olmalı. Prof. Lee'ye dokun.,Ein Kurs braucht einen Professor. Tippe auf Prof. Lee.,Una clase necesita profesor. Toca al profesor Lee.,Un cours a besoin d'un professeur. Touche le professeur Lee.,Uma aula precisa de professor. Toque em Prof. Lee.,Занятию нужен преподаватель. Нажми «Проф. Ли».,授業には教授が必要です。リー教授をタップしてください。,수업에는 교수가 필요해요. 리 교수를 눌러 보세요.,क्लास को प्रोफ़ेसर चाहिए। Prof. Lee पर टैप करो।
+coach.5,The plan is ready. Press Start the week.,Plan hazır. Haftayı başlat'a bas.,Der Plan ist fertig. Drück auf „Woche starten“.,El plan está listo. Pulsa Empezar la semana.,Le planning est prêt. Appuie sur « Lancer la semaine ».,O plano está pronto. Aperte Começar a semana.,План готов. Нажми «Начать неделю».,計画ができました。「今週を始める」を押してください。,계획이 준비됐어요. “이번 주 시작”을 누르세요.,"योजना तैयार है। ""हफ़्ता शुरू करो"" दबाओ।"
+coach.6,The bell! Students walk to class. Watch the path.,Zil! Öğrenciler derse yürüyor. Yola bak.,Die Klingel! Studierende laufen zum Kurs. Beobachte den Weg.,¡El timbre! Los estudiantes van a clase. Fíjate en el camino.,La sonnerie ! Les étudiants vont en cours. Regarde l'allée.,O sinal! Os alunos vão para a aula. Acompanhe o caminho.,Звонок! Студенты идут на занятия. Смотри за дорожками.,チャイムです！ 学生が教室へ向かいます。通路の様子を見てください。,종이 울렸어요! 학생들이 수업에 가요. 길을 지켜보세요.,घंटी बजी! छात्र क्लास की ओर चल पड़े। रास्ते पर नज़र रखो।
+coach.7,Some were late: the way round is long. Tap the gate to open a shortcut.,Bazıları geç kaldı: dolambaçlı yol uzun. Kısa yol açmak için kapıya dokun.,"Einige kamen zu spät: Der Umweg ist lang. Tippe aufs Tor, um eine Abkürzung zu öffnen.",Algunos llegaron tarde: el camino es largo. Toca la puerta para abrir un atajo.,Certains sont en retard : le détour est long. Touche le portail pour ouvrir un raccourci.,Alguns chegaram atrasados: o caminho é longo. Toque no portão para abrir um atalho.,"Некоторые опоздали: обход длинный. Нажми на ворота, чтобы открыть короткий путь.",遅れた学生がいます。遠回りが長いためです。門をタップして近道を開けましょう。,지각한 학생이 있어요. 돌아가는 길이 너무 멀어요. 출입문을 눌러 지름길을 여세요.,कुछ छात्र देर से पहुँचे: घूमकर जाने का रास्ता लंबा है। शॉर्टकट खोलने के लिए गेट पर टैप करो।
+coach.8,Class is over. Tap the coins to collect the tuition.,Ders bitti. Harcı toplamak için madeni paraya dokun.,"Der Kurs ist vorbei. Tippe auf die Münzen, um die Gebühren einzusammeln.",La clase terminó. Toca las monedas para recoger la matrícula.,Le cours est fini. Touche les pièces pour encaisser les frais.,A aula acabou. Toque nas moedas para recolher as mensalidades.,"Занятие закончилось. Нажми на монеты, чтобы забрать плату за учёбу.",授業が終わりました。コインをタップして授業料を集めましょう。,수업이 끝났어요. 동전을 눌러 등록금을 받으세요.,क्लास खत्म। फीस लेने के लिए सिक्कों पर टैप करो।
+coach.9,Spend it: tap the plot and build the library. Builders work together.,Harcamanın zamanı: arsaya dokunup kütüphaneyi inşa et. Ekipler birlikte çalışır.,Gib es aus: Tippe aufs Grundstück und baue die Bibliothek. Bauteams arbeiten zusammen.,Gástalo: toca el terreno y construye la biblioteca. Los obreros trabajan juntos.,Dépense-les : touche le terrain et construis la bibliothèque. Les ouvriers travaillent ensemble.,Gaste: toque no terreno e construa a biblioteca. As equipes trabalham juntas.,Потрать: нажми на участок и построй библиотеку. Строители работают вместе.,使いましょう: 区画をタップして図書館を建てます。作業員は一緒に働きます。,이제 써 볼까요? 빈 땅을 눌러 도서관을 지으세요. 건설 팀이 함께 일해요.,पैसे खर्च करो: जगह पर टैप करो और लाइब्रेरी बनाओ। मज़दूर मिलकर काम करते हैं।
+coach.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
+coach.step,Step {n} of {m},Adım {n} / {m},Schritt {n} von {m},Paso {n} de {m},Étape {n} sur {m},Passo {n} de {m},Шаг {n} из {m},ステップ {n} / {m},{m}단계 중 {n}단계,चरण {n} / {m}
+cohort.bus1,"Business, year 1","İşletme, 1. sınıf","Betriebswirtschaft, 1. Jahr","Economía, 1.º año","Gestion, 1re année","Administração, 1º ano","Бизнес, 1 курс",経営学 1年,경영학 1학년,"Business, पहला साल"
+cohort.bus2,"Business, year 2","İşletme, 2. sınıf","Betriebswirtschaft, 2. Jahr","Economía, 2.º año","Gestion, 2e année","Administração, 2º ano","Бизнес, 2 курс",経営学 2年,경영학 2학년,"Business, दूसरा साल"
+cohort.che1,Chemistry,Kimya,Chemie,Química,Chimie,Química,Химия,化学,화학,केमिस्ट्री
+cohort.law1,Law,Hukuk,Jura,Derecho,Droit,Direito,Право,法学,법학,कानून
+cohort.lit1,Literature,Edebiyat,Literatur,Literatura,Littérature,Literatura,Литература,文学,문학,साहित्य
+cohort.mat1,Maths,Matematik,Mathematik,Matemáticas,Maths,Matemática,Математика,数学,수학,गणित
+cohort.phi1,Philosophy,Felsefe,Philosophie,Filosofía,Philosophie,Filosofia,Философия,哲学,철학,दर्शनशास्त्र
+cohort.phy1,Physics,Fizik,Physik,Física,Physique,Física,Физика,物理,물리학,फ़िज़िक्स
+common.ok,OK,Tamam,OK,OK,OK,OK,OK,OK,확인,ठीक है
+common.open,Open,Aç,Öffnen,Abrir,Ouvrir,Abrir,Открыть,開く,열기,खोलो
+course.bus101,Business 101,İşletme 101,Betriebswirtschaft 101,Economía 101,Gestion 101,Administração 101,Введение в бизнес,経営学入門,경영 입문,बिज़नेस 101
+course.bus101.code,BUS101,BUS101,BWL101,ECO101,GES101,ADM101,BUS101,BUS101,BUS101,BUS101
+course.bus110,Accounting Basics,Muhasebe Temelleri,Buchhaltung Grundlagen,Nociones de contabilidad,Bases de comptabilité,Noções de Contabilidade,Основы учёта,簿記の基礎,회계 기초,अकाउंटिंग की बातें
+course.bus110.code,BUS110,BUS110,BWL110,ECO110,GES110,ADM110,BUS110,BUS110,BUS110,BUS110
+course.bus201,Marketing,Pazarlama,Marketing,Marketing,Marketing,Marketing,Маркетинг,マーケティング,마케팅,मार्केटिंग
+course.bus201.code,BUS201,BUS201,BWL201,ECO201,GES201,ADM201,BUS201,BUS201,BUS201,BUS201
+course.bus210,Team Leadership,Takım Liderliği,Teamführung,Liderazgo de equipos,Direction d'équipe,Liderança de Equipes,Командное лидерство,チームリーダーシップ,팀 리더십,टीम लीडरशिप
+course.bus210.code,BUS210,BUS210,BWL210,ECO210,GES210,ADM210,BUS210,BUS210,BUS210,BUS210
+course.che101,General Chemistry,Genel Kimya,Allgemeine Chemie,Química general,Chimie générale,Química Geral,Общая химия,一般化学,일반 화학,सामान्य रसायन विज्ञान
+course.che101.code,CHE101,CHE101,CHE101,QUI101,CHI101,QUI101,CHE101,CHE101,CHE101,CHE101
+course.che150,Chemistry Lab,Kimya Laboratuvarı,Chemie-Labor,Laboratorio de química,Travaux pratiques de chimie,Laboratório de Química,Химическая лаборатория,化学実験,화학 실험,केमिस्ट्री लैब
+course.che150.code,CHE150,CHE150,CHE150,QUI150,CHI150,QUI150,CHE150,CHE150,CHE150,CHE150
+course.law101,Contract Law,Sözleşme Hukuku,Vertragsrecht,Derecho de contratos,Droit des contrats,Direito Contratual,Договорное право,契約法,계약법,कॉन्ट्रैक्ट कानून
+course.law101.code,LAW101,LAW101,JUR101,DER101,DRT101,DIR101,LAW101,LAW101,LAW101,LAW101
+course.law110,Legal Writing,Hukuk Yazımı,Juristisches Schreiben,Redacción jurídica,Rédaction juridique,Redação Jurídica,Юридическое письмо,法文書作成,법률 문서 작성,कानूनी लेखन
+course.law110.code,LAW110,LAW110,JUR110,DER110,DRT110,DIR110,LAW110,LAW110,LAW110,LAW110
+course.lit101,World Novels,Dünya Romanları,Weltliteratur,Novelas del mundo,Romans du monde,Romances Mundiais,Мировой роман,世界の小説,세계 소설,विश्व उपन्यास
+course.lit101.code,LIT101,LIT101,LIT101,LIT101,LIT101,LIT101,LIT101,LIT101,LIT101,LIT101
+course.lit110,Creative Writing,Yaratıcı Yazarlık,Kreatives Schreiben,Escritura creativa,Écriture créative,Escrita Criativa,Литературное творчество,創作文学,창작 글쓰기,क्रिएटिव राइटिंग
+course.lit110.code,LIT110,LIT110,LIT110,LIT110,LIT110,LIT110,LIT110,LIT110,LIT110,LIT110
+course.mat101,Calculus,Kalkülüs,Analysis,Cálculo,Analyse,Cálculo,Математический анализ,微積分,미적분,कैलकुलस
+course.mat101.code,MAT101,MAT101,MAT101,MAT101,MAT101,MAT101,MAT101,MAT101,MAT101,MAT101
+course.mat110,Linear Algebra,Lineer Cebir,Lineare Algebra,Álgebra lineal,Algèbre linéaire,Álgebra Linear,Линейная алгебра,線形代数,선형대수,लीनियर एलजेब्रा
+course.mat110.code,MAT110,MAT110,MAT110,MAT110,MAT110,MAT110,MAT110,MAT110,MAT110,MAT110
+course.phi101,Logic,Mantık,Logik,Lógica,Logique,Lógica,Логика,論理学,논리학,तर्कशास्त्र
+course.phi101.code,PHI101,PHI101,PHI101,FIL101,PHI101,FIL101,PHI101,PHI101,PHI101,PHI101
+course.phi110,Ethics,Etik,Ethik,Ética,Éthique,Ética,Этика,倫理学,윤리학,नैतिकता
+course.phi110.code,PHI110,PHI110,PHI110,FIL110,PHI110,FIL110,PHI110,PHI110,PHI110,PHI110
+course.phy101,Mechanics,Mekanik,Mechanik,Mecánica,Mécanique,Mecânica,Механика,力学,역학,यांत्रिकी
+course.phy101.code,PHY101,PHY101,PHY101,FIS101,PHY101,FIS101,PHY101,PHY101,PHY101,PHY101
+course.phy150,Physics Lab,Fizik Laboratuvarı,Physik-Labor,Laboratorio de física,Travaux pratiques de physique,Laboratório de Física,Физическая лаборатория,物理実験,물리 실험,फ़िज़िक्स लैब
+course.phy150.code,PHY150,PHY150,PHY150,FIS150,PHY150,FIS150,PHY150,PHY150,PHY150,PHY150
+crisis.burst_pipe.b,A room is closed for a few hours.,Bir oda birkaç saatliğine kapanır.,Ein Raum ist für ein paar Stunden gesperrt.,Una sala queda cerrada unas horas.,Une salle est fermée pendant quelques heures.,Uma sala fica fechada por algumas horas.,Одна аудитория закрыта на несколько часов.,数時間、教室が一つ使えなくなります。,방 하나가 몇 시간 동안 닫혀요.,एक कमरा कुछ घंटों के लिए बंद है।
+crisis.burst_pipe.t,Burst pipe,Patlak boru,Rohrbruch,Tubería rota,Canalisation cassée,Cano estourado,Прорвало трубу,水道管の破裂,수도관 파열,पाइप फटा
+crisis.dorm_flu.b,Fewer dorm students come to class for two days.,İki gün boyunca daha az yurtlu öğrenci derse gelir.,Zwei Tage lang kommen weniger Wohnheim-Studierende zum Unterricht.,Durante dos días vienen menos residentes a clase.,Moins d'étudiants de la résidence viennent en cours pendant deux jours.,Menos alunos do alojamento vão às aulas por dois dias.,Два дня на занятия приходит меньше студентов из общежития.,2日間、寮の学生の出席が減ります。,이틀 동안 기숙사 학생 일부가 수업에 덜 와요.,दो दिन तक हॉस्टल के कम छात्र क्लास आएँगे।
+crisis.dorm_flu.t,Dorm flu,Yurtta grip,Grippewelle im Wohnheim,Gripe en la residencia,Grippe à la résidence,Gripe no alojamento,Грипп в общежитии,寮での風邪流行,기숙사 독감,हॉस्टल में फ़्लू
+crisis.fire_drill.b,The next bell change takes longer.,Bir sonraki zil değişimi daha uzun sürer.,Der nächste Klingelwechsel dauert länger.,El próximo cambio de timbre tardará más.,Le prochain changement de sonnerie prend plus de temps.,A próxima troca de horário vai demorar mais.,Следующая смена звонков идёт дольше.,次のチャイムの切り替えに時間がかかります。,다음 종 교체가 더 오래 걸려요.,अगली घंटी बदलने में ज़्यादा समय लगेगा।
+crisis.fire_drill.t,Fire drill,Yangın tatbikatı,Feueralarm-Übung,Simulacro de incendio,Exercice d'évacuation,Simulado de incêndio,Учебная эвакуация,避難訓練,소방 훈련,फ़ायर ड्रिल
+crisis.none,All calm.,Her şey sakin.,Alles ruhig.,Todo tranquilo.,Tout est calme.,Tudo calmo.,Всё спокойно.,今日は平穏です。,모두 평온해요.,सब शांत है।
+crisis.open_day.b,Visitors fill the paths and the canteen.,Ziyaretçiler yolları ve kantini doldurur.,Besucher füllen die Wege und die Mensa.,Los visitantes llenan los caminos y la cantina.,Les visiteurs remplissent les allées et la cantine.,Visitantes lotam os caminhos e o refeitório.,Гости заполняют дорожки и столовую.,見学者で通路と食堂がいっぱいになります。,방문객들로 길과 식당이 가득 차요.,रास्तों और कैंटीन में मेहमान भर जाएँगे।
+crisis.open_day.t,Open day,Açık gün,Tag der offenen Tür,Jornada de puertas abiertas,Journée portes ouvertes,Dia de portas abertas,День открытых дверей,オープンキャンパス,개방의 날,ओपन डे
+crisis.poached.b,A rival university wants one of your professors.,Rakip bir üniversite hocalarından birini istiyor.,Eine Konkurrenz-Uni will einen deiner Professoren.,Una universidad rival quiere a uno de tus profesores.,Une université concurrente veut l'un de tes professeurs.,Uma universidade rival quer contratar um dos seus professores.,Другой университет хочет переманить одного из твоих преподавателей.,ライバル大学があなたの教授の一人を引き抜こうとしています。,라이벌 대학이 교수 한 명을 데려가고 싶어 해요.,एक दूसरी यूनिवर्सिटी आपके एक प्रोफ़ेसर को बुलाना चाहती है।
+crisis.poached.t,Professor poached,Hoca kapıldı,Professor abgeworben,Profesor fichado,Professeur débauché,Professor disputado,Преподавателя переманивают,教授の引き抜き,교수 스카우트 제의,प्रोफ़ेसर छिन गए
+crisis.power_outage.b,One exam slot runs without power.,Bir sınav saati elektriksiz geçer.,Ein Prüfungsraum läuft ohne Strom.,Un turno de examen se hace sin luz.,Un créneau d'examen se déroule sans électricité.,Uma prova fica sem energia.,Один экзамен идёт без электричества.,一つの試験枠が停電の中で行われます。,시험 시간 한 칸이 정전 상태로 진행돼요.,एक परीक्षा का समय बिजली के बिना चलेगा।
+crisis.power_outage.t,Power cut,Elektrik kesintisi,Stromausfall,Corte de luz,Coupure de courant,Falta de luz,Отключили свет,停電,정전,बिजली कटी
+crisis.protest.b,Students march on the quad.,Öğrenciler meydanda yürüyor.,Studierende ziehen über den Campusplatz.,Los estudiantes marchan por el patio.,Des étudiants défilent sur le campus.,Alunos marcham pelo pátio.,Студенты идут маршем по двору.,学生が中庭でデモ行進をしています。,학생들이 중앙 광장으로 행진해요.,छात्र कैंपस के आँगन में मार्च कर रहे हैं।
+crisis.protest.t,Fee protest,Harç protestosu,Protest gegen Gebühren,Protesta por las tasas,Manifestation contre les frais,Protesto por mensalidade,Протест из-за платы,授業料への抗議,등록금 항의,फीस के खिलाफ़ प्रदर्शन
+crisis.sick_prof.b,A professor stays home today.,Bir hoca bugün evde kalıyor.,Ein Professor bleibt heute zu Hause.,Un profesor se queda en casa hoy.,Un professeur reste chez lui aujourd'hui.,Um professor fica em casa hoje.,Один преподаватель сегодня остаётся дома.,今日は教授が一人、休みです。,교수 한 명이 오늘 쉬어요.,एक प्रोफ़ेसर आज घर पर हैं।
+crisis.sick_prof.t,Sick professor,Hasta hoca,Professor krank,Profesor enfermo,Professeur malade,Professor doente,Преподаватель заболел,教授の体調不良,교수 병가,बीमार प्रोफ़ेसर
+crisis.snow_day.b,Everyone walks slower today.,Bugün herkes daha yavaş yürüyor.,Heute kommen alle langsamer voran.,Hoy todos caminan más despacio.,Tout le monde marche plus lentement aujourd'hui.,Todo mundo anda mais devagar hoje.,Сегодня все идут медленнее.,今日は全員の歩みが遅くなります。,오늘은 모두 천천히 걸어요.,आज सब धीरे चलेंगे।
+crisis.snow_day.t,Snow day,Kar günü,Schneetag,Día de nieve,Jour de neige,Dia de neve,Снегопад,雪の日,눈 오는 날,बर्फ़ का दिन
+crisis.title,Today on campus,Bugün kampüste,Heute auf dem Campus,Hoy en el campus,Aujourd'hui sur le campus,Hoje no campus,Сегодня в кампусе,今日のキャンパス,오늘 캠퍼스 소식,आज कैंपस में
+day.0,Monday,Pazartesi,Montag,Lunes,Lundi,Segunda-feira,Понедельник,月曜日,월요일,सोमवार
+day.1,Tuesday,Salı,Dienstag,Martes,Mardi,Terça-feira,Вторник,火曜日,화요일,मंगलवार
+day.2,Wednesday,Çarşamba,Mittwoch,Miércoles,Mercredi,Quarta-feira,Среда,水曜日,수요일,बुधवार
+day.3,Thursday,Perşembe,Donnerstag,Jueves,Jeudi,Quinta-feira,Четверг,木曜日,목요일,गुरुवार
+day.4,Friday,Cuma,Freitag,Viernes,Vendredi,Sexta-feira,Пятница,金曜日,금요일,शुक्रवार
+day.short.0,Mon,Pzt,Mo,Lun,Lun,Seg,Пн,月,월,सोम
+day.short.1,Tue,Sal,Di,Mar,Mar,Ter,Вт,火,화,मंगल
+day.short.2,Wed,Çar,Mi,Mié,Mer,Qua,Ср,水,수,बुध
+day.short.3,Thu,Per,Do,Jue,Jeu,Qui,Чт,木,목,गुरु
+day.short.4,Fri,Cum,Fr,Vie,Ven,Sex,Пт,金,금,शुक्र
+day.sunday,Sunday,Pazar,Sonntag,Domingo,Dimanche,Domingo,Воскресенье,日曜日,일요일,रविवार
+decision.concede,Freeze fees this week,Bu hafta harçları dondur,Gebühren diese Woche einfrieren,Congelar las tasas esta semana,Geler les frais cette semaine,Congelar mensalidades nesta semana,Заморозить плату на неделю,今週は授業料を据え置く,이번 주 등록금 동결,इस हफ़्ते फीस रोको
+decision.concede.d,Costs half a day of income. The quad stays calm.,Yarım günlük gelire mal olur. Meydan sakin kalır.,Kostet einen halben Tag Einnahmen. Der Campusplatz bleibt ruhig.,Cuesta medio día de ingresos. El patio se mantiene tranquilo.,Coûte une demi-journée de revenus. Le campus reste calme.,Custa meio dia de renda. O pátio fica calmo.,Стоит полдня дохода. Двор остаётся спокойным.,1日分の収入の半分がかかります。中庭は落ち着きます。,하루치 수입의 절반이 들어가요. 중앙 광장은 조용해져요.,आधे दिन की कमाई जाएगी। माहौल शांत रहेगा।
+decision.let_go,Wish them well,İyi dilekler,Alles Gute wünschen,Desearles suerte,Leur souhaiter bonne chance,Desejar boa sorte,Пожелать удачи,温かく見送る,잘 가요,शुभकामनाएँ दो
+decision.let_go.d,Free. They leave at the end of the week.,Ücretsiz. Hafta sonunda ayrılırlar.,Kostenlos. Sie gehen am Ende der Woche.,Gratis. Se marchan al final de la semana.,Gratuit. Ils partent à la fin de la semaine.,Grátis. Eles saem no fim da semana.,Бесплатно. Уходит в конце недели.,無料。週末に退職します。,무료예요. 이번 주 끝에 떠나요.,मुफ़्त। वे हफ़्ते के आखिर में चले जाएँगे।
+decision.paused,Time waits while you decide.,Sen karar verirken zaman bekler.,"Die Zeit wartet, während du entscheidest.",El tiempo espera mientras decides.,Le temps attend que tu décides.,O tempo espera enquanto você decide.,"Время ждёт, пока ты решаешь.",決めるまで時間は止まっています。,결정하는 동안 시간이 멈춰요.,फ़ैसला करने तक समय रुका रहेगा।
+decision.poached.b,Another university offers {name} a job.,Başka bir üniversite {name} adlı kişiye iş teklif ediyor.,Eine andere Uni bietet {name} eine Stelle an.,Otra universidad ofrece a {name} un trabajo.,Une autre université propose à {name} un poste.,Outra universidade oferece um emprego para {name}.,Другой университет предлагает {name} работу.,別の大学が {name} に仕事をオファーしています。,다른 대학이 {name}에게 일자리를 제안했어요.,एक दूसरी यूनिवर्सिटी {name} को नौकरी का ऑफ़र दे रही है।
+decision.protest.b,Students march across the quad: they want lower fees this week.,Öğrenciler meydanda yürüyor: bu hafta daha düşük harç istiyorlar.,Studierende ziehen über den Campusplatz: Sie wollen diese Woche niedrigere Gebühren.,Los estudiantes marchan por el patio: quieren tasas más bajas esta semana.,Des étudiants défilent sur le campus : ils veulent des frais moins chers cette semaine.,Alunos marcham pelo pátio: querem mensalidades menores nesta semana.,Студенты идут маршем по двору: хотят меньше платы на этой неделе.,学生が中庭をデモ行進しています。今週の授業料を下げてほしいとのことです。,학생들이 중앙 광장을 가로질러 행진해요. 이번 주 등록금을 낮춰 달라고 해요.,छात्र आँगन में मार्च कर रहे हैं: वे इस हफ़्ते कम फीस चाहते हैं।
+decision.retain,Retention bonus,Bağlılık primi,Bindungsbonus,Prima de retención,Prime de fidélisation,Bônus de permanência,"Премия, чтобы остался",残留ボーナス,잔류 보너스,रुकने का बोनस
+decision.retain.d,Two weeks of wages. They stay.,İki haftalık maaş. Kalırlar.,Zwei Wochen Gehalt. Sie bleiben.,Dos semanas de sueldo. Se quedan.,Deux semaines de salaire. Ils restent.,Duas semanas de salário. Eles ficam.,Две недели зарплаты. Останется.,2週間分の給料です。残ってくれます。,임금 2주치를 주면 남아요.,दो हफ़्ते की तनख्वाह। वे रुक जाएँगे।
+decision.talk,Talk it through,Konuşarak çöz,Gespräch suchen,Hablar del asunto,En discuter,Conversar,Обсудить,話し合う,대화로 풀기,बात करो
+decision.talk.d,"Free, but the paths are half blocked today.","Ücretsiz, ama bugün yollar yarı yarıya kapalı.","Kostenlos, aber die Wege sind heute halb versperrt.","Gratis, pero hoy los caminos están medio cortados.","Gratuit, mais les allées sont à moitié bloquées aujourd'hui.","Grátis, mas os caminhos ficam meio bloqueados hoje.","Бесплатно, но сегодня дорожки наполовину перекрыты.",無料ですが、今日は通路が半分ふさがります。,"무료지만, 오늘은 길이 절반쯤 막혀요.","मुफ़्त, पर आज रास्ते आधे बंद रहेंगे।"
+err.blocked,Follow the guide.,Rehberi takip et.,Folge der Anleitung.,Sigue la guía.,Suis le guide.,Siga o guia.,Сначала следуй подсказкам.,ガイドに従ってください。,안내를 따라가 주세요.,गाइड को फ़ॉलो करो।
+err.building,Still being built.,Hâlâ inşa ediliyor.,Wird noch gebaut.,Todavía en obras.,Toujours en construction.,Ainda em construção.,Ещё строится.,まだ建設中です。,아직 짓는 중이에요.,अभी बन रहा है।
+err.busy,Another upgrade is running.,Başka bir geliştirme sürüyor.,Eine andere Verbesserung läuft schon.,Otra mejora está en marcha.,Une autre amélioration est en cours.,Outra melhoria está em andamento.,Уже идёт другое улучшение.,別のアップグレードが進行中です。,다른 업그레이드가 진행 중이에요.,एक और अपग्रेड चल रहा है।
+err.cash,Not enough money.,Yeterli paran yok.,Nicht genug Geld.,No tienes suficiente dinero.,Pas assez d'argent.,Dinheiro insuficiente.,Недостаточно денег.,お金が足りません。,돈이 부족해요.,पैसे कम हैं।
+err.cohort_busy,That group has another class then.,O grubun o saatte başka dersi var.,Diese Gruppe hat dann schon einen anderen Kurs.,Ese grupo tiene otra clase en ese momento.,Ce groupe a un autre cours à ce moment-là.,Esse grupo tem outra aula nesse horário.,В это время у группы другое занятие.,そのグループはその時間に別の授業があります。,그 조는 그 시간에 다른 수업이 있어요.,उस ग्रुप की उस समय दूसरी क्लास है।
+err.context,Not available right now.,Şu an kullanılamıyor.,Gerade nicht verfügbar.,No disponible ahora mismo.,Pas disponible pour le moment.,Não disponível agora.,Сейчас недоступно.,今は使えません。,지금은 할 수 없어요.,अभी उपलब्ध नहीं है।
+err.enough,That course has all its classes.,Bu dersin tüm dersleri zaten var.,Dieser Kurs hat schon alle seine Termine.,Esa asignatura ya tiene todas sus clases.,Ce cours a déjà tous ses créneaux.,Essa disciplina já tem todas as aulas.,У этого предмета уже все занятия.,その授業はすべての枠が埋まっています。,그 과목의 수업이 모두 배치됐어요.,उस कोर्स की सारी क्लास लग चुकी हैं।
+err.invalid,That doesn't work.,Bu olmuyor.,Das geht so nicht.,Eso no funciona.,Ça ne marche pas.,Isso não funciona.,Так не получится.,うまくいきません。,이렇게는 안 돼요.,यह नहीं चलेगा।
+err.locked,Not open yet.,Henüz açık değil.,Noch nicht offen.,Aún no está abierto.,Pas encore ouvert.,Ainda não está aberto.,Ещё не открыто.,まだ開いていません。,아직 열리지 않았어요.,अभी खुला नहीं है।
+err.max,Maximum reached.,En fazlaya ulaşıldı.,Maximum erreicht.,Límite alcanzado.,Maximum atteint.,Limite máximo atingido.,Достигнут максимум.,上限に達しました。,최대치에 도달했어요.,सीमा पूरी हो गई।
+err.needs_hall,This course needs a lecture hall.,Bu ders bir ders salonu gerektiriyor.,Dieser Kurs braucht einen Hörsaal.,Esta asignatura necesita un aula magna.,Ce cours a besoin d'une salle de cours.,Esta disciplina precisa de um auditório.,Этому предмету нужен лекционный зал.,この授業には講義室が必要です。,이 과목에는 강의실이 필요해요.,इस कोर्स के लिए लेक्चर हॉल चाहिए।
+err.needs_lab,This course needs a lab.,Bu ders bir laboratuvar gerektiriyor.,Dieser Kurs braucht ein Labor.,Esta asignatura necesita un laboratorio.,Ce cours a besoin d'un labo.,Esta disciplina precisa de um laboratório.,Этому предмету нужна лаборатория.,この授業には実験室が必要です。,이 과목에는 실험실이 필요해요.,इस कोर्स के लिए लैब चाहिए।
+err.no_board,Open a room first.,Önce bir oda aç.,Öffne zuerst einen Raum.,Abre primero una sala.,Ouvre d'abord une salle.,Abra uma sala primeiro.,Сначала открой аудиторию.,先に教室を開いてください。,먼저 강의실을 여세요.,पहले एक कमरा खोलो।
+err.no_cell,Tap an empty cell first.,Önce boş bir hücreye dokun.,Tippe zuerst auf eine leere Zelle.,Toca antes una casilla vacía.,Touche d'abord une case vide.,Toque numa célula vazia primeiro.,Сначала нажми на пустую ячейку.,先に空いているマスをタップしてください。,먼저 빈 칸을 누르세요.,पहले एक खाली खाने पर टैप करो।
+err.no_prof,No professor.,Hoca yok.,Kein Professor.,No hay profesor.,Pas de professeur.,Sem professor.,Нет преподавателя.,教授がいません。,교수가 없어요.,कोई प्रोफ़ेसर नहीं।
+err.no_room_left,No free room fits the rest.,Kalan dersler için boş oda yok.,Kein freier Raum passt für den Rest.,Ninguna sala libre sirve para el resto.,Aucune salle libre ne convient au reste.,Nenhuma sala livre cabe no resto.,Для остальных нет свободной аудитории.,残りの授業に合う空き教室がありません。,나머지를 넣을 빈 방이 없어요.,बाकी के लिए कोई खाली कमरा नहीं।
+err.none,Nobody to let go.,Ayrılacak kimse yok.,Niemand zum Verabschieden.,No hay nadie a quien despedir.,Personne à laisser partir.,Ninguém para dispensar.,Некого отпускать.,見送る人がいません。,내보낼 사람이 없어요.,जाने देने के लिए कोई नहीं।
+err.not_room,Not a classroom.,Burası bir derslik değil.,Das ist kein Klassenraum.,Eso no es un aula.,Ce n'est pas une salle de cours.,Não é uma sala de aula.,Это не аудитория.,教室ではありません。,강의실이 아니에요.,यह क्लासरूम नहीं है।
+err.nothing_missing,Nothing to fill.,Doldurulacak bir şey yok.,Nichts zum Füllen.,No hay nada que rellenar.,Rien à remplir.,Nada para preencher.,Нечего заполнять.,埋める枠はありません。,채울 칸이 없어요.,भरने के लिए कुछ नहीं।
+err.owned,Already done.,Zaten yapıldı.,Schon erledigt.,Ya está hecho.,Déjà fait.,Já feito.,Уже готово.,すでに済んでいます。,이미 완료했어요.,पहले से हो चुका है।
+err.past,That slot is over.,O saat geçti.,Dieser Termin ist vorbei.,Ese hueco ya pasó.,Ce créneau est passé.,Esse horário já passou.,Это время уже прошло.,その枠は終わっています。,그 시간은 이미 지났어요.,वह समय निकल चुका है।
+err.phase,Not now.,Şimdi değil.,Nicht jetzt.,Ahora no.,Pas maintenant.,Não agora.,Не сейчас.,今はできません。,지금은 안 돼요.,अभी नहीं।
+err.prestige,Needs more prestige.,Daha fazla itibar gerekiyor.,Braucht mehr Prestige.,Necesita más prestigio.,Il faut plus de prestige.,Precisa de mais prestígio.,Нужно больше престижа.,名声が足りません。,명성이 더 필요해요.,ज़्यादा प्रतिष्ठा चाहिए।
+err.prof_busy,The professor teaches another class then.,Hoca o saatte başka bir ders veriyor.,Der Professor unterrichtet dann einen anderen Kurs.,El profesor da otra clase en ese momento.,Le professeur a un autre cours à ce moment-là.,O professor dá outra aula nesse horário.,В это время преподаватель ведёт другое занятие.,その時間、教授は別の授業があります。,그 시간에 교수님은 다른 수업이 있어요.,प्रोफ़ेसर उस समय दूसरी क्लास पढ़ाते हैं।
+err.prof_tired,The professor already teaches 3 classes that day.,Hoca o gün zaten 3 ders veriyor.,Der Professor unterrichtet an diesem Tag schon 3 Kurse.,El profesor ya da 3 clases ese día.,Le professeur a déjà 3 cours ce jour-là.,O professor já dá 3 aulas nesse dia.,В этот день преподаватель уже ведёт 3 занятия.,その教授はその日すでに3つの授業を担当しています。,그날 교수님은 이미 수업을 3개 맡고 있어요.,प्रोफ़ेसर उस दिन पहले से 3 क्लास पढ़ा रहे हैं।
+err.requires,Needs another upgrade first.,Önce başka bir geliştirme gerekiyor.,Braucht zuerst eine andere Verbesserung.,Primero necesita otra mejora.,Il faut d'abord une autre amélioration.,Precisa de outra melhoria antes.,Сначала нужно другое улучшение.,先に別のアップグレードが必要です。,먼저 다른 업그레이드가 필요해요.,पहले एक और अपग्रेड चाहिए।
+err.research,Needs an upgrade first.,Önce bir geliştirme gerekiyor.,Braucht zuerst eine Verbesserung.,Primero necesita una mejora.,Il faut d'abord une amélioration.,Precisa de uma melhoria primeiro.,Сначала нужно улучшение.,先にアップグレードが必要です。,먼저 업그레이드가 필요해요.,पहले एक अपग्रेड चाहिए।
+err.room_busy,This room is taken then.,Bu oda o saatte dolu.,Dieser Raum ist dann belegt.,Esta sala está ocupada en ese momento.,Cette salle est prise à ce moment-là.,Esta sala está ocupada nesse horário.,В это время аудитория занята.,その時間、この教室は使用中です。,그 시간에는 방이 이미 사용 중이에요.,यह कमरा उस समय भरा है।
+err.running,Already running.,Zaten çalışıyor.,Läuft schon.,Ya está en marcha.,Déjà en cours.,Já em andamento.,Уже идёт.,すでに進行中です。,이미 진행 중이에요.,पहले से चल रहा है।
+err.unknown,That doesn't work.,Bu olmuyor.,Das geht so nicht.,Eso no funciona.,Ça ne marche pas.,Isso não funciona.,Так не получится.,うまくいきません。,이렇게는 안 돼요.,यह नहीं चलेगा।
+err.wrong_faculty,Wrong faculty.,Yanlış fakülte.,Falsche Fakultät.,Facultad equivocada.,Mauvaise faculté.,Faculdade errada.,Не тот факультет.,学部が違います。,학부가 달라요.,गलत विभाग।
+faculty.business,Business,İşletme,Betriebswirtschaft,Economía,Gestion,Administração,Бизнес,経営学,경영학,बिज़नेस
+faculty.chemistry,Chemistry,Kimya,Chemie,Química,Chimie,Química,Химия,化学,화학,केमिस्ट्री
+faculty.law,Law,Hukuk,Jura,Derecho,Droit,Direito,Право,法学,법학,कानून
+faculty.literature,Literature,Edebiyat,Literatur,Literatura,Littérature,Literatura,Литература,文学,문학,साहित्य
+faculty.maths,Maths,Matematik,Mathematik,Matemáticas,Maths,Matemática,Математика,数学,수학,गणित
+faculty.philosophy,Philosophy,Felsefe,Philosophie,Filosofía,Philosophie,Filosofia,Философия,哲学,철학,दर्शनशास्त्र
+faculty.physics,Physics,Fizik,Physik,Física,Physique,Física,Физика,物理,물리학,फ़िज़िक्स
+graphics.dropped,Graphics lowered to keep it smooth. You can change it in Settings.,Akıcı kalsın diye grafikler düşürüldü. Ayarlar'dan değiştirebilirsin.,"Grafik wurde gesenkt, damit es flüssig läuft. Du kannst es in den Einstellungen ändern.",Gráficos reducidos para que vaya fluido. Puedes cambiarlo en Ajustes.,Graphismes baissés pour rester fluide. Tu peux les changer dans les Réglages.,Gráficos reduzidos para manter a fluidez. Você pode mudar isso em Configurações.,"Графику снизили, чтобы игра шла плавнее. Изменить можно в настройках.",スムーズに動くよう画質を下げました。設定で変更できます。,부드럽게 돌아가도록 그래픽을 낮췄어요. 설정에서 바꿀 수 있어요.,खेल चिकना चले इसलिए ग्राफ़िक्स कम किए। सेटिंग्स में बदल सकते हो।
+graphics.high,High,Yüksek,Hoch,Alta,Élevée,Alta,Высокая,高,높음,ऊँचा
+graphics.low,Low,Düşük,Niedrig,Baja,Basse,Baixa,Низкая,低,낮음,कम
+graphics.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
+hud.exam_week,Exam week,Sınav haftası,Prüfungswoche,Semana de exámenes,Semaine d'examens,Semana de provas,Экзаменационная неделя,試験週,시험 주간,परीक्षा का हफ़्ता
+hud.hungry,Hungry {n},Aç {n},Hungrig {n},Hambre {n},Faim {n},Com fome {n},Голодных: {n},空腹 {n},배고픔 {n},भूखे {n}
+hud.late,Late {n},Geç {n},Zu spät {n},Tarde {n},Retard {n},Atrasados {n},Опоздали: {n},遅刻 {n},지각 {n},देर से {n}
+hud.next_week,Next week,Gelecek hafta,Nächste Woche,Próxima semana,Semaine suivante,Próxima semana,Следующая неделя,次の週へ,다음 주,अगला हफ़्ता
+hud.prestige,★ {p},★ {p},★ {p},★ {p},★ {p},★ {p},★ {p},★ {p},★ {p},★ {p}
+hud.report,Open the grades,Notları aç,Noten öffnen,Ver las notas,Voir les notes,Abrir as notas,Открыть оценки,成績を見る,성적 보기,ग्रेड देखो
+hud.speed,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×
+hud.speed_guide,Speed opens after the guide.,"Hız, rehberden sonra açılır.",Tempo wird nach der Anleitung freigeschaltet.,La velocidad se desbloquea al terminar la guía.,La vitesse se débloque après le guide.,A velocidade é liberada depois do guia.,Скорость откроется после подсказок.,ガイドのあとに速度変更が使えます。,가이드를 마치면 속도를 올릴 수 있어요.,गाइड पूरी होने के बाद स्पीड खुलेगी।
+hud.speed_locked,3× and 4× come with the Speed pack.,"3× ve 4×, Hız Paketi ile gelir.",3× und 4× gibt es mit dem Tempo-Paket.,3× y 4× llegan con el pack de Velocidad.,3× et 4× viennent avec le Pack Vitesse.,3× e 4× vêm com o pacote de Velocidade.,3× и 4× идут в пакете скорости.,3×と4×はスピードパックに含まれます。,"3×, 4×는 속도 팩에 들어 있어요.",3× और 4× स्पीड पैक के साथ मिलते हैं।
+hud.start_exams,Start the exams,Sınavları başlat,Prüfungen starten,Empezar los exámenes,Lancer les examens,Começar as provas,Начать экзамены,試験を始める,시험 시작,परीक्षा शुरू करो
+hud.start_week,Start the week,Haftayı başlat,Woche starten,Empezar la semana,Lancer la semaine,Começar a semana,Начать неделю,今週を始める,이번 주 시작,हफ़्ता शुरू करो
+hud.week,Sem {s} · Week {n},Dönem {s} · Hafta {n},Sem. {s} · Woche {n},Sem {s} · Semana {n},Sem {s} · Semaine {n},Sem. {s} · Semana {n},Семестр {s} · Неделя {n},{s}学期 · {n}週目,{s}학기 · {n}주차,सेम {s} · हफ़्ता {n}
+iap.automation.d,Smart auto-fill and a morning repair of today's classes. You can turn it off.,Akıllı doldurma ve her sabah bugünkü derslerin onarımı. İstersen kapatabilirsin.,Smartes Auto-füllen und eine morgendliche Korrektur der heutigen Kurse. Du kannst es ausschalten.,Autorrelleno inteligente y una reparación matinal de las clases de hoy. Puedes desactivarlo.,Remplissage intelligent et réparation du matin des cours du jour. Tu peux le désactiver.,Preenchimento inteligente e um ajuste matinal das aulas de hoje. Você pode desligar.,Умное авто-заполнение и утренняя починка занятий на сегодня. Можно выключить.,賢い自動配置と、毎朝の今日の授業の修正を行います。オフにもできます。,스마트 자동 채우기와 아침마다 오늘 수업 칸을 고쳐 주는 기능이에요. 끌 수 있어요.,समझदारी से अपने आप भरना और सुबह आज की क्लास ठीक करना। इसे बंद भी कर सकते हो।
+iap.automation.t,Registrar,Kayıt Ofisi,Studienbüro,Secretaría,Scolarité,Secretaria,Регистратура,教務係,교무 도우미,रजिस्ट्रार
+iap.bundle.d,"Chancellor Edition, Speed, Registrar, Long Break and all campus themes. No ads.","Şansölye Sürümü, Hız, Kayıt Ofisi, Uzun Tatil ve tüm kampüs temaları. Reklam yok.","Kanzler-Edition, Tempo, Studienbüro, Lange Pause und alle Campus-Designs. Ohne Werbung.","Edición Rectorado, Velocidad, Secretaría, Pausa larga y todos los temas del campus. Sin anuncios.","Édition Chancelier, Vitesse, Scolarité, Longue pause et tous les thèmes du campus. Sans pubs.","Edição do Reitor, Velocidade, Secretaria, Pausa Longa e todos os temas do campus. Sem anúncios.","Издание «Ректор», скорость, регистратура, долгие каникулы и все темы кампуса. Без рекламы.",学長エディション、スピード、教務係、長い休憩、キャンパステーマすべて。広告なし。,"학장 에디션, 속도, 교무 도우미, 긴 방학, 모든 캠퍼스 테마가 들어 있어요. 광고 없음.","चांसलर एडिशन, स्पीड, रजिस्ट्रार, लंबी छुट्टी और कैंपस की सारी थीम। विज्ञापन नहीं।"
+iap.bundle.t,Complete Campus Collection,Tam Kampüs Koleksiyonu,Komplett-Campus-Paket,Colección completa del campus,Collection complète du campus,Coleção Completa do Campus,Полная коллекция кампуса,キャンパス完全コレクション,캠퍼스 올인원 컬렉션,पूरा कैंपस कलेक्शन
+iap.cash_l.d,Funds for 5 days of income.,5 günlük gelir kadar fon.,Geld für 5 Tage Einnahmen.,Fondos para 5 días de ingresos.,Fonds pour 5 jours de revenus.,Verba para 5 dias de renda.,Деньги на 5 дней дохода.,5日分の収入に相当する資金。,5일치 수입에 해당하는 자금이에요.,5 दिन की कमाई जितना पैसा।
+iap.cash_l.t,Big Funds,Büyük Fon,Große Geldspritze,Fondos grandes,Gros fonds,Grande Verba,Много денег,大口資金,큰 자금,बड़ा फ़ंड
+iap.cash_m.d,Funds for 2.5 days of income.,"2,5 günlük gelir kadar fon.","Geld für 2,5 Tage Einnahmen.","Fondos para 2,5 días de ingresos.","Fonds pour 2,5 jours de revenus.","Verba para 2,5 dias de renda.","Деньги на 2,5 дня дохода.",2.5日分の収入に相当する資金。,2.5일치 수입에 해당하는 자금이에요.,2.5 दिन की कमाई जितना पैसा।
+iap.cash_m.t,Funds,Fon,Geldspritze,Fondos,Fonds,Verba,Запас денег,資金,자금,फ़ंड
+iap.cash_s.d,Funds for 1 day of income.,1 günlük gelir kadar fon.,Geld für 1 Tag Einnahmen.,Fondos para 1 día de ingresos.,Fonds pour 1 jour de revenus.,Verba para 1 dia de renda.,Деньги на 1 день дохода.,1日分の収入に相当する資金。,1일치 수입에 해당하는 자금이에요.,1 दिन की कमाई जितना पैसा।
+iap.cash_s.t,Small Funds,Küçük Fon,Kleine Geldspritze,Fondos pequeños,Petits fonds,Pequena Verba,Немного денег,少額資金,작은 자금,छोटा फ़ंड
+iap.cash_xl.d,Funds for 10 days of income.,10 günlük gelir kadar fon.,Geld für 10 Tage Einnahmen.,Fondos para 10 días de ingresos.,Fonds pour 10 jours de revenus.,Verba para 10 dias de renda.,Деньги на 10 дней дохода.,10日分の収入に相当する資金。,10일치 수입에 해당하는 자금이에요.,10 दिन की कमाई जितना पैसा।
+iap.cash_xl.t,Endowment,Vakıf Bağışı,Stiftungsgeld,Dotación,Dotation,Doação,Крупный фонд,寄付金,기부금,दान-निधि
+iap.comeback.d,Funds for 3 days to restart the campus.,Kampüsü yeniden başlatmak için 3 günlük fon.,"Geld für 3 Tage, um den Campus wieder anzukurbeln.",Fondos para 3 días para volver a poner en marcha el campus.,Fonds pour 3 jours pour relancer le campus.,Verba para 3 dias para reabrir o campus.,"Деньги на 3 дня, чтобы снова запустить кампус.",キャンパスを再スタートするための3日分の資金。,캠퍼스를 다시 시작하는 데 쓸 3일치 자금이에요.,कैंपस दोबारा शुरू करने के लिए 3 दिन का पैसा।
+iap.comeback.t,Welcome Back Funds,Hoş Geldin Fonu,Willkommen-zurück-Geldspritze,Fondos de bienvenida,Fonds de retour,Verba de Retorno,С возвращением: деньги,おかえり資金,복귀 환영 자금,वापसी फ़ंड
+iap.cosmetics_all.d,"Ivy, Modern and Desert together, at a lower price.","Sarmaşık, Modern ve Çöl birlikte, daha uygun fiyata.","Efeu, Modern und Wüste zusammen, zu einem günstigeren Preis.","Hiedra, Moderno y Desierto juntos, a un precio menor.","Lierre, Moderne et Désert ensemble, à prix réduit.","Hera, Moderno e Deserto juntos, por um preço menor.","Темы «Плющ», «Модерн» и «Пустыня» вместе, дешевле.",アイビー、モダン、デザートをまとめてお得な価格で。,"아이비, 모던, 사막 테마를 한꺼번에 더 싸게 담았어요.","आइवी, मॉडर्न और डेज़र्ट, सब एक साथ, कम कीमत में।"
+iap.cosmetics_all.t,All Campus Themes,Tüm Kampüs Temaları,Alle Campus-Designs,Todos los temas del campus,Tous les thèmes du campus,Todos os Temas do Campus,Все темы кампуса,キャンパステーマ全部,모든 캠퍼스 테마,सारी कैंपस थीम
+iap.exam_kit.d,Two extra invigilators and a backup generator for this exam week.,Bu sınav haftası için iki ek gözetmen ve yedek jeneratör.,Zwei zusätzliche Aufsichten und ein Notstromaggregat für diese Prüfungswoche.,Dos vigilantes extra y un generador de reserva para esta semana de exámenes.,Deux surveillants en plus et un générateur de secours pour cette semaine d'examens.,Dois fiscais extras e um gerador de backup para esta semana de provas.,Два дополнительных дежурных и запасной генератор на эту экзаменационную неделю.,この試験週のための試験監督2名の追加と予備発電機。,이번 시험 주간에 감독관 2명과 비상 발전기를 더해 줘요.,इस परीक्षा के हफ़्ते के लिए दो अतिरिक्त निरीक्षक और एक बैकअप जनरेटर।
+iap.exam_kit.t,Exam Week Kit,Sınav Haftası Seti,Prüfungswochen-Set,Kit de semana de exámenes,Kit semaine d'examens,Kit Semana de Provas,Набор для экзаменов,試験週キット,시험 주간 키트,परीक्षा हफ़्ता किट
+iap.noads.d,No more promo screens or banners. Video rewards come without the video.,Artık tanıtım ekranı ve afiş yok. Video ödülleri videosuz gelir.,Keine Werbebildschirme und Banner mehr. Videobelohnungen gibt es ohne Video.,Sin más pantallas ni banners promocionales. Las recompensas en vídeo llegan sin el vídeo.,Plus d'écrans promo ni de bannières. Les récompenses vidéo sont offertes sans vidéo.,Sem telas promocionais nem banners. Recompensas de vídeo vêm sem o vídeo.,Больше никаких рекламных экранов и баннеров. Награды за видео приходят без видео.,宣伝画面やバナーはなくなります。動画報酬は動画なしで受け取れます。,홍보 화면과 배너가 더는 나오지 않아요. 영상 보상은 영상 없이 받아요.,अब प्रचार स्क्रीन या बैनर नहीं। वीडियो वाले इनाम बिना वीडियो के मिलेंगे।
+iap.noads.t,Remove Ads,Reklamları Kaldır,Werbung entfernen,Quitar anuncios,Retirer les pubs,Remover Anúncios,Убрать рекламу,広告を削除,광고 제거,विज्ञापन हटाओ
+iap.offline_plus.d,"The break between terms pays up to 12 hours, at 80 %.","Dönemler arası ara, %80 oranında 12 saate kadar ödeme yapar.","Die Pause zwischen den Semestern zahlt bis zu 12 Stunden, zu 80 %.","La pausa entre trimestres paga hasta 12 horas, al 80 %.","La pause entre les semestres rapporte jusqu'à 12 heures, à 80 %.","A pausa entre semestres paga até 12 horas, a 80 %.","Каникулы между семестрами приносят доход за 12 часов, 80 %.",学期の間の休みは、最大12時間分を80 %で受け取れます。,학기 사이 방학에는 최대 12시간치를 80%로 받아요.,"सेमेस्टर के बीच की छुट्टी में 12 घंटे तक, 80 % पर कमाई।"
+iap.offline_plus.t,Long Break,Uzun Tatil,Lange Pause,Pausa larga,Longue pause,Pausa Longa,Долгие каникулы,長期休暇,긴 방학,लंबी छुट्टी
+iap.premium.d,"No ads, the gold Chancellor campus trim and 2 days of funds once.","Reklam yok, altın Şansölye kampüs süslemesi ve bir kerelik 2 günlük fon.","Keine Werbung, die goldene Kanzler-Verzierung für den Campus und einmalig 2 Tage Geld.","Sin anuncios, el adorno dorado del Rectorado y 2 días de fondos una vez.","Sans pubs, la finition or de l'Édition Chancelier et 2 jours de fonds, une seule fois.","Sem anúncios, o detalhe dourado do Reitor no campus e 2 dias de verba, uma vez só.","Без рекламы, золотое оформление кампуса «Ректор» и деньги на 2 дня, один раз.",広告なし、金色の学長キャンパス装飾、2日分の資金が一度に。,"광고가 없고, 금색 학장 장식과 자금 2일치를 한 번에 받아요.","कोई विज्ञापन नहीं, सुनहरी चांसलर कैंपस सजावट और एक बार 2 दिन का फ़ंड।"
+iap.premium.t,Chancellor Edition,Şansölye Sürümü,Kanzler-Edition,Edición Rectorado,Édition Chancelier,Edição do Reitor,Издание «Ректор»,学長エディション,학장 에디션,चांसलर एडिशन
+iap.speed.d,"Play at 3× and 4×, and skip the week summary if you like.","3× ve 4× hızında oyna, istersen haftalık özeti atla.",Spiele mit 3× und 4× und überspringe auf Wunsch die Wochenübersicht.,"Juega a 3× y 4×, y salta el resumen de la semana si quieres.","Joue en 3× et 4×, et passe le bilan de la semaine si tu veux.","Jogue a 3× e 4× e pule o resumo da semana, se quiser.","Играй на 3× и 4× и, если хочешь, пропускай итоги недели.",3×と4×で遊べます。お好みで週のまとめを飛ばせます。,"3×, 4× 속도로 플레이하고, 원하면 주간 요약을 건너뛰어요.","3× और 4× पर खेलो, और चाहो तो हफ़्ते का सार छोड़ दो।"
+iap.speed.t,Speed Pack,Hız Paketi,Tempo-Paket,Pack de Velocidad,Pack Vitesse,Pacote de Velocidade,Пакет скорости,スピードパック,속도 팩,स्पीड पैक
+iap.starter.d,Funds for 2 days and one extra campus marshal on the payroll. Does not remove ads.,2 günlük fon ve bordroya bir ek kampüs görevlisi. Reklamları kaldırmaz.,Geld für 2 Tage und einen zusätzlichen Campus-Ordner auf der Gehaltsliste. Entfernt keine Werbung.,Fondos para 2 días y un celador extra en nómina. No quita los anuncios.,Fonds pour 2 jours et un surveillant du campus en plus sur la paie. Ne retire pas les pubs.,Verba para 2 dias e um fiscal extra na folha de pagamento. Não remove anúncios.,Деньги на 2 дня и один дополнительный дежурный в штате. Реклама не убирается.,2日分の資金と、給与に加わるキャンパス係1名。広告は消えません。,자금 2일치와 교내 안내원 1명을 줘요. 광고는 제거되지 않아요.,2 दिन का फ़ंड और तनख्वाह पर एक अतिरिक्त कैंपस मार्शल। इससे विज्ञापन नहीं हटते।
+iap.starter.t,Starter Campus Pack,Başlangıç Kampüs Paketi,Starter-Campus-Paket,Pack inicial del campus,Pack de départ du campus,Pacote Inicial do Campus,Стартовый набор кампуса,スターターパック,입문 캠퍼스 팩,शुरुआती कैंपस पैक
+iap.theme_desert.d,Warm sandstone tones.,Sıcak kumtaşı tonları.,Warme Sandsteintöne.,Tonos cálidos de arenisca.,Tons de grès chauds.,Tons quentes de arenito.,Тёплые оттенки песчаника.,あたたかい砂岩の色合い。,따뜻한 사암 색이에요.,गर्म बलुआ पत्थर के रंग।
+iap.theme_desert.t,Desert Theme,Çöl Teması,Wüsten-Design,Tema Desierto,Thème Désert,Tema Deserto,Тема «Пустыня»,デザートテーマ,사막 테마,डेज़र्ट थीम
+iap.theme_ivy.d,Ivy-green walls all over campus.,Kampüs boyunca sarmaşık yeşili duvarlar.,Efeugrüne Wände auf dem ganzen Campus.,Muros verdes de hiedra por todo el campus.,Murs couverts de lierre sur tout le campus.,Paredes com hera verde por todo o campus.,Зелёные стены плюща по всему кампусу.,キャンパス中がアイビーグリーンの壁に。,캠퍼스 곳곳에 담쟁이 녹색 벽이 생겨요.,पूरे कैंपस में आइवी-हरी दीवारें।
+iap.theme_ivy.t,Ivy Theme,Sarmaşık Teması,Efeu-Design,Tema Hiedra,Thème Lierre,Tema Hera,Тема «Плющ»,アイビーテーマ,아이비 테마,आइवी थीम
+iap.theme_modern.d,Cool glass-and-steel tones.,Serin cam ve çelik tonları.,Kühle Glas- und Stahltöne.,Tonos frescos de cristal y acero.,Tons froids de verre et d'acier.,Tons frios de vidro e aço.,Холодные оттенки стекла и стали.,ガラスとスチールのクールな色合い。,시원한 유리와 철 색이에요.,ठंडे शीशे और स्टील के रंग।
+iap.theme_modern.t,Modern Theme,Modern Tema,Modern-Design,Tema Moderno,Thème Moderne,Tema Moderno,Тема «Модерн»,モダンテーマ,모던 테마,मॉडर्न थीम
+intake.choose,Choose,Seç,Auswählen,Elegir,Choisir,Escolher,Выбрать,選ぶ,선택,चुनो
+intake.chosen,Chosen,Seçildi,Gewählt,Elegido,Choisi,Escolhido,Выбрано,選択済み,선택됨,चुना गया
+intake.grow,Grow,Büyüt,Wachsen,Crecer,Agrandir,Crescer,Расширить,増やす,키우기,बढ़ाओ
+intake.grow.d,"About 20 % more students. More tuition, fuller rooms, slightly lower grades.","Yaklaşık %20 daha fazla öğrenci. Daha fazla harç, daha dolu odalar, biraz daha düşük notlar.","Etwa 20 % mehr Studierende. Mehr Gebühren, vollere Räume, etwas schlechtere Noten.","Unos 20 % más de estudiantes. Más matrícula, aulas más llenas, notas un poco más bajas.","Environ 20 % d'étudiants en plus. Plus de frais, salles plus pleines, notes un peu plus basses.","Cerca de 20% mais alunos. Mais mensalidades, salas mais cheias, notas um pouco menores.","Примерно на 20 % больше студентов. Больше платы, полнее аудитории, оценки чуть ниже.",学生が約20 %増えます。授業料は増え、教室は埋まり、成績はやや下がります。,"신입생이 약 20% 늘어요. 등록금과 학생 수가 늘고, 성적은 조금 낮아져요.","लगभग 20 % ज़्यादा छात्र। ज़्यादा फीस, भरे कमरे, थोड़े कम ग्रेड।"
+intake.help,Choose how many new students to accept.,Kaç yeni öğrenci kabul edeceğini seç.,"Wähle, wie viele neue Studierende du aufnimmst.",Elige cuántos estudiantes nuevos aceptar.,Choisis combien de nouveaux étudiants accepter.,Escolha quantos novos alunos aceitar.,"Выбери, сколько новых студентов принять.",受け入れる新入生の人数を選びましょう。,새 학기에 신입생을 몇 명 받을지 정하세요.,चुनो कितने नए छात्र लेने हैं।
+intake.keep,Keep the size,Boyutu koru,Größe beibehalten,Mantener el tamaño,Garder la taille,Manter o tamanho,Оставить как есть,今の規模を保つ,규모 유지,जितने हैं उतने रखो
+intake.keep.d,"Same groups, same rooms.","Aynı gruplar, aynı odalar.","Gleiche Gruppen, gleiche Räume.","Mismos grupos, mismas salas.","Mêmes groupes, mêmes salles.","Mesmos grupos, mesmas salas.","Те же группы, те же аудитории.",同じグループ、同じ教室。,"같은 조, 같은 방이에요.","वही ग्रुप, वही कमरे।"
+intake.select,Be selective,Seçici ol,Auswählen lassen,Ser selectivo,Être sélectif,Ser seletivo,Отбирать строже,選抜する,선발,चुनिंदा लो
+intake.select.d,A few more students with better grades. Scholarships cost money.,Daha iyi notlu birkaç öğrenci daha. Burslar para tutar.,Etwas mehr Studierende mit besseren Noten. Stipendien kosten Geld.,Algunos estudiantes más con mejores notas. Las becas cuestan dinero.,Quelques étudiants de plus avec de meilleures notes. Les bourses coûtent de l'argent.,"Alguns alunos a mais, com notas melhores. Bolsas custam dinheiro.","Немного студентов, но с лучшими оценками. Стипендии стоят денег.",成績優秀な学生が少し増えます。奨学金にはお金がかかります。,성적이 더 좋은 학생을 조금 더 받아요. 장학금에는 돈이 들어요.,थोड़े ज़्यादा अच्छे ग्रेड वाले छात्र। स्कॉलरशिप पर पैसा लगता है।
+intake.title,Next semester's intake,Gelecek dönemin alımı,Aufnahme für das nächste Semester,Admisión del próximo semestre,Admissions du prochain semestre,Entrada do próximo semestre,Набор на следующий семестр,次の学期の新入生,다음 학기 신입생 모집,अगले सेमेस्टर के नए छात्र
+intro.1.b,"Your young campus needs a plan: which class goes in which room, and when.","Genç kampüsün bir plana ihtiyacı var: hangi ders hangi odaya, ne zaman girecek.",Dein junger Campus braucht einen Plan: Welcher Kurs in welchen Raum kommt und wann.,Tu joven campus necesita un plan: qué clase va en qué sala y cuándo.,"Ton jeune campus a besoin d'un plan : quel cours dans quelle salle, et à quelle heure.",Seu campus jovem precisa de um plano: qual aula vai em qual sala e em que horário.,Молодому кампусу нужен план: какое занятие в какой аудитории и когда.,若いキャンパスには計画が必要です。どの授業をどの教室で、いつ行うか決めましょう。,"어린 캠퍼스에는 계획이 필요해요. 어떤 수업을 어느 방에서, 언제 할지 정하세요.","हमारे नए कैंपस को एक योजना चाहिए: कौन-सी क्लास किस कमरे में, और कब।"
+intro.1.t,"Welcome, Dean","Hoş geldin, Dekan","Willkommen, Dekan","Bienvenido, decano","Bienvenue, Doyen","Bem-vindo, Reitor","Добро пожаловать, декан",ようこそ、学部長,"환영해요, 학장님","स्वागत है, डीन साहब"
+intro.2.b,"Every bell, students walk to their next class. Short paths, no crowds, nobody late.","Her zilde öğrenciler bir sonraki derslerine yürür. Kısa yollar, kalabalık yok, kimse geç kalmaz.","Bei jeder Klingel laufen Studierende zu ihrem nächsten Kurs. Kurze Wege, keine Staus, niemand kommt zu spät.","Con cada timbre, los estudiantes van a su siguiente clase. Caminos cortos, sin aglomeraciones y nadie llega tarde.","À chaque sonnerie, les étudiants vont à leur cours suivant. Des allées courtes, pas de foule, personne en retard.","A cada sinal, os alunos caminham até a próxima aula. Caminhos curtos, sem filas, ninguém atrasado.","На каждый звонок студенты идут на следующее занятие. Короткие дорожки, без толп, никто не опаздывает.",チャイムのたびに、学生は次の授業へ向かいます。通路を短くし、混雑させず、誰も遅刻させないようにしましょう。,"종이 울릴 때마다 학생들이 다음 수업으로 걸어가요. 짧은 길, 혼잡 없이, 지각하는 학생 없이요.","हर घंटी पर छात्र अगली क्लास की ओर चलते हैं। छोटे रास्ते, कोई भीड़ नहीं, कोई देर से नहीं।"
+intro.2.t,Beat the bell,Zilden önce yetiş,Vor der Klingel fertig,Gana al timbre,Bats la sonnerie,Vença o sinal,Опереди звонок,チャイムに勝とう,종보다 빠르게,घंटी से पहले पहुँचो
+intro.3.b,"Good grades raise prestige. Prestige brings new faculties, halls and students.","İyi notlar itibarı artırır. İtibar yeni fakülteler, salonlar ve öğrenciler getirir.","Gute Noten bringen Prestige. Prestige bringt neue Fakultäten, Säle und Studierende.","Las buenas notas suben el prestigio. El prestigio trae nuevas facultades, aulas y estudiantes.","De bonnes notes augmentent le prestige. Le prestige apporte de nouvelles facultés, salles et étudiants.","Boas notas aumentam o prestígio. O prestígio traz novas faculdades, salões e alunos.","Хорошие оценки повышают престиж. Престиж приносит новые факультеты, залы и студентов.",よい成績は名声を高めます。名声は新しい学部、講堂、学生を呼びます。,"좋은 성적은 명성을 높여요. 명성은 새 학부, 강당, 학생을 불러와요.","अच्छे ग्रेड से प्रतिष्ठा बढ़ती है। प्रतिष्ठा से नए विभाग, हॉल और छात्र आते हैं।"
+intro.3.t,Grow the campus,Kampüsünü büyüt,Campus ausbauen,Haz crecer el campus,Fais grandir le campus,Cresça o campus,Расти вместе с кампусом,キャンパスを育てよう,캠퍼스를 키우세요,कैंपस बढ़ाओ
+intro.next,Next,İleri,Weiter,Siguiente,Suivant,Próximo,Дальше,次へ,다음,आगे
+intro.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
+intro.start,Let's go,Hadi başlayalım,Los geht's,Vamos,C'est parti,Vamos lá,Поехали,はじめよう,시작해요,चलो शुरू करें
+late.busiest,Busiest paths,En yoğun yollar,Vollste Wege,Caminos más concurridos,Allées les plus fréquentées,Caminhos mais cheios,Самые загруженные дорожки,混雑する通路,가장 붐비는 길,सबसे भीड़ वाले रास्ते
+late.flowing,Every path is flowing.,Her yol akıyor.,Alle Wege sind frei.,Todos los caminos fluyen.,Toutes les allées sont fluides.,Todos os caminhos estão fluindo.,По всем дорожкам свободно.,すべての通路はスムーズです。,모든 길이 잘 흘러요.,हर रास्ता चल रहा है।
+late.how,Fewer late students,Daha az geç kalan öğrenci,Weniger zu spät kommende Studierende,Menos estudiantes tarde,Moins d'étudiants en retard,Menos alunos atrasados,Меньше опоздавших,遅刻を減らすには,지각 줄이는 법,कम देर से आने वाले छात्र
+late.hungry,"{n} students found no seat ({m} lunch seats). Build a canteen, hire canteen crew or move a class into the lunch hour.","{n} öğrenci yer bulamadı ({m} öğle koltuğu). Kantin yap, kantin personeli al ya da bir dersi öğle saatine taşı.","{n} Studierende fanden keinen Platz ({m} Mittagsplätze). Baue eine Mensa, stelle Mensa-Personal ein oder verschiebe einen Kurs in die Mittagspause.","{n} estudiantes no encontraron sitio ({m} plazas de almuerzo). Construye una cantina, contrata personal de cantina o pasa una clase a la hora de comer.","{n} étudiants n'ont pas trouvé de place ({m} places au déjeuner). Construis une cantine, embauche du personnel de cantine ou déplace un cours sur l'heure du déjeuner.","{n} alunos não acharam lugar ({m} lugares no almoço). Construa um refeitório, contrate equipe de cantina ou mova uma aula para a hora do almoço.","Без места за обедом: {n}, мест в столовой: {m}. Построй столовую, найми персонал столовой или перенеси занятие на время обеда.",{n} 人の学生が座れませんでした（昼食の席は {m}）。食堂を建てるか、食堂スタッフを雇うか、授業を昼休みに移しましょう。,"학생 {n}명은 자리가 없었어요(점심 자리 {m}개). 구내식당을 짓거나, 식당 직원을 고용하거나, 수업을 점심시간으로 옮기세요.","{n} छात्रों को सीट नहीं मिली ({m} लंच सीटें)। कैंटीन बनाओ, कैंटीन स्टाफ़ रखो, या एक क्लास लंच के समय पर ले जाओ।"
+late.late,Late,Geç,Zu spät,Tarde,En retard,Atrasados,Опоздали,遅刻,지각,देर
+late.lunch,Lunch,Öğle,Mittag,Almuerzo,Déjeuner,Almoço,Обед,昼食,점심,लंच
+late.none_now,No bell change right now. Students are in class.,Şu an zil değişimi yok. Öğrenciler derste.,Gerade kein Klingelwechsel. Die Studierenden sind im Kurs.,Ahora no hay cambio de timbre. Los estudiantes están en clase.,Pas de changement de sonnerie pour l'instant. Les étudiants sont en cours.,Nenhuma troca de sinal agora. Os alunos estão em aula.,Сейчас смены звонков нет. Студенты на занятиях.,今はチャイムの切り替えはありません。学生は授業中です。,지금은 종이 바뀌지 않아요. 학생들은 수업 중이에요.,अभी घंटी नहीं बदल रही। छात्र क्लास में हैं।
+late.tips,"Open gates, build dorms near the halls, put a group's classes in rooms close together, hire marshals, and stagger the bells.","Kapıları aç, yurtları salonların yakınına kur, bir grubun derslerini birbirine yakın odalara koy, görevli al ve zilleri kaydır.","Öffne Tore, baue Wohnheime nahe den Sälen, lege die Kurse einer Gruppe in nahe Räume, stelle Ordner ein und staffle die Klingeln.","Abre puertas, construye residencias cerca de las aulas, junta las clases de un grupo en salas cercanas, contrata celadores y escalona los timbres.","Ouvre des portails, construis des résidences près des amphis, regroupe les salles d'un même groupe, embauche des surveillants et décale les sonneries.","Abra portões, construa alojamentos perto dos salões, junte as aulas de um grupo em salas próximas, contrate fiscais e escalone os sinais.","Открывай ворота, строй общежития рядом с залами, ставь занятия группы в аудитории поближе, нанимай дежурных и сдвигай звонки.",門を開け、講堂の近くに寮を建て、グループの授業を近い教室にまとめ、係を雇い、チャイムの時間をずらしましょう。,"정문을 열고, 강당 가까이 기숙사를 짓고, 한 조의 수업은 가까운 방에 두고, 안내원을 고용하고, 종 시간을 엇갈리게 하세요.","गेट खोलो, हॉल के पास हॉस्टल बनाओ, एक ग्रुप की क्लास पास के कमरों में रखो, मार्शल रखो, और घंटियाँ अलग-अलग समय पर बजाओ।"
+late.title,Bell change,Zil değişimi,Klingelwechsel,Cambio de timbre,Changement de sonnerie,Troca de sinal,Смена звонков,チャイムの切り替え,종 교체,घंटी बदलना
+late.today,Late today: {n} of {m},Bugün geç kalan: {n} / {m},Heute zu spät: {n} von {m},Llegadas tarde hoy: {n} de {m},En retard aujourd'hui : {n} sur {m},Atrasados hoje: {n} de {m},Опоздали сегодня: {n} из {m},今日の遅刻: {n} / {m},오늘 지각: {m}명 중 {n}명,आज देर: {m} में से {n}
+late.walking,Walking now,Şu an yürüyor,Unterwegs,Caminando ahora,En chemin,Caminhando agora,Сейчас идут,移動中,지금 이동 중,अभी चल रहे हैं
+marker.building,Building · {pct},İnşa ediliyor · {pct},Bau · {pct},Construyendo · {pct},Chantier · {pct},Construindo · {pct},Строится · {pct},建設中 · {pct},건설 중 · {pct},इमारत · {pct}
+marker.closed,Closed,Kapalı,Geschlossen,Cerrado,Fermé,Fechado,Закрыто,閉鎖中,닫힘,बंद
+marker.gate,Open gate · {cost},Açık kapı · {cost},Offenes Tor · {cost},Puerta abierta · {cost},Portail ouvert · {cost},Portão aberto · {cost},Открыть ворота · {cost},門を開く · {cost},출입문 열기 · {cost},खुला गेट · {cost}
+offline.body,Your timetable ran while you were away ({time}). The campus earned {cash}.,Sen yokken programın işledi ({time}). Kampüs {cash} kazandı.,"Dein Stundenplan lief, während du weg warst ({time}). Der Campus hat {cash} verdient.",Tu horario siguió funcionando mientras estabas fuera ({time}). El campus ganó {cash}.,Ton emploi du temps a tourné pendant ton absence ({time}). Le campus a gagné {cash}.,Seu horário funcionou enquanto você esteve fora ({time}). O campus ganhou {cash}.,"Пока тебя не было ({time}), расписание шло. Кампус заработал {cash}.",留守の間も時間割は動いていました（{time}）。キャンパスは {cash} を稼ぎました。,자리를 비운 동안({time}) 시간표가 돌아갔어요. 번 돈: {cash},आपकी गैरमौजूदगी में टाइमटेबल चलता रहा ({time})। कैंपस ने {cash} कमाए।
+offline.capped,The break between terms pays for up to {h} hours.,"Dönemler arası ara, en fazla {h} saat için ödeme yapar.",Die Pause zwischen den Semestern zahlt für bis zu {h} Stunden.,La pausa entre trimestres paga hasta {h} horas.,La pause entre les semestres rapporte jusqu'à {h} heures.,A pausa entre semestres paga até {h} horas.,Каникулы между семестрами платят за {h} ч.,学期の間の休みは最大 {h} 時間分が支払われます。,학기 사이 방학에는 최대 {h}시간치를 받아요.,सेमेस्टर के बीच की छुट्टी में {h} घंटे तक कमाई मिलती है।
+offline.title,"Welcome back, Dean","Hoş geldin, Dekan","Willkommen zurück, Dekan","Bienvenido de nuevo, decano","Bon retour, Doyen","Bem-vindo de volta, Reitor","С возвращением, декан",おかえりなさい、学部長,"돌아오셨군요, 학장님","वापस स्वागत है, डीन साहब"
+phase.report,Week report,Haftalık rapor,Wochenbericht,Informe semanal,Bilan de la semaine,Relatório da semana,Отчёт за неделю,週の報告,주간 성적표,हफ़्ते की रिपोर्ट
+place.admin,Admin building,Yönetim binası,Verwaltungsgebäude,Edificio de administración,Bâtiment administratif,Prédio administrativo,Административный корпус,事務棟,행정동,प्रशासन भवन
+place.canteen,Canteen,Kantin,Mensa,Cantina,Cantine,Refeitório,Столовая,食堂,구내식당,कैंटीन
+place.entrance,Bus stop,Otobüs durağı,Bushaltestelle,Parada de autobús,Arrêt de bus,Ponto de ônibus,Автобусная остановка,バス停,버스 정류장,बस स्टॉप
+place.gate_s,South gate,Güney kapısı,Südtor,Puerta sur,Portail sud,Portão sul,Южные ворота,南門,남문,दक्षिण गेट
+place.hall_main,Main Hall,Ana Salon,Haupthalle,Salón principal,Grand hall,Salão Principal,Главный зал,メインホール,중앙 홀,मेन हॉल
+place.j_green,College green,Kolej çimenliği,Campuswiese,Césped del colegio,Pelouse du collège,Gramado da faculdade,Газон колледжа,カレッジ広場,대학 잔디밭,कॉलेज ग्रीन
+place.j_quad,The quad,Avlu,Der Campusplatz,El patio,La cour,O pátio,Двор,中庭,중앙 광장,आँगन
+place.j_road,Ring road,Çevre yolu,Ringstraße,Vía de circunvalación,Boulevard périphérique,Via circular,Кольцевая дорога,環状道路,순환로,रिंग रोड
+place.j_sci,Science square,Bilim meydanı,Naturwissenschaftsplatz,Plaza de Ciencias,Place des sciences,Praça da Ciência,Площадь науки,理学の広場,과학 광장,साइंस चौक
+place.junction,Crossing,Kavşak,Kreuzung,Cruce,Carrefour,Cruzamento,Перекрёсток,交差点,교차로,चौराहा
+place.site_canteen_q,Quad Canteen,Avlu Kantini,Mensa am Platz,Cantina del patio,Cantine de la cour,Refeitório do Pátio,Столовая во дворе,中庭食堂,광장 식당,आँगन कैंटीन
+place.site_canteen_s,Science Canteen,Bilim Kantini,Mensa Naturwissenschaften,Cantina de Ciencias,Cantine des sciences,Refeitório da Ciência,Столовая науки,理学食堂,과학관 식당,साइंस कैंटीन
+place.site_dorm_a,Elm House,Karaağaç Yurdu,Ulmenhaus,Residencia Olmo,Maison des Ormes,Casa Olmo,Дом «Вяз»,エルム館,엘름 하우스,एल्म हाउस
+place.site_dorm_b,Birch House,Huş Yurdu,Birkenhaus,Residencia Abedul,Maison des Bouleaux,Casa Bétula,Дом «Берёза»,バーチ館,버치 하우스,बर्च हाउस
+place.site_dorm_c,Cedar House,Sedir Yurdu,Zedernhaus,Residencia Cedro,Maison des Cèdres,Casa Cedro,Дом «Кедр»,シーダー館,시더 하우스,सीडर हाउस
+place.site_hall_east,East Hall,Doğu Salonu,Osthalle,Aula del Este,Salle Est,Salão Leste,Восточный зал,東ホール,동관,ईस्ट हॉल
+place.site_hall_q1,Quad Hall,Avlu Salonu,Platzhalle,Aula del patio,Salle de la cour,Salão do Pátio,Зал во дворе,中庭ホール,광장 강당,आँगन हॉल
+place.site_hall_q2,Great Hall,Büyük Salon,Große Halle,Gran Salón,La Grande Salle,Grande Salão,Большой зал,大ホール,그레이트 홀,ग्रेट हॉल
+place.site_hall_q3,North Hall,Kuzey Salonu,Nordhalle,Aula del Norte,Salle Nord,Salão Norte,Северный зал,北ホール,북관,नॉर्थ हॉल
+place.site_hall_s1,Science Hall,Bilim Salonu,Naturwissenschaftshalle,Aula de Ciencias,Salle des sciences,Salão da Ciência,Научный зал,理学ホール,과학 강당,साइंस हॉल
+place.site_hall_s2,South Hall,Güney Salonu,Südhalle,Aula del Sur,Salle Sud,Salão Sul,Южный зал,南ホール,남관,साउथ हॉल
+place.site_lab_1,Lab One,Lab 1,Labor eins,Laboratorio Uno,Labo 1,Laboratório Um,Лаборатория 1,実験室1,실험실 1,लैब वन
+place.site_lab_2,Lab Two,Lab 2,Labor zwei,Laboratorio Dos,Labo 2,Laboratório Dois,Лаборатория 2,実験室2,실험실 2,लैब टू
+place.site_library,Library plot,Kütüphane arsası,Bibliotheksgrundstück,Terreno de la biblioteca,Terrain de la bibliothèque,Terreno da biblioteca,Участок под библиотеку,図書館の区画,도서관 부지,लाइब्रेरी की जगह
+prof.adeyemi,Prof. Adeyemi,Prof. Adeyemi,Prof. Adeyemi,Prof. Adeyemi,Prof. Adeyemi,Prof. Adeyemi,Проф. Адейеми,アデイェミ教授,아데예미 교수,Prof. Adeyemi
+prof.brandt,Prof. Brandt,Prof. Brandt,Prof. Brandt,Prof. Brandt,Prof. Brandt,Prof. Brandt,Проф. Брандт,ブラント教授,브란트 교수,Prof. Brandt
+prof.costa,Prof. Costa,Prof. Costa,Prof. Costa,Prof. Costa,Prof. Costa,Prof. Costa,Проф. Коста,コスタ教授,코스타 교수,Prof. Costa
+prof.haddad,Prof. Haddad,Prof. Haddad,Prof. Haddad,Prof. Haddad,Prof. Haddad,Prof. Haddad,Проф. Хаддад,ハダッド教授,하다드 교수,Prof. Haddad
+prof.ibrahim,Prof. Ibrahim,Prof. Ibrahim,Prof. Ibrahim,Prof. Ibrahim,Prof. Ibrahim,Prof. Ibrahim,Проф. Ибрагим,イブラヒム教授,이브라힘 교수,Prof. Ibrahim
+prof.kaur,Prof. Kaur,Prof. Kaur,Prof. Kaur,Prof. Kaur,Prof. Kaur,Prof. Kaur,Проф. Каур,カウル教授,카우르 교수,Prof. Kaur
+prof.lee,Prof. Lee,Prof. Lee,Prof. Lee,Prof. Lee,Prof. Lee,Prof. Lee,Проф. Ли,リー教授,리 교수,Prof. Lee
+prof.lindqvist,Prof. Lindqvist,Prof. Lindqvist,Prof. Lindqvist,Prof. Lindqvist,Prof. Lindqvist,Prof. Lindqvist,Проф. Линдквист,リンドクヴィスト教授,린드크비스트 교수,Prof. Lindqvist
+prof.mensah,Prof. Mensah,Prof. Mensah,Prof. Mensah,Prof. Mensah,Prof. Mensah,Prof. Mensah,Проф. Менса,メンサー教授,멘사 교수,Prof. Mensah
+prof.moreau,Prof. Moreau,Prof. Moreau,Prof. Moreau,Prof. Moreau,Prof. Moreau,Prof. Moreau,Проф. Моро,モロー教授,모로 교수,Prof. Moreau
+prof.nakamura,Prof. Nakamura,Prof. Nakamura,Prof. Nakamura,Prof. Nakamura,Prof. Nakamura,Prof. Nakamura,Проф. Накамура,ナカムラ教授,나카무라 교수,Prof. Nakamura
+prof.novak,Prof. Novak,Prof. Novak,Prof. Novak,Prof. Novak,Prof. Novak,Prof. Novak,Проф. Новак,ノヴァク教授,노박 교수,Prof. Novak
+prof.okafor,Prof. Okafor,Prof. Okafor,Prof. Okafor,Prof. Okafor,Prof. Okafor,Prof. Okafor,Проф. Окафор,オカフォー教授,오카포르 교수,Prof. Okafor
+prof.ortega,Prof. Ortega,Prof. Ortega,Prof. Ortega,Prof. Ortega,Prof. Ortega,Prof. Ortega,Проф. Ортега,オルテガ教授,오르테가 교수,Prof. Ortega
+prof.petrov,Prof. Petrov,Prof. Petrov,Prof. Petrov,Prof. Petrov,Prof. Petrov,Prof. Petrov,Проф. Петров,ペトロフ教授,페트로프 교수,Prof. Petrov
+prof.quinn,Prof. Quinn,Prof. Quinn,Prof. Quinn,Prof. Quinn,Prof. Quinn,Prof. Quinn,Проф. Куинн,クイン教授,퀸 교수,Prof. Quinn
+prof.rao,Prof. Rao,Prof. Rao,Prof. Rao,Prof. Rao,Prof. Rao,Prof. Rao,Проф. Рао,ラオ教授,라오 교수,Prof. Rao
+prof.rossi,Prof. Rossi,Prof. Rossi,Prof. Rossi,Prof. Rossi,Prof. Rossi,Prof. Rossi,Проф. Росси,ロッシ教授,로시 교수,Prof. Rossi
+prof.silva,Prof. Silva,Prof. Silva,Prof. Silva,Prof. Silva,Prof. Silva,Prof. Silva,Проф. Силва,シルバ教授,실바 교수,Prof. Silva
+prof.tanaka,Prof. Tanaka,Prof. Tanaka,Prof. Tanaka,Prof. Tanaka,Prof. Tanaka,Prof. Tanaka,Проф. Танака,タナカ教授,다나카 교수,Prof. Tanaka
+prof.weber,Prof. Weber,Prof. Weber,Prof. Weber,Prof. Weber,Prof. Weber,Prof. Weber,Проф. Вебер,ヴェーバー教授,베버 교수,Prof. Weber
+report.cohorts,Grades,Notlar,Noten,Notas,Notes,Notas,Оценки,成績,성적,ग्रेड
+report.concessions,Concessions,İndirimler,Zugeständnisse,Concesiones,Concessions,Concessões,Послабления,売店収入,감면,रियायतें
+report.events,Events,Olaylar,Ereignisse,Eventos,Événements,Eventos,События,イベント,행사,घटनाएँ
+report.exam_fees,Exam fees,Sınav ücretleri,Prüfungsgebühren,Tasas de examen,Frais d'examen,Taxas de prova,Плата за экзамены,試験料,시험 응시료,परीक्षा फ़ीस
+report.exam_title,Semester {n} closed,{n}. dönem kapandı,Semester {n} abgeschlossen,Semestre {n} cerrado,Semestre {n} terminé,Semestre {n} encerrado,Семестр {n} закрыт,{n}学期 終了,{n}학기 마감,सेमेस्टर {n} खत्म
+report.grade_good,Good week,İyi bir hafta,Gute Woche,Buena semana,Bonne semaine,Boa semana,Хорошая неделя,良い週でした,좋은 주,अच्छा हफ़्ता
+report.grade_great,Excellent week,Harika bir hafta,Hervorragende Woche,Semana excelente,Semaine excellente,Semana excelente,Отличная неделя,素晴らしい週でした,훌륭한 주,शानदार हफ़्ता
+report.grade_low,A tough week,Zor bir hafta,Eine harte Woche,Semana difícil,Semaine difficile,Semana difícil,Тяжёлая неделя,大変な週でした,힘든 주,मुश्किल हफ़्ता
+report.grants,Grants,Hibeler,Zuschüsse,Ayudas,Subventions,Bolsas,Гранты,助成金,보조금,अनुदान
+report.held,Classes held,Yapılan dersler,Abgehaltene Kurse,Clases impartidas,Cours donnés,Aulas dadas,Проведено занятий,開講した授業,진행된 수업,क्लास हुईं
+report.hungry,Hungry at lunch,Öğlede aç,Hungrig in der Mittagspause,Hambre a la hora de comer,Affamés au déjeuner,Com fome no almoço,Голодные в обед,昼食の席不足,점심 배고픔,दोपहर में भूखे
+report.late,Late arrivals,Geç gelenler,Verspätungen,Llegadas tarde,Arrivées en retard,Chegadas atrasadas,Опоздания,遅刻,지각 도착,देर से पहुँचे
+report.money,Money,Para,Geld,Dinero,Argent,Dinheiro,Деньги,お金,돈,पैसा
+report.net,Net,Net,Netto,Neto,Net,Líquido,Итого,差し引き,순수익,कुल बचत
+report.none,Your first report comes on Friday evening.,İlk raporun Cuma akşamı gelecek.,Dein erster Bericht kommt am Freitagabend.,Tu primer informe llega el viernes por la tarde.,Ton premier bilan arrive vendredi soir.,Seu primeiro relatório sai na sexta à noite.,Первый отчёт придёт в пятницу вечером.,最初の報告は金曜の夕方に届きます。,첫 성적표는 금요일 저녁에 나와요.,आपकी पहली रिपोर्ट शुक्रवार शाम को आएगी।
+report.overtime,Overtime,Fazla mesai,Überstunden,Horas extra,Heures sup,Hora extra,Сверхурочные,残業代,초과근무,ओवरटाइम
+report.prestige,Prestige {p} ({d}),İtibar {p} ({d}),Prestige {p} ({d}),Prestigio {p} ({d}),Prestige {p} ({d}),Prestígio {p} ({d}),Престиж {p} ({d}),名声 {p}（{d}）,명성 {p} ({d}),प्रतिष्ठा {p} ({d})
+report.rent,Dorm rent,Yurt kirası,Wohnheimmiete,Alquiler de la residencia,Loyer des résidences,Aluguel do alojamento,Аренда общежития,寮の家賃,기숙비,हॉस्टल किराया
+report.semester,Semester,Dönem,Semester,Semestre,Semestre,Semestre,Семестр,学期,학기,सेमेस्टर
+report.semester_grade,Semester grade,Dönem notu,Semesternote,Nota del semestre,Moyenne du semestre,Nota do semestre,Оценка за семестр,学期の成績,학기 성적,सेमेस्टर ग्रेड
+report.title,Week {n} report,{n}. hafta raporu,Wochenbericht {n},Informe de la semana {n},Bilan de la semaine {n},Relatório da semana {n},Отчёт за неделю {n},{n}週目の報告,{n}주차 성적표,हफ़्ता {n} की रिपोर्ट
+report.tuition,Tuition,Harç,Studiengebühren,Matrícula,Frais de scolarité,Mensalidades,Плата за учёбу,授業料,등록금,फीस
+report.upkeep,Upkeep and services,Bakım ve hizmetler,Unterhalt und Dienste,Mantenimiento y servicios,Entretien et services,Manutenção e serviços,Содержание и услуги,維持費とサービス,유지비와 서비스,रखरखाव और सेवाएँ
+report.wages,Wages,Ücretler,Löhne,Salarios,Salaires,Salários,Зарплаты,給料,임금,वेतन
+report.week,The week,Hafta,Die Woche,La semana,La semaine,A semana,Неделя,今週,이번 주,यह हफ़्ता
+research.auto_fill_plus.d,Auto-fill weighs walking time and lunch seats.,Otomatik doldurma yürüme süresini ve öğle koltuklarını hesaba katar.,Das Auto-füllen berücksichtigt Gehzeiten und Mittagsplätze.,El autorrelleno tiene en cuenta el tiempo de paseo y las plazas de almuerzo.,Le remplissage tient compte du temps de marche et des places au déjeuner.,O preenchimento considera o tempo de caminhada e os lugares no almoço.,Авто-заполнение учитывает время в пути и места в столовой.,自動配置は移動時間と昼食の席を考慮します。,자동 채우기가 이동 시간과 점심 자리를 함께 고려해요.,अपने आप भरना चलने के समय और लंच की सीटें देखता है।
+research.auto_fill_plus.t,Smart auto-fill,Akıllı doldur,Smartes Auto-füllen,Autorrelleno inteligente,Remplissage intelligent,Preenchimento inteligente,Умное авто-заполнение,賢く自動で埋める,스마트 자동 채우기,समझदारी से अपने आप भरो
+research.backup_power.d,Power cuts no longer spoil exams.,Elektrik kesintileri artık sınavları bozmaz.,Stromausfälle verderben keine Prüfungen mehr.,Los cortes de luz ya no estropean los exámenes.,Les coupures de courant ne gâchent plus les examens.,Quedas de energia não estragam mais as provas.,Отключения света больше не портят экзамены.,停電しても試験が台無しになりません。,정전이 나도 시험이 망가지지 않아요.,बिजली कटने से परीक्षा खराब नहीं होगी।
+research.backup_power.t,Backup power,Yedek güç,Notstrom,Energía de reserva,Groupe électrogène,Energia de reserva,Запасное питание,予備電源,비상 전원,बैकअप बिजली
+research.bike_lanes.d,Everyone gets around faster.,Herkes daha hızlı dolaşır.,Alle kommen schneller voran.,Todos se desplazan más rápido.,Tout le monde se déplace plus vite.,Todo mundo se locomove mais rápido.,Все передвигаются быстрее.,全員の移動が速くなります。,모두가 더 빨리 이동해요.,सब तेज़ी से आएँ-जाएँ।
+research.bike_lanes.t,Bike lanes,Bisiklet yolları,Fahrradwege,Carriles bici,Pistes cyclables,Ciclovias,Велодорожки,自転車レーン,자전거 도로,साइकिल लेन
+research.branch.admin,Administration,Yönetim,Verwaltung,Administración,Administration,Administração,Администрация,事務,행정,प्रशासन
+research.branch.learning,Learning,Öğrenme,Lernen,Aprendizaje,Enseignement,Aprendizado,Обучение,学習,학습,पढ़ाई
+research.branch.life,Campus life,Kampüs hayatı,Campusleben,Vida universitaria,Vie étudiante,Vida no campus,Жизнь кампуса,キャンパスライフ,캠퍼스 생활,कैंपस जीवन
+research.branch.mobility,Mobility,Ulaşım,Mobilität,Movilidad,Déplacements,Mobilidade,Передвижение,移動,이동,आवाजाही
+research.clubs.d,More prestige every week.,Her hafta daha fazla itibar.,Jede Woche mehr Prestige.,Más prestigio cada semana.,Plus de prestige chaque semaine.,Mais prestígio a cada semana.,Больше престижа каждую неделю.,毎週、名声が増えます。,매주 명성이 올라가요.,हर हफ़्ते ज़्यादा प्रतिष्ठा।
+research.clubs.t,Student clubs,Öğrenci kulüpleri,Studentenclubs,Clubes de estudiantes,Clubs étudiants,Grêmios estudantis,Студенческие клубы,学生サークル,학생 동아리,छात्र क्लब
+research.done,Done,Tamam,Fertig,Hecho,Terminé,Concluído,Готово,完了,완료,हो गया
+research.dorm_comfort.d,Higher rent and a little prestige.,Daha yüksek kira ve biraz itibar.,Höhere Miete und etwas mehr Prestige.,Alquiler más alto y un poco más de prestigio.,Loyer plus élevé et un peu de prestige.,Aluguel mais alto e um pouco mais de prestígio.,Выше аренда и немного престижа.,家賃は上がり、名声も少し上がります。,"기숙비가 조금 오르고, 명성도 조금 올라가요.","किराया ज़्यादा, और थोड़ी प्रतिष्ठा।"
+research.dorm_comfort.t,Cosy dorms,Rahat yurtlar,Gemütliche Wohnheime,Residencias acogedoras,Résidences confortables,Alojamentos aconchegantes,Уютные общежития,居心地のよい寮,포근한 기숙사,आरामदेह हॉस्टल
+research.faculty_dev.d,Professors teach better.,Hocalar daha iyi ders verir.,Professoren unterrichten besser.,Los profesores enseñan mejor.,Les professeurs enseignent mieux.,Os professores ensinam melhor.,Преподаватели учат лучше.,教授の授業がよりよくなります。,교수님들의 강의가 더 좋아져요.,प्रोफ़ेसर बेहतर पढ़ाते हैं।
+research.faculty_dev.t,Faculty training,Öğretim eğitimi,Fortbildung für Lehrende,Formación del profesorado,Formation des enseignants,Capacitação docente,Обучение преподавателей,教員研修,교수 연수,प्रोफ़ेसर प्रशिक्षण
+research.finished,Upgrade ready: {name},Geliştirme hazır: {name},Verbesserung fertig: {name},Mejora lista: {name},Amélioration prête : {name},Melhoria pronta: {name},Улучшение готово: {name},アップグレード完了: {name},업그레이드 완료: {name},अपग्रेड तैयार: {name}
+research.food_trucks.d,40 more lunch seats per lunch hour.,Her öğle saatinde 40 öğle koltuğu daha.,40 zusätzliche Mittagsplätze pro Mittagspause.,40 plazas más de almuerzo en cada hora de comida.,40 places de plus au déjeuner par heure de pause.,40 lugares a mais no almoço por horário de almoço.,Ещё 40 мест в столовой на каждый обед.,昼休みの席が40増えます。,점심시간마다 점심 자리가 40개 늘어요.,दोपहर के खाने में 40 सीटें और।
+research.food_trucks.t,Food trucks,Yemek kamyonları,Essenswagen,Camiones de comida,Camions-restaurants,Carrinhos de lanche,Фуд-траки,フードトラック,푸드 트럭,फ़ूड ट्रक
+research.grant_office.d,Bigger grants when a semester closes.,Dönem kapanınca daha büyük hibeler.,"Größere Zuschüsse, wenn ein Semester endet.",Ayudas más grandes al cerrar un semestre.,Subventions plus élevées à la fin d'un semestre.,Bolsas maiores quando um semestre termina.,"Большие гранты, когда семестр закрывается.",学期末に助成金が増えます。,학기가 끝나면 보조금이 커져요.,सेमेस्टर खत्म होने पर बड़ा अनुदान।
+research.grant_office.t,Grant office,Hibe ofisi,Stipendienstelle,Oficina de ayudas,Bureau des bourses,Escritório de bolsas,Грантовый отдел,助成金窓口,보조금 사무실,अनुदान दफ़्तर
+research.gym.d,Healthy students: more prestige every week.,Sağlıklı öğrenciler: her hafta daha fazla itibar.,Gesunde Studierende: jede Woche mehr Prestige.,Estudiantes sanos: más prestigio cada semana.,Des étudiants en forme : plus de prestige chaque semaine.,Alunos saudáveis: mais prestígio a cada semana.,Здоровые студенты: больше престижа каждую неделю.,健康な学生が増え、毎週の名声が上がります。,건강한 학생이 많아져 매주 명성이 올라가요.,स्वस्थ छात्र: हर हफ़्ते ज़्यादा प्रतिष्ठा।
+research.gym.t,Gym,Spor salonu,Turnhalle,Gimnasio,Gymnase,Academia,Спортзал,体育館,체육관,जिम
+research.lab_equipment.d,Lab classes teach better.,Laboratuvar dersleri daha iyi öğretilir.,Laborkurse werden besser vermittelt.,Las prácticas de laboratorio enseñan mejor.,Les travaux pratiques s'améliorent.,As aulas de laboratório ensinam melhor.,Занятия в лаборатории идут лучше.,実験授業の質が上がります。,실험 수업이 더 잘 가르쳐져요.,लैब क्लास बेहतर पढ़ाती हैं।
+research.lab_equipment.t,Lab equipment,Laboratuvar ekipmanı,Laborausstattung,Equipo de laboratorio,Matériel de labo,Equipamentos de laboratório,Лабораторное оборудование,実験機器,실험 장비,लैब के उपकरण
+research.left,{time} left,{time} kaldı,Noch {time},Quedan {time},Reste {time},Faltam {time},Осталось {time},残り {time},{time} 남음,{time} बाकी
+research.library_hours.d,The library's bonus doubles.,Kütüphanenin bonusu iki katına çıkar.,Der Bonus der Bibliothek verdoppelt sich.,La bonificación de la biblioteca se duplica.,Le bonus de la bibliothèque double.,O bônus da biblioteca dobra.,Бонус библиотеки удваивается.,図書館のボーナスが2倍になります。,도서관 보너스가 두 배가 돼요.,लाइब्रेरी का बोनस दोगुना।
+research.library_hours.t,Late library hours,Geç kütüphane saatleri,Lange Bibliothekszeiten,Horario de biblioteca nocturno,Horaires tardifs de la bibliothèque,Biblioteca aberta até tarde,Библиотека до ночи,図書館の夜間開館,도서관 야간 개방,लाइब्रेरी के देर तक खुलने का समय
+research.requires,Needs {name},{name} gerekli,Braucht {name},Necesita {name},Il faut {name},Precisa de {name},Нужно: {name},{name} が必要,{name} 필요,{name} चाहिए
+research.scholarships.d,Selective intakes bring stronger students.,Seçici alımlar daha güçlü öğrenciler getirir.,Ausgewählte Aufnahmen bringen stärkere Studierende.,Las admisiones selectivas traen estudiantes más fuertes.,Les admissions sélectives attirent de meilleurs étudiants.,Entradas seletivas trazem alunos mais fortes.,Строгий отбор приводит более сильных студентов.,選抜入学で、より優秀な学生が集まります。,선발한 신입생이 더 뛰어나요.,चुनिंदा दाखिले से बेहतर छात्र आते हैं।
+research.scholarships.t,Scholarships,Burslar,Stipendien,Becas,Bourses,Bolsas de estudo,Стипендии,奨学金,장학금,स्कॉलरशिप
+research.shuttle.d,A fast line from the bus stop to the science campus.,Otobüs durağından bilim kampüsüne hızlı bir hat.,Eine schnelle Linie von der Bushaltestelle zum Naturwissenschaftscampus.,Una línea rápida desde la parada de autobús hasta el campus de ciencias.,Une ligne rapide entre l'arrêt de bus et le campus des sciences.,Uma linha rápida do ponto de ônibus até o campus da ciência.,Быстрая линия от автобусной остановки до научного кампуса.,バス停から理学キャンパスまで速い便が走ります。,버스 정류장에서 과학 캠퍼스까지 빠른 노선이에요.,बस स्टॉप से साइंस कैंपस तक तेज़ सवारी।
+research.shuttle.t,Campus shuttle,Kampüs servisi,Campus-Shuttle,Lanzadera del campus,Navette du campus,Ônibus do campus,Кампусный шаттл,キャンパスシャトル,캠퍼스 셔틀,कैंपस शटल
+research.signposts.d,Nobody gets lost: walks are a little shorter.,Kimse kaybolmaz: yürüyüşler biraz kısalır.,Niemand verläuft sich: Die Wege sind etwas kürzer.,Nadie se pierde: los paseos son un poco más cortos.,Personne ne se perd : les trajets sont un peu plus courts.,Ninguém se perde: os trajetos ficam um pouco mais curtos.,Никто не заблудится: дорога чуть короче.,迷う人がいなくなり、移動が少し短くなります。,아무도 길을 잃지 않아 걷는 거리가 조금 줄어요.,कोई भटकता नहीं: रास्ते थोड़े छोटे।
+research.signposts.t,Signposts,Yönlendirme tabelaları,Wegweiser,Señalización,Panneaux,Placas de sinalização,Указатели,案内表示,안내 표지판,दिशा-संकेत
+research.smart_boards.d,Every class teaches a little better.,Her ders biraz daha iyi öğretilir.,Jeder Kurs wird etwas besser vermittelt.,Cada clase enseña un poco mejor.,Chaque cours s'améliore un peu.,Cada aula ensina um pouco melhor.,Каждое занятие идёт немного лучше.,すべての授業が少しよくなります。,모든 수업이 조금 더 잘 돼요.,हर क्लास थोड़ा बेहतर पढ़ाती है।
+research.smart_boards.t,Smart boards,Akıllı tahtalar,Smartboards,Pizarras digitales,Tableaux interactifs,Quadros inteligentes,Умные доски,電子黒板,스마트 보드,स्मार्ट बोर्ड
+research.staggered_bells.d,Faculties change rooms in two waves.,Fakülteler odalarını iki dalga halinde değiştirir.,Fakultäten wechseln ihre Räume in zwei Wellen.,Las facultades cambian de sala en dos turnos.,Les facultés changent de salle en deux vagues.,As faculdades trocam de sala em duas levas.,Факультеты меняют аудитории в две волны.,学部ごとに二回に分けて教室を移動します。,학부마다 두 차례로 나눠서 강의실을 바꿔요.,विभाग दो हिस्सों में कमरे बदलते हैं।
+research.staggered_bells.t,Staggered bells,Kademeli zil,Gestaffelte Klingeln,Timbres escalonados,Sonneries décalées,Sinais escalonados,Сдвинутые звонки,時差チャイム,시차 종,अलग-अलग घंटियाँ
+research.start,Start · {cost},Başlat · {cost},Starten · {cost},Empezar · {cost},Lancer · {cost},Começar · {cost},Начать · {cost},開始 · {cost},시작 · {cost},शुरू करो · {cost}
+research.tutoring.d,Late students still catch up more of the class.,Geç kalan öğrenciler derslerin daha fazlasını yakalar.,Zu spät kommende Studierende holen mehr vom Kurs nach.,Los estudiantes con retraso aprovechan más la clase.,Les étudiants en retard rattrapent davantage le cours.,Alunos atrasados ainda acompanham mais da aula.,Опоздавшие всё равно нагоняют больше занятия.,遅れた学生も授業の内容をより多く取り戻せます。,지각한 학생도 수업을 더 많이 따라잡아요.,देर से आने वाले छात्र भी ज़्यादा क्लास पकड़ लेते हैं।
+research.tutoring.t,Tutoring,Ek ders,Nachhilfe,Tutorías,Soutien scolaire,Monitoria,Доп. занятия,個別指導,보충 수업,ट्यूशन
+research.wide_paths.d,Lets you widen busy paths in Campus.,Kampüs ekranında yoğun yolları genişletmeni sağlar.,"Erlaubt dir, belebte Wege im Campus zu verbreitern.",Te permite ensanchar los caminos concurridos en Campus.,Permet d'élargir les allées fréquentées dans le Campus.,Permite alargar caminhos movimentados no Campus.,Позволяет расширять загруженные дорожки в кампусе.,キャンパスで混雑する通路を広げられます。,캠퍼스에서 붐비는 길을 넓힐 수 있어요.,कैंपस में भीड़ वाले रास्ते चौड़े करने देता है।
+research.wide_paths.t,Wider paths,Geniş yollar,Breitere Wege,Caminos más anchos,Allées plus larges,Caminhos mais largos,Широкие дорожки,広い通路,넓은 길,चौड़े रास्ते
+research.zone,Needs {name},{name} gerekli,Braucht {name},Necesita {name},Il faut {name},Precisa de {name},Нужно: {name},{name} が必要,{name} 필요,{name} चाहिए
+reward.city_help.b,Last resort: the city ends today's crisis.,Son çare: şehir bugünkü krizi bitirir.,Letzter Ausweg: Die Stadt beendet die heutige Krise.,Último recurso: la ciudad pone fin a la crisis de hoy.,Dernier recours : la ville met fin à la crise du jour.,Último recurso: a prefeitura encerra a crise de hoje.,Последний шанс: город закроет сегодняшний кризис.,最後の手段: 市が今日のトラブルを解決します。,마지막 수단: 시에서 오늘의 위기를 해결해 줘요.,आखिरी सहारा: शहर आज का संकट खत्म करता है।
+reward.city_help.t,Call the city for help,Şehirden yardım iste,Stadt um Hilfe bitten,Pedir ayuda a la ciudad,Appeler la ville à l'aide,Pedir ajuda à prefeitura,Попросить помощи у города,市に助けを求める,시에 도움 요청,शहर से मदद माँगो
+reward.claim,Claim,Al,Abholen,Reclamar,Récupérer,Resgatar,Забрать,受け取る,받기,लो
+reward.daily_bonus.b,A small gift once a day.,Günde bir kez küçük bir hediye.,Ein kleines Geschenk einmal am Tag.,Un pequeño regalo una vez al día.,Un petit cadeau chaque jour.,Um pequeno presente por dia.,Небольшой подарок раз в день.,1日1回の小さなプレゼント。,하루에 한 번 주는 작은 선물이에요.,हर दिन एक छोटा तोहफ़ा।
+reward.daily_bonus.t,Supplies from the alumni,Mezunlardan malzeme,Vorräte von den Ehemaligen,Suministros de los exalumnos,Fournitures des anciens,Suprimentos dos ex-alunos,Припасы от выпускников,卒業生からの差し入れ,동문회 보급품,पुराने छात्रों से सामान
+reward.done_cash,+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash}
+reward.done_city,The city helped: the crisis is over.,Şehir yardım etti: kriz bitti.,Die Stadt hat geholfen: Die Krise ist vorbei.,La ciudad ayudó: la crisis ha terminado.,La ville a aidé : la crise est finie.,A prefeitura ajudou: a crise acabou.,Город помог: кризис позади.,市が助けてくれました。トラブルは解決です。,시가 도와줘서 위기가 끝났어요.,शहर ने मदद की: संकट खत्म।
+reward.done_marshals,Extra marshals are on the paths for the next bell.,Bir sonraki zil için yollarda ek görevliler var.,Zusätzliche Ordner sind für die nächste Klingel auf den Wegen.,Hay celadores extra en los caminos para el próximo timbre.,Des surveillants supplémentaires sont dans les allées pour la prochaine sonnerie.,Fiscais extras estão nos caminhos para o próximo sinal.,Дополнительные дежурные стоят на дорожках к следующему звонку.,次のチャイムに向けて、通路に係が追加されました。,다음 종이 울릴 때 추가 안내원이 길에 나와요.,अगली घंटी के लिए रास्तों पर अतिरिक्त मार्शल हैं।
+reward.extra_marshals.b,Three more marshals guide the next bell change.,Üç görevli daha bir sonraki zil değişimine rehberlik eder.,Drei weitere Ordner leiten den nächsten Klingelwechsel.,Tres celadores más guían el próximo cambio de timbre.,Trois surveillants de plus guident le prochain changement de sonnerie.,Mais três fiscais orientam a próxima troca de sinal.,Ещё трое дежурных проводят следующую смену звонков.,さらに係3名が次のチャイムの切り替えを誘導します。,안내원 3명이 더 나와 다음 종 교체를 도와줘요.,अगली घंटी बदलने में तीन और मार्शल मदद करेंगे।
+reward.extra_marshals.t,Extra marshals,Ek görevliler,Zusätzliche Ordner,Celadores extra,Surveillants en renfort,Fiscais extras,Доп. дежурные,係の追加,추가 안내원,अतिरिक्त मार्शल
+reward.free.b,Included with your purchase: no video.,Satın almanla birlikte gelir: video yok.,Im Kauf enthalten: kein Video.,Incluido con tu compra: sin vídeo.,Inclus avec ton achat : pas de vidéo.,Incluído na sua compra: sem vídeo.,Входит в покупку: видео не нужно.,購入特典に含まれます。動画は不要です。,구매에 포함돼요. 영상 없이 받아요.,आपकी खरीदारी में शामिल: कोई वीडियो नहीं।
+reward.free_cash,Claim · +{cash},Al · +{cash},Abholen · +{cash},Recoger · +{cash},Récupérer · +{cash},Resgatar · +{cash},Забрать · +{cash},受け取る · +{cash},받기 · +{cash},लो · +{cash}
+reward.offline_x2.b,Watch a short video to get it twice.,"Kısa bir video izle, iki katını al.","Sieh dir ein kurzes Video an, um es doppelt zu bekommen.",Mira un vídeo corto para cobrarlo el doble.,Regarde une courte vidéo pour le recevoir deux fois.,Assista a um vídeo curto para receber o dobro.,"Посмотри короткое видео, чтобы получить вдвое больше.",短い動画を見ると2倍になります。,짧은 영상을 보면 두 배로 받아요.,दोगुना पाने के लिए एक छोटा वीडियो देखो।
+reward.offline_x2.t,Double the break pay,Ara ödemesini ikiye katla,Pausengeld verdoppeln,Doble pago de la pausa,Double la paie de pause,Dobre o pagamento da pausa,Удвоить доход за каникулы,休みの報酬を2倍に,방학 수당 두 배,छुट्टी की कमाई दोगुनी
+reward.unavailable,Not available right now.,Şu an kullanılamıyor.,Gerade nicht verfügbar.,No disponible ahora mismo.,Pas disponible pour le moment.,Não disponível agora.,Сейчас недоступно.,今は利用できません。,지금은 받을 수 없어요.,अभी उपलब्ध नहीं है।
+reward.video,Watch a video,Video izle,Video ansehen,Ver un vídeo,Regarder une vidéo,Assistir a um vídeo,Посмотреть видео,動画を見る,영상 보기,वीडियो देखो
+reward.video_cash,Video · +{cash},Video · +{cash},Video · +{cash},Vídeo · +{cash},Vidéo · +{cash},Vídeo · +{cash},Видео · +{cash},動画 · +{cash},영상 · +{cash},वीडियो · +{cash}
+settings.auto_repair,Registrar repairs today's plan,Kayıt Ofisi bugünkü planı onarsın,Studienbüro korrigiert den heutigen Plan,Secretaría repara el plan de hoy,La scolarité répare le planning du jour,A secretaria corrige o plano de hoje,Регистратура чинит план на сегодня,教務係が今日の予定を直す,교무 도우미가 오늘 계획을 고쳐요,रजिस्ट्रार आज की योजना ठीक करे
+settings.auto_repair.d,"Each morning, classes in a closed room move to a free slot.","Her sabah, kapalı bir odadaki dersler boş bir yuvaya taşınır.",Jeden Morgen wechseln Kurse aus einem gesperrten Raum in einen freien Termin.,"Cada mañana, las clases de una sala cerrada pasan a un hueco libre.","Chaque matin, les cours d'une salle fermée passent sur un créneau libre.","Toda manhã, as aulas de uma sala fechada passam para um horário livre.",Каждое утро занятия из закрытой аудитории переносятся в свободное место.,毎朝、閉鎖中の教室の授業を空いている枠へ移します。,아침마다 닫힌 방의 수업을 빈 칸으로 옮겨요.,"हर सुबह, बंद कमरे की क्लास खाली समय में चली जाती है।"
+settings.auto_skip,Skip the week summary,Haftalık özeti atla,Wochenübersicht überspringen,Saltar el resumen semanal,Passer le bilan de la semaine,Pular o resumo da semana,Пропускать итоги недели,週のまとめを飛ばす,주간 요약 건너뛰기,हफ़्ते का सार छोड़ो
+settings.auto_skip.d,Goes straight to the next week (not after exams).,Doğrudan sonraki haftaya geçer (sınavlardan sonra değil).,Geht direkt zur nächsten Woche (nicht nach Prüfungen).,Pasa directamente a la semana siguiente (no después de los exámenes).,Passe directement à la semaine suivante (pas après les examens).,Vai direto para a próxima semana (não após as provas).,Сразу переходит к следующей неделе (кроме экзаменов).,すぐ次の週へ進みます（試験後は除く）。,바로 다음 주로 넘어가요(시험 후에는 제외).,सीधे अगले हफ़्ते पर जाओ (परीक्षा के बाद नहीं)।
+settings.effects,Effects,Efektler,Effekte,Efectos,Effets,Efeitos,Эффекты,効果音,효과음,इफ़ेक्ट
+settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Графика,画質,그래픽,ग्राफ़िक्स
+settings.guide,How to play: replay the guide,Nasıl oynanır: rehberi tekrar oynat,So wird gespielt: Anleitung erneut abspielen,Cómo jugar: repetir la guía,Comment jouer : revoir le guide,Como jogar: rever o guia,Как играть: повторить подсказки,遊び方: ガイドをもう一度見る,플레이 방법: 가이드 다시 보기,कैसे खेलें: गाइड दोबारा देखो
+settings.help,Help,Yardım,Hilfe,Ayuda,Aide,Ajuda,Помощь,ヘルプ,도움말,मदद
+settings.language,Language,Dil,Sprache,Idioma,Langue,Idioma,Язык,言語,언어,भाषा
+settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,음악,संगीत
+settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
+settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चालू
+settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
+settings.privacy,Privacy,Gizlilik,Datenschutz,Privacidad,Confidentialité,Privacidade,Конфиденциальность,プライバシー,개인정보,गोपनीयता
+settings.privacy_options,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
+settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
+settings.sound,Sound,Ses,Ton,Sonido,Son,Som,Звук,サウンド,사운드,आवाज़
+settings.theme,Campus theme,Kampüs teması,Campus-Design,Tema del campus,Thème du campus,Tema do campus,Тема кампуса,キャンパステーマ,캠퍼스 테마,कैंपस थीम
+settings.title,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
+settings.version,Version {v},Sürüm {v},Version {v},Versión {v},Version {v},Versão {v},Версия {v},バージョン {v},버전 {v},वर्शन {v}
+sheet.close,Close,Kapat,Schließen,Cerrar,Fermer,Fechar,Закрыть,閉じる,닫기,बंद करो
+shop.bought,{name} is yours.,{name} artık senin.,{name} gehört dir.,{name} es tuyo.,{name} est à toi.,{name} é seu.,{name} твой.,{name} を手に入れました。,{name} 구매 완료!,{name} अब आपका है।
+shop.cap,That's enough packs for today.,Bugünlük paket sınırına ulaştın.,Das sind für heute genug Pakete.,Ya hay suficientes packs por hoy.,C'est assez de packs pour aujourd'hui.,Já são pacotes suficientes por hoje.,На сегодня наборов хватит.,今日のパックはこれで十分です。,오늘은 이 팩을 더 살 수 없어요.,आज के लिए इतने पैक काफ़ी हैं।
+shop.failed,The purchase did not go through.,Satın alma tamamlanmadı.,Der Kauf ist nicht durchgegangen.,La compra no se completó.,L'achat n'a pas abouti.,A compra não foi concluída.,Покупка не прошла.,購入できませんでした。,구매가 완료되지 않았어요.,खरीदारी पूरी नहीं हुई।
+shop.funds,{cash} added.,{cash} eklendi.,{cash} hinzugefügt.,{cash} añadidos.,{cash} ajoutés.,{cash} adicionados.,Добавлено: {cash}.,{cash} を追加しました。,{cash} 받았어요.,{cash} जुड़ गए।
+shop.group.adfree,No ads,Reklamsız,Ohne Werbung,Sin anuncios,Sans pubs,Sem anúncios,Без рекламы,広告なし,광고 없음,बिना विज्ञापन
+shop.group.boost,Convenience,Kolaylık,Komfort,Comodidad,Confort,Conveniência,Удобства,便利機能,편의,सुविधा
+shop.group.budget,Funds,Fon,Geld,Fondos,Fonds,Verba,Деньги,資金,자금,फ़ंड
+shop.group.looks,Campus themes,Kampüs temaları,Campus-Designs,Temas del campus,Thèmes du campus,Temas do campus,Темы кампуса,キャンパステーマ,캠퍼스 테마,कैंपस थीम
+shop.group.offer,Offers,Teklifler,Angebote,Ofertas,Offres,Ofertas,Предложения,特別オファー,특가,ऑफ़र
+shop.offer,Offer,Teklif,Angebot,Oferta,Offre,Oferta,Предложение,特別オファー,특가,ऑफ़र
+shop.owned,Owned,Sende,Gekauft,Comprado,Acquis,Comprado,Куплено,所持済み,보유 중,आपके पास
+shop.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
+shop.restore_failed,Could not restore right now. Try again later.,Şu an geri yüklenemedi. Daha sonra tekrar dene.,Gerade nicht wiederherstellbar. Versuch es später noch einmal.,No se pudo restaurar ahora. Inténtalo más tarde.,Impossible de restaurer pour le moment. Réessaie plus tard.,Não foi possível restaurar agora. Tente de novo mais tarde.,Сейчас не получилось восстановить. Попробуй позже.,今は復元できません。あとでもう一度お試しください。,지금은 복원할 수 없어요. 나중에 다시 해 보세요.,अभी वापस नहीं ला सके। बाद में फिर कोशिश करो।
+shop.restored,Purchases restored.,Satın almalar geri yüklendi.,Käufe wiederhergestellt.,Compras restauradas.,Achats restaurés.,Compras restauradas.,Покупки восстановлены.,購入を復元しました。,구매를 복원했어요.,खरीदारी वापस आ गई।
+shop.title,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
+shop.unavailable,The store is not available right now.,Mağaza şu an kullanılamıyor.,Der Shop ist gerade nicht verfügbar.,La tienda no está disponible ahora mismo.,La boutique n'est pas disponible pour le moment.,A loja não está disponível agora.,Магазин сейчас недоступен.,ストアは今利用できません。,지금은 상점을 열 수 없어요.,दुकान अभी उपलब्ध नहीं है।
+staff.canteen_crew,Canteen crew,Kantin personeli,Mensa-Personal,Personal de cantina,Personnel de cantine,Equipe da cantina,Персонал столовой,食堂スタッフ,식당 직원,कैंटीन स्टाफ़
+staff.canteen_crew.d,Each one adds 25 % more lunch seats.,Her biri öğle koltuklarını %25 artırır.,Jede Person bringt 25 % mehr Mittagsplätze.,Cada uno añade un 25 % más de plazas para almorzar.,Chacun ajoute 25 % de places au déjeuner.,Cada um adiciona 25% mais lugares no almoço.,Каждый добавляет 25 % мест в столовой.,1人につき昼食の席が25 %増えます。,한 명당 점심 자리가 25%씩 늘어요.,हर एक से दोपहर में 25 % ज़्यादा सीटें।
+staff.departments,Departments,Bölümler,Abteilungen,Departamentos,Départements,Departamentos,Отделы,学部,부서,विभाग
+staff.dismiss,Let one go,Birini işten çıkar,Jemanden verabschieden,Despedir a uno,Laisser partir quelqu'un,Dispensar um,Уволить одного,一人を退職させる,한 명 내보내기,किसी को जाने दो
+staff.hire,Hire · {cost},İşe al · {cost},Einstellen · {cost},Contratar · {cost},Embaucher · {cost},Contratar · {cost},Нанять · {cost},雇う · {cost},고용 · {cost},रखो · {cost}
+staff.hire_prof,Hire a professor,Hoca al,Professor einstellen,Contratar un profesor,Embaucher un professeur,Contratar um professor,Нанять преподавателя,教授を雇う,교수 고용,प्रोफ़ेसर रखो
+staff.lab_techs,Lab technicians,Laboratuvar teknisyenleri,Laborassistenz,Técnicos de laboratorio,Techniciens de labo,Técnicos de laboratório,Лаборанты,実験技術員,실험 조교,लैब टेक्नीशियन
+staff.lab_techs.d,"One per lab class at the same time, or labs run at half quality.",Aynı anda her laboratuvar dersine bir kişi; yoksa laboratuvarlar yarım kalitede çalışır.,"Eine pro Laborkurs gleichzeitig, sonst laufen Labore mit halber Qualität.","Uno por práctica de laboratorio a la vez, o los laboratorios funcionan a media calidad.","Un par travaux pratiques en même temps, sinon les labos tournent à mi-régime.","Um por aula de laboratório ao mesmo tempo, ou os laboratórios funcionam com metade da qualidade.","По одному на каждое лабораторное занятие одновременно, иначе лаборатории работают вполсилы.",実験授業ごとに1人必要です。いない場合は実験の質が半分になります。,실험 수업마다 한 명씩 있어야 실험이 제대로 돌아가요. 없으면 품질이 절반으로 떨어져요.,"हर लैब क्लास के लिए एक, वरना लैब की क्लास आधी गुणवत्ता पर चलेगी।"
+staff.leaving,leaving,ayrılıyor,geht,se marcha,part,saindo,уходит,退職予定,퇴사 예정,जा रहे हैं
+staff.maintenance,Maintenance,Bakım,Hausmeisterei,Mantenimiento,Entretien,Manutenção,Техслужба,整備,시설 관리,रखरखाव
+staff.maintenance.d,Builds faster and reopens closed rooms sooner.,Daha hızlı inşa eder ve kapalı odaları daha çabuk açar.,Baut schneller und öffnet gesperrte Räume früher wieder.,Construye más rápido y reabre antes las salas cerradas.,Construit plus vite et rouvre les salles fermées plus tôt.,Constrói mais rápido e reabre salas fechadas mais cedo.,Строит быстрее и быстрее открывает закрытые аудитории.,工事が速くなり、閉鎖中の教室も早く再開できます。,"건설이 빨라지고, 닫힌 방도 더 빨리 다시 열어요.",काम तेज़ होता है और बंद कमरे जल्दी खुलते हैं।
+staff.marshals,Campus marshals,Kampüs görevlileri,Campus-Ordner,Celadores del campus,Surveillants du campus,Fiscais do campus,Дежурные кампуса,キャンパス係,캠퍼스 안내원,कैंपस मार्शल
+staff.marshals.d,Each one keeps a busy path flowing at the bell.,Her biri zil sırasında yoğun bir yolu akıcı tutar.,Jeder hält einen belebten Weg bei der Klingel in Bewegung.,Cada uno mantiene fluido un camino concurrido al sonar el timbre.,Chacun fluidifie une allée fréquentée à la sonnerie.,Cada um mantém um caminho movimentado fluindo na hora do sinal.,Каждый держит загруженную дорожку свободной во время звонка.,1人につき、チャイムの時に混雑する通路をスムーズに保ちます。,한 명당 종이 울릴 때 붐비는 길을 원활하게 유지해요.,हर एक घंटी के समय भीड़ वाला रास्ता चलता रखता है।
+staff.no_prof,No professor yet: its classes cannot run.,Henüz hoca yok: dersleri çalıştırılamaz.,Noch kein Professor: Seine Kurse können nicht stattfinden.,Todavía no hay profesor: sus clases no pueden impartirse.,Pas encore de professeur : ses cours ne peuvent pas avoir lieu.,Ainda sem professor: essas aulas não podem acontecer.,Преподавателя пока нет: занятия не могут идти.,教授がまだいないため、この授業は開講できません。,아직 교수가 없어서 이 수업들은 열 수 없어요.,अभी कोई प्रोफ़ेसर नहीं: इसकी क्लास नहीं चल सकतीं।
+staff.payroll,Payroll {cash} per week,Haftalık bordro {cash},Gehaltsliste {cash} pro Woche,Nómina {cash} por semana,Paie {cash} par semaine,Folha de pagamento {cash} por semana,Зарплаты {cash} в неделю,週の給与 {cash},주간 급여 {cash},तनख्वाह {cash} हर हफ़्ते
+staff.policies,Policies,Politikalar,Richtlinien,Políticas,Règlements,Políticas,Правила,方針,정책,नीतियाँ
+staff.prof_rule,A professor teaches at most {n} classes a day. Wage {wage} per week.,Bir hoca günde en fazla {n} ders verir. Haftalık maaş {wage}.,Ein Professor unterrichtet höchstens {n} Kurse am Tag. Gehalt {wage} pro Woche.,Un profesor da como máximo {n} clases al día. Sueldo {wage} por semana.,Un professeur donne au plus {n} cours par jour. Salaire {wage} par semaine.,Um professor dá no máximo {n} aulas por dia. Salário {wage} por semana.,Преподаватель ведёт не больше {n} занятий в день. Зарплата {wage} в неделю.,教授は1日に最大 {n} 件の授業を担当します。週の給料は {wage}。,교수는 하루에 최대 {n}개 수업을 맡을 수 있어요. 주급 {wage}.,एक प्रोफ़ेसर एक दिन में ज़्यादा से ज़्यादा {n} क्लास पढ़ाता है। वेतन {wage} हर हफ़्ते।
+staff.professors,Professors,Hocalar,Professoren,Profesores,Professeurs,Professores,Преподаватели,教授,교수,प्रोफ़ेसर
+staff.registry,Registry,Kayıt Ofisi,Studienbüro,Secretaría,Scolarité,Secretaria,Регистратура,教務課,교무처,रजिस्ट्री
+staff.registry.d,Invigilates exams; more applicants when you grow the intake.,Sınavları gözetir; kabulü büyüttükçe daha fazla başvuru gelir.,"Beaufsichtigt Prüfungen; mehr Bewerbende, wenn du die Aufnahme vergrößerst.",Vigila los exámenes; más aspirantes cuando amplías la admisión.,Surveille les examens ; plus de candidats quand tu agrandis les admissions.,Fiscaliza as provas; mais candidatos quando você aumenta a entrada.,"Дежурит на экзаменах; больше абитуриентов, когда набор растёт.",試験の監督をします。新入生の数を増やすと応募者も増えます。,시험을 감독해요. 신입생 규모를 키우면 지원자가 늘어요.,परीक्षा की निगरानी; कैंपस बढ़ाने पर ज़्यादा आवेदक।
+staff.sick,sick today,bugün hasta,heute krank,enfermo hoy,malade aujourd'hui,doente hoje,сегодня болеет,今日は体調不良,오늘 병가,आज बीमार
+staff.staggered.d,"Faculties change rooms in two waves, 5 minutes apart. Overtime {cash} a day.",Fakülteler odalarını 5 dakika ara ile iki dalga halinde değiştirir. Fazla mesai günlük {cash}.,"Fakultäten wechseln ihre Räume in zwei Wellen, 5 Minuten auseinander. Überstunden {cash} pro Tag.","Las facultades cambian de sala en dos turnos, con 5 minutos de diferencia. Horas extra {cash} al día.","Les facultés changent de salle en deux vagues, à 5 minutes d'intervalle. Heures sup {cash} par jour.","As faculdades trocam de sala em duas levas, com 5 minutos de intervalo. Hora extra {cash} por dia.","Факультеты меняют аудитории в две волны, с разницей 5 минут. Сверхурочные {cash} в день.",学部ごとに5分ずらして2回に分けて教室を移動します。残業代は1日 {cash}。,학부마다 5분 간격으로 두 차례로 나눠 강의실을 바꿔요. 하루 초과근무 {cash}.,"विभाग दो हिस्सों में, 5 मिनट के फ़र्क से कमरे बदलते हैं। ओवरटाइम {cash} रोज़।"
+tab.board,Timetable,Ders programı,Stundenplan,Horario,Planning,Horário,Расписание,時間割,시간표,टाइमटेबल
+tab.campus,Campus,Kampüs,Campus,Campus,Campus,Campus,Кампус,キャンパス,캠퍼스,कैंपस
+tab.research,Upgrades,Geliştirmeler,Verbesserungen,Mejoras,Améliorations,Melhorias,Улучшения,アップグレード,업그레이드,अपग्रेड
+tab.settings,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
+tab.shop,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
+tab.staff,Staff,Personel,Personal,Personal,Personnel,Equipe,Персонал,スタッフ,직원,स्टाफ़
+theme.default,Classic,Klasik,Klassisch,Clásico,Classique,Clássico,Классика,クラシック,클래식,क्लासिक
+theme.gold_trim,Chancellor gold,Şansölye altını,Kanzler-Gold,Dorado del Rectorado,Or du chancelier,Dourado do Reitor,Золото ректора,学長ゴールド,학장 금색,चांसलर सुनहरा
+theme.theme_desert,Desert,Çöl,Wüste,Desierto,Désert,Deserto,Пустыня,デザート,사막,डेज़र्ट
+theme.theme_ivy,Ivy,Sarmaşık,Efeu,Hiedra,Lierre,Hera,Плющ,アイビー,아이비,आइवी
+theme.theme_modern,Modern,Modern,Modern,Moderno,Moderne,Moderno,Модерн,モダン,모던,मॉडर्न
+tip.decision,A decision is waiting. Time stops until you choose.,Bir karar bekliyor. Sen seçene kadar zaman durur.,"Eine Entscheidung wartet. Die Zeit steht still, bis du dich entschieden hast.",Hay una decisión esperando. El tiempo se detiene hasta que elijas.,Une décision t'attend. Le temps s'arrête jusqu'à ce que tu choisisses.,Uma decisão está esperando. O tempo para até você escolher.,"Ждёт решение. Время стоит, пока ты не выберешь.",決めることがあります。選ぶまで時間は止まります。,결정이 기다리고 있어요. 고를 때까지 시간이 멈춰요.,एक फ़ैसला बाकी है। आप चुनो तब तक समय रुका है।
+tip.dorm,Students in a dorm walk from it in the morning and pay rent.,Yurttaki öğrenciler sabah buradan yürür ve kira öder.,Studierende aus einem Wohnheim laufen morgens von dort los und zahlen Miete.,Los estudiantes de una residencia salen de ella por la mañana y pagan alquiler.,Les étudiants d'une résidence partent de là le matin et paient un loyer.,Alunos de um alojamento saem de lá de manhã e pagam aluguel.,Студенты из общежития утром идут отсюда и платят аренду.,寮の学生は朝ここから通い、家賃を払います。,"기숙사 학생들은 아침에 거기서 출발하고, 기숙비를 내요.",हॉस्टल के छात्र सुबह यहाँ से पैदल आते हैं और किराया देते हैं।
+tip.exam,Exam week: one exam per course. Big rooms and registry staff keep it fair.,Sınav haftası: her ders için bir sınav. Büyük salonlar ve kayıt personeli adaleti sağlar.,Prüfungswoche: eine Prüfung pro Kurs. Große Räume und das Studienbüro sorgen für Fairness.,Semana de exámenes: un examen por asignatura. Las aulas grandes y el personal de secretaría lo hacen justo.,Semaine d'examens : un examen par cours. Les grandes salles et le personnel de scolarité gardent l'équité.,Semana de provas: uma prova por disciplina. Salões grandes e a secretaria mantêm tudo justo.,Экзаменационная неделя: один экзамен на предмет. Большие залы и регистратура делают всё честно.,試験週: 授業ごとに試験は1回です。大教室と教務課が公平に保ちます。,시험 주간에는 과목마다 시험이 하나예요. 큰 강의실과 교무처 직원이 공정하게 맞춰 줘요.,परीक्षा का हफ़्ता: हर कोर्स की एक परीक्षा। बड़े कमरे और रजिस्ट्री स्टाफ़ इसे निष्पक्ष रखते हैं।
+tip.lab,"Lab classes need a lab technician each, or they run at half quality.",Laboratuvar dersleri her biri için bir teknisyen ister; yoksa yarım kalitede çalışır.,"Laborkurse brauchen je eine Laborassistenz, sonst laufen sie mit halber Qualität.","Las prácticas de laboratorio necesitan un técnico cada una, o funcionan a media calidad.","Les travaux pratiques ont besoin d'un technicien de labo chacun, sinon ils tournent à mi-régime.","Aulas de laboratório precisam de um técnico cada, senão rendem metade.","Каждому лабораторному занятию нужен лаборант, иначе оно идёт вполсилы.",実験授業には実験技術員が一人ずつ必要です。いないと質が半分になります。,실험 수업마다 실험 조교가 한 명씩 필요해요. 없으면 품질이 절반이 돼요.,"लैब क्लास को हर एक के लिए लैब टेक्नीशियन चाहिए, वरना वे आधी गुणवत्ता पर चलेंगी।"
+tip.late,Late students learn less. Tap the late counter to see the busiest paths.,Geç kalan öğrenciler daha az öğrenir. Geç sayacına dokunarak en yoğun yolları gör.,"Zu spät kommende Studierende lernen weniger. Tippe auf den Zähler, um die vollsten Wege zu sehen.",Los estudiantes que llegan tarde aprenden menos. Toca el contador de retrasos para ver los caminos más concurridos.,Les étudiants en retard apprennent moins. Touche le compteur de retards pour voir les allées les plus fréquentées.,Alunos atrasados aprendem menos. Toque no contador de atrasos para ver os caminhos mais cheios.,"Опоздавшие учатся хуже. Нажми на счётчик опоздавших, чтобы увидеть самые загруженные дорожки.",遅刻した学生は学びが減ります。遅刻カウンターをタップすると、混雑する通路が分かります。,지각한 학생은 덜 배워요. 지각 표시를 눌러 가장 붐비는 길을 확인하세요.,देर से आने वाले छात्र कम सीखते हैं। सबसे भीड़ वाले रास्ते देखने के लिए देर वाले काउंटर पर टैप करो।
+tip.lunch,"Hungry students learn less after lunch. More lunch seats, or a class at 12:00, spread the queue.","Aç öğrenciler öğleden sonra daha az öğrenir. Daha fazla öğle koltuğu ya da 12:00'de bir ders, kuyruğu dağıtır.",Hungrige Studierende lernen nach dem Mittag weniger. Mehr Mittagsplätze oder ein Kurs um 12:00 verteilen die Schlange.,"Los estudiantes con hambre aprenden menos después de comer. Más plazas de almuerzo, o una clase a las 12:00, reparten la cola.",Les étudiants affamés apprennent moins après le déjeuner. Plus de places ou un cours à 12 h 00 désengorgent la file.,Alunos com fome aprendem menos depois do almoço. Mais lugares no almoço ou uma aula às 12:00 dividem a fila.,Голодные студенты после обеда учатся хуже. Больше мест в столовой или занятие на 12:00 разгрузят очередь.,空腹の学生は昼食のあと学びが減ります。昼食の席を増やすか、12:00に授業を置くと、列が分散します。,점심 후에는 배고픈 학생이 덜 배워요. 점심 자리를 늘리거나 수업을 12시에 두면 줄이 나뉘어요.,"भूखे छात्र खाने के बाद कम सीखते हैं। ज़्यादा लंच सीटें, या 12:00 की क्लास, लाइन बाँट देती है।"
+tip.open_day,Open day: visitors crowd the paths. Few late students bring a bonus tonight.,Açık gün: ziyaretçiler yolları doldurur. Bu gece az geç kalan öğrenci bonus getirir.,Tag der offenen Tür: Besucher drängen sich auf den Wegen. Wenige zu spät kommende Studierende bringen heute Abend einen Bonus.,"Jornada de puertas abiertas: los visitantes llenan los caminos. Si llegan pocos tarde, esta noche hay bonus.",Journée portes ouvertes : les visiteurs remplissent les allées. Peu d'étudiants en retard rapportent un bonus ce soir.,Dia de portas abertas: visitantes lotam os caminhos. Poucos atrasos hoje rendem um bônus à noite.,День открытых дверей: гости заполняют дорожки. Мало опоздавших — сегодня вечером бонус.,オープンキャンパス: 見学者で通路が混みます。遅刻が少ないと今夜ボーナスがもらえます。,개방의 날에는 방문객이 길을 메워요. 오늘 밤 지각 학생이 적으면 보너스가 있어요.,ओपन डे: मेहमान रास्तों पर भीड़ करते हैं। आज रात कम देर से आने पर बोनस मिलता है।
+tip.pipe,A burst pipe closed a room. Move its classes on the board.,Patlak bir boru bir odayı kapattı. Derslerini tahtada taşı.,Ein Rohrbruch hat einen Raum gesperrt. Verschiebe seine Kurse im Plan.,Una tubería rota cerró una sala. Mueve sus clases en el horario.,Une canalisation cassée a fermé une salle. Déplace ses cours sur le planning.,Um cano estourado fechou uma sala. Mova as aulas dessa sala no quadro.,"Прорвало трубу, аудитория закрыта. Перенеси её занятия в расписании.",水道管が破裂して教室が閉鎖されました。時間割で授業を移しましょう。,수도관이 터져 방 하나가 닫혔어요. 시간표에서 그 수업을 옮기세요.,फटे पाइप से एक कमरा बंद हुआ। बोर्ड पर उसकी क्लास दूसरी जगह ले जाओ।
+tip.quad,"The quad is open: hire professors for Literature, Law and Philosophy, then plan their classes.","Avlu açık: Edebiyat, Hukuk ve Felsefe için hoca al, sonra derslerini planla.","Der Campusplatz ist offen: Stelle Professoren für Literatur, Jura und Philosophie ein und plane dann ihre Kurse.","El patio está abierto: contrata profesores de Literatura, Derecho y Filosofía, y luego planifica sus clases.","La cour est ouverte : embauche des professeurs de Littérature, Droit et Philosophie, puis planifie leurs cours.","O pátio está aberto: contrate professores de Literatura, Direito e Filosofia e depois planeje as aulas.","Двор открыт: найми преподавателей по литературе, праву и философии, а потом составь их расписание.",中庭が開きました。文学・法学・哲学の教授を雇い、その授業を計画しましょう。,"중앙 광장이 열렸어요. 문학, 법학, 철학 교수를 고용한 뒤 수업을 짜 보세요.","आँगन खुल गया है: साहित्य, कानून और दर्शनशास्त्र के लिए प्रोफ़ेसर रखो, फिर उनकी क्लास लगाओ।"
+tip.report,Every Friday the grades come in. Good grades raise prestige.,Her Cuma notlar gelir. İyi notlar itibarı artırır.,Jeden Freitag kommen die Noten. Gute Noten bringen Prestige.,Cada viernes llegan las notas. Las buenas notas suben el prestigio.,"Chaque vendredi, les notes arrivent. De bonnes notes augmentent le prestige.","Toda sexta, as notas chegam. Boas notas aumentam o prestígio.",Каждую пятницу приходят оценки. Хорошие оценки повышают престиж.,毎週金曜日に成績が届きます。よい成績は名声を高めます。,금요일마다 성적이 나와요. 좋은 성적은 명성을 올려 줘요.,हर शुक्रवार ग्रेड आते हैं। अच्छे ग्रेड से प्रतिष्ठा बढ़ती है।
+tip.science,"The science campus is far: labs, a dorm and the shuttle keep walks short.","Bilim kampüsü uzakta: laboratuvarlar, bir yurt ve servis yürüyüşleri kısa tutar.","Der Naturwissenschaftscampus ist weit weg: Labore, ein Wohnheim und der Shuttle halten die Wege kurz.","El campus de ciencias está lejos: los laboratorios, una residencia y la lanzadera acortan los paseos.","Le campus des sciences est loin : labos, résidence et navette raccourcissent les trajets.","O campus da ciência fica longe: laboratórios, um alojamento e o ônibus mantêm os trajetos curtos.","Научный кампус далеко: лаборатории, общежитие и шаттл делают путь короче.",理学キャンパスは遠いので、実験室、寮、シャトルで移動を短くしましょう。,"과학 캠퍼스는 멀어요. 실험실, 기숙사, 셔틀이 있으면 걷는 거리가 짧아져요.","साइंस कैंपस दूर है: लैब, हॉस्टल और शटल से रास्ते छोटे रहते हैं।"
+tip.shuttle,The shuttle runs from the bus stop to the science campus.,"Servis, otobüs durağından bilim kampüsüne gider.",Der Shuttle fährt von der Bushaltestelle zum Naturwissenschaftscampus.,La lanzadera va de la parada de autobús al campus de ciencias.,La navette relie l'arrêt de bus au campus des sciences.,O ônibus sai do ponto de ônibus em direção ao campus da ciência.,Шаттл ходит от автобусной остановки до научного кампуса.,シャトルはバス停から理学キャンパスまで走ります。,셔틀은 버스 정류장에서 과학 캠퍼스까지 다녀요.,शटल बस स्टॉप से साइंस कैंपस तक चलती है।
+tip.sick,"A professor is sick. A free colleague of the same faculty covers, or a substitute does.",Bir hoca hasta. Aynı fakülteden boş bir meslektaş ya da bir vekil girer.,"Ein Professor ist krank. Ein freier Kollege derselben Fakultät springt ein, oder eine Vertretung.","Un profesor está enfermo. Un compañero libre de la misma facultad lo cubre, o lo hace un suplente.","Un professeur est malade. Un collègue libre de la même faculté le remplace, ou un remplaçant.","Um professor está doente. Um colega livre da mesma faculdade cobre, ou um substituto.",Преподаватель заболел. Его подменит свободный коллега с того же факультета или замена.,教授が体調を崩しました。同じ学部の空いている同僚か代講の人が担当します。,"교수님이 아파요. 같은 학부의 쉬는 교수가 대신하거나, 대체 강사가 맡아요.",एक प्रोफ़ेसर बीमार है। उसी विभाग का खाली साथी या कोई सब्स्टीट्यूट क्लास ले लेगा।
+tip.snow,Snow day: everyone walks slower. Rooms close together help.,Kar günü: herkes daha yavaş yürür. Odalar birbirine yakınsa yardımcı olur.,Schneetag: Alle kommen langsamer voran. Räume nahe beieinander helfen.,Día de nieve: todos caminan más despacio. Las salas juntas ayudan.,Jour de neige : tout le monde marche plus lentement. Des salles proches les unes des autres aident.,Dia de neve: todo mundo anda mais devagar. Salas próximas ajudam.,"Снегопад: все идут медленнее. Помогают аудитории, стоящие рядом.",雪の日: 全員の歩みが遅くなります。教室を近くにまとめると助かります。,눈 오는 날에는 모두 천천히 걸어요. 방이 가까이 모여 있으면 도움이 돼요.,बर्फ़ का दिन: सब धीरे चलते हैं। पास-पास के कमरे मदद करते हैं।
+tip.staggered,Staggered bells are ready: turn them on in Staff to split the crowds.,Kademeli zil hazır: kalabalıkları bölmek için Personel'den aç.,"Gestaffelte Klingeln sind bereit: Schalte sie im Personal ein, um das Gedränge zu verteilen.",Los timbres escalonados ya están listos: actívalos en Personal para repartir la multitud.,Les sonneries décalées sont prêtes : active-les dans Personnel pour désengorger les couloirs.,Os sinais escalonados estão prontos: ative-os em Equipe para dividir as multidões.,"Сдвинутые звонки готовы: включи их в персонале, чтобы разделить толпы.",時差チャイムの準備ができました。スタッフ画面でオンにすると混雑が分散します。,시차 종을 쓸 수 있어요. 직원 탭에서 켜면 인파가 나뉘어요.,अलग-अलग घंटियाँ तैयार हैं: भीड़ बाँटने के लिए स्टाफ़ में चालू करो।
+tip.widen,Wider paths are ready: find them in Campus.,Geniş yollar hazır: Kampüs'te bul.,Breitere Wege sind bereit: Du findest sie im Campus.,Los caminos más anchos ya están listos: encuéntralos en Campus.,Les allées plus larges sont prêtes : trouve-les dans Campus.,Caminhos mais largos estão prontos: encontre-os em Campus.,Широкие дорожки готовы: найдёшь их в кампусе.,広い通路が使えます。キャンパス画面で見つけましょう。,넓은 길을 쓸 수 있어요. 캠퍼스 탭에서 찾아보세요.,चौड़े रास्ते तैयार हैं: उन्हें कैंपस में ढूँढो।
+toast.build_start,The builders started.,Ekipler işe başladı.,Die Bauteams haben angefangen.,Los obreros han empezado.,Les ouvriers ont commencé.,As equipes começaram.,Строители начали.,作業員が工事を始めました。,건설 팀이 시작했어요.,मज़दूर काम पर लग गए।
+toast.built,{name} is open.,{name} açıldı.,{name} ist geöffnet.,{name} está abierto.,{name} est ouvert.,{name} está aberto.,{name} открыт.,{name} が開きました。,{name} 완공!,{name} खुल गया।
+toast.gate,Gate open: a shortcut for the next bell.,Kapı açıldı: bir sonraki zil için kısa yol.,Tor offen: eine Abkürzung für die nächste Klingel.,Puerta abierta: un atajo para el próximo timbre.,Portail ouvert : un raccourci pour la prochaine sonnerie.,Portão aberto: um atalho para o próximo sinal.,Ворота открыты: короткий путь к следующему звонку.,門が開きました。次のチャイムに向けた近道です。,출입문 열림: 다음 종을 위한 지름길이에요.,गेट खुला: अगली घंटी के लिए शॉर्टकट।
+toast.hungry,{n} students found no seat at lunch.,{n} öğrenci öğle yemeğinde yer bulamadı.,{n} Studierende fanden in der Mittagspause keinen Platz.,{n} estudiantes no encontraron sitio para comer.,{n} étudiants n'ont pas trouvé de place au déjeuner.,{n} alunos não acharam lugar no almoço.,В обед без места остались: {n}.,昼食時に {n} 人の学生が座れませんでした。,점심에 자리를 얻지 못한 학생 {n}명.,लंच में {n} छात्रों को सीट नहीं मिली।
+toast.open_day,Open day went well: {cash} from visitors.,Açık gün iyi geçti: ziyaretçilerden {cash}.,Der Tag der offenen Tür lief gut: {cash} von den Besuchern.,La jornada de puertas abiertas fue bien: {cash} de los visitantes.,La journée portes ouvertes a bien marché : {cash} des visiteurs.,O dia de portas abertas foi bem: {cash} dos visitantes.,День открытых дверей удался: {cash} от гостей.,オープンキャンパスは大成功: 見学者から {cash}。,개방의 날이 잘 끝났어요. 방문객 수입: {cash},ओपन डे अच्छा रहा: मेहमानों से {cash} मिले।
+toast.till,Tuition collected: {cash},Harç toplandı: {cash},Gebühren eingesammelt: {cash},Matrícula recogida: {cash},Frais encaissés : {cash},Mensalidades recolhidas: {cash},Плата за учёбу собрана: {cash},授業料を集めました: {cash},등록금 받음: {cash},फीस इकट्ठा हुई: {cash}
+toast.zone,{name} is open: new faculties enroll!,{name} açıldı: yeni fakülteler kayıt alıyor!,{name} ist geöffnet: Neue Fakultäten nehmen Studierende auf!,¡{name} está abierto: las nuevas facultades ya admiten alumnos!,{name} est ouvert : de nouvelles facultés accueillent des étudiants !,{name} está aberto: novas faculdades para matrícula!,{name} открыт: новые факультеты набирают студентов!,{name} が開きました。新しい学部の受付が始まります！,{name} 열림! 새 학부 등록을 받아요.,{name} खुल गया है: नए विभाग दाखिला लेंगे!
+unit.h,h,sa,h,h,h,h,ч,時,시간,घं
+unit.min,min,dk,min,min,min,min,мин,分,분,मि
+unit.s,s,sn,s,s,s,s,с,秒,초,से
+warn.building,being built,inşa ediliyor,wird gebaut,en obras,en construction,em construção,строится,建設中,건설 중,बन रहा है
+warn.closed,room closed,oda kapalı,Raum geschlossen,sala cerrada,salle fermée,sala fechada,аудитория закрыта,教室閉鎖中,방 닫힘,कमरा बंद
+warn.no_prof,no professor,hoca yok,kein Professor,sin profesor,pas de professeur,sem professor,нет преподавателя,教授なし,교수 없음,कोई प्रोफ़ेसर नहीं
+warn.prof_off,professor off sick,hoca hasta,Professor krank,profesor de baja,professeur absent,professor doente,преподаватель болеет,教授が体調不良,교수 병가 중,प्रोफ़ेसर बीमार
+warn.seats,too few seats,koltuk yetersiz,zu wenige Plätze,muy pocas plazas,trop peu de places,poucos lugares,мало мест,座席が足りません,좌석 부족,सीटें बहुत कम
+zone.college,Community College,Topluluk Koleji,Community College,Colegio comunitario,Collège communautaire,Faculdade Comunitária,Колледж сообщества,コミュニティカレッジ,지역 전문대,कम्युनिटी कॉलेज
+zone.college.d,"Business, the first hall, the canteen.","İşletme, ilk salon, kantin.","Betriebswirtschaft, der erste Saal, die Mensa.","Economía, la primera aula y la cantina.","Gestion, la première salle, la cantine.","Administração, o primeiro salão, o refeitório.","Бизнес, первый зал, столовая.",経営学、最初の講堂、食堂。,"경영학, 첫 강의실, 구내식당이 있어요.","बिज़नेस, पहला हॉल और कैंटीन।"
+zone.needs,Needs prestige {p},İtibar {p} gerekli,Braucht Prestige {p},Necesita prestigio {p},Il faut {p} de prestige,Precisa de prestígio {p},Нужно престижа: {p},名声 {p} が必要,명성 {p} 필요,प्रतिष्ठा {p} चाहिए
+zone.quad,Liberal Arts Quad,Sanat Avlusu,Geisteswissenschaftlicher Campusplatz,Patio de Humanidades,Cour des lettres,Pátio de Humanidades,Двор гуманитарных наук,教養中庭,인문 광장,लिबरल आर्ट्स आँगन
+zone.quad.d,"Literature, Law and Philosophy. Big halls and a second canteen.","Edebiyat, Hukuk ve Felsefe. Büyük salonlar ve ikinci bir kantin.","Literatur, Jura und Philosophie. Große Säle und eine zweite Mensa.","Literatura, Derecho y Filosofía. Aulas grandes y una segunda cantina.","Littérature, Droit et Philosophie. Grandes salles et deuxième cantine.","Literatura, Direito e Filosofia. Salões grandes e um segundo refeitório.","Литература, право и философия. Большие залы и вторая столовая.",文学、法学、哲学。大きな講堂と2つ目の食堂。,"문학, 법학, 철학이 있어요. 큰 강당과 두 번째 식당도 있어요.","साहित्य, कानून और दर्शनशास्त्र। बड़े हॉल और दूसरी कैंटीन।"
+zone.science,Science Campus,Bilim Kampüsü,Naturwissenschaftscampus,Campus de Ciencias,Campus des sciences,Campus da Ciência,Научный кампус,理学キャンパス,과학 캠퍼스,साइंस कैंपस
+zone.science.d,"Physics, Chemistry and Maths. Labs and long walks.","Fizik, Kimya ve Matematik. Laboratuvarlar ve uzun yürüyüşler.","Physik, Chemie und Mathematik. Labore und lange Wege.","Física, Química y Matemáticas. Laboratorios y paseos largos.","Physique, Chimie et Maths. Labos et longs trajets.","Física, Química e Matemática. Laboratórios e caminhos longos.","Физика, химия и математика. Лаборатории и долгие переходы.",物理、化学、数学。実験室と長い移動。,"물리, 화학, 수학이 있어요. 실험실과 긴 걸음이 있어요.","फ़िज़िक्स, केमिस्ट्री और गणित। लैब और लंबे रास्ते।"
+zone.unlock,Open · {cost},Aç · {cost},Öffnen · {cost},Abrir · {cost},Ouvrir · {cost},Abrir · {cost},Открыть · {cost},開く · {cost},열기 · {cost},खोलो · {cost}

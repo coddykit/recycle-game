@@ -1,500 +1,500 @@
 key,en,tr,de,es,fr,pt,ru,ja,ko,hi
-app.tagline,Burger Truck Manager,,,,,,,,,
-app.title,Grill Convoy,,,,,,,,,
-bar.allhands,All hands!,,,,,,,,,
-bar.allhands_on,All hands on,,,,,,,,,
-bar.allhands_wait,Ready in {min} min,,,,,,,,,
-bar.driving,On the road · Patties {p},,,,,,,,,
-bar.extinguish,Extinguish,,,,,,,,,
-bar.info,Line {q} · Patties {p} · Buns {b} · {rate}/h,,,,,,,,,
-bar.open,Truck,,,,,,,,,
-bar.propane,Swap bottle {cost},,,,,,,,,
-bar.propane_kit,Use spare bottle,,,,,,,,,
-bar.restock,Restock run,,,,,,,,,
-card.breakfast,Breakfast,,,,,,,,,
-card.cheese,Cheese,,,,,,,,,
-card.classic,Classic,,,,,,,,,
-card.double,Double,,,,,,,,,
-card.kids,Kids,,,,,,,,,
-card.premium,Premium,,,,,,,,,
-card.spicy,Spicy,,,,,,,,,
-card.veggie,Veggie,,,,,,,,,
-coach.1,Meet your truck at the Office Plaza. Tap Open the window.,,,,,,,,,
-coach.10,The commissary makes patties for tomorrow. Tap Prep on patties.,,,,,,,,,
-coach.11,Pack the truck: add 20 more patties.,,,,,,,,,
-coach.12,Everything is packed. Tap Start the day.,,,,,,,,,
-coach.13,The lunch rush is here! Tap All hands.,,,,,,,,,
-coach.14,Too much grease: a flare-up! Tap Extinguish.,,,,,,,,,
-coach.2,Your first customer! Tap the ticket.,,,,,,,,,
-coach.3,One classic burger. Put a patty on the grill.,,,,,,,,,
-coach.4,"Wait for the sizzle, then flip it.",,,,,,,,,
-coach.5,"Bun, cheese, sauce. Tap Assemble.",,,,,,,,,
-coach.6,Hand it out at the window. Tap Serve.,,,,,,,,,
-coach.7,"Your crew takes over now. When the day ends, read the report and tap Next day.",,,,,,,,,
-coach.8,A runner helps wherever the line is slowest. Hire a runner.,,,,,,,,,
-coach.9,"Hot buns, faster burgers. Tap the toaster, then the free spot next to the bench.",,,,,,,,,
-coach.done,You're ready! Keep the line moving and the truck stocked.,,,,,,,,,
-coach.skip,Skip,,,,,,,,,
-coach.step,Step {n} of {m},,,,,,,,,
-common.back,Back,,,,,,,,,
-common.cancel,Cancel,,,,,,,,,
-common.locked,Locked,,,,,,,,,
-common.ok,OK,,,,,,,,,
-common.open,Open,,,,,,,,,
-common.owned,Owned,,,,,,,,,
-cook.1,Take the ticket,,,,,,,,,
-cook.2,Patty on the grill,,,,,,,,,
-cook.3,Sizzling…,,,,,,,,,
-cook.4,Flip!,,,,,,,,,
-cook.5,Assemble,,,,,,,,,
-cook.6,Serve,,,,,,,,,
-crew.count,{n}/{m},,,,,,,,,
-crew.hire,Hire {role} {cost},,,,,,,,,
-crew.release,Let someone go,,,,,,,,,
-crew.release.d,Saves a wage. No refund.,,,,,,,,,
-crew.release_btn,Let go,,,,,,,,,
-crew.switch,→ {role},,,,,,,,,
-crew.title,Crew,,,,,,,,,
-crew.wage,Each cook costs {cost} a day.,,,,,,,,,
-crisis.flare.b,The grill runs at half speed and patties burn. Extinguish it.,,,,,,,,,
-crisis.flare.t,Grease flare-up,,,,,,,,,
-crisis.halftime.b,Fans rush the stadium trucks. All hands and a second window help.,,,,,,,,,
-crisis.halftime.t,Halftime stampede,,,,,,,,,
-crisis.heat.b,Drinks sell twice as much. The beach is packed.,,,,,,,,,
-crisis.heat.t,Heat wave,,,,,,,,,
-crisis.match_day.t,Match day,,,,,,,,,
-crisis.propane.b,The grill goes dark when the tank is empty. Swap the bottle or run home.,,,,,,,,,
-crisis.propane.t,Propane low,,,,,,,,,
-crisis.rain.b,"Walk-ins drop, most at the beach. Order-ahead pickups go up.",,,,,,,,,
-crisis.rain.t,Rain,,,,,,,,,
-crisis.rival.b,A rival parked at your pitch and splits the crowd. Counter-offer or move.,,,,,,,,,
-crisis.rival.t,Rival truck,,,,,,,,,
-curve.beach,Busy all afternoon,,,,,,,,,
-curve.lunch,Lunch rush 12:00–14:00,,,,,,,,,
-curve.stadium,"Evening, match waves",,,,,,,,,
-district.boardwalk,Boardwalk,,,,,,,,,
-district.harbour,Harbour,,,,,,,,,
-district.plaza,Office Plaza,,,,,,,,,
-district.stadium,Stadium,,,,,,,,,
-err.already,Already done.,,,,,,,,,
-err.away,The truck must be at the commissary.,,,,,,,,,
-err.board_full,The menu board is full.,,,,,,,,,
-err.busy,Busy right now.,,,,,,,,,
-err.cash,Not enough money.,,,,,,,,,
-err.chapter,Unlock the Stadium first.,,,,,,,,,
-err.closed,The truck is not open.,,,,,,,,,
-err.cooldown,Not ready yet.,,,,,,,,,
-err.empty,Nothing there.,,,,,,,,,
-err.failed,That didn't work.,,,,,,,,,
-err.fame,Needs more Fame.,,,,,,,,,
-err.fridge_full,The fridge is full.,,,,,,,,,
-err.invalid,Not possible here.,,,,,,,,,
-err.last,You need at least one.,,,,,,,,,
-err.locked,Unlock this pitch first.,,,,,,,,,
-err.max,Maximum reached.,,,,,,,,,
-err.no_better,Your layout is already the best.,,,,,,,,,
-err.no_crew,Hire crew first.,,,,,,,,,
-err.no_pitch,Pick a pitch first.,,,,,,,,,
-err.no_room,No free tile. Sell a station or extend the truck.,,,,,,,,,
-err.no_stock,The commissary has none left.,,,,,,,,,
-err.nothing,Nothing to do here.,,,,,,,,,
-err.order,One step at a time.,,,,,,,,,
-err.owned,Already yours.,,,,,,,,,
-err.phase,Not now.,,,,,,,,,
-err.queue_full,The prep queue is full.,,,,,,,,,
-err.report,The day is over.,,,,,,,,,
-err.requires,Research the earlier step first.,,,,,,,,,
-err.research,Research it first.,,,,,,,,,
-err.slots,No free rule slot.,,,,,,,,,
-err.truck_full,The truck is full.,,,,,,,,,
-err.unknown,Not possible here.,,,,,,,,,
-graphics.dropped,Graphics lowered to keep the game smooth. You can change it in Settings.,,,,,,,,,
-graphics.high,High,,,,,,,,,
-graphics.low,Low,,,,,,,,,
-graphics.medium,Medium,,,,,,,,,
-hud.day,Day {n},,,,,,,,,
-hud.fame,Fame {r},,,,,,,,,
-hud.next_day,Next day,,,,,,,,,
-hud.open_window,Open the window,,,,,,,,,
-hud.speed,{n}×,,,,,,,,,
-hud.speed_guide,That unlocks after the guide.,,,,,,,,,
-hud.speed_locked,Faster speeds come with the Speed Pack.,,,,,,,,,
-hud.start_day,Start the day,,,,,,,,,
-iap.automation.d,Two more Head cook rule slots.,,,,,,,,,
-iap.automation.t,Head Cook+,,,,,,,,,
-iap.bundle.d,"Pitmaster Edition, Convoy Pass, Speed Pack, Head Cook+ and every look. Ad-free.",,,,,,,,,
-iap.bundle.t,Complete Grill Convoy,,,,,,,,,
-iap.cash_l.d,About 5 days of income.,,,,,,,,,
-iap.cash_l.t,Cash Chest,,,,,,,,,
-iap.cash_m.d,About 2.5 days of income.,,,,,,,,,
-iap.cash_m.t,Cash Crate,,,,,,,,,
-iap.cash_s.d,About one day of income.,,,,,,,,,
-iap.cash_s.t,Cash Bag,,,,,,,,,
-iap.cash_xl.d,About 10 days of income.,,,,,,,,,
-iap.cash_xl.t,Cash Vault,,,,,,,,,
-iap.comeback.d,Cash to get the convoy rolling again.,,,,,,,,,
-iap.comeback.t,Welcome-back Crate,,,,,,,,,
-iap.convoy_pass.d,"Ad-free, one more rule slot and one more layout preset per truck. Forever.",,,,,,,,,
-iap.convoy_pass.t,Convoy Pass,,,,,,,,,
-iap.cosmetics_all.d,"Every livery, outfit, board and awning.",,,,,,,,,
-iap.cosmetics_all.t,Looks Collection,,,,,,,,,
-iap.crisis.d,3 spare propane bottles and some cash.,,,,,,,,,
-iap.crisis.t,Propane Rescue Kit,,,,,,,,,
-iap.livery_neon.d,A pink neon paint job. Looks only.,,,,,,,,,
-iap.livery_neon.t,Neon Livery,,,,,,,,,
-iap.livery_retro.d,A sky-blue retro paint job. Looks only.,,,,,,,,,
-iap.livery_retro.t,Retro Livery,,,,,,,,,
-iap.menuboards.d,Chalk and neon menu boards. Looks only.,,,,,,,,,
-iap.menuboards.t,Menu Board Styles,,,,,,,,,
-iap.milestone.d,Cash and a stocked commissary for your new truck.,,,,,,,,,
-iap.milestone.t,New-Truck Pack,,,,,,,,,
-iap.noads.d,No promo breaks. Rewards without videos.,,,,,,,,,
-iap.noads.t,Remove Ads,,,,,,,,,
-iap.offline_plus.d,Away pay for up to 10 hours at 75 %.,,,,,,,,,
-iap.offline_plus.t,Offline Plus,,,,,,,,,
-iap.premium.d,"Ad-free, gold truck trim and chef whites, an extra career slot and a starter pack.",,,,,,,,,
-iap.premium.t,Pitmaster Edition,,,,,,,,,
-iap.slots.d,Three more career slots.,,,,,,,,,
-iap.slots.t,Extra Saves,,,,,,,,,
-iap.speed.d,3× and 4× speed.,,,,,,,,,
-iap.speed.t,Speed Pack,,,,,,,,,
-iap.starter.d,Cash to get going and a runner for truck #1.,,,,,,,,,
-iap.starter.t,Quick Start,,,,,,,,,
-iap.uniforms.d,New outfits for your crew. Looks only.,,,,,,,,,
-iap.uniforms.t,Crew Outfits,,,,,,,,,
-iap.window_awnings.d,Striped awning sets. Looks only.,,,,,,,,,
-iap.window_awnings.t,Window Awnings,,,,,,,,,
-intro.1.b,Cinder Bay loves burgers. You start with one old truck at the Office Plaza.,,,,,,,,,
-intro.1.t,"One truck, one pitch",,,,,,,,,
-intro.2.b,Set up the kitchen inside the truck. A good layout makes a fast line.,,,,,,,,,
-intro.2.t,"Grill, bench, window",,,,,,,,,
-intro.3.b,"Pick the pitch, pack the stock, beat the rush. Grow a convoy.",,,,,,,,,
-intro.3.t,Be in the right place,,,,,,,,,
-intro.next,Next,,,,,,,,,
-intro.skip,Skip,,,,,,,,,
-intro.start,Let's cook,,,,,,,,,
-kitchen.batch,Batch of {n} · {min} min,,,,,,,,,
-kitchen.batch_of,{n} {name},,,,,,,,,
-kitchen.help,Prep costs money now and takes time. Trucks load from here.,,,,,,,,,
-kitchen.in_progress,Cooking now,,,,,,,,,
-kitchen.night,The night crew finishes the queue after the day ends.,,,,,,,,,
-kitchen.now,{min} min left,,,,,,,,,
-kitchen.par,Par levels (auto-prep at night),,,,,,,,,
-kitchen.par_row,{name}: keep {n},,,,,,,,,
-kitchen.prep,Prep · {cost},,,,,,,,,
-kitchen.queue,Prep queue {n}/{m},,,,,,,,,
-kitchen.stock,{name} {n}/{cap},,,,,,,,,
-kitchen.title,Commissary,,,,,,,,,
-layout.auto,Auto-arrange,,,,,,,,,
-layout.buy,Buy stations,,,,,,,,,
-layout.extend,Body extension,,,,,,,,,
-layout.extend.d,A 5×4 kitchen in this truck.,,,,,,,,,
-layout.faster,Line {pct} faster,,,,,,,,,
-layout.front,"Top row = the serving side. Keep grill, bench and window close.",,,,,,,,,
-layout.help_pick,Tap a station to pick it up.,,,,,,,,,
-layout.help_place,Now tap where it goes (swaps if taken).,,,,,,,,,
-layout.load,Load {n},,,,,,,,,
-layout.save,Save {n},,,,,,,,,
-layout.sell,Sell (half price),,,,,,,,,
-layout.slower,Line {pct} slower,,,,,,,,,
-layout.title,Kitchen layout,,,,,,,,,
-layout.undo,Undo,,,,,,,,,
-looks.default,Classic paint,,,,,,,,,
-looks.gold_trim,Gold trim,,,,,,,,,
-looks.help,"Crew outfits, window awnings and menu board styles show at every open truck once owned.",,,,,,,,,
-looks.livery_neon,Neon,,,,,,,,,
-looks.livery_retro,Retro,,,,,,,,,
-map.calendar,Calendar,,,,,,,,,
-map.match,Match day at the stadium,,,,,,,,,
-map.pitches,Pitches,,,,,,,,,
-map.sub,Fame {fame},,,,,,,,,
-map.today,Today,,,,,,,,,
-map.tomorrow,Tomorrow,,,,,,,,,
-map.weekend,"Weekend: offices are closed, the beach is busy.",,,,,,,,,
-medal.0,Bronze,,,,,,,,,
-medal.1,Silver,,,,,,,,,
-medal.2,Gold,,,,,,,,,
-menu.help,Fewer cards make a faster line. Different crowds like different burgers.,,,,,,,,,
-menu.slots,{n}/{m},,,,,,,,,
-menu.title,Menu board,,,,,,,,,
-offline.body,Your convoy earned {cash} in {time}.,,,,,,,,,
-offline.capped,Pay stops after {h} hours away.,,,,,,,,,
-offline.title,While you were away,,,,,,,,,
-pack.apply_suggest,Pack by forecast,,,,,,,,,
-pack.away,load at the commissary,,,,,,,,,
-pack.fridge,fridge {n},,,,,,,,,
-pack.repack,Like yesterday,,,,,,,,,
-pack.row,{name} {n}/{cap},,,,,,,,,
-pack.suggest,"Forecast: {p} patties, {b} buns, {s} sides",,,,,,,,,
-pack.title,Pack list,,,,,,,,,
-phase.live,Service,,,,,,,,,
-phase.plan,Morning,,,,,,,,,
-phase.report,Day report,,,,,,,,,
-pitch.assigned,Goes here today,,,,,,,,,
-pitch.crowd,Crowd,,,,,,,,,
-pitch.forecast,~{n} customers,,,,,,,,,
-pitch.later,Unlocks in a later chapter.,,,,,,,,,
-pitch.match_every,A match every third day.,,,,,,,,,
-pitch.match_today,Match day! Halftime brings a huge rush at 17:45.,,,,,,,,,
-pitch.match_tomorrow,Match day tomorrow.,,,,,,,,,
-pitch.needs,Needs Fame {r},,,,,,,,,
-pitch.now_at,Now: {name},,,,,,,,,
-pitch.p_boardwalk.d,"Families and tourists by the sea. Busy on hot days and weekends, empty in the rain.",,,,,,,,,
-pitch.p_plaza.d,"Office towers. A big lunch rush on weekdays, quiet at weekends.",,,,,,,,,
-pitch.p_stadium.d,Quiet most days. On match days fans come in waves.,,,,,,,,,
-pitch.permit,permit {cost},,,,,,,,,
-pitch.permit_k,Permit per day,,,,,,,,,
-pitch.rep,Reputation {r},,,,,,,,,
-pitch.rival,A rival truck parked here today. A counter-offer wins some customers back.,,,,,,,,,
-pitch.send_here,Send here,,,,,,,,,
-pitch.today,Today,,,,,,,,,
-pitch.tomorrow,Tomorrow,,,,,,,,,
-pitch.trucks,Your trucks,,,,,,,,,
-pitch.unlock,Unlock · {cost},,,,,,,,,
-place.commissary,Commissary,,,,,,,,,
-place.p_boardwalk,Boardwalk,,,,,,,,,
-place.p_plaza,Office Plaza,,,,,,,,,
-place.p_stadium,Stadium Gate,,,,,,,,,
-report.bonus,Bonus,,,,,,,,,
-report.burgers,{n} burgers,,,,,,,,,
-report.fame,Fame {r},,,,,,,,,
-report.fuel,Fuel and propane,,,,,,,,,
-report.hint_good,A smooth day. Try a busier pitch or a bigger menu.,,,,,,,,,
-report.hint_line,"The line was too long: hire, add a station, or shorten the menu.",,,,,,,,,
-report.hint_sellout,"You sold out: pack more, prep more, or call a restock run.",,,,,,,,,
-report.hint_wait,People waited long: check the slowest station in the layout.,,,,,,,,,
-report.hint_waste,Lots of leftovers spoiled: pack closer to the forecast.,,,,,,,,,
-report.ingredients,Ingredients,,,,,,,,,
-report.lost,Walked away / sold out,,,,,,,,,
-report.minutes,{n} min,,,,,,,,,
-report.net,Profit,,,,,,,,,
-report.permits,Permits,,,,,,,,,
-report.sales,Sales,,,,,,,,,
-report.sellout,Sold-out time,,,,,,,,,
-report.served,Customers served,,,,,,,,,
-report.service,Service,,,,,,,,,
-report.speed,Speed,,,,,,,,,
-report.stock,Stock,,,,,,,,,
-report.title,Day {n} report,,,,,,,,,
-report.wages,Wages,,,,,,,,,
-report.wait,Average wait,,,,,,,,,
-report.waste,Waste,,,,,,,,,
-research.body_extension.d,Trucks can grow to a 5×4 kitchen.,,,,,,,,,
-research.body_extension.t,Body extension,,,,,,,,,
-research.branch.kitchen,Kitchen,,,,,,,,,
-research.branch.menu,Menu,,,,,,,,,
-research.branch.ops,Operations,,,,,,,,,
-research.card_breakfast.d,Sells well before noon.,,,,,,,,,
-research.card_breakfast.t,Breakfast burger,,,,,,,,,
-research.card_double.d,"Two patties, big price. Fans love it.",,,,,,,,,
-research.card_double.t,Double burger,,,,,,,,,
-research.card_kids.d,Small and quick. Beach families love it.,,,,,,,,,
-research.card_kids.t,Kids burger,,,,,,,,,
-research.card_premium.d,The best burger in the bay. Tourists pay well.,,,,,,,,,
-research.card_premium.t,Premium burger,,,,,,,,,
-research.card_spicy.d,A hot one for the brave.,,,,,,,,,
-research.card_spicy.t,Spicy burger,,,,,,,,,
-research.card_veggie.d,A plant patty for office workers and tourists.,,,,,,,,,
-research.card_veggie.t,Veggie burger,,,,,,,,,
-research.commissary_plus.d,"Bigger, faster prep batches.",,,,,,,,,
-research.commissary_plus.t,Bigger commissary,,,,,,,,,
-research.crew_training.d,Every cook works 10 % faster.,,,,,,,,,
-research.crew_training.t,Crew training,,,,,,,,,
-research.dispatcher.d,"Trucks can pack, cook and restock by themselves.",,,,,,,,,
-research.dispatcher.t,Head cook rules,,,,,,,,,
-research.done,Done,,,,,,,,,
-research.drink_fridge.d,Unlocks the drink fridge station.,,,,,,,,,
-research.drink_fridge.t,Drink fridge,,,,,,,,,
-research.finished,Research done: {name},,,,,,,,,
-research.fire_drill.d,Half as many flare-ups.,,,,,,,,,
-research.fire_drill.t,Fire drill,,,,,,,,,
-research.fryer.d,Unlocks the fryer station: fries with every burger.,,,,,,,,,
-research.fryer.t,Fryer,,,,,,,,,
-research.fuel_saver.d,15 % less fuel per km.,,,,,,,,,
-research.fuel_saver.t,Fuel saver,,,,,,,,,
-research.grill_plus.d,Grills cook 15 % faster.,,,,,,,,,
-research.grill_plus.t,Hotter grills,,,,,,,,,
-research.left,{time} left,,,,,,,,,
-research.menu_board_plus.d,Room for a fourth card.,,,,,,,,,
-research.menu_board_plus.t,Bigger menu board,,,,,,,,,
-research.order_ahead.d,Some customers order for pickup instead of leaving a long line.,,,,,,,,,
-research.order_ahead.t,Order-ahead,,,,,,,,,
-research.par_levels.d,The night crew preps up to your targets by itself.,,,,,,,,,
-research.par_levels.t,Par levels,,,,,,,,,
-research.premium_tier.d,Unlocks the premium fixings tier.,,,,,,,,,
-research.premium_tier.t,Premium fixings,,,,,,,,,
-research.propane_gauge.d,15 % less propane per patty.,,,,,,,,,
-research.propane_gauge.t,Propane gauge,,,,,,,,,
-research.requires,Needs: {name},,,,,,,,,
-research.rival_scout.d,Rival trucks take fewer customers.,,,,,,,,,
-research.rival_scout.t,Rival scout,,,,,,,,,
-research.sauce_rail.d,Unlocks the sauce rail station.,,,,,,,,,
-research.sauce_rail.t,Sauce rail,,,,,,,,,
-research.second_window.d,Trucks can have two windows.,,,,,,,,,
-research.second_window.t,Second window,,,,,,,,,
-research.start,Start · {cost},,,,,,,,,
-research.wrap_bench.d,Unlocks the wrap bench for order-ahead pickups.,,,,,,,,,
-research.wrap_bench.t,Wrap bench,,,,,,,,,
-reward.claim,Claim,,,,,,,,,
-reward.daily.b,A little cash to start the day.,,,,,,,,,
-reward.daily.t,Morning bonus,,,,,,,,,
-reward.done_cash,+{cash} added,,,,,,,,,
-reward.done_patties,+{n} patties on the truck,,,,,,,,,
-reward.done_prep,The batch is ready,,,,,,,,,
-reward.done_rescue,Grill back to normal,,,,,,,,,
-reward.done_runner,A helper joined the crew,,,,,,,,,
-reward.free.b,Included with your ad-free pack — no video.,,,,,,,,,
-reward.free_cash,Claim +{cash},,,,,,,,,
-reward.offline.b,Watch a short video to get it twice.,,,,,,,,,
-reward.offline.t,Double the away pay,,,,,,,,,
-reward.patties.b,20 more patties on this truck.,,,,,,,,,
-reward.patties.t,Bonus patties,,,,,,,,,
-reward.prep.b,Finish the batch in progress now.,,,,,,,,,
-reward.prep.t,Quick prep,,,,,,,,,
-reward.rescue.b,Put out the flare-up or get the grill lit again now.,,,,,,,,,
-reward.rescue.t,Crew rescue,,,,,,,,,
-reward.runner.b,A helper joins this truck for a while.,,,,,,,,,
-reward.runner.t,Extra runner,,,,,,,,,
-reward.unavailable,Not available right now,,,,,,,,,
-reward.video,Watch video,,,,,,,,,
-reward.video_cash,Watch · +{cash},,,,,,,,,
-role.assembler,Assembler,,,,,,,,,
-role.assembler.d,Builds burgers at the bench.,,,,,,,,,
-role.cashier,Cashier,,,,,,,,,
-role.cashier.d,Takes orders at the window.,,,,,,,,,
-role.griller,Griller,,,,,,,,,
-role.griller.d,Works the grill.,,,,,,,,,
-role.runner,Runner,,,,,,,,,
-role.runner.d,Helps wherever the line is slowest; halves walking.,,,,,,,,,
-settings.effects,Sound effects,,,,,,,,,
-settings.graphics,Graphics,,,,,,,,,
-settings.guide,How to play / Replay the guide,,,,,,,,,
-settings.help,Help,,,,,,,,,
-settings.language,Language,,,,,,,,,
-settings.looks,Looks,,,,,,,,,
-settings.music,Music,,,,,,,,,
-settings.off,Off,,,,,,,,,
-settings.on,On,,,,,,,,,
-settings.policy,Privacy policy,,,,,,,,,
-settings.privacy,Privacy,,,,,,,,,
-settings.privacy_options,Privacy options,,,,,,,,,
-settings.replay,Replay,,,,,,,,,
-settings.restore,Restore purchases,,,,,,,,,
-settings.slot,Career {n},,,,,,,,,
-settings.slot_new,New career {n},,,,,,,,,
-settings.slots,Careers,,,,,,,,,
-settings.slots_more,Extra Saves and the Pitmaster Edition add career slots.,,,,,,,,,
-settings.slots_n,{n} slots,,,,,,,,,
-settings.sound,Sound,,,,,,,,,
-settings.title,Settings,,,,,,,,,
-settings.version,Version {v},,,,,,,,,
-sheet.close,Close,,,,,,,,,
-shop.bought,{name} is yours,,,,,,,,,
-shop.cap,Daily pack limit reached. Come back tomorrow.,,,,,,,,,
-shop.failed,Purchase did not go through,,,,,,,,,
-shop.funds,+{cash} added,,,,,,,,,
-shop.group.adfree,Ad-free and packs,,,,,,,,,
-shop.group.boost,Upgrades,,,,,,,,,
-shop.group.budget,Cash,,,,,,,,,
-shop.group.looks,Looks,,,,,,,,,
-shop.group.offer,Offers,,,,,,,,,
-shop.offer,Special offer,,,,,,,,,
-shop.owned,Owned,,,,,,,,,
-shop.restore,Restore purchases,,,,,,,,,
-shop.restore_failed,Could not restore. Try again later.,,,,,,,,,
-shop.restored,Purchases restored,,,,,,,,,
-shop.title,Shop,,,,,,,,,
-shop.unavailable,The store is not available right now,,,,,,,,,
-station.assembly,Bench,,,,,,,,,
-station.assembly.d,A second assembly bench.,,,,,,,,,
-station.fridge,Drink fridge,,,,,,,,,
-station.fridge.d,Sells drinks; doubles on hot days. Next to the window: 10 % faster.,,,,,,,,,
-station.fryer,Fryer,,,,,,,,,
-station.fryer.d,Sells fries. Next to the window: fresh fries sell for more.,,,,,,,,,
-station.grill,Grill,,,,,,,,,
-station.grill.d,Two more plates for patties.,,,,,,,,,
-station.sauce,Sauce rail,,,,,,,,,
-station.sauce.d,Next to the bench: 10 % faster.,,,,,,,,,
-station.toaster,Toaster,,,,,,,,,
-station.toaster.d,Next to the bench: the bench works 15 % faster.,,,,,,,,,
-station.window,Window,,,,,,,,,
-station.window.d,"A second window: longer line, faster orders.",,,,,,,,,
-station.wrap,Wrap bench,,,,,,,,,
-station.wrap.d,Next to the window: order-ahead pickups go out faster.,,,,,,,,,
-stock.bun,Buns,,,,,,,,,
-stock.patty,Patties,,,,,,,,,
-stock.side,Sides,,,,,,,,,
-tab.kitchen,Kitchen,,,,,,,,,
-tab.map,Map,,,,,,,,,
-tab.research,Research,,,,,,,,,
-tab.settings,Settings,,,,,,,,,
-tab.shop,Shop,,,,,,,,,
-tab.trucks,Trucks,,,,,,,,,
-tier.0,Budget,,,,,,,,,
-tier.0.d,"Cheap toppings: lower cost, a few customers pass by.",,,,,,,,,
-tier.1,Standard,,,,,,,,,
-tier.1.d,Good toppings at a fair cost.,,,,,,,,,
-tier.2,Premium,,,,,,,,,
-tier.2.d,Best toppings: more customers stop and pitches gain reputation faster.,,,,,,,,,
-tier.title,Fixings,,,,,,,,,
-tip.boardwalk,"The Boardwalk loves hot days and weekends, hates rain. Check the forecast.",,,,,,,,,
-tip.dispatcher,"Head cook rules: a truck can pack, cook and restock by itself. Turn it on in the truck.",,,,,,,,,
-tip.flare,Clean the grill when the line is short to avoid flare-ups.,,,,,,,,,
-tip.fridge,A drink fridge sells drinks — twice as many on hot days.,,,,,,,,,
-tip.fryer,Fryers sell fries with burgers. Buy one in the truck layout.,,,,,,,,,
-tip.halftime,Halftime! Open every window and call All hands.,,,,,,,,,
-tip.heat,Heat wave: drinks fly. A drink fridge pays off today.,,,,,,,,,
-tip.line,"People leave when the line is too long. Hire, add a station or use All hands.",,,,,,,,,
-tip.match_tomorrow,Match day tomorrow: prep extra patties tonight.,,,,,,,,,
-tip.order_ahead,"Order-ahead: when the line is long, some customers order for pickup instead of leaving.",,,,,,,,,
-tip.par,Par levels: the night crew preps up to your targets by itself.,,,,,,,,,
-tip.premium,Premium fixings: more customers stop and pitches gain reputation faster.,,,,,,,,,
-tip.propane,Propane is running low. Swap the bottle before the grill goes dark.,,,,,,,,,
-tip.propane_out,The grill is dark. Swap the propane bottle or do a restock run.,,,,,,,,,
-tip.rain,Rain: the beach is empty. Move the truck or shorten the menu.,,,,,,,,,
-tip.report,"Every number in the report points to a fix: stock, line or waiting.",,,,,,,,,
-tip.rival,A rival truck! A counter-offer wins customers back.,,,,,,,,,
-tip.second_window,A second window takes orders faster and lets the line grow longer.,,,,,,,,,
-tip.sold_out,Sold out! Call a restock run or pack more tomorrow.,,,,,,,,,
-tip.stadium,Match days at the stadium bring halftime stampedes. Pack big.,,,,,,,,,
-tip.truck2,Two trucks: send each to a different pitch.,,,,,,,,,
-toast.district,{name} is open for business!,,,,,,,,,
-toast.prep_done,{n} {name} ready,,,,,,,,,
-toast.restock,Restock run: back soon.,,,,,,,,,
-truck.auto,Head cook rules,,,,,,,,,
-truck.auto.d,"Packs by the forecast, sets roles, cleans and restocks by itself. Slots {n}/{m}.",,,,,,,,,
-truck.bottleneck,Slowest: {stage},,,,,,,,,
-truck.box,Box Truck,,,,,,,,,
-truck.box.d,"A second truck: 5×4 kitchen, 4 crew, bigger fridge.",,,,,,,,,
-truck.clean,Clean grill ({pct} grease),,,,,,,,,
-truck.drive,{min} min drive,,,,,,,,,
-truck.go,Go,,,,,,,,,
-truck.incomplete,"Needs a grill, a bench and a window.",,,,,,,,,
-truck.line,The line,,,,,,,,,
-truck.name,Truck {n},,,,,,,,,
-truck.no_pitch,No pitch,,,,,,,,,
-truck.per_hour,{n} burgers/h,,,,,,,,,
-truck.pitch,Today's pitch,,,,,,,,,
-truck.promo,Counter-offer,,,,,,,,,
-truck.promo.d,10 % off today wins back most of the crowd.,,,,,,,,,
-truck.queue,In line,,,,,,,,,
-truck.recall,Close and go home,,,,,,,,,
-truck.send,Drive to {name},,,,,,,,,
-truck.served,{n} served · {w} lost,,,,,,,,,
-truck.starter,Old Faithful,,,,,,,,,
-truck.starter.d,"Your first truck. 4×3 kitchen, 3 crew.",,,,,,,,,
-truck.status.drive,On the road,,,,,,,,,
-truck.status.idle,At the commissary,,,,,,,,,
-truck.status.restock,Restocking,,,,,,,,,
-truck.status.service,Open,,,,,,,,,
-truck.stock,{p} patties · {b} buns,,,,,,,,,
-truck.today,Today,,,,,,,,,
-truck.walk,walking {n} tiles,,,,,,,,,
-trucks.sub,{n} trucks,,,,,,,,,
-unit.h,h,,,,,,,,,
-unit.min,min,,,,,,,,,
-unit.s,s,,,,,,,,,
-weather.cloudy,☁ Cloudy,,,,,,,,,
-weather.hot,🔥 Heat wave,,,,,,,,,
-weather.rain,☂ Rain,,,,,,,,,
-weather.sunny,☀ Sunny,,,,,,,,,
+app.tagline,Burger Truck Manager,Burger kamyonu yöneticisi,Dein Burger-Truck-Manager,Gestor de food trucks de hamburguesas,Gère ton camion de burgers,Gerencie seu food truck de hambúrguer,Управляй фудтраками с бургерами,バーガートラックの経営者,버거 트럭 매니저,बर्गर ट्रक मैनेजर
+app.title,Grill Convoy,Grill Convoy,Grill Convoy,Grill Convoy,Grill Convoy,Grill Convoy,Grill Convoy,Grill Convoy,Grill Convoy,Grill Convoy
+bar.allhands,All hands!,Herkes başa!,Alle ran!,¡Todos a trabajar!,Tout le monde !,Todos à frente!,Все на помощь!,全員集合！,전원 출동!,सब हाज़िर!
+bar.allhands_on,All hands on,Herkes başta,Alle ran an,Todos a trabajar,Renfort activé,Todos na frente,Все на подмоге,全員で対応中,전원 출동 중,सब लग गए
+bar.allhands_wait,Ready in {min} min,{min} dk içinde hazır,Fertig in {min} Min.,Listo en {min} min,Prêt dans {min} min,Pronto em {min} min,Готово через {min} мин,{min} 分後に準備完了,{min}분 뒤 준비,{min} मिनट में तैयार
+bar.driving,On the road · Patties {p},Yolda · Köfte {p},Unterwegs · Bratlinge {p},En ruta · Medallones {p},En route · Steaks {p},Na estrada · Carnes {p},В пути · Котлеты: {p},移動中 · パティ {p},이동 중 · 패티 {p},सड़क पर · पैटी {p}
+bar.extinguish,Extinguish,Söndür,Löschen,Apagar,Éteindre,Apagar,Потушить,消火する,불 끄기,आग बुझाओ
+bar.info,Line {q} · Patties {p} · Buns {b} · {rate}/h,Kuyruk {q} · Köfte {p} · Ekmek {b} · {rate}/sa,Schlange {q} · Bratlinge {p} · Brötchen {b} · {rate}/Std.,Cola {q} · Medallones {p} · Panecillos {b} · {rate}/h,File {q} · Steaks {p} · Pains {b} · {rate}/h,Fila {q} · Carnes {p} · Pães {b} · {rate}/h,Очередь: {q} · Котлеты: {p} · Булочки: {b} · {rate}/ч,行列 {q} · パティ {p} · バンズ {b} · {rate}/時,줄 {q} · 패티 {p} · 번 {b} · 시간당 {rate},लाइन {q} · पैटी {p} · बन {b} · {rate}/घं
+bar.open,Truck,Kamyon,Truck,Camión,Camion,Caminhão,Фудтрак,トラック,트럭,ट्रक
+bar.propane,Swap bottle {cost},Tüpü değiştir {cost},Tauschen {cost},Cambiar bombona {cost},Changer {cost},Trocar botijão {cost},Заменить баллон {cost},ボンベ交換 {cost},가스통 교체 {cost},सिलेंडर बदलो {cost}
+bar.propane_kit,Use spare bottle,Yedek tüpü kullan,Ersatzflasche nutzen,Usar bombona extra,Bouteille de secours,Usar botijão reserva,Запасной баллон,予備のボンベを使う,예비 가스통 쓰기,अतिरिक्त सिलेंडर लगाओ
+bar.restock,Restock run,Stok takviyesi,Nachschubfahrt,Ir a reabastecer,Tournée de réassort,Viagem de reposição,Рейс за припасами,補充に行く,보충 운행,सामान भरने की यात्रा
+card.breakfast,Breakfast,Kahvaltı,Frühstück,Desayuno,Petit-déj,Café da manhã,Завтрак,朝食,아침,नाश्ता
+card.cheese,Cheese,Peynirli,Käse,Queso,Fromage,Queijo,Сырный,チーズ,치즈,चीज़
+card.classic,Classic,Klasik,Klassik,Clásica,Classique,Clássico,Классический,定番,클래식,क्लासिक
+card.double,Double,Çift,Doppelt,Doble,Double,Duplo,Двойной,ダブル,더블,डबल
+card.kids,Kids,Çocuk,Kids,Infantil,Enfants,Infantil,Детский,キッズ,키즈,बच्चों का
+card.premium,Premium,Premium,Premium,Premium,Premium,Premium,Премиум,プレミアム,프리미엄,प्रीमियम
+card.spicy,Spicy,Acılı,Scharf,Picante,Épicé,Picante,Острый,スパイシー,매운맛,तीखा
+card.veggie,Veggie,Vejetaryen,Vegi,Vegetal,Végé,Vegetariano,Овощной,ベジ,채식,वेज
+coach.1,Meet your truck at the Office Plaza. Tap Open the window.,Ofis Meydanı'nda kamyonunla buluş. Pencereyi aç'a dokun.,Triff deinen Truck am Büroplatz. Tippe auf „Fenster öffnen“.,Encuentra tu camión en la Plaza de Oficinas. Toca Abrir la ventanilla.,Rejoins ton camion sur la Place des bureaux. Touche Ouvrir le guichet.,Encontre seu caminhão na Praça dos Escritórios. Toque em Abrir a janela.,Встреть свой фудтрак у Офисной площади. Нажми «Открыть окно».,オフィス広場であなたのトラックに会いましょう。「窓口を開ける」をタップしてください。,오피스 광장에서 트럭을 만나요. “창문 열기”를 누르세요.,ऑफ़िस प्लाज़ा पर अपना ट्रक देखो। खिड़की खोलो पर टैप करो।
+coach.10,The commissary makes patties for tomorrow. Tap Prep on patties.,Hazırlık merkezi yarın için köfte yapar. Köfteye Hazırlık'a dokun.,Die Vorratsküche macht Bratlinge für morgen. Tippe auf Vorbereiten bei Bratlingen.,La cocina central prepara medallones para mañana. Toca Preparar medallones.,La cuisine centrale prépare les steaks pour demain. Touche Préparer les steaks.,A cozinha central prepara as carnes para amanhã. Toque em Preparar carnes.,Заготовочная готовит котлеты на завтра. Нажми «Заготовить» у котлет.,仕込み場で明日のためのパティを作ります。パティの「仕込み」をタップしてください。,공동 주방에서 내일 쓸 패티를 만들어요. 패티의 “준비”를 누르세요.,मुख्य किचन कल के लिए पैटी बनाता है। पैटी की तैयारी पर टैप करो।
+coach.11,Pack the truck: add 20 more patties.,Kamyonu doldur: 20 köfte daha ekle.,Pack den Truck: Lade 20 Bratlinge mehr ein.,Carga el camión: añade 20 medallones más.,Charge le camion : ajoute 20 steaks de plus.,Carregue o caminhão: adicione mais 20 carnes.,Загрузи фудтрак: добавь ещё 20 котлет.,トラックに積み込みましょう: パティをさらに20個追加。,트럭에 짐을 실으세요. 패티를 20개 더 넣으세요.,ट्रक भरो: 20 पैटी और जोड़ो।
+coach.12,Everything is packed. Tap Start the day.,Her şey yüklendi. Güne başla'ya dokun.,Alles ist gepackt. Tippe auf Tag starten.,Todo está cargado. Toca Empezar el día.,Tout est chargé. Touche Commencer la journée.,Tudo carregado. Toque em Começar o dia.,Всё загружено. Нажми «Начать день».,積み込みが終わりました。「営業開始」をタップしてください。,모두 실었어요. “하루 시작”을 누르세요.,सब भर गया। दिन शुरू करो पर टैप करो।
+coach.13,The lunch rush is here! Tap All hands.,Öğle yoğunluğu geldi! Herkes başa'ya dokun.,Der Mittagsansturm ist da! Tippe auf Alle ran.,¡Ya llega la hora punta del almuerzo! Toca Todos a trabajar.,Le coup de feu du midi arrive ! Touche Tout le monde.,A correria do almoço chegou! Toque em Todos à frente.,Обеденный наплыв! Нажми «Все на подмогу».,ランチタイムの混雑です！ 「全員集合」をタップしてください。,점심 손님이 몰려와요! “전원 출동”을 누르세요.,दोपहर की भीड़ आ गई! सब हाज़िर पर टैप करो।
+coach.14,Too much grease: a flare-up! Tap Extinguish.,Çok fazla yağ: alev! Söndür'e dokun.,Zu viel Fett: Es brennt! Tippe auf Löschen.,¡Demasiada grasa: una llamarada! Toca Apagar.,Trop de graisse : un feu de friture ! Touche Éteindre.,Gordura demais: fogo na chapa! Toque em Apagar.,Слишком много жира: вспышка! Нажми «Потушить».,油が多すぎて火が上がりました！ 「消火する」をタップしてください。,기름이 너무 많이 튀었어요. 불이 났어요! “불 끄기”를 누르세요.,बहुत ज़्यादा तेल: आग भड़की! आग बुझाओ पर टैप करो।
+coach.2,Your first customer! Tap the ticket.,İlk müşterin! Fişe dokun.,Deine erste Kundin! Tippe auf den Bon.,¡Tu primer cliente! Toca el ticket.,Ton premier client ! Touche le ticket.,Seu primeiro cliente! Toque no pedido.,Первый клиент! Нажми на талон.,最初のお客さんです！ 注文札をタップしてください。,첫 손님이에요! 주문표를 누르세요.,तुम्हारा पहला ग्राहक! टिकट पर टैप करो।
+coach.3,One classic burger. Put a patty on the grill.,Bir klasik burger. Izgaraya bir köfte koy.,Ein klassischer Burger. Leg einen Bratling auf den Grill.,Una hamburguesa clásica. Pon un medallón en la plancha.,Un burger classique. Pose un steak sur le grill.,Um hambúrguer clássico. Coloque uma carne na chapa.,Один классический бургер. Положи котлету на гриль.,定番バーガーが1つ。パティを鉄板にのせましょう。,클래식 버거 한 개예요. 그릴에 패티를 올리세요.,एक क्लासिक बर्गर। ग्रिल पर एक पैटी रखो।
+coach.4,"Wait for the sizzle, then flip it.","Cızırtıyı bekle, sonra çevir.","Warte, bis es zischt, dann wende ihn.",Espera a que chisporrotee y dale la vuelta.,"Attends le grésillement, puis retourne-le.",Espere chiar e depois vire.,Дождись шипения и переверни.,ジュージュー焼けるまで待って、裏返しましょう。,지글지글 소리가 나면 뒤집으세요.,"सिज़लने का इंतज़ार करो, फिर पलटो।"
+coach.5,"Bun, cheese, sauce. Tap Assemble.","Ekmek, peynir, sos. Hazırla'ya dokun.","Brötchen, Käse, Soße. Tippe auf Zusammenstellen.","Panecillo, queso, salsa. Toca Montar.","Pain, fromage, sauce. Touche Assembler.","Pão, queijo, molho. Toque em Montar.","Булочка, сыр, соус. Нажми «Собрать».",バンズ、チーズ、ソース。「組み立て」をタップしてください。,"번, 치즈, 소스 준비됐어요. “조립”을 누르세요.","बन, चीज़, सॉस। असेंबल पर टैप करो।"
+coach.6,Hand it out at the window. Tap Serve.,Pencereden ver. Servis et'e dokun.,Reich es am Fenster heraus. Tippe auf Servieren.,Entrégala en la ventanilla. Toca Servir.,Donne-le au guichet. Touche Servir.,Entregue na janela. Toque em Servir.,Выдай в окне. Нажми «Выдать».,窓口で渡しましょう。「提供」をタップしてください。,창문으로 건네주세요. “제공”을 누르세요.,सर्विस खिड़की पर दो। सर्व करो पर टैप करो।
+coach.7,"Your crew takes over now. When the day ends, read the report and tap Next day.",Ekibin artık devralıyor. Gün bitince raporu oku ve Sonraki gün'e dokun.,"Dein Team übernimmt jetzt. Wenn der Tag endet, lies den Bericht und tippe auf Nächster Tag.","Ahora tu equipo se encarga. Cuando termine el día, lee el informe y toca Día siguiente.","Ton équipe prend le relais. À la fin de la journée, lis le rapport et touche Jour suivant.","Sua equipe assume agora. Quando o dia acabar, leia o relatório e toque em Próximo dia.","Теперь за работу отвечает экипаж. Когда день закончится, прочти отчёт и нажми «Следующий день».",これからはスタッフが任せられます。営業が終わったら報告を読んで「次の日へ」をタップしてください。,이제 직원들이 맡아요. 하루가 끝나면 보고서를 읽고 “다음 날”을 누르세요.,अब तुम्हारा स्टाफ़ काम सँभालता है। दिन खत्म हो तो रिपोर्ट पढ़ो और अगला दिन पर टैप करो।
+coach.8,A runner helps wherever the line is slowest. Hire a runner.,Bir koşucu en yavaş kuyruğa yardım eder. Bir koşucu işe al.,"Ein Läufer hilft, wo die Schlange am längsten ist. Stell einen Läufer ein.",Un ayudante echa una mano donde la cola sea más lenta. Contrata a un ayudante.,Un coureur aide là où la file est la plus lente. Embauche un coureur.,Um auxiliar ajuda onde a fila está mais lenta. Contrate um auxiliar.,"Помощник выручает там, где очередь медленнее всего. Найми помощника.",ランナーは、行列がいちばん遅いところを手伝います。ランナーを雇いましょう。,심부름 직원은 줄이 가장 느린 곳을 도와요. 심부름 직원을 고용하세요.,रनर वहाँ मदद करता है जहाँ लाइन सबसे धीमी है। एक रनर रखो।
+coach.9,"Hot buns, faster burgers. Tap the toaster, then the free spot next to the bench.","Sıcak ekmek, daha hızlı burger. Tost makinesine, sonra tezgâhın yanındaki boş yere dokun.","Warme Brötchen, schnellere Burger. Tippe auf den Toaster, dann auf den freien Platz neben der Theke.","Panecillos calientes, hamburguesas más rápidas. Toca la tostadora y luego el hueco libre junto a la mesada.","Pains chauds, burgers plus rapides. Touche le grille-pain, puis la place libre à côté du comptoir.","Pães quentinhos, hambúrgueres mais rápidos. Toque na torradeira e depois no espaço livre ao lado do balcão.","Горячие булочки — быстрее бургеры. Нажми на тостер, потом на свободное место рядом со столом.",温かいバンズでバーガーがもっと速く。トースターをタップして、調理台の横の空きマスをタップしてください。,따뜻한 번이면 버거가 더 빨라요. 토스터를 누른 다음 벤치 옆의 빈 자리를 누르세요.,"गर्म बन, तेज़ बर्गर। टोस्टर पर टैप करो, फिर बेंच के पास की खाली जगह पर।"
+coach.done,You're ready! Keep the line moving and the truck stocked.,"Hazırsın! Kuyruğu akıt, kamyonu dolu tut.",Los geht's! Halte die Schlange in Bewegung und den Truck gut bestückt.,¡Listo! Mantén la cola en movimiento y el camión abastecido.,C'est parti ! Garde la file en mouvement et le camion bien approvisionné.,Pronto! Mantenha a fila andando e o caminhão abastecido.,Готово! Держи очередь в движении и фудтрак с запасом.,準備完了です！ 行列を流し、トラックの在庫を切らさないようにしましょう。,준비 끝! 줄을 계속 움직이고 트럭을 채워 두세요.,तुम तैयार हो! लाइन चलती रखो और ट्रक में सामान भरा रखो।
+coach.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
+coach.step,Step {n} of {m},Adım {n} / {m},Schritt {n} von {m},Paso {n} de {m},Étape {n} sur {m},Passo {n} de {m},Шаг {n} из {m},ステップ {n} / {m},{m}단계 중 {n}단계,चरण {n} / {m}
+common.back,Back,Geri,Zurück,Atrás,Retour,Voltar,Назад,戻る,뒤로,वापस
+common.cancel,Cancel,İptal,Abbrechen,Cancelar,Annuler,Cancelar,Отмена,キャンセル,취소,रद्द करो
+common.locked,Locked,Kilitli,Gesperrt,Bloqueado,Verrouillé,Bloqueado,Закрыто,ロック中,잠김,बंद
+common.ok,OK,Tamam,OK,OK,OK,OK,OK,OK,확인,ठीक है
+common.open,Open,Aç,Öffnen,Abrir,Ouvrir,Abrir,Открыть,開く,열기,खोलो
+common.owned,Owned,Sende,Gekauft,Comprado,Acquis,Comprado,Куплено,所持済み,보유 중,आपके पास
+cook.1,Take the ticket,Fişi al,Bon nehmen,Coge el ticket,Prends le ticket,Pegar o pedido,Взять талон,注文札を取る,주문표 받기,टिकट लो
+cook.2,Patty on the grill,Izgarada köfte,Bratling auf den Grill,Medallón a la plancha,Steak sur le grill,Carne na chapa,Котлета на гриле,鉄板にパティをのせる,패티를 그릴에,ग्रिल पर पैटी
+cook.3,Sizzling…,Cızırdıyor…,Brutzelt …,Chisporroteando…,Ça grésille…,Chiando…,Шипит…,ジュージュー…,지글지글…,सिज़ल रही है…
+cook.4,Flip!,Çevir!,Wenden!,¡Dale la vuelta!,Retourne !,Vire!,Переверни!,裏返す！,뒤집기!,पलटो!
+cook.5,Assemble,Hazırla,Zusammenstellen,Montar,Assembler,Montar,Собрать,組み立て,조립,असेंबल करो
+cook.6,Serve,Servis et,Servieren,Servir,Servir,Servir,Выдать,提供,제공,सर्व करो
+crew.count,{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m}
+crew.hire,Hire {role} {cost},{role} işe al {cost},{role} einstellen {cost},Contratar {role} {cost},Embaucher {role} {cost},Contratar {role} {cost},Нанять {role} · {cost},{role} を雇う {cost},{role} 고용 {cost},{role} रखो {cost}
+crew.release,Let someone go,Birini gönder,Jemanden gehen lassen,Despedir a alguien,Laisser partir quelqu'un,Dispensar alguém,Уволить одного,一人を辞めてもらう,직원 내보내기,किसी को जाने दो
+crew.release.d,Saves a wage. No refund.,Bir maaştan tasarruf. Geri ödeme yok.,Spart einen Lohn. Keine Rückerstattung.,Ahorra un sueldo. Sin reembolso.,Économise un salaire. Aucun remboursement.,Economiza um salário. Sem reembolso.,Экономит зарплату. Деньги не возвращаются.,給料を節約できます。返金はありません。,임금을 아낄 수 있어요. 환불은 없어요.,एक तनख्वाह बचती है। पैसे वापस नहीं मिलते।
+crew.release_btn,Let go,Gönder,Gehen lassen,Despedir,Laisser partir,Dispensar,Уволить,辞めてもらう,내보내기,जाने दो
+crew.switch,→ {role},→ {role},→ {role},→ {role},→ {role},→ {role},→ {role},→ {role},→ {role},→ {role}
+crew.title,Crew,Ekip,Team,Equipo,Équipe,Equipe,Экипаж,スタッフ,직원,स्टाफ़
+crew.wage,Each cook costs {cost} a day.,Her aşçı günde {cost} tutar.,Jede Küchenkraft kostet {cost} am Tag.,Cada cocinero cuesta {cost} al día.,Chaque cuisinier coûte {cost} par jour.,Cada cozinheiro custa {cost} por dia.,Каждый повар стоит {cost} в день.,料理スタッフ1人につき1日 {cost}。,요리사 한 명당 하루 {cost}.,हर कुक का खर्च {cost} रोज़।
+crisis.flare.b,The grill runs at half speed and patties burn. Extinguish it.,Izgara yarı hızda çalışır ve köfteler yanar. Söndür.,"Der Grill läuft nur halb so schnell, und Bratlinge verbrennen. Lösch den Brand.",La plancha va a media velocidad y los medallones se queman. Apágala.,Le grill tourne à mi-régime et les steaks brûlent. Éteins-le.,A chapa funciona na metade da velocidade e as carnes queimam. Apague o fogo.,"Гриль работает вполсилы, котлеты подгорают. Потуши его.",鉄板の速度が半分になり、パティが焦げています。消火しましょう。,그릴이 절반 속도로 돌고 패티가 타요. 불을 끄세요.,ग्रिल आधी स्पीड से चलती है और पैटी जलती हैं। इसे बुझाओ।
+crisis.flare.t,Grease flare-up,Yağ alevlenmesi,Fettbrand,Llamarada de grasa,Feu de friture,Fogo na gordura,Вспышка жира,油の火がつく,기름 불꽃,तेल की आग
+crisis.halftime.b,Fans rush the stadium trucks. All hands and a second window help.,Taraftarlar stadyumdaki kamyonlara koşuyor. Herkes başta ve ikinci bir pencere yardımcı olur.,Fans stürmen die Trucks am Stadion. Alle ran und ein zweites Fenster helfen.,Los aficionados se lanzan a los camiones del estadio. Todos a trabajar y una segunda ventanilla ayudan.,Les fans se précipitent vers les camions du stade. Tout le monde en renfort et un second guichet aident.,Os torcedores correm para os caminhões do estádio. Todos à frente e uma segunda janela ajudam.,Болельщики бегут к фудтракам у стадиона. Помогут все на подмоге и второе окно.,ファンがスタジアムのトラックに押し寄せます。全員集合と2つ目の窓口が役立ちます。,팬들이 경기장 트럭으로 몰려가요. 전원 출동과 두 번째 창문이 도움이 돼요.,स्टेडियम के ट्रकों पर प्रशंसकों की भीड़ टूटती है। सब हाज़िर और दूसरी खिड़की मदद करेंगी।
+crisis.halftime.t,Halftime stampede,Devre arası izdiham,Ansturm in der Halbzeit,Avalancha del descanso,Ruée de la mi-temps,Debandada do intervalo,Давка в перерыв,ハーフタイムの大混雑,하프타임 인파,हाफ़-टाइम की भीड़
+crisis.heat.b,Drinks sell twice as much. The beach is packed.,İçecekler iki kat satar. Sahil tıka basa dolu.,Getränke verkaufen sich doppelt so gut. Der Strand ist voll.,Las bebidas se venden el doble. La playa está llena.,Les boissons se vendent deux fois plus. La plage est bondée.,Bebidas vendem o dobro. A praia está lotada.,Напитки продаются вдвое лучше. Пляж забит.,飲み物が2倍売れます。ビーチは大混雑です。,음료가 두 배로 팔려요. 해변이 붐벼요.,पेय दोगुने बिकते हैं। समुद्र तट भरा है।
+crisis.heat.t,Heat wave,Sıcak dalgası,Hitzewelle,Ola de calor,Vague de chaleur,Onda de calor,Жара,猛暑,폭염,गर्मी की लहर
+crisis.match_day.t,Match day,Maç günü,Spieltag,Día de partido,Jour de match,Dia de jogo,День матча,試合の日,경기 날,मैच का दिन
+crisis.propane.b,The grill goes dark when the tank is empty. Swap the bottle or run home.,Tüp bittiğinde ızgara söner. Tüpü değiştir ya da eve dön.,"Der Grill geht aus, wenn die Flasche leer ist. Tausch die Flasche oder fahr nach Hause.",La plancha se apaga cuando la bombona se vacía. Cambia la bombona o vuelve a casa.,Le grill s'éteint quand la bouteille est vide. Change de bouteille ou rentre.,A chapa apaga quando o botijão acaba. Troque o botijão ou volte para casa.,"Гриль гаснет, когда баллон пуст. Замени баллон или поезжай домой.",ボンベが空になると鉄板の火が消えます。ボンベを交換するか、帰ってください。,가스통이 비면 그릴이 꺼져요. 가스통을 바꾸거나 집으로 돌아가세요.,सिलेंडर खाली होने पर ग्रिल बंद हो जाती है। सिलेंडर बदलो या घर लौटो।
+crisis.propane.t,Propane low,Propan azaldı,Propan fast leer,Poco propano,Propane presque vide,Gás acabando,Мало пропана,プロパンガス残量少,가스 부족,गैस कम
+crisis.rain.b,"Walk-ins drop, most at the beach. Order-ahead pickups go up.","Plansız müşteriler azalır, en çok sahilde. Önceden siparişler artar.","Laufkundschaft sinkt, am stärksten am Strand. Vorbestellte Abholungen steigen.","Bajan los clientes que pasan por allí, sobre todo en la playa. Suben los recogidos de pedidos anticipados.","Moins de clients de passage, surtout à la plage. Les commandes à emporter augmentent.","Menos clientes passam, principalmente na praia. Os pedidos antecipados aumentam.","Гостей с улицы меньше, особенно на пляже. Заказы на вынос растут.",飛び込み客が減り、特にビーチで減ります。事前注文の受け取りが増えます。,"지나가던 손님이 줄고, 특히 해변에서 많이 줄어요. 미리 주문한 픽업은 늘어요.","बिना बुलाए आने वाले ग्राहक घटते हैं, ज़्यादातर समुद्र तट पर। पहले से ऑर्डर वाले पिकअप बढ़ते हैं।"
+crisis.rain.t,Rain,Yağmur,Regen,Lluvia,Pluie,Chuva,Дождь,雨,비,बारिश
+crisis.rival.b,A rival parked at your pitch and splits the crowd. Counter-offer or move.,Bir rakip satış noktanıza park etti ve kalabalığı bölüyor. Karşı teklif sun ya da yer değiştir.,Ein Konkurrenz-Truck hat sich auf deinen Platz gestellt und teilt die Menge. Gegenangebot machen oder umziehen.,Un rival aparcó en tu puesto y se reparte la clientela. Haz una contraoferta o cambia de sitio.,Un concurrent s'est garé sur ton emplacement et partage la foule. Fais une contre-offre ou déménage.,Um concorrente estacionou no seu ponto e divide os clientes. Faça uma contraproposta ou mude de lugar.,Соперник встал на твою точку и делит гостей. Предложи скидку или переезжай.,ライバル店があなたの場所の近くに止まり、客が分かれています。対抗割引をするか、場所を移しましょう。,라이벌 트럭이 자리에 와서 손님을 나눠 가져가요. 대응 할인을 하거나 자리를 옮기세요.,एक प्रतिद्वंद्वी ट्रक तुम्हारी जगह पर खड़ा है और भीड़ बाँट रहा है। जवाबी ऑफ़र दो या जगह बदलो।
+crisis.rival.t,Rival truck,Rakip kamyon,Konkurrenz-Truck,Camión rival,Camion concurrent,Caminhão concorrente,Фудтрак-соперник,ライバルのトラック,라이벌 트럭,प्रतिद्वंद्वी ट्रक
+curve.beach,Busy all afternoon,Öğleden sonra hep yoğun,Den ganzen Nachmittag voll,Ocupado toda la tarde,Animé toute l'après-midi,Movimento o dia todo,Людно весь день,午後ずっと混雑,오후 내내 붐벼요,दोपहर भर व्यस्त
+curve.lunch,Lunch rush 12:00–14:00,Öğle yoğunluğu 12:00–14:00,Mittagsansturm 12:00–14:00,Hora punta del almuerzo 12:00–14:00,Coup de feu du midi 12 h 00–14 h 00,Almoço 12:00–14:00,Обеденный наплыв 12:00–14:00,ランチ混雑 12:00〜14:00,점심 손님 12:00–14:00,दोपहर की भीड़ 12:00–14:00
+curve.stadium,"Evening, match waves","Akşam, maç dalgaları","Abends, Wellen beim Spiel","Tarde, oleadas por el partido","Soirée, vagues de match","Noite, ondas de jogo","Вечер, волны матча",夕方、試合の波,"저녁, 관중이 밀려와요","शाम, मैच की लहरें"
+district.boardwalk,Boardwalk,Sahil yolu,Strandpromenade,Paseo marítimo,Front de mer,Calçadão,Набережная,遊歩道,해변 산책로,समुद्री सैरगाह
+district.harbour,Harbour,Liman,Hafen,Puerto,Port,Porto,Гавань,港,항구,बंदरगाह
+district.plaza,Office Plaza,Ofis Meydanı,Büroplatz,Plaza de Oficinas,Place des bureaux,Praça dos Escritórios,Офисная площадь,オフィス広場,오피스 광장,ऑफ़िस प्लाज़ा
+district.stadium,Stadium,Stadyum,Stadion,Estadio,Stade,Estádio,Стадион,スタジアム,경기장,स्टेडियम
+err.already,Already done.,Zaten yapıldı.,Schon erledigt.,Ya está hecho.,Déjà fait.,Já feito.,Уже готово.,すでに済んでいます。,이미 완료했어요.,पहले से हो चुका है।
+err.away,The truck must be at the commissary.,Kamyon hazırlık merkezinde olmalı.,Der Truck muss in der Vorratsküche sein.,El camión debe estar en la cocina central.,Le camion doit être à la cuisine centrale.,O caminhão precisa estar na cozinha central.,Фудтрак должен быть в заготовочной.,トラックは仕込み場にいる必要があります。,트럭은 공동 주방에 있어야 해요.,ट्रक को मुख्य किचन पर होना चाहिए।
+err.board_full,The menu board is full.,Menü panosu dolu.,Die Menütafel ist voll.,La pizarra del menú está llena.,Le tableau des menus est plein.,O quadro de cardápio está cheio.,Доска меню заполнена.,メニューボードがいっぱいです。,메뉴판이 꽉 찼어요.,मेन्यू बोर्ड भरा है।
+err.busy,Busy right now.,Şu an meşgul.,Gerade beschäftigt.,Ocupado ahora mismo.,Occupé pour le moment.,Ocupado agora.,Сейчас занято.,ただいま手が離せません。,지금은 바빠요.,अभी व्यस्त है।
+err.cash,Not enough money.,Yeterli paran yok.,Nicht genug Geld.,No tienes suficiente dinero.,Pas assez d'argent.,Dinheiro insuficiente.,Недостаточно денег.,お金が足りません。,돈이 부족해요.,पैसे कम हैं।
+err.chapter,Unlock the Stadium first.,Önce Stadyum'un kilidini aç.,Schalte zuerst das Stadion frei.,Desbloquea antes el Estadio.,Débloque d'abord le Stade.,Desbloqueie o Estádio primeiro.,Сначала открой стадион.,先にスタジアムを開放してください。,먼저 경기장을 여세요.,पहले स्टेडियम खोलो।
+err.closed,The truck is not open.,Kamyon açık değil.,Der Truck ist nicht geöffnet.,El camión no está abierto.,Le camion n'est pas ouvert.,O caminhão não está aberto.,Фудтрак не открыт.,トラックは営業していません。,트럭이 열려 있지 않아요.,ट्रक खुला नहीं है।
+err.cooldown,Not ready yet.,Henüz hazır değil.,Noch nicht bereit.,Todavía no está listo.,Pas encore prêt.,Ainda não está pronto.,Ещё не готово.,まだ準備ができていません。,아직 준비되지 않았어요.,अभी तैयार नहीं।
+err.empty,Nothing there.,Orada bir şey yok.,Hier ist nichts.,No hay nada ahí.,Rien ici.,Não há nada aí.,Здесь пусто.,そこには何もありません。,거기에는 아무것도 없어요.,वहाँ कुछ नहीं है।
+err.failed,That didn't work.,Olmadı.,Das hat nicht geklappt.,Eso no funcionó.,Ça n'a pas marché.,Não deu certo.,Не получилось.,うまくいきませんでした。,실패했어요.,यह नहीं हुआ।
+err.fame,Needs more Fame.,Daha fazla şöhret gerekli.,Braucht mehr Ruhm.,Necesita más Fama.,Il faut plus de renommée.,Precisa de mais Fama.,Нужно больше известности.,知名度が足りません。,명성이 더 필요해요.,ज़्यादा शोहरत चाहिए।
+err.fridge_full,The fridge is full.,Buzdolabı dolu.,Der Kühlschrank ist voll.,La nevera está llena.,Le frigo est plein.,A geladeira está cheia.,Холодильник полон.,冷蔵庫がいっぱいです。,냉장고가 꽉 찼어요.,फ़्रिज भरा है।
+err.invalid,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
+err.last,You need at least one.,En az bir tane gerekli.,Du brauchst mindestens einen.,Necesitas al menos uno.,Il en faut au moins un.,Você precisa de pelo menos um.,Нужен хотя бы один.,少なくとも1つは必要です。,최소 한 개는 있어야 해요.,कम से कम एक तो चाहिए।
+err.locked,Unlock this pitch first.,Önce bu satış noktasının kilidini aç.,Schalte zuerst diesen Standplatz frei.,Desbloquea antes este puesto.,Débloque d'abord cet emplacement.,Desbloqueie este ponto primeiro.,Сначала открой эту точку.,先にこの出店場所を開放してください。,먼저 이 자리를 여세요.,पहले यह जगह खोलो।
+err.max,Maximum reached.,En fazlaya ulaşıldı.,Maximum erreicht.,Límite alcanzado.,Maximum atteint.,Limite máximo atingido.,Достигнут максимум.,上限に達しました。,최대치에 도달했어요.,सीमा पूरी हो गई।
+err.no_better,Your layout is already the best.,Düzenin zaten en iyisi.,Dein Aufbau ist schon der beste.,Tu distribución ya es la mejor.,Ton agencement est déjà le meilleur.,Sua disposição já é a melhor.,Твоя раскладка уже лучшая.,今のレイアウトがすでに最適です。,지금 배치가 이미 가장 좋아요.,तुम्हारा लेआउट पहले से सबसे अच्छा है।
+err.no_crew,Hire crew first.,Önce ekip işe al.,Stell zuerst Team ein.,Contrata primero al equipo.,Embauche d'abord une équipe.,Contrate a equipe primeiro.,Сначала найми экипаж.,先にスタッフを雇ってください。,먼저 직원을 고용하세요.,पहले स्टाफ़ रखो।
+err.no_pitch,Pick a pitch first.,Önce bir satış noktası seç.,Wähle zuerst einen Standplatz.,Elige primero un puesto.,Choisis d'abord un emplacement.,Escolha um ponto primeiro.,Сначала выбери точку.,先に出店場所を選んでください。,먼저 자리를 고르세요.,पहले एक जगह चुनो।
+err.no_room,No free tile. Sell a station or extend the truck.,Boş kare yok. Bir istasyonu sat ya da kamyonu uzat.,Kein freies Feld. Verkaufe eine Station oder erweitere den Truck.,No hay casilla libre. Vende una estación o amplía el camión.,Pas de case libre. Vends un poste ou agrandis le camion.,Sem espaço livre. Venda uma estação ou amplie o caminhão.,Нет свободной клетки. Продай станцию или расширь фудтрак.,空きマスがありません。設備を売却するか、トラックを拡張してください。,빈 칸이 없어요. 자리를 팔거나 트럭을 넓히세요.,कोई खाली टाइल नहीं। एक स्टेशन बेचो या ट्रक बढ़ाओ।
+err.no_stock,The commissary has none left.,Hazırlık merkezinde kalmadı.,Die Vorratsküche hat nichts mehr.,La cocina central ya no tiene.,La cuisine centrale n'en a plus.,A cozinha central não tem mais.,В заготовочной ничего не осталось.,仕込み場には在庫がもうありません。,공동 주방에 남은 게 없어요.,मुख्य किचन में अब कुछ नहीं बचा।
+err.nothing,Nothing to do here.,Burada yapacak bir şey yok.,Hier gibt es nichts zu tun.,No hay nada que hacer aquí.,Rien à faire ici.,Nada para fazer aqui.,Здесь нечего делать.,ここでできることはありません。,여기서 할 일이 없어요.,यहाँ करने को कुछ नहीं।
+err.order,One step at a time.,Bir seferde bir adım.,Immer ein Schritt nach dem anderen.,Un paso cada vez.,Une étape à la fois.,Um passo de cada vez.,Один шаг за раз.,一度に一つずつ進めてください。,한 단계씩 하세요.,एक बार में एक कदम।
+err.owned,Already yours.,Zaten senin.,Gehört dir schon.,Ya es tuyo.,Déjà à toi.,Já é seu.,Уже твоё.,すでに持っています。,이미 보유 중이에요.,यह पहले से तुम्हारा है।
+err.phase,Not now.,Şimdi değil.,Nicht jetzt.,Ahora no.,Pas maintenant.,Não agora.,Не сейчас.,今はできません。,지금은 안 돼요.,अभी नहीं।
+err.queue_full,The prep queue is full.,Hazırlık kuyruğu dolu.,Die Vorbereitungsschlange ist voll.,La cola de preparación está llena.,La file de préparation est pleine.,A fila de preparo está cheia.,Очередь заготовок полна.,仕込みの待ち行列がいっぱいです。,준비 줄이 꽉 찼어요.,तैयारी की कतार भरी है।
+err.report,The day is over.,Gün bitti.,Der Tag ist vorbei.,El día ha terminado.,La journée est terminée.,O dia acabou.,День окончен.,今日の営業は終わりました。,하루가 끝났어요.,दिन खत्म हो गया।
+err.requires,Research the earlier step first.,Önce bir önceki adımı araştır.,Erforsche zuerst den vorherigen Schritt.,Investiga antes el paso anterior.,Recherche d'abord l'étape précédente.,Pesquise a etapa anterior primeiro.,Сначала исследуй предыдущий шаг.,先に前の研究を終えてください。,앞 단계를 먼저 연구하세요.,पहले पिछला चरण रिसर्च करो।
+err.research,Research it first.,Önce bunu araştır.,Erforsche es zuerst.,Investígalo primero.,Recherche-le d'abord.,Pesquise primeiro.,Сначала исследуй это.,先に研究してください。,먼저 연구하세요.,पहले इसकी रिसर्च करो।
+err.slots,No free rule slot.,Boş kural yuvası yok.,Kein freier Regelplatz.,No hay ranura libre de regla.,Aucun emplacement de règle libre.,Nenhuma vaga de regra livre.,Нет свободного слота правил.,空いている指示枠がありません。,빈 규칙 칸이 없어요.,कोई खाली नियम-जगह नहीं।
+err.truck_full,The truck is full.,Kamyon dolu.,Der Truck ist voll.,El camión está lleno.,Le camion est plein.,O caminhão está cheio.,Фудтрак полон.,トラックがいっぱいです。,트럭이 꽉 찼어요.,ट्रक भरा है।
+err.unknown,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
+graphics.dropped,Graphics lowered to keep the game smooth. You can change it in Settings.,Oyun akıcı kalsın diye grafikler düşürüldü. Ayarlar'dan değiştirebilirsin.,"Grafik gesenkt, damit das Spiel flüssig läuft. Du kannst es in den Einstellungen ändern.",Gráficos reducidos para mantener el juego fluido. Puedes cambiarlo en Ajustes.,Graphismes baissés pour garder le jeu fluide. Tu peux les changer dans les Réglages.,Gráficos reduzidos para manter o jogo suave. Você pode mudar isso em Configurações.,"Графика снижена, чтобы игра шла плавно. Это можно поменять в настройках.",ゲームを滑らかにするため画質を下げました。設定で変更できます。,게임을 부드럽게 하려고 그래픽을 낮췄어요. 설정에서 바꿀 수 있어요.,गेम चिकना चलाने के लिए ग्राफ़िक्स घटाया गया। इसे सेटिंग्स में बदल सकते हो।
+graphics.high,High,Yüksek,Hoch,Alta,Élevée,Alta,Высокая,高,높음,ऊँचा
+graphics.low,Low,Düşük,Niedrig,Baja,Basse,Baixa,Низкая,低,낮음,कम
+graphics.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
+hud.day,Day {n},Gün {n},Tag {n},Día {n},Jour {n},Dia {n},День {n},{n}日目,{n}일차,दिन {n}
+hud.fame,Fame {r},Şöhret {r},Ruhm {r},Fama {r},Renommée {r},Fama {r},Известность {r},知名度 {r},명성 {r},शोहरत {r}
+hud.next_day,Next day,Sonraki gün,Nächster Tag,Día siguiente,Jour suivant,Próximo dia,Следующий день,次の日へ,다음 날,अगला दिन
+hud.open_window,Open the window,Pencereyi aç,Fenster öffnen,Abrir la ventanilla,Ouvrir le guichet,Abrir a janela,Открыть окно,窓口を開ける,창문 열기,खिड़की खोलो
+hud.speed,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×
+hud.speed_guide,That unlocks after the guide.,"Bu, rehberden sonra açılır.",Das wird nach der Anleitung freigeschaltet.,Eso se desbloquea al terminar la guía.,Ça se débloque après le guide.,Isso desbloqueia depois do guia.,Это откроется после подсказок.,ガイドのあとに開放されます。,가이드를 마치면 열려요.,यह गाइड के बाद खुलेगा।
+hud.speed_locked,Faster speeds come with the Speed Pack.,Daha hızlı modlar Hız Paketi ile gelir.,Schnellere Geschwindigkeit gibt es mit dem Tempo-Paket.,Las velocidades rápidas vienen con el Pack de Velocidad.,Les vitesses rapides sont dans le Pack Vitesse.,Velocidades maiores vêm com o Pacote de Velocidade.,Быстрые скорости идут с пакетом скорости.,より速い速度はスピードパックに含まれます。,더 빠른 속도는 속도 팩에 포함돼요.,तेज़ चाल स्पीड पैक के साथ मिलती है।
+hud.start_day,Start the day,Güne başla,Tag starten,Empezar el día,Commencer la journée,Começar o dia,Начать день,営業開始,하루 시작,दिन शुरू करो
+iap.automation.d,Two more Head cook rule slots.,İki baş aşçı kuralı yuvası daha.,Zwei weitere Regelplätze für den Küchenchef.,Dos ranuras más de reglas para el Jefe de cocina.,Deux emplacements de règles du chef en plus.,Mais duas vagas de regras do Chefe de Cozinha.,Ещё два слота правил главного повара.,料理長の指示枠を2つ追加。,주방장 규칙 칸이 2개 더 생겨요.,हेड कुक के दो और नियम।
+iap.automation.t,Head Cook+,Baş Aşçı+,Küchenchef+,Jefe de cocina+,Chef+,Chefe de Cozinha+,Главный повар+,料理長+,주방장 플러스,हेड कुक+
+iap.bundle.d,"Pitmaster Edition, Convoy Pass, Speed Pack, Head Cook+ and every look. Ad-free.","Usta Şef Sürümü, Konvoy Kartı, Hız Paketi, Baş Aşçı+ ve tüm görünümler. Reklamsız.","Chef-Edition, Konvoi-Pass, Tempo-Paket, Küchenchef+ und alle Looks. Werbefrei.","Edición Pitmaster, Pase del convoy, Pack de Velocidad, Jefe de cocina+ y todos los estilos. Sin anuncios.","Édition Pitmaster, Pass Convoi, Pack Vitesse, Chef+ et tous les looks. Sans pub.","Edição do Mestre da Brasa, Passe do Comboio, Pacote de Velocidade, Chefe de Cozinha+ e todos os visuais. Sem anúncios.","Издание «Мастер гриля», пропуск колонны, пакет скорости, главный повар+ и все оформления. Без рекламы.",ピットマスター・エディション、コンボイパス、スピードパック、料理長+、すべてのデザイン。広告なし。,"그릴 마스터 에디션, 트럭 행렬 패스, 속도 팩, 주방장 플러스, 모든 외형이 들어 있어요. 광고 없음.","पिटमास्टर एडिशन, कारवाँ पास, स्पीड पैक, हेड कुक+ और हर लुक। विज्ञापन-मुक्त।"
+iap.bundle.t,Complete Grill Convoy,Tam Izgara Konvoyu,Komplett-Grill-Konvoi,Grill Convoy completo,Collection complète Grill Convoy,Grill Convoy Completo,Полный набор Grill Convoy,グリルコンボイ完全版,그릴 컨보이 올인원,पूरा ग्रिल कारवाँ
+iap.cash_l.d,About 5 days of income.,Yaklaşık 5 günlük gelir.,Etwa 5 Tage Einnahmen.,Unos 5 días de ingresos.,Environ 5 jours de revenus.,Cerca de 5 dias de renda.,Примерно на 5 дней дохода.,約5日分の収入。,수입 약 5일 치예요.,लगभग 5 दिन की कमाई।
+iap.cash_l.t,Cash Chest,Para Sandığı,Geldtruhe,Cofre de efectivo,Coffre d'argent,Baú de Dinheiro,Денежный сундук,現金の箱,현금 상자,पैसों का संदूक
+iap.cash_m.d,About 2.5 days of income.,"Yaklaşık 2,5 günlük gelir.","Etwa 2,5 Tage Einnahmen.","Unos 2,5 días de ingresos.","Environ 2,5 jours de revenus.","Cerca de 2,5 dias de renda.","Примерно 2,5 дня дохода.",約2.5日分の収入。,수입 약 2.5일 치예요.,लगभग 2.5 दिन की कमाई।
+iap.cash_m.t,Cash Crate,Para Kutusu,Geldkiste,Caja de efectivo,Caisse d'argent,Caixa de Dinheiro,Денежный ящик,現金の木箱,현금 궤짝,पैसों का डिब्बा
+iap.cash_s.d,About one day of income.,Yaklaşık bir günlük gelir.,Etwa ein Tag Einnahmen.,Aproximadamente un día de ingresos.,Environ un jour de revenus.,Cerca de um dia de renda.,Примерно один день дохода.,約1日分の収入。,수입 약 하루 치예요.,लगभग एक दिन की कमाई।
+iap.cash_s.t,Cash Bag,Para Torbası,Geldbeutel,Bolsa de efectivo,Sac d'argent,Sacola de Dinheiro,Денежный мешок,現金の袋,현금 주머니,पैसों का थैला
+iap.cash_xl.d,About 10 days of income.,Yaklaşık 10 günlük gelir.,Etwa 10 Tage Einnahmen.,Unos 10 días de ingresos.,Environ 10 jours de revenus.,Cerca de 10 dias de renda.,Примерно 10 дней дохода.,約10日分の収入。,수입 약 10일 치예요.,लगभग 10 दिन की कमाई।
+iap.cash_xl.t,Cash Vault,Para Kasası,Geldtresor,Bóveda de efectivo,Chambre forte,Cofre de Dinheiro,Денежное хранилище,現金の金庫,현금 금고,पैसों का खज़ाना
+iap.comeback.d,Cash to get the convoy rolling again.,Konvoyu yeniden çalıştırmak için para.,"Geld, damit der Konvoi wieder ins Rollen kommt.",Efectivo para que el convoy vuelva a rodar.,De l'argent pour relancer le convoi.,Dinheiro para o comboio voltar a rodar.,"Деньги, чтобы колонна снова поехала.",コンボイをもう一度走らせるための現金。,트럭 행렬을 다시 굴리는 데 쓸 현금이에요.,कारवाँ दोबारा चलाने के लिए पैसे।
+iap.comeback.t,Welcome-back Crate,Hoş geldin sandığı,Willkommen-zurück-Kiste,Caja de bienvenida,Caisse de retour,Caixa de Boas-vindas,Ящик «С возвращением»,おかえり木箱,환영 상자,वापसी की पेटी
+iap.convoy_pass.d,"Ad-free, one more rule slot and one more layout preset per truck. Forever.","Reklamsız, bir kural yuvası daha ve kamyon başına bir düzen ön ayarı daha. Kalıcı.","Werbefrei, ein weiterer Regelplatz und eine weitere Layout-Vorlage pro Truck. Für immer.","Sin anuncios, una ranura de regla más y un preajuste de distribución más por camión. Para siempre.","Sans pub, un emplacement de règle en plus et un préréglage d'agencement en plus par camion. À vie.","Sem anúncios, mais uma vaga de regra e mais um preset de layout por caminhão. Para sempre.","Без рекламы, ещё один слот правил и ещё один шаблон раскладки на каждый фудтрак. Навсегда.",広告なし、指示枠 +1、トラックごとにレイアウトプリセット +1。永久に。,"광고 없음, 트럭마다 규칙 칸 1개와 배치 프리셋 1개가 더 생겨요. 영구적이에요.","विज्ञापन-मुक्त, हर ट्रक के लिए एक और नियम-जगह और एक और लेआउट प्रीसेट। हमेशा के लिए।"
+iap.convoy_pass.t,Convoy Pass,Konvoy Kartı,Konvoi-Pass,Pase del convoy,Pass Convoi,Passe do Comboio,Пропуск колонны,コンボイパス,트럭 행렬 패스,कारवाँ पास
+iap.cosmetics_all.d,"Every livery, outfit, board and awning.","Her kamyon boyası, kıyafet, pano ve tente.","Jede Lackierung, jedes Outfit, jede Tafel und jede Markise.","Todas las libreas, atuendos, pizarras y toldos.","Toutes les livrées, tenues, tableaux et auvents.","Todas as pinturas, uniformes, quadros e toldos.","Все раскраски, наряды, доски и навесы.",すべてのペイント、服装、ボード、日よけ。,"모든 도장, 복장, 메뉴판, 차양이 들어 있어요.","हर रंग-रोगन, पोशाक, बोर्ड और छज्जा।"
+iap.cosmetics_all.t,Looks Collection,Görünüm Koleksiyonu,Looks-Sammlung,Colección de estilos,Collection de looks,Coleção de Visuais,Коллекция оформления,デザインコレクション,외형 컬렉션,लुक कलेक्शन
+iap.crisis.d,3 spare propane bottles and some cash.,3 yedek propan tüpü ve biraz para.,3 Ersatzflaschen Propan und etwas Geld.,3 bombonas de propano de repuesto y algo de efectivo.,3 bouteilles de propane de secours et un peu d'argent.,3 botijões reserva e um pouco de dinheiro.,3 запасных баллона пропана и немного денег.,予備のプロパンガスボンベ3本と現金少し。,예비 가스통 3개와 약간의 현금이에요.,3 अतिरिक्त गैस सिलेंडर और कुछ पैसे।
+iap.crisis.t,Propane Rescue Kit,Propan Kurtarma Seti,Propan-Rettungsset,Kit de rescate de propano,Kit de secours propane,Kit de Socorro de Gás,Набор спасения от пропана,プロパンガス救助キット,가스 구조 키트,गैस बचाव किट
+iap.livery_neon.d,A pink neon paint job. Looks only.,Pembe neon boya. Sadece görünüm.,Eine pinke Neon-Lackierung. Nur zum Ansehen.,Pintura rosa neón. Solo es estética.,Une peinture néon rose. Esthétique uniquement.,Uma pintura neon rosa. Só visual.,Розовая неоновая покраска. Только внешний вид.,ピンクのネオンのペイント。見た目のみ。,분홍 네온 도장이에요. 외형만 바뀌어요.,गुलाबी नीऑन रंग-रोगन। सिर्फ़ दिखावट।
+iap.livery_neon.t,Neon Livery,Neon Boya,Neon-Lackierung,Librea neón,Livrée néon,Pintura Neon,Неоновая раскраска,ネオンペイント,네온 도장,नीऑन रंग-रोगन
+iap.livery_retro.d,A sky-blue retro paint job. Looks only.,Gök mavisi retro boya. Sadece görünüm.,Eine himmelblaue Retro-Lackierung. Nur zum Ansehen.,Pintura retro azul cielo. Solo es estética.,Une peinture rétro bleu ciel. Esthétique uniquement.,Uma pintura retrô azul-celeste. Só visual.,Голубая ретро-покраска. Только внешний вид.,空色のレトロなペイント。見た目のみ。,하늘색 레트로 도장이에요. 외형만 바뀌어요.,आसमानी रेट्रो रंग-रोगन। सिर्फ़ दिखावट।
+iap.livery_retro.t,Retro Livery,Retro Boya,Retro-Lackierung,Librea retro,Livrée rétro,Pintura Retrô,Ретро-раскраска,レトロペイント,레트로 도장,रेट्रो रंग-रोगन
+iap.menuboards.d,Chalk and neon menu boards. Looks only.,Kreta ve neon menü panoları. Sadece görünüm.,Menütafeln aus Kreide und Neon. Nur zum Ansehen.,Pizarras de menú de tiza y neón. Solo es estética.,Tableaux de menus à la craie et au néon. Esthétique uniquement.,Quadros de cardápio de giz e neon. Só visual.,Меловые и неоновые доски меню. Только внешний вид.,チョークとネオンのメニューボード。見た目のみ。,분필과 네온 메뉴판이에요. 외형만 바뀌어요.,चॉक और नीऑन मेन्यू बोर्ड। सिर्फ़ दिखावट।
+iap.menuboards.t,Menu Board Styles,Menü Panosu Stilleri,Stile für Menütafeln,Estilos de pizarra de menú,Styles de tableau de menu,Estilos de Quadro de Cardápio,Стили доски меню,メニューボードのスタイル,메뉴판 스타일,मेन्यू बोर्ड की शैलियाँ
+iap.milestone.d,Cash and a stocked commissary for your new truck.,Yeni kamyonun için para ve dolu bir hazırlık merkezi.,Geld und eine gefüllte Vorratsküche für deinen neuen Truck.,Efectivo y una cocina central abastecida para tu camión nuevo.,De l'argent et une cuisine centrale bien approvisionnée pour ton nouveau camion.,Dinheiro e uma cozinha central abastecida para seu novo caminhão.,Деньги и заполненная заготовочная для нового фудтрака.,新しいトラックのための現金と、仕込み場の在庫。,새 트럭을 위한 현금과 채워진 공동 주방이에요.,तुम्हारे नए ट्रक के लिए पैसे और भरा हुआ मुख्य किचन।
+iap.milestone.t,New-Truck Pack,Yeni Kamyon Paketi,Neuer-Truck-Paket,Pack del camión nuevo,Pack Nouveau camion,Pacote Novo Caminhão,Набор нового фудтрака,新トラックパック,새 트럭 팩,नया ट्रक पैक
+iap.noads.d,No promo breaks. Rewards without videos.,Tanıtım molası yok. Ödüller videosuz.,Keine Werbepausen. Belohnungen ohne Videos.,Sin pausas publicitarias. Recompensas sin vídeos.,Pas de pauses promo. Récompenses sans vidéo.,Sem pausas com propaganda. Recompensas sem vídeos.,Без рекламных пауз. Награды без видео.,宣伝の休憩はなくなります。報酬は動画なしで受け取れます。,홍보 화면이 없어요. 보상은 영상 없이 받아요.,कोई प्रचार ब्रेक नहीं। इनाम बिना वीडियो के।
+iap.noads.t,Remove Ads,Reklamları Kaldır,Werbung entfernen,Quitar anuncios,Retirer les pubs,Remover Anúncios,Убрать рекламу,広告を削除,광고 제거,विज्ञापन हटाओ
+iap.offline_plus.d,Away pay for up to 10 hours at 75 %.,Uzaktayken 10 saate kadar %75 ücret.,Lohn für Abwesenheit bis 10 Stunden zu 75 %.,"Pago mientras estás fuera, hasta 10 horas al 75 %.",Gains d'absence jusqu'à 10 heures à 75 %.,"Ganhe enquanto está fora por até 10 horas, a 75 %.",Оплата за отсутствие до 10 часов в размере 75 %.,離れている間も最大10時間、75 %の収入。,최대 10시간 동안 75 %로 부재 중 수입을 받아요.,"10 घंटे तक, 75 % पर, दूर रहने की कमाई।"
+iap.offline_plus.t,Offline Plus,Çevrimdışı Artı,Offline-Plus,Sin conexión Plus,Hors ligne Plus,Offline Plus,Офлайн+,オフラインプラス,오프라인 플러스,ऑफ़लाइन प्लस
+iap.premium.d,"Ad-free, gold truck trim and chef whites, an extra career slot and a starter pack.","Reklamsız, altın kamyon süsü ve şef önlüğü, ekstra kariyer yuvası ve başlangıç paketi.","Werbefrei, goldene Truck-Zierleisten und Kochjacke, ein zusätzlicher Karrierespeicher und ein Starterpaket.","Sin anuncios, adornos dorados en el camión y uniforme de chef, una ranura de carrera extra y un pack inicial.","Sans pub, liserés dorés sur le camion et tenue de chef, un emplacement de carrière en plus et un pack de départ.","Sem anúncios, acabamento dourado no caminhão e dólmã de chef, uma vaga extra de carreira e um pacote inicial.","Без рекламы, золотая отделка фудтрака, поварская форма, ещё один слот карьеры и стартовый набор.",広告なし、金のトラック装飾とシェフの白衣、キャリア枠 +1、スターターパック。,"광고 없음, 금색 트럭 장식과 요리사 복장, 추가 경력 칸, 입문 팩이 들어 있어요.","विज्ञापन-मुक्त, सुनहरी ट्रक सजावट और शेफ़ की सफ़ेद पोशाक, एक और करियर स्लॉट और एक स्टार्टर पैक।"
+iap.premium.t,Pitmaster Edition,Usta Şef Sürümü,Chef-Edition,Edición Pitmaster,Édition Pitmaster,Edição do Mestre da Brasa,Издание «Мастер гриля»,ピットマスター・エディション,그릴 마스터 에디션,पिटमास्टर एडिशन
+iap.slots.d,Three more career slots.,Üç kariyer yuvası daha.,Drei weitere Karrierespeicher.,Tres ranuras de carrera más.,Trois emplacements de carrière en plus.,Mais três vagas de carreira.,Ещё три слота карьеры.,キャリア枠を3つ追加。,경력 칸이 3개 더 생겨요.,तीन और करियर स्लॉट।
+iap.slots.t,Extra Saves,Ek Kayıtlar,Zusätzliche Speicherplätze,Partidas extra,Sauvegardes en plus,Saves Extras,Доп. сохранения,セーブ枠追加,추가 저장,अतिरिक्त सेव
+iap.speed.d,3× and 4× speed.,3× ve 4× hız.,3× und 4× Tempo.,Velocidad 3× y 4×.,Vitesse 3× et 4×.,Velocidade 3× e 4×.,Скорость 3× и 4×.,3×と4×の速さ。,3× 및 4× 속도예요.,3× और 4× स्पीड।
+iap.speed.t,Speed Pack,Hız Paketi,Tempo-Paket,Pack de Velocidad,Pack Vitesse,Pacote de Velocidade,Пакет скорости,スピードパック,속도 팩,स्पीड पैक
+iap.starter.d,Cash to get going and a runner for truck #1.,Başlamak için para ve 1 numaralı kamyon için bir koşucu.,Geld für den Start und einen Läufer für Truck Nr. 1.,Efectivo para empezar y un ayudante para el camión n.º 1.,De l'argent pour démarrer et un coureur pour le camion n° 1.,Dinheiro para começar e um auxiliar para o caminhão nº 1.,Деньги для старта и помощник для фудтрака №1.,スタートのための現金と、1号トラックのランナー。,시작할 현금과 1번 트럭용 심부름 직원을 줘요.,शुरू करने के लिए पैसे और ट्रक #1 के लिए एक रनर।
+iap.starter.t,Quick Start,Hızlı Başlangıç,Schneller Start,Inicio rápido,Démarrage rapide,Início Rápido,Быстрый старт,クイックスタート,빠른 시작,तुरंत शुरुआत
+iap.uniforms.d,New outfits for your crew. Looks only.,Ekibin için yeni kıyafetler. Sadece görünüm.,Neue Outfits für dein Team. Nur zum Ansehen.,Uniformes nuevos para tu equipo. Solo es estético.,Nouvelles tenues pour ton équipe. Esthétique uniquement.,Novos uniformes para sua equipe. Só visual.,Новые наряды для экипажа. Только внешний вид.,スタッフの新しい服装。見た目のみ。,직원을 위한 새 복장이에요. 외형만 바뀌어요.,तुम्हारे स्टाफ़ के लिए नई पोशाकें। सिर्फ़ दिखावट।
+iap.uniforms.t,Crew Outfits,Ekip Kıyafetleri,Team-Outfits,Uniformes del equipo,Tenues d'équipe,Uniformes da Equipe,Наряды экипажа,スタッフの服装,직원 복장,स्टाफ़ की पोशाकें
+iap.window_awnings.d,Striped awning sets. Looks only.,Çizgili tente setleri. Sadece görünüm.,Gestreifte Markisen-Sets. Nur zum Ansehen.,Juegos de toldos a rayas. Solo es estético.,Jeux d'auvents rayés. Esthétique uniquement.,Conjuntos de toldo listrado. Só visual.,Полосатые наборы навесов. Только внешний вид.,縞模様の日よけセット。見た目のみ。,줄무늬 차양 세트예요. 외형만 바뀌어요.,धारियों वाले छज्जे के सेट। सिर्फ़ दिखावट।
+iap.window_awnings.t,Window Awnings,Pencere Tenteleri,Fenstermarkisen,Toldos de ventanilla,Auvents de guichet,Toldos da Janela,Навесы окна,窓の日よけ,창문 차양,खिड़की के छज्जे
+intro.1.b,Cinder Bay loves burgers. You start with one old truck at the Office Plaza.,Cinder Koyu burgeri sever. Ofis Meydanı'nda eski tek bir kamyonla başlarsın.,Cinder Bay liebt Burger. Du startest mit einem alten Truck am Büroplatz.,A Cinder Bay le encantan las hamburguesas. Empiezas con un camión viejo en la Plaza de Oficinas.,Cinder Bay adore les burgers. Tu commences avec un vieux camion sur la Place des bureaux.,A Baía Cinder adora hambúrguer. Você começa com um caminhão velho na Praça dos Escritórios.,Бухта Синдер обожает бургеры. Ты начинаешь со старого фудтрака на Офисной площади.,シンダーベイはバーガーが大好き。あなたはオフィス広場で古いトラック1台から始めます。,신더 베이 사람들은 버거를 사랑해요. 오피스 광장에 낡은 트럭 한 대로 시작해요.,सिंडर बे को बर्गर बहुत पसंद हैं। तुम ऑफ़िस प्लाज़ा पर एक पुराने ट्रक से शुरू करते हो।
+intro.1.t,"One truck, one pitch","Bir kamyon, bir nokta","Ein Truck, ein Standplatz","Un camión, un puesto","Un camion, un emplacement","Um caminhão, um ponto","Один фудтрак, одна точка",トラック1台、出店場所1つ,"트럭 한 대, 자리 하나","एक ट्रक, एक जगह"
+intro.2.b,Set up the kitchen inside the truck. A good layout makes a fast line.,Kamyonun içinde mutfağı kur. İyi bir düzen hızlı bir kuyruk demek.,Richte die Küche im Truck ein. Ein guter Aufbau bedeutet eine schnelle Schlange.,Monta la cocina dentro del camión. Una buena distribución hace una cola rápida.,Installe la cuisine dans le camion. Un bon agencement fait une file rapide.,Monte a cozinha dentro do caminhão. Um bom layout faz uma fila rápida.,Собери кухню внутри фудтрака. Хорошая раскладка делает очередь быстрой.,トラックの中に厨房を整えましょう。よいレイアウトは行列を速くします。,트럭 안에 주방을 꾸미세요. 좋은 배치가 빠른 줄을 만들어요.,ट्रक के अंदर किचन सेट करो। अच्छा लेआउट तेज़ लाइन बनाता है।
+intro.2.t,"Grill, bench, window","Izgara, tezgâh, pencere","Grill, Theke, Fenster","Plancha, mesada, ventanilla","Grill, plan de travail, guichet","Chapa, bancada, janela","Гриль, стол, окно",鉄板、調理台、窓口,"그릴, 벤치, 창문","ग्रिल, बेंच, खिड़की"
+intro.3.b,"Pick the pitch, pack the stock, beat the rush. Grow a convoy.","Satış noktasını seç, stoğu doldur, yoğunluğu yen. Bir konvoy büyüt.","Wähl den Standplatz, pack den Vorrat und schlag den Ansturm. Bau einen Konvoi auf.","Elige el puesto, carga el género y gana a la hora punta. Haz crecer un convoy.","Choisis l'emplacement, prépare les stocks, bats le coup de feu. Fais grandir un convoi.","Escolha o ponto, abasteça o estoque, vença a correria. Monte um comboio.","Выбирай точку, собирай припасы, побеждай очередь. Расширяй колонну.",出店場所を選び、在庫を積み、混雑に勝ちましょう。コンボイを大きくしていきましょう。,"자리를 고르고, 재료를 채우고, 몰려오는 손님을 이기세요. 트럭 행렬을 키우세요.","सही जगह चुनो, स्टॉक भरो, भीड़ को मात दो। एक कारवाँ बढ़ाओ।"
+intro.3.t,Be in the right place,Doğru yerde ol,Sei am richtigen Ort,Estar en el lugar correcto,Sois au bon endroit,Esteja no lugar certo,Будь в нужном месте,正しい場所にいよう,알맞은 곳에 있으세요,सही जगह पर रहो
+intro.next,Next,İleri,Weiter,Siguiente,Suivant,Próximo,Дальше,次へ,다음,आगे
+intro.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
+intro.start,Let's cook,Pişirmeye başlayalım,Los geht's,Vamos a cocinar,C'est parti,Vamos cozinhar,Давай готовить,料理をはじめよう,요리 시작!,चलो पकाएँ
+kitchen.batch,Batch of {n} · {min} min,Parti {n} · {min} dk,Charge von {n} · {min} Min.,Lote de {n} · {min} min,Lot de {n} · {min} min,Lote de {n} · {min} min,Партия: {n} · {min} мин,{n} 個の仕込み · {min} 分,{n}개 묶음 · {min}분,{n} का बैच · {min} मिनट
+kitchen.batch_of,{n} {name},{n} {name},{n} {name},{n} {name},{n} {name},{n} {name},{name}: {n},{name} {n},{n} {name},{n} {name}
+kitchen.help,Prep costs money now and takes time. Trucks load from here.,Hazırlık artık para tutar ve zaman alır. Kamyonlar buradan yükleme yapar.,Vorbereitung kostet jetzt Geld und Zeit. Von hier werden die Trucks beladen.,Preparar cuesta dinero y lleva tiempo. Los camiones cargan desde aquí.,La préparation coûte maintenant de l'argent et du temps. Les camions se chargent ici.,O preparo agora custa dinheiro e leva tempo. Os caminhões carregam daqui.,Заготовки теперь стоят денег и занимают время. Фудтраки загружаются отсюда.,仕込みにはお金と時間がかかります。トラックはここから積み込みます。,이제 준비에는 돈이 들고 시간도 걸려요. 트럭은 여기서 짐을 실어요.,तैयारी अब पैसे लेती है और समय भी। ट्रक यहीं से भरे जाते हैं।
+kitchen.in_progress,Cooking now,Şu an pişiyor,Wird gerade gekocht,Cocinando ahora,En cuisson,Cozinhando agora,Сейчас готовится,仕込み中,지금 요리 중,अभी पक रहा है
+kitchen.night,The night crew finishes the queue after the day ends.,Gece ekibi gün bitince kuyruğu tamamlar.,"Die Nachtschicht arbeitet die Schlange ab, wenn der Tag endet.",El equipo de noche termina la cola cuando acaba el día.,L'équipe de nuit termine la file après la fin de la journée.,A equipe da noite termina a fila depois que o dia acaba.,Ночная смена доделывает очередь после конца дня.,営業が終わると、夜勤のスタッフが仕込みの列を終わらせます。,하루가 끝나면 야간 직원이 줄을 마무리해요.,दिन खत्म होने पर रात का स्टाफ़ कतार पूरी करता है।
+kitchen.now,{min} min left,{min} dk kaldı,noch {min} Min.,Quedan {min} min,{min} min restantes,Faltam {min} min,Осталось {min} мин,残り {min} 分,{min}분 남음,{min} मिनट बाकी
+kitchen.par,Par levels (auto-prep at night),Hedef stoklar (gece otomatik hazırlık),Sollmengen (nachts automatisch vorbereiten),Niveles objetivo (preparación automática de noche),Niveaux cibles (préparation auto la nuit),Níveis mínimos (preparo automático à noite),Нормы запаса (ночные заготовки),基準在庫（夜に自動で仕込み）,기준 수량 (밤에 자동 준비),रोज़ का लक्ष्य (रात में अपने आप तैयारी)
+kitchen.par_row,{name}: keep {n},{name}: {n} tut,{name}: {n} vorhalten,{name}: mantener {n},{name} : garder {n},{name}: manter {n},{name}: держать {n},{name}: {n} 個を維持,{name}: {n}개 유지,{name}: {n} रखो
+kitchen.prep,Prep · {cost},Hazırla · {cost},Vorbereiten · {cost},Preparar · {cost},Préparer · {cost},Preparar · {cost},Заготовить · {cost},仕込み · {cost},준비 · {cost},तैयारी · {cost}
+kitchen.queue,Prep queue {n}/{m},Hazırlık kuyruğu {n}/{m},Vorbereitungsschlange {n}/{m},Cola de preparación {n}/{m},File de préparation {n}/{m},Fila de preparo {n}/{m},Очередь заготовок {n}/{m},仕込みの列 {n}/{m},준비 줄 {n}/{m},तैयारी की कतार {n}/{m}
+kitchen.stock,{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap}
+kitchen.title,Commissary,Hazırlık merkezi,Vorratsküche,Cocina central,Cuisine centrale,Cozinha central,Заготовочная,仕込み場,공동 주방,मुख्य किचन
+layout.auto,Auto-arrange,Otomatik diz,Automatisch anordnen,Ordenar automáticamente,Ranger automatiquement,Organizar automaticamente,Расставить сам,自動で並べる,자동 배치,अपने आप सजाओ
+layout.buy,Buy stations,İstasyon satın al,Stationen kaufen,Comprar estaciones,Acheter des postes,Comprar estações,Купить станции,設備を買う,칸 사기,स्टेशन खरीदो
+layout.extend,Body extension,Gövde uzatma,Aufbau erweitern,Ampliación de la caja,Extension de carrosserie,Extensão do corpo,Расширение кузова,車体の拡張,차체 확장,ट्रक का विस्तार
+layout.extend.d,A 5×4 kitchen in this truck.,Bu kamyonda 5×4 mutfak.,Eine 5×4-Küche in diesem Truck.,Una cocina de 5×4 en este camión.,Une cuisine de 5×4 dans ce camion.,Uma cozinha 5×4 neste caminhão.,Кухня 5×4 в этом фудтраке.,このトラックを5×4の厨房にします。,이 트럭을 5×4 주방으로 만들어요.,इस ट्रक में 5×4 किचन।
+layout.faster,Line {pct} faster,Kuyruk {pct} daha hızlı,Schlange {pct} schneller,La cola va un {pct} más rápido,File {pct} plus rapide,Fila {pct} mais rápida,Очередь на {pct} быстрее,行列が {pct} 速くなる,줄이 {pct} 빨라져요,लाइन {pct} तेज़
+layout.front,"Top row = the serving side. Keep grill, bench and window close.","En üst sıra servis tarafı. Izgarayı, tezgâhı ve pencereyi yakın tut.","Obere Reihe = die Ausgabeseite. Halte Grill, Theke und Fenster nah beieinander.","La fila de arriba es la zona de servicio. Mantén cerca la plancha, la mesada y la ventanilla.","Rangée du haut = côté service. Garde le grill, le plan de travail et le guichet proches.","Fileira de cima = lado do balcão. Mantenha chapa, bancada e janela próximos.","Верхний ряд — сторона выдачи. Держи гриль, стол и окно рядом.",上の段は提供側です。鉄板、調理台、窓口は近くに置きましょう。,"윗줄은 손님 쪽이에요. 그릴, 벤치, 창문을 가까이 두세요.","ऊपर की पंक्ति = परोसने वाली तरफ़। ग्रिल, बेंच और खिड़की पास रखो।"
+layout.help_pick,Tap a station to pick it up.,Almak için bir istasyona dokun.,"Tippe auf eine Station, um sie aufzunehmen.",Toca una estación para cogerla.,Touche un poste pour le prendre.,Toque numa estação para pegá-la.,"Нажми на станцию, чтобы поднять её.",設備をタップして持ち上げてください。,칸을 누르면 집어 들어요.,स्टेशन उठाने के लिए उस पर टैप करो।
+layout.help_place,Now tap where it goes (swaps if taken).,Şimdi gideceği yere dokun (doluysa yer değiştirir).,"Tippe jetzt auf den Zielort (tauscht, wenn belegt).",Ahora toca dónde va (se intercambia si está ocupado).,Touche maintenant où le poser (échange si la place est prise).,Agora toque onde ela vai (troca se estiver ocupado).,"Теперь нажми, куда её поставить (поменяется, если место занято).",置く場所をタップしてください（埋まっていれば入れ替えます）。,이제 놓을 자리를 누르세요(이미 있으면 바뀌어요).,अब जगह पर टैप करो जहाँ रखना है (भरी हो तो अदला-बदली होगी)।
+layout.load,Load {n},Yükle {n},Laden {n},Cargar {n},Charger {n},Carregar {n},Загрузка {n},読み込み {n},불러오기 {n},लोड {n}
+layout.save,Save {n},Kaydet {n},Speichern {n},Guardar {n},Sauver {n},Salvar {n},Сохранить {n},保存 {n},저장 {n},सेव {n}
+layout.sell,Sell (half price),Sat (yarı fiyat),Verkaufen (halber Preis),Vender (mitad de precio),Vendre (moitié prix),Vender (metade do preço),Продать (за полцены),売る（半額）,팔기 (반값),बेचो (आधे दाम पर)
+layout.slower,Line {pct} slower,Kuyruk {pct} daha yavaş,Schlange {pct} langsamer,La cola va un {pct} más lento,File {pct} plus lente,Fila {pct} mais lenta,Очередь на {pct} медленнее,行列が {pct} 遅くなる,줄이 {pct} 느려져요,लाइन {pct} धीमी
+layout.title,Kitchen layout,Mutfak düzeni,Küchenaufbau,Distribución de la cocina,Agencement de la cuisine,Layout da cozinha,Раскладка кухни,厨房のレイアウト,주방 배치,किचन का लेआउट
+layout.undo,Undo,Geri al,Rückgängig,Deshacer,Annuler,Desfazer,Отменить,元に戻す,되돌리기,पलटो
+looks.default,Classic paint,Klasik boya,Klassische Lackierung,Pintura clásica,Peinture classique,Pintura clássica,Классическая покраска,定番のペイント,기본 도장,क्लासिक रंग
+looks.gold_trim,Gold trim,Altın süs,Goldzierleiste,Adornos dorados,Liserés dorés,Acabamento dourado,Золотая отделка,金の縁取り,금색 장식,सुनहरी सजावट
+looks.help,"Crew outfits, window awnings and menu board styles show at every open truck once owned.","Ekip kıyafetleri, pencere tenteleri ve menü panosu stilleri, sahip olunca her açık kamyonda görünür.","Team-Outfits, Fenstermarkisen und Menütafel-Stile werden nach dem Kauf bei jedem geöffneten Truck angezeigt.","Una vez comprados, los uniformes del equipo, los toldos de ventanilla y los estilos de pizarra se muestran en cada camión abierto.","Les tenues d'équipe, auvents et styles de tableau s'affichent sur chaque camion ouvert une fois possédés.","Uniformes da equipe, toldos das janelas e estilos de quadro de cardápio aparecem em todo caminhão aberto, depois de comprados.","Наряды экипажа, навесы окон и стили доски меню показываются на каждом открытом фудтраке, когда куплены.",持っているスタッフの服装、窓の日よけ、メニューボードのスタイルは、営業中のすべてのトラックに表示されます。,"소유하면 직원 복장, 창문 차양, 메뉴판 스타일이 열린 모든 트럭에 보여요.","खरीदने के बाद स्टाफ़ की पोशाकें, खिड़की के छज्जे और मेन्यू बोर्ड की शैलियाँ हर खुले ट्रक पर दिखती हैं।"
+looks.livery_neon,Neon,Neon,Neon,Neón,Néon,Neon,Неон,ネオン,네온,नीऑन
+looks.livery_retro,Retro,Retro,Retro,Retro,Rétro,Retrô,Ретро,レトロ,레트로,रेट्रो
+map.calendar,Calendar,Takvim,Kalender,Calendario,Calendrier,Calendário,Календарь,カレンダー,달력,कैलेंडर
+map.match,Match day at the stadium,Stadyumda maç günü,Spieltag im Stadion,Día de partido en el estadio,Jour de match au stade,Dia de jogo no estádio,День матча на стадионе,スタジアムの試合日,경기장의 경기 날,स्टेडियम में मैच का दिन
+map.pitches,Pitches,Satış noktaları,Standplätze,Puestos,Emplacements,Pontos,Точки,出店場所,자리,जगहें
+map.sub,Fame {fame},Şöhret {fame},Ruhm {fame},Fama {fame},Renommée {fame},Fama {fame},Известность {fame},知名度 {fame},명성 {fame},शोहरत {fame}
+map.today,Today,Bugün,Heute,Hoy,Aujourd'hui,Hoje,Сегодня,今日,오늘,आज
+map.tomorrow,Tomorrow,Yarın,Morgen,Mañana,Demain,Amanhã,Завтра,明日,내일,कल
+map.weekend,"Weekend: offices are closed, the beach is busy.","Hafta sonu: ofisler kapalı, sahil yoğun.","Wochenende: Büros geschlossen, der Strand ist voll.",Fin de semana: las oficinas están cerradas y la playa está llena.,"Week-end : les bureaux sont fermés, la plage est animée.",Fim de semana: os escritórios fecham e a praia fica movimentada.,"Выходные: офисы закрыты, на пляже людно.",週末: オフィスは休み、ビーチは混雑。,"주말에는 사무실이 쉬고, 해변이 붐벼요.","वीकेंड: दफ़्तर बंद हैं, समुद्र तट व्यस्त है।"
+medal.0,Bronze,Bronz,Bronze,Bronce,Bronze,Bronze,Бронза,ブロンズ,동메달,कांस्य
+medal.1,Silver,Gümüş,Silber,Plata,Argent,Prata,Серебро,シルバー,은메달,रजत
+medal.2,Gold,Altın,Gold,Oro,Or,Ouro,Золото,ゴールド,금메달,स्वर्ण
+menu.help,Fewer cards make a faster line. Different crowds like different burgers.,"Az kart, hızlı kuyruk demek. Farklı kalabalıklar farklı burgerleri sever.",Weniger Karten bedeuten eine schnellere Schlange. Verschiedene Menschen mögen verschiedene Burger.,Menos tarjetas hacen una cola más rápida. A distintos públicos les gustan distintas hamburguesas.,Moins de cartes = file plus rapide. Des publics différents aiment des burgers différents.,Menos cartões deixam a fila mais rápida. Públicos diferentes gostam de hambúrgueres diferentes.,Меньше карточек — быстрее очередь. Разным толпам нравятся разные бургеры.,カードが少ないほど行列は速くなります。客層によって好みのバーガーは違います。,카드가 적을수록 줄이 빨라요. 손님마다 좋아하는 버거가 달라요.,कम कार्ड = तेज़ लाइन। अलग-अलग भीड़ को अलग बर्गर पसंद आते हैं।
+menu.slots,{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m},{n}/{m}
+menu.title,Menu board,Menü panosu,Menütafel,Pizarra del menú,Tableau des menus,Quadro de cardápio,Доска меню,メニューボード,메뉴판,मेन्यू बोर्ड
+offline.body,Your convoy earned {cash} in {time}.,Konvoyun {time} içinde {cash} kazandı.,Dein Konvoi hat in {time} {cash} verdient.,Tu convoy ganó {cash} en {time}.,Ton convoi a gagné {cash} pendant {time}.,Seu comboio ganhou {cash} em {time}.,Твоя колонна заработала {cash} за {time}.,コンボイは {time} の間に {cash} を稼ぎました。,트럭 행렬이 {time} 동안 번 돈: {cash},तुम्हारे कारवाँ ने {time} में {cash} कमाए।
+offline.capped,Pay stops after {h} hours away.,{h} saat uzakta kaldıktan sonra ücret durur.,Die Auszahlung stoppt nach {h} Stunden Abwesenheit.,Los pagos se detienen tras {h} horas fuera.,Les gains s'arrêtent après {h} heures d'absence.,O pagamento para após {h} horas fora.,Оплата прекращается после {h} ч отсутствия.,{h} 時間離れると収入は止まります。,{h}시간 넘게 자리를 비우면 수입이 멈춰요.,{h} घंटे दूर रहने के बाद कमाई रुक जाती है।
+offline.title,While you were away,Sen yokken,Während du weg warst,Mientras estabas fuera,Pendant ton absence,Enquanto você estava fora,Пока тебя не было,留守の間に,자리를 비운 사이,तुम्हारे दूर रहने के दौरान
+pack.apply_suggest,Pack by forecast,Tahmine göre yükle,Nach Vorhersage packen,Cargar según la previsión,Charger selon les prévisions,Carregar pela previsão,Загрузить по прогнозу,予測どおりに積む,예보대로 싣기,अनुमान से भरो
+pack.away,load at the commissary,hazırlık merkezinden yükle,Ladung in der Vorratsküche,cargar en la cocina central,charger à la cuisine centrale,carregar na cozinha central,загрузка в заготовочной,仕込み場で積み込み,공동 주방에서 싣기,मुख्य किचन से भरो
+pack.fridge,fridge {n},buzdolabı {n},Kühlschrank {n},nevera {n},frigo {n},geladeira {n},холодильник {n},冷蔵庫 {n},냉장고 {n},फ़्रिज {n}
+pack.repack,Like yesterday,Dünkü gibi,Wie gestern,Como ayer,Comme hier,Igual a ontem,Как вчера,昨日と同じ,어제처럼,कल जैसा
+pack.row,{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap},{name} {n}/{cap}
+pack.suggest,"Forecast: {p} patties, {b} buns, {s} sides","Tahmin: {p} köfte, {b} ekmek, {s} yan ürün","Vorhersage: {p} Bratlinge, {b} Brötchen, {s} Beilagen","Previsión: {p} medallones, {b} panecillos, {s} acompañamientos","Prévisions : {p} steaks, {b} pains, {s} accompagnements","Previsão: {p} carnes, {b} pães, {s} acompanhamentos",Прогноз: котлеты {p} · булочки {b} · гарнир {s},予測: パティ {p}、バンズ {b}、サイド {s},"예보: 패티 {p}, 번 {b}, 사이드 {s}","अनुमान: {p} पैटी, {b} बन, {s} साइड"
+pack.title,Pack list,Yükleme listesi,Packliste,Lista de carga,Liste de chargement,Lista de carga,Список загрузки,積み込みリスト,짐 목록,भरने की सूची
+phase.live,Service,Servis,Service,Servicio,Service,Atendimento,Обслуживание,回収サービス,서비스,सेवा
+phase.plan,Morning,Sabah,Morgens,Mañana,Matin,Manhã,Утро,朝,아침,सुबह
+phase.report,Day report,Gün raporu,Tagesbericht,Informe del día,Rapport de la journée,Relatório do dia,Отчёт дня,日報,하루 보고서,दिन की रिपोर्ट
+pitch.assigned,Goes here today,Bugün burada,Heute hier eingeplant,Va aquí hoy,Va ici aujourd'hui,Vai para cá hoje,Сегодня здесь,今日はここで営業,오늘 여기로 가요,आज यहाँ जाएगा
+pitch.crowd,Crowd,Kalabalık,Andrang,Público,Public,Público,Толпа,客の入り,손님,भीड़
+pitch.forecast,~{n} customers,~{n} müşteri,~{n} Kunden,~{n} clientes,~{n} clients,~{n} clientes,Прогноз гостей: {n},約 {n} 人のお客さん,손님 약 {n}명,लगभग {n} ग्राहक
+pitch.later,Unlocks in a later chapter.,Sonraki bölümde açılır.,Wird in einem späteren Kapitel freigeschaltet.,Se desbloquea en un capítulo posterior.,Se débloque dans un chapitre plus tard.,Desbloqueia em um capítulo posterior.,Откроется в следующей главе.,あとの章で開放されます。,나중 장에서 열려요.,बाद के अध्याय में खुलेगा।
+pitch.match_every,A match every third day.,Her üç günde bir maç.,Alle drei Tage ein Spiel.,Un partido cada tres días.,Un match tous les trois jours.,Um jogo a cada três dias.,Матч каждые три дня.,3日ごとに試合があります。,3일마다 경기가 있어요.,हर तीसरे दिन मैच।
+pitch.match_today,Match day! Halftime brings a huge rush at 17:45.,Maç günü! Devre arası 17:45'te büyük bir izdiham.,Spieltag! In der Halbzeit um 17:45 gibt es einen riesigen Ansturm.,¡Día de partido! El descanso trae una avalancha enorme a las 17:45.,Jour de match ! La mi-temps amène une énorme affluence à 17 h 45.,Dia de jogo! O intervalo traz uma correria enorme às 17:45.,День матча! В перерыв в 17:45 будет огромная очередь.,試合日！ 17:45のハーフタイムに大混雑になります。,경기 날! 하프타임에 17:45 무렵 큰 인파가 와요.,मैच का दिन! हाफ़-टाइम पर 17:45 बजे बड़ी भीड़।
+pitch.match_tomorrow,Match day tomorrow.,Yarın maç günü.,Morgen ist Spieltag.,Mañana es día de partido.,Jour de match demain.,Dia de jogo amanhã.,Завтра день матча.,明日は試合日です。,내일은 경기 날이에요.,कल मैच का दिन है।
+pitch.needs,Needs Fame {r},Şöhret {r} gerekli,Braucht Ruhm {r},Necesita Fama {r},Demande une renommée de {r},Precisa de Fama {r},Нужна известность {r},知名度 {r} が必要,명성 {r} 필요,शोहरत {r} चाहिए
+pitch.now_at,Now: {name},Şu an: {name},Jetzt: {name},Ahora: {name},Maintenant : {name},Agora: {name},Сейчас: {name},現在: {name},지금: {name},अभी: {name}
+pitch.p_boardwalk.d,"Families and tourists by the sea. Busy on hot days and weekends, empty in the rain.","Denizdeki aileler ve turistler. Sıcak günlerde ve hafta sonları yoğun, yağmurda boş.","Familien und Touristen am Meer. Voll an heißen Tagen und am Wochenende, leer bei Regen.","Familias y turistas junto al mar. Muy concurrido en días de calor y fines de semana, vacío con lluvia.","Familles et touristes au bord de la mer. Animé les jours chauds et le week-end, vide sous la pluie.","Famílias e turistas à beira-mar. Movimentado em dias quentes e fins de semana, vazio na chuva.","Семьи и туристы у моря. Людно в жару и по выходным, пусто под дождём.",海沿いの家族連れと観光客。暑い日や週末は混み、雨の日は空いています。,"바다 옆 가족과 관광객이 와요. 더운 날과 주말에 붐비고, 비 오는 날엔 텅 비어요.","समुद्र किनारे परिवार और पर्यटक। गर्म दिनों और वीकेंड पर व्यस्त, बारिश में खाली।"
+pitch.p_plaza.d,"Office towers. A big lunch rush on weekdays, quiet at weekends.","Ofis kuleleri. Hafta içi büyük öğle yoğunluğu, hafta sonu sakin.","Bürotürme. Ein großer Mittagsansturm an Werktagen, am Wochenende ruhig.","Torres de oficinas. Una gran hora punta a la hora de comer entre semana, tranquilo los fines de semana.","Tours de bureaux. Gros coup de feu du midi en semaine, calme le week-end.","Torres de escritórios. Grande correria no almoço nos dias úteis, tranquilo nos fins de semana.","Офисные башни. Большая очередь в обед по будням, тихо по выходным.",オフィスビルが並ぶ場所。平日の昼は大混雑、週末は静かです。,"사무실 빌딩들이 있어요. 평일 점심에 크게 붐비고, 주말엔 조용해요.","दफ़्तरों वाली इमारतें। हफ़्ते के दिनों में दोपहर की बड़ी भीड़, वीकेंड पर शांत।"
+pitch.p_stadium.d,Quiet most days. On match days fans come in waves.,Çoğu gün sakin. Maç günlerinde taraftarlar dalgalar halinde gelir.,An den meisten Tagen ruhig. An Spieltagen kommen die Fans in Wellen.,Tranquilo la mayoría de días. En días de partido los aficionados llegan en oleadas.,"Calme la plupart des jours. Les jours de match, les fans arrivent par vagues.","Tranquilo na maioria dos dias. Em dias de jogo, os torcedores chegam em ondas.",Обычно тихо. В дни матчей болельщики приходят волнами.,ふだんは静かです。試合日はファンが波のように押し寄せます。,대부분 조용해요. 경기 날에는 팬들이 밀려 들어와요.,ज़्यादातर दिन शांत। मैच के दिन प्रशंसक लहरों में आते हैं।
+pitch.permit,permit {cost},izin {cost},Genehmigung {cost},permiso {cost},autorisation {cost},licença {cost},Разрешение {cost},許可証 {cost},허가 {cost},परमिट {cost}
+pitch.permit_k,Permit per day,Günlük izin,Genehmigung pro Tag,Permiso por día,Autorisation par jour,Licença por dia,Разрешение в день,1日の出店許可,하루 허가비,रोज़ का परमिट
+pitch.rep,Reputation {r},İtibar {r},Ruf {r},Reputación {r},Réputation {r},Reputação {r},Репутация {r},評判 {r},평판 {r},प्रतिष्ठा {r}
+pitch.rival,A rival truck parked here today. A counter-offer wins some customers back.,Bugün burada bir rakip kamyon park etti. Karşı teklif bazı müşterileri geri kazandırır.,Heute steht hier ein Konkurrenz-Truck. Ein Gegenangebot holt einige Kunden zurück.,Hoy hay un camión rival aparcado aquí. Una contraoferta recupera algunos clientes.,Un camion concurrent est garé ici aujourd'hui. Une contre-offre récupère une partie des clients.,Um caminhão concorrente estacionou aqui hoje. Uma contraproposta traz de volta alguns clientes.,Сегодня здесь стоит соперник. Спецпредложение вернёт часть гостей.,今日はここにライバル店が止まっています。対抗割引で客を取り戻せます。,오늘 여기에 라이벌 트럭이 와 있어요. 대응 할인으로 손님 일부를 되찾을 수 있어요.,आज यहाँ एक प्रतिद्वंद्वी ट्रक खड़ा है। जवाबी ऑफ़र कुछ ग्राहक वापस लाता है।
+pitch.send_here,Send here,Buraya gönder,Hierher schicken,Enviar aquí,Envoyer ici,Enviar para cá,Отправить сюда,ここへ送る,여기로 보내기,यहाँ भेजो
+pitch.today,Today,Bugün,Heute,Hoy,Aujourd'hui,Hoje,Сегодня,今日,오늘,आज
+pitch.tomorrow,Tomorrow,Yarın,Morgen,Mañana,Demain,Amanhã,Завтра,明日,내일,कल
+pitch.trucks,Your trucks,Kamyonların,Deine Trucks,Tus camiones,Tes camions,Seus caminhões,Твои фудтраки,あなたのトラック,내 트럭,तुम्हारे ट्रक
+pitch.unlock,Unlock · {cost},Aç · {cost},Freischalten · {cost},Desbloquear · {cost},Débloquer · {cost},Desbloquear · {cost},Открыть · {cost},開放 · {cost},열기 · {cost},खोलो · {cost}
+place.commissary,Commissary,Hazırlık merkezi,Vorratsküche,Cocina central,Cuisine centrale,Cozinha central,Заготовочная,仕込み場,공동 주방,मुख्य किचन
+place.p_boardwalk,Boardwalk,Sahil yolu,Strandpromenade,Paseo marítimo,Front de mer,Calçadão,Набережная,遊歩道,해변 산책로,समुद्री सैरगाह
+place.p_plaza,Office Plaza,Ofis Meydanı,Büroplatz,Plaza de Oficinas,Place des bureaux,Praça dos Escritórios,Офисная площадь,オフィス広場,오피스 광장,ऑफ़िस प्लाज़ा
+place.p_stadium,Stadium Gate,Stat Kapısı,Stadiontor,Puerta del estadio,Porte du stade,Portão do Estádio,Ворота стадиона,スタジアムの入口,경기장 입구,स्टेडियम गेट
+report.bonus,Bonus,Prim,Bonus,Bonificación,Bonus,Bônus,Премия,ボーナス,보너스,बोनस
+report.burgers,{n} burgers,{n} burger,{n} Burger,{n} hamburguesas,{n} burgers,{n} hambúrgueres,Бургеры: {n},バーガー {n} 個,버거 {n}개,{n} बर्गर
+report.fame,Fame {r},Şöhret {r},Ruhm {r},Fama {r},Renommée {r},Fama {r},Известность {r},知名度 {r},명성 {r},शोहरत {r}
+report.fuel,Fuel and propane,Yakıt ve propan,Sprit und Propan,Combustible y propano,Carburant et propane,Combustível e gás,Топливо и пропан,燃料とプロパン,연료와 가스,ईंधन और गैस
+report.hint_good,A smooth day. Try a busier pitch or a bigger menu.,Pürüzsüz bir gün. Daha yoğun bir satış noktası ya da daha geniş bir menü dene.,Ein reibungsloser Tag. Probier einen belebteren Standplatz oder eine größere Karte.,Un día redondo. Prueba un puesto más concurrido o un menú más grande.,Une journée sans accroc. Essaie un emplacement plus animé ou un menu plus grand.,Um dia tranquilo. Experimente um ponto mais movimentado ou um cardápio maior.,Ровный день. Попробуй более людную точку или большее меню.,順調な一日でした。もっと混む場所や、大きなメニューを試してみましょう。,순조로운 하루였어요. 더 붐비는 자리나 더 큰 메뉴를 시도해 보세요.,बढ़िया दिन। एक भीड़ वाली जगह या बड़ा मेन्यू आज़माओ।
+report.hint_line,"The line was too long: hire, add a station, or shorten the menu.","Kuyruk çok uzundu: işe al, istasyon ekle ya da menüyü kısalt.","Die Schlange war zu lang: Stell jemanden ein, bau eine Station dazu oder kürze das Menü.","La cola fue demasiado larga: contrata, añade una estación o acorta el menú.","La file était trop longue : embauche, ajoute un poste ou raccourcis le menu.","A fila ficou longa demais: contrate, adicione uma estação ou encurte o cardápio.","Очередь была слишком длинной: найми людей, добавь станцию или сократи меню.",行列が長すぎました: 雇う、設備を増やす、メニューを減らすのいずれかを。,"줄이 너무 길었어요. 직원을 고용하거나, 칸을 추가하거나, 메뉴를 줄이세요.","लाइन बहुत लंबी थी: स्टाफ़ रखो, स्टेशन जोड़ो या मेन्यू छोटा करो।"
+report.hint_sellout,"You sold out: pack more, prep more, or call a restock run.","Stok bitti: daha çok yükle, daha çok hazırla ya da stok takviyesi çağır.","Du bist ausverkauft: Pack mehr, bereite mehr vor oder plane eine Nachschubfahrt.","Se te acabó: carga más, prepara más o pide un reabastecimiento.","Tu as tout vendu : prépare plus, ou organise une tournée de réassort.","Você esgotou: leve mais, prepare mais ou faça uma viagem de reposição.","Всё распродано: загружай больше, заготавливай больше или отправь рейс за припасами.",売り切れました: 多めに積む、多めに仕込む、補充に行くのいずれかを。,"재료가 다 떨어졌어요. 더 싣거나, 더 준비하거나, 보충 운행을 부르세요.","सब बिक गया: ज़्यादा भरो, ज़्यादा तैयारी करो, या सामान लाने की यात्रा बुलाओ।"
+report.hint_wait,People waited long: check the slowest station in the layout.,İnsanlar uzun bekledi: düzendeki en yavaş istasyona bak.,Die Leute haben lange gewartet: Prüf im Aufbau die langsamste Station.,La gente esperó mucho: revisa la estación más lenta de la distribución.,Les gens ont attendu longtemps : vérifie le poste le plus lent dans l'agencement.,As pessoas esperaram muito: confira a estação mais lenta no layout.,Гости долго ждали: проверь самую медленную станцию в раскладке.,お客さんの待ち時間が長くなりました: レイアウトで一番遅い設備を確認しましょう。,기다리는 시간이 길었어요. 배치에서 가장 느린 칸을 확인하세요.,लोग देर तक इंतज़ार करते रहे: लेआउट में सबसे धीमा स्टेशन देखो।
+report.hint_waste,Lots of leftovers spoiled: pack closer to the forecast.,Çok artık bozuldu: yüklemeyi tahmine daha yakın yap.,Viele Reste sind verdorben: Pack näher an der Vorhersage.,Se estropeó mucha comida sobrante: carga más cerca de la previsión.,Beaucoup de restes ont été perdus : charge au plus près des prévisions.,Muita sobra estragou: leve mais perto da previsão.,Много остатков испортилось: загружай ближе к прогнозу.,余った食材がたくさん傷みました: 予測に近い量を積みましょう。,남은 음식이 많이 상했어요. 예보에 더 가깝게 싣으세요.,काफ़ी बचा हुआ सामान खराब हुआ: अनुमान के करीब भरो।
+report.ingredients,Ingredients,Malzemeler,Zutaten,Ingredientes,Ingrédients,Ingredientes,Ингредиенты,食材,재료,सामग्री
+report.lost,Walked away / sold out,Gidip gitti / stok bitti,Weggegangen / ausverkauft,Se fueron / agotado,Partis / rupture,Foram embora / esgotado,Ушли / распродано,立ち去った客 / 売り切れ,떠난 손님 / 품절,चले गए / सब बिका
+report.minutes,{n} min,{n} dk,{n} Min.,{n} min,{n} min,{n} min,{n} мин,{n} 分,{n}분,{n} मिनट
+report.net,Profit,Kâr,Gewinn,Beneficio,Bénéfice,Lucro,Прибыль,利益,이익,मुनाफ़ा
+report.permits,Permits,İzinler,Genehmigungen,Permisos,Autorisations,Licenças,Разрешения,出店許可,허가,परमिट
+report.sales,Sales,Satışlar,Umsatz,Ventas,Ventes,Vendas,Продажи,売上,매출,बिक्री
+report.sellout,Sold-out time,Stokun bittiği an,Zeit ausverkauft,Tiempo agotado,Temps de rupture,Tempo esgotado,Время распродажи,売り切れた時間,품절 시간,सब बिकने का समय
+report.served,Customers served,Servis edilen müşteri,Bediente Kunden,Clientes atendidos,Clients servis,Clientes atendidos,Выдано гостям,提供した客数,제공한 손님,परोसे गए ग्राहक
+report.service,Service,Servis,Service,Servicio,Service,Atendimento,Обслуживание,回収サービス,서비스,सेवा
+report.speed,Speed,Hız,Tempo,Velocidad,Rapidité,Velocidade,Скорость,速さ,속도,स्पीड
+report.stock,Stock,Stok,Vorrat,Existencias,Stock,Estoque,Запасы,在庫,재고,स्टॉक
+report.title,Day {n} report,{n}. gün raporu,Bericht Tag {n},Informe del día {n},Rapport du jour {n},Relatório do dia {n},Отчёт за день {n},{n}日目のレポート,{n}일차 보고서,दिन {n} की रिपोर्ट
+report.wages,Wages,Ücretler,Löhne,Salarios,Salaires,Salários,Зарплаты,給料,임금,वेतन
+report.wait,Average wait,Ortalama bekleme,Durchschnittliche Wartezeit,Espera media,Attente moyenne,Espera média,Среднее ожидание,平均待ち時間,평균 대기,औसत इंतज़ार
+report.waste,Waste,Israf,Verschwendung,Desperdicio,Gaspillage,Desperdício,Потери,廃棄,폐기,बर्बादी
+research.body_extension.d,Trucks can grow to a 5×4 kitchen.,Kamyonlar 5×4 mutfağa kadar büyüyebilir.,Trucks können zu einer 5×4-Küche wachsen.,Los camiones pueden crecer hasta una cocina de 5×4.,Les camions peuvent s'agrandir en cuisine 5×4.,Os caminhões podem crescer para uma cozinha 5×4.,Фудтраки могут вырасти до кухни 5×4.,トラックは5×4の厨房まで広げられます。,트럭을 5×4 주방으로 키울 수 있어요.,ट्रक 5×4 किचन तक बढ़ सकते हैं।
+research.body_extension.t,Body extension,Gövde uzatma,Aufbau erweitern,Ampliación de la caja,Extension de carrosserie,Extensão do corpo,Расширение кузова,車体の拡張,차체 확장,ट्रक का विस्तार
+research.branch.kitchen,Kitchen,Mutfak,Küche,Cocina,Cuisine,Cozinha,Кухня,厨房,주방,किचन
+research.branch.menu,Menu,Menü,Menü,Menú,Menu,Cardápio,Меню,メニュー,메뉴,मेन्यू
+research.branch.ops,Operations,Operasyon,Betrieb,Operaciones,Opérations,Operações,Операции,運営,운영,संचालन
+research.card_breakfast.d,Sells well before noon.,Öğlene kadar iyi satar.,Verkauft sich vor 12 Uhr gut.,Se vende muy bien antes del mediodía.,Se vend bien avant midi.,Vende bem antes do meio-dia.,Хорошо продаётся до полудня.,昼前によく売れます。,정오 전에 잘 팔려요.,दोपहर से पहले अच्छी बिक्री।
+research.card_breakfast.t,Breakfast burger,Kahvaltı burgeri,Frühstücksburger,Hamburguesa de desayuno,Burger petit-déj,Hambúrguer do café,Завтрак-бургер,朝食バーガー,아침 버거,नाश्ता बर्गर
+research.card_double.d,"Two patties, big price. Fans love it.","İki köfte, yüksek fiyat. Taraftarlar bayılır.","Zwei Bratlinge, guter Preis. Fans lieben ihn.","Dos medallones, precio alto. A los aficionados les encanta.","Deux steaks, gros prix. Les fans l'adorent.","Duas carnes, preço alto. Os torcedores adoram.","Две котлеты, высокая цена. Болельщики в восторге.",パティ2枚で高単価。ファンに大人気です。,패티가 두 장이라 값이 높아요. 팬들이 좋아해요.,"दो पैटी, बड़ा दाम। प्रशंसकों को पसंद है।"
+research.card_double.t,Double burger,Çift burger,Doppelburger,Hamburguesa doble,Burger double,Hambúrguer duplo,Двойной бургер,ダブルバーガー,더블 버거,डबल बर्गर
+research.card_kids.d,Small and quick. Beach families love it.,Küçük ve hızlı. Sahildeki aileler sever.,Klein und schnell. Strandfamilien lieben ihn.,Pequeña y rápida. A las familias de la playa les encanta.,Petit et rapide. Les familles de la plage l'adorent.,Pequeno e rápido. Famílias da praia adoram.,Маленький и быстрый. Пляжные семьи его любят.,小ぶりで手早く食べられます。ビーチの家族連れに人気です。,작고 빨라요. 해변 가족들이 좋아해요.,छोटा और जल्दी। समुद्र तट के परिवारों को पसंद है।
+research.card_kids.t,Kids burger,Çocuk burgeri,Kinderburger,Hamburguesa infantil,Burger enfants,Hambúrguer infantil,Детский бургер,キッズバーガー,키즈 버거,बच्चों का बर्गर
+research.card_premium.d,The best burger in the bay. Tourists pay well.,Koyun en iyi burgeri. Turistler iyi öder.,Der beste Burger der Bucht. Touristen zahlen gern.,La mejor hamburguesa de la bahía. Los turistas pagan bien.,Le meilleur burger de la baie. Les touristes paient bien.,O melhor hambúrguer da baía. Turistas pagam bem.,Лучший бургер в бухте. Туристы платят хорошо.,湾でいちばんのバーガー。観光客がしっかり払ってくれます。,이 만에서 최고의 버거예요. 관광객이 기꺼이 내요.,खाड़ी का सबसे बढ़िया बर्गर। पर्यटक अच्छे दाम देते हैं।
+research.card_premium.t,Premium burger,Premium burger,Premium-Burger,Hamburguesa premium,Burger premium,Hambúrguer premium,Премиум-бургер,プレミアムバーガー,프리미엄 버거,प्रीमियम बर्गर
+research.card_spicy.d,A hot one for the brave.,Cesurlar için sıcak bir tat.,Ein scharfer für Mutige.,Una picante para los valientes.,Un plat brûlant pour les courageux.,Um apimentado para os corajosos.,Острый для смелых.,勇気ある人向けのピリ辛バーガー。,용기 있는 분을 위한 매운 버거예요.,हिम्मत वालों के लिए तीखा।
+research.card_spicy.t,Spicy burger,Acılı burger,Scharfer Burger,Hamburguesa picante,Burger épicé,Hambúrguer picante,Острый бургер,スパイシーバーガー,매운 버거,तीखा बर्गर
+research.card_veggie.d,A plant patty for office workers and tourists.,Ofis çalışanları ve turistler için bitkisel köfte.,Ein pflanzliches Patty für Büroleute und Touristen.,Medallón vegetal para oficinistas y turistas.,Un steak végétal pour les employés de bureau et les touristes.,Uma carne vegetal para trabalhadores de escritório e turistas.,Овощная котлета для офисных работников и туристов.,オフィスワーカーや観光客向けの植物性パティ。,사무실 직장인과 관광객을 위한 채식 패티예요.,दफ़्तर के कर्मचारियों और पर्यटकों के लिए सब्ज़ी की पैटी।
+research.card_veggie.t,Veggie burger,Vejetaryen burger,Vegi-Burger,Hamburguesa vegetal,Burger végé,Hambúrguer vegetariano,Овощной бургер,ベジバーガー,채식 버거,वेज बर्गर
+research.commissary_plus.d,"Bigger, faster prep batches.","Daha büyük, daha hızlı hazırlık partileri.","Größere, schnellere Vorbereitungschargen.",Lotes de preparación más grandes y rápidos.,Des lots de préparation plus gros et plus rapides.,Lotes de preparo maiores e mais rápidos.,Больше и быстрее партии заготовок.,より大きく、より速い仕込みができます。,"더 많이, 더 빠르게 준비해요.","बड़े, तेज़ तैयारी बैच।"
+research.commissary_plus.t,Bigger commissary,Büyük hazırlık merkezi,Größere Vorratsküche,Cocina central más grande,Cuisine centrale agrandie,Cozinha central maior,Большая заготовочная,仕込み場の拡張,더 큰 공동 주방,बड़ा मुख्य किचन
+research.crew_training.d,Every cook works 10 % faster.,Her aşçı %10 daha hızlı çalışır.,Jede Küchenkraft arbeitet 10 % schneller.,Cada cocinero trabaja un 10 % más rápido.,Chaque cuisinier travaille 10 % plus vite.,Cada cozinheiro trabalha 10 % mais rápido.,Каждый повар работает на 10 % быстрее.,料理スタッフ全員が 10 %速く働きます。,모든 요리사가 10% 더 빨리 일해요.,हर कुक 10 % तेज़ काम करता है।
+research.crew_training.t,Crew training,Ekip eğitimi,Teamschulung,Formación del equipo,Formation de l'équipe,Treinamento da equipe,Обучение экипажа,スタッフ研修,직원 교육,स्टाफ़ प्रशिक्षण
+research.dispatcher.d,"Trucks can pack, cook and restock by themselves.","Kamyonlar kendi kendine yükleyebilir, pişirebilir ve stok takviyesi yapabilir.","Trucks können selbst packen, kochen und nachfüllen.","Los camiones pueden cargar, cocinar y reabastecerse por sí solos.","Les camions peuvent charger, cuisiner et se réapprovisionner tout seuls.","Os caminhões podem carregar, cozinhar e repor sozinhos.","Фудтраки могут сами загружаться, готовить и пополнять запасы.",トラックが自分で積み込み、調理、補充をします。,"트럭이 스스로 싣고, 요리하고, 보충할 수 있어요.","ट्रक खुद भर सकते हैं, पका सकते हैं और सामान भर सकते हैं।"
+research.dispatcher.t,Head cook rules,Baş aşçı kuralları,Küchenchef-Regeln,Reglas del jefe de cocina,Règles du chef,Regras do Chefe de Cozinha,Правила главного повара,料理長の指示,주방장 규칙,हेड कुक के नियम
+research.done,Done,Tamam,Fertig,Hecho,Terminé,Concluído,Готово,完了,완료,हो गया
+research.drink_fridge.d,Unlocks the drink fridge station.,İçecek buzdolabı istasyonunu açar.,Schaltet die Getränkekühlstation frei.,Desbloquea la estación de nevera de bebidas.,Débloque le poste frigo à boissons.,Desbloqueia a estação da geladeira de bebidas.,Открывает станцию холодильника с напитками.,飲み物の冷蔵庫の設備が使えるようになります。,음료 냉장고 칸을 열어요.,ड्रिंक फ़्रिज स्टेशन खोलता है।
+research.drink_fridge.t,Drink fridge,İçecek buzdolabı,Getränkekühlschrank,Nevera de bebidas,Frigo à boissons,Geladeira de bebidas,Холодильник с напитками,飲料冷蔵庫,음료 냉장고,ड्रिंक फ़्रिज
+research.finished,Research done: {name},Araştırma bitti: {name},Forschung fertig: {name},Investigación terminada: {name},Recherche terminée : {name},Pesquisa concluída: {name},Исследование готово: {name},研究完了: {name},연구 완료: {name},रिसर्च पूरी: {name}
+research.fire_drill.d,Half as many flare-ups.,Alevlenmeler yarı yarıya azalır.,Halb so viele Fettbrände.,La mitad de llamaradas.,Deux fois moins de feux de friture.,Metade dos incêndios na chapa.,Вспышек жира вдвое меньше.,火が上がる回数が半分になります。,불꽃이 절반으로 줄어요.,आग भड़कने की घटनाएँ आधी।
+research.fire_drill.t,Fire drill,Yangın tatbikatı,Brandschutzübung,Simulacro de incendio,Exercice incendie,Treinamento de incêndio,Учебная тревога,消火訓練,화재 대피 훈련,आग का अभ्यास
+research.fryer.d,Unlocks the fryer station: fries with every burger.,Fritöz istasyonunu açar: her burgerle patates.,Schaltet die Fritteusenstation frei: Pommes zu jedem Burger.,Desbloquea la estación de freidora: patatas fritas con cada hamburguesa.,Débloque le poste friteuse : des frites avec chaque burger.,Desbloqueia a estação da fritadeira: batata frita com cada hambúrguer.,Открывает станцию фритюра: картошка к каждому бургеру.,フライヤーの設備が使えるようになります。バーガーにポテトを添えられます。,튀김기 칸을 열어요. 버거마다 감자튀김을 같이 팔아요.,फ़्रायर स्टेशन खोलता है: हर बर्गर के साथ फ़्रेंच फ़्राइज़।
+research.fryer.t,Fryer,Fritöz,Fritteuse,Freidora,Friteuse,Fritadeira,Фритюрница,フライヤー,튀김기,फ़्रायर
+research.fuel_saver.d,15 % less fuel per km.,Kilometre başına %15 daha az yakıt.,15 % weniger Sprit pro km.,Un 15 % menos de combustible por km.,15 % de carburant en moins par km.,15 % menos combustível por km.,На 15 % меньше топлива на км.,1 kmあたりの燃料が15 %減ります。,km당 연료가 15 % 덜 들어요.,प्रति किमी 15 % कम ईंधन।
+research.fuel_saver.t,Fuel saver,Yakıt tasarrufu,Spritsparer,Ahorro de combustible,Économie de carburant,Economizador de combustível,Экономия топлива,省燃費,연료 절약,ईंधन बचत
+research.grill_plus.d,Grills cook 15 % faster.,Izgaralar %15 daha hızlı pişirir.,Grills garen 15 % schneller.,Las planchas cocinan un 15 % más rápido.,Les grills cuisent 15 % plus vite.,As chapas cozinham 15 % mais rápido.,Гриль готовит на 15 % быстрее.,鉄板の調理が 15 %速くなります。,그릴이 15% 빨리 익혀요.,ग्रिल 15 % तेज़ पकाती हैं।
+research.grill_plus.t,Hotter grills,Daha sıcak ızgaralar,Heißere Grills,Planchas más calientes,Grills plus chauds,Chapas mais quentes,Жарче гриль,高温の鉄板,더 뜨거운 그릴,तेज़ ग्रिल
+research.left,{time} left,{time} kaldı,Noch {time},Quedan {time},Reste {time},Faltam {time},Осталось {time},残り {time},{time} 남음,{time} बाकी
+research.menu_board_plus.d,Room for a fourth card.,Dördüncü bir kart için yer.,Platz für eine vierte Karte.,Espacio para una cuarta tarjeta.,De la place pour une quatrième carte.,Espaço para um quarto cartão.,Место для четвёртой карточки.,4枚目のカードを置けます。,네 번째 카드를 넣을 자리가 생겨요.,चौथे कार्ड के लिए जगह।
+research.menu_board_plus.t,Bigger menu board,Büyük menü panosu,Größere Menütafel,Pizarra de menú más grande,Tableau de menus agrandi,Quadro de cardápio maior,Большая доска меню,大きなメニューボード,더 큰 메뉴판,बड़ा मेन्यू बोर्ड
+research.order_ahead.d,Some customers order for pickup instead of leaving a long line.,Bazı müşteriler uzun kuyruk yerine paket için önceden sipariş verir.,"Manche Kunden bestellen zur Abholung, statt in einer langen Schlange zu warten.",Algunos clientes piden para recoger en vez de hacer una cola larga.,Certains clients commandent à emporter au lieu de faire une longue file.,Alguns clientes pedem para retirar em vez de fazer fila longa.,"Некоторые гости заказывают на вынос, а не стоят в длинной очереди.",長い行列に並ぶかわりに、受け取り注文をするお客さんが出ます。,긴 줄 대신 일부 손님이 픽업 주문을 해요.,कुछ ग्राहक लंबी लाइन छोड़कर पहले से ऑर्डर करके पिकअप करते हैं।
+research.order_ahead.t,Order-ahead,Önceden sipariş,Vorbestellung,Pedido anticipado,Commande à l'avance,Pedido antecipado,Предзаказ,事前注文,미리 주문,पहले से ऑर्डर
+research.par_levels.d,The night crew preps up to your targets by itself.,Gece ekibi hedeflerine kadar kendi kendine hazırlar.,Die Nachtschicht bereitet selbstständig bis zu deinen Sollmengen vor.,El equipo de noche prepara hasta tus objetivos por sí solo.,L'équipe de nuit prépare toute seule jusqu'à tes objectifs.,A equipe da noite prepara até suas metas sozinha.,Ночная смена сама заготовит до твоих норм.,夜勤のスタッフが目標量まで自動で仕込みます。,야간 직원이 목표량까지 스스로 준비해요.,रात का स्टाफ़ तुम्हारे लक्ष्य तक अपने आप तैयारी करता है।
+research.par_levels.t,Par levels,Hedef stoklar,Sollmengen,Niveles objetivo,Niveaux cibles,Níveis mínimos,Нормы запаса,基準在庫,기준 수량,रोज़ के लक्ष्य
+research.premium_tier.d,Unlocks the premium fixings tier.,Premium malzeme kademesini açar.,Schaltet die Premium-Beläge frei.,Desbloquea el nivel de ingredientes premium.,Débloque le niveau de garnitures premium.,Desbloqueia o nível de acompanhamentos premium.,Открывает премиум-начинки.,プレミアムの具材ランクが開放されます。,프리미엄 토핑 등급을 열어요.,प्रीमियम टॉपिंग का स्तर खोलता है।
+research.premium_tier.t,Premium fixings,Premium malzemeler,Premium-Beläge,Ingredientes premium,Garnitures premium,Acompanhamentos premium,Премиум-начинки,プレミアムの具材,프리미엄 토핑,प्रीमियम टॉपिंग
+research.propane_gauge.d,15 % less propane per patty.,Köfte başına %15 daha az propan.,15 % weniger Propan pro Bratling.,Un 15 % menos de propano por medallón.,15 % de propane en moins par steak.,15 % menos gás por carne.,На 15 % меньше пропана на котлету.,パティ1枚あたりのプロパンガスが 15 %減ります。,패티당 가스가 15% 덜 들어요.,हर पैटी पर 15 % कम गैस।
+research.propane_gauge.t,Propane gauge,Propan göstergesi,Propananzeige,Medidor de propano,Jauge de propane,Medidor de gás,Датчик пропана,プロパンガス計,가스 계량기,गैस मीटर
+research.requires,Needs: {name},Gerekli: {name},Braucht: {name},Necesita: {name},Demande : {name},Precisa de: {name},Нужно: {name},必要: {name},필요: {name},चाहिए: {name}
+research.rival_scout.d,Rival trucks take fewer customers.,Rakip kamyonlar daha az müşteri alır.,Konkurrenz-Trucks nehmen weniger Kunden weg.,Los camiones rivales se llevan menos clientes.,Les camions concurrents prennent moins de clients.,Caminhões concorrentes levam menos clientes.,Фудтраки-соперники отбирают меньше гостей.,ライバル店が取る客が減ります。,라이벌 트럭이 손님을 덜 빼앗아요.,प्रतिद्वंद्वी ट्रक कम ग्राहक ले जाते हैं।
+research.rival_scout.t,Rival scout,Rakip gözetleme,Konkurrenz-Späher,Explorador rival,Espion concurrent,Espião da concorrência,Разведка соперников,ライバル偵察,라이벌 정찰,प्रतिद्वंद्वी पर नज़र
+research.sauce_rail.d,Unlocks the sauce rail station.,Sos rafı istasyonunu açar.,Schaltet die Soßenschiene-Station frei.,Desbloquea la estación de barra de salsas.,Débloque le poste rail à sauces.,Desbloqueia a estação de molhos.,Открывает станцию рейки соусов.,ソースレールの設備が使えるようになります。,소스 레일 칸을 열어요.,सॉस रेल स्टेशन खोलता है।
+research.sauce_rail.t,Sauce rail,Sos rafı,Soßenschiene,Barra de salsas,Rail à sauces,Trilho de molhos,Рейка соусов,ソースレール,소스 레일,सॉस रेल
+research.second_window.d,Trucks can have two windows.,Kamyonlar iki pencereye sahip olabilir.,Trucks können zwei Fenster haben.,Los camiones pueden tener dos ventanillas.,Les camions peuvent avoir deux guichets.,Os caminhões podem ter duas janelas.,Фудтрак может иметь два окна.,トラックに窓口を2つ置けます。,트럭에 창문을 두 개 달 수 있어요.,ट्रकों में दो खिड़कियाँ हो सकती हैं।
+research.second_window.t,Second window,İkinci pencere,Zweites Fenster,Segunda ventanilla,Deuxième guichet,Segunda janela,Второе окно,2つ目の窓口,두 번째 창문,दूसरी खिड़की
+research.start,Start · {cost},Başlat · {cost},Starten · {cost},Empezar · {cost},Lancer · {cost},Começar · {cost},Начать · {cost},開始 · {cost},시작 · {cost},शुरू करो · {cost}
+research.wrap_bench.d,Unlocks the wrap bench for order-ahead pickups.,Önceden sipariş paketleri için dürüm tezgâhını açar.,Schaltet die Wrap-Theke für Vorbestellungen frei.,Desbloquea la mesada de envoltorios para los pedidos anticipados.,Débloque le plan de travail wraps pour les commandes à emporter.,Desbloqueia a bancada de embrulho para os pedidos antecipados.,Открывает стол для заверток для предзаказов.,事前注文の受け取り用に、ラップ台が使えるようになります。,미리 주문한 픽업을 위한 랩 벤치를 열어요.,पहले से ऑर्डर वाले पिकअप के लिए रैप बेंच खोलता है।
+research.wrap_bench.t,Wrap bench,Dürüm tezgâhı,Wrap-Theke,Mesada de envoltorios,Plan de travail wraps,Bancada de embrulho,Стол для заверток,ラップ台,랩 벤치,रैप बेंच
+reward.claim,Claim,Al,Abholen,Reclamar,Récupérer,Resgatar,Забрать,受け取る,받기,लो
+reward.daily.b,A little cash to start the day.,Güne başlamak için biraz para.,Ein bisschen Geld für den Start in den Tag.,Un poco de dinero para empezar el día.,Un peu d'argent pour commencer la journée.,Um pouco de dinheiro para começar o dia.,"Немного денег, чтобы начать день.",営業のスタートに少しお金を。,하루를 시작하는 약간의 자금이에요.,दिन शुरू करने के लिए थोड़े पैसे।
+reward.daily.t,Morning bonus,Sabah bonusu,Morgenbonus,Bonificación de la mañana,Bonus du matin,Bônus da manhã,Утренний бонус,朝のボーナス,아침 보너스,सुबह का बोनस
+reward.done_cash,+{cash} added,+{cash} eklendi,+{cash} gutgeschrieben,+{cash} añadidos,+{cash} ajoutés,+{cash} recebidos,+{cash} начислено,+{cash} を受け取りました,+{cash} 들어옴,+{cash} जुड़े
+reward.done_patties,+{n} patties on the truck,Kamyona +{n} köfte eklendi,+{n} Bratlinge im Truck,+{n} medallones en el camión,+{n} steaks dans le camion,+{n} carnes no caminhão,Котлеты в фудтраке: +{n},トラックにパティ +{n},트럭에 패티 +{n},ट्रक पर +{n} पैटी
+reward.done_prep,The batch is ready,Parti hazır,Die Charge ist fertig,El lote está listo,Le lot est prêt,O lote está pronto,Партия готова,仕込みが完了しました,묶음이 준비됐어요,बैच तैयार है
+reward.done_rescue,Grill back to normal,Izgara normale döndü,Grill läuft wieder normal,Plancha de nuevo en marcha,Le grill fonctionne à nouveau,Chapa de volta ao normal,Гриль снова в порядке,鉄板が通常に戻りました,그릴이 정상으로 돌아왔어요,ग्रिल फिर से ठीक है
+reward.done_runner,A helper joined the crew,Bir yardımcı ekibe katıldı,Ein Helfer ist dem Team beigetreten,Un ayudante se unió al equipo,Un renfort a rejoint l'équipe,Um auxiliar entrou na equipe,Помощник присоединился к экипажу,助っ人がスタッフに加わりました,도우미가 직원에 합류했어요,एक मददगार स्टाफ़ में जुड़ा
+reward.free.b,Included with your ad-free pack — no video.,Reklamsız paketinle birlikte geliyor — video yok.,Im Werbefrei-Paket enthalten — ohne Video.,Incluido con tu pack sin anuncios: sin vídeo.,Inclus avec ton pack sans pub — pas de vidéo.,Incluído no seu pacote sem anúncios — sem vídeo.,Входит в пакет без рекламы — без видео.,広告なしパックに含まれています。動画は不要です。,광고 제거 팩에 포함돼요 — 영상 없음.,तुम्हारे विज्ञापन-मुक्त पैक में शामिल — कोई वीडियो नहीं।
+reward.free_cash,Claim +{cash},+{cash} al,+{cash} abholen,Reclamar +{cash},Récupérer +{cash},Resgatar +{cash},Забрать +{cash},+{cash} を受け取る,{cash} 받기,+{cash} लो
+reward.offline.b,Watch a short video to get it twice.,"Kısa bir video izle, iki katını al.","Sieh dir ein kurzes Video an, um es doppelt zu bekommen.",Mira un vídeo corto para cobrarlo el doble.,Regarde une courte vidéo pour le recevoir deux fois.,Assista a um vídeo curto para receber o dobro.,"Посмотри короткое видео, чтобы получить вдвое больше.",短い動画を見ると2倍になります。,짧은 영상을 보면 두 배로 받아요.,दोगुना पाने के लिए एक छोटा वीडियो देखो।
+reward.offline.t,Double the away pay,Uzaktayken ücreti ikiye katla,Abwesenheitslohn verdoppeln,Duplicar lo ganado fuera,Double les gains d'absence,Dobrar o pagamento de fora,Удвоить оплату за отсутствие,留守中の収入を2倍に,부재 중 수입 두 배,दूर रहने की कमाई दोगुनी
+reward.patties.b,20 more patties on this truck.,Bu kamyona 20 köfte daha.,20 weitere Bratlinge in diesem Truck.,20 medallones más en este camión.,20 steaks de plus dans ce camion.,Mais 20 carnes neste caminhão.,Ещё 20 котлет в этом фудтраке.,このトラックにパティ 20 個追加。,이 트럭에 패티 20개를 더 실어요.,इस ट्रक पर 20 और पैटी।
+reward.patties.t,Bonus patties,Bonus köfteler,Bonus-Bratlinge,Medallones de bonificación,Steaks bonus,Carnes de bônus,Бонусные котлеты,ボーナスのパティ,보너스 패티,बोनस पैटी
+reward.prep.b,Finish the batch in progress now.,Devam eden partiyi hemen bitir.,Beende jetzt die laufende Charge.,Termina ahora el lote en curso.,Termine maintenant le lot en cours.,Termine agora o lote em andamento.,Сейчас доделать текущую партию.,進行中の仕込みを今すぐ終わらせます。,지금 진행 중인 묶음을 끝내요.,चल रहा बैच अभी पूरा करो।
+reward.prep.t,Quick prep,Hızlı hazırlık,Schnelle Vorbereitung,Preparación rápida,Préparation express,Preparo rápido,Быстрая заготовка,すばやい仕込み,빠른 준비,फ़टाफ़ट तैयारी
+reward.rescue.b,Put out the flare-up or get the grill lit again now.,Yağ alevini söndür ya da ızgarayı hemen yeniden yak.,Lösch den Brand oder zünde den Grill jetzt wieder an.,Apaga la llamarada o vuelve a encender la plancha ahora.,Éteins le feu de friture ou rallume le grill tout de suite.,Apague o fogo ou acenda a chapa de novo agora.,Потуши вспышку или сейчас снова зажги гриль.,火をすぐに消すか、鉄板にもう一度火をつけます。,지금 기름 불꽃을 끄거나 그릴에 다시 불을 붙여요.,अभी आग बुझाओ या ग्रिल फिर से जलाओ।
+reward.rescue.t,Crew rescue,Ekip kurtarma,Team-Rettung,Rescate del equipo,Sauvetage de l'équipe,Resgate da equipe,Помощь экипажа,スタッフの救助,직원 구조,स्टाफ़ का बचाव
+reward.runner.b,A helper joins this truck for a while.,Bir yardımcı bu kamyona bir süreliğine katılır.,Ein Helfer kommt für eine Weile in diesen Truck.,Un ayudante se une a este camión durante un rato.,Un renfort rejoint ce camion pendant un moment.,Um auxiliar entra neste caminhão por um tempo.,Помощник присоединяется к этому фудтраку на время.,しばらくの間、このトラックに助っ人が加わります。,잠시 동안 도우미가 이 트럭에 합류해요.,एक मददगार कुछ देर के लिए इस ट्रक से जुड़ता है।
+reward.runner.t,Extra runner,Ek koşucu,Extra-Läufer,Ayudante extra,Coureur en renfort,Auxiliar extra,Дополнительный помощник,助っ人ランナー,추가 심부름 직원,अतिरिक्त रनर
+reward.unavailable,Not available right now,Şu an kullanılamıyor,Gerade nicht verfügbar,No disponible ahora mismo,Indisponible pour le moment,Indisponível agora,Сейчас недоступно,ただいま利用できません,지금은 사용할 수 없어요,अभी उपलब्ध नहीं
+reward.video,Watch video,Video izle,Video ansehen,Ver vídeo,Regarder la vidéo,Assistir vídeo,Смотреть видео,動画を見る,영상 보기,वीडियो देखो
+reward.video_cash,Watch · +{cash},İzle · +{cash},Ansehen · +{cash},Ver · +{cash},Regarder · +{cash},Assistir · +{cash},Смотреть · +{cash},見る · +{cash},보기 · +{cash},देखो · +{cash}
+role.assembler,Assembler,Hazırlayıcı,Zusammensteller,Montador,Assembleur,Montador,Сборщик,組み立て係,조립 담당,असेंबलर
+role.assembler.d,Builds burgers at the bench.,Tezgâhta burger hazırlar.,Baut Burger an der Theke.,Monta las hamburguesas en la mesada.,Monte les burgers au plan de travail.,Monta os hambúrgueres na bancada.,Собирает бургеры за столом.,調理台でバーガーを組み立てます。,벤치에서 버거를 조립해요.,बेंच पर बर्गर बनाता है।
+role.cashier,Cashier,Kasiyer,Kassierer,Cajero,Caissier,Caixa,Кассир,会計係,계산 담당,कैशियर
+role.cashier.d,Takes orders at the window.,Pencerede siparişleri alır.,Nimmt Bestellungen am Fenster auf.,Toma los pedidos en la ventanilla.,Prend les commandes au guichet.,Anota os pedidos na janela.,Принимает заказы у окна.,窓口で注文を受けます。,창문에서 주문을 받아요.,खिड़की पर ऑर्डर लेता है।
+role.griller,Griller,Izgaracı,Griller,Cocinero de plancha,Grilleur,Grelhador,Гриль-повар,焼き係,그릴 담당,ग्रिलर
+role.griller.d,Works the grill.,Izgarayı yönetir.,Arbeitet am Grill.,Se encarga de la plancha.,S'occupe du grill.,Cuida da chapa.,Работает на гриле.,鉄板で焼きます。,그릴을 맡아요.,ग्रिल सँभालता है।
+role.runner,Runner,Koşucu,Läufer,Ayudante,Coureur,Auxiliar,Помощник,ランナー,심부름 직원,रनर
+role.runner.d,Helps wherever the line is slowest; halves walking.,En yavaş kuyruğa yardım eder; yürüyüşü yarıya indirir.,"Hilft, wo die Schlange am längsten ist; halbiert die Laufwege.",Ayuda donde la cola sea más lenta; reduce a la mitad los desplazamientos.,Aide là où la file est la plus lente ; divise par deux les déplacements.,Ajuda onde a fila está mais lenta; reduz pela metade o tempo de caminhada.,"Помогает там, где очередь медленнее всего; вдвое сокращает ходьбу.",行列がいちばん遅いところを手伝います。移動の時間が半分になります。,줄이 가장 느린 곳을 도와요. 이동 시간을 절반으로 줄여요.,जहाँ लाइन सबसे धीमी हो वहाँ मदद करता है; पैदल चलना आधा।
+settings.effects,Sound effects,Ses efektleri,Soundeffekte,Efectos de sonido,Effets sonores,Efeitos sonoros,Звуковые эффекты,効果音,효과음,ध्वनि प्रभाव
+settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Графика,画質,그래픽,ग्राफ़िक्स
+settings.guide,How to play / Replay the guide,Nasıl oynanır / Rehberi tekrar oynat,Spielanleitung / Anleitung wiederholen,Cómo jugar / Repetir la guía,Comment jouer / Revoir le guide,Como jogar / Rever o tutorial,Как играть / Повторить обучение,遊び方 / ガイドをもう一度見る,플레이 방법 / 가이드 다시 보기,कैसे खेलें / गाइड फिर से देखो
+settings.help,Help,Yardım,Hilfe,Ayuda,Aide,Ajuda,Помощь,ヘルプ,도움말,मदद
+settings.language,Language,Dil,Sprache,Idioma,Langue,Idioma,Язык,言語,언어,भाषा
+settings.looks,Looks,Görünümler,Optik,Estilos,Esthétique,Visuais,Внешний вид,見た目,외형,लुक
+settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,음악,संगीत
+settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
+settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चालू
+settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
+settings.privacy,Privacy,Gizlilik,Datenschutz,Privacidad,Confidentialité,Privacidade,Конфиденциальность,プライバシー,개인정보,गोपनीयता
+settings.privacy_options,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
+settings.replay,Replay,Tekrar oynat,Erneut,Repetir,Rejouer,Repetir,Повторить,もう一度見る,다시 보기,दोबारा चलाओ
+settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
+settings.slot,Career {n},Kariyer {n},Karriere {n},Partida {n},Carrière {n},Carreira {n},Карьера {n},キャリア {n},경력 {n},करियर {n}
+settings.slot_new,New career {n},Yeni kariyer {n},Neue Karriere {n},Nueva partida {n},Nouvelle carrière {n},Nova carreira {n},Новая карьера {n},新しいキャリア {n},새 경력 {n},नया करियर {n}
+settings.slots,Careers,Kariyerler,Karrieren,Partidas,Carrières,Carreiras,Карьеры,キャリア,경력,करियर
+settings.slots_more,Extra Saves and the Pitmaster Edition add career slots.,Ek Kayıtlar ve Usta Şef Sürümü ek kariyer yuvaları ekler.,Zusätzliche Speicherplätze und die Chef-Edition schalten weitere Karriereplätze frei.,Las partidas extra y la Edición Pitmaster añaden ranuras de partida.,Les Sauvegardes en plus et l'Édition Pitmaster ajoutent des emplacements de carrière.,Saves extras e a Edição do Mestre da Brasa adicionam vagas de carreira.,Доп. сохранения и издание «Мастер гриля» добавляют слоты карьеры.,セーブ枠追加とピットマスター・エディションで、キャリア枠が増えます。,추가 저장과 그릴 마스터 에디션으로 경력 칸이 더 생겨요.,अतिरिक्त सेव और पिटमास्टर एडिशन करियर स्लॉट जोड़ते हैं।
+settings.slots_n,{n} slots,{n} yuva,{n} Plätze,{n} ranuras,{n} emplacements,{n} vagas,Слотов: {n},{n} 枠,{n}칸,{n} स्लॉट
+settings.sound,Sound,Ses,Ton,Sonido,Son,Som,Звук,サウンド,사운드,आवाज़
+settings.title,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
+settings.version,Version {v},Sürüm {v},Version {v},Versión {v},Version {v},Versão {v},Версия {v},バージョン {v},버전 {v},वर्शन {v}
+sheet.close,Close,Kapat,Schließen,Cerrar,Fermer,Fechar,Закрыть,閉じる,닫기,बंद करो
+shop.bought,{name} is yours,{name} artık senin,{name} gehört dir,{name} ya es tuyo,{name} est à toi,{name} é seu,{name} теперь твоё,{name} を入手しました,{name} 획득 완료,{name} अब तुम्हारा है
+shop.cap,Daily pack limit reached. Come back tomorrow.,Günlük paket sınırına ulaşıldı. Yarın tekrar gel.,Tageslimit für Pakete erreicht. Komm morgen wieder.,Límite diario de packs alcanzado. Vuelve mañana.,Limite quotidienne de packs atteinte. Reviens demain.,Limite diário de pacotes atingido. Volte amanhã.,Достигнут дневной лимит пакетов. Приходи завтра.,1日のパックの上限に達しました。また明日来てください。,하루 팩 구매 한도에 도달했어요. 내일 다시 오세요.,रोज़ के पैक की सीमा पूरी हो गई। कल फिर आओ।
+shop.failed,Purchase did not go through,Satın alma tamamlanamadı,Der Kauf hat nicht geklappt,La compra no se completó,L'achat n'a pas abouti,A compra não foi concluída,Покупка не прошла,購入できませんでした,구매가 완료되지 않았어요,खरीदारी पूरी नहीं हुई
+shop.funds,+{cash} added,+{cash} eklendi,+{cash} gutgeschrieben,+{cash} añadidos,+{cash} ajoutés,+{cash} recebidos,+{cash} начислено,+{cash} を受け取りました,+{cash} 들어옴,+{cash} जुड़े
+shop.group.adfree,Ad-free and packs,Reklamsız ve paketler,Werbefrei & Pakete,Sin anuncios y packs,Sans pub et packs,Sem anúncios e pacotes,Без рекламы и пакеты,広告なし・パック,광고 제거 & 팩,विज्ञापन-मुक्त और पैक
+shop.group.boost,Upgrades,Geliştirmeler,Verbesserungen,Mejoras,Améliorations,Melhorias,Улучшения,アップグレード,업그레이드,अपग्रेड
+shop.group.budget,Cash,Para,Geld,Dinero,Argent,Dinheiro,Деньги,お金,자금,पैसे
+shop.group.looks,Looks,Görünümler,Optik,Estilos,Esthétique,Visuais,Внешний вид,見た目,외형,लुक
+shop.group.offer,Offers,Teklifler,Angebote,Ofertas,Offres,Ofertas,Предложения,特別オファー,특가,ऑफ़र
+shop.offer,Special offer,Özel teklif,Sonderangebot,Oferta especial,Offre spéciale,Oferta especial,Специальное предложение,特別オファー,특별 제안,खास ऑफ़र
+shop.owned,Owned,Sende,Gekauft,Comprado,Acquis,Comprado,Куплено,所持済み,보유 중,आपके पास
+shop.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
+shop.restore_failed,Could not restore. Try again later.,Geri yüklenemedi. Daha sonra tekrar dene.,Konnte nicht wiederherstellen. Versuche es später noch einmal.,No se pudo restaurar. Inténtalo más tarde.,Impossible de restaurer. Réessaie plus tard.,Não foi possível restaurar. Tente de novo mais tarde.,Не удалось восстановить. Попробуй позже.,復元できませんでした。あとでもう一度お試しください。,복원할 수 없어요. 나중에 다시 해 보세요.,वापस नहीं ला सके। बाद में फिर कोशिश करो।
+shop.restored,Purchases restored,Satın alımlar geri yüklendi,Käufe wiederhergestellt,Compras restauradas,Achats restaurés,Compras restauradas,Покупки восстановлены,購入を復元しました,구매를 복원했어요,खरीदारी वापस आ गई
+shop.title,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
+shop.unavailable,The store is not available right now,Mağaza şu an kullanılamıyor,Der Shop ist gerade nicht verfügbar,La tienda no está disponible ahora mismo,La boutique n'est pas disponible pour le moment,A loja não está disponível agora,Магазин сейчас недоступен,ストアは現在ご利用いただけません,지금은 상점을 사용할 수 없어요,स्टोर अभी उपलब्ध नहीं है
+station.assembly,Bench,Tezgâh,Theke,Mesada,Plan de travail,Bancada,Стол,調理台,벤치,बेंच
+station.assembly.d,A second assembly bench.,İkinci bir hazırlama tezgâhı.,Eine zweite Zusammenstellungstheke.,Una segunda mesada de montaje.,Un second plan de travail pour l'assemblage.,Uma segunda bancada de montagem.,Второй стол для сборки.,2つ目の組み立て用調理台。,두 번째 조립 벤치예요.,दूसरी असेंबली बेंच।
+station.fridge,Drink fridge,İçecek buzdolabı,Getränkekühlschrank,Nevera de bebidas,Frigo à boissons,Geladeira de bebidas,Холодильник,飲料冷蔵庫,음료 냉장고,ड्रिंक फ़्रिज
+station.fridge.d,Sells drinks; doubles on hot days. Next to the window: 10 % faster.,İçecek satar; sıcak günlerde iki katına çıkar. Pencerenin yanında: %10 daha hızlı.,Verkauft Getränke; doppelt so viel an heißen Tagen. Neben dem Fenster: 10 % schneller.,Vende bebidas; se duplica en días de calor. Junto a la ventanilla: un 10 % más rápido.,Vend des boissons ; double les jours chauds. À côté du guichet : 10 % plus rapide.,Vende bebidas; dobra em dias quentes. Ao lado da janela: 10 % mais rápido.,Продаёт напитки; вдвое больше в жару. Рядом с окном: на 10 % быстрее.,飲み物を売ります。暑い日は2倍売れます。窓口の横に置くと 10 %速くなります。,음료를 팔아요. 더운 날에는 두 배로 팔려요. 창문 옆에 두면 10% 빨라요.,पेय बेचता है; गर्म दिनों में दोगुना। खिड़की के पास: 10 % तेज़।
+station.fryer,Fryer,Fritöz,Fritteuse,Freidora,Friteuse,Fritadeira,Фритюрница,フライヤー,튀김기,फ़्रायर
+station.fryer.d,Sells fries. Next to the window: fresh fries sell for more.,Patates satar. Pencerenin yanında: taze patates daha pahalı satılır.,Verkauft Pommes. Neben dem Fenster: frische Pommes bringen mehr Geld.,Vende patatas fritas. Junto a la ventanilla: las patatas recién hechas se venden más caro.,Vend des frites. À côté du guichet : les frites fraîches se vendent plus cher.,Vende batata frita. Ao lado da janela: batata fresca vende por mais.,Продаёт картошку фри. Рядом с окном: свежая картошка продаётся дороже.,ポテトを売ります。窓口の横に置くと、揚げたてのポテトがより高く売れます。,감자튀김을 팔아요. 창문 옆에 두면 갓 튀긴 감자튀김을 더 비싸게 팔아요.,फ़्रेंच फ़्राइज़ बेचता है। खिड़की के पास: ताज़ी फ़्राइज़ ज़्यादा दाम पर।
+station.grill,Grill,Izgara,Grill,Plancha,Grill,Chapa,Гриль,鉄板,그릴,ग्रिल
+station.grill.d,Two more plates for patties.,Köfte için iki tabak daha.,Zwei weitere Plätze für Bratlinge.,Dos platos más para los medallones.,Deux plaques de plus pour les steaks.,Mais duas placas para carnes.,Ещё две позиции для котлет.,パティ用の鉄板を2枚追加。,패티를 올릴 접시가 두 개 더 생겨요.,पैटी के लिए दो और प्लेटें।
+station.sauce,Sauce rail,Sos rafı,Soßenschiene,Barra de salsas,Rail à sauces,Trilho de molhos,Рейка соусов,ソースレール,소스 레일,सॉस रेल
+station.sauce.d,Next to the bench: 10 % faster.,Tezgâhın yanında: %10 daha hızlı.,Neben der Theke: 10 % schneller.,Junto a la mesada: un 10 % más rápido.,À côté du plan de travail : 10 % plus rapide.,Ao lado da bancada: 10 % mais rápido.,Рядом со столом: на 10 % быстрее.,調理台の横に置くと 10 %速くなります。,벤치 옆에 두면 10% 빨라요.,बेंच के पास: 10 % तेज़।
+station.toaster,Toaster,Tost makinesi,Toaster,Tostadora,Grille-pain,Torradeira,Тостер,トースター,토스터,टोस्टर
+station.toaster.d,Next to the bench: the bench works 15 % faster.,Tezgâhın yanında: tezgâh %15 daha hızlı çalışır.,Neben der Theke: die Theke arbeitet 15 % schneller.,Junto a la mesada: la mesada trabaja un 15 % más rápido.,À côté du plan de travail : le plan de travail va 15 % plus vite.,Ao lado da bancada: a bancada trabalha 15 % mais rápido.,Рядом со столом: стол работает на 15 % быстрее.,調理台の横に置くと、調理台が 15 %速く働きます。,벤치 옆에 두면 벤치가 15% 빨라요.,बेंच के पास: बेंच 15 % तेज़ चलती है।
+station.window,Window,Pencere,Fenster,Ventanilla,Guichet,Janela,Окно,窓口,창문,खिड़की
+station.window.d,"A second window: longer line, faster orders.","İkinci bir pencere: daha uzun kuyruk, daha hızlı sipariş.","Ein zweites Fenster: längere Schlange, schnellere Bestellungen.","Una segunda ventanilla: cola más larga, pedidos más rápidos.","Un second guichet : file plus longue, commandes plus rapides.","Uma segunda janela: fila mais longa, pedidos mais rápidos.","Второе окно: очередь длиннее, заказы быстрее.",2つ目の窓口: 行列が長くでき、注文が速くなります。,두 번째 창문이에요. 줄이 길어지고 주문이 빨라져요.,"दूसरी खिड़की: लंबी लाइन, तेज़ ऑर्डर।"
+station.wrap,Wrap bench,Dürüm tezgâhı,Wrap-Theke,Mesada de envoltorios,Plan de travail wraps,Bancada de embrulho,Стол для заверток,ラップ台,랩 벤치,रैप बेंच
+station.wrap.d,Next to the window: order-ahead pickups go out faster.,Pencerenin yanında: önceden sipariş paketleri daha hızlı çıkar.,Neben dem Fenster: Vorbestellungen gehen schneller raus.,Junto a la ventanilla: los pedidos anticipados salen más rápido.,À côté du guichet : les commandes à emporter partent plus vite.,Ao lado da janela: os pedidos antecipados saem mais rápido.,Рядом с окном: заказы на предзаказ уходят быстрее.,窓口の横に置くと、事前注文の受け渡しが速くなります。,창문 옆에 두면 미리 주문한 픽업이 더 빨리 나가요.,खिड़की के पास: पहले से ऑर्डर वाले पिकअप तेज़ निकलते हैं।
+stock.bun,Buns,Ekmek,Brötchen,Panecillos,Pains,Pães,Булочки,バンズ,번,बन
+stock.patty,Patties,Köfte,Bratlinge,Medallones,Steaks,Carnes,Котлеты,パティ,패티,पैटी
+stock.side,Sides,Yan ürünler,Beilagen,Acompañamientos,Accompagnements,Acompanhamentos,Гарнир,サイド,사이드,साइड
+tab.kitchen,Kitchen,Mutfak,Küche,Cocina,Cuisine,Cozinha,Заготовки,厨房,주방,किचन
+tab.map,Map,Harita,Karte,Mapa,Carte,Mapa,Карта,地図,지도,नक्शा
+tab.research,Research,Araştırma,Forschung,Investigación,Recherche,Pesquisa,Исследования,研究,연구,रिसर्च
+tab.settings,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
+tab.shop,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
+tab.trucks,Trucks,Kamyonlar,Trucks,Camiones,Camions,Caminhões,Фудтраки,トラック,트럭,ट्रक
+tier.0,Budget,Ekonomik,Günstig,Económico,Économique,Econômico,Эконом,お手頃,저가,बजट
+tier.0.d,"Cheap toppings: lower cost, a few customers pass by.","Ucuz malzemeler: düşük maliyet, birkaç müşteri geçer.","Billige Beläge: niedrigere Kosten, einige Kunden gehen vorbei.","Ingredientes baratos: menos coste, pasan pocos clientes.","Garnitures bon marché : coût bas, peu de clients passent.","Coberturas baratas: custo menor, poucos clientes passam.","Дешёвые начинки: ниже цена, мимо проходит несколько гостей.",安い具材: 費用は低いが、立ち寄る客は少なめ。,싼 토핑이라 비용이 낮아요. 지나가는 손님이 몇 명 있어요.,"सस्ते टॉपिंग: कम खर्च, कुछ ग्राहक ही रुकते हैं।"
+tier.1,Standard,Standart,Standard,Estándar,Standard,Padrão,Стандарт,スタンダード,표준,स्टैंडर्ड
+tier.1.d,Good toppings at a fair cost.,Makul maliyetle iyi malzemeler.,Gute Beläge zu fairem Preis.,Buenos ingredientes a un precio justo.,Bonnes garnitures à prix juste.,Boas coberturas a um preço justo.,Хорошие начинки по честной цене.,適正な価格でよい具材。,적당한 값에 좋은 토핑이에요.,"अच्छे टॉपिंग, उचित दाम पर।"
+tier.2,Premium,Premium,Premium,Premium,Premium,Premium,Премиум,プレミアム,프리미엄,प्रीमियम
+tier.2.d,Best toppings: more customers stop and pitches gain reputation faster.,"En iyi malzemeler: daha çok müşteri durur, satış noktaları daha hızlı şöhret kazanır.",Beste Beläge: mehr Kunden bleiben stehen und der Standplatz gewinnt schneller an Ruf.,Los mejores ingredientes: se detienen más clientes y los puestos ganan reputación más rápido.,Les meilleures garnitures : plus de clients s'arrêtent et la réputation des emplacements monte plus vite.,Melhores coberturas: mais clientes param e os pontos ganham reputação mais rápido.,"Лучшие начинки: больше гостей останавливаются, точки быстрее набирают репутацию.",最高の具材: 立ち寄る客が増え、出店場所の評判も早く上がります。,"최고급 토핑이에요. 더 많은 손님이 멈추고, 자리의 평판이 더 빨리 올라가요.",सबसे अच्छे टॉपिंग: ज़्यादा ग्राहक रुकते हैं और जगह की प्रतिष्ठा तेज़ी से बढ़ती है।
+tier.title,Fixings,Malzemeler,Beläge,Ingredientes,Garnitures,Coberturas,Начинки,具材,토핑,टॉपिंग
+tip.boardwalk,"The Boardwalk loves hot days and weekends, hates rain. Check the forecast.","Sahil yolu sıcak günleri ve hafta sonlarını sever, yağmuru sevmez. Tahmine bak.","Die Strandpromenade liebt heiße Tage und Wochenenden, hasst Regen. Schau auf die Vorhersage.","El paseo marítimo ama los días de calor y los fines de semana, pero odia la lluvia. Revisa la previsión.","Le front de mer adore les jours chauds et le week-end, déteste la pluie. Regarde les prévisions.","O Calçadão adora dias quentes e fins de semana, e odeia chuva. Confira a previsão.",Набережная любит жаркие дни и выходные и не любит дождь. Смотри прогноз.,遊歩道は暑い日と週末に人気、雨は苦手です。天気予報を確認しましょう。,해변 산책로는 더운 날과 주말을 좋아하고 비를 싫어해요. 예보를 확인하세요.,"समुद्री सैरगाह गर्म दिनों और वीकेंड पर चलती है, बारिश से चिढ़ती है। मौसम का अनुमान देखो।"
+tip.dispatcher,"Head cook rules: a truck can pack, cook and restock by itself. Turn it on in the truck.","Baş aşçı kuralları: bir kamyon kendi kendine yükleyebilir, pişirebilir ve stok takviyesi yapabilir. Kamyonda aç.","Küchenchef-Regeln: Ein Truck kann selbst packen, kochen und nachfüllen. Schalte es im Truck ein.","Reglas del jefe de cocina: un camión puede cargar, cocinar y reabastecerse por sí solo. Actívalo en el camión.","Règles du chef : un camion peut charger, cuisiner et se réapprovisionner seul. Active-le dans le camion.","Regras do Chefe de Cozinha: um caminhão pode carregar, cozinhar e repor sozinho. Ative no caminhão.","Правила главного повара: фудтрак сам загружается, готовит и пополняет запасы. Включи его в фудтраке.",料理長の指示: トラックは自分で積み込み、調理、補充ができます。トラックでオンにしましょう。,"주방장 규칙: 트럭이 스스로 싣고, 요리하고, 보충해요. 트럭에서 켜세요.","हेड कुक के नियम: ट्रक खुद भर सकता है, पका सकता है और सामान भर सकता है। ट्रक में चालू करो।"
+tip.flare,Clean the grill when the line is short to avoid flare-ups.,"Kuyruk kısaken ızgarayı temizle, alevlenmeyi önle.","Reinige den Grill, wenn die Schlange kurz ist, um Fettbrände zu vermeiden.",Limpia la plancha cuando la cola esté corta para evitar llamaradas.,Nettoie le grill quand la file est courte pour éviter les feux de friture.,Limpe a chapa quando a fila estiver curta para evitar incêndios.,"Чисти гриль, когда очередь короткая, чтобы не было вспышек.",火が上がらないよう、行列が短いときに鉄板を掃除しましょう。,줄이 짧을 때 그릴을 닦으면 불꽃을 막을 수 있어요.,"लाइन छोटी हो तो ग्रिल साफ़ करो, ताकि आग न भड़के।"
+tip.fridge,A drink fridge sells drinks — twice as many on hot days.,İçecek buzdolabı içecek satar — sıcak günlerde iki katı.,Ein Getränkekühlschrank verkauft Getränke — an heißen Tagen doppelt so viele.,Una nevera de bebidas vende bebidas: el doble en días de calor.,Un frigo à boissons vend des boissons — deux fois plus les jours chauds.,Uma geladeira de bebidas vende bebidas — o dobro em dias quentes.,Холодильник с напитками продаёт напитки — вдвое больше в жару.,飲料冷蔵庫は飲み物を売ります。暑い日は2倍売れます。,음료 냉장고는 음료를 팔아요. 더운 날에는 두 배로 팔려요.,ड्रिंक फ़्रिज पेय बेचता है — गर्म दिनों में दोगुने।
+tip.fryer,Fryers sell fries with burgers. Buy one in the truck layout.,Fritözler burgerle birlikte patates satar. Kamyon düzeninde bir tane al.,Fritteusen verkaufen Pommes zu den Burgern. Kauf eine im Truck-Aufbau.,Las freidoras venden patatas fritas con las hamburguesas. Cómprala en la distribución del camión.,Les friteuses vendent des frites avec les burgers. Achète-en une dans l'agencement du camion.,As fritadeiras vendem batata frita com os hambúrgueres. Compre uma no layout do caminhão.,Фритюрницы продают картошку к бургерам. Купи её в раскладке фудтрака.,フライヤーはバーガーと一緒にポテトを売ります。トラックのレイアウトで買いましょう。,튀김기는 버거와 함께 감자튀김을 팔아요. 트럭 배치에서 사세요.,फ़्रायर बर्गर के साथ फ़्राइज़ बेचते हैं। ट्रक के लेआउट में एक खरीदो।
+tip.halftime,Halftime! Open every window and call All hands.,Devre arası! Her pencereyi aç ve Herkes başa'yı çağır.,Halbzeit! Öffne jedes Fenster und ruf Alle ran.,¡Descanso! Abre todas las ventanillas y pulsa Todos a trabajar.,Mi-temps ! Ouvre tous les guichets et appelle Tout le monde.,Intervalo! Abra todas as janelas e chame Todos à frente.,Перерыв! Открой все окна и нажми «Все на подмогу».,ハーフタイムです！ 窓口をすべて開けて、全員集合をかけましょう。,하프타임이에요! 창문을 모두 열고 “전원 출동”을 누르세요.,हाफ़-टाइम! हर खिड़की खोलो और सब हाज़िर पर टैप करो।
+tip.heat,Heat wave: drinks fly. A drink fridge pays off today.,Sıcak dalgası: içecekler kapışılır. Bugün içecek buzdolabı kendini öder.,Hitzewelle: Getränke gehen weg wie warme Semmeln. Ein Getränkekühlschrank lohnt sich heute.,Ola de calor: vuelan las bebidas. Hoy compensa una nevera de bebidas.,Vague de chaleur : les boissons partent vite. Un frigo à boissons se rentabilise aujourd'hui.,Onda de calor: as bebidas voam. Uma geladeira de bebidas compensa hoje.,Жара: напитки разлетаются. Холодильник с напитками окупится сегодня.,熱波: 飲み物がよく出ます。今日は飲料冷蔵庫が役立ちます。,폭염이에요. 음료가 날개 돋친 듯 팔려요. 오늘은 음료 냉장고가 본전을 뽑아요.,गर्मी की लहर: पेय उड़ते हैं। आज ड्रिंक फ़्रिज फ़ायदे का है।
+tip.line,"People leave when the line is too long. Hire, add a station or use All hands.","Kuyruk çok uzunsa insanlar gider. İşe al, istasyon ekle ya da Herkes başa'yı kullan.","Leute gehen, wenn die Schlange zu lang ist. Stell jemanden ein, bau eine Station dazu oder nutz Alle ran.","La gente se va cuando la cola es demasiado larga. Contrata, añade una estación o usa Todos a trabajar.","Les gens partent quand la file est trop longue. Embauche, ajoute un poste ou utilise Tout le monde.","As pessoas vão embora quando a fila está longa demais. Contrate, adicione uma estação ou use Todos à frente.","Люди уходят, когда очередь слишком длинная. Найми людей, добавь станцию или используй «Все на подмогу».",行列が長すぎると、お客さんは帰ってしまいます。雇う、設備を増やす、全員集合を使うのいずれかを。,"줄이 너무 길면 손님이 떠나요. 직원을 고용하거나, 칸을 추가하거나, “전원 출동”을 쓰세요.","लाइन बहुत लंबी हो तो लोग चले जाते हैं। स्टाफ़ रखो, स्टेशन जोड़ो या सब हाज़िर इस्तेमाल करो।"
+tip.match_tomorrow,Match day tomorrow: prep extra patties tonight.,Yarın maç günü: bu gece fazladan köfte hazırla.,Morgen ist Spieltag: Bereite heute Abend extra Bratlinge vor.,Mañana es día de partido: prepara medallones extra esta noche.,Jour de match demain : prépare des steaks en plus ce soir.,Dia de jogo amanhã: prepare carnes extras esta noite.,Завтра день матча: заготовь лишние котлеты сегодня вечером.,明日は試合日です。今夜のうちにパティを多めに仕込みましょう。,내일은 경기 날이에요. 오늘 밤 패티를 더 준비하세요.,कल मैच का दिन: आज रात अतिरिक्त पैटी बनाओ।
+tip.order_ahead,"Order-ahead: when the line is long, some customers order for pickup instead of leaving.",Önceden sipariş: kuyruk uzunken bazı müşteriler gitmek yerine paket için sipariş verir.,"Vorbestellung: Wenn die Schlange lang ist, bestellen manche Kunden zur Abholung, statt zu gehen.","Pedido anticipado: cuando la cola es larga, algunos clientes piden para recoger en vez de irse.","Commande à l'avance : quand la file est longue, certains clients commandent à emporter au lieu de partir.","Pedido antecipado: quando a fila está longa, alguns clientes pedem para retirar em vez de desistir.","Предзаказ: когда очередь длинная, некоторые гости заказывают на вынос, а не уходят.",事前注文: 行列が長いと、帰る代わりに受け取り注文をするお客さんが出ます。,미리 주문: 줄이 길면 일부 손님이 떠나는 대신 픽업 주문을 해요.,पहले से ऑर्डर: लाइन लंबी हो तो कुछ ग्राहक जाने की बजाय पिकअप के लिए ऑर्डर करते हैं।
+tip.par,Par levels: the night crew preps up to your targets by itself.,Hedef stoklar: gece ekibi hedeflerine kadar kendi kendine hazırlar.,Sollmengen: Die Nachtschicht bereitet selbstständig bis zu deinen Zielen vor.,Niveles objetivo: el equipo de noche prepara hasta tus objetivos por sí solo.,Niveaux cibles : l'équipe de nuit prépare toute seule jusqu'à tes objectifs.,Níveis mínimos: a equipe da noite prepara até suas metas sozinha.,Нормы запаса: ночная смена сама заготавливает до твоих целей.,基準在庫: 夜勤のスタッフが目標量まで自動で仕込みます。,기준 수량: 야간 직원이 목표량까지 스스로 준비해요.,रोज़ के लक्ष्य: रात का स्टाफ़ तुम्हारे लक्ष्य तक अपने आप तैयारी करता है।
+tip.premium,Premium fixings: more customers stop and pitches gain reputation faster.,"Premium malzemeler: daha çok müşteri durur, satış noktaları daha hızlı şöhret kazanır.",Premium-Beläge: mehr Kunden bleiben stehen und der Standplatz gewinnt schneller an Ruf.,Ingredientes premium: se detienen más clientes y los puestos ganan reputación más rápido.,Garnitures premium : plus de clients s'arrêtent et la réputation des emplacements monte plus vite.,Coberturas premium: mais clientes param e os pontos ganham reputação mais rápido.,"Премиум-начинки: больше гостей останавливаются, точки быстрее набирают репутацию.",プレミアムの具材: 立ち寄る客が増え、出店場所の評判が早く上がります。,"프리미엄 토핑: 더 많은 손님이 멈추고, 자리의 평판이 더 빨리 올라가요.",प्रीमियम टॉपिंग: ज़्यादा ग्राहक रुकते हैं और जगह की प्रतिष्ठा तेज़ी से बढ़ती है।
+tip.propane,Propane is running low. Swap the bottle before the grill goes dark.,Propan azalıyor. Izgara sönmeden tüpü değiştir.,"Das Propan geht langsam zur Neige. Tausch die Flasche, bevor der Grill ausgeht.",El propano se está acabando. Cambia la bombona antes de que la plancha se apague.,Le propane est presque vide. Change la bouteille avant que le grill ne s'éteigne.,O gás está acabando. Troque o botijão antes que a chapa apague.,"Пропан заканчивается. Замени баллон, пока гриль не погас.",プロパンガスが少なくなっています。鉄板の火が消える前にボンベを交換しましょう。,가스가 얼마 남지 않았어요. 그릴이 꺼지기 전에 가스통을 바꾸세요.,गैस कम हो रही है। ग्रिल बंद होने से पहले सिलेंडर बदलो।
+tip.propane_out,The grill is dark. Swap the propane bottle or do a restock run.,Izgara söndü. Propan tüpünü değiştir ya da bir stok takviyesi yap.,Der Grill ist aus. Tausch die Propanflasche oder mach eine Nachschubfahrt.,La plancha está apagada. Cambia la bombona de propano o haz un reabastecimiento.,Le grill est éteint. Change la bouteille de propane ou fais une tournée de réassort.,A chapa apagou. Troque o botijão de gás ou faça uma viagem de reposição.,Гриль погас. Замени баллон с пропаном или отправь рейс за припасами.,鉄板の火が消えました。ボンベを交換するか、補充に行きましょう。,그릴이 꺼졌어요. 가스통을 바꾸거나 보충 운행을 하세요.,ग्रिल बंद है। गैस सिलेंडर बदलो या सामान लाने की यात्रा करो।
+tip.rain,Rain: the beach is empty. Move the truck or shorten the menu.,Yağmur: sahil boş. Kamyonu taşı ya da menüyü kısalt.,Regen: Der Strand ist leer. Verlege den Truck oder kürze das Menü.,Lluvia: la playa está vacía. Mueve el camión o acorta el menú.,Pluie : la plage est vide. Déplace le camion ou raccourcis le menu.,Chuva: a praia está vazia. Mude o caminhão de lugar ou encurte o cardápio.,Дождь: пляж пуст. Переставь фудтрак или сократи меню.,雨: ビーチは空いています。トラックを移すか、メニューを減らしましょう。,비가 와서 해변이 비었어요. 트럭을 옮기거나 메뉴를 줄이세요.,बारिश: समुद्र तट खाली है। ट्रक हटाओ या मेन्यू छोटा करो।
+tip.report,"Every number in the report points to a fix: stock, line or waiting.","Raporda her sayı bir düzeltmeye işaret eder: stok, kuyruk ya da bekleme.","Jede Zahl im Bericht zeigt auf eine Lösung: Vorrat, Schlange oder Wartezeit.","Cada número del informe apunta a una mejora: existencias, cola o espera.","Chaque chiffre du rapport indique une solution : stock, file ou attente.","Cada número do relatório aponta uma solução: estoque, fila ou espera.","Каждое число в отчёте указывает на исправление: запасы, очередь или ожидание.",報告の数字はすべて改善のヒントです。在庫、行列、待ち時間を見てみましょう。,"보고서의 모든 숫자는 해결할 곳을 알려 줘요: 재고, 줄, 대기.","रिपोर्ट का हर आँकड़ा एक सुधार की ओर इशारा करता है: स्टॉक, लाइन या इंतज़ार।"
+tip.rival,A rival truck! A counter-offer wins customers back.,Rakip kamyon! Karşı teklif müşterileri geri kazandırır.,Ein Konkurrenz-Truck! Ein Gegenangebot holt Kunden zurück.,¡Un camión rival! Una contraoferta recupera clientes.,Un camion concurrent ! Une contre-offre fait revenir les clients.,Um caminhão concorrente! Uma contraproposta traz os clientes de volta.,Фудтрак-соперник! Спецпредложение вернёт гостей.,ライバル店です！ 対抗割引で客を取り戻せます。,라이벌 트럭이에요! 대응 할인으로 손님을 되찾으세요.,प्रतिद्वंद्वी ट्रक! जवाबी ऑफ़र ग्राहक वापस लाता है।
+tip.second_window,A second window takes orders faster and lets the line grow longer.,İkinci pencere siparişleri daha hızlı alır ve kuyruğun daha da uzamasına izin verir.,Ein zweites Fenster nimmt Bestellungen schneller auf und lässt die Schlange länger werden.,Una segunda ventanilla toma pedidos más rápido y permite que la cola crezca más.,Un second guichet prend les commandes plus vite et laisse la file grandir.,Uma segunda janela atende pedidos mais rápido e deixa a fila crescer.,Второе окно быстрее принимает заказы и позволяет очереди расти.,2つ目の窓口で注文が速くなり、行列も長くできます。,두 번째 창문은 주문을 더 빨리 받고 줄을 더 길게 만들어요.,दूसरी खिड़की ऑर्डर तेज़ लेती है और लाइन को और लंबा होने देती है।
+tip.sold_out,Sold out! Call a restock run or pack more tomorrow.,Stok bitti! Stok takviyesi çağır ya da yarına daha çok yükle.,Ausverkauft! Plane eine Nachschubfahrt oder pack morgen mehr.,¡Agotado! Pide un reabastecimiento o carga más para mañana.,Rupture de stock ! Organise une tournée de réassort ou charge davantage demain.,Esgotado! Faça uma viagem de reposição ou leve mais amanhã.,Распродано! Отправь рейс за припасами или загрузи больше на завтра.,売り切れ！ 補充に行くか、明日は多めに積みましょう。,품절이에요! 보충 운행을 부르거나 내일 더 실으세요.,सब बिक गया! सामान लाने की यात्रा बुलाओ या कल ज़्यादा भरो।
+tip.stadium,Match days at the stadium bring halftime stampedes. Pack big.,Stadyumdaki maç günleri devre arası izdihamı getirir. Büyük yükle.,Spieltage am Stadion bringen Ansturm in der Halbzeit. Pack groß ein.,Los días de partido en el estadio traen avalanchas en el descanso. Carga a lo grande.,Les jours de match au stade provoquent des ruées à la mi-temps. Charge gros.,Dias de jogo no estádio trazem debandadas no intervalo. Leve bastante.,Дни матчей на стадионе приносят давку в перерыв. Загружайся с запасом.,スタジアムの試合日はハーフタイムに大混雑になります。多めに積みましょう。,경기장의 경기 날에는 하프타임 인파가 몰려와요. 많이 싣고 가세요.,स्टेडियम में मैच के दिन हाफ़-टाइम पर भीड़ टूटती है। बड़ा भरकर जाओ।
+tip.truck2,Two trucks: send each to a different pitch.,İki kamyon: her birini farklı bir satış noktasına gönder.,Zwei Trucks: Schick jeden zu einem anderen Standplatz.,Dos camiones: envía cada uno a un puesto distinto.,Deux camions : envoie chacun sur un emplacement différent.,Dois caminhões: envie cada um para um ponto diferente.,Два фудтрака: отправь каждый на свою точку.,トラックが2台: それぞれ別の出店場所へ送りましょう。,트럭이 두 대면 각각 다른 자리로 보내세요.,दो ट्रक: हर एक को अलग जगह भेजो।
+toast.district,{name} is open for business!,{name} iş için açık!,{name} ist geöffnet!,¡{name} ya abre sus puertas!,{name} est ouvert !,{name} está aberto para negócios!,{name} открыта для гостей!,{name} が営業を開始しました！,{name} 영업 시작!,{name} कारोबार के लिए खुल गया है!
+toast.prep_done,{n} {name} ready,{n} {name} hazır,{n} {name} fertig,{n} {name} listos,{n} {name} prêts,{n} {name} prontos,Готово: {name} × {n},{name} {n} 個 準備完了,{name} {n}개 준비 완료,{n} {name} तैयार
+toast.restock,Restock run: back soon.,Stok takviyesi: birazdan geri.,Nachschubfahrt: bin bald zurück.,Reabastecimiento en camino: vuelve pronto.,Tournée de réassort : de retour bientôt.,Viagem de reposição: volta logo.,Рейс за припасами: скоро вернётся.,補充に行っています。まもなく戻ります。,보충 운행 중이에요. 곧 돌아와요.,सामान लाने की यात्रा: जल्द लौटेंगे।
+truck.auto,Head cook rules,Baş aşçı kuralları,Küchenchef-Regeln,Reglas del jefe de cocina,Règles du chef,Regras do Chefe de Cozinha,Правила главного повара,料理長の指示,주방장 규칙,हेड कुक के नियम
+truck.auto.d,"Packs by the forecast, sets roles, cleans and restocks by itself. Slots {n}/{m}.","Tahmine göre yükler, rolleri belirler, kendi kendine temizler ve stok takviyesi yapar. Yuvalar {n}/{m}.","Packt nach Vorhersage, verteilt Aufgaben, reinigt und füllt selbstständig nach. Plätze {n}/{m}.","Carga según la previsión, asigna funciones, limpia y reabastece por sí solo. Ranuras {n}/{m}.","Charge selon les prévisions, attribue les rôles, nettoie et réapprovisionne tout seul. Emplacements {n}/{m}.","Carrega pela previsão, define funções, limpa e repõe sozinho. Vagas {n}/{m}.","Загружает по прогнозу, назначает роли, убирает и пополняет запасы сам. Слоты {n}/{m}.",予測に合わせて積み込み、役割を決め、自分で掃除と補充をします。枠 {n}/{m}。,"예보에 맞춰 싣고, 역할을 정하고, 스스로 청소하고 보충해요. 칸 {n}/{m}.","अनुमान से भरता है, भूमिकाएँ तय करता है, खुद साफ़ और भरता है। स्लॉट {n}/{m}।"
+truck.bottleneck,Slowest: {stage},En yavaş: {stage},Langsamste Stelle: {stage},Más lento: {stage},Le plus lent : {stage},Mais lenta: {stage},Самое медленное: {stage},一番遅い: {stage},가장 느림: {stage},सबसे धीमा: {stage}
+truck.box,Box Truck,Kutu Kamyon,Großer Truck,Camión caja,Camion-fourgon,Caminhão baú,Грузовой фудтрак,箱型トラック,박스 트럭,बॉक्स ट्रक
+truck.box.d,"A second truck: 5×4 kitchen, 4 crew, bigger fridge.","İkinci bir kamyon: 5×4 mutfak, 4 ekip üyesi, daha büyük buzdolabı.","Ein zweiter Truck: 5×4-Küche, 4 Teammitglieder, größerer Kühlschrank.","Un segundo camión: cocina de 5×4, 4 del equipo, nevera más grande.","Un second camion : cuisine 5×4, 4 employés, frigo plus grand.","Um segundo caminhão: cozinha 5×4, 4 da equipe, geladeira maior.","Второй фудтрак: кухня 5×4, экипаж из 4 человек, холодильник побольше.",2台目のトラック: 5×4の厨房、スタッフ4人、大きな冷蔵庫。,"두 번째 트럭이에요. 5×4 주방, 직원 4명, 더 큰 냉장고.","दूसरा ट्रक: 5×4 किचन, 4 स्टाफ़, बड़ा फ़्रिज।"
+truck.clean,Clean grill ({pct} grease),Izgarayı temizle (yağ {pct}),Grill reinigen ({pct} Fett),Limpiar la plancha ({pct} de grasa),Nettoyer le grill ({pct} de graisse),Limpar a chapa ({pct} de gordura),Почистить гриль ({pct} жира),鉄板を掃除（油 {pct}）,그릴 청소 (기름 {pct}),ग्रिल साफ़ करो ({pct} चिकनाई)
+truck.drive,{min} min drive,{min} dk yol,{min} Min. Fahrt,{min} min en coche,{min} min de route,{min} min de viagem,В пути {min} мин,移動 {min} 分,{min}분 운전,{min} मिनट का सफ़र
+truck.go,Go,Başlat,Los,Ir,Partir,Ir,Поехали,出発,출발,चलो
+truck.incomplete,"Needs a grill, a bench and a window.","Bir ızgara, tezgâh ve pencere gerekli.","Braucht einen Grill, eine Theke und ein Fenster.","Necesita una plancha, una mesada y una ventanilla.","Il faut un grill, un plan de travail et un guichet.","Precisa de uma chapa, uma bancada e uma janela.","Нужны гриль, стол и окно.",鉄板、調理台、窓口が必要です。,"그릴, 벤치, 창문이 필요해요.","ग्रिल, बेंच और खिड़की चाहिए।"
+truck.line,The line,Kuyruk,Die Schlange,La cola,La file,A fila,Очередь,行列,줄,लाइन
+truck.name,Truck {n},Kamyon {n},Truck {n},Camión {n},Camion {n},Caminhão {n},Фудтрак {n},トラック {n},트럭 {n},ट्रक {n}
+truck.no_pitch,No pitch,Satış noktası yok,Kein Standplatz,Sin puesto,Pas d'emplacement,Sem ponto,Нет точки,出店場所なし,자리 없음,कोई जगह नहीं
+truck.per_hour,{n} burgers/h,{n} burger/sa,{n} Burger/Std.,{n} hamburguesas/h,{n} burgers/h,{n} hambúrgueres/h,Бургеры: {n}/ч,{n} 個/時,시간당 버거 {n}개,{n} बर्गर/घं
+truck.pitch,Today's pitch,Bugünkü satış noktası,Heutiger Standplatz,Puesto de hoy,Emplacement du jour,Ponto de hoje,Точка на сегодня,今日の出店場所,오늘의 자리,आज की जगह
+truck.promo,Counter-offer,Karşı teklif,Gegenangebot,Contraoferta,Contre-offre,Contraproposta,Спецпредложение,対抗割引,대응 할인,जवाबी ऑफ़र
+truck.promo.d,10 % off today wins back most of the crowd.,Bugün %10 indirim kalabalığın çoğunu geri kazandırır.,10 % Rabatt heute holen die meisten Leute zurück.,Un 10 % de descuento hoy recupera a la mayoría del público.,-10 % aujourd'hui : fait revenir la plupart du public.,10 % de desconto hoje recupera a maior parte do público.,Скидка 10 % сегодня возвращает большую часть гостей.,今日 10 %割引で、ほとんどの客を取り戻せます。,오늘 10% 할인하면 손님 대부분을 되찾아요.,आज 10 % छूट से ज़्यादातर भीड़ वापस आती है।
+truck.queue,In line,Kuyrukta,In der Schlange,En cola,En file,Na fila,В очереди,並んでいます,줄 서 있음,कतार में
+truck.recall,Close and go home,Kapat ve eve dön,Schließen und nach Hause fahren,Cerrar y volver a casa,Fermer et rentrer,Fechar e voltar para casa,Закрыть и ехать домой,閉めて帰る,문 닫고 집에 가기,बंद करो और घर लौटो
+truck.send,Drive to {name},{name} noktasına sür,Nach {name} fahren,Conducir a {name},Aller à {name},Ir para {name},Ехать на {name},{name} へ向かう,{name}에 보내기,{name} की ओर चलाओ
+truck.served,{n} served · {w} lost,{n} servis · {w} kayıp,{n} bedient · {w} verloren,{n} atendidos · {w} perdidos,{n} servis · {w} perdus,{n} atendidos · {w} perdidos,Выдано: {n} · потеряно: {w},提供 {n} · 取り逃し {w},{n}명 제공 · {w}명 놓침,{n} परोसे · {w} खोए
+truck.starter,Old Faithful,Eski Sadık,Der Treue,El Fiel,Le Fidèle,Velho Fiel,Старый надёжный,頼れる相棒,믿음직한 옛 트럭,ओल्ड फ़ेथफ़ुल
+truck.starter.d,"Your first truck. 4×3 kitchen, 3 crew.","İlk kamyonun. 4×3 mutfak, 3 ekip üyesi.","Dein erster Truck. 4×3-Küche, 3 Teammitglieder.","Tu primer camión. Cocina de 4×3, 3 del equipo.","Ton premier camion. Cuisine 4×3, 3 employés.","Seu primeiro caminhão. Cozinha 4×3, 3 da equipe.","Твой первый фудтрак. Кухня 4×3, экипаж из 3 человек.",1台目のトラック。4×3の厨房、スタッフ3人。,"첫 트럭이에요. 4×3 주방, 직원 3명.","तुम्हारा पहला ट्रक। 4×3 किचन, 3 स्टाफ़।"
+truck.status.drive,On the road,Yolda,Unterwegs,En ruta,En route,Na estrada,В пути,移動中,이동 중,सड़क पर
+truck.status.idle,At the commissary,Hazırlık merkezinde,In der Vorratsküche,En la cocina central,À la cuisine centrale,Na cozinha central,В заготовочной,仕込み場にいます,공동 주방에 있어요,मुख्य किचन पर
+truck.status.restock,Restocking,Stok alıyor,Wird nachgefüllt,Reabasteciendo,Réassort en cours,Reabastecendo,Пополняется,補充中,보충 중,सामान भर रहा है
+truck.status.service,Open,Açık,Geöffnet,Abierto,Ouvert,Aberto,Открыт,営業中,영업 중,खुला
+truck.stock,{p} patties · {b} buns,{p} köfte · {b} ekmek,{p} Bratlinge · {b} Brötchen,{p} medallones · {b} panecillos,{p} steaks · {b} pains,{p} carnes · {b} pães,Котлеты: {p} · булочки: {b},パティ {p} · バンズ {b},패티 {p} · 번 {b},{p} पैटी · {b} बन
+truck.today,Today,Bugün,Heute,Hoy,Aujourd'hui,Hoje,Сегодня,今日,오늘,आज
+truck.walk,walking {n} tiles,{n} kare yürüyüş,{n} Felder zu Fuß,caminando {n} casillas,"à pied, {n} cases",andando {n} casas,Пешком: {n},{n} マス歩く,{n}칸 걸어가는 중,{n} टाइल पैदल
+trucks.sub,{n} trucks,{n} kamyon,{n} Trucks,{n} camiones,{n} camions,{n} caminhões,Фудтраков: {n},トラック {n} 台,트럭 {n}대,{n} ट्रक
+unit.h,h,sa,h,h,h,h,ч,時,시간,घं
+unit.min,min,dk,min,min,min,min,мин,分,분,मि
+unit.s,s,sn,s,s,s,s,с,秒,초,से
+weather.cloudy,☁ Cloudy,☁ Bulutlu,☁ Bewölkt,☁ Nublado,☁ Nuageux,☁ Nublado,☁ Облачно,☁ くもり,☁ 흐림,☁ बादल
+weather.hot,🔥 Heat wave,🔥 Sıcak dalgası,🔥 Hitzewelle,🔥 Ola de calor,🔥 Vague de chaleur,🔥 Onda de calor,🔥 Жара,🔥 熱波,🔥 폭염,🔥 गर्मी की लहर
+weather.rain,☂ Rain,☂ Yağmur,☂ Regen,☂ Lluvia,☂ Pluie,☂ Chuva,☂ Дождь,☂ 雨,☂ 비,☂ बारिश
+weather.sunny,☀ Sunny,☀ Güneşli,☀ Sonnig,☀ Soleado,☀ Ensoleillé,☀ Ensolarado,☀ Солнечно,☀ 晴れ,☀ 맑음,☀ धूप

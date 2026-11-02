@@ -1,492 +1,492 @@
 key,en,tr,de,es,fr,pt,ru,ja,ko,hi
-app.tagline,"Run a law firm: juggle hearings, settle or litigate, grow your practice.",,,,,,,,,
-app.title,Docket Day,,,,,,,,,
-area.contract,Contract,,,,,,,,,
-area.family,Family,,,,,,,,,
-area.small_claims,Small claims,,,,,,,,,
-area.tenancy,Tenancy,,,,,,,,,
-area.traffic,Traffic,,,,,,,,,
-chapter.courthouse_row,Courthouse Row,,,,,,,,,
-chapter.garage,The Garage Front,,,,,,,,,
-chapter.main_street,Main Street Suite,,,,,,,,,
-claim.0,Who was really there,,,,,,,,,
-claim.1,When it happened,,,,,,,,,
-claim.2,What was agreed,,,,,,,,,
-claim.3,What it cost,,,,,,,,,
-claim.4,Who was warned,,,,,,,,,
-claim.5,What the rules say,,,,,,,,,
-coach.1,"Welcome, Counsel! A client is waiting. Tap the reception desk.",,,,,,,,,
-coach.2,A parking ticket. Easy first case. Tap Accept.,,,,,,,,,
-coach.3,Tasks sit on the Docket Rail by date. Drag the intern onto the glowing evidence task.,,,,,,,,,
-coach.4,Tap the clock to skip ahead to tomorrow.,,,,,,,,,
-coach.4w,The intern is out taking photos…,,,,,,,,,
-coach.5,Amber = due soon. Drag the paralegal onto the filing.,,,,,,,,,
-coach.6,The prep table: match each claim with the glowing exhibit.,,,,,,,,,
-coach.7,Now the bill. Tap Billing run.,,,,,,,,,
-coach.7w,Court at 14:00. Watch the hearing.,,,,,,,,,
-coach.8,Spend some fees: build the library. Prep gets faster.,,,,,,,,,
-coach.9,"Two hearings, one partner! Drag the associate onto one of them.",,,,,,,,,
+app.tagline,"Run a law firm: juggle hearings, settle or litigate, grow your practice.","Bir hukuk bürosunu yönet: duruşmaları yetiştir, uzlaş ya da davaya git, büronu büyüt.","Führe eine Kanzlei: Verhandlungen jonglieren, vergleichen oder prozessieren, deine Praxis ausbauen.","Dirige un despacho de abogados: compagina vistas, negocia o ve a juicio y haz crecer tu bufete.","Dirige un cabinet d'avocats : jongle entre les audiences, transige ou plaide, fais grandir ton étude.","Administre um escritório de advocacia: dê conta das audiências, feche acordos ou vá a julgamento e faça seu escritório crescer.","Веди юридическую фирму: успевай на слушания, урегулируй или судись, расширяй практику.",法律事務所を経営しよう。審理を回し、示談か訴訟かを選び、事務所を大きくしよう。,"법률사무소를 운영하세요. 재판을 조율하고, 합의하거나 소송하며 사무소를 키워 보세요.","फ़र्म चलाओ: सुनवाइयाँ सँभालो, समझौता करो या मुकदमा लड़ो, और अपना काम बढ़ाओ।"
+app.title,Docket Day,Docket Day,Docket Day,Docket Day,Docket Day,Docket Day,Docket Day,Docket Day,Docket Day,Docket Day
+area.contract,Contract,Sözleşme,Vertrag,Contratos,Contrats,Contratos,Договоры,契約,계약,कॉन्ट्रैक्ट
+area.family,Family,Aile,Familie,Familia,Famille,Família,Семейные,家事,가사,परिवार
+area.small_claims,Small claims,Küçük alacak,Kleinforderungen,Reclamaciones menores,Petites créances,Pequenas causas,Мелкие иски,少額訴訟,소액 사건,छोटे दावे
+area.tenancy,Tenancy,Kira,Mietrecht,Arrendamientos,Locations,Locações,Аренда жилья,賃貸,임대차,किराएदारी
+area.traffic,Traffic,Trafik,Verkehr,Tráfico,Circulation,Trânsito,Дорожные дела,交通,교통,ट्रैफ़िक
+chapter.courthouse_row,Courthouse Row,Adliye Sırası,Gerichtsstraße,Calle del Juzgado,Rue du Palais,Rua do Fórum,Улица суда,裁判所通り,법원 거리,कोर्टहाउस रो
+chapter.garage,The Garage Front,Garaj Önü,Garagenfront,Frente del garaje,Devant le garage,Frente da Garagem,Фасад гаража,ガレージ前の事務所,차고 앞 사무실,गैराज वाला दफ़्तर
+chapter.main_street,Main Street Suite,Ana Cadde Ofisi,Hauptstraßen-Büro,Despacho de la Calle Mayor,Bureau de la Grand-Rue,Avenida Principal,Офис на Главной,メインストリートの事務所,메인 스트리트 사무실,मेन स्ट्रीट सूट
+claim.0,Who was really there,Gerçekte kim oradaydı,Wer wirklich da war,Quién estuvo realmente allí,Qui était vraiment là,Quem estava mesmo lá,Кто был там на самом деле,実際に居合わせたのは誰か,실제로 누가 있었나,असल में कौन वहाँ था
+claim.1,When it happened,Ne zaman oldu,Wann es passiert ist,Cuándo ocurrió,Quand c'est arrivé,Quando aconteceu,Когда это произошло,いつ起きたか,언제 일어났나,कब हुआ
+claim.2,What was agreed,Ne kararlaştırıldı,Was vereinbart wurde,Qué se acordó,Ce qui avait été convenu,O que foi acordado,О чём договорились,何が合意されたか,무엇에 합의했나,क्या तय हुआ था
+claim.3,What it cost,Neye mal oldu,Was es gekostet hat,Cuánto costó,Ce que ça a coûté,Quanto custou,Сколько это стоило,いくらかかったか,비용은 얼마였나,इसमें कितना नुकसान हुआ
+claim.4,Who was warned,Kim uyarıldı,Wer gewarnt wurde,Quién fue avisado,Qui a été prévenu,Quem foi avisado,Кого предупредили,誰に警告されたか,누가 경고를 받았나,किसे पहले बताया गया था
+claim.5,What the rules say,Kurallar ne diyor,Was die Regeln sagen,Qué dicen las normas,Ce que disent les règles,O que dizem as regras,Что говорят правила,規則には何と書かれているか,규정은 뭐라고 하나,नियम क्या कहते हैं
+coach.1,"Welcome, Counsel! A client is waiting. Tap the reception desk.","Hoş geldin, Avukat! Bir müvekkil bekliyor. Resepsiyon masasına dokun.","Willkommen, Kollege! Eine Mandantin wartet. Tippe auf den Empfang.","¡Bienvenido, letrado! Hay un cliente esperando. Toca el mostrador de recepción.","Bienvenue, Maître ! Un client attend. Touche l'accueil.","Bem-vindo, colega! Um cliente está esperando. Toque na recepção.","Добро пожаловать, юрист! Клиент ждёт. Нажми на стойку регистрации.",ようこそ、先生！ 依頼人が待っています。受付をタップしてください。,"환영해요, 변호사님! 의뢰인이 기다리고 있어요. 접수 데스크를 누르세요.","स्वागत है, वकील साहब! एक क्लाइंट इंतज़ार कर रहा है। रिसेप्शन डेस्क पर टैप करो।"
+coach.2,A parking ticket. Easy first case. Tap Accept.,Bir park cezası. İlk dava için kolay. Kabul et'e dokun.,Ein Parkticket. Ein einfacher erster Fall. Tippe auf Annehmen.,Una multa de aparcamiento. Primer caso fácil. Toca Aceptar.,Un procès-verbal de stationnement. Premier dossier facile. Touche Accepter.,Uma multa de estacionamento. Caso fácil para começar. Toque em Aceitar.,Штраф за парковку. Простое первое дело. Нажми «Принять».,駐車違反の案件です。最初の案件にぴったり。「受ける」をタップしてください。,주차 위반 건이에요. 쉬운 첫 사건이에요. “수락”을 누르세요.,पार्किंग का चालान। आसान पहला केस। स्वीकार करो पर टैप करो।
+coach.3,Tasks sit on the Docket Rail by date. Drag the intern onto the glowing evidence task.,Görevler tarihe göre Dosya Hattı'nda durur. Stajyeri parlayan delil görevinin üstüne sürükle.,Aufgaben stehen nach Datum auf der Terminleiste. Zieh die Hilfskraft auf die leuchtende Beweisaufgabe.,Las tareas se ordenan por fecha en el Riel de agenda. Arrastra al becario sobre la tarea de pruebas que brilla.,Les tâches sont classées par date sur le Rail. Glisse le stagiaire sur la tâche de preuve qui brille.,"As tarefas ficam no Trilho da Pauta, por data. Arraste o estagiário para a tarefa de provas que está brilhando.",Задачи лежат в ленте дел по дате. Перетащи стажёра на светящуюся задачу с уликой.,作業は期日ボードに日付順で並びます。光っている証拠の作業に、インターンをドラッグしてください。,업무는 날짜순으로 사건 일정표에 놓여요. 인턴을 빛나는 증거 업무로 끌어다 놓으세요.,काम डॉकेट रेल पर तारीख के हिसाब से लगे हैं। इंटर्न को चमकते सबूत वाले काम पर खींचकर ले जाओ।
+coach.4,Tap the clock to skip ahead to tomorrow.,Yarına geçmek için saate dokun.,"Tippe auf die Uhr, um zum nächsten Tag vorzuspulen.",Toca el reloj para saltar a mañana.,Touche l'horloge pour passer à demain.,Toque no relógio para pular para amanhã.,"Нажми на часы, чтобы перейти к завтрашнему дню.",時計をタップして明日に進めましょう。,시계를 누르면 내일로 넘어가요.,कल पर जाने के लिए घड़ी पर टैप करो।
+coach.4w,The intern is out taking photos…,Stajyer fotoğraf çekmeye gitti…,Die Hilfskraft macht gerade Fotos …,El becario ha salido a hacer fotos…,Le stagiaire est parti prendre des photos…,O estagiário saiu para tirar fotos…,Стажёр пошёл фотографировать…,インターンは写真撮影に出ています…,인턴이 사진을 찍으러 나갔어요…,इंटर्न फ़ोटो लेने गया है…
+coach.5,Amber = due soon. Drag the paralegal onto the filing.,Sarı = yakında son tarih. Hukuk asistanını dilekçenin üstüne sürükle.,Gelb = bald fällig. Zieh die Rechtsassistenz auf die Eingabe.,Ámbar = vence pronto. Arrastra al auxiliar jurídico sobre la presentación.,Orange = bientôt dû. Glisse l'assistant juridique sur le dépôt.,Âmbar = vence em breve. Arraste o paralegal para o protocolo.,Жёлтый — срок скоро. Перетащи помощника юриста на подачу документов.,黄色は締切が近いしるしです。パラリーガルを提出書類にドラッグしてください。,호박색 = 곧 마감이에요. 법률 보조원을 서류 제출 업무로 끌어다 놓으세요.,पीला = जल्द देना है। पैरालीगल को फ़ाइलिंग पर खींचो।
+coach.6,The prep table: match each claim with the glowing exhibit.,Hazırlık masası: her iddiayı parlayan delille eşleştir.,Der Vorbereitungstisch: Ordne jede Behauptung dem leuchtenden Beweisstück zu.,La mesa de preparación: une cada hecho con la prueba que brilla.,La table de préparation : associe chaque point à la pièce qui brille.,A mesa de preparação: combine cada alegação com a prova que brilha.,Стол подготовки: сопоставь каждое требование со светящейся уликой.,準備テーブルです。それぞれの主張と、光っている証拠品を組み合わせてください。,준비 테이블: 각 주장과 빛나는 증거를 맞춰 주세요.,तैयारी मेज़: हर दावे को चमकते सबूत से मिलाओ।
+coach.7,Now the bill. Tap Billing run.,Şimdi fatura. Faturalama'ya dokun.,Jetzt die Abrechnung. Tippe auf Abrechnungslauf.,Ahora la factura. Toca Facturar.,Maintenant la facturation. Touche Facturation.,Agora a conta. Toque em Faturamento.,Теперь счёт. Нажми «Выставить счета».,次は請求です。「請求処理」をタップしてください。,이제 청구할 차례예요. “청구 실행”을 누르세요.,अब बिल। बिलिंग चलाओ पर टैप करो।
+coach.7w,Court at 14:00. Watch the hearing.,Saat 14:00'te duruşma. Duruşmayı izle.,Gericht um 14:00. Schau der Verhandlung zu.,Vista a las 14:00. Mira la vista.,Audience à 14 h 00. Regarde l'audience.,Audiência às 14:00. Acompanhe a sessão.,Суд в 14:00. Смотри слушание.,14:00に審理があります。審理の様子を見ましょう。,14:00에 법정이 열려요. 재판을 지켜보세요.,14:00 पर कोर्ट। सुनवाई देखो।
+coach.8,Spend some fees: build the library. Prep gets faster.,Biraz ücret harca: kütüphaneyi inşa et. Hazırlık hızlanır.,Gib etwas Honorar aus: Baue die Bibliothek. Die Vorbereitung geht schneller.,Gasta parte de los honorarios: construye la biblioteca. La preparación irá más rápida.,Dépense quelques honoraires : construis la bibliothèque. La préparation ira plus vite.,Gaste um pouco dos honorários: construa a biblioteca. A preparação fica mais rápida.,Потрать гонорары: построй библиотеку. Подготовка пойдёт быстрее.,報酬を使いましょう: 資料室を建てましょう。準備が速くなります。,수임료를 써 보세요. 도서관을 지으면 준비가 더 빨라져요.,कुछ फ़ीस खर्च करो: लाइब्रेरी बनाओ। तैयारी तेज़ होगी।
+coach.9,"Two hearings, one partner! Drag the associate onto one of them.","İki duruşma, bir ortak! Ortağı onlardan birinin üstüne sürükle.","Zwei Verhandlungen, ein Partner! Zieh den Associate auf eine davon.",¡Dos vistas y un socio! Arrastra al asociado sobre una de ellas.,"Deux audiences, un seul associé ! Glisse le collaborateur sur l'une d'elles.","Duas audiências, um sócio! Arraste o advogado associado para uma delas.","Два слушания, один партнёр! Перетащи младшего юриста на одно из них.",審理が2件、担当は1人！ アソシエイトをどちらか一方にドラッグしてください。,재판은 두 건인데 파트너는 한 명이에요! 담당 변호사를 둘 중 하나로 끌어다 놓으세요.,"दो सुनवाइयाँ, एक पार्टनर! असोसिएट को किसी एक पर खींचो।"
 coach.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 coach.step,Step {n} of {m},Adım {n} / {m},Schritt {n} von {m},Paso {n} de {m},Étape {n} sur {m},Passo {n} de {m},Шаг {n} из {m},ステップ {n} / {m},{m}단계 중 {n}단계,चरण {n} / {m}
 common.ok,OK,Tamam,OK,OK,OK,OK,OK,OK,확인,ठीक है
-court.next,"Next: {name}, day {n}",,,,,,,,,
-court.none,No hearings today.,,,,,,,,,
-court.title,Courthouse,,,,,,,,,
-court.today,Today's hearings,,,,,,,,,
-crisis.power_cut.b,No printers for an hour: filings stop.,,,,,,,,,
-crisis.power_cut.t,Power cut,,,,,,,,,
-crisis.sick_day.b,Someone is home with a cold today.,,,,,,,,,
-crisis.sick_day.t,Sick day,,,,,,,,,
-crisis.substitute_judge.b,A different judge takes a hearing this week. Check the card.,,,,,,,,,
-crisis.substitute_judge.t,Substitute judge,,,,,,,,,
-crisis.surprise_motion.b,The other side filed a motion. A new paper is due tomorrow.,,,,,,,,,
-crisis.surprise_motion.t,Surprise motion,,,,,,,,,
-err.blocked,Follow the guide first.,,,,,,,,,
-err.building,Already building.,,,,,,,,,
-err.busy,One build at a time.,,,,,,,,,
-err.cash,Not enough operating cash.,,,,,,,,,
-err.closed,Close more matters first.,,,,,,,,,
-err.conflict,Conflict of interest: refer or wall it.,,,,,,,,,
-err.desks,No free desk. Build one or move up.,,,,,,,,,
-err.done,Already done.,,,,,,,,,
-err.founder,You can't let yourself go!,,,,,,,,,
-err.in_session,They're in court.,,,,,,,,,
-err.invalid,That's not possible right now.,,,,,,,,,
-err.locked,Opens in a later chapter.,,,,,,,,,
-err.max,That's the most you can have.,,,,,,,,,
-err.no_price,The store isn't ready yet.,,,,,,,,,
-err.no_skill,They can't do that kind of task.,,,,,,,,,
-err.not_lawyer,Only lawyers go to court.,,,,,,,,,
-err.nothing,Nothing to do.,,,,,,,,,
-err.owned,Already there.,,,,,,,,,
-err.phase,Not at this time of day.,,,,,,,,,
-err.standing,Not enough Standing yet.,,,,,,,,,
-err.tutorial,Not during the guide.,,,,,,,,,
-err.unknown,Something went wrong.,,,,,,,,,
-err.used,Already used once.,,,,,,,,,
-err.wall_locked,Ethical walls open at Main Street.,,,,,,,,,
-err.wrong,Not that card.,,,,,,,,,
-exhibit.0,Witness note,,,,,,,,,
-exhibit.1,Time-stamped photo,,,,,,,,,
-exhibit.2,Signed agreement,,,,,,,,,
-exhibit.3,Receipts,,,,,,,,,
-exhibit.4,Email reminder,,,,,,,,,
-exhibit.5,Rulebook page,,,,,,,,,
-exhibit.decoy,Coffee-stained doodle,,,,,,,,,
-fee.contingency,Contingency,,,,,,,,,
-fee.hourly,Hourly,,,,,,,,,
-fee.retainer,Retainer,,,,,,,,,
-graphics.dropped,Graphics lowered to keep it smooth. Change it in Settings.,,,,,,,,,
+court.next,"Next: {name}, day {n}","Sıradaki: {name}, gün {n}","Nächste: {name}, Tag {n}","Próxima: {name}, día {n}","Prochaine : {name}, jour {n}","Próxima: {name}, dia {n}","Далее: {name}, день {n}",次: {name}、{n}日目,"다음: {name}, {n}일차","अगली: {name}, दिन {n}"
+court.none,No hearings today.,Bugün duruşma yok.,Heute keine Verhandlungen.,Hoy no hay vistas.,Pas d'audience aujourd'hui.,Nenhuma audiência hoje.,Сегодня слушаний нет.,今日は審理がありません。,오늘은 재판이 없어요.,आज कोई सुनवाई नहीं।
+court.title,Courthouse,Adliye,Gericht,Juzgado,Palais de justice,Fórum,Суд,裁判所,법원,कोर्टहाउस
+court.today,Today's hearings,Bugünkü duruşmalar,Heutige Verhandlungen,Vistas de hoy,Audiences du jour,Audiências de hoje,Слушания сегодня,今日の審理,오늘의 재판,आज की सुनवाइयाँ
+crisis.power_cut.b,No printers for an hour: filings stop.,Bir saatliğine yazıcı yok: dilekçeler durur.,Eine Stunde keine Drucker: Eingaben stocken.,Durante una hora no hay impresoras: las presentaciones se paran.,Plus d'imprimantes pendant une heure : les dépôts s'arrêtent.,Sem impressoras por uma hora: os protocolos param.,Час не работают принтеры: подача документов стоит.,1時間プリンターが使えず、書類の提出が止まります。,한 시간 동안 프린터를 쓸 수 없어서 서류 제출이 멈춰요.,एक घंटे तक प्रिंटर बंद: फ़ाइलिंग रुकेगी।
+crisis.power_cut.t,Power cut,Elektrik kesintisi,Stromausfall,Corte de luz,Coupure de courant,Queda de energia,Отключили свет,停電,정전,बिजली कटी
+crisis.sick_day.b,Someone is home with a cold today.,Biri bugün nezle olduğu için evde.,Heute ist jemand mit Erkältung zu Hause.,Hoy alguien se queda en casa con un resfriado.,Quelqu'un est resté chez lui aujourd'hui avec un rhume.,Alguém está em casa com um resfriado hoje.,Кто-то сегодня дома с простудой.,今日は風邪で休んでいるスタッフがいます。,오늘은 한 명이 감기로 집에 있어요.,आज किसी को सर्दी-ज़ुकाम है और वह घर पर है।
+crisis.sick_day.t,Sick day,Hasta gün,Krankheitstag,Día de baja,Jour d'arrêt,Dia de atestado,Больничный,病欠,병가,बीमारी का दिन
+crisis.substitute_judge.b,A different judge takes a hearing this week. Check the card.,Bu hafta bir duruşmaya başka bir hâkim bakıyor. Karta bak.,Diese Woche übernimmt eine andere Richterin oder ein anderer Richter eine Verhandlung. Schau auf die Karte.,Esta semana otro juez lleva una vista. Revisa la ficha.,Un autre juge préside une audience cette semaine. Vérifie la fiche.,Outro juiz assume uma audiência esta semana. Veja a ficha.,На этой неделе слушание ведёт другой судья. Посмотри карточку.,今週は別の裁判官が審理を担当します。カードを確認してください。,이번 주에는 다른 판사가 재판을 맡아요. 카드를 확인하세요.,इस हफ़्ते एक दूसरे जज सुनवाई करेंगे। कार्ड देखो।
+crisis.substitute_judge.t,Substitute judge,Vekil hâkim,Vertretungsrichter,Juez sustituto,Juge suppléant,Juiz substituto,Замена судьи,代理の裁判官,대리 판사,बदले हुए जज
+crisis.surprise_motion.b,The other side filed a motion. A new paper is due tomorrow.,Karşı taraf talep verdi. Yarın yeni bir belge teslim edilmeli.,Die Gegenseite hat einen Antrag eingereicht. Morgen ist ein neuer Schriftsatz fällig.,La otra parte presentó un escrito. Mañana vence un nuevo documento.,La partie adverse a déposé une requête. Un nouveau document est attendu demain.,A outra parte apresentou uma petição. Um novo documento vence amanhã.,Другая сторона подала ходатайство. Новая бумага нужна завтра.,相手方が申立てをしました。明日までに新しい書類が必要です。,상대측이 신청서를 냈어요. 내일까지 새 서류를 내야 해요.,सामने वाले पक्ष ने अर्ज़ी दी है। कल एक नया कागज़ देना है।
+crisis.surprise_motion.t,Surprise motion,Sürpriz talep,Überraschender Antrag,Escrito sorpresa,Requête surprise,Petição surpresa,Неожиданное ходатайство,突然の申立て,기습 신청,अचानक अर्ज़ी
+err.blocked,Follow the guide first.,Önce rehberi takip et.,Folge zuerst der Anleitung.,Sigue primero la guía.,Suis d'abord le guide.,Siga o guia primeiro.,Сначала следуй подсказкам.,先にガイドに従ってください。,먼저 안내를 따라가 주세요.,पहले गाइड पूरी करो।
+err.building,Already building.,Zaten inşa ediliyor.,Wird schon gebaut.,Ya se está construyendo.,Déjà en construction.,Já em construção.,Уже строится.,すでに建設中です。,이미 짓는 중이에요.,पहले से बन रहा है।
+err.busy,One build at a time.,Aynı anda tek inşaat.,Immer nur ein Bau.,Una obra a la vez.,Une construction à la fois.,Uma obra de cada vez.,Одна стройка за раз.,一度に建設できるのは一つだけです。,한 번에 하나만 지을 수 있어요.,एक बार में एक निर्माण।
+err.cash,Not enough operating cash.,Yeterli işletme parası yok.,Nicht genug Betriebsgeld.,No hay suficiente efectivo de explotación.,Trésorerie insuffisante.,Caixa operacional insuficiente.,Недостаточно оборотных средств.,運転資金が足りません。,운영 자금이 부족해요.,दफ़्तर में पर्याप्त पैसा नहीं है।
+err.closed,Close more matters first.,Önce daha fazla dosyayı kapat.,Schließe zuerst mehr Mandate ab.,Cierra antes más asuntos.,Clos d'abord plus d'affaires.,Feche mais casos antes.,Сначала закрой больше дел.,先に案件をもっと終わらせてください。,먼저 사건을 더 끝내세요.,पहले और केस बंद करो।
+err.conflict,Conflict of interest: refer or wall it.,Çıkar çatışması: yönlendir ya da duvar ör.,Interessenkonflikt: weiterleiten oder eine ethische Mauer bauen.,Conflicto de intereses: deriva el caso o levanta una muralla.,Conflit d'intérêts : oriente-le ailleurs ou dresse une muraille de Chine.,Conflito de interesses: encaminhe ou crie uma barreira ética.,Конфликт интересов: передай дело или отгороди.,利益相反です: 紹介するか、情報遮断措置をとってください。,이해 충돌이에요. 다른 곳에 넘기거나 차단벽을 세우세요.,हितों का टकराव: या तो भेजो या नैतिक दीवार लगाओ।
+err.desks,No free desk. Build one or move up.,Boş masa yok. Bir tane inşa et ya da yukarı taşın.,Kein freier Schreibtisch. Baue einen oder zieh um.,No hay mesa libre. Construye una o sube de planta.,Aucun bureau libre. Construis-en un ou passe à l'étage supérieur.,Nenhuma mesa livre. Construa uma ou mude de andar.,Нет свободного стола. Построй или переходи выше.,空いている机がありません。机を増やすか、事務所を移してください。,빈 책상이 없어요. 하나 짓거나 더 큰 사무실로 옮기세요.,कोई खाली मेज़ नहीं। एक बनाओ या ऊपर जाओ।
+err.done,Already done.,Zaten yapıldı.,Schon erledigt.,Ya está hecho.,Déjà fait.,Já feito.,Уже готово.,すでに済んでいます。,이미 완료했어요.,पहले से हो चुका है।
+err.founder,You can't let yourself go!,Kendini işten çıkaramazsın!,Du kannst dich nicht selbst entlassen!,¡No puedes despedirte a ti mismo!,Tu ne peux pas te renvoyer !,Você não pode se dispensar!,Себя уволить нельзя!,自分を解雇することはできません！,나 자신은 내보낼 수 없어요!,तुम खुद को नहीं निकाल सकते!
+err.in_session,They're in court.,Duruşmalarda.,Sie sind gerade vor Gericht.,Están en la vista.,Ils sont au tribunal.,Estão no tribunal.,Они в суде.,その人は法廷にいます。,그 사람은 지금 법정에 있어요.,वे कोर्ट में हैं।
+err.invalid,That's not possible right now.,Şu an bu mümkün değil.,Das geht gerade nicht.,Ahora mismo no es posible.,Ce n'est pas possible pour l'instant.,Isso não é possível agora.,Сейчас это невозможно.,今はそれはできません。,지금은 그렇게 할 수 없어요.,अभी यह मुमकिन नहीं है।
+err.locked,Opens in a later chapter.,Sonraki bölümde açılır.,Öffnet sich in einem späteren Kapitel.,Se abre en un capítulo posterior.,S'ouvre dans un chapitre plus tard.,Abre em um capítulo posterior.,Откроется в следующей главе.,あとの章で開きます。,다음 장에서 열려요.,बाद के अध्याय में खुलेगा।
+err.max,That's the most you can have.,Sahip olabileceğin en fazla bu.,Mehr geht nicht.,Ese es el máximo que puedes tener.,C'est le maximum possible.,Esse é o máximo que você pode ter.,Это максимум.,これ以上は持てません。,이 이상은 가질 수 없어요.,इससे ज़्यादा नहीं हो सकते।
+err.no_price,The store isn't ready yet.,Mağaza henüz hazır değil.,Der Shop ist noch nicht bereit.,La tienda aún no está lista.,La boutique n'est pas encore prête.,A loja ainda não está pronta.,Магазин ещё не готов.,ストアはまだ準備中です。,상점이 아직 준비되지 않았어요.,दुकान अभी तैयार नहीं है।
+err.no_skill,They can't do that kind of task.,Bu tür görevi yapamazlar.,Diese Person kann diese Aufgabe nicht übernehmen.,No pueden hacer ese tipo de tarea.,Elle ne peut pas faire ce type de tâche.,Essa pessoa não consegue fazer esse tipo de tarefa.,Они не умеют такую задачу.,その人はその種類の作業はできません。,그 종류의 업무는 할 수 없어요.,वे यह तरह का काम नहीं कर सकते।
+err.not_lawyer,Only lawyers go to court.,Sadece avukatlar duruşmaya gider.,Nur Anwältinnen und Anwälte gehen vor Gericht.,Solo los abogados van a juicio.,Seuls les avocats vont au tribunal.,Só advogados vão ao tribunal.,В суд ходят только юристы.,法廷に行けるのは弁護士だけです。,변호사만 법정에 갈 수 있어요.,कोर्ट सिर्फ़ वकील जाते हैं।
+err.nothing,Nothing to do.,Yapılacak bir şey yok.,Nichts zu tun.,No hay nada que hacer.,Rien à faire.,Nada para fazer.,Делать нечего.,やることはありません。,할 일이 없어요.,करने को कुछ नहीं।
+err.owned,Already there.,Zaten burada.,Schon vorhanden.,Ya está.,Déjà là.,Já está lá.,Уже есть.,すでにあります。,이미 있어요.,पहले से है।
+err.phase,Not at this time of day.,Günün bu saatinde değil.,Zu dieser Tageszeit nicht möglich.,Ahora no es el momento del día.,Pas à cette heure de la journée.,Não é hora disso agora.,Сейчас не то время суток.,この時間帯にはできません。,지금 시간에는 할 수 없어요.,दिन के इस समय नहीं।
+err.standing,Not enough Standing yet.,Henüz yeterli itibar yok.,Noch nicht genug Ansehen.,Aún no tienes suficiente reputación.,Pas encore assez de renom.,Reputação insuficiente ainda.,Пока не хватает авторитета.,評価が足りません。,평판이 아직 부족해요.,अभी साख काफ़ी नहीं है।
+err.tutorial,Not during the guide.,Rehber sırasında olmaz.,Nicht während der Anleitung.,No durante la guía.,Pas pendant le guide.,Não durante o guia.,Не во время подсказок.,ガイドの間はできません。,가이드 중에는 할 수 없어요.,गाइड के दौरान नहीं।
+err.unknown,Something went wrong.,Bir şeyler ters gitti.,Etwas ist schiefgelaufen.,Algo salió mal.,Une erreur s'est produite.,Algo deu errado.,Что-то пошло не так.,何か問題が起きました。,문제가 생겼어요.,कुछ गड़बड़ हो गई।
+err.used,Already used once.,Zaten bir kez kullanıldı.,Schon einmal benutzt.,Ya se usó una vez.,Déjà utilisé une fois.,Já usado uma vez.,Уже использовано.,一度使用済みです。,이미 한 번 썼어요.,एक बार पहले इस्तेमाल हो चुका है।
+err.wall_locked,Ethical walls open at Main Street.,Etik duvarlar Ana Cadde'de açılır.,Ethische Mauern öffnen sich in der Hauptstraße.,Las murallas éticas se abren en la Calle Mayor.,Les murailles de Chine s'ouvrent à la Grand-Rue.,As barreiras éticas abrem na Avenida Principal.,Этические барьеры открываются на Главной улице.,情報遮断措置はメインストリートで使えるようになります。,정보 차단벽은 메인 스트리트에서 열려요.,नैतिक दीवारें मेन स्ट्रीट पर खुलती हैं।
+err.wrong,Not that card.,Bu kart değil.,Nicht diese Karte.,Esa carta no es.,Ce n'est pas la bonne carte.,Não é esse cartão.,Не та карточка.,そのカードではありません。,그 카드가 아니에요.,यह कार्ड नहीं।
+exhibit.0,Witness note,Tanık notu,Zeugennotiz,Nota de un testigo,Note de témoin,Anotação de testemunha,Записка свидетеля,目撃者のメモ,목격자 메모,गवाह का नोट
+exhibit.1,Time-stamped photo,Zaman damgalı fotoğraf,Foto mit Zeitstempel,Foto con fecha y hora,Photo horodatée,Foto com data e hora,Фото с отметкой времени,日時入りの写真,시간이 찍힌 사진,समय की मुहर वाली फ़ोटो
+exhibit.2,Signed agreement,İmzalı sözleşme,Unterschriebene Vereinbarung,Acuerdo firmado,Accord signé,Contrato assinado,Подписанное соглашение,署名入りの合意書,서명된 합의서,दस्तखत वाला समझौता
+exhibit.3,Receipts,Fişler,Belege,Recibos,Reçus,Recibos,Чеки,領収書,영수증,रसीदें
+exhibit.4,Email reminder,E-posta hatırlatması,E-Mail-Erinnerung,Recordatorio por correo,Rappel par e-mail,Lembrete por e-mail,Email-напоминание,メールの催促,이메일 알림,ईमेल की याद दिलाने वाला संदेश
+exhibit.5,Rulebook page,Yönetmelik sayfası,Seite aus dem Regelwerk,Página del reglamento,Page du règlement,Página do regulamento,Страница правил,規則集のページ,규정집 페이지,नियम-पुस्तिका का पन्ना
+exhibit.decoy,Coffee-stained doodle,Kahve lekeli karalama,Gekritzel mit Kaffeefleck,Garabato manchado de café,Gribouillis taché de café,Rabisco com mancha de café,Рисунок в пятнах кофе,コーヒーのシミがついた落書き,커피 얼룩 낙서,चाय के दाग वाली डूडल
+fee.contingency,Contingency,Başarı primi,Erfolgshonorar,A éxito,Au résultat,Êxito,Процент с выигрыша,成功報酬,성공보수,सफलता पर फ़ीस
+fee.hourly,Hourly,Saatlik,Stundensatz,Por horas,À l'heure,Por hora,Почасовая,時間制,시간당 보수,घंटे के हिसाब से
+fee.retainer,Retainer,Ön ödeme,Vorschuss,Iguala,Forfait,Adiantado,Аванс,顧問料,착수금,पेशगी फ़ीस
+graphics.dropped,Graphics lowered to keep it smooth. Change it in Settings.,Akıcı kalsın diye grafikler düşürüldü. Ayarlar'dan değiştirebilirsin.,"Grafik wurde gesenkt, damit es flüssig läuft. Du kannst es in den Einstellungen ändern.",Gráficos reducidos para que vaya fluido. Cámbialo en Ajustes.,Graphismes baissés pour rester fluide. Tu peux les changer dans les Réglages.,Gráficos reduzidos para manter a fluidez. Mude em Configurações.,"Графику снизили, чтобы игра шла плавнее. Изменить можно в настройках.",スムーズに動くよう画質を下げました。設定で変更できます。,부드럽게 돌아가도록 그래픽을 낮췄어요. 설정에서 바꿀 수 있어요.,खेल चिकना चले इसलिए ग्राफ़िक्स कम किए। सेटिंग्स में बदल सकते हो।
 graphics.high,High,Yüksek,Hoch,Alta,Élevée,Alta,Высокая,高,높음,ऊँचा
 graphics.low,Low,Düşük,Niedrig,Baja,Basse,Baixa,Низкая,低,낮음,कम
 graphics.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
-hearing.bad,Overruled!,,,,,,,,,
-hearing.continue,Continue,,,,,,,,,
-hearing.good,Sustained!,,,,,,,,,
-hearing.line.0,All rise!,,,,,,,,,
-hearing.line.1,"Counsel, your opening.",,,,,,,,,
-hearing.line.2,The other side objects…,,,,,,,,,
-hearing.line.3,The judge weighs the exhibits.,,,,,,,,,
-hearing.lost,Lost. Lesson fee {cash},,,,,,,,,
-hearing.nolawyer,Nobody from the firm is here!,,,,,,,,,
-hearing.objection,Objection!,,,,,,,,,
-hearing.objection_help,Tap when the marker is in the green.,,,,,,,,,
-hearing.odds,Odds {pct},,,,,,,,,
-hearing.title,Hearing: {name},,,,,,,,,
-hearing.won,Won! Fee {cash},,,,,,,,,
-hud.bill,Billing run,,,,,,,,,
-hud.building,Building {name} · {time},,,,,,,,,
+hearing.bad,Overruled!,Reddedildi!,Abgelehnt!,¡Rechazada!,Rejeté !,Indeferido!,Возражение отклонено!,異議却下！,기각!,खारिज!
+hearing.continue,Continue,Devam et,Weiter,Continuar,Continuer,Continuar,Продолжить,続ける,계속,जारी रखो
+hearing.good,Sustained!,Kabul edildi!,Stattgegeben!,¡Aceptada!,Accordé !,Deferido!,Возражение принято!,異議認容！,인용!,मंज़ूर!
+hearing.line.0,All rise!,Herkes ayağa!,Alle erheben sich!,¡Todos en pie!,Veuillez vous lever !,Todos de pé!,"Встать, суд идёт!",起立！,모두 기립!,सब खड़े हो जाएँ!
+hearing.line.1,"Counsel, your opening.","Sayın avukat, açılış konuşmanız.","Kollege, Ihr Eröffnungsvortrag.","Letrado, su alegato inicial.","Maître, votre plaidoirie d'ouverture.","Colega, sua abertura.","Юрист, ваше вступительное слово.",先生、冒頭陳述をどうぞ。,"변호인, 모두 진술하세요.","वकील, अपनी शुरुआत करें।"
+hearing.line.2,The other side objects…,Karşı taraf itiraz ediyor…,Die Gegenseite erhebt Einspruch …,La otra parte protesta…,La partie adverse s'oppose…,A outra parte se opõe…,Другая сторона возражает…,相手方が異議を唱えています…,상대측이 이의를 제기해요…,सामने वाला पक्ष आपत्ति कर रहा है…
+hearing.line.3,The judge weighs the exhibits.,Hâkim delilleri tartıyor.,Die Richterin wägt die Beweisstücke ab.,El juez sopesa las pruebas.,Le juge examine les pièces.,O juiz analisa as provas.,Судья изучает улики.,裁判官が証拠品を検討しています。,판사가 증거를 살펴봐요.,जज सबूतों को तौल रहे हैं।
+hearing.lost,Lost. Lesson fee {cash},Kaybettin. Ders ücreti {cash},Verloren. Lehrgeld {cash},Perdida. Honorarios de aprendizaje {cash},Perdu. Frais d'apprentissage {cash},Perdeu. Honorários de aprendizado {cash},Проигрыш. Плата за урок {cash},敗訴。経験料 {cash},패소. 수업료 {cash},हार गए। सबक़ की फ़ीस {cash}
+hearing.nolawyer,Nobody from the firm is here!,Bürodan kimse burada değil!,Niemand aus der Kanzlei ist da!,¡Nadie del despacho está aquí!,Personne du cabinet n'est là !,Ninguém do escritório está aqui!,Никто из фирмы не пришёл!,事務所から誰も出廷していません！,사무소에서 아무도 오지 않았어요!,फ़र्म का कोई वकील यहाँ नहीं है!
+hearing.objection,Objection!,İtiraz!,Einspruch!,¡Protesta!,Objection !,Protesto!,Возражаю!,異議あり！,이의 있어요!,आपत्ति!
+hearing.objection_help,Tap when the marker is in the green.,İşaretçi yeşilde olduğunda dokun.,"Tippe, wenn die Markierung im Grünen ist.",Toca cuando el marcador esté en el verde.,Touche quand le repère est dans le vert.,Toque quando o marcador estiver no verde.,"Нажми, когда маркер в зелёной зоне.",マーカーが緑に入ったらタップしてください。,표시가 초록에 있을 때 누르세요.,"जब निशान हरे हिस्से में हो, तब टैप करो।"
+hearing.odds,Odds {pct},Şans {pct},Chance {pct},Probabilidad {pct},Chances {pct},Chances {pct},Шансы {pct},勝率 {pct},승산 {pct},जीत की संभावना {pct}
+hearing.title,Hearing: {name},Duruşma: {name},Verhandlung: {name},Vista: {name},Audience : {name},Audiência: {name},Слушание: {name},審理: {name},재판: {name},सुनवाई: {name}
+hearing.won,Won! Fee {cash},Kazandın! Ücret {cash},Gewonnen! Honorar {cash},¡Ganada! Honorarios {cash},Gagné ! Honoraires {cash},Ganhou! Honorários {cash},Выигрыш! Гонорар {cash},勝訴！ 報酬 {cash},승소! 수임료 {cash},जीत गए! फ़ीस {cash}
+hud.bill,Billing run,Faturalama,Abrechnungslauf,Facturación,Facturation,Faturamento,Выставление счетов,請求処理,청구 실행,बिलिंग
+hud.building,Building {name} · {time},{name} inşa ediliyor · {time},Bau {name} · {time},Construyendo {name} · {time},Construction {name} · {time},Construindo {name} · {time},Строится {name} · {time},建設中 {name} · {time},{name} 짓는 중 · {time},{name} बन रहा है · {time}
 hud.day,Day {n},Gün {n},Tag {n},Día {n},Jour {n},Dia {n},День {n},{n}日目,{n}일차,दिन {n}
-hud.ff,⏩ Skip ahead,,,,,,,,,
+hud.ff,⏩ Skip ahead,⏩ İleri sar,⏩ Vorspulen,⏩ Adelantar,⏩ Avancer,⏩ Pular,⏩ Перемотать,⏩ 先へ進む,⏩ 빨리 넘기기,⏩ आगे छोड़ो
 hud.next_day,Next day,Sonraki gün,Nächster Tag,Día siguiente,Jour suivant,Próximo dia,Следующий день,次の日へ,다음 날,अगला दिन
 hud.speed,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×
-hud.speed_guide,Speed opens after the guide.,,,,,,,,,
-hud.speed_locked,Faster Days unlocks 4× speed.,,,,,,,,,
-hud.standing,★ {s},,,,,,,,,
-hud.standing_info,Standing = your reputation in each practice area. It brings bigger matters and opens new chapters.,,,,,,,,,
+hud.speed_guide,Speed opens after the guide.,"Hız, rehberden sonra açılır.",Tempo wird nach der Anleitung freigeschaltet.,La velocidad se desbloquea al terminar la guía.,La vitesse se débloque après le guide.,A velocidade libera depois do guia.,Ускорение откроется после подсказок.,ガイドのあとに速度変更が使えます。,가이드를 마치면 속도를 올릴 수 있어요.,गाइड पूरी होने के बाद स्पीड खुलेगी।
+hud.speed_locked,Faster Days unlocks 4× speed.,Daha hızlı günler 4× hızı açar.,Schnellere Tage schalten 4× Tempo frei.,Días rápidos desbloquea la velocidad 4×.,Les journées rapides débloquent la vitesse 4×.,Dias mais rápidos liberam velocidade 4×.,Быстрые дни открывают скорость 4×.,速い日々で4×の速さが使えます。,빠른 하루 기능으로 4× 속도가 열려요.,तेज़ दिन 4× स्पीड खोलता है।
+hud.standing,★ {s},★ {s},★ {s},★ {s},★ {s},★ {s},★ {s},★ {s},★ {s},★ {s}
+hud.standing_info,Standing = your reputation in each practice area. It brings bigger matters and opens new chapters.,"İtibar, her uzmanlık alanındaki itibarındır. Daha büyük dosyalar getirir ve yeni bölümleri açar.",Ansehen = dein Ruf in jedem Rechtsgebiet. Es bringt größere Mandate und öffnet neue Kapitel.,Reputación = tu fama en cada área de práctica. Trae asuntos más grandes y abre nuevos capítulos.,"Le renom, c'est ta réputation dans chaque domaine. Il attire de plus grosses affaires et ouvre de nouveaux chapitres.",Reputação = sua fama em cada área de atuação. Traz casos maiores e abre novos capítulos.,Авторитет — твоя репутация в каждой области практики. Он приносит дела крупнее и открывает новые главы.,評価 = 各分野での評判です。大きな案件を呼び、新しい章を開きます。,평판은 각 업무 분야에서 쌓인 신뢰예요. 더 큰 사건을 데려오고 새 장을 열어 줘요.,साख = हर क्षेत्र में तुम्हारी प्रतिष्ठा। इससे बड़े केस आते हैं और नए अध्याय खुलते हैं।
 hud.start_day,Start the day,Güne başla,Tag starten,Empezar el día,Commencer la journée,Começar o dia,Начать день,営業開始,하루 시작,दिन शुरू करो
-hud.trust,Trust {cash},,,,,,,,,
-hud.trust_info,"Client money held in trust. It is never yours to spend: retainer work draws from it, the rest goes back to the client.",,,,,,,,,
-hud.weekday.0,Mon,,,,,,,,,
-hud.weekday.1,Tue,,,,,,,,,
-hud.weekday.2,Wed,,,,,,,,,
-hud.weekday.3,Thu,,,,,,,,,
-hud.weekday.4,Fri,,,,,,,,,
-iap.automation.d,Staffs new tasks and hearings by itself + 2 more standing instructions.,,,,,,,,,
-iap.automation.t,Office Manager,,,,,,,,,
-iap.bundle.d,Ad-free + Edition + Partner's Pass + Faster Days + Overnight+ + every look.,,,,,,,,,
-iap.bundle.t,Complete Docket Collection,,,,,,,,,
-iap.cash_l.d,5 days of operating cash.,,,,,,,,,
-iap.cash_l.t,Quarterly budget,,,,,,,,,
-iap.cash_m.d,2.5 days of operating cash.,,,,,,,,,
-iap.cash_m.t,Office budget,,,,,,,,,
-iap.cash_s.d,1 day of operating cash.,,,,,,,,,
-iap.cash_s.t,Petty cash,,,,,,,,,
-iap.cash_xl.d,10 days of operating cash.,,,,,,,,,
-iap.cash_xl.t,Firm reserve,,,,,,,,,
-iap.comeback.d,2 days of operating cash to restart the firm.,,,,,,,,,
-iap.comeback.t,Welcome Back,,,,,,,,,
-iap.cosmetics_all.d,"Every office style, outfit and courtroom theme.",,,,,,,,,
-iap.cosmetics_all.t,Cosmetic Collection,,,,,,,,,
-iap.court_themes.d,A grander courthouse across the street.,,,,,,,,,
-iap.court_themes.t,Courtroom themes,,,,,,,,,
-iap.noads.d,No more ad breaks. Rewards without videos.,,,,,,,,,
+hud.trust,Trust {cash},Emanet {cash},Treuhand {cash},Cuenta de clientes {cash},Compte client {cash},Fundo {cash},Счёт клиентов {cash},預り金 {cash},위탁금 {cash},अमानत {cash}
+hud.trust_info,"Client money held in trust. It is never yours to spend: retainer work draws from it, the rest goes back to the client.","Müvekkil parası emanette tutulur. Asla harcayamazsın: ön ödeme işleri bundan çekilir, kalanı müvekkile döner.","Geld der Mandantschaft auf dem Treuhandkonto. Es gehört nie dir: Vorschussarbeit wird daraus bezahlt, der Rest geht zurück an die Mandantschaft.",Dinero de clientes en cuenta. Nunca es tuyo para gastarlo: el trabajo con iguala se cobra de ahí y el resto vuelve al cliente.,"Argent des clients placé sur un compte client. Il ne t'appartient jamais : le forfait y puise, le reste retourne au client.","Dinheiro de clientes guardado em fundo. Nunca é seu para gastar: os honorários adiantados saem daí, o resto volta para o cliente.","Деньги клиентов на доверительном счёте. Это не твои деньги: работа по авансу списывается отсюда, остальное возвращается клиенту.",依頼人のお金を預り金として保管します。自分の支出には使えません。顧問料の業務はここから引き落とされ、残りは依頼人に返します。,"의뢰인 돈은 위탁금으로 보관돼요. 내 돈처럼 쓸 수 없어요. 착수금 업무는 여기서 쓰고, 나머지는 의뢰인에게 돌아가요.","क्लाइंट का पैसा अमानत में रखा जाता है। यह कभी तुम्हारे खर्च का नहीं होता: पेशगी वाला काम इसी से लिया जाता है, बाकी क्लाइंट को लौटता है।"
+hud.weekday.0,Mon,Pzt,Mo,Lun,Lun,Seg,Пн,月,월,सोम
+hud.weekday.1,Tue,Sal,Di,Mar,Mar,Ter,Вт,火,화,मंगल
+hud.weekday.2,Wed,Çar,Mi,Mié,Mer,Qua,Ср,水,수,बुध
+hud.weekday.3,Thu,Per,Do,Jue,Jeu,Qui,Чт,木,목,गुरु
+hud.weekday.4,Fri,Cum,Fr,Vie,Ven,Sex,Пт,金,금,शुक्र
+iap.automation.d,Staffs new tasks and hearings by itself + 2 more standing instructions.,Yeni görevleri ve duruşmaları kendi kendine atar + 2 sabit talimat daha.,Besetzt neue Aufgaben und Verhandlungen selbst + 2 weitere Daueranweisungen.,Asigna solo las nuevas tareas y vistas + 2 instrucciones permanentes más.,Attribue seul les nouvelles tâches et audiences + 2 autres consignes permanentes.,Designa novas tarefas e audiências sozinho + 2 instruções permanentes a mais.,"Сам назначает новые задачи и слушания, плюс 2 постоянных указания.",新しい作業と審理に自動で担当を割り当てます。さらに常設指示を2つ追加。,새 업무와 재판에 직원을 스스로 배정해요. 상시 지시가 2개 더 있어요.,नए काम और सुनवाइयाँ अपने आप सौंपता है + 2 और स्थायी निर्देश।
+iap.automation.t,Office Manager,Büro Yöneticisi,Büroleitung,Gerente de oficina,Responsable de bureau,Gerente do Escritório,Офис-менеджер,事務所長,사무장,ऑफ़िस मैनेजर
+iap.bundle.d,Ad-free + Edition + Partner's Pass + Faster Days + Overnight+ + every look.,Reklamsız + Sürüm + Ortak Kartı + Hızlı Günler + Gece+ + tüm görünümler.,Ohne Werbung + Edition + Partnerkarte + Schnellere Tage + Übernacht+ + alle Looks.,Sin anuncios + Edición + Pase de socio + Días rápidos + Nocturno+ + todos los estilos.,Sans pub + Édition + Pass Associé + Journées rapides + Nuit+ + tous les styles.,Sem anúncios + Edição + Passe de Sócio + Dias Mais Rápidos + Noite+ + todos os visuais.,"Без рекламы, издание, партнёрский пропуск, быстрые дни, ночная работа+ и все оформления.",広告なし＋エディション＋パートナーパス＋速い日々＋夜間営業+＋全デザイン。,"광고 제거, 에디션, 파트너 패스, 빠른 하루, 야간 플러스, 모든 외형이 들어 있어요.",विज्ञापन-मुक्त + एडिशन + पार्टनर पास + तेज़ दिन + ओवरनाइट+ + हर लुक।
+iap.bundle.t,Complete Docket Collection,Tam Dosya Koleksiyonu,Komplett-Kanzlei-Paket,Colección completa del despacho,Collection complète Docket,Coleção Completa do Escritório,Полная коллекция Docket,期日完全コレクション,사건 일정 올인원 컬렉션,पूरा डॉकेट कलेक्शन
+iap.cash_l.d,5 days of operating cash.,5 günlük işletme parası.,5 Tage Betriebsgeld.,5 días de efectivo de explotación.,5 jours de trésorerie.,5 dias de caixa operacional.,5 дней оборотных средств.,運転資金5日分。,운영 자금 5일치예요.,5 दिन का दफ़्तर खर्च।
+iap.cash_l.t,Quarterly budget,Üç aylık bütçe,Quartalsbudget,Presupuesto trimestral,Budget trimestriel,Orçamento trimestral,Квартальный бюджет,四半期予算,분기 예산,तिमाही बजट
+iap.cash_m.d,2.5 days of operating cash.,"2,5 günlük işletme parası.","2,5 Tage Betriebsgeld.","2,5 días de efectivo de explotación.","2,5 jours de trésorerie.","2,5 dias de caixa operacional.","2,5 дня оборотных средств.",運転資金2.5日分。,운영 자금 2.5일치예요.,2.5 दिन का दफ़्तर खर्च।
+iap.cash_m.t,Office budget,Büro bütçesi,Büro-Budget,Presupuesto de oficina,Budget du cabinet,Orçamento do escritório,Бюджет офиса,事務所予算,사무소 예산,दफ़्तर बजट
+iap.cash_s.d,1 day of operating cash.,1 günlük işletme parası.,1 Tag Betriebsgeld.,1 día de efectivo de explotación.,1 jour de trésorerie.,1 dia de caixa operacional.,1 день оборотных средств.,運転資金1日分。,운영 자금 1일치예요.,1 दिन का दफ़्तर खर्च।
+iap.cash_s.t,Petty cash,Küçük kasa,Portokasse,Caja chica,Petite caisse,Caixinha,Мелкая наличность,小口現金,소액 현금,छोटा खर्च
+iap.cash_xl.d,10 days of operating cash.,10 günlük işletme parası.,10 Tage Betriebsgeld.,10 días de efectivo de explotación.,10 jours de trésorerie.,10 dias de caixa operacional.,10 дней оборотных средств.,運転資金10日分。,운영 자금 10일치예요.,10 दिन का दफ़्तर खर्च।
+iap.cash_xl.t,Firm reserve,Büro rezervi,Kanzleirücklage,Reserva del despacho,Réserve du cabinet,Reserva do escritório,Резерв фирмы,事務所の積立金,사무소 적립금,फ़र्म रिज़र्व
+iap.comeback.d,2 days of operating cash to restart the firm.,Büroyu yeniden başlatmak için 2 günlük işletme parası.,"2 Tage Betriebsgeld, um die Kanzlei neu zu starten.",2 días de efectivo de explotación para volver a poner en marcha el despacho.,2 jours de trésorerie pour relancer le cabinet.,2 dias de caixa operacional para reabrir o escritório.,"2 дня оборотных средств, чтобы снова запустить фирму.",事務所を再開するための運転資金2日分。,사무소를 다시 시작하는 데 쓸 운영 자금 2일치예요.,फ़र्म दोबारा शुरू करने के लिए 2 दिन का दफ़्तर खर्च।
+iap.comeback.t,Welcome Back,Tekrar Hoş Geldin,Willkommen zurück,Bienvenido de nuevo,Bienvenue à nouveau,Bem-vindo de volta,С возвращением,おかえりパック,다시 오신 것을 환영해요,वापसी पैक
+iap.cosmetics_all.d,"Every office style, outfit and courtroom theme.","Her büro tarzı, kıyafet ve duruşma salonu teması.","Jeder Büro-Stil, jedes Outfit und jedes Gerichtssaal-Design.","Todos los estilos de oficina, atuendos y temas de sala de vistas.","Tous les styles de bureau, tenues et thèmes de salle d'audience.","Todos os estilos de escritório, roupas e temas de tribunal.","Все стили офиса, наряды и темы зала суда.",すべての事務所スタイル、服装、法廷テーマ。,"모든 사무실 스타일, 복장, 법정 테마가 들어 있어요.","हर दफ़्तर की शैली, पोशाक और कोर्टरूम थीम।"
+iap.cosmetics_all.t,Cosmetic Collection,Görünüm Koleksiyonu,Kosmetik-Sammlung,Colección de adornos,Collection esthétique,Coleção de Cosméticos,Коллекция оформления,見た目コレクション,꾸미기 컬렉션,सौंदर्य कलेक्शन
+iap.court_themes.d,A grander courthouse across the street.,Karşıdaki adliyenin daha görkemli hali.,Ein prächtigeres Gericht auf der anderen Straßenseite.,Un juzgado más grande al otro lado de la calle.,"Un palais de justice plus grandiose, de l'autre côté de la rue.",Um fórum mais imponente do outro lado da rua.,Более величественное здание суда через дорогу.,向かいに、より立派な裁判所が建ちます。,길 건너에 있는 더 웅장한 법원이에요.,सड़क के उस पार एक भव्य कचहरी।
+iap.court_themes.t,Courtroom themes,Duruşma salonu temaları,Gerichtssaal-Designs,Temas de sala de vistas,Thèmes de salle d'audience,Temas de tribunal,Темы зала суда,法廷テーマ,법정 테마,कोर्टरूम थीम
+iap.noads.d,No more ad breaks. Rewards without videos.,Artık reklam molası yok. Ödüller videosuz.,Keine Werbepausen mehr. Belohnungen ohne Videos.,Sin más pausas publicitarias. Recompensas sin vídeos.,Plus de pauses publicitaires. Récompenses sans vidéo.,Sem mais intervalos com anúncios. Recompensas sem vídeos.,Больше никаких рекламных пауз. Награды без видео.,広告の休憩はなくなります。報酬は動画なしで受け取れます。,광고 화면이 더는 나오지 않아요. 보상은 영상 없이 받아요.,अब विज्ञापन ब्रेक नहीं। इनाम बिना वीडियो के।
 iap.noads.t,Remove Ads,Reklamları Kaldır,Werbung entfernen,Quitar anuncios,Retirer les pubs,Remover Anúncios,Убрать рекламу,広告を削除,광고 제거,विज्ञापन हटाओ
-iap.outfits.d,Sharper outfits for your whole team.,,,,,,,,,
-iap.outfits.t,Suits & Gowns,,,,,,,,,
-iap.overnight_plus.d,The firm earns up to 8 h while you're away (instead of 4).,,,,,,,,,
-iap.overnight_plus.t,Overnight+,,,,,,,,,
-iap.partner_pass.d,Ad-free + a 14-day Docket Rail + one more standing instruction. Permanent.,,,,,,,,,
-iap.partner_pass.t,Partner's Pass,,,,,,,,,
-iap.premium.d,Ad-free + gold nameplate office style + one more standing instruction.,,,,,,,,,
-iap.premium.t,Managing Partner Edition,,,,,,,,,
-iap.retainer_relief.d,2.5 days of operating cash to get past a slow week.,,,,,,,,,
-iap.retainer_relief.t,Bridge Funds,,,,,,,,,
-iap.speed.d,4× speed and a quicker billing run.,,,,,,,,,
-iap.speed.t,Faster Days,,,,,,,,,
-iap.starter.d,2 days of operating cash + an extra intern for a day.,,,,,,,,,
-iap.starter.t,Starter Pack,,,,,,,,,
-iap.theme_classic.d,Wood panels and green lamps.,,,,,,,,,
-iap.theme_classic.t,Classic office,,,,,,,,,
-iap.theme_deco.d,Gold trim and black marble.,,,,,,,,,
-iap.theme_deco.t,Art Deco office,,,,,,,,,
-iap.theme_loft.d,Brick walls and big windows.,,,,,,,,,
-iap.theme_loft.t,Loft office,,,,,,,,,
-intake.accept,Accept,,,,,,,,,
-intake.conflict,Conflict: we already act against this client.,,,,,,,,,
-intake.decline,Decline,,,,,,,,,
-intake.empty,Nobody waiting. New clients walk in during office hours.,,,,,,,,,
-intake.hearing_in,Court in {a}–{b} days,,,,,,,,,
-intake.patience,Waits until {time},,,,,,,,,
-intake.refer,Refer,,,,,,,,,
-intake.retainer,Retainer {cash} into trust,,,,,,,,,
-intake.rule_off,Off,,,,,,,,,
-intake.rule_on,Auto-accept,,,,,,,,,
-intake.rules,Standing instructions,,,,,,,,,
-intake.rules_help,"Auto-accept small, conflict-free matters of an area, also while you're away. {n} of {m} used.",,,,,,,,,
-intake.title,Reception,,,,,,,,,
-intake.twist_easy,Twist: easier than it looks,,,,,,,,,
-intake.twist_hard,Twist: trickier than it looks,,,,,,,,,
-intake.twist_hidden,Twist: unknown,,,,,,,,,
-intake.twist_none,Twist: none,,,,,,,,,
-intake.upcoming,Coming up next,,,,,,,,,
-intake.value,Claim {cash},,,,,,,,,
-intake.waiting,{n} waiting,,,,,,,,,
-intake.wall,Wall · {cost},,,,,,,,,
-intake.win_fee,Win fee {cash},,,,,,,,,
-intro.1.b,"A garage-front office in Calderport, right across from the courthouse.",,,,,,,,,
-intro.1.t,Your own law firm,,,,,,,,,
-intro.2.b,Every client brings dates. Put the right person on each task before it's due.,,,,,,,,,
-intro.2.t,Fit people into the calendar,,,,,,,,,
-intro.3.b,"Prep well, pick your battles, and grow into a busy practice.",,,,,,,,,
-intro.3.t,Settle or go to court,,,,,,,,,
+iap.outfits.d,Sharper outfits for your whole team.,Tüm ekibin için daha şık kıyafetler.,Schickere Outfits für dein ganzes Team.,Trajes más elegantes para todo tu equipo.,Des tenues plus élégantes pour toute ton équipe.,Roupas mais elegantes para toda a sua equipe.,Строгие наряды для всей команды.,チーム全員にかっこいい服装を。,팀 전체가 더 단정한 옷차림을 해요.,पूरी टीम के लिए तेज़ पोशाकें।
+iap.outfits.t,Suits & Gowns,Takım ve Cüppe,Anzüge & Roben,Trajes y togas,Costumes et toges,Ternos e Becas,Костюмы и мантии,スーツとガウン,정장과 가운,सूट और गाउन
+iap.overnight_plus.d,The firm earns up to 8 h while you're away (instead of 4).,Sen yokken büro en fazla 8 saat kazanır (4 yerine).,"Die Kanzlei verdient bis zu 8 Std., während du weg bist (statt 4).",El despacho gana hasta 8 h mientras no estás (en vez de 4).,Le cabinet gagne jusqu'à 8 h pendant ton absence (au lieu de 4).,O escritório ganha até 8 h enquanto você está fora (em vez de 4).,"Фирма зарабатывает до 8 ч, пока тебя нет (вместо 4).",留守の間も最大8時間分稼げます（通常は4時間）。,자리를 비운 동안 사무소가 최대 8시간치(4시간 대신)를 벌어요.,तुम्हारे दूर रहने पर फ़र्म 8 घंटे तक कमाती है (4 की जगह)।
+iap.overnight_plus.t,Overnight+,Gece+,Übernacht+,Nocturno+,Nuit+,Noite+,Ночная работа+,夜間営業+,야간 플러스,ओवरनाइट+
+iap.partner_pass.d,Ad-free + a 14-day Docket Rail + one more standing instruction. Permanent.,Reklamsız + 14 günlük Dosya Hattı + bir sabit talimat daha. Kalıcı.,Ohne Werbung + eine 14-Tage-Terminleiste + eine weitere Daueranweisung. Dauerhaft.,Sin anuncios + Riel de agenda de 14 días + una instrucción permanente más. Para siempre.,Sans pub + Rail des dossiers 14 jours + une consigne permanente de plus. Définitif.,Sem anúncios + Trilho da Pauta por 14 dias + mais uma instrução permanente. Vitalício.,"Без рекламы, лента дел на 14 дней и одно постоянное указание. Навсегда.",広告なし＋14日分の期日ボード＋常設指示をもう1つ。永久に有効。,"광고 제거, 14일짜리 사건 일정표, 상시 지시 1개가 영구적으로 들어 있어요.",विज्ञापन-मुक्त + 14 दिन की डॉकेट रेल + एक और स्थायी निर्देश। हमेशा के लिए।
+iap.partner_pass.t,Partner's Pass,Ortak Kartı,Partnerkarte,Pase de socio,Pass Associé,Passe de Sócio,Партнёрский пропуск,パートナーパス,파트너 패스,पार्टनर पास
+iap.premium.d,Ad-free + gold nameplate office style + one more standing instruction.,Reklamsız + altın isim levhalı büro tarzı + bir sabit talimat daha.,Ohne Werbung + goldenes Namensschild-Büro + eine weitere Daueranweisung.,Sin anuncios + estilo de oficina con placa dorada + una instrucción permanente más.,Sans pub + style de bureau à plaque dorée + une consigne permanente de plus.,Sem anúncios + estilo de escritório com placa dourada + mais uma instrução permanente.,"Без рекламы, золотая табличка офиса и одно постоянное указание.",広告なし＋金の表札の事務所スタイル＋常設指示をもう1つ。,"광고 제거, 금색 명패 사무실 스타일, 상시 지시 1개가 들어 있어요.",विज्ञापन-मुक्त + सुनहरी नेमप्लेट वाली दफ़्तर शैली + एक और स्थायी निर्देश।
+iap.premium.t,Managing Partner Edition,Baş Ortak Sürümü,Geschäftsführende-Partner-Edition,Edición Socio director,Édition Associé gérant,Edição do Sócio-Gerente,Издание «Управляющий партнёр»,統括パートナーエディション,대표 변호사 에디션,मैनेजिंग पार्टनर एडिशन
+iap.retainer_relief.d,2.5 days of operating cash to get past a slow week.,"Yavaş bir haftayı atlatmak için 2,5 günlük işletme parası.","2,5 Tage Betriebsgeld, um eine schwache Woche zu überstehen.","2,5 días de efectivo de explotación para superar una semana lenta.","2,5 jours de trésorerie pour passer une semaine difficile.","2,5 dias de caixa operacional para atravessar uma semana difícil.","2,5 дня оборотных средств, чтобы пережить трудную неделю.",暇な週を乗り切るための運転資金2.5日分。,느린 주를 버틸 운영 자금 2.5일치예요.,धीमे हफ़्ते से निकलने के लिए 2.5 दिन का दफ़्तर खर्च।
+iap.retainer_relief.t,Bridge Funds,Köprü Fonu,Überbrückungsgeld,Fondos puente,Fonds relais,Fundos de Transição,Запас на трудную неделю,つなぎ資金,징검다리 자금,ब्रिज फ़ंड
+iap.speed.d,4× speed and a quicker billing run.,4× hız ve daha hızlı bir faturalama turu.,4× Tempo und ein schnellerer Abrechnungslauf.,Velocidad 4× y una facturación más rápida.,Vitesse 4× et facturation plus rapide.,Velocidade 4× e um faturamento mais rápido.,Скорость 4× и более быстрое выставление счетов.,4×の速さと、より速い請求処理。,4× 속도와 더 빠른 청구 실행이에요.,4× स्पीड और तेज़ बिलिंग।
+iap.speed.t,Faster Days,Hızlı Günler,Schnellere Tage,Días rápidos,Journées rapides,Dias Mais Rápidos,Быстрые дни,速い日々,빠른 하루,तेज़ दिन
+iap.starter.d,2 days of operating cash + an extra intern for a day.,2 günlük işletme parası + bir günlüğüne ek stajyer.,2 Tage Betriebsgeld + eine zusätzliche Hilfskraft für einen Tag.,2 días de efectivo de explotación + un becario extra durante un día.,2 jours de trésorerie + un stagiaire en plus pendant un jour.,2 dias de caixa operacional + um estagiário extra por um dia.,2 дня оборотных средств и дополнительный стажёр на день.,運転資金2日分＋インターン1名（1日分）。,운영 자금 2일치와 하루 동안 인턴 한 명을 더 줘요.,2 दिन का दफ़्तर खर्च + एक दिन के लिए एक अतिरिक्त इंटर्न।
+iap.starter.t,Starter Pack,Başlangıç Paketi,Starterpaket,Pack inicial,Pack de départ,Pacote Inicial,Стартовый набор,スターターパック,입문 팩,स्टार्टर पैक
+iap.theme_classic.d,Wood panels and green lamps.,Ahşap paneller ve yeşil lambalar.,Holztäfelung und grüne Lampen.,Paneles de madera y lámparas verdes.,Boiseries et lampes vertes.,Painéis de madeira e luminárias verdes.,Деревянные панели и зелёные лампы.,木の羽目板と緑のランプ。,나무 패널과 초록 램프예요.,लकड़ी के पैनल और हरे लैंप।
+iap.theme_classic.t,Classic office,Klasik büro,Klassisches Büro,Oficina clásica,Bureau classique,Escritório clássico,Классический офис,クラシックな事務所,클래식 사무실,क्लासिक दफ़्तर
+iap.theme_deco.d,Gold trim and black marble.,Altın çerçeve ve siyah mermer.,Goldzierrat und schwarzer Marmor.,Adornos dorados y mármol negro.,Liserés dorés et marbre noir.,Detalhes dourados e mármore preto.,Золотая отделка и чёрный мрамор.,金の縁取りと黒大理石。,금색 장식과 검은 대리석이에요.,सुनहरी किनारी और काला संगमरमर।
+iap.theme_deco.t,Art Deco office,Art Deco büro,Art-déco-Büro,Oficina Art Déco,Bureau Art déco,Escritório Art Déco,Офис в стиле ар-деко,アール・デコの事務所,아르데코 사무실,आर्ट डेको दफ़्तर
+iap.theme_loft.d,Brick walls and big windows.,Tuğla duvarlar ve büyük pencereler.,Backsteinwände und große Fenster.,Muros de ladrillo y ventanales grandes.,Murs en briques et grandes fenêtres.,Paredes de tijolo e janelas grandes.,Кирпичные стены и большие окна.,レンガの壁と大きな窓。,벽돌 벽과 큰 창문이에요.,ईंट की दीवारें और बड़ी खिड़कियाँ।
+iap.theme_loft.t,Loft office,Loft büro,Loft-Büro,Oficina loft,Bureau loft,Escritório loft,Офис-лофт,ロフトの事務所,로프트 사무실,लॉफ़्ट दफ़्तर
+intake.accept,Accept,Kabul et,Annehmen,Aceptar,Accepter,Aceitar,Принять,受ける,수락,स्वीकार करो
+intake.conflict,Conflict: we already act against this client.,Çıkar çatışması: bu müvekkile karşı zaten çalışıyoruz.,Konflikt: Wir vertreten bereits die Gegenseite.,Conflicto: ya actuamos contra este cliente.,Conflit : nous agissons déjà contre ce client.,Conflito: já atuamos contra este cliente.,Конфликт: мы уже действуем против этого клиента.,利益相反: 当事務所は、この依頼人の相手方として既に活動しています。,이해 충돌: 우리가 이미 이 의뢰인의 상대편에서 일하고 있어요.,टकराव: हम इस क्लाइंट के खिलाफ़ पहले से काम कर रहे हैं।
+intake.decline,Decline,Reddet,Ablehnen,Rechazar,Refuser,Recusar,Отказать,断る,거절,मना करो
+intake.empty,Nobody waiting. New clients walk in during office hours.,Bekleyen kimse yok. Yeni müvekkiller büro saatlerinde gelir.,Niemand wartet. Neue Mandanten kommen während der Bürozeiten.,No hay nadie esperando. Los nuevos clientes entran en horas de oficina.,Personne n'attend. De nouveaux clients entrent pendant les heures de bureau.,Ninguém esperando. Novos clientes chegam no horário de expediente.,Никто не ждёт. Новые клиенты приходят в часы приёма.,待っている人はいません。新しい依頼人は営業時間中に来ます。,기다리는 사람이 없어요. 새 의뢰인은 영업시간에 찾아와요.,कोई इंतज़ार में नहीं। दफ़्तर के समय में नए क्लाइंट आते हैं।
+intake.hearing_in,Court in {a}–{b} days,Duruşma {a}–{b} gün içinde,Gericht in {a}–{b} Tagen,Juicio en {a}–{b} días,Audience dans {a} à {b} jours,Audiência em {a}–{b} dias,Суд через {a}–{b} дн.,審理まで {a}～{b} 日,법원 {a}–{b}일 후,सुनवाई {a}–{b} दिन में
+intake.patience,Waits until {time},{time} kadar bekler,Wartet bis {time},Espera hasta las {time},Attend jusqu'à {time},Espera até {time},Ждёт до {time},{time} まで待ちます,{time}까지 기다려요,{time} तक इंतज़ार करेगा
+intake.refer,Refer,Yönlendir,Weiterleiten,Derivar,Orienter,Encaminhar,Передать,紹介する,소개,भेजो
+intake.retainer,Retainer {cash} into trust,"Ön ödeme {cash}, emanete",Vorschuss {cash} auf das Treuhandkonto,Iguala {cash} a cuenta de clientes,Forfait {cash} sur le compte client,Adiantamento {cash} no fundo,Аванс {cash} на счёт клиента,顧問料 {cash} を預り金へ,위탁금 착수금: {cash},पेशगी {cash} अमानत में
+intake.rule_off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
+intake.rule_on,Auto-accept,Otomatik kabul,Automatisch annehmen,Aceptar solo,Accepter auto,Aceitar sozinho,Авто-приём,自動で受ける,자동 수락,अपने आप स्वीकार
+intake.rules,Standing instructions,Sabit talimatlar,Daueranweisungen,Instrucciones permanentes,Consignes permanentes,Instruções permanentes,Постоянные указания,常設指示,상시 지시,स्थायी निर्देश
+intake.rules_help,"Auto-accept small, conflict-free matters of an area, also while you're away. {n} of {m} used.","Bir alanın küçük, çakışmasız dosyalarını sen yokken de otomatik kabul et. {n} / {m} kullanıldı.","Kleine, konfliktfreie Fälle eines Rechtsgebiets automatisch annehmen, auch wenn du weg bist. {n} von {m} genutzt.","Acepta solo asuntos pequeños y sin conflicto de un área, también mientras no estás. {n} de {m} usadas.","Accepte automatiquement les petites affaires sans conflit d'un domaine, même pendant ton absence. {n} sur {m} utilisées.","Aceita automaticamente casos pequenos, sem conflito, de uma área, mesmo enquanto você está fora. {n} de {m} usadas.","Автоматически принимает небольшие дела без конфликтов в области, даже когда тебя нет. Использовано: {n} из {m}.",利益相反のない小さな案件を、留守の間も含めて分野ごとに自動で受けます。{m} 件中 {n} 件使用。,업무 분야의 작고 이해 충돌이 없는 사건을 자동 수락해요. 자리를 비운 동안에도 돼요. {m}개 중 {n}개 사용 중.,"किसी क्षेत्र के छोटे, बिना टकराव वाले केस अपने आप स्वीकार करो, तुम्हारी गैरमौजूदगी में भी। {n} में से {m} इस्तेमाल।"
+intake.title,Reception,Resepsiyon,Empfang,Recepción,Accueil,Recepção,Приёмная,受付,접수,रिसेप्शन
+intake.twist_easy,Twist: easier than it looks,Dönüş: göründüğünden kolay,Wendung: einfacher als gedacht,Giro: más fácil de lo que parece,Rebondissement : plus simple qu'il n'y paraît,Reviravolta: mais fácil do que parece,"Поворот: проще, чем кажется",ひねり: 見た目より簡単,변수: 보기보다 쉬움,मोड़: लगता है उससे आसान
+intake.twist_hard,Twist: trickier than it looks,Dönüş: göründüğünden zor,Wendung: kniffliger als gedacht,Giro: más difícil de lo que parece,Rebondissement : plus délicat qu'il n'y paraît,Reviravolta: mais complicado do que parece,"Поворот: сложнее, чем кажется",ひねり: 見た目より難しい,변수: 보기보다 까다로움,मोड़: लगता है उससे मुश्किल
+intake.twist_hidden,Twist: unknown,Dönüş: bilinmiyor,Wendung: unbekannt,Giro: desconocido,Rebondissement : inconnu,Reviravolta: desconhecida,Поворот: неизвестно,ひねり: 不明,변수: 알 수 없음,मोड़: अज्ञात
+intake.twist_none,Twist: none,Dönüş: yok,Wendung: keine,Giro: ninguno,Rebondissement : aucun,Reviravolta: nenhuma,Поворот: нет,ひねり: なし,변수: 없음,मोड़: कोई नहीं
+intake.upcoming,Coming up next,Sırada gelecekler,Als Nächstes,Próximamente,À venir ensuite,A seguir,Скоро,次に来る依頼,다음 예정,आगे आने वाले
+intake.value,Claim {cash},Talep {cash},Anspruch {cash},Reclamación {cash},Demande {cash},Causa {cash},Требование {cash},請求額 {cash},청구 금액 {cash},दावा {cash}
+intake.waiting,{n} waiting,{n} bekliyor,{n} wartend,{n} esperando,{n} en attente,{n} esperando,Ждут: {n},{n} 人待ち,대기 {n}명,{n} इंतज़ार में
+intake.wall,Wall · {cost},Duvar · {cost},Mauer · {cost},Muralla · {cost},Cloison · {cost},Barreira · {cost},Барьер · {cost},遮断措置 · {cost},차단벽 · {cost},दीवार · {cost}
+intake.win_fee,Win fee {cash},Kazanma ücreti {cash},Erfolgshonorar {cash},Honorarios por ganar {cash},Honoraires si gain {cash},Honorários de vitória {cash},Гонорар за победу {cash},成功報酬 {cash},성공 수임료 {cash},जीत की फ़ीस {cash}
+intro.1.b,"A garage-front office in Calderport, right across from the courthouse.","Calderport'ta, adliyenin tam karşısında garaj önü bir büro.","Ein Büro an der Garagenfront in Calderport, direkt gegenüber vom Gericht.","Un despacho en el frente de un garaje en Calderport, justo enfrente del juzgado.","Un cabinet installé dans un garage, juste en face du palais de justice de Calderport.","Um escritório na frente de uma garagem em Calderport, bem em frente ao fórum.","Офис у гаража в Калдерпорте, прямо напротив суда.",カルダーポートにあるガレージ前の事務所。裁判所のすぐ向かいです。,"칼더포트 법원 맞은편, 차고 앞에 있는 사무실이에요.","कैल्डरपोर्ट में एक गैराज वाला दफ़्तर, कचहरी के ठीक सामने।"
+intro.1.t,Your own law firm,Kendi hukuk büron,Deine eigene Kanzlei,Tu propio despacho,Ton propre cabinet,Seu próprio escritório de advocacia,Твоя юридическая фирма,あなたの法律事務所,내 법률사무소,तुम्हारी अपनी लॉ फ़र्म
+intro.2.b,Every client brings dates. Put the right person on each task before it's due.,Her müvekkil tarihler getirir. Her görev son tarihinden önce doğru kişiye verilmeli.,Jede Mandantin und jeder Mandant bringt Termine mit. Setz vor jeder Frist die richtige Person auf jede Aufgabe.,Cada cliente trae fechas. Pon a la persona adecuada en cada tarea antes de que venza.,Chaque client apporte des dates. Place la bonne personne sur chaque tâche avant l'échéance.,Cada cliente traz prazos. Coloque a pessoa certa em cada tarefa antes do vencimento.,У каждого клиента свои сроки. Поставь нужного человека на каждую задачу до срока.,依頼人はそれぞれ期日を持ってきます。締切前に、それぞれの作業に合った人を配置しましょう。,의뢰인마다 기한이 있어요. 마감 전에 각 업무에 알맞은 사람을 배정하세요.,हर क्लाइंट तारीखें लाता है। हर काम की समय-सीमा से पहले सही व्यक्ति को उस पर लगाओ।
+intro.2.t,Fit people into the calendar,Herkesi takvime yerleştir,Menschen in den Kalender einplanen,Encaja a la gente en el calendario,Cale les gens dans l'agenda,Encaixe as pessoas na agenda,Расставь людей по календарю,人をスケジュールに合わせよう,사람을 일정에 맞추세요,लोगों को कैलेंडर में बिठाओ
+intro.3.b,"Prep well, pick your battles, and grow into a busy practice.","İyi hazırlan, savaşlarını seç ve yoğun bir büroya dönüş.","Gut vorbereiten, Kämpfe wählen und zu einer vollen Praxis wachsen.","Prepara bien, elige tus batallas y crece hasta tener un despacho muy ocupado.","Prépare bien, choisis tes combats et développe un cabinet très actif.","Prepare bem, escolha suas batalhas e cresça para um escritório movimentado.","Хорошо готовься, выбирай бои и расти в загруженную практику.",しっかり準備し、戦う案件を選んで、忙しい事務所へ育てましょう。,"준비를 잘하고, 싸울 사건을 고르고, 바쁜 사무소로 키우세요.","अच्छी तैयारी करो, अपनी लड़ाई चुनो, और एक व्यस्त प्रैक्टिस में बढ़ो।"
+intro.3.t,Settle or go to court,Uzlaş ya da mahkemeye git,Vergleichen oder vor Gericht,Negocia o ve a juicio,Transiger ou plaider,Feche acordo ou vá a julgamento,Урегулируй или иди в суд,示談か法廷か,합의하거나 법정에 가세요,समझौता करो या कोर्ट जाओ
 intro.next,Next,İleri,Weiter,Siguiente,Suivant,Próximo,Дальше,次へ,다음,आगे
 intro.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 intro.start,Let's go,Hadi başlayalım,Los geht's,Vamos,C'est parti,Vamos lá,Поехали,はじめよう,시작해요,चलो शुरू करें
-judge.dozewell,Judge Dozewell,,,,,,,,,
-judge.dozewell.d,"Tired on Fridays: −8 % on a Friday, a bit better other days.",,,,,,,,,
-judge.kindlebrook,Judge Kindlebrook,,,,,,,,,
-judge.kindlebrook.d,Soft spot for small claimants: +8 % on traffic and small claims.,,,,,,,,,
-judge.mendwell,Judge Mendwell,,,,,,,,,
-judge.mendwell.d,"Loves a settlement: better offers, a tougher trial.",,,,,,,,,
-judge.quillby,Judge Quillby,,,,,,,,,
-judge.quillby.d,"Strict on deadlines: a late filing costs 10 %, on time helps a little.",,,,,,,,,
-kind.evidence,Evidence,,,,,,,,,
-kind.file,Filing,,,,,,,,,
-kind.hearing,Hearing,,,,,,,,,
-kind.motion,Motion,,,,,,,,,
-kind.prep,Prep,,,,,,,,,
-lever.continue,Continuance,,,,,,,,,
-lever.settle,Settle,,,,,,,,,
-lever.visiting,Visiting,,,,,,,,,
-looks.default,Plain office,,,,,,,,,
-looks.equip,Use,,,,,,,,,
-looks.equipped,In use,,,,,,,,,
-matter.attends,{name} attends,,,,,,,,,
-matter.collision,"Two hearings, one lawyer. Cover one!",,,,,,,,,
-matter.continuance,Continuance,,,,,,,,,
-matter.continuance_d,Moves the hearing 3 days. Once per matter.,,,,,,,,,
-matter.contract.0,Late app delivery,,,,,,,,,
-matter.contract.1,Catering contract gone cold,,,,,,,,,
-matter.contract.2,Warehouse lease dispute,,,,,,,,,
-matter.contract.3,Missed shipment penalty,,,,,,,,,
-matter.decide,Settle or litigate,,,,,,,,,
-matter.done,Done,,,,,,,,,
-matter.due,Due {day},,,,,,,,,
-matter.due_today,Due today,,,,,,,,,
-matter.family.0,Holiday schedule tug-of-war,,,,,,,,,
-matter.family.1,Who keeps the dog?,,,,,,,,,
-matter.family.2,Weekend visit timetable,,,,,,,,,
-matter.family.3,Grandparents' visiting days,,,,,,,,,
-matter.hearing_line,Court {day} at {time},,,,,,,,,
-matter.in_session,In court now,,,,,,,,,
-matter.late,Late,,,,,,,,,
-matter.levers,Levers,,,,,,,,,
-matter.litigate_d,"In court: win {win}, lose {loss}.",,,,,,,,,
-matter.nobody,Nobody yet,,,,,,,,,
-matter.odds,Odds {pct},,,,,,,,,
-matter.odds_hidden,Odds {pct} ±?,,,,,,,,,
-matter.odds_label,Odds,,,,,,,,,
-matter.parties,{client} vs {opponent},,,,,,,,,
-matter.prep_done,Prep table done,,,,,,,,,
-matter.prep_locked,Opens when the evidence is in,,,,,,,,,
-matter.prep_open,Prep table,,,,,,,,,
-matter.progress,{done} of {need},,,,,,,,,
-matter.settle,Settle · {cash},,,,,,,,,
-matter.settle_d,Certain money now. A small Standing gain.,,,,,,,,,
-matter.small_claims.0,Unpaid cake order,,,,,,,,,
-matter.small_claims.1,"Broken fence, broken promise",,,,,,,,,
-matter.small_claims.2,Deposit for a cancelled party,,,,,,,,,
-matter.small_claims.3,The dented delivery van,,,,,,,,,
-matter.tasks,Tasks,,,,,,,,,
-matter.tenancy.0,Deposit never returned,,,,,,,,,
-matter.tenancy.1,Leaky roof standoff,,,,,,,,,
-matter.tenancy.2,The noisy-neighbour clause,,,,,,,,,
-matter.tenancy.3,Surprise rent hike,,,,,,,,,
-matter.traffic.0,Parking ticket on a cargo bike,,,,,,,,,
-matter.traffic.1,Speed camera mix-up,,,,,,,,,
-matter.traffic.2,Towed from a loading zone,,,,,,,,,
-matter.traffic.3,Wrong-way scooter fine,,,,,,,,,
-matter.trust,Trust held {cash},,,,,,,,,
-matter.trust_label,Trust held,,,,,,,,,
-matter.twist_label,Twist,,,,,,,,,
-matter.unassign,Remove,,,,,,,,,
-matter.uncovered,Nobody attends this hearing.,,,,,,,,,
-matter.visiting,Visiting counsel attends,,,,,,,,,
-matter.visiting_btn,Visiting · {cash},,,,,,,,,
-matter.visiting_d,Another firm's lawyer covers this hearing. Weaker in court than your own people.,,,,,,,,,
-matter.wall,Behind an ethical wall,,,,,,,,,
-matters.collisions,{n} collision(s) on the rail,,,,,,,,,
-matters.empty,No open matters. Tap the reception desk.,,,,,,,,,
-matters.title,Matters,,,,,,,,,
-office.build,Build · {cost},,,,,,,,,
-office.building,Building {name} · {time} left,,,,,,,,,
-office.built,Built,,,,,,,,,
-office.chapter,Chapter {n}: {name},,,,,,,,,
-office.desks,Desks {n} of {m},,,,,,,,,
-office.looks,Looks,,,,,,,,,
-office.max,The biggest office in the MVP. More floors after launch.,,,,,,,,,
-office.move_cost,Move · {cost},,,,,,,,,
-office.move_up,Move to {name},,,,,,,,,
-office.needs,"Needs ★ {s} Standing and {n} closed matters (now ★ {have}, {closed}).",,,,,,,,,
-office.rooms,Rooms,,,,,,,,,
-office.title,Office,,,,,,,,,
-offline.body,While you were away ({time}) the firm earned {cash} on its standing instructions.,,,,,,,,,
-offline.capped,Counted up to {h} h.,,,,,,,,,
-offline.title,Welcome back,,,,,,,,,
-party.anchor_laundry,Anchor Laundry,,,,,,,,,
-party.beacon_press,Beacon Print Shop,,,,,,,,,
-party.brightwave_tech,Brightwave Gadgets,,,,,,,,,
-party.city_parking,Calderport Parking Office,,,,,,,,,
-party.copper_kettle,Copper Kettle Café,,,,,,,,,
-party.cycle_club,Calderport Cycle Club,,,,,,,,,
-party.dockside_gym,Dockside Gym,,,,,,,,,
-party.ferry_coop,Ferry Riders Co-op,,,,,,,,,
-party.gullwing_bakery,Gullwing Bakery,,,,,,,,,
-party.harbor_flats,Harbor Flats Lettings,,,,,,,,,
-party.ironbridge_builders,Ironbridge Builders,,,,,,,,,
-party.kelp_kitchen,Kelp Kitchen,,,,,,,,,
-party.lantern_books,Lantern Books,,,,,,,,,
-party.maple_dental,Maple Row Dental,,,,,,,,,
-party.marlow_florist,Marlow Lane Florist,,,,,,,,,
-party.mosswood_vet,Mosswood Vets,,,,,,,,,
-party.pebble_school,Pebble Hill School,,,,,,,,,
-party.pickle_deli,The Pickle Jar Deli,,,,,,,,,
-party.quayside_hotel,Quayside Hotel,,,,,,,,,
-party.rivet_garage,Rivet Street Garage,,,,,,,,,
-party.saltmarsh_farm,Saltmarsh Farm,,,,,,,,,
-party.seagull_scooters,Seagull Scooters,,,,,,,,,
-party.starling_studio,Starling Dance Studio,,,,,,,,,
-party.tidewater_taxi,Tidewater Cabs,,,,,,,,,
-party.tumble,Ivo Tumbleby,,,,,,,,,
-phase.live,Office hours,,,,,,,,,
+judge.dozewell,Judge Dozewell,Hâkim Dozewell,Richter Dozewell,Juez Dozewell,Juge Dozewell,Juiz Dozewell,Судья Дозуэлл,ドゼウェル判事,도즈웰 판사,जज Dozewell
+judge.dozewell.d,"Tired on Fridays: −8 % on a Friday, a bit better other days.","Cumaları yorgun: cumaya %8 kötü, diğer günler biraz iyi.","Freitags müde: −8 % am Freitag, an anderen Tagen etwas besser.","Cansado los viernes: −8 % los viernes, algo mejor el resto de días.","Fatigué le vendredi : −8 % le vendredi, un peu mieux les autres jours.","Cansado às sextas: −8 % na sexta, um pouco melhor nos outros dias.","Устаёт к пятнице: −8 % в пятницу, в остальные дни чуть лучше.",金曜は疲れ気味: 金曜は −8 %、ほかの日は少しよい。,"금요일에는 피곤해요: 금요일 −8%, 다른 날은 조금 나아요.","शुक्रवार को थके हुए: शुक्रवार पर −8 %, बाकी दिन थोड़ा बेहतर।"
+judge.kindlebrook,Judge Kindlebrook,Hâkim Kindlebrook,Richter Kindlebrook,Juez Kindlebrook,Juge Kindlebrook,Juiz Kindlebrook,Судья Киндлбрук,キンドルブルック判事,킨들브룩 판사,जज Kindlebrook
+judge.kindlebrook.d,Soft spot for small claimants: +8 % on traffic and small claims.,Küçük davacılara yumuşak: trafik ve küçük alacak davalarında %8 lehe.,Hat ein Herz für kleine Kläger: +8 % bei Verkehr und Kleinforderungen.,Tiene debilidad por los pequeños demandantes: +8 % en tráfico y reclamaciones menores.,Faible pour les petits demandeurs : +8 % en circulation et petites créances.,Tem simpatia por pequenos autores: +8 % em trânsito e pequenas causas.,Слабость к мелким истцам: +8 % в дорожных и мелких исках.,小口の原告に甘い: 交通と少額訴訟で +8 %。,소액 원고에게 약해요: 교통과 소액 사건 +8%.,छोटे दावेदारों के लिए नरम कोना: ट्रैफ़िक और छोटे दावों पर +8 %।
+judge.mendwell,Judge Mendwell,Hâkim Mendwell,Richter Mendwell,Juez Mendwell,Juge Mendwell,Juiz Mendwell,Судья Мендвелл,メンドウェル判事,멘드웰 판사,जज Mendwell
+judge.mendwell.d,"Loves a settlement: better offers, a tougher trial.","Uzlaşmayı sever: daha iyi teklifler, daha zor bir duruşma.","Liebt Vergleiche: bessere Angebote, eine härtere Verhandlung.","Le encanta un acuerdo: mejores ofertas, un juicio más duro.","Adore les transactions : de meilleures offres, un procès plus dur.","Adora um acordo: melhores propostas, julgamento mais difícil.","Любит мировые: лучше предложения, но жёстче суд.",示談が好き: 示談の条件はよくなる一方、裁判は手強くなる。,"합의를 좋아해요: 더 좋은 제안, 더 까다로운 재판.","समझौते के शौकीन: बेहतर प्रस्ताव, पर मुकदमा सख़्त।"
+judge.quillby,Judge Quillby,Hâkim Quillby,Richterin Quillby,Juez Quillby,Juge Quillby,Juiz Quillby,Судья Куиллби,クイルビー判事,퀼비 판사,जज Quillby
+judge.quillby.d,"Strict on deadlines: a late filing costs 10 %, on time helps a little.","Sürelere katı: geç dilekçe %10'a mal olur, zamanında verilen biraz yardım eder.","Streng bei Fristen: Eine verspätete Eingabe kostet 10 %, pünktlich hilft ein wenig.",Estricto con los plazos: una presentación tardía cuesta un 10 %; entregarla a tiempo ayuda un poco.,"Strict sur les délais : un dépôt en retard coûte 10 %, un dépôt à temps aide un peu.","Rígido com prazos: um protocolo atrasado custa 10 %, em dia ajuda um pouco.","Строг к срокам: поздняя подача стоит 10 %, вовремя — немного помогает.",期限に厳しい: 提出遅れは −10 %、期限内なら少し有利。,"기한에 엄격해요: 늦은 서류 제출은 10% 손해, 제때 내면 조금 도움이 돼요.","समय-सीमा पर सख़्त: देर से फ़ाइलिंग पर 10 % नुकसान, समय पर थोड़ा फ़ायदा।"
+kind.evidence,Evidence,Delil,Beweise,Pruebas,Preuves,Provas,Улики,証拠,증거 수집,सबूत
+kind.file,Filing,Dilekçe,Eingabe,Presentación,Dépôt,Protocolo,Подача документов,提出,서류 제출,फ़ाइलिंग
+kind.hearing,Hearing,Duruşma,Verhandlung,Vista,Audience,Audiência,Слушание,審理,재판,सुनवाई
+kind.motion,Motion,Talep,Antrag,Escrito,Requête,Petição,Ходатайство,申立て,신청,अर्ज़ी
+kind.prep,Prep,Hazırlık,Vorbereitung,Preparación,Préparation,Preparação,Подготовка,準備,준비,तैयारी
+lever.continue,Continuance,Erteleme,Vertagung,Aplazamiento,Renvoi,Adiamento,Отсрочка,期日変更,기일 연기,सुनवाई आगे बढ़ाओ
+lever.settle,Settle,Uzlaş,Vergleich,Acuerdo,Transiger,Acordo,Урегулировать,示談,합의,समझौता
+lever.visiting,Visiting,Konuk avukat,Gastanwalt,Abogado visitante,Avocat extérieur,Advogado convidado,Приглашённый юрист,外部弁護士,외부 변호사,बाहर का वकील
+looks.default,Plain office,Sade büro,Schlichtes Büro,Oficina sencilla,Bureau sobre,Escritório simples,Простой офис,シンプルな事務所,기본 사무실,सादा दफ़्तर
+looks.equip,Use,Kullan,Nutzen,Usar,Utiliser,Usar,Использовать,使う,사용,इस्तेमाल करो
+looks.equipped,In use,Kullanımda,In Benutzung,En uso,En service,Em uso,Используется,使用中,사용 중,इस्तेमाल में
+matter.attends,{name} attends,{name} katılıyor,{name} ist da,{name} asiste,{name} assiste,{name} comparece,{name} на слушании,{name} が出廷,{name} 참석,{name} मौजूद है
+matter.collision,"Two hearings, one lawyer. Cover one!","Aynı saatte iki duruşma, tek avukat. Birini seç!","Zwei Verhandlungen, eine Anwältin. Deck eine ab!","Dos vistas, un abogado. ¡Cubre una!","Deux audiences, un avocat. Couvre-en une !","Duas audiências, um advogado. Cubra uma!","Два слушания, один юрист. Выбери одно!",審理が2件、弁護士は1人。どちらかをカバーしてください！,"재판 두 건, 변호사 한 명! 한 건을 맡으세요.","दो सुनवाइयाँ, एक वकील। एक को कवर करो!"
+matter.continuance,Continuance,Erteleme,Vertagung,Aplazamiento,Renvoi,Adiamento,Отсрочка,期日変更,기일 연기,सुनवाई आगे बढ़ाओ
+matter.continuance_d,Moves the hearing 3 days. Once per matter.,Duruşmayı 3 gün erteler. Dosya başına bir kez.,Verschiebt die Verhandlung um 3 Tage. Einmal pro Mandat.,Mueve la vista 3 días. Una vez por asunto.,Repousse l'audience de 3 jours. Une fois par affaire.,Adia a audiência em 3 dias. Uma vez por caso.,Переносит слушание на 3 дня. По одному разу на дело.,審理を3日ずらします。案件ごとに1回。,재판을 3일 미뤄요. 사건당 한 번이에요.,सुनवाई 3 दिन आगे। हर केस में एक बार।
+matter.contract.0,Late app delivery,Geç kalan uygulama teslimi,Verspätete Lieferung der App,Entrega tardía de la aplicación,Livraison tardive de l'application,Entrega atrasada de aplicativo,Поздняя поставка приложения,アプリの納品遅れ,늦은 앱 납품,देर से ऐप डिलीवरी
+matter.contract.1,Catering contract gone cold,Soğuyan catering sözleşmesi,Catering-Vertrag eingeschlafen,Contrato de catering que se enfrió,Contrat de traiteur tombé à l'eau,Contrato de bufê travado,Спор о договоре с кейтерингом,ケータリング契約が立ち消えに,식당 출장 계약이 흐지부지됨,कैटरिंग का ठंडा पड़ा समझौता
+matter.contract.2,Warehouse lease dispute,Depo kiralama anlaşmazlığı,Streit um einen Lagermietvertrag,Disputa por el alquiler de un almacén,Litige sur un bail d'entrepôt,Disputa de locação de galpão,Спор об аренде склада,倉庫の賃貸借をめぐる争い,창고 임대 분쟁,गोदाम के किराए का विवाद
+matter.contract.3,Missed shipment penalty,Kaçırılan sevkiyat cezası,Vertragsstrafe für verspätete Lieferung,Penalización por envío perdido,Pénalité pour livraison manquée,Multa por remessa atrasada,Штраф за сорванную поставку,出荷遅れの違約金,배송 지연 위약금,छूटी हुई शिपमेंट का जुर्माना
+matter.decide,Settle or litigate,Uzlaş ya da davaya git,Vergleichen oder prozessieren,Negociar o ir a juicio,Transiger ou plaider,Acordo ou julgamento,Урегулировать или судиться,示談か訴訟か,합의할지 소송할지,समझौता करो या मुकदमा लड़ो
+matter.done,Done,Tamam,Fertig,Hecho,Terminé,Concluído,Готово,完了,완료,हो गया
+matter.due,Due {day},Son tarih: {day},Fällig {day},Vence el {day},Échéance {day},Vence {day},Срок: {day},締切 {day},마감 {day},{day} तक जमा
+matter.due_today,Due today,Son tarih bugün,Heute fällig,Vence hoy,À rendre aujourd'hui,Vence hoje,Срок сегодня,今日が締切,오늘 마감,आज जमा करना है
+matter.family.0,Holiday schedule tug-of-war,Bayram programı çekişmesi,Streit um den Feiertagsplan,Tira y afloja por el calendario de vacaciones,Bras de fer sur le calendrier des vacances,Cabo de guerra das férias,Перетягивание графика праздников,休暇の予定をめぐる綱引き,명절 일정 줄다리기,छुट्टियों के दिनों की खींचतान
+matter.family.1,Who keeps the dog?,Köpek kimde kalacak?,Wer bekommt den Hund?,¿Quién se queda con el perro?,Qui garde le chien ?,Quem fica com o cachorro?,Кто оставит собаку?,犬はどちらが引き取る？,강아지는 누가 키우나요?,कुत्ता किसके पास रहेगा?
+matter.family.2,Weekend visit timetable,Hafta sonu ziyaret programı,Plan für Wochenendbesuche,Horario de visitas de fin de semana,Planning des visites du week-end,Horário de visitas no fim de semana,График выходных встреч,週末の面会スケジュール,주말 방문 시간표,वीकेंड मिलने का समय
+matter.family.3,Grandparents' visiting days,Büyükanne ve büyükbaba ziyaret günleri,Besuchstage bei den Großeltern,Días de visita de los abuelos,Jours de visite des grands-parents,Dias de visita dos avós,Дни встреч с бабушкой и дедушкой,祖父母の面会日,조부모 방문일,दादा-दादी से मिलने के दिन
+matter.hearing_line,Court {day} at {time},"Duruşma {day}, {time}",Gericht {day} um {time},Juicio el {day} a las {time},Audience {day} à {time},Tribunal dia {day} às {time},Суд {day} в {time},{day} {time} 審理,법원 {day} {time},कोर्ट {day} को {time} पर
+matter.in_session,In court now,Şu an duruşmada,Gerade vor Gericht,En la vista ahora,Au tribunal maintenant,No tribunal agora,Уже в суде,今、法廷中,지금 법정 중,अभी कोर्ट में
+matter.late,Late,Geç,Verspätet,Tarde,En retard,Atrasado,Опоздали,遅延,지각,देर
+matter.levers,Levers,Kaldıraçlar,Hebel,Palancas,Leviers,Alavancas,Рычаги,手段,수단,उपाय
+matter.litigate_d,"In court: win {win}, lose {loss}.","Duruşmada: kazanırsan {win}, kaybedersen {loss}.","Vor Gericht: gewinnen {win}, verlieren {loss}.","En juicio: gana {win}, pierde {loss}.","Au tribunal : gain {win}, perte {loss}.","No tribunal: vitória {win}, derrota {loss}.","В суде: выигрыш {win}, проигрыш {loss}.",法廷で: 勝訴 {win}、敗訴 {loss}。,"법정에서: 승소 {win}, 패소 {loss}.","कोर्ट में: जीत {win}, हार {loss}।"
+matter.nobody,Nobody yet,Henüz kimse yok,Noch niemand,Nadie todavía,Personne pour l'instant,Ninguém ainda,Пока никого,まだ誰もいません,아직 없음,अभी कोई नहीं
+matter.odds,Odds {pct},Şans {pct},Chance {pct},Probabilidad {pct},Chances {pct},Chances {pct},Шансы {pct},勝率 {pct},승산 {pct},जीत की संभावना {pct}
+matter.odds_hidden,Odds {pct} ±?,Şans {pct} ±?,Chance {pct} ±?,Probabilidad {pct} ±?,Chances {pct} ±?,Chances {pct} ±?,Шансы {pct} ±?,勝率 {pct} ±?,승산 {pct} ±?,जीत की संभावना {pct} ±?
+matter.odds_label,Odds,Şans,Chance,Probabilidad,Chances,Chances,Шансы,勝率,승산,जीत की संभावना
+matter.parties,{client} vs {opponent},{client} karşı {opponent},{client} gegen {opponent},{client} contra {opponent},{client} contre {opponent},{client} x {opponent},{client} против {opponent},{client} 対 {opponent},{client} 대 {opponent},{client} बनाम {opponent}
+matter.prep_done,Prep table done,Hazırlık masası tamam,Vorbereitungstisch fertig,Mesa de preparación completada,Table de préparation terminée,Mesa de preparação concluída,Стол подготовки готов,準備テーブル完了,준비 테이블 완료,तैयारी मेज़ पूरी
+matter.prep_locked,Opens when the evidence is in,Deliller gelince açılır,"Öffnet sich, sobald die Beweise da sind",Se abre cuando las pruebas estén listas,S'ouvre quand les preuves sont réunies,Abre quando as provas chegarem,"Откроется, когда улики будут собраны",証拠がそろうと開きます,증거가 모이면 열려요,सबूत आने पर खुलेगा
+matter.prep_open,Prep table,Hazırlık masası,Vorbereitungstisch,Mesa de preparación,Table de préparation,Mesa de preparação,Стол подготовки,準備テーブル,준비 테이블,तैयारी मेज़
+matter.progress,{done} of {need},{done} / {need},{done} von {need},{done} de {need},{done} sur {need},{done} de {need},{done} из {need},{need} 中 {done},{done}/{need},{need} में से {done}
+matter.settle,Settle · {cash},Uzlaş · {cash},Vergleichen · {cash},Acuerdo · {cash},Transiger · {cash},Acordo · {cash},Урегулировать · {cash},示談 · {cash},합의 · {cash},समझौता · {cash}
+matter.settle_d,Certain money now. A small Standing gain.,Hemen kesin para. Küçük bir itibar kazancı.,Sicheres Geld jetzt. Ein kleiner Ansehensgewinn.,Dinero seguro ahora. Pequeña ganancia de reputación.,De l'argent certain maintenant. Un petit gain de renom.,Dinheiro certo agora. Um pequeno ganho de Reputação.,Верные деньги сейчас. Небольшой прирост авторитета.,確実なお金がすぐ入ります。評価も少し上がります。,지금 확실한 돈이에요. 평판도 조금 올라요.,अभी पक्का पैसा। साख में थोड़ा इज़ाफ़ा।
+matter.small_claims.0,Unpaid cake order,Ödenmemiş pasta siparişi,Unbezahlte Torte,Pedido de tarta sin pagar,Commande de gâteau impayée,Pedido de bolo não pago,Неоплаченный заказ торта,代金未払いのケーキ注文,갚지 않은 케이크 주문,बिना भुगतान का केक का ऑर्डर
+matter.small_claims.1,"Broken fence, broken promise","Kırık çit, tutulmayan söz","Kaputter Zaun, gebrochenes Versprechen","Valla rota, promesa rota","Clôture cassée, promesse non tenue","Cerca quebrada, promessa quebrada",Сломанный забор и нарушенное слово,壊れた柵、破られた約束,"부서진 울타리, 깨진 약속","टूटी बाड़, टूटा वादा"
+matter.small_claims.2,Deposit for a cancelled party,İptal edilen parti için depozito,Anzahlung für eine abgesagte Feier,Depósito de una fiesta cancelada,Acompte pour une fête annulée,Sinal de uma festa cancelada,Залог за отменённую вечеринку,キャンセルされたパーティーの手付金,취소된 파티 보증금,रद्द हुई पार्टी का डिपॉज़िट
+matter.small_claims.3,The dented delivery van,Göçük veren teslimat minibüsü,Der verbeulte Lieferwagen,La furgoneta de reparto abollada,La camionnette de livraison cabossée,A van de entrega amassada,Помятый грузовой фургон,へこんだ配送バン,찌그러진 배달 밴,पिचकी हुई डिलीवरी वैन
+matter.tasks,Tasks,Görevler,Aufgaben,Tareas,Tâches,Tarefas,Задачи,作業,업무,काम
+matter.tenancy.0,Deposit never returned,Depozito hiç iade edilmedi,Kaution nie zurückgezahlt,Fianza que nunca se devolvió,Caution jamais rendue,Caução nunca devolvida,Залог так и не вернули,敷金が返ってこない,돌려받지 못한 보증금,डिपॉज़िट वापस नहीं मिला
+matter.tenancy.1,Leaky roof standoff,Akan çatı anlaşmazlığı,Streit um das undichte Dach,Conflicto por un tejado con goteras,Conflit sur un toit qui fuit,Impasse por telhado com goteira,Спор о протекающей крыше,雨漏りの言い争い,새는 지붕 대치,टपकती छत का झगड़ा
+matter.tenancy.2,The noisy-neighbour clause,Gürültücü komşu maddesi,Die Klausel zum lauten Nachbarn,La cláusula del vecino ruidoso,La clause du voisin bruyant,Cláusula do vizinho barulhento,Пункт о шумных соседях,騒音トラブルの条項,시끄러운 이웃 조항,शोर करने वाले पड़ोसी वाली शर्त
+matter.tenancy.3,Surprise rent hike,Beklenmedik kira artışı,Überraschende Mieterhöhung,Subida de alquiler sorpresa,Hausse de loyer surprise,Aumento surpresa do aluguel,Внезапное повышение аренды,突然の家賃値上げ,갑작스러운 월세 인상,अचानक किराया बढ़ोतरी
+matter.traffic.0,Parking ticket on a cargo bike,Kargo bisikletine park cezası,Parkticket für ein Lastenrad,Multa de aparcamiento por una bici de carga,Procès-verbal pour un vélo-cargo,Multa de estacionamento de bicicleta de carga,Штраф за парковку велогрузового,荷物用自転車の駐車違反,화물 자전거의 주차 위반,कार्गो बाइक का पार्किंग चालान
+matter.traffic.1,Speed camera mix-up,Hız kamerası karışıklığı,Verwechslung beim Blitzer,Confusión con el radar de velocidad,Erreur du radar,Confusão com radar de velocidade,Путаница со скоростной камерой,速度違反カメラの取り違え,속도 카메라 착오,स्पीड कैमरे की गलतफ़हमी
+matter.traffic.2,Towed from a loading zone,Yükleme bölgesinden çekildi,Abgeschleppt aus der Ladezone,Grúa en una zona de carga,Enlevé d'une zone de livraison,Rebocado de zona de carga,Эвакуация с зоны погрузки,荷捌き場からのレッカー移動,하역 구역에서 견인됨,लोडिंग ज़ोन से गाड़ी उठाई गई
+matter.traffic.3,Wrong-way scooter fine,Ters yönde scooter cezası,Bußgeld für einen Roller in falscher Richtung,Multa a un patinete por ir en sentido contrario,Amende pour trottinette à contresens,Multa de patinete na contramão,Штраф за самокат против движения,逆走スクーターの違反,역방향 스쿠터 과태료,उल्टी दिशा में स्कूटर का चालान
+matter.trust,Trust held {cash},Emanette {cash},Treuhand verwahrt {cash},Cuenta de clientes {cash},Compte client : {cash},Fundo de {cash},Счёт клиента: {cash},預り金 {cash},위탁금 보관 {cash},अमानत में {cash}
+matter.trust_label,Trust held,Emanet,Treuhand verwahrt,Cuenta de clientes,Compte client,Fundo,Счёт клиента,預り金,위탁금 보관,अमानत में
+matter.twist_label,Twist,Dönüş,Wendung,Giro,Rebondissement,Reviravolta,Поворот,ひねり,변수,मोड़
+matter.unassign,Remove,Kaldır,Entfernen,Quitar,Retirer,Remover,Снять,外す,빼기,हटाओ
+matter.uncovered,Nobody attends this hearing.,Bu duruşmaya kimse katılmıyor.,Niemand ist bei dieser Verhandlung.,Nadie asiste a esta vista.,Personne n'assiste à cette audience.,Ninguém comparece a esta audiência.,На этом слушании никого нет.,この審理には誰も出廷しません。,이 재판에 아무도 참석하지 않아요.,इस सुनवाई में कोई मौजूद नहीं।
+matter.visiting,Visiting counsel attends,Konuk avukat katılıyor,Gastanwältin oder Gastanwalt ist da,Asiste un abogado visitante,Un avocat extérieur assiste,Advogado convidado comparece,Приглашённый юрист на слушании,外部弁護士が出廷,외부 변호사 참석,बाहर का वकील मौजूद
+matter.visiting_btn,Visiting · {cash},Konuk · {cash},Gast · {cash},Visitante · {cash},Extérieur · {cash},Convidado · {cash},Приглашённый · {cash},外部弁護士 · {cash},외부 변호사 · {cash},बाहर का वकील · {cash}
+matter.visiting_d,Another firm's lawyer covers this hearing. Weaker in court than your own people.,Başka bir bürodan bir avukat bu duruşmaya bakar. Kendi ekibinden daha zayıf.,Die Anwältin oder der Anwalt einer anderen Kanzlei übernimmt diese Verhandlung. Vor Gericht schwächer als eigene Leute.,Un abogado de otro despacho cubre esta vista. Más débil en la sala que nuestra gente.,Un avocat d'un autre cabinet couvre l'audience. Moins fort au tribunal que nos propres équipes.,Um advogado de outro escritório cobre esta audiência. Mais fraco no tribunal do que os nossos.,"Юрист другой фирмы ведёт слушание. В суде слабее, чем свои.",別の事務所の弁護士が担当します。法廷では自分の事務所の人より弱いです。,다른 사무소 변호사가 이 재판을 맡아요. 법정에서는 우리 직원보다 약해요.,दूसरी फ़र्म का वकील यह सुनवाई देखेगा। कोर्ट में तुम्हारे अपने लोगों से कमज़ोर।
+matter.wall,Behind an ethical wall,Etik duvarın arkasında,Hinter einer ethischen Mauer,Tras una muralla ética,Derrière une muraille de Chine,Atrás de uma barreira ética,За этическим барьером,情報遮断措置の内側,정보 차단벽 뒤,नैतिक दीवार के पीछे
+matters.collisions,{n} collision(s) on the rail,Rayda {n} çakışma,{n} Konflikt(e) auf der Terminleiste,{n} choque(s) en el riel,{n} conflit(s) sur le rail,{n} conflito(s) no trilho,Столкновений на ленте: {n},期日ボード上の重複 {n} 件,사건 일정표에 충돌 {n}건,रेल पर {n} टकराव
+matters.empty,No open matters. Tap the reception desk.,Açık dosya yok. Resepsiyon masasına dokun.,Keine offenen Mandate. Tippe auf den Empfang.,No hay asuntos abiertos. Toca el mostrador de recepción.,Aucune affaire ouverte. Touche l'accueil.,Nenhum caso aberto. Toque na recepção.,Открытых дел нет. Нажми на стойку регистрации.,進行中の案件はありません。受付をタップしてください。,진행 중인 사건이 없어요. 접수 데스크를 누르세요.,कोई खुला केस नहीं। रिसेप्शन डेस्क पर टैप करो।
+matters.title,Matters,Dosyalar,Mandate,Asuntos,Affaires,Casos,Дела,案件,사건,केस
+office.build,Build · {cost},İnşa et · {cost},Bauen · {cost},Construir · {cost},Construire · {cost},Construir · {cost},Построить · {cost},建設 · {cost},짓기 · {cost},बनाओ · {cost}
+office.building,Building {name} · {time} left,{name} inşa ediliyor · {time} kaldı,Bau {name} · noch {time},Construyendo {name} · quedan {time},Construction {name} · {time} restantes,Construindo {name} · faltam {time},Строится {name} · осталось {time},建設中 {name} · 残り {time},{name} 짓는 중 · {time} 남음,{name} बन रहा है · {time} बाकी
+office.built,Built,Tamamlandı,Fertig,Construido,Construit,Pronto,Построено,建設済み,완공,बन गया
+office.chapter,Chapter {n}: {name},Bölüm {n}: {name},Kapitel {n}: {name},Capítulo {n}: {name},Chapitre {n} : {name},Capítulo {n}: {name},Глава {n}: {name},第{n}章: {name},{n}장: {name},अध्याय {n}: {name}
+office.desks,Desks {n} of {m},Masalar {n} / {m},Schreibtische {n} von {m},Mesas {n} de {m},Bureaux {n} sur {m},Mesas {n} de {m},Столов {n} из {m},机 {m} 中 {n},책상 {n}/{m},मेज़ें {n} / {m}
+office.looks,Looks,Görünümler,Optik,Estilos,Esthétique,Visuais,Внешний вид,見た目,외형,लुक
+office.max,The biggest office in the MVP. More floors after launch.,Bu sürümdeki en büyük büro. Lansmandan sonra daha fazla kat.,Das größte Büro im MVP. Weitere Etagen nach dem Start.,La oficina más grande del MVP. Más plantas tras el lanzamiento.,Le plus grand bureau de la version de test. D'autres étages après le lancement.,O maior escritório do MVP. Mais andares depois do lançamento.,Самый большой офис в MVP. Другие этажи — после запуска.,このバージョンで最大の事務所です。今後、フロアが増えます。,현재 버전에서 가장 큰 사무실이에요. 출시 후 층이 더 늘어나요.,MVP का सबसे बड़ा दफ़्तर। लॉन्च के बाद और मंज़िलें।
+office.move_cost,Move · {cost},Taşın · {cost},Umziehen · {cost},Mudanza · {cost},Déménager · {cost},Mudar · {cost},Переезд · {cost},移転 · {cost},이전 · {cost},शिफ़्ट · {cost}
+office.move_up,Move to {name},{name} bölümüne taşın,Umziehen nach {name},Mudarse a {name},Déménager à {name},Mudar para {name},Переехать в {name},{name} へ移転,이전: {name},{name} में जाओ
+office.needs,"Needs ★ {s} Standing and {n} closed matters (now ★ {have}, {closed}).","★ {s} itibar ve {n} kapalı dosya gerekli (şu an ★ {have}, {closed}).","Braucht ★ {s} Ansehen und {n} abgeschlossene Mandate (jetzt ★ {have}, {closed}).","Necesita ★ {s} de reputación y {n} asuntos cerrados (ahora ★ {have}, {closed}).","Demande ★ {s} de renom et {n} affaires closes (actuellement ★ {have}, {closed}).","Precisa de ★ {s} de Reputação e {n} casos fechados (agora ★ {have}, {closed}).","Нужно ★ {s} авторитета и {n} закрытых дел (сейчас ★ {have}, закрыто: {closed}).",評価 ★ {s} と解決済みの案件 {n} 件が必要（現在 ★ {have}、解決 {closed}）。,"평판 ★ {s}, 마무리한 사건 {n}건이 필요해요(지금 ★ {have}, {closed}건).","★ {s} साख और {n} बंद केस चाहिए (अभी ★ {have}, {closed})।"
+office.rooms,Rooms,Odalar,Räume,Salas,Salles,Salas,Комнаты,部屋,방,कमरे
+office.title,Office,Büro,Büro,Oficina,Bureau,Escritório,Офис,事務所,사무실,दफ़्तर
+offline.body,While you were away ({time}) the firm earned {cash} on its standing instructions.,"Sen yokken ({time}) büro, sabit talimatlarıyla {cash} kazandı.","Während du weg warst ({time}), hat die Kanzlei mit ihren Daueranweisungen {cash} verdient.",Mientras no estabas ({time}) el despacho ganó {cash} con sus instrucciones permanentes.,"Pendant ton absence ({time}), le cabinet a gagné {cash} grâce à ses consignes permanentes.","Enquanto você esteve fora ({time}), o escritório ganhou {cash} com as instruções permanentes.","Пока тебя не было ({time}), фирма заработала {cash} по постоянным указаниям.",留守の間（{time}）、常設指示により事務所は {cash} を稼ぎました。,자리를 비운 동안({time}) 사무소가 상시 지시로 번 돈: {cash},तुम्हारी गैरमौजूदगी में ({time}) फ़र्म ने अपने स्थायी निर्देशों से {cash} कमाए।
+offline.capped,Counted up to {h} h.,{h} saate kadar sayıldı.,Bis zu {h} Std. gezählt.,Contado hasta {h} h.,Compté jusqu'à {h} h.,Contado até {h} h.,Учтено до {h} ч.,最大 {h} 時間分まで計算しました。,최대 {h}시간까지 계산했어요.,{h} घंटे तक गिना गया।
+offline.title,Welcome back,Hoş geldin,Willkommen zurück,Bienvenido de nuevo,Bon retour,Bem-vindo de volta,С возвращением,おかえりなさい,돌아오셨군요,वापस स्वागत है
+party.anchor_laundry,Anchor Laundry,Anchor Çamaşırhanesi,Anker-Wäscherei,Lavandería Anchor,Blanchisserie Anchor,Lavanderia Âncora,Прачечная «Якорь»,アンカーランドリー,앵커 세탁소,एंकर लॉन्ड्री
+party.beacon_press,Beacon Print Shop,Beacon Matbaası,Leuchtturm-Druckerei,Imprenta Beacon,Imprimerie Beacon,Gráfica Farol,Типография «Маяк»,ビーコン印刷店,비컨 인쇄소,बीकन प्रिंट शॉप
+party.brightwave_tech,Brightwave Gadgets,Brightwave Elektronik,Brightwave-Elektronik,Gadgets Brightwave,Brightwave Gadgets,Gadgets Brightwave,Гаджеты «Яркая волна»,ブライトウェーブ・ガジェット,브라이트웨이브 가전,ब्राइटवेव गैजेट्स
+party.city_parking,Calderport Parking Office,Calderport Otopark Dairesi,Parkamt Calderport,Oficina de Aparcamiento de Calderport,Service de stationnement de Calderport,Escritório de Estacionamento de Calderport,Парковочный офис Калдерпорта,カルダーポート駐車場管理局,칼더포트 주차 사무소,कैल्डरपोर्ट पार्किंग दफ़्तर
+party.copper_kettle,Copper Kettle Café,Copper Kettle Kafe,Café Kupferkessel,Cafetería Copper Kettle,Café La Bouilloire de Cuivre,Café Chaleira de Cobre,Кафе «Медный чайник»,カッパーケトル・カフェ,코퍼 케틀 카페,कॉपर केतली कैफ़े
+party.cycle_club,Calderport Cycle Club,Calderport Bisiklet Kulübü,Fahrradclub Calderport,Club Ciclista de Calderport,Club cycliste de Calderport,Clube de Ciclismo de Calderport,Велоклуб Калдерпорта,カルダーポート自転車クラブ,칼더포트 자전거 클럽,कैल्डरपोर्ट साइकिल क्लब
+party.dockside_gym,Dockside Gym,Rıhtım Spor Salonu,Hafen-Fitnessstudio,Gimnasio Dockside,Salle de sport Dockside,Academia do Porto,Спортзал «Причал»,ドックサイド・ジム,도크사이드 체육관,डॉकसाइड जिम
+party.ferry_coop,Ferry Riders Co-op,Feribot Yolcuları Kooperatifi,Fährfahrer-Genossenschaft,Cooperativa de Usuarios del Ferri,Coopérative des Passeurs,Cooperativa dos Motoristas da Balsa,Кооператив водителей паромов,フェリー利用者組合,페리 라이더 협동조합,फ़ेरी राइडर्स सहकारी समिति
+party.gullwing_bakery,Gullwing Bakery,Gullwing Fırını,Möwenflügel-Bäckerei,Panadería Gullwing,Boulangerie Gullwing,Padaria Asa de Gaivota,Пекарня «Чайка»,ガルウィング・ベーカリー,걸윙 빵집,गलविंग बेकरी
+party.harbor_flats,Harbor Flats Lettings,Harbor Flats Kiralama,Hafenwohnungen Vermietung,Alquileres Harbor Flats,Locations Harbor Flats,Imobiliária Harbor Flats,Агентство жилья «Гавань»,ハーバーフラッツ不動産,하버 플랫 임대,हार्बर फ़्लैट्स किराया
+party.ironbridge_builders,Ironbridge Builders,Ironbridge İnşaat,Eisenbrücke Bau,Constructores Ironbridge,Bâtiments Ironbridge,Construtora Ironbridge,Строители «Железный мост»,アイアンブリッジ建設,아이언브리지 건설,आयरनब्रिज बिल्डर्स
+party.kelp_kitchen,Kelp Kitchen,Kelp Mutfağı,Tang-Küche,Cocina Kelp,Cuisine Kelp,Cozinha Kelp,Кухня «Ламинария»,ケルプ・キッチン,켈프 키친,केल्प किचन
+party.lantern_books,Lantern Books,Lantern Kitabevi,Laternen-Bücher,Librería Lantern,Librairie Lantern,Livraria Lanterna,Книги «Фонарь»,ランタン書店,랜턴 서점,लालटेन बुक्स
+party.maple_dental,Maple Row Dental,Maple Row Diş Kliniği,Ahornreihe Zahnarzt,Clínica Dental Maple Row,Cabinet dentaire Maple Row,Odontologia Maple Row,Стоматология «Клён»,メイプルロウ歯科,메이플 로 치과,मेपल रो डेंटल
+party.marlow_florist,Marlow Lane Florist,Marlow Lane Çiçekçisi,Blumenladen Marlow Lane,Floristería Marlow Lane,Fleuriste Marlow Lane,Floricultura Marlow Lane,Цветы с Марлоу-лейн,マーロウレーン花店,말로 레인 꽃집,मार्लो लेन फ़्लोरिस्ट
+party.mosswood_vet,Mosswood Vets,Mosswood Veteriner,Tierarzt Mosswood,Veterinaria Mosswood,Vétérinaires Mosswood,Veterinária Mosswood,Ветклиника «Мшистый лес»,モスウッド動物病院,모스우드 동물병원,मॉसवुड वेट्स
+party.pebble_school,Pebble Hill School,Pebble Hill Okulu,Kieselhügel-Schule,Colegio Pebble Hill,École Pebble Hill,Escola Pebble Hill,Школа Пеббл-Хилл,ペブルヒル学園,페블 힐 스쿨,पेबल हिल स्कूल
+party.pickle_deli,The Pickle Jar Deli,Pickle Jar Şarküteri,Das Gurkenglas-Feinkostgeschäft,Charcutería The Pickle Jar,Épicerie Le Pot de Cornichons,Delicatessen The Pickle Jar,Деликатесы «Банка с огурцами»,ピクルスジャー惣菜店,피클 자 델리,द पिकल जार डेली
+party.quayside_hotel,Quayside Hotel,Quayside Otel,Kai-Hotel,Hotel Quayside,Hôtel Quayside,Hotel Quayside,Отель «Набережная»,キーサイドホテル,퀘이사이드 호텔,क्वेसाइड होटल
+party.rivet_garage,Rivet Street Garage,Rivet Street Garajı,Nietenstraße Werkstatt,Garaje Rivet Street,Garage Rivet Street,Garagem Rivet Street,Гараж с Риветстрит,リベットストリート自動車整備,리벳 스트리트 정비소,रिवेट स्ट्रीट गैराज
+party.saltmarsh_farm,Saltmarsh Farm,Saltmarsh Çiftliği,Salzmarsch-Hof,Granja Saltmarsh,Ferme Saltmarsh,Fazenda Saltmarsh,Ферма «Солончак»,ソルトマーシュ農場,솔트마시 농장,सॉल्टमार्श फ़ार्म
+party.seagull_scooters,Seagull Scooters,Seagull Scooter,Möwen-Roller,Patinetes Seagull,Trottinettes Seagull,Patinetes Seagull,Самокаты «Чайка»,シーガル・スクーター,갈매기 스쿠터,सीगल स्कूटर्स
+party.starling_studio,Starling Dance Studio,Starling Dans Stüdyosu,Star-Tanzstudio,Estudio de Danza Starling,Studio de danse Starling,Estúdio de Dança Starling,Студия танца «Скворец»,スターリングダンススタジオ,스타링 댄스 스튜디오,स्टार्लिंग डांस स्टूडियो
+party.tidewater_taxi,Tidewater Cabs,Tidewater Taksi,Tidewater-Taxi,Taxis Tidewater,Taxis Tidewater,Táxis Tidewater,Такси «Прилив»,タイドウォーター・タクシー,타이드워터 택시,टाइडवॉटर कैब्स
+party.tumble,Ivo Tumbleby,Ivo Tumbleby,Ivo Tumbleby,Ivo Tumbleby,Ivo Tumbleby,Ivo Tumbleby,Иво Тамблби,アイヴォ・タンブルビー,이보 텀블비,Ivo Tumbleby
+phase.live,Office hours,Büro saatleri,Bürozeiten,Horario de oficina,Heures de bureau,Expediente,Часы приёма,営業時間,영업시간,दफ़्तर का समय
 phase.plan,Morning plan,Sabah planı,Morgenplan,Plan de la mañana,Planification du matin,Plano da manhã,План на утро,朝の計画,아침 계획,सुबह की योजना
 phase.report,Day report,Gün raporu,Tagesbericht,Informe del día,Rapport de la journée,Relatório do dia,Отчёт дня,日報,하루 보고서,दिन की रिपोर्ट
-prep.claim,Claim {n}: {text},,,,,,,,,
-prep.done,Every claim is backed. Odds up!,,,,,,,,,
-prep.help,Match each claim with the exhibit that proves it.,,,,,,,,,
-prep.hint,Hint: the glowing card.,,,,,,,,,
-prep.title,Prep table,,,,,,,,,
-prep.wrong,Not that one. Try another card.,,,,,,,,,
-rail.collision,Collision,,,,,,,,,
-rail.court,Court {time},,,,,,,,,
-rail.drag_hint,Drag a person onto a task,,,,,,,,,
-rail.empty,No dates yet. Accept a client at reception.,,,,,,,,,
-rail.pick,Now tap a task for {name}.,,,,,,,,,
-rail.title,Docket Rail,,,,,,,,,
-rail.today,Today,,,,,,,,,
-report.billed,Billed hours,,,,,,,,,
-report.billed_done,Billed: {cash},,,,,,,,,
-report.billing,Busy time,,,,,,,,,
-report.boost,Billing boost,,,,,,,,,
-report.clients,Clients,,,,,,,,,
-report.deadlines,Deadlines,,,,,,,,,
-report.fees,Fees,,,,,,,,,
-report.invoices,Ready to bill: {cash},,,,,,,,,
-report.late,Late filings,,,,,,,,,
-report.losses,Losses,,,,,,,,,
-report.net,Net,,,,,,,,,
-report.rent,Rent,,,,,,,,,
-report.salaries,Salaries,,,,,,,,,
-report.sanctions,Sanctions,,,,,,,,,
-report.settles,Settlements,,,,,,,,,
-report.standing,Standing ★ {s},,,,,,,,,
+prep.claim,Claim {n}: {text},İddia {n}: {text},Behauptung {n}: {text},Hecho {n}: {text},Point {n} : {text},Alegação {n}: {text},Требование {n}: {text},主張 {n}: {text},주장 {n}: {text},दावा {n}: {text}
+prep.done,Every claim is backed. Odds up!,Her iddia desteklendi. Şans yükseldi!,Jede Behauptung ist belegt. Die Chancen steigen!,Cada hecho está respaldado. ¡Las probabilidades suben!,Tous les points sont appuyés. Les chances montent !,Todas as alegações estão respaldadas. Chances subiram!,Каждое требование подкреплено. Шансы выросли!,すべての主張に裏づけがそろいました。勝率アップ！,모든 주장이 뒷받침됐어요. 승산이 올랐어요!,हर दावे का आधार है। जीत की संभावना बढ़ी!
+prep.help,Match each claim with the exhibit that proves it.,Her iddiayı onu kanıtlayan delille eşleştir.,"Ordne jede Behauptung dem Beweisstück zu, das sie belegt.",Une cada hecho con la prueba que lo demuestra.,Associe chaque point à la pièce qui le prouve.,Combine cada alegação com a prova que a comprova.,"Сопоставь каждое требование с уликой, которая его подтверждает.",それぞれの主張を、裏づける証拠品と組み合わせてください。,각 주장을 증명하는 증거와 맞춰 주세요.,हर दावे को उस सबूत से मिलाओ जो उसे साबित करता है।
+prep.hint,Hint: the glowing card.,İpucu: parlayan kart.,Hinweis: die leuchtende Karte.,Pista: la carta que brilla.,Indice : la carte qui brille.,Dica: o cartão que brilha.,Подсказка: светящаяся карточка.,ヒント: 光っているカード。,힌트: 빛나는 카드예요.,इशारा: चमकता कार्ड।
+prep.title,Prep table,Hazırlık masası,Vorbereitungstisch,Mesa de preparación,Table de préparation,Mesa de preparação,Стол подготовки,準備テーブル,준비 테이블,तैयारी मेज़
+prep.wrong,Not that one. Try another card.,Bu değil. Başka bir karta dene.,Nicht diese. Probier eine andere Karte.,Esa no. Prueba otra carta.,Pas celle-là. Essaie une autre carte.,Não é esse. Tente outro cartão.,Не та. Попробуй другую карточку.,それではありません。別のカードを試してください。,그게 아니에요. 다른 카드를 골라 보세요.,वह नहीं। कोई और कार्ड आज़माओ।
+rail.collision,Collision,Çakışma,Konflikt,Choque,Conflit,Conflito,Столкновение,重複,충돌,टकराव
+rail.court,Court {time},Duruşma {time},Gericht {time},Vista {time},Tribunal {time},Tribunal {time},Суд {time},法廷 {time},법원 {time},कोर्ट {time}
+rail.drag_hint,Drag a person onto a task,Bir kişiyi bir göreve sürükle,Zieh eine Person auf eine Aufgabe,Arrastra a una persona sobre una tarea,Glisse une personne sur une tâche,Arraste uma pessoa para uma tarefa,Перетащи человека на задачу,人を作業にドラッグ,사람을 업무 위로 끌어다 놓으세요,किसी व्यक्ति को काम पर खींचो
+rail.empty,No dates yet. Accept a client at reception.,Henüz tarih yok. Resepsiyonda bir müvekkil kabul et.,Noch keine Termine. Nimm eine Mandantschaft am Empfang an.,Aún no hay fechas. Acepta a un cliente en recepción.,Pas encore de dates. Accepte un client à l'accueil.,Ainda sem datas. Aceite um cliente na recepção.,Дат пока нет. Прими клиента на стойке регистрации.,まだ期日はありません。受付で依頼人を受けましょう。,아직 일정이 없어요. 접수 데스크에서 의뢰인을 수락하세요.,अभी कोई तारीख नहीं। रिसेप्शन पर कोई क्लाइंट स्वीकार करो।
+rail.pick,Now tap a task for {name}.,Şimdi {name} için bir göreve dokun.,Tippe jetzt auf eine Aufgabe für {name}.,Ahora toca una tarea para {name}.,Touche maintenant une tâche pour {name}.,Agora toque numa tarefa para {name}.,Теперь нажми на задачу для {name}.,次に、{name} の作業をタップしてください。,이제 {name}의 업무를 누르세요.,अब {name} के लिए कोई काम चुनो।
+rail.title,Docket Rail,Dosya Hattı,Terminleiste,Riel de agenda,Rail des dossiers,Trilho da Pauta,Лента дел,期日ボード,사건 일정표,डॉकेट रेल
+rail.today,Today,Bugün,Heute,Hoy,Aujourd'hui,Hoje,Сегодня,今日,오늘,आज
+report.billed,Billed hours,Faturalanan saatler,Abgerechnete Stunden,Horas facturadas,Heures facturées,Horas faturadas,Оплачено часов,請求した時間,청구한 시간,बिल किए घंटे
+report.billed_done,Billed: {cash},Faturalandı: {cash},Abgerechnet: {cash},Facturado: {cash},Facturé : {cash},Faturado: {cash},Выставлено: {cash},請求済み: {cash},청구 완료: {cash},बिल किया: {cash}
+report.billing,Busy time,Yoğun zaman,Arbeitszeit,Tiempo ocupado,Temps facturable,Tempo ocupado,Занятое время,稼働時間,바쁜 시간,व्यस्त समय
+report.boost,Billing boost,Faturalama artışı,Abrechnungsbonus,Impulso de facturación,Bonus de facturation,Impulso de faturamento,Бонус выставления счетов,請求ブースト,청구 보너스,बिलिंग बूस्ट
+report.clients,Clients,Müvekkiller,Mandanten,Clientes,Clients,Clientes,Клиенты,依頼人,의뢰인,क्लाइंट
+report.deadlines,Deadlines,Son tarihler,Fristen,Plazos,Échéances,Prazos,Сроки,締切,마감,समय-सीमाएँ
+report.fees,Fees,Ücretler,Honorare,Honorarios,Honoraires,Honorários,Гонорары,報酬,수임료,फ़ीस
+report.invoices,Ready to bill: {cash},Faturalanmaya hazır: {cash},Abrechnungsfertig: {cash},Listo para facturar: {cash},Prêt à facturer : {cash},Pronto para faturar: {cash},Готово к выставлению: {cash},請求可能: {cash},청구 가능: {cash},बिल के लिए तैयार: {cash}
+report.late,Late filings,Geç dilekçeler,Verspätete Eingaben,Presentaciones tardías,Dépôts en retard,Protocolos atrasados,Поздние подачи,提出遅れ,늦은 서류 제출,देर से फ़ाइलिंग
+report.losses,Losses,Kayıplar,Verluste,Pérdidas,Pertes,Perdas,Проигрыши,敗訴,패소,हार
+report.net,Net,Net,Netto,Neto,Net,Saldo,Итого,差し引き,순이익,कुल बचत
+report.rent,Rent,Kira,Miete,Alquiler,Loyer,Aluguel,Аренда,家賃,임대료,किराया
+report.salaries,Salaries,Maaşlar,Gehälter,Sueldos,Salaires,Salários,Зарплаты,給与,급여,तनख्वाहें
+report.sanctions,Sanctions,Yaptırımlar,Strafen,Sanciones,Sanctions,Sanções,Санкции,制裁金,제재금,जुर्माने
+report.settles,Settlements,Uzlaşmalar,Vergleiche,Acuerdos,Transactions,Acordos,Урегулирования,示談,합의,समझौते
+report.standing,Standing ★ {s},İtibar ★ {s},Ansehen ★ {s},Reputación ★ {s},Renom ★ {s},Reputação ★ {s},Авторитет ★ {s},評価 ★ {s},평판 ★ {s},साख ★ {s}
 report.title,Day {n} report,{n}. gün raporu,Bericht Tag {n},Informe del día {n},Rapport du jour {n},Relatório do dia {n},Отчёт за день {n},{n}日目のレポート,{n}일차 보고서,दिन {n} की रिपोर्ट
-report.visiting,Visiting counsel,,,,,,,,,
-report.walked_out,Walked out,,,,,,,,,
-report.walls,Ethical walls,,,,,,,,,
-report.wins,Wins,,,,,,,,,
-report.worked,Hours worked,,,,,,,,,
-reward.billing_boost.b,Watch a short video: +15 % on today's invoices.,,,,,,,,,
-reward.billing_boost.t,Billing boost,,,,,,,,,
-reward.case_preview.b,Watch a short video: see the twist of the next 3 clients.,,,,,,,,,
-reward.case_preview.t,Case file preview,,,,,,,,,
+report.visiting,Visiting counsel,Konuk avukat,Gastanwälte,Abogados visitantes,Avocats extérieurs,Advogados convidados,Приглашённые юристы,外部弁護士,외부 변호사,बाहर के वकील
+report.walked_out,Walked out,Vazgeçip gitti,Abgesprungen,Se marcharon,Partis,Desistiram,Ушли,途中で離脱,떠난 의뢰인,छोड़कर चले गए
+report.walls,Ethical walls,Etik duvarlar,Ethische Mauern,Murallas éticas,Murailles de Chine,Barreiras éticas,Этические барьеры,情報遮断措置,정보 차단벽,नैतिक दीवारें
+report.wins,Wins,Kazanılan davalar,Siege,Victorias,Gains,Vitórias,Выигрыши,勝訴,승소,जीत
+report.worked,Hours worked,Çalışılan saatler,Geleistete Stunden,Horas trabajadas,Heures travaillées,Horas trabalhadas,Отработано часов,勤務時間,일한 시간,काम किए घंटे
+reward.billing_boost.b,Watch a short video: +15 % on today's invoices.,Kısa bir video izle: bugünkü faturalara %15 ekstra.,Sieh dir ein kurzes Video an: +15 % auf die heutigen Rechnungen.,Mira un vídeo corto: +15 % en las facturas de hoy.,Regarde une courte vidéo : +15 % sur les factures du jour.,Assista a um vídeo curto: +15 % nas faturas de hoje.,Посмотри короткое видео: +15 % к сегодняшним счетам.,短い動画を見ると、今日の請求額が +15 %。,짧은 영상을 보면 오늘 청구서가 +15% 돼요.,छोटा वीडियो देखो: आज के बिलों पर +15 %।
+reward.billing_boost.t,Billing boost,Faturalama artışı,Abrechnungsbonus,Impulso de facturación,Bonus de facturation,Impulso de faturamento,Бонус счетов,請求ブースト,청구 보너스,बिलिंग बूस्ट
+reward.case_preview.b,Watch a short video: see the twist of the next 3 clients.,Kısa bir video izle: sıradaki 3 müvekkilin dönüşünü gör.,Sieh dir ein kurzes Video an: Wendungen der nächsten 3 Mandate sehen.,Mira un vídeo corto: descubre el giro de los próximos 3 clientes.,Regarde une courte vidéo : vois le rebondissement des 3 prochains clients.,Assista a um vídeo curto: veja a reviravolta dos próximos 3 clientes.,Посмотри короткое видео: узнай повороты следующих 3 клиентов.,短い動画を見ると、次の依頼人3件のひねりがわかります。,짧은 영상을 보면 다음 의뢰인 3명의 변수를 미리 볼 수 있어요.,छोटा वीडियो देखो: अगले 3 क्लाइंट का मोड़ देखो।
+reward.case_preview.t,Case file preview,Dosya önizlemesi,Vorschau der Akten,Vista previa del expediente,Aperçu des dossiers,Prévia do processo,Предпросмотр дел,案件ファイルのプレビュー,사건 파일 미리 보기,केस फ़ाइल की झलक
 reward.claim,Claim,Al,Abholen,Reclamar,Récupérer,Resgatar,Забрать,受け取る,받기,लो
-reward.done_cash,+{cash},,,,,,,,,
-reward.done_preview,The next clients' twists are on their cards.,,,,,,,,,
-reward.free.b,Yours without a video (ad-free).,,,,,,,,,
+reward.done_cash,+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash},+{cash}
+reward.done_preview,The next clients' twists are on their cards.,Sıradaki müvekkillerin dönüşleri kartlarında.,Die Wendungen der nächsten Mandate stehen auf ihren Karten.,Los giros de los próximos clientes ya aparecen en sus fichas.,Les rebondissements des prochains clients sont sur leurs fiches.,As reviravoltas dos próximos clientes estão nos cartões.,Повороты следующих клиентов теперь на их карточках.,次の依頼人のひねりがカードに表示されました。,다음 의뢰인들의 변수가 카드에 표시됐어요.,अगले क्लाइंट के मोड़ उनके कार्ड पर हैं।
+reward.free.b,Yours without a video (ad-free).,Video olmadan senin (reklamsız).,Gehört dir ohne Video (werbefrei).,Tuyo sin vídeo (sin anuncios).,À toi sans vidéo (sans pub).,É seu sem vídeo (sem anúncios).,Твоё без видео (без рекламы).,動画なしで受け取れます（広告なし）。,영상 없이 받아요(광고 없음).,बिना वीडियो के तुम्हारा (विज्ञापन-मुक्त)।
 reward.free_cash,Claim +{cash},+{cash} al,+{cash} abholen,Reclamar +{cash},Récupérer +{cash},Resgatar +{cash},Забрать +{cash},+{cash} を受け取る,{cash} 받기,+{cash} लो
-reward.offline_x2.b,Watch a short video to double what the firm earned.,,,,,,,,,
-reward.offline_x2.t,Double the overnight fees,,,,,,,,,
-reward.unavailable,Not available right now.,,,,,,,,,
-reward.video,Watch a video,,,,,,,,,
-reward.video_cash,Video · +{cash},,,,,,,,,
-role.associate,Associate,,,,,,,,,
-role.associate.d,"Covers hearings, preps and files.",,,,,,,,,
-role.clerk,Court clerk,,,,,,,,,
-role.clerk.d,Picks up open filings on their own.,,,,,,,,,
-role.intern,Intern,,,,,,,,,
-role.intern.d,"Cheap, many hours, runs errands and gathers evidence.",,,,,,,,,
-role.investigator,Investigator,,,,,,,,,
-role.investigator.d,Gathers evidence fast and finds the twist.,,,,,,,,,
-role.paralegal,Paralegal,,,,,,,,,
-role.paralegal.d,The fastest at filings. Sorts exhibits when you skip the prep table.,,,,,,,,,
-role.partner,Partner,,,,,,,,,
-role.partner.d,"Few hours, the best in court and at prep.",,,,,,,,,
-role.receptionist,Receptionist,,,,,,,,,
-role.receptionist.d,"More walk-ins, and clients wait longer.",,,,,,,,,
-room.coffee,Coffee corner,,,,,,,,,
-room.coffee.d,People tire 40 % slower.,,,,,,,,,
-room.conference,Conference room,,,,,,,,,
-room.conference.d,Settlement offers 15 % better.,,,,,,,,,
-room.desk,Extra desk,,,,,,,,,
-room.desk.d,Room for one more person.,,,,,,,,,
-room.docroom,Document room,,,,,,,,,
-room.docroom.d,Filings go 20 % faster.,,,,,,,,,
-room.evidence,Evidence room,,,,,,,,,
-room.evidence.d,Evidence goes 25 % faster.,,,,,,,,,
-room.library,Library,,,,,,,,,
-room.library.d,Prep goes 25 % faster.,,,,,,,,,
-room.war_room,Trial war room,,,,,,,,,
-room.war_room.d,+4 % odds in every hearing.,,,,,,,,,
-settings.about,About,,,,,,,,,
-settings.about_text,Calderport and everyone in it are made up. Legal flavour only — not legal advice.,,,,,,,,,
-settings.effects,Effects,,,,,,,,,
+reward.offline_x2.b,Watch a short video to double what the firm earned.,"Kısa bir video izle, büronun kazancını iki katına çıkar.","Sieh dir ein kurzes Video an, um das Verdiente der Kanzlei zu verdoppeln.",Mira un vídeo corto para duplicar lo que ganó el despacho.,Regarde une courte vidéo pour doubler les gains du cabinet.,Assista a um vídeo curto para dobrar o que o escritório ganhou.,"Посмотри короткое видео, чтобы удвоить то, что заработала фирма.",短い動画を見ると、事務所の稼ぎが2倍になります。,짧은 영상을 보면 사무소가 번 돈이 두 배가 돼요.,छोटा वीडियो देखो और फ़र्म की कमाई दोगुनी करो।
+reward.offline_x2.t,Double the overnight fees,Gece ücretlerini ikiye katla,Nachtgebühren verdoppeln,Doble de honorarios nocturnos,Double les honoraires de nuit,Dobrar os honorários da noite,Удвоить ночной гонорар,夜間の報酬を2倍に,야간 수임료 두 배,रात की फ़ीस दोगुनी
+reward.unavailable,Not available right now.,Şu an kullanılamıyor.,Gerade nicht verfügbar.,No disponible ahora mismo.,Pas disponible pour le moment.,Indisponível agora.,Сейчас недоступно.,今は利用できません。,지금은 받을 수 없어요.,अभी उपलब्ध नहीं है।
+reward.video,Watch a video,Video izle,Video ansehen,Ver un vídeo,Regarder une vidéo,Assistir a um vídeo,Посмотреть видео,動画を見る,영상 보기,वीडियो देखो
+reward.video_cash,Video · +{cash},Video · +{cash},Video · +{cash},Vídeo · +{cash},Vidéo · +{cash},Vídeo · +{cash},Видео · +{cash},動画 · +{cash},영상 · +{cash},वीडियो · +{cash}
+role.associate,Associate,Avukat yardımcısı,Associate,Asociado,Collaborateur,Advogado associado,Младший юрист,アソシエイト,담당 변호사,असोसिएट
+role.associate.d,"Covers hearings, preps and files.","Duruşmalara bakar, hazırlar ve dilekçe verir.","Übernimmt Verhandlungen, Vorbereitung und Eingaben.","Cubre vistas, prepara y presenta escritos.","S'occupe des audiences, des préparations et des dépôts.","Cuida de audiências, preparação e protocolos.","Ведёт слушания, готовит и подаёт документы.",審理、準備、提出を担当します。,"재판, 준비, 서류 제출을 맡아요.","सुनवाई, तैयारी और फ़ाइलिंग सँभालता है।"
+role.clerk,Court clerk,Mahkeme katibi,Justizangestellte,Oficial del juzgado,Greffier,Escrevente,Секретарь суда,書記官,법원 서기,कोर्ट क्लर्क
+role.clerk.d,Picks up open filings on their own.,Bekleyen dilekçeleri kendiliğinden alır.,Holt offene Eingaben selbstständig ab.,Recoge por su cuenta las presentaciones pendientes.,Récupère seul les dépôts en attente.,Pega os protocolos pendentes sozinho.,Сам берёт открытые подачи.,未処理の提出を自分で拾います。,열린 서류 제출 건을 스스로 처리해요.,खुली फ़ाइलिंग खुद उठाता है।
+role.intern,Intern,Stajyer,Hilfskraft,Becario,Stagiaire,Estagiário,Стажёр,インターン,인턴,इंटर्न
+role.intern.d,"Cheap, many hours, runs errands and gathers evidence.","Ucuz, çok saat çalışır, işleri yapar ve delil toplar.","Günstig, viele Stunden, erledigt Botengänge und sammelt Beweise.","Barato, muchas horas, hace recados y reúne pruebas.","Bon marché, beaucoup d'heures, fait les courses et rassemble les preuves.","Barato, muitas horas, faz recados e reúne provas.","Дёшево, много часов, выполняет поручения и собирает улики.",安くて長時間働き、使い走りや証拠集めをします。,저렴하고 시간이 많아요. 심부름과 증거 모으기를 해요.,"सस्ता, ज़्यादा घंटे, काम-काज और सबूत जुटाता है।"
+role.investigator,Investigator,Araştırmacı,Ermittler,Investigador,Enquêteur,Investigador,Следователь,調査員,조사관,जाँचकर्ता
+role.investigator.d,Gathers evidence fast and finds the twist.,Delili hızla toplar ve dönüşü bulur.,Sammelt schnell Beweise und findet die Wendung.,Reúne pruebas rápido y encuentra el giro.,Rassemble vite les preuves et trouve le rebondissement.,Reúne provas rápido e descobre a reviravolta.,Быстро собирает улики и находит поворот.,証拠をすばやく集め、ひねりを見つけます。,증거를 빨리 모으고 변수를 찾아내요.,सबूत तेज़ी से जुटाता है और मोड़ ढूँढता है।
+role.paralegal,Paralegal,Hukuk asistanı,Rechtsassistenz,Auxiliar jurídico,Assistant juridique,Paralegal,Помощник юриста,パラリーガル,법률 보조원,पैरालीगल
+role.paralegal.d,The fastest at filings. Sorts exhibits when you skip the prep table.,Dilekçede en hızlısı. Hazırlık masasını atlarsan delilleri ayırır.,"Am schnellsten bei Eingaben. Sortiert Beweisstücke, wenn du den Vorbereitungstisch überspringst.",El más rápido con las presentaciones. Ordena las pruebas si saltas la mesa de preparación.,Le plus rapide pour les dépôts. Trie les pièces quand tu passes la table de préparation.,O mais rápido com protocolos. Organiza as provas quando você pula a mesa de preparação.,"Самый быстрый в подачах. Сортирует улики, если пропустить стол подготовки.",提出が最も速い人。準備テーブルを使わないと証拠品を整理します。,서류 제출이 가장 빨라요. 준비 테이블을 건너뛰면 증거를 정리해요.,फ़ाइलिंग में सबसे तेज़। तैयारी मेज़ छोड़ने पर सबूत छाँटता है।
+role.partner,Partner,Ortak,Partner,Socio,Associé,Sócio,Партнёр,パートナー,파트너 변호사,पार्टनर
+role.partner.d,"Few hours, the best in court and at prep.","Az saat, duruşmada ve hazırlıkta en iyisi.","Wenige Stunden, die Besten vor Gericht und bei der Vorbereitung.","Pocas horas, el mejor en la sala y en la preparación.","Peu d'heures, le meilleur au tribunal comme en préparation.","Poucas horas, o melhor no tribunal e na preparação.","Мало часов, лучший в суде и на подготовке.",勤務時間は短いが、法廷と準備では最高の腕前。,시간은 적지만 법정과 준비에서 최고예요.,"कम घंटे, कोर्ट और तैयारी में सबसे अच्छा।"
+role.receptionist,Receptionist,Resepsiyonist,Empfangskraft,Recepcionista,Réceptionniste,Recepcionista,Администратор,受付係,접수 직원,रिसेप्शनिस्ट
+role.receptionist.d,"More walk-ins, and clients wait longer.","Daha çok kapıdan gelen müvekkil, ama müvekkiller daha uzun bekler.","Mehr Laufkundschaft, aber Mandanten warten länger.","Más clientes sin cita, y los clientes esperan más.","Plus de clients spontanés, mais ils attendent plus longtemps.","Mais clientes sem hora marcada, e os clientes esperam mais.","Больше клиентов с улицы, но они дольше ждут.",飛び込みの依頼人が増えますが、依頼人の待ち時間も長くなります。,방문 의뢰인이 늘지만 기다리는 시간도 길어져요.,"ज़्यादा बिना बुलाए आने वाले क्लाइंट, पर क्लाइंट ज़्यादा इंतज़ार करते हैं।"
+room.coffee,Coffee corner,Kahve köşesi,Kaffee-Ecke,Rincón del café,Coin café,Cantinho do café,Уголок с кофе,コーヒーコーナー,커피 코너,कॉफ़ी कोना
+room.coffee.d,People tire 40 % slower.,İnsanlar %40 daha yavaş yorulur.,Menschen ermüden 40 % langsamer.,La gente se cansa un 40 % más despacio.,Les gens se fatiguent 40 % moins vite.,As pessoas cansam 40 % mais devagar.,Люди устают на 40 % медленнее.,疲れにくくなります（40 %遅く疲れる）。,사람들이 40% 덜 지쳐요.,लोग 40 % धीमे थकते हैं।
+room.conference,Conference room,Toplantı odası,Besprechungsraum,Sala de reuniones,Salle de réunion,Sala de reuniões,Переговорная,会議室,회의실,कॉन्फ़्रेंस रूम
+room.conference.d,Settlement offers 15 % better.,Uzlaşma teklifleri %15 daha iyi.,Vergleichsangebote 15 % besser.,Las ofertas de acuerdo son un 15 % mejores.,Les offres de transaction sont 15 % meilleures.,Propostas de acordo 15 % melhores.,Предложения при урегулировании на 15 % лучше.,示談の条件が 15 %よくなります。,합의 제안이 15% 더 좋아져요.,समझौते के प्रस्ताव 15 % बेहतर।
+room.desk,Extra desk,Ek masa,Zusatz-Schreibtisch,Mesa extra,Bureau supplémentaire,Mesa extra,Дополнительный стол,机を増やす,추가 책상,अतिरिक्त मेज़
+room.desk.d,Room for one more person.,Bir kişi daha için yer.,Platz für eine weitere Person.,Espacio para una persona más.,De la place pour une personne de plus.,Espaço para mais uma pessoa.,Место для ещё одного человека.,もう1人入れる場所ができます。,한 명 더 들어갈 자리예요.,एक और व्यक्ति के लिए जगह।
+room.docroom,Document room,Belge odası,Dokumentenraum,Sala de documentos,Salle des documents,Sala de documentos,Комната документов,書類室,문서실,दस्तावेज़ कक्ष
+room.docroom.d,Filings go 20 % faster.,Dilekçeler %20 daha hızlı.,Eingaben gehen 20 % schneller.,Las presentaciones van un 20 % más rápido.,Les dépôts vont 20 % plus vite.,Os protocolos saem 20 % mais rápido.,Подачи идут на 20 % быстрее.,提出が 20 %速くなります。,서류 제출이 20% 빨라져요.,फ़ाइलिंग 20 % तेज़।
+room.evidence,Evidence room,Delil odası,Beweisraum,Sala de pruebas,Salle des preuves,Sala de provas,Комната улик,証拠室,증거실,सबूत कक्ष
+room.evidence.d,Evidence goes 25 % faster.,Deliller %25 daha hızlı işlenir.,Beweise kommen 25 % schneller.,Las pruebas van un 25 % más rápido.,Les preuves vont 25 % plus vite.,As provas andam 25 % mais rápido.,Улики собираются на 25 % быстрее.,証拠の処理が 25 %速くなります。,증거 처리가 25% 빨라져요.,सबूत 25 % तेज़।
+room.library,Library,Kütüphane,Bibliothek,Biblioteca,Bibliothèque,Biblioteca,Библиотека,図書館,도서관,लाइब्रेरी
+room.library.d,Prep goes 25 % faster.,Hazırlık %25 daha hızlı.,Die Vorbereitung geht 25 % schneller.,La preparación va un 25 % más rápido.,La préparation va 25 % plus vite.,A preparação fica 25 % mais rápida.,Подготовка идёт на 25 % быстрее.,準備が 25 %速くなります。,준비가 25% 빨라져요.,तैयारी 25 % तेज़।
+room.war_room,Trial war room,Dava savaş odası,Prozess-Kommandozentrale,Sala de guerra del juicio,Salle de crise du procès,Sala de estratégia,Штаб перед процессом,裁判作戦室,재판 작전실,ट्रायल वॉर रूम
+room.war_room.d,+4 % odds in every hearing.,Her duruşmada şansa +%4.,+4 % Chance in jeder Verhandlung.,+4 % de probabilidad en cada vista.,+4 % de chances à chaque audience.,+4 % de chances em cada audiência.,+4 % шансов на каждом слушании.,すべての審理で勝率 +4 %。,모든 재판에서 승산 +4%.,हर सुनवाई में +4 % जीत की संभावना।
+settings.about,About,Hakkında,Über das Spiel,Acerca de,À propos,Sobre,О игре,このゲームについて,정보,के बारे में
+settings.about_text,Calderport and everyone in it are made up. Legal flavour only — not legal advice.,Calderport ve içindeki herkes kurgudur. Sadece hukuk havası; hukuki tavsiye değildir.,Calderport und alle darin sind erfunden. Nur für den Spaß — keine Rechtsberatung.,"Calderport y todos sus habitantes son ficticios. Solo es ambientación jurídica, no asesoramiento legal.",Calderport et tous ses habitants sont fictifs. Ambiance juridique seulement : ceci ne constitue pas un conseil juridique.,Calderport e todos que vivem nela são fictícios. Apenas ambientação jurídica — não é aconselhamento jurídico.,"Калдерпорт и все, кто в нём, вымышлены. Только игровая атмосфера — это не юридическая консультация.",カルダーポートとそこに登場する人々はすべて架空です。法律風の雰囲気だけで、法的助言ではありません。,"칼더포트와 그곳의 모든 사람과 상호는 가상이에요. 법률 분위기를 낸 것일 뿐이며, 법률 자문이 아니에요.",कैल्डरपोर्ट और इसके सभी लोग काल्पनिक हैं। सिर्फ़ कानूनी माहौल के लिए — यह कानूनी सलाह नहीं है।
+settings.effects,Effects,Efektler,Effekte,Efectos,Effets,Efeitos,Эффекты,効果音,효과음,इफ़ेक्ट
 settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Графика,画質,그래픽,ग्राफ़िक्स
-settings.guide,How to play / replay the guide,,,,,,,,,
-settings.help,Help,,,,,,,,,
+settings.guide,How to play / replay the guide,Nasıl oynanır / Rehberi tekrar oynat,So wird gespielt / Anleitung erneut,Cómo jugar / repetir la guía,Comment jouer / revoir le guide,Como jogar / rever o guia,Как играть / повторить подсказки,遊び方 / ガイドをもう一度見る,플레이 방법 / 가이드 다시 보기,कैसे खेलें / गाइड दोबारा देखो
+settings.help,Help,Yardım,Hilfe,Ayuda,Aide,Ajuda,Помощь,ヘルプ,도움말,मदद
 settings.language,Language,Dil,Sprache,Idioma,Langue,Idioma,Язык,言語,언어,भाषा
 settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,음악,संगीत
-settings.objection,Objection! tap in hearings,,,,,,,,,
+settings.objection,Objection! tap in hearings,Duruşmalarda İtiraz! dokunuşu,Einspruch! in Verhandlungen tippen,¡Protesta! tocar en las vistas,Objection ! en touchant pendant les audiences,Protesto! toque nas audiências,«Возражаю!» нажатием на слушаниях,異議あり！ 審理中にタップ,재판 중 “이의 있어요!” 누르기,सुनवाई में आपत्ति! पर टैप
 settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
 settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चालू
-settings.open,Open,,,,,,,,,
+settings.open,Open,Aç,Öffnen,Abrir,Ouvrir,Abrir,Открыть,開く,열기,खोलो
 settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
 settings.privacy,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
 settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
-settings.sound,Sound,,,,,,,,,
+settings.sound,Sound,Ses,Ton,Sonido,Son,Som,Звук,サウンド,사운드,आवाज़
 settings.title,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
 settings.version,Version {v},Sürüm {v},Version {v},Versión {v},Version {v},Versão {v},Версия {v},バージョン {v},버전 {v},वर्शन {v}
 sheet.close,Close,Kapat,Schließen,Cerrar,Fermer,Fechar,Закрыть,閉じる,닫기,बंद करो
-shop.bought,{name}: thank you!,,,,,,,,,
-shop.cap,That's the daily limit for packs.,,,,,,,,,
-shop.failed,The purchase didn't go through.,,,,,,,,,
-shop.funds,+{cash} operating cash,,,,,,,,,
-shop.group.adfree,Ad-free & big packs,,,,,,,,,
-shop.group.boost,Helpers,,,,,,,,,
-shop.group.budget,Operating cash,,,,,,,,,
+shop.bought,{name}: thank you!,{name}: teşekkürler!,{name}: Danke!,{name}: ¡gracias!,{name} : merci !,{name}: obrigado!,{name}: спасибо!,{name}: ありがとうございます！,{name}: 감사해요!,{name}: धन्यवाद!
+shop.cap,That's the daily limit for packs.,Paketler için günlük sınır bu.,Das ist das Tageslimit für Pakete.,Ese es el límite diario de packs.,C'est la limite quotidienne pour les packs.,Esse é o limite diário de pacotes.,Это дневной лимит наборов.,パックは1日の上限に達しています。,오늘은 팩을 이만큼만 살 수 있어요.,पैक की रोज़ की सीमा यही है।
+shop.failed,The purchase didn't go through.,Satın alma tamamlanamadı.,Der Kauf hat nicht geklappt.,La compra no se completó.,L'achat n'a pas abouti.,A compra não foi concluída.,Покупка не прошла.,購入できませんでした。,구매가 완료되지 않았어요.,खरीदारी पूरी नहीं हुई।
+shop.funds,+{cash} operating cash,+{cash} işletme parası,+{cash} Betriebsgeld,+{cash} de efectivo de explotación,+{cash} de trésorerie,+{cash} de caixa operacional,+{cash} оборотных средств,運転資金 +{cash},운영 자금 +{cash},+{cash} दफ़्तर खर्च
+shop.group.adfree,Ad-free & big packs,Reklamsız ve paketler,Werbefrei & Pakete,Sin anuncios y packs,Sans pub et gros packs,Sem anúncios e pacotes,Без рекламы и пакеты,広告なし＆大型パック,광고 없음 & 큰 팩,विज्ञापन-मुक्त और पैक
+shop.group.boost,Helpers,Yardımcılar,Helfer,Ayudantes,Coups de pouce,Ajudantes,Помощники,助っ人,도우미,सहायक
+shop.group.budget,Operating cash,İşletme parası,Betriebsgeld,Dinero,Trésorerie,Caixa operacional,Оборотные средства,運転資金,운영 자금,दफ़्तर खर्च
 shop.group.looks,Looks,Görünümler,Optik,Estilos,Esthétique,Visuais,Внешний вид,見た目,외형,लुक
 shop.group.offer,Offers,Teklifler,Angebote,Ofertas,Offres,Ofertas,Предложения,特別オファー,특가,ऑफ़र
-shop.offer,Offer,,,,,,,,,
+shop.offer,Offer,Teklif,Angebot,Oferta,Offre,Oferta,Предложение,特別オファー,특가,ऑफ़र
 shop.owned,Owned,Sende,Gekauft,Comprado,Acquis,Comprado,Куплено,所持済み,보유 중,आपके पास
-shop.restore,Restore,,,,,,,,,
-shop.restore_failed,Couldn't restore right now.,,,,,,,,,
-shop.restored,Purchases restored.,,,,,,,,,
+shop.restore,Restore,Geri yükle,Wiederherstellen,Restaurar,Restaurer,Restaurar,Восстановить,復元,복원,वापस लाओ
+shop.restore_failed,Couldn't restore right now.,Şu an geri yüklenemedi.,Gerade nicht wiederherstellbar.,No se pudo restaurar ahora.,Impossible de restaurer pour le moment.,Não foi possível restaurar agora.,Сейчас не получилось восстановить.,今は復元できません。,지금은 복원할 수 없어요.,अभी वापस नहीं ला सके।
+shop.restored,Purchases restored.,Satın almalar geri yüklendi.,Käufe wiederhergestellt.,Compras restauradas.,Achats restaurés.,Compras restauradas.,Покупки восстановлены.,購入を復元しました。,구매를 복원했어요.,खरीदारी वापस आ गई।
 shop.title,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
-shop.unavailable,The store isn't ready yet.,,,,,,,,,
-staff.day_pass,Day pass,,,,,,,,,
-staff.founder,You (founder),,,,,,,,,
-staff.hours,{left} of {total} h left,,,,,,,,,
-staff.in_court,In court,,,,,,,,,
-staff.name.0,You,,,,,,,,,
-staff.name.1,Ada,,,,,,,,,
-staff.name.10,Jonah,,,,,,,,,
-staff.name.11,Kiri,,,,,,,,,
-staff.name.12,Leon,,,,,,,,,
-staff.name.13,Mila,,,,,,,,,
-staff.name.14,Nico,,,,,,,,,
-staff.name.15,Oona,,,,,,,,,
-staff.name.16,Pax,,,,,,,,,
-staff.name.17,Quinn,,,,,,,,,
-staff.name.18,Rhea,,,,,,,,,
-staff.name.19,Sami,,,,,,,,,
-staff.name.2,Bram,,,,,,,,,
-staff.name.20,Tess,,,,,,,,,
-staff.name.21,Umar,,,,,,,,,
-staff.name.22,Vera,,,,,,,,,
-staff.name.23,Wes,,,,,,,,,
-staff.name.3,Cleo,,,,,,,,,
-staff.name.4,Dev,,,,,,,,,
-staff.name.5,Esme,,,,,,,,,
-staff.name.6,Farid,,,,,,,,,
-staff.name.7,Gia,,,,,,,,,
-staff.name.8,Hugo,,,,,,,,,
-staff.name.9,Ines,,,,,,,,,
-staff.queue,{h} h of work queued,,,,,,,,,
-staff.sick,Out sick,,,,,,,,,
-staff.tired,Tired,,,,,,,,,
-tab.matters,Matters,,,,,,,,,
-tab.office,Office,,,,,,,,,
-tab.settings,Settings,,,,,,,,,
+shop.unavailable,The store isn't ready yet.,Mağaza henüz hazır değil.,Der Shop ist noch nicht bereit.,La tienda aún no está lista.,La boutique n'est pas encore prête.,A loja ainda não está pronta.,Магазин ещё не готов.,ストアはまだ準備中です。,상점이 아직 준비되지 않았어요.,दुकान अभी तैयार नहीं है।
+staff.day_pass,Day pass,Günlük geçiş,Tagespass,Pase diario,Pass journée,Passe do dia,Дневной пропуск,日帰りパス,하루 이용권,दिन का पास
+staff.founder,You (founder),Sen (kurucu),Du (Gründer),Tú (fundador),Toi (fondateur),Você (fundador),Ты (основатель),あなた（創業者）,나 (창립자),तुम (संस्थापक)
+staff.hours,{left} of {total} h left,{total} saatin {left} tanesi kaldı,{left} von {total} Std. übrig,Quedan {left} de {total} h,{left} h restantes sur {total},{left} de {total} h restantes,Осталось {left} из {total} ч,残り {left} / {total} 時間,{total}시간 중 {left}시간 남음,{left} / {total} घं बाकी
+staff.in_court,In court,Duruşmada,Vor Gericht,En la vista,Au tribunal,No tribunal,В суде,法廷中,법정 중,कोर्ट में
+staff.name.0,You,Sen,Du,Tú,Toi,Você,Ты,あなた,나,You
+staff.name.1,Ada,Ada,Ada,Ada,Ada,Ada,Ада,エイダ,에이다,Ada
+staff.name.10,Jonah,Jonah,Jonah,Jonah,Jonah,Jonah,Джона,ジョナ,조나,Jonah
+staff.name.11,Kiri,Kiri,Kiri,Kiri,Kiri,Kiri,Кири,キリ,키리,Kiri
+staff.name.12,Leon,Leon,Leon,Leon,Leon,Leon,Леон,レオン,레온,Leon
+staff.name.13,Mila,Mila,Mila,Mila,Mila,Mila,Мила,ミラ,밀라,Mila
+staff.name.14,Nico,Nico,Nico,Nico,Nico,Nico,Нико,ニコ,니코,Nico
+staff.name.15,Oona,Oona,Oona,Oona,Oona,Oona,Уна,ウーナ,우나,Oona
+staff.name.16,Pax,Pax,Pax,Pax,Pax,Pax,Пакс,パックス,팍스,Pax
+staff.name.17,Quinn,Quinn,Quinn,Quinn,Quinn,Quinn,Куинн,クイン,퀸,Quinn
+staff.name.18,Rhea,Rhea,Rhea,Rhea,Rhea,Rhea,Рея,レア,레아,Rhea
+staff.name.19,Sami,Sami,Sami,Sami,Sami,Sami,Сами,サミ,사미,Sami
+staff.name.2,Bram,Bram,Bram,Bram,Bram,Bram,Брэм,ブラム,브람,Bram
+staff.name.20,Tess,Tess,Tess,Tess,Tess,Tess,Тесс,テス,테스,Tess
+staff.name.21,Umar,Umar,Umar,Umar,Umar,Umar,Умар,ウマル,우마르,Umar
+staff.name.22,Vera,Vera,Vera,Vera,Vera,Vera,Вера,ヴェラ,베라,Vera
+staff.name.23,Wes,Wes,Wes,Wes,Wes,Wes,Уэс,ウェス,웨스,Wes
+staff.name.3,Cleo,Cleo,Cleo,Cleo,Cleo,Cleo,Клео,クレオ,클레오,Cleo
+staff.name.4,Dev,Dev,Dev,Dev,Dev,Dev,Дев,デヴ,데브,Dev
+staff.name.5,Esme,Esme,Esme,Esme,Esme,Esme,Эсме,エスメ,에스메,Esme
+staff.name.6,Farid,Farid,Farid,Farid,Farid,Farid,Фарид,ファリード,파리드,Farid
+staff.name.7,Gia,Gia,Gia,Gia,Gia,Gia,Джиа,ジア,지아,Gia
+staff.name.8,Hugo,Hugo,Hugo,Hugo,Hugo,Hugo,Хьюго,ユーゴ,휴고,Hugo
+staff.name.9,Ines,Ines,Ines,Ines,Ines,Ines,Инес,イネス,이네스,Ines
+staff.queue,{h} h of work queued,{h} sa iş sırada,{h} Std. Arbeit in der Warteschlange,{h} h de trabajo en cola,{h} h de travail en attente,{h} h de trabalho na fila,В очереди работы: {h} ч,待機中の作業 {h} 時間,대기 중인 업무 {h}시간,{h} घं का काम कतार में
+staff.sick,Out sick,Hasta izinli,Krankgeschrieben,De baja por enfermedad,En arrêt,De atestado,На больничном,病欠中,병가 중,"बीमार, छुट्टी पर"
+staff.tired,Tired,Yorgun,Müde,Cansado,Fatigué,Cansado,Устал,疲れ気味,지침,थका हुआ
+tab.matters,Matters,Dosyalar,Mandate,Asuntos,Affaires,Casos,Дела,案件,사건,केस
+tab.office,Office,Büro,Büro,Oficina,Bureau,Escritório,Офис,事務所,사무실,दफ़्तर
+tab.settings,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
 tab.shop,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
-tab.team,Team,,,,,,,,,
-team.fire,Let go,,,,,,,,,
-team.hire,Hire,,,,,,,,,
-team.hire_cost,Hire · {cost},,,,,,,,,
-team.rate,{rate}/h · salary {salary}/day,,,,,,,,,
-team.roster,Your people,,,,,,,,,
-team.sub,{n} people · desks {d}/{m},,,,,,,,,
-team.title,Team,,,,,,,,,
-tier.L,Large,,,,,,,,,
-tier.M,Medium,,,,,,,,,
-tier.S,Small,,,,,,,,,
-tip.auto_continuance,"Nobody went to court, so the judge moved the hearing once. Next time it goes ahead without you.",,,,,,,,,
-tip.chapter2,"Main Street! Tenancy and family matters, investigators, clerks and conflicts.",,,,,,,,,
-tip.chapter3,"Courthouse Row! Contract matters, a second partner and the war room.",,,,,,,,,
-tip.conflict,"Purple badge = conflict. You can't act for both sides: refer the client, or (from Main Street) build an ethical wall.",,,,,,,,,
-tip.judges,"Each judge has a habit. It's on the matter card, so plan for it.",,,,,,,,,
-tip.late,A missed filing costs a sanction and Standing. It stays on the rail until it's done.,,,,,,,,,
-tip.motion,"Put someone on the motion today, or pay a sanction tomorrow.",,,,,,,,,
-tip.power_cut,Filings wait an hour. Evidence and prep go on.,,,,,,,,,
-tip.report,"Every evening: the report, then the billing run turns the day's work into money.",,,,,,,,,
-tip.sick,Their tasks wait. Drag someone else onto anything urgent.,,,,,,,,,
-tip.substitute,"New judge, new habit. Check the odds on the card.",,,,,,,,,
-tip.trust,Retainer money sits in trust. Hours on that matter draw from it; leftovers go back to the client.,,,,,,,,,
-tip.twist,The evidence is in: the card now shows the true odds.,,,,,,,,,
-toast.assigned,{name} is on it.,,,,,,,,,
-toast.billed,Billed {cash}.,,,,,,,,,
-toast.chapter,Welcome to {name}!,,,,,,,,,
-toast.continued,The hearing moved to day {n}.,,,,,,,,,
-toast.hired,{name} joined as {role}.,,,,,,,,,
-toast.late,Late {kind}: sanction.,,,,,,,,,
-toast.lost,Lost the {name} hearing. +{cash} lesson fee,,,,,,,,,
-toast.referred,Referred: +{cash},,,,,,,,,
-toast.room_done,{name} is ready.,,,,,,,,,
-toast.settled,Settled: +{cash},,,,,,,,,
-toast.trust_in,{cash} retainer into trust.,,,,,,,,,
-toast.walked_out,A client gave up waiting.,,,,,,,,,
-toast.walkin,A client walked in.,,,,,,,,,
-toast.won,Won the {name} hearing! +{cash},,,,,,,,,
+tab.team,Team,Ekip,Team,Equipo,Équipe,Equipe,Команда,チーム,팀,टीम
+team.fire,Let go,İşten çıkar,Entlassen,Despedir,Laisser partir,Dispensar,Уволить,退職させる,내보내기,निकालो
+team.hire,Hire,İşe al,Einstellen,Contratar,Embaucher,Contratar,Нанять,雇う,고용,रखो
+team.hire_cost,Hire · {cost},İşe al · {cost},Einstellen · {cost},Contratar · {cost},Embaucher · {cost},Contratar · {cost},Нанять · {cost},雇う · {cost},고용 · {cost},रखो · {cost}
+team.rate,{rate}/h · salary {salary}/day,{rate}/sa · maaş {salary}/gün,{rate}/Std. · Gehalt {salary}/Tag,{rate}/h · sueldo {salary}/día,{rate}/h · salaire {salary}/jour,{rate}/h · salário {salary}/dia,{rate}/ч · зарплата {salary} в день,{rate}/時 · 給与 {salary}/日,{rate}/시간 · 일급 {salary},{rate}/घं · तनख्वाह {salary}/दिन
+team.roster,Your people,Ekibin,Deine Leute,Tu gente,Tes collaborateurs,Sua equipe,Твои люди,スタッフ一覧,우리 직원,तुम्हारे लोग
+team.sub,{n} people · desks {d}/{m},{n} kişi · masalar {d}/{m},{n} Personen · Schreibtische {d}/{m},{n} personas · mesas {d}/{m},{n} personnes · bureaux {d}/{m},{n} pessoas · mesas {d}/{m},Человек: {n} · столов {d}/{m},{n} 人 · 机 {d}/{m},{n}명 · 책상 {d}/{m},{n} लोग · मेज़ें {d}/{m}
+team.title,Team,Ekip,Team,Equipo,Équipe,Equipe,Команда,チーム,팀,टीम
+tier.L,Large,Büyük,Groß,Grande,Grand,Grande,Большой,大,대형,बड़ा
+tier.M,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
+tier.S,Small,Küçük,Klein,Pequeño,Petit,Pequeno,Малый,小,소형,छोटा
+tip.auto_continuance,"Nobody went to court, so the judge moved the hearing once. Next time it goes ahead without you.","Kimse mahkemeye gitmedi, bu yüzden hâkim duruşmayı bir kez erteledi. Bir dahakine sensiz ilerler.","Niemand ging vor Gericht, also hat die Richterin die Verhandlung einmal verschoben. Beim nächsten Mal findet sie ohne dich statt.","Nadie fue al juzgado, así que el juez aplazó la vista una vez. La próxima vez seguirá sin ti.","Personne n'est allé au tribunal, alors le juge a repoussé l'audience une fois. La prochaine fois, elle aura lieu sans toi.","Ninguém foi ao tribunal, então o juiz adiou a audiência uma vez. Da próxima vez, ela acontece sem você.","Никто не пришёл в суд, поэтому судья перенёс слушание один раз. В следующий раз оно пройдёт без тебя.",誰も出廷しなかったため、裁判官が審理を1回延期しました。次回は、そのまま審理が行われます。,아무도 법정에 가지 않아서 판사가 재판을 한 번 미뤘어요. 다음에는 당신 없이 진행돼요.,"किसी ने कोर्ट नहीं जाना, इसलिए जज ने सुनवाई एक बार आगे खिसकाई। अगली बार तुम्हारे बिना आगे बढ़ेगी।"
+tip.chapter2,"Main Street! Tenancy and family matters, investigators, clerks and conflicts.","Ana Cadde! Kira ve aile dosyaları, araştırmacılar, katipler ve çıkar çatışmaları.","Hauptstraße! Mietrecht- und Familienfälle, Ermittler, Justizangestellte und Interessenkonflikte.","¡La Calle Mayor! Asuntos de arrendamientos y familia, investigadores, oficiales y conflictos.","La Grand-Rue ! Affaires de location et de famille, enquêteurs, greffiers et conflits.","Avenida Principal! Casos de locação e família, investigadores, escreventes e conflitos.","Главная улица! Дела об аренде и семейные дела, следователи, секретари и конфликты.",メインストリートへようこそ！ 賃貸と家事の案件、調査員、書記官、利益相反の問題が加わります。,"메인 스트리트! 임대차와 가사 사건, 조사관, 서기, 이해 충돌이 열렸어요.","मेन स्ट्रीट! किराएदारी और परिवार के केस, जाँचकर्ता, क्लर्क और टकराव।"
+tip.chapter3,"Courthouse Row! Contract matters, a second partner and the war room.","Adliye Sırası! Sözleşme dosyaları, ikinci bir ortak ve dava savaş odası.","Gerichtsstraße! Vertragsfälle, ein zweiter Partner und die Prozess-Kommandozentrale.","¡La Calle del Juzgado! Asuntos de contratos, un segundo socio y la sala de guerra.","La rue du Palais ! Affaires contractuelles, un second associé et la salle de crise.","Rua do Fórum! Casos de contratos, um segundo sócio e a sala de estratégia.","Улица суда! Договорные дела, второй партнёр и штаб перед процессом.",裁判所通りです！ 契約案件、2人目のパートナー、作戦室が使えます。,"법원 거리! 계약 사건, 두 번째 파트너, 재판 작전실이 열렸어요.","कोर्टहाउस रो! कॉन्ट्रैक्ट के केस, दूसरा पार्टनर और वॉर रूम।"
+tip.conflict,"Purple badge = conflict. You can't act for both sides: refer the client, or (from Main Street) build an ethical wall.",Mor rozet = çıkar çatışması. İki tarafa birden bakamazsın: müvekkili yönlendir ya da (Ana Cadde'den itibaren) etik duvar ör.,Lila Marke = Interessenkonflikt. Du kannst nicht beide Seiten vertreten: Leite die Mandantschaft weiter oder baue (ab der Hauptstraße) eine ethische Mauer.,"La insignia morada = conflicto. No puedes actuar para las dos partes: deriva al cliente o, desde la Calle Mayor, levanta una muralla ética.","Badge violet = conflit. Tu ne peux pas représenter les deux camps : oriente le client, ou (depuis la Grand-Rue) dresse une muraille de Chine.",Distintivo roxo = conflito. Você não pode atuar para os dois lados: encaminhe o cliente ou (da Avenida Principal) crie uma barreira ética.,Фиолетовый значок — конфликт. Нельзя представлять обе стороны: передай клиента или (на Главной улице) построй этический барьер.,紫のバッジ = 利益相反。両方の側につくことはできません。依頼人を紹介するか、（メインストリートから）情報遮断措置を作りましょう。,"보라색 표시는 이해 충돌이에요. 양쪽을 모두 맡을 수 없어요. 의뢰인을 소개하거나, 메인 스트리트부터는 정보 차단벽을 세우세요.","बैंगनी बैज = टकराव। दोनों तरफ़ से काम नहीं कर सकते: क्लाइंट को भेजो, या (मेन स्ट्रीट से) नैतिक दीवार बनाओ।"
+tip.judges,"Each judge has a habit. It's on the matter card, so plan for it.","Her hâkimin bir alışkanlığı var. Dosya kartında yazar, ona göre plan yap.","Jede Richterin und jeder Richter hat eine Eigenart. Sie steht auf der Mandatskarte, plane also danach.","Cada juez tiene sus manías. Aparecen en la ficha del asunto, así que planifica según eso.",Chaque juge a ses habitudes. Elles sont sur la fiche de l'affaire : prévois-les.,"Cada juiz tem um hábito. Ele está na ficha do caso, então planeje para isso.",У каждого судьи есть привычка. Она написана на карточке дела — учитывай её в планах.,裁判官にはそれぞれ癖があります。案件カードに書いてあるので、それを見越して計画しましょう。,판사마다 습관이 있어요. 사건 카드에 나와 있으니 미리 계획하세요.,"हर जज की अपनी आदत होती है। वह केस कार्ड पर लिखी होती है, उसी हिसाब से योजना बनाओ।"
+tip.late,A missed filing costs a sanction and Standing. It stays on the rail until it's done.,Kaçırılan dilekçe yaptırım ve itibara mal olur. Bitene kadar Dosya Hattı'nda kalır.,"Eine verpasste Frist kostet eine Strafe und Ansehen. Sie bleibt auf der Terminleiste, bis sie erledigt ist.",Una presentación perdida cuesta una sanción y reputación. Se queda en el riel hasta que se haga.,Un dépôt manqué coûte une sanction et du renom. Il reste sur le rail tant qu'il n'est pas fait.,Um protocolo perdido custa uma sanção e Reputação. Ele fica no trilho até ser feito.,"Пропущенная подача стоит санкции и авторитета. Дело остаётся на ленте, пока не будет готово.",提出を逃すと制裁金と評価を失います。終わるまで期日ボードに残ります。,서류 제출을 놓치면 제재금과 평판이 깎여요. 끝날 때까지 일정표에 남아 있어요.,छूटी फ़ाइलिंग से जुर्माना और साख जाती है। काम पूरा होने तक वह रेल पर रहता है।
+tip.motion,"Put someone on the motion today, or pay a sanction tomorrow.","Bugün talebe biri ata, yoksa yarın yaptırım öde.","Setz heute jemanden auf den Antrag, sonst zahlst du morgen eine Strafe.","Pon a alguien en el escrito hoy, o paga una sanción mañana.","Affecte quelqu'un à la requête aujourd'hui, ou paie une sanction demain.","Coloque alguém na petição hoje, ou pague uma sanção amanhã.","Поставь кого-нибудь на ходатайство сегодня, или завтра заплатишь санкцию.",今日、誰かを申立てに担当させるか、明日制裁金を払うかです。,오늘 누군가를 신청 업무에 배정하세요. 아니면 내일 제재금을 내야 해요.,"आज ही किसी को अर्ज़ी पर लगाओ, वरना कल जुर्माना भरो।"
+tip.power_cut,Filings wait an hour. Evidence and prep go on.,Dilekçeler bir saat bekler. Delil ve hazırlık devam eder.,Eingaben warten eine Stunde. Beweise und Vorbereitung laufen weiter.,Las presentaciones esperan una hora. Las pruebas y la preparación siguen.,Les dépôts attendent une heure. Les preuves et la préparation continuent.,Os protocolos esperam uma hora. Provas e preparação continuam.,Подачи ждут час. Улики и подготовка идут дальше.,提出は1時間待ちになります。証拠整理と準備は続けられます。,서류 제출은 한 시간 기다려요. 증거와 준비는 계속 진행돼요.,फ़ाइलिंग एक घंटा रुकती है। सबूत और तैयारी चलती रहती है।
+tip.report,"Every evening: the report, then the billing run turns the day's work into money.","Her akşam rapor gelir, sonra faturalama turu günün işini paraya çevirir.","Jeden Abend: der Bericht, dann macht der Abrechnungslauf aus der Arbeit des Tages Geld.","Cada noche: el informe, y luego la facturación convierte el trabajo del día en dinero.","Chaque soir : le bilan, puis la facturation transforme le travail de la journée en argent.","Toda noite: o relatório, depois o faturamento transforma o trabalho do dia em dinheiro.","Каждый вечер отчёт, а потом выставление счетов превращает работу дня в деньги.",毎晩: 報告のあと、請求処理で一日の仕事がお金になります。,"매일 저녁 보고서가 나오고, 이어서 청구 실행이 하루의 업무를 돈으로 바꿔요.","हर शाम रिपोर्ट आती है, फिर बिलिंग दिन के काम को पैसे में बदलती है।"
+tip.sick,Their tasks wait. Drag someone else onto anything urgent.,Görevleri bekler. Acil olan herhangi bir işe başka birini sürükle.,Ihre Aufgaben warten. Zieh bei Dringendem jemand anderen darauf.,Sus tareas esperan. Arrastra a otra persona sobre lo urgente.,Leurs tâches attendent. Glisse quelqu'un d'autre sur tout ce qui est urgent.,As tarefas dessa pessoa esperam. Arraste outra pessoa para qualquer coisa urgente.,Их задачи ждут. Перетащи кого-то другого на срочное дело.,その人の作業は待機します。急ぎの作業には、ほかの人をドラッグしましょう。,그 사람의 업무는 기다려요. 급한 일에는 다른 사람을 끌어다 놓으세요.,उनके काम रुक जाते हैं। ज़रूरी काम पर किसी और को खींचो।
+tip.substitute,"New judge, new habit. Check the odds on the card.","Yeni hâkim, yeni alışkanlık. Karttaki şansa bak.","Neue Richterin, neue Eigenart. Schau auf der Karte nach der Chance.","Juez nuevo, manías nuevas. Revisa las probabilidades en la ficha.","Nouveau juge, nouvelles habitudes. Vérifie les chances sur la fiche.","Novo juiz, novo hábito. Confira as chances na ficha.",Новый судья — новая привычка. Проверь шансы на карточке.,新しい裁判官、新しい癖。カードの勝率を確認しましょう。,"새 판사, 새 습관이에요. 카드에서 승산을 확인하세요.","नया जज, नई आदत। कार्ड पर जीत की संभावना देखो।"
+tip.trust,Retainer money sits in trust. Hours on that matter draw from it; leftovers go back to the client.,Ön ödeme parası emanette durur. O dosyadaki saatler oradan çekilir; artan kısım müvekkile döner.,Vorschussgeld liegt auf dem Treuhandkonto. Die Stunden zu diesem Mandat werden daraus bezahlt; der Rest geht an die Mandantschaft zurück.,El dinero de la iguala queda en la cuenta de clientes. Las horas de ese asunto se cobran de ahí; lo que sobre vuelve al cliente.,L'argent du forfait reste sur le compte client. Les heures sur l'affaire y puisent ; le reste retourne au client.,O dinheiro de adiantamento fica no fundo. As horas daquele caso saem dele; o que sobrar volta para o cliente.,Аванс лежит на счёте клиента. Часы по делу списываются оттуда; остаток возвращается клиенту.,顧問料は預り金として保管されます。その案件の時間分はここから引き落とされ、残りは依頼人に返します。,"착수금은 위탁금에 보관돼요. 그 사건의 시간이 여기서 쓰이고, 남은 돈은 의뢰인에게 돌아가요.",पेशगी का पैसा अमानत में रहता है। उस केस के घंटे इसी से लिए जाते हैं; बचा हुआ क्लाइंट को लौटता है।
+tip.twist,The evidence is in: the card now shows the true odds.,Deliller geldi: kart artık gerçek şansı gösteriyor.,Die Beweise sind da: Die Karte zeigt jetzt die wahren Chancen.,Las pruebas ya están: la ficha ahora muestra las probabilidades reales.,Les preuves sont réunies : la fiche montre maintenant les vraies chances.,As provas chegaram: a ficha agora mostra as chances reais.,Улики собраны: на карточке теперь настоящие шансы.,証拠がそろいました。カードに本当の勝率が表示されます。,증거가 모였어요. 이제 카드에 진짜 승산이 표시돼요.,सबूत आ गए हैं: अब कार्ड पर असली संभावना दिखती है।
+toast.assigned,{name} is on it.,{name} işin başında.,{name} kümmert sich darum.,{name} se encarga.,{name} s'en occupe.,{name} está cuidando disso.,{name} уже занимается.,{name} が担当します。,{name} 배정 완료.,{name} इस पर है।
+toast.billed,Billed {cash}.,{cash} faturalandı.,{cash} abgerechnet.,Facturado {cash}.,Facturé {cash}.,Faturado {cash}.,Выставлено {cash}.,{cash} を請求しました。,청구 완료 {cash}.,{cash} का बिल बना।
+toast.chapter,Welcome to {name}!,{name} bölümüne hoş geldin!,Willkommen in {name}!,¡Bienvenido a {name}!,Bienvenue à {name} !,Bem-vindo a {name}!,Добро пожаловать в {name}!,{name} へようこそ！,{name}에 오신 것을 환영해요!,{name} में स्वागत है!
+toast.continued,The hearing moved to day {n}.,Duruşma {n}. güne ertelendi.,Die Verhandlung wurde auf Tag {n} verschoben.,La vista se movió al día {n}.,L'audience a été repoussée au jour {n}.,A audiência foi adiada para o dia {n}.,Слушание перенесли на день {n}.,審理は {n} 日目に延期されました。,재판이 {n}일차로 미뤄졌어요.,सुनवाई दिन {n} पर खिसकी।
+toast.hired,{name} joined as {role}.,"{name}, {role} olarak katıldı.",{name} ist als {role} dabei.,{name} se incorporó como {role}.,{name} a rejoint l'équipe comme {role}.,{name} entrou como {role}.,{name} пришёл на должность: {role}.,{name} が {role} として加わりました。,"합류: {name}, 직책 {role}",{name} {role} बनकर जुड़ा।
+toast.late,Late {kind}: sanction.,Geç {kind}: yaptırım.,Verspätet ({kind}): Strafe.,{kind} tardía: sanción.,{kind} en retard : sanction.,{kind} atrasado: sanção.,"Опоздали: {kind}, санкция.",{kind} が遅延: 制裁金。,늦은 {kind}: 제재금.,देर से {kind}: जुर्माना।
+toast.lost,Lost the {name} hearing. +{cash} lesson fee,{name} duruşmasını kaybettin. +{cash} ders ücreti,Die Verhandlung {name} verloren. +{cash} Lehrgeld,Perdiste la vista de {name}. +{cash} de honorarios de aprendizaje,Audience {name} perdue. +{cash} de frais d'apprentissage,Perdeu a audiência de {name}. +{cash} de honorários de aprendizado,Проигрыш в слушании «{name}». +{cash} плата за урок,{name} の審理で敗訴。経験料 +{cash},{name} 재판에서 패소했어요. 수업료 +{cash},{name} की सुनवाई हारे। +{cash} सबक़ की फ़ीस
+toast.referred,Referred: +{cash},Yönlendirildi: +{cash},Weitergeleitet: +{cash},Derivado: +{cash},Orienté : +{cash},Encaminhado: +{cash},Передано: +{cash},紹介: +{cash},소개 완료: +{cash},भेजा गया: +{cash}
+toast.room_done,{name} is ready.,{name} hazır.,{name} ist fertig.,{name} está lista.,{name} est prête.,{name} está pronta.,{name} готово.,{name} の準備ができました。,{name} 준비 완료.,{name} तैयार है।
+toast.settled,Settled: +{cash},Uzlaşıldı: +{cash},Verglichen: +{cash},Acuerdo: +{cash},Transaction : +{cash},Acordo fechado: +{cash},Урегулировано: +{cash},示談成立: +{cash},합의 완료: +{cash},समझौता हुआ: +{cash}
+toast.trust_in,{cash} retainer into trust.,{cash} ön ödeme emanete.,{cash} Vorschuss auf das Treuhandkonto.,Iguala de {cash} a cuenta de clientes.,{cash} de forfait sur le compte client.,{cash} de adiantamento no fundo.,Аванс {cash} на счёт клиента.,顧問料 {cash} を預り金へ。,위탁금에 착수금 {cash} 입금.,{cash} पेशगी अमानत में।
+toast.walked_out,A client gave up waiting.,Bir müvekkil beklemekten vazgeçti.,Eine Mandantin hat genug vom Warten und ist gegangen.,Un cliente se cansó de esperar.,Un client a renoncé à attendre.,Um cliente desistiu de esperar.,Клиент устал ждать и ушёл.,待ちくたびれた依頼人が帰ってしまいました。,의뢰인 한 명이 기다리다 떠났어요.,एक क्लाइंट इंतज़ार छोड़कर चला गया।
+toast.walkin,A client walked in.,Bir müvekkil geldi.,Eine Mandantin ist hereinspaziert.,Entró un cliente sin cita.,Un client est arrivé.,Um cliente chegou sem hora marcada.,Пришёл клиент.,依頼人が飛び込みで来ました。,의뢰인 한 명이 찾아왔어요.,एक क्लाइंट बिना बुलाए आया।
+toast.won,Won the {name} hearing! +{cash},{name} duruşmasını kazandın! +{cash},Die Verhandlung {name} gewonnen! +{cash},¡Ganaste la vista de {name}! +{cash},Audience {name} gagnée ! +{cash},Ganhou a audiência de {name}! +{cash},Выигрыш в деле «{name}»! +{cash},{name} の審理に勝訴！ +{cash},{name} 재판에서 승소했어요! +{cash},{name} की सुनवाई जीती! +{cash}
 unit.h,h,sa,h,h,h,h,ч,時,시간,घं
 unit.min,min,dk,min,min,min,min,мин,分,분,मि
 unit.s,s,sn,s,s,s,s,с,秒,초,से

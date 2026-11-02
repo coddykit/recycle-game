@@ -1,298 +1,298 @@
 key,en,tr,de,es,fr,pt,ru,ja,ko,hi
-amb.accept,Accept,,,,,,,,,
-amb.call,Ambulance coming: {shape} {tag},,,,,,,,,
-amb.divert,Divert,,,,,,,,,
-amb.left,{min} min to answer,,,,,,,,,
-app.tagline,Keep the hospital moving,,,,,,,,,
+amb.accept,Accept,Kabul et,Annehmen,Aceptar,Accepter,Aceitar,Принять,受け入れる,수락,स्वीकार करो
+amb.call,Ambulance coming: {shape} {tag},Ambulans geliyor: {shape} {tag},Rettungswagen kommt: {shape} {tag},Ambulancia en camino: {shape} {tag},Ambulance en route : {shape} {tag},Ambulância chegando: {shape} {tag},Скорая едет: {shape} {tag},救急車が向かっています: {shape} {tag},구급차 도착 중: {shape} {tag},एंबुलेंस आ रही है: {shape} {tag}
+amb.divert,Divert,Yönlendir,Umleiten,Desviar,Rediriger,Desviar,Переадресовать,他院へ回す,다른 병원,दूसरे अस्पताल भेजो
+amb.left,{min} min to answer,Yanıtlamak için {min} dk,{min} Min. zum Antworten,{min} min para responder,{min} min pour répondre,{min} min para responder,Ответить за {min} мин,回答まで {min} 分,응답까지 {min}분,जवाब देने के लिए {min} मिनट
+app.tagline,Keep the hospital moving,Hastaneyi akışta tut,Halte das Krankenhaus in Bewegung,Mantén el hospital en marcha,Garde l'hôpital en mouvement,Mantenha o hospital funcionando,Держи больницу в движении,病院の流れを止めないで,병원이 막히지 않게 이끌어요,अस्पताल चलता रहे
 app.title,Charge Nurse,Charge Nurse,Charge Nurse,Charge Nurse,Charge Nurse,Charge Nurse,Charge Nurse,Charge Nurse,Charge Nurse,Charge Nurse
-bed.bay,Bay {n},,,,,,,,,
-bed.clean,Clean now,,,,,,,,,
-bed.clean.d,Get this bed ready for the next patient.,,,,,,,,,
-bed.stay_left,Ready to go home around {time},,,,,,,,,
-bed.ward,{ward} · bed {n},,,,,,,,,
-bedstate.busy,In use,,,,,,,,,
-bedstate.clean,Clean and ready,,,,,,,,,
-bedstate.cleaning,Being cleaned,,,,,,,,,
-bedstate.closed,Closed for now,,,,,,,,,
-bedstate.dirty,Needs cleaning,,,,,,,,,
-board.boarding,Waiting in a bay for a ward bed,,,,,,,,,
-board.capacity,Capacity board,,,,,,,,,
-board.closed,{n} closed,,,,,,,,,
-board.forecast,Today: {list},,,,,,,,,
-board.forecast_calm,Today looks calm. A good day to upgrade.,,,,,,,,,
-board.show,Show,,,,,,,,,
-board.sub,Reputation {r} · ED {pct} full,,,,,,,,,
-board.surge,Surge team,,,,,,,,,
-board.surge.d,One extra nurse and doctor for today.,,,,,,,,,
-board.surge_on,On duty,,,,,,,,,
-board.used,{n} of {m} in use,,,,,,,,,
-board.ward,{busy}/{n} busy · {dirty} to clean · {soon} going home soon,,,,,,,,,
-build.bay,Add a treatment bay,,,,,,,,,
-build.bay.d,{n} bays now. More patients seen at once.,,,,,,,,,
-build.bed,Add a bed: {ward},,,,,,,,,
-build.bed.d,{n} beds now.,,,,,,,,,
-build.beds,Bays and beds,,,,,,,,,
-build.rooms,Rooms,,,,,,,,,
-clue.0.0,"Twisted an ankle. Walks in slowly, but can stand on it.",,,,,,,,,
-clue.0.1,"A small cut on the hand. Already wrapped, feels fine.",,,,,,,,,
-clue.0.2,A sore throat for two days. Talking and joking.,,,,,,,,,
-clue.1.0,"A high fever since last night. Tired, but talking clearly.",,,,,,,,,
-clue.1.1,Fell off a bike. The wrist is swollen and hurts.,,,,,,,,,
-clue.1.2,Stomach pain for a few hours. Can sit and wait.,,,,,,,,,
-clue.2.0,Short of breath when walking. Needs to sit down.,,,,,,,,,
-clue.2.1,A bad fall from a ladder. Cannot put weight on the leg.,,,,,,,,,
-clue.2.2,Chest feels tight. Pale and worried.,,,,,,,,,
-clue.3.0,Very hard to breathe. Can only say a few words.,,,,,,,,,
-clue.3.1,Fainted and is still very drowsy.,,,,,,,,,
-clue.3.2,Strong chest pain that does not stop. Needs help now.,,,,,,,,,
-coach.1,"Hi, nurse! A patient is waiting. Tap the patient.",,,,,,,,,
-coach.10,The shift is ending. Tap Hand over.,,,,,,,,,
-coach.2,Choose a colour. This one is green: mild. Tap Green.,,,,,,,,,
-coach.2.wrong,Read the card again: an ankle that can still walk is mild. Try Green.,,,,,,,,,
-coach.3,Send them to a room. Tap the free bay.,,,,,,,,,
-coach.4,"Great. The doctor treats them. When it's done, tap Discharge.",,,,,,,,,
-coach.5,Now the bed is dirty. Tap it to clean it.,,,,,,,,,
-coach.6,An ambulance! Red goes first. Tap Accept.,,,,,,,,,
-coach.7,This patient needs a scan. Open the X-ray room.,,,,,,,,,
-coach.8,More patients are coming. Hire a second porter.,,,,,,,,,
-coach.9,Something is blocking the flow. Tap the red line.,,,,,,,,,
+bed.bay,Bay {n},Bölüm {n},Behandlungsplatz {n},Box {n},Box {n},Box {n},Смотровая {n},処置室 {n},진료 칸 {n},बे {n}
+bed.clean,Clean now,Şimdi temizle,Jetzt reinigen,Limpiar ya,Nettoyer maintenant,Limpar agora,Прибрать сейчас,今すぐ清掃,지금 청소,अभी साफ़ करो
+bed.clean.d,Get this bed ready for the next patient.,Bu yatağı bir sonraki hasta için hazırla.,Mach dieses Bett bereit für die nächste Patientin oder den nächsten Patienten.,Deja esta cama lista para el siguiente paciente.,Prépare ce lit pour le prochain patient.,Deixe este leito pronto para o próximo paciente.,Подготовь эту койку для следующего пациента.,次の患者さんのためにこのベッドを整えましょう。,다음 환자를 받을 수 있도록 이 병상을 정리하세요.,इस बिस्तर को अगले मरीज़ के लिए तैयार करो।
+bed.stay_left,Ready to go home around {time},Yaklaşık {time} civarında eve gitmeye hazır,Bereit zum Nachhausegehen gegen {time},Lista para irse a casa hacia las {time},Prêt à rentrer chez lui vers {time},Pronto para ir para casa por volta das {time},Готов к выписке около {time},{time} ごろ退院の予定,{time}쯤 퇴원 준비가 돼요,लगभग {time} पर घर जाने के लिए तैयार
+bed.ward,{ward} · bed {n},{ward} · yatak {n},{ward} · Bett {n},{ward} · cama {n},{ward} · lit {n},{ward} · leito {n},{ward} · койка {n},{ward} · ベッド {n},{ward} · 병상 {n},{ward} · बिस्तर {n}
+bedstate.busy,In use,Dolu,Belegt,Ocupada,Occupé,Em uso,Занята,使用中,사용 중,इस्तेमाल में
+bedstate.clean,Clean and ready,Temiz ve hazır,Sauber und bereit,Limpia y lista,Propre et prêt,Limpo e pronto,Чистая и готова,清掃済み・使用可,"청소 완료, 사용 가능",साफ़ और तैयार
+bedstate.cleaning,Being cleaned,Temizleniyor,Wird gereinigt,Limpiándose,En cours de nettoyage,Sendo limpo,Убирают,清掃中,청소 중,साफ़ हो रहा है
+bedstate.closed,Closed for now,Şimdilik kapalı,Vorerst gesperrt,Cerrada por ahora,Fermé pour l'instant,Fechado por enquanto,Пока закрыта,今は閉鎖中,지금은 닫힘,अभी बंद
+bedstate.dirty,Needs cleaning,Temizlik gerekiyor,Muss gereinigt werden,Necesita limpieza,À nettoyer,Precisa de limpeza,Нужна уборка,清掃が必要,청소 필요,सफ़ाई चाहिए
+board.boarding,Waiting in a bay for a ward bed,Servis yatağı için bölümde bekliyor,Wartet im Behandlungsplatz auf ein Stationsbett,Esperando en un box a una cama de planta,En attente dans un box qu'un lit de service se libère,Esperando num box por um leito de enfermaria,"Ждёт койку в отделении, сидя в смотровой",病棟のベッドが空くのを処置室で待っています,병동 병상을 기다리며 진료 칸에서 대기 중,वार्ड के बिस्तर के इंतज़ार में बे में
+board.capacity,Capacity board,Kapasite tablosu,Kapazitätsübersicht,Panel de capacidad,Tableau des capacités,Painel de ocupação,Загрузка,空き状況ボード,병상 현황판,क्षमता बोर्ड
+board.closed,{n} closed,{n} kapalı,{n} gesperrt,{n} cerradas,{n} fermés,{n} fechados,Закрыто: {n},閉鎖 {n},{n}개 닫힘,{n} बंद
+board.forecast,Today: {list},Bugün: {list},Heute: {list},Hoy: {list},Aujourd'hui : {list},Hoje: {list},Сегодня: {list},今日: {list},오늘: {list},आज: {list}
+board.forecast_calm,Today looks calm. A good day to upgrade.,Bugün sakin görünüyor. Yükseltme için iyi bir gün.,Heute sieht es ruhig aus. Ein guter Tag für Verbesserungen.,Hoy parece tranquilo. Buen día para mejorar.,La journée semble calme. Bon moment pour améliorer.,O dia parece calmo. Bom momento para melhorar.,Сегодня спокойно. Хороший день для улучшений.,今日は落ち着いています。設備を強化するのによい日です。,오늘은 한가해요. 업그레이드하기 좋은 날이에요.,आज शांत दिन लग रहा है। अपग्रेड के लिए अच्छा दिन।
+board.show,Show,Göster,Zeigen,Mostrar,Afficher,Mostrar,Показать,表示,보기,दिखाओ
+board.sub,Reputation {r} · ED {pct} full,İtibar {r} · Acil {pct} dolu,Ansehen {r} · Notaufnahme {pct} voll,Reputación {r} · Urgencias al {pct} %,Réputation {r} · urgences pleines à {pct},Reputação {r} · PS {pct} lotado,Репутация {r} · приёмный заполнен на {pct},評判 {r} · 救急の混雑 {pct},평판 {r} · 응급실 {pct} 참,प्रतिष्ठा {r} · इमरजेंसी {pct} भरी
+board.surge,Surge team,Yoğunluk ekibi,Einsatzteam,Equipo de refuerzo,Équipe renfort,Equipe extra,Доп. бригада,応援チーム,응원 팀,अतिरिक्त टीम
+board.surge.d,One extra nurse and doctor for today.,Bugün için bir ek hemşire ve bir ek doktor.,Eine zusätzliche Pflegekraft und ein Arzt für heute.,Una enfermera y un médico extra para hoy.,Un infirmier et un médecin en plus pour aujourd'hui.,Uma enfermeira e um médico extras para hoje.,Один дополнительный медбрат и врач на сегодня.,今日だけ看護師と医師を1人ずつ追加します。,오늘 하루 간호사와 의사가 한 명씩 더 와요.,आज के लिए एक अतिरिक्त नर्स और डॉक्टर।
+board.surge_on,On duty,Nöbette,Im Dienst,De guardia,De garde,De plantão,На дежурстве,出勤中,근무 중,ड्यूटी पर
+board.used,{n} of {m} in use,{m} yataktan {n} tanesi kullanımda,{n} von {m} belegt,{n} de {m} en uso,{n} sur {m} occupés,{n} de {m} em uso,Занято {n} из {m},{m} 中 {n} 使用中,{m}개 중 {n}개 사용 중,{m} में से {n} इस्तेमाल में
+board.ward,{busy}/{n} busy · {dirty} to clean · {soon} going home soon,{busy}/{n} dolu · {dirty} temizlenecek · {soon} yakında çıkacak,{busy}/{n} belegt · {dirty} zu reinigen · {soon} gehen bald nach Hause,{busy}/{n} ocupadas · {dirty} por limpiar · {soon} altas pronto,{busy}/{n} occupés · {dirty} à nettoyer · {soon} sortent bientôt,{busy}/{n} ocupados · {dirty} para limpar · {soon} indo para casa em breve,Занято {busy}/{n} · убрать: {dirty} · скоро выпишут: {soon},使用中 {busy}/{n} · 清掃待ち {dirty} · まもなく退院 {soon},{busy}/{n} 사용 중 · 청소 {dirty}개 · 곧 퇴원 {soon}명,{busy}/{n} व्यस्त · {dirty} साफ़ करने हैं · {soon} जल्दी घर जाएँगे
+build.bay,Add a treatment bay,Tedavi bölümü ekle,Behandlungsplatz hinzufügen,Añadir un box de tratamiento,Ajouter un box de soins,Adicionar um box de atendimento,Добавить смотровую,処置室を増やす,진료 칸 추가,इलाज का बे जोड़ो
+build.bay.d,{n} bays now. More patients seen at once.,Şu an {n} bölüm. Aynı anda daha çok hasta bakılır.,Jetzt {n} Plätze. Mehr Patienten werden gleichzeitig versorgt.,Ahora hay {n} boxes. Se atiende a más pacientes a la vez.,{n} box maintenant. Plus de patients vus à la fois.,{n} boxes agora. Mais pacientes atendidos ao mesmo tempo.,Смотровых: {n}. Больше пациентов принимаем одновременно.,現在 {n} 室。一度に診られる患者さんが増えます。,지금 진료 칸 {n}개. 한꺼번에 더 많은 환자를 봐요.,अभी {n} बे। एक साथ ज़्यादा मरीज़ देखे जाएँगे।
+build.bed,Add a bed: {ward},Yatak ekle: {ward},Bett hinzufügen: {ward},Añadir una cama: {ward},Ajouter un lit : {ward},Adicionar um leito: {ward},Добавить койку: {ward},ベッドを増やす: {ward},병상 추가: {ward},बिस्तर जोड़ो: {ward}
+build.bed.d,{n} beds now.,Şu an {n} yatak.,Jetzt {n} Betten.,Ahora hay {n} camas.,{n} lits maintenant.,{n} leitos agora.,Коек: {n}.,現在 {n} 床。,지금 병상 {n}개예요.,अभी {n} बिस्तर।
+build.beds,Bays and beds,Bölümler ve yataklar,Plätze und Betten,Boxes y camas,Box et lits,Boxes e leitos,Смотровые и койки,処置室とベッド,진료 칸과 병상,बे और बिस्तर
+build.rooms,Rooms,Odalar,Räume,Salas,Salles,Salas,Кабинеты,部屋,방,कमरे
+clue.0.0,"Twisted an ankle. Walks in slowly, but can stand on it.","Ayak bileğini burktu. Yavaş geldi, ama üstüne basabiliyor.","Hat sich den Knöchel verdreht. Kommt langsam herein, kann aber auftreten.","Se torció un tobillo. Llega despacio, pero puede apoyarlo.","Une cheville tordue. Il entre lentement, mais peut poser le pied.","Torceu o tornozelo. Entrou devagar, mas consegue apoiar o pé.","Подвернул лодыжку. Заходит медленно, но может наступать на ногу.",足首をひねりました。ゆっくり歩いてこられ、足をつくことができます。,발목을 삐었어요. 천천히 걸어 들어오지만 디딜 수 있어요.,"पैर में मोच। धीरे चलकर आया, पर पैर पर खड़ा हो सकता है।"
+clue.0.1,"A small cut on the hand. Already wrapped, feels fine.","Elinde küçük bir kesik. Zaten sarılmış, iyi hissediyor.","Ein kleiner Schnitt an der Hand. Schon verbunden, fühlt sich gut an.","Un pequeño corte en la mano. Ya vendado, se encuentra bien.","Une petite coupure à la main. Déjà pansée, ça va.",Um pequeno corte na mão. Já está enfaixado e se sente bem.,"Небольшой порез на руке. Уже перевязан, самочувствие хорошее.",手に小さな切り傷。すでに巻いてあり、本人は平気そうです。,손에 작은 상처가 났어요. 이미 감싸져 있고 괜찮다고 해요.,"हाथ पर छोटा कट। पहले से पट्टी बँधी है, ठीक लग रहा है।"
+clue.0.2,A sore throat for two days. Talking and joking.,İki gündür boğazı ağrıyor. Konuşuyor ve espri yapıyor.,Seit zwei Tagen Halsschmerzen. Spricht und scherzt.,Dolor de garganta desde hace dos días. Habla y bromea.,Mal de gorge depuis deux jours. Il parle et plaisante.,Dor de garganta há dois dias. Conversa e brinca.,Два дня болит горло. Говорит и шутит.,2日前から喉が痛みます。話したり冗談を言ったりしています。,이틀째 목이 아파요. 말도 하고 농담도 해요.,दो दिन से गला दुख रहा है। बात कर रहा है और मज़ाक कर रहा है।
+clue.1.0,"A high fever since last night. Tired, but talking clearly.",Dün geceden beri yüksek ateşi var. Yorgun ama net konuşuyor.,"Seit gestern Nacht hohes Fieber. Müde, spricht aber klar.","Fiebre alta desde anoche. Cansado, pero habla con claridad.","Forte fièvre depuis hier soir. Fatigué, mais il parle clairement.","Febre alta desde a noite passada. Cansado, mas fala com clareza.","Высокая температура со вчерашнего вечера. Устал, но говорит ясно.",昨夜から熱が高いです。疲れていますが、はっきり話せます。,어젯밤부터 열이 높아요. 피곤해하지만 말은 또렷해요.,"कल रात से तेज़ बुखार। थका हुआ है, पर साफ़ बोल रहा है।"
+clue.1.1,Fell off a bike. The wrist is swollen and hurts.,Bisikletten düştü. Bilekte şişlik var ve ağrıyor.,Vom Fahrrad gefallen. Das Handgelenk ist geschwollen und tut weh.,Se cayó de la bici. La muñeca está hinchada y le duele.,Chute de vélo. Le poignet est gonflé et douloureux.,Caiu da bicicleta. O punho está inchado e dói.,Упал с велосипеда. Запястье опухло и болит.,自転車から転倒。手首が腫れて痛みます。,자전거에서 떨어졌어요. 손목이 부었고 아파요.,साइकिल से गिर गया। कलाई सूजी है और दुख रही है।
+clue.1.2,Stomach pain for a few hours. Can sit and wait.,Birkaç saattir karnı ağrıyor. Oturup bekleyebiliyor.,Seit ein paar Stunden Bauchschmerzen. Kann sitzen und warten.,Dolor de estómago desde hace unas horas. Puede sentarse y esperar.,Douleurs au ventre depuis quelques heures. Peut s'asseoir et attendre.,Dor de barriga há algumas horas. Consegue sentar e esperar.,Несколько часов болит живот. Может сидеть и ждать.,数時間前からお腹が痛みます。座って待つことができます。,몇 시간째 배가 아파요. 앉아서 기다릴 수 있어요.,कुछ घंटों से पेट में दर्द। बैठकर इंतज़ार कर सकता है।
+clue.2.0,Short of breath when walking. Needs to sit down.,Yürürken nefesi kesiliyor. Oturması gerekiyor.,Kurzatmig beim Gehen. Muss sich hinsetzen.,Le falta el aire al caminar. Necesita sentarse.,Essoufflé en marchant. A besoin de s'asseoir.,Falta de ar ao caminhar. Precisa sentar.,Задыхается при ходьбе. Нужно присесть.,歩くと息切れがします。座って休む必要があります。,걸으면 숨이 차요. 앉아야 해요.,चलते समय साँस फूल रही है। बैठने की ज़रूरत है।
+clue.2.1,A bad fall from a ladder. Cannot put weight on the leg.,Merdivenden kötü bir düşüş. Bacağına basamıyor.,Schwer von einer Leiter gestürzt. Kann das Bein nicht belasten.,Una caída fuerte desde una escalera. No puede apoyar la pierna.,Grosse chute d'une échelle. Ne peut pas poser la jambe.,Uma queda feia de uma escada. Não consegue apoiar a perna.,Сильно упал с лестницы. Не может наступить на ногу.,はしごから落ちて大けがです。脚に体重をかけられません。,사다리에서 떨어졌어요. 다리에 체중을 싣지 못해요.,सीढ़ी से बुरी तरह गिर गया। पैर पर वज़न नहीं डाल पा रहा।
+clue.2.2,Chest feels tight. Pale and worried.,Göğsü sıkışıyor. Solgun ve endişeli.,Das Brustgefühl ist eng. Blass und besorgt.,Siente opresión en el pecho. Está pálido y preocupado.,Serrement dans la poitrine. Pâle et inquiet.,Sente aperto no peito. Pálido e preocupado.,Тяжесть в груди. Бледный и встревоженный.,胸が締めつけられるようです。顔色が悪く、不安そうです。,가슴이 답답해요. 얼굴이 창백하고 불안해해요.,सीने में जकड़न है। चेहरा पीला है और घबराया हुआ है।
+clue.3.0,Very hard to breathe. Can only say a few words.,Nefes almakta çok zorlanıyor. Sadece birkaç kelime söyleyebiliyor.,Atmet sehr schwer. Kann nur wenige Worte sagen.,Le cuesta mucho respirar. Solo puede decir unas pocas palabras.,Respire très difficilement. Ne peut dire que quelques mots.,Respira com muita dificuldade. Só consegue dizer poucas palavras.,Очень трудно дышать. Может говорить только несколько слов.,とても息がしづらいです。短い言葉しか話せません。,숨쉬기가 매우 힘들어요. 몇 마디만 할 수 있어요.,साँस लेने में बहुत तकलीफ़। बस कुछ शब्द बोल पा रहा है।
+clue.3.1,Fainted and is still very drowsy.,Bayılmış ve hâlâ çok uykulu.,Ist ohnmächtig gewesen und noch sehr benommen.,Se desmayó y todavía está muy adormilado.,"Évanoui, encore très somnolent.",Desmaiou e ainda está muito sonolento.,Потерял сознание и всё ещё очень сонный.,意識を失い、まだとても眠そうです。,정신을 잃었다가 깨어났지만 아직 많이 졸려 해요.,बेहोश हुआ था और अभी भी बहुत उनींदा है।
+clue.3.2,Strong chest pain that does not stop. Needs help now.,Durmayan şiddetli göğüs ağrısı. Hemen yardıma ihtiyacı var.,"Starker Brustschmerz, der nicht aufhört. Braucht jetzt Hilfe.",Dolor fuerte en el pecho que no cede. Necesita ayuda ya.,Forte douleur dans la poitrine qui ne passe pas. A besoin d'aide maintenant.,Dor forte no peito que não passa. Precisa de ajuda agora.,"Сильная боль в груди, не проходит. Нужна помощь прямо сейчас.",強い胸の痛みが続いています。すぐに手当てが必要です。,가슴 통증이 계속돼요. 지금 바로 도움이 필요해요.,"सीने में तेज़ दर्द, जो रुक नहीं रहा। अभी मदद चाहिए।"
+coach.1,"Hi, nurse! A patient is waiting. Tap the patient.","Merhaba, hemşire! Bir hasta bekliyor. Hastaya dokun.","Hallo, Stationsleitung! Eine Patientin wartet. Tippe auf die Patientin.","¡Hola, enfermera! Hay un paciente esperando. Toca al paciente.",Bonjour ! Un patient attend. Touche le patient.,"Olá, plantonista! Um paciente está esperando. Toque no paciente.","Привет, старшая медсестра! Ждёт пациент. Нажми на пациента.",こんにちは、看護師さん！ 患者さんが待っています。患者さんをタップしてください。,"안녕하세요, 간호사님! 환자가 기다리고 있어요. 환자를 눌러 보세요.","नमस्ते, नर्स जी! एक मरीज़ इंतज़ार कर रहा है। मरीज़ पर टैप करो।"
+coach.10,The shift is ending. Tap Hand over.,Vardiya bitiyor. Devret'e dokun.,Die Schicht endet. Tippe auf Übergabe.,El turno está terminando. Toca Relevo.,La garde se termine. Touche « Passer la relève ».,O plantão está terminando. Toque em Passar o plantão.,Смена заканчивается. Нажми «Передать смену».,勤務の終わりです。「申し送り」をタップしてください。,근무가 끝나가요. “인수인계”를 누르세요.,शिफ़्ट खत्म हो रही है। ड्यूटी बदलो पर टैप करो।
+coach.2,Choose a colour. This one is green: mild. Tap Green.,Bir renk seç. Bu yeşil: hafif. Yeşil'e dokun.,Wähle eine Farbe. Diese hier ist Grün: leicht. Tippe auf Grün.,Elige un color. Este es verde: leve. Toca Verde.,Choisis une couleur. Celle-ci est verte : léger. Touche Vert.,Escolha uma cor. Esta é verde: leve. Toque em Verde.,Выбери цвет. Этот зелёный: легко. Нажми «Зелёный».,色を選びましょう。この患者さんは緑: 軽症です。「緑」をタップしてください。,색을 고르세요. 이 환자는 초록이에요. 경증이에요. “초록”을 누르세요.,एक रंग चुनो। यह हरा है: हल्का मामला। हरे पर टैप करो।
+coach.2.wrong,Read the card again: an ankle that can still walk is mild. Try Green.,Kartı tekrar oku: hâlâ yürüyebilen bir ayak bileği hafiftir. Yeşil'i dene.,"Lies die Karte noch einmal: Ein Knöchel, mit dem man noch gehen kann, ist leicht. Versuch Grün.",Lee la tarjeta otra vez: un tobillo que aún puede caminar es leve. Prueba con Verde.,"Relis la fiche : une cheville qui permet encore de marcher, c'est léger. Essaie Vert.",Leia o cartão de novo: um tornozelo que ainda anda é leve. Tente Verde.,"Перечитай карточку: лодыжка, на которую можно наступать, — это легко. Попробуй «Зелёный».",カードをもう一度見てください。歩ける足首の捻挫は軽症です。「緑」を試してください。,카드를 다시 읽어 보세요. 아직 걸을 수 있는 발목은 경증이에요. “초록”을 눌러 보세요.,"कार्ड फिर से पढ़ो: जो पैर से चल पा रहा है, उसकी मोच हल्की है। हरा आज़माओ।"
+coach.3,Send them to a room. Tap the free bay.,Onu bir odaya gönder. Boş bölüme dokun.,Schick sie in einen Raum. Tippe auf den freien Platz.,Llévalo a una sala. Toca el box libre.,Envoie-le dans une salle. Touche le box libre.,Mande o paciente para uma sala. Toque no box livre.,Отправь на смотровую. Нажми на свободную смотровую.,処置室へ案内しましょう。空いている処置室をタップしてください。,이 환자를 진료 칸으로 보내세요. 비어 있는 진료 칸을 누르세요.,मरीज़ को कमरे में भेजो। खाली बे पर टैप करो।
+coach.4,"Great. The doctor treats them. When it's done, tap Discharge.",Harika. Doktor tedavi eder. Bittiğinde Taburcu et'e dokun.,"Super. Der Arzt behandelt sie. Wenn es fertig ist, tippe auf Entlassen.","Muy bien. El médico lo atiende. Cuando termine, toca Alta.","Bien. Le médecin le soigne. Quand c'est fini, touche Sortie.","Ótimo. O médico atende. Quando terminar, toque em Dar alta.","Отлично. Врач его осматривает. Когда закончит, нажми «Выписка».",いいですね。医師が診察します。終わったら「退院」をタップしてください。,잘했어요. 의사가 진료해요. 끝나면 “퇴원”을 누르세요.,बढ़िया। डॉक्टर इलाज करेंगे। पूरा होने पर छुट्टी पर टैप करो।
+coach.5,Now the bed is dirty. Tap it to clean it.,Şimdi yatak kirli. Temizlemek için dokun.,"Jetzt ist das Bett schmutzig. Tippe darauf, um es zu reinigen.",Ahora la cama está sucia. Tócala para limpiarla.,Maintenant le lit est sale. Touche-le pour le nettoyer.,Agora o leito está sujo. Toque nele para limpar.,"Теперь койка грязная. Нажми на неё, чтобы прибрать.",ベッドが汚れました。タップして清掃しましょう。,이제 병상이 더러워졌어요. 눌러서 청소하세요.,अब बिस्तर गंदा है। साफ़ करने के लिए उस पर टैप करो।
+coach.6,An ambulance! Red goes first. Tap Accept.,Ambulans! Kırmızı önce gelir. Kabul et'e dokun.,Ein Rettungswagen! Rot kommt zuerst. Tippe auf Annehmen.,¡Una ambulancia! El rojo va primero. Toca Aceptar.,Une ambulance ! Le rouge passe en premier. Touche Accepter.,Uma ambulância! O vermelho vem primeiro. Toque em Aceitar.,Скорая! Красный идёт первым. Нажми «Принять».,救急車です！ 赤が最優先です。「受け入れる」をタップしてください。,구급차예요! 빨강이 먼저예요. “수락”을 누르세요.,एंबुलेंस! लाल पहले जाता है। स्वीकार करो पर टैप करो।
+coach.7,This patient needs a scan. Open the X-ray room.,Bu hastanın röntgeni gerekiyor. Röntgen odasını aç.,Diese Patientin braucht eine Aufnahme. Öffne den Röntgenraum.,Este paciente necesita una prueba de imagen. Abre la sala de radiografías.,Ce patient a besoin d'une radio. Ouvre la salle de radio.,Este paciente precisa de uma radiografia. Abra a sala de Raio-X.,Этому пациенту нужен снимок. Открой рентген-кабинет.,この患者さんは検査が必要です。レントゲン室を開いてください。,이 환자는 촬영이 필요해요. 엑스레이실을 여세요.,इस मरीज़ का स्कैन चाहिए। एक्स-रे कमरा खोलो।
+coach.8,More patients are coming. Hire a second porter.,Daha fazla hasta geliyor. İkinci bir hasta taşıyıcı al.,Es kommen mehr Patienten. Stell einen zweiten Pfleger für den Transport ein.,Llegan más pacientes. Contrata a un segundo camillero.,D'autres patients arrivent. Embauche un second brancardier.,Mais pacientes estão chegando. Contrate um segundo maqueiro.,Пациентов будет больше. Найми второго санитара.,患者さんが増えてきました。搬送係をもう1人雇いましょう。,환자가 더 오고 있어요. 이송 요원을 한 명 더 고용하세요.,और मरीज़ आ रहे हैं। दूसरा पोर्टर रखो।
+coach.9,Something is blocking the flow. Tap the red line.,Bir şey akışı tıkıyor. Kırmızı çizgiye dokun.,Etwas blockiert den Ablauf. Tippe auf die rote Linie.,Algo bloquea el flujo. Toca la línea roja.,Quelque chose bloque le flux. Touche la ligne rouge.,Algo está travando o fluxo. Toque na linha vermelha.,Что-то мешает потоку. Нажми на красную линию.,流れがつまっています。赤い線をタップしてください。,무언가 흐름을 막고 있어요. 빨간 선을 누르세요.,कुछ चीज़ काम को रोक रही है। लाल लाइन पर टैप करो।
 coach.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 coach.step,Step {n} of {m},Adım {n} / {m},Schritt {n} von {m},Paso {n} de {m},Étape {n} sur {m},Passo {n} de {m},Шаг {n} из {m},ステップ {n} / {m},{m}단계 중 {n}단계,चरण {n} / {m}
 common.ok,OK,Tamam,OK,OK,OK,OK,OK,OK,확인,ठीक है
-common.open,Open,,,,,,,,,
-crisis.crash.b,Several ambulances arrive at once.,,,,,,,,,
-crisis.crash.t,Highway crash,,,,,,,,,
-crisis.flu_surge.b,Many more patients arrive. Call the surge team.,,,,,,,,,
-crisis.flu_surge.t,Flu week,,,,,,,,,
-crisis.inspection.b,Keep beds clean and waits short until the shift change.,,,,,,,,,
-crisis.inspection.t,Inspection day,,,,,,,,,
-crisis.norovirus.b,Some beds are closed for cleaning for two days.,,,,,,,,,
-crisis.norovirus.t,Stomach bug on a ward,,,,,,,,,
-crisis.power_outage.b,Scans and surgery pause until the power is back.,,,,,,,,,
-crisis.power_outage.t,Power cut,,,,,,,,,
-crisis.power_saved.b,The backup generator kept everything running.,,,,,,,,,
-crisis.power_saved.t,Power cut,,,,,,,,,
-crisis.scanner_down.b,One scan room is out of order for a while.,,,,,,,,,
-crisis.scanner_down.t,Scanner down,,,,,,,,,
-crisis.sick_calls.b,One team is short today.,,,,,,,,,
-crisis.sick_calls.t,Sick calls,,,,,,,,,
-crisis.supply_delay.b,Supplies cost more for two days.,,,,,,,,,
-crisis.supply_delay.t,Supply delay,,,,,,,,,
-err.bay_busy,No free bay,,,,,,,,,
-err.bay_dirty,That bay needs cleaning first.,,,,,,,,,
-err.busy,One upgrade at a time.,,,,,,,,,
+common.open,Open,Aç,Öffnen,Abrir,Ouvrir,Abrir,Открыть,開く,열기,खोलो
+crisis.crash.b,Several ambulances arrive at once.,Birçok ambulans aynı anda geliyor.,Mehrere Rettungswagen kommen gleichzeitig.,Llegan varias ambulancias a la vez.,Plusieurs ambulances arrivent en même temps.,Várias ambulâncias chegam ao mesmo tempo.,Сразу приезжает несколько машин скорой помощи.,救急車が一度に何台か到着します。,구급차 여러 대가 한꺼번에 도착해요.,एक साथ कई एंबुलेंस पहुँचती हैं।
+crisis.crash.t,Highway crash,Otoyol kazası,Unfall auf der Autobahn,Accidente en la autopista,Accident sur l'autoroute,Acidente na rodovia,ДТП на трассе,高速道路での事故,고속도로 사고,हाईवे पर हादसा
+crisis.flu_surge.b,Many more patients arrive. Call the surge team.,Çok daha fazla hasta geliyor. Yoğunluk ekibini çağır.,Viel mehr Patienten kommen. Ruf das Einsatzteam.,Llegan muchos más pacientes. Llama al equipo de refuerzo.,Beaucoup plus de patients arrivent. Appelle l'équipe renfort.,Muitos pacientes a mais chegam. Chame a equipe extra.,Пациентов приходит гораздо больше. Вызови дополнительную бригаду.,患者さんが大勢来院します。応援チームを呼びましょう。,환자가 훨씬 많이 와요. 응원 팀을 부르세요.,बहुत ज़्यादा मरीज़ आते हैं। अतिरिक्त टीम बुलाओ।
+crisis.flu_surge.t,Flu week,Grip haftası,Grippewoche,Semana de gripe,Semaine de grippe,Semana de gripe,Неделя гриппа,インフルエンザの流行,독감 주간,फ़्लू का हफ़्ता
+crisis.inspection.b,Keep beds clean and waits short until the shift change.,"Vardiya değişimine kadar yatakları temiz, bekleme süresini kısa tut.",Halte Betten sauber und Wartezeiten kurz bis zum Schichtwechsel.,Mantén las camas limpias y las esperas cortas hasta el relevo.,Garde les lits propres et les attentes courtes jusqu'à la relève.,Mantenha os leitos limpos e as esperas curtas até a troca de plantão.,Держи койки чистыми и очередь короткой до смены.,交代の時間まで、ベッドを清潔に保ち、待ち時間を短くしましょう。,"교대 시간까지 병상을 깨끗하게, 대기는 짧게 유지하세요.",शिफ़्ट बदलने तक बिस्तर साफ़ और इंतज़ार छोटा रखो।
+crisis.inspection.t,Inspection day,Denetim günü,Kontrolltag,Día de inspección,Jour d'inspection,Dia de fiscalização,День проверки,立ち入り検査の日,점검의 날,निरीक्षण का दिन
+crisis.norovirus.b,Some beds are closed for cleaning for two days.,Bazı yataklar iki gün temizlik için kapalı.,Einige Betten sind zwei Tage zur Reinigung gesperrt.,Algunas camas están cerradas dos días para limpiarlas.,Certains lits sont fermés pour nettoyage pendant deux jours.,Alguns leitos ficam fechados para limpeza por dois dias.,Некоторые койки на два дня закрыты для уборки.,2日間、一部のベッドが清掃のため閉鎖されます。,일부 병상은 이틀 동안 청소를 위해 닫혀요.,कुछ बिस्तर दो दिन के लिए सफ़ाई के लिए बंद हैं।
+crisis.norovirus.t,Stomach bug on a ward,Serviste mide virüsü,Magen-Darm-Welle auf einer Station,Gastroenteritis en una planta,Gastro dans un service,Virose na enfermaria,Желудочный вирус в отделении,病棟で胃腸炎の流行,병동 장염 유행,वार्ड में पेट का इन्फ़ेक्शन
+crisis.power_outage.b,Scans and surgery pause until the power is back.,Elektrik gelene kadar taramalar ve ameliyatlar durur.,"Aufnahmen und Operationen pausieren, bis der Strom zurück ist.",Las pruebas de imagen y las cirugías se detienen hasta que vuelva la luz.,Scanners et bloc en pause jusqu'au retour du courant.,Exames e cirurgias param até a energia voltar.,"Снимки и операции стоят, пока не вернётся свет.",電力が戻るまで検査と手術は止まります。,전기가 들어올 때까지 촬영과 수술이 멈춰요.,बिजली आने तक स्कैन और ऑपरेशन रुके रहेंगे।
+crisis.power_outage.t,Power cut,Elektrik kesintisi,Stromausfall,Corte de luz,Coupure de courant,Falta de luz,Отключили свет,停電,정전,बिजली कटी
+crisis.power_saved.b,The backup generator kept everything running.,Yedek jeneratör her şeyi çalışır tuttu.,Das Notstromaggregat hat alles am Laufen gehalten.,El generador de reserva mantuvo todo en marcha.,Le groupe électrogène a tout fait tourner.,O gerador de reserva manteve tudo funcionando.,Запасной генератор не дал всему остановиться.,非常用発電機のおかげで、すべて動き続けました。,비상 발전기가 모든 것을 계속 돌렸어요.,बैकअप जनरेटर ने सब चालू रखा।
+crisis.power_saved.t,Power cut,Elektrik kesintisi,Stromausfall,Corte de luz,Coupure de courant,Gerador ligado,Отключили свет,停電,정전 대비 성공,बिजली कटी
+crisis.scanner_down.b,One scan room is out of order for a while.,Bir tarama odası bir süre arızalı.,Ein Aufnahmeraum ist eine Weile außer Betrieb.,Una sala de escáner está fuera de servicio un rato.,Une salle de scanner est hors service pendant un moment.,Uma sala de exames fica fora de serviço por um tempo.,Один кабинет снимков какое-то время не работает.,しばらくの間、検査室が一つ使えません。,촬영실 하나가 한동안 고장 났어요.,एक स्कैन कमरा कुछ समय के लिए खराब है।
+crisis.scanner_down.t,Scanner down,Tarayıcı arızası,Scanner ausgefallen,Escáner averiado,Scanner en panne,Tomógrafo parado,Аппарат сломался,検査機の故障,촬영 장비 고장,स्कैनर खराब
+crisis.sick_calls.b,One team is short today.,Bir ekip bugün eksik.,Ein Team ist heute unterbesetzt.,Un equipo va justo de personal hoy.,Une équipe est en sous-effectif aujourd'hui.,Uma equipe está com falta hoje.,Сегодня в одной бригаде не хватает людей.,今日はチームの人数が一人足りません。,오늘은 한 팀이 부족해요.,आज एक टीम में लोग कम हैं।
+crisis.sick_calls.t,Sick calls,Hastalık izinleri,Krankmeldungen,Bajas por enfermedad,Arrêts maladie,Faltas por doença,Больничные,欠勤連絡,병가 연락,बीमारी की छुट्टी
+crisis.supply_delay.b,Supplies cost more for two days.,Malzemeler iki gün boyunca daha pahalı.,Material kostet zwei Tage lang mehr.,El material cuesta más durante dos días.,Le matériel coûte plus cher pendant deux jours.,Os suprimentos ficam mais caros por dois dias.,Расходники два дня стоят дороже.,2日間、物品の費用が高くなります。,이틀 동안 소모품 값이 올라요.,दो दिन तक सामान महँगा रहेगा।
+crisis.supply_delay.t,Supply delay,Malzeme gecikmesi,Lieferverzögerung,Retraso de suministros,Retard de livraison,Atraso de suprimentos,Задержка поставок,物品の入荷遅れ,소모품 지연,सामान में देरी
+err.bay_busy,No free bay,Boş bölüm yok,Kein freier Platz,No hay box libre,Aucun box libre,Nenhum box livre,Нет свободной смотровой,空いている処置室がありません,빈 진료 칸이 없어요,कोई खाली बे नहीं
+err.bay_dirty,That bay needs cleaning first.,Bu bölümün önce temizlenmesi gerek.,Dieser Platz muss zuerst gereinigt werden.,Ese box necesita limpieza primero.,Ce box doit d'abord être nettoyé.,Esse box precisa de limpeza primeiro.,Сначала нужно убрать эту смотровую.,その処置室は先に清掃が必要です。,그 진료 칸은 먼저 청소해야 해요.,उस बे को पहले साफ़ करना होगा।
+err.busy,One upgrade at a time.,Aynı anda tek yükseltme.,Immer nur eine Verbesserung.,Una mejora a la vez.,Une amélioration à la fois.,Uma melhoria de cada vez.,Одно улучшение за раз.,一度に一つの強化だけできます。,업그레이드는 한 번에 하나만 할 수 있어요.,एक बार में एक अपग्रेड।
 err.cash,Not enough money.,Yeterli paran yok.,Nicht genug Geld.,No tienes suficiente dinero.,Pas assez d'argent.,Dinheiro insuficiente.,Недостаточно денег.,お金が足りません。,돈이 부족해요.,पैसे कम हैं।
-err.context,Not needed right now.,,,,,,,,,
+err.context,Not needed right now.,Şu an gerekmiyor.,Gerade nicht nötig.,No hace falta ahora mismo.,Pas nécessaire pour l'instant.,Não é necessário agora.,Сейчас не нужно.,今は必要ありません。,지금은 필요하지 않아요.,अभी ज़रूरत नहीं है।
 err.invalid,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
-err.locked,Open the earlier wing first.,,,,,,,,,
-err.max,Maximum reached,,,,,,,,,
-err.no_call,No ambulance is calling.,,,,,,,,,
-err.no_patient,Tap a waiting patient first.,,,,,,,,,
-err.not_built,Build the room first.,,,,,,,,,
-err.not_dirty,This bed is already clean.,,,,,,,,,
-err.not_ready,Not ready for that yet.,,,,,,,,,
+err.locked,Open the earlier wing first.,Önce önceki kanadı aç.,Öffne zuerst den früheren Flügel.,Abre antes el ala anterior.,Ouvre d'abord l'aile précédente.,Abra antes a ala anterior.,Сначала открой предыдущее крыло.,先に前の棟を開いてください。,먼저 앞쪽 병동을 여세요.,पहले पिछला विंग खोलो।
+err.max,Maximum reached,Azami sınıra ulaşıldı,Maximum erreicht,Máximo alcanzado,Maximum atteint,Limite atingido,Достигнут максимум,上限に達しました,최대치에 도달했어요,सीमा पूरी हो गई
+err.no_call,No ambulance is calling.,Şu an çağıran ambulans yok.,Kein Rettungswagen ruft an.,Ninguna ambulancia está llamando.,Aucune ambulance n'appelle.,Nenhuma ambulância está chamando.,Скорая сейчас не вызывает.,救急車からの呼び出しはありません。,지금 부르는 구급차가 없어요.,कोई एंबुलेंस नहीं बुला रही।
+err.no_patient,Tap a waiting patient first.,Önce bekleyen bir hastaya dokun.,Tippe zuerst auf eine wartende Patientin oder einen Patienten.,Toca antes a un paciente en espera.,Touche d'abord un patient en attente.,Toque primeiro num paciente que está esperando.,Сначала нажми на ждущего пациента.,先に待っている患者さんをタップしてください。,먼저 기다리는 환자를 누르세요.,पहले इंतज़ार करते मरीज़ पर टैप करो।
+err.not_built,Build the room first.,Önce odayı inşa et.,Baue zuerst den Raum.,Construye antes la sala.,Construis d'abord la salle.,Construa a sala primeiro.,Сначала построй кабинет.,先に部屋を建ててください。,먼저 방을 지으세요.,पहले कमरा बनाओ।
+err.not_dirty,This bed is already clean.,Bu yatak zaten temiz.,Dieses Bett ist schon sauber.,Esta cama ya está limpia.,Ce lit est déjà propre.,Este leito já está limpo.,Эта койка уже чистая.,このベッドはすでに清潔です。,이 병상은 이미 깨끗해요.,यह बिस्तर पहले से साफ़ है।
+err.not_ready,Not ready for that yet.,Bunun için henüz hazır değil.,Dafür noch nicht bereit.,Todavía no está listo para eso.,Pas encore prêt pour ça.,Ainda não está pronto para isso.,Для этого ещё не готово.,まだその準備ができていません。,아직 그건 할 수 없어요.,उसके लिए अभी तैयार नहीं।
 err.owned,Already yours.,Zaten senin.,Gehört dir schon.,Ya es tuyo.,Déjà à toi.,Já é seu.,Уже твоё.,すでに持っています。,이미 보유 중이에요.,यह पहले से तुम्हारा है।
 err.phase,Not now.,Şimdi değil.,Nicht jetzt.,Ahora no.,Pas maintenant.,Não agora.,Не сейчас.,今はできません。,지금은 안 돼요.,अभी नहीं।
-err.reputation,Reputation too low,,,,,,,,,
-err.requires,Finish the earlier upgrade first.,,,,,,,,,
-err.research,Unlock the upgrade first.,,,,,,,,,
-err.running,Already running.,,,,,,,,,
-err.too_late,A doctor already saw this patient.,,,,,,,,,
+err.reputation,Reputation too low,İtibar çok düşük,Ansehen zu niedrig,Reputación demasiado baja,Réputation trop basse,Reputação baixa demais,Репутация слишком низкая,評判が足りません,평판이 너무 낮아요,प्रतिष्ठा बहुत कम है
+err.requires,Finish the earlier upgrade first.,Önce önceki yükseltmeyi bitir.,Schließe zuerst die frühere Verbesserung ab.,Termina antes la mejora anterior.,Termine d'abord l'amélioration précédente.,Termine antes a melhoria anterior.,Сначала закончи предыдущее улучшение.,先に前の強化を終えてください。,먼저 앞의 업그레이드를 끝내세요.,पहले पिछला अपग्रेड पूरा करो।
+err.research,Unlock the upgrade first.,Önce yükseltmenin kilidini aç.,Schalte zuerst die Verbesserung frei.,Desbloquea antes la mejora.,Débloque d'abord l'amélioration.,Desbloqueie a melhoria primeiro.,Сначала открой улучшение.,先に強化を解放してください。,먼저 업그레이드를 여세요.,पहले अपग्रेड खोलो।
+err.running,Already running.,Zaten çalışıyor.,Läuft schon.,Ya está en marcha.,Déjà en cours.,Já em andamento.,Уже идёт.,すでに進行中です。,이미 진행 중이에요.,पहले से चल रहा है।
+err.too_late,A doctor already saw this patient.,Bir doktor bu hastayı zaten gördü.,Ein Arzt hat diese Patientin schon gesehen.,Un médico ya ha atendido a este paciente.,Un médecin a déjà vu ce patient.,Um médico já atendeu este paciente.,Врач уже осмотрел этого пациента.,医師がすでにこの患者さんを診ています。,의사가 이미 이 환자를 봤어요.,एक डॉक्टर इस मरीज़ को पहले देख चुका है।
 err.unknown,Not possible here.,Burada mümkün değil.,Hier nicht möglich.,No es posible aquí.,Impossible ici.,Não é possível aqui.,Здесь это невозможно.,ここではできません。,여기서는 할 수 없습니다.,यहाँ यह नहीं हो सकता।
-err.untagged,Give a colour first.,,,,,,,,,
-err.window,Hand over between 18:30 and 19:00.,,,,,,,,,
-err.wing,Open the wing first,,,,,,,,,
+err.untagged,Give a colour first.,Önce bir renk ver.,Vergib zuerst eine Farbe.,Primero elige un color.,Choisis d'abord une couleur.,Dê uma cor primeiro.,Сначала выбери цвет.,先に色をつけてください。,먼저 색을 고르세요.,पहले एक रंग दो।
+err.window,Hand over between 18:30 and 19:00.,Devri 18:30 ile 19:00 arasında yap.,Übergabe zwischen 18:30 und 19:00.,Haz el relevo entre las 18:30 y las 19:00.,Passe la relève entre 18 h 30 et 19 h 00.,Passe o plantão entre 18:30 e 19:00.,Передать смену можно с 18:30 до 19:00.,申し送りは18:30から19:00の間に行ってください。,18:30에서 19:00 사이에 인수인계하세요.,18:30 से 19:00 के बीच ड्यूटी बदलो।
+err.wing,Open the wing first,Önce kanadı aç,Öffne zuerst den Flügel,Abre primero el ala,Ouvre d'abord l'aile,Abra a ala primeiro,Сначала открой крыло,先に棟を開いてください,먼저 병동을 여세요,पहले विंग खोलो
 graphics.dropped,Graphics lowered to keep the game smooth. You can change it in Settings.,Oyun akıcı kalsın diye grafikler düşürüldü. Ayarlar'dan değiştirebilirsin.,"Grafik gesenkt, damit das Spiel flüssig läuft. Du kannst es in den Einstellungen ändern.",Gráficos reducidos para mantener el juego fluido. Puedes cambiarlo en Ajustes.,Graphismes baissés pour garder le jeu fluide. Tu peux les changer dans les Réglages.,Gráficos reduzidos para manter o jogo suave. Você pode mudar isso em Configurações.,"Графика снижена, чтобы игра шла плавно. Это можно поменять в настройках.",ゲームを滑らかにするため画質を下げました。設定で変更できます。,게임을 부드럽게 하려고 그래픽을 낮췄어요. 설정에서 바꿀 수 있어요.,गेम चिकना चलाने के लिए ग्राफ़िक्स घटाया गया। इसे सेटिंग्स में बदल सकते हो।
 graphics.high,High,Yüksek,Hoch,Alta,Élevée,Alta,Высокая,高,높음,ऊँचा
 graphics.low,Low,Düşük,Niedrig,Baja,Basse,Baixa,Низкая,低,낮음,कम
 graphics.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
 hud.day,Day {n},Gün {n},Tag {n},Día {n},Jour {n},Dia {n},День {n},{n}日目,{n}일차,दिन {n}
-hud.handover,Hand over,,,,,,,,,
+hud.handover,Hand over,Devret,Übergabe,Relevo,Passer la relève,Passar o plantão,Передать смену,申し送り,인수인계,ड्यूटी बदलो
 hud.next_day,Next day,Sonraki gün,Nächster Tag,Día siguiente,Jour suivant,Próximo dia,Следующий день,次の日へ,다음 날,अगला दिन
-hud.reputation,♥ {r},,,,,,,,,
+hud.reputation,♥ {r},♥ {r},♥ {r},♥ {r},♥ {r},♥ {r},♥ {r},♥ {r},♥ {r},♥ {r}
 hud.speed,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×
 hud.speed_guide,Speed-up unlocks after the guide.,"Hızlandırma, rehberden sonra açılır.",Schneller stellen schaltet sich nach der Anleitung frei.,La velocidad rápida se desbloquea al terminar la guía.,L'accélération se débloque après le guide.,A velocidade maior libera depois do tutorial.,Ускорение откроется после обучения.,スピードアップはガイドの後に解放されます。,가이드를 마치면 빨리 감기가 열려요.,गाइड के बाद तेज़ चाल खुलेगी।
 hud.speed_locked,Faster speeds come with the Speed Pack.,Daha hızlı modlar Hız Paketi ile gelir.,Schnellere Geschwindigkeit gibt es mit dem Tempo-Paket.,Las velocidades rápidas vienen con el Pack de Velocidad.,Les vitesses rapides sont dans le Pack Vitesse.,Velocidades maiores vêm com o Pacote de Velocidade.,Быстрые скорости идут с пакетом скорости.,より速い速度はスピードパックに含まれます。,더 빠른 속도는 속도 팩에 포함돼요.,तेज़ चाल स्पीड पैक के साथ मिलती है।
-hud.start_day,Start shift,,,,,,,,,
-iap.bundle.d,"Ad-free, the Edition, the Speed Pack and all three themes.",,,,,,,,,
-iap.bundle.t,Complete Hospital Collection,,,,,,,,,
-iap.cash_l.d,Five days of your usual income.,,,,,,,,,
-iap.cash_l.t,Big Budget,,,,,,,,,
-iap.cash_m.d,Two and a half days of your usual income.,,,,,,,,,
-iap.cash_m.t,Budget,,,,,,,,,
-iap.cash_s.d,One day of your usual income.,,,,,,,,,
-iap.cash_s.t,Small Budget,,,,,,,,,
-iap.cash_xl.d,Ten days of your usual income.,,,,,,,,,
-iap.cash_xl.t,Huge Budget,,,,,,,,,
-iap.noads.d,No more ads between shifts. Rewards come without a video.,,,,,,,,,
+hud.start_day,Start shift,Vardiyayı başlat,Schicht starten,Empezar turno,Commencer la garde,Começar o plantão,Начать смену,勤務開始,근무 시작,शिफ़्ट शुरू करो
+iap.bundle.d,"Ad-free, the Edition, the Speed Pack and all three themes.","Reklamsız, Sürüm, Hız Paketi ve üç temanın tamamı.","Ohne Werbung, die Edition, das Tempo-Paket und alle drei Designs.","Sin anuncios, la Edición, el Pack de Velocidad y los tres temas.","Sans pub, l'Édition, le Pack Vitesse et les trois thèmes.","Sem anúncios, a Edição, o Pacote de Velocidade e os três temas.","Без рекламы, издание, пакет скорости и все три темы.",広告なし、院長エディション、スピードパック、3つのテーマすべて。,"광고 없음, 에디션, 속도 팩, 테마 세 가지가 모두 들어 있어요.","विज्ञापन-मुक्त, एडिशन, स्पीड पैक और तीनों थीम।"
+iap.bundle.t,Complete Hospital Collection,Tam Hastane Koleksiyonu,Komplett-Krankenhaus-Paket,Colección completa del hospital,Collection complète de l'hôpital,Coleção Completa do Hospital,Полная коллекция больницы,病院コンプリートセット,병원 올인원 컬렉션,पूरा अस्पताल कलेक्शन
+iap.cash_l.d,Five days of your usual income.,Her zamanki gelirinden beş günlük para.,Fünf Tage deines üblichen Einkommens.,Cinco días de tus ingresos habituales.,Cinq jours de tes revenus habituels.,Cinco dias da sua renda habitual.,Пять дней вашего обычного дохода.,いつもの収入5日分。,평소 수입의 5일치예요.,तुम्हारी आम कमाई के पाँच दिन।
+iap.cash_l.t,Big Budget,Büyük Bütçe,Großes Budget,Presupuesto grande,Gros budget,Orçamento Grande,Большой бюджет,大口予算,큰 예산,बड़ा बजट
+iap.cash_m.d,Two and a half days of your usual income.,Her zamanki gelirinden iki buçuk günlük para.,Zweieinhalb Tage deines üblichen Einkommens.,Dos días y medio de tus ingresos habituales.,Deux jours et demi de tes revenus habituels.,Dois dias e meio da sua renda habitual.,Два с половиной дня обычного дохода.,いつもの収入2.5日分。,평소 수입의 2.5일치예요.,तुम्हारी आम कमाई के ढाई दिन।
+iap.cash_m.t,Budget,Bütçe,Budget,Presupuesto,Budget,Orçamento,Бюджет,予算,예산,बजट
+iap.cash_s.d,One day of your usual income.,Her zamanki gelirinden bir günlük para.,Ein Tag deines üblichen Einkommens.,Un día de tus ingresos habituales.,Un jour de tes revenus habituels.,Um dia da sua renda habitual.,Один день обычного дохода.,いつもの収入1日分。,평소 수입의 하루치예요.,तुम्हारी आम कमाई का एक दिन।
+iap.cash_s.t,Small Budget,Küçük Bütçe,Kleines Budget,Presupuesto pequeño,Petit budget,Orçamento Pequeno,Небольшой бюджет,少額予算,작은 예산,छोटा बजट
+iap.cash_xl.d,Ten days of your usual income.,Her zamanki gelirinden on günlük para.,Zehn Tage deines üblichen Einkommens.,Diez días de tus ingresos habituales.,Dix jours de tes revenus habituels.,Dez dias da sua renda habitual.,Десять дней обычного дохода.,いつもの収入10日分。,평소 수입의 10일치예요.,तुम्हारी आम कमाई के दस दिन।
+iap.cash_xl.t,Huge Budget,Dev Bütçe,Riesiges Budget,Presupuesto enorme,Budget énorme,Orçamento Enorme,Огромный бюджет,特大予算,아주 큰 예산,भारी बजट
+iap.noads.d,No more ads between shifts. Rewards come without a video.,Vardiyalar arasında artık reklam yok. Ödüller videosuz gelir.,Keine Werbung mehr zwischen den Schichten. Belohnungen gibt es ohne Video.,Sin más anuncios entre turnos. Las recompensas llegan sin vídeo.,Plus aucune pub entre les gardes. Les récompenses sont offertes sans vidéo.,Sem mais anúncios entre os plantões. As recompensas vêm sem vídeo.,Больше никакой рекламы между сменами. Награды приходят без видео.,勤務の間の広告がなくなります。報酬は動画なしで受け取れます。,교대 사이 광고가 더는 나오지 않아요. 보상은 영상 없이 받아요.,शिफ़्ट के बीच अब विज्ञापन नहीं। इनाम बिना वीडियो के मिलेंगे।
 iap.noads.t,Remove Ads,Reklamları Kaldır,Werbung entfernen,Quitar anuncios,Retirer les pubs,Remover Anúncios,Убрать рекламу,広告を削除,광고 제거,विज्ञापन हटाओ
-iap.premium.d,"Ad-free, gold hospital theme and one day of starter supplies.",,,,,,,,,
-iap.premium.t,Chief of Medicine Edition,,,,,,,,,
-iap.speed.d,Play at 3× and 4× speed. Skip the shift report automatically.,,,,,,,,,
+iap.premium.d,"Ad-free, gold hospital theme and one day of starter supplies.","Reklamsız, altın hastane teması ve bir günlük başlangıç malzemesi.","Ohne Werbung, goldenes Krankenhausdesign und ein Tag Startmaterial.","Sin anuncios, tema dorado del hospital y un día de suministros iniciales.","Sans pub, thème d'hôpital doré et un jour de fournitures de départ.","Sem anúncios, tema dourado do hospital e um dia de suprimentos iniciais.","Без рекламы, золотая тема больницы и один день стартовых припасов.",広告なし、金色の病院テーマ、スターター物資1日分。,"광고 없음, 금색 병원 테마, 시작 물품 하루치가 들어 있어요.","विज्ञापन-मुक्त, सुनहरी अस्पताल थीम और एक दिन का शुरुआती सामान।"
+iap.premium.t,Chief of Medicine Edition,Başhekim Sürümü,Chefarzt-Edition,Edición Jefatura de Medicina,Édition Chef de médecine,Edição do Chefe da Medicina,Издание «Главный врач»,院長エディション,의료 총괄 에디션,मुख्य चिकित्सक एडिशन
+iap.speed.d,Play at 3× and 4× speed. Skip the shift report automatically.,3× ve 4× hızında oyna. Vardiya raporunu otomatik atla.,Spiele mit 3× und 4× Tempo. Der Schichtbericht wird automatisch übersprungen.,Juega a velocidad 3× y 4×. El informe del turno se salta automáticamente.,Joue en 3× et 4×. Passe automatiquement le bilan de garde.,Jogue em velocidade 3× e 4×. Pule o relatório do plantão automaticamente.,Играй на скорости 3× и 4×. Отчёт о смене пропускается автоматически.,3×と4×の速さで遊べます。勤務報告を自動で飛ばします。,"3×, 4× 속도로 플레이해요. 근무 보고서는 자동으로 넘어가요.",3× और 4× स्पीड पर खेलो। शिफ़्ट की रिपोर्ट अपने आप छोड़ी जाएगी।
 iap.speed.t,Speed Pack,Hız Paketi,Tempo-Paket,Pack de Velocidad,Pack Vitesse,Pacote de Velocidade,Пакет скорости,スピードパック,속도 팩,स्पीड पैक
-iap.starter.d,Two days of income and one extra porter. Does not remove ads.,,,,,,,,,
-iap.starter.t,Starter Kit,,,,,,,,,
-iap.theme_modern.d,Cool glass and steel look for your hospital.,,,,,,,,,
-iap.theme_modern.t,Modern Theme,,,,,,,,,
-iap.theme_pediatric.d,Bright pastel colours for a friendly hospital.,,,,,,,,,
-iap.theme_pediatric.t,Playful Theme,,,,,,,,,
-iap.theme_retro.d,Warm wood and old-school tiles.,,,,,,,,,
-iap.theme_retro.t,Retro Theme,,,,,,,,,
-intro.1.b,You are the charge nurse. Patients arrive all day. You keep them moving.,,,,,,,,,
-intro.1.t,You run the floor,,,,,,,,,
-intro.2.b,"Give each patient a colour. Red goes first, green can wait.",,,,,,,,,
-intro.2.t,Colours decide,,,,,,,,,
-intro.3.b,The real problem is often a bed nobody cleaned. Find it and fix it.,,,,,,,,,
-intro.3.t,Find the jam,,,,,,,,,
+iap.starter.d,Two days of income and one extra porter. Does not remove ads.,İki günlük gelir ve bir ek hasta taşıyıcı. Reklamları kaldırmaz.,Zwei Tage Einkommen und ein zusätzlicher Pfleger für den Transport. Entfernt keine Werbung.,Dos días de ingresos y un camillero extra. No quita los anuncios.,Deux jours de revenus et un brancardier en plus. Ne retire pas les pubs.,Dois dias de renda e um maqueiro extra. Não remove anúncios.,Два дня дохода и один дополнительный санитар. Реклама не убирается.,2日分の収入と搬送係1人の追加。広告は消えません。,수입 2일치와 이송 요원 한 명을 더 줘요. 광고는 제거되지 않아요.,दो दिन की कमाई और एक अतिरिक्त पोर्टर। इससे विज्ञापन नहीं हटते।
+iap.starter.t,Starter Kit,Başlangıç Seti,Startpaket,Kit inicial,Kit de départ,Kit Inicial,Стартовый набор,スターターキット,입문 키트,स्टार्टर किट
+iap.theme_modern.d,Cool glass and steel look for your hospital.,Hastanen için serin cam ve çelik görünüm.,Kühler Glas- und Stahllook für dein Krankenhaus.,Aspecto frío de cristal y acero para tu hospital.,Look verre et acier pour ton hôpital.,Visual frio de vidro e aço para o seu hospital.,Холодный стеклянный и стальной вид для твоей больницы.,病院をガラスとスチールのクールな見た目に。,병원에 시원한 유리와 철 느낌을 줘요.,तुम्हारे अस्पताल के लिए ठंडा शीशा और स्टील वाला लुक।
+iap.theme_modern.t,Modern Theme,Modern Tema,Modern-Design,Tema Moderno,Thème Moderne,Tema Moderno,Тема «Модерн»,モダンテーマ,모던 테마,मॉडर्न थीम
+iap.theme_pediatric.d,Bright pastel colours for a friendly hospital.,Dostane bir hastane için canlı pastel renkler.,Helle Pastellfarben für ein freundliches Krankenhaus.,Colores pastel y vivos para un hospital amable.,Couleurs pastel vives pour un hôpital accueillant.,Cores pastel vibrantes para um hospital acolhedor.,Яркие пастельные цвета для дружелюбной больницы.,やさしい明るいパステルカラーの病院に。,친근한 병원을 위한 밝은 파스텔 색이에요.,हँसमुख अस्पताल के लिए चमकीले हल्के रंग।
+iap.theme_pediatric.t,Playful Theme,Neşeli Tema,Verspieltes Design,Tema Divertido,Thème Ludique,Tema Divertido,Весёлая тема,ポップテーマ,발랄한 테마,मस्ती वाली थीम
+iap.theme_retro.d,Warm wood and old-school tiles.,Sıcak ahşap ve eski usul karolar.,Warmes Holz und Fliesen im alten Stil.,Madera cálida y azulejos de siempre.,Bois chaud et carrelage à l'ancienne.,Madeira quente e azulejos antigos.,Тёплое дерево и плитка в старом стиле.,あたたかみのある木目と昔ながらのタイル。,따뜻한 나무와 옛날 타일이에요.,गर्म लकड़ी और पुराने ज़माने की टाइलें।
+iap.theme_retro.t,Retro Theme,Retro Tema,Retro-Design,Tema Retro,Thème Rétro,Tema Retrô,Тема «Ретро»,レトロテーマ,레트로 테마,रेट्रो थीम
+intro.1.b,You are the charge nurse. Patients arrive all day. You keep them moving.,Sen servis hemşiresisin. Hastalar gün boyu gelir. Onları akışta tutarsın.,Du bist die Stationsleitung. Den ganzen Tag kommen Patienten. Du hältst alles in Bewegung.,Eres la enfermera jefa. Los pacientes llegan todo el día. Tú haces que sigan avanzando.,Tu diriges le service. Les patients arrivent toute la journée. Tu les fais avancer.,Você é o responsável pelo plantão. Pacientes chegam o dia todo. Você mantém tudo andando.,Ты старшая медсестра. Пациенты приходят весь день. Ты держишь всё в движении.,あなたは看護師長です。患者さんは一日中やってきます。流れを止めないようにしましょう。,당신은 책임 간호사예요. 환자가 하루 종일 와요. 흐름을 이어 주세요.,तुम चार्ज नर्स हो। दिन भर मरीज़ आते हैं। तुम उन्हें आगे बढ़ाते हो।
+intro.1.t,You run the floor,Kat senin,Du leitest die Station,Tú diriges la planta,Tu diriges le service,Você comanda o andar,Ты управляешь этажом,フロアを仕切ろう,병동을 맡았어요,वार्ड तुम्हारे हाथ में है
+intro.2.b,"Give each patient a colour. Red goes first, green can wait.","Her hastaya bir renk ver. Kırmızı önce gelir, yeşil bekleyebilir.","Gib jeder Patientin und jedem Patienten eine Farbe. Rot kommt zuerst, Grün kann warten.",Pon un color a cada paciente. El rojo va primero; el verde puede esperar.,"Donne une couleur à chaque patient. Le rouge passe en premier, le vert peut attendre.","Dê uma cor a cada paciente. O vermelho vai primeiro, o verde pode esperar.","Дай каждому пациенту цвет. Красный идёт первым, зелёный может подождать.",患者さんそれぞれに色をつけます。赤が最優先、緑は待てます。,"환자마다 색을 정하세요. 빨강이 먼저, 초록은 기다려도 돼요.","हर मरीज़ को एक रंग दो। लाल पहले जाता है, हरा इंतज़ार कर सकता है।"
+intro.2.t,Colours decide,Renkler karar verir,Farben entscheiden,Los colores deciden,Les couleurs décident,As cores decidem,Цвета решают,色で決まる,색이 순서를 정해요,रंग से तय होता है
+intro.3.b,The real problem is often a bed nobody cleaned. Find it and fix it.,Asıl sorun çoğu zaman kimsenin temizlemediği bir yatak. Onu bul ve düzelt.,"Das eigentliche Problem ist oft ein Bett, das niemand gereinigt hat. Finde es und behebe es.",El problema real suele ser una cama que nadie limpió. Encuéntrala y arréglala.,Le vrai problème vient souvent d'un lit que personne n'a nettoyé. Trouve-le et règle-le.,O problema real costuma ser um leito que ninguém limpou. Encontre e resolva.,"Настоящая проблема часто в койке, которую никто не убрал. Найди её и исправь.",本当の問題は、誰も清掃していないベッドであることが多いです。見つけて直しましょう。,진짜 문제는 누군가 치우지 않은 병상인 경우가 많아요. 찾아서 고치세요.,अक्सर असली दिक्कत वह बिस्तर होता है जिसे किसी ने साफ़ नहीं किया। उसे ढूँढो और ठीक करो।
+intro.3.t,Find the jam,Tıkanıklığı bul,Finde den Stau,Encuentra el atasco,Trouve le blocage,Ache o gargalo,Найди затор,つまりを見つけよう,막힌 곳을 찾으세요,रुकावट ढूँढो
 intro.next,Next,İleri,Weiter,Siguiente,Suivant,Próximo,Дальше,次へ,다음,आगे
 intro.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 intro.start,Let's go,Hadi başlayalım,Los geht's,Vamos,C'est parti,Vamos lá,Поехали,はじめよう,시작해요,चलो शुरू करें
-lens.bays,All bays are busy. Add a bay or treat patients faster.,,,,,,,,,
-lens.beds,Admitted patients wait in the bays for a ward bed. New patients cannot get in. Add ward beds or speed up discharges.,,,,,,,,,
-lens.dirty,Beds are empty but dirty. The cleaners are behind. Tap a bed to clean it or hire cleaners.,,,,,,,,,
-lens.discharge,"Patients are ready to go home, but nobody signed them out. Their beds stay blocked. Tap Discharge or hire nurses.",,,,,,,,,
-lens.doctors,Patients wait in bays for a doctor. Hire doctors.,,,,,,,,,
-lens.or,Patients wait for the operating room. Each surgery takes time and a doctor.,,,,,,,,,
-lens.porters,"A bed is free, but no porter can move the patient. Hire porters.",,,,,,,,,
-lens.reception,People wait at the front desk. Hire receptionists.,,,,,,,,,
-lens.short.bays,Bays full,,,,,,,,,
-lens.short.beds,No ward beds,,,,,,,,,
-lens.short.dirty,Dirty beds,,,,,,,,,
-lens.short.discharge,Discharges wait,,,,,,,,,
-lens.short.doctors,Doctors busy,,,,,,,,,
-lens.short.or,Surgery queue,,,,,,,,,
-lens.short.porters,Porters busy,,,,,,,,,
-lens.short.reception,Front desk queue,,,,,,,,,
-lens.short.smooth,Flow is smooth,,,,,,,,,
-lens.short.tests,Scan queue,,,,,,,,,
-lens.short.triage,Triage queue,,,,,,,,,
-lens.smooth,Everything is moving. Nothing is blocking the corridors right now.,,,,,,,,,
-lens.tests,The scan room has a queue. Hire a technician for it.,,,,,,,,,
-lens.triage,People wait for a colour. Tag them yourself or hire nurses.,,,,,,,,,
-offline.body,The night shift earned {cash} in {time}.,,,,,,,,,
+lens.bays,All bays are busy. Add a bay or treat patients faster.,Tüm bölümler dolu. Bir bölüm ekle ya da hastalara daha hızlı bak.,Alle Behandlungsplätze sind belegt. Bau einen Platz dazu oder behandle schneller.,Todos los boxes están ocupados. Añade un box o atiende más rápido a los pacientes.,Tous les box sont occupés. Ajoute un box ou soigne les patients plus vite.,Todos os boxes estão ocupados. Adicione um box ou atenda os pacientes mais rápido.,Все смотровые заняты. Добавь смотровую или быстрее принимай пациентов.,処置室がすべて使用中です。処置室を増やすか、診察を速くしましょう。,진료 칸이 모두 사용 중이에요. 칸을 늘리거나 환자를 더 빨리 진료하세요.,सारे बे भरे हैं। एक बे जोड़ो या मरीज़ों का इलाज तेज़ करो।
+lens.beds,Admitted patients wait in the bays for a ward bed. New patients cannot get in. Add ward beds or speed up discharges.,Yatışı yapılan hastalar servis yatağı için bölümde bekliyor. Yeni hastalar içeri giremiyor. Servis yatağı ekle ya da taburculuğu hızlandır.,Aufgenommene Patienten warten in den Behandlungsplätzen auf ein Stationsbett. Neue Patienten kommen nicht hinein. Bau Stationsbetten oder beschleunige die Entlassungen.,Los pacientes ingresados esperan en los boxes una cama de planta. Los nuevos no pueden entrar. Añade camas o acelera las altas.,Les patients admis attendent dans les box qu'un lit de service se libère. Les nouveaux patients ne peuvent pas entrer. Ajoute des lits ou accélère les sorties.,Pacientes internados esperam nos boxes por um leito de enfermaria. Novos pacientes não conseguem entrar. Adicione leitos ou acelere as altas.,Госпитализированные пациенты ждут в смотровых койку в отделении. Новые пациенты не могут войти. Добавь койки или ускорь выписку.,入院が決まった患者さんが、病棟のベッドを待って処置室にいます。新しい患者さんが入れません。病棟のベッドを増やすか、退院を早めましょう。,입원 환자가 병동 병상을 기다리며 진료 칸에 머물러요. 새 환자는 들어올 수 없어요. 병상을 늘리거나 퇴원을 서두르세요.,भर्ती मरीज़ वार्ड के बिस्तर के इंतज़ार में बे में रहते हैं। नए मरीज़ अंदर नहीं आ पाते। वार्ड बिस्तर जोड़ो या छुट्टी तेज़ करो।
+lens.dirty,Beds are empty but dirty. The cleaners are behind. Tap a bed to clean it or hire cleaners.,Yataklar boş ama kirli. Temizlikçiler geride kaldı. Temizlemek için bir yatağa dokun ya da temizlikçi al.,"Betten sind frei, aber schmutzig. Die Reinigung kommt nicht hinterher. Tippe auf ein Bett, um es zu reinigen, oder stell Reinigungskräfte ein.",Hay camas vacías pero sucias. Los limpiadores van retrasados. Toca una cama para limpiarla o contrata limpiadores.,Des lits sont libres mais sales. Les agents d'entretien sont en retard. Touche un lit pour le nettoyer ou embauche du personnel d'entretien.,"Há leitos vazios, mas sujos. A limpeza está atrasada. Toque num leito para limpar ou contrate faxineiros.","Койки свободны, но грязные. Уборщики отстают. Нажми на койку, чтобы прибрать, или найми уборщиков.",ベッドは空いていますが汚れています。清掃が追いついていません。ベッドをタップして清掃するか、清掃スタッフを雇いましょう。,병상은 비었지만 더러워요. 청소가 밀려 있어요. 병상을 눌러 청소하거나 청소 직원을 고용하세요.,बिस्तर खाली हैं पर गंदे हैं। सफ़ाई वाले पीछे हैं। सफ़ाई के लिए बिस्तर पर टैप करो या सफ़ाई कर्मी रखो।
+lens.discharge,"Patients are ready to go home, but nobody signed them out. Their beds stay blocked. Tap Discharge or hire nurses.",Hastalar eve gitmeye hazır ama kimse çıkışlarını imzalamadı. Yatakları dolu kalıyor. Taburcu et'e dokun ya da hemşire al.,"Patienten sind bereit, nach Hause zu gehen, aber niemand hat sie abgemeldet. Ihre Betten bleiben belegt. Tippe auf Entlassen oder stell Pflegekräfte ein.","Hay pacientes listos para irse a casa, pero nadie firmó su alta. Sus camas siguen bloqueadas. Toca Alta o contrata enfermeras.","Des patients peuvent rentrer chez eux, mais personne n'a signé leur sortie. Leurs lits restent bloqués. Touche Sortie ou embauche des infirmiers.","Pacientes prontos para ir para casa, mas ninguém deu alta. Os leitos continuam bloqueados. Toque em Dar alta ou contrate enfermeiros.","Пациенты готовы домой, но их не выписали, и койки заняты. Нажми «Выписка» или найми медсестёр.",退院できる患者さんが、手続きされないまま残っています。ベッドが空きません。「退院」をタップするか、看護師を雇いましょう。,환자가 퇴원 준비가 됐지만 아무도 퇴원 서명을 하지 않았어요. 병상이 계속 막혀 있어요. “퇴원”을 누르거나 간호사를 고용하세요.,"मरीज़ घर जाने के लिए तैयार हैं, पर किसी ने उनकी छुट्टी दर्ज नहीं की। उनके बिस्तर रुके हैं। छुट्टी पर टैप करो या नर्स रखो।"
+lens.doctors,Patients wait in bays for a doctor. Hire doctors.,Hastalar bölümlerde doktor bekliyor. Doktor al.,Patienten warten in den Behandlungsplätzen auf einen Arzt. Stell Ärzte ein.,Los pacientes esperan en los boxes a un médico. Contrata médicos.,Des patients attendent dans les box qu'un médecin les voie. Embauche des médecins.,Pacientes esperam nos boxes por um médico. Contrate médicos.,Пациенты ждут врача в смотровых. Найми врачей.,患者さんが医師を待って処置室にいます。医師を雇いましょう。,환자가 진료 칸에서 의사를 기다려요. 의사를 고용하세요.,मरीज़ बे में डॉक्टर का इंतज़ार कर रहे हैं। डॉक्टर रखो।
+lens.or,Patients wait for the operating room. Each surgery takes time and a doctor.,Hastalar ameliyathaneyi bekliyor. Her ameliyat zaman ve bir doktor ister.,Patienten warten auf den Operationssaal. Jede Operation braucht Zeit und einen Arzt.,Los pacientes esperan el quirófano. Cada cirugía lleva tiempo y un médico.,Des patients attendent le bloc opératoire. Chaque opération prend du temps et un médecin.,Pacientes esperam pelo centro cirúrgico. Cada cirurgia leva tempo e um médico.,Пациенты ждут операционную. Каждая операция занимает время и врача.,患者さんが手術室の順番を待っています。手術には時間と医師が必要です。,환자가 수술실을 기다려요. 수술마다 시간과 의사가 필요해요.,मरीज़ ऑपरेशन थिएटर का इंतज़ार कर रहे हैं। हर ऑपरेशन में समय और एक डॉक्टर लगता है।
+lens.porters,"A bed is free, but no porter can move the patient. Hire porters.",Bir yatak boş ama hastayı taşıyacak kimse yok. Hasta taşıyıcı al.,"Ein Bett ist frei, aber niemand kann die Patientin oder den Patienten verlegen. Stell Pfleger für den Transport ein.","Hay una cama libre, pero ningún camillero puede trasladar al paciente. Contrata camilleros.","Un lit est libre, mais aucun brancardier ne peut transférer le patient. Embauche des brancardiers.","Há um leito livre, mas nenhum maqueiro pode levar o paciente. Contrate maqueiros.","Койка свободна, но пациента некому перевезти. Найми санитаров.",ベッドは空いていますが、患者さんを運べる搬送係がいません。搬送係を雇いましょう。,병상은 비었지만 환자를 옮길 이송 요원이 없어요. 이송 요원을 고용하세요.,"एक बिस्तर खाली है, पर मरीज़ को ले जाने वाला कोई पोर्टर नहीं। पोर्टर रखो।"
+lens.reception,People wait at the front desk. Hire receptionists.,İnsanlar resepsiyonda bekliyor. Kayıt görevlisi al.,Menschen warten am Empfang. Stell Empfangskräfte ein.,La gente espera en recepción. Contrata recepcionistas.,Des personnes attendent à l'accueil. Embauche des agents d'accueil.,Pessoas esperam na recepção. Contrate recepcionistas.,Люди ждут у стойки регистрации. Найми регистраторов.,受付で人が待っています。受付係を雇いましょう。,사람들이 접수창구 앞에서 기다려요. 접수 직원을 고용하세요.,लोग रिसेप्शन पर इंतज़ार कर रहे हैं। रिसेप्शनिस्ट रखो।
+lens.short.bays,Bays full,Bölümler dolu,Plätze voll,Boxes llenos,Box pleins,Boxes cheios,Смотровые заняты,処置室が満員,진료 칸 가득,बे भरे
+lens.short.beds,No ward beds,Servis yatağı yok,Keine Stationsbetten,Sin camas de planta,Pas de lits,Sem leitos,Нет коек в отделении,病棟のベッドなし,병동 병상 없음,वार्ड बिस्तर नहीं
+lens.short.dirty,Dirty beds,Kirli yataklar,Schmutzige Betten,Camas sucias,Lits sales,Leitos sujos,Грязные койки,汚れたベッド,더러운 병상,गंदे बिस्तर
+lens.short.discharge,Discharges wait,Çıkışlar bekliyor,Entlassungen warten,Altas en espera,Sorties en attente,Altas em espera,Ждут выписки,退院待ち,퇴원 대기,छुट्टी रुकी
+lens.short.doctors,Doctors busy,Doktorlar meşgul,Ärzte beschäftigt,Médicos ocupados,Médecins occupés,Médicos ocupados,Врачи заняты,医師が手一杯,의사 바쁨,डॉक्टर व्यस्त
+lens.short.or,Surgery queue,Ameliyat kuyruğu,OP-Warteschlange,Cola de cirugía,File au bloc,Fila de cirurgia,Очередь на операцию,手術の待ち,수술 대기,ऑपरेशन की कतार
+lens.short.porters,Porters busy,Taşıyıcılar meşgul,Pfleger im Einsatz,Camilleros ocupados,Brancardiers occupés,Maqueiros ocupados,Санитары заняты,搬送係が手一杯,이송 요원 바쁨,पोर्टर व्यस्त
+lens.short.reception,Front desk queue,Resepsiyon kuyruğu,Empfang,Cola de recepción,File à l'accueil,Fila na recepção,Очередь у стойки,受付の待ち,접수 대기,रिसेप्शन की कतार
+lens.short.smooth,Flow is smooth,Akış düzgün,Ablauf läuft gut,El flujo es fluido,Le flux est fluide,Fluxo tranquilo,Поток идёт гладко,流れはスムーズ,흐름 원활,काम सही चल रहा है
+lens.short.tests,Scan queue,Tarama kuyruğu,Warteschlange Aufnahme,Cola de pruebas,File d'imagerie,Fila de exames,Очередь на снимки,検査の待ち,촬영 대기,स्कैन की कतार
+lens.short.triage,Triage queue,Triyaj kuyruğu,Warteschlange Triage,Cola de triaje,File de tri,Fila da triagem,Очередь на сортировку,トリアージの待ち,분류 대기,छँटाई की कतार
+lens.smooth,Everything is moving. Nothing is blocking the corridors right now.,Her şey akıyor. Şu an koridorları hiçbir şey tıkamıyor.,Alles läuft. Gerade blockiert nichts die Flure.,Todo avanza. Ahora mismo nada bloquea los pasillos.,Tout avance. Rien ne bloque les couloirs pour l'instant.,Tudo está andando. Nada está travando os corredores agora.,Всё движется. Сейчас ничто не мешает коридорам.,すべて順調に動いています。今は廊下もつまっていません。,모든 게 잘 돌아가요. 지금은 복도가 막히지 않았어요.,सब चल रहा है। अभी गलियारों में कोई रुकावट नहीं।
+lens.tests,The scan room has a queue. Hire a technician for it.,Tarama odasında kuyruk var. Oraya bir teknisyen al.,Vor dem Aufnahmeraum bildet sich eine Schlange. Stell dafür eine Fachkraft ein.,La sala de pruebas tiene cola. Contrata un técnico para ella.,La salle d'imagerie a une file. Embauche un technicien pour elle.,A sala de exames tem fila. Contrate um técnico para ela.,В кабинете снимков очередь. Найми для него техника.,検査室に待ちの列があります。検査技師を雇いましょう。,촬영실에 줄이 생겼어요. 기사를 고용하세요.,स्कैन कमरे में कतार है। उसके लिए टेक्नीशियन रखो।
+lens.triage,People wait for a colour. Tag them yourself or hire nurses.,İnsanlar bir renk bekliyor. Onlara sen renk ver ya da hemşire al.,Menschen warten auf eine Farbe. Vergib sie selbst oder stell Pflegekräfte ein.,La gente espera un color. Asígnalo tú o contrata enfermeras.,Des personnes attendent une couleur. Donne-la toi-même ou embauche des infirmiers.,Pessoas esperam por uma cor. Classifique você mesmo ou contrate enfermeiros.,Люди ждут цвет. Выбери сам или найми медсестёр.,色づけを待っている人がいます。自分で色をつけるか、看護師を雇いましょう。,사람들이 색을 기다려요. 직접 색을 고르거나 간호사를 고용하세요.,लोग रंग का इंतज़ार कर रहे हैं। खुद रंग दो या नर्स रखो।
+offline.body,The night shift earned {cash} in {time}.,Gece vardiyası {time} içinde {cash} kazandı.,Die Nachtschicht hat in {time} {cash} verdient.,El turno de noche ganó {cash} en {time}.,L'équipe de nuit a gagné {cash} en {time}.,A equipe da noite ganhou {cash} em {time}.,Ночная смена заработала {cash} за {time}.,夜勤が {time} の間に {cash} を稼ぎました。,야간 근무팀이 {time} 동안 번 돈: {cash},रात की शिफ़्ट ने {time} में {cash} कमाए।
 offline.capped,Pay stops after {h} hours away.,{h} saat uzakta kaldıktan sonra ücret durur.,Die Auszahlung stoppt nach {h} Stunden Abwesenheit.,Los pagos se detienen tras {h} horas fuera.,Les gains s'arrêtent après {h} heures d'absence.,O pagamento para após {h} horas fora.,Оплата прекращается после {h} ч отсутствия.,{h} 時間離れると収入は止まります。,{h}시간 넘게 자리를 비우면 수입이 멈춰요.,{h} घंटे दूर रहने के बाद कमाई रुक जाती है।
 offline.title,While you were away,Sen yokken,Während du weg warst,Mientras estabas fuera,Pendant ton absence,Enquanto você estava fora,Пока тебя не было,留守の間に,자리를 비운 사이,तुम्हारे दूर रहने के दौरान
-patient.ambulance,by ambulance,,,,,,,,,
-patient.board,Admitted — waiting for a bed on {ward},,,,,,,,,
-patient.discharge,Discharge,,,,,,,,,
-patient.discharge.d,Sign them out now. The bed is free sooner.,,,,,,,,,
-patient.note_lost,The handover note was lost — this takes longer.,,,,,,,,,
-patient.send,Send to a bay,,,,,,,,,
-patient.send.d,A doctor sees them there.,,,,,,,,,
-patient.send_to,Bay {n},,,,,,,,,
-patient.tag,Colour,,,,,,,,,
-patient.tag_help,"Read the card. Red is the most urgent, green the mildest.",,,,,,,,,
-patient.test,Needs a scan: {room},,,,,,,,,
-patient.title,Patient #{n},,,,,,,,,
-patient.waited,Waited {min} min so far,,,,,,,,,
-phase.handover,Shift change,,,,,,,,,
+patient.ambulance,by ambulance,ambulansla,per Rettungswagen,en ambulancia,par ambulance,de ambulância,на скорой,救急車で,구급차로 도착,एंबुलेंस से
+patient.board,Admitted — waiting for a bed on {ward},Yatırıldı — {ward} servisinde yatak bekliyor,Aufgenommen — wartet auf ein Bett auf {ward},Ingresado: espera una cama en {ward},Admis — attend un lit au service {ward},Internado — aguardando um leito em {ward},"Направлен, ждёт койку в отделении {ward}",入院決定 — {ward} のベッドを待っています,입원 — {ward} 병상을 기다리는 중,भर्ती — {ward} पर बिस्तर का इंतज़ार
+patient.discharge,Discharge,Taburcu et,Entlassen,Alta,Sortie,Dar alta,Выписка,退院,퇴원,छुट्टी
+patient.discharge.d,Sign them out now. The bed is free sooner.,Şimdi çıkışını imzala. Yatak daha erken boşalır.,Melde sie jetzt ab. Das Bett wird schneller frei.,Fírmala ya. La cama queda libre antes.,Signe la sortie maintenant. Le lit se libère plus vite.,Dê alta agora. O leito fica livre mais cedo.,Выпиши сейчас. Койка освободится быстрее.,今すぐ退院の手続きをしましょう。ベッドが早く空きます。,지금 퇴원 서명을 하세요. 병상이 더 빨리 비어요.,अभी छुट्टी दर्ज करो। बिस्तर जल्दी खाली होगा।
+patient.note_lost,The handover note was lost — this takes longer.,Devir notu kayboldu — bu daha uzun sürer.,Die Übergabenotiz ist verloren gegangen — das dauert länger.,Se perdió la nota del relevo: esto tarda más.,Le mot de relève a été perdu — ça prend plus de temps.,A ficha do plantão se perdeu — isso leva mais tempo.,"Записка при передаче смены потерялась, поэтому это займёт больше времени.",申し送りメモがなくなりました。そのぶん時間がかかります。,인수인계 기록이 유실됐어요. 시간이 더 걸려요.,ड्यूटी बदलने का नोट खो गया — इसमें ज़्यादा समय लगेगा।
+patient.send,Send to a bay,Bir bölüme gönder,In einen Platz schicken,Enviar a un box,Envoyer dans un box,Enviar para um box,Отправить в смотровую,処置室へ案内,진료 칸으로 보내기,बे में भेजो
+patient.send.d,A doctor sees them there.,Orada bir doktor bakar.,Dort wird sie oder er von einem Arzt gesehen.,Allí lo atiende un médico.,Un médecin le voit là-bas.,Um médico atende ali.,Там его осмотрит врач.,そこで医師が診ます。,그곳에서 의사가 진료해요.,वहाँ एक डॉक्टर इलाज करेगा।
+patient.send_to,Bay {n},Bölüm {n},Platz {n},Box {n},Box {n},Box {n},Смотровая {n},処置室 {n},진료 칸 {n},बे {n}
+patient.tag,Colour,Renk,Farbe,Color,Couleur,Cor,Цвет,色,색,रंग
+patient.tag_help,"Read the card. Red is the most urgent, green the mildest.","Kartı oku. Kırmızı en acil olan, yeşil en hafif olan.","Lies die Karte. Rot ist am dringendsten, Grün am mildesten.","Lee la tarjeta. El rojo es el más urgente; el verde, el más leve.","Lis la fiche. Le rouge est le plus urgent, le vert le plus léger.","Leia o cartão. Vermelho é o mais urgente, verde o mais leve.","Прочти карточку. Красный — самый срочный, зелёный — самый лёгкий.",カードを読みましょう。赤がいちばん急ぎ、緑がいちばん軽症です。,"카드를 읽어 보세요. 빨강이 가장 긴급하고, 초록이 가장 가벼워요.","कार्ड पढ़ो। लाल सबसे ज़रूरी है, हरा सबसे हल्का।"
+patient.test,Needs a scan: {room},Tarama gerekiyor: {room},Braucht eine Aufnahme: {room},Necesita una prueba de imagen: {room},Besoin d'une imagerie : {room},Precisa de exame: {room},Нужен снимок: {room},検査が必要: {room},촬영 필요: {room},स्कैन चाहिए: {room}
+patient.title,Patient #{n},Hasta #{n},Patient Nr. {n},Paciente n.º {n},Patient n° {n},Paciente nº {n},Пациент №{n},患者さん #{n},환자 #{n},मरीज़ #{n}
+patient.waited,Waited {min} min so far,Şimdiye kadar {min} dk bekledi,Bisher {min} Min. gewartet,Lleva esperando {min} min,Attente jusqu'ici : {min} min,Esperou {min} min até agora,Ждёт уже {min} мин,ここまでの待ち時間 {min} 分,지금까지 {min}분 기다림,अब तक {min} मिनट इंतज़ार
+phase.handover,Shift change,Vardiya değişimi,Schichtwechsel,Relevo de turno,Relève,Troca de plantão,Передача смены,交代,교대 시간,ड्यूटी बदलना
 phase.live,On shift,Vardiyada,Im Einsatz,En turno,En service,Em turno,Смена идёт,営業中,근무 중,काम चालू
-phase.plan,Morning board,,,,,,,,,
-phase.report,Shift report,,,,,,,,,
-report.arrivals,Patients arrived,,,,,,,,,
-report.bad,Left / worse / moved,,,,,,,,,
-report.bad_v,{lwbs} / {worse} / {transfer},,,,,,,,,
-report.blocked,Beds blocked,,,,,,,,,
-report.bonus,Bonus,,,,,,,,,
-report.calm,Calm handover: the teams are rested.,,,,,,,,,
-report.care,Care,,,,,,,,,
-report.diverted,Ambulances diverted,,,,,,,,,
-report.fees,Case payments,,,,,,,,,
+phase.plan,Morning board,Sabah tablosu,Morgenübersicht,Panel de la mañana,Tableau du matin,Painel da manhã,Утренняя доска,朝の確認,아침 현황판,सुबह का बोर्ड
+phase.report,Shift report,Vardiya raporu,Schichtbericht,Informe del turno,Bilan de garde,Relatório do plantão,Отчёт смены,勤務報告,근무 보고,शिफ़्ट की रिपोर्ट
+report.arrivals,Patients arrived,Gelen hastalar,Aufgenommene Patienten,Pacientes que llegaron,Patients arrivés,Pacientes chegados,Поступило пациентов,来院した患者さん,도착한 환자,आए मरीज़
+report.bad,Left / worse / moved,Ayrıldı / kötüleşti / nakledildi,Gegangen / schlechter / verlegt,Se fueron / empeoraron / trasladados,Partis / pire / transférés,Saíram / pioraram / transferidos,Ушли / хуже / переведены,途中帰宅 / 悪化 / 転院,중단 / 악화 / 이송,चले गए / बिगड़े / भेजे गए
+report.bad_v,{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer},{lwbs} / {worse} / {transfer}
+report.blocked,Beds blocked,Tıkalı yataklar,Blockierte Betten,Camas bloqueadas,Lits bloqués,Leitos bloqueados,Койки заняты,ふさがったベッド,막힌 병상,रुके बिस्तर
+report.bonus,Bonus,Prim,Bonus,Bonificación,Prime,Bônus,Премия,ボーナス,보너스,बोनस
+report.calm,Calm handover: the teams are rested.,Sakin devir: ekipler dinlenmiş.,Ruhige Übergabe: Die Teams sind ausgeruht.,Relevo tranquilo: los equipos están descansados.,Relève calme : les équipes sont reposées.,Passagem tranquila: as equipes estão descansadas.,Спокойная передача: команды отдохнули.,落ち着いた申し送りです。チームは休めています。,차분한 인수인계: 팀이 쉬었어요.,शांत ड्यूटी बदलाव: टीमें आराम से हैं।
+report.care,Care,Bakım,Versorgung,Atención,Soins,Cuidado,Уход,診療,진료,देखभाल
+report.diverted,Ambulances diverted,Yönlendirilen ambulanslar,Umgeleitete Rettungswagen,Ambulancias desviadas,Ambulances réorientées,Ambulâncias desviadas,Скорых переадресовано,転送した救急車,우회한 구급차,एंबुलेंस दूसरी ओर भेजी गईं
+report.fees,Case payments,Hasta ödemeleri,Fallvergütungen,Pagos por casos,Paiements des soins,Pagamentos dos casos,Оплата услуг,診療報酬,진료비,इलाज की फ़ीस
 report.fines,Fines,Cezalar,Strafen,Multas,Amendes,Multas,Штрафы,罰金,벌금,जुर्माने
-report.flow,Flow,,,,,,,,,
-report.minutes,{n} min,,,,,,,,,
-report.net,Net,,,,,,,,,
-report.night,Night team,,,,,,,,,
-report.night_v,{n} treated · {cash},,,,,,,,,
-report.reputation,Reputation {r},,,,,,,,,
-report.rushed,"Rushed handover: notes lost, teams still tired.",,,,,,,,,
-report.supplies,Supplies,,,,,,,,,
+report.flow,Flow,Akış,Ablauf,Flujo,Flux,Fluxo,Поток,流れ,흐름,काम की रफ़्तार
+report.minutes,{n} min,{n} dk,{n} Min.,{n} min,{n} min,{n} min,{n} мин,{n} 分,{n}분,{n} मिनट
+report.net,Net,Net,Netto,Neto,Net,Saldo,Итого,差し引き,순이익,कुल बचत
+report.night,Night team,Gece ekibi,Nachtteam,Equipo de noche,Équipe de nuit,Equipe da noite,Ночная смена,夜勤チーム,야간 팀,रात की टीम
+report.night_v,{n} treated · {cash},{n} tedavi · {cash},{n} behandelt · {cash},{n} atendidos · {cash},{n} soignés · {cash},{n} atendidos · {cash},Осмотрено: {n} · {cash},{n} 人診察 · {cash},{n}명 진료 · {cash},{n} का इलाज · {cash}
+report.reputation,Reputation {r},İtibar {r},Ansehen {r},Reputación {r},Réputation {r},Reputação {r},Репутация {r},評判 {r},평판 {r},प्रतिष्ठा {r}
+report.rushed,"Rushed handover: notes lost, teams still tired.","Aceleyle devir: notlar kayboldu, ekipler hâlâ yorgun.","Hektische Übergabe: Notizen verloren, Teams noch müde.",Relevo apresurado: notas perdidas y equipos agotados.,"Relève bâclée : notes perdues, équipes toujours fatiguées.","Passagem corrida: fichas perdidas, equipes ainda cansadas.","Передача смены в спешке: записки потеряны, команды всё ещё устали.",慌ただしい申し送りでした。メモはなくなり、チームは疲れています。,급한 인수인계: 기록이 유실되고 팀은 여전히 지쳐 있어요.,"जल्दबाज़ी में ड्यूटी बदली: नोट खो गए, टीमें अब भी थकी हैं।"
+report.supplies,Supplies,Malzemeler,Material,Suministros,Fournitures,Suprimentos,Расходники,物品,소모품,सामान
 report.title,Day {n} report,{n}. gün raporu,Bericht Tag {n},Informe del día {n},Rapport du jour {n},Relatório do dia {n},Отчёт за день {n},{n}日目のレポート,{n}일차 보고서,दिन {n} की रिपोर्ट
-report.treated,Patients treated,,,,,,,,,
-report.upkeep,Upkeep,,,,,,,,,
+report.treated,Patients treated,Tedavi edilen hastalar,Behandelte Patienten,Pacientes atendidos,Patients soignés,Pacientes atendidos,Осмотрено пациентов,診察した患者さん,진료한 환자,इलाज किए गए मरीज़
+report.upkeep,Upkeep,Bakım,Unterhalt,Mantenimiento,Entretien,Manutenção,Содержание,維持費,유지비,रखरखाव
 report.wages,Wages,Ücretler,Löhne,Salarios,Salaires,Salários,Зарплаты,給料,임금,वेतन
-report.wait,Average wait for a doctor,,,,,,,,,
-report.waits,Waits,,,,,,,,,
-report.ward,Ward nights,,,,,,,,,
-research.branch.care,Care,,,,,,,,,
-research.branch.comfort,Comfort,,,,,,,,,
-research.branch.flow,Flow,,,,,,,,,
-research.branch.resilience,Resilience,,,,,,,,,
-research.discharge_lounge.d,Ready patients wait in the lounge. Ward beds free up at once.,,,,,,,,,
-research.discharge_lounge.t,Discharge lounge,,,,,,,,,
-research.diversion_rules.d,Send unanswered ambulances away when the ED is too full.,,,,,,,,,
-research.diversion_rules.t,Diversion rules,,,,,,,,,
+report.wait,Average wait for a doctor,Doktor için ortalama bekleme,Durchschnittliche Wartezeit auf einen Arzt,Espera media para un médico,Attente moyenne pour un médecin,Espera média por médico,Среднее ожидание врача,医師までの平均待ち時間,의사를 기다리는 평균 시간,डॉक्टर के लिए औसत इंतज़ार
+report.waits,Waits,Bekleme süreleri,Wartezeiten,Esperas,Attentes,Esperas,Ожидание,待ち時間,대기,इंतज़ार
+report.ward,Ward nights,Servis geceleri,Stationsnächte,Noches en planta,Nuits en service,Noites na enfermaria,Ночи в отделении,病棟の夜間,병동 야간,वार्ड की रातें
+research.branch.care,Care,Bakım,Versorgung,Atención,Soins,Cuidado,Уход,診療,진료,देखभाल
+research.branch.comfort,Comfort,Konfor,Komfort,Confort,Confort,Conforto,Комфорт,快適さ,편의,आराम
+research.branch.flow,Flow,Akış,Ablauf,Flujo,Flux,Fluxo,Поток,流れ,흐름,रफ़्तार
+research.branch.resilience,Resilience,Dayanıklılık,Belastbarkeit,Resistencia,Résistance,Resistência,Стойкость,耐久力,대비,मज़बूती
+research.discharge_lounge.d,Ready patients wait in the lounge. Ward beds free up at once.,Hazır hastalar salonda bekler. Servis yatakları hemen boşalır.,Fertige Patienten warten im Aufenthaltsraum. Stationsbetten werden sofort frei.,Los pacientes listos esperan en la sala. Las camas de planta quedan libres al instante.,Les patients prêts attendent dans le salon. Les lits se libèrent tout de suite.,Pacientes prontos esperam na sala de espera. Os leitos da enfermaria ficam livres na hora.,Готовые к выписке ждут в холле. Койки в отделении освобождаются сразу.,退院できる患者さんはラウンジで待ちます。病棟のベッドがすぐ空きます。,퇴원 준비가 된 환자는 라운지에서 기다려요. 병동 병상이 바로 비어요.,तैयार मरीज़ लाउंज में इंतज़ार करते हैं। वार्ड बिस्तर तुरंत खाली।
+research.discharge_lounge.t,Discharge lounge,Taburculuk salonu,Entlassungsraum,Sala de altas,Salon de sortie,Sala de alta,Холл выписки,退院ラウンジ,퇴원 라운지,छुट्टी लाउंज
+research.diversion_rules.d,Send unanswered ambulances away when the ED is too full.,Acil dolu olduğunda cevapsız ambulansları gönder.,"Schick unbeantwortete Rettungswagen weg, wenn die Notaufnahme zu voll ist.",Desvía las ambulancias sin respuesta cuando Urgencias está demasiado llena.,Renvoie les ambulances sans réponse quand les urgences sont trop pleines.,Envia as ambulâncias sem resposta embora quando o PS estiver cheio demais.,"Отправляй скорые без ответа в другие больницы, когда приёмный переполнен.",救急が満員のとき、応答できない救急車を他院へ回します。,응급실이 너무 꽉 차면 응답 없는 구급차를 다른 병원으로 보내요.,इमरजेंसी भर जाए तो बिना जवाब वाली एंबुलेंस को दूर भेजो।
+research.diversion_rules.t,Diversion rules,Yönlendirme kuralları,Umleitungsregeln,Normas de desvío,Règles de réorientation,Regras de desvio,Правила переадресации,転送ルール,우회 규칙,दूसरी ओर भेजने के नियम
 research.done,Done,Tamam,Fertig,Hecho,Terminé,Concluído,Готово,完了,완료,हो गया
-research.fast_track.d,Free nurses treat mild green cases without a bay.,,,,,,,,,
-research.fast_track.t,Fast track,,,,,,,,,
-research.finished,Upgrade ready: {name},,,,,,,,,
-research.generator.d,Power cuts no longer stop the scans and the OR.,,,,,,,,,
-research.generator.t,Backup generator,,,,,,,,,
-research.help,Upgrades work during the shift. One at a time.,,,,,,,,,
-research.lab_automation.d,Lab tests are faster.,,,,,,,,,
-research.lab_automation.t,Lab robots,,,,,,,,,
-research.left,{min} shift min left,,,,,,,,,
-research.night_team.d,More staff on the night shift.,,,,,,,,,
-research.night_team.t,Stronger night team,,,,,,,,,
-research.or_checklist.d,Surgeries take less time.,,,,,,,,,
-research.or_checklist.t,Surgery checklist,,,,,,,,,
-research.porter_tablets.d,Porters get jobs on a tablet and move faster.,,,,,,,,,
-research.porter_tablets.t,Porter tablets,,,,,,,,,
-research.quick_clean.d,Cleaners get beds ready faster.,,,,,,,,,
-research.quick_clean.t,Quick-clean kits,,,,,,,,,
-research.quiet_hours.d,Teams get tired more slowly. Less burnout.,,,,,,,,,
-research.quiet_hours.t,Quiet hours,,,,,,,,,
-research.requires,Needs {name},,,,,,,,,
-research.shift_min,{min} shift min,,,,,,,,,
-research.specialist_track.d,Doctors treat faster.,,,,,,,,,
-research.specialist_track.t,Specialist track,,,,,,,,,
+research.fast_track.d,Free nurses treat mild green cases without a bay.,Boş hemşireler bölüm olmadan hafif yeşil vakaları tedavi eder.,Freie Pflegekräfte behandeln leichte grüne Fälle ohne Behandlungsplatz.,Las enfermeras libres atienden los casos leves en verde sin necesidad de box.,Les infirmiers libres soignent les cas verts légers sans box.,Enfermeiros livres atendem casos verdes leves sem usar um box.,Свободные медсёстры лечат лёгкие зелёные случаи без смотровой.,空いている看護師が、処置室を使わずに軽症の緑の患者さんを診ます。,놀고 있는 간호사가 진료 칸 없이 초록 경증 환자를 봐요.,खाली नर्सें हरे मामले बे के बिना देखती हैं।
+research.fast_track.t,Fast track,Hızlı yol,Schnellbehandlung,Circuito rápido,Parcours rapide,Atendimento rápido,Быстрый приём,迅速診療,신속 진료,फ़ास्ट ट्रैक
+research.finished,Upgrade ready: {name},Yükseltme hazır: {name},Verbesserung fertig: {name},Mejora lista: {name},Amélioration prête : {name},Melhoria pronta: {name},Улучшение готово: {name},強化完了: {name},업그레이드 완료: {name},अपग्रेड तैयार: {name}
+research.generator.d,Power cuts no longer stop the scans and the OR.,Elektrik kesintileri artık taramaları ve ameliyathaneyi durdurmaz.,Stromausfälle stoppen Aufnahmen und den OP nicht mehr.,Los cortes de luz ya no detienen las pruebas ni el quirófano.,Les coupures de courant n'arrêtent plus les scanners ni le bloc.,Quedas de energia não param mais os exames e o centro cirúrgico.,Отключения света больше не останавливают снимки и операционную.,停電でも検査と手術室が止まりません。,정전이 나도 촬영과 수술이 멈추지 않아요.,बिजली कटने पर भी स्कैन और ऑपरेशन नहीं रुकेंगे।
+research.generator.t,Backup generator,Yedek jeneratör,Notstromaggregat,Generador de reserva,Groupe électrogène,Gerador de reserva,Запасной генератор,非常用発電機,비상 발전기,बैकअप जनरेटर
+research.help,Upgrades work during the shift. One at a time.,Yükseltmeler vardiya sırasında çalışır. Tek seferde biri.,Verbesserungen laufen während der Schicht. Immer nur eine.,Las mejoras funcionan durante el turno. Una a la vez.,Les améliorations se font pendant la garde. Une à la fois.,As melhorias funcionam durante o plantão. Uma de cada vez.,Улучшения работают во время смены. По одному за раз.,強化は勤務中に進みます。一度に一つです。,업그레이드는 근무 중에 진행돼요. 한 번에 하나씩이에요.,अपग्रेड शिफ़्ट के दौरान चलते हैं। एक बार में एक।
+research.lab_automation.d,Lab tests are faster.,Laboratuvar testleri daha hızlı.,Labortests gehen schneller.,Los análisis de laboratorio son más rápidos.,Les analyses de labo sont plus rapides.,Os exames de laboratório ficam mais rápidos.,Анализы в лаборатории делаются быстрее.,検査室の検査が速くなります。,검사가 더 빨라요.,लैब टेस्ट तेज़ होते हैं।
+research.lab_automation.t,Lab robots,Laboratuvar robotları,Laborroboter,Robots de laboratorio,Robots de labo,Robôs de laboratório,Лабораторные роботы,検査ロボット,검사실 로봇,लैब रोबोट
+research.left,{min} shift min left,Vardiyada {min} dk kaldı,{min} Min. Schicht übrig,Quedan {min} min de turno,{min} min de garde restantes,{min} min de plantão restantes,Осталось минут смены: {min},勤務残り {min} 分,근무 {min}분 남음,शिफ़्ट के {min} मिनट बाकी
+research.night_team.d,More staff on the night shift.,Gece vardiyasında daha fazla personel.,Mehr Personal in der Nachtschicht.,Más personal en el turno de noche.,Plus de personnel pendant la garde de nuit.,Mais equipe no plantão da noite.,На ночной смене больше персонала.,夜勤のスタッフが増えます。,야간 근무에 직원이 더 많아요.,रात की शिफ़्ट में ज़्यादा स्टाफ़।
+research.night_team.t,Stronger night team,Güçlü gece ekibi,Stärkeres Nachtteam,Equipo de noche reforzado,Équipe de nuit renforcée,Equipe da noite reforçada,Сильнее ночная команда,夜勤チーム強化,강화된 야간 팀,मज़बूत रात की टीम
+research.or_checklist.d,Surgeries take less time.,Ameliyatlar daha az sürer.,Operationen dauern weniger lang.,Las cirugías llevan menos tiempo.,Les opérations prennent moins de temps.,As cirurgias levam menos tempo.,Операции занимают меньше времени.,手術の時間が短くなります。,수술 시간이 줄어요.,ऑपरेशन में कम समय लगता है।
+research.or_checklist.t,Surgery checklist,Ameliyat kontrol listesi,OP-Checkliste,Lista de cirugía,Checklist au bloc,Checklist cirúrgico,Чек-лист операции,手術チェックリスト,수술 체크리스트,ऑपरेशन चेकलिस्ट
+research.porter_tablets.d,Porters get jobs on a tablet and move faster.,Taşıyıcılar işlerini tabletten alır ve daha hızlı hareket eder.,Pfleger bekommen Aufträge auf einem Tablet und sind schneller.,Los camilleros reciben los encargos en una tableta y se mueven más rápido.,Les brancardiers reçoivent leurs missions sur tablette et vont plus vite.,Os maqueiros recebem tarefas em um tablet e andam mais rápido.,Санитары получают задания на планшете и двигаются быстрее.,搬送係がタブレットで仕事を受け取り、速く動けます。,이송 요원이 태블릿으로 일을 받아 더 빨리 움직여요.,पोर्टर टैबलेट पर काम लेते हैं और तेज़ चलते हैं।
+research.porter_tablets.t,Porter tablets,Taşıyıcı tabletleri,Tablets für Pfleger,Tabletas para camilleros,Tablettes pour brancardiers,Tablets para maqueiros,Планшеты санитаров,搬送係のタブレット,이송 태블릿,पोर्टर टैबलेट
+research.quick_clean.d,Cleaners get beds ready faster.,Temizlikçiler yatakları daha hızlı hazırlar.,Reinigungskräfte machen Betten schneller bereit.,Los limpiadores dejan las camas listas más deprisa.,Les agents d'entretien préparent les lits plus vite.,Os faxineiros deixam os leitos prontos mais rápido.,Уборщики быстрее готовят койки.,清掃スタッフがベッドを速く整えられます。,청소 직원이 병상을 더 빨리 준비해요.,सफ़ाई कर्मी बिस्तर जल्दी तैयार करते हैं।
+research.quick_clean.t,Quick-clean kits,Hızlı temizlik setleri,Schnellreinigungs-Sets,Kits de limpieza rápida,Kits de nettoyage rapide,Kits de limpeza rápida,Наборы для быстрой уборки,速乾清掃キット,빠른 청소 키트,फ़ास्ट-क्लीन किट
+research.quiet_hours.d,Teams get tired more slowly. Less burnout.,Ekipler daha yavaş yorulur. Tükenmişlik azalır.,Die Teams werden langsamer müde. Weniger Erschöpfung.,Los equipos se cansan más despacio. Menos agotamiento.,Les équipes se fatiguent moins vite. Moins d'épuisement.,A equipe se cansa mais devagar. Menos esgotamento.,Команды устают медленнее. Меньше выгорания.,チームが疲れにくくなります。燃え尽き症候群が減ります。,팀이 덜 지쳐요. 번아웃이 줄어요.,टीमें धीरे थकती हैं। थकान कम।
+research.quiet_hours.t,Quiet hours,Sessiz saatler,Ruhezeiten,Horas tranquilas,Heures calmes,Horas tranquilas,Тихие часы,静かな時間,조용한 시간,शांत घंटे
+research.requires,Needs {name},{name} gerekli,Braucht {name},Necesita {name},Il faut {name},Precisa de {name},Нужно: {name},{name} が必要,{name} 필요,{name} चाहिए
+research.shift_min,{min} shift min,Vardiya {min} dk,{min} Min. Schicht,{min} min de turno,{min} min de garde,{min} min de plantão,{min} мин смены,勤務 {min} 分,근무 {min}분,{min} शिफ़्ट मिनट
+research.specialist_track.d,Doctors treat faster.,Doktorlar daha hızlı tedavi eder.,Ärzte behandeln schneller.,Los médicos atienden más rápido.,Les médecins soignent plus vite.,Os médicos atendem mais rápido.,Врачи лечат быстрее.,医師の診察が速くなります。,의사가 더 빨리 진료해요.,डॉक्टर तेज़ इलाज करते हैं।
+research.specialist_track.t,Specialist track,Uzman yolu,Facharztprogramm,Vía de especialistas,Filière spécialisée,Trilha de especialistas,Программа специалистов,専門医コース,전문의 과정,विशेषज्ञ ट्रैक
 research.start,Start · {cost},Başlat · {cost},Starten · {cost},Empezar · {cost},Lancer · {cost},Começar · {cost},Начать · {cost},開始 · {cost},시작 · {cost},शुरू करो · {cost}
-research.surge_stock.d,Flu weeks and supply delays hit softer.,,,,,,,,,
-research.surge_stock.t,Surge stock,,,,,,,,,
-research.triage_training.d,Nurses pick the right colour more often.,,,,,,,,,
-research.triage_training.t,Triage training,,,,,,,,,
-research.waiting_hall.d,People wait longer before they give up.,,,,,,,,,
-research.waiting_hall.t,Comfy waiting hall,,,,,,,,,
-research.ward_rooms.d,Ward nights pay more.,,,,,,,,,
-research.ward_rooms.t,Better ward rooms,,,,,,,,,
-research.wing,Needs {name},,,,,,,,,
-research.xray_digital.d,X-ray scans are faster.,,,,,,,,,
-research.xray_digital.t,Digital X-ray,,,,,,,,,
-reward.call_neighbor.b,They take {n} waiting patients. Once per crisis.,,,,,,,,,
-reward.call_neighbor.t,Call the neighbour hospital,,,,,,,,,
+research.surge_stock.d,Flu weeks and supply delays hit softer.,Grip haftaları ve malzeme gecikmeleri daha az etkiler.,Grippewochen und Lieferverzögerungen treffen weniger hart.,Las semanas de gripe y los retrasos de suministros afectan menos.,Les semaines de grippe et les retards de livraison pèsent moins.,Semanas de gripe e atrasos de suprimentos pesam menos.,Недели гриппа и задержки поставок переносятся легче.,流行期や物品の入荷遅れの影響が小さくなります。,독감 주간과 소모품 지연의 타격이 줄어요.,फ़्लू के हफ़्ते और सामान की देरी का असर कम।
+research.surge_stock.t,Surge stock,Yoğunluk stoku,Notfallvorrat,Reserva para picos,Stock d'urgence,Estoque de emergência,Запас на пиковые дни,急増用の備蓄,응급 비축품,अतिरिक्त सामान का स्टॉक
+research.triage_training.d,Nurses pick the right colour more often.,Hemşireler doğru rengi daha sık seçer.,Pflegekräfte wählen öfter die richtige Farbe.,Las enfermeras eligen más a menudo el color correcto.,Les infirmiers choisissent plus souvent la bonne couleur.,Os enfermeiros escolhem a cor certa com mais frequência.,Медсёстры чаще выбирают правильный цвет.,看護師が正しい色を選びやすくなります。,간호사가 색을 더 자주 정확히 골라요.,नर्सें सही रंग ज़्यादा बार चुनती हैं।
+research.triage_training.t,Triage training,Triyaj eğitimi,Triage-Schulung,Formación en triaje,Formation au tri,Treinamento de triagem,Обучение сортировке,トリアージ研修,분류 교육,छँटाई का प्रशिक्षण
+research.waiting_hall.d,People wait longer before they give up.,İnsanlar vazgeçmeden önce daha uzun bekler.,"Menschen warten länger, bevor sie aufgeben.",La gente aguanta más tiempo antes de marcharse.,Les gens attendent plus longtemps avant de partir.,As pessoas esperam mais tempo antes de desistir.,"Люди дольше ждут, прежде чем уйти.",待つ人が、あきらめるまでの時間が長くなります。,사람들이 포기하기 전까지 더 오래 기다려요.,लोग छोड़कर जाने से पहले ज़्यादा देर इंतज़ार करते हैं।
+research.waiting_hall.t,Comfy waiting hall,Rahat bekleme salonu,Gemütlicher Wartesaal,Sala de espera cómoda,Salle d'attente confortable,Sala de espera confortável,Уютный зал ожидания,快適な待合室,편안한 대기실,आरामदेह इंतज़ार कक्ष
+research.ward_rooms.d,Ward nights pay more.,Gece servisleri daha fazla kazandırır.,Stationsnächte bringen mehr Geld.,Las noches en planta pagan más.,Les nuits en service rapportent davantage.,Os plantões noturnos rendem mais.,Ночи в отделении приносят больше.,病棟の夜間の収入が増えます。,병동 야간 수입이 늘어요.,वार्ड की रातें ज़्यादा कमाती हैं।
+research.ward_rooms.t,Better ward rooms,Daha iyi servis odaları,Bessere Stationszimmer,Mejores habitaciones de planta,Meilleures chambres de service,Melhores quartos da enfermaria,Улучшенные палаты,病室の改善,더 나은 병실,बेहतर वार्ड कमरे
+research.wing,Needs {name},{name} gerekli,Braucht {name},Necesita {name},Il faut {name},Precisa de {name},Нужно: {name},{name} が必要,{name} 필요,{name} चाहिए
+research.xray_digital.d,X-ray scans are faster.,Röntgen taramaları daha hızlı.,Röntgenaufnahmen gehen schneller.,Las radiografías se hacen más rápido.,Les radios sont plus rapides.,As radiografias ficam mais rápidas.,Снимки на рентгене делаются быстрее.,レントゲン撮影が速くなります。,엑스레이 촬영이 더 빨라요.,एक्स-रे स्कैन तेज़ होते हैं।
+research.xray_digital.t,Digital X-ray,Dijital röntgen,Digitales Röntgen,Radiografía digital,Radio numérique,Raio-X digital,Цифровой рентген,デジタルレントゲン,디지털 엑스레이,डिजिटल एक्स-रे
+reward.call_neighbor.b,They take {n} waiting patients. Once per crisis.,{n} bekleyen hastayı alırlar. Kriz başına bir kez.,Sie nehmen {n} wartende Patienten auf. Einmal pro Krise.,Se llevan {n} pacientes en espera. Una vez por crisis.,Il prend {n} patients en attente. Une fois par crise.,Eles recebem {n} pacientes em espera. Uma vez por crise.,Они заберут {n} ждущих пациентов. Один раз за кризис.,待っている患者さんを {n} 人引き受けてくれます。トラブルごとに1回。,이웃 병원이 대기 환자 {n}명을 받아요. 위기당 한 번이에요.,वे {n} इंतज़ार करते मरीज़ ले लेंगे। हर संकट में एक बार।
+reward.call_neighbor.t,Call the neighbour hospital,Komşu hastaneyi ara,Nachbarklinik anrufen,Llamar al hospital vecino,Appeler l'hôpital voisin,Chamar o hospital vizinho,Позвонить в соседнюю больницу,近くの病院に連絡する,이웃 병원에 연락,पड़ोसी अस्पताल को बुलाओ
 reward.claim,Claim,Al,Abholen,Reclamar,Récupérer,Resgatar,Забрать,受け取る,받기,लो
-reward.daily_bonus.b,A little money to start the day.,,,,,,,,,
-reward.daily_bonus.t,Morning bonus,,,,,,,,,
+reward.daily_bonus.b,A little money to start the day.,Güne başlamak için biraz para.,Ein bisschen Geld für den Start in den Tag.,Un poco de dinero para empezar el día.,Un petit coup de pouce pour commencer la journée.,Um pouco de dinheiro para começar o dia.,"Немного денег, чтобы начать день.",一日の始まりに少しのお金。,하루를 시작할 작은 돈이에요.,दिन शुरू करने के लिए थोड़े पैसे।
+reward.daily_bonus.t,Morning bonus,Sabah bonusu,Morgenbonus,Bonificación de la mañana,Bonus du matin,Bônus da manhã,Утренний бонус,朝のボーナス,아침 보너스,सुबह का बोनस
 reward.done_cash,+{cash} added,+{cash} eklendi,+{cash} gutgeschrieben,+{cash} añadidos,+{cash} ajoutés,+{cash} recebidos,+{cash} начислено,+{cash} を受け取りました,+{cash} 들어옴,+{cash} जुड़े
-reward.done_float,A float helper joined {team} for an hour.,,,,,,,,,
-reward.done_neighbor,{n} patients went to the neighbour hospital.,,,,,,,,,
-reward.float_nurse.b,One extra helper joins {team} for an hour.,,,,,,,,,
-reward.float_nurse.t,Float staff,,,,,,,,,
+reward.done_float,A float helper joined {team} for an hour.,Bir destek personeli bir saatliğine {team} ekibine katıldı.,Eine Springerkraft hat {team} für eine Stunde unterstützt.,Un refuerzo se unió a {team} durante una hora.,Un renfort volant a rejoint {team} pour une heure.,Um reforço se juntou à {team} por uma hora.,Подменный сотрудник помог: {team} на час.,応援の看護師が1時間 {team} に加わりました。,지원 간호사가 {team}에 한 시간 동안 합류했어요.,एक अतिरिक्त मददगार {team} के साथ एक घंटे के लिए जुड़ा।
+reward.done_neighbor,{n} patients went to the neighbour hospital.,{n} hasta komşu hastaneye gönderildi.,{n} Patienten sind in die Nachbarklinik gebracht worden.,{n} pacientes fueron al hospital vecino.,{n} patients sont partis à l'hôpital voisin.,{n} pacientes foram para o hospital vizinho.,{n} пациентов ушли в соседнюю больницу.,{n} 人の患者さんが近くの病院へ向かいました。,환자 {n}명이 이웃 병원으로 갔어요.,{n} मरीज़ पड़ोसी अस्पताल भेजे गए।
+reward.float_nurse.b,One extra helper joins {team} for an hour.,Bir ek yardımcı bir saatliğine {team} ekibine katılır.,Eine zusätzliche Hilfe unterstützt {team} für eine Stunde.,Un ayudante extra se une a {team} durante una hora.,Un renfort en plus rejoint {team} pendant une heure.,Um ajudante extra se junta à {team} por uma hora.,Один дополнительный помощник на час присоединяется к команде: {team}.,1時間、応援の人が1人 {team} に加わります。,추가 인력 한 명이 {team}에 한 시간 동안 합류해요.,एक अतिरिक्त मददगार {team} के साथ एक घंटे के लिए जुड़ेगा।
+reward.float_nurse.t,Float staff,Destek personeli,Springerkraft,Personal de apoyo,Renfort volant,Reforço volante,Подменный персонал,応援スタッフ,지원 인력,अतिरिक्त स्टाफ़
 reward.free.b,Included with your ad-free pack — no video.,Reklamsız paketinle birlikte geliyor — video yok.,Im Werbefrei-Paket enthalten — ohne Video.,Incluido con tu pack sin anuncios: sin vídeo.,Inclus avec ton pack sans pub — pas de vidéo.,Incluído no seu pacote sem anúncios — sem vídeo.,Входит в пакет без рекламы — без видео.,広告なしパックに含まれています。動画は不要です。,광고 제거 팩에 포함돼요 — 영상 없음.,तुम्हारे विज्ञापन-मुक्त पैक में शामिल — कोई वीडियो नहीं।
 reward.free_cash,Claim +{cash},+{cash} al,+{cash} abholen,Reclamar +{cash},Récupérer +{cash},Resgatar +{cash},Забрать +{cash},+{cash} を受け取る,{cash} 받기,+{cash} लो
-reward.offline_x2.b,Watch a short video to get it twice.,,,,,,,,,
-reward.offline_x2.t,Double the night pay,,,,,,,,,
+reward.offline_x2.b,Watch a short video to get it twice.,"Kısa bir video izle, iki katını al.","Sieh dir ein kurzes Video an, um es doppelt zu bekommen.",Mira un vídeo corto para cobrarlo el doble.,Regarde une courte vidéo pour le recevoir deux fois.,Assista a um vídeo curto para receber o dobro.,"Посмотри короткое видео, чтобы получить вдвое больше.",短い動画を見ると2倍になります。,짧은 영상을 보면 두 배로 받아요.,दोगुना पाने के लिए एक छोटा वीडियो देखो।
+reward.offline_x2.t,Double the night pay,Gece ücretini ikiye katla,Nachtlohn verdoppeln,Doble pago de la noche,Double la paie de nuit,Dobre o pagamento da noite,Удвоить ночную оплату,夜勤手当を2倍に,야간 수당 두 배,रात की कमाई दोगुनी
 reward.unavailable,Not available right now,Şu an kullanılamıyor,Gerade nicht verfügbar,No disponible ahora mismo,Indisponible pour le moment,Indisponível agora,Сейчас недоступно,ただいま利用できません,지금은 사용할 수 없어요,अभी उपलब्ध नहीं
 reward.video,Watch video,Video izle,Video ansehen,Ver vídeo,Regarder la vidéo,Assistir vídeo,Смотреть видео,動画を見る,영상 보기,वीडियो देखो
 reward.video_cash,Watch · +{cash},İzle · +{cash},Ansehen · +{cash},Ver · +{cash},Regarder · +{cash},Assistir · +{cash},Смотреть · +{cash},見る · +{cash},보기 · +{cash},देखो · +{cash}
-room.ct,CT scanner,,,,,,,,,
-room.ct.d,Fast detailed scans for serious cases. Comes with one technician.,,,,,,,,,
-room.down,out of order,,,,,,,,,
-room.lab,Lab,,,,,,,,,
-room.lab.d,Quick sample tests. Comes with one technician.,,,,,,,,,
-room.or,Operating room,,,,,,,,,
-room.or.d,Surgery for serious cases. Needs a doctor and an ICU or surgical bed after.,,,,,,,,,
-room.xray,X-ray room,,,,,,,,,
-room.xray.d,Scans for broken bones and chests. Comes with one technician.,,,,,,,,,
-rule.arrival,First come,,,,,,,,,
-rule.balanced,Balanced,,,,,,,,,
-rule.divert,Diversion rule,,,,,,,,,
-rule.divert.at,When {pct} full,,,,,,,,,
-rule.divert.locked,Unlock the Diversion Rules upgrade to send ambulances away by themselves.,,,,,,,,,
-rule.divert.never,Never,,,,,,,,,
-rule.queue,Who goes first,,,,,,,,,
-rule.queue.help,Red always goes first. Choose the order for everyone else.,,,,,,,,,
-rule.urgent,Most urgent,,,,,,,,,
+room.ct,CT scanner,BT tarayıcı,CT-Gerät,Escáner de TAC,Scanner,Tomógrafo,КТ-аппарат,CT,CT 촬영기,सीटी स्कैनर
+room.ct.d,Fast detailed scans for serious cases. Comes with one technician.,Ciddi vakalar için hızlı ve ayrıntılı taramalar. Bir teknisyenle gelir.,"Schnelle, genaue Aufnahmen für schwere Fälle. Mit einer Fachkraft.",Pruebas rápidas y detalladas para casos graves. Incluye un técnico.,Scans rapides et détaillés pour les cas graves. Livré avec un technicien.,Exames rápidos e detalhados para casos graves. Vem com um técnico.,Быстрые подробные снимки для тяжёлых случаев. Идёт с одним техником.,重い症状の患者さん向けに、速くて詳しい検査ができます。技師1人つき。,중증 환자를 위한 빠르고 자세한 촬영이에요. 기사 한 명이 함께 와요.,गंभीर मामलों के लिए तेज़ और विस्तृत स्कैन। एक टेक्नीशियन साथ आता है।
+room.down,out of order,arızalı,außer Betrieb,fuera de servicio,hors service,fora de serviço,не работает,故障中,고장 남,खराब
+room.lab,Lab,Laboratuvar,Labor,Laboratorio,Labo,Laboratório,Лаборатория,検査室,검사실,लैब
+room.lab.d,Quick sample tests. Comes with one technician.,Hızlı numune testleri. Bir teknisyenle gelir.,Schnelle Probentests. Mit einer Fachkraft.,Análisis rápidos de muestras. Incluye un técnico.,Analyses rapides. Livré avec un technicien.,Exames rápidos de amostras. Vem com um técnico.,Быстрые анализы образцов. Идёт с одним лаборантом.,すばやい検体検査。技師1人つき。,빠른 검체 검사예요. 기사 한 명이 함께 와요.,जल्दी होने वाले सैंपल टेस्ट। एक टेक्नीशियन साथ आता है।
+room.or,Operating room,Ameliyathane,Operationssaal,Quirófano,Bloc opératoire,Centro cirúrgico,Операционная,手術室,수술실,ऑपरेशन थिएटर
+room.or.d,Surgery for serious cases. Needs a doctor and an ICU or surgical bed after.,Ciddi vakalar için ameliyat. Sonrasında bir doktor ve yoğun bakım ya da cerrahi yatak gerekir.,Operationen bei schweren Fällen. Braucht einen Arzt und danach ein Intensiv- oder OP-Bett.,Cirugía para casos graves. Necesita un médico y una cama de UCI o de cirugía después.,"Chirurgie pour les cas graves. Il faut un médecin, puis un lit de soins intensifs ou de chirurgie après.",Cirurgia para casos graves. Precisa de um médico e de um leito de UTI ou cirúrgico depois.,"Операции для тяжёлых случаев. Нужен врач, а после — койка реанимации или хирургическая койка.",重い症状の患者さんの手術。医師が必要で、術後は集中治療室か外科病棟のベッドが必要です。,"중증 환자를 위한 수술이에요. 의사가 필요하고, 수술 후에는 중환자실이나 수술 병상이 필요해요.",गंभीर मामलों का ऑपरेशन। इसके बाद डॉक्टर और आईसीयू या सर्जिकल बिस्तर चाहिए।
+room.xray,X-ray room,Röntgen odası,Röntgenraum,Sala de radiografías,Salle de radio,Sala de Raio-X,Рентген-кабинет,レントゲン室,엑스레이실,एक्स-रे कमरा
+room.xray.d,Scans for broken bones and chests. Comes with one technician.,Kırık kemikler ve göğüs için taramalar. Bir teknisyenle gelir.,Aufnahmen bei Knochenbrüchen und Brustkorb. Mit einer Fachkraft.,Pruebas para huesos rotos y tórax. Incluye un técnico.,Radios des os cassés et du thorax. Livré avec un technicien.,Exames de ossos quebrados e de tórax. Vem com um técnico.,Снимки для переломов и грудной клетки. Идёт с одним техником.,骨折や胸部の撮影。技師1人つき。,골절과 흉부 촬영이에요. 기사 한 명이 함께 와요.,हड्डी और छाती के स्कैन। एक टेक्नीशियन साथ आता है।
+rule.arrival,First come,İlk gelen,Wer zuerst kommt,Por orden de llegada,Premier arrivé,Quem chegou primeiro,Кто первым пришёл,先着順,도착 순서,"पहले आया, पहले"
+rule.balanced,Balanced,Dengeli,Ausgewogen,Equilibrado,Équilibré,Equilibrado,Поровну,バランス,균형,संतुलित
+rule.divert,Diversion rule,Yönlendirme kuralı,Umleitungsregel,Norma de desvío,Règle de réorientation,Regra de desvio,Правило переадресации,転送ルール,우회 규칙,दूसरी ओर भेजने का नियम
+rule.divert.at,When {pct} full,{pct} dolunca,Bei {pct} voll,Cuando esté al {pct} %,Quand {pct} pleines,Quando {pct} cheio,Когда заполнено на {pct},{pct} 満員のとき,{pct} 찼을 때,जब {pct} भरा हो
+rule.divert.locked,Unlock the Diversion Rules upgrade to send ambulances away by themselves.,Ambulansları kendi kendine yönlendirmek için Yönlendirme Kuralları yükseltmesinin kilidini aç.,"Schalte die Verbesserung Umleitungsregeln frei, um Rettungswagen selbstständig wegzuschicken.",Desbloquea la mejora de Normas de desvío para enviar ambulancias por sí solas.,Débloque l'amélioration Règles de réorientation pour renvoyer les ambulances toute seule.,Desbloqueie a melhoria Regras de Desvio para enviar as ambulâncias sozinho.,"Открой улучшение «Правила переадресации», чтобы скорые отправлялись сами.",転送ルールを強化で解放すると、救急車を自動で他院へ回せます。,구급차를 알아서 다른 병원으로 보내려면 우회 규칙 업그레이드를 여세요.,दूसरे अस्पताल भेजने के लिए दूसरी ओर भेजने वाला अपग्रेड खोलो।
+rule.divert.never,Never,Asla,Nie,Nunca,Jamais,Nunca,Никогда,しない,안 함,कभी नहीं
+rule.queue,Who goes first,Kim önce gider,Wer zuerst drankommt,Quién va primero,Qui passe en premier,Quem vai primeiro,Кто идёт первым,優先順,누가 먼저 가나요,कौन पहले जाएगा
+rule.queue.help,Red always goes first. Choose the order for everyone else.,Kırmızı her zaman önce gider. Diğerleri için sırayı sen seç.,Rot kommt immer zuerst. Wähle die Reihenfolge für alle anderen.,El rojo siempre va primero. Elige el orden para los demás.,Le rouge passe toujours en premier. Choisis l'ordre pour les autres.,O vermelho sempre vai primeiro. Escolha a ordem para os demais.,Красный всегда идёт первым. Выбери порядок для остальных.,赤は常に最優先です。それ以外の患者さんの順番を選びましょう。,빨강은 언제나 먼저예요. 나머지 환자의 순서를 고르세요.,लाल हमेशा पहले जाता है। बाकी के लिए क्रम चुनो।
+rule.urgent,Most urgent,En acil olan,Am dringendsten,Más urgente,Le plus urgent,Mais urgente,Самый срочный,緊急度順,가장 긴급한 순,सबसे ज़रूरी
 settings.effects,Sound effects,Ses efektleri,Soundeffekte,Efectos de sonido,Effets sonores,Efeitos sonoros,Звуковые эффекты,効果音,효과음,ध्वनि प्रभाव
 settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Графика,画質,그래픽,ग्राफ़िक्स
 settings.guide,How to play / Replay the guide,Nasıl oynanır / Rehberi tekrar oynat,Spielanleitung / Anleitung wiederholen,Cómo jugar / Repetir la guía,Comment jouer / Revoir le guide,Como jogar / Rever o tutorial,Как играть / Повторить обучение,遊び方 / ガイドをもう一度見る,플레이 방법 / 가이드 다시 보기,कैसे खेलें / गाइड फिर से देखो
@@ -301,11 +301,11 @@ settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,�
 settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
 settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चालू
 settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
-settings.privacy,Privacy and help,,,,,,,,,
-settings.privacy_options,Privacy options,,,,,,,,,
+settings.privacy,Privacy and help,Gizlilik ve yardım,Datenschutz und Hilfe,Privacidad y ayuda,Confidentialité et aide,Privacidade e ajuda,Конфиденциальность и помощь,プライバシーとヘルプ,개인정보 및 도움말,गोपनीयता और मदद
+settings.privacy_options,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
 settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
-settings.sound,Sound,,,,,,,,,
-settings.theme,Hospital theme,,,,,,,,,
+settings.sound,Sound,Ses,Ton,Sonido,Son,Som,Звук,サウンド,사운드,आवाज़
+settings.theme,Hospital theme,Hastane teması,Krankenhaus-Design,Tema del hospital,Thème de l'hôpital,Tema do hospital,Тема больницы,病院テーマ,병원 테마,अस्पताल की थीम
 settings.title,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
 settings.version,Version {v},Sürüm {v},Version {v},Versión {v},Version {v},Versão {v},Версия {v},バージョン {v},버전 {v},वर्शन {v}
 sheet.close,Close,Kapat,Schließen,Cerrar,Fermer,Fechar,Закрыть,閉じる,닫기,बंद करो
@@ -325,99 +325,99 @@ shop.restore_failed,Could not restore. Try again later.,Geri yüklenemedi. Daha 
 shop.restored,Purchases restored,Satın alımlar geri yüklendi,Käufe wiederhergestellt,Compras restauradas,Achats restaurés,Compras restauradas,Покупки восстановлены,購入を復元しました,구매를 복원했어요,खरीदारी वापस आ गई
 shop.title,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
 shop.unavailable,The store is not available right now,Mağaza şu an kullanılamıyor,Der Shop ist gerade nicht verfügbar,La tienda no está disponible ahora mismo,La boutique n'est pas disponible pour le moment,A loja não está disponível agora,Магазин сейчас недоступен,ストアは現在ご利用いただけません,지금은 상점을 사용할 수 없어요,स्टोर अभी उपलब्ध नहीं है
-staff.burnout,Burnout {pct},,,,,,,,,
-staff.burnout_high,The teams are burning out: everyone works slower and more call in sick. Hire help and keep shifts calm.,,,,,,,,,
-staff.float,+1 float staff,,,,,,,,,
-staff.hire,Hire · {cost},,,,,,,,,
-staff.line,{n} on the team · {busy} busy · {tired} tired,,,,,,,,,
-staff.sick,one called in sick,,,,,,,,,
-staff.techs,{n} technicians,,,,,,,,,
-stage.bay,Waiting for a bay,,,,,,,,,
-stage.board,Needs a ward bed,,,,,,,,,
-stage.discharge,Paperwork for going home,,,,,,,,,
-stage.fast,Fast track with a nurse,,,,,,,,,
-stage.lounge,In the discharge lounge,,,,,,,,,
-stage.move,On the way with a porter,,,,,,,,,
-stage.ready,Ready to go home,,,,,,,,,
-stage.reg,At the front desk,,,,,,,,,
-stage.registering,Signing in,,,,,,,,,
-stage.stay,Resting on the ward,,,,,,,,,
-stage.surgery,In surgery,,,,,,,,,
-stage.test,Waiting for a scan,,,,,,,,,
-stage.testing,Having a scan,,,,,,,,,
-stage.treat,In a bay,,,,,,,,,
-stage.triage,Waiting for a colour,,,,,,,,,
-stage.triaging,With the triage nurse,,,,,,,,,
-stage.wready,Ready to go home,,,,,,,,,
-tab.board,Board,,,,,,,,,
-tab.build,Build,,,,,,,,,
-tab.research,Upgrades,,,,,,,,,
+staff.burnout,Burnout {pct},Tükenmişlik {pct},Erschöpfung {pct},Agotamiento {pct},Épuisement {pct},Esgotamento {pct},Выгорание {pct},燃え尽き度 {pct},피로도 {pct},थकान {pct}
+staff.burnout_high,The teams are burning out: everyone works slower and more call in sick. Hire help and keep shifts calm.,Ekipler tükeniyor: herkes daha yavaş çalışıyor ve daha çok kişi hasta izni alıyor. Yardım al ve vardiyaları sakin tut.,"Die Teams sind erschöpft: Alle arbeiten langsamer, und mehr melden sich krank. Stell Hilfe ein und halte die Schichten ruhig.",Los equipos se agotan: todos trabajan más lento y más personas se dan de baja. Contrata ayuda y mantén los turnos tranquilos.,Les équipes s'épuisent : tout le monde travaille plus lentement et les arrêts maladie augmentent. Embauche de l'aide et garde des gardes calmes.,As equipes estão esgotadas: todos trabalham mais devagar e mais faltam. Contrate reforço e mantenha os plantões tranquilos.,"Команды выгорают: все работают медленнее, и больше людей берут больничный. Наймите помощь и держите смены спокойными.",チームが燃え尽きかけています。作業が遅くなり、欠勤も増えます。応援を雇って、勤務を落ち着かせましょう。,팀이 지치고 있어요. 모두 느리게 일하고 병가를 내는 사람이 늘어요. 도움을 더 고용하고 교대를 차분히 유지하세요.,टीमें थक रही हैं: सब धीरे काम करते हैं और ज़्यादा लोग बीमारी की छुट्टी लेते हैं। मदद रखो और शिफ़्ट शांत रखो।
+staff.float,+1 float staff,+1 destek personeli,+1 Springerkraft,+1 personal de apoyo,+1 renfort volant,+1 reforço volante,+1 подменный сотрудник,応援スタッフ +1,지원 간호사 +1,+1 अतिरिक्त स्टाफ़
+staff.hire,Hire · {cost},İşe al · {cost},Einstellen · {cost},Contratar · {cost},Embaucher · {cost},Contratar · {cost},Нанять · {cost},雇う · {cost},고용 · {cost},रखो · {cost}
+staff.line,{n} on the team · {busy} busy · {tired} tired,Ekipte {n} kişi · {busy} meşgul · {tired} yorgun,{n} im Team · {busy} beschäftigt · {tired} müde,{n} en el equipo · {busy} ocupados · {tired} cansados,{n} dans l'équipe · {busy} occupés · {tired} fatigués,{n} na equipe · {busy} ocupados · {tired} cansados,В команде: {n} · заняты: {busy} · устали: {tired},チーム {n} 人 · 手一杯 {busy} · 疲れ気味 {tired},팀원 {n}명 · 바쁨 {busy} · 피곤함 {tired},टीम में {n} · {busy} व्यस्त · {tired} थके
+staff.sick,one called in sick,biri hasta izni aldı,eine Person hat sich krankgemeldet,uno se dio de baja,un arrêt maladie,um faltou por doença,один взял больничный,1人が欠勤連絡,한 명이 병가를 냈어요,एक ने बीमारी की छुट्टी ली
+staff.techs,{n} technicians,{n} teknisyen,{n} Fachkräfte,{n} técnicos,{n} techniciens,{n} técnicos,Техников: {n},技師 {n} 人,기사 {n}명,{n} टेक्नीशियन
+stage.bay,Waiting for a bay,Bölüm bekleniyor,Wartet auf einen Platz,Esperando un box,En attente d'un box,Esperando um box,Ждёт смотровую,処置室の空きを待っています,진료 칸을 기다리는 중,बे का इंतज़ार
+stage.board,Needs a ward bed,Servis yatağı gerekli,Braucht ein Stationsbett,Necesita una cama de planta,Attend un lit de service,Precisa de um leito de enfermaria,Нужна койка в отделении,病棟のベッドが必要,병동 병상이 필요해요,वार्ड बिस्तर चाहिए
+stage.discharge,Paperwork for going home,Taburculuk işlemleri,Papierkram für die Entlassung,Papeleo para irse a casa,Formalités de sortie,Papelada para ir para casa,Документы на выписку,退院の手続き中,퇴원 서류 처리 중,घर जाने की कागज़ी कार्रवाई
+stage.fast,Fast track with a nurse,Hemşireyle hızlı yolda,Schnellbehandlung mit einer Pflegekraft,Circuito rápido con una enfermera,Parcours rapide avec un infirmier,Atendimento rápido com enfermeiro,Быстрый приём с медсестрой,看護師による迅速診療,간호사와 신속 진료 중,नर्स के साथ फ़ास्ट ट्रैक
+stage.lounge,In the discharge lounge,Taburculuk salonunda,Im Entlassungsraum,En la sala de altas,Au salon de sortie,Na sala de alta,В холле выписки,退院ラウンジにいます,퇴원 라운지에 있어요,छुट्टी लाउंज में
+stage.move,On the way with a porter,Taşıyıcıyla yolda,Unterwegs mit einem Pfleger,De camino con un camillero,En route avec un brancardier,A caminho com um maqueiro,Едет с санитаром,搬送係と移動中,이송 요원과 이동 중,पोर्टर के साथ रास्ते में
+stage.ready,Ready to go home,Eve gitmeye hazır,Bereit zum Nachhausegehen,Listo para irse a casa,Prêt à rentrer chez lui,Pronto para ir para casa,Готов к выписке,退院の準備ができました,퇴원 준비 완료,घर जाने के लिए तैयार
+stage.reg,At the front desk,Resepsiyonda,Am Empfang,En recepción,À l'accueil,Na recepção,У стойки регистрации,受付にいます,접수창구에 있어요,रिसेप्शन पर
+stage.registering,Signing in,Kaydediliyor,Wird angemeldet,Registrándose,Enregistrement,Fazendo cadastro,Регистрация,受付中,접수 중,दर्ज हो रहा है
+stage.stay,Resting on the ward,Serviste dinleniyor,Ruht auf der Station,Descansando en planta,Se repose dans le service,Descansando na enfermaria,Отдыхает в отделении,病棟で休んでいます,병동에서 쉬는 중,वार्ड में आराम
+stage.surgery,In surgery,Ameliyatta,Im OP,En cirugía,Au bloc opératoire,Em cirurgia,На операции,手術中,수술 중,ऑपरेशन में
+stage.test,Waiting for a scan,Tarama bekliyor,Wartet auf eine Aufnahme,Esperando una prueba,En attente d'imagerie,Esperando exame,Ждёт снимок,検査の順番を待っています,촬영 대기 중,स्कैन का इंतज़ार
+stage.testing,Having a scan,Taramada,Wird untersucht,Haciéndose una prueba,En imagerie,Fazendo exame,Делает снимок,検査中,촬영 중,स्कैन हो रहा है
+stage.treat,In a bay,Bir bölümde,In einem Platz,En un box,En box,Em um box,В смотровой,処置室にいます,진료 칸에 있어요,बे में
+stage.triage,Waiting for a colour,Renk bekliyor,Wartet auf eine Farbe,Esperando un color,En attente d'une couleur,Esperando uma cor,Ждёт цвет,色づけを待っています,색을 기다리는 중,रंग का इंतज़ार
+stage.triaging,With the triage nurse,Triyaj hemşiresinde,Bei der Pflegekraft in der Triage,Con la enfermera de triaje,Avec l'infirmier de tri,Com a equipe de triagem,У медсестры на сортировке,トリアージ看護師と対応中,분류 간호사와 함께,छँटाई नर्स के पास
+stage.wready,Ready to go home,Eve gitmeye hazır,Bereit zum Nachhausegehen,Listo para irse a casa,Prêt à rentrer chez lui,Pronto para ir para casa,Готов к выписке,退院の準備ができました,퇴원 준비 완료,घर जाने के लिए तैयार
+tab.board,Board,Tablo,Übersicht,Panel,Tableau,Painel,Доска,ボード,현황판,बोर्ड
+tab.build,Build,İnşa,Bauen,Construir,Construire,Construir,Строить,建設,짓기,बनाओ
+tab.research,Upgrades,Geliştirmeler,Verbesserungen,Mejoras,Améliorations,Melhorias,Улучшения,アップグレード,업그레이드,अपग्रेड
 tab.shop,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
-tab.staff,Staff,,,,,,,,,
-tag.green,Green,,,,,,,,,
-tag.orange,Orange,,,,,,,,,
-tag.red,Red,,,,,,,,,
-tag.yellow,Yellow,,,,,,,,,
-team.cleaner,Cleaners,,,,,,,,,
-team.cleaner.d,Clean beds and bays between patients.,,,,,,,,,
-team.clerk,Receptionists,,,,,,,,,
-team.clerk.d,Sign new patients in at the front desk.,,,,,,,,,
-team.doctor,Doctors,,,,,,,,,
-team.doctor.d,Treat patients in the bays and in surgery.,,,,,,,,,
-team.nurse,Nurses,,,,,,,,,
-team.nurse.d,"Give colours, sign discharges, fast-track mild cases.",,,,,,,,,
-team.porter,Porters,,,,,,,,,
-team.porter.d,Move admitted patients to the wards.,,,,,,,,,
-team.tech,Technicians,,,,,,,,,
-team.tech.d,Each scan room needs its own technicians. More = faster scans.,,,,,,,,,
-theme.default,Classic,,,,,,,,,
-theme.gold_theme,Gold,,,,,,,,,
-theme.theme_modern,Modern,,,,,,,,,
-theme.theme_pediatric,Playful,,,,,,,,,
-theme.theme_retro,Retro,,,,,,,,,
-tip.ambulance,"An ambulance is calling! Accept for a bonus, or divert if you are full.",,,,,,,,,
-tip.board,This patient needs a ward bed. Check the Board: are beds full or dirty?,,,,,,,,,
-tip.city,"City General is open: surgery, intensive care and a CT scanner.",,,,,,,,,
-tip.crash,"A crash brings many patients. Keep bays moving, discharge fast.",,,,,,,,,
-tip.ct,The CT scanner is open for serious cases.,,,,,,,,,
-tip.diversion,Set the diversion rule on the Board.,,,,,,,,,
-tip.fast_track,Fast track: idle nurses now treat green cards.,,,,,,,,,
-tip.inspection,Inspection today: clean beds and short waits earn a bonus.,,,,,,,,,
-tip.lab,The lab is open. Give it technicians in the Staff tab.,,,,,,,,,
-tip.lounge,Discharge lounge: ready patients leave their beds right away.,,,,,,,,,
-tip.lwbs,Someone left without being seen. Long waits cost reputation.,,,,,,,,,
-tip.norovirus,Some ward beds are closed. Watch the Board for boarding patients.,,,,,,,,,
-tip.or,"The operating room is open. After surgery, red patients need an ICU bed.",,,,,,,,,
-tip.power,Power cut: scans wait. The generator upgrade prevents this.,,,,,,,,,
-tip.report,"This is your shift report. Stars for care, waits and flow raise your reputation.",,,,,,,,,
-tip.rushed,No handover today: notes were lost and the teams stay tired. Tap Hand over at 18:30.,,,,,,,,,
-tip.scanner,A scanner is down. Patients wait for that scan.,,,,,,,,,
-tip.sick,Someone called in sick. Burnout makes this more likely.,,,,,,,,,
-tip.specialist,Specialists: treatments are faster now.,,,,,,,,,
-tip.supply,Supplies cost more for a while.,,,,,,,,,
-tip.surge,Flu week! Call the surge team on the Board.,,,,,,,,,
-tip.town,"The Town Hospital is open: more patients, a general ward and a lab.",,,,,,,,,
-tip.transfer,A patient was moved to another hospital. Keep a bay free for red cards.,,,,,,,,,
-tip.worsened,Someone waited too long and got worse. Red and orange cards cannot wait long.,,,,,,,,,
-toast.amb_accept,Ambulance accepted. The crew brings the patient straight in.,,,,,,,,,
-toast.amb_divert,Ambulance sent to another hospital. The region notices.,,,,,,,,,
-toast.discharged,Discharged — the bed is free for the next patient.,,,,,,,,,
-toast.inspection_bad,Inspection found dirty beds or long waits. Fine {cash}.,,,,,,,,,
-toast.inspection_ok,Inspection passed! Bonus {cash}.,,,,,,,,,
-toast.wing,{name} is open!,,,,,,,,,
+tab.staff,Staff,Personel,Personal,Personal,Personnel,Equipe,Персонал,スタッフ,직원,स्टाफ़
+tag.green,Green,Yeşil,Grün,Verde,Vert,Verde,Зелёный,緑,초록,हरा
+tag.orange,Orange,Turuncu,Orange,Naranja,Orange,Laranja,Оранжевый,オレンジ,주황,नारंगी
+tag.red,Red,Kırmızı,Rot,Rojo,Rouge,Vermelho,Красный,赤,빨강,लाल
+tag.yellow,Yellow,Sarı,Gelb,Amarillo,Jaune,Amarelo,Жёлтый,黄,노랑,पीला
+team.cleaner,Cleaners,Temizlikçiler,Reinigungskräfte,Limpiadores,Agents d'entretien,Faxineiros,Уборщики,清掃スタッフ,청소 직원,सफ़ाई कर्मी
+team.cleaner.d,Clean beds and bays between patients.,Hastalar arasında yatak ve bölümleri temizler.,Reinigen Betten und Plätze zwischen den Patienten.,Limpian camas y boxes entre pacientes.,Nettoient les lits et les box entre deux patients.,Limpam leitos e boxes entre os pacientes.,Убирают койки и смотровые между пациентами.,患者さんの間にベッドと処置室を清掃します。,환자 사이사이 병상과 진료 칸을 청소해요.,मरीज़ों के बीच बिस्तर और बे साफ़ करते हैं।
+team.clerk,Receptionists,Kayıt görevlileri,Empfangskräfte,Recepcionistas,Accueil,Recepcionistas,Регистраторы,受付係,접수 직원,रिसेप्शनिस्ट
+team.clerk.d,Sign new patients in at the front desk.,Yeni hastaları resepsiyonda kaydeder.,Melden neue Patienten am Empfang an.,Registran a los nuevos pacientes en recepción.,Enregistrent les nouveaux patients à l'accueil.,Cadastram novos pacientes na recepção.,Регистрируют новых пациентов у стойки.,新しい患者さんの受付を行います。,접수창구에서 새 환자를 등록해요.,नए मरीज़ों को रिसेप्शन पर दर्ज करते हैं।
+team.doctor,Doctors,Doktorlar,Ärzte,Médicos,Médecins,Médicos,Врачи,医師,의사,डॉक्टर
+team.doctor.d,Treat patients in the bays and in surgery.,Bölümlerde ve ameliyatta hastaları tedavi eder.,Behandeln Patienten in den Plätzen und im OP.,Atienden a los pacientes en los boxes y en cirugía.,Soignent les patients dans les box et au bloc.,Atendem pacientes nos boxes e na cirurgia.,Лечат пациентов в смотровых и на операциях.,処置室と手術室で患者さんを診ます。,진료 칸과 수술실에서 환자를 진료해요.,बे और ऑपरेशन में मरीज़ों का इलाज करते हैं।
+team.nurse,Nurses,Hemşireler,Pflegekräfte,Enfermeras,Infirmiers,Enfermeiros,Медсёстры,看護師,간호사,नर्स
+team.nurse.d,"Give colours, sign discharges, fast-track mild cases.","Renk verir, çıkışları imzalar, hafif vakaları hızlı yola alır.","Vergeben Farben, melden Entlassungen, bearbeiten leichte Fälle schnell.","Asignan colores, firman altas y llevan los casos leves por el circuito rápido.","Donnent les couleurs, signent les sorties, prennent en charge les cas légers.","Dão cores, registram altas e levam casos leves pelo atendimento rápido.","Ставят цвета, оформляют выписки, быстро принимают лёгкие случаи.",色づけ、退院手続き、軽症の迅速診療を行います。,"색을 정하고, 퇴원에 서명하고, 경증 환자를 신속 진료해요.","रंग देते हैं, छुट्टी दर्ज करते हैं, हल्के मामले फ़ास्ट-ट्रैक करते हैं।"
+team.porter,Porters,Hasta taşıyıcılar,Pfleger,Camilleros,Brancardiers,Maqueiros,Санитары,搬送係,이송 요원,पोर्टर
+team.porter.d,Move admitted patients to the wards.,Yatışı yapılan hastaları servislere taşır.,Bringen aufgenommene Patienten auf die Stationen.,Llevan a los pacientes ingresados a las plantas.,Transfèrent les patients admis vers les services.,Levam os pacientes internados às enfermarias.,Перевозят госпитализированных пациентов в отделения.,入院する患者さんを病棟へ運びます。,입원 환자를 병동으로 옮겨요.,भर्ती मरीज़ों को वार्ड तक ले जाते हैं।
+team.tech,Technicians,Teknisyenler,Fachkräfte,Técnicos,Techniciens,Técnicos,Техники,技師,기사,टेक्नीशियन
+team.tech.d,Each scan room needs its own technicians. More = faster scans.,"Her tarama odasının kendi teknisyenleri olmalı. Daha çok teknisyen, daha hızlı tarama.",Jeder Aufnahmeraum braucht eigene Fachkräfte. Mehr = schnellere Aufnahmen.,Cada sala de pruebas necesita sus propios técnicos. Más técnicos = pruebas más rápidas.,Chaque salle d'imagerie a besoin de ses techniciens. Plus = scans plus rapides.,Cada sala de exames precisa dos próprios técnicos. Mais técnicos = exames mais rápidos.,Каждому кабинету снимков нужны свои техники. Больше техников — быстрее снимки.,検査室ごとに技師が必要です。増えると検査が速くなります。,촬영실마다 기사가 필요해요. 기사가 많을수록 촬영이 빨라요.,हर स्कैन कमरे के अपने टेक्नीशियन चाहिए। ज़्यादा = तेज़ स्कैन।
+theme.default,Classic,Klasik,Klassisch,Clásico,Classique,Clássico,Классика,クラシック,클래식,क्लासिक
+theme.gold_theme,Gold,Altın,Gold,Dorado,Or,Dourado,Золото,ゴールド,금색,सुनहरा
+theme.theme_modern,Modern,Modern,Modern,Moderno,Moderne,Moderno,Модерн,モダン,모던,मॉडर्न
+theme.theme_pediatric,Playful,Neşeli,Verspielt,Divertido,Ludique,Divertido,Весёлая,ポップ,발랄한,मस्ती वाली
+theme.theme_retro,Retro,Retro,Retro,Retro,Rétro,Retrô,Ретро,レトロ,레트로,रेट्रो
+tip.ambulance,"An ambulance is calling! Accept for a bonus, or divert if you are full.",Bir ambulans çağırıyor! Bonus için kabul et ya da doluysan yönlendir.,"Ein Rettungswagen ruft an! Nimm ihn an für einen Bonus, oder leite um, wenn du voll bist.","¡Una ambulancia está llamando! Acepta para una bonificación, o desvía si estás lleno.","Une ambulance appelle ! Accepte pour un bonus, ou redirige si tu es plein.","Uma ambulância está chamando! Aceite para ganhar bônus, ou desvie se estiver lotado.","Скорая вызывает! Прими за бонус или переадресуй, если мест нет.",救急車から連絡があります！ 受け入れるとボーナス、満員なら他院へ回しましょう。,"구급차가 오고 있어요! 수락하면 보너스가 있고, 꽉 찼으면 다른 병원으로 보내세요.","एंबुलेंस बुला रही है! स्वीकार करो तो बोनस मिलता है, भरा हो तो दूसरी ओर भेजो।"
+tip.board,This patient needs a ward bed. Check the Board: are beds full or dirty?,"Bu hastanın servis yatağına ihtiyacı var. Tabloya bak: yataklar dolu mu, kirli mi?",Diese Patientin braucht ein Stationsbett. Schau in die Übersicht: Sind Betten belegt oder schmutzig?,Este paciente necesita una cama de planta. Mira el Panel: ¿las camas están ocupadas o sucias?,Ce patient a besoin d'un lit de service. Regarde le Tableau : les lits sont pleins ou sales ?,Este paciente precisa de um leito de enfermaria. Veja o Painel: os leitos estão ocupados ou sujos?,Этому пациенту нужна койка в отделении. Посмотри на доску: койки заняты или грязные?,この患者さんは病棟のベッドが必要です。ボードを確認: ベッドは埋まっていますか、汚れていますか？,"이 환자는 병동 병상이 필요해요. 현황판에서 병상이 꽉 찼는지, 더러운지 확인하세요.",इस मरीज़ को वार्ड बिस्तर चाहिए। बोर्ड देखो: बिस्तर भरे हैं या गंदे?
+tip.city,"City General is open: surgery, intensive care and a CT scanner.","Şehir Genel Hastanesi açık: ameliyat, yoğun bakım ve bir BT tarayıcı.","Das Stadtkrankenhaus ist offen: Operationen, Intensivstation und ein CT-Gerät.","El Hospital General de la Ciudad está abierto: cirugía, cuidados intensivos y un escáner de TAC.","L'Hôpital central est ouvert : chirurgie, soins intensifs et scanner.","O Hospital Geral da Cidade está aberto: cirurgia, UTI e um tomógrafo.","Городская больница открыта: операционная, реанимация и КТ.",ミナト総合病院が開院しました。手術、集中治療、CTがあります。,"시립 종합병원이 열렸어요: 수술실, 중환자실, CT 촬영기가 있어요.","सिटी जनरल खुल गया है: ऑपरेशन, इंटेंसिव केयर और सीटी स्कैनर।"
+tip.crash,"A crash brings many patients. Keep bays moving, discharge fast.","Bir kaza çok hasta getirir. Bölümleri akışta tut, çıkışları hızlı yap.",Ein Unfall bringt viele Patienten. Halte die Plätze in Bewegung und entlasse schnell.,Un accidente trae muchos pacientes. Mantén los boxes en movimiento y da altas rápido.,"Un accident amène beaucoup de patients. Garde les box en mouvement, fais sortir vite.",Um acidente traz muitos pacientes. Mantenha os boxes andando e dê altas rápido.,После ДТП приходит много пациентов. Держи смотровые в движении и быстро выписывай.,事故で患者さんが大勢来ます。処置室の流れを止めず、退院を早めましょう。,사고가 나면 환자가 많이 와요. 진료 칸을 계속 돌리고 퇴원을 서두르세요.,"हादसे में कई मरीज़ आते हैं। बे चलते रखो, छुट्टी जल्दी करो।"
+tip.ct,The CT scanner is open for serious cases.,BT tarayıcı ciddi vakalar için açık.,Das CT-Gerät ist für schwere Fälle offen.,El escáner de TAC está abierto para los casos graves.,Le scanner est ouvert pour les cas graves.,O tomógrafo está aberto para casos graves.,КТ-аппарат открыт для тяжёлых случаев.,CTは重い症状の患者さん向けに使えるようになりました。,CT 촬영기가 중증 환자를 위해 열렸어요.,सीटी स्कैनर गंभीर मामलों के लिए खुल गया है।
+tip.diversion,Set the diversion rule on the Board.,Yönlendirme kuralını Tablo'dan ayarla.,Lege die Umleitungsregel in der Übersicht fest.,Configura la norma de desvío en el Panel.,Règle la réorientation depuis le Tableau.,Defina a regra de desvio no Painel.,Задай правило переадресации на доске.,ボードで転送ルールを設定しましょう。,현황판에서 우회 규칙을 정하세요.,बोर्ड पर दूसरी ओर भेजने का नियम लगाओ।
+tip.fast_track,Fast track: idle nurses now treat green cards.,Hızlı yol: boştaki hemşireler artık yeşil kartları tedavi eder.,Schnellbehandlung: Freie Pflegekräfte behandeln jetzt grüne Karten.,Circuito rápido: las enfermeras libres ya atienden las tarjetas verdes.,Parcours rapide : les infirmiers libres soignent maintenant les cartes vertes.,Atendimento rápido: enfermeiros ociosos agora atendem cartões verdes.,Быстрый приём: свободные медсёстры теперь лечат зелёные карточки.,迅速診療: 手が空いた看護師が緑のカードの患者さんを診られます。,신속 진료: 놀고 있는 간호사가 이제 초록 카드를 봐요.,फ़ास्ट ट्रैक: खाली नर्सें अब हरे कार्ड देखती हैं।
+tip.inspection,Inspection today: clean beds and short waits earn a bonus.,Bugün denetim: temiz yataklar ve kısa beklemeler bonus kazandırır.,Kontrolltag heute: Saubere Betten und kurze Wartezeiten bringen einen Bonus.,Inspección hoy: camas limpias y esperas cortas dan una bonificación.,Inspection aujourd'hui : des lits propres et des attentes courtes rapportent une prime.,Fiscalização hoje: leitos limpos e esperas curtas rendem bônus.,Сегодня проверка: чистые койки и короткое ожидание дают бонус.,今日は立ち入り検査です。清潔なベッドと短い待ち時間でボーナスがもらえます。,"오늘은 점검일이에요. 병상을 깨끗하게, 대기는 짧게 하면 보너스가 있어요.",आज निरीक्षण है: साफ़ बिस्तर और छोटे इंतज़ार से बोनस मिलता है।
+tip.lab,The lab is open. Give it technicians in the Staff tab.,Laboratuvar açık. Personel sekmesinden teknisyen ver.,Das Labor ist offen. Gib ihm Fachkräfte im Reiter Personal.,El laboratorio está abierto. Asígnale técnicos en la pestaña Personal.,Le labo est ouvert. Donne-lui des techniciens dans l'onglet Personnel.,O laboratório está aberto. Coloque técnicos nele na aba Equipe.,Лаборатория открыта. Дай ей лаборантов на вкладке «Персонал».,検査室が開きました。スタッフ画面で技師を配置しましょう。,검사실이 열렸어요. 직원 탭에서 기사를 배정하세요.,लैब खुल गई है। स्टाफ़ टैब में उसे टेक्नीशियन दो।
+tip.lounge,Discharge lounge: ready patients leave their beds right away.,Taburculuk salonu: hazır hastalar yataklarını hemen boşaltır.,Entlassungsraum: Fertige Patienten verlassen ihr Bett sofort.,Sala de altas: los pacientes listos dejan su cama al momento.,Salon de sortie : les patients prêts quittent leur lit tout de suite.,Sala de alta: pacientes prontos deixam o leito na hora.,Холл выписки: готовые пациенты сразу освобождают койки.,退院ラウンジ: 退院できる患者さんはすぐベッドを離れます。,퇴원 라운지: 준비된 환자는 바로 병상을 비워요.,छुट्टी लाउंज: तैयार मरीज़ तुरंत अपना बिस्तर छोड़ते हैं।
+tip.lwbs,Someone left without being seen. Long waits cost reputation.,Biri görülmeden ayrıldı. Uzun bekleyişler itibara mal olur.,"Jemand ist gegangen, ohne behandelt zu werden. Lange Wartezeiten kosten Ansehen.",Alguien se fue sin ser atendido. Las esperas largas cuestan reputación.,Quelqu'un est parti sans être vu. Les longues attentes coûtent de la réputation.,Alguém foi embora sem ser atendido. Esperas longas custam reputação.,"Кто-то ушёл, не дождавшись. Долгое ожидание снижает репутацию.",診察を待たずに帰ってしまった方がいます。待ち時間が長いと評判が下がります。,진료를 받지 못하고 돌아간 사람이 있어요. 대기가 길면 평판이 떨어져요.,कोई बिना देखे चला गया। लंबे इंतज़ार से प्रतिष्ठा घटती है।
+tip.norovirus,Some ward beds are closed. Watch the Board for boarding patients.,Bazı servis yatakları kapalı. Tabloda yatışı bekleyen hastalara bak.,Einige Stationsbetten sind gesperrt. Behalte in der Übersicht die wartenden Patienten im Blick.,Algunas camas de planta están cerradas. Mira el Panel por si hay pacientes esperando una cama.,Certains lits de service sont fermés. Surveille le Tableau pour les patients qui attendent.,Alguns leitos da enfermaria estão fechados. Acompanhe no Painel os pacientes aguardando leito.,"Некоторые койки закрыты. Следи на доске за пациентами, которые ждут место.",一部の病棟ベッドが閉鎖中です。入院待ちの患者さんをボードで確認しましょう。,일부 병상이 닫혔어요. 현황판에서 병상을 기다리는 환자를 확인하세요.,कुछ वार्ड बिस्तर बंद हैं। बोर्ड पर रुके मरीज़ों पर नज़र रखो।
+tip.or,"The operating room is open. After surgery, red patients need an ICU bed.",Ameliyathane açık. Ameliyattan sonra kırmızı hastalar yoğun bakım yatağı ister.,Der Operationssaal ist offen. Nach einer Operation braucht ein roter Patient ein Intensivbett.,"El quirófano está abierto. Después de la cirugía, los pacientes en rojo necesitan una cama de UCI.","Le bloc opératoire est ouvert. Après l'opération, les patients rouges ont besoin d'un lit de soins intensifs.","O centro cirúrgico está aberto. Depois da cirurgia, pacientes vermelhos precisam de leito de UTI.",Операционная открыта. После операции красным пациентам нужна койка реанимации.,手術室が開きました。手術後、赤の患者さんには集中治療室のベッドが必要です。,수술실이 열렸어요. 수술 후 빨강 환자에게는 중환자실 병상이 필요해요.,ऑपरेशन थिएटर खुल गया है। ऑपरेशन के बाद लाल मरीज़ को आईसीयू बिस्तर चाहिए।
+tip.power,Power cut: scans wait. The generator upgrade prevents this.,Elektrik kesintisi: taramalar bekler. Jeneratör yükseltmesi bunu önler.,Stromausfall: Aufnahmen warten. Das Notstromaggregat verhindert das.,Corte de luz: las pruebas esperan. La mejora del generador evita esto.,Coupure de courant : les scanners attendent. L'amélioration du groupe électrogène l'évite.,Falta de luz: os exames esperam. A melhoria do gerador evita isso.,Отключили свет: снимки ждут. Улучшение «Запасной генератор» этого не допускает.,停電中は検査が止まります。非常用発電機の強化で防げます。,정전으로 촬영이 멈춰요. 발전기 업그레이드가 있으면 막을 수 있어요.,बिजली कटी: स्कैन रुके हैं। जनरेटर अपग्रेड इसे रोकता है।
+tip.report,"This is your shift report. Stars for care, waits and flow raise your reputation.","Bu senin vardiya raporun. Bakım, bekleme ve akış için yıldızlar itibarını artırır.","Das ist dein Schichtbericht. Sterne für Versorgung, Wartezeiten und Ablauf heben dein Ansehen.","Este es tu informe del turno. Las estrellas de atención, esperas y flujo suben tu reputación.","Voici ton bilan de garde. Les étoiles pour les soins, les attentes et le flux font monter ta réputation.","Este é o relatório do seu plantão. Estrelas por cuidado, esperas e fluxo aumentam sua reputação.","Это отчёт смены. Звёзды за уход, ожидание и поток повышают репутацию.",これは勤務報告です。診療、待ち時間、流れの評価が評判を上げます。,"이건 근무 보고서예요. 진료, 대기, 흐름의 별점이 평판을 올려요.","यह तुम्हारी शिफ़्ट की रिपोर्ट है। देखभाल, इंतज़ार और रफ़्तार के सितारे प्रतिष्ठा बढ़ाते हैं।"
+tip.rushed,No handover today: notes were lost and the teams stay tired. Tap Hand over at 18:30.,"Bugün devir yok: notlar kayboldu, ekipler yorgun kalıyor. 18:30'da Devret'e dokun.","Heute keine Übergabe: Notizen sind verloren, und die Teams bleiben müde. Tippe um 18:30 auf Übergabe.",Hoy no hubo relevo: se perdieron notas y los equipos siguen cansados. Toca Relevo a las 18:30.,Pas de relève aujourd'hui : des notes ont été perdues et les équipes restent fatiguées. Touche Passer la relève à 18 h 30.,Sem passagem de plantão hoje: as fichas se perderam e as equipes seguem cansadas. Toque em Passar o plantão às 18:30.,"Сегодня без передачи смены: записки потеряны, команды устали. Нажми «Передать смену» в 18:30.",今日は申し送りが慌ただしくなりました。メモがなくなり、チームは疲れたままです。18:30に「申し送り」をタップしましょう。,오늘은 인수인계를 못 했어요. 기록이 유실되고 팀은 계속 지쳐 있어요. 18:30에 인수인계를 누르세요.,आज ड्यूटी बदलाव नहीं हुआ: नोट खो गए और टीमें थकी हैं। 18:30 पर ड्यूटी बदलो पर टैप करो।
+tip.scanner,A scanner is down. Patients wait for that scan.,Bir tarayıcı arızalı. Hastalar o taramayı bekliyor.,Ein Scanner ist ausgefallen. Patienten warten auf diese Aufnahme.,Un escáner está averiado. Los pacientes esperan esa prueba.,Un scanner est en panne. Les patients attendent cet examen.,Um tomógrafo está parado. Os pacientes esperam por esse exame.,Аппарат сломался. Пациенты ждут этот снимок.,検査機が故障しています。患者さんはその検査を待っています。,촬영 장비가 고장 났어요. 그 촬영을 기다리는 환자가 있어요.,एक स्कैनर खराब है। उस स्कैन के लिए मरीज़ इंतज़ार कर रहे हैं।
+tip.sick,Someone called in sick. Burnout makes this more likely.,Biri hasta izni aldı. Tükenmişlik bunu daha olası yapar.,Jemand hat sich krankgemeldet. Erschöpfung macht das wahrscheinlicher.,Alguien se dio de baja. El agotamiento hace que esto pase más.,Quelqu'un a appelé pour un arrêt maladie. L'épuisement rend cela plus probable.,Alguém faltou por doença. O esgotamento torna isso mais provável.,Кто-то взял больничный. Выгорание делает это вероятнее.,欠勤の連絡がありました。燃え尽きが進むと起こりやすくなります。,누군가 병가를 냈어요. 피로도가 높으면 더 자주 생겨요.,किसी ने बीमारी की छुट्टी ली। थकान से यह और ज़्यादा होता है।
+tip.specialist,Specialists: treatments are faster now.,Uzmanlar: tedaviler artık daha hızlı.,Fachärzte: Behandlungen gehen jetzt schneller.,Especialistas: los tratamientos ya son más rápidos.,Spécialistes : les soins sont plus rapides maintenant.,Especialistas: os atendimentos agora são mais rápidos.,Специалисты: лечение теперь быстрее.,専門医: 治療が速くなりました。,전문의: 이제 진료가 더 빨라요.,विशेषज्ञ: अब इलाज तेज़ होते हैं।
+tip.supply,Supplies cost more for a while.,Malzemeler bir süreliğine daha pahalı.,Material kostet eine Weile mehr.,Los suministros cuestan más durante un tiempo.,Le matériel coûte plus cher pendant un moment.,Os suprimentos ficam mais caros por um tempo.,Расходники какое-то время стоят дороже.,しばらくの間、物品の費用が高くなります。,당분간 소모품 값이 올라요.,कुछ समय के लिए सामान महँगा है।
+tip.surge,Flu week! Call the surge team on the Board.,Grip haftası! Tablo'dan yoğunluk ekibini çağır.,Grippewoche! Ruf das Einsatzteam in der Übersicht.,¡Semana de gripe! Llama al equipo de refuerzo desde el Panel.,Semaine de grippe ! Appelle l'équipe renfort depuis le Tableau.,Semana de gripe! Chame a equipe extra no Painel.,Неделя гриппа! Вызови дополнительную бригаду на доске.,インフルエンザの流行週です！ ボードで応援チームを呼びましょう。,독감 주간이에요! 현황판에서 응원 팀을 부르세요.,फ़्लू का हफ़्ता! बोर्ड पर अतिरिक्त टीम बुलाओ।
+tip.town,"The Town Hospital is open: more patients, a general ward and a lab.","Kasaba Hastanesi açık: daha fazla hasta, genel bir servis ve bir laboratuvar.","Das Stadtkrankenhaus ist offen: mehr Patienten, eine allgemeine Station und ein Labor.","El Hospital Comarcal está abierto: más pacientes, una planta general y un laboratorio.","L'hôpital municipal est ouvert : plus de patients, un service général et un labo.","O Hospital da Cidade está aberto: mais pacientes, uma enfermaria geral e um laboratório.","Районная больница открыта: больше пациентов, общее отделение и лаборатория.",町の病院が開院しました。患者さんが増え、一般病棟と検査室もあります。,"타운 병원이 열렸어요: 더 많은 환자, 일반 병동, 검사실이 있어요.","टाउन हॉस्पिटल खुल गया है: ज़्यादा मरीज़, एक जनरल वार्ड और एक लैब।"
+tip.transfer,A patient was moved to another hospital. Keep a bay free for red cards.,Bir hasta başka bir hastaneye nakledildi. Kırmızı kartlar için bir bölümü boş tut.,Eine Patientin wurde in ein anderes Krankenhaus verlegt. Halte einen Platz für rote Karten frei.,Un paciente fue trasladado a otro hospital. Deja un box libre para las tarjetas rojas.,Un patient a été transféré dans un autre hôpital. Garde un box libre pour les cartes rouges.,Um paciente foi transferido para outro hospital. Mantenha um box livre para os cartões vermelhos.,Пациента перевели в другую больницу. Держи смотровую свободной для красных карточек.,患者さんが他の病院へ移りました。赤のカードのために処置室を一つ空けておきましょう。,환자 한 명이 다른 병원으로 옮겨졌어요. 빨강 카드를 위해 진료 칸 하나를 비워 두세요.,एक मरीज़ को दूसरे अस्पताल भेजा गया। लाल कार्ड के लिए एक बे खाली रखो।
+tip.worsened,Someone waited too long and got worse. Red and orange cards cannot wait long.,Biri çok beklediği için kötüleşti. Kırmızı ve turuncu kartlar uzun beklemez.,Jemand hat zu lange gewartet und sich verschlechtert. Rote und orange Karten können nicht lange warten.,Alguien esperó demasiado y empeoró. Las tarjetas rojas y naranjas no pueden esperar mucho.,Quelqu'un a trop attendu et a empiré. Les cartes rouges et orange ne peuvent pas attendre longtemps.,Alguém esperou demais e piorou. Cartões vermelhos e laranjas não podem esperar muito.,"Кто-то ждал слишком долго, и ему стало хуже. Красные и оранжевые карточки долго ждать не могут.",待ちすぎて症状が悪化した方がいます。赤とオレンジのカードは長く待てません。,너무 오래 기다려서 상태가 나빠진 환자가 있어요. 빨강과 주황 카드는 오래 기다릴 수 없어요.,किसी को बहुत देर इंतज़ार करना पड़ा और उसकी हालत बिगड़ गई। लाल और नारंगी कार्ड ज़्यादा देर नहीं रुक सकते।
+toast.amb_accept,Ambulance accepted. The crew brings the patient straight in.,Ambulans kabul edildi. Ekip hastayı doğrudan içeri getirir.,Rettungswagen angenommen. Das Team bringt die Patientin direkt herein.,Ambulancia aceptada. El equipo lleva al paciente directamente.,Ambulance acceptée. L'équipe amène le patient directement.,Ambulância aceita. A equipe leva o paciente direto para dentro.,Скорая принята. Бригада сразу привезёт пациента.,救急車を受け入れました。隊員がそのまま患者さんを運び込みます。,구급차를 수락했어요. 대원이 환자를 바로 데려와요.,एंबुलेंस स्वीकार की। टीम मरीज़ को सीधे अंदर लाती है।
+toast.amb_divert,Ambulance sent to another hospital. The region notices.,Ambulans başka bir hastaneye yönlendirildi. Bölge fark etti.,Rettungswagen in ein anderes Krankenhaus geschickt. Die Region hat es bemerkt.,Ambulancia enviada a otro hospital. La región lo nota.,Ambulance envoyée dans un autre hôpital. La région l'a remarqué.,Ambulância enviada a outro hospital. A região percebeu.,Скорая отправлена в другую больницу. Регион это заметил.,救急車を他の病院へ回しました。地域からも気づかれています。,구급차를 다른 병원으로 보냈어요. 지역에 알려졌어요.,एंबुलेंस दूसरे अस्पताल भेजी गई। इलाके में खबर है।
+toast.discharged,Discharged — the bed is free for the next patient.,Taburcu edildi — yatak bir sonraki hasta için boş.,Entlassen — das Bett ist frei für die nächste Patientin oder den nächsten Patienten.,Alta concedida: la cama queda libre para el siguiente paciente.,Sorti — le lit est libre pour le prochain patient.,Alta dada — o leito está livre para o próximo paciente.,Выписан — койка свободна для следующего пациента.,退院しました。次の患者さんのためにベッドが空きました。,퇴원 완료 — 다음 환자를 위해 병상이 비었어요.,छुट्टी हो गई — अगले मरीज़ के लिए बिस्तर खाली।
+toast.inspection_bad,Inspection found dirty beds or long waits. Fine {cash}.,Denetimde kirli yataklar ya da uzun bekleyişler bulundu. Ceza {cash}.,Die Kontrolle fand schmutzige Betten oder lange Wartezeiten. Strafe {cash}.,La inspección encontró camas sucias o esperas largas. Multa de {cash}.,L'inspection a trouvé des lits sales ou de longues attentes. Amende {cash}.,A fiscalização encontrou leitos sujos ou esperas longas. Multa de {cash}.,Проверка нашла грязные койки или долгое ожидание. Штраф {cash}.,検査で汚れたベッドや長い待ち時間が見つかりました。罰金 {cash}。,점검에서 더러운 병상이나 긴 대기가 확인됐어요. 벌금 {cash}.,निरीक्षण में गंदे बिस्तर या लंबे इंतज़ार मिले। जुर्माना {cash}।
+toast.inspection_ok,Inspection passed! Bonus {cash}.,Denetimi geçtin! Bonus {cash}.,Kontrolle bestanden! Bonus {cash}.,¡Inspección superada! Bonificación de {cash}.,Inspection réussie ! Prime {cash}.,Fiscalização aprovada! Bônus de {cash}.,Проверка пройдена! Бонус {cash}.,検査に合格！ ボーナス {cash}。,점검 통과! 보너스 {cash}.,निरीक्षण पास! बोनस {cash}।
+toast.wing,{name} is open!,{name} açıldı!,{name} ist offen!,¡{name} está abierto!,{name} est ouvert !,{name} está aberto!,{name} открыто!,{name} が開きました！,{name} 열림!,{name} खुल गया है!
 unit.h,h,sa,h,h,h,h,ч,時,시간,घं
 unit.min,min,dk,min,min,min,min,мин,分,분,मि
 unit.s,s,sn,s,s,s,s,с,秒,초,से
-ward.general,General ward,,,,,,,,,
-ward.icu,Intensive care,,,,,,,,,
-ward.obs,Observation,,,,,,,,,
-ward.surgical,Surgical ward,,,,,,,,,
-wing.city,City General,,,,,,,,,
-wing.city.d,"Operating room, intensive care, surgical ward, CT and lifts.",,,,,,,,,
-wing.clinic,Village Clinic,,,,,,,,,
-wing.clinic.d,"Your first clinic: one corridor, a few bays.",,,,,,,,,
-wing.needs,needs reputation {r},,,,,,,,,
-wing.open,Open · {cost},,,,,,,,,
-wing.town,Town Hospital,,,,,,,,,
-wing.town.d,"A bigger ED, a general ward, a lab and a discharge lounge.",,,,,,,,,
-zone.bays,Treatment bays,,,,,,,,,
+ward.general,General ward,Genel servis,Allgemeinstation,Planta general,Service général,Enfermaria geral,Общее отделение,一般病棟,일반 병동,जनरल वार्ड
+ward.icu,Intensive care,Yoğun bakım,Intensivstation,Cuidados intensivos,Soins intensifs,UTI,Реанимация,集中治療室,중환자실,इंटेंसिव केयर
+ward.obs,Observation,Gözlem,Beobachtung,Observación,Observation,Observação,Наблюдение,経過観察,관찰실,निगरानी वार्ड
+ward.surgical,Surgical ward,Cerrahi servis,Chirurgische Station,Planta de cirugía,Service de chirurgie,Enfermaria cirúrgica,Хирургическое отделение,外科病棟,외과 병동,सर्जिकल वार्ड
+wing.city,City General,Şehir Genel Hastanesi,Stadtkrankenhaus,Hospital General de la Ciudad,Hôpital central,Hospital Geral da Cidade,Городская больница,ミナト総合病院,시립 종합병원,सिटी जनरल
+wing.city.d,"Operating room, intensive care, surgical ward, CT and lifts.","Ameliyathane, yoğun bakım, cerrahi servis, BT ve asansörler.","Operationssaal, Intensivstation, chirurgische Station, CT und Aufzüge.","Quirófano, cuidados intensivos, planta de cirugía, TAC y ascensores.","Bloc opératoire, soins intensifs, service de chirurgie, scanner et ascenseurs.","Centro cirúrgico, UTI, enfermaria cirúrgica, tomógrafo e elevadores.","Операционная, реанимация, хирургическое отделение, КТ и лифты.",手術室、集中治療室、外科病棟、CT、エレベーター。,"수술실, 중환자실, 외과 병동, CT 촬영기와 엘리베이터가 있어요.","ऑपरेशन थिएटर, इंटेंसिव केयर, सर्जिकल वार्ड, सीटी और लिफ़्ट।"
+wing.clinic,Village Clinic,Köy Kliniği,Dorfklinik,Consultorio del pueblo,Dispensaire du village,Clínica do Vilarejo,Сельская клиника,村の診療所,마을 진료소,गाँव का क्लिनिक
+wing.clinic.d,"Your first clinic: one corridor, a few bays.","İlk kliniğin: tek koridor, birkaç bölüm.","Deine erste Klinik: ein Flur, ein paar Plätze.",Tu primer consultorio: un pasillo y algunos boxes.,"Ta première clinique : un couloir, quelques box.",Sua primeira clínica: um corredor e alguns boxes.,"Твоя первая клиника: один коридор, несколько смотровых.",最初の診療所: 廊下が一本と処置室がいくつか。,첫 진료소예요. 복도 하나와 진료 칸 몇 개가 있어요.,"तुम्हारा पहला क्लिनिक: एक गलियारा, कुछ बे।"
+wing.needs,needs reputation {r},itibar {r} gerekli,braucht Ansehen {r},necesita reputación {r},demande une réputation de {r},precisa de reputação {r},нужна репутация {r},評判 {r} が必要,평판 {r} 필요,प्रतिष्ठा {r} चाहिए
+wing.open,Open · {cost},Aç · {cost},Öffnen · {cost},Abrir · {cost},Ouvrir · {cost},Abrir · {cost},Открыть · {cost},開く · {cost},열기 · {cost},खोलो · {cost}
+wing.town,Town Hospital,Kasaba Hastanesi,Stadtklinik,Hospital Comarcal,Hôpital municipal,Hospital da Cidade,Районная больница,町の病院,타운 병원,टाउन हॉस्पिटल
+wing.town.d,"A bigger ED, a general ward, a lab and a discharge lounge.","Daha büyük bir acil, genel servis, laboratuvar ve taburculuk salonu.","Eine größere Notaufnahme, eine allgemeine Station, ein Labor und ein Entlassungsraum.","Urgencias más grandes, una planta general, un laboratorio y una sala de altas.","Des urgences plus grandes, un service général, un labo et un salon de sortie.","Um PS maior, uma enfermaria geral, um laboratório e uma sala de alta.","Приёмный побольше, общее отделение, лаборатория и холл выписки.",大きめの救急、一般病棟、検査室、退院ラウンジ。,"더 큰 응급실, 일반 병동, 검사실, 퇴원 라운지가 있어요.","बड़ी इमरजेंसी, जनरल वार्ड, लैब और छुट्टी लाउंज।"
+zone.bays,Treatment bays,Tedavi bölümleri,Behandlungsplätze,Boxes de tratamiento,Box de soins,Boxes de atendimento,Смотровые,処置室,진료 칸,इलाज के बे

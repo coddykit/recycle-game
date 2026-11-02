@@ -8,7 +8,7 @@
  "bar.extinguish": "Löschen",
  "bar.info": "Schlange {q} · Bratlinge {p} · Brötchen {b} · {rate}/Std.",
  "bar.open": "Truck",
- "bar.propane": "Flasche tauschen {cost}",
+ "bar.propane": "Tauschen {cost}",
  "bar.propane_kit": "Ersatzflasche nutzen",
  "bar.restock": "Nachschubfahrt",
  "card.breakfast": "Frühstück",

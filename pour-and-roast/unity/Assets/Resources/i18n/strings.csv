@@ -1,435 +1,435 @@
 key,en,tr,de,es,fr,pt,ru,ja,ko,hi
-app.tagline,"Run the bar, roast the beans",,,,,,,,,
+app.tagline,"Run the bar, roast the beans","Barı işlet, kahveyi kavur","Führe die Bar, röste die Bohnen",Lleva la barra y tuesta los granos,"Tiens le bar, torréfie les grains",Administre o balcão e torre os grãos,Управляй баром и обжаривай зёрна,カフェを切り盛りして、豆を焙煎しよう,"바를 운영하고, 원두를 볶아요","बार चलाओ, कॉफ़ी भूनो"
 app.title,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast,Pour & Roast
-bar.batch,Batch same drinks,,,,,,,,,
-bar.batch.d,"Two cups of the same drink in one go. Faster, but a pre-order may wait.",,,,,,,,,
-bar.dial_in,Dial in,,,,,,,,,
-bar.dial_in.d,Tune the grind: shots stop tasting bitter.,,,,,,,,,
-bar.grinder,Grinder,,,,,,,,,
-bar.hire,Hire,,,,,,,,,
-bar.hire_role,Hire a {role},,,,,,,,,
-bar.level,Level {n},,,,,,,,,
-bar.max_level,Top level,,,,,,,,,
-bar.repair,Unjam,,,,,,,,,
-bar.repair.d,Clear the jammed grinder now.,,,,,,,,,
-bar.rule,House rule,,,,,,,,,
-bar.team,Your team,,,,,,,,,
-bar.train,Train · {cost},,,,,,,,,
-bar.tune,Dial-in,,,,,,,,,
-bar.wear,Wear,,,,,,,,,
-buy.beans,Supplier beans,,,,,,,,,
-buy.beans.d,5 kg of ready-roasted beans. Average quality.,,,,,,,,,
-buy.decor,Plants and lights,,,,,,,,,
-buy.decor.d,A cosier cafe: a little better reviews.,,,,,,,,,
-buy.drum,Bigger roaster drum,,,,,,,,,
-buy.drum.d,Roast more beans in one batch.,,,,,,,,,
-buy.grinder,Better grinder,,,,,,,,,
-buy.grinder.d,Faster shots and less wear.,,,,,,,,,
-buy.heads,Espresso group head,,,,,,,,,
-buy.heads.d,One more shot at the same time.,,,,,,,,,
-buy.ice,Ice maker,,,,,,,,,
-buy.ice.d,Makes more ice for iced drinks.,,,,,,,,,
-buy.ice_bag,Bag of ice,,,,,,,,,
-buy.ice_bag.d,10 kg of ice right now.,,,,,,,,,
-buy.milk_run,Emergency milk run,,,,,,,,,
-buy.milk_run.d,"Extra whole and oat milk, here in a few minutes.",,,,,,,,,
-buy.rail,Longer ticket rail,,,,,,,,,
-buy.rail.d,More orders can wait before people walk away.,,,,,,,,,
-buy.seats,Table and chairs,,,,,,,,,
-buy.seats.d,More people stop by when they can sit.,,,,,,,,,
-buy.service_grinder,Service the grinder,,,,,,,,,
-buy.service_grinder.d,Resets the wear. A worn grinder can jam.,,,,,,,,,
-buy.staff.barista.d,Makes drinks at the espresso machine or the steam wand.,,,,,,,,,
-buy.staff.cashier.d,Hands cups over fast and plates the pastries.,,,,,,,,,
-buy.staff.roaster.d,Drops your roasts at a good point and blends rested beans each morning.,,,,,,,,,
-buy.staff.runner.d,"Faster, cheaper milk runs when stock is low.",,,,,,,,,
-buy.wands,Steam wand,,,,,,,,,
-buy.wands.d,Steam more milk at once.,,,,,,,,,
-coach.1,Welcome to the Quayside Cart! Tap Open to start your first day.,,,,,,,,,
-coach.10,People like to sit. Buy a table.,,,,,,,,,
-coach.11,Rain tomorrow! Rain brings hot drinks and pre-orders. Tap Prep hot drinks.,,,,,,,,,
-coach.12,Last one: set the house rule to Deadline first. Pre-orders are never late.,,,,,,,,,
-coach.2,A customer ordered. Their ticket is on the rail. Tap the ticket.,,,,,,,,,
-coach.3,Now tap the espresso machine. Your barista makes the coffee.,,,,,,,,,
-coach.4,The cup is on the pickup shelf. Tap the shelf to hand it over.,,,,,,,,,
-coach.5,This order is a latte. Lattes need milk. Tap the milk fridge.,,,,,,,,,
-coach.6,Hire a second barista. They will work the steam wand.,,,,,,,,,
-coach.7,Two people want the same drink. Turn on Batch to make them together.,,,,,,,,,
-coach.8,This is a pre-order with a pickup time. Tap Priority so it is ready on time.,,,,,,,,,
-coach.9,The coffee tastes bitter. Press and hold the grinder to dial it in.,,,,,,,,,
-coach.done,You're ready! Keep the rail moving and the shots sweet. Settings → How to play shows this again.,,,,,,,,,
+bar.batch,Batch same drinks,Aynısını toplu yap,Gleiche Getränke bündeln,Preparar bebidas iguales en lote,Grouper les mêmes boissons,Juntar bebidas iguais,Партия одинаковых,同じ飲み物をまとめて作る,같은 음료 한꺼번에 만들기,एक जैसे ड्रिंक एक साथ
+bar.batch.d,"Two cups of the same drink in one go. Faster, but a pre-order may wait.","Aynı içecekten iki fincanı tek seferde yap. Daha hızlı, ama bir ön sipariş bekleyebilir.","Zwei Tassen desselben Getränks auf einmal. Schneller, aber eine Vorbestellung kann warten.","Dos tazas de la misma bebida de una vez. Más rápido, pero un pedido anticipado puede esperar.","Deux tasses de la même boisson d'un coup. Plus rapide, mais une commande anticipée peut attendre.","Duas xícaras da mesma bebida de uma vez. Mais rápido, mas um pedido antecipado pode esperar.","Две чашки одного напитка за раз. Быстрее, но предзаказ может подождать.",同じ飲み物を2杯まとめて作ります。速くなりますが、予約注文は待つことがあります。,"같은 음료 두 잔을 한 번에 만들어요. 빠르지만, 예약 주문은 기다릴 수 있어요.","एक ही ड्रिंक के दो कप एक बार में। तेज़ होता है, पर पहले से ऑर्डर देर से मिल सकता है।"
+bar.dial_in,Dial in,İnce ayar,Mahlgrad einstellen,Ajustar molienda,Régler la mouture,Ajustar moagem,Настроить помол,挽き目調整,맛 맞추기,सेट करो
+bar.dial_in.d,Tune the grind: shots stop tasting bitter.,Öğütmeyi ayarla: shotlar acı tadı bırakmasın.,Stell die Mühle richtig ein: Die Shots schmecken nicht mehr bitter.,Afina la molienda: las dosis dejan de saber amargas.,Ajuste la mouture : les shots n'ont plus un goût amer.,Ajuste a moagem: as doses param de ficar amargas.,Подстрой помол: эспрессо перестанет горчить.,挽き目を整えると、ショットの苦味が消えます。,분쇄도를 맞춰요. 샷이 쓴맛에서 벗어나요.,ग्राइंड ठीक करो: शॉट कड़वे लगने बंद हो जाएँगे।
+bar.grinder,Grinder,Öğütücü,Mühle,Molinillo,Moulin,Moedor,Кофемолка,グラインダー,그라인더,ग्राइंडर
+bar.hire,Hire,İşe al,Einstellen,Contratar,Embaucher,Contratar,Нанять,雇う,고용,रखो
+bar.hire_role,Hire a {role},Bir {role} işe al,{role} einstellen,Contratar un {role},Embaucher un {role},Contratar um(a) {role},Нанять: {role},{role} を雇う,{role} 고용,{role} रखो
+bar.level,Level {n},Seviye {n},Stufe {n},Nivel {n},Niveau {n},Nível {n},Уровень {n},レベル {n},{n}단계,लेवल {n}
+bar.max_level,Top level,En üst seviye,Höchste Stufe,Nivel máximo,Niveau max,Nível máximo,Максимальный уровень,最高レベル,최고 단계,सबसे ऊँचा लेवल
+bar.repair,Unjam,Sıkışmayı aç,Entstopfen,Desatascar,Débloquer,Desentupir,Разблокировать,詰まりを直す,막힘 풀기,जाम हटाओ
+bar.repair.d,Clear the jammed grinder now.,Sıkışmış öğütücüyü hemen temizle.,Die verklemmte Mühle jetzt freimachen.,Limpia ahora el molinillo atascado.,Dégage le moulin bloqué maintenant.,Limpe o moedor travado agora.,Прочисти заклинившую кофемолку сейчас.,詰まったグラインダーをすぐに直します。,막힌 그라인더를 지금 치워요.,अभी जाम हुआ ग्राइंडर साफ़ करो।
+bar.rule,House rule,Mekân kuralı,Hausregel,Regla de la casa,Règle de la maison,Regra da casa,Правило кафе,店のルール,운영 규칙,दुकान का नियम
+bar.team,Your team,Ekibin,Dein Team,Tu equipo,Ton équipe,Sua equipe,Твоя команда,あなたのチーム,우리 팀,तुम्हारी टीम
+bar.train,Train · {cost},Eğit · {cost},Schulen · {cost},Formar · {cost},Former · {cost},Treinar · {cost},Обучить · {cost},研修 · {cost},교육 · {cost},ट्रेनिंग · {cost}
+bar.tune,Dial-in,İnce ayar,Mahlgrad,Ajuste de molienda,Réglage,Ajuste de moagem,Помол,挽き目調整,맛 맞추기,सेटिंग
+bar.wear,Wear,Aşınma,Verschleiß,Desgaste,Usure,Desgaste,Износ,摩耗,마모,घिसावट
+buy.beans,Supplier beans,Tedarikçi çekirdeği,Lieferanten-Bohnen,Granos del proveedor,Grains du fournisseur,Grão do fornecedor,Зёрна от поставщика,仕入れ豆,납품 원두,सप्लायर की बीन्स
+buy.beans.d,5 kg of ready-roasted beans. Average quality.,5 kg hazır kavrulmuş çekirdek. Ortalama kalite.,5 kg fertig geröstete Bohnen. Durchschnittliche Qualität.,5 kg de granos ya tostados. Calidad media.,5 kg de grains déjà torréfiés. Qualité moyenne.,5 kg de grãos já torrados. Qualidade média.,5 кг готовых обжаренных зёрен. Среднее качество.,焙煎済みの豆5kg。品質は並みです。,로스팅이 끝난 원두 5kg. 보통 품질이에요.,5 किलो तैयार भुनी बीन्स। औसत क्वालिटी।
+buy.decor,Plants and lights,Bitkiler ve ışıklar,Pflanzen und Lichter,Plantas y luces,Plantes et lumières,Plantas e luzes,Растения и светильники,植物と照明,식물과 조명,पौधे और लाइटें
+buy.decor.d,A cosier cafe: a little better reviews.,Daha samimi bir kafe: biraz daha iyi yorumlar.,Ein gemütlicheres Café: etwas bessere Bewertungen.,Una cafetería más acogedora: reseñas un poco mejores.,Un café plus cosy : de meilleurs avis.,Um café mais aconchegante: avaliações um pouco melhores.,Уютнее кафе: чуть лучше отзывы.,居心地のよいカフェに。レビューが少しよくなります。,더 아늑한 카페예요. 리뷰가 조금 좋아져요.,आरामदेह कैफ़े: रिव्यू थोड़े बेहतर।
+buy.drum,Bigger roaster drum,Daha büyük kavurma tamburu,Größere Rösttrommel,Tambor de tostador más grande,Tambour de torréfacteur plus grand,Tambor de torra maior,Барабан побольше,大きな焙煎ドラム,더 큰 로스터 드럼,बड़ा रोस्टर ड्रम
+buy.drum.d,Roast more beans in one batch.,Tek partide daha çok çekirdek kavur.,Röste in einer Charge mehr Bohnen.,Tuesta más granos en un solo lote.,Torréfie plus de grains d'un coup.,Torre mais grãos de uma vez.,Обжаривай больше зёрен за одну партию.,一度にたくさんの豆を焙煎できます。,한 번에 원두를 더 많이 볶아요.,एक बैच में ज़्यादा बीन्स भूनो।
+buy.grinder,Better grinder,Daha iyi öğütücü,Bessere Mühle,Molinillo mejor,Meilleur moulin,Moedor melhor,Кофемолка получше,よいグラインダー,더 좋은 그라인더,बेहतर ग्राइंडर
+buy.grinder.d,Faster shots and less wear.,Daha hızlı shot ve daha az aşınma.,Schnellere Shots und weniger Verschleiß.,Dosis más rápidas y menos desgaste.,Shots plus rapides et moins d'usure.,Doses mais rápidas e menos desgaste.,Быстрее эспрессо и меньше износа.,ショットが速くなり、摩耗も減ります。,샷이 빨리 나오고 덜 닳아요.,तेज़ शॉट और कम घिसावट।
+buy.heads,Espresso group head,Espresso grup başlığı,Espresso-Brühgruppe,Cabezal de grupo de espresso,Tête de groupe espresso,Cabeçote de espresso,Групповая головка,エスプレッソのグループヘッド,에스프레소 그룹 헤드,एस्प्रेसो ग्रुप हेड
+buy.heads.d,One more shot at the same time.,Aynı anda bir shot daha.,Ein Shot mehr gleichzeitig.,Una dosis más al mismo tiempo.,Un shot de plus en même temps.,Mais uma dose ao mesmo tempo.,Ещё одна порция одновременно.,同時に抽出できるショットが1つ増えます。,같은 시간에 샷을 한 번 더 뽑아요.,एक बार में एक और शॉट।
+buy.ice,Ice maker,Buz makinesi,Eismaschine,Máquina de hielo,Machine à glace,Máquina de gelo,Льдогенератор,製氷機,제빙기,आइस मेकर
+buy.ice.d,Makes more ice for iced drinks.,Buzlu içecekler için daha çok buz yapar.,Macht mehr Eis für Eisgetränke.,Hace más hielo para las bebidas frías.,Produit plus de glace pour les boissons glacées.,Produz mais gelo para as bebidas geladas.,Делает больше льда для холодных напитков.,アイスドリンク用の氷をたくさん作れます。,아이스 음료를 위한 얼음을 더 만들어요.,आइस्ड ड्रिंक के लिए ज़्यादा बर्फ़ बनाता है।
+buy.ice_bag,Bag of ice,Buz torbası,Beutel Eis,Bolsa de hielo,Sac de glace,Saco de gelo,Мешок льда,氷の袋,얼음 한 봉지,बर्फ़ का थैला
+buy.ice_bag.d,10 kg of ice right now.,Hemen 10 kg buz.,Sofort 10 kg Eis.,10 kg de hielo ahora mismo.,10 kg de glace tout de suite.,10 kg de gelo agora.,10 кг льда прямо сейчас.,今すぐ氷10kg。,지금 얼음 10kg.,अभी 10 किलो बर्फ़।
+buy.milk_run,Emergency milk run,Acil süt siparişi,Notfall-Milchfahrt,Reparto urgente de leche,Livraison de lait d'urgence,Entrega de leite de emergência,Срочный подвоз молока,緊急の牛乳便,긴급 우유 배달,इमरजेंसी दूध मँगाओ
+buy.milk_run.d,"Extra whole and oat milk, here in a few minutes.","Ekstra tam yağlı ve yulaf sütü, birkaç dakika içinde burada.","Zusätzliche Vollmilch und Hafermilch, in wenigen Minuten hier.","Leche entera y de avena extra, aquí en unos minutos.","Lait entier et lait d'avoine en supplément, livré dans quelques minutes.","Leite integral e de aveia extra, aqui em alguns minutos.","Дополнительное цельное и овсяное молоко, будет через несколько минут.",牛乳とオーツミルクを追加で、数分後に届けます。,일반 우유와 오트 우유를 몇 분 안에 추가로 받아요.,कुछ मिनट में अतिरिक्त फ़ुल-क्रीम और ओट दूध।
+buy.rail,Longer ticket rail,Daha uzun fiş rafı,Längere Bonschiene,Riel de pedidos más largo,Rail à tickets plus long,Trilho de pedidos maior,Длиннее лента заказов,長いオーダーレール,더 긴 주문 레일,लंबी ऑर्डर रेल
+buy.rail.d,More orders can wait before people walk away.,İnsanlar gitmeden önce daha fazla sipariş bekleyebilir.,"Mehr Bestellungen können warten, bevor Leute gehen.",Pueden esperar más pedidos antes de que la gente se vaya.,Plus de commandes peuvent attendre avant que les gens partent.,Mais pedidos podem esperar antes de as pessoas irem embora.,"Больше заказов могут ждать, прежде чем люди уйдут.",お客さんが帰る前に、待てる注文が増えます。,손님이 떠나기 전까지 주문을 더 기다리게 할 수 있어요.,लोगों के चले जाने से पहले ज़्यादा ऑर्डर इंतज़ार कर सकते हैं।
+buy.seats,Table and chairs,Masa ve sandalyeler,Tisch und Stühle,Mesas y sillas,Tables et chaises,Mesas e cadeiras,Столик и стулья,テーブルと椅子,테이블과 의자,मेज़ और कुर्सियाँ
+buy.seats.d,More people stop by when they can sit.,İnsanlar oturabiliyorsa daha çok kişi uğrar.,"Mehr Leute kommen vorbei, wenn sie sitzen können.",Más gente se para cuando puede sentarse.,Plus de gens s'arrêtent quand ils peuvent s'asseoir.,Mais gente para por aqui quando pode se sentar.,"Больше людей заходят, когда есть где сесть.",座れると立ち寄るお客さんが増えます。,앉을 자리가 있으면 들르는 손님이 늘어요.,बैठने की जगह हो तो ज़्यादा लोग रुकते हैं।
+buy.service_grinder,Service the grinder,Öğütücüye bakım,Mühle warten,Revisar el molinillo,Révision du moulin,Revisar o moedor,Обслужить кофемолку,グラインダーを整備,그라인더 점검,ग्राइंडर की सर्विस
+buy.service_grinder.d,Resets the wear. A worn grinder can jam.,Aşınmayı sıfırlar. Aşınmış öğütücü sıkışabilir.,Setzt den Verschleiß zurück. Eine abgenutzte Mühle kann verklemmen.,Reinicia el desgaste. Un molinillo gastado puede atascarse.,Remet l'usure à zéro. Un moulin usé peut se bloquer.,Zera o desgaste. Um moedor gasto pode travar.,Сбрасывает износ. Изношенная кофемолка может заклинить.,摩耗をリセットします。摩耗したグラインダーは詰まりやすくなります。,마모를 초기화해요. 많이 닳은 그라인더는 막힐 수 있어요.,घिसावट शून्य करता है। घिसा ग्राइंडर जाम हो सकता है।
+buy.staff.barista.d,Makes drinks at the espresso machine or the steam wand.,Espresso makinesinde ya da buhar çubuğunda içecek hazırlar.,Macht Getränke an der Espressomaschine oder an der Dampfdüse.,Prepara bebidas en la máquina de espresso o en el vaporizador.,Prépare les boissons à la machine espresso ou à la buse vapeur.,Prepara bebidas na máquina de espresso ou no vaporizador.,Готовит напитки у эспрессо-машины или парового краника.,エスプレッソマシンやスチームワンドで飲み物を作ります。,에스프레소 머신이나 스팀 완드에서 음료를 만들어요.,एस्प्रेसो मशीन या स्टीम वैंड पर ड्रिंक बनाता है।
+buy.staff.cashier.d,Hands cups over fast and plates the pastries.,Fincanları hızla uzatır ve hamur işlerini tabaklar.,Reicht Tassen schnell heraus und richtet Gebäck an.,Entrega las tazas rápido y sirve la bollería.,Remet les tasses rapidement et dresse les viennoiseries.,Entrega os copos rápido e arruma os doces.,Быстро передаёт чашки и выкладывает выпечку.,カップをすばやく渡し、焼き菓子を皿に盛ります。,컵을 빠르게 건네고 페이스트리를 담아요.,कप जल्दी थमाता है और पेस्ट्री सजाता है।
+buy.staff.roaster.d,Drops your roasts at a good point and blends rested beans each morning.,Kavurmalarını iyi bir noktada boşaltır ve her sabah dinlendirilmiş çekirdekleri harmanlar.,Nimmt die Röstung zum richtigen Zeitpunkt aus der Trommel und mischt jeden Morgen ausgeruhte Bohnen.,Retira los tuestes en su punto y mezcla cada mañana granos reposados.,Décharge tes torréfactions au bon moment et mélange les grains reposés chaque matin.,Tira as torras no ponto certo e mistura grãos descansados toda manhã.,Выгружает обжарку в нужный момент и каждое утро смешивает отлежавшиеся зёрна.,焙煎をよいタイミングで排出し、毎朝、休ませた豆をブレンドします。,"좋은 시점에 원두를 배출하고, 매일 아침 쉰 원두를 블렌딩해요.",सही समय पर तुम्हारी बीन्स उतारता है और हर सुबह आराम कर चुकी बीन्स मिलाता है।
+buy.staff.runner.d,"Faster, cheaper milk runs when stock is low.","Stok azaldığında daha hızlı, daha ucuz süt siparişleri.","Schnellere, günstigere Milchfahrten, wenn der Vorrat knapp ist.",Reparto de leche más rápido y barato cuando queda poco stock.,Livraisons de lait plus rapides et moins chères quand le stock est bas.,Entregas de leite mais rápidas e baratas quando o estoque está baixo.,"Быстрее и дешевле подвоз молока, когда запасы на исходе.",在庫が少ないとき、牛乳便を速く安く手配します。,재고가 부족할 때 더 빠르고 싸게 배달을 다녀와요.,स्टॉक कम हो तो तेज़ और सस्ते दूध के चक्कर।
+buy.wands,Steam wand,Buhar çubuğu,Dampfdüse,Vaporizador de leche,Buse vapeur,Vaporizador extra,Паровой краник,スチームワンド,스팀 완드,स्टीम वैंड
+buy.wands.d,Steam more milk at once.,Bir seferde daha çok süt buharla.,Dampft mehr Milch auf einmal auf.,Vaporiza más leche a la vez.,Vapeur plus de lait à la fois.,Vaporiza mais leite de uma vez.,Вспенивай больше молока одновременно.,一度にたくさんのミルクを泡立てられます。,우유를 한 번에 더 많이 데워요.,एक बार में ज़्यादा दूध भाप में।
+coach.1,Welcome to the Quayside Cart! Tap Open to start your first day.,Rıhtım Arabası'na hoş geldin! İlk günün için Aç'a dokun.,"Willkommen am Kai-Wagen! Tippe auf Öffnen, um deinen ersten Tag zu starten.",¡Bienvenido al carrito del muelle! Toca Abrir para empezar tu primer día.,Bienvenue au chariot du quai ! Touche Ouvrir pour commencer ta première journée.,Bem-vindo ao Carrinho do Cais! Toque em Abrir para começar o primeiro dia.,"Добро пожаловать в тележку на Набережной! Нажми «Открыть», чтобы начать первый день.",キーサイドのカートへようこそ！ 「開店」をタップして初日を始めましょう。,부두 카트에 오신 것을 환영해요! “열기”를 눌러 첫날을 시작하세요.,क्वेसाइड कार्ट में स्वागत है! पहला दिन शुरू करने के लिए खोलो पर टैप करो।
+coach.10,People like to sit. Buy a table.,İnsanlar oturmayı sever. Bir masa al.,Die Leute setzen sich gern hin. Kauf einen Tisch.,A la gente le gusta sentarse. Compra una mesa.,Les gens aiment s'asseoir. Achète une table.,As pessoas gostam de sentar. Compre uma mesa.,Людям нравится сидеть. Купи столик.,お客さんは座りたがります。テーブルを買いましょう。,사람들은 앉고 싶어 해요. 테이블을 사세요.,लोगों को बैठना पसंद है। एक मेज़ खरीदो।
+coach.11,Rain tomorrow! Rain brings hot drinks and pre-orders. Tap Prep hot drinks.,Yarın yağmur! Yağmur sıcak içecek ve ön sipariş getirir. Sıcak içecekleri Hazırla'ya dokun.,Morgen Regen! Regen bringt heiße Getränke und Vorbestellungen. Tippe auf Heiße Getränke vorbereiten.,¡Mañana llueve! La lluvia trae bebidas calientes y pedidos anticipados. Toca Preparar bebidas calientes.,Pluie demain ! La pluie amène boissons chaudes et commandes anticipées. Touche Préparer les boissons chaudes.,Chuva amanhã! Chuva traz bebidas quentes e pedidos antecipados. Toque em Preparar bebidas quentes.,Завтра дождь! Дождь приносит горячие напитки и предзаказы. Нажми «Заготовить горячие».,明日は雨です！ 雨の日は温かい飲み物と予約注文が増えます。「温かい飲み物を仕込む」をタップしてください。,내일은 비가 와요! 비 오는 날엔 따뜻한 음료와 예약 주문이 늘어요. “따뜻한 음료 준비”를 누르세요.,कल बारिश! बारिश में गरम ड्रिंक और पहले से ऑर्डर बढ़ते हैं। गरम ड्रिंक तैयार करो पर टैप करो।
+coach.12,Last one: set the house rule to Deadline first. Pre-orders are never late.,Son adım: mekân kuralını Önce son tarih olarak ayarla. Ön siparişler asla geç kalmaz.,Letzter Schritt: Stell die Hausregel auf Frist zuerst. Vorbestellungen kommen nie zu spät.,Última: pon la regla de la casa en Primero el plazo. Los pedidos anticipados nunca llegan tarde.,Dernière étape : mets la règle de la maison sur Échéance d'abord. Les commandes anticipées ne sont jamais en retard.,Último: defina a regra da casa como Prazo primeiro. Pedidos antecipados nunca atrasam.,Последнее: поставь правило кафе «Сначала срочные». Предзаказы никогда не опаздывают.,最後です: 店のルールを「締切優先」にしましょう。予約注文が遅れなくなります。,마지막이에요: 운영 규칙을 “마감 우선”으로 바꾸세요. 예약 주문은 절대 늦지 않아요.,आख़िरी: दुकान का नियम 'पहले डेडलाइन' पर रखो। पहले से ऑर्डर कभी देर से नहीं होते।
+coach.2,A customer ordered. Their ticket is on the rail. Tap the ticket.,Bir müşteri sipariş verdi. Fişi rafta. Fişe dokun.,Jemand hat bestellt. Der Bon hängt an der Schiene. Tippe auf den Bon.,Un cliente ha pedido. Su ticket está en el riel. Toca el ticket.,Un client a commandé. Son ticket est sur le rail. Touche le ticket.,Um cliente pediu. O pedido está no trilho. Toque no pedido.,Гость заказал. Его талон на ленте. Нажми на талон.,お客さんが注文しました。注文札がレールにあります。注文札をタップしてください。,손님이 주문했어요. 주문표가 레일에 있어요. 주문표를 누르세요.,एक ग्राहक ने ऑर्डर दिया। उसका टिकट रेल पर है। टिकट पर टैप करो।
+coach.3,Now tap the espresso machine. Your barista makes the coffee.,Şimdi espresso makinesine dokun. Baristan kahveyi hazırlar.,Tippe jetzt auf die Espressomaschine. Deine Barista macht den Kaffee.,Ahora toca la máquina de espresso. Tu barista prepara el café.,Touche maintenant la machine espresso. Ton barista prépare le café.,Agora toque na máquina de espresso. Seu barista faz o café.,Теперь нажми на эспрессо-машину. Бариста сварит кофе.,次はエスプレッソマシンをタップしてください。バリスタがコーヒーを作ります。,이제 에스프레소 머신을 누르세요. 바리스타가 커피를 만들어요.,अब एस्प्रेसो मशीन पर टैप करो। तुम्हारा बरिस्ता कॉफ़ी बनाएगा।
+coach.4,The cup is on the pickup shelf. Tap the shelf to hand it over.,Fincan teslim rafında. Teslim etmek için rafa dokun.,"Die Tasse steht auf dem Abholregal. Tippe aufs Regal, um sie zu übergeben.",La taza está en el estante de recogida. Toca el estante para entregarla.,La tasse est sur l'étagère de retrait. Touche l'étagère pour la remettre.,O copo está na prateleira de retirada. Toque na prateleira para entregar.,"Чашка на полке выдачи. Нажми на полку, чтобы передать заказ.",カップが受け取り棚にあります。棚をタップして渡しましょう。,컵이 픽업 선반에 놓였어요. 선반을 눌러 건네주세요.,कप पिकअप शेल्फ़ पर है। थमाने के लिए शेल्फ़ पर टैप करो।
+coach.5,This order is a latte. Lattes need milk. Tap the milk fridge.,Bu sipariş bir latte. Latte süt ister. Süt buzdolabına dokun.,Diese Bestellung ist ein Latte. Lattes brauchen Milch. Tippe auf den Milchkühlschrank.,Este pedido es un latte. Los lattes llevan leche. Toca la nevera de la leche.,Cette commande est un latte. Les lattes ont besoin de lait. Touche le frigo à lait.,Este pedido é um latte. Lattes precisam de leite. Toque na geladeira de leite.,Этот заказ — латте. Латте нужно молоко. Нажми на холодильник с молоком.,この注文はカフェラテです。ラテにはミルクが必要です。ミルク冷蔵庫をタップしてください。,이 주문은 라떼예요. 라떼에는 우유가 필요해요. 우유 냉장고를 누르세요.,यह ऑर्डर लाते का है। लाते में दूध चाहिए। दूध के फ़्रिज पर टैप करो।
+coach.6,Hire a second barista. They will work the steam wand.,İkinci bir barista işe al. Buhar çubuğunu o kullanacak.,Stell eine zweite Barista ein. Sie übernimmt die Dampfdüse.,Contrata a un segundo barista. Se encargará del vaporizador.,Embauche un second barista. Il s'occupera de la buse vapeur.,Contrate um segundo barista. Ele vai usar o vaporizador.,Найми второго бариста. Он будет работать с паровым краником.,2人目のバリスタを雇いましょう。スチームワンドを担当します。,두 번째 바리스타를 고용하세요. 스팀 완드를 맡을 거예요.,एक दूसरा बरिस्ता रखो। वह स्टीम वैंड सँभालेगा।
+coach.7,Two people want the same drink. Turn on Batch to make them together.,İki kişi aynı içeceği istiyor. Birlikte yapmak için Toplu'yu aç.,"Zwei Leute wollen dasselbe Getränk. Schalte Bündeln ein, damit sie zusammen gemacht werden.",Dos personas quieren la misma bebida. Activa Lote para prepararlas juntas.,Deux personnes veulent la même boisson. Active Grouper pour les préparer ensemble.,Duas pessoas querem a mesma bebida. Ative Juntar para fazer as duas juntas.,"Двое хотят один напиток. Включи «Партия», чтобы сделать их вместе.",2人が同じ飲み物を注文しています。「まとめ作り」をオンにして、一緒に作りましょう。,같은 음료를 원하는 손님이 둘이에요. “한꺼번에 만들기”를 켜서 함께 만드세요.,दो लोग एक ही ड्रिंक चाहते हैं। साथ बनाने के लिए बैच चालू करो।
+coach.8,This is a pre-order with a pickup time. Tap Priority so it is ready on time.,"Bu, teslim saati olan bir ön sipariş. Zamanında hazır olması için Öncelik'e dokun.","Das ist eine Vorbestellung mit Abholzeit. Tippe auf Vorrang, damit sie pünktlich fertig ist.",Este es un pedido anticipado con hora de recogida. Toca Prioridad para que esté listo a tiempo.,C'est une commande anticipée avec une heure de retrait. Touche Prioritaire pour qu'elle soit prête à l'heure.,Este é um pedido antecipado com horário de retirada. Toque em Prioridade para ficar pronto a tempo.,"Это предзаказ с временем выдачи. Нажми «Приоритет», чтобы он был готов вовремя.",これは受け取り時間つきの予約注文です。「優先」をタップして、時間どおりに用意しましょう。,이건 픽업 시간이 있는 예약 주문이에요. “우선”을 눌러 제때 준비되게 하세요.,"यह पहले से ऑर्डर है जिसका पिकअप समय तय है। समय पर तैयार हो, इसलिए प्राथमिकता पर टैप करो।"
+coach.9,The coffee tastes bitter. Press and hold the grinder to dial it in.,Kahve acı tadıyor. İnce ayar için öğütücüye basılı tut.,"Der Kaffee schmeckt bitter. Halte die Mühle gedrückt, um den Mahlgrad einzustellen.",El café sabe amargo. Mantén pulsado el molinillo para ajustar la molienda.,Le café a un goût amer. Maintiens le moulin appuyé pour régler la mouture.,O café está amargo. Pressione e segure o moedor para ajustar a moagem.,"Кофе горчит. Нажми на кофемолку и удерживай, чтобы настроить помол.",コーヒーが苦いです。グラインダーを長押しして、挽き目を調整しましょう。,커피가 써요. 그라인더를 길게 눌러 맛을 맞추세요.,कॉफ़ी कड़वी है। ग्राइंड सेट करने के लिए ग्राइंडर को दबाकर रखो।
+coach.done,You're ready! Keep the rail moving and the shots sweet. Settings → How to play shows this again.,"Hazırsın! Fiş rafını akıt, shotları tatlı tut. Ayarlar → Nasıl oynanır bunu tekrar gösterir.",Los geht's! Halte die Schiene in Bewegung und die Shots süß. Einstellungen → So wird gespielt zeigt das wieder.,¡Listo! Mantén el riel en movimiento y las dosis dulces. Ajustes → Cómo jugar vuelve a mostrar esto.,C'est prêt ! Garde le rail en mouvement et les shots doux. Réglages → Comment jouer te montrera à nouveau ceci.,Pronto! Mantenha o trilho andando e as doses doces. Ajustes → Como jogar mostra isso de novo.,Готово! Держи ленту в движении и эспрессо сладким. «Настройки → Как играть» покажет это снова.,準備完了です！ レールを流して、ショットを甘く保ちましょう。設定 → 遊び方で、もう一度見られます。,준비 끝! 레일을 계속 움직이고 샷을 달콤하게 유지하세요. 설정 → 플레이 방법에서 다시 볼 수 있어요.,तुम तैयार हो! रेल चलती रखो और शॉट मीठे रखो। सेटिंग → कैसे खेलें में यह फिर से देख सकते हो।
 coach.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
 coach.step,Step {n} of {m},Adım {n} / {m},Schritt {n} von {m},Paso {n} de {m},Étape {n} sur {m},Passo {n} de {m},Шаг {n} из {m},ステップ {n} / {m},{m}단계 중 {n}단계,चरण {n} / {m}
 common.back,Back,Geri,Zurück,Atrás,Retour,Voltar,Назад,戻る,뒤로,वापस
 common.cancel,Cancel,İptal,Abbrechen,Cancelar,Annuler,Cancelar,Отмена,キャンセル,취소,रद्द करो
 common.ok,OK,Tamam,OK,OK,OK,OK,OK,OK,확인,ठीक है
-common.open,Open,,,,,,,,,
-contract.bistro,Harbour Bistro,,,,,,,,,
-contract.bistro.d,A small bistro by the ferry wants your house beans.,,,,,,,,,
-contract.ferry,Ferry Kiosk,,,,,,,,,
-contract.ferry.d,The ferry kiosk serves your coffee on every crossing.,,,,,,,,,
-contract.needs,Needs ★ {r},,,,,,,,,
-contract.next,next on day {n},,,,,,,,,
-contract.pause,Pause,,,,,,,,,
-contract.sign,Sign,,,,,,,,,
-contract.terms,{kg} every {days} days · quality {q}+ · {cash},,,,,,,,,
-crisis.frost.b,One green coffee costs 50 % more for a few days.,,,,,,,,,
-crisis.frost.t,Frost at origin,,,,,,,,,
-crisis.grinder_jam.b,No shots until it's fixed. Hold the grinder to unjam it.,,,,,,,,,
-crisis.grinder_jam.t,Grinder jammed,,,,,,,,,
-crisis.heat.b,Iced drinks flood the rail. Watch the ice.,,,,,,,,,
-crisis.heat.t,Heat,,,,,,,,,
-crisis.milk_late.b,Today's milk comes 3 hours late. Order a milk run or pause lattes.,,,,,,,,,
-crisis.milk_late.t,Milk van late,,,,,,,,,
-crisis.rain.b,"Benches empty, pre-orders stack up. Prep hot drinks.",,,,,,,,,
-crisis.rain.t,Rain,,,,,,,,,
-crisis.review_spree.b,Three bad reviews in a row. Fewer people come by until tomorrow.,,,,,,,,,
-crisis.review_spree.t,Bad reviews,,,,,,,,,
-crisis.wholesale_short.b,Not enough good beans for a wholesale order. A small fee was paid.,,,,,,,,,
-crisis.wholesale_short.t,Delivery short,,,,,,,,,
-cust.commuter,Commuter,,,,,,,,,
-cust.influencer,Influencer,,,,,,,,,
-cust.regular,Regular,,,,,,,,,
-cust.student,Student,,,,,,,,,
-cust.tourist,Tourist,,,,,,,,,
-err.blocked,Follow the guide,,,,,,,,,
-err.busy,Busy right now,,,,,,,,,
-err.cash,Not enough money,,,,,,,,,
-err.invalid,Not possible,,,,,,,,,
-err.last,Keep at least one drink,,,,,,,,,
-err.locked,Not open yet,,,,,,,,,
-err.max,Maxed out,,,,,,,,,
-err.no_green,No green coffee,,,,,,,,,
-err.no_stops,Nothing to do,,,,,,,,,
-err.no_ticket,Tap a ticket first,,,,,,,,,
-err.nothing,Nothing to do,,,,,,,,,
-err.nothing_ready,Nothing on the shelf yet,,,,,,,,,
-err.nothing_rested,Nothing has rested yet,,,,,,,,,
-err.owned,Already yours,,,,,,,,,
-err.phase,Not right now,,,,,,,,,
-err.rating,You need more stars,,,,,,,,,
-err.ready,Already done,,,,,,,,,
-err.requires,Needs research first,,,,,,,,,
-err.research,Needs research,,,,,,,,,
-err.role,Only baristas work stations,,,,,,,,,
-err.running,Already running,,,,,,,,,
-err.started,Already being made,,,,,,,,,
-err.unknown,Not possible,,,,,,,,,
-err.unreachable,Not possible,,,,,,,,,
-forecast.board_help,The forecast board (research) shows three days ahead.,,,,,,,,,
-forecast.day,Day {n},,,,,,,,,
-forecast.fog,"Quiet street, more pre-orders.",,,,,,,,,
-forecast.heat,Iced drinks everywhere. Ice runs out fast.,,,,,,,,,
-forecast.prep,Prepare,,,,,,,,,
-forecast.prep_hot,Prep hot drinks,,,,,,,,,
-forecast.prep_hot.d,Pre-brew {n} cups of americano and filter. Served at once. In the urn: {left}.,,,,,,,,,
-forecast.prep_ice,Make extra ice,,,,,,,,,
-forecast.prep_ice.d,Add {kg} of ice to the bin.,,,,,,,,,
-forecast.rain,"Fewer walk-ins, more pre-orders, more hot drinks.",,,,,,,,,
-forecast.sunny,Normal day. Walk-ins as usual.,,,,,,,,,
-forecast.title,Forecast,,,,,,,,,
-forecast.today,Today,,,,,,,,,
-forecast.tomorrow,Tomorrow,,,,,,,,,
+common.open,Open,Aç,Öffnen,Abrir,Ouvrir,Abrir,Открыть,開く,열기,खोलो
+contract.bistro,Harbour Bistro,Liman Bistrosu,Hafenbistro,Bistró del Puerto,Bistrot du port,Bistrô do Porto,Бистро «Гавань»,港のビストロ,하버 비스트로,हार्बर बिस्ट्रो
+contract.bistro.d,A small bistro by the ferry wants your house beans.,Feribotun yanındaki küçük bir bistro senin ev çekirdeğini istiyor.,Ein kleines Bistro an der Fähre möchte deine Hausbohnen.,Un pequeño bistró junto al ferri quiere tus granos de la casa.,Un petit bistrot près du ferry veut tes grains maison.,Um pequeno bistrô perto da balsa quer seu grão da casa.,Небольшое бистро у парома хочет твои фирменные зёрна.,フェリー乗り場の小さなビストロが、あなたの店の豆を欲しがっています。,페리 선착장 옆 작은 비스트로가 우리 원두를 원해요.,फ़ेरी के पास का एक छोटा बिस्ट्रो तुम्हारी दुकान की बीन्स चाहता है।
+contract.ferry,Ferry Kiosk,Feribot Kulübesi,Fähr-Kiosk,Quiosco del ferri,Kiosque du ferry,Quiosque da Balsa,Киоск у парома,フェリーの売店,페리 키오스크,फ़ेरी काउंटर
+contract.ferry.d,The ferry kiosk serves your coffee on every crossing.,Feribot kulübesi her geçişte kahveni servis eder.,Der Fähr-Kiosk serviert deinen Kaffee bei jeder Überfahrt.,El quiosco del ferri sirve tu café en cada travesía.,Le kiosque du ferry sert ton café à chaque traversée.,O quiosque da balsa serve seu café em todas as travessias.,Киоск у парома подаёт твой кофе на каждом рейсе.,フェリーの売店が、毎便あなたのコーヒーを出します。,페리 키오스크가 모든 배편에서 커피를 팔아요.,फ़ेरी काउंटर हर क्रॉसिंग पर तुम्हारी कॉफ़ी परोसता है।
+contract.needs,Needs ★ {r},★ {r} gerekli,Braucht ★ {r},Necesita ★ {r},Demande ★ {r},Precisa de ★ {r},Нужно ★ {r},★ {r} が必要,★ {r} 필요,★ {r} चाहिए
+contract.next,next on day {n},sıradaki: {n}. gün,nächste am Tag {n},próximo el día {n},suivant le jour {n},próximo no dia {n},следующая: день {n},次は {n} 日目,다음: {n}일차,अगला दिन {n} पर
+contract.pause,Pause,Duraklat,Pausieren,Pausar,Pause,Pausar,Приостановить,一時停止,일시 정지,रोको
+contract.sign,Sign,İmzala,Unterschreiben,Firmar,Signer,Assinar,Подписать,契約する,계약,साइन करो
+contract.terms,{kg} every {days} days · quality {q}+ · {cash},Her {days} günde {kg} · kalite {q}+ · {cash},{kg} alle {days} Tage · Qualität {q}+ · {cash},{kg} cada {days} días · calidad {q}+ · {cash},{kg} tous les {days} jours · qualité {q}+ · {cash},{kg} a cada {days} dias · qualidade {q}+ · {cash},{kg} каждые {days} дн. · качество {q}+ · {cash},{days} 日ごとに {kg} · 品質 {q}+ · {cash},{days}일마다 {kg} · 품질 {q} 이상 · {cash},{kg} हर {days} दिन पर · क्वालिटी {q}+ · {cash}
+crisis.frost.b,One green coffee costs 50 % more for a few days.,Bir çiğ kahve birkaç gün boyunca %50 daha pahalı.,Ein Sack Rohkaffee kostet ein paar Tage lang 50 % mehr.,Un kilo de café verde cuesta un 50 % más durante unos días.,Un café vert coûte 50 % de plus pendant quelques jours.,Um café verde custa 50 % mais por alguns dias.,Один сорт зелёного кофе на несколько дней дороже на 50 %.,数日間、生豆の一部が 50 %値上がりします。,생두 한 봉지가 며칠 동안 50% 비싸져요.,कुछ दिनों के लिए एक कच्ची कॉफ़ी 50 % महँगी।
+crisis.frost.t,Frost at origin,Üreticide don,Frost im Anbaugebiet,Helada en origen,Gel à l'origine,Geada na origem,Заморозки у плантаций,産地の霜害,산지 서리,उत्पत्ति वाले खेत में पाला
+crisis.grinder_jam.b,No shots until it's fixed. Hold the grinder to unjam it.,Düzelene kadar shot yok. Sıkışmayı açmak için öğütücüye basılı tut.,"Keine Shots, bis es repariert ist. Halte die Mühle gedrückt, um sie zu entstopfen.",Sin dosis hasta que se arregle. Mantén pulsado el molinillo para desatascarlo.,Pas de shots tant que ce n'est pas réparé. Maintiens le moulin pour le débloquer.,Sem doses até consertar. Segure o moedor para desentupir.,"Пока не починишь, эспрессо не будет. Удержи кофемолку, чтобы её разблокировать.",直るまでショットは作れません。グラインダーを長押しして詰まりを直しましょう。,고칠 때까지 샷을 뽑을 수 없어요. 그라인더를 길게 눌러 막힘을 풀어요.,ठीक होने तक कोई शॉट नहीं। जाम हटाने के लिए ग्राइंडर दबाकर रखो।
+crisis.grinder_jam.t,Grinder jammed,Öğütücü sıkıştı,Mühle verklemmt,Molinillo atascado,Moulin bloqué,Moedor travado,Кофемолка заклинила,グラインダーの詰まり,그라인더 막힘,ग्राइंडर जाम
+crisis.heat.b,Iced drinks flood the rail. Watch the ice.,Buzlu içecekler fiş rafını doldurur. Buzu takip et.,Eisgetränke überschwemmen die Schiene. Behalte das Eis im Blick.,Las bebidas frías inundan el riel. Vigila el hielo.,Les boissons glacées envahissent le rail. Surveille la glace.,Bebidas geladas lotam o trilho. Fique de olho no gelo.,Холодные напитки заполнили ленту. Следи за льдом.,アイスドリンクの注文が殺到します。氷に気をつけましょう。,아이스 음료가 레일에 넘쳐요. 얼음을 확인하세요.,आइस्ड ड्रिंक की रेल भर गई। बर्फ़ पर नज़र रखो।
+crisis.heat.t,Heat,Sıcak,Hitze,Calor,Canicule,Calor,Жара,猛暑,더위,गर्मी
+crisis.milk_late.b,Today's milk comes 3 hours late. Order a milk run or pause lattes.,Bugünkü süt 3 saat geç geliyor. Acil süt siparişi ver ya da latteleri duraklat.,Die heutige Milch kommt 3 Stunden zu spät. Bestell eine Notfall-Milchfahrt oder pausiere Lattes.,La leche de hoy llega con 3 horas de retraso. Pide un reparto urgente o pausa los lattes.,Le lait du jour arrive 3 heures en retard. Commande une livraison d'urgence ou mets les lattes en pause.,O leite de hoje chega 3 horas atrasado. Peça uma entrega de emergência ou pause os lattes.,Молоко сегодня придёт на 3 часа позже. Закажи срочный подвоз или приостанови латте.,今日の牛乳は3時間遅れて届きます。牛乳便を頼むか、ラテを一時停止しましょう。,오늘 우유 배달이 3시간 늦어요. 긴급 우유 배달을 주문하거나 라떼를 잠시 멈추세요.,आज का दूध 3 घंटे देर से आएगा। इमरजेंसी दूध मँगाओ या लाते रोको।
+crisis.milk_late.t,Milk van late,Süt kamyonu geç,Milchwagen verspätet,Furgoneta de leche retrasada,Camionnette de lait en retard,Caminhão do leite atrasado,Молоко опаздывает,牛乳便の遅れ,우유 차량 지연,दूध की वैन लेट
+crisis.rain.b,"Benches empty, pre-orders stack up. Prep hot drinks.","Banklar boş, ön siparişler birikiyor. Sıcak içecekleri hazırla.","Die Bänke sind leer, Vorbestellungen stapeln sich. Bereite heiße Getränke vor.",Los bancos se vacían y los pedidos anticipados se acumulan. Prepara bebidas calientes.,"Les bancs sont vides, les commandes anticipées s'accumulent. Prépare les boissons chaudes.","Bancos vazios, pedidos antecipados se acumulam. Prepare bebidas quentes.","Скамейки пусты, предзаказы копятся. Заготовь горячие напитки.",店内の席は空き、予約注文がたまっていきます。温かい飲み物を仕込みましょう。,벤치가 비고 예약 주문이 쌓여요. 따뜻한 음료를 준비하세요.,"बैठने की जगहें खाली, पहले से ऑर्डर जमा हो रहे हैं। गरम ड्रिंक तैयार करो।"
+crisis.rain.t,Rain,Yağmur,Regen,Lluvia,Pluie,Chuva,Дождь,雨,비,बारिश
+crisis.review_spree.b,Three bad reviews in a row. Fewer people come by until tomorrow.,Art arda üç kötü yorum. Yarına kadar daha az kişi uğrar.,Drei schlechte Bewertungen hintereinander. Bis morgen kommen weniger Leute vorbei.,Tres malas reseñas seguidas. Hasta mañana vendrá menos gente.,Trois mauvais avis d'affilée. Moins de monde passe jusqu'à demain.,Três avaliações ruins seguidas. Menos gente passa por aqui até amanhã.,Три плохих отзыва подряд. До завтра приходит меньше людей.,悪いレビューが3件続きました。明日まで立ち寄るお客さんが減ります。,나쁜 리뷰가 연달아 세 개 달렸어요. 내일까지 들르는 사람이 줄어요.,लगातार तीन खराब रिव्यू। कल तक कम लोग आएँगे।
+crisis.review_spree.t,Bad reviews,Kötü yorumlar,Schlechte Bewertungen,Malas reseñas,Mauvais avis,Avaliações ruins,Плохие отзывы,悪いレビュー,나쁜 리뷰,खराब रिव्यू
+crisis.wholesale_short.b,Not enough good beans for a wholesale order. A small fee was paid.,Toptan bir sipariş için yeterli iyi çekirdek yok. Küçük bir ceza ödendi.,Nicht genug gute Bohnen für eine Großbestellung. Eine kleine Strafe wurde gezahlt.,No hay suficientes granos buenos para un pedido mayorista. Se pagó una pequeña penalización.,Pas assez de bons grains pour une commande en gros. Une petite pénalité a été payée.,Não há grãos bons suficientes para um pedido de atacado. Uma pequena multa foi paga.,Не хватает хороших зёрен для оптового заказа. Уплачен небольшой штраф.,卸売の注文に必要な良質の豆が足りません。少額の違約金を払いました。,도매 주문에 쓸 좋은 원두가 부족해요. 소액 위약금을 냈어요.,थोक ऑर्डर के लिए अच्छी बीन्स कम पड़ीं। थोड़ा जुर्माना भरा गया।
+crisis.wholesale_short.t,Delivery short,Teslimat eksik,Lieferung zu knapp,Entrega incompleta,Livraison incomplète,Entrega incompleta,Не хватает товара,納品不足,납품 부족,डिलीवरी में कमी
+cust.commuter,Commuter,Yolcu,Pendler,Viajero,Navetteur,Pendular,Пассажир,通勤客,출근족,दफ़्तर जाने वाला
+cust.influencer,Influencer,Fenomen,Influencer,Influencer,Influenceur,Influenciador,Блогер,インフルエンサー,인플루언서,इन्फ़्लुएंसर
+cust.regular,Regular,Müdavim,Stammgast,Habitual,Habitué,Cliente fiel,Постоянный гость,常連,단골,नियमित ग्राहक
+cust.student,Student,Öğrenci,Student,Estudiante,Étudiant,Estudante,Студент,学生,학생,छात्र
+cust.tourist,Tourist,Turist,Tourist,Turista,Touriste,Turista,Турист,観光客,관광객,पर्यटक
+err.blocked,Follow the guide,Rehberi takip et,Folge der Anleitung,Sigue la guía,Suis le guide,Siga o guia,Сначала следуй подсказкам,ガイドに従ってください,가이드를 따라가 주세요,गाइड को फ़ॉलो करो
+err.busy,Busy right now,Şu an meşgul,Gerade beschäftigt,Ocupado ahora mismo,Occupé pour le moment,Ocupado agora,Сейчас занято,今は手が離せません,지금은 바빠요,अभी व्यस्त है
+err.cash,Not enough money,Yeterli para yok,Nicht genug Geld,No hay suficiente dinero,Pas assez d'argent,Dinheiro insuficiente,Не хватает денег,お金が足りません,돈이 부족해요,पैसे कम हैं
+err.invalid,Not possible,Mümkün değil,Nicht möglich,No es posible,Impossible,Não é possível,Невозможно,できません,할 수 없어요,यह नहीं हो सकता
+err.last,Keep at least one drink,En az bir içecek tut,Behalte mindestens ein Getränk,Mantén al menos una bebida,Garde au moins une boisson,Mantenha pelo menos uma bebida,Оставь хотя бы один напиток,飲み物は少なくとも1つ残してください,음료는 최소 한 종류 남겨 두세요,कम से कम एक ड्रिंक रखो
+err.locked,Not open yet,Henüz açık değil,Noch nicht offen,Aún no está abierto,Pas encore ouvert,Ainda não está aberto,Ещё не открыто,まだ開いていません,아직 열리지 않았어요,अभी खुला नहीं है
+err.max,Maxed out,En üst seviyede,Maximal erreicht,Al máximo,Maximum atteint,No máximo,Максимум,上限に達しました,최대치예요,सीमा पूरी
+err.no_green,No green coffee,Çiğ kahve yok,Kein Rohkaffee,No hay café verde,Pas de café vert,Sem café verde,Нет зелёного кофе,生豆がありません,생두가 없어요,कच्ची कॉफ़ी नहीं है
+err.no_stops,Nothing to do,Yapılacak bir şey yok,Nichts zu tun,Nada que hacer,Rien à faire,Nada para fazer,Делать нечего,やることはありません,할 일이 없어요,करने को कुछ नहीं
+err.no_ticket,Tap a ticket first,Önce bir fişe dokun,Tippe zuerst auf einen Bon,Toca antes un ticket,Touche d'abord un ticket,Toque primeiro num pedido,Сначала нажми на талон,先に注文札をタップしてください,먼저 주문표를 누르세요,पहले एक टिकट पर टैप करो
+err.nothing,Nothing to do,Yapılacak bir şey yok,Nichts zu tun,Nada que hacer,Rien à faire,Nada para fazer,Делать нечего,やることはありません,할 일이 없어요,करने को कुछ नहीं
+err.nothing_ready,Nothing on the shelf yet,Rafta henüz bir şey yok,Noch nichts auf dem Regal,Todavía no hay nada en el estante,Rien sur l'étagère pour l'instant,Nada na prateleira ainda,На полке пока ничего нет,棚にはまだ何もありません,선반에 아직 아무것도 없어요,शेल्फ़ पर अभी कुछ नहीं
+err.nothing_rested,Nothing has rested yet,Henüz dinlenen bir şey yok,Noch nichts ist ausgeruht,Todavía no ha reposado nada,Rien n'a encore reposé,Nada descansou ainda,Ещё ничего не отлежалось,まだ休ませた豆はありません,아직 쉬고 있는 원두가 없어요,अभी कुछ आराम नहीं कर रहा
+err.owned,Already yours,Zaten senin,Schon deins,Ya es tuyo,Déjà à toi,Já é seu,Уже твоё,すでにお持ちです,이미 가지고 있어요,पहले से तुम्हारा है
+err.phase,Not right now,Şu an değil,Gerade nicht,Ahora no,Pas maintenant,Não agora,Сейчас нельзя,今はできません,지금은 안 돼요,अभी नहीं
+err.rating,You need more stars,Daha fazla yıldıza ihtiyacın var,Du brauchst mehr Sterne,Necesitas más estrellas,Il te faut plus d'étoiles,Você precisa de mais estrelas,Нужно больше звёзд,星がもっと必要です,별점이 더 필요해요,और स्टार चाहिए
+err.ready,Already done,Zaten yapıldı,Schon erledigt,Ya está hecho,Déjà fait,Já feito,Уже готово,すでに済んでいます,이미 완료했어요,पहले से हो चुका है
+err.requires,Needs research first,Önce araştırma gerekli,Braucht zuerst Forschung,Primero necesita investigación,Il faut d'abord une recherche,Precisa de pesquisa antes,Сначала нужно исследование,先に研究が必要です,먼저 연구가 필요해요,पहले रिसर्च चाहिए
+err.research,Needs research,Araştırma gerekli,Braucht Forschung,Necesita investigación,Il faut une recherche,Precisa de pesquisa,Нужно исследование,研究が必要です,연구가 필요해요,रिसर्च चाहिए
+err.role,Only baristas work stations,Sadece baristalar istasyonlarda çalışır,Nur Baristas bedienen die Stationen,Solo los baristas atienden las estaciones,Seuls les baristas tiennent les postes,Só baristas trabalham nas estações,Только бариста работает на станциях,設備を使えるのはバリスタだけです,바리스타만 작업대를 맡을 수 있어요,सिर्फ़ बरिस्ता स्टेशन चलाते हैं
+err.running,Already running,Zaten çalışıyor,Läuft schon,Ya está en marcha,Déjà en cours,Já em andamento,Уже идёт,すでに進行中です,이미 진행 중이에요,पहले से चल रहा है
+err.started,Already being made,Zaten hazırlanıyor,Wird schon gemacht,Ya se está preparando,Déjà en préparation,Já sendo feito,Уже готовится,すでに作成中です,이미 만드는 중이에요,पहले से बन रहा है
+err.unknown,Not possible,Mümkün değil,Nicht möglich,No es posible,Impossible,Não é possível,Невозможно,できません,할 수 없어요,यह नहीं हो सकता
+err.unreachable,Not possible,Mümkün değil,Nicht möglich,No es posible,Impossible,Não é possível,Невозможно,できません,할 수 없어요,यह नहीं हो सकता
+forecast.board_help,The forecast board (research) shows three days ahead.,Tahmin panosu (araştırma) üç gün ilerisini gösterir.,Die Vorhersagetafel (Forschung) zeigt drei Tage im Voraus.,El tablero de previsión (investigación) muestra tres días por adelantado.,Le tableau des prévisions (recherche) montre trois jours à l'avance.,O quadro de previsão (pesquisa) mostra três dias à frente.,Доска прогноза (в исследованиях) показывает три дня вперёд.,天気予報ボード（研究）で、3日先までの予報がわかります。,예보판(연구)은 사흘 앞의 날씨를 보여 줘요.,पूर्वानुमान बोर्ड (रिसर्च) तीन दिन आगे तक दिखाता है।
+forecast.day,Day {n},Gün {n},Tag {n},Día {n},Jour {n},Dia {n},День {n},{n}日目,{n}일차,दिन {n}
+forecast.fog,"Quiet street, more pre-orders.","Sakin sokak, daha çok ön sipariş.","Ruhige Straße, mehr Vorbestellungen.","Calle tranquila, más pedidos anticipados.","Rue calme, plus de commandes anticipées.","Rua calma, mais pedidos antecipados.","Тихая улица, больше предзаказов.",通りは静かで、予約注文が増えます。,"조용한 거리, 예약 주문이 늘어요.","सुनसान गली, ज़्यादा पहले से ऑर्डर।"
+forecast.heat,Iced drinks everywhere. Ice runs out fast.,Her yerde buzlu içecek. Buz çabuk biter.,Eisgetränke überall. Das Eis geht schnell aus.,Bebidas frías por todas partes. El hielo se acaba rápido.,Boissons glacées partout. La glace s'épuise vite.,Bebidas geladas por toda parte. O gelo acaba rápido.,Холодные напитки повсюду. Лёд быстро заканчивается.,どこでもアイスドリンクが売れます。氷がすぐになくなります。,아이스 음료가 사방에서 팔려요. 얼음이 빨리 떨어져요.,हर जगह आइस्ड ड्रिंक। बर्फ़ जल्दी खत्म होगी।
+forecast.prep,Prepare,Hazırla,Vorbereiten,Preparar,Préparer,Preparar,Заготовить,仕込む,준비,तैयारी
+forecast.prep_hot,Prep hot drinks,Sıcak içecekleri hazırla,Heiße Getränke vorbereiten,Preparar bebidas calientes,Préparer les boissons chaudes,Preparar bebidas quentes,Заготовить горячие,温かい飲み物を仕込む,따뜻한 음료 준비,गरम ड्रिंक तैयार करो
+forecast.prep_hot.d,Pre-brew {n} cups of americano and filter. Served at once. In the urn: {left}.,{n} fincan americano ve filtre kahveyi önceden demle. Hemen servis edilir. Sürahide: {left}.,Brühe {n} Tassen Americano und Filterkaffee vor. Sofort serviert. Im Warmhalter: {left}.,Prepara de antemano {n} tazas de americano y de filtro. Se sirven al momento. En el termo: {left}.,Pré-infuse {n} tasses d'américano et de filtre. Servi tout de suite. Dans la carafe : {left}.,Prepare antecipadamente {n} xícaras de americano e de coador. Servidas na hora. Na garrafa térmica: {left}.,Заварить заранее {n} шт. американо и фильтра. Выдаётся сразу. В термосе: {left}.,アメリカーノとフィルターコーヒーを {n} 杯ずつ先に淹れます。すぐに出せます。保温ポット内: {left}。,아메리카노와 드립 커피 {n}잔을 미리 내려 둬요. 바로 제공돼요. 보온 주전자에: {left}.,{n} कप अमेरिकानो और फ़िल्टर पहले से बनाओ। एक साथ परोसे जाएँगे। कैराफ़े में: {left}।
+forecast.prep_ice,Make extra ice,Ekstra buz yap,Extra Eis machen,Hacer hielo extra,Faire de la glace en plus,Fazer gelo extra,Наколоть лёд про запас,氷を多めに作る,얼음 더 만들기,और बर्फ़ बनाओ
+forecast.prep_ice.d,Add {kg} of ice to the bin.,Kovaya {kg} buz ekle.,{kg} Eis in den Behälter geben.,Añade {kg} de hielo al recipiente.,Ajoute {kg} de glace dans le bac.,Coloque {kg} de gelo no balde.,Добавить льда в контейнер: {kg}.,氷を {kg} ボックスに追加します。,통에 얼음 {kg} 추가.,बिन में {kg} बर्फ़ डालो।
+forecast.rain,"Fewer walk-ins, more pre-orders, more hot drinks.","Daha az plansız müşteri, daha çok ön sipariş, daha çok sıcak içecek.","Weniger Laufkundschaft, mehr Vorbestellungen, mehr heiße Getränke.","Menos clientes que pasan, más pedidos anticipados y más bebidas calientes.","Moins de passage, plus de commandes anticipées, plus de boissons chaudes.","Menos gente de passagem, mais pedidos antecipados, mais bebidas quentes.","Меньше гостей с улицы, больше предзаказов и горячих напитков.",飛び込み客は減り、予約注文と温かい飲み物が増えます。,"들르는 손님은 줄고, 예약 주문과 따뜻한 음료는 늘어요.","कम आने वाले ग्राहक, ज़्यादा पहले से ऑर्डर, ज़्यादा गरम ड्रिंक।"
+forecast.sunny,Normal day. Walk-ins as usual.,Normal bir gün. Plansız müşteriler her zamanki gibi.,Normaler Tag. Laufkundschaft wie üblich.,Día normal. Clientes que pasan como siempre.,Journée normale. Passage habituel.,Dia normal. Gente de passagem como sempre.,Обычный день. Гости с улицы как обычно.,いつもどおりの日です。飛び込み客もいつも通り。,평범한 날이에요. 들르는 손님은 평소처럼 와요.,सामान्य दिन। आने वाले ग्राहक हमेशा की तरह।
+forecast.title,Forecast,Tahmin,Vorhersage,Previsión,Prévisions,Previsão,Прогноз,天気予報,날씨 예보,पूर्वानुमान
+forecast.today,Today,Bugün,Heute,Hoy,Aujourd'hui,Hoje,Сегодня,今日,오늘,आज
+forecast.tomorrow,Tomorrow,Yarın,Morgen,Mañana,Demain,Amanhã,Завтра,明日,내일,कल
 graphics.dropped,Graphics lowered to keep the game smooth. You can change it in Settings.,Oyun akıcı kalsın diye grafikler düşürüldü. Ayarlar'dan değiştirebilirsin.,"Grafik gesenkt, damit das Spiel flüssig läuft. Du kannst es in den Einstellungen ändern.",Gráficos reducidos para mantener el juego fluido. Puedes cambiarlo en Ajustes.,Graphismes baissés pour garder le jeu fluide. Tu peux les changer dans les Réglages.,Gráficos reduzidos para manter o jogo suave. Você pode mudar isso em Configurações.,"Графика снижена, чтобы игра шла плавно. Это можно поменять в настройках.",ゲームを滑らかにするため画質を下げました。設定で変更できます。,게임을 부드럽게 하려고 그래픽을 낮췄어요. 설정에서 바꿀 수 있어요.,गेम चिकना चलाने के लिए ग्राफ़िक्स घटाया गया। इसे सेटिंग्स में बदल सकते हो।
 graphics.high,High,Yüksek,Hoch,Alta,Élevée,Alta,Высокая,高,높음,ऊँचा
 graphics.low,Low,Düşük,Niedrig,Baja,Basse,Baixa,Низкая,低,낮음,कम
 graphics.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
-grow.branch_income,Runs itself · about {cash} a day,,,,,,,,,
-grow.branches,Branches,,,,,,,,,
-grow.here,You are working here today.,,,,,,,,,
-grow.here_short,Here,,,,,,,,,
-grow.needs,Needs ★ {r}.,,,,,,,,,
-grow.needs_short,★ {r},,,,,,,,,
-grow.switch,Work here,,,,,,,,,
-grow.switch_help,Switch branches in the morning plan.,,,,,,,,,
-hud.batch_off,Batch off,,,,,,,,,
-hud.batch_on,Batch on,,,,,,,,,
+grow.branch_income,Runs itself · about {cash} a day,Kendi kendine çalışır · günde yaklaşık {cash},Läuft von selbst · etwa {cash} am Tag,Funciona solo · unos {cash} al día,Tourne tout seul · environ {cash} par jour,Funciona sozinha · cerca de {cash} por dia,Работает само · около {cash} в день,自動で運営 · 1日およそ {cash},스스로 돌아가요 · 하루 약 {cash},अपने आप चलता है · लगभग {cash} रोज़
+grow.branches,Branches,Şubeler,Filialen,Sucursales,Succursales,Filiais,Филиалы,支店,지점,शाखाएँ
+grow.here,You are working here today.,Bugün burada çalışıyorsun.,Du arbeitest heute hier.,Hoy trabajas aquí.,Tu travailles ici aujourd'hui.,Você está trabalhando aqui hoje.,Сегодня ты работаешь здесь.,今日はここで働いています。,오늘은 여기서 일해요.,आज तुम यहाँ काम कर रहे हो।
+grow.here_short,Here,Burada,Hier,Aquí,Ici,Aqui,Здесь,ここ,여기,यहाँ
+grow.needs,Needs ★ {r}.,★ {r} gerekli.,Braucht ★ {r}.,Necesita ★ {r}.,Demande ★ {r}.,Precisa de ★ {r}.,Нужно ★ {r}.,★ {r} が必要。,★ {r} 필요.,★ {r} चाहिए।
+grow.needs_short,★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r},★ {r}
+grow.switch,Work here,Burada çalış,Hier arbeiten,Trabajar aquí,Travailler ici,Trabalhar aqui,Работать здесь,ここで働く,여기서 일하기,यहाँ काम करो
+grow.switch_help,Switch branches in the morning plan.,Sabah planından şubeler arasında geçiş yap.,Wechsle die Filiale im Morgenplan.,Cambia de sucursal en el plan de la mañana.,Change de succursale dans le plan du matin.,Troque de filial no plano da manhã.,Переключай филиалы в утреннем плане.,朝の計画で支店を切り替えられます。,아침 계획에서 지점을 바꿀 수 있어요.,सुबह की योजना में शाखाएँ बदलो।
+hud.batch_off,Batch off,Toplu kapalı,Bündeln aus,Lote desactivado,Groupement désactivé,Juntar desligado,Партия выкл.,まとめ作り オフ,한꺼번에 끄기,बैच बंद
+hud.batch_on,Batch on,Toplu açık,Bündeln an,Lote activado,Groupement activé,Juntar ligado,Партия вкл.,まとめ作り オン,한꺼번에 켜짐,बैच चालू
 hud.day,Day {n},Gün {n},Tag {n},Día {n},Jour {n},Dia {n},День {n},{n}日目,{n}일차,दिन {n}
-hud.hold_grinder,Hold the grinder to dial it in.,,,,,,,,,
+hud.hold_grinder,Hold the grinder to dial it in.,İnce ayar için öğütücüye basılı tut.,"Halte die Mühle gedrückt, um den Mahlgrad einzustellen.",Mantén pulsado el molinillo para ajustar la molienda.,Maintiens le moulin pour régler la mouture.,Segure o moedor para ajustar a moagem.,"Удержи кофемолку, чтобы настроить помол.",グラインダーを長押しして挽き目を調整。,그라인더를 길게 눌러 맛을 맞추세요.,सेट करने के लिए ग्राइंडर दबाकर रखो।
 hud.next_day,Next day,Sonraki gün,Nächster Tag,Día siguiente,Jour suivant,Próximo dia,Следующий день,次の日へ,다음 날,अगला दिन
-hud.open,Open the doors,,,,,,,,,
+hud.open,Open the doors,Kapıları aç,Tür öffnen,Abrir las puertas,Ouvrir les portes,Abrir as portas,Открыть двери,開店する,문 열기,दरवाज़े खोलो
 hud.speed,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×,{n}×
-hud.speed_guide,Speed opens after the guide.,,,,,,,,,
-hud.speed_locked,3× and 4× come with the Speed Pack.,,,,,,,,,
-iap.aprons.d,Wine-red aprons for the whole team.,,,,,,,,,
-iap.aprons.t,Wine Aprons,,,,,,,,,
-iap.automation.d,The grinder stays dialled in and pre-orders are flagged by themselves.,,,,,,,,,
-iap.automation.t,Head Barista+,,,,,,,,,
-iap.bundle.d,"Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.",,,,,,,,,
+hud.speed_guide,Speed opens after the guide.,"Hız, rehberden sonra açılır.",Tempo wird nach der Anleitung freigeschaltet.,La velocidad se desbloquea al terminar la guía.,La vitesse se débloque après le guide.,A velocidade libera depois do guia.,Скорость откроется после подсказок.,ガイドのあとに速度変更が使えます。,가이드를 마치면 속도를 올릴 수 있어요.,गाइड के बाद स्पीड खुलेगी।
+hud.speed_locked,3× and 4× come with the Speed Pack.,"3× ve 4×, Hız Paketi ile gelir.",3× und 4× gibt es mit dem Tempo-Paket.,3× y 4× vienen con el Pack de Velocidad.,Les vitesses 3× et 4× sont dans le Pack Vitesse.,3× e 4× vêm com o Pacote de Velocidade.,3× и 4× идут в пакете скорости.,3×と4×はスピードパックに含まれます。,"3×, 4×는 속도 팩에 들어 있어요.",3× और 4× स्पीड पैक के साथ मिलते हैं।
+iap.aprons.d,Wine-red aprons for the whole team.,Tüm ekip için bordo önlükler.,Weinrote Schürzen für das ganze Team.,Delantales granate para todo el equipo.,Tabliers bordeaux pour toute l'équipe.,Aventais vinho para toda a equipe.,Бордовые фартуки для всей команды.,チーム全員にワインレッドのエプロン。,팀 전체가 입을 와인색 앞치마예요.,पूरी टीम के लिए वाइन-रंग के एप्रन।
+iap.aprons.t,Wine Aprons,Bordo Önlükler,Weinrote Schürzen,Delantales granate,Tabliers bordeaux,Aventais Vinho,Бордовые фартуки,ワインレッドのエプロン,와인 앞치마,वाइन एप्रन
+iap.automation.d,The grinder stays dialled in and pre-orders are flagged by themselves.,Öğütücü ayarlı kalır ve ön siparişler kendiliğinden işaretlenir.,"Die Mühle bleibt eingestellt, und Vorbestellungen werden selbstständig markiert.",El molinillo se mantiene ajustado y los pedidos anticipados se marcan solos.,Le moulin reste bien réglé et les commandes anticipées sont signalées toutes seules.,O moedor fica ajustado sozinho e os pedidos antecipados são sinalizados automaticamente.,"Помол остаётся настроенным, а предзаказы помечаются сами.",グラインダーの挽き目が自動で保たれ、予約注文にも自動で印がつきます。,"그라인더 맛이 계속 맞춰져 있고, 예약 주문은 스스로 표시돼요.",ग्राइंडर अपने आप सेट रहता है और पहले से ऑर्डर अपने आप चिह्नित होते हैं।
+iap.automation.t,Head Barista+,Baş Barista+,Chef-Barista+,Barista jefe+,Chef barista+,Barista-chefe+,Старший бариста+,チーフバリスタ+,수석 바리스타+,हेड बरिस्ता+
+iap.bundle.d,"Edition, Roaster's Pass, Speed, Head Barista+ and every look. Ad-free.","Sürüm, Kavurucu Kartı, Hız, Baş Barista+ ve tüm görünümler. Reklamsız.","Edition, Röster-Pass, Tempo, Chef-Barista+ und alle Looks. Werbefrei.","Edición, Pase del tostador, Velocidad, Barista jefe+ y todos los estilos. Sin anuncios.","Édition, Pass Torréfacteur, Vitesse, Chef barista+ et tous les looks. Sans pub.","Edição, Passe do Torrador, Velocidade, Barista-chefe+ e todos os visuais. Sem anúncios.","Издание, пропуск обжарщика, скорость, старший бариста+ и все оформления. Без рекламы.",エディション、ロースターパス、スピード、チーフバリスタ+、すべてのデザイン。広告なし。,"에디션, 로스터 패스, 속도, 수석 바리스타+와 모든 외형이 들어 있어요. 광고 없음.","एडिशन, रोस्टर पास, स्पीड, हेड बरिस्ता+ और हर लुक। विज्ञापन-मुक्त।"
 iap.bundle.t,Complete Pour & Roast,Pour & Roast'un tamamı,Komplettes Pour & Roast,Pour & Roast completo,Pour & Roast complet,Pour & Roast Completo,Полная версия Pour & Roast,Pour & Roast 完全版,Pour & Roast 완전판,पूरा Pour & Roast
-iap.cash_l.d,About five days of income.,,,,,,,,,
-iap.cash_l.t,Strongbox,,,,,,,,,
-iap.cash_m.d,About two and a half days of income.,,,,,,,,,
-iap.cash_m.t,Cash Register,,,,,,,,,
+iap.cash_l.d,About five days of income.,Yaklaşık beş günlük gelir.,Etwa fünf Tage Einnahmen.,Unos cinco días de ingresos.,Environ cinq jours de revenus.,Cerca de cinco dias de renda.,Примерно на 5 дней дохода.,収入およそ5日分。,수입 약 5일치예요.,लगभग पाँच दिन की कमाई।
+iap.cash_l.t,Strongbox,Çelik Kasa,Geldschatulle,Caja fuerte,Coffre-fort,Cofre,Сейф,金庫,금고,तिजोरी
+iap.cash_m.d,About two and a half days of income.,Yaklaşık iki buçuk günlük gelir.,Etwa zweieinhalb Tage Einnahmen.,Unos dos días y medio de ingresos.,Environ deux jours et demi de revenus.,Cerca de dois dias e meio de renda.,"Примерно на 2,5 дня дохода.",収入およそ2.5日分。,수입 약 2.5일치예요.,लगभग ढाई दिन की कमाई।
+iap.cash_m.t,Cash Register,Kasa,Kasse,Caja registradora,Caisse enregistreuse,Caixa Registradora,Касса,レジ現金,현금 서랍,कैश रजिस्टर
 iap.cash_s.d,About one day of income.,Yaklaşık bir günlük gelir.,Etwa ein Tag Einnahmen.,Aproximadamente un día de ingresos.,Environ un jour de revenus.,Cerca de um dia de renda.,Примерно один день дохода.,約1日分の収入。,수입 약 하루 치예요.,लगभग एक दिन की कमाई।
-iap.cash_s.t,Tip Jar,,,,,,,,,
-iap.cash_xl.d,About ten days of income.,,,,,,,,,
-iap.cash_xl.t,Vault,,,,,,,,,
-iap.comeback.d,Two days of cash to get the cafe going again.,,,,,,,,,
+iap.cash_s.t,Tip Jar,Bahşiş Kavanozu,Trinkgeldglas,Bote de propinas,Bocal à pourboires,Pote de Gorjetas,Банка для чаевых,チップ入れ,팁 항아리,टिप जार
+iap.cash_xl.d,About ten days of income.,Yaklaşık on günlük gelir.,Etwa zehn Tage Einnahmen.,Unos diez días de ingresos.,Environ dix jours de revenus.,Cerca de dez dias de renda.,Примерно на 10 дней дохода.,収入およそ10日分。,수입 약 10일치예요.,लगभग दस दिन की कमाई।
+iap.cash_xl.t,Vault,Kasa Odası,Tresor,Bóveda,Chambre forte,Cofre Forte,Хранилище,大金庫,금고실,खज़ाना
+iap.comeback.d,Two days of cash to get the cafe going again.,Kafeyi yeniden çalıştırmak için iki günlük para.,"Zwei Tage Geld, um das Café wieder zum Laufen zu bringen.",Dos días de dinero para volver a poner en marcha la cafetería.,Deux jours d'argent pour relancer le café.,Dois dias de caixa para o café voltar a funcionar.,"Деньги на 2 дня, чтобы кафе снова заработало.",カフェを再開するための2日分の現金。,카페를 다시 시작하는 데 쓸 현금 2일치예요.,कैफ़े दोबारा चलाने के लिए दो दिन का पैसा।
 iap.comeback.t,Welcome-back Crate,Hoş geldin sandığı,Willkommen-zurück-Kiste,Caja de bienvenida,Caisse de retour,Caixa de Boas-vindas,Ящик «С возвращением»,おかえり木箱,환영 상자,वापसी की पेटी
-iap.cosmetics_all.d,"Every look in the shop, for less.",,,,,,,,,
-iap.cosmetics_all.t,Looks Collection,,,,,,,,,
-iap.crisis.d,"Fills the fridge with milk and ice right now, plus some cash.",,,,,,,,,
-iap.crisis.t,Milk Run Kit,,,,,,,,,
-iap.cups.d,Teal takeaway cups on the pickup shelf.,,,,,,,,,
-iap.cups.t,Teal Cups,,,,,,,,,
-iap.latte_art.d,Gold-sleeved latte-art cups on the pickup shelf.,,,,,,,,,
-iap.latte_art.t,Latte Art Cups,,,,,,,,,
-iap.milestone.d,Four days of cash for your new venue.,,,,,,,,,
-iap.milestone.t,New-Venue Pack,,,,,,,,,
-iap.noads.d,No more ad breaks between days. Rewards without videos.,,,,,,,,,
+iap.cosmetics_all.d,"Every look in the shop, for less.","Mağazadaki her görünüm, daha ucuza.","Jeder Look im Shop, zu einem günstigeren Preis.","Todos los estilos de la tienda, por menos.","Tous les looks de la boutique, moins cher.","Todos os visuais da loja, por menos.","Все оформления из магазина, дешевле.",ショップのデザインすべてを、お得に。,가게의 모든 외형을 더 싸게 담았어요.,"दुकान के हर लुक, कम दाम में।"
+iap.cosmetics_all.t,Looks Collection,Görünüm Koleksiyonu,Look-Sammlung,Colección de estilos,Collection de looks,Coleção de Visuais,Коллекция оформлений,デザインコレクション,외형 컬렉션,लुक कलेक्शन
+iap.crisis.d,"Fills the fridge with milk and ice right now, plus some cash.","Buzdolabını hemen süt ve buzla doldurur, bir miktar para da ekler.","Füllt sofort den Kühlschrank mit Milch und Eis auf, dazu etwas Geld.","Llena la nevera de leche y hielo ahora mismo, más algo de dinero.","Remplit tout de suite le frigo de lait et de glace, plus un peu d'argent.","Enche a geladeira de leite e gelo agora, mais um pouco de dinheiro.","Сразу заполняет холодильник молоком и льдом, плюс немного денег.",今すぐ冷蔵庫に牛乳と氷を補充し、現金も少し付きます。,"지금 바로 냉장고에 우유와 얼음을 채우고, 현금도 조금 줘요.","अभी फ़्रिज में दूध और बर्फ़ भरता है, साथ में कुछ पैसे।"
+iap.crisis.t,Milk Run Kit,Acil Süt Seti,Notfall-Milchset,Kit de reparto de leche,Kit livraison de lait,Kit Entrega de Leite,Набор срочного подвоза,牛乳便キット,우유 배달 키트,दूध मँगाने की किट
+iap.cups.d,Teal takeaway cups on the pickup shelf.,Teslim rafında turkuaz paket bardaklar.,Türkisfarbene Becher auf dem Abholregal.,Vasos para llevar verde azulado en el estante de recogida.,Gobelets à emporter turquoise sur l'étagère de retrait.,Copos para viagem verde-azulados na prateleira de retirada.,Бирюзовые стаканы навынос на полке выдачи.,受け取り棚にティール色のテイクアウトカップ。,픽업 선반에 청록색 테이크아웃 컵이 놓여요.,पिकअप शेल्फ़ पर टील टेकअवे कप।
+iap.cups.t,Teal Cups,Turkuaz Bardaklar,Türkise Becher,Vasos verde azulado,Gobelets turquoise,Copos Verde-azulados,Бирюзовые стаканы,ティールのカップ,청록 컵,टील कप
+iap.latte_art.d,Gold-sleeved latte-art cups on the pickup shelf.,Teslim rafında altın kenarlı latte art fincanları.,Becher mit goldenen Ärmeln für Latte Art auf dem Abholregal.,Vasos para latte art con borde dorado en el estante de recogida.,Tasses à latte art aux manchons dorés sur l'étagère de retrait.,Copos de latte art com detalhes dourados na prateleira de retirada.,Чашки для латте-арта с золотой каймой на полке выдачи.,受け取り棚に、金のスリーブ付きラテアートカップ。,금색 테두리 라떼 아트 컵이 픽업 선반에 놓여요.,पिकअप शेल्फ़ पर सुनहरी किनारी वाले लाते-आर्ट कप।
+iap.latte_art.t,Latte Art Cups,Latte Art Fincanları,Latte-Art-Becher,Vasos de latte art,Tasses latte art,Copos de Latte Art,Чашки для латте-арта,ラテアートカップ,라떼 아트 컵,लाते आर्ट कप
+iap.milestone.d,Four days of cash for your new venue.,Yeni mekânın için dört günlük para.,Vier Tage Geld für deinen neuen Standort.,Cuatro días de dinero para tu nuevo local.,Quatre jours d'argent pour ton nouveau local.,Quatro dias de caixa para seu novo ponto.,Деньги на 4 дня для нового заведения.,新しい店舗のための4日分の現金。,새 매장을 위한 4일치 현금이에요.,तुम्हारी नई जगह के लिए चार दिन का पैसा।
+iap.milestone.t,New-Venue Pack,Yeni Mekân Paketi,Neuer-Standort-Paket,Pack del nuevo local,Pack Nouveau local,Pacote Novo Ponto,Набор нового заведения,新店舗パック,새 매장 팩,नई जगह पैक
+iap.noads.d,No more ad breaks between days. Rewards without videos.,Günler arasında artık reklam molası yok. Ödüller videosuz.,Keine Werbepausen mehr zwischen den Tagen. Belohnungen ohne Videos.,Sin más pausas publicitarias entre días. Recompensas sin vídeos.,Plus de pauses pub entre les journées. Récompenses sans vidéo.,Sem mais pausas com anúncios entre os dias. Recompensas sem vídeos.,Больше никаких рекламных пауз между днями. Награды без видео.,営業日の間の広告がなくなります。報酬は動画なしで受け取れます。,하루와 하루 사이 광고가 나오지 않아요. 보상은 영상 없이 받아요.,दिनों के बीच अब विज्ञापन नहीं। इनाम बिना वीडियो के।
 iap.noads.t,Remove Ads,Reklamları Kaldır,Werbung entfernen,Quitar anuncios,Retirer les pubs,Remover Anúncios,Убрать рекламу,広告を削除,광고 제거,विज्ञापन हटाओ
-iap.offline_plus.d,"Earn for up to 10 hours away, at a better rate.",,,,,,,,,
+iap.offline_plus.d,"Earn for up to 10 hours away, at a better rate.","En fazla 10 saat uzakta kazanç, daha iyi oranla.","Verdiene bis zu 10 Stunden Abwesenheit, zu einem besseren Satz.","Gana mientras estás fuera hasta 10 horas, a mejor tarifa.","Gagne pendant jusqu'à 10 heures d'absence, à un meilleur taux.","Ganhe por até 10 horas fora, com uma taxa melhor.","Доход за отсутствие до 10 часов, по лучшей ставке.",留守の間も最大10時間、よいレートで稼げます。,"자리를 비운 동안 최대 10시간, 더 좋은 비율로 벌어요.",10 घंटे तक दूर रहने पर बेहतर दर से कमाई।
 iap.offline_plus.t,Offline Plus,Çevrimdışı Artı,Offline-Plus,Sin conexión Plus,Hors ligne Plus,Offline Plus,Офлайн+,オフラインプラス,오프라인 플러스,ऑफ़लाइन प्लस
-iap.premium.d,"Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.",,,,,,,,,
-iap.premium.t,Head Roaster Edition,,,,,,,,,
-iap.roast_pass.d,"Ad-free, a better roaster assistant and 10 % more for wholesale.",,,,,,,,,
-iap.roast_pass.t,Roaster's Pass,,,,,,,,,
-iap.slots.d,Three more save slots for more cafes.,,,,,,,,,
-iap.slots.t,Extra Saves,,,,,,,,,
-iap.speed.d,3× and 4× speed and an option to skip the day report.,,,,,,,,,
+iap.premium.d,"Ad-free, a gold espresso machine, a sack of great beans and one extra save slot.","Reklamsız, altın espresso makinesi, bir çuval iyi çekirdek ve bir ek kayıt yuvası.","Werbefrei, eine goldene Espressomaschine, ein Sack guter Bohnen und ein zusätzlicher Speicherplatz.","Sin anuncios, una máquina de espresso dorada, un saco de granos excelentes y una partida extra.","Sans pub, une machine espresso dorée, un sac de bons grains et un emplacement de sauvegarde en plus.","Sem anúncios, uma máquina de espresso dourada, um saco de grãos excelentes e um slot de save extra.","Без рекламы, золотая эспрессо-машина, мешок отличных зёрен и один дополнительный слот сохранения.",広告なし、金色のエスプレッソマシン、上質な豆の袋、セーブ枠 +1。,"광고 없음, 금색 에스프레소 머신, 좋은 원두 한 자루, 저장 칸 하나가 들어 있어요.","विज्ञापन-मुक्त, सुनहरी एस्प्रेसो मशीन, बढ़िया बीन्स का बोरा और एक अतिरिक्त सेव स्लॉट।"
+iap.premium.t,Head Roaster Edition,Baş Kavurucu Sürümü,Chefröster-Edition,Edición Tostador jefe,Édition Torréfacteur en chef,Edição do Torrador-chefe,Издание «Главный обжарщик»,チーフ焙煎士エディション,수석 로스터 에디션,हेड रोस्टर एडिशन
+iap.roast_pass.d,"Ad-free, a better roaster assistant and 10 % more for wholesale.","Reklamsız, daha iyi bir kavurucu yardımcısı ve toptan satışta %10 fazla.","Werbefrei, ein besserer Röster-Assistent und 10 % mehr im Großhandel.","Sin anuncios, un mejor asistente de tostado y un 10 % más en ventas mayoristas.","Sans pub, un meilleur assistant torréfacteur et 10 % de plus en vente en gros.","Sem anúncios, um assistente de torra melhor e 10 % a mais no atacado.","Без рекламы, лучший помощник обжарщика и +10 % к опту.",広告なし、より優秀な焙煎アシスタント、卸売の売上 +10 %。,"광고 없음, 더 좋은 로스팅 보조, 도매 10% 추가예요.","विज्ञापन-मुक्त, बेहतर रोस्टर सहायक और थोक में 10 % ज़्यादा।"
+iap.roast_pass.t,Roaster's Pass,Kavurucu Kartı,Röster-Pass,Pase del tostador,Pass Torréfacteur,Passe do Torrador,Пропуск обжарщика,ロースターパス,로스터 패스,रोस्टर पास
+iap.slots.d,Three more save slots for more cafes.,Daha çok kafe için üç kayıt yuvası daha.,Drei weitere Speicherplätze für mehr Cafés.,Tres partidas más para más cafeterías.,Trois emplacements de sauvegarde en plus pour plus de cafés.,Mais três slots de save para mais cafés.,Ещё три слота сохранения для новых кафе.,カフェを増やすためのセーブ枠を3つ追加。,카페를 더 늘릴 수 있도록 저장 칸 3개가 더 생겨요.,ज़्यादा कैफ़े के लिए तीन और सेव स्लॉट।
+iap.slots.t,Extra Saves,Ek Kayıtlar,Zusätzliche Speicher,Partidas extra,Sauvegardes en plus,Saves Extras,Доп. сохранения,セーブ枠追加,추가 저장,अतिरिक्त सेव
+iap.speed.d,3× and 4× speed and an option to skip the day report.,"3× ve 4× hız, gün raporunu atlama seçeneği.","3× und 4× Tempo und die Option, den Tagesbericht zu überspringen.",Velocidad 3× y 4× y la opción de saltar el informe del día.,Vitesse 3× et 4× et option pour passer le rapport de journée.,Velocidade 3× e 4× e a opção de pular o relatório do dia.,Скорость 3× и 4× и возможность пропускать отчёт дня.,3×と4×の速さ。営業日の報告を飛ばす設定も使えます。,"3×, 4× 속도와 하루 보고서 건너뛰기 옵션이에요.",3× और 4× स्पीड और दिन की रिपोर्ट छोड़ने का विकल्प।
 iap.speed.t,Speed Pack,Hız Paketi,Tempo-Paket,Pack de Velocidad,Pack Vitesse,Pacote de Velocidade,Пакет скорости,スピードパック,속도 팩,स्पीड पैक
-iap.starter.d,Two days of cash and a free extra barista. One time only.,,,,,,,,,
-iap.starter.t,Quick Start,,,,,,,,,
-iap.theme_artdeco.d,Deep blue walls with gold trim.,,,,,,,,,
-iap.theme_artdeco.t,Art Deco Look,,,,,,,,,
-iap.theme_nordic.d,Pale wood and soft white walls.,,,,,,,,,
-iap.theme_nordic.t,Nordic Look,,,,,,,,,
-intro.1.b,A little coffee cart on the rainy Brindle Quay. Your uncle left it to you.,,,,,,,,,
-intro.1.t,Uncle's cart is yours,,,,,,,,,
-intro.2.b,"Every order is a ticket. Choose what's next, who works where, and keep everyone happy.",,,,,,,,,
-intro.2.t,"Tickets, not chaos",,,,,,,,,
-intro.3.b,Grow into a corner cafe and a roastery. Great beans make great reviews.,,,,,,,,,
-intro.3.t,Roast your own beans,,,,,,,,,
+iap.starter.d,Two days of cash and a free extra barista. One time only.,İki günlük para ve bedava bir ek barista. Yalnızca bir kez.,Zwei Tage Geld und eine zusätzliche Barista gratis. Nur einmal.,Dos días de dinero y un barista extra gratis. Solo una vez.,Deux jours d'argent et un barista supplémentaire offert. Une seule fois.,Dois dias de caixa e um barista extra de graça. Só uma vez.,Деньги на 2 дня и бесплатный дополнительный бариста. Только один раз.,2日分の現金と、無料のバリスタ1名。1回限り。,현금 2일치와 무료 바리스타 한 명을 줘요. 한 번만 받을 수 있어요.,दो दिन का पैसा और एक मुफ़्त अतिरिक्त बरिस्ता। सिर्फ़ एक बार।
+iap.starter.t,Quick Start,Hızlı Başlangıç,Schneller Start,Inicio rápido,Démarrage rapide,Início Rápido,Быстрый старт,クイックスタート,빠른 시작,तुरंत शुरुआत
+iap.theme_artdeco.d,Deep blue walls with gold trim.,Altın çerçeveli koyu mavi duvarlar.,Tiefblaue Wände mit goldenen Zierleisten.,Paredes azul intenso con adornos dorados.,Murs bleu profond avec liserés dorés.,Paredes azul-escuras com detalhes dourados.,Глубокие синие стены с золотой отделкой.,金の縁取りのある濃紺の壁。,금색 장식이 있는 짙은 파란 벽이에요.,गहरी नीली दीवारें और सुनहरी किनारी।
+iap.theme_artdeco.t,Art Deco Look,Art Deco Görünüm,Art-déco-Look,Look Art Déco,Look Art déco,Visual Art Déco,Стиль ар-деко,アール・デコの雰囲気,아르데코 외형,आर्ट डेको लुक
+iap.theme_nordic.d,Pale wood and soft white walls.,Açık renk ahşap ve yumuşak beyaz duvarlar.,Heller Holzton und weiche weiße Wände.,Madera clara y paredes blancas suaves.,Bois clair et murs blanc doux.,Madeira clara e paredes brancas suaves.,Светлое дерево и мягкие белые стены.,淡い木目と、やわらかな白い壁。,연한 나무와 부드러운 흰 벽이에요.,हल्की लकड़ी और नरम सफ़ेद दीवारें।
+iap.theme_nordic.t,Nordic Look,Nordik Görünüm,Nordischer Look,Look nórdico,Look nordique,Visual Nórdico,Скандинавский стиль,ノルディックの雰囲気,북유럽 외형,नॉर्डिक लुक
+intro.1.b,A little coffee cart on the rainy Brindle Quay. Your uncle left it to you.,Yağmurlu Brindle Rıhtımı'nda küçük bir kahve arabası. Amcan sana bırakmış.,Ein kleiner Kaffeewagen am verregneten Brindle-Kai. Dein Onkel hat ihn dir hinterlassen.,Un pequeño carrito de café en el lluvioso Brindle Quay. Tu tío te lo dejó.,"Un petit chariot à café sur le quai de Brindle, sous la pluie. Ton oncle te l'a laissé.","Um pequeno carrinho de café no Cais Brindle, sob chuva. Seu tio deixou para você.",Маленькая кофейная тележка на дождливой набережной Бриндл. Её оставил тебе дядя.,雨の多いブリンドル波止場の小さなコーヒーカート。おじさんがあなたに残してくれました。,비 오는 브린들 부두의 작은 커피 카트예요. 삼촌이 당신에게 남겨 주셨어요.,बारिश वाले ब्रिंडल क्वे पर एक छोटी कॉफ़ी कार्ट। इसे तुम्हारे चाचा ने तुम्हें दिया है।
+intro.1.t,Uncle's cart is yours,Amcanın arabası artık senin,Der Wagen von Onkel gehört dir,El carrito del tío es tuyo,Le chariot de l'oncle est à toi,O carrinho do tio é seu,Тележка дяди теперь твоя,おじさんのカートはあなたのもの,삼촌의 카트가 이제 당신 거예요,चाचा की कार्ट अब तुम्हारी है
+intro.2.b,"Every order is a ticket. Choose what's next, who works where, and keep everyone happy.","Her sipariş bir fiştir. Sıradakini seç, herkesin nerede çalışacağını belirle ve herkesi memnun tut.","Jede Bestellung ist ein Bon. Entscheide, was als Nächstes kommt, wer wo arbeitet, und halte alle zufrieden.","Cada pedido es un ticket. Elige qué sigue, quién trabaja dónde y mantén contentos a todos.","Chaque commande est un ticket. Choisis la suite, qui travaille où, et garde tout le monde content.","Cada pedido vira um ticket. Escolha o que vem a seguir, quem trabalha onde e mantenha todos felizes.","Каждый заказ — это талон. Выбирай, что дальше, кто где работает, и радуй всех.",注文はすべて注文札になります。次の作業、誰がどこで働くかを決め、みんなを満足させましょう。,"주문마다 주문표가 생겨요. 다음에 할 일, 누가 어디서 일할지 정하고, 모두를 만족시키세요.","हर ऑर्डर एक टिकट है। तय करो अगला क्या, कौन कहाँ काम करे, और सबको खुश रखो।"
+intro.2.t,"Tickets, not chaos","Kaos değil, fişler",Bons statt Chaos,"Tickets, no caos","Des tickets, pas le chaos","Pedidos, não caos","Талоны, а не хаос",混乱せず、注文札で管理,혼란이 아니라 주문표예요,"टिकट, अराजकता नहीं"
+intro.3.b,Grow into a corner cafe and a roastery. Great beans make great reviews.,Köşe bir kafeye ve bir kavurma atölyesine büyü. Harika çekirdek harika yorumlar getirir.,Wachse zu einem Eckcafé und einer Rösterei. Gute Bohnen bringen gute Bewertungen.,Crece hasta tener una cafetería de esquina y un tostadero. Buenos granos traen buenas reseñas.,Deviens un café de coin et une torréfaction. De bons grains font de bons avis.,Cresça até um café de esquina e uma torrefação. Bons grãos geram boas avaliações.,Расти до углового кафе и обжарочной. Отличные зёрна — отличные отзывы.,角のカフェ、そして焙煎所へと育てましょう。よい豆はよいレビューにつながります。,구석 카페와 로스터리로 키워 보세요. 좋은 원두가 좋은 리뷰를 만들어요.,कोने का कैफ़े और फिर एक रोस्टरी बनो। बढ़िया बीन्स से बढ़िया रिव्यू आते हैं।
+intro.3.t,Roast your own beans,Kendi çekirdeğini kavur,Röste deine eigenen Bohnen,Tuesta tus propios granos,Torréfie tes propres grains,Torre seus próprios grãos,Обжаривай свои зёрна,自分の豆を焙煎しよう,원두를 직접 볶으세요,अपनी बीन्स भूनो
 intro.next,Next,İleri,Weiter,Siguiente,Suivant,Próximo,Дальше,次へ,다음,आगे
 intro.skip,Skip,Atla,Überspringen,Saltar,Passer,Pular,Пропустить,スキップ,건너뛰기,छोड़ो
-intro.start,Let's brew,,,,,,,,,
-marker.bitter,Bitter!,,,,,,,,,
-marker.brew_here,Brew here,,,,,,,,,
-marker.drop_now,Drop now!,,,,,,,,,
-marker.heads,Shots {n}/{m},,,,,,,,,
-marker.jam,Jammed!,,,,,,,,,
-marker.ready,{n} ready,,,,,,,,,
-marker.roaster,Roaster,,,,,,,,,
-marker.shelf,Pickup,,,,,,,,,
-menu.add,Add,,,,,,,,,
-menu.americano,Americano,,,,,,,,,
-menu.americano.short,Ame,,,,,,,,,
-menu.banana_bread,Banana bread,,,,,,,,,
-menu.banana_bread.short,Ban,,,,,,,,,
-menu.board,Menu board,,,,,,,,,
-menu.cappuccino,Cappuccino,,,,,,,,,
-menu.cappuccino.short,Cap,,,,,,,,,
-menu.cinnamon_bun,Cinnamon bun,,,,,,,,,
-menu.cinnamon_bun.short,Bun,,,,,,,,,
-menu.cookie,Cookie,,,,,,,,,
-menu.cookie.short,Coo,,,,,,,,,
-menu.count,{n} drinks on the board,,,,,,,,,
-menu.croissant,Croissant,,,,,,,,,
-menu.croissant.short,Cro,,,,,,,,,
-menu.espresso,Espresso,,,,,,,,,
-menu.espresso.short,Esp,,,,,,,,,
-menu.filter,Filter coffee,,,,,,,,,
-menu.filter.short,Fil,,,,,,,,,
-menu.flat_white,Flat white,,,,,,,,,
-menu.flat_white.short,FW,,,,,,,,,
-menu.help,Fewer drinks = a faster bar. More drinks = bigger tickets.,,,,,,,,,
-menu.iced_americano,Iced americano,,,,,,,,,
-menu.iced_americano.short,IAme,,,,,,,,,
-menu.iced_latte,Iced latte,,,,,,,,,
-menu.iced_latte.short,ILat,,,,,,,,,
-menu.latte,Latte,,,,,,,,,
-menu.latte.short,Lat,,,,,,,,,
-menu.mocha,Mocha,,,,,,,,,
-menu.mocha.short,Moc,,,,,,,,,
-menu.muffin,Muffin,,,,,,,,,
-menu.muffin.short,Muf,,,,,,,,,
-menu.off,Not on the menu,,,,,,,,,
-menu.par,Bake {n} · in case {stock},,,,,,,,,
-menu.par_help,Baked each morning up to this number. Leftovers are wasted.,,,,,,,,,
-menu.pastries,Pastries,,,,,,,,,
-menu.pour_over,Pour-over,,,,,,,,,
-menu.pour_over.short,PO,,,,,,,,,
-menu.remove,Remove,,,,,,,,,
-offline.body,Your cafe earned {cash} in {time}.,,,,,,,,,
-offline.capped,Away pay stops after {h} hours.,,,,,,,,,
-offline.help,Auto top-up and a cashier make the cafe earn more while you're away.,,,,,,,,,
+intro.start,Let's brew,Demlemeye başlayalım,Los geht's,Vamos a preparar café,C'est parti,Vamos preparar,Заварим,淹れてみよう,내려 볼까요,चलो बनाएँ
+marker.bitter,Bitter!,Acı!,Bitter!,¡Amargo!,Amer !,Amargo!,Горчит!,苦い！,써요!,कड़वा!
+marker.brew_here,Brew here,Burada demle,Hier brühen,Preparar aquí,Infuser ici,Preparar aqui,Варить здесь,ここで淹れる,여기서 추출,यहाँ बनाओ
+marker.drop_now,Drop now!,Şimdi boşalt!,Jetzt rausnehmen!,¡Retira ya!,Décharge maintenant !,Tirar agora!,Выгружай!,今、排出！,지금 배출!,अभी उतारो!
+marker.heads,Shots {n}/{m},Shotlar {n}/{m},Shots {n}/{m},Dosis {n}/{m},Shots {n}/{m},Doses {n}/{m},Порции: {n}/{m},ショット {n}/{m},샷 {n}/{m},शॉट {n}/{m}
+marker.jam,Jammed!,Sıkıştı!,Verklemmt!,¡Atascado!,Bloqué !,Travado!,Заклинило!,詰まり！,막힘!,जाम!
+marker.ready,{n} ready,{n} hazır,{n} fertig,{n} listos,{n} prêts,{n} prontos,Готово: {n},{n} 個 準備完了,{n}개 준비됨,{n} तैयार
+marker.roaster,Roaster,Kavurucu,Röster,Tostador,Torréfacteur,Torrador,Обжарка,焙煎機,로스터,रोस्टर
+marker.shelf,Pickup,Teslim,Abholung,Recogida,Retrait,Retirada,Выдача,受け取り,픽업,पिकअप
+menu.add,Add,Ekle,Hinzufügen,Añadir,Ajouter,Adicionar,Добавить,追加,추가,जोड़ो
+menu.americano,Americano,Americano,Americano,Americano,Américano,Americano,Американо,アメリカーノ,아메리카노,अमेरिकानो
+menu.americano.short,Ame,Ame,Ame,Ame,Amé,Ame,Амер,アメ,아메,अमे
+menu.banana_bread,Banana bread,Muzlu ekmek,Bananenbrot,Pan de plátano,Banana bread,Pão de banana,Банановый хлеб,バナナブレッド,바나나브레드,केले की ब्रेड
+menu.banana_bread.short,Ban,Muz,Ban,Plá,Ban,Ban,Банан,バナ,바나나,केला
+menu.board,Menu board,Menü panosu,Menütafel,Carta,Tableau des menus,Quadro de cardápio,Доска меню,メニューボード,메뉴판,मेन्यू बोर्ड
+menu.cappuccino,Cappuccino,Kapuçino,Cappuccino,Capuchino,Cappuccino,Cappuccino,Капучино,カプチーノ,카푸치노,कैपुचीनो
+menu.cappuccino.short,Cap,Kap,Cap,Cap,Cap,Cap,Капуч,カプ,카푸,कैप
+menu.cinnamon_bun,Cinnamon bun,Tarçınlı çörek,Zimtschnecke,Rollo de canela,Brioche à la cannelle,Pão de canela,Коричная булочка,シナモンロール,시나몬 번,दालचीनी बन
+menu.cinnamon_bun.short,Bun,Çör,Zim,Can,Can,Can,Корица,ロール,시나몬,बन
+menu.cookie,Cookie,Kurabiye,Keks,Galleta,Cookie,Cookie,Печенье,クッキー,쿠키,कुकी
+menu.cookie.short,Coo,Kur,Kek,Gal,Coo,Coo,Печен,クキ,쿠키,कुकी
+menu.count,{n} drinks on the board,Panoda {n} içecek,{n} Getränke auf der Tafel,{n} bebidas en la carta,{n} boissons au tableau,{n} bebidas no quadro,Напитков в меню: {n},ボードの飲み物 {n} 種,메뉴판에 음료 {n}개,मेन्यू पर {n} ड्रिंक
+menu.croissant,Croissant,Kruvasan,Croissant,Cruasán,Croissant,Croissant,Круассан,クロワッサン,크루아상,क्रोसां
+menu.croissant.short,Cro,Kru,Cro,Cro,Cro,Cro,Круас,クロ,크루,क्रो
+menu.espresso,Espresso,Espresso,Espresso,Espresso,Espresso,Espresso,Эспрессо,エスプレッソ,에스프레소,एस्प्रेसो
+menu.espresso.short,Esp,Esp,Esp,Esp,Esp,Esp,Эспр,エス,에스프,एस्प्र
+menu.filter,Filter coffee,Filtre kahve,Filterkaffee,Café de filtro,Café filtre,Café de coador,Фильтр-кофе,ドリップコーヒー,드립 커피,फ़िल्टर कॉफ़ी
+menu.filter.short,Fil,Fil,Fil,Fil,Filt,Fil,Фильт,ドリ,드립,फ़िल्
+menu.flat_white,Flat white,Flat white,Flat White,Flat white,Flat white,Flat white,Флэт уайт,フラットホワイト,플랫 화이트,फ़्लैट व्हाइट
+menu.flat_white.short,FW,FW,FW,FW,FW,FW,Флэт,FW,플랫,फ़्लै
+menu.help,Fewer drinks = a faster bar. More drinks = bigger tickets.,"Az içecek, hızlı bar demek. Çok içecek, daha büyük fişler demek.",Weniger Getränke = schnellere Bar. Mehr Getränke = größere Bons.,Menos bebidas = barra más rápida. Más bebidas = tickets más grandes.,Moins de boissons = bar plus rapide. Plus de boissons = tickets plus gros.,Menos bebidas = balcão mais rápido. Mais bebidas = pedidos maiores.,Меньше напитков — быстрее бар. Больше напитков — крупнее чеки.,飲み物が少ないほどカウンターは速くなります。飲み物が多いと注文の合計金額が大きくなります。,음료가 적을수록 바가 빨라져요. 음료가 많으면 주문이 커져요.,कम ड्रिंक = तेज़ बार। ज़्यादा ड्रिंक = बड़े ऑर्डर।
+menu.iced_americano,Iced americano,Buzlu americano,Eis-Americano,Americano con hielo,Américano glacé,Americano gelado,Холодное американо,アイスアメリカーノ,아이스 아메리카노,आइस्ड अमेरिकानो
+menu.iced_americano.short,IAme,BAme,EAm,IAme,AmG,IAme,АйсА,アイアメ,아아,आ.अमे
+menu.iced_latte,Iced latte,Buzlu latte,Eis-Latte,Latte con hielo,Latte glacé,Latte gelado,Айс-латте,アイスラテ,아이스 라떼,आइस्ड लाते
+menu.iced_latte.short,ILat,BLat,ELa,ILat,LaG,ILat,АйсЛ,アイラ,아라,आ.लाते
+menu.latte,Latte,Latte,Latte,Latte,Latte,Latte,Латте,ラテ,라떼,लाते
+menu.latte.short,Lat,Lat,Lat,Lat,Lat,Lat,Латте,ラテ,라떼,लाते
+menu.mocha,Mocha,Mocha,Mocha,Moca,Mocha,Mocha,Мокка,モカ,모카,मोका
+menu.mocha.short,Moc,Moc,Moc,Moc,Moc,Moc,Мокка,モ,모카,मोका
+menu.muffin,Muffin,Muffin,Muffin,Magdalena,Muffin,Muffin,Маффин,マフィン,머핀,मफ़िन
+menu.muffin.short,Muf,Muf,Muf,Mag,Muf,Muf,Маффин,マフ,머핀,मफ़
+menu.off,Not on the menu,Menüde değil,Nicht auf der Karte,Fuera de la carta,Pas au menu,Fora do cardápio,Нет в меню,メニューにありません,메뉴에 없음,मेन्यू पर नहीं
+menu.par,Bake {n} · in case {stock},Pişir {n} · yedek {stock},Backen {n} · Vorrat {stock},Hornear {n} · por si acaso {stock},Cuire {n} · stock {stock},Assar {n} · por precaução {stock},Испечь: {n} · запас {stock},{n} 個焼く · 在庫 {stock},{n}개 굽기 · 여유분 {stock},{n} बेक करो · स्टॉक {stock} होने पर
+menu.par_help,Baked each morning up to this number. Leftovers are wasted.,Her sabah bu sayıya kadar pişirilir. Artanlar israf olur.,Wird jeden Morgen bis zu dieser Zahl gebacken. Reste werden weggeworfen.,Se hornea cada mañana hasta este número. Lo que sobra se desperdicia.,Cuit chaque matin jusqu'à ce nombre. Les restes sont perdus.,Assados toda manhã até este número. As sobras são desperdiçadas.,Пекутся каждое утро до этого числа. Остатки пропадают.,毎朝この数まで焼きます。余ったものは廃棄されます。,매일 아침 이 개수까지 구워요. 남은 빵은 버려져요.,हर सुबह इस संख्या तक बेक होता है। बचा हुआ बर्बाद होता है।
+menu.pastries,Pastries,Hamur işleri,Gebäck,Bollería,Viennoiseries,Doces,Выпечка,焼き菓子,페이스트리,पेस्ट्री
+menu.pour_over,Pour-over,Dökme kahve,Pour-over,Café de goteo,Pour-over,Café filtrado,Пуровер,ハンドドリップ,푸어오버,पोर-ओवर
+menu.pour_over.short,PO,Dök,PO,PO,PO,CF,Пуров,HD,푸오,पो
+menu.remove,Remove,Kaldır,Entfernen,Quitar,Retirer,Remover,Убрать,外す,빼기,हटाओ
+offline.body,Your cafe earned {cash} in {time}.,Kafen {time} içinde {cash} kazandı.,Dein Café hat in {time} {cash} verdient.,Tu cafetería ganó {cash} en {time}.,Ton café a gagné {cash} pendant {time}.,Seu café ganhou {cash} em {time}.,Твоё кафе заработало {cash} за {time}.,カフェは {time} の間に {cash} を稼ぎました。,카페가 {time} 동안 번 돈: {cash},तुम्हारे कैफ़े ने {time} में {cash} कमाए।
+offline.capped,Away pay stops after {h} hours.,Uzaktayken ödeme {h} saatten sonra durur.,Die Abwesenheitsvergütung endet nach {h} Stunden.,El pago por estar fuera se detiene tras {h} horas.,La paie d'absence s'arrête après {h} heures.,O pagamento fora para após {h} horas.,Оплата за отсутствие прекращается после {h} ч.,留守中の収入は {h} 時間で止まります。,자리를 비운 수입은 {h}시간 뒤에 멈춰요.,दूर रहने की कमाई {h} घंटे बाद रुकती है।
+offline.help,Auto top-up and a cashier make the cafe earn more while you're away.,"Otomatik takviye ve bir kasiyer, sen yokken kafenin daha çok kazanmasını sağlar.",Automatisches Nachfüllen und eine Kassiererin lassen das Café auch in deiner Abwesenheit mehr verdienen.,La reposición automática y un cajero hacen que la cafetería gane más mientras no estás.,Le réapprovisionnement automatique et une caissière font gagner plus le café pendant ton absence.,Reposição automática e um caixa fazem o café ganhar mais enquanto você está fora.,"Автопополнение и кассир помогают кафе зарабатывать, пока тебя нет.",自動補充と会計係があると、留守の間もカフェがより多く稼げます。,자동 보충과 계산 담당이 있으면 자리를 비운 동안에도 카페가 더 벌어요.,अपने आप टॉप-अप और एक कैशियर तुम्हारी गैरमौजूदगी में भी कैफ़े की कमाई बढ़ाते हैं।
 offline.title,While you were away,Sen yokken,Während du weg warst,Mientras estabas fuera,Pendant ton absence,Enquanto você estava fora,Пока тебя не было,留守の間に,자리를 비운 사이,तुम्हारे दूर रहने के दौरान
-origin.highland,Highland Washed,,,,,,,,,
-origin.highland.d,Bright and floral. Shines as a light roast.,,,,,,,,,
-origin.lowland,Lowland Natural,,,,,,,,,
-origin.lowland.d,Fruity and round. A safe medium roast.,,,,,,,,,
-origin.valley,Valley Classic,,,,,,,,,
-origin.valley.d,"Cheap, chocolatey, made for dark roasts.",,,,,,,,,
-origin.volcanic,Volcanic Honey,,,,,,,,,
-origin.volcanic.d,Sweet and rare. The best beans on the market.,,,,,,,,,
-phase.live,Open,,,,,,,,,
+origin.highland,Highland Washed,Yüksek Yıkanmış,Hochland gewaschen,Lavado de tierras altas,Highland lavé,Lavado das Terras Altas,Горный мытый,ハイランド・ウォッシュド,하이랜드 워시드,हाइलैंड वॉश्ड
+origin.highland.d,Bright and floral. Shines as a light roast.,Parlak ve çiçeksi. Açık kavurmada parlar.,Hell und blumig. Glänzt als helle Röstung.,Brillante y floral. Brilla con un tueste claro.,Vif et floral. Brille en torréfaction claire.,Brilhante e floral. Brilha como torra clara.,Яркий и цветочный. Раскрывается при светлой обжарке.,明るく花のような香り。浅煎りで輝きます。,밝고 꽃향이 나요. 라이트 로스트에서 빛나요.,चमकदार और फूलों जैसी। हल्के रोस्ट में खिलती है।
+origin.lowland,Lowland Natural,Ova Doğal,Tiefland natur,Natural de tierras bajas,Lowland naturel,Natural das Terras Baixas,Низинный натуральный,ローランド・ナチュラル,로우랜드 내추럴,लोलैंड नैचुरल
+origin.lowland.d,Fruity and round. A safe medium roast.,Meyveli ve yuvarlak. Güvenli bir orta kavurma.,Fruchtig und rund. Eine sichere mittlere Röstung.,Afrutado y redondo. Un tueste medio seguro.,Fruité et rond. Une torréfaction moyenne sûre.,Frutado e redondo. Uma torra média segura.,Фруктовый и мягкий. Надёжная средняя обжарка.,フルーティでまろやか。中煎りで安心の味わい。,과일향이 나고 부드러워요. 안정적인 미디엄 로스트예요.,फलदार और गोल स्वाद। सुरक्षित मीडियम रोस्ट।
+origin.valley,Valley Classic,Vadi Klasik,Tal-Klassiker,Clásico del valle,Valley classique,Clássico do Vale,Долинный классический,ヴァレー・クラシック,밸리 클래식,वैली क्लासिक
+origin.valley.d,"Cheap, chocolatey, made for dark roasts.","Ucuz, çikolatamsı, koyu kavurmalar için.","Günstig, schokoladig, gemacht für dunkle Röstungen.","Barato, a chocolate, pensado para tuestes oscuros.","Pas cher, chocolaté, fait pour les torréfactions foncées.","Barato, achocolatado, feito para torras escuras.","Недорогой, шоколадный, для тёмной обжарки.",安価でチョコレートのような風味。深煎りに向いています。,저렴하고 초콜릿 맛이 나요. 다크 로스트용이에요.,"सस्ती, चॉकलेटी, गहरे रोस्ट के लिए।"
+origin.volcanic,Volcanic Honey,Volkanik Bal,Vulkan-Honig,Miel volcánica,Volcanic Miel,Mel Vulcânico,Вулканический мёд,ヴォルカニック・ハニー,화산 허니,वोल्केनिक हनी
+origin.volcanic.d,Sweet and rare. The best beans on the market.,Tatlı ve nadir. Piyasanın en iyi çekirdeği.,Süß und selten. Die besten Bohnen auf dem Markt.,Dulce y raro. Los mejores granos del mercado.,Doux et rare. Les meilleurs grains du marché.,Doce e raro. Os melhores grãos do mercado.,Сладкий и редкий. Лучшие зёрна на рынке.,甘くて希少。市場で最高の豆です。,달고 귀해요. 시장에서 가장 좋은 원두예요.,मीठी और दुर्लभ। बाज़ार की सबसे बढ़िया बीन्स।
+phase.live,Open,Açık,Geöffnet,Abierto,Ouvert,Aberto,Открыто,営業中,영업 중,खुला
 phase.plan,Morning plan,Sabah planı,Morgenplan,Plan de la mañana,Planification du matin,Plano da manhã,План на утро,朝の計画,아침 계획,सुबह की योजना
 phase.report,Day report,Gün raporu,Tagesbericht,Informe del día,Rapport de la journée,Relatório do dia,Отчёт дня,日報,하루 보고서,दिन की रिपोर्ट
-profile.dark,Dark,,,,,,,,,
-profile.light,Light,,,,,,,,,
-profile.medium,Medium,,,,,,,,,
-report.beans,Beans,,,,,,,,,
-report.bonus,Bonus,,,,,,,,,
-report.branches,Branches,,,,,,,,,
-report.fees,Fees,,,,,,,,,
-report.milk,Milk and ice,,,,,,,,,
-report.minutes,{n} min,,,,,,,,,
+profile.dark,Dark,Koyu,Dunkel,Oscuro,Foncée,Escura,Тёмная,深煎り,다크,गहरा
+profile.light,Light,Hafif,Hell,Claro,Claire,Clara,Светлая,浅煎り,라이트,हल्का
+profile.medium,Medium,Orta,Mittel,Media,Moyenne,Média,Средняя,中,보통,मध्यम
+report.beans,Beans,Çekirdek,Bohnen,Granos,Grains,Grãos,Зёрна,豆,원두,बीन्स
+report.bonus,Bonus,Bonus,Bonus,Bonificación,Bonus,Bônus,Премия,ボーナス,보너스,बोनस
+report.branches,Branches,Şubeler,Filialen,Sucursales,Succursales,Filiais,Филиалы,支店,지점,शाखाएँ
+report.fees,Fees,Hizmet bedeli,Gebühren,Tasas,Frais,Taxas,Сборы,手数料,수수료,फ़ीस
+report.milk,Milk and ice,Süt ve buz,Milch und Eis,Leche y hielo,Lait et glace,Leite e gelo,Молоко и лёд,牛乳と氷,우유와 얼음,दूध और बर्फ़
+report.minutes,{n} min,{n} dk,{n} Min.,{n} min,{n} min,{n} min,{n} мин,{n} 分,{n}분,{n} मिनट
 report.net,Profit,Kâr,Gewinn,Beneficio,Bénéfice,Lucro,Прибыль,利益,이익,मुनाफ़ा
-report.on_time,Pre-orders on time,,,,,,,,,
-report.pastry,Pastries,,,,,,,,,
-report.quality,Cup quality,,,,,,,,,
-report.rent,Rent,,,,,,,,,
-report.revenue,Sales,,,,,,,,,
-report.reviews,Reviews {avg} ★ ({n}) · reputation {rating} ★,,,,,,,,,
-report.served,Served,,,,,,,,,
-report.tips,Tips,,,,,,,,,
+report.on_time,Pre-orders on time,Zamanında ön siparişler,Vorbestellungen pünktlich,Pedidos anticipados a tiempo,Commandes anticipées à l'heure,Pedidos antecipados no horário,Предзаказы вовремя,予約注文の時間どおり,제시간에 나온 예약 주문,समय पर पहले से ऑर्डर
+report.pastry,Pastries,Hamur işleri,Gebäck,Bollería,Viennoiseries,Doces,Выпечка,焼き菓子,페이스트리,पेस्ट्री
+report.quality,Cup quality,Fincan kalitesi,Tassenqualität,Calidad de la taza,Qualité des tasses,Qualidade da xícara,Качество чашки,カップの品質,음료 품질,कप की क्वालिटी
+report.rent,Rent,Kira,Miete,Alquiler,Loyer,Aluguel,Аренда,家賃,임대료,किराया
+report.revenue,Sales,Satışlar,Umsatz,Ventas,Ventes,Vendas,Продажи,売上,매출,बिक्री
+report.reviews,Reviews {avg} ★ ({n}) · reputation {rating} ★,Yorumlar {avg} ★ ({n}) · itibar {rating} ★,Bewertungen {avg} ★ ({n}) · Ruf {rating} ★,Reseñas {avg} ★ ({n}) · reputación {rating} ★,Avis {avg} ★ ({n}) · réputation {rating} ★,Avaliações {avg} ★ ({n}) · reputação {rating} ★,Отзывы {avg} ★ ({n}) · репутация {rating} ★,レビュー {avg} ★（{n} 件）· 評判 {rating} ★,리뷰 {avg} ★ ({n}) · 평판 {rating} ★,रिव्यू {avg} ★ ({n}) · प्रतिष्ठा {rating} ★
+report.served,Served,Servis edilen,Bedient,Servidos,Servis,Atendidos,Выдано,提供数,제공,परोसे गए
+report.tips,Tips,Bahşişler,Trinkgeld,Propinas,Pourboires,Gorjetas,Чаевые,チップ,팁,टिप
 report.title,Day {n} report,{n}. gün raporu,Bericht Tag {n},Informe del día {n},Rapport du jour {n},Relatório do dia {n},Отчёт за день {n},{n}日目のレポート,{n}일차 보고서,दिन {n} की रिपोर्ट
 report.wages,Wages,Ücretler,Löhne,Salarios,Salaires,Salários,Зарплаты,給料,임금,वेतन
-report.wait,Average wait,,,,,,,,,
-report.walked,Walked away,,,,,,,,,
-report.waste,Wasted (spoiled),,,,,,,,,
-report.wholesale,Wholesale,,,,,,,,,
-research.branch.bar,Bar craft,,,,,,,,,
-research.branch.cafe,Cafe,,,,,,,,,
-research.branch.roastery,Roastery,,,,,,,,,
-research.burr_set.d,Half the grinder wear.,,,,,,,,,
-research.burr_set.t,Hard burrs,,,,,,,,,
-research.cupping_lab.d,Every roast tastes better.,,,,,,,,,
-research.cupping_lab.t,Cupping lab,,,,,,,,,
-research.dial_scale.d,The grind drifts 40 % slower.,,,,,,,,,
-research.dial_scale.t,Dose scale,,,,,,,,,
+report.wait,Average wait,Ortalama bekleme,Durchschnittliche Wartezeit,Espera media,Attente moyenne,Espera média,Среднее ожидание,平均待ち時間,평균 대기,औसत इंतज़ार
+report.walked,Walked away,Gidip gitti,Gegangen,Se fueron,Partis,Foram embora,Ушли,立ち去った客,떠난 손님,चले गए
+report.waste,Wasted (spoiled),İsraf (bozulan),Weggeworfen (verdorben),Desperdiciado (estropeado),Gaspillé (périmé),Desperdício (estragou),Потери (испорчено),廃棄（傷み）,버린 것 (상함),बर्बाद (खराब हुआ)
+report.wholesale,Wholesale,Toptan,Großhandel,Mayorista,Vente en gros,Atacado,Опт,卸売,도매,थोक
+research.branch.bar,Bar craft,Bar sanatı,Barkunst,Arte de la barra,Art du bar,Arte do balcão,Мастерство бара,バーの技術,바 기술,बार की कारीगरी
+research.branch.cafe,Cafe,Kafe,Café,Cafetería,Café,Café,Кафе,カフェ,카페,कैफ़े
+research.branch.roastery,Roastery,Kavurma atölyesi,Rösterei,Tostadero,Torréfaction,Torrefação,Обжарка,焙煎所,로스터리,रोस्टरी
+research.burr_set.d,Half the grinder wear.,Öğütücü aşınmasını yarıya indirir.,Halber Mühlenverschleiß.,La mitad de desgaste del molinillo.,Moitié moins d'usure du moulin.,Metade do desgaste do moedor.,Вдвое меньше износа кофемолки.,グラインダーの摩耗が半分になります。,그라인더 마모가 절반이에요.,ग्राइंडर की घिसावट आधी।
+research.burr_set.t,Hard burrs,Sert bıçaklar,Harte Mahlscheiben,Muelas duras,Meules renforcées,Rebolos duros,Твёрдые жернова,硬質刃,경질 날,सख़्त बर्र
+research.cupping_lab.d,Every roast tastes better.,Her kavurma daha iyi tadar.,Jede Röstung schmeckt besser.,Cada tueste sabe mejor.,Chaque torréfaction a meilleur goût.,Toda torra tem sabor melhor.,Каждая обжарка вкуснее.,すべての焙煎の味がよくなります。,모든 로스팅이 더 맛있어요.,हर भुनाई बेहतर स्वाद देती है।
+research.cupping_lab.t,Cupping lab,Tadım laboratuvarı,Cupping-Labor,Laboratorio de catación,Labo de dégustation,Laboratório de prova,Лаборатория дегустации,カッピングラボ,커핑 실험실,कपिंग लैब
+research.dial_scale.d,The grind drifts 40 % slower.,Öğütme %40 daha yavaş kayar.,Der Mahlgrad verschiebt sich 40 % langsamer.,La molienda se desvía un 40 % más despacio.,La mouture dérive 40 % plus lentement.,A moagem sai do ponto 40 % mais devagar.,Помол сбивается на 40 % медленнее.,挽き目のずれが 40 %遅くなります。,분쇄도가 40% 느리게 흐트러져요.,ग्राइंड 40 % धीमे बिगड़ता है।
+research.dial_scale.t,Dose scale,Doz ölçeği,Dosierwaage,Báscula de dosis,Balance de dosage,Balança de dose,Весы для дозы,計量スケール,도징 저울,डोज़ स्केल
 research.done,Done,Tamam,Fertig,Hecho,Terminé,Concluído,Готово,完了,완료,हो गया
-research.double_boiler.d,Steaming 10 % faster again.,,,,,,,,,
-research.double_boiler.t,Double boiler,,,,,,,,,
-research.finished,{name} is ready!,,,,,,,,,
-research.forecast_board.d,See the weather three days ahead.,,,,,,,,,
-research.forecast_board.t,Forecast board,,,,,,,,,
-research.green_storage.d,Buy 20 kg lots at 10 % off.,,,,,,,,,
-research.green_storage.t,Green storage,,,,,,,,,
-research.head_barista.d,Pre-orders close to pickup are flagged by themselves.,,,,,,,,,
-research.head_barista.t,Head barista,,,,,,,,,
-research.loyalty_cards.d,More regulars come back.,,,,,,,,,
-research.loyalty_cards.t,Loyalty cards,,,,,,,,,
-research.milk_pitchers.d,Steaming 10 % faster.,,,,,,,,,
-research.milk_pitchers.t,Milk pitchers,,,,,,,,,
-research.music_system.d,Cosier vibes: better reviews.,,,,,,,,,
-research.music_system.t,Music system,,,,,,,,,
-research.needs_venue,Needs {name},,,,,,,,,
-research.origin_trip.d,Unlocks Volcanic Honey on the green market.,,,,,,,,,
-research.origin_trip.t,Origin trip,,,,,,,,,
-research.packing_bench.d,Unlocks the second wholesale contract.,,,,,,,,,
-research.packing_bench.t,Packing bench,,,,,,,,,
-research.pastry_oven.d,Better pastries that cost less to bake.,,,,,,,,,
-research.pastry_oven.t,Pastry oven,,,,,,,,,
-research.pickup_app.d,More pre-orders from the town's app.,,,,,,,,,
-research.pickup_app.t,Pickup app,,,,,,,,,
-research.rail_tablet.d,Two more tickets fit on the rail.,,,,,,,,,
-research.rail_tablet.t,Rail tablet,,,,,,,,,
-research.requires,Needs {name},,,,,,,,,
-research.roast_assistant.d,You can hire a roaster assistant.,,,,,,,,,
-research.roast_assistant.t,Roaster training,,,,,,,,,
-research.roast_profiles.d,"Roast light and dark, not only medium.",,,,,,,,,
-research.roast_profiles.t,Roast profiles,,,,,,,,,
-research.shot_timer.d,Every shot tastes a little better.,,,,,,,,,
-research.shot_timer.t,Shot timer,,,,,,,,,
+research.double_boiler.d,Steaming 10 % faster again.,Buharlama yine %10 daha hızlı.,Dampft noch einmal 10 % schneller.,Vaporiza un 10 % más rápido otra vez.,Vapeur encore 10 % plus rapide.,Vaporiza 10 % mais rápido de novo.,Вспенивание ещё на 10 % быстрее.,スチームがさらに 10 %速くなります。,스팀이 다시 10% 빨라져요.,भाप फिर से 10 % तेज़।
+research.double_boiler.t,Double boiler,Çift kazan,Doppelkessel,Caldera doble,Double chaudière,Caldeira dupla,Двойной бойлер,ダブルボイラー,이중 보일러,डबल बॉयलर
+research.finished,{name} is ready!,{name} hazır!,{name} ist fertig!,¡{name} está listo!,{name} est prêt !,{name} está pronto!,{name}: готово!,{name} が完成しました！,{name} 준비 완료!,{name} तैयार है!
+research.forecast_board.d,See the weather three days ahead.,Hava durumunu üç gün önceden gör.,Sieh das Wetter drei Tage im Voraus.,Mira el tiempo con tres días de antelación.,Vois la météo trois jours à l'avance.,Veja o tempo com três dias de antecedência.,Смотри погоду на три дня вперёд.,3日先までの天気がわかります。,사흘 앞의 날씨를 미리 봐요.,तीन दिन आगे का मौसम देखो।
+research.forecast_board.t,Forecast board,Tahmin panosu,Vorhersagetafel,Tablero de previsión,Tableau des prévisions,Quadro de previsão,Доска прогноза,天気予報ボード,예보판,पूर्वानुमान बोर्ड
+research.green_storage.d,Buy 20 kg lots at 10 % off.,20 kg'lık partileri %10 indirimle al.,Kauf 20-kg-Posten mit 10 % Rabatt.,Compra lotes de 20 kg con un 10 % de descuento.,Achète des lots de 20 kg à 10 % de réduction.,Compre lotes de 20 kg com 10 % de desconto.,Покупай партии по 20 кг со скидкой 10 %.,20kg単位で 10 %引きで買えます。,20kg 단위로 사면 10% 할인돼요.,10 % छूट पर 20 किलो के लॉट खरीदो।
+research.green_storage.t,Green storage,Çiğ kahve deposu,Rohkaffee-Lager,Almacén de café verde,Stockage du café vert,Armazenamento de café verde,Склад зелёного кофе,生豆の保管庫,생두 보관고,कच्ची बीन्स का गोदाम
+research.head_barista.d,Pre-orders close to pickup are flagged by themselves.,Teslim saatine yakın ön siparişler kendiliğinden işaretlenir.,Vorbestellungen kurz vor der Abholung werden selbstständig markiert.,Los pedidos anticipados cerca de su recogida se marcan solos.,Les commandes anticipées proches de l'heure de retrait sont signalées toutes seules.,Pedidos antecipados perto da retirada são sinalizados sozinhos.,"Предзаказы, близкие к выдаче, помечаются сами.",受け取りが近い予約注文に、自動で印がつきます。,픽업 시간이 가까운 예약 주문이 스스로 표시돼요.,पिकअप के करीब वाले पहले से ऑर्डर अपने आप चिह्नित होते हैं।
+research.head_barista.t,Head barista,Baş barista,Chef-Barista,Barista jefe,Chef barista,Barista-chefe,Старший бариста,チーフバリスタ,수석 바리스타,हेड बरिस्ता
+research.loyalty_cards.d,More regulars come back.,Daha çok müdavim geri gelir.,Mehr Stammgäste kommen zurück.,Vuelven más habituales.,Plus d'habitués reviennent.,Mais clientes fiéis voltam.,Возвращается больше постоянных гостей.,常連さんがもっと戻ってきます。,단골이 더 자주 돌아와요.,ज़्यादा नियमित ग्राहक लौटते हैं।
+research.loyalty_cards.t,Loyalty cards,Sadakat kartları,Treuekarten,Tarjetas de fidelidad,Cartes de fidélité,Cartões fidelidade,Карты лояльности,ポイントカード,단골 카드,लॉयल्टी कार्ड
+research.milk_pitchers.d,Steaming 10 % faster.,Buharlama %10 daha hızlı.,Dampft 10 % schneller.,Vaporiza un 10 % más rápido.,Vapeur 10 % plus rapide.,Vaporiza 10 % mais rápido.,Вспенивание на 10 % быстрее.,スチームが 10 %速くなります。,스팀이 10% 빨라져요.,भाप 10 % तेज़।
+research.milk_pitchers.t,Milk pitchers,Süt sürahileri,Milchkännchen,Jarras de leche,Pichets à lait,Jarras de leite,Кувшины для молока,ミルクピッチャー,우유 피처,दूध के जग
+research.music_system.d,Cosier vibes: better reviews.,Daha samimi hava: daha iyi yorumlar.,Gemütlichere Stimmung: bessere Bewertungen.,Ambiente más acogedor: mejores reseñas.,Ambiance plus cosy : de meilleurs avis.,Ambiente mais aconchegante: avaliações melhores.,Уютнее атмосфера: лучше отзывы.,居心地のよい雰囲気で、レビューがよくなります。,더 아늑한 분위기로 리뷰가 좋아져요.,आरामदेह माहौल: बेहतर रिव्यू।
+research.music_system.t,Music system,Müzik sistemi,Musikanlage,Equipo de música,Système audio,Sistema de som,Музыкальная система,音響システム,음악 시스템,म्यूज़िक सिस्टम
+research.needs_venue,Needs {name},{name} gerekli,Braucht {name},Necesita {name},Il faut {name},Precisa de {name},Нужно: {name},{name} が必要,{name} 필요,{name} चाहिए
+research.origin_trip.d,Unlocks Volcanic Honey on the green market.,Çiğ kahve pazarında Volkanik Bal'ı açar.,Schaltet Vulkan-Honig auf dem Rohkaffeemarkt frei.,Desbloquea la miel volcánica en el mercado de café verde.,Débloque Volcanic Miel sur le marché du café vert.,Desbloqueia o Mel Vulcânico no mercado de café verde.,Открывает Вулканический мёд на рынке зелёного кофе.,生豆市場で「ヴォルカニック・ハニー」が買えるようになります。,생두 시장에서 화산 허니를 열어요.,कच्ची बीन्स के बाज़ार में वोल्केनिक हनी खोलता है।
+research.origin_trip.t,Origin trip,Menşe gezisi,Reise ins Anbaugebiet,Viaje a origen,Voyage à l'origine,Viagem à origem,Поездка к плантациям,産地視察,산지 방문,खेत की यात्रा
+research.packing_bench.d,Unlocks the second wholesale contract.,İkinci toptan sözleşmenin kilidini açar.,Schaltet den zweiten Großhandelsvertrag frei.,Desbloquea el segundo contrato mayorista.,Débloque le second contrat en gros.,Desbloqueia o segundo contrato de atacado.,Открывает второй оптовый контракт.,2つ目の卸売契約が結べるようになります。,두 번째 도매 계약을 열어요.,दूसरा थोक अनुबंध खोलता है।
+research.packing_bench.t,Packing bench,Paketleme tezgâhı,Verpackungstisch,Mesa de envasado,Plan d'emballage,Bancada de embalagem,Стол для упаковки,梱包台,포장 작업대,पैकिंग बेंच
+research.pastry_oven.d,Better pastries that cost less to bake.,Daha az pişirme maliyetiyle daha iyi hamur işleri.,"Besseres Gebäck, das günstiger zu backen ist.",Mejor bollería que cuesta menos hornear.,De meilleures viennoiseries qui coûtent moins cher à cuire.,Doces melhores que custam menos para assar.,"Лучшая выпечка, которую дешевле печь.",焼き菓子がよりおいしく、焼く費用も少なくなります。,더 맛있는 페이스트리를 더 싸게 구워요.,"बेहतर पेस्ट्री, बेक करने में कम खर्च।"
+research.pastry_oven.t,Pastry oven,Hamur fırını,Gebäckofen,Horno de bollería,Four à viennoiseries,Forno de doces,Печь для выпечки,焼き菓子用オーブン,페이스트리 오븐,पेस्ट्री ओवन
+research.pickup_app.d,More pre-orders from the town's app.,Kasabanın uygulamasından daha çok ön sipariş.,Mehr Vorbestellungen über die App der Stadt.,Más pedidos anticipados desde la app del pueblo.,Plus de commandes anticipées depuis l'appli de la ville.,Mais pedidos antecipados pelo app da cidade.,Больше предзаказов из приложения города.,街のアプリから予約注文が増えます。,동네 앱에서 예약 주문이 더 많이 들어와요.,शहर के ऐप से ज़्यादा पहले से ऑर्डर।
+research.pickup_app.t,Pickup app,Teslim uygulaması,Abhol-App,App de recogida,Appli de retrait,App de retirada,Приложение для выдачи,受け取りアプリ,픽업 앱,पिकअप ऐप
+research.rail_tablet.d,Two more tickets fit on the rail.,Fiş rafına iki fiş daha sığar.,Zwei weitere Bons passen auf die Schiene.,Dos tickets más caben en el riel.,Deux tickets de plus tiennent sur le rail.,Mais dois pedidos cabem no trilho.,На ленту помещается ещё два талона.,レールに注文札がさらに2枚置けます。,주문 레일에 주문표가 두 장 더 들어가요.,रेल पर दो और टिकट आ सकते हैं।
+research.rail_tablet.t,Rail tablet,Raf tableti,Schienen-Tablet,Tableta para el riel,Tablette du rail,Tablet do trilho,Планшет для ленты,レール用タブレット,레일 태블릿,रेल टैबलेट
+research.requires,Needs {name},{name} gerekli,Braucht {name},Necesita {name},Il faut {name},Precisa de {name},Нужно: {name},{name} が必要,{name} 필요,{name} चाहिए
+research.roast_assistant.d,You can hire a roaster assistant.,Bir kavurucu yardımcısı işe alabilirsin.,Du kannst einen Röster-Assistenten einstellen.,Puedes contratar a un asistente de tostado.,Tu peux embaucher un assistant torréfacteur.,Você pode contratar um assistente de torra.,Можно нанять помощника обжарщика.,焙煎アシスタントを雇えるようになります。,로스팅 보조를 고용할 수 있어요.,तुम एक रोस्टर सहायक रख सकते हो।
+research.roast_assistant.t,Roaster training,Kavurucu eğitimi,Röster-Schulung,Formación de tostador,Formation torréfacteur,Treinamento de torrador,Обучение обжарщика,焙煎の研修,로스터 교육,रोस्टर की ट्रेनिंग
+research.roast_profiles.d,"Roast light and dark, not only medium.","Sadece orta değil, hafif ve koyu da kavur.","Röste hell und dunkel, nicht nur mittel.","Tuesta claro y oscuro, no solo medio.","Torréfie clair et foncé, pas seulement moyen.","Torre clara e escura, não só média.","Обжаривай светло и тёмно, а не только средне.",中煎りだけでなく、浅煎りと深煎りも焙煎できます。,미디엄뿐 아니라 라이트와 다크도 볶아요.,"सिर्फ़ मीडियम नहीं, हल्का और गहरा भी भूनो।"
+research.roast_profiles.t,Roast profiles,Kavurma profilleri,Röstprofile,Perfiles de tueste,Profils de torréfaction,Perfis de torra,Профили обжарки,焙煎プロファイル,로스팅 프로필,भुनाई के तरीके
+research.shot_timer.d,Every shot tastes a little better.,Her shot biraz daha iyi tadar.,Jeder Shot schmeckt etwas besser.,Cada dosis sabe un poco mejor.,Chaque shot a meilleur goût.,Toda dose tem sabor um pouco melhor.,Каждое эспрессо вкуснее.,すべてのショットが少しおいしくなります。,샷마다 맛이 조금 더 좋아져요.,हर शॉट थोड़ा बेहतर स्वाद देता है।
+research.shot_timer.t,Shot timer,Shot zamanlayıcısı,Shot-Timer,Temporizador de dosis,Chronomètre à shots,Cronômetro de dose,Таймер эспрессо,ショットタイマー,샷 타이머,शॉट टाइमर
 research.start,Start · {cost},Başlat · {cost},Starten · {cost},Empezar · {cost},Lancer · {cost},Começar · {cost},Начать · {cost},開始 · {cost},시작 · {cost},शुरू करो · {cost}
-research.tamping_mat.d,Steady tamps: shots 8 % faster.,,,,,,,,,
-research.tamping_mat.t,Tamping mat,,,,,,,,,
-research.window_seats.d,6 % more people stop by.,,,,,,,,,
-research.window_seats.t,Window seats,,,,,,,,,
-review.bitter,Bitter coffee. Dial it in!,,,,,,,,,
-review.good,Nice coffee.,,,,,,,,,
-review.great,"Perfect cup, really quick!",,,,,,,,,
-review.late,My pre-order was late.,,,,,,,,,
-review.no_oat,No oat milk left.,,,,,,,,,
-review.slow,Waited too long.,,,,,,,,,
-review.sold_out,They ran out of what I ordered.,,,,,,,,,
-review.walked,Gave up and left.,,,,,,,,,
-review.weak,The coffee was just OK.,,,,,,,,,
-reviews.empty.b,Serve your first customer.,,,,,,,,,
-reviews.empty.t,No reviews yet,,,,,,,,,
-reviews.help,"Every customer leaves a review. The average sets your stars, and stars bring people in.",,,,,,,,,
-reviews.title,Review wall,,,,,,,,,
-reward.auto_dialin.b,Watch a short video: the grinder stays tuned for 90 minutes.,,,,,,,,,
-reward.auto_dialin.t,Auto dial-in,,,,,,,,,
+research.tamping_mat.d,Steady tamps: shots 8 % faster.,Düzgün sıkıştırma: shotlar %8 daha hızlı.,Gleichmäßiges Andrücken: Shots 8 % schneller.,Apisonados firmes: dosis un 8 % más rápidas.,Tassages réguliers : shots 8 % plus rapides.,Socagem firme: doses 8 % mais rápidas.,Ровная трамбовка: эспрессо на 8 % быстрее.,安定したタンピングで、ショットが 8 %速くなります。,꾹꾹 일정하게 눌러 샷이 8% 빨라져요.,एक जैसी दबाई: शॉट 8 % तेज़।
+research.tamping_mat.t,Tamping mat,Sıkıştırma matı,Tampermatte,Alfombrilla de apisonado,Tapis de tassage,Tapete de socagem,Коврик для трамбовки,タンピングマット,탬핑 매트,टैंपिंग मैट
+research.window_seats.d,6 % more people stop by.,%6 daha fazla kişi uğrar.,6 % mehr Leute bleiben stehen.,Un 6 % más de gente se para.,6 % de passants en plus.,6 % mais gente para por aqui.,На 6 % больше людей заходят.,立ち寄るお客さんが 6 %増えます。,들르는 손님이 6% 늘어요.,6 % ज़्यादा लोग रुकते हैं।
+research.window_seats.t,Window seats,Pencere koltukları,Fensterplätze,Asientos junto a la ventana,Places en vitrine,Lugares na janela,Места у окна,窓際の席,창가 좌석,खिड़की वाली सीटें
+review.bitter,Bitter coffee. Dial it in!,Acı kahve. İnce ayar yap!,Bitterer Kaffee. Stell den Mahlgrad ein!,Café amargo. ¡Ajusta la molienda!,Café amer. Règle la mouture !,Café amargo. Ajuste a moagem!,Горький кофе. Подстрой помол!,苦いコーヒーです。挽き目を調整してください！,커피가 써요. 맛을 맞춰 주세요!,कड़वी कॉफ़ी। ग्राइंड सेट करो!
+review.good,Nice coffee.,Güzel kahve.,Netter Kaffee.,Buen café.,Bon café.,Café bom.,Неплохой кофе.,おいしいコーヒーでした。,괜찮은 커피예요.,अच्छी कॉफ़ी।
+review.great,"Perfect cup, really quick!","Mükemmel fincan, gerçekten hızlı!","Perfekte Tasse, und richtig schnell!","¡Taza perfecta, y muy rápido!","Tasse parfaite, et super rapide !","Xícara perfeita, e super rápida!",Идеальная чашка и так быстро!,完璧な一杯で、とても早かったです！,"완벽한 한 잔, 정말 빨랐어요!","परफ़ेक्ट कप, और बहुत जल्दी!"
+review.late,My pre-order was late.,Ön siparişim geç geldi.,Meine Vorbestellung war zu spät.,Mi pedido anticipado llegó tarde.,Ma commande anticipée était en retard.,Meu pedido antecipado atrasou.,Мой предзаказ опоздал.,予約注文が遅れました。,예약 주문이 늦었어요.,मेरा पहले से ऑर्डर देर से आया।
+review.no_oat,No oat milk left.,Yulaf sütü kalmamış.,Keine Hafermilch mehr da.,Ya no queda leche de avena.,Plus de lait d'avoine.,Acabou o leite de aveia.,Овсяного молока не осталось.,オーツミルクが切れていました。,오트 우유가 없었어요.,ओट दूध खत्म था।
+review.slow,Waited too long.,Çok uzun bekledim.,Viel zu lange gewartet.,Esperé demasiado.,Attendu trop longtemps.,Esperei demais.,Ждал слишком долго.,待ち時間が長すぎました。,너무 오래 기다렸어요.,बहुत देर इंतज़ार करना पड़ा।
+review.sold_out,They ran out of what I ordered.,İstediğim şey bitmişti.,"Das, was ich bestellt habe, war aus.",Se les acabó lo que había pedido.,Ils n'avaient plus ce que j'ai commandé.,Acabou o que eu pedi.,"Закончилось то, что я заказал.",注文したものが売り切れでした。,주문한 게 품절이었어요.,"जो मैंने मँगाया था, वह खत्म था।"
+review.walked,Gave up and left.,Vazgeçip çıktım.,Aufgegeben und gegangen.,Me cansé y me fui.,J'ai abandonné et je suis parti.,Desisti e fui embora.,Устал ждать и ушёл.,待ちきれず帰りました。,기다리다 그냥 나갔어요.,इंतज़ार छोड़कर चला गया।
+review.weak,The coffee was just OK.,Kahve sadece idare eder.,Der Kaffee war einfach okay.,El café estaba simplemente bien.,Le café était juste correct.,O café estava só ok.,Кофе так себе.,コーヒーは普通でした。,커피가 그냥 그랬어요.,कॉफ़ी ठीक-ठाक थी।
+reviews.empty.b,Serve your first customer.,İlk müşterini servis et.,Bedien deine erste Kundin oder deinen ersten Kunden.,Atiende a tu primer cliente.,Sers ton premier client.,Atenda seu primeiro cliente.,Обслужи первого гостя.,最初のお客さんに提供しましょう。,첫 손님에게 음료를 내 주세요.,अपने पहले ग्राहक को परोसो।
+reviews.empty.t,No reviews yet,Henüz yorum yok,Noch keine Bewertungen,Todavía no hay reseñas,Pas encore d'avis,Ainda sem avaliações,Отзывов пока нет,まだレビューがありません,아직 리뷰가 없어요,अभी कोई रिव्यू नहीं
+reviews.help,"Every customer leaves a review. The average sets your stars, and stars bring people in.","Her müşteri bir yorum bırakır. Ortalama yıldızlarını belirler, yıldızlar da insanları getirir.","Jede Kundin und jeder Kunde hinterlässt eine Bewertung. Der Durchschnitt bestimmt deine Sterne, und Sterne bringen Leute her.","Cada cliente deja una reseña. La media fija tus estrellas, y las estrellas atraen gente.","Chaque client laisse un avis. La moyenne fixe tes étoiles, et les étoiles attirent du monde.","Cada cliente deixa uma avaliação. A média define suas estrelas, e as estrelas atraem gente.","Каждый гость оставляет отзыв. Средняя оценка даёт звёзды, а звёзды приводят людей.",お客さんは皆レビューを残します。その平均が星の数になり、星がお客さんを呼びます。,"손님마다 리뷰를 남겨요. 평균이 별점을 정하고, 별점이 사람을 불러와요.","हर ग्राहक रिव्यू छोड़ता है। औसत तुम्हारे स्टार तय करता है, और स्टार लोगों को खींचते हैं।"
+reviews.title,Review wall,Yorum duvarı,Bewertungswand,Muro de reseñas,Mur des avis,Mural de avaliações,Стена отзывов,レビューの壁,리뷰 벽,रिव्यू की दीवार
+reward.auto_dialin.b,Watch a short video: the grinder stays tuned for 90 minutes.,Kısa bir video izle: öğütücü 90 dakika ayarlı kalır.,Sieh dir ein kurzes Video an: Die Mühle bleibt 90 Minuten eingestellt.,Mira un vídeo corto: el molinillo se mantiene ajustado durante 90 minutos.,Regarde une courte vidéo : le moulin reste réglé pendant 90 minutes.,Assista a um vídeo curto: o moedor fica ajustado por 90 minutos.,Посмотри короткое видео: кофемолка остаётся настроенной 90 минут.,短い動画を見ると、グラインダーの挽き目が90分間保たれます。,짧은 영상을 보면 그라인더가 90분 동안 맞춰져 있어요.,छोटा वीडियो देखो: ग्राइंडर 90 मिनट तक सेट रहेगा।
+reward.auto_dialin.t,Auto dial-in,Otomatik ince ayar,Automatisch einstellen,Ajuste automático,Réglage automatique,Ajuste automático,Авто-настройка помола,挽き目の自動調整,자동 맛 맞추기,अपने आप सेटिंग
 reward.claim,Claim,Al,Abholen,Reclamar,Récupérer,Resgatar,Забрать,受け取る,받기,लो
-reward.crisis_halve.b,Watch a short video to soften today's problem.,,,,,,,,,
-reward.crisis_halve.t,Last resort,,,,,,,,,
-reward.daily_bonus.b,A little cash to start the day.,,,,,,,,,
-reward.daily_bonus.t,Morning bonus,,,,,,,,,
+reward.crisis_halve.b,Watch a short video to soften today's problem.,Bugünkü sorunu yumuşatmak için kısa bir video izle.,"Sieh dir ein kurzes Video an, um das heutige Problem abzumildern.",Mira un vídeo corto para suavizar el problema de hoy.,Regarde une courte vidéo pour atténuer le problème du jour.,Assista a um vídeo curto para amenizar o problema de hoje.,"Посмотри короткое видео, чтобы смягчить сегодняшнюю проблему.",短い動画を見ると、今日のトラブルがやわらぎます。,짧은 영상을 보면 오늘 문제가 조금 줄어요.,आज की दिक्कत हल्की करने के लिए छोटा वीडियो देखो।
+reward.crisis_halve.t,Last resort,Son çare,Letzter Ausweg,Último recurso,Dernier recours,Último recurso,Последний шанс,最後の手段,마지막 수단,आख़िरी सहारा
+reward.daily_bonus.b,A little cash to start the day.,Güne başlamak için biraz para.,Ein bisschen Geld für den Start in den Tag.,Un poco de dinero para empezar el día.,Un peu d'argent pour commencer la journée.,Um pouco de dinheiro para começar o dia.,"Немного денег, чтобы начать день.",営業のスタートに少しお金を。,하루를 시작하는 약간의 자금이에요.,दिन शुरू करने के लिए थोड़े पैसे।
+reward.daily_bonus.t,Morning bonus,Sabah bonusu,Morgenbonus,Bonificación de la mañana,Bonus du matin,Bônus da manhã,Утренний бонус,朝のボーナス,아침 보너스,सुबह का बोनस
 reward.done_cash,+{cash} added,+{cash} eklendi,+{cash} gutgeschrieben,+{cash} añadidos,+{cash} ajoutés,+{cash} recebidos,+{cash} начислено,+{cash} を受け取りました,+{cash} 들어옴,+{cash} जुड़े
-reward.done_crisis,That problem is sorted.,,,,,,,,,
-reward.done_helper,A helper joins the bar for an hour.,,,,,,,,,
-reward.done_stock,Milk and ice topped up.,,,,,,,,,
-reward.done_tune,The grinder stays tuned for a while.,,,,,,,,,
-reward.emergency_stock.b,Watch a short video: milk (and ice) topped up now.,,,,,,,,,
-reward.emergency_stock.t,Emergency stock,,,,,,,,,
-reward.extra_barista.b,Watch a short video: a helper works the bar for an hour.,,,,,,,,,
-reward.extra_barista.t,Extra barista,,,,,,,,,
+reward.done_crisis,That problem is sorted.,Bu sorun çözüldü.,Das Problem ist gelöst.,Ese problema está resuelto.,Ce problème est réglé.,Esse problema foi resolvido.,С проблемой разобрались.,そのトラブルは解決しました。,그 문제를 해결했어요.,वह दिक्कत सुलझ गई।
+reward.done_helper,A helper joins the bar for an hour.,Bir yardımcı bir saatliğine bara katıldı.,Eine Aushilfe unterstützt die Bar für eine Stunde.,Un ayudante se une a la barra durante una hora.,Un renfort rejoint le bar pour une heure.,Um ajudante entra no balcão por uma hora.,Помощник на час встал за бар.,1時間、助っ人がカウンターに入ります。,도우미가 한 시간 동안 바에 합류해요.,एक मददगार एक घंटे के लिए बार पर आया।
+reward.done_stock,Milk and ice topped up.,Süt ve buz tamamlandı.,Milch und Eis wurden nachgefüllt.,Leche y hielo repuestos.,Lait et glace refaits.,Leite e gelo reabastecidos.,Молоко и лёд пополнены.,牛乳と氷を補充しました。,우유와 얼음을 채웠어요.,दूध और बर्फ़ फिर से भर गए।
+reward.done_tune,The grinder stays tuned for a while.,Öğütücü bir süre ayarlı kalır.,Die Mühle bleibt eine Weile eingestellt.,El molinillo se mantiene ajustado durante un rato.,Le moulin reste réglé un moment.,O moedor fica ajustado por um tempo.,Кофемолка некоторое время остаётся настроенной.,しばらくの間、グラインダーの挽き目が保たれます。,그라인더가 한동안 맞춰져 있어요.,ग्राइंडर कुछ देर के लिए सेट रहेगा।
+reward.emergency_stock.b,Watch a short video: milk (and ice) topped up now.,Kısa bir video izle: süt (ve buz) hemen tamamlanır.,Sieh dir ein kurzes Video an: Milch (und Eis) werden sofort nachgefüllt.,Mira un vídeo corto: repone ahora la leche (y el hielo).,Regarde une courte vidéo : lait (et glace) refait tout de suite.,Assista a um vídeo curto: leite (e gelo) reabastecidos agora.,Посмотри короткое видео: молоко (и лёд) пополняются прямо сейчас.,短い動画を見ると、今すぐ牛乳（と氷）が補充されます。,짧은 영상을 보면 지금 우유(와 얼음)를 채워요.,छोटा वीडियो देखो: अभी दूध (और बर्फ़) भरो।
+reward.emergency_stock.t,Emergency stock,Acil stok,Notfall-Vorrat,Reposición de emergencia,Stock d'urgence,Estoque de emergência,Срочный запас,緊急の補充,긴급 재고,इमरजेंसी स्टॉक
+reward.extra_barista.b,Watch a short video: a helper works the bar for an hour.,Kısa bir video izle: bir yardımcı bir saat bara yardım eder.,Sieh dir ein kurzes Video an: Eine Aushilfe arbeitet eine Stunde an der Bar.,Mira un vídeo corto: un ayudante atiende la barra durante una hora.,Regarde une courte vidéo : un renfort travaille au bar pendant une heure.,Assista a um vídeo curto: um ajudante trabalha no balcão por uma hora.,Посмотри короткое видео: помощник работает за баром час.,短い動画を見ると、助っ人が1時間カウンターに入ります。,짧은 영상을 보면 도우미가 한 시간 동안 바를 맡아요.,छोटा वीडियो देखो: एक मददगार एक घंटे बार पर काम करेगा।
+reward.extra_barista.t,Extra barista,Ek barista,Extra-Barista,Barista extra,Barista en renfort,Barista extra,Дополнительный бариста,助っ人バリスタ,추가 바리스타,अतिरिक्त बरिस्ता
 reward.free.b,Included with your ad-free pack — no video.,Reklamsız paketinle birlikte geliyor — video yok.,Im Werbefrei-Paket enthalten — ohne Video.,Incluido con tu pack sin anuncios: sin vídeo.,Inclus avec ton pack sans pub — pas de vidéo.,Incluído no seu pacote sem anúncios — sem vídeo.,Входит в пакет без рекламы — без видео.,広告なしパックに含まれています。動画は不要です。,광고 제거 팩에 포함돼요 — 영상 없음.,तुम्हारे विज्ञापन-मुक्त पैक में शामिल — कोई वीडियो नहीं।
 reward.free_cash,Claim +{cash},+{cash} al,+{cash} abholen,Reclamar +{cash},Récupérer +{cash},Resgatar +{cash},Забрать +{cash},+{cash} を受け取る,{cash} 받기,+{cash} लो
-reward.offline_x2.b,Watch a short video to get it twice.,,,,,,,,,
-reward.offline_x2.t,Double the away pay,,,,,,,,,
+reward.offline_x2.b,Watch a short video to get it twice.,"Kısa bir video izle, iki katını al.","Sieh dir ein kurzes Video an, um es doppelt zu bekommen.",Mira un vídeo corto para cobrarlo el doble.,Regarde une courte vidéo pour le recevoir deux fois.,Assista a um vídeo curto para receber o dobro.,"Посмотри короткое видео, чтобы получить вдвое больше.",短い動画を見ると2倍になります。,짧은 영상을 보면 두 배로 받아요.,दोगुना पाने के लिए एक छोटा वीडियो देखो।
+reward.offline_x2.t,Double the away pay,Uzaktayken ücreti ikiye katla,Abwesenheitslohn verdoppeln,Duplicar lo ganado fuera,Double les gains d'absence,Dobrar o pagamento de fora,Удвоить оплату за отсутствие,留守中の収入を2倍に,부재 중 수입 두 배,दूर रहने की कमाई दोगुनी
 reward.unavailable,Not available right now,Şu an kullanılamıyor,Gerade nicht verfügbar,No disponible ahora mismo,Indisponible pour le moment,Indisponível agora,Сейчас недоступно,ただいま利用できません,지금은 사용할 수 없어요,अभी उपलब्ध नहीं
 reward.video,Watch video,Video izle,Video ansehen,Ver vídeo,Regarder la vidéo,Assistir vídeo,Смотреть видео,動画を見る,영상 보기,वीडियो देखो
 reward.video_cash,Watch · +{cash},İzle · +{cash},Ansehen · +{cash},Ver · +{cash},Regarder · +{cash},Assistir · +{cash},Смотреть · +{cash},見る · +{cash},보기 · +{cash},देखो · +{cash}
-roast.assist_help,Your assistant will drop it at a good point.,,,,,,,,,
-roast.best,best: {p},,,,,,,,,
-roast.blend,Blend,,,,,,,,,
-roast.blend.d,Fold {kg} of rested beans into the house beans.,,,,,,,,,
-roast.buy_lot,Buy {kg} · {cost},,,,,,,,,
-roast.contracts,Wholesale,,,,,,,,,
-roast.drop,Drop,,,,,,,,,
-roast.drop_help,Tap Drop in the first-crack sweet spot (70–86 %) for the best beans.,,,,,,,,,
-roast.drum,Drum roaster,,,,,,,,,
-roast.house,House beans {kg} · quality {q},,,,,,,,,
-roast.in_stock,stock {kg},,,,,,,,,
-roast.locked.b,The drum roaster opens with the {name}.,,,,,,,,,
-roast.locked.t,No roaster yet,,,,,,,,,
-roast.market,Green coffee market,,,,,,,,,
-roast.price,price {pct},,,,,,,,,
-roast.rest_help,Fresh roasts rest one day before they taste right.,,,,,,,,,
-roast.rested,rested,,,,,,,,,
-roast.resting,Resting racks,,,,,,,,,
-roast.resting_until,resting until tomorrow,,,,,,,,,
-roast.roasting,Roasting…,,,,,,,,,
-roast.start_help,Pick green coffee and a roast profile.,,,,,,,,,
-roast.sweet,First crack! Drop now,,,,,,,,,
-role.barista,Barista,,,,,,,,,
-role.cashier,Cashier,,,,,,,,,
-role.roaster,Roaster assistant,,,,,,,,,
-role.runner,Runner,,,,,,,,,
-rule.deadline,Deadline first,,,,,,,,,
-rule.deadline.d,The ticket that is due soonest is made first. Pre-orders stay on time.,,,,,,,,,
-rule.fifo,First come,,,,,,,,,
-rule.fifo.d,Tickets are made in the order they arrive.,,,,,,,,,
-rule.vip,Regulars first,,,,,,,,,
-rule.vip.d,Regulars and special guests are served first.,,,,,,,,,
-settings.auto_report,Skip the day report,,,,,,,,,
-settings.auto_report.d,Go straight to the next morning (Speed Pack).,,,,,,,,,
+roast.assist_help,Your assistant will drop it at a good point.,Yardımcın iyi bir noktada boşaltır.,Dein Assistent nimmt die Röstung zum richtigen Zeitpunkt heraus.,Tu asistente retirará el tueste en su punto.,Ton assistant décharge au bon moment.,Seu assistente vai tirar a torra no ponto certo.,Помощник выгрузит в нужный момент.,アシスタントがよいタイミングで排出します。,로스팅 보조가 좋은 시점에 배출해요.,तुम्हारा सहायक इसे सही समय पर उतारेगा।
+roast.best,best: {p},en iyi: {p},bester: {p},mejor: {p},meilleur : {p},melhor: {p},лучший: {p},最良: {p},최고: {p},सबसे बढ़िया: {p}
+roast.blend,Blend,Harmanla,Mischen,Mezclar,Assemblage,Mistura,Смешать,ブレンド,블렌딩,मिलाओ
+roast.blend.d,Fold {kg} of rested beans into the house beans.,Dinlenmiş çekirdeklerden {kg} tanesini ev çekirdeğine kat.,Gib {kg} ausgeruhte Bohnen zu den Hausbohnen.,Incorpora {kg} de granos reposados a los granos de la casa.,Ajoute {kg} de grains reposés aux grains maison.,Acrescente {kg} de grãos descansados ao grão da casa.,Добавь {kg} отлежавшихся зёрен к фирменным.,休ませた豆 {kg} を店の豆に混ぜます。,쉰 원두 {kg} → 하우스 원두에 섞어요.,आराम कर चुकी {kg} बीन्स दुकान की बीन्स में मिलाओ।
+roast.buy_lot,Buy {kg} · {cost},Al {kg} · {cost},{kg} kaufen · {cost},Comprar {kg} · {cost},Acheter {kg} · {cost},Comprar {kg} · {cost},Купить {kg} · {cost},{kg} を買う · {cost},{kg} 사기 · {cost},{kg} खरीदो · {cost}
+roast.contracts,Wholesale,Toptan,Großhandel,Mayorista,Vente en gros,Atacado,Опт,卸売,도매,थोक
+roast.drop,Drop,Boşalt,Rausnehmen,Retirar,Décharger,Tirar,Выгрузить,排出,배출,उतारो
+roast.drop_help,Tap Drop in the first-crack sweet spot (70–86 %) for the best beans.,En iyi çekirdek için ilk çatlağın tatlı noktasında (%70–86) Boşalt'a dokun.,Tippe auf Rausnehmen im Bereich des ersten Knackens (70–86 %) für die besten Bohnen.,Toca Retirar en el punto dulce del primer crack (70–86 %) para los mejores granos.,Touche Décharger dans la zone idéale du premier craquement (70–86 %) pour les meilleurs grains.,Toque em Tirar na faixa ideal de primeiro estalo (70–86 %) para os melhores grãos.,"Нажми «Выгрузить» в сладкой зоне первого треска (70–86 %), чтобы получить лучшие зёрна.",一ハゼの最適な時期（70〜86 %）に「排出」をタップすると、最高の豆になります。,1차 크랙 달콤한 구간(70–86%)에서 배출을 누르면 가장 좋은 원두가 나와요.,सबसे बढ़िया बीन्स के लिए पहली चटक के मीठे हिस्से (70–86 %) में उतारो।
+roast.drum,Drum roaster,Tambur kavurucu,Trommelröster,Tostador de tambor,Torréfacteur à tambour,Torrador de tambor,Барабанная обжарка,ドラム式焙煎機,드럼 로스터,ड्रम रोस्टर
+roast.house,House beans {kg} · quality {q},Ev çekirdeği {kg} · kalite {q},Hausbohnen {kg} · Qualität {q},Granos de la casa {kg} · calidad {q},Grains maison {kg} · qualité {q},Grão da casa {kg} · qualidade {q},Фирменные зёрна {kg} · качество {q},店の豆 {kg} · 品質 {q},하우스 원두 {kg} · 품질 {q},दुकान की बीन्स {kg} · क्वालिटी {q}
+roast.in_stock,stock {kg},stok {kg},Vorrat {kg},stock {kg},stock {kg},estoque {kg},запас {kg},在庫 {kg},재고 {kg},स्टॉक {kg}
+roast.locked.b,The drum roaster opens with the {name}.,Tambur kavurucu {name} ile açılır.,Die Trommelröster öffnet mit {name}.,El tostador de tambor se abre con el {name}.,Le torréfacteur à tambour s'ouvre avec le {name}.,O torrador de tambor abre com o {name}.,Барабанная обжарка откроется вместе с {name}.,ドラム式焙煎機は {name} と一緒に開放されます。,드럼 로스터는 {name} 연구와 함께 열려요.,ड्रम रोस्टर {name} के साथ खुलेगा।
+roast.locked.t,No roaster yet,Henüz kavurucu yok,Noch kein Röster,Aún no hay tostador,Pas encore de torréfacteur,Sem torrador ainda,Обжарки пока нет,まだ焙煎機がありません,아직 로스터가 없어요,अभी कोई रोस्टर नहीं
+roast.market,Green coffee market,Çiğ kahve pazarı,Rohkaffee-Markt,Mercado de café verde,Marché du café vert,Mercado de café verde,Рынок зелёного кофе,生豆市場,생두 시장,कच्ची कॉफ़ी का बाज़ार
+roast.price,price {pct},fiyat {pct},Preis {pct},precio {pct},prix {pct},preço {pct},цена {pct},価格 {pct},가격 {pct},दाम {pct}
+roast.rest_help,Fresh roasts rest one day before they taste right.,Taze kavurmalar doğru tat vermek için bir gün dinlenir.,"Frische Röstungen ruhen einen Tag, bevor sie richtig schmecken.",Los tuestes frescos necesitan reposar un día para saber bien.,Les torréfactions fraîches reposent un jour avant d'être à leur meilleur.,Torras frescas descansam um dia antes de ficar no ponto.,"Свежая обжарка отлёживается день, прежде чем станет вкусной.",焙煎したての豆は、1日休ませるとおいしくなります。,갓 볶은 원두는 하루 쉬어야 제맛이 나요.,ताज़ी भुनी बीन्स एक दिन आराम के बाद सही स्वाद देती हैं।
+roast.rested,rested,dinlendi,ausgeruht,reposado,reposé,descansado,отлежалось,休ませ済み,숙성 완료,आराम कर चुकी
+roast.resting,Resting racks,Dinlenme rafları,Ruhegestelle,Bandejas de reposo,Étagères de repos,Prateleiras de descanso,Полки отлёжки,休ませ棚,숙성 선반,आराम के रैक
+roast.resting_until,resting until tomorrow,yarına kadar dinlenir,ruht bis morgen,reposando hasta mañana,repos jusqu'à demain,descansando até amanhã,отлёживается до завтра,明日まで休ませ中,내일까지 숙성,कल तक आराम
+roast.roasting,Roasting…,Kavruluyor…,Wird geröstet …,Tostando…,Torréfaction…,Torrando…,Обжарка…,焙煎中…,로스팅 중…,भुन रही है…
+roast.start_help,Pick green coffee and a roast profile.,Çiğ kahve ve bir kavurma profili seç.,Wähl Rohkaffee und ein Röstprofil.,Elige café verde y un perfil de tueste.,Choisis du café vert et un profil de torréfaction.,Escolha o café verde e um perfil de torra.,Выбери зелёный кофе и профиль обжарки.,生豆と焙煎プロファイルを選んでください。,생두와 로스팅 프로필을 고르세요.,कच्ची कॉफ़ी और भुनाई का तरीका चुनो।
+roast.sweet,First crack! Drop now,İlk çatlak! Şimdi boşalt,Erstes Knacken! Jetzt rausnehmen,¡Primer crack! Retira ya,Premier craquement ! Décharge maintenant,Primeiro estalo! Tire agora,Первый треск! Выгружай,一ハゼ！ 今すぐ排出,1차 크랙! 지금 배출,पहली चटक! अभी उतारो
+role.barista,Barista,Barista,Barista,Barista,Barista,Barista,Бариста,バリスタ,바리스타,बरिस्ता
+role.cashier,Cashier,Kasiyer,Kassiererin,Cajero,Caissier,Caixa,Кассир,会計係,계산 담당,कैशियर
+role.roaster,Roaster assistant,Kavurucu yardımcısı,Röster-Assistent,Asistente de tostado,Assistant torréfacteur,Assistente de torra,Помощник обжарщика,焙煎アシスタント,로스팅 보조,रोस्टर सहायक
+role.runner,Runner,Koşucu,Aushilfe,Recadero,Coursier,Auxiliar,Помощник,ランナー,심부름 직원,रनर
+rule.deadline,Deadline first,Önce son tarih,Frist zuerst,Primero el plazo,Échéance d'abord,Prazo primeiro,Сначала срочные,締切優先,마감 우선,पहले डेडलाइन
+rule.deadline.d,The ticket that is due soonest is made first. Pre-orders stay on time.,En yakın son tarihli fiş önce yapılır. Ön siparişler zamanında kalır.,"Der Bon, der am ehesten fällig ist, wird zuerst gemacht. Vorbestellungen bleiben pünktlich.",Se prepara primero el ticket con fecha más cercana. Los pedidos anticipados llegan a tiempo.,Le ticket dont l'échéance est la plus proche est préparé en premier. Les commandes anticipées restent à l'heure.,O pedido com prazo mais próximo é feito primeiro. Pedidos antecipados saem no horário.,"Первым делается талон, у которого срок ближе. Предзаказы успевают вовремя.",締切が近い注文札から順に作ります。予約注文も時間どおりになります。,가장 빨리 마감되는 주문표를 먼저 만들어요. 예약 주문은 제때 나와요.,"जिसकी डेडलाइन सबसे नज़दीक हो, वह पहले बनता है। पहले से ऑर्डर समय पर रहते हैं।"
+rule.fifo,First come,İlk gelen,Wer zuerst kommt,Por orden de llegada,Premier arrivé,Quem chegou primeiro,Кто первый,先着順,먼저 온 순서,"पहले आया, पहले"
+rule.fifo.d,Tickets are made in the order they arrive.,Fişler geldikleri sırayla yapılır.,Bons werden in der Reihenfolge ihres Eingangs gemacht.,Los tickets se preparan en el orden en que llegan.,Les tickets sont préparés dans l'ordre d'arrivée.,Os pedidos são feitos na ordem em que chegam.,Талоны делаются в порядке поступления.,注文札は届いた順に作ります。,주문표는 들어온 순서대로 만들어요.,टिकट उसी क्रम में बनते हैं जिस क्रम में आते हैं।
+rule.vip,Regulars first,Önce müdavimler,Stammgäste zuerst,Primero los habituales,Habitués d'abord,Clientes fiéis primeiro,Постоянные первыми,常連優先,단골 우선,नियमित पहले
+rule.vip.d,Regulars and special guests are served first.,Müdavimler ve özel misafirler önce servis edilir.,Stammgäste und besondere Gäste werden zuerst bedient.,Los habituales y los invitados especiales se atienden primero.,Les habitués et les invités spéciaux sont servis en premier.,Clientes fiéis e convidados especiais são atendidos primeiro.,Постоянные гости и особые гости обслуживаются первыми.,常連さんと特別なお客さんを先に提供します。,단골과 특별 손님을 먼저 제공해요.,नियमित ग्राहक और खास मेहमान पहले परोसे जाते हैं।
+settings.auto_report,Skip the day report,Gün raporunu atla,Tagesbericht überspringen,Saltar el informe del día,Passer le rapport de journée,Pular o relatório do dia,Пропускать отчёт дня,営業日の報告を飛ばす,하루 보고서 건너뛰기,दिन की रिपोर्ट छोड़ो
+settings.auto_report.d,Go straight to the next morning (Speed Pack).,Doğrudan ertesi sabaha geç (Hız Paketi).,Direkt zum nächsten Morgen (Tempo-Paket).,Ir directamente a la mañana siguiente (Pack de Velocidad).,Va directement au lendemain matin (Pack Vitesse).,Vai direto para a manhã seguinte (Pacote de Velocidade).,Сразу переход к следующему утру (пакет скорости).,すぐ翌朝へ進みます（スピードパック）。,바로 다음 날 아침으로 넘어가요 (속도 팩).,सीधे अगली सुबह पर जाओ (स्पीड पैक)।
 settings.effects,Sound effects,Ses efektleri,Soundeffekte,Efectos de sonido,Effets sonores,Efeitos sonoros,Звуковые эффекты,効果音,효과음,ध्वनि प्रभाव
 settings.graphics,Graphics,Grafikler,Grafik,Gráficos,Graphismes,Gráficos,Графика,画質,그래픽,ग्राफ़िक्स
-settings.guide,How to play,,,,,,,,,
-settings.guide.d,Replay the step-by-step guide.,,,,,,,,,
-settings.help,Help,,,,,,,,,
+settings.guide,How to play,Nasıl oynanır,So wird gespielt,Cómo jugar,Comment jouer,Como jogar,Как играть,遊び方,플레이 방법,कैसे खेलें
+settings.guide.d,Replay the step-by-step guide.,Adım adım rehberi tekrar oynat.,Die Schritt-für-Schritt-Anleitung noch einmal abspielen.,Repite la guía paso a paso.,Rejoue le guide pas à pas.,Repetir o guia passo a passo.,Повторить пошаговое обучение.,ステップ式のガイドをもう一度見られます。,단계별 가이드를 다시 봐요.,कदम-दर-कदम गाइड फिर से देखो।
+settings.help,Help,Yardım,Hilfe,Ayuda,Aide,Ajuda,Помощь,ヘルプ,도움말,मदद
 settings.language,Language,Dil,Sprache,Idioma,Langue,Idioma,Язык,言語,언어,भाषा
-settings.looks,Cafe look,,,,,,,,,
+settings.looks,Cafe look,Kafe görünümü,Café-Look,Estilo de la cafetería,Look du café,Visual do café,Оформление кафе,カフェの雰囲気,카페 외형,कैफ़े का लुक
 settings.music,Music,Müzik,Musik,Música,Musique,Música,Музыка,音楽,음악,संगीत
 settings.off,Off,Kapalı,Aus,Desactivado,Désactivé,Desligado,Выкл.,オフ,끔,बंद
 settings.on,On,Açık,Ein,Activado,Activé,Ligado,Вкл.,オン,켬,चालू
 settings.policy,Privacy policy,Gizlilik politikası,Datenschutzerklärung,Política de privacidad,Politique de confidentialité,Política de privacidade,Политика конфиденциальности,プライバシーポリシー,개인정보 처리방침,गोपनीयता नीति
-settings.privacy,Privacy,,,,,,,,,
-settings.privacy_options,Privacy options,,,,,,,,,
-settings.privacy_options.d,Change your ad and data choices.,,,,,,,,,
-settings.replay,Replay,,,,,,,,,
+settings.privacy,Privacy,Gizlilik,Datenschutz,Privacidad,Confidentialité,Privacidade,Конфиденциальность,プライバシー,개인정보,गोपनीयता
+settings.privacy_options,Privacy options,Gizlilik seçenekleri,Datenschutzoptionen,Opciones de privacidad,Options de confidentialité,Opções de privacidade,Настройки конфиденциальности,プライバシー設定,개인정보 옵션,गोपनीयता विकल्प
+settings.privacy_options.d,Change your ad and data choices.,Reklam ve veri tercihlerini değiştir.,Ändere deine Einstellungen für Werbung und Daten.,Cambia tus preferencias de anuncios y datos.,Modifie tes choix de pub et de données.,Altere suas escolhas de anúncios e dados.,Измени выбор по рекламе и данным.,広告とデータの設定を変更します。,광고와 데이터 선택을 바꿔요.,अपनी विज्ञापन और डेटा पसंद बदलो।
+settings.replay,Replay,Tekrar oynat,Erneut,Repetir,Rejouer,Repetir,Повторить,もう一度見る,다시 보기,दोबारा चलाओ
 settings.restore,Restore purchases,Satın alımları geri yükle,Käufe wiederherstellen,Restaurar compras,Restaurer les achats,Restaurar compras,Восстановить покупки,購入を復元,구매 복원,खरीदारी वापस लाओ
-settings.slot,Slot {n},,,,,,,,,
-settings.slots,Save slots,,,,,,,,,
-settings.slots_help,Each slot is a separate cafe. More slots come with the Edition or Extra Saves.,,,,,,,,,
-settings.slots_n,{n} open,,,,,,,,,
-settings.sound,Sound,,,,,,,,,
-settings.theme_default,Classic,,,,,,,,,
+settings.slot,Slot {n},Yuva {n},Speicher {n},Partida {n},Emplacement {n},Slot {n},Слот {n},スロット {n},칸 {n},स्लॉट {n}
+settings.slots,Save slots,Kayıt yuvaları,Speicherplätze,Partidas guardadas,Emplacements de sauvegarde,Slots de save,Слоты сохранения,セーブ枠,저장 칸,सेव स्लॉट
+settings.slots_help,Each slot is a separate cafe. More slots come with the Edition or Extra Saves.,Her yuva ayrı bir kafe. Daha çok yuva Sürüm'le ya da Ek Kayıtlar ile gelir.,Jeder Platz ist ein eigenes Café. Mehr Plätze gibt es mit der Edition oder zusätzlichen Speichern.,Cada partida es una cafetería distinta. Más partidas llegan con la Edición o con Partidas extra.,Chaque emplacement est un café séparé. D'autres emplacements viennent avec l'Édition ou les Sauvegardes en plus.,Cada slot é um café separado. Mais slots vêm com a Edição ou com Saves Extras.,Каждый слот — отдельное кафе. Больше слотов идёт с изданием или доп. сохранениями.,スロットごとに別のカフェになります。エディションやセーブ枠追加で増えます。,칸마다 카페가 따로 있어요. 더 많은 칸은 에디션이나 추가 저장으로 생겨요.,हर स्लॉट एक अलग कैफ़े है। ज़्यादा स्लॉट एडिशन या अतिरिक्त सेव के साथ मिलते हैं।
+settings.slots_n,{n} open,{n} açık,{n} frei,{n} abiertas,{n} ouverts,{n} abertos,Открыто: {n},{n} 個 利用可,{n}개 열림,{n} खुले
+settings.sound,Sound,Ses,Ton,Sonido,Son,Som,Звук,サウンド,사운드,आवाज़
+settings.theme_default,Classic,Klasik,Klassisch,Clásico,Classique,Clássico,Классика,クラシック,클래식,क्लासिक
 settings.title,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
 settings.version,Version {v},Sürüm {v},Version {v},Versión {v},Version {v},Versão {v},Версия {v},バージョン {v},버전 {v},वर्शन {v}
 sheet.close,Close,Kapat,Schließen,Cerrar,Fermer,Fechar,Закрыть,閉じる,닫기,बंद करो
@@ -449,89 +449,89 @@ shop.restore_failed,Could not restore. Try again later.,Geri yüklenemedi. Daha 
 shop.restored,Purchases restored,Satın alımlar geri yüklendi,Käufe wiederhergestellt,Compras restauradas,Achats restaurés,Compras restauradas,Покупки восстановлены,購入を復元しました,구매를 복원했어요,खरीदारी वापस आ गई
 shop.title,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
 shop.unavailable,The store is not available right now,Mağaza şu an kullanılamıyor,Der Shop ist gerade nicht verfügbar,La tienda no está disponible ahora mismo,La boutique n'est pas disponible pour le moment,A loja não está disponível agora,Магазин сейчас недоступен,ストアは現在ご利用いただけません,지금은 상점을 사용할 수 없어요,स्टोर अभी उपलब्ध नहीं है
-station.any,All-round,,,,,,,,,
-station.espresso,Espresso,,,,,,,,,
-station.milk,Steam wand,,,,,,,,,
-stock.auto_beans,Auto top-up,,,,,,,,,
-stock.auto_beans.d,Buy supplier beans when the hopper runs low.,,,,,,,,,
-stock.beans,Coffee beans,,,,,,,,,
-stock.house_beans,House beans,,,,,,,,,
-stock.ice,Ice,,,,,,,,,
-stock.milk,Milk,,,,,,,,,
-stock.milk_eta,van at {time},,,,,,,,,
-stock.milk_help,The supplier delivers your order each morning. Half of what's left spoils overnight.,,,,,,,,,
-stock.oat,Oat milk,,,,,,,,,
-stock.order,Daily order {n},,,,,,,,,
-stock.q,quality {q},,,,,,,,,
-stock.whole,Whole milk,,,,,,,,,
-supplier.cheap,Cheap supplier,,,,,,,,,
-supplier.premium,Premium supplier,,,,,,,,,
-supplier.regular,Regular supplier,,,,,,,,,
-tab.bar,Bar,,,,,,,,,
-tab.grow,Grow,,,,,,,,,
-tab.menu,Menu,,,,,,,,,
+station.any,All-round,Her iş,Allround,Polivalente,Polyvalent,Versátil,Универсальный,オールラウンド,만능,सब काम
+station.espresso,Espresso,Espresso,Espresso,Espresso,Espresso,Espresso,Эспрессо,エスプレッソ,에스프레소,एस्प्रेसो
+station.milk,Steam wand,Buhar çubuğu,Dampfdüse,Vaporizador,Buse vapeur,Vaporizador,Паровой краник,スチームワンド,스팀 완드,स्टीम वैंड
+stock.auto_beans,Auto top-up,Otomatik takviye,Automatisch nachfüllen,Reposición automática,Réappro automatique,Reposição automática,Автопополнение,自動補充,자동 보충,अपने आप टॉप-अप
+stock.auto_beans.d,Buy supplier beans when the hopper runs low.,Hazne azaldığında tedarikçi çekirdeği al.,"Kauf Lieferanten-Bohnen, wenn der Behälter knapp wird.",Compra granos al proveedor cuando la tolva esté casi vacía.,Achète des grains au fournisseur quand la trémie est presque vide.,Compra grãos do fornecedor quando o reservatório fica baixo.,"Покупай зёрна у поставщика, когда бункер почти пуст.",ホッパーが少なくなったら、仕入れ豆を自動で買います。,호퍼가 부족해지면 납품 원두를 자동으로 사요.,हॉपर कम हो तो सप्लायर की बीन्स खरीदो।
+stock.beans,Coffee beans,Kahve çekirdeği,Kaffeebohnen,Granos de café,Grains de café,Grãos de café,Кофейные зёрна,コーヒー豆,커피 원두,कॉफ़ी बीन्स
+stock.house_beans,House beans,Ev çekirdeği,Hausbohnen,Granos de la casa,Grains maison,Grãos da casa,Фирменные зёрна,店の豆,하우스 원두,दुकान की बीन्स
+stock.ice,Ice,Buz,Eis,Hielo,Glace,Gelo,Лёд,氷,얼음,बर्फ़
+stock.milk,Milk,Süt,Milch,Leche,Lait,Leite,Молоко,ミルク,우유,दूध
+stock.milk_eta,van at {time},kamyon {time}'de,Wagen um {time},furgoneta a las {time},camionnette à {time},caminhão às {time},фургон в {time},{time} に到着予定,{time} 도착 예정 차량,वैन {time} पर
+stock.milk_help,The supplier delivers your order each morning. Half of what's left spoils overnight.,Tedarikçi siparişini her sabah getirir. Kalanın yarısı gece bozulur.,Der Lieferant bringt jeden Morgen deine Bestellung. Die Hälfte des Restes verdirbt über Nacht.,El proveedor entrega tu pedido cada mañana. La mitad de lo que sobra se estropea durante la noche.,Le fournisseur livre ta commande chaque matin. La moitié de ce qui reste se gâte pendant la nuit.,O fornecedor entrega seu pedido toda manhã. Metade do que sobra estraga durante a noite.,Поставщик привозит заказ каждое утро. Половина остатка портится за ночь.,仕入れ業者が毎朝注文品を届けます。残りの半分は一晩で傷みます。,납품업체가 매일 아침 주문을 배달해요. 남은 것의 절반은 밤새 상해요.,सप्लायर हर सुबह तुम्हारा ऑर्डर पहुँचाता है। बचे का आधा हिस्सा रात में खराब हो जाता है।
+stock.oat,Oat milk,Yulaf sütü,Hafermilch,Leche de avena,Lait d'avoine,Leite de aveia,Овсяное молоко,オーツミルク,오트 우유,ओट दूध
+stock.order,Daily order {n},Günlük sipariş {n},Tagesbestellung {n},Pedido diario {n},Commande du jour {n},Pedido diário {n},Заказ на день: {n},毎日の注文 {n},오늘의 주문 {n},रोज़ का ऑर्डर {n}
+stock.q,quality {q},kalite {q},Qualität {q},calidad {q},qualité {q},qualidade {q},качество {q},品質 {q},품질 {q},क्वालिटी {q}
+stock.whole,Whole milk,Tam yağlı süt,Vollmilch,Leche entera,Lait entier,Leite integral,Цельное молоко,牛乳,일반 우유,फ़ुल-क्रीम दूध
+supplier.cheap,Cheap supplier,Ucuz tedarikçi,Günstiger Lieferant,Proveedor económico,Fournisseur économique,Fornecedor econômico,Дешёвый поставщик,格安の仕入れ先,저가 납품업체,सस्ता सप्लायर
+supplier.premium,Premium supplier,Premium tedarikçi,Premium-Lieferant,Proveedor premium,Fournisseur premium,Fornecedor premium,Премиум-поставщик,プレミアムの仕入れ先,프리미엄 납품업체,प्रीमियम सप्लायर
+supplier.regular,Regular supplier,Standart tedarikçi,Normaler Lieferant,Proveedor habitual,Fournisseur habituel,Fornecedor padrão,Обычный поставщик,通常の仕入れ先,일반 납품업체,नियमित सप्लायर
+tab.bar,Bar,Bar,Bar,Barra,Bar,Balcão,Бар,カウンター,바,बार
+tab.grow,Grow,Büyüt,Ausbau,Crecer,Croissance,Crescer,Развитие,成長,확장,बढ़ाओ
+tab.menu,Menu,Menü,Karte,Carta,Menu,Cardápio,Меню,メニュー,메뉴,मेन्यू
 tab.research,Research,Araştırma,Forschung,Investigación,Recherche,Pesquisa,Исследования,研究,연구,रिसर्च
-tab.roastery,Roastery,,,,,,,,,
-tab.settings,Settings,,,,,,,,,
+tab.roastery,Roastery,Kavurma,Rösterei,Tostadero,Torréfaction,Torrefação,Обжарка,焙煎所,로스터리,रोस्टरी
+tab.settings,Settings,Ayarlar,Einstellungen,Ajustes,Réglages,Configurações,Настройки,設定,설정,सेटिंग्स
 tab.shop,Shop,Mağaza,Shop,Tienda,Boutique,Loja,Магазин,ショップ,상점,दुकान
-ticket.brew,Brew next,,,,,,,,,
-ticket.cancel,Cancel,,,,,,,,,
-ticket.dup,duplicate,,,,,,,,,
-ticket.flag,Priority,,,,,,,,,
-ticket.oat,oat,,,,,,,,,
-ticket.oat_long,oat milk,,,,,,,,,
-ticket.pickup,{who} · pickup at {time},,,,,,,,,
-ticket.unflag,Unflag,,,,,,,,,
-ticket.waiting,{who} · waiting {min} min,,,,,,,,,
-tip.assistant,Hire a roaster assistant in the Bar tab: he drops and blends by himself.,,,,,,,,,
-tip.beans_out,Out of beans! Turn on auto top-up or roast more.,,,,,,,,,
-tip.blend,Your roast has rested. Open the Roastery tab and tap Blend.,,,,,,,,,
-tip.corner,"The Corner Cafe is open! Pastries, iced drinks and tables. The cart keeps running as a branch.",,,,,,,,,
-tip.forecast,The forecast board shows three days ahead.,,,,,,,,,
-tip.frost,Frost at origin: buy a different green coffee for a few days.,,,,,,,,,
-tip.head_barista,Your head barista now flags pre-orders that are close to their pickup time.,,,,,,,,,
-tip.heat,Heat: iced drinks everywhere. Buy ice or make extra in the forecast.,,,,,,,,,
-tip.ice_out,Out of ice! Buy a bag or a bigger ice maker.,,,,,,,,,
-tip.jam,"A worn grinder jammed. Hold it to unjam, and service it in the Bar tab.",,,,,,,,,
-tip.milk_late,The milk van is late. A milk run or fewer milk drinks helps.,,,,,,,,,
-tip.milk_out,Out of milk! Order more for tomorrow or send a milk run.,,,,,,,,,
-tip.plan,"Each morning: check the forecast, the milk order and the menu, then open.",,,,,,,,,
-tip.rail_full,"The rail was full, so someone walked away. Add a barista or a longer rail.",,,,,,,,,
-tip.rain,Rain day: more pre-orders and hot drinks. Prep the urn in the forecast.,,,,,,,,,
-tip.report,"That was your first day! Stars come from reviews: fast, tasty and on time.",,,,,,,,,
-tip.rest,Fresh beans rest until tomorrow. Then blend them into the house beans.,,,,,,,,,
-tip.roast,Now roast it: pick a profile and tap Drop in the sweet spot.,,,,,,,,,
-tip.roastery,The Roastery Hall is open! Buy green coffee in the Roastery tab.,,,,,,,,,
-tip.sold_out,A pastry sold out. Bake more in the Menu tab.,,,,,,,,,
-tip.spree,Bad reviews hurt footfall. Check the dial-in and the wait times.,,,,,,,,,
-tip.walked,"A customer gave up waiting. Hire, add a group head, or set a house rule.",,,,,,,,,
-tip.wholesale,Wholesale needs enough beans of good quality on the delivery day.,,,,,,,,,
-toast.blended,{kg} blended into the house beans.,,,,,,,,,
-toast.dialed,Grinder dialled in. Shots taste sweet again.,,,,,,,,,
-toast.drop,Batch dropped. It rests until tomorrow.,,,,,,,,,
-toast.drop_sweet,Right in the sweet spot! A great batch.,,,,,,,,,
-toast.fridge,"Milk in the fridge: whole {whole}, oat {oat}.",,,,,,,,,
-toast.handover,{n} orders handed over. Smiles all round!,,,,,,,,,
-toast.milk_run,The emergency milk is here.,,,,,,,,,
-toast.repaired,Grinder unjammed.,,,,,,,,,
-toast.roast_done,Roast done · quality {q},,,,,,,,,
-toast.venue,{name} is open!,,,,,,,,,
-toast.wholesale,Wholesale delivery paid: {cash},,,,,,,,,
-trait.chatty,Chatty,,,,,,,,,
-trait.perfectionist,Perfectionist,,,,,,,,,
-trait.quick,Quick,,,,,,,,,
-trait.steady,Steady,,,,,,,,,
+ticket.brew,Brew next,Sıradakini demle,Als Nächstes brühen,Preparar el siguiente,Infuser ensuite,Preparar a seguir,Варить следующим,次に淹れる,다음에 만들기,अगला बनाओ
+ticket.cancel,Cancel,İptal,Abbrechen,Cancelar,Annuler,Cancelar,Отмена,キャンセル,취소,रद्द करो
+ticket.dup,duplicate,tekrar,doppelt,duplicado,doublon,duplicado,дубль,重複,중복,दोहरा
+ticket.flag,Priority,Öncelik,Vorrang,Prioridad,Prioritaire,Prioridade,Приоритет,優先,우선,प्राथमिकता
+ticket.oat,oat,yulaf,Hafer,avena,avoine,aveia,овсяное,オーツ,오트,ओट
+ticket.oat_long,oat milk,yulaf sütü,Hafermilch,leche de avena,lait d'avoine,leite de aveia,овсяное молоко,オーツミルク,오트 우유,ओट दूध
+ticket.pickup,{who} · pickup at {time},{who} · {time} teslim,{who} · Abholung um {time},{who} · recogida a las {time},{who} · retrait à {time},{who} · retirada às {time},{who} · выдача в {time},{who} · {time} 受け取り,{who} · {time}에 픽업,{who} · {time} पर पिकअप
+ticket.unflag,Unflag,Önceliği kaldır,Vorrang aufheben,Quitar prioridad,Retirer la priorité,Tirar prioridade,Снять приоритет,優先を解除,우선 해제,प्राथमिकता हटाओ
+ticket.waiting,{who} · waiting {min} min,{who} · {min} dk bekliyor,{who} · wartet {min} Min.,{who} · esperando {min} min,{who} · attend depuis {min} min,{who} · esperando há {min} min,{who} · ждёт {min} мин,{who} · {min} 分待ち,{who} · {min}분째 대기,{who} · {min} मिनट से इंतज़ार
+tip.assistant,Hire a roaster assistant in the Bar tab: he drops and blends by himself.,Bar sekmesinden bir kavurucu yardımcısı işe al: boşaltır ve kendi kendine harmanlar.,Stell im Tab Bar einen Röster-Assistenten ein: Er nimmt heraus und mischt selbstständig.,Contrata un asistente de tostado en la pestaña Barra: él retira y mezcla por su cuenta.,Embauche un assistant torréfacteur dans l'onglet Bar : il décharge et mélange tout seul.,Contrate um assistente de torra na aba Balcão: ele tira e mistura sozinho.,Найми помощника обжарщика во вкладке «Бар»: он сам выгружает и смешивает.,カウンタータブで焙煎アシスタントを雇いましょう。排出とブレンドを自分でしてくれます。,바 탭에서 로스팅 보조를 고용하세요. 혼자서 배출하고 블렌딩해요.,बार टैब में रोस्टर सहायक रखो: वह खुद उतारता और मिलाता है।
+tip.beans_out,Out of beans! Turn on auto top-up or roast more.,Çekirdek bitti! Otomatik takviyeyi aç ya da daha çok kavur.,Keine Bohnen mehr! Schalte das automatische Nachfüllen ein oder röste mehr.,¡Se acabaron los granos! Activa la reposición automática o tuesta más.,Plus de grains ! Active le réappro automatique ou torréfie davantage.,Acabaram os grãos! Ative a reposição automática ou torre mais.,Зёрна закончились! Включи автопополнение или обжарь больше.,豆が切れました！ 自動補充をオンにするか、もっと焙煎しましょう。,원두가 떨어졌어요! 자동 보충을 켜거나 더 볶으세요.,बीन्स खत्म! अपने आप टॉप-अप चालू करो या और भूनो।
+tip.blend,Your roast has rested. Open the Roastery tab and tap Blend.,Kavurman dinlendi. Kavurma sekmesini açıp Harmanla'ya dokun.,Deine Röstung hat geruht. Öffne das Tab Rösterei und tippe auf Mischen.,Tu tueste ya ha reposado. Abre la pestaña Tostadero y toca Mezclar.,Ta torréfaction a reposé. Ouvre l'onglet Torréfaction et touche Assemblage.,Sua torra descansou. Abra a aba Torrefação e toque em Mistura.,Обжарка отлежалась. Открой вкладку «Обжарка» и нажми «Смешать».,焙煎した豆が休めました。焙煎所タブを開いて「ブレンド」をタップしてください。,로스팅이 숙성됐어요. 로스터리 탭을 열고 블렌딩을 누르세요.,तुम्हारी भुनाई आराम कर चुकी है। रोस्टरी टैब खोलो और मिलाओ पर टैप करो।
+tip.corner,"The Corner Cafe is open! Pastries, iced drinks and tables. The cart keeps running as a branch.","Köşe Kafe açık! Hamur işleri, buzlu içecekler ve masalar. Araba bir şube olarak çalışmaya devam eder.","Das Eckcafé ist offen! Gebäck, Eisgetränke und Tische. Der Wagen läuft als Filiale weiter.","¡La Cafetería de la esquina está abierta! Bollería, bebidas frías y mesas. El carrito sigue funcionando como sucursal.","Le café du coin est ouvert ! Viennoiseries, boissons glacées et tables. Le chariot continue comme succursale.","O Café da Esquina está aberto! Doces, bebidas geladas e mesas. O carrinho continua funcionando como filial.","Угловое кафе открыто! Выпечка, холодные напитки и столики. Тележка продолжает работать как филиал.",角のカフェが開きました！ 焼き菓子、アイスドリンク、テーブルがあります。カートは支店として営業を続けます。,"구석 카페가 열렸어요! 페이스트리, 아이스 음료, 테이블이 있어요. 카트는 지점으로 계속 돌아가요.","कॉर्नर कैफ़े खुल गया है! पेस्ट्री, आइस्ड ड्रिंक और मेज़ें। कार्ट एक शाखा के रूप में चलती रहती है।"
+tip.forecast,The forecast board shows three days ahead.,Tahmin panosu üç gün ilerisini gösterir.,Die Vorhersagetafel zeigt drei Tage im Voraus.,El tablero de previsión muestra tres días por adelantado.,Le tableau des prévisions montre trois jours à l'avance.,O quadro de previsão mostra três dias à frente.,Доска прогноза показывает три дня вперёд.,天気予報ボードでは3日先までわかります。,예보판은 사흘 앞의 날씨를 보여 줘요.,पूर्वानुमान बोर्ड तीन दिन आगे दिखाता है।
+tip.frost,Frost at origin: buy a different green coffee for a few days.,Üreticide don: birkaç gün için farklı bir çiğ kahve al.,Frost im Anbaugebiet: Kauf für ein paar Tage einen anderen Rohkaffee.,Helada en origen: compra otro café verde durante unos días.,Gel à l'origine : achète un autre café vert pendant quelques jours.,Geada na origem: compre outro café verde por alguns dias.,Заморозки у плантаций: несколько дней покупай другой зелёный кофе.,産地で霜害: 数日間は別の生豆を買いましょう。,산지 서리: 며칠 동안은 다른 생두를 사세요.,उत्पत्ति वाले खेत में पाला: कुछ दिनों के लिए दूसरी कच्ची कॉफ़ी खरीदो।
+tip.head_barista,Your head barista now flags pre-orders that are close to their pickup time.,Baş baristan artık teslim saatine yakın ön siparişleri işaretler.,"Dein Chef-Barista markiert jetzt Vorbestellungen, die bald abgeholt werden.",Tu barista jefe ahora marca los pedidos anticipados cercanos a su hora de recogida.,Ton chef barista signale maintenant les commandes anticipées proches de leur heure de retrait.,Seu barista-chefe agora sinaliza os pedidos antecipados que estão perto do horário de retirada.,"Старший бариста теперь помечает предзаказы, у которых скоро время выдачи.",チーフバリスタが、受け取り時間が近い予約注文に印をつけるようになりました。,수석 바리스타가 이제 픽업 시간이 가까운 예약 주문에 표시를 달아요.,तुम्हारा हेड बरिस्ता अब पिकअप समय के करीब वाले पहले से ऑर्डर चिह्नित करता है।
+tip.heat,Heat: iced drinks everywhere. Buy ice or make extra in the forecast.,Sıcak: her yerde buzlu içecek. Buz al ya da tahminden ekstra yap.,Hitze: Eisgetränke überall. Kauf Eis oder mach in der Vorhersage extra.,Calor: bebidas frías por todas partes. Compra hielo o haz más en la previsión.,Canicule : boissons glacées partout. Achète de la glace ou fais-en plus dans les prévisions.,Calor: bebidas geladas por toda parte. Compre gelo ou faça extra na previsão.,Жара: холодные напитки повсюду. Купи лёд или сделай запас по прогнозу.,猛暑: どこでもアイスドリンクが売れます。氷を買うか、天気予報を見て多めに作りましょう。,더위: 아이스 음료가 사방에서 팔려요. 얼음을 사거나 예보에서 더 만드세요.,गर्मी: हर जगह आइस्ड ड्रिंक। बर्फ़ खरीदो या पूर्वानुमान में अतिरिक्त बनाओ।
+tip.ice_out,Out of ice! Buy a bag or a bigger ice maker.,Buz bitti! Bir torba al ya da daha büyük bir buz makinesi.,Kein Eis mehr! Kauf einen Beutel oder eine größere Eismaschine.,¡Se acabó el hielo! Compra una bolsa o una máquina de hielo más grande.,Plus de glace ! Achète un sac ou une machine à glace plus grande.,Acabou o gelo! Compre um saco ou uma máquina de gelo maior.,Льда не осталось! Купи мешок или большой льдогенератор.,氷が切れました！ 氷の袋を買うか、大きな製氷機を買いましょう。,얼음이 떨어졌어요! 한 봉지를 사거나 더 큰 제빙기를 사세요.,बर्फ़ खत्म! एक थैला खरीदो या बड़ा आइस मेकर।
+tip.jam,"A worn grinder jammed. Hold it to unjam, and service it in the Bar tab.",Aşınmış bir öğütücü sıkıştı. Açmak için basılı tut ve Bar sekmesinden bakım yap.,"Eine verschlissene Mühle hat sich verklemmt. Halte sie gedrückt, um sie zu entstopfen, und warte sie im Tab Bar.",Un molinillo gastado se atascó. Mantenlo pulsado para desatascarlo y revísalo en la pestaña Barra.,"Un moulin usé s'est bloqué. Maintiens-le pour le débloquer, et fais-le réviser dans l'onglet Bar.",Um moedor gasto travou. Segure para desentupir e faça a revisão na aba Balcão.,"Изношенная кофемолка заклинила. Удержи, чтобы разблокировать, и обслужи её во вкладке «Бар».",摩耗したグラインダーが詰まりました。長押しで詰まりを直し、カウンタータブで整備しましょう。,"닳은 그라인더가 막혔어요. 길게 눌러 풀고, 바 탭에서 점검하세요.","घिसा ग्राइंडर जाम हो गया। जाम हटाने के लिए दबाकर रखो, और बार टैब में उसकी सर्विस कराओ।"
+tip.milk_late,The milk van is late. A milk run or fewer milk drinks helps.,Süt kamyonu geç kaldı. Acil süt siparişi ya da daha az sütlü içecek yardımcı olur.,Der Milchwagen ist spät dran. Eine Notfall-Milchfahrt oder weniger Milchgetränke helfen.,La furgoneta de leche llega tarde. Un reparto urgente o menos bebidas con leche ayudan.,La camionnette de lait a du retard. Une livraison d'urgence ou moins de boissons au lait aide.,O caminhão do leite está atrasado. Uma entrega de emergência ou menos bebidas com leite ajuda.,Фургон с молоком опаздывает. Помогут срочный подвоз или меньше молочных напитков.,牛乳便が遅れています。牛乳便を頼むか、牛乳系の飲み物を減らすと助かります。,우유 차량이 늦어요. 긴급 우유 배달이나 우유 음료를 줄이면 도움이 돼요.,दूध की वैन लेट है। इमरजेंसी दूध मँगाना या दूध वाले ड्रिंक कम करना मदद करता है।
+tip.milk_out,Out of milk! Order more for tomorrow or send a milk run.,Süt bitti! Yarın için daha çok sipariş ver ya da acil süt siparişi gönder.,Keine Milch mehr! Bestell für morgen mehr oder schick eine Notfall-Milchfahrt.,¡Se acabó la leche! Pide más para mañana o envía un reparto urgente.,Plus de lait ! Commande davantage pour demain ou lance une livraison d'urgence.,Acabou o leite! Peça mais para amanhã ou mande uma entrega de emergência.,Молоко закончилось! Закажи больше на завтра или вызови срочный подвоз.,牛乳が切れました！ 明日分を多めに頼むか、牛乳便を送りましょう。,우유가 떨어졌어요! 내일을 위해 더 주문하거나 긴급 우유 배달을 부르세요.,दूध खत्म! कल के लिए और मँगाओ या इमरजेंसी दूध भेजो।
+tip.plan,"Each morning: check the forecast, the milk order and the menu, then open.","Her sabah: tahmine, süt siparişine ve menüye bak, sonra aç.","Jeden Morgen: Schau auf Vorhersage, Milchbestellung und Karte, dann öffne.","Cada mañana: revisa la previsión, el pedido de leche y la carta, y luego abre.","Chaque matin : vérifie les prévisions, la commande de lait et le menu, puis ouvre.","Toda manhã: confira a previsão, o pedido de leite e o cardápio, depois abra.","Каждое утро: проверь прогноз, заказ молока и меню, потом открывайся.",毎朝、天気予報、牛乳の注文、メニューを確認してから開店しましょう。,"매일 아침: 예보, 우유 주문, 메뉴를 확인하고 여세요.","हर सुबह: पूर्वानुमान, दूध का ऑर्डर और मेन्यू देखो, फिर खोलो।"
+tip.rail_full,"The rail was full, so someone walked away. Add a barista or a longer rail.","Fiş rafı doluydu, bu yüzden biri gitti. Bir barista ya da daha uzun bir raf ekle.","Die Schiene war voll, deshalb ist jemand gegangen. Stell eine Barista ein oder nimm eine längere Schiene.",El riel estaba lleno y alguien se fue. Añade un barista o un riel más largo.,"Le rail était plein, donc quelqu'un est parti. Ajoute un barista ou un rail plus long.","O trilho estava cheio, então alguém foi embora. Adicione um barista ou um trilho maior.","Лента была полна, и кто-то ушёл. Добавь бариста или удлини ленту.",レールがいっぱいで、帰ってしまったお客さんがいます。バリスタを増やすか、長いレールにしましょう。,레일이 꽉 차서 손님 한 명이 떠났어요. 바리스타를 더 두거나 레일을 늘리세요.,"रेल भरी थी, इसलिए कोई चला गया। एक बरिस्ता या लंबी रेल जोड़ो।"
+tip.rain,Rain day: more pre-orders and hot drinks. Prep the urn in the forecast.,Yağmurlu gün: daha çok ön sipariş ve sıcak içecek. Tahminde sürahiyi hazırla.,Regentag: mehr Vorbestellungen und heiße Getränke. Bereite den Warmhalter in der Vorhersage vor.,Día de lluvia: más pedidos anticipados y bebidas calientes. Prepara el termo según la previsión.,Jour de pluie : plus de commandes anticipées et de boissons chaudes. Prépare la carafe dans les prévisions.,Dia de chuva: mais pedidos antecipados e bebidas quentes. Prepare a garrafa térmica conforme a previsão.,Дождливый день: больше предзаказов и горячих напитков. Заготовь термос по прогнозу.,雨の日: 予約注文と温かい飲み物が増えます。天気予報を見て保温ポットを仕込みましょう。,비 오는 날: 예약 주문과 따뜻한 음료가 늘어요. 예보에서 보온 주전자를 준비하세요.,बारिश का दिन: ज़्यादा पहले से ऑर्डर और गरम ड्रिंक। पूर्वानुमान में कैराफ़े तैयार करो।
+tip.report,"That was your first day! Stars come from reviews: fast, tasty and on time.","İlk günün bitti! Yıldızlar yorumlardan gelir: hızlı, lezzetli ve zamanında.","Das war dein erster Tag! Sterne kommen aus Bewertungen: schnell, lecker und pünktlich.","¡Ese fue tu primer día! Las estrellas vienen de las reseñas: rápido, rico y a tiempo.","C'était ta première journée ! Les étoiles viennent des avis : rapide, bon et à l'heure.","Esse foi seu primeiro dia! As estrelas vêm das avaliações: rápido, gostoso e no horário.","Это был твой первый день! Звёзды берутся из отзывов: быстро, вкусно и вовремя.",初日お疲れさまでした！ 星はレビューから生まれます。速く、おいしく、時間どおりに。,"첫날 끝! 별점은 리뷰에서 나와요. 빠르고, 맛있고, 제시간에 내세요.","पहला दिन पूरा! स्टार रिव्यू से आते हैं: तेज़, स्वादिष्ट और समय पर।"
+tip.rest,Fresh beans rest until tomorrow. Then blend them into the house beans.,Taze çekirdekler yarına kadar dinlenir. Sonra ev çekirdeğine harmanla.,Frische Bohnen ruhen bis morgen. Dann mischst du sie unter die Hausbohnen.,Los granos frescos reposan hasta mañana. Luego mézclalos con los granos de la casa.,"Les grains frais reposent jusqu'à demain. Ensuite, mélange-les aux grains maison.","Grãos frescos descansam até amanhã. Depois, misture-os ao grão da casa.",Свежие зёрна отлёживаются до завтра. Потом смешай их с фирменными.,焙煎したての豆は明日まで休ませます。そのあと店の豆にブレンドしましょう。,신선한 원두는 내일까지 쉬어요. 그다음 하우스 원두에 섞으세요.,ताज़ी बीन्स कल तक आराम करती हैं। फिर उन्हें दुकान की बीन्स में मिलाओ।
+tip.roast,Now roast it: pick a profile and tap Drop in the sweet spot.,Şimdi kavur: bir profil seç ve tatlı noktada Boşalt'a dokun.,Jetzt rösten: Wähl ein Profil und tippe im richtigen Bereich auf Rausnehmen.,Ahora tuesta: elige un perfil y toca Retirar en el punto dulce.,Maintenant torréfie : choisis un profil et touche Décharger dans la zone idéale.,Agora torre: escolha um perfil e toque em Tirar na faixa ideal.,Теперь обжарь: выбери профиль и нажми «Выгрузить» в сладкой зоне.,では焙煎しましょう。プロファイルを選び、ちょうどよいタイミングで「排出」をタップしてください。,이제 볶으세요: 프로필을 고르고 달콤한 구간에서 배출을 누르세요.,अब भूनो: भुनाई का तरीका चुनो और मीठे हिस्से में उतारो पर टैप करो।
+tip.roastery,The Roastery Hall is open! Buy green coffee in the Roastery tab.,Kavurma Salonu açık! Çiğ kahveyi Kavurma sekmesinden al.,Die Rösthalle ist offen! Kauf Rohkaffee im Tab Rösterei.,¡La Sala del tostadero está abierta! Compra café verde en la pestaña Tostadero.,Le hall de torréfaction est ouvert ! Achète du café vert dans l'onglet Torréfaction.,O Salão da Torrefação está aberto! Compre café verde na aba Torrefação.,Зал обжарки открыт! Покупай зелёный кофе во вкладке «Обжарка».,焙煎ホールが開きました！ 焙煎所タブで生豆を買いましょう。,로스터리 홀이 열렸어요! 로스터리 탭에서 생두를 사세요.,रोस्टरी हॉल खुल गया है! रोस्टरी टैब में कच्ची कॉफ़ी खरीदो।
+tip.sold_out,A pastry sold out. Bake more in the Menu tab.,Bir hamur işi bitti. Menü sekmesinden daha çok pişir.,Ein Gebäck ist ausverkauft. Back mehr im Tab Karte.,Se agotó una bollería. Hornea más en la pestaña Carta.,Une viennoiserie est épuisée. Cuis-en davantage dans l'onglet Menu.,Um doce esgotou. Asse mais na aba Cardápio.,Выпечка распродана. Испеки больше во вкладке «Меню».,焼き菓子が売り切れました。メニュータブでもっと焼きましょう。,페이스트리가 품절됐어요. 메뉴 탭에서 더 구우세요.,एक पेस्ट्री बिक गई। मेन्यू टैब में और बेक करो।
+tip.spree,Bad reviews hurt footfall. Check the dial-in and the wait times.,Kötü yorumlar ayak trafiğini düşürür. İnce ayara ve bekleme sürelerine bak.,Schlechte Bewertungen schaden dem Andrang. Schau auf den Mahlgrad und die Wartezeiten.,Las malas reseñas hacen bajar la clientela. Revisa el ajuste de molienda y los tiempos de espera.,Les mauvais avis font fuir les passants. Vérifie la mouture et les temps d'attente.,Avaliações ruins afastam gente. Confira a moagem e os tempos de espera.,Плохие отзывы бьют по посещаемости. Проверь помол и время ожидания.,悪いレビューは客足を遠ざけます。挽き目調整と待ち時間を確認しましょう。,나쁜 리뷰는 손님 발길을 줄여요. 맛 맞추기와 대기 시간을 확인하세요.,खराब रिव्यू से लोग घटते हैं। ग्राइंड सेट और इंतज़ार का समय जाँचो।
+tip.walked,"A customer gave up waiting. Hire, add a group head, or set a house rule.","Bir müşteri beklemekten vazgeçti. Ekle, bir grup başlığı ekle ya da bir mekân kuralı koy.","Eine Kundin oder ein Kunde hat das Warten aufgegeben. Stell jemanden ein, bau einen Brühkopf dazu oder leg eine Hausregel fest.","Un cliente se cansó de esperar. Contrata, añade un cabezal de grupo o pon una regla de la casa.","Un client a abandonné en attendant. Embauche, ajoute une tête de groupe ou mets une règle de la maison.","Um cliente desistiu de esperar. Contrate, adicione um cabeçote ou defina uma regra da casa.","Гость устал ждать и ушёл. Найми людей, добавь группу эспрессо-машины или поставь правило кафе.",待ちきれず帰ったお客さんがいます。雇う、グループヘッドを増やす、店のルールを決めるのいずれかを。,"기다리다 떠난 손님이 있어요. 직원을 고용하거나, 그룹 헤드를 추가하거나, 운영 규칙을 정하세요.","एक ग्राहक इंतज़ार छोड़कर चला गया। भर्ती करो, एक ग्रुप हेड जोड़ो, या दुकान का नियम रखो।"
+tip.wholesale,Wholesale needs enough beans of good quality on the delivery day.,Toptan satış için teslimat gününde yeterli iyi kalite çekirdek olmalı.,Der Großhandel braucht am Liefertag genug gute Bohnen.,Los pedidos mayoristas necesitan granos suficientes y de buena calidad el día de la entrega.,La vente en gros demande assez de bons grains le jour de la livraison.,O atacado precisa de grãos suficientes e de boa qualidade no dia da entrega.,Для опта в день поставки нужно достаточно хороших зёрен.,卸売は、納品日に十分な良質の豆が必要です。,도매는 납품일에 좋은 원두가 충분해야 해요.,थोक के लिए डिलीवरी के दिन पर्याप्त अच्छी क्वालिटी की बीन्स चाहिए।
+toast.blended,{kg} blended into the house beans.,{kg} ev çekirdeğine harmanlandı.,{kg} unter die Hausbohnen gemischt.,{kg} mezclados con los granos de la casa.,{kg} ajoutés aux grains maison.,{kg} misturados ao grão da casa.,{kg} смешано с фирменными зёрнами.,{kg} を店の豆にブレンドしました。,블렌딩 완료: {kg} → 하우스 원두,{kg} दुकान की बीन्स में मिलाई गईं।
+toast.dialed,Grinder dialled in. Shots taste sweet again.,Öğütücü ayarlandı. Shotlar yeniden tatlı.,Mühle eingestellt. Die Shots schmecken wieder süß.,Molinillo ajustado. Las dosis vuelven a saber dulces.,Moulin réglé. Les shots ont à nouveau un goût doux.,Moedor ajustado. As doses voltaram a ser doces.,Помол настроен. Эспрессо снова сладкий.,グラインダーの挽き目を調整しました。ショットがまた甘くなりました。,그라인더 맞춤 완료. 샷이 다시 달콤해요.,ग्राइंडर सेट हो गया। शॉट फिर से मीठे।
+toast.drop,Batch dropped. It rests until tomorrow.,Parti boşaltıldı. Yarına kadar dinlenir.,Charge rausgenommen. Sie ruht bis morgen.,Lote retirado. Reposa hasta mañana.,Lot déchargé. Il reposera jusqu'à demain.,Lote tirado. Ele descansa até amanhã.,Партия выгружена. Отлёживается до завтра.,焙煎を排出しました。明日まで休ませます。,배출 완료. 내일까지 숙성돼요.,बैच उतर गया। कल तक आराम करेगा।
+toast.drop_sweet,Right in the sweet spot! A great batch.,Tam tatlı noktada! Harika bir parti.,Genau im richtigen Bereich! Eine tolle Charge.,¡En pleno punto dulce! Un gran lote.,Pile dans la zone idéale ! Un superbe lot.,No ponto ideal! Um ótimo lote.,Точно в сладкой зоне! Отличная партия.,ちょうどよいタイミングです！ すばらしい焙煎です。,달콤한 구간에 딱 맞았어요! 훌륭한 배치예요.,सही मीठे हिस्से में! बढ़िया बैच।
+toast.fridge,"Milk in the fridge: whole {whole}, oat {oat}.","Buzdolabında süt: tam yağlı {whole}, yulaf {oat}.","Milch im Kühlschrank: voll {whole}, Hafer {oat}.","Leche en la nevera: entera {whole}, avena {oat}.","Lait au frigo : entier {whole}, avoine {oat}.","Leite na geladeira: integral {whole}, aveia {oat}.","В холодильнике молока: цельного {whole}, овсяного {oat}.",冷蔵庫の牛乳: 牛乳 {whole}、オーツミルク {oat}。,"냉장고의 우유: 일반 {whole}, 오트 {oat}.","फ़्रिज में दूध: फ़ुल-क्रीम {whole}, ओट {oat}।"
+toast.handover,{n} orders handed over. Smiles all round!,{n} sipariş teslim edildi. Herkes gülüyor!,{n} Bestellungen übergeben. Überall Lächeln!,{n} pedidos entregados. ¡Sonrisas para todos!,{n} commandes remises. Des sourires partout !,{n} pedidos entregues. Sorrisos para todos!,Выдано заказов: {n}. Все довольны!,{n} 件の注文を渡しました。みんな笑顔！,주문 {n}개를 건넸어요. 모두 웃음이 가득해요!,{n} ऑर्डर परोसे गए। सब मुस्कुराए!
+toast.milk_run,The emergency milk is here.,Acil süt geldi.,Die Notfall-Milch ist da.,Ha llegado la leche de emergencia.,Le lait d'urgence est arrivé.,O leite de emergência chegou.,Срочное молоко приехало.,緊急の牛乳が届きました。,긴급 우유가 도착했어요.,इमरजेंसी दूध आ गया।
+toast.repaired,Grinder unjammed.,Öğütücünün sıkışması açıldı.,Mühle entstopft.,Molinillo desatascado.,Moulin débloqué.,Moedor desentupido.,Кофемолка разблокирована.,グラインダーの詰まりを直しました。,그라인더 막힘을 풀었어요.,ग्राइंडर का जाम हट गया।
+toast.roast_done,Roast done · quality {q},Kavurma bitti · kalite {q},Röstung fertig · Qualität {q},Tueste terminado · calidad {q},Torréfaction terminée · qualité {q},Torra pronta · qualidade {q},Обжарка готова · качество {q},焙煎完了 · 品質 {q},로스팅 완료 · 품질 {q},भुनाई पूरी · क्वालिटी {q}
+toast.venue,{name} is open!,{name} açık!,{name} ist geöffnet!,¡{name} está abierto!,{name} est ouvert !,{name} está aberto!,{name} открыто!,{name} が開店しました！,{name} 영업 시작!,{name} खुल गया है!
+toast.wholesale,Wholesale delivery paid: {cash},Toptan teslimat ödendi: {cash},Großhandelslieferung bezahlt: {cash},Entrega mayorista cobrada: {cash},Livraison en gros payée : {cash},Entrega de atacado paga: {cash},Оплата за опт: {cash},卸売の納品代金を受け取りました: {cash},도매 납품 대금을 받았어요: {cash},थोक डिलीवरी का पैसा मिला: {cash}
+trait.chatty,Chatty,Konuşkan,Gesprächig,Parlanchín,Bavard,Falante,Болтливый,おしゃべり,수다쟁이,बातूनी
+trait.perfectionist,Perfectionist,Mükemmeliyetçi,Perfektionistin,Perfeccionista,Perfectionniste,Perfeccionista,Перфекционист,完璧主義,완벽주의자,परफ़ेक्शनिस्ट
+trait.quick,Quick,Çabuk,Flink,Rápido,Rapide,Rápido,Быстрый,てきぱき,빠름,फ़टाफ़ट
+trait.steady,Steady,Sakin,Gleichmäßig,Constante,Régulier,Constante,Спокойный,落ち着き,꾸준함,स्थिर
 unit.h,h,sa,h,h,h,h,ч,時,시간,घं
 unit.min,min,dk,min,min,min,min,мин,分,분,मि
 unit.s,s,sn,s,s,s,s,с,秒,초,से
 upgrade.title,Upgrades,Geliştirmeler,Verbesserungen,Mejoras,Améliorations,Melhorias,Улучшения,アップグレード,업그레이드,अपग्रेड
-venue.cart,Quayside Cart,,,,,,,,,
-venue.cart.d,A coffee cart under a striped awning on the quay.,,,,,,,,,
-venue.corner,Corner Cafe,,,,,,,,,
-venue.corner.d,"Seats, a pastry case, iced drinks and more customers.",,,,,,,,,
-venue.roastery,Roastery Hall,,,,,,,,,
-venue.roastery.d,A big hall with a drum roaster. Roast your own beans and sell wholesale.,,,,,,,,,
-weather.fog,☁ Fog,,,,,,,,,
-weather.heat,☀ Heat,,,,,,,,,
-weather.rain,☂ Rain,,,,,,,,,
-weather.sunny,☀ Clear,,,,,,,,,
+venue.cart,Quayside Cart,Rıhtım Arabası,Kai-Wagen,Carrito del muelle,Chariot du quai,Carrinho do Cais,Тележка на набережной,キーサイドのカート,부두 카트,क्वेसाइड कार्ट
+venue.cart.d,A coffee cart under a striped awning on the quay.,Rıhtımda çizgili bir tente altında kahve arabası.,Ein Kaffeewagen unter einer gestreiften Markise am Kai.,Un carrito de café bajo un toldo a rayas en el muelle.,Un chariot à café sous un auvent rayé sur le quai.,Um carrinho de café sob um toldo listrado no cais.,Кофейная тележка под полосатым навесом на набережной.,波止場の縞模様の日よけの下にあるコーヒーカート。,부두에서 줄무늬 차양 아래 있는 커피 카트예요.,घाट पर एक धारीदार छज्जे के नीचे कॉफ़ी कार्ट।
+venue.corner,Corner Cafe,Köşe Kafe,Eckcafé,Cafetería de la esquina,Café du coin,Café da Esquina,Угловое кафе,角のカフェ,코너 카페,कॉर्नर कैफ़े
+venue.corner.d,"Seats, a pastry case, iced drinks and more customers.","Koltuklar, hamur işi vitrini, buzlu içecekler ve daha çok müşteri.","Sitzplätze, eine Gebäckvitrine, Eisgetränke und mehr Kunden.","Asientos, vitrina de bollería, bebidas frías y más clientes.","Des places, une vitrine de viennoiseries, des boissons glacées et plus de clients.","Mesas, uma vitrine de doces, bebidas geladas e mais clientes.","Места, витрина с выпечкой, холодные напитки и больше гостей.",座席、焼き菓子のケース、アイスドリンク、そしてより多くのお客さん。,"좌석, 페이스트리 진열대, 아이스 음료와 더 많은 손님이 있어요.","बैठने की जगह, पेस्ट्री केस, आइस्ड ड्रिंक और ज़्यादा ग्राहक।"
+venue.roastery,Roastery Hall,Kavurma Salonu,Rösthalle,Sala del tostadero,Hall de torréfaction,Salão da Torrefação,Зал обжарки,焙煎ホール,로스터리 홀,रोस्टरी हॉल
+venue.roastery.d,A big hall with a drum roaster. Roast your own beans and sell wholesale.,Tambur kavurucu olan büyük bir salon. Kendi çekirdeğini kavur ve toptan sat.,Eine große Halle mit Trommelröster. Röste deine eigenen Bohnen und verkaufe im Großhandel.,Una gran sala con tostador de tambor. Tuesta tus propios granos y véndelos al por mayor.,Une grande salle avec un torréfacteur à tambour. Torréfie tes grains et vends-les en gros.,Um grande salão com torrador de tambor. Torre seus grãos e venda no atacado.,Большой зал с барабанной обжаркой. Обжаривай свои зёрна и продавай оптом.,ドラム式焙煎機がある大きなホール。自分の豆を焙煎して、卸売もできます。,드럼 로스터가 있는 넓은 홀이에요. 원두를 직접 볶고 도매로 팔아요.,ड्रम रोस्टर वाला बड़ा हॉल। अपनी बीन्स भूनो और थोक में बेचो।
+weather.fog,☁ Fog,☁ Sis,☁ Nebel,☁ Niebla,☁ Brouillard,☁ Neblina,☁ Туман,☁ 霧,☁ 안개,☁ कोहरा
+weather.heat,☀ Heat,☀ Sıcak,☀ Hitze,☀ Calor,☀ Canicule,☀ Calor,☀ Жара,☀ 猛暑,☀ 더위,☀ गर्मी
+weather.rain,☂ Rain,☂ Yağmur,☂ Regen,☂ Lluvia,☂ Pluie,☂ Chuva,☂ Дождь,☂ 雨,☂ 비,☂ बारिश
+weather.sunny,☀ Clear,☀ Güneşli,☀ Klar,☀ Despejado,☀ Dégagé,☀ Limpo,☀ Ясно,☀ 快晴,☀ 맑음,☀ साफ़
