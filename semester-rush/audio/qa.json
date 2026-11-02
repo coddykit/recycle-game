@@ -1,0 +1,105 @@
+{
+ "total_mb": 1.52,
+ "assets": {
+  "ui_tap": {
+   "kind": "sfx",
+   "dur": 0.26,
+   "lufs": -28.4,
+   "tp": -3.3,
+   "peak": -3.3,
+   "head_sil": 0.001,
+   "tail_sil": 0.03,
+   "kb": 5.8,
+   "ch": 1,
+   "flags": []
+  },
+  "coins": {
+   "kind": "sfx",
+   "dur": 1.0,
+   "lufs": -14.9,
+   "tp": -2.0,
+   "peak": -2.4,
+   "head_sil": 0.0,
+   "tail_sil": 0.281,
+   "kb": 13.0,
+   "ch": 1,
+   "flags": []
+  },
+  "success": {
+   "kind": "sfx",
+   "dur": 1.48,
+   "lufs": -14.0,
+   "tp": -2.6,
+   "peak": -2.6,
+   "head_sil": 0.0,
+   "tail_sil": 0.495,
+   "kb": 12.9,
+   "ch": 1,
+   "flags": []
+  },
+  "warning": {
+   "kind": "sfx",
+   "dur": 1.2,
+   "lufs": -16.9,
+   "tp": -2.6,
+   "peak": -2.6,
+   "head_sil": 0.0,
+   "tail_sil": 0.438,
+   "kb": 11.5,
+   "ch": 1,
+   "flags": []
+  },
+  "bell": {
+   "kind": "sfx",
+   "dur": 2.0,
+   "lufs": -14.0,
+   "tp": -4.9,
+   "peak": -5.9,
+   "head_sil": 0.0,
+   "tail_sil": 0.69,
+   "kb": 19.7,
+   "ch": 1,
+   "flags": []
+  },
+  "place": {
+   "kind": "sfx",
+   "dur": 0.34,
+   "lufs": -25.6,
+   "tp": -2.8,
+   "peak": -2.8,
+   "head_sil": 0.002,
+   "tail_sil": 0.034,
+   "kb": 6.2,
+   "ch": 1,
+   "flags": []
+  },
+  "music_calm": {
+   "kind": "music",
+   "dur": 56.9,
+   "lufs": -18.0,
+   "tp": -5.1,
+   "peak": -5.1,
+   "head_sil": 0.0,
+   "tail_sil": 0.0,
+   "kb": 764.5,
+   "ch": 2,
+   "seam_jump": 0.16,
+   "seam_step_db": -19.7,
+   "flags": []
+  },
+  "music_busy": {
+   "kind": "music",
+   "dur": 56.6,
+   "lufs": -18.0,
+   "tp": -3.8,
+   "peak": -3.8,
+   "head_sil": 0.0,
+   "tail_sil": 0.0,
+   "kb": 727.8,
+   "ch": 2,
+   "seam_jump": 0.025,
+   "seam_step_db": 1.5,
+   "flags": []
+  }
+ }
+}

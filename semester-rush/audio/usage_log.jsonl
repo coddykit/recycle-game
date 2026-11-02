@@ -6,3 +6,5 @@
 {"kind": "sfx", "id": "bell", "seconds": 2.0, "credits": 20, "remaining": 38337, "cost_from": "header", "hash": "950bac70", "took": 1.5, "t": "2026-11-02T07:53:17"}
 {"kind": "sfx", "id": "place", "seconds": 0.6, "credits": 6, "remaining": 38331, "cost_from": "header", "hash": "b6b8d226", "took": 2.0, "t": "2026-11-02T07:53:21"}
 {"kind": "music", "id": "music_calm", "seconds": 60, "credits": 750, "remaining": 37581, "cost_from": "rate", "hash": "feee0c93", "took": 7.5, "t": "2026-11-02T07:53:30"}
+{"kind": "music", "id": "music_busy", "seconds": 60, "credits": 750, "remaining": 36831, "cost_from": "rate", "hash": "b590ee4d", "took": 10.4, "t": "2026-11-02T07:53:51"}
+{"kind": "batch_end", "spent": 1568, "remaining": 36831, "t": "2026-11-02T07:53:58"}

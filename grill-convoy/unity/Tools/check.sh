@@ -25,10 +25,15 @@ grep -rn -i -w -E "McDonald'?s|Burger King|Wendy'?s|Five Guys|Shake Shack|In-N-O
 grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY" "$UNITY" --include=*.cs --include=*.json --include=*.md --include=*.py --include=*.sh && bad "a secret in the repo"
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
 for f in coach_chef intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
-for f in truck_starter truck_box commissary parasol menu_board; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in truck_starter truck_box commissary parasol menu_board d_office_a d_office_b d_house_a d_shop_a d_kiosk d_lifeguard d_stand d_floodlight d_planter d_lights d_warehouse d_crane d_boat d_bits; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
 for f in chef cashier fan burger; do [ -f "$A/Art/Meshy/${f}_lod0.fbx" ] && [ -f "$A/Art/Meshy/${f}_base.png" ] || bad "missing Art/Meshy/$f (docs/ART.md)"; done
 for f in icon_full icon_adaptive_fg; do [ -f "$A/Art/Icon/$f.png" ] || bad "missing Art/Icon/$f.png (tools/art/render_ui.py)"; done
+G=$(dirname "$UNITY")
+for f in feature-graphic.png icon-candidates/c1.png icon-candidates/c2.png icon-candidates/c3.png play-data-safety.csv listing/en-US.json screenshots/en.json; do [ -f "$G/store/$f" ] || bad "missing store/$f (docs/ART.md, store/validate.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
+
+step "store listing + screenshot copy (store/validate.py)"
+python3 "$G/store/validate.py" | tail -3; [ "$(python3 "$G/store/validate.py" | tail -1)" = "STORE_LISTING_PASS" ] || fail=1
 
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
 out=$(sh "$HERE/dotnet_check.sh" 2>&1); echo "$out" | grep -E "Error|Passed!|Failed" ; echo "$out" | grep -q "Passed!" || fail=1

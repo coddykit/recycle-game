@@ -4,7 +4,8 @@ DocketDay.World.Pal), so the whole street shares ONE material. Bevelled boxes + 
 bottom-centre, front = -Y in Blender (Unity -Z after the FBX axis swap). No text, crests or real court symbols.
 Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
   blender -b --python docket-day/tools/art/kit.py -- <unity dir> [<sheet.png>]
-Budget (Low draws: one material, one mesh per prop): furniture ≤ 400 tris, the courthouse ≤ 1500.
+Budget (Low draws: one material, one mesh per prop): furniture ≤ 400 tris, street / tower pieces ≤ 600, the courthouse
+≤ 1500, the skyline backdrop ≤ 600. The game merges the static ones into the street / tower / rooms meshes (0 extra draws).
 """
 import math
 import os
@@ -84,6 +85,28 @@ class Prop:
         elif axis == "Y":
             bmesh.ops.rotate(self.bm, verts=verts, cent=(0, 0, 0), matrix=mathutils.Matrix.Rotation(math.radians(90), 3, "X"))
         bmesh.ops.translate(self.bm, verts=verts, vec=center)
+        self._paint([f for f in self.bm.faces if f not in before], sw)
+
+    def prism(self, center, size, sw, gable=None):
+        """Gable roof: a triangular prism along X (ridge on top), bottom-centre at center. gable = swatch of the two ends."""
+        cx, cy, cz = center
+        sx, sy, sz = size
+        x0, x1, y0, y1 = cx - sx / 2, cx + sx / 2, cy - sy / 2, cy + sy / 2
+        v = [self.bm.verts.new(c) for c in ((x0, y0, cz), (x0, y1, cz), (x0, cy, cz + sz), (x1, y0, cz), (x1, y1, cz), (x1, cy, cz + sz))]
+        slopes = [self.bm.faces.new((v[0], v[3], v[5], v[2])), self.bm.faces.new((v[4], v[1], v[2], v[5]))]
+        ends = [self.bm.faces.new((v[0], v[2], v[1])), self.bm.faces.new((v[3], v[4], v[5]))]
+        for f in slopes + ends:
+            f.normal_update()
+        self._paint(slopes, sw)
+        self._paint(ends, sw if gable is None else gable)
+
+    def blob(self, center, radius, sw, squash=1.0):
+        """Faceted low-poly crown (icosphere, 1 subdivision = 20 tris)."""
+        import mathutils
+        before = set(self.bm.faces)
+        res = bmesh.ops.create_icosphere(self.bm, subdivisions=1, radius=radius)
+        bmesh.ops.scale(self.bm, verts=res["verts"], vec=(1.0, 1.0, squash))
+        bmesh.ops.translate(self.bm, verts=res["verts"], vec=center)
         self._paint([f for f in self.bm.faces if f not in before], sw)
 
     def wheel(self, x, y, r=0.42, w=0.3):
@@ -241,6 +264,166 @@ def bench():
     return p.build()
 
 
+# ---------------------------------------------------------------- polish pass (2026-11-02): street, tower floors, roof
+
+def window(p, x, y, z, w=1.3, h=1.7, frame=WHITE, sill=CONCRETE, mullion=True):
+    """A framed window on a -Y facade at plane y (pane slightly proud of the wall, frame + sill)."""
+    p.box((x, y - 0.06, z), (w, 0.12, h), WINDOW)
+    p.box((x, y - 0.14, z + h - 0.12), (w + 0.24, 0.16, 0.16), frame)              # head
+    p.box((x, y - 0.18, z - 0.14), (w + 0.36, 0.3, 0.14), sill)                     # sill
+    if mullion:
+        p.box((x, y - 0.13, z), (0.1, 0.06, h - 0.1), frame)                        # mullion
+
+
+def townhouse(name, floors, wall, roof, gabled, door_x=0.0):
+    """Harbour row house, 8.5 m wide × 10 m deep, front (-Y) facade with framed windows, door, cornice and roof."""
+    p = Prop(name)
+    w, d, fh = 8.5, 10.0, 3.2
+    h = floors * fh + 0.6
+    p.box((0, 0, 0), (w, d, h), wall, top=ROOFGREY, bevel=0.08)
+    p.box((0, -d / 2 - 0.05, 0), (w + 0.1, 0.3, 0.6), CONCRETE)                       # plinth
+    for f in range(floors):
+        z = 0.6 + f * fh + 0.7
+        xs = (-2.7, 0.0, 2.7)
+        for x in xs:
+            if f == 0 and abs(x - door_x) < 0.1:
+                continue
+            window(p, x, -d / 2, z, w=1.3, h=1.6, mullion=floors < 4)
+        if f > 0:
+            p.box((0, -d / 2 - 0.08, 0.6 + f * fh - 0.1), (w + 0.05, 0.16, 0.18), CREAM if wall != CREAM else SAND)   # floor band
+    p.box((door_x, -d / 2 - 0.04, 0.6), (1.3, 0.12, 2.3), BRAND if wall != BLUEWALL else WOOD)                     # door
+    p.box((door_x, -d / 2 - 0.5, 0), (1.9, 1.0, 0.3), CONCRETE)                                                     # step
+    p.box((door_x, -d / 2 - 0.55, 2.95), (2.0, 1.1, 0.12), roof)                                                    # door canopy
+    if gabled:
+        p.prism((0, 0, h), (w + 0.5, d + 0.6, 2.6), roof, gable=wall)
+        p.box((2.4, 1.5, h + 0.6), (0.8, 0.8, 2.4), BRICK, top=DARK)                                                # chimney
+    else:
+        p.box((0, 0, h), (w + 0.5, d + 0.5, 0.45), roof, bevel=0.05)                                                # cornice
+        p.box((-2.0, 1.8, h + 0.45), (1.4, 1.2, 0.9), METAL, top=DARK, bevel=0.04)                                 # roof hatch / AC
+    return p.build()
+
+
+def townhouse_a():
+    return townhouse("townhouse_a", 3, CREAM, ROOFRED, True)
+
+
+def townhouse_b():
+    return townhouse("townhouse_b", 2, BRICK, ROOFGREY, True, door_x=-2.7)
+
+
+def townhouse_c():
+    return townhouse("townhouse_c", 4, BLUEWALL, ROOFGREY, False, door_x=2.7)
+
+
+def tree():
+    p = Prop("tree")
+    p.cyl((0, 0, 1.1), 0.22, 2.2, TRUNK, segs=6)
+    p.blob((0, 0, 2.9), 1.5, TREE, squash=0.85)
+    p.blob((0.7, 0.3, 3.9), 1.0, TREE, squash=0.9)
+    p.blob((-0.5, -0.4, 3.7), 0.9, GRASS, squash=0.9)
+    return p.build()
+
+
+def planter():
+    p = Prop("planter")
+    p.box((0, 0, 0), (1.6, 0.8, 0.6), CONCRETE, top=TRUNK, bevel=0.05)
+    p.blob((-0.35, 0, 0.85), 0.45, TREE, squash=0.8)
+    p.blob((0.35, 0.05, 0.8), 0.4, GRASS, squash=0.8)
+    return p.build()
+
+
+def hydrant():
+    p = Prop("hydrant")
+    p.cyl((0, 0, 0.35), 0.18, 0.7, WARN, segs=8)
+    p.cyl((0, 0, 0.75), 0.13, 0.1, WARN, segs=8)
+    p.cyl((0, 0, 0.45), 0.07, 0.5, WARN, segs=6, axis="X")
+    p.box((0, 0, 0), (0.5, 0.5, 0.06), CONCRETE)
+    return p.build()
+
+
+def skyline():
+    """Distant backdrop: a strip of plain tower silhouettes (no windows, no landmarks), one mesh."""
+    p = Prop("skyline")
+    import random
+    rnd = random.Random(11)
+    x = -70.0
+    while x < 80.0:
+        w = rnd.uniform(6, 11)
+        h = rnd.uniform(14, 34)
+        p.box((x + w / 2, rnd.uniform(-2, 2), 0), (w, 6, h), rnd.choice((BLUEWALL, ROOFGREY, STONE)), top=ROOFGREY)
+        x += w + rnd.uniform(0.5, 3)
+    return p.build()
+
+
+def floor_shell():
+    """One open-front office floor of the tower (28 m × 14.5 m × 6 m, pivot = bottom centre, open side = -Y): slab with a
+    concrete edge, back wall with three framed windows, side walls with front pilasters, a trimmed cut-away lintel and a
+    baseboard. CREAM = the office wall (the game remaps it to the office style), WOOD = trim (gold on Art Deco), CARPET =
+    the floor (wood on the ground floor)."""
+    p = Prop("floor_shell")
+    w, d, h = 28.0, 14.5, 6.0
+    p.box((0, 0, 0), (w, d, 0.4), CONCRETE, top=CARPET, bevel=0.06)                  # slab
+    p.box((0, d / 2, 0.4), (w, 0.6, h - 0.4), CREAM)                                  # back wall
+    for x in (-w / 2, w / 2):
+        p.box((x, 0, 0.4), (0.6, d, h - 0.4), CREAM)                                  # side walls
+        p.box((x, -d / 2 + 0.2, 0.4), (1.0, 0.8, h - 0.4), WOOD, bevel=0.06)         # front pilasters
+    p.box((0, -d / 2 + 0.2, h - 0.7), (w + 0.4, 0.6, 0.7), WOOD, bevel=0.05)        # lintel (the cut-away edge)
+    p.box((0, d / 2 - 0.36, 0.4), (w - 0.6, 0.1, 0.3), WOOD)                         # baseboard
+    for x in (-8.5, 0.0, 8.5):                                                         # tall back windows (open side faces the camera)
+        p.box((x, d / 2 - 0.34, 1.6), (5.2, 0.08, 2.8), WINDOW)
+        p.box((x, d / 2 - 0.4, 4.3), (5.6, 0.14, 0.18), WOOD)                        # head
+        p.box((x, d / 2 - 0.45, 1.42), (5.7, 0.3, 0.16), WOOD)                       # sill
+        for mx in (-1.3, 1.3):
+            p.box((x + mx, d / 2 - 0.4, 1.6), (0.1, 0.06, 2.8), WHITE)               # mullions
+    return p.build()
+
+
+def office_decor():
+    """Per-floor clutter merged into the tower mesh (Medium/High): two potted plants, a water cooler, a wall clock."""
+    p = Prop("office_decor")
+    for x in (-12.4, 12.4):
+        p.cyl((x, 5.6, 0.35), 0.35, 0.7, TRUNK, segs=8)
+        p.blob((x, 5.6, 1.25), 0.6, TREE, squash=1.1)
+    p.box((5.2, 6.2, 0), (0.6, 0.6, 1.1), WHITE, bevel=0.04)                         # cooler
+    p.cyl((5.2, 6.2, 1.35), 0.24, 0.5, TEAL, segs=8)
+    p.cyl((-4.3, 6.95, 4.6), 0.45, 0.08, WHITE, segs=12, axis="Y")                    # clock (no numbers)
+    p.cyl((-4.3, 6.92, 4.6), 0.5, 0.06, DARK, segs=12, axis="Y")
+    return p.build()
+
+
+def roof_top():
+    """The tower roof: slab with a parapet, two AC units, a water tank and the stair hut (28 m × 14.5 m)."""
+    p = Prop("roof_top")
+    w, d = 28.0, 14.5
+    p.box((0, 0, 0), (w + 1.0, d + 1.0, 0.6), ROOFGREY, bevel=0.06)
+    for y in (-(d + 1.0) / 2 + 0.2, (d + 1.0) / 2 - 0.2):
+        p.box((0, y, 0.6), (w + 1.0, 0.4, 0.7), CONCRETE)
+    for x in (-(w + 1.0) / 2 + 0.2, (w + 1.0) / 2 - 0.2):
+        p.box((x, 0, 0.6), (0.4, d + 1.0, 0.7), CONCRETE)
+    for x in (6.0, 9.0):
+        p.box((x, 3.0, 0.6), (2.2, 1.6, 1.2), METAL, top=DARK, bevel=0.06)          # AC units
+    p.cyl((-9.0, 3.5, 2.1), 1.3, 2.4, WOOD, segs=10)                                  # water tank
+    for x in (-9.8, -8.2):
+        p.box((x, 3.5, 0.6), (0.25, 0.25, 0.9), DARK)
+    p.box((11.0, -3.0, 0.6), (3.0, 3.0, 2.6), CREAM, top=ROOFGREY, bevel=0.05)       # stair hut
+    p.box((11.0, -4.55, 0.6), (1.1, 0.1, 2.0), WOOD)
+    return p.build()
+
+
+def entrance():
+    """The Garage Front: rolled-up shutter box under the lintel, a wide step, two planters and a doormat (pivot = the
+    front step centre; kept low so it never hides the reception desk)."""
+    p = Prop("entrance")
+    p.box((0, 0, 0), (4.4, 2.2, 0.25), CONCRETE, bevel=0.04)                          # step
+    p.box((0, 0.2, 0.25), (2.4, 1.2, 0.03), BRAND)                                     # doormat
+    for x in (-2.8, 2.8):
+        p.box((x, 0.1, 0), (1.0, 1.0, 0.7), CONCRETE, top=TRUNK, bevel=0.05)          # planters
+        p.blob((x, 0.1, 1.05), 0.55, TREE, squash=0.85)
+    p.box((0, 1.0, 4.85), (6.0, 0.6, 0.45), METAL, bevel=0.04)                         # shutter box
+    p.box((0, 0.72, 4.75), (5.8, 0.06, 0.12), DARK)
+    return p.build()
+
+
 def export(ob):
     bpy.ops.object.select_all(action="DESELECT")
     ob.select_set(True)
@@ -269,18 +452,21 @@ def sheet(objs):
     import mathutils
     scene = bpy.context.scene
     scene.render.engine = "BLENDER_EEVEE"
-    scene.render.resolution_x, scene.render.resolution_y = 1600, 400
+    scene.render.resolution_x, scene.render.resolution_y = 2400, 600
     scene.render.film_transparent = False
     world = bpy.data.worlds.new("w"); world.color = (0.85, 0.9, 0.92); scene.world = world
     x = -20.0
     for ob in objs:
+        if ob.name == "skyline":
+            ob.location = (0, 120, 0)
+            continue
         ob.location = (x, 0, 0)
-        x += 28.0 if ob.name == "courthouse" else 5.0
+        x += {"courthouse": 28.0, "skyline": 0.0, "floor_shell": 32.0, "roof_top": 32.0}.get(ob.name, 12.0 if ob.name.startswith("townhouse") else 5.0)
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
-    cam.data.ortho_scale = 90
-    cam.location = (30, -60, 34)
+    cam.data.ortho_scale = (x + 20.0) * 1.02
+    cam.location = ((x - 20.0) / 2 - 4.0, -60, 34)
     cam.rotation_euler = mathutils.Euler((math.radians(62), 0, 0))
     scene.camera = cam
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
@@ -296,7 +482,9 @@ def main():
     reset()
     os.makedirs(OUT, exist_ok=True)
     mat = material()
-    objs = [desk(), reception(), bookshelf(), coffee(), cabinet(), conference(), boxes(), board(), courthouse(), lamp(), bench()]
+    objs = [desk(), reception(), bookshelf(), coffee(), cabinet(), conference(), boxes(), board(), courthouse(), lamp(), bench(),
+            townhouse_a(), townhouse_b(), townhouse_c(), tree(), planter(), hydrant(), skyline(), floor_shell(), office_decor(), roof_top(),
+            entrance()]
     total = 0
     for ob in objs:
         ob.data.materials.append(mat)

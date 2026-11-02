@@ -85,10 +85,23 @@ def place(ob, loc, yaw=0.0, scale=1.0):
     return ob
 
 
-def built(builder, loc, yaw=0.0, scale=1.0, **kw):
-    """A kit builder (kit.py) → a palette-textured object in this scene. The street side of buildings is local -X."""
+def built(builder, loc, yaw=0.0, scale=1.0, wall=None, roof=None, **kw):
+    """A kit builder (kit.py) → a palette-textured object in this scene. The street side of buildings is local -X.
+    wall / roof: the same palette swap the game does (CREAM → wall swatch, ROOFRED → roof swatch)."""
     ob = builder(**kw)
     ob.data.materials.append(palette_mat())
+    swap = {}
+    if wall is not None:
+        swap[kit.CREAM] = wall
+    if roof is not None:
+        swap[kit.ROOFRED] = roof
+    if swap:
+        uvl = ob.data.uv_layers.active.data
+        for l in uvl:
+            u, v = l.uv
+            sw = int((1.0 - v) * 8) * 8 + int(u * 8)
+            if sw in swap:
+                l.uv = kit.uv_of(swap[sw])
     return place(ob, loc, yaw, scale)
 
 
@@ -160,53 +173,62 @@ def render(path, w, h):
 def feature():
     """A harbour street in the morning: machines with citizens bringing bags, the van on its round, the depot with bales."""
     reset((0.62, 0.84, 0.86))
-    slab("ground", (0, 10, -0.1), (260, 160, 0.1), kit.GRASS)
-    slab("sea", (0, -95, -0.6), (400, 80, 0.1), 15)
-    slab("sand", (0, -54, -0.1), (400, 6, 0.12), 16)
-    slab("road", (0, -18, 0), (260, 9, 0.06), kit.ROAD)                       # the harbour front road (east-west)
-    slab("road2", (6, 30, 0), (9, 100, 0.06), kit.ROAD)                       # a street up into town
+    slab("ground", (0, 30, -0.1), (300, 200, 0.1), kit.GRASS)
+    slab("sea", (0, -130, -0.6), (400, 100, 0.1), 15)
+    slab("sand", (0, -73, -0.1), (400, 8, 0.12), 16)
+    slab("road", (0, -18, 0), (300, 9, 0.06), kit.ROAD)                       # the harbour front road (east-west)
+    slab("road2", (6, 40, 0), (9, 110, 0.06), kit.ROAD)                       # a street up into town
+    slab("road3", (0, 30, 0), (300, 8, 0.06), kit.ROAD)                       # a back street
     slab("plaza", (-14, -6, 0), (22, 14, 0.08), kit.CONCRETE)
     rnd = random.Random(4)
+    walls = [kit.CREAM, kit.TERRA, kit.BLUEWALL, kit.CREAM]
+    roofs = [kit.ROOFRED, kit.ROOFGREY]
     builders = [kit.bld_harbour_a, kit.bld_harbour_b, kit.bld_old_a, kit.bld_old_b]
-    xs = [-92, -78, -63, -49, 26, 40, 54, 68, 82]
-    for i, x in enumerate(xs):                                                 # north side of the front road
-        built(builders[i % 4], (x, -4.5, 0), yaw=90, scale=1.0 + rnd.random() * 0.1)
-    for i, y in enumerate((14, 28, 42, 58)):                                   # both sides of the street up
-        built(builders[(i + 1) % 4], (-4.0, y, 0), yaw=180)
-        built(builders[(i + 2) % 4], (16.5, y, 0), yaw=0)
-    built(kit.bld_uni_a, (-30, 60, 0), yaw=-90)
-    built(kit.bld_uni_b, (40, 70, 0), yaw=-90)
-    built(kit.stadium, (110, 70, 0), yaw=0, scale=0.9)
-    for x, y in ((-36, 18), (-22, 34), (30, 22), (-60, 30), (60, 40), (-80, 14), (84, 16), (-16, 4)):
+
+    def b(i, loc, yaw):
+        return built(builders[i % 4], loc, yaw=yaw, scale=1.0 + rnd.random() * 0.1, wall=walls[rnd.randrange(4)], roof=roofs[rnd.randrange(2)])
+    for i, x in enumerate((-110, -96, -81, -66, -51, -36, 26, 40, 54, 68, 82, 96)):
+        b(i, (x, -5.0, 0), 90)                                                # facing the front road
+        if abs(x) > 30:
+            b(i + 2, (x, 17.5, 0), -90)                                        # facing the back street
+    for i, x in enumerate((-100, -82, -64, -46, 28, 46, 64, 82)):
+        built((kit.bld_uni_a, kit.bld_uni_b, kit.bld_old_b, kit.bld_old_a)[i % 4], (x, 44, 0), yaw=90, wall=walls[rnd.randrange(4)], roof=roofs[i % 2])
+    for i, y in enumerate((52, 68, 84)):
+        b(i + 1, (-4.0, y, 0), 180)
+        b(i + 3, (16.5, y, 0), 0)
+    built(kit.stadium, (120, 95, 0), yaw=0, scale=0.9)
+    for x, y in ((-30, 4), (34, 6), (-58, 6), (-74, 4), (60, 8), (-90, 6), (88, 5), (-6, 18), (20, 20), (-120, 40), (110, 40)):
         tree((x, y, 0), 1.1 + rnd.random() * 0.4)
     # the deposit corner: two machines + a shop, citizens with bags
-    kitprop("machine_m", (-19, -9.5, 0.08), yaw=0, scale=2.2)
-    kitprop("machine_s", (-12, -9.5, 0.08), yaw=0, scale=2.2)
-    kitprop("shop", (-8, 4, 0), yaw=180, scale=1.6)
-    char("citizen", (-22.5, -13.5, 0), yaw=-20, scale=2.2)
-    char("citizen", (-9.0, -13.8, 0), yaw=25, scale=2.2)
-    char("operator", (-15.5, -14.2, 0), yaw=5, scale=2.2)
+    kitprop("machine_m", (-19, -9.0, 0.08), yaw=0, scale=2.2)
+    kitprop("machine_s", (-12, -9.0, 0.08), yaw=0, scale=2.2)
+    kitprop("shop", (-6, 4.5, 0), yaw=180, scale=1.5)
+    char("citizen", (-23.0, -13.0, 0), yaw=-20, scale=2.6)
+    char("citizen", (-8.0, -13.4, 0), yaw=25, scale=2.6)
+    char("operator", (-15.5, -14.0, 0), yaw=5, scale=2.6)
     # trucks on the front road
-    kitprop("van", (8, -18.5, 0), yaw=90, scale=1.6)
-    kitprop("compactor", (-48, -16.5, 0), yaw=-90, scale=1.5)
-    # depot compound on the east (authored in depot-local Unity x/z = Blender x/y)
-    dep = (128, -44, 0)
-    built(kit.depot_hall, dep, scale=1.0)
-    for k in range(10):
-        col, row, lay = k % 5, (k // 5) % 2, 0
-        bale("pet" if k % 3 else "alu", (dep[0] + 18 + col * 4.4, dep[1] + 10 + row * 4.4, lay), scale=3.6)
-    for k in range(4):
-        bale("pet", (dep[0] + 20 + k * 4.4, dep[1] + 10, 3.6), scale=3.6)
-    camera((-10, -170, 120), (12, -6, 0), lens=34)
+    kitprop("van", (14, -19.5, 0), yaw=90, scale=1.7)
+    kitprop("compactor", (-46, -16.5, 0), yaw=-90, scale=1.6)
+    # depot compound between the road and the beach (authored in depot-local Unity x/z = Blender x/y)
+    dep = (52, -48, 0)
+    built(kit.depot_hall, dep)
+    for k in range(12):
+        col, row = k % 6, (k // 6) % 2
+        bale("pet" if k % 3 else "alu", (dep[0] + 18 + col * 4.4, dep[1] + 10 + row * 4.4, 0), scale=3.6)
+    for k in range(5):
+        bale("pet" if k % 2 else "alu", (dep[0] + 20 + k * 4.4, dep[1] + 10, 3.6), scale=3.6)
+    kitprop("van", (dep[0] - 20, dep[1] + 14, 0), yaw=0, scale=1.7)
+    kitprop("bike", (dep[0] - 14, dep[1] + 14, 0), yaw=0, scale=1.7)
+    camera((-2, -158, 96), (24, -18, 0), lens=42)
     render(os.path.join(STORE, "feature-graphic.png"), 1024, 500)
 
 
 def icon_machine():
     reset((0.36, 0.78, 0.66))
     slab("disc", (0, 0, -0.05), (30, 30, 0.05), kit.GRASS)
-    kitprop("machine_m", (0.4, 0.4, 0), yaw=-24)
-    bale("pet", (-1.35, -0.55, 0), yaw=18, scale=0.95)
-    camera((2.2, -6.2, 2.9), (-0.25, 0, 1.2), ortho=3.3)
+    kitprop("machine_m", (0.45, 0.35, 0), yaw=-24)
+    bale("pet", (-1.25, -0.6, 0), yaw=18, scale=0.95)
+    camera((2.2, -6.2, 2.9), (-0.3, 0, 1.25), ortho=3.9)
     render(os.path.join(STORE, "icon-candidates/c1.png"), 512, 512)
 
 
@@ -214,15 +236,15 @@ def icon_van():
     reset((0.98, 0.78, 0.36))
     slab("road", (0, 0, -0.05), (40, 3.2, 0.05), kit.ROAD)
     slab("verge", (0, 3.2, -0.06), (40, 4, 0.05), kit.GRASS)
-    kitprop("van", (0.2, 0, 0), yaw=-62)
-    kitprop("machine_s", (-2.6, 2.4, 0), yaw=-20, scale=1.15)
-    camera((5.2, -6.5, 4.2), (-0.2, 0.5, 1.0), ortho=6.4)
+    kitprop("van", (0.3, -0.2, 0), yaw=-62)
+    kitprop("machine_s", (-2.9, 2.6, 0), yaw=-20, scale=1.15)
+    camera((5.2, -6.5, 4.2), (-0.5, 0.6, 1.1), ortho=6.9)
     render(os.path.join(STORE, "icon-candidates/c2.png"), 512, 512)
 
 
 def icon_bales():
     reset((0.10, 0.42, 0.36))
-    slab("pad", (0, 0, -0.05), (30, 30, 0.05), kit.CONCRETE)
+    slab("pad", (0, 0, -0.05), (30, 30, 0.05), kit.TGREEN)
     for i, m in enumerate(("pet", "alu", "pet")):
         bale(m, ((i - 1) * 1.08, 0, 0), yaw=(i - 1) * 6)
     bale("alu", (-0.54, 0, 1.02), yaw=4)

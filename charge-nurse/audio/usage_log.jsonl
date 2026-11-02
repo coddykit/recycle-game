@@ -1,0 +1,12 @@
+{"kind": "batch_start", "remaining": 38331, "limit": 40000, "calls": 10, "est": 1619, "t": "2026-11-02T07:54:18"}
+{"kind": "sfx", "id": "ui_tap", "seconds": 0.5, "credits": 5, "remaining": 38326, "cost_from": "header", "hash": "9e6f2f57", "took": 1.9, "t": "2026-11-02T07:54:20"}
+{"kind": "sfx", "id": "coins", "seconds": 1.0, "credits": 10, "remaining": 38316, "cost_from": "header", "hash": "83cfc1d0", "took": 1.4, "t": "2026-11-02T07:54:24"}
+{"kind": "sfx", "id": "success", "seconds": 1.5, "credits": 15, "remaining": 38301, "cost_from": "header", "hash": "73184a3f", "took": 1.4, "t": "2026-11-02T07:54:27"}
+{"kind": "sfx", "id": "warning", "seconds": 1.2, "credits": 12, "remaining": 38289, "cost_from": "header", "hash": "46391cb2", "took": 1.6, "t": "2026-11-02T07:54:31"}
+{"kind": "sfx", "id": "tag", "seconds": 0.6, "credits": 6, "remaining": 38283, "cost_from": "header", "hash": "dccfcf9b", "took": 1.9, "t": "2026-11-02T07:54:35"}
+{"kind": "sfx", "id": "clean", "seconds": 1.2, "credits": 12, "remaining": 38271, "cost_from": "header", "hash": "8accf2b0", "took": 1.5, "t": "2026-11-02T07:54:38"}
+{"kind": "sfx", "id": "siren", "seconds": 2.0, "credits": 20, "remaining": 38251, "cost_from": "header", "hash": "384d1bf9", "took": 1.6, "t": "2026-11-02T07:54:42"}
+{"kind": "sfx", "id": "shift_end", "seconds": 2.0, "credits": 20, "remaining": 38231, "cost_from": "header", "hash": "b3c392e5", "took": 1.4, "t": "2026-11-02T07:54:45"}
+{"kind": "music", "id": "music_calm", "seconds": 60, "credits": 750, "remaining": 36826, "cost_from": "rate", "hash": "14302997", "took": 7.4, "t": "2026-11-02T07:54:55"}
+{"kind": "music", "id": "music_busy", "seconds": 60, "credits": 750, "remaining": 36076, "cost_from": "rate", "hash": "093aac79", "took": 7.2, "t": "2026-11-02T07:55:11"}
+{"kind": "batch_end", "spent": 1600, "remaining": 36076, "t": "2026-11-02T07:55:23"}

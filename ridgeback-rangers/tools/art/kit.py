@@ -120,6 +120,10 @@ class Prop:
         cx, cy, cz = center
         rings = []
         for i, (r, z) in enumerate(profile):
+            if r <= 1e-6:   # a pole: one shared vertex, the band becomes a fan of triangles
+                pole = self.bm.verts.new((cx, cy, cz + z))
+                rings.append([pole] * segs)
+                continue
             ring = []
             for k in range(segs):
                 a = phase + k * 2 * math.pi / segs
@@ -132,9 +136,13 @@ class Prop:
             for k in range(segs):
                 a0, a1 = rings[i][k], rings[i][(k + 1) % segs]
                 b0, b1 = rings[i + 1][k], rings[i + 1][(k + 1) % segs]
-                if (a0.co - b0.co).length < 1e-6 and (a1.co - b1.co).length < 1e-6:
-                    continue
-                f = self.bm.faces.new((a0, a1, b1, b0))
+                if a0 is a1:
+                    quad = (a0, b1, b0)
+                elif b0 is b1:
+                    quad = (a0, a1, b0)
+                else:
+                    quad = (a0, a1, b1, b0)
+                f = self.bm.faces.new(quad)
                 f.normal_update()
                 self._paint([f], band)
                 out.append(f)
@@ -326,19 +334,22 @@ def material():
 def sheet(objs):
     import mathutils
     scene = bpy.context.scene
+    for ob in scene.objects:
+        if ob.type == "MESH" and ob not in objs:
+            ob.hide_render = True
     scene.render.engine = "BLENDER_EEVEE"
-    scene.render.resolution_x, scene.render.resolution_y = 1600, 400
+    cols = 8
+    rows = (len(objs) + cols - 1) // cols
+    scene.render.resolution_x, scene.render.resolution_y = 1600, 260 * rows + 120
     scene.render.film_transparent = False
     world = bpy.data.worlds.new("w"); world.color = (0.85, 0.9, 0.92); scene.world = world
-    x = -20.0
-    for ob in objs:
-        ob.location = (x, 0, 0)
-        x += 9.0
+    for i, ob in enumerate(objs):
+        ob.location = ((i % cols) * 9.0, -(i // cols) * 11.0, 0)
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
-    cam.data.ortho_scale = 80
-    cam.location = (12, -40, 22)
+    cam.data.ortho_scale = 76
+    cam.location = (31.5, -40 - (rows - 1) * 5.5, 30)
     cam.rotation_euler = mathutils.Euler((math.radians(62), 0, 0))
     scene.camera = cam
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
@@ -464,8 +475,8 @@ def water_point(low=False):
     p = Prop("water_point_low" if low else "water_point")
     sq = (1.0, 0.66)
     if low:
-        p.lathe((0, 0, 0), [(2.05, 0.12), (1.6, 0.12)], 8, STONE, top=False, squash=sq)
-        p.lathe((0, 0, 0), [(1.6, 0.1), (0.0, 0.1)], 8, WATER, top=False, squash=sq)
+        p.lathe((0, 0, 0), [(2.05, 0.12), (1.6, 0.12)], 6, STONE, top=False, squash=sq)
+        p.lathe((0, 0, 0), [(1.6, 0.1)], 6, WATER, top=True, squash=sq)
         return p.build()
     rng = random.Random(3)
     p.lathe((0, 0, 0), [(2.1, 0), (2.05, 0.18), (1.75, 0.22), (1.6, 0.12)], 12, STONE, top=False, squash=sq,
@@ -480,13 +491,13 @@ def dig_site(low=False):
     """A fossil dig: an earth ring around the pit, rib bones showing, a tool crate, a canvas awning and a shovel."""
     p = Prop("dig_site_low" if low else "dig_site")
     if low:
-        p.lathe((0, 0, 0), [(3.4, 0.0), (2.6, 0.35), (2.0, 0.12)], 6, MUD, top=False)
+        p.lathe((0, 0, 0), [(3.4, 0.0), (2.3, 0.3)], 6, MUD, swatches=[MUD], top=False)
         p.box((2.9, -1.6, 0), (0.6, 0.6, 0.5), WOOD)
         return p.build()
     rng = random.Random(8)
     p.lathe((0, 0, 0), [(3.6, 0.0), (2.9, 0.38), (2.3, 0.3), (1.9, 0.06)], 12, MUD, top=False, jitter=0.06, rng=rng,
             swatches=[MUD, MUD, ROCK])
-    p.lathe((0, 0, 0), [(1.9, 0.06), (0.0, 0.06)], 12, ROCK, top=False)
+    p.lathe((0, 0, 0), [(1.9, 0.06)], 12, ROCK, top=True)
     # rib arcs + a spine (bone), half buried
     p.box((0, 0, 0.0), (0.16, 2.4, 0.16), BONE, bevel=0.03)
     for i, y in enumerate((-0.8, -0.3, 0.2, 0.7)):
@@ -508,7 +519,7 @@ def volcano(low=False):
     p = Prop("volcano_low" if low else "volcano")
     if low:
         p.lathe((0, 0, 0), [(43.2, 0), (21.0, 21.0), (7.3, 31.8)], 9, VROCK, top=False, swatches=[GRASSD, VROCK])
-        p.lathe((0, 0, 0), [(7.3, 31.3), (0.0, 31.3)], 9, LAVA, top=False)
+        p.lathe((0, 0, 0), [(7.3, 31.3)], 9, LAVA, top=True)
         return p.build()
     prof = [(43.2, 0), (37.5, 5.5), (30.0, 12.0), (22.0, 19.0), (14.5, 25.5), (9.6, 30.2), (8.2, 31.8), (6.4, 30.6)]
     p.lathe((0, 0, 0), prof, 20, VROCK, top=False, jitter=0.07, rng=rng,
@@ -638,7 +649,7 @@ def main():
             ob.data.materials.append(mat)
     write_bank(os.path.join(OUT, "props.bytes"), merge)
     if SHEET:
-        sheet([ob for ob in merge if not ob.name.endswith("_low") and ob.name not in ("volcano", "hill")])
+        sheet([ob for ob in merge if ob.name not in ("volcano", "hill", "volcano_low", "hill_low") and not ob.name.startswith("fence")])
 
 
 if __name__ == "__main__" or True:

@@ -84,6 +84,7 @@ def load(path, png, loc, yaw=0.0, scale=1.0, interp="Linear"):
             o.data.materials.clear()
             o.data.materials.append(m)
     root.location = loc
+    root.rotation_mode = "XYZ"
     root.rotation_euler = (root.rotation_euler.x, root.rotation_euler.y, math.radians(yaw))
     root.scale = (root.scale.x * scale, root.scale.y * scale, root.scale.z * scale)
     return root
@@ -192,11 +193,11 @@ def feature():
     # the cast: the dean and a professor in front, the bell-change crowd streaming to class behind them
     char("dean", (-1.0, -3.6, 0), yaw=12, scale=1.0)
     char("professor", (1.3, -2.6, 0), yaw=-20, scale=0.98, arms=72)
-    crowd = ((-9.0, 9.4, 45), (-7.2, 8.6, 40), (-5.0, 9.6, 50), (-2.6, 8.8, 35), (2.4, 9.2, -40), (4.8, 8.7, -45), (7.4, 9.5, -35),
-             (-0.6, 4.0, 10), (0.9, 6.2, -15), (-0.3, 11.6, 5), (9.6, 8.9, -50), (-11.4, 9.1, 40))   # yaw 0 = towards the camera
+    crowd = ((-9.0, 9.6, 60), (-6.6, 8.4, 55), (-4.4, 9.9, 65), (-2.2, 8.7, 50), (2.6, 9.4, -55), (5.0, 8.3, -60), (7.6, 9.8, -50),
+             (-0.7, 3.6, 15), (0.9, 6.0, -20), (-0.2, 12.4, 170), (10.4, 8.8, -65), (-12.0, 9.2, 60), (1.6, 11.0, 190))   # yaw 0 = towards the camera
     for i, (x, y, yaw) in enumerate(crowd):
         char("student", (x, y, 0), yaw=yaw, scale=0.86 + (i % 3) * 0.04, arms=75)
-    camera((0.4, -10.5, 2.6), (0.0, 6.0, 2.4), lens=30)
+    camera((0.4, -12.0, 3.1), (0.0, 6.0, 2.2), lens=30)
     render(os.path.join(STORE, "feature-graphic.png"), 1024, 500)
 
 

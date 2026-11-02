@@ -71,9 +71,16 @@ def plane(center, size, h, z=0.0):
     return o
 
 
-def reset(bg):
+def reset(bg, sun=2.6, world=0.55):
+    """render_ui.reset, but the world light is neutral (the visible backdrop is its own emissive plane) and softer: the
+    pastel palette washes out under the UI renders' brighter setup."""
     _mats.clear()   # read_factory_settings drops every material
     R.reset(bg=bg)
+    w = bpy.context.scene.world.node_tree.nodes["Background"]
+    w.inputs[0].default_value = (0.86, 0.9, 0.92, 1)
+    w.inputs[1].default_value = world
+    bpy.data.objects["sun"].data.energy = sun
+    bpy.data.objects["fill"].data.energy = 0.6
 
 
 # palette (unity/Tools/make_palette.py)
@@ -101,7 +108,7 @@ def feature():
     """Feature graphic: a cut-away corner of the hospital at golden hour — ward bays with staff and a patient, the
     corridor heat strip going green → red, the ambulance under its canopy; calm lawn on the left for the deck's wordmark."""
     reset(bg=(0.80, 0.92, 0.95))
-    plane((6, 4), (90, 60), GRASS, 0)
+    plane((6, 4), (120, 80), "#7DB862", 0)
     plane((8, 2), (34, 20), PAVING, 0.01)
     # rooms: bays (mint), triage (cream), scan (blue)
     room(9.5, 5.5, 12, 8, MINT)
@@ -132,10 +139,9 @@ def feature():
     for x in (-2.0, 1.5):
         R.kit("planter", (x, -1.8, 0))
     sun = bpy.data.objects["sun"]
-    sun.data.energy = 3.6
     sun.rotation_euler = mathutils.Euler((math.radians(50), math.radians(10), math.radians(-40)))
     sun.data.color = (1.0, 0.95, 0.86)
-    R.camera((19, -22, 17), (14, 3.5, 0.8), lens=38)
+    R.camera((15, -27, 19), (14.5, 4.0, 0.6), lens=34)
     R.render(os.path.join(STORE, "feature-graphic.png"), 1024, 500)
 
 
@@ -173,32 +179,29 @@ def backdrop(cam_loc, look, top, bottom, dist=30):
 
 def icons():
     os.makedirs(ICONS, exist_ok=True)
-    # c1 — the charge nurse, head + shoulders, on the brand teal; a ring of the four triage colours behind
-    reset(bg=(0.13, 0.65, 0.63))
-    cam, look = (0.15, -2.6, 1.52), (0, 0, 1.42)
-    backdrop(cam, look, "#2BB5AF", "#167C78", dist=6)
-    for i, col in enumerate(TAGS):
-        a = math.radians(-135 + i * 90 + 45)
-        disc((math.cos(a) * 0.33, 0.9, 1.43 + math.sin(a) * 0.33), 0.11, col, 0.03).rotation_euler = (math.radians(90), 0, 0)
+    # c1 — the charge nurse, head + shoulders, on the brand teal with a soft lighter disc behind her head
+    reset(bg=(0.13, 0.65, 0.63), sun=2.4)
+    cam, look = (0.15, -2.6, 1.5), (0, 0, 1.40)
+    backdrop(cam, look, "#2BB5AF", "#127370", dist=6)
+    disc((0.0, 0.8, 1.47), 0.36, "#5CCFC8", 0.03).rotation_euler = (math.radians(90), 0, 0)
     R.char("nurse", (0, 0, 0), yaw=-8)
-    R.camera(cam, look, ortho=0.82)
+    R.camera(cam, look, ortho=0.8)
     R.render(os.path.join(ICONS, "c1.png"), 512, 512)
-    # c2 — a hospital bay bed from above at 3/4 with a big green triage disc: "a bed is free"
-    reset(bg=(0.81, 0.91, 0.87))
-    cam, look = (2.6, -3.0, 3.6), (0.0, 0.1, 0.4)
-    backdrop(cam, look, "#E6F4EF", "#A9D8C4", dist=8)
-    plane((0, 0), (8, 8), MINT, 0)
-    R.kit("bay", (0, 0, 0), yaw=-10)
-    disc((0.95, -0.75, 1.75), 0.38, TAGS[0], 0.08).rotation_euler = (math.radians(60), 0, math.radians(35))
-    R.camera(cam, look, ortho=3.1)
+    # c2 — a ward bed seen from above at 3/4 on a teal floor, a green triage tag on the blanket: "the bed is ready"
+    reset(bg=(0.81, 0.91, 0.87), sun=2.2, world=0.45)
+    cam, look = (2.4, -2.6, 4.2), (0.0, 0.0, 0.35)
+    plane((0, 0), (12, 12), "#2BA39A", 0)
+    R.kit("bed", (0, 0, 0), yaw=-20)
+    disc((0.05, -0.25, 0.62), 0.24, TAGS[0], 0.06)
+    R.camera(cam, look, ortho=2.7)
     R.render(os.path.join(ICONS, "c2.png"), 512, 512)
-    # c3 — the ambulance nose-on at 3/4 under a teal sky (plain stripe, no emblem)
-    reset(bg=(0.16, 0.64, 0.62))
-    cam, look = (-4.2, -5.6, 2.2), (0.0, -0.4, 1.1)
+    # c3 — the ambulance at 3/4 on a teal ground (plain stripe, no emblem)
+    reset(bg=(0.16, 0.64, 0.62), sun=2.4, world=0.45)
+    cam, look = (-4.4, -5.8, 3.0), (0.0, -0.3, 1.0)
     backdrop(cam, look, "#3CC2BB", "#167C78", dist=12)
-    plane((0, 0), (20, 20), "#C9CDD2", 0)
+    plane((0, 0), (30, 30), "#1E8F89", 0)
     R.kit("ambulance", (0, 0, 0), yaw=-15)
-    R.camera(cam, look, ortho=5.6)
+    R.camera(cam, look, ortho=5.4)
     R.render(os.path.join(ICONS, "c3.png"), 512, 512)
 
 
