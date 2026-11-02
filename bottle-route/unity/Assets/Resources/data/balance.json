@@ -45,7 +45,7 @@
   "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
   "stars": {
     "service": [0.12, 0.06, 0.02],
-    "efficiency": [12, 25, 40],
+    "efficiency": [10, 18, 28],
     "throughput": [0.70, 0.35, 0.10]
   },
   "events": { "free_days": 3, "per_day": [0.0, 0.6, 1.0, 1.4, 1.7] },

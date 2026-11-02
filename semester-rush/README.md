@@ -28,11 +28,15 @@ kapasitesi, sınav haftası, 9 kriz, çevrimdışı mola, 11 adımlı rehber, ma
 | `unity/Tools` | `check.sh` (tüm kapılar), `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/en.json` (kaynak) |
 | `tools/art`, `tools/meshy` | Blender kiti (`kit.py`), UI render (`render_ui.py`), Meshy istemcisi + optimizer |
 | `docs/` | `UNITY.md`, `BALANCE.md`, `MONETIZATION_PARITY.md`, `ART.md` |
+| `store/` | Play listing (`listing/en-US.json`, other 9 locales translated centrally), screenshot plan (`screenshots/en.json`), Data safety CSV, feature graphic + 3 icon candidates (`tools/art/render_store.py`), `validate.py` (run by `check.sh`) |
 
 ## Durum (2026-11-02)
 
-- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → yalnız beklenen `EveryLanguageIsComplete` kırmızı (9 dil merkezi
-  çeviriyi bekliyor). 133 NUnit testi (sim 48, oyun katmanı 30, CoddyKit 55), `UNITY_REF_CHECK: PASS`.
+- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → `SEMESTER_RUSH_CHECK: PASS` (134 NUnit testi, `STORE_LISTING_PASS`,
+  `UNITY_REF_CHECK: PASS`).
+- **Cila turu (2026-11-02):** mağaza metni (en) + ekran görüntüsü planı + Data safety + feature graphic + 3 ikon adayı;
+  kampüs süslemesi (Blender ağaç / lamba / bank / bisiklet parkı / kapı, bölge ve yol meşlerine birleştirildi, Düşük'te
+  0 ek çizim); tempo: Quad ~1 sa, Science ~2,8 sa (`docs/BALANCE.md`, `docs/ART.md`).
 - **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, perf_gate, emülatör smoke, AAB → `docs/UNITY.md` §2.
 - **Bekleyen:** 9 dilin çevirisi (fleet §9, Haiku), ses (ElevenLabs, sahip onayı), P8 kimlikleri (boş bırakıldı), §8 `ad_free` satırının sahip onayı.
 

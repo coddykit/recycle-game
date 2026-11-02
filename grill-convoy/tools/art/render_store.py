@@ -274,7 +274,7 @@ def feature_graphic():
         figure(x, y, 160 + (i * 23) % 40, shirts[i])
     figure(-1.0, -1.0, -20, "#3FB0AC", burger=True)
     figure(9.6, -2.2, 200, "#F2C744", burger=True)
-    char("burger", (-0.6, -10.5, 0.3), yaw=-25, scale=3.2)
+    char("burger", (-1.2, -8.5, 1.6), yaw=-25, scale=3.0)
     cam = camera((5.0, -22.0, 7.0), (6.0, 10.0, 3.2), lens=30)
     backdrop(cam, "#FFE7B8", "#F59A62", dist=300, size=700, radial=False)
     render(os.path.join(STORE, "feature-graphic.png"), 1024, 500)

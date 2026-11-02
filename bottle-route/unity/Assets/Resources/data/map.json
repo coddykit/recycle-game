@@ -3,9 +3,9 @@
   "road_factor": 1.2,
   "districts": [
     { "id": "harbour",    "chapter": 1, "rating": 0,  "cost": 0,     "archetypes": [0.50, 0.25, 0.05, 0.10, 0.10] },
-    { "id": "oldtown",    "chapter": 2, "rating": 45, "cost": 3500,  "archetypes": [0.40, 0.25, 0.05, 0.15, 0.15] },
-    { "id": "university", "chapter": 3, "rating": 55, "cost": 14000,  "archetypes": [0.25, 0.10, 0.50, 0.10, 0.05] },
-    { "id": "stadium",    "chapter": 4, "rating": 60, "cost": 26000, "archetypes": [0.35, 0.35, 0.15, 0.05, 0.10] }
+    { "id": "oldtown",    "chapter": 2, "rating": 45, "cost": 1500,  "archetypes": [0.40, 0.25, 0.05, 0.15, 0.15] },
+    { "id": "university", "chapter": 3, "rating": 55, "cost": 10000,  "archetypes": [0.25, 0.10, 0.50, 0.10, 0.05] },
+    { "id": "stadium",    "chapter": 4, "rating": 64, "cost": 30000, "archetypes": [0.35, 0.35, 0.15, 0.05, 0.10] }
   ],
   "nodes": [
     { "id": "depot",     "x": 0.0, "y": 0.0, "district": "harbour", "kind": "depot" },

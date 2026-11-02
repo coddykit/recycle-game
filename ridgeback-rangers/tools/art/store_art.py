@@ -209,14 +209,16 @@ def reset(sky_top="#F2B880", sky_bottom="#9FC9C2", strength=1.0, filmic=True):
     w.use_nodes = True
     nt = w.node_tree
     bg = nt.nodes["Background"]
-    grad = nt.nodes.new("ShaderNodeTexGradient")
     coord = nt.nodes.new("ShaderNodeTexCoord")
-    mapn = nt.nodes.new("ShaderNodeMapping")
     ramp = nt.nodes.new("ShaderNodeValToRGB")
     # a vertical sky gradient: the window vector's z drives the ramp
     sep = nt.nodes.new("ShaderNodeSeparateXYZ")
-    nt.links.new(coord.outputs["Window"], sep.inputs[0])
-    nt.links.new(sep.outputs["Y"], ramp.inputs["Fac"])
+    rng_ = nt.nodes.new("ShaderNodeMapRange")
+    nt.links.new(coord.outputs["Generated"], sep.inputs[0])
+    nt.links.new(sep.outputs["Z"], rng_.inputs["Value"])
+    rng_.inputs["From Min"].default_value = -0.05
+    rng_.inputs["From Max"].default_value = 0.45
+    nt.links.new(rng_.outputs["Result"], ramp.inputs["Fac"])
     ramp.color_ramp.elements[0].color = (*srgb(sky_bottom), 1)
     ramp.color_ramp.elements[1].color = (*srgb(sky_top), 1)
     nt.links.new(ramp.outputs["Color"], bg.inputs["Color"])
@@ -252,8 +254,29 @@ def camera(loc, look, lens=50):
     return cam
 
 
+QUICK = os.environ.get("QUICK") == "1"
+SHOTS = [x for x in os.environ.get("SHOTS", "").split(",") if x]
+
+
+def bbox(root):
+    """World-space bounds of an imported model (all mesh children)."""
+    bpy.context.view_layer.update()
+    lo, hi = [1e9] * 3, [-1e9] * 3
+    for o in [root] + list(root.children_recursive):
+        if o.type != "MESH":
+            continue
+        for c in o.bound_box:
+            w = o.matrix_world @ mathutils.Vector(c)
+            for k in range(3):
+                lo[k] = min(lo[k], w[k]); hi[k] = max(hi[k], w[k])
+    return lo, hi
+
+
 def render(path, w, h, samples=64):
     sc = bpy.context.scene
+    if QUICK:
+        samples, w, h = 8, w // 2, h // 2
+        path = os.path.join(os.environ.get("TMPDIR", "/tmp"), "quick_" + os.path.basename(path))
     sc.eevee.taa_render_samples = samples
     sc.render.resolution_x, sc.render.resolution_y = w, h
     sc.render.resolution_percentage = 100
@@ -474,10 +497,9 @@ def main():
         preview(True)
         preview(False)
         return
-    feature_graphic()
-    icon_longneck()
-    icon_horned()
-    icon_warden()
+    for name, fn in (("fg", feature_graphic), ("c1", icon_longneck), ("c2", icon_horned), ("c3", icon_warden)):
+        if not SHOTS or name in SHOTS:
+            fn()
     print("STORE_ART_DONE")
 
 
