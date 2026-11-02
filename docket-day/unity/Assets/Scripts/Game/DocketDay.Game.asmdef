@@ -1,0 +1,17 @@
+{
+    "name": "DocketDay.Game",
+    "rootNamespace": "DocketDay.Game",
+    "references": [
+        "DocketDay.Sim",
+        "CoddyKit.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

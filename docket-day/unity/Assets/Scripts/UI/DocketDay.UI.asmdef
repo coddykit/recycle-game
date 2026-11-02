@@ -1,0 +1,14 @@
+{
+    "name": "DocketDay.UI",
+    "rootNamespace": "DocketDay.UI",
+    "references": [ "DocketDay.Game", "DocketDay.Sim", "DocketDay.World", "DocketDay.App", "CoddyKit.Core", "CoddyKit.Runtime", "Unity.InputSystem" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

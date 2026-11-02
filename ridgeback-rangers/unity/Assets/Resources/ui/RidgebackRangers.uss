@@ -1,0 +1,76 @@
+/* Ridgeback Rangers — game styles on top of the CoddyKit theme (CoddyTokens.uss / CoddyKit.uss). Fleet UI rules: ≥ 48 dp
+   touch targets (--touch-min), ≥ 14 sp body text, every toast a card, no raw Godot/Unity look, no visible scrollbar. */
+.br-root { flex-grow: 1; }
+.br-hud { position: absolute; left: 0; right: 0; top: 0; flex-direction: column; padding: var(--space-s) var(--space-m); }
+.br-hud__row { flex-direction: row; align-items: center; justify-content: space-between; }
+.br-chip { flex-direction: row; align-items: center; background-color: var(--surface); border-radius: var(--radius-pill);
+  padding: var(--space-xs) var(--space-m); margin-right: var(--space-xs); min-height: var(--touch-min); }
+.br-chip__label { font-size: var(--type-label); color: var(--on-surface); -unity-font-style: bold; }
+.br-chip__sub { font-size: var(--type-caption); color: var(--on-surface-muted); margin-left: var(--space-xs); }
+.br-chip--money .br-chip__label { color: var(--success); }
+.br-chip--warn { background-color: var(--warning-container); }
+.br-crises { flex-direction: row; flex-wrap: wrap; margin-top: var(--space-xs); }
+.br-speed { flex-direction: row; }
+.br-speed__btn { min-width: var(--touch-min); min-height: var(--touch-min); margin-left: var(--space-xxs); border-radius: var(--radius-pill);
+  background-color: var(--surface); color: var(--on-surface); font-size: var(--type-label); -unity-font-style: bold; border-width: 0; }
+.br-speed__btn--on { background-color: var(--primary); color: var(--on-primary); }
+.br-main-action { margin-top: var(--space-s); align-self: center; min-width: 220px; }
+
+.br-bottom { position: absolute; left: 0; right: 0; bottom: 0; flex-direction: column; }
+.br-tabs { flex-direction: row; background-color: var(--surface); min-height: var(--touch-tab-bar); border-top-left-radius: var(--radius-l); border-top-right-radius: var(--radius-l); }
+.br-tab { flex-grow: 1; flex-basis: 0; min-height: var(--touch-tab-bar); background-color: rgba(0,0,0,0); border-width: 0;
+  font-size: var(--type-caption); color: var(--on-surface-muted); -unity-font-style: bold; white-space: normal; }
+.br-tab--on { color: var(--primary); }
+.br-route { flex-direction: column; background-color: var(--surface-high); margin: 0 var(--space-m) var(--space-s) var(--space-m);
+  border-radius: var(--radius-l); padding: var(--space-s) var(--space-m); }
+.br-route__row { flex-direction: row; align-items: center; justify-content: space-between; margin-top: var(--space-xs); }
+.br-route__est { font-size: var(--type-caption); color: var(--on-surface-muted); flex-shrink: 1; white-space: normal; }
+.br-fuel { flex-direction: row; align-items: center; background-color: var(--surface); border-radius: var(--radius-pill); padding: var(--space-xxs) var(--space-s); min-height: var(--touch-min); }
+
+.br-markers { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.br-marker { position: absolute; width: 56px; height: 64px; margin-left: -28px; margin-top: -72px; align-items: center; }
+.br-marker__gauge { width: 18px; height: 40px; background-color: var(--surface); border-radius: var(--radius-xs); border-width: 2px;
+  border-color: var(--outline); justify-content: flex-end; overflow: hidden; }
+.br-marker__fill { width: 100%; background-color: var(--success); }
+.br-marker__fill--warn { background-color: var(--warning); }
+.br-marker__fill--full { background-color: var(--danger); }
+.br-marker__fill--estimate { opacity: 0.6; }
+.br-marker__badge { font-size: var(--type-caption); color: var(--on-surface); -unity-font-style: bold; background-color: var(--surface);
+  border-radius: var(--radius-pill); padding: 0 var(--space-xs); margin-top: var(--space-xxs); }
+.br-marker--selected .br-marker__gauge { border-color: var(--primary); border-width: 3px; }
+.br-marker--route .br-marker__badge { background-color: var(--primary); color: var(--on-primary); }
+.br-marker--jam .br-marker__badge { background-color: var(--danger); color: var(--on-primary); }
+.br-depot-marker { position: absolute; flex-direction: row; margin-left: -80px; margin-top: -90px; }
+.br-depot-btn { min-width: var(--touch-min); min-height: var(--touch-min); border-radius: var(--radius-pill); margin: 0 var(--space-xxs);
+  background-color: var(--surface); color: var(--on-surface); font-size: var(--type-caption); -unity-font-style: bold; border-width: 0; }
+.br-depot-btn--coins { background-color: var(--accent); color: var(--on-accent); }
+
+.br-coach { position: absolute; left: var(--space-m); right: var(--space-m); bottom: 190px; background-color: var(--surface-high);
+  border-radius: var(--radius-l); padding: var(--space-m); flex-direction: row; align-items: center; }
+.br-coach--top { bottom: auto; top: 150px; }
+.br-coach__face { width: 72px; height: 72px; border-radius: 36px; margin-right: var(--space-m); background-color: var(--primary-container); flex-shrink: 0; }
+.br-coach__texts { flex-shrink: 1; flex-grow: 1; }
+.br-coach__text { font-size: var(--type-body); color: var(--on-surface); white-space: normal; }
+.br-coach__step { font-size: var(--type-caption); color: var(--on-surface-muted); margin-top: var(--space-xxs); }
+.br-coach__skip { align-self: flex-start; }
+.br-spot { position: absolute; width: 96px; height: 96px; margin-left: -48px; margin-top: -48px; border-radius: 48px;
+  border-width: 4px; border-color: var(--accent); }
+.br-spot--pulse { scale: 1.12 1.12; }
+
+.br-report__stars { flex-direction: row; justify-content: space-between; margin: var(--space-s) 0; }
+.br-report__star { flex-grow: 1; align-items: center; }
+.br-report__star-value { font-size: var(--type-title); color: var(--accent); -unity-font-style: bold; }
+.br-row { flex-direction: row; justify-content: space-between; padding: var(--space-xxs) 0; }
+.br-row__k { font-size: var(--type-body); color: var(--on-surface-muted); }
+.br-row__v { font-size: var(--type-body); color: var(--on-surface); -unity-font-style: bold; }
+.br-row__v--good { color: var(--success); }
+.br-row__v--bad { color: var(--danger); }
+
+.br-pager { position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: var(--background); padding: var(--space-xl) var(--space-l); }
+.br-pager__art { flex-grow: 1; -unity-background-scale-mode: scale-to-fit; margin-bottom: var(--space-l); }
+.br-pager__title { font-size: var(--type-headline); color: var(--on-surface); -unity-font-style: bold; -unity-text-align: middle-center; white-space: normal; }
+.br-pager__body { font-size: var(--type-body-l); color: var(--on-surface-muted); -unity-text-align: middle-center; white-space: normal; margin: var(--space-s) 0 var(--space-l) 0; }
+.br-pager__dots { flex-direction: row; justify-content: center; margin-bottom: var(--space-l); }
+.br-pager__dot { width: 10px; height: 10px; border-radius: 5px; margin: 0 6px; background-color: var(--outline); }
+.br-pager__dot--on { background-color: var(--primary); width: 26px; }
+.br-pager__actions { flex-direction: row; justify-content: space-between; align-items: center; }

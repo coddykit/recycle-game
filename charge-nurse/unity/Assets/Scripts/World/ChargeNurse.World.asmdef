@@ -1,0 +1,14 @@
+{
+    "name": "ChargeNurse.World",
+    "rootNamespace": "ChargeNurse.World",
+    "references": [ "ChargeNurse.Game", "ChargeNurse.Sim", "CoddyKit.Core", "CoddyKit.Runtime", "Unity.InputSystem" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

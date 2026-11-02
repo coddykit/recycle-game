@@ -1,0 +1,14 @@
+{
+    "name": "PourAndRoast.World",
+    "rootNamespace": "PourAndRoast.World",
+    "references": [ "PourAndRoast.Game", "PourAndRoast.Sim", "CoddyKit.Core", "CoddyKit.Runtime", "Unity.InputSystem" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

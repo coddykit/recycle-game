@@ -1,0 +1,14 @@
+{
+    "name": "GrillConvoy.UI",
+    "rootNamespace": "GrillConvoy.UI",
+    "references": [ "GrillConvoy.Game", "GrillConvoy.Sim", "GrillConvoy.World", "GrillConvoy.App", "CoddyKit.Core", "CoddyKit.Runtime", "Unity.InputSystem" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

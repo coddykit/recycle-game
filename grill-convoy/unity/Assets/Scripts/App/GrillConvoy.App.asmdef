@@ -1,0 +1,14 @@
+{
+    "name": "GrillConvoy.App",
+    "rootNamespace": "GrillConvoy.App",
+    "references": [ "CoddyKit.Core", "CoddyKit.Runtime", "GrillConvoy.Sim", "GrillConvoy.Game" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

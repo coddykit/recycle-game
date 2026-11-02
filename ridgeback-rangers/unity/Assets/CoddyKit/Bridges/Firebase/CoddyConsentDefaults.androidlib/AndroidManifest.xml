@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CoddyKit consent mode v2 defaults: every Google signal DENIED until UMP has answered (ConsentMode.cs). -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+  <application>
+    <meta-data android:name="google_analytics_default_allow_analytics_storage" android:value="false" />
+    <meta-data android:name="google_analytics_default_allow_ad_storage" android:value="false" />
+    <meta-data android:name="google_analytics_default_allow_ad_user_data" android:value="false" />
+    <meta-data android:name="google_analytics_default_allow_ad_personalization_signals" android:value="false" />
+  </application>
+</manifest>

@@ -1,0 +1,17 @@
+{
+    "name": "CoddyKit.Runtime",
+    "rootNamespace": "CoddyKit",
+    "references": [
+        "CoddyKit.Core",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

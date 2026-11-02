@@ -1,0 +1,25 @@
+{
+    "name": "CoddyKit.AdMob",
+    "rootNamespace": "CoddyKit.Bridges",
+    "references": [
+        "CoddyKit.Core",
+        "CoddyKit.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "CODDY_ADMOB"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.google.ads.mobile",
+            "expression": "9.0.0",
+            "define": "CODDY_ADMOB"
+        }
+    ],
+    "noEngineReferences": false
+}

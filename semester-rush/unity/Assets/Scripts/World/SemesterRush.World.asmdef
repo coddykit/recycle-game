@@ -1,0 +1,14 @@
+{
+    "name": "SemesterRush.World",
+    "rootNamespace": "SemesterRush.World",
+    "references": [ "SemesterRush.Game", "SemesterRush.Sim", "CoddyKit.Core", "CoddyKit.Runtime", "Unity.InputSystem" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

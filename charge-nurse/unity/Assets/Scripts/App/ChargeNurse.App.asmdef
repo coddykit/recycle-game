@@ -1,0 +1,14 @@
+{
+    "name": "ChargeNurse.App",
+    "rootNamespace": "ChargeNurse.App",
+    "references": [ "CoddyKit.Core", "CoddyKit.Runtime", "ChargeNurse.Sim", "ChargeNurse.Game" ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

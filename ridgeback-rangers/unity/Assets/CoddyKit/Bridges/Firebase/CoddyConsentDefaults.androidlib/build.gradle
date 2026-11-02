@@ -1,0 +1,16 @@
+// CoddyKit: consent mode v2 manifest defaults (all denied before UMP). Manifest only, no code, no resources.
+apply plugin: 'com.android.library'
+
+android {
+    namespace "com.coddykit.kit.consentdefaults"
+    compileSdk getProperty("unity.compileSdkVersion") as int
+    buildToolsVersion = getProperty("unity.buildToolsVersion")
+    defaultConfig {
+        minSdk getProperty("unity.minSdkVersion") as int
+    }
+    sourceSets {
+        main {
+            manifest.srcFile 'AndroidManifest.xml'
+        }
+    }
+}
