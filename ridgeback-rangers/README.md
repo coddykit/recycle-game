@@ -36,10 +36,19 @@ Codigames oyunundan / film serisinden isim, görsel, metin yok; "Jurassic" yok.
     saklanır), mağaza kuralları (`ad_free` yalnız noads/premium/ranger_pass/bundle), ödül tavanları (= veri), anahtarlar +
     yer tutucular, denge botu 1/7/20 gün.
   - Motor kodu (kit + App + World + UI) UnityEngine 2021.3 referanslarına karşı derleniyor (yalnız bilinen 2 Unity-6 API'si).
+- **P2 cilası (bulut, 2026-11-02):** mağaza dosyaları `store/` (en-US metin "Dino Park: Ridgeback Rangers", 8 ekran görüntüsü
+  planı, Data safety CSV, `validate.py`, öne çıkan görsel + 3 ikon adayı — Blender, kendi modellerimiz); diorama Blender kit
+  birleştirme bankası (`Resources/kit/props.bytes`: ağaç, eğrelti ağacı, kaya, volkan, tepe, kazı alanı, kiosk, su noktası,
+  gölgelik, Orta/Yüksek'te pahlı çitler + yol lambaları; binalar da birleşti → her kademede 7–9 draw az, Düşük ek draw 0,
+  Düşük üçgen ≈ −400); `MeshKit.Quad` sarım düzeltmesi; tempo: tramvay 20 koltuk / araba 1 500, Dune Mesa 26 000 →
+  Fern Valley ≈ 1 sa, Dune Mesa ≈ 2,5 sa, yeni bölge sonrası yürüyen ziyaretçi %43→%31 ve 2–3 gün (`docs/ART.md`,
+  `docs/BALANCE.md`). `check.sh` tam PASS (125/125).
 - **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, FBX eksenleri, cihazda görünüm, perf_gate (Düşük ≤ 120 draw
   hedefi), emülatör smoke, AAB → `docs/UNITY.md` §2.
 - **Sahip kararı bekleyenler:** `ad_free` ürün listesi (§8; ranger_pass "pass" sayılsın mı), kitle 13+ mı (plan R4,
-  Families), mağaza adı (Play'de yeniden kontrol), son ikon.
+  Families — mağaza metni ve görseller çocuğa yönelik değil tutuldu, `validate.py` çocuk kelimelerini reddeder; Families
+  seçilirse Data safety CSV, reklam ve Firebase değişir), mağaza adı (Play'de yeniden kontrol; başlık anahtar kelime önce:
+  "Dino Park: Ridgeback Rangers"), son ikon (`store/icon-candidates/c1..c3`).
 - **Boş bırakılan kimlikler (P8, Patron):** AdMob ödüllü birim, AdMob uygulama kimliği, RevenueCat anahtarı, Firebase
   config. Uydurma kimlik yok (§5).
 
@@ -54,5 +63,7 @@ python3 ridgeback-rangers/unity/Tools/i18n_merge.py && python3 ridgeback-rangers
 ```
 
 ```bash
-blender -b --python ridgeback-rangers/tools/art/kit.py -- ridgeback-rangers/unity
+blender -b --python ridgeback-rangers/tools/art/kit.py -- ridgeback-rangers/unity          # FBX + props.bytes merge bank
+blender -b --python ridgeback-rangers/tools/art/store_art.py -- ridgeback-rangers           # store/feature-graphic.png + icon candidates
+python3 ridgeback-rangers/tools/art/check_kit.py && python3 ridgeback-rangers/store/validate.py
 ```

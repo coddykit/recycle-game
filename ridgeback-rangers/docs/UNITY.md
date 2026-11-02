@@ -42,8 +42,9 @@ $U -batchmode -nographics -quit -projectPath ridgeback-rangers/unity -executeMet
 $U -batchmode -nographics -projectPath ridgeback-rangers/unity -runTests -testPlatform EditMode -testResults /tmp/editmode.xml -logFile -
 ```
 
-**Things to look at first in the editor** (written without one): FBX axis of the Blender kit (fronts must face the camera =
--Z; `IslandWorld.Prop` yaw) and of the Meshy dinosaurs (faces +Z after `glb2fbx.py`; `Herd` adds no yaw — check they walk head first), palette point filter (`RidgebackArtImport`), USS import warnings, marker placement
+**Things to look at first in the editor** (written without one): `Resources/kit/props.bytes` imports as a TextAsset
+(`.bytes`) and `KitBank` logs no warning — buildings, trees, the volcano etc. are merged from it (a missing bank silently
+falls back to the boxes); FBX axis of the tram car (now under a yaw pivot, the importer rotation is kept: `IslandWorld.Prop`) and of the Meshy dinosaurs (faces +Z after `glb2fbx.py`; `Herd` adds no yaw — check they walk head first), palette point filter (`RidgebackArtImport`), USS import warnings, marker placement
 (`RuntimePanelUtils.ScreenToPanel` with top-left coordinates), the spotlight on sheet pills (`Target_*` names), the
 house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (target ≤ 120, fleet ≤ 150).
 
@@ -52,9 +53,9 @@ house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (ta
 | Check | Result | How |
 |---|---|---|
 | Sim + Game + CoddyKit.Core compile netstandard2.1 / C# 9, `-warnaserror` | PASS | `Tools/dotnet_check.sh` (.NET 8) |
-| NUnit EditMode tests (sim 41, game 29, kit 55) | **124 / 125** — only `EveryLanguageIsComplete` (English only until the central translation) | same |
+| NUnit EditMode tests (sim 41, game 29, kit 55) | **125 / 125** (P2 polish run; translations merged) | same |
 | Engine-bound code (kit Runtime + App + World + UI) vs UnityEngine 2021.3 reference modules + Input System stubs | PASS except 2 Unity-6-only APIs (`QualitySettings.count`, `SystemLanguage.Hindi`) | `Tools/unity_ref_check.sh` |
-| Every `.cs` under Assets parses as C# 9 (editor+tests and Android+bridges define sets) | 84 files, 0 errors | same |
+| Every `.cs` under Assets parses as C# 9 (editor+tests and Android+bridges define sets) | 85 files, 0 errors | same |
 | Static gates (one MobileAds init = the kit's, no AdMob interstitial/banner, no PlayerPrefs, no "bought anything" ad logic, no trial wording, no franchise / reference-game names (Jurassic, Codigames…), no secrets, generated files fresh, art present) | PASS | `Tools/check.sh` |
 
 ## 4. Release ids and accounts (P8 — Patron only)
@@ -73,7 +74,9 @@ house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (ta
 
 ## First editor check: face culling of procedural meshes (2026-11-02)
 
-`MeshKit.Quad` was fixed fleet-wide to wind triangles clockwise (Unity front faces). Helpers that pass their corners in
+`MeshKit.Quad` was fixed fleet-wide to wind triangles clockwise (Unity front faces) — in this game only at the P2 polish
+(2026-11-02; the copy here still had the old order). The merge-bank props have a known axis and winding (checked in Blender
+with back-face culling on, `tools/art/store_art.py`). Helpers that pass their corners in
 the opposite order (pour-and-roast's `Cyl` was one, fixed) would now show inside-out. On the first editor open, look at
 every procedural prop / building / ground strip on Medium with back-face culling on: a missing or see-through face means
 that helper's corner order must be swapped. The Blender kit FBX import with a -90° X root rotation over Z-up vertices:
