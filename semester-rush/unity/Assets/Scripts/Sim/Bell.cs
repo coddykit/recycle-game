@@ -187,9 +187,14 @@ namespace SemesterRush.Sim
             return (hi - w) / (hi - lo);
         }
 
+        /// <summary>Busiest load / capacity per path this week (not saved; the Campus sheet offers wider paths where it is high).</summary>
+        public double[] PeakHeat { get; private set; } = new double[0];
+
         void BellChange(int slot)
         {
             bell = ComputeBell(S.Day, slot, true);
+            if (PeakHeat.Length != bell.Heat.Length || (S.Day == 0 && slot == 0)) PeakHeat = new double[bell.Heat.Length];
+            for (int e = 0; e < bell.Heat.Length; e++) PeakHeat[e] = Math.Max(PeakHeat[e], bell.Heat[e]);
             S.ExtraMarshals = 0;
             S.Events.RemoveAll(e => e.Id == "fire_drill");
             Emit("bell", slot, bell.Late, bell.Students);

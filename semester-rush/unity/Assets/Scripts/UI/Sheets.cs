@@ -289,18 +289,23 @@ namespace SemesterRush.UI
                 var b = Sim.CanBuy("gate:" + e.Index);
                 if (b.Reason == "locked" || b.Reason == "owned") continue;
                 int ei = e.Index;
-                Card(L.F("campus.gate", "a", Place(e.A), "b", Place(e.B)), L.T("campus.gate.d"), BuyLabel(b), () => main.Run("gate:" + ei), b.Ok);
+                Card(L.F("campus.gate", "a", NodeLabel(e.A), "b", NodeLabel(e.B)), L.T("campus.gate.d"), BuyLabel(b), () => main.Run("gate:" + ei), b.Ok);
             }
             if (Sim.Has("wide_paths"))
+            {
+                int shown = 0;
                 foreach (var e in Sim.Gd.Edges)
                 {
                     var b = Sim.CanBuy("widen:" + e.Index);
                     if (!b.Ok && b.Reason != "cash") continue;
                     int ei = e.Index;
-                    double heat = Sim.Bell != null && ei < Sim.Bell.Heat.Length ? Sim.Bell.Heat[ei] : 0;
-                    if (heat < 0.5 && Sim.S.History.Count > 0) continue;   // only the paths that get busy
-                    Card(L.F("campus.widen", "a", Place(e.A), "b", Place(e.B)), L.T("campus.widen.d"), BuyLabel(b), () => Buy("widen:" + ei), b.Ok);
+                    double heat = ei < Sim.PeakHeat.Length ? Sim.PeakHeat[ei] : 0;
+                    if (heat < 0.7) continue;   // only the paths that got busy this week
+                    Card(L.F("campus.widen", "a", NodeLabel(e.A), "b", NodeLabel(e.B)), L.F("campus.widen.busy", "pct", Fmt.Pct(heat, L.Lang)), BuyLabel(b), () => Buy("widen:" + ei), b.Ok);
+                    shown++;
                 }
+                if (shown == 0) Body(L.T("campus.widen.none"), "coddy-caption-muted");
+            }
             Section(L.T("campus.buildings"));
             foreach (var b in Sim.S.Buildings)
             {
