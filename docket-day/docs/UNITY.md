@@ -13,7 +13,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.docketday`. Built on th
 | `DocketDay.Game` | none | session, actions, coach, commerce, rewards, review hook, analytics catalogue, strings, formatting |
 | `DocketDay.App` | yes | kit config (ids), boot curtain |
 | `DocketDay.World` | yes (+ Input System) | diorama, crowd, camera rig, picking |
-| `DocketDay.UI` | yes (+ Input System) | entry point (`BottleMain`), screens, sheets, guide view, audio |
+| `DocketDay.UI` | yes (+ Input System) | entry point (`DocketMain`), screens, sheets, guide view, audio |
 | `DocketDay.Editor` | editor | project setup + scenes, Android build, fonts, icons, art import |
 | tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — **asmdefs to add in the editor** (see §2 step 5) |
 
@@ -23,14 +23,14 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.docketday`. Built on th
    `ProjectSettings/ProjectVersion.txt` = 6000.3.27f1 (the Volt City editor); a newer 6000.3 is fine.
 2. `sh docket-day/unity/Tools/fetch_packages.sh` (Google Play Review / Core / Common + Firebase tarballs → `Packages/tarballs/`, gitignored).
    Google Mobile Ads + RevenueCat come from OpenUPM (scoped registry already in `Packages/manifest.json`).
-3. Open `docket-day/unity`. `BottleProjectSetup` runs by itself on the first open: fleet Android policy, URP Low / Medium
+3. Open `docket-day/unity`. `DocketProjectSetup` runs by itself on the first open: fleet Android policy, URP Low / Medium
    / High assets, quality levels, kit PanelSettings + fonts, palette materials, `Boot` + `Region` scenes, build scenes.
    Menu: **Coddy › Docket Day › Apply Project Setup**, **Coddy › Validate Project** (`PROJECT_VALID`).
 4. Press Play in `Assets/Scenes/Boot.unity` (or `Region.unity` directly — it boots the kit itself). Expected: curtain →
-   town → intro pager → guide step 1 (spotlight on the Fish Market machine).
+   the firm's street → intro pager → guide step 1 (spotlight on the reception marker).
 5. Test runner: create two test asmdefs (copy Volt City's): `DocketDay.Sim.Tests` (refs `DocketDay.Sim`, nunit,
    `UNITY_INCLUDE_TESTS`) in `Assets/Tests/EditMode`, `DocketDay.Game.Tests` (refs Sim, Game, CoddyKit.Core,
-   `DocketDay.Sim.Tests`) in `Assets/Tests/Game`. Then Test Runner → EditMode → Run All (125 expected, as under .NET).
+   `DocketDay.Sim.Tests`) in `Assets/Tests/Game`. Then Test Runner → EditMode → Run All (134 expected, as under .NET; `EveryLanguageIsComplete` red until the central translation).
 6. **One commit** with everything the editor generated: `ProjectSettings/*`, `Packages/packages-lock.json`,
    `Assets/Settings/*`, `Assets/Scenes/*`, `Assets/Resources/materials/*.mat`, `Assets/Resources/ui/fonts/DocketPanelText.asset`,
    all `.meta` files. Never `Library/`, `Temp/`, `Logs/`, `UserSettings/`.
@@ -38,12 +38,12 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.docketday`. Built on th
 Batch alternative (agent on the Mini):
 ```sh
 U=/Applications/Unity/Hub/Editor/<version>/Unity.app/Contents/MacOS/Unity
-$U -batchmode -nographics -quit -projectPath docket-day/unity -executeMethod DocketDay.EditorTools.BottleProjectSetup.Apply -logFile -
+$U -batchmode -nographics -quit -projectPath docket-day/unity -executeMethod DocketDay.EditorTools.DocketProjectSetup.Apply -logFile -
 $U -batchmode -nographics -projectPath docket-day/unity -runTests -testPlatform EditMode -testResults /tmp/editmode.xml -logFile -
 ```
 
 **Things to look at first in the editor** (written without one): FBX axis of the Blender kit (fronts must face the camera =
--Z; `RegionWorld.BuildPoints` yaw), palette point filter (`BottleArtImport`), USS import warnings, marker placement
+-Z; desks are turned 180° in `RegionWorld.BuildTower`, wall props 0°), palette point filter (`DocketArtImport`), USS import warnings, marker placement
 (`RuntimePanelUtils.ScreenToPanel` with top-left coordinates), the spotlight on sheet pills (`Target_*` names), the
 house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (target ≤ 120, fleet ≤ 150).
 
@@ -52,20 +52,24 @@ house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (ta
 | Check | Result | How |
 |---|---|---|
 | Sim + Game + CoddyKit.Core compile netstandard2.1 / C# 9, `-warnaserror` | PASS | `Tools/dotnet_check.sh` (.NET 8) |
-| NUnit EditMode tests (sim 43, game 27, kit 55) | **125 / 125** | same |
+| NUnit EditMode tests (sim 45, game 34, kit 55) | **133 / 134** (only `EveryLanguageIsComplete`: 9 languages wait for the central translation) | same |
 | Engine-bound code (kit Runtime + App + World + UI) vs UnityEngine 2021.3 reference modules + Input System stubs | PASS except 2 Unity-6-only APIs (`QualitySettings.count`, `SystemLanguage.Hindi`) | `Tools/unity_ref_check.sh` |
-| Every `.cs` under Assets parses as C# 9 (editor+tests and Android+bridges define sets) | 83 files, 0 errors | same |
-| Static gates (one MobileAds init = the kit's, no AdMob interstitial/banner, no PlayerPrefs, no "bought anything" ad logic, no trial wording, no real scheme/brand names, no secrets, generated files fresh, art present) | PASS | `Tools/check.sh` |
+| Every `.cs` under Assets parses as C# 9 (editor+tests and Android+bridges define sets) | 82 files, 0 errors | same |
+| Static gates (one MobileAds init = the kit's, no AdMob interstitial/banner, no PlayerPrefs, no "bought anything" ad logic, no trial wording, no reference-game / real firm or court names, no secrets, generated files fresh, art present) | PASS | `Tools/check.sh` |
 
 ## 4. Release ids and accounts (P8 — Patron only)
 
-`BottleGameConfig.AdMobRewardedAndroid`, `RevenueCatAndroidKey`: empty → no rewarded video and a fake store in release.
-`BottleAndroidBuild` reads `DOCKETDAY_ADMOB_APP_ID`, `DOCKETDAY_KEYSTORE*`, `DOCKETDAY_VERSION_*`,
+`DocketGameConfig.AdMobRewardedAndroid`, `RevenueCatAndroidKey`: empty → no rewarded video and a fake store in release.
+`DocketAndroidBuild` reads `DOCKETDAY_ADMOB_APP_ID`, `DOCKETDAY_KEYSTORE*`, `DOCKETDAY_VERSION_*`,
 `DOCKETDAY_RELEASE` (from Volt City's build script) and fails a production build without them. Firebase:
 `docket-day/config/google-services.json` (not in git). Store / AdMob / RevenueCat / ads_app registration: CLAUDE.md §15.
 
 ## 5. Differences from Volt City
 
-- Diorama is procedural (map JSON → roads, blocks, props) on ONE palette material; Blender kit props + Meshy bales.
-- No world-space UI: fill gauges are UI Toolkit markers placed from the camera at 30 Hz (Low 10 Hz).
+- Diorama: a procedural office-tower cutaway (one open floor per chapter) + street + the Blender courthouse, ONE palette
+  material; Blender kit furniture; the Meshy office cat is the only textured world prop. People are instanced chunky figures.
+- No world-space UI: the reception / courthouse badges are UI Toolkit markers placed from the camera at 30 Hz (Low 10 Hz).
+- The Docket Rail + people row are UI Toolkit (drag = PointerDown/Move/Up with pointer capture after an upward move; the
+  horizontal ScrollViews keep sideways drags). Check on a device: a sideways swipe scrolls, an upward drag picks a person up.
+- The hearing scene is a UI overlay with pre-rendered Meshy portraits (fixed poses, no skeletons).
 - Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
