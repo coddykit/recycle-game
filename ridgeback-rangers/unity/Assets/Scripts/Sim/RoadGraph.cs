@@ -86,7 +86,7 @@ namespace RidgebackRangers.Sim
             return km;
         }
 
-        /// <summary>Position along a path at km from its start (for the diorama's trucks).</summary>
+        /// <summary>Position along a path at km from its start (for the diorama's rangers).</summary>
         public (double x, double y, double heading) PointAt(List<int> path, double km)
         {
             if (path == null || path.Count == 0) { var hq = Gd.Nodes[Math.Max(0, Gd.HqNode)]; return (hq.X, hq.Y, 0); }

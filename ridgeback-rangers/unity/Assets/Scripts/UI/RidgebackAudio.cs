@@ -2,7 +2,7 @@
 // default, persisted), silent in the background and in batch mode (headless tests / CI: no audio). Clips come from
 // Resources/audio/<id> (ElevenLabs batch through games/tools/audio — only after the owner approves the credits; until
 // then the game runs silently and every Play() is a cheap no-op).
-//   sfx ids: ui_tap, truck, machine_crunch, baler_press, coins, sold, success, warning   music: music_calm, music_busy
+//   sfx ids: ui_tap, pin, alarm, radio, crate, gate, tram, coins, hatch, success, warning   music: music_calm, music_busy
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +10,7 @@ namespace RidgebackRangers.UI
 {
     public sealed class RidgebackAudio : MonoBehaviour
     {
-        public static readonly string[] Sfx = { "ui_tap", "truck", "machine_crunch", "baler_press", "coins", "sold", "success", "warning" };
+        public static readonly string[] Sfx = { "ui_tap", "pin", "alarm", "radio", "crate", "gate", "tram", "coins", "hatch", "success", "warning" };
         public static readonly string[] Music = { "music_calm", "music_busy" };
 
         readonly Dictionary<string, AudioClip> clips = new Dictionary<string, AudioClip>();

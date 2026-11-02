@@ -1,8 +1,8 @@
 // Ridgeback Rangers — editor setup: applies the CoddyKit fleet policy with this game's values (ProjectSetup: Android IL2CPP
 // ARM64, minSdk 25, targetSdk 36, Vulkan + GLES3, URP tier assets, no Unity splash), creates the palette materials, the
-// Boot scene (camera + curtain UIDocument + RidgebackBoot) and the Region scene (camera rig, sun, RegionWorld, TapInput, UI
+// Boot scene (camera + curtain UIDocument + RidgebackBoot) and the Island scene (camera rig, sun, IslandWorld, TapInput, UI
 // document + RidgebackMain), and registers both build scenes. Runs once on the first editor open (when
-// Assets/Settings/URP-Medium.asset or the Region scene is missing), from "Coddy/Ridgeback Rangers/Apply Project Setup" and from
+// Assets/Settings/URP-Medium.asset or the Island scene is missing), from "Coddy/Ridgeback Rangers/Apply Project Setup" and from
 // CI before every build (RidgebackAndroidBuild). After the first open commit ProjectSettings/*, Assets/Settings/*,
 // Assets/Scenes/*, Assets/Resources/materials/*.mat, the PanelSettings asset and ALL generated .meta files in one commit.
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace RidgebackRangers.EditorTools
     public static class RidgebackProjectSetup
     {
         public const string BootScene = "Assets/Scenes/Boot.unity";
-        public const string RegionScene = "Assets/Scenes/Region.unity";
+        public const string IslandScene = "Assets/Scenes/Island.unity";
         public const string PaletteTex = "Assets/Resources/materials/palette.png";
         public const string PaletteMat = "Assets/Resources/materials/palette.mat";
         public const string PaletteLowMat = "Assets/Resources/materials/palette_low.mat";
@@ -44,7 +44,7 @@ namespace RidgebackRangers.EditorTools
         {
             ProjectSpecRegistry.Current = Spec;
             if (Application.isBatchMode) return;
-            if (!File.Exists(Spec.SettingsDir + "/URP-Medium.asset") || !File.Exists(RegionScene))
+            if (!File.Exists(Spec.SettingsDir + "/URP-Medium.asset") || !File.Exists(IslandScene))
                 EditorApplication.delayCall += () => Apply();
         }
 
@@ -55,7 +55,7 @@ namespace RidgebackRangers.EditorTools
             RidgebackFonts.Apply(ProjectSetup.EnsurePanelSettings(Spec));
             EnsureMaterials();
             EnsureBootScene();
-            EnsureRegionScene();
+            EnsureIslandScene();
             RegisterScenes();
             AssetDatabase.SaveAssets();
             var problems = ProjectValidator.Problems(Spec);
@@ -116,9 +116,9 @@ namespace RidgebackRangers.EditorTools
             EditorSceneManager.SaveScene(scene, BootScene);
         }
 
-        public static void EnsureRegionScene()
+        public static void EnsureIslandScene()
         {
-            if (File.Exists(RegionScene)) return;
+            if (File.Exists(IslandScene)) return;
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);
             var camGo = Cam(new Color(0.55f, 0.78f, 0.86f), false);
             var cam = camGo.GetComponent<Camera>();
@@ -136,7 +136,7 @@ namespace RidgebackRangers.EditorTools
             RenderSettings.ambientLight = new Color(0.62f, 0.66f, 0.70f);
 
             var worldGo = new GameObject("World");
-            var world = worldGo.AddComponent<RegionWorld>();
+            var world = worldGo.AddComponent<IslandWorld>();
             world.cam = cam;
             world.rig = rig;
             world.sun = sun;
@@ -149,13 +149,13 @@ namespace RidgebackRangers.EditorTools
             var main = uiGo.AddComponent<RidgebackMain>();
             main.uiDocument = doc;
             main.world = world;
-            EditorSceneManager.SaveScene(scene, RegionScene);
+            EditorSceneManager.SaveScene(scene, IslandScene);
         }
 
         public static void RegisterScenes()
         {
             var scenes = new List<EditorBuildSettingsScene> { new EditorBuildSettingsScene(BootScene, true) };
-            if (File.Exists(RegionScene)) scenes.Add(new EditorBuildSettingsScene(RegionScene, true));
+            if (File.Exists(IslandScene)) scenes.Add(new EditorBuildSettingsScene(IslandScene, true));
             EditorBuildSettings.scenes = scenes.ToArray();
         }
     }

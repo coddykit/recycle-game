@@ -1,8 +1,8 @@
-"""Ridgeback Rangers — renders the UI art from the repo's own models (Meshy characters in unity/Assets/Art/Meshy + bales and the
-Blender kit in unity/Assets/Resources/kit): the coach portrait, the three intro pager images, the boot curtain and a
-placeholder app icon set (the owner picks the final icon at P7). EEVEE, headless.
+"""Ridgeback Rangers — renders the UI art from the repo's own models (the Meshy Chief Ranger + dinosaurs in
+unity/Assets/Art/Meshy, textures in unity/Assets/Resources/kit, the Blender kit): the coach portrait, the three intro
+pager images, the boot curtain and a placeholder app icon set (the owner picks the final icon at P7). EEVEE, headless.
   blender -b --python ridgeback-rangers/tools/art/render_ui.py -- <unity dir>
-Outputs: Assets/Resources/ui/{coach_operator,intro_1,intro_2,intro_3,curtain}.png, Assets/Art/Icon/icon_*.png
+Outputs: Assets/Resources/ui/{coach_warden,intro_1,intro_2,intro_3,curtain}.png, Assets/Art/Icon/icon_*.png
 """
 import math
 import os
@@ -80,8 +80,8 @@ def kit(name, loc, yaw=0.0, scale=1.0):
     return load(os.path.join(A, "Resources/kit/%s.fbx" % name), os.path.join(A, "Resources/materials/palette.png"), loc, yaw, scale, "Closest")
 
 
-def bale(mat, loc, yaw=0.0):
-    return load(os.path.join(A, "Resources/kit/bale_%s_lod1.fbx" % mat), os.path.join(A, "Resources/kit/bale_%s_base.png" % mat), loc, yaw)
+def dino(family, loc, yaw=0.0, scale=1.0):
+    return load(os.path.join(A, "Art/Meshy/dino_%s_lod0.fbx" % family), os.path.join(A, "Resources/kit/dino_%s_base.png" % family), loc, yaw, scale)
 
 
 def ground(size=40, color=(0.55, 0.78, 0.48)):
@@ -121,57 +121,52 @@ def render(path, w, h):
 def main():
     os.makedirs(UI, exist_ok=True)
     os.makedirs(ICON, exist_ok=True)
+    GREEN = (0.55, 0.78, 0.48)
     # coach portrait (head + shoulders, transparent; the bubble crops it into a circle)
     reset(transparent=True)
-    char("operator", (0, 0, 0))
-    camera((0.15, -1.55, 1.58), (0, 0, 1.5), lens=85)
-    render(os.path.join(UI, "coach_operator.png"), 256, 256)
-    # intro 1: a citizen brings bottles to a machine
-    reset()
-    ground()
-    char("citizen", (-0.9, 0, 0), yaw=25)
-    kit("machine_s", (0.7, 0.4, 0), yaw=-15)
-    camera((0.4, -5.2, 2.0), (0, 0, 1.0), lens=45)
+    char("warden", (0, 0, 0))
+    camera((0.1, -1.6, 1.55), (0, 0, 1.47), lens=85)
+    render(os.path.join(UI, "coach_warden.png"), 256, 256)
+    # intro 1: the Chief Warden meets a triceratops (dinos are ~1 unit long: scale them up to a friendly size)
+    reset(bg=(0.62, 0.84, 0.92))
+    ground(color=GREEN)
+    char("warden", (-0.9, 0.2, 0), yaw=20)
+    dino("horned", (0.9, 0.6, 0), yaw=-120, scale=2.4)
+    camera((0.2, -5.4, 1.9), (0.1, 0, 0.9), lens=42)
     render(os.path.join(UI, "intro_1.png"), 720, 720)
-    # intro 2: machines fill up, the van comes
-    reset()
-    ground()
-    kit("machine_s", (-1.2, 1.0, 0), yaw=10)
-    kit("machine_m", (1.4, 1.2, 0), yaw=-10)
-    kit("van", (0.2, -1.6, 0), yaw=90)
-    char("operator", (2.6, -0.6, 0), yaw=-30)
-    camera((2.5, -9.5, 5.0), (0.4, 0, 1.0), lens=40)
+    # intro 2: pins = problems; a ranger cabin and a hungry herd at the barn
+    reset(bg=(0.62, 0.84, 0.92))
+    ground(color=GREEN)
+    kit("barn", (-1.6, 2.4, 0), yaw=10, scale=0.45)
+    dino("plated", (0.9, 0.4, 0), yaw=-100, scale=2.2)
+    dino("duckbill", (-0.4, -0.2, 0), yaw=-60, scale=1.8)
+    char("warden", (1.9, -0.9, 0), yaw=-35)
+    camera((1.0, -7.0, 3.0), (0.2, 0.4, 0.9), lens=40)
     render(os.path.join(UI, "intro_2.png"), 720, 720)
-    # intro 3: bales make money
-    reset()
-    ground(color=(0.75, 0.77, 0.78))
-    for i in range(3):
-        bale("pet", (-1.2 + i * 1.15, 0.6, 0))
-    bale("alu", (-0.6, 0.6, 1.05))
-    bale("pet", (0.55, 0.6, 1.05))
-    char("technician", (1.9, -0.6, 0), yaw=-25)
-    camera((1.0, -6.5, 2.8), (0.2, 0, 1.0), lens=45)
+    # intro 3: visitors ride the safari tram past a long-neck
+    reset(bg=(0.62, 0.84, 0.92))
+    ground(color=GREEN)
+    kit("tram_car", (-1.0, -0.6, 0), yaw=90, scale=0.6)
+    dino("longneck", (1.0, 1.0, 0), yaw=-130, scale=3.2)
+    camera((0.6, -6.5, 2.6), (0.2, 0.3, 1.3), lens=40)
     render(os.path.join(UI, "intro_3.png"), 720, 720)
-    # boot curtain (portrait): the whole cast
+    # boot curtain (portrait): the cast in front of the island
     reset(bg=(0.06, 0.23, 0.18))
     ground(color=(0.2, 0.45, 0.35))
-    kit("van", (-1.0, 1.5, 0), yaw=70)
-    kit("machine_s", (1.6, 2.5, 0), yaw=-20)
-    bale("pet", (2.2, 0.6, 0))
-    char("operator", (0.2, -0.4, 0), yaw=10)
-    char("citizen", (-1.6, -0.9, 0), yaw=30)
-    camera((0.3, -8.0, 3.2), (0.2, 0.6, 1.4), lens=38)
+    kit("gate", (0.2, 2.6, 0), yaw=0, scale=0.5)
+    dino("longneck", (1.5, 1.4, 0), yaw=-140, scale=3.0)
+    dino("horned", (-1.4, 0.4, 0), yaw=-50, scale=2.0)
+    char("warden", (0.2, -0.4, 0), yaw=10)
+    camera((0.3, -8.0, 3.0), (0.2, 0.8, 1.4), lens=38)
     render(os.path.join(UI, "curtain.png"), 720, 1280)
-    # placeholder icon set: a deposit machine with a PET bale, mint field
-    reset()
-    kit("machine_m", (0.35, 0.2, 0), yaw=-20)
-    bale("pet", (-1.1, -0.2, 0), yaw=15)
-    camera((0, -6.0, 2.6), (-0.3, 0, 1.15), ortho=3.6)
+    # placeholder icon set: a triceratops head-on with the warden's hat colours, green field
+    reset(bg=(0.55, 0.80, 0.55))
+    dino("horned", (0, 0, 0), yaw=-25, scale=2.6)
+    camera((0.8, -4.0, 1.4), (0, 0, 0.6), ortho=2.2)
     render(os.path.join(ICON, "icon_full.png"), 1024, 1024)
     reset(transparent=True)
-    kit("machine_m", (0.35, 0.2, 0), yaw=-20)
-    bale("pet", (-1.1, -0.2, 0), yaw=15)
-    camera((0, -6.0, 2.6), (-0.3, 0, 1.15), ortho=5.4)   # inside the 66 dp adaptive safe zone
+    dino("horned", (0, 0, 0), yaw=-25, scale=2.6)
+    camera((0.8, -4.0, 1.4), (0, 0, 0.6), ortho=3.3)   # inside the 66 dp adaptive safe zone
     render(os.path.join(ICON, "icon_adaptive_fg.png"), 432, 432)
     print("RENDER_DONE")
 

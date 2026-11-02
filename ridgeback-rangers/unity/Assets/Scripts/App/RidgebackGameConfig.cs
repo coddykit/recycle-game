@@ -14,7 +14,7 @@ namespace RidgebackRangers.App
     {
         public const string AppId = "ridgeback-rangers";                 // ads-config X-App-ID, house-ad host id
         public const string Package = "com.coddykit.ridgebackrangers";
-        public const string ProductName = "Ridgeback Rangers";           // store title "Ridgeback Rangers: Recycling Tycoon" (30 chars)
+        public const string ProductName = "Ridgeback Rangers";           // store title "Ridgeback Rangers: Dino Park" (28 chars, plan §11)
         public const string PrivacyUrl = "https://www.coddykit.com/pages/privacy-policy";
 
         // ---- P8 (Patron): real ids. Keep the constant names (a preflight reads them). ----

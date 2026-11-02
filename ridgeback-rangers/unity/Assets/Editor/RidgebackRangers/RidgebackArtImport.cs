@@ -1,6 +1,6 @@
 // Ridgeback Rangers — import rules for the art (no glTF importer in this project; models arrive as FBX):
 //   * kit + Meshy FBX: 1 unit = 1 m (Blender FBX_SCALE_UNITS), no imported materials (the game assigns the palette
-//     material, or the model's own texture for the Meshy bales), no cameras / lights, readable off (memory), normals kept;
+//     material, or the model's own texture for the Meshy dinosaurs), no cameras / lights, readable off (memory), normals kept;
 //   * the palette texture: point filter, no mipmaps, uncompressed (8×8 px — any blur mixes neighbouring swatches);
 //   * Meshy textures: max 1024 (the _low twins 512), ASTC on Android.
 using UnityEditor;

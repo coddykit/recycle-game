@@ -1,9 +1,9 @@
-// Ridgeback Rangers — the Region screen (UI Toolkit, CoddyKit theme). Layout (portrait):
-//   top    HUD: day + phase, clock, cash, Green Rating; speed buttons; today's crisis chips; the main action (Start the day
-//          in the morning plan, Next day on the report)
-//   middle the diorama + markers (a fill gauge over every return point, ≥ 48 dp tap target; the depot's coins / baler buttons)
-//   bottom the route bar (while a truck is selected: stops, predicted km · fuel · minutes · load, Suggest / Clear / Go) and
-//          the tab bar: Network · Fleet · Depot · Research · Shop · ⚙ — each opens a bottom sheet (Sheets.cs)
+// Ridgeback Rangers — the Island screen (UI Toolkit, CoddyKit theme). Layout (portrait):
+//   top    HUD: the Chief's badge (day + phase), clock, coins, Conservation Points, Sanctuary Rating; speed buttons; today's
+//          event chips; the main action (Start the day in the morning plan, Day report at the end)
+//   middle the diorama + markers: a PIN over every problem (icon + time left, ≥ 48 dp tap target), the gate (while closed),
+//          the tram (queue count, tap = send it out), a "+" over every empty paddock slot, the "Fed!" button in the guide
+//   bottom the tab bar: Park · Rangers · Hatchery · Plan · Shop · ⚙ — each opens a bottom sheet (Sheets.cs)
 // Text is set only when it changed (UiKit.SetText, LESSONS A10); lists are rebuilt on events, never under a finger
 // (UiKit.Held, fleet §16); markers move at 30 Hz (Low 10 Hz) with style.translate (no layout pass).
 using System;
@@ -25,22 +25,22 @@ namespace RidgebackRangers.UI
         Loc L => main.Loc;
         Simulation Sim => main.Session.Sim;
         GameActions Act => main.Actions;
-        RegionWorld World => main.world;
+        IslandWorld World => main.world;
 
         // HUD
-        Label dayLabel, clockLabel, cashLabel, ratingLabel;
+        Label clockLabel, cashLabel, cpLabel, ratingLabel;
+        Button badge;
         VisualElement crisesRow, speedRow, hud;
         Button mainAction;
         readonly List<Button> speedButtons = new List<Button>();
         // bottom
-        VisualElement bottom, routeBar, tabsRow;
-        Label routeTitle, routeEst, fuelLabel;
-        Button goBtn, suggestBtn, clearBtn, fuelBadge;
+        VisualElement bottom, tabsRow;
         readonly Dictionary<string, Button> tabs = new Dictionary<string, Button>();
         // markers
-        VisualElement markerLayer, depotMarker;
-        Button coinsBtn, balerBtn, depotBtn;
-        readonly List<Marker> markers = new List<Marker>();
+        VisualElement markerLayer;
+        Button gateBtn, tramBtn, fedBtn;
+        readonly Dictionary<int, Button> pinMarkers = new Dictionary<int, Button>();
+        readonly Dictionary<int, Button> slotMarkers = new Dictionary<int, Button>();
         float markerAcc;
         // state
         string openTab = "";
@@ -50,15 +50,10 @@ namespace RidgebackRangers.UI
         bool sheetDirty;
         public bool WindowOpen => (sheet != null && sheet.IsOpen) || PagerOpen;
 
-        sealed class Marker
+        public static readonly Dictionary<string, string> PinIcon = new Dictionary<string, string>
         {
-            public Button Root;
-            public VisualElement Fill;
-            public Label Badge;
-            public string LastBadge = "";
-            public float LastPct = -1;
-            public string LastClass = "";
-        }
+            { PinKinds.Hungry, "🥬" }, { PinKinds.Squabble, "💢" }, { PinKinds.Sick, "✚" }, { PinKinds.Fence, "🔧" }, { PinKinds.Escape, "⚠" }, { PinKinds.Flood, "💧" },
+        };
 
         public GameScreen(VisualElement root, RidgebackMain main)
         {
@@ -66,7 +61,7 @@ namespace RidgebackRangers.UI
             this.main = main;
             var uss = Resources.Load<StyleSheet>("ui/RidgebackRangers");
             if (uss != null) root.styleSheets.Add(uss);
-            root.AddToClassList("br-root");
+            root.AddToClassList("rr-root");
             BuildMarkers();
             BuildHud();
             BuildBottom();
@@ -80,36 +75,35 @@ namespace RidgebackRangers.UI
         void BuildHud()
         {
             hud = new VisualElement { name = "Hud" };
-            hud.AddToClassList("br-hud");
+            hud.AddToClassList("rr-hud");
             hud.pickingMode = PickingMode.Ignore;
-            var row = Row("br-hud__row");
-            var left = Row("br-hud__row");
-            dayLabel = ChipLabel(left, "", out _);
+            var row = Row("rr-hud__row");
+            var left = Row("rr-hud__row");
+            badge = new Button(() => main.Run("badge")) { name = "Badge" };
+            badge.AddToClassList("rr-badge");
+            badge.focusable = false;
+            left.Add(badge);
             clockLabel = ChipLabel(left, "", out _);
             row.Add(left);
-            var right = Row("br-hud__row");
+            var right = Row("rr-hud__row");
             cashLabel = ChipLabel(right, "", out var cashChip);
-            cashChip.AddToClassList("br-chip--money");
+            cashChip.AddToClassList("rr-chip--money");
+            cpLabel = ChipLabel(right, "", out var cpChip);
+            cpChip.AddToClassList("rr-chip--cp");
             ratingLabel = ChipLabel(right, "", out var ratingChip);
             ratingChip.RegisterCallback<ClickEvent>(_ => OpenSheet("report_last"));
             row.Add(right);
             hud.Add(row);
 
-            var row2 = Row("br-hud__row");
-            crisesRow = Row("br-crises");
-            fuelBadge = new Button(() => main.Run("fuel_info")) { name = "FuelBadge" };
-            fuelBadge.AddToClassList("br-fuel");
-            fuelBadge.focusable = false;
-            fuelLabel = UiKit.Text("", "coddy-caption-muted");
-            fuelBadge.Add(fuelLabel);
-            row2.Add(fuelBadge);
+            var row2 = Row("rr-hud__row");
+            crisesRow = Row("rr-crises");
             row2.Add(crisesRow);
-            speedRow = Row("br-speed");
-            for (int s = 1; s <= 4; s++)
+            speedRow = Row("rr-speed");
+            for (int s = 1; s <= 3; s++)
             {
                 int sp = s;
                 var b = new Button(() => OnSpeed(sp)) { text = L.F("hud.speed", "n", sp) };
-                b.AddToClassList("br-speed__btn");
+                b.AddToClassList("rr-speed__btn");
                 b.focusable = false;
                 speedButtons.Add(b);
                 speedRow.Add(b);
@@ -118,7 +112,7 @@ namespace RidgebackRangers.UI
             hud.Add(row2);
 
             mainAction = UiKit.PrimaryButton("", OnMainAction);
-            mainAction.AddToClassList("br-main-action");
+            mainAction.AddToClassList("rr-main-action");
             mainAction.name = "MainAction";
             hud.Add(mainAction);
             root.Add(hud);
@@ -127,34 +121,14 @@ namespace RidgebackRangers.UI
         void BuildBottom()
         {
             bottom = new VisualElement { name = "Bottom" };
-            bottom.AddToClassList("br-bottom");
+            bottom.AddToClassList("rr-bottom");
             bottom.pickingMode = PickingMode.Ignore;
-
-            routeBar = new VisualElement { name = "RouteBar" };
-            routeBar.AddToClassList("br-route");
-            var top = Row("br-route__row");
-            routeTitle = UiKit.Text("", "coddy-label-strong");
-            top.Add(routeTitle);
-            routeBar.Add(top);
-            routeEst = UiKit.Text("", "br-route__est");
-            routeBar.Add(routeEst);
-            var actions = Row("br-route__row");
-            suggestBtn = UiKit.ActionPill("", () => main.Run("suggest"), true, "tonal");
-            clearBtn = UiKit.ActionPill("", () => main.Run("clear"), true, "tonal");
-            goBtn = UiKit.ActionPill("", () => main.Run("go"));
-            goBtn.name = "Go";
-            actions.Add(suggestBtn);
-            actions.Add(clearBtn);
-            actions.Add(goBtn);
-            routeBar.Add(actions);
-            bottom.Add(routeBar);
-
-            tabsRow = Row("br-tabs");
-            foreach (var id in new[] { "network", "fleet", "depot", "research", "shop", "settings" })
+            tabsRow = Row("rr-tabs");
+            foreach (var id in new[] { "park", "rangers", "hatchery", "plan", "shop", "settings" })
             {
                 string tid = id;
                 var b = new Button(() => OnTab(tid)) { name = "Tab_" + id };
-                b.AddToClassList("br-tab");
+                b.AddToClassList("rr-tab");
                 b.focusable = false;
                 tabs[id] = b;
                 tabsRow.Add(b);
@@ -166,51 +140,70 @@ namespace RidgebackRangers.UI
         void BuildMarkers()
         {
             markerLayer = new VisualElement { name = "Markers" };
-            markerLayer.AddToClassList("br-markers");
+            markerLayer.AddToClassList("rr-markers");
             markerLayer.pickingMode = PickingMode.Ignore;
-            depotMarker = new VisualElement { name = "DepotMarker" };
-            depotMarker.AddToClassList("br-depot-marker");
-            depotBtn = DepotButton("", () => main.Run("depot"), "Depot");
-            coinsBtn = DepotButton("", () => main.Run("till"), "Coins");
-            coinsBtn.AddToClassList("br-depot-btn--coins");
-            balerBtn = DepotButton("", () => main.Run("baler"), "Baler");
-            depotMarker.Add(depotBtn);
-            depotMarker.Add(coinsBtn);
-            depotMarker.Add(balerBtn);
-            markerLayer.Add(depotMarker);
+            gateBtn = MarkerButton("", () => main.Run("gate"), "Gate", "rr-marker--gate");
+            tramBtn = MarkerButton("", OnTramTap, "Tram", "rr-marker--tram");
+            fedBtn = MarkerButton("", () => main.Run("fed_ok"), "Fed", "rr-marker--fed");
             root.Add(markerLayer);
         }
 
-        Button DepotButton(string text, Action a, string name)
+        Button MarkerButton(string text, Action a, string name, string cls)
         {
             var b = new Button(a) { text = text, name = name };
-            b.AddToClassList("br-depot-btn");
+            b.AddToClassList("rr-marker");
+            b.AddToClassList(cls);
             b.focusable = false;
+            markerLayer.Add(b);
             return b;
+        }
+
+        void OnTramTap()
+        {
+            if (Sim.Phase == Phases.Live && !Sim.S.Tram.Running && (Sim.Queued > 0 || Sim.S.Tram.Riders > 0)) main.Run("tram_go");
+            else OpenSheet("plan");
         }
 
         void SyncMarkers()
         {
-            while (markers.Count < Sim.S.Points.Count)
+            // pins: one marker per open pin (keyed by pin id)
+            var alive = new HashSet<int>();
+            foreach (var p in Sim.S.Pins)
             {
-                int i = markers.Count;
-                var m = new Marker { Root = new Button(() => main.Run("select_point:" + i)) { name = "Point_" + i } };
-                m.Root.AddToClassList("br-marker");
-                m.Root.focusable = false;
-                m.Root.style.backgroundColor = new Color(0, 0, 0, 0);
-                m.Root.style.borderTopWidth = m.Root.style.borderBottomWidth = m.Root.style.borderLeftWidth = m.Root.style.borderRightWidth = 0;
-                var gauge = new VisualElement { pickingMode = PickingMode.Ignore };
-                gauge.AddToClassList("br-marker__gauge");
-                m.Fill = new VisualElement { pickingMode = PickingMode.Ignore };
-                m.Fill.AddToClassList("br-marker__fill");
-                gauge.Add(m.Fill);
-                m.Root.Add(gauge);
-                m.Badge = UiKit.Text("", "br-marker__badge");
-                m.Root.Add(m.Badge);
-                markerLayer.Insert(0, m.Root);
-                markers.Add(m);
+                alive.Add(p.Id);
+                if (pinMarkers.ContainsKey(p.Id)) continue;
+                int id = p.Id;
+                var b = MarkerButton(PinIcon.TryGetValue(p.Kind, out var ic) ? ic : "!", () => OnPinTap(id), "Pin_" + p.Id, "rr-marker--pin");
+                b.AddToClassList("rr-marker--pin-" + p.Kind);
+                b.userData = p.Kind;
+                pinMarkers[p.Id] = b;
             }
-            while (markers.Count > Sim.S.Points.Count) { markers[markers.Count - 1].Root.RemoveFromHierarchy(); markers.RemoveAt(markers.Count - 1); }
+            foreach (var id in new List<int>(pinMarkers.Keys))
+                if (!alive.Contains(id)) { pinMarkers[id].RemoveFromHierarchy(); pinMarkers.Remove(id); }
+            // empty paddock slots in open zones
+            var slots = new HashSet<int>();
+            foreach (var n in Sim.Gd.Nodes)
+            {
+                if (n.Kind != "paddock" || !Sim.Unlocked(n.Zone) || Sim.PaddockAt(n.Index) >= 0) continue;
+                slots.Add(n.Index);
+                if (slotMarkers.ContainsKey(n.Index)) continue;
+                int node = n.Index;
+                slotMarkers[node] = MarkerButton("+", () => OnSlotTap(node), "Slot_" + n.Id, "rr-marker--slot");
+            }
+            foreach (var id in new List<int>(slotMarkers.Keys))
+                if (!slots.Contains(id)) { slotMarkers[id].RemoveFromHierarchy(); slotMarkers.Remove(id); }
+        }
+
+        void OnPinTap(int id)
+        {
+            var r = main.Run("pin:" + id);
+            if (r.Ok) OpenSheet("pin", id);
+        }
+
+        void OnSlotTap(int node)
+        {
+            if (main.Coach.Active) { main.Coach.WrongTap(); return; }
+            OpenSheet("build", node);
         }
 
         // ------------------------------------------------------------------ helpers
@@ -226,8 +219,8 @@ namespace RidgebackRangers.UI
         static Label ChipLabel(VisualElement parent, string text, out VisualElement chip)
         {
             chip = new VisualElement();
-            chip.AddToClassList("br-chip");
-            var l = UiKit.Text(text, "br-chip__label");
+            chip.AddToClassList("rr-chip");
+            var l = UiKit.Text(text, "rr-chip__label");
             chip.Add(l);
             parent.Add(chip);
             return l;
@@ -240,6 +233,7 @@ namespace RidgebackRangers.UI
         }
 
         string Money(double v) => Fmt.Money((long)Math.Round(v), L.Lang);
+        string Cp(double v) => L.F("hud.cp", "n", Fmt.Int((long)Math.Floor(v), L.Lang));
 
         /// <summary>A UI point (top-left screen px) lies on a pickable UI element (camera pan / world taps must not start there).</summary>
         public bool OverUi(Vector2 screenTopLeft)
@@ -268,25 +262,35 @@ namespace RidgebackRangers.UI
 
         void OnTab(string id)
         {
-            if (main.Coach.Active && main.Coach.Target != "tab." + id) { main.Coach.WrongTap(); return; }
+            if (main.Coach.Active) { main.Coach.WrongTap(); return; }
             if (openTab == id && sheet != null && sheet.IsOpen) { CloseSheet(); return; }
             OpenSheet(id);
         }
 
-        /// <summary>A world tap (RegionWorld.Picked).</summary>
+        /// <summary>A world tap (IslandWorld.Picked).</summary>
         public void WorldPick(WorldHit hit)
         {
             switch (hit.Kind)
             {
-                case "point": main.Run("select_point:" + hit.Index); break;
-                case "truck": main.Run("select_truck:" + hit.Index); break;
-                case "depot": main.Run("depot"); break;
+                case "animal": OnAnimalTap(hit.Index); break;
+                case "tram": if (main.Coach.Active && main.Coach.Step != 7) main.Coach.WrongTap(); else OnTramTap(); break;
+                case "gate": if (!Sim.S.GateOpen) main.Run("gate"); else if (main.Coach.Active) main.Coach.WrongTap(); break;
+                case "paddock": if (main.Coach.Active) main.Coach.WrongTap(); else OpenSheet("paddock", hit.Index); break;
+                case "slot": OnSlotTap(hit.Index); break;
                 default:
                     if (main.Coach.Active) main.Coach.WrongTap();
-                    else if (Act.SelectedTruck < 0) main.Run("clear");
                     break;
             }
         }
+
+        void OnAnimalTap(int i)
+        {
+            var r = main.Run("animal:" + i);
+            if (r.Ok && Act.CompareSecond >= 0) OpenSheet("compare");
+            else if (r.Ok) Toast(L.F("compare.picked", "name", AnimalName(i)), ToastKind.Info);
+        }
+
+        string AnimalName(int i) => i >= 0 && i < Sim.S.Animals.Count ? L.T("sp." + Sim.S.Animals[i].Species) + (Sim.S.Animals[i].Young ? " · " + L.T("animal.young") : "") : "";
 
         /// <summary>After an action ran (RidgebackMain): open the right sheet, refresh.</summary>
         public void AfterAction(string id, ActionResult r)
@@ -296,24 +300,13 @@ namespace RidgebackRangers.UI
             {
                 switch (a[0])
                 {
-                    case "select_point":
-                        if (Act.SelectedTruck < 0) OpenSheet("point", int.Parse(a[1]));
+                    case "send":
+                        Toast(L.T("toast.sent"), ToastKind.Info);
+                        if (sheet != null && sheet.IsOpen && sheetKind == "pin") CloseSheet();
                         break;
-                    case "select_truck":
-                    case "go":
-                    case "clear":
-                        if (sheet != null && sheet.IsOpen && sheetKind != "depot") CloseSheet();
-                        break;
-                    case "depot":
-                    case "baler":
-                        OpenSheet("depot");
-                        break;
-                    case "till":
-                        if (r.Value > 0) Toast(L.F("toast.till", "cash", Money(r.Value)), ToastKind.Success);
-                        break;
-                    case "fuel_info":
-                        Toast(L.T("hud.fuel_info"), ToastKind.Info);
-                        break;
+                    case "gate": Toast(L.T("toast.gate"), ToastKind.Success); break;
+                    case "tram_go": Toast(L.F("toast.tram", "n", Sim.S.Tram.Riders), ToastKind.Success); break;
+                    case "badge": Toast(L.F("hud.badge_info", "r", Fmt.Rating(Sim.S.Rating)), ToastKind.Info); break;
                     case "start_day":
                     case "next_day":
                         CloseSheet();
@@ -341,6 +334,9 @@ namespace RidgebackRangers.UI
             if (sheetDirty && sheet != null && sheet.IsOpen && !UiKit.Held(sheet.Body)) { sheetDirty = false; FillSheet(); }
         }
 
+        /// <summary>Something in the sim changed that an open sheet shows (pins, eggs, a hatchling…).</summary>
+        public void MarkSheetDirty() => sheetDirty = true;
+
         float hudAcc;
 
         public void Refresh(bool force)
@@ -349,20 +345,20 @@ namespace RidgebackRangers.UI
             if (!force && hudAcc < 0.2f) return;   // 5 Hz HUD text
             hudAcc = 0;
             var s = Sim.S;
-            UiKit.SetText(dayLabel, L.F("hud.day", "n", s.Day) + " · " + L.T("phase." + s.Phase));
+            UiKit.SetText(badge, "★ " + L.F("hud.day", "n", s.Day) + " · " + L.T("phase." + s.Phase));
             UiKit.SetText(clockLabel, Fmt.ClockMin(s.Minute));
             UiKit.SetText(cashLabel, Money(s.Cash));
+            UiKit.SetText(cpLabel, Cp(s.Cp));
             UiKit.SetText(ratingLabel, L.F("hud.rating", "r", Fmt.Rating(s.Rating)));
             for (int i = 0; i < speedButtons.Count; i++)
             {
-                speedButtons[i].EnableInClassList("br-speed__btn--on", s.Speed == i + 1);
-                speedButtons[i].style.display = Sim.Phase == Phases.Live ? DisplayStyle.Flex : DisplayStyle.None;
+                speedButtons[i].EnableInClassList("rr-speed__btn--on", s.Speed == i + 1);
+                speedButtons[i].style.display = Sim.Phase == Phases.Live && !main.Coach.Active ? DisplayStyle.Flex : DisplayStyle.None;
             }
-            bool showMain = Sim.Phase != Phases.Live && !(main.Coach.Active && main.Coach.Step < 6);
+            bool showMain = Sim.Phase != Phases.Live && !main.Coach.Active;
             mainAction.style.display = showMain ? DisplayStyle.Flex : DisplayStyle.None;
             UiKit.SetText(mainAction, Sim.Phase == Phases.Plan ? L.T("hud.start_day") : L.T("phase.report"));
-            UiKit.SetText(fuelLabel, L.F("hud.fuel", "cost", Money(s.Today.Fuel)));
-            // crisis chips
+            // event chips
             var crises = Sim.ActiveCrises();
             string key = string.Join(",", crises);
             if ((string)crisesRow.userData != key)
@@ -372,78 +368,67 @@ namespace RidgebackRangers.UI
                 foreach (var c in crises)
                 {
                     var chip = new VisualElement();
-                    chip.AddToClassList("br-chip");
-                    chip.AddToClassList("br-chip--warn");
-                    chip.Add(UiKit.Text(L.T("crisis." + c + ".t"), "br-chip__label"));
+                    chip.AddToClassList("rr-chip");
+                    chip.AddToClassList("rr-chip--warn");
+                    chip.Add(UiKit.Text(L.T("crisis." + c + ".t"), "rr-chip__label"));
                     crisesRow.Add(chip);
                 }
             }
-            // route bar
-            bool route = Act.SelectedTruck >= 0;
-            routeBar.style.display = route ? DisplayStyle.Flex : DisplayStyle.None;
-            if (route)
-            {
-                var t = Sim.S.Trucks[Act.SelectedTruck];
-                UiKit.SetText(routeTitle, L.F("truck.name", "type", L.T("truck." + t.Type), "n", Act.SelectedTruck + 1) + " · " + L.F("route.draft", "n", Act.Draft.Count));
-                var e = Act.DraftEstimate;
-                UiKit.SetText(routeEst, e != null && e.Ok
-                    ? L.F("route.est", "km", Fmt.Km(e.Km, L.Lang), "cost", Money(e.Cost), "min", (long)Math.Round(e.Minutes), "pct", Fmt.Pct(e.LoadPct, L.Lang))
-                    : (Sim.FreeDrivers <= 0 && !t.Busy ? L.T("truck.no_driver") : L.T("route.hint")));
-                goBtn.SetEnabled(Act.Draft.Count > 0);
-            }
-            UiKit.SetText(suggestBtn, L.T("truck.suggest"));
-            UiKit.SetText(clearBtn, L.T("truck.clear"));
-            UiKit.SetText(goBtn, L.T("truck.go"));
             foreach (var kv in tabs)
             {
                 UiKit.SetText(kv.Value, kv.Key == "settings" ? "⚙" : L.T("tab." + kv.Key));
-                kv.Value.EnableInClassList("br-tab--on", openTab == kv.Key && sheet != null && sheet.IsOpen);
+                kv.Value.EnableInClassList("rr-tab--on", openTab == kv.Key && sheet != null && sheet.IsOpen);
             }
-            // depot marker
-            UiKit.SetText(depotBtn, L.T("depot.title"));
-            double till = Math.Floor(s.Depot.Till);
-            coinsBtn.style.display = till >= 1 || main.Coach.Target == "coins" ? DisplayStyle.Flex : DisplayStyle.None;
-            UiKit.SetText(coinsBtn, "+" + Money(till));
-            UiKit.SetText(balerBtn, s.Depot.BalerDown ? "⚠ " + L.T("depot.baler") : L.T("depot.baler"));
+            // world buttons
+            gateBtn.style.display = Sim.Phase == Phases.Live && !s.GateOpen ? DisplayStyle.Flex : DisplayStyle.None;
+            UiKit.SetText(gateBtn, L.T("marker.gate"));
+            int waiting = Sim.Queued + (s.Tram.Running ? 0 : s.Tram.Riders);
+            UiKit.SetText(tramBtn, s.Tram.Running ? L.T("marker.tram_out") : L.F("marker.tram", "n", waiting));
+            tramBtn.EnableInClassList("rr-marker--ready", !s.Tram.Running && waiting > 0 && Sim.Phase == Phases.Live);
+            bool fed = main.Coach.Active && main.Coach.Target == "fed";
+            fedBtn.style.display = fed ? DisplayStyle.Flex : DisplayStyle.None;
+            UiKit.SetText(fedBtn, L.T("marker.fed"));
             SyncMarkers();
+        }
+
+        void Place(VisualElement e, Vector3 world)
+        {
+            var sp = World.ScreenOf(world);
+            if (sp == null) { e.style.visibility = Visibility.Hidden; return; }
+            e.style.visibility = Visibility.Visible;
+            var pp = ToPanel(sp.Value);
+            e.style.translate = new Translate(pp.x, pp.y);
+        }
+
+        Vector3 PinWorld(PinState p)
+        {
+            var basePos = p.Paddock >= 0 && p.Kind != PinKinds.Flood && p.Kind != PinKinds.Escape ? World.PaddockCenter(p.Paddock) : World.NodePos(p.Node);
+            int k = Array.IndexOf(PinKinds.All, p.Kind);
+            return basePos + new Vector3(-9f + (k % 3) * 9f, 14f, (k / 3) * 6f);
         }
 
         void PlaceMarkers()
         {
             if (World == null) return;
-            for (int i = 0; i < markers.Count && i < Sim.S.Points.Count; i++)
+            foreach (var p in Sim.S.Pins)
             {
-                var m = markers[i];
-                var p = Sim.S.Points[i];
-                var sp = World.ScreenOf(World.PointPos(i) + Vector3.up * 8f);
-                if (sp == null) { m.Root.style.display = DisplayStyle.None; continue; }
-                m.Root.style.display = DisplayStyle.Flex;
-                var pp = ToPanel(sp.Value);
-                m.Root.style.translate = new Translate(pp.x, pp.y);
-                float pct = (float)Sim.DisplayPct(p);
-                if (Mathf.Abs(pct - m.LastPct) > 0.01f) { m.LastPct = pct; m.Fill.style.height = Length.Percent(pct * 100f); }
-                string cls = p.Jammed || Sim.IsFull(p) ? "br-marker__fill--full" : pct >= p.Threshold / 100f - 0.0001f ? "br-marker__fill--warn" : "";
-                if (cls != m.LastClass)
-                {
-                    m.Fill.EnableInClassList("br-marker__fill--full", cls == "br-marker__fill--full");
-                    m.Fill.EnableInClassList("br-marker__fill--warn", cls == "br-marker__fill--warn");
-                    m.LastClass = cls;
-                }
-                m.Fill.EnableInClassList("br-marker__fill--estimate", !Sim.DisplayIsLive(p));
-                int stop = Act.Draft.IndexOf(i);
-                string badge = p.Jammed ? "!" : stop >= 0 ? (stop + 1).ToString() : Fmt.Pct(pct, L.Lang);
-                if (badge != m.LastBadge) { m.LastBadge = badge; UiKit.SetText(m.Badge, badge); }
-                m.Root.EnableInClassList("br-marker--route", stop >= 0);
-                m.Root.EnableInClassList("br-marker--jam", p.Jammed);
-                m.Root.EnableInClassList("br-marker--selected", Act.SelectedPoint == i);
+                if (!pinMarkers.TryGetValue(p.Id, out var b)) continue;
+                Place(b, PinWorld(p));
+                double left = p.Deadline - Sim.S.Minute;
+                string text = (PinIcon.TryGetValue(p.Kind, out var ic) ? ic : "!") + (p.Ranger >= 0 ? " ⏵" : Sim.S.Tutorial ? "" : " " + (long)Math.Max(0, Math.Ceiling(left)) + "′");
+                UiKit.SetText(b, text);
+                b.EnableInClassList("rr-marker--urgent", p.Ranger < 0 && left < 20 && !Sim.S.Tutorial);
+                b.EnableInClassList("rr-marker--taken", p.Ranger >= 0);
+                b.EnableInClassList("rr-marker--selected", Act.SelectedPin == p.Id);
             }
-            var dp = World.ScreenOf(World.DepotPos + Vector3.up * 14f);
-            if (dp != null) { var pp = ToPanel(dp.Value); depotMarker.style.translate = new Translate(pp.x, pp.y); }
+            foreach (var kv in slotMarkers) Place(kv.Value, World.NodePos(kv.Key) + Vector3.up * 6f);
+            Place(gateBtn, World.GatePos + Vector3.up * 16f);
+            Place(tramBtn, World.StationPos + new Vector3(0, 14f, 0));
+            Place(fedBtn, World.PaddockCenter(0) + Vector3.up * 24f);
         }
 
         void Relocalise()
         {
-            foreach (var m in markers) { m.LastBadge = ""; }
             for (int s = 0; s < speedButtons.Count; s++) speedButtons[s].text = L.F("hud.speed", "n", s + 1);
             crisesRow.userData = null;
             Refresh(true);
@@ -455,16 +440,19 @@ namespace RidgebackRangers.UI
         {
             VisualElement e = target switch
             {
-                "go" => goBtn,
-                "fuel" => fuelBadge,
-                "depot" => depotBtn,
-                "coins" => coinsBtn,
-                "baler" => balerBtn,
+                "badge" => badge,
+                "gate" => gateBtn,
+                "tram" => tramBtn,
+                "fed" => fedBtn,
                 _ => null,
             };
-            if (e == null && target.StartsWith("point:") && int.TryParse(target.Substring(6), out int pi) && pi < markers.Count) e = markers[pi].Root;
+            if (e == null && target.StartsWith("pin:"))
+            {
+                string kind = target.Substring(4);
+                foreach (var p in Sim.S.Pins) if (p.Kind == kind && pinMarkers.TryGetValue(p.Id, out var b)) { e = b; break; }
+            }
             if (e == null && sheet != null && sheet.IsOpen) e = sheet.Panel.Q<VisualElement>("Target_" + target.Replace(':', '_'));
-            if (e == null || e.panel == null || e.resolvedStyle.display == DisplayStyle.None) return null;
+            if (e == null || e.panel == null || e.resolvedStyle.display == DisplayStyle.None || e.resolvedStyle.visibility == Visibility.Hidden) return null;
             return e.worldBound;
         }
     }

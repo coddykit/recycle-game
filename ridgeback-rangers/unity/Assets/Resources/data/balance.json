@@ -47,7 +47,7 @@
     "hatch_tech": 2000, "chief": 3000, "cooler": 800, "feed_run2": 1800
   },
   "chief": { "rating": 55 },
-  "calls": { "per_day": [2, 3, 3, 4], "kinds": ["fence", "sick", "squabble"] },
+  "calls": { "per_day": [3, 4, 4, 5], "kinds": ["fence", "sick", "squabble"] },
   "events": { "free_days": 3, "per_day": [0, 0, 0.6, 1.0, 1.2] },
   "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 10, "rate": 0.5, "rate_plus": 0.75, "days_per_hour": 0.5 },
   "rewards": {

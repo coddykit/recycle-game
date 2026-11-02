@@ -90,7 +90,7 @@ namespace RidgebackRangers.Game
         /// <summary>Road km: "4.2 km" (one decimal below 10).</summary>
         public static string Km(double km, string lang = "en") => (km < 10 ? OneDec(Math.Round(km, 1), lang) : Int((long)Math.Round(km), lang)) + " km";
 
-        /// <summary>Green Rating 0..100 -> "62".</summary>
+        /// <summary>Sanctuary Rating 0..100 -> "62".</summary>
         public static string Rating(double r) => ((long)Math.Round(Math.Max(0, Math.Min(100, r)))).ToString(CultureInfo.InvariantCulture);
     }
 }

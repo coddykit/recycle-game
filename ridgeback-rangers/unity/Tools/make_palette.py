@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """Ridgeback Rangers — writes Assets/Resources/materials/palette.png (8×8 px). Swatch order = RidgebackRangers.World.Pal (MeshKit.cs)
-and the Blender kit (tools/art/kit.py). Bright, clean civic palette (design §8); the brand is a fresh mint green — no
-government green-white scheme colours (impersonation rule)."""
+and the Blender kit (tools/art/kit.py). Warm toy-diorama island (plan §8): saturated greens, terracotta, sand; the brand is a
+ranger green. No film-franchise colour schemes (no black-and-yellow gate livery)."""
 import os, sys
 from PIL import Image
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(os.path.dirname(HERE), "Assets/Resources/materials/palette.png")
 SW = [
-    "#8CC970", "#6FAF57", "#5A6270", "#F2F0E6", "#C9CDD2", "#F4E7C9", "#E3926B", "#8FB7D9",   # 0-7
-    "#C9574A", "#7D8792", "#2FB89A", "#F7F9F8", "#FAFAF7", "#3E9C6E", "#9EA7AE", "#4FA3C7",   # 8-15
-    "#EBD9A6", "#4E9F4C", "#7A5434", "#B9BEC2", "#33414E", "#8ED3F0", "#C7CDD3", "#5BB178",   # 16-23
-    "#E0533F", "#F2C744", "#8A6A4A", "#E7B93B", "#F08A5D", "#2F6E46", "#22A6A1", "#D9C7A0",   # 24-31
-    "#E8B894", "#4C7FD1", "#E57A3C", "#9B59B6", "#3FB0AC", "#F2C744", "#3B4A5A", "#FFFFFF",   # 32-39
+    "#8CC970", "#5E9E4A", "#C9A878", "#EFE3C2", "#B9B4AA", "#F4E7C9", "#D9875B", "#8FB7D9",   # 0-7   grass, grass dark, dirt path, path line, stone, cream, terracotta, blue
+    "#C9574A", "#6F7A73", "#2F8F5B", "#F2EEDF", "#FAFAF7", "#3E7D4F", "#9A6B43", "#4FA3C7",   # 8-15  roof red, roof slate, ranger green, panel, white, jungle, wood, water
+    "#E8D3A0", "#4E9F4C", "#7A5434", "#B9BEC2", "#33414E", "#9AA6AE", "#8C7F72", "#6DBF5A",   # 16-23 sand, tree, trunk, locked, dark, steel, rock, fern
+    "#E0533F", "#F2C744", "#7E5F45", "#E7B93B", "#F08A5D", "#2F6E46", "#3FB6C9", "#C8B27E",   # 24-31 warning, yellow, mud, gold, sunset, forest, glacier, khaki
+    "#E8B894", "#4C7FD1", "#E57A3C", "#9B59B6", "#3FB0AC", "#F2C744", "#3B4A5A", "#FFFFFF",   # 32-39 skin, shirts A-E, trousers, white
+    "#5A4A42", "#FF7A3D", "#D8C8A8", "#A7C77A",                                               # 40-43 volcano rock, lava glow, egg shell, dino olive
 ]
 while len(SW) < 64: SW.append("#FF00FF")
 img = Image.new("RGB", (8, 8))

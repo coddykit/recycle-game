@@ -1,4 +1,4 @@
-"""Blender headless: LOD0 GLB -> decimated FBX (collapse to a triangle budget). Used for the Meshy bales: Blender 4.0's
+"""Blender headless: LOD0 GLB -> decimated FBX (collapse to a triangle budget). Used when a Meshy LOD GLB is empty: Blender 4.0's
 glTF exporter fails on their decimated LODs ("Array length mismatch"), the FBX exporter does not.
   blender -b --python ridgeback-rangers/tools/art/glb2fbx_lod.py -- <lod0.glb> <out.fbx> <triangles>
 """

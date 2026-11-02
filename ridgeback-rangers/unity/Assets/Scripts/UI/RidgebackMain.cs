@@ -1,16 +1,16 @@
-// Ridgeback Rangers — the Region scene's entry point. Wires the engine-free game layer (GameSession + GameActions + Coach +
-// Commerce + RidgebackRewards + ReviewHook) to the diorama (RegionWorld), the UI (GameScreen) and the CoddyUnityKit (tiers,
+// Ridgeback Rangers — the Island scene's entry point. Wires the engine-free game layer (GameSession + GameActions + Coach +
+// Commerce + RidgebackRewards + ReviewHook) to the diorama (IslandWorld), the UI (GameScreen) and the CoddyUnityKit (tiers,
 // purchases cache, house ads, rewarded, review, toasts):
 //   * data from Resources/data, strings from Resources/i18n/strings.csv, the career from
 //     persistentDataPath/ridgebackrangers/career.json through the kit SaveRepository (GameSession);
 //   * time: the sim advances with real unscaled time; the guide pauses it while it waits for the player and runs it fast
 //     while it waits for the world; full-screen ads pause it;
 //   * events -> world walkers / toasts / first-time tips / review moments / offers;
-//   * house banner: only after the pager + guide, never over a sheet with a purchase, the pager or the loading curtain
-//     (kit rule: hidden for ad_free); the screen's bottom bar is lifted by the banner height (SafeAreaPadding);
+//   * house banner: only after the pager + guide, never over the shop, the pager or the loading curtain (kit rule: hidden
+//     for ad_free); the screen's bottom bar is lifted by the banner height (SafeAreaPadding);
 //   * house interstitial: only at "Next day" after a report, never in session 1 or the guide (kit pacing decides);
-//   * save on pause / quit, offline pay on resume (welcome-back card with the ×2 rewarded opt-in).
-// Opening the Region scene directly in the editor boots the kit itself.
+//   * save on pause / quit, offline pay on resume (welcome-back card with the Dawn Report ×2 rewarded opt-in).
+// Opening the Island scene directly in the editor boots the kit itself.
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +29,7 @@ namespace RidgebackRangers.UI
     public sealed class RidgebackMain : MonoBehaviour
     {
         public UIDocument uiDocument;
-        public RegionWorld world;
+        public IslandWorld world;
 
         public GameSession Session { get; private set; }
         public Loc Loc { get; private set; }
@@ -46,6 +46,7 @@ namespace RidgebackRangers.UI
         CoddyKitHost kit;
         readonly ReviewHook review = new ReviewHook();
         bool adPause, low, inBackground;
+        float lastCameraAction = -10f;
         Action perksChanged;
         Action<Tier> tierChanged;
 
@@ -86,7 +87,7 @@ namespace RidgebackRangers.UI
             };
             Shop.LoadPrices();
             Session.ApplyPerks(kit.Purchases.Has);
-            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplyLivery(); Screen?.Refresh(true); };
+            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplySkin(); Screen?.Refresh(true); };
             kit.Purchases.Changed += perksChanged;
             Rewards = new RidgebackRewards(() => Session.Sim, kit.Rewarded) { AdFree = () => kit.Purchases.AdFree };
             Rewards.Granted += (placement, r) =>
@@ -113,7 +114,7 @@ namespace RidgebackRangers.UI
             // the first 3D frame runs inside the GPU breadcrumb (a shader-compiler crash -> safe shaders next launch)
             kit.Tiers.BeginShaderWork("region_first_frame");
             world.Init(Session.Sim, low);
-            ApplyLivery();
+            ApplySkin();
             world.Picked += hit => Screen?.WorldPick(hit);
             tierChanged = t => { low = t == Tier.Low; UiKit.Low = low; world.SetLow(low); };
             kit.Tiers.Changed += tierChanged;
@@ -130,13 +131,14 @@ namespace RidgebackRangers.UI
             {
                 world.rig.OverUi = p => Screen.OverUi(p);
                 world.rig.Enabled = () => !Screen.WindowOpen;
+                world.rig.Moved += () => { if (Time.unscaledTime - lastCameraAction > 0.5f) { lastCameraAction = Time.unscaledTime; Run("camera"); } };
             }
             kit.Review.Context = () => new ReviewGate.Context { Tutorial = Coach.Active, WindowOpen = Screen.WindowOpen || adPause, Background = inBackground };
 
             yield return null;
             kit.Tiers.EndShaderWork();
             RidgebackBoot.Ready();
-            Track("br_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
+            Track("rr_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
 
             // onboarding: pager (once) -> guide (until done or skipped)
             if (!st.IntroDone) Screen.ShowPager(() => { st.IntroDone = true; st.Save(); BeginGuideIfNeeded(); });
@@ -177,34 +179,52 @@ namespace RidgebackRangers.UI
         void OnEvent(SimEvent e)
         {
             world.OnSimEvent(e);
-            if (e.Type == "deposit" || e.Type == "turned") return;
+            if (e.Type == "arrive") return;
             var sim = Session.Sim;
             switch (e.Type)
             {
                 case "day_done":
-                    Track("br_day_done", new Dictionary<string, object> { { "day", (long)e.A }, { "stars", (long)e.B } });
+                    Track("rr_day_done", new Dictionary<string, object> { { "day", (long)e.A }, { "stars", (long)e.B } });
                     if (!Coach.Active) Screen.OpenSheet("report");
                     Shop.TryOffer("day_report", Coach.Active);
                     break;
-                case "bale": Audio.Play("baler_press"); break;
-                case "sold":
-                    Audio.Play("sold");
-                    UiToastHost.Show(Loc.F("toast.sold", "n", e.B, "cash", Fmt.Money((long)e.V, Loc.Lang)), ToastKind.Success);
-                    Track("bale_sold", new Dictionary<string, object> { { "mat", Mats.Ids[Math.Max(0, Math.Min(2, e.A))] }, { "n", (long)e.B } });
+                case "pin":
+                    Audio.Play(e.Text == PinKinds.Escape ? "alarm" : "pin");
+                    Screen.MarkSheetDirty();
                     break;
-                case "research_done": UiToastHost.Show(Loc.F("research.finished", "name", Loc.T("research." + e.Text + ".t")), ToastKind.Success); break;
-                case "district":
-                    UiToastHost.Show(Loc.F("toast.district", "name", Loc.T("district." + e.Text)), ToastKind.Success);
-                    Track("district_unlock", new Dictionary<string, object> { { "district", e.Text } });
+                case "pin_done":
+                    Audio.Play("success");
+                    Screen.MarkSheetDirty();
+                    break;
+                case "fed":
+                    if (!Coach.Active) UiToastHost.Show(Loc.T("marker.fed"), ToastKind.Success);
+                    Audio.Play("crate");
+                    break;
+                case "pin_failed":
+                    UiToastHost.Show(Loc.F("toast.failed", "name", Loc.T("pin." + e.Text)), ToastKind.Warning);
+                    Track("pin_failed", new Dictionary<string, object> { { "kind", e.Text } });
+                    Screen.MarkSheetDirty();
+                    break;
+                case "evacuation": UiToastHost.Show(Loc.T("toast.evacuation"), ToastKind.Warning); break;
+                case "ride_done": Audio.Play("coins"); break;
+                case "tram_go": Audio.Play("tram"); break;
+                case "hatched":
+                    UiToastHost.Show(Loc.F(e.B < 0 ? "toast.hatched_nursery" : "toast.hatched", "name", Loc.T("sp." + e.Text)), ToastKind.Success);
+                    Audio.Play("hatch");
+                    Track("animal_hatched", new Dictionary<string, object> { { "species", e.Text } });
+                    Screen.MarkSheetDirty();
+                    break;
+                case "egg": case "egg_cold": case "dig_done": case "egg_ok": Screen.MarkSheetDirty(); break;
+                case "zone":
+                    UiToastHost.Show(Loc.F("toast.zone", "name", Loc.T("zone." + e.Text)), ToastKind.Success);
+                    Track("zone_unlock", new Dictionary<string, object> { { "zone", e.Text } });
                     break;
                 case "crisis":
                     UiToastHost.Show(Loc.T("crisis." + e.Text + ".t") + " — " + Loc.T("crisis." + e.Text + ".b"), ToastKind.Warning);
                     Audio.Play("warning");
                     Track("crisis", new Dictionary<string, object> { { "id", e.Text } });
-                    if (e.Text == "match_day") Shop.TryOffer("match_day", Coach.Active);
+                    Shop.TryOffer("island_event", Coach.Active);
                     break;
-                case "jam": Audio.Play("warning"); break;
-                case "serviced": Audio.Play("machine_crunch"); break;
             }
             if (!Coach.Active)
             {
@@ -229,9 +249,9 @@ namespace RidgebackRangers.UI
 
         static string SoundFor(string action)
         {
-            if (action.StartsWith("go")) return "truck";
-            if (action.StartsWith("till")) return "coins";
-            if (action.StartsWith("buy:") || action.StartsWith("research:")) return "success";
+            if (action.StartsWith("send:")) return "radio";
+            if (action.StartsWith("gate")) return "gate";
+            if (action.StartsWith("buy:") || action.StartsWith("dig:")) return "success";
             return "";
         }
 
@@ -245,7 +265,11 @@ namespace RidgebackRangers.UI
         }
 
         public void SheetOpened(string kind) { }
-        public void SheetClosed(string kind) { if (kind == "offline") LastOffline = null; }
+        public void SheetClosed(string kind)
+        {
+            if (kind == "offline") LastOffline = null;
+            if (kind == "compare" && !Coach.Active) Actions.ClearCompare();
+        }
 
         public void ClaimReward(string placement, int target)
         {
@@ -292,12 +316,21 @@ namespace RidgebackRangers.UI
 
         public void ShowPrivacyOptions() => CoddyServices.Consent.ShowPrivacyOptions(_ => { });
 
-        void ApplyLivery()
+        void ApplySkin()
         {
-            string l = Session.Settings.Livery;
-            if (l == "" && kit.Purchases.Has("gold_livery")) l = "gold_livery";
+            string l = Session.Settings.TramSkin;
+            if (l == "" && kit.Purchases.Has("golden_tram")) l = "golden_tram";
             if (l != "" && !kit.Purchases.Has(l)) l = "";
-            world.SetLivery(l);
+            world.SetTramSkin(l);
+        }
+
+        /// <summary>Shop: equip / unequip an owned tram skin ("" = default or the Edition's golden tram).</summary>
+        public void EquipSkin(string skin)
+        {
+            Session.Settings.TramSkin = skin ?? "";
+            Session.Settings.Save();
+            ApplySkin();
+            Screen.OpenSheet("shop");
         }
 
         void Track(string name, Dictionary<string, object> p)

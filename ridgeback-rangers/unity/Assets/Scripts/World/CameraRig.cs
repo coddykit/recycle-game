@@ -1,4 +1,4 @@
-// Ridgeback Rangers — tilt-shift diorama camera: fitted to the unlocked districts (portrait), then clamped pan (one finger /
+// Ridgeback Rangers — tilt-shift diorama camera: fitted to the unlocked zones of the island (portrait), then clamped pan (one finger /
 // mouse drag) and pinch / wheel zoom. Pan and pinch never select (the kit TapInput cancels a tap after 12 dp of travel or
 // a second finger). A press that starts on a pickable UI element never pans (OverUi). The transform is written only when
 // the view changed (no per-frame work while idle).
@@ -17,6 +17,8 @@ namespace RidgebackRangers.World
         public Camera cam;
         public Func<Vector2, bool> OverUi = _ => false;
         public Func<bool> Enabled = () => true;
+        /// <summary>The player panned or zoomed (the guide's "move the island" step).</summary>
+        public event Action Moved;
         /// <summary>Share of the screen the HUD + bottom bar cover (the fit keeps the town in the free band).</summary>
         public float TopUi = 0.12f, BottomUi = 0.22f;
 
@@ -93,7 +95,7 @@ namespace RidgebackRangers.World
                 {
                     float d = Vector2.Distance(t[0].screenPosition, t[1].screenPosition);
                     if (t[1].phase == UnityEngine.InputSystem.TouchPhase.Began || pinchStart <= 0f) { pinchStart = d; zoomStart = zoom; }
-                    else if (d > 0f) { zoom = zoomStart * pinchStart / d; dirty = true; }
+                    else if (d > 0f) { zoom = zoomStart * pinchStart / d; dirty = true; if (Mathf.Abs(d - pinchStart) > 20f) Moved?.Invoke(); }
                     dragging = false;
                     pressBlocked = true;
                     return;
@@ -119,7 +121,7 @@ namespace RidgebackRangers.World
             if (m == null) return;
             Vector2 mp = m.position.ReadValue();
             float wheel = m.scroll.ReadValue().y;
-            if (Mathf.Abs(wheel) > 0.01f && !OverUi(new Vector2(mp.x, Screen.height - mp.y))) { zoom *= wheel > 0 ? 0.9f : 1.1f; dirty = true; }
+            if (Mathf.Abs(wheel) > 0.01f && !OverUi(new Vector2(mp.x, Screen.height - mp.y))) { zoom *= wheel > 0 ? 0.9f : 1.1f; dirty = true; Moved?.Invoke(); }
             if (m.leftButton.wasPressedThisFrame)
             {
                 pressPos = lastPos = mp;
@@ -132,7 +134,7 @@ namespace RidgebackRangers.World
 
         void Drag(Vector2 p, float pxPerDp)
         {
-            if (!dragging && Vector2.Distance(p, pressPos) >= PanStartDp * pxPerDp) dragging = true;
+            if (!dragging && Vector2.Distance(p, pressPos) >= PanStartDp * pxPerDp) { dragging = true; Moved?.Invoke(); }
             if (!dragging) { lastPos = p; return; }
             Vector2 delta = p - lastPos;
             lastPos = p;
