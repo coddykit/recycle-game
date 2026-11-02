@@ -1,54 +1,35 @@
-# Charge Nurse: Recycling Tycoon (Unity 6)
+# Charge Nurse: Hospital Manager (Unity 6)
 
-Plan: kökteki `RECYCLING_GAME_PLAN.md`. Filo kuralları: kökteki `CLAUDE.md`. Örnek alınan oyunlar: `smuggler/`
-(Borderline Empire, Godot) ve monorepodaki `games/volt-city` (Grid Keeper, filonun ilk Unity oyunu; CoddyUnityKit
-oradan kopyalandı).
+Plan: kökteki `HOSPITAL_GAME_PLAN.md` (MVP = §14). Filo kuralları: kökteki `CLAUDE.md`. Şablon: `bottle-route/`
+(`GAME_TEMPLATE.md`); CoddyUnityKit oradan aynen kopyalandı.
 
-**Oyun:** Kıyıdaki bir bölge depozito sistemini yeni açtı. Vatandaşlar şişe/kutu/camı makinelere getiriyor, makineler
-doluyor; sen kamyonlara rota çiziyorsun (her km yakıt), boşaltma kuralı koyuyorsun (%60/%80/%95, her gün, çağrılınca),
-depoda sayım hattı ücret kazandırıyor, pres balya yapıyor, balyayı günün fiyatından satıyorsun. Az boşaltırsan makine
-taşar, insanlar geri döner, Yeşil Puan düşer; çok boşaltırsan yarı boş kamyonlar yakıt yakar. Krizler: sıcak hava,
-maç günü, sıkışma, sensör arızası, toplu iade, arıza, yakıt zammı, balya fiyatı çöküşü, pres arızası, cam kırılması.
-Gerçek DOA / TÜÇA / bakanlık / market adı yok (taklit kuralı).
+**Oyun:** Küçük bir kasaba kliniğinin sorumlu hemşiresisin; klinik zamanla kasaba hastanesine, sonra şehir hastanesine
+büyüyor. Hastalar geliyor; her birine renk veriyorsun (yeşil hafif … kırmızı acil; renk + şekil, renk körü dostu),
+boş yatağa gönderiyorsun, taburcu ediyorsun, kirli yatağı temizletiyorsun, ambulansı kabul ya da yönlendiriyorsun.
+Ekipler (hemşire, doktor, hasta taşıyıcı, temizlik, kayıt, teknisyen) kurallarına göre çalışır; asıl iş **darboğazı
+bulmak**: kırmızı koridora / mercek düğmesine dokununca oyun sebebi tek cümleyle söyler (çoğu zaman acil değil,
+taburcu ya da kirli yatak). 18:30–19:00 arası devir teslim (yapmazsan notlar kaybolur, ekip yorgun kalır); gece ekibi
+kendi başına, yarım kapasiteyle çalışır. Krizler: grip haftası, zincirleme kaza, elektrik kesintisi, tarayıcı arızası,
+hastalık izni, mide virüsü (koğuş kapanır), malzeme gecikmesi, denetim. Kan, ölüm, gerçek hastane / ilaç / marka adı
+yok; referans oyunun adı, görseli, metni kullanılmadı.
 
 ## Klasörler
 
 | Yol | Ne |
 |---|---|
-| `unity/` | Unity 6 projesi (URP, Android, portre). `unity/Assets/CoddyKit` = filo Unity kiti (volt-city'den) |
-| `unity/Assets/Scripts/Sim` | `ChargeNurse.Sim` — motordan bağımsız simülasyon (yol ağı, makineler, kamyonlar, depo, pazar, krizler, ekonomi, kayıt) |
-| `unity/Assets/Scripts/Game` | `ChargeNurse.Game` — motordan bağımsız oyun katmanı (oturum/kayıt, eylemler, 14 adımlı rehber, mağaza, ödüllü reklam, yorum anı, analitik, 10 dil) |
-| `unity/Assets/Scripts/{App,World,UI}` | Unity katmanı: açılış, diorama, UI Toolkit ekranları |
-| `unity/Assets/Editor/ChargeNurse` | proje kurulumu (sahneler, malzemeler, Android politikası), Android derleme, font, ikon, içe aktarma |
-| `unity/Assets/Resources` | veri (`data/*.json`), metinler (`i18n/strings.csv`), kit modelleri, palet, arayüz görselleri, fontlar |
-| `unity/Assets/Tests` | NUnit testleri (EditMode) — aynı dosyalar .NET ile de koşar |
-| `unity/Tools` | `check.sh` (tüm kapılar), `dotnet_check.sh`, `unity_ref_check.sh`, `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/*.json` |
-| `tools/meshy`, `tools/art` | Meshy istemcisi + optimizer (filo aracı), Blender kiti, arayüz render'ları |
-| `docs/` | `UNITY.md` (editörde ilk açılış), `ART.md`, `BALANCE.md`, `MONETIZATION_PARITY.md` |
+| `unity/Assets/Scripts/Sim` | `ChargeNurse.Sim` — motordan bağımsız simülasyon (hasta akışı, ekipler, yatak/koğuş, darboğaz merceği, devir teslim + gece, krizler, ekonomi, kayıt, denge botu) |
+| `unity/Assets/Scripts/Game` | oturum/kayıt, eylemler, 10 adımlı rehber, mağaza, ödüllü reklam, yorum anı, analitik, metinler |
+| `unity/Assets/Scripts/{App,World,UI}` | açılış, kesitli kampüs dioraması (tek palet malzemesi, ısı haritalı koridorlar), UI Toolkit ekranları |
+| `unity/Assets/Resources` | veri (`data/*.json`), metinler (`i18n/strings.csv`), Blender kiti, paletler (+3 tema), arayüz görselleri |
+| `unity/Tools` | `check.sh` (tüm kapılar), `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/*.json` |
+| `tools/art`, `tools/meshy` | Blender kiti + arayüz render'ları, Meshy istemcisi + optimizer |
+| `docs/` | `UNITY.md`, `BALANCE.md`, `MONETIZATION_PARITY.md`, `ART.md` |
 
 ## Durum (2026-11-02)
 
-- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → `BOTTLE_ROUTE_CHECK: PASS`
-  - 125 NUnit testi (sim 43, oyun katmanı 27, CoddyKit 55): rehberin 14 adımı baştan sona, yanlış dokunuş, atla/tekrar,
-    yarıda bırakıp yeniden açma, kayıt güvenliği (fuzz, `.unreadable` saklanır), mağaza kuralları (`ad_free` yalnız
-    noads/premium/route_pass/bundle), ödül tavanları, 10 dil eksiksiz + yer tutucular, denge botu 7/20 gün.
-  - Unity'ye bağlı kod (kit Runtime + App + World + UI) UnityEngine 2021.3 referanslarına karşı derleniyor (yalnız 2
-    Unity-6 API'si farklı); 83 C# dosyası iki tanım kümesinde sözdizimi hatasız.
-- **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, performans ölçümü (perf_gate), emülatör
-  smoke, AAB. → `docs/UNITY.md` §2: ilk açılış adımları (Mac Mini / sahibin Unity'si).
-- **Boş bırakılan kimlikler (P8, Patron):** AdMob ödüllü birim, AdMob uygulama kimliği, RevenueCat anahtarı, Firebase
-  config. Uydurma kimlik yok (§5).
-
-## Komutlar
-
-```bash
-sh charge-nurse/unity/Tools/check.sh
-```
-
-```bash
-python3 charge-nurse/unity/Tools/i18n_merge.py && python3 charge-nurse/unity/Tools/build_iap.py
-```
-
-```bash
-blender -b --python charge-nurse/tools/art/kit.py -- charge-nurse/unity
-```
+- `sh unity/Tools/check.sh` → yalnız beklenen `EveryLanguageIsComplete` kırmızı (9 dil merkezi çeviriyi bekliyor;
+  metinler yalnız İngilizce, `Tools/i18n/en.json`). 124 testin 123'ü yeşil (sim 41, oyun 28, kit 55); Unity'ye bağlı
+  kod referans derlemede temiz.
+- Doğrulanmadı: Unity Editor'da sahne, cihazda görünüm, perf_gate, emülatör smoke, AAB (`docs/UNITY.md` §2).
+- Boş kimlikler (P8, Patron): AdMob ödüllü birim + uygulama, RevenueCat anahtarı, Firebase config.
+- Sahip onayı bekleyen `ad_free` listesi: noads, premium, bundle (+ v1.1 chief_pass).
