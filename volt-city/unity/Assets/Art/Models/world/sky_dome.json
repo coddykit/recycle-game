@@ -1,0 +1,27 @@
+{
+ "group": "world",
+ "id": "sky_dome",
+ "material": "vc_world",
+ "palette": {
+  "sky": {
+   "code": 0.2,
+   "index": 4,
+   "srgb": "#FFFFFF"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 144,
+ "unity_bounds_max": [
+  5996.644,
+  3000.0,
+  6016.644
+ ],
+ "unity_bounds_min": [
+  -5916.644,
+  -696.0,
+  -5896.644
+ ],
+ "uv": "UV0/UV1 per material code (vckit module doc)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

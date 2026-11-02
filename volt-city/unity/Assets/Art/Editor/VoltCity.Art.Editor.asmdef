@@ -1,0 +1,18 @@
+{
+    "name": "VoltCity.Art.Editor",
+    "rootNamespace": "VoltCity.Art.Editor",
+    "references": [
+        "VoltCity.Art"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,203 @@
+/* Volt City — game screen styles on top of the CoddyKit design-2 theme (CoddyKit.uss + generated CoddyTokens.uss).
+   Portrait 720 px reference (1 dp = 1.75 px): body >= 25 px, caption >= 21 px, touch targets >= 84 px.
+   Weak devices: flat colours only (no blur / shadow / shader); transitions only on state changes.
+   UNVERIFIED in the editor until Unity is installed (import warnings are printed for unknown properties). */
+
+.vc-lang-hi { -unity-text-generator: advanced; }
+.vc-screen { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.vc-safe { position: absolute; left: 0; top: 0; right: 0; bottom: 0; flex-direction: column; }
+.vc-layer { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.vc-band { flex-grow: 1; min-height: 160px; }
+
+/* ---------------------------------------------------------------- HUD (glass card, 2 rows) */
+/* a top bar: the background reaches the screen's top edge (padding-top = status inset + 8, set in code), rounded below */
+.vc-hud, .vc-hud--flat {
+    margin: 0;
+    padding: 8px 20px 12px 20px;
+    border-bottom-left-radius: var(--radius-l);
+    border-bottom-right-radius: var(--radius-l);
+    background-color: rgba(15, 35, 51, 0.90);
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-color: var(--outline);
+}
+.vc-hud--flat { background-color: var(--surface); border-bottom-left-radius: var(--radius-m); border-bottom-right-radius: var(--radius-m); }
+.vc-hud__row { flex-direction: row; align-items: center; min-height: 84px; }
+.vc-hud__row2 { flex-direction: row; align-items: center; margin-top: 4px; }
+.vc-stat { margin-right: 14px; justify-content: center; flex-shrink: 0; }
+.vc-stat--grow { flex-grow: 1; flex-shrink: 1; flex-direction: row; align-items: center; }
+.vc-stat--grow > .vc-stat__big { flex-shrink: 0; min-width: 96px; }   /* the clock keeps its width; the phase chip ellipsizes instead */
+.vc-stat__big { font-size: var(--type-title); -unity-font-style: bold; white-space: nowrap; }
+.vc-chip {
+    font-size: var(--type-caption);
+    color: var(--on-surface);
+    background-color: var(--accent-container);
+    border-radius: 16px;
+    padding: 2px 10px;
+    margin-left: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1;
+}
+.vc-speed { min-width: 84px; margin-right: 4px; transition-property: scale; transition-duration: 0.12s; }
+.vc-speed--pulse { scale: 1.18 1.18; }
+
+/* ---------------------------------------------------------------- Balance needle */
+.vc-needle { width: 250px; min-height: 120px; flex-shrink: 0; align-items: center; }
+.vc-needle__dial { width: 220px; height: 80px; }
+.vc-needle__hand {
+    position: absolute; left: 107px; bottom: 6px;
+    width: 6px; height: 66px;
+    border-radius: 3px;
+    background-color: var(--on-surface);
+    transform-origin: 50% 100%;
+    transition-property: rotate;
+    transition-duration: 0.25s;
+}
+.vc-needle__hub { position: absolute; left: 100px; bottom: 0; width: 20px; height: 12px; border-top-left-radius: 10px; border-top-right-radius: 10px; background-color: var(--on-surface); }
+.vc-needle__texts { flex-direction: row; align-items: center; margin-top: 2px; }
+.vc-needle__icon { width: 26px; height: 26px; margin-right: 6px; --unity-image-tint-color: var(--success); }
+.vc-needle__label { font-size: var(--type-caption); -unity-font-style: bold; white-space: nowrap; }
+.vc-needle--amber .vc-needle__icon { --unity-image-tint-color: var(--warning); }
+.vc-needle--red .vc-needle__icon { --unity-image-tint-color: var(--danger); }
+.vc-needle--amber .vc-needle__label { color: var(--warning); }
+.vc-needle--red .vc-needle__label { color: var(--danger); }
+
+.vc-goal {
+    flex-grow: 1; flex-shrink: 1;
+    min-height: 84px;
+    margin-left: 8px;
+    padding: 8px 12px;
+    border-radius: var(--radius-m);
+    background-color: var(--surface-variant);
+    justify-content: center;
+}
+.vc-goal__text { font-size: var(--type-caption); white-space: normal; color: var(--on-surface); }
+.vc-explainer { margin-top: 8px; padding: 10px 14px; border-radius: var(--radius-m); background-color: var(--surface-high); }
+
+/* ---------------------------------------------------------------- tab sheet (half / full) */
+.vc-tabsheet {
+    height: 36%;
+    background-color: var(--background);
+    border-top-left-radius: var(--radius-l);
+    border-top-right-radius: var(--radius-l);
+    border-top-width: 1px;
+    border-color: var(--outline);
+    padding: 0 16px 0 16px;
+    transition-property: height;
+    transition-duration: 0.18s;
+}
+.vc-tabsheet--full { height: 70%; }
+.vc-tabsheet__handle-zone { height: 40px; align-items: center; justify-content: center; }
+.vc-tabsheet__list { flex-grow: 1; flex-shrink: 1; margin-top: 8px; }
+.vc-primary-row { margin-top: 10px; }
+.vc-sheet-primary { flex-grow: 1; }
+
+/* ---------------------------------------------------------------- tab bar (5 equal tabs, 100 px) */
+.vc-tabbar { flex-direction: row; height: 100px; background-color: var(--surface-sunken); border-top-width: 1px; border-color: var(--outline); }
+.vc-tab {
+    flex-grow: 1; flex-basis: 0;
+    margin: 0; padding: 6px 0 4px 0;
+    border-width: 0; border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
+    align-items: center; justify-content: center;
+}
+.vc-tab:hover, .vc-tab:active { background-color: rgba(0, 0, 0, 0); }
+.vc-tab__icon { width: 40px; height: 40px; --unity-image-tint-color: var(--on-surface-muted); }
+.vc-tab__label { font-size: var(--type-caption); color: var(--on-surface-muted); -unity-text-align: middle-center; white-space: nowrap; }
+.vc-tab--on .vc-tab__icon { --unity-image-tint-color: var(--primary); }
+.vc-tab--on .vc-tab__label { color: var(--primary); -unity-font-style: bold; }
+
+/* ---------------------------------------------------------------- card extras: output bar, side controls */
+.vc-bar { height: 8px; margin-top: 10px; border-radius: 4px; background-color: var(--surface-sunken); overflow: hidden; }
+.vc-bar__fill { height: 100%; width: 0; background-color: var(--accent); border-radius: 4px; }
+.vc-card--tappable:active { background-color: var(--surface-high); }
+.vc-stepper { flex-direction: row; }
+.vc-stepper__pill { min-width: 84px; padding: 0; margin-left: 8px; font-size: var(--type-title); }
+.vc-segmented { flex-direction: row; border-radius: var(--radius-pill); background-color: var(--surface-sunken); padding: 4px; }
+.vc-segment {
+    min-height: 76px; min-width: 76px;
+    margin: 0; padding: 0 12px;
+    border-width: 0; border-radius: 38px;
+    background-color: rgba(0, 0, 0, 0);
+    color: var(--on-surface-muted);
+    font-size: var(--type-caption);
+    -unity-font-style: bold;
+}
+.vc-segment:hover { background-color: rgba(0, 0, 0, 0); }
+.vc-segment--on, .vc-segment--on:hover { background-color: var(--primary); color: var(--on-primary); }
+.vc-check { font-size: var(--type-title); color: var(--primary); -unity-font-style: bold; }
+
+/* ---------------------------------------------------------------- guide spotlight */
+.vc-coach { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.vc-coach__dim { position: absolute; background-color: var(--scrim-dim); }
+.vc-coach__ring { position: absolute; border-width: 4px; border-color: var(--primary); border-radius: var(--radius-m); }
+.vc-coach__ring--flash { border-color: var(--danger); border-width: 7px; }
+.vc-coach__bubble {
+    position: absolute;
+    padding: 16px 20px;
+    border-radius: var(--radius-l);
+    background-color: var(--surface-high);
+    border-width: 1px;
+    border-color: var(--primary);
+}
+.vc-coach__bubble-row { flex-direction: row; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+
+/* ---------------------------------------------------------------- pager (3 pages) */
+.vc-pager { position: absolute; left: 0; top: 0; right: 0; bottom: 0; background-color: var(--background); flex-direction: column; }
+.vc-pager__hero { position: absolute; left: 0; top: 0; right: 0; bottom: 0; }
+.vc-pager__spacer { flex-grow: 1; }
+.vc-pager__foot { flex-shrink: 0; background-color: var(--background); border-top-left-radius: var(--radius-xl); border-top-right-radius: var(--radius-xl); }
+.vc-pager__panel {
+    flex-shrink: 0;
+    padding: 32px 32px 32px 32px;
+    background-color: var(--background);
+    border-top-left-radius: var(--radius-xl);
+    border-top-right-radius: var(--radius-xl);
+}
+.vc-pager__panel .coddy-headline, .vc-pager__panel .coddy-body-muted { white-space: normal; flex-shrink: 0; }
+.vc-pager__dots { flex-direction: row; justify-content: center; margin: 20px 0; }
+.vc-pager__dot { width: 14px; height: 14px; margin: 0 6px; border-radius: 7px; background-color: var(--outline); }
+.vc-pager__dot--on { background-color: var(--primary); width: 34px; }
+.vc-pager__row { flex-direction: row; align-items: center; justify-content: space-between; }
+.vc-pager__next { flex-grow: 1; margin-left: 16px; }
+
+/* ---- P4: shop info strip (one tap opens / closes the whole text) + control-room themes (sold looks: kit palette
+   overrides only, custom properties inherit from the screen root) ---- */
+.vc-card--wrap .coddy-list-card__texts .coddy-caption-muted { white-space: normal; overflow: visible; }
+.vc-theme--retro {
+    --primary: #ff9a5c;
+    --primary-pressed: #e07f45;
+    --primary-lip: #9a5230;
+    --primary-container: #43301f;
+    --accent: #7fe0b0;
+    --accent-container: #1d3f33;
+    --outline: #5a4a36;
+}
+.vc-theme--gold {
+    --primary: #f2c14e;
+    --primary-pressed: #d4a73f;
+    --primary-lip: #8a6a22;
+    --primary-container: #463c1d;
+    --accent: #ffe08a;
+    --accent-container: #4a3f1c;
+    --outline: #6a5a2a;
+}
+
+/* a status chip on a row's side: lock + why not yet (not a greyed button) */
+.vc-status {
+    flex-direction: row; align-items: center;
+    min-height: 60px; margin: 0; padding: 0 16px 0 12px;
+    border-width: 1px; border-color: var(--outline); border-radius: 30px;
+    background-color: var(--surface-sunken);
+}
+.vc-status__icon { width: 26px; height: 26px; margin-right: 8px; --unity-image-tint-color: var(--warning); }
+.vc-status__text { font-size: var(--type-caption); -unity-font-style: bold; color: var(--on-surface); white-space: nowrap; }
+
+/* a card / report sheet dims the city less than the guide does: at night with dark districts the 0.62 scrim turned the
+   whole map black behind a card (play 10-29, Patron #174) — the sheet stays in front, the city stays readable */
+.coddy-scrim { background-color: rgba(4, 10, 15, 0.42); }
+
+/* kit icons (2026-10-30): the chosen-language mark is the kit check icon, the HUD settings button the kit gear icon */
+.vc-check-icon { width: 34px; height: 34px; -unity-background-image-tint-color: var(--primary); }

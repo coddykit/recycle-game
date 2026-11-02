@@ -1,0 +1,175 @@
+{
+ "_doc": "Full-bleed Play art (owner rule 2026-10-28) for games/tools/store/fullbleed.py. Look = Grid Keeper's control room: night-navy switchboard panel (the HUD glass #0f2333 -> #0a1721), faint one-line diagram in the cyan accent #4fd8f0, amber live-rail #ffb547 toward the game; Noto Sans (the game's own UI font) Black Condensed caps + amber kicker. Icon: C3b (store/icon/play-512.png, Patron 10-29) in the bands and the feature graphic; the feature title is each listing's localized store title (brand_listing). Raws: real earned frames from Tests/PlayMode/VoltStoreCaptureTest.cs (Medium, 2x supersampled, captured at the game-area size: phone 1080x1690, tablet 1600x2254). Copy: tools/store/copy.json (make_copy.py). Feature graphic raw: the test's world-only <raw>/feature/07-shed.png (night, Stadium Row shed) copied to <raw>/<locale>/feature/feature.png. Run: VOLT_STORE_DIR=<raw> Unity -batchmode -runTests -testPlatform PlayMode -testFilter VoltCity.PlayMode.Tests.VoltStoreCaptureTest (one Unity at a time, GPU slot via novareka-dev/shot-lock.sh, needs a logged-in GUI session), then fullbleed.py + fullbleed_validate.py with Pillow raqm + fontTools.",
+ "game": "games/volt-city",
+ "package": "com.coddykit.voltcity",
+ "brand": "Grid Keeper",
+ "raw": "/Volumes/BuildSSD/store-assets/voltcity-play-2026-10-29-fb-raw",
+ "copy": "games/volt-city/tools/store/copy.json",
+ "icon": "games/volt-city/store/icon/play-512.png",
+ "locales": [
+  "en-US",
+  "tr-TR",
+  "de-DE",
+  "es-ES",
+  "fr-FR",
+  "pt-BR",
+  "ru-RU",
+  "ja-JP",
+  "ko-KR",
+  "hi-IN"
+ ],
+ "headline_idx": 0,
+ "kicker_idx": 1,
+ "style": {
+  "kind": "switchboard",
+  "bg": "#13293b",
+  "bg2": "#08131c",
+  "deco": "#4fd8f0",
+  "edge": "#ffb547",
+  "edge_dark": "#4fd8f0",
+  "head": "#ffffff",
+  "head_shadow": "#000000",
+  "kicker": "#ffb547",
+  "emblem_bg": "#0f2333",
+  "emblem_ring": "#27506f",
+  "icon_frac": 0.56
+ },
+ "fonts": {
+  "default": {
+   "head": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/NotoSans.ttf",
+     {
+      "wght": 900,
+      "wdth": 62.5
+     }
+    ]
+   ],
+   "kick": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/NotoSans.ttf",
+     {
+      "wght": 700,
+      "wdth": 87.5
+     }
+    ]
+   ]
+  },
+  "ja-JP": {
+   "upper": false,
+   "head": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/lastdigit/notosansjp_NotoSansJP[wght].ttf",
+     {
+      "wght": 900
+     }
+    ]
+   ],
+   "kick": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/lastdigit/notosansjp_NotoSansJP[wght].ttf",
+     {
+      "wght": 700
+     }
+    ]
+   ]
+  },
+  "ko-KR": {
+   "upper": false,
+   "head": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/lastdigit/notosanskr_NotoSansKR[wght].ttf",
+     {
+      "wght": 900
+     }
+    ]
+   ],
+   "kick": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/lastdigit/notosanskr_NotoSansKR[wght].ttf",
+     {
+      "wght": 700
+     }
+    ]
+   ]
+  },
+  "hi-IN": {
+   "upper": false,
+   "head": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/NotoSansDevanagari.ttf",
+     {
+      "wght": 900,
+      "wdth": 62.5
+     }
+    ]
+   ],
+   "kick": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/NotoSansDevanagari.ttf",
+     {
+      "wght": 700,
+      "wdth": 87.5
+     }
+    ]
+   ]
+  }
+ },
+ "slides": [
+  {
+   "id": "01-peak",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  },
+  {
+   "id": "02-storm",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  },
+  {
+   "id": "03-balance",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  },
+  {
+   "id": "04-forecast",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  },
+  {
+   "id": "05-ripple",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  },
+  {
+   "id": "06-build",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  },
+  {
+   "id": "07-shed",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  },
+  {
+   "id": "08-report",
+   "phone": 0.0,
+   "tablet": 0.5,
+   "band": "bottom"
+  }
+ ],
+ "feature": {
+  "slide": "feature",
+  "raw_kind": "feature",
+  "anchor": 0.5,
+  "corner": "bl"
+ },
+ "brand_listing": "games/volt-city/store/listing/{locale}.json"
+}

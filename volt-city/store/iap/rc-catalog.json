@@ -1,0 +1,1191 @@
+{
+ "_": "Play only. GENERATED from Assets/Resources/data/iap.json by unity/Tools/build_iap.py - edit the source, not this. One-time products only (no subscription, no trial). Entitlements = the grant ids (docs/IAP.md section 4); consumables grant none (RevenueCat: attach to none; delivered once per transaction, never restored).",
+ "package": "com.coddykit.voltcity",
+ "langs": [
+  "en",
+  "tr",
+  "de",
+  "es",
+  "fr",
+  "pt",
+  "ru",
+  "ja",
+  "ko",
+  "hi"
+ ],
+ "play_locale": {
+  "en": "en-US",
+  "tr": "tr-TR",
+  "de": "de-DE",
+  "es": "es-ES",
+  "fr": "fr-FR",
+  "pt": "pt-BR",
+  "ru": "ru-RU",
+  "ja": "ja-JP",
+  "ko": "ko-KR",
+  "hi": "hi-IN"
+ },
+ "price_policy": {
+  "reference": "usd is the reference tier-1 price; store-automation/src/pricing-policy.ts scales it by income group (PPP) before it reaches Play",
+  "tiers": {
+   "T1_high": 1.0,
+   "T2_upper_mid": 0.6,
+   "T3_lower_mid": 0.35,
+   "T4_low": 0.22
+  }
+ },
+ "ad_free": {
+  "entitlement": "noads",
+  "products": [
+   "noads",
+   "premium",
+   "grid_pass",
+   "bundle"
+  ],
+  "rule": "games/CLAUDE.md sections 3 + 8: Remove Ads and the big packs only; a cheap product never removes ads"
+ },
+ "entitlement_names": {
+  "noads": "Remove Ads",
+  "forecast_plus": "Long-Range Forecast",
+  "slots": "Extra City Slots",
+  "theme_gold": "Gold Control Room",
+  "skyline_neon": "Neon Skyline Windows",
+  "speed4": "Rush Hour Speed",
+  "dispatcher": "Dispatcher Assistant",
+  "offline_plus": "Night Crew+",
+  "livery_sunset": "Sunset Truck Livery",
+  "livery_arctic": "Arctic Truck Livery",
+  "pylons_deco": "Art Deco Pylons",
+  "blades_candy": "Candy Stripe Turbines",
+  "room_retro": "Retro Control Room"
+ },
+ "offerings": [
+  {
+   "id": "default",
+   "title": "Ad-free and packs",
+   "packages": [
+    "noads",
+    "premium",
+    "grid_pass",
+    "bundle"
+   ],
+   "note": "the ad-free products: the shop's first block"
+  },
+  {
+   "id": "upgrades",
+   "title": "Control-room upgrades",
+   "packages": [
+    "speed",
+    "dispatcher",
+    "forecast_plus",
+    "offline_plus",
+    "slots"
+   ],
+   "note": "convenience: never hides a free path (pay-to-win check in IAP.md)"
+  },
+  {
+   "id": "looks",
+   "title": "City looks",
+   "packages": [
+    "livery_sunset",
+    "livery_arctic",
+    "pylons_deco",
+    "blades_candy",
+    "skyline_neon",
+    "room_retro",
+    "cosmetics_all"
+   ],
+   "note": "6 looks + Style Collection"
+  },
+  {
+   "id": "budget",
+   "title": "Budget",
+   "packages": [
+    "cash_s",
+    "cash_m",
+    "cash_l",
+    "cash_xl"
+   ],
+   "note": "consumables, at most 3 a UTC day, never restored"
+  },
+  {
+   "id": "offers",
+   "title": "Offers",
+   "packages": [
+    "starter",
+    "comeback",
+    "storm_kit"
+   ],
+   "note": "IapOffers rules (data/iap.json offers); never in the tutorial / first session / a live shift"
+  }
+ ],
+ "reserved": {
+  "scenarios": {
+   "kind": "permanent",
+   "usd": 2.99,
+   "grants": [
+    "scenarios"
+   ],
+   "note": "5 hand-made scenarios on the same map (Heat Dome Week, Ice Storm Night, Final Match Night, Eclipse Day, Islanded Grid)"
+  }
+ },
+ "products": [
+  {
+   "slug": "noads",
+   "id": "com.coddykit.voltcity.noads",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 2.99,
+   "price_tiers_usd": {
+    "T1_high": 2.99,
+    "T2_upper_mid": 1.79,
+    "T3_lower_mid": 1.05,
+    "T4_low": 0.66
+   },
+   "group": "adfree",
+   "grants": [
+    "noads"
+   ],
+   "entitlements": [
+    "noads"
+   ],
+   "ad_free": true,
+   "name": {
+    "en": "Remove Ads",
+    "tr": "Reklamları Kaldır",
+    "de": "Werbung entfernen",
+    "es": "Quitar anuncios",
+    "fr": "Supprimer les pubs",
+    "pt": "Remover anúncios",
+    "ru": "Убрать рекламу",
+    "ja": "広告削除",
+    "ko": "광고 제거",
+    "hi": "विज्ञापन हटाएं"
+   },
+   "desc": {
+    "en": "Ad-free: removes the short ads between shifts and the banner. Optional rewards come without videos, with the same daily limits. Permanent.",
+    "tr": "Reklamsız: vardiyalar arasındaki kısa reklamları ve banner'ı kaldırır. İsteğe bağlı ödüller aynı günlük limitlerle, videosuz gelir. Kalıcı.",
+    "de": "Werbefrei: entfernt die kurzen Werbeanzeigen zwischen den Schichten und das Banner. Optionale Belohnungen gibt es ohne Videos, mit denselben täglichen Limits. Dauerhaft.",
+    "es": "Sin anuncios: quita los anuncios cortos entre turnos y el banner. Las recompensas opcionales llegan sin vídeos, con los mismos límites diarios. Permanente.",
+    "fr": "Sans pub : supprime les courtes pubs entre les services et la bannière. Les récompenses facultatives restent sans vidéo, avec les mêmes limites quotidiennes. Permanent.",
+    "pt": "Sem anúncios: remove os anúncios curtos entre os turnos e o banner. As recompensas opcionais vêm sem vídeos, com os mesmos limites diários. Permanente.",
+    "ru": "Без рекламы: убирает короткие ролики между сменами и баннер. Необязательные награды приходят без видео, с теми же дневными лимитами. Навсегда.",
+    "ja": "広告なし: シフト間の短い広告とバナーを消します。任意の特典は動画なしで受け取れ、毎日の上限は同じです。永久。",
+    "ko": "광고 없음: 교대 사이의 짧은 광고와 배너가 사라져요. 선택 보상은 영상 없이 받을 수 있고, 하루 한도는 같아요. 영구 적용.",
+    "hi": "बिना विज्ञापन: शिफ्टों के बीच के छोटे विज्ञापन और बैनर हट जाते हैं। वैकल्पिक इनाम बिना वीडियो मिलते हैं, दैनिक सीमा वही रहती है। स्थायी।"
+   }
+  },
+  {
+   "slug": "premium",
+   "id": "com.coddykit.voltcity.premium",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 8.99,
+   "price_tiers_usd": {
+    "T1_high": 8.99,
+    "T2_upper_mid": 5.39,
+    "T3_lower_mid": 3.15,
+    "T4_low": 1.98
+   },
+   "group": "adfree",
+   "grants": [
+    "noads",
+    "forecast_plus",
+    "slots",
+    "theme_gold"
+   ],
+   "entitlements": [
+    "noads",
+    "forecast_plus",
+    "slots",
+    "theme_gold"
+   ],
+   "ad_free": true,
+   "name": {
+    "en": "Chief Engineer Edition",
+    "tr": "Başmühendis Sürümü",
+    "de": "Chefingenieur-Edition",
+    "es": "Edición Ingeniero Jefe",
+    "fr": "Édition Ingénieur en chef",
+    "pt": "Edição do Engenheiro-Chefe",
+    "ru": "Издание «Главный инженер»",
+    "ja": "チーフエンジニア版",
+    "ko": "수석 엔지니어 에디션",
+    "hi": "चीफ़ इंजीनियर एडिशन"
+   },
+   "desc": {
+    "en": "Ad-free, plus the 3-shift forecast, 3 extra city slots and the gold theme: gold control room and gold truck livery. Permanent.",
+    "tr": "Reklamsız, ayrıca 3 vardiyalık tahmin, 3 ekstra şehir yuvası ve altın tema: altın kontrol odası ve altın kamyon rengi. Kalıcı.",
+    "de": "Werbefrei, dazu 3-Schicht-Vorschau, 3 zusätzliche Stadtplätze und das Goldthema: goldene Leitstelle und goldene Wagen-Lackierung. Dauerhaft.",
+    "es": "Sin anuncios, más la previsión de 3 turnos, 3 ranuras extra de ciudad y el tema dorado: sala de control y camiones dorados. Permanente.",
+    "fr": "Sans pub, plus les prévisions sur 3 services, 3 emplacements de ville en plus et le thème or : salle de contrôle dorée et camions dorés. Permanent.",
+    "pt": "Sem anúncios, mais a previsão de 3 turnos, 3 vagas extras de cidade e o tema dourado: sala de controle dourada e pintura dourada dos caminhões. Permanente.",
+    "ru": "Без рекламы, плюс прогноз на 3 смены, 3 дополнительных слота городов и золотая тема: золотая диспетчерская и золотая окраска машин. Навсегда.",
+    "ja": "広告なしに加え、3シフト先までの予報、都市スロット3つ追加、ゴールドテーマ（金色の管制室と金色のトラック塗装）。永久。",
+    "ko": "광고 없음에 더해 3교대 예보, 도시 슬롯 3개 추가, 골드 테마(금빛 관제실과 금색 트럭 도색). 영구 적용.",
+    "hi": "बिना विज्ञापन, साथ में 3 शिफ्ट का पूर्वानुमान, 3 अतिरिक्त शहर स्लॉट और सुनहरी थीम: सुनहरा कंट्रोल रूम और सुनहरा ट्रक पेंट। स्थायी।"
+   }
+  },
+  {
+   "slug": "grid_pass",
+   "id": "com.coddykit.voltcity.grid_pass",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 6.99,
+   "price_tiers_usd": {
+    "T1_high": 6.99,
+    "T2_upper_mid": 4.19,
+    "T3_lower_mid": 2.45,
+    "T4_low": 1.54
+   },
+   "group": "adfree",
+   "grants": [
+    "noads",
+    "slots",
+    "skyline_neon"
+   ],
+   "entitlements": [
+    "noads",
+    "slots",
+    "skyline_neon"
+   ],
+   "ad_free": true,
+   "name": {
+    "en": "Utility Pass",
+    "tr": "Şebeke Geçişi",
+    "de": "Versorgungspass",
+    "es": "Pase de servicios",
+    "fr": "Pass Réseau",
+    "pt": "Passe da Rede",
+    "ru": "Сетевой пропуск",
+    "ja": "ユーティリティパス",
+    "ko": "유틸리티 패스",
+    "hi": "यूटिलिटी पास"
+   },
+   "desc": {
+    "en": "Ad-free, plus 3 extra city slots and the neon skyline windows. Permanent.",
+    "tr": "Reklamsız, ayrıca 3 ekstra şehir yuvası ve neon şehir pencereleri. Kalıcı.",
+    "de": "Werbefrei, dazu 3 zusätzliche Stadtplätze und die Neon-Skyline-Fenster. Dauerhaft.",
+    "es": "Sin anuncios, más 3 ranuras extra de ciudad y las ventanas de skyline neón. Permanente.",
+    "fr": "Sans pub, plus 3 emplacements de ville en plus et les fenêtres néon. Permanent.",
+    "pt": "Sem anúncios, mais 3 vagas extras de cidade e as janelas neon. Permanente.",
+    "ru": "Без рекламы, плюс 3 дополнительных слота городов и неоновые окна. Навсегда.",
+    "ja": "広告なしに加え、都市スロット3つ追加とネオンの夜景の窓。永久。",
+    "ko": "광고 없음, 도시 슬롯 3개 추가, 네온 스카이라인 창문. 영구 적용.",
+    "hi": "बिना विज्ञापन, साथ में 3 अतिरिक्त शहर स्लॉट और नीऑन स्काइलाइन खिड़कियां। स्थायी।"
+   }
+  },
+  {
+   "slug": "bundle",
+   "id": "com.coddykit.voltcity.bundle",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 21.99,
+   "price_tiers_usd": {
+    "T1_high": 21.99,
+    "T2_upper_mid": 13.19,
+    "T3_lower_mid": 7.7,
+    "T4_low": 4.84
+   },
+   "group": "adfree",
+   "grants": [
+    "noads",
+    "theme_gold",
+    "speed4",
+    "dispatcher",
+    "forecast_plus",
+    "offline_plus",
+    "slots",
+    "livery_sunset",
+    "livery_arctic",
+    "pylons_deco",
+    "blades_candy",
+    "skyline_neon",
+    "room_retro"
+   ],
+   "entitlements": [
+    "noads",
+    "theme_gold",
+    "speed4",
+    "dispatcher",
+    "forecast_plus",
+    "offline_plus",
+    "slots",
+    "livery_sunset",
+    "livery_arctic",
+    "pylons_deco",
+    "blades_candy",
+    "skyline_neon",
+    "room_retro"
+   ],
+   "ad_free": true,
+   "name": {
+    "en": "Complete Grid Keeper Collection",
+    "tr": "Grid Keeper Koleksiyonunun Tamamı",
+    "de": "Komplette Grid-Keeper-Sammlung",
+    "es": "Colección completa de Grid Keeper",
+    "fr": "Collection complète Grid Keeper",
+    "pt": "Coleção Completa Grid Keeper",
+    "ru": "Полная коллекция Grid Keeper",
+    "ja": "グリッドキーパー完全コレクション",
+    "ko": "그리드 키퍼 완전 컬렉션",
+    "hi": "ग्रिड कीपर पूरा कलेक्शन"
+   },
+   "desc": {
+    "en": "Everything permanent in one pack: ad-free, gold theme, 4× speed, Dispatcher Assistant, long forecast, Night Crew+, extra slots and all six looks.",
+    "tr": "Kalıcı her şey tek pakette: reklamsız, altın tema, 4× hız, Dağıtım Asistanı, uzun tahmin, Gece Ekibi+, ekstra yuvalar ve altı görünümün tamamı.",
+    "de": "Alles Dauerhafte in einem Paket: werbefrei, Goldthema, 4× Tempo, Dispatcher-Assistent, Langzeitprognose, Nachtteam+, zusätzliche Plätze und alle sechs Looks.",
+    "es": "Todo lo permanente en un pack: sin anuncios, tema dorado, velocidad 4×, Asistente de despacho, pronóstico largo, Cuadrilla nocturna+, ranuras extra y los seis estilos.",
+    "fr": "Tout le permanent en un pack : sans pub, thème or, vitesse 4×, Assistant répartiteur, prévisions longue portée, Équipe de nuit+, emplacements en plus et les six looks.",
+    "pt": "Tudo o que é permanente em um pacote: sem anúncios, tema dourado, velocidade 4×, Assistente de Despacho, previsão de longo alcance, Equipe Noturna+, vagas extras e os seis visuais.",
+    "ru": "Всё постоянное одним набором: без рекламы, золотая тема, ускорение 4×, Помощник диспетчера, дальний прогноз, Ночная бригада+, доп. слоты и все шесть образов.",
+    "ja": "永久の特典をすべて一つのパックに: 広告なし、ゴールドテーマ、4×、派遣アシスタント、長期予報、夜間作業班+、追加スロット、すべての見た目。",
+    "ko": "영구 혜택을 한 팩에: 광고 없음, 골드 테마, 4×, 파견 어시스턴트, 장기 예보, 야간 작업반+, 추가 슬롯, 외형 전부.",
+    "hi": "एक पैक में सारी स्थायी चीज़ें: बिना विज्ञापन, सुनहरी थीम, 4× स्पीड, डिस्पैचर सहायक, लंबा पूर्वानुमान, रात की टीम+, अतिरिक्त स्लॉट और छहों रूप।"
+   }
+  },
+  {
+   "slug": "speed",
+   "id": "com.coddykit.voltcity.speed",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 2.99,
+   "price_tiers_usd": {
+    "T1_high": 2.99,
+    "T2_upper_mid": 1.79,
+    "T3_lower_mid": 1.05,
+    "T4_low": 0.66
+   },
+   "group": "upgrades",
+   "grants": [
+    "speed4"
+   ],
+   "entitlements": [
+    "speed4"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Rush Hour Speed",
+    "tr": "Yoğun Saat Hızı",
+    "de": "Rush-Hour-Tempo",
+    "es": "Velocidad hora punta",
+    "fr": "Vitesse Heure de pointe",
+    "pt": "Velocidade Hora de Pico",
+    "ru": "Ускорение «Час пик»",
+    "ja": "ラッシュアワー速度",
+    "ko": "러시 아워 스피드",
+    "hi": "रश आवर स्पीड"
+   },
+   "desc": {
+    "en": "Adds 4× speed to live shifts and an optional auto-collect for the shift report. Changes time only. Permanent.",
+    "tr": "Canlı vardiyalara 4× hız ve vardiya raporu için isteğe bağlı otomatik toplama ekler. Yalnızca zamanı değiştirir. Kalıcı.",
+    "de": "Schaltet 4× Tempo für laufende Schichten frei und optional das automatische Einsammeln des Schichtberichts. Ändert nur die Zeit. Dauerhaft.",
+    "es": "Añade velocidad 4× a los turnos en curso y la recogida automática opcional del informe de turno. Solo cambia el tiempo. Permanente.",
+    "fr": "Ajoute la vitesse 4× aux services en cours et un encaissement automatique du rapport de service. Change seulement le temps. Permanent.",
+    "pt": "Adiciona velocidade 4× aos turnos em andamento e recebimento automático do relatório do turno. Muda só o tempo. Permanente.",
+    "ru": "Добавляет ускорение 4× к идущим сменам и необязательный автосбор отчёта смены. Меняет только время. Навсегда.",
+    "ja": "進行中のシフトが4×速になり、シフト報告を自動で受け取るオプションも使えます。変わるのは時間の進み方だけです。永久。",
+    "ko": "진행 중인 교대를 4×로 하고, 교대 보고서 자동 받기도 고를 수 있어요. 시간만 바뀌어요. 영구 적용.",
+    "hi": "चल रही शिफ्ट में 4× स्पीड जुड़ जाती है, और शिफ्ट रिपोर्ट के लिए अपने-आप लेने का विकल्प भी। सिर्फ़ समय बदलता है। स्थायी।"
+   }
+  },
+  {
+   "slug": "dispatcher",
+   "id": "com.coddykit.voltcity.dispatcher",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 4.99,
+   "price_tiers_usd": {
+    "T1_high": 4.99,
+    "T2_upper_mid": 2.99,
+    "T3_lower_mid": 1.75,
+    "T4_low": 1.1
+   },
+   "group": "upgrades",
+   "grants": [
+    "dispatcher"
+   ],
+   "entitlements": [
+    "dispatcher"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Dispatcher Assistant",
+    "tr": "Dağıtım Asistanı",
+    "de": "Dispatcher-Assistent",
+    "es": "Asistente de despacho",
+    "fr": "Assistant répartiteur",
+    "pt": "Assistente de Despacho",
+    "ru": "Помощник диспетчера",
+    "ja": "派遣アシスタント",
+    "ko": "파견 어시스턴트",
+    "hi": "डिस्पैचर सहायक"
+   },
+   "desc": {
+    "en": "Build the auto-baseload, auto-battery and auto-crew helpers early instead of in chapters 3 to 5. Same helpers, sooner. Permanent.",
+    "tr": "Otomatik temel yük, batarya ve ekip yardımcılarını 3-5. bölümler yerine erken kur. Aynı yardımcılar, daha erken. Kalıcı.",
+    "de": "Baue die Automatik für Grundlast, Batterie und Trupps früh statt in Kapitel 3 bis 5. Dieselben Helfer, nur früher. Dauerhaft.",
+    "es": "Construye antes los ayudantes de carga base, batería y cuadrillas automáticas, en lugar de en los capítulos 3 a 5. Los mismos ayudantes, antes. Permanente.",
+    "fr": "Débloque plus tôt les assistants d'alimentation de base, de batterie et d'équipes automatiques, au lieu des chapitres 3 à 5. Mêmes assistants, plus tôt. Permanent.",
+    "pt": "Libera antes os ajudantes de carga base automática, bateria automática e equipes automáticas, em vez dos capítulos 3 a 5. Os mesmos ajudantes, mais cedo. Permanente.",
+    "ru": "Открывает помощников автоподачи базовой нагрузки, автобатареи и автобригад уже сейчас, а не в главах с 3 по 5. Те же помощники, раньше. Навсегда.",
+    "ja": "自動ベース電源・自動蓄電・自動作業班の補助装置を、3〜5章ではなく早い段階で建てられます。同じ補助装置が、より早く使えます。永久。",
+    "ko": "자동 기저 부하, 자동 배터리, 자동 작업반 도우미를 3~5장이 아니라 더 일찍 지을 수 있어요. 같은 도우미가 더 빨리. 영구 적용.",
+    "hi": "ऑटो बेसलोड, ऑटो बैटरी और ऑटो टीम सहायक 3 से 5 अध्याय के बजाय पहले ही बनाएं। वही सहायक, जल्दी। स्थायी।"
+   }
+  },
+  {
+   "slug": "forecast_plus",
+   "id": "com.coddykit.voltcity.forecast_plus",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.99,
+   "price_tiers_usd": {
+    "T1_high": 1.99,
+    "T2_upper_mid": 1.19,
+    "T3_lower_mid": 0.7,
+    "T4_low": 0.44
+   },
+   "group": "upgrades",
+   "grants": [
+    "forecast_plus"
+   ],
+   "entitlements": [
+    "forecast_plus"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Long-Range Forecast",
+    "tr": "Uzun Menzilli Tahmin",
+    "de": "Langzeitprognose",
+    "es": "Pronóstico a largo plazo",
+    "fr": "Prévisions longue portée",
+    "pt": "Previsão de Longo Alcance",
+    "ru": "Дальний прогноз",
+    "ja": "長期予報",
+    "ko": "장기 예보",
+    "hi": "लंबी अवधि का पूर्वानुमान"
+   },
+   "desc": {
+    "en": "See the weather and events 3 shifts ahead instead of 1. Permanent.",
+    "tr": "Hava durumunu ve olayları 1 yerine 3 vardiya ileriden gör. Kalıcı.",
+    "de": "Sieh Wetter und Ereignisse 3 Schichten voraus statt 1. Dauerhaft.",
+    "es": "Ve el tiempo y los eventos 3 turnos por delante en lugar de 1. Permanente.",
+    "fr": "Vois la météo et les événements 3 services à l'avance au lieu de 1. Permanent.",
+    "pt": "Veja o clima e os eventos com 3 turnos de antecedência em vez de 1. Permanente.",
+    "ru": "Погода и события на 3 смены вперёд вместо 1. Навсегда.",
+    "ja": "天気と出来事を、1シフト先ではなく3シフト先まで見られます。永久。",
+    "ko": "날씨와 이벤트를 1교대가 아니라 3교대 앞까지 볼 수 있어요. 영구 적용.",
+    "hi": "मौसम और घटनाएं 1 के बजाय 3 शिफ्ट आगे तक देखें। स्थायी।"
+   }
+  },
+  {
+   "slug": "offline_plus",
+   "id": "com.coddykit.voltcity.offline_plus",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 2.99,
+   "price_tiers_usd": {
+    "T1_high": 2.99,
+    "T2_upper_mid": 1.79,
+    "T3_lower_mid": 1.05,
+    "T4_low": 0.66
+   },
+   "group": "upgrades",
+   "grants": [
+    "offline_plus"
+   ],
+   "entitlements": [
+    "offline_plus"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Night Crew+",
+    "tr": "Gece Ekibi+",
+    "de": "Nachtteam+",
+    "es": "Cuadrilla nocturna+",
+    "fr": "Équipe de nuit+",
+    "pt": "Equipe Noturna+",
+    "ru": "Ночная бригада+",
+    "ja": "夜間作業班+",
+    "ko": "야간 작업반+",
+    "hi": "रात की टीम+"
+   },
+   "desc": {
+    "en": "While you are away the night crew works up to 16 hours instead of 8 and earns 1.5× as much. Permanent.",
+    "tr": "Sen uzaktayken gece ekibi 8 yerine en fazla 16 saat çalışır ve 1.5× kazanır. Kalıcı.",
+    "de": "Wenn du weg bist, arbeitet das Nachtteam bis zu 16 statt 8 Stunden und verdient 1.5× so viel. Dauerhaft.",
+    "es": "Mientras estás fuera, la cuadrilla nocturna trabaja hasta 16 horas en lugar de 8 y gana 1.5× más. Permanente.",
+    "fr": "Pendant ton absence, l'équipe de nuit travaille jusqu'à 16 heures au lieu de 8 et gagne 1,5× plus. Permanent.",
+    "pt": "Enquanto você está fora, a equipe noturna trabalha até 16 horas em vez de 8 e ganha 1,5× mais. Permanente.",
+    "ru": "Пока тебя нет, ночная бригада работает до 16 часов вместо 8 и зарабатывает в 1,5× больше. Навсегда.",
+    "ja": "離れている間、夜間作業班は8時間ではなく最大16時間働き、稼ぎは1.5×になります。永久。",
+    "ko": "자리를 비운 동안 야간 작업반이 8시간 대신 최대 16시간 일하고, 1.5×를 벌어요. 영구 적용.",
+    "hi": "आपके बाहर रहने पर रात की टीम 8 घंटे की जगह 16 घंटे तक काम करती है और 1.5× कमाती है। स्थायी।"
+   }
+  },
+  {
+   "slug": "slots",
+   "id": "com.coddykit.voltcity.slots",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.99,
+   "price_tiers_usd": {
+    "T1_high": 1.99,
+    "T2_upper_mid": 1.19,
+    "T3_lower_mid": 0.7,
+    "T4_low": 0.44
+   },
+   "group": "upgrades",
+   "grants": [
+    "slots"
+   ],
+   "entitlements": [
+    "slots"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Extra City Slots",
+    "tr": "Ekstra Şehir Yuvaları",
+    "de": "Zusätzliche Stadtplätze",
+    "es": "Ranuras extra de ciudad",
+    "fr": "Emplacements de ville en plus",
+    "pt": "Vagas Extras de Cidade",
+    "ru": "Доп. слоты городов",
+    "ja": "都市スロット追加",
+    "ko": "도시 슬롯 추가",
+    "hi": "अतिरिक्त शहर स्लॉट"
+   },
+   "desc": {
+    "en": "3 more city slots: run up to 4 cities side by side and switch between them in Settings. Permanent.",
+    "tr": "3 yuva daha: en fazla 4 şehri yan yana çalıştır, Ayarlar'dan aralarında geçiş yap. Kalıcı.",
+    "de": "3 weitere Stadtplätze: Betreibe bis zu 4 Städte nebeneinander und wechsle in den Einstellungen zwischen ihnen. Dauerhaft.",
+    "es": "3 ranuras más: gestiona hasta 4 ciudades a la vez y cambia entre ellas en Ajustes. Permanente.",
+    "fr": "3 emplacements de ville en plus : gère jusqu'à 4 villes côte à côte et passe de l'une à l'autre dans les Réglages. Permanent.",
+    "pt": "3 vagas de cidade a mais: administre até 4 cidades lado a lado e troque entre elas em Configurações. Permanente.",
+    "ru": "Ещё 3 слота городов: веди до 4 городов рядом и переключайся между ними в настройках. Навсегда.",
+    "ja": "都市スロットを3つ追加。最大4都市を並べて運営し、設定で切り替えられます。永久。",
+    "ko": "도시 슬롯 3개 추가. 도시를 최대 4개까지 나란히 운영하고 설정에서 바꿀 수 있어요. 영구 적용.",
+    "hi": "3 और शहर स्लॉट: एक साथ 4 शहर चलाएं और सेटिंग में उनके बीच बदलें। स्थायी।"
+   }
+  },
+  {
+   "slug": "livery_sunset",
+   "id": "com.coddykit.voltcity.livery_sunset",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.49,
+   "price_tiers_usd": {
+    "T1_high": 1.49,
+    "T2_upper_mid": 0.89,
+    "T3_lower_mid": 0.52,
+    "T4_low": 0.33
+   },
+   "group": "looks",
+   "grants": [
+    "livery_sunset"
+   ],
+   "entitlements": [
+    "livery_sunset"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Sunset Truck Livery",
+    "tr": "Gün Batımı Kamyon Boyası",
+    "de": "Sonnenuntergang-Lackierung",
+    "es": "Librea de camión: atardecer",
+    "fr": "Livrée camion Coucher de soleil",
+    "pt": "Pintura Caminhão Pôr do Sol",
+    "ru": "Окраска машин «Закат»",
+    "ja": "サンセット・トラック塗装",
+    "ko": "선셋 트럭 도색",
+    "hi": "सनसेट ट्रक पेंट"
+   },
+   "desc": {
+    "en": "Paints your repair trucks in warm sunset orange and red. Looks only. Permanent.",
+    "tr": "Onarım kamyonlarını sıcak gün batımı turuncusu ve kırmızıya boyar. Yalnızca görünüm. Kalıcı.",
+    "de": "Lackiert deine Reparaturwagen in warmem Orange und Rot wie ein Sonnenuntergang. Nur Optik. Dauerhaft.",
+    "es": "Pinta tus camiones de reparación en naranja y rojo cálidos de atardecer. Solo aspecto. Permanente.",
+    "fr": "Peint tes camions de réparation en orange et rouge coucher de soleil. Look uniquement. Permanent.",
+    "pt": "Pinta seus caminhões de reparo em laranja e vermelho de pôr do sol. Só visual. Permanente.",
+    "ru": "Красит ремонтные машины в тёплый закатный оранжевый и красный. Только внешний вид. Навсегда.",
+    "ja": "修理トラックを温かい夕焼けのオレンジと赤に塗ります。見た目だけ。永久。",
+    "ko": "수리 트럭을 따뜻한 노을빛 주황과 빨강으로 칠해요. 외형만 바뀌어요. 영구 적용.",
+    "hi": "मरम्मत ट्रकों को गर्म सूर्यास्त वाले नारंगी और लाल रंग में रंगता है। केवल रूप बदलता है। स्थायी।"
+   }
+  },
+  {
+   "slug": "livery_arctic",
+   "id": "com.coddykit.voltcity.livery_arctic",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.49,
+   "price_tiers_usd": {
+    "T1_high": 1.49,
+    "T2_upper_mid": 0.89,
+    "T3_lower_mid": 0.52,
+    "T4_low": 0.33
+   },
+   "group": "looks",
+   "grants": [
+    "livery_arctic"
+   ],
+   "entitlements": [
+    "livery_arctic"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Arctic Truck Livery",
+    "tr": "Kutup Kamyon Boyası",
+    "de": "Arktis-Lackierung",
+    "es": "Librea de camión: ártica",
+    "fr": "Livrée camion Arctique",
+    "pt": "Pintura Caminhão Ártico",
+    "ru": "Окраска машин «Арктика»",
+    "ja": "アークティック・トラック塗装",
+    "ko": "아크틱 트럭 도색",
+    "hi": "आर्कटिक ट्रक पेंट"
+   },
+   "desc": {
+    "en": "Paints your repair trucks in icy white and blue. Looks only. Permanent.",
+    "tr": "Onarım kamyonlarını buz gibi beyaz ve maviye boyar. Yalnızca görünüm. Kalıcı.",
+    "de": "Lackiert deine Reparaturwagen in eisigem Weiß und Blau. Nur Optik. Dauerhaft.",
+    "es": "Pinta tus camiones de reparación en blanco y azul helados. Solo aspecto. Permanente.",
+    "fr": "Peint tes camions de réparation en blanc glacé et bleu. Look uniquement. Permanent.",
+    "pt": "Pinta seus caminhões de reparo em branco gelado e azul. Só visual. Permanente.",
+    "ru": "Красит ремонтные машины в ледяной белый и синий. Только внешний вид. Навсегда.",
+    "ja": "修理トラックを氷のような白と青に塗ります。見た目だけ。永久。",
+    "ko": "수리 트럭을 얼음처럼 흰색과 파란색으로 칠해요. 외형만 바뀌어요. 영구 적용.",
+    "hi": "मरम्मत ट्रकों को बर्फ़ीले सफ़ेद और नीले रंग में रंगता है। केवल रूप बदलता है। स्थायी।"
+   }
+  },
+  {
+   "slug": "pylons_deco",
+   "id": "com.coddykit.voltcity.pylons_deco",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.49,
+   "price_tiers_usd": {
+    "T1_high": 1.49,
+    "T2_upper_mid": 0.89,
+    "T3_lower_mid": 0.52,
+    "T4_low": 0.33
+   },
+   "group": "looks",
+   "grants": [
+    "pylons_deco"
+   ],
+   "entitlements": [
+    "pylons_deco"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Art Deco Pylons",
+    "tr": "Art Deco Direkleri",
+    "de": "Art-déco-Masten",
+    "es": "Torres Art Déco",
+    "fr": "Pylônes Art déco",
+    "pt": "Postes Art Déco",
+    "ru": "Опоры в стиле ар-деко",
+    "ja": "アールデコの送電塔",
+    "ko": "아르데코 송전탑",
+    "hi": "आर्ट डेको पाइलन"
+   },
+   "desc": {
+    "en": "Gives every power line pylon red and white Art Deco bands. Looks only. Permanent.",
+    "tr": "Her enerji hattı direğine kırmızı ve beyaz Art Deco bantları verir. Yalnızca görünüm. Kalıcı.",
+    "de": "Gibt jedem Strommast rote und weiße Art-déco-Bänder. Nur Optik. Dauerhaft.",
+    "es": "Da a cada torre de línea eléctrica bandas rojas y blancas Art Déco. Solo aspecto. Permanente.",
+    "fr": "Donne à chaque pylône de ligne électrique des bandes rouges et blanches Art déco. Look uniquement. Permanent.",
+    "pt": "Dá a cada poste de linha de transmissão faixas vermelhas e brancas em estilo Art Déco. Só visual. Permanente.",
+    "ru": "Каждая опора линии электропередачи получает красно-белые полосы в стиле ар-деко. Только внешний вид. Навсегда.",
+    "ja": "すべての送電塔に赤と白のアールデコ調の帯を付けます。見た目だけ。永久。",
+    "ko": "모든 송전탑에 빨강과 흰색 아르데코 띠를 둘러요. 외형만 바뀌어요. 영구 적용.",
+    "hi": "हर बिजली के पाइलन पर लाल और सफ़ेद आर्ट डेको पट्टियां लगती हैं। केवल रूप बदलता है। स्थायी।"
+   }
+  },
+  {
+   "slug": "blades_candy",
+   "id": "com.coddykit.voltcity.blades_candy",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.49,
+   "price_tiers_usd": {
+    "T1_high": 1.49,
+    "T2_upper_mid": 0.89,
+    "T3_lower_mid": 0.52,
+    "T4_low": 0.33
+   },
+   "group": "looks",
+   "grants": [
+    "blades_candy"
+   ],
+   "entitlements": [
+    "blades_candy"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Candy Stripe Turbines",
+    "tr": "Şeker Çizgili Türbinler",
+    "de": "Zuckerstreifen-Turbinen",
+    "es": "Turbinas a rayas de caramelo",
+    "fr": "Éoliennes rayées bonbon",
+    "pt": "Turbinas Listra Doce",
+    "ru": "Полосатые турбины",
+    "ja": "キャンディ柄の風車",
+    "ko": "캔디 스트라이프 풍력 터빈",
+    "hi": "कैंडी स्ट्राइप टरबाइन"
+   },
+   "desc": {
+    "en": "Red and white striped tips on every wind turbine. Looks only. Permanent.",
+    "tr": "Her rüzgâr türbininin uçlarında kırmızı ve beyaz çizgiler. Yalnızca görünüm. Kalıcı.",
+    "de": "Rot-weiß gestreifte Spitzen an jeder Windturbine. Nur Optik. Dauerhaft.",
+    "es": "Puntas con rayas rojas y blancas en cada aerogenerador. Solo aspecto. Permanente.",
+    "fr": "Pointes rouges et blanches rayées sur chaque éolienne. Look uniquement. Permanent.",
+    "pt": "Pontas listradas em vermelho e branco em cada turbina eólica. Só visual. Permanente.",
+    "ru": "Красно-белые полосатые кончики на каждой ветряной турбине. Только внешний вид. Навсегда.",
+    "ja": "すべての風車の羽根の先に赤と白のストライプを付けます。見た目だけ。永久。",
+    "ko": "모든 풍력 터빈 날개 끝에 빨강과 흰색 줄무늬를 그려요. 외형만 바뀌어요. 영구 적용.",
+    "hi": "हर पवन टरबाइन के सिरों पर लाल और सफ़ेद धारियां। केवल रूप बदलता है। स्थायी।"
+   }
+  },
+  {
+   "slug": "skyline_neon",
+   "id": "com.coddykit.voltcity.skyline_neon",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.49,
+   "price_tiers_usd": {
+    "T1_high": 1.49,
+    "T2_upper_mid": 0.89,
+    "T3_lower_mid": 0.52,
+    "T4_low": 0.33
+   },
+   "group": "looks",
+   "grants": [
+    "skyline_neon"
+   ],
+   "entitlements": [
+    "skyline_neon"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Neon Skyline Windows",
+    "tr": "Neon Şehir Pencereleri",
+    "de": "Neon-Skyline-Fenster",
+    "es": "Ventanas de skyline neón",
+    "fr": "Fenêtres néon de la ville",
+    "pt": "Janelas Neon da Cidade",
+    "ru": "Неоновые окна города",
+    "ja": "ネオンの夜景の窓",
+    "ko": "네온 스카이라인 창문",
+    "hi": "नीऑन स्काइलाइन खिड़कियां"
+   },
+   "desc": {
+    "en": "City windows glow in neon pink and cyan at night. Looks only. Permanent.",
+    "tr": "Şehrin pencereleri geceleri pembe ve camgöbeği neonla parlar. Yalnızca görünüm. Kalıcı.",
+    "de": "Die Fenster der Stadt leuchten nachts in Neon-Pink und Cyan. Nur Optik. Dauerhaft.",
+    "es": "Las ventanas de la ciudad brillan de noche en rosa neón y cian. Solo aspecto. Permanente.",
+    "fr": "Les fenêtres de la ville brillent en rose et cyan néon la nuit. Look uniquement. Permanent.",
+    "pt": "As janelas da cidade brilham em rosa e ciano neon à noite. Só visual. Permanente.",
+    "ru": "Окна города ночью светятся неоновым розовым и голубым. Только внешний вид. Навсегда.",
+    "ja": "夜になると、都市の窓がネオンのピンクとシアンに光ります。見た目だけ。永久。",
+    "ko": "밤이 되면 도시 창문이 네온 핑크와 청록색으로 빛나요. 외형만 바뀌어요. 영구 적용.",
+    "hi": "रात में शहर की खिड़कियां नीऑन गुलाबी और सियान रंग में चमकती हैं। केवल रूप बदलता है। स्थायी।"
+   }
+  },
+  {
+   "slug": "room_retro",
+   "id": "com.coddykit.voltcity.room_retro",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 1.49,
+   "price_tiers_usd": {
+    "T1_high": 1.49,
+    "T2_upper_mid": 0.89,
+    "T3_lower_mid": 0.52,
+    "T4_low": 0.33
+   },
+   "group": "looks",
+   "grants": [
+    "room_retro"
+   ],
+   "entitlements": [
+    "room_retro"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Retro Control Room",
+    "tr": "Retro Kontrol Odası",
+    "de": "Retro-Leitstelle",
+    "es": "Sala de control retro",
+    "fr": "Salle de contrôle rétro",
+    "pt": "Sala de Controle Retrô",
+    "ru": "Ретро-диспетчерская",
+    "ja": "レトロ管制室",
+    "ko": "레트로 관제실",
+    "hi": "रेट्रो कंट्रोल रूम"
+   },
+   "desc": {
+    "en": "A warm retro colour scheme for the control-room screens. Looks only. Permanent.",
+    "tr": "Kontrol odası ekranları için sıcak bir retro renk düzeni. Yalnızca görünüm. Kalıcı.",
+    "de": "Ein warmes Retro-Farbschema für die Bildschirme der Leitstelle. Nur Optik. Dauerhaft.",
+    "es": "Un esquema de colores retro y cálido para las pantallas de la sala de control. Solo aspecto. Permanente.",
+    "fr": "Une palette rétro chaleureuse pour les écrans de la salle de contrôle. Look uniquement. Permanent.",
+    "pt": "Um esquema de cores retrô e quente para as telas da sala de controle. Só visual. Permanente.",
+    "ru": "Тёплая ретро-палитра для экранов диспетчерской. Только внешний вид. Навсегда.",
+    "ja": "管制室の画面を温かみのあるレトロな配色にします。見た目だけ。永久。",
+    "ko": "관제실 화면을 따뜻한 레트로 색감으로 바꿔요. 외형만 바뀌어요. 영구 적용.",
+    "hi": "कंट्रोल रूम की स्क्रीन के लिए गर्म रेट्रो रंग योजना। केवल रूप बदलता है। स्थायी।"
+   }
+  },
+  {
+   "slug": "cosmetics_all",
+   "id": "com.coddykit.voltcity.cosmetics_all",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 6.99,
+   "price_tiers_usd": {
+    "T1_high": 6.99,
+    "T2_upper_mid": 4.19,
+    "T3_lower_mid": 2.45,
+    "T4_low": 1.54
+   },
+   "group": "looks",
+   "grants": [
+    "livery_sunset",
+    "livery_arctic",
+    "pylons_deco",
+    "blades_candy",
+    "skyline_neon",
+    "room_retro"
+   ],
+   "entitlements": [
+    "livery_sunset",
+    "livery_arctic",
+    "pylons_deco",
+    "blades_candy",
+    "skyline_neon",
+    "room_retro"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Style Collection",
+    "tr": "Stil Koleksiyonu",
+    "de": "Stil-Kollektion",
+    "es": "Colección de estilos",
+    "fr": "Collection de styles",
+    "pt": "Coleção de Estilos",
+    "ru": "Коллекция стилей",
+    "ja": "スタイルコレクション",
+    "ko": "스타일 컬렉션",
+    "hi": "स्टाइल कलेक्शन"
+   },
+   "desc": {
+    "en": "All six looks: Sunset and Arctic liveries, Art Deco pylons, candy turbines, neon skyline and the retro control room. Permanent.",
+    "tr": "Altı görünümün tamamı: Gün Batımı ve Kutup kamyon boyaları, Art Deco direkleri, şeker çizgili türbinler, neon şehir pencereleri ve retro kontrol odası. Kalıcı.",
+    "de": "Alle sechs Looks: Sonnenuntergangs- und Arktis-Lackierungen, Art-déco-Masten, Zuckerstreifen-Turbinen, Neon-Skyline und die Retro-Leitstelle. Dauerhaft.",
+    "es": "Los seis estilos: librea atardecer y ártica, torres Art Déco, turbinas de caramelo, skyline neón y la sala de control retro. Permanente.",
+    "fr": "Les six looks : livrées Coucher de soleil et Arctique, pylônes Art déco, éoliennes bonbon, skyline néon et salle de contrôle rétro. Permanent.",
+    "pt": "Os seis visuais: pinturas Pôr do Sol e Ártico, postes Art Déco, turbinas listradas, janelas neon e a sala de controle retrô. Permanente.",
+    "ru": "Все шесть образов: окраски «Закат» и «Арктика», опоры в стиле ар-деко, полосатые турбины, неоновые окна и ретро-диспетчерская. Навсегда.",
+    "ja": "見た目すべて: サンセットとアークティックの塗装、アールデコの送電塔、キャンディ柄の風車、ネオンの夜景、レトロ管制室。永久。",
+    "ko": "외형 전부: 선셋과 아크틱 도색, 아르데코 송전탑, 캔디 터빈, 네온 스카이라인, 레트로 관제실. 영구 적용.",
+    "hi": "सभी छह रूप: सनसेट और आर्कटिक पेंट, आर्ट डेको पाइलन, कैंडी टरबाइन, नीऑन स्काइलाइन और रेट्रो कंट्रोल रूम। स्थायी।"
+   }
+  },
+  {
+   "slug": "starter",
+   "id": "com.coddykit.voltcity.starter",
+   "kind": "permanent",
+   "play_type": "non_consumable (one-time managed product)",
+   "usd": 2.99,
+   "price_tiers_usd": {
+    "T1_high": 2.99,
+    "T2_upper_mid": 1.79,
+    "T3_lower_mid": 1.05,
+    "T4_low": 0.66
+   },
+   "group": "offer",
+   "grants": [
+    "forecast_plus",
+    "livery_sunset"
+   ],
+   "entitlements": [
+    "forecast_plus",
+    "livery_sunset"
+   ],
+   "ad_free": false,
+   "name": {
+    "en": "Starter Kit",
+    "tr": "Başlangıç Paketi",
+    "de": "Starter-Paket",
+    "es": "Kit de inicio",
+    "fr": "Kit de départ",
+    "pt": "Kit Inicial",
+    "ru": "Стартовый набор",
+    "ja": "スターターキット",
+    "ko": "스타터 키트",
+    "hi": "स्टार्टर किट"
+   },
+   "desc": {
+    "en": "The Long-Range Forecast plus the Sunset truck livery, at a starter price. One-time offer. Permanent.",
+    "tr": "Uzun Menzilli Tahmin ile Gün Batımı kamyon boyası, başlangıç fiyatına. Tek seferlik teklif. Kalıcı.",
+    "de": "Die Langzeitprognose und die Sonnenuntergang-Lackierung zum Einstiegspreis. Einmaliges Angebot. Dauerhaft.",
+    "es": "El pronóstico a largo plazo y la librea atardecer de camiones, a precio de inicio. Oferta única. Permanente.",
+    "fr": "Les prévisions longue portée et la livrée Coucher de soleil, à prix de départ. Offre unique. Permanent.",
+    "pt": "A Previsão de Longo Alcance mais a pintura Pôr do Sol dos caminhões, por um preço inicial. Oferta única. Permanente.",
+    "ru": "Дальний прогноз и закатная окраска машин по стартовой цене. Разовое предложение. Навсегда.",
+    "ja": "長期予報とサンセット・トラック塗装のセットを入門価格で。一回限りのオファー。永久。",
+    "ko": "장기 예보와 선셋 트럭 도색을 입문 가격에 담았어요. 한정 특가. 영구 적용.",
+    "hi": "लंबा पूर्वानुमान और सनसेट ट्रक पेंट, शुरुआती कीमत पर। एक बार का ऑफ़र। स्थायी।"
+   }
+  },
+  {
+   "slug": "cash_s",
+   "id": "com.coddykit.voltcity.cash_s",
+   "kind": "consumable",
+   "play_type": "consumable (one-time managed product, consumed after delivery)",
+   "usd": 0.99,
+   "price_tiers_usd": {
+    "T1_high": 0.99,
+    "T2_upper_mid": 0.59,
+    "T3_lower_mid": 0.35,
+    "T4_low": 0.22
+   },
+   "group": "budget",
+   "grants": [],
+   "entitlements": [],
+   "ad_free": false,
+   "name": {
+    "en": "Small Budget",
+    "tr": "Küçük Bütçe",
+    "de": "Kleines Budget",
+    "es": "Presupuesto pequeño",
+    "fr": "Petit budget",
+    "pt": "Pequeno Orçamento",
+    "ru": "Небольшой бюджет",
+    "ja": "少額の予算",
+    "ko": "소규모 예산",
+    "hi": "छोटा बजट"
+   },
+   "desc": {
+    "en": "Adds 1 day of your current income to the city budget at once. Added once on this device, never restored.",
+    "tr": "Şehir bütçesine mevcut gelirinin 1 günlüğünü hemen ekler. Bu cihazda bir kez eklenir, asla geri yüklenmez.",
+    "de": "Füllt das Stadtbudget sofort um 1 Tag deines aktuellen Einkommens auf. Wird einmal auf diesem Gerät gutgeschrieben und nie wiederhergestellt.",
+    "es": "Añade de golpe 1 día de tus ingresos actuales al presupuesto de la ciudad. Se añade una vez en este dispositivo y nunca se restaura.",
+    "fr": "Ajoute d'un coup 1 jour de revenus actuels au budget de la ville. Ajouté une seule fois sur cet appareil, jamais restauré.",
+    "pt": "Adiciona de uma vez 1 dia da renda atual ao orçamento da cidade. Adicionado uma vez neste aparelho, nunca restaurado.",
+    "ru": "Сразу добавляет в бюджет города 1 день текущего дохода. Добавляется один раз на этом устройстве, не восстанавливается.",
+    "ja": "現在の収入1日分を都市の予算にすぐ追加します。この端末では一度だけ追加され、復元はされません。",
+    "ko": "현재 수입의 1일치를 도시 예산에 바로 더해요. 이 기기에서 한 번만 추가되며 복원되지 않아요.",
+    "hi": "आपकी मौजूदा कमाई का 1 दिन शहर के बजट में तुरंत जुड़ता है। इस डिवाइस पर एक बार जुड़ता है, वापस नहीं आता।"
+   }
+  },
+  {
+   "slug": "cash_m",
+   "id": "com.coddykit.voltcity.cash_m",
+   "kind": "consumable",
+   "play_type": "consumable (one-time managed product, consumed after delivery)",
+   "usd": 2.49,
+   "price_tiers_usd": {
+    "T1_high": 2.49,
+    "T2_upper_mid": 1.49,
+    "T3_lower_mid": 0.87,
+    "T4_low": 0.55
+   },
+   "group": "budget",
+   "grants": [],
+   "entitlements": [],
+   "ad_free": false,
+   "name": {
+    "en": "Budget Boost",
+    "tr": "Bütçe Desteği",
+    "de": "Budget-Schub",
+    "es": "Impulso de presupuesto",
+    "fr": "Coup de pouce budget",
+    "pt": "Reforço de Orçamento",
+    "ru": "Бюджетный буст",
+    "ja": "予算ブースト",
+    "ko": "예산 부스트",
+    "hi": "बजट बूस्ट"
+   },
+   "desc": {
+    "en": "Adds 2.5 days of your current income to the city budget at once. Added once on this device, never restored.",
+    "tr": "Şehir bütçesine mevcut gelirinin 2.5 günlüğünü hemen ekler. Bu cihazda bir kez eklenir, asla geri yüklenmez.",
+    "de": "Füllt das Stadtbudget sofort um 2.5 Tage deines aktuellen Einkommens auf. Wird einmal auf diesem Gerät gutgeschrieben und nie wiederhergestellt.",
+    "es": "Añade de golpe 2.5 días de tus ingresos actuales al presupuesto de la ciudad. Se añade una vez en este dispositivo y nunca se restaura.",
+    "fr": "Ajoute d'un coup 2,5 jours de revenus actuels au budget de la ville. Ajouté une seule fois sur cet appareil, jamais restauré.",
+    "pt": "Adiciona de uma vez 2,5 dias da renda atual ao orçamento da cidade. Adicionado uma vez neste aparelho, nunca restaurado.",
+    "ru": "Сразу добавляет в бюджет города 2,5 дня текущего дохода. Добавляется один раз на этом устройстве, не восстанавливается.",
+    "ja": "現在の収入2.5日分を都市の予算にすぐ追加します。この端末では一度だけ追加され、復元はされません。",
+    "ko": "현재 수입의 2.5일치를 도시 예산에 바로 더해요. 이 기기에서 한 번만 추가되며 복원되지 않아요.",
+    "hi": "आपकी मौजूदा कमाई के 2.5 दिन शहर के बजट में तुरंत जुड़ते हैं। इस डिवाइस पर एक बार जुड़ता है, वापस नहीं आता।"
+   }
+  },
+  {
+   "slug": "cash_l",
+   "id": "com.coddykit.voltcity.cash_l",
+   "kind": "consumable",
+   "play_type": "consumable (one-time managed product, consumed after delivery)",
+   "usd": 4.99,
+   "price_tiers_usd": {
+    "T1_high": 4.99,
+    "T2_upper_mid": 2.99,
+    "T3_lower_mid": 1.75,
+    "T4_low": 1.1
+   },
+   "group": "budget",
+   "grants": [],
+   "entitlements": [],
+   "ad_free": false,
+   "name": {
+    "en": "Big Budget",
+    "tr": "Büyük Bütçe",
+    "de": "Großes Budget",
+    "es": "Gran presupuesto",
+    "fr": "Gros budget",
+    "pt": "Grande Orçamento",
+    "ru": "Большой бюджет",
+    "ja": "大型の予算",
+    "ko": "대형 예산",
+    "hi": "बड़ा बजट"
+   },
+   "desc": {
+    "en": "Adds 5 days of your current income to the city budget at once. Added once on this device, never restored.",
+    "tr": "Şehir bütçesine mevcut gelirinin 5 günlüğünü hemen ekler. Bu cihazda bir kez eklenir, asla geri yüklenmez.",
+    "de": "Füllt das Stadtbudget sofort um 5 Tage deines aktuellen Einkommens auf. Wird einmal auf diesem Gerät gutgeschrieben und nie wiederhergestellt.",
+    "es": "Añade de golpe 5 días de tus ingresos actuales al presupuesto de la ciudad. Se añade una vez en este dispositivo y nunca se restaura.",
+    "fr": "Ajoute d'un coup 5 jours de revenus actuels au budget de la ville. Ajouté une seule fois sur cet appareil, jamais restauré.",
+    "pt": "Adiciona de uma vez 5 dias da renda atual ao orçamento da cidade. Adicionado uma vez neste aparelho, nunca restaurado.",
+    "ru": "Сразу добавляет в бюджет города 5 дней текущего дохода. Добавляется один раз на этом устройстве, не восстанавливается.",
+    "ja": "現在の収入5日分を都市の予算にすぐ追加します。この端末では一度だけ追加され、復元はされません。",
+    "ko": "현재 수입의 5일치를 도시 예산에 바로 더해요. 이 기기에서 한 번만 추가되며 복원되지 않아요.",
+    "hi": "आपकी मौजूदा कमाई के 5 दिन शहर के बजट में तुरंत जुड़ते हैं। इस डिवाइस पर एक बार जुड़ता है, वापस नहीं आता।"
+   }
+  },
+  {
+   "slug": "cash_xl",
+   "id": "com.coddykit.voltcity.cash_xl",
+   "kind": "consumable",
+   "play_type": "consumable (one-time managed product, consumed after delivery)",
+   "usd": 8.99,
+   "price_tiers_usd": {
+    "T1_high": 8.99,
+    "T2_upper_mid": 5.39,
+    "T3_lower_mid": 3.15,
+    "T4_low": 1.98
+   },
+   "group": "budget",
+   "grants": [],
+   "entitlements": [],
+   "ad_free": false,
+   "name": {
+    "en": "City Fund",
+    "tr": "Şehir Fonu",
+    "de": "Stadtfonds",
+    "es": "Fondo de la ciudad",
+    "fr": "Fonds de la ville",
+    "pt": "Fundo da Cidade",
+    "ru": "Городской фонд",
+    "ja": "都市基金",
+    "ko": "도시 기금",
+    "hi": "शहर फंड"
+   },
+   "desc": {
+    "en": "Adds 10 days of your current income to the city budget at once. Added once on this device, never restored.",
+    "tr": "Şehir bütçesine mevcut gelirinin 10 günlüğünü hemen ekler. Bu cihazda bir kez eklenir, asla geri yüklenmez.",
+    "de": "Füllt das Stadtbudget sofort um 10 Tage deines aktuellen Einkommens auf. Wird einmal auf diesem Gerät gutgeschrieben und nie wiederhergestellt.",
+    "es": "Añade de golpe 10 días de tus ingresos actuales al presupuesto de la ciudad. Se añade una vez en este dispositivo y nunca se restaura.",
+    "fr": "Ajoute d'un coup 10 jours de revenus actuels au budget de la ville. Ajouté une seule fois sur cet appareil, jamais restauré.",
+    "pt": "Adiciona de uma vez 10 dias da renda atual ao orçamento da cidade. Adicionado uma vez neste aparelho, nunca restaurado.",
+    "ru": "Сразу добавляет в бюджет города 10 дней текущего дохода. Добавляется один раз на этом устройстве, не восстанавливается.",
+    "ja": "現在の収入10日分を都市の予算にすぐ追加します。この端末では一度だけ追加され、復元はされません。",
+    "ko": "현재 수입의 10일치를 도시 예산에 바로 더해요. 이 기기에서 한 번만 추가되며 복원되지 않아요.",
+    "hi": "आपकी मौजूदा कमाई के 10 दिन शहर के बजट में तुरंत जुड़ते हैं। इस डिवाइस पर एक बार जुड़ता है, वापस नहीं आता।"
+   }
+  },
+  {
+   "slug": "comeback",
+   "id": "com.coddykit.voltcity.comeback",
+   "kind": "consumable",
+   "play_type": "consumable (one-time managed product, consumed after delivery)",
+   "usd": 0.99,
+   "price_tiers_usd": {
+    "T1_high": 0.99,
+    "T2_upper_mid": 0.59,
+    "T3_lower_mid": 0.35,
+    "T4_low": 0.22
+   },
+   "group": "offer",
+   "grants": [],
+   "entitlements": [],
+   "ad_free": false,
+   "name": {
+    "en": "Welcome Back Fund",
+    "tr": "Hoş Geldin Fonu",
+    "de": "Willkommen-zurück-Fonds",
+    "es": "Fondo de bienvenida",
+    "fr": "Fonds de retour",
+    "pt": "Fundo de Boas-Vindas",
+    "ru": "Фонд возвращения",
+    "ja": "おかえり基金",
+    "ko": "복귀 지원금",
+    "hi": "वापसी फंड"
+   },
+   "desc": {
+    "en": "1 day of your current income to restart the city after a break. Added once on this device, never restored.",
+    "tr": "Ara verdikten sonra şehri yeniden başlatmak için mevcut gelirinin 1 günlüğü. Bu cihazda bir kez eklenir, asla geri yüklenmez.",
+    "de": "1 Tag deines aktuellen Einkommens, um die Stadt nach einer Pause neu zu starten. Wird einmal auf diesem Gerät gutgeschrieben und nie wiederhergestellt.",
+    "es": "1 día de tus ingresos actuales para reiniciar la ciudad tras una pausa. Se añade una vez en este dispositivo y nunca se restaura.",
+    "fr": "1 jour de revenus actuels pour relancer la ville après une pause. Ajouté une seule fois sur cet appareil, jamais restauré.",
+    "pt": "1 dia da renda atual para reerguer a cidade depois de uma pausa. Adicionado uma vez neste aparelho, nunca restaurado.",
+    "ru": "1 день текущего дохода, чтобы снова запустить город после перерыва. Добавляется один раз на этом устройстве, не восстанавливается.",
+    "ja": "休止のあとに都市を再開するための、現在の収入1日分。この端末では一度だけ追加され、復元はされません。",
+    "ko": "쉬고 난 뒤 도시를 다시 시작하도록 현재 수입의 1일치를 드려요. 이 기기에서 한 번만 추가되며 복원되지 않아요.",
+    "hi": "ब्रेक के बाद शहर फिर से शुरू करने के लिए आपकी मौजूदा कमाई का 1 दिन। इस डिवाइस पर एक बार जुड़ता है, वापस नहीं आता।"
+   }
+  },
+  {
+   "slug": "storm_kit",
+   "id": "com.coddykit.voltcity.storm_kit",
+   "kind": "consumable",
+   "play_type": "consumable (one-time managed product, consumed after delivery)",
+   "usd": 1.99,
+   "price_tiers_usd": {
+    "T1_high": 1.99,
+    "T2_upper_mid": 1.19,
+    "T3_lower_mid": 0.7,
+    "T4_low": 0.44
+   },
+   "group": "offer",
+   "grants": [],
+   "entitlements": [],
+   "ad_free": false,
+   "name": {
+    "en": "Storm Recovery Fund",
+    "tr": "Fırtına Onarım Fonu",
+    "de": "Sturm-Wiederaufbaufonds",
+    "es": "Fondo de recuperación por tormenta",
+    "fr": "Fonds après tempête",
+    "pt": "Fundo de Recuperação",
+    "ru": "Фонд после шторма",
+    "ja": "嵐からの復旧基金",
+    "ko": "폭풍 복구 기금",
+    "hi": "तूफ़ान रिकवरी फंड"
+   },
+   "desc": {
+    "en": "3 days of your current income to rebuild after a hard storm shift. Added once on this device, never restored.",
+    "tr": "Sert bir fırtına vardiyasından sonra yeniden inşa için mevcut gelirinin 3 günlüğü. Bu cihazda bir kez eklenir, asla geri yüklenmez.",
+    "de": "3 Tage deines aktuellen Einkommens, um nach einer heftigen Sturmschicht wieder aufzubauen. Wird einmal auf diesem Gerät gutgeschrieben und nie wiederhergestellt.",
+    "es": "3 días de tus ingresos actuales para reconstruir tras un turno de tormenta fuerte. Se añade una vez en este dispositivo y nunca se restaura.",
+    "fr": "3 jours de revenus actuels pour reconstruire après un service de tempête difficile. Ajouté une seule fois sur cet appareil, jamais restauré.",
+    "pt": "3 dias da renda atual para reconstruir depois de um turno de tempestade forte. Adicionado uma vez neste aparelho, nunca restaurado.",
+    "ru": "3 дня текущего дохода, чтобы восстановить город после тяжёлой штормовой смены. Добавляется один раз на этом устройстве, не восстанавливается.",
+    "ja": "激しい嵐のシフトのあとに立て直すための、現在の収入3日分。この端末では一度だけ追加され、復元はされません。",
+    "ko": "강한 폭풍 교대 뒤 재건을 위해 현재 수입 3일치를 드려요. 이 기기에서 한 번만 추가되며 복원되지 않아요.",
+    "hi": "भारी तूफ़ान वाली शिफ्ट के बाद दोबारा बनाने के लिए आपकी मौजूदा कमाई के 3 दिन। इस डिवाइस पर एक बार जुड़ता है, वापस नहीं आता।"
+   }
+  }
+ ]
+}

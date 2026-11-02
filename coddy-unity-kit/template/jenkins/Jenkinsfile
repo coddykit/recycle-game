@@ -1,0 +1,90 @@
+// Games/@SLUG@-mobile (UNITY) — Linux build-only job. NOT WIRED: create the job only after (1) the project was opened
+// once in Unity 6 LTS and ProjectSettings/ProjectVersion.txt + the .meta files are committed, (2) the same Unity version +
+// Android modules are installed on the linux-android agent, (3) the licence credential exists (games/volt-city/docs/UNITY.md §7).
+// Until then every run stops in "Wiring check" with WIRED=false. Never uploads; the Patron uploads the AAB + symbols in
+// one Play edit (play_upload.mjs SYMBOLS_ZIP=...). No secrets in this file: Jenkins credentials only.
+pipeline {
+    agent { label 'linux-android' }
+    options {
+        disableConcurrentBuilds()
+        timeout(time: 180, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        skipDefaultCheckout()
+    }
+    parameters {
+        booleanParam(name: 'WIRED', defaultValue: false, description: 'Set true only once games/volt-city/docs/UNITY.md §7 is done (editor + licence on the agent)')
+        choice(name: 'RELEASE', choices: ['internal', 'production', 'dev'], description: 'internal/production = signed release AAB (preflight --production); dev = development build')
+    }
+    environment {
+        REPO_GIT_URL = 'git@github.com:coddykit/CoddyApps.git'
+        GAME = '@SLUG@'
+        TMPDIR = "${HOME}/tmp"
+        GIT_LFS_SKIP_SMUDGE = '1'
+        // public AdMob APP id (store-automation/.env ADMOB_APP_ID_<SLUG>_ANDROID, P4/P8 Patron): set it here when it exists;
+        // @NS@AndroidBuild writes it into GoogleMobileAdsSettings for the build only. Empty = release builds fail closed.
+        @PREFIX@_ADMOB_APP_ID = ''
+    }
+    stages {
+        stage('Wiring check') {
+            steps {
+                script {
+                    if (!params.WIRED) {
+                        currentBuild.result = 'NOT_BUILT'
+                        error('Games/@SLUG@-mobile (Unity) is NOT WIRED yet - see games/volt-city/docs/UNITY.md section 7')
+                    }
+                }
+            }
+        }
+        stage('Checkout') {
+            steps {
+                sh '''
+                    set -eu
+                    mkdir -p "$TMPDIR"
+                    if [ ! -d repo/.git ]; then
+                        git clone --filter=blob:none --no-checkout "$REPO_GIT_URL" repo
+                        git -C repo sparse-checkout init --cone
+                    fi
+                    # games/tools/ads + ui + unity: the generators' --check gates and the kit drift gate read the fleet sources
+                    git -C repo sparse-checkout set "games/$GAME" games/tools/ads games/tools/ui games/tools/unity games/jenkins
+                    git -C repo fetch origin main
+                    git -C repo checkout -f -B main origin/main
+                    git -C repo clean -fdx -- "games/$GAME/jenkins" "games/$GAME/unity/Build"
+                    git -C repo log -1 --format='commit %h %ci %s'
+                '''
+            }
+        }
+        stage('Preflight') {
+            steps {
+                sh '''
+                    if [ "$RELEASE" = "dev" ]; then python3 "repo/games/$GAME/jenkins/preflight.py";
+                    else python3 "repo/games/$GAME/jenkins/preflight.py" --production; fi
+                '''
+            }
+        }
+        stage('Tests + Android build-only') {
+            environment { @PREFIX@_RELEASE = "${params.RELEASE}" }
+            steps {
+                withCredentials([
+                    file(credentialsId: 'unity-license-ulf', variable: 'UNITY_LICENSE_FILE'),
+                    usernamePassword(credentialsId: 'unity-account', usernameVariable: 'UNITY_EMAIL', passwordVariable: 'UNITY_PASSWORD'),
+                    file(credentialsId: '@SLUGNODASH@-upload-keystore', variable: '@PREFIX@_KEYSTORE'),
+                    string(credentialsId: '@SLUGNODASH@-keystore-pass', variable: '@PREFIX@_KEYSTORE_PASS'),
+                    string(credentialsId: '@SLUGNODASH@-key-pass', variable: '@PREFIX@_KEY_PASS'),
+                ]) {
+                    // Library/ is kept between runs in the workspace (first import of the project is the slow part)
+                    sh 'sh "repo/games/$GAME/jenkins/build_unity_android.sh" build'
+                }
+            }
+        }
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: 'repo/games/@SLUG@/unity/Build/android/@SLUG@.aab,repo/games/@SLUG@/unity/Build/android/@SLUG@.symbols.zip,repo/games/@SLUG@/unity/Build/android/version_code.txt,repo/games/@SLUG@/unity/Build/android/release.json', fingerprint: true
+            }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'repo/games/@SLUG@/unity/Build/android/*.log,repo/games/@SLUG@/unity/Build/android/preflight.txt,repo/games/@SLUG@/unity/Build/android/editmode.xml', allowEmptyArchive: true
+        }
+    }
+}

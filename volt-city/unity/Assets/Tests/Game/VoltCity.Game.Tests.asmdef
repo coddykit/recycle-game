@@ -1,0 +1,26 @@
+{
+    "name": "VoltCity.Game.Tests",
+    "rootNamespace": "VoltCity.Game.Tests",
+    "references": [
+        "VoltCity.Game",
+        "VoltCity.Sim",
+        "CoddyKit.Core",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,46 @@
+{
+ "_doc": "Screenshot slide texts (store/SCREENSHOTS.md). headline <= 28 chars (ja/ko <= 14), chip <= 28 chars (ja/ko <= 14); feature = feature-graphic tagline <= 32 chars.",
+ "shots": [
+  {
+   "id": "01-peak",
+   "headline": "Keep the city's lights on",
+   "chip": "Real-time power grid"
+  },
+  {
+   "id": "02-storm",
+   "headline": "Send crews when storms hit",
+   "chip": "15 kinds of events"
+  },
+  {
+   "id": "03-balance",
+   "headline": "Balance supply and demand",
+   "chip": "Steam, gas, hydro, wind, sun"
+  },
+  {
+   "id": "04-forecast",
+   "headline": "Plan ahead for heatwaves",
+   "chip": "Next-shift forecast"
+  },
+  {
+   "id": "05-ripple",
+   "headline": "Light up new districts",
+   "chip": "8 districts"
+  },
+  {
+   "id": "06-build",
+   "headline": "Build a cleaner grid",
+   "chip": "50 investments"
+  },
+  {
+   "id": "07-shed",
+   "headline": "Decide who stays lit",
+   "chip": "Hospital Hill comes last"
+  },
+  {
+   "id": "08-report",
+   "headline": "Earn three-star shifts",
+   "chip": "5 chapters + endless mode"
+  }
+ ],
+ "feature": "Keep the lights on"
+}

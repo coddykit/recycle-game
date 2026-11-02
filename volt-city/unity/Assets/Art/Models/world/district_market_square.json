@@ -1,0 +1,177 @@
+{
+ "group": "world",
+ "id": "district_market_square",
+ "material": "vc_world",
+ "palette": {
+  "blue": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#2F6CC8"
+  },
+  "concreteL": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#CFCBC2"
+  },
+  "copper": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#5FA391"
+  },
+  "cream": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#F1E3C2"
+  },
+  "dgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#5A5F66"
+  },
+  "e_lamp": {
+   "code": 0.35,
+   "index": 7,
+   "srgb": "#FFD9A0"
+  },
+  "e_pool": {
+   "code": 0.75,
+   "index": 15,
+   "srgb": "#4C5057"
+  },
+  "green": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#3E9A55"
+  },
+  "l_warm": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FFE2B0"
+  },
+  "lgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C2C6CA"
+  },
+  "orange": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#EE8A2E"
+  },
+  "red": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#D23B36"
+  },
+  "roofB": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#3E5A7A"
+  },
+  "roofG": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#5D6A5E"
+  },
+  "roofK": {
+   "code": 0.6,
+   "index": 12,
+   "srgb": "#3C424B"
+  },
+  "roofL": {
+   "code": 0.6,
+   "index": 12,
+   "srgb": "#8F949A"
+  },
+  "roofT": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C46A47"
+  },
+  "sandstone": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#D7BF94"
+  },
+  "stone": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C6B9A2"
+  },
+  "teal": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#2A8F8C"
+  },
+  "w_brick": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#A4553D"
+  },
+  "w_brickL": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#BD6D52"
+  },
+  "w_concreteL": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#CFCBC2"
+  },
+  "w_cream": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#F1E3C2"
+  },
+  "w_plaster": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#E9DFCB"
+  },
+  "w_plasterB": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#B5CEDC"
+  },
+  "w_plasterG": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#C3D8B3"
+  },
+  "w_plasterP": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#EDC4B0"
+  },
+  "w_plasterY": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#EED69A"
+  },
+  "w_sandstone": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#D7BF94"
+  },
+  "w_stone": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#C6B9A2"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 1856,
+ "unity_bounds_max": [
+  36.7,
+  32.95,
+  145.45
+ ],
+ "unity_bounds_min": [
+  -76.7,
+  2.8,
+  44.55
+ ],
+ "uv": "UV0/UV1 per material code (vckit module doc)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

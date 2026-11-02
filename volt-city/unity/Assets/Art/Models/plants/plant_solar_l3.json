@@ -1,0 +1,42 @@
+{
+ "group": "plants",
+ "id": "plant_solar_l3",
+ "material": "vc_world",
+ "palette": {
+  "cyan": {
+   "code": 0.15,
+   "index": 3,
+   "srgb": "#39C6E0"
+  },
+  "galv": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#9EA6AD"
+  },
+  "solar": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#24406A"
+  },
+  "solarF": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#B9C2CA"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 116,
+ "unity_bounds_max": [
+  316.0,
+  5.0,
+  -184.0
+ ],
+ "unity_bounds_min": [
+  208.0,
+  1.2,
+  -273.2
+ ],
+ "uv": "UV0.x battery strip 0..1, UV0.y plant type index + .5",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

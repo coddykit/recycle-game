@@ -1,0 +1,30 @@
+{
+ "_doc": "Crew first names only (DESIGN section 11: generated names are checked against the real-people list; first names alone).",
+ "crew": [
+  "Ada",
+  "Ben",
+  "Cleo",
+  "Dev",
+  "Esra",
+  "Finn",
+  "Gia",
+  "Hugo",
+  "Ines",
+  "Jonas",
+  "Kemal",
+  "Lena",
+  "Mio",
+  "Nadia",
+  "Oskar",
+  "Priya",
+  "Quinn",
+  "Rosa",
+  "Sami",
+  "Tara",
+  "Umut",
+  "Vera",
+  "Wes",
+  "Yuki",
+  "Zara"
+ ]
+}

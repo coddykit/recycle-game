@@ -1,0 +1,57 @@
+{
+ "group": "plants",
+ "id": "plant_peaker_l1",
+ "material": "vc_world",
+ "palette": {
+  "concreteD": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#8C887F"
+  },
+  "galv": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#9EA6AD"
+  },
+  "l_warm": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FFE2B0"
+  },
+  "lgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C2C6CA"
+  },
+  "roofL": {
+   "code": 0.6,
+   "index": 12,
+   "srgb": "#8F949A"
+  },
+  "steelD": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#7A828A"
+  },
+  "white": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#F2F1EC"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 150,
+ "unity_bounds_max": [
+  294.375,
+  25.6,
+  28.6
+ ],
+ "unity_bounds_min": [
+  238.0,
+  2.6,
+  -12.0
+ ],
+ "uv": "UV0.x battery strip 0..1, UV0.y plant type index + .5",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

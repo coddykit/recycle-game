@@ -1,0 +1,174 @@
+{
+ "_doc": "DESIGN sections 3, 7, 8 numbers. Time: one shift = 240 sim s = 24 diorama hours (10 s = 1 h), fixed step 0.25 s (960 steps). Money in whole $ (fictional). The P1 balance runner (tools/balance.gd) is the gate for every number here; P1-VALIDATION.md records the tuning.",
+ "time": {
+  "step_us": 250000,
+  "shift_s": 240,
+  "steps_per_hour": 40,
+  "start_min": 360,
+  "first_shift_start_min": 1050,
+  "speeds": [
+   1,
+   2,
+   3
+  ],
+  "speed4": 4,
+  "autosave_s": 30
+ },
+ "start": {
+  "cash": 600,
+  "districts": [
+   "old_harbor",
+   "riverside"
+  ],
+  "plants": {
+   "steam": 1
+  },
+  "steam_steps": 5,
+  "battery_mode": "auto",
+  "rating_x100": 250
+ },
+ "tariff_per_mwh": 2.0,
+ "grid": {
+  "band_pct": 3,
+  "shed_pct": 5,
+  "shed_after_s": 18,
+  "over_pct": 8,
+  "over_trip_after_s": 35,
+  "restore_after_s": 5,
+  "restore_margin_pct": 3,
+  "governor_pct": 7,
+  "hospital_backup_s": 60,
+  "backup_fuel": 1.5,
+  "auto_restore": true
+ },
+ "line": {
+  "heat_per_s": 0.4,
+  "cool_per_s": 0.06,
+  "warn_pct": 70,
+  "reclose_s": 15
+ },
+ "growth": {
+  "per_shift_pm": 8,
+  "max_pm": 250
+ },
+ "crew": {
+  "speed_mps": 40,
+  "speed_upgrades_pct": [
+   125,
+   150
+  ],
+  "upkeep": 40,
+  "job_cost": 15,
+  "return_after_s": 5,
+  "first_crews": 1
+ },
+ "dr": {
+  "pct": [
+   8,
+   12
+  ],
+  "dur_s": 30,
+  "cooldown_s": 60,
+  "cost": 30
+ },
+ "import": {
+  "pct": 15,
+  "dur_s": 60
+ },
+ "rating": {
+  "u_zero_pm": 750,
+  "u_full_pm": 995,
+  "window": 5
+ },
+ "stars": {
+  "three_pm": 985,
+  "two_pm": 880
+ },
+ "co2_stars": {
+  "three": 0.25,
+  "two": 0.6
+ },
+ "offline": {
+  "cap_h": 8,
+  "share": 0.7,
+  "plus_cap_h": 16,
+  "plus_rate": 1.5,
+  "min_s": 60
+ },
+ "day": {
+  "shifts": 6.7,
+  "income_floor": 1000
+ },
+ "investment": {
+  "base": 420,
+  "mult": 1.15,
+  "payback_first": 7,
+  "payback_last": 28,
+  "value_scale": 0.27,
+  "stage_base": [
+   [
+    0,
+    855
+   ],
+   [
+    9,
+    1590
+   ],
+   [
+    15,
+    2420
+   ],
+   [
+    24,
+    4080
+   ],
+   [
+    32,
+    4000
+   ],
+   [
+    37,
+    5800
+   ],
+   [
+    43,
+    7445
+   ]
+  ]
+ },
+ "rewards": {
+  "single_max_day": 0.2,
+  "daily_max_day": 0.5,
+  "placements": {
+   "offline_x2": {
+    "cap": 1,
+    "cooldown_s": 0,
+    "cash": true
+   },
+   "shift_bonus": {
+    "cap": 3,
+    "cooldown_s": 600,
+    "cash": true,
+    "share": 0.5
+   },
+   "emergency_import": {
+    "cap": 2,
+    "cooldown_s": 900,
+    "cash": false
+   },
+   "crew_overtime": {
+    "cap": 3,
+    "cooldown_s": 300,
+    "cash": false
+   }
+  }
+ },
+ "purchases": {
+  "per_utc_day": 3,
+  "receipts_max": 512
+ },
+ "review": {
+  "min_play_s": 240,
+  "max_play_s": 300
+ }
+}

@@ -1,0 +1,27 @@
+{
+    "name": "VoltCity.World.Editor",
+    "rootNamespace": "VoltCity.WorldEditor",
+    "references": [
+        "VoltCity.World",
+        "VoltCity.Art",
+        "VoltCity.UI",
+        "VoltCity.App",
+        "VoltCity.Editor",
+        "CoddyKit.Core",
+        "CoddyKit.Runtime",
+        "CoddyKit.Editor",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

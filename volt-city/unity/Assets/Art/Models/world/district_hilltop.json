@@ -1,0 +1,102 @@
+{
+ "group": "world",
+ "id": "district_hilltop",
+ "material": "vc_world",
+ "palette": {
+  "brickD": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#84442F"
+  },
+  "dgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#5A5F66"
+  },
+  "e_lamp": {
+   "code": 0.35,
+   "index": 7,
+   "srgb": "#FFD9A0"
+  },
+  "e_pool": {
+   "code": 0.75,
+   "index": 15,
+   "srgb": "#4C5057"
+  },
+  "grassD": {
+   "code": 0.7,
+   "index": 14,
+   "srgb": "#4A7A3A"
+  },
+  "pool": {
+   "code": 0.5,
+   "index": 10,
+   "srgb": "#3FB6C8"
+  },
+  "roofG": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#5D6A5E"
+  },
+  "roofR": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#B0503A"
+  },
+  "roofT": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C46A47"
+  },
+  "w_cream": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#F1E3C2"
+  },
+  "w_plaster": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#E9DFCB"
+  },
+  "w_plasterP": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#EDC4B0"
+  },
+  "w_plasterW": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#F3EFE6"
+  },
+  "w_plasterY": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#EED69A"
+  },
+  "white": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#F2F1EC"
+  },
+  "woodL": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#B08A5C"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 1264,
+ "unity_bounds_max": [
+  -93.3,
+  28.51,
+  251.45
+ ],
+ "unity_bounds_min": [
+  -206.7,
+  16.2,
+  158.55
+ ],
+ "uv": "UV0/UV1 per material code (vckit module doc)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

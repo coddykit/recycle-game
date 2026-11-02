@@ -1,0 +1,14 @@
+{
+    "name": "@NS@.World",
+    "rootNamespace": "@NS@.World",
+    "references": ["@NS@.Sim", "@NS@.Game", "CoddyKit.Core", "CoddyKit.Runtime", "Unity.InputSystem", "Unity.RenderPipelines.Core.Runtime", "Unity.RenderPipelines.Universal.Runtime"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

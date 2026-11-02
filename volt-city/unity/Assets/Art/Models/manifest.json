@@ -1,0 +1,1554 @@
+{
+ "generator": "blender/build_art.py",
+ "kit": {
+  "apartment": 52,
+  "block": 20,
+  "containers": 84,
+  "control_tower": 86,
+  "data_hall": 60,
+  "gable_house": 16,
+  "hangar": 34,
+  "harbour_crane": 84,
+  "hospital": 134,
+  "lamp": 20,
+  "market_hall": 56,
+  "row_houses": 94,
+  "shop_row": 88,
+  "stadium": 178,
+  "terminal": 12,
+  "tower": 50,
+  "villa": 62,
+  "warehouse": 42
+ },
+ "layout_sha256": "e4eb1a98e2f4d6909bc81e73b7027e029b1f4a484ef8931e72a362b027b18e08",
+ "models": {
+  "car": {
+   "bounds_max": [
+    0.9,
+    1.456,
+    2.04
+   ],
+   "bounds_min": [
+    -0.9,
+    0.0,
+    -2.27
+   ],
+   "budget": 200,
+   "fbx": {
+    "bytes": 20876,
+    "path": "unity/Assets/Art/Models/props/car.fbx",
+    "sha256": "fa635c63a06e0f3f80a1462ef52386215e2e6ea325ba6eb679af6211437c71c8"
+   },
+   "glb": {
+    "bytes": 17712,
+    "path": "unity/Assets/Art/Models/props/car.glb",
+    "sha256": "b138580a7f1778743f715d84711c01f6efab4e61742462e0fee51975132c0c01"
+   },
+   "group": "props",
+   "keys": [
+    "carbody",
+    "carglass",
+    "l_head",
+    "l_red",
+    "tyre"
+   ],
+   "material": "vc_prop",
+   "sidecar": {
+    "bytes": 872,
+    "path": "unity/Assets/Art/Models/props/car.json",
+    "sha256": "fba625b60e919053246fe0f4d6f3b40adbbe43248b7ba01791c26ee12c45e7db"
+   },
+   "triangles": 156
+  },
+  "district_airport_flats": {
+   "bounds_max": [
+    194.12,
+    41.55,
+    -239.55
+   ],
+   "bounds_min": [
+    3.6,
+    1.4,
+    -336.45
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 51068,
+    "path": "unity/Assets/Art/Models/world/district_airport_flats.fbx",
+    "sha256": "ade3d4f09135692e424241aaab69a2b575f6ea741b933781be10d7a139264ff2"
+   },
+   "glb": {
+    "bytes": 127300,
+    "path": "unity/Assets/Art/Models/world/district_airport_flats.glb",
+    "sha256": "d022f9d2c92496a5afcdf37c1b59b1110774b2f78f5c4c19c12879a0dc99705f"
+   },
+   "group": "world",
+   "keys": [
+    "asphaltD",
+    "blue",
+    "charcoal",
+    "concreteD",
+    "concreteL",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "galv",
+    "glassD",
+    "green",
+    "grey",
+    "l_red",
+    "lgrey",
+    "red",
+    "sandstone",
+    "teal",
+    "w_glass",
+    "w_glassD",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1937,
+    "path": "unity/Assets/Art/Models/world/district_airport_flats.json",
+    "sha256": "669d6bcbde17e97cb545ac28d429eaac2dc0fab85246fdaddc22f8afd3b4340c"
+   },
+   "triangles": 1274
+  },
+  "district_hilltop": {
+   "bounds_max": [
+    -93.3,
+    28.51,
+    251.45
+   ],
+   "bounds_min": [
+    -206.7,
+    16.2,
+    158.55
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 53468,
+    "path": "unity/Assets/Art/Models/world/district_hilltop.fbx",
+    "sha256": "cf92dbd00d408601cb583c5b2ce0b14b4923182188be3bc6b6208b4f23f5a502"
+   },
+   "glb": {
+    "bytes": 130784,
+    "path": "unity/Assets/Art/Models/world/district_hilltop.glb",
+    "sha256": "eebe7d7676c7f02d92eb98bb9803333d4f4c978f7720babb4729b5ef5e0dc5b1"
+   },
+   "group": "world",
+   "keys": [
+    "brickD",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "grassD",
+    "pool",
+    "roofG",
+    "roofR",
+    "roofT",
+    "w_cream",
+    "w_plaster",
+    "w_plasterP",
+    "w_plasterW",
+    "w_plasterY",
+    "white",
+    "woodL"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1650,
+    "path": "unity/Assets/Art/Models/world/district_hilltop.json",
+    "sha256": "f459715db483622000bfa1be8d111b309aab1c9ba8938ca39b47092055390ba1"
+   },
+   "triangles": 1264
+  },
+  "district_hospital_hill": {
+   "bounds_max": [
+    90.7,
+    35.95,
+    276.45
+   ],
+   "bounds_min": [
+    -14.7,
+    12.2,
+    187.55
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 46060,
+    "path": "unity/Assets/Art/Models/world/district_hospital_hill.fbx",
+    "sha256": "6d435a4be0507c406045a0df1e550f61713ac726a03f05c0b17c78306746a34c"
+   },
+   "glb": {
+    "bytes": 111428,
+    "path": "unity/Assets/Art/Models/world/district_hospital_hill.glb",
+    "sha256": "0cc1897e2fde7575193df437a6e790e727ab4804bca0ae8a78d773e2d67069ea"
+   },
+   "group": "world",
+   "keys": [
+    "asphaltD",
+    "blue",
+    "charcoal",
+    "concreteL",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "glassD",
+    "grassD",
+    "green",
+    "grey",
+    "lgrey",
+    "red",
+    "roofL",
+    "roofT",
+    "sandstone",
+    "teal",
+    "w_concreteL",
+    "w_cream",
+    "w_plaster",
+    "w_plasterW",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 2087,
+    "path": "unity/Assets/Art/Models/world/district_hospital_hill.json",
+    "sha256": "7685e827e46311ccdb8ce3018c301d0b7e4c4c1252254dbb521d6266f94c721c"
+   },
+   "triangles": 1108
+  },
+  "district_market_square": {
+   "bounds_max": [
+    36.7,
+    32.95,
+    145.45
+   ],
+   "bounds_min": [
+    -76.7,
+    2.8,
+    44.55
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 67692,
+    "path": "unity/Assets/Art/Models/world/district_market_square.fbx",
+    "sha256": "5acaa65760004b92d9c7f33386511ab2ff00ff4b893c322420653426ddf33a02"
+   },
+   "glb": {
+    "bytes": 185996,
+    "path": "unity/Assets/Art/Models/world/district_market_square.glb",
+    "sha256": "d59567f942dc0809a370b82e7339e626e9772c01951a1de34524b5246ee10909"
+   },
+   "group": "world",
+   "keys": [
+    "blue",
+    "concreteL",
+    "copper",
+    "cream",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "green",
+    "l_warm",
+    "lgrey",
+    "orange",
+    "red",
+    "roofB",
+    "roofG",
+    "roofK",
+    "roofL",
+    "roofT",
+    "sandstone",
+    "stone",
+    "teal",
+    "w_brick",
+    "w_brickL",
+    "w_concreteL",
+    "w_cream",
+    "w_plaster",
+    "w_plasterB",
+    "w_plasterG",
+    "w_plasterP",
+    "w_plasterY",
+    "w_sandstone",
+    "w_stone"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 2740,
+    "path": "unity/Assets/Art/Models/world/district_market_square.json",
+    "sha256": "4b3ea3e0c56bbff690c3cf59e07b2f0284704615f9f5cbfe3477d789233e07b5"
+   },
+   "triangles": 1856
+  },
+  "district_old_harbor": {
+   "bounds_max": [
+    -97.3,
+    29.55,
+    -92.96
+   ],
+   "bounds_min": [
+    -242.0,
+    -5.0,
+    -202.45
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 71276,
+    "path": "unity/Assets/Art/Models/world/district_old_harbor.fbx",
+    "sha256": "96c777ccec21cfb45a5caee15a3bd3ff01387e083503798e83b7d472fbc8e1eb"
+   },
+   "glb": {
+    "bytes": 211292,
+    "path": "unity/Assets/Art/Models/world/district_old_harbor.glb",
+    "sha256": "aa4e3832f0ebe4b25356285cc8071124314b552269428ce8829411d07b78ea35"
+   },
+   "group": "world",
+   "keys": [
+    "brickD",
+    "concreteL",
+    "container1",
+    "container2",
+    "container3",
+    "container4",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "glassD",
+    "l_red",
+    "navy",
+    "orange",
+    "red",
+    "roofG",
+    "roofK",
+    "roofR",
+    "roofT",
+    "steelD",
+    "w_brick",
+    "w_brickD",
+    "w_brickL",
+    "w_galv",
+    "w_plaster",
+    "w_plasterY",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 2383,
+    "path": "unity/Assets/Art/Models/world/district_old_harbor.json",
+    "sha256": "20325a8df09117c6e79862dcf74d5000f24748e6829a6fbdd40c473b61554fea"
+   },
+   "triangles": 2078
+  },
+  "district_riverside": {
+   "bounds_max": [
+    1.7,
+    23.95,
+    16.45
+   ],
+   "bounds_min": [
+    -111.7,
+    1.8,
+    -76.45
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 62332,
+    "path": "unity/Assets/Art/Models/world/district_riverside.fbx",
+    "sha256": "053c673462f414d8603ab8a0729a69b43e7bd601604c869632c29bd438519e3f"
+   },
+   "glb": {
+    "bytes": 163360,
+    "path": "unity/Assets/Art/Models/world/district_riverside.glb",
+    "sha256": "395bbbc17ca6295c50cb31156b37ddb07aae70eea3e3ec9282103f6a25881aff"
+   },
+   "group": "world",
+   "keys": [
+    "brickD",
+    "concreteL",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "grassD",
+    "lgrey",
+    "roofB",
+    "roofG",
+    "roofK",
+    "roofR",
+    "roofT",
+    "w_brick",
+    "w_concreteL",
+    "w_cream",
+    "w_plaster",
+    "w_plasterB",
+    "w_plasterG",
+    "w_plasterP",
+    "w_plasterY"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1947,
+    "path": "unity/Assets/Art/Models/world/district_riverside.json",
+    "sha256": "21efc2b9117912d2688034ed79cdbb889b8acae6daa0377f817f5524982fa9a0"
+   },
+   "triangles": 1604
+  },
+  "district_stadium_row": {
+   "bounds_max": [
+    198.0,
+    38.95,
+    -79.55
+   ],
+   "bounds_min": [
+    78.0,
+    1.8,
+    -192.45
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 44124,
+    "path": "unity/Assets/Art/Models/world/district_stadium_row.fbx",
+    "sha256": "84cf0fc1ec7ed9d62ee290b0659fcd8e4813cad9c4eaaf32ca054d6b7af83b2c"
+   },
+   "glb": {
+    "bytes": 108476,
+    "path": "unity/Assets/Art/Models/world/district_stadium_row.glb",
+    "sha256": "1beb45778b31b2361eb8eb7684f169000c13d194422a69dbb71eb687e8e07b56"
+   },
+   "group": "world",
+   "keys": [
+    "brickD",
+    "concreteL",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "galv",
+    "grass",
+    "navy",
+    "roofK",
+    "roofR",
+    "stone",
+    "w_brick",
+    "w_brickL",
+    "w_concreteL",
+    "w_plaster",
+    "w_plasterY"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1653,
+    "path": "unity/Assets/Art/Models/world/district_stadium_row.json",
+    "sha256": "6a1c5cdd1c2654707e50064f9c42c2241534a3753ede9e570ee2a6b9088dd7aa"
+   },
+   "triangles": 1038
+  },
+  "district_tech_park": {
+   "bounds_max": [
+    230.7,
+    69.75,
+    137.45
+   ],
+   "bounds_min": [
+    113.3,
+    3.4,
+    32.55
+   ],
+   "budget": 6500,
+   "fbx": {
+    "bytes": 45148,
+    "path": "unity/Assets/Art/Models/world/district_tech_park.fbx",
+    "sha256": "5d183c1d4e57d90757610eb6a2bc53f74fd7f00e2e61474b6a1d7b7b2f784ef0"
+   },
+   "glb": {
+    "bytes": 106712,
+    "path": "unity/Assets/Art/Models/world/district_tech_park.glb",
+    "sha256": "2358251bbf13f16449d05f726e9eb3f318e7f4f1ce89aa8f0c077a37fff33367"
+   },
+   "group": "world",
+   "keys": [
+    "asphaltD",
+    "blue",
+    "charcoal",
+    "concreteL",
+    "dgrey",
+    "e_lamp",
+    "e_pool",
+    "galv",
+    "glassD",
+    "green",
+    "l_cyan",
+    "l_red",
+    "lgrey",
+    "red",
+    "roofK",
+    "roofL",
+    "sandstone",
+    "teal",
+    "w_concreteL",
+    "w_glass",
+    "w_glassD",
+    "w_steel",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 2147,
+    "path": "unity/Assets/Art/Models/world/district_tech_park.json",
+    "sha256": "3fbe671ec62ee3e40c12aaf3ded62ce9694aa653db93c1786e87fb1540797ded"
+   },
+   "triangles": 1062
+  },
+  "fault_marker": {
+   "bounds_max": [
+    4.225,
+    8.946,
+    4.225
+   ],
+   "bounds_min": [
+    -4.225,
+    0.0,
+    -4.225
+   ],
+   "budget": 72,
+   "fbx": {
+    "bytes": 18060,
+    "path": "unity/Assets/Art/Models/props/fault_marker.fbx",
+    "sha256": "f06d4cd1465c0c19ed4d3ee46dcea7c25b6e50fe88039dcc3746d8bd4e608e7d"
+   },
+   "glb": {
+    "bytes": 9536,
+    "path": "unity/Assets/Art/Models/props/fault_marker.glb",
+    "sha256": "171c8ff1c7e6a196e42edf0ac37b6ff9dfb1fed94ff6605b8164a2db34c58187"
+   },
+   "group": "props",
+   "keys": [
+    "l_amber",
+    "l_red"
+   ],
+   "material": "vc_prop",
+   "sidecar": {
+    "bytes": 669,
+    "path": "unity/Assets/Art/Models/props/fault_marker.json",
+    "sha256": "6763a92fc41ac225e6cb5eab404c1188a35f09f177c7e76251d762bc606a2944"
+   },
+   "triangles": 72
+  },
+  "grid_lines": {
+   "bounds_max": [
+    243.266,
+    50.635,
+    297.292
+   ],
+   "bounds_min": [
+    -153.275,
+    0.5,
+    -264.5
+   ],
+   "budget": 7000,
+   "fbx": {
+    "bytes": 80332,
+    "path": "unity/Assets/Art/Models/world/grid_lines.fbx",
+    "sha256": "8a2b7452341e5c308f23a9510f3d833d4d82aa72bb8788e7df0b32b8ce9e633c"
+   },
+   "glb": {
+    "bytes": 164036,
+    "path": "unity/Assets/Art/Models/world/grid_lines.glb",
+    "sha256": "a31108612aae08d8e8dc2250d332750e829fe6690129b20167c5d6246decee6f"
+   },
+   "group": "world",
+   "keys": [
+    "galv",
+    "pylon",
+    "wire"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 705,
+    "path": "unity/Assets/Art/Models/world/grid_lines.json",
+    "sha256": "0b84543e9337c55a53ecc47995c677e26a57dcfce5181ec13a795222613bb47e"
+   },
+   "triangles": 1564
+  },
+  "plant_battery_l1": {
+   "bounds_max": [
+    114.0,
+    6.0,
+    -24.0
+   ],
+   "bounds_min": [
+    64.0,
+    1.6,
+    -30.62
+   ],
+   "budget": 900,
+   "fbx": {
+    "bytes": 17772,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l1.fbx",
+    "sha256": "af0ebea11c0707943306e4cd8a8cd98ea8fa53bf8c6602475be63be1eae25d7e"
+   },
+   "glb": {
+    "bytes": 8324,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l1.glb",
+    "sha256": "f05bd5a0830f2455eaae65ef798af89799e3a6995d27a5cfa09b6e7ad3984cae"
+   },
+   "group": "plants",
+   "keys": [
+    "batt_strip",
+    "battery",
+    "cyan",
+    "lgrey"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 787,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l1.json",
+    "sha256": "7186e7bdf250025cfb403edad664ba09e77a8f66da6c92d6f235068d57456d2f"
+   },
+   "triangles": 68
+  },
+  "plant_battery_l2": {
+   "bounds_max": [
+    114.0,
+    6.0,
+    -24.0
+   ],
+   "bounds_min": [
+    64.0,
+    1.6,
+    -40.62
+   ],
+   "budget": 900,
+   "fbx": {
+    "bytes": 18892,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l2.fbx",
+    "sha256": "9c770c1c676d0dba7639013ea160a74510c688f4f7e0198ec64a28eb2b44cb45"
+   },
+   "glb": {
+    "bytes": 13224,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l2.glb",
+    "sha256": "805125094dc0343a8928619478b997ecda04e50fb3d67cfd5e8935f4d8a3c32d"
+   },
+   "group": "plants",
+   "keys": [
+    "batt_strip",
+    "battery",
+    "cyan",
+    "lgrey"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 788,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l2.json",
+    "sha256": "7fcfa540011c3a752b175b4fa15d33e6df240035f29cb15dbc1472840a1e96cf"
+   },
+   "triangles": 116
+  },
+  "plant_battery_l3": {
+   "bounds_max": [
+    114.0,
+    6.0,
+    -24.0
+   ],
+   "bounds_min": [
+    64.0,
+    1.6,
+    -40.62
+   ],
+   "budget": 900,
+   "fbx": {
+    "bytes": 19852,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l3.fbx",
+    "sha256": "74f6d80c3a9427eb32c5697f67f390d7b42801f1a76090fae5779e8d3450ffe6"
+   },
+   "glb": {
+    "bytes": 18120,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l3.glb",
+    "sha256": "29d1d9a715f4206347da001a7a53b1cbfd1675d5577a2ae1942a6fcf6983ca1a"
+   },
+   "group": "plants",
+   "keys": [
+    "batt_strip",
+    "battery",
+    "cyan",
+    "lgrey"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 788,
+    "path": "unity/Assets/Art/Models/plants/plant_battery_l3.json",
+    "sha256": "fc3ad52a7537e1ef666d37ffd6002f001314d130269e44fd9a8dbeb0254ea054"
+   },
+   "triangles": 164
+  },
+  "plant_hydro_l1": {
+   "bounds_max": [
+    226.0,
+    12.0,
+    440.0
+   ],
+   "bounds_min": [
+    96.0,
+    -4.0,
+    275.7
+   ],
+   "budget": 2200,
+   "fbx": {
+    "bytes": 20668,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l1.fbx",
+    "sha256": "87500a52f8062865d33783af46c5e6b62dd53511e957c82387e234c1b1efb74f"
+   },
+   "glb": {
+    "bytes": 15292,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l1.glb",
+    "sha256": "56c965d0ed50ee5f7cf2973a5422458e41cc7e061e4a20d122b7e07f52cf37c0"
+   },
+   "group": "plants",
+   "keys": [
+    "concrete",
+    "concreteD",
+    "concreteL",
+    "cyan",
+    "galv",
+    "l_warm",
+    "roofL",
+    "steelD",
+    "water"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1145,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l1.json",
+    "sha256": "d4813eef6d435b04563216a5b3acaaf9957e6740d141e075f5305c7508d5442a"
+   },
+   "triangles": 135
+  },
+  "plant_hydro_l2": {
+   "bounds_max": [
+    226.0,
+    12.0,
+    440.0
+   ],
+   "bounds_min": [
+    96.0,
+    -4.0,
+    275.7
+   ],
+   "budget": 2200,
+   "fbx": {
+    "bytes": 21372,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l2.fbx",
+    "sha256": "9a6fa2959a6db472e8c4dd8389c4d5f0c272a7394d3525ba2b42de2e35401e09"
+   },
+   "glb": {
+    "bytes": 17956,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l2.glb",
+    "sha256": "b0f89391229393ff5beb9bf1e72dc50475a5b5eb73b2714feb7b99031ca583ec"
+   },
+   "group": "plants",
+   "keys": [
+    "concrete",
+    "concreteD",
+    "concreteL",
+    "cyan",
+    "galv",
+    "l_warm",
+    "roofL",
+    "steelD",
+    "water"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1145,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l2.json",
+    "sha256": "9f6ecd992beae788cd08e00eece2ac1d297919c1800d7074d71743aab3feecea"
+   },
+   "triangles": 163
+  },
+  "plant_hydro_l3": {
+   "bounds_max": [
+    226.0,
+    12.0,
+    440.0
+   ],
+   "bounds_min": [
+    96.0,
+    -4.0,
+    275.7
+   ],
+   "budget": 2200,
+   "fbx": {
+    "bytes": 22076,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l3.fbx",
+    "sha256": "087fd82e91d6cc8b89c6fb93a4e6717f9b63a7da821db3b018563604e3475d73"
+   },
+   "glb": {
+    "bytes": 20620,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l3.glb",
+    "sha256": "306528ff421386ba7ca1fe4183d6df55daf940d85426cf5858289060b32e0cb3"
+   },
+   "group": "plants",
+   "keys": [
+    "concrete",
+    "concreteD",
+    "concreteL",
+    "cyan",
+    "galv",
+    "l_warm",
+    "roofL",
+    "steelD",
+    "water"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1145,
+    "path": "unity/Assets/Art/Models/plants/plant_hydro_l3.json",
+    "sha256": "b8eb2233be9db7a756f0d8fa70b69df79c239887aa47b1d59fe7bfb0c2e2a4d7"
+   },
+   "triangles": 191
+  },
+  "plant_peaker_l1": {
+   "bounds_max": [
+    294.375,
+    25.6,
+    28.6
+   ],
+   "bounds_min": [
+    238.0,
+    2.6,
+    -12.0
+   ],
+   "budget": 1200,
+   "fbx": {
+    "bytes": 20108,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l1.fbx",
+    "sha256": "04370d417e3b3bd65e3c87ac46514f776a943db97295774d69d7ea462d9aa1ff"
+   },
+   "glb": {
+    "bytes": 16148,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l1.glb",
+    "sha256": "bf54c0c8315569668c6af75e810618509ffc42732c5abb33a3917cb7f17a8fbe"
+   },
+   "group": "plants",
+   "keys": [
+    "concreteD",
+    "galv",
+    "l_warm",
+    "lgrey",
+    "roofL",
+    "steelD",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 999,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l1.json",
+    "sha256": "5b1506d3baf1f2f042d02c32673498e3965ad0101a4113b0f420ae698a67d9ef"
+   },
+   "triangles": 150
+  },
+  "plant_peaker_l2": {
+   "bounds_max": [
+    294.375,
+    25.6,
+    28.6
+   ],
+   "bounds_min": [
+    238.0,
+    2.6,
+    -12.0
+   ],
+   "budget": 1200,
+   "fbx": {
+    "bytes": 22060,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l2.fbx",
+    "sha256": "48ec5a6b6d3e642d1ac3cfa5f2a0bf99447b2f91771684c9ff7556944fca7dc3"
+   },
+   "glb": {
+    "bytes": 24548,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l2.glb",
+    "sha256": "5e9c231e54d928746fc2c2e3d90e0a9753719496afd247f88748dee72ffadd85"
+   },
+   "group": "plants",
+   "keys": [
+    "concreteD",
+    "galv",
+    "l_warm",
+    "lgrey",
+    "roofL",
+    "steelD",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 999,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l2.json",
+    "sha256": "96f0249fc6fce1e2014f80cade2680d87afff0066dfd14a92d336dbdca3245c5"
+   },
+   "triangles": 238
+  },
+  "plant_peaker_l3": {
+   "bounds_max": [
+    297.3,
+    25.6,
+    28.6
+   ],
+   "bounds_min": [
+    238.0,
+    2.6,
+    -12.0
+   ],
+   "budget": 1200,
+   "fbx": {
+    "bytes": 24076,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l3.fbx",
+    "sha256": "9fac87ea54f81bb58182f27ed3b6ae0f35bbef325479b2b2e775f6c4630f00a4"
+   },
+   "glb": {
+    "bytes": 32952,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l3.glb",
+    "sha256": "0df4a7c7603a3bf9dc6bec7c16cbfcecfa2fc5122c0c952c0f12c6b48967ee22"
+   },
+   "group": "plants",
+   "keys": [
+    "concreteD",
+    "galv",
+    "l_warm",
+    "lgrey",
+    "roofL",
+    "steelD",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 997,
+    "path": "unity/Assets/Art/Models/plants/plant_peaker_l3.json",
+    "sha256": "b4f577801ab2e13a2b074a41d5a573ad442d5afd58ca037dd25f7b78217e06e3"
+   },
+   "triangles": 326
+  },
+  "plant_solar_l1": {
+   "bounds_max": [
+    266.0,
+    5.0,
+    -184.0
+   ],
+   "bounds_min": [
+    208.0,
+    1.2,
+    -228.2
+   ],
+   "budget": 1500,
+   "fbx": {
+    "bytes": 17356,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l1.fbx",
+    "sha256": "94dfcfca37589d3f7bafe51f3a1ddbef23fb0fb56842b1c1d3ef070b33cc91c9"
+   },
+   "glb": {
+    "bytes": 5864,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l1.glb",
+    "sha256": "fa87dc47f413364031a9e26411eb8496679c9cefacd270ce37e6e5eeabcc5925"
+   },
+   "group": "plants",
+   "keys": [
+    "cyan",
+    "galv",
+    "solar",
+    "solarF"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 779,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l1.json",
+    "sha256": "7df7d27a963e9bba1a60599b488c8cc0257f84f1a438dad6c02cff50f0d3cb90"
+   },
+   "triangles": 44
+  },
+  "plant_solar_l2": {
+   "bounds_max": [
+    266.0,
+    5.0,
+    -184.0
+   ],
+   "bounds_min": [
+    208.0,
+    1.2,
+    -273.2
+   ],
+   "budget": 1500,
+   "fbx": {
+    "bytes": 18044,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l2.fbx",
+    "sha256": "69b484f0b72e237e38a89b7080f8c4589a1434796d9428a8cab53f0d6e479a6d"
+   },
+   "glb": {
+    "bytes": 8324,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l2.glb",
+    "sha256": "6b23632adc5ae13b1d07f3425c7e7320fc1129c11f15ca7711d15aaa1e1c4090"
+   },
+   "group": "plants",
+   "keys": [
+    "cyan",
+    "galv",
+    "solar",
+    "solarF"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 779,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l2.json",
+    "sha256": "5cf75698ee2a306b82fb960044bffcbbad6c7b4505bf69a7125dfc96b0ccf1fa"
+   },
+   "triangles": 68
+  },
+  "plant_solar_l3": {
+   "bounds_max": [
+    316.0,
+    5.0,
+    -184.0
+   ],
+   "bounds_min": [
+    208.0,
+    1.2,
+    -273.2
+   ],
+   "budget": 1500,
+   "fbx": {
+    "bytes": 19244,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l3.fbx",
+    "sha256": "30cc8c9290808cc23dd39b7f37f894d37f1aea173ba757cc9c6b9b61c6faae11"
+   },
+   "glb": {
+    "bytes": 13220,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l3.glb",
+    "sha256": "48d3077ce0a6d838b16371d25eb4591745a8e0736bb68f4dd59fc65dd0e4de67"
+   },
+   "group": "plants",
+   "keys": [
+    "cyan",
+    "galv",
+    "solar",
+    "solarF"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 780,
+    "path": "unity/Assets/Art/Models/plants/plant_solar_l3.json",
+    "sha256": "579a013cb80972f65488747b415ae50f74e4ab6af843f82ea3915270ca1173f1"
+   },
+   "triangles": 116
+  },
+  "plant_steam_l1": {
+   "bounds_max": [
+    -136.0,
+    83.68,
+    -248.4
+   ],
+   "bounds_min": [
+    -216.062,
+    1.4,
+    -319.0
+   ],
+   "budget": 1800,
+   "fbx": {
+    "bytes": 22076,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l1.fbx",
+    "sha256": "3b8608cbac85e77174b4cc6fcbcacf397ebe38d22f2e71b2e0450c149f7a12c7"
+   },
+   "glb": {
+    "bytes": 24116,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l1.glb",
+    "sha256": "4a68b186a809cd82759b2c18b4892bea967139f122c3727455266b1f29781bc2"
+   },
+   "group": "plants",
+   "keys": [
+    "brick",
+    "brickD",
+    "charcoal",
+    "concrete",
+    "galv",
+    "l_red",
+    "l_warm",
+    "red",
+    "roofK",
+    "smoke",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1288,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l1.json",
+    "sha256": "6a53895026a412750ffd4598801e7e7efc28af7e4096986c5d46e73e07cc05ae"
+   },
+   "triangles": 198
+  },
+  "plant_steam_l2": {
+   "bounds_max": [
+    -118.0,
+    87.68,
+    -248.4
+   ],
+   "bounds_min": [
+    -216.062,
+    1.4,
+    -319.0
+   ],
+   "budget": 1800,
+   "fbx": {
+    "bytes": 24940,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l2.fbx",
+    "sha256": "9fa3dfceec7c2c2b155d749d35c36719d0227fccd03d9f828afec5a34626070d"
+   },
+   "glb": {
+    "bytes": 36872,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l2.glb",
+    "sha256": "76197bf0b1c67ca8f95550350e0dde68d55f5c9605d3a561068bca076b777524"
+   },
+   "group": "plants",
+   "keys": [
+    "brick",
+    "brickD",
+    "charcoal",
+    "concrete",
+    "galv",
+    "l_red",
+    "l_warm",
+    "red",
+    "roofK",
+    "smoke",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1288,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l2.json",
+    "sha256": "74c706939656a8f5a7124fd1911b07edfdfb6991abe47d998e53383679dd00fa"
+   },
+   "triangles": 308
+  },
+  "plant_steam_l3": {
+   "bounds_max": [
+    -118.0,
+    91.68,
+    -248.4
+   ],
+   "bounds_min": [
+    -216.062,
+    1.4,
+    -319.0
+   ],
+   "budget": 1800,
+   "fbx": {
+    "bytes": 28028,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l3.fbx",
+    "sha256": "442b5a2cde869a18ab19f7ba346ed723758db263d190f8845ae9b559a728bc17"
+   },
+   "glb": {
+    "bytes": 50856,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l3.glb",
+    "sha256": "999593cb1d9bf45e97802c39a9ae761025dda7b92d638a88520608ae4be70235"
+   },
+   "group": "plants",
+   "keys": [
+    "brick",
+    "brickD",
+    "charcoal",
+    "concrete",
+    "cyan",
+    "galv",
+    "l_red",
+    "l_warm",
+    "red",
+    "roofK",
+    "smoke",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1358,
+    "path": "unity/Assets/Art/Models/plants/plant_steam_l3.json",
+    "sha256": "8a18efcfd6b67474e92786b2c62d9f40634b7e0b7fdd7da08c49b9bc1dd02854"
+   },
+   "triangles": 430
+  },
+  "plant_wind_l1": {
+   "bounds_max": [
+    -21.501,
+    88.226,
+    296.368
+   ],
+   "bounds_min": [
+    -247.586,
+    13.176,
+    282.648
+   ],
+   "budget": 4400,
+   "fbx": {
+    "bytes": 23532,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l1.fbx",
+    "sha256": "493fbd69407b4dc202b2129f816112ac86f503ad61d770a608014fba2e551600"
+   },
+   "glb": {
+    "bytes": 31692,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l1.glb",
+    "sha256": "b335fed6c6232e02e85cfcbf4b96f07d4c3fd2b9f3e5b0afd016db427ab7cfa0"
+   },
+   "group": "plants",
+   "keys": [
+    "l_red",
+    "turbine"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 652,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l1.json",
+    "sha256": "2631b703aab101386008bfb1fc55cfa95142099d56e616c6ca7847cb871564f1"
+   },
+   "triangles": 304
+  },
+  "plant_wind_l2": {
+   "bounds_max": [
+    -21.501,
+    88.226,
+    296.368
+   ],
+   "bounds_min": [
+    -265.384,
+    -8.0,
+    249.046
+   ],
+   "budget": 4400,
+   "fbx": {
+    "bytes": 30572,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l2.fbx",
+    "sha256": "35623b3c0372229e21d13f68500b15eb787aef455803a973e75b86a9abb7bead"
+   },
+   "glb": {
+    "bytes": 61928,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l2.glb",
+    "sha256": "fd10de065eb4e6a53318f82f64c71ad1f2e0d97a8d09e20588da30a8e691a1e4"
+   },
+   "group": "plants",
+   "keys": [
+    "l_red",
+    "turbine"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 650,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l2.json",
+    "sha256": "349d3aea27fc9ab6a5d5c3082d5ddbe3a6cc30b93a176be01271fedb17790ff7"
+   },
+   "triangles": 608
+  },
+  "plant_wind_l3": {
+   "bounds_max": [
+    -21.501,
+    113.517,
+    330.145
+   ],
+   "bounds_min": [
+    -265.384,
+    -8.0,
+    249.046
+   ],
+   "budget": 4400,
+   "fbx": {
+    "bytes": 37644,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l3.fbx",
+    "sha256": "884e87add57bf709c39018d1c1498e9c2182eda59c82e2f8df50482df426ee10"
+   },
+   "glb": {
+    "bytes": 92172,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l3.glb",
+    "sha256": "a1c7473c7e4def0f44c6857fbbe0950d5c98478fc4d122489e5da2809471705f"
+   },
+   "group": "plants",
+   "keys": [
+    "l_red",
+    "turbine"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 651,
+    "path": "unity/Assets/Art/Models/plants/plant_wind_l3.json",
+    "sha256": "ad9e9c2236393f002782fc6cbb76220b98205a5c4f650e319dd098c3a492b86c"
+   },
+   "triangles": 912
+  },
+  "sky_dome": {
+   "bounds_max": [
+    5996.644,
+    3000.0,
+    6016.644
+   ],
+   "bounds_min": [
+    -5916.644,
+    -696.0,
+    -5896.644
+   ],
+   "budget": 400,
+   "fbx": {
+    "bytes": 20220,
+    "path": "unity/Assets/Art/Models/world/sky_dome.fbx",
+    "sha256": "215cb2b1dbfa477859037e52fc36d773e0541fa79414c174352b7ff43b6d0165"
+   },
+   "glb": {
+    "bytes": 16856,
+    "path": "unity/Assets/Art/Models/world/sky_dome.glb",
+    "sha256": "eeabe8e176b5c6bebf27d274930459aef62ad6a17a1dbc19066699664374532b"
+   },
+   "group": "world",
+   "keys": [
+    "sky"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 567,
+    "path": "unity/Assets/Art/Models/world/sky_dome.json",
+    "sha256": "1b3586d7bb5f832309d0c7e5495856525ea2197a90fc002b95fa528cafa8f45d"
+   },
+   "triangles": 144
+  },
+  "substation": {
+   "bounds_max": [
+    9.0,
+    9.5,
+    7.0
+   ],
+   "bounds_min": [
+    -9.0,
+    0.0,
+    -7.0
+   ],
+   "budget": 300,
+   "fbx": {
+    "bytes": 21852,
+    "path": "unity/Assets/Art/Models/grid/substation.fbx",
+    "sha256": "cbb98413cc7981620b9bffc216a7d231f0a23feac853da3a9fbcac887e49ee05"
+   },
+   "glb": {
+    "bytes": 23176,
+    "path": "unity/Assets/Art/Models/grid/substation.glb",
+    "sha256": "65bac2a9bf4092270e1b25804ece376525c1570c5f350c1bdd77a8ef6ae03d53"
+   },
+   "group": "grid",
+   "keys": [
+    "concreteD",
+    "cyan",
+    "galv",
+    "insul",
+    "steelD"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 828,
+    "path": "unity/Assets/Art/Models/grid/substation.json",
+    "sha256": "1351ab11bb06e5a2824b7619e19501fec1ea8f05bde23ff7a947107dc9d07925"
+   },
+   "triangles": 214
+  },
+  "substation_smart": {
+   "bounds_max": [
+    9.0,
+    12.8,
+    7.0
+   ],
+   "bounds_min": [
+    -9.0,
+    0.0,
+    -8.15
+   ],
+   "budget": 420,
+   "fbx": {
+    "bytes": 25116,
+    "path": "unity/Assets/Art/Models/grid/substation_smart.fbx",
+    "sha256": "3f07cbabcbe097e766d318edbf6613e7ff17feb74189edc3d128b4e860b955cb"
+   },
+   "glb": {
+    "bytes": 33828,
+    "path": "unity/Assets/Art/Models/grid/substation_smart.glb",
+    "sha256": "9dbb7f5c92c3a3230129375afeb2486846aa3fddd0641e7f32898198472eff5f"
+   },
+   "group": "grid",
+   "keys": [
+    "concreteD",
+    "cyan",
+    "galv",
+    "insul",
+    "l_cyan",
+    "steelD",
+    "white"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 978,
+    "path": "unity/Assets/Art/Models/grid/substation_smart.json",
+    "sha256": "8984f4ccd54481b21334f6b51a2003682dd10c1764f2ebdfb447b018c8237eb9"
+   },
+   "triangles": 318
+  },
+  "terrain_city": {
+   "bounds_max": [
+    1500.0,
+    83.666,
+    2200.0
+   ],
+   "bounds_min": [
+    -1500.0,
+    -7.0,
+    -1300.0
+   ],
+   "budget": 10500,
+   "fbx": {
+    "bytes": 271244,
+    "path": "unity/Assets/Art/Models/world/terrain_city.fbx",
+    "sha256": "55a3724e34752e42ab76dc82d36adcbce9115ddac980219904fac5412ee2afe0"
+   },
+   "glb": {
+    "bytes": 420856,
+    "path": "unity/Assets/Art/Models/world/terrain_city.glb",
+    "sha256": "e817d6913ad2946a3f76d9f62ba9884facd18e2d7ab5083b1937bfb4dce86063"
+   },
+   "group": "world",
+   "keys": [
+    "asphalt",
+    "concrete",
+    "concreteD",
+    "field",
+    "grass",
+    "grassD",
+    "meadow",
+    "pier",
+    "wheat"
+   ],
+   "material": "vc_world",
+   "sidecar": {
+    "bytes": 1143,
+    "path": "unity/Assets/Art/Models/world/terrain_city.json",
+    "sha256": "d18608fa67f015806d487434a22da6d576f256e4611e98a36443f4b6b6275601"
+   },
+   "triangles": 9990
+  },
+  "tree": {
+   "bounds_max": [
+    2.517,
+    8.8,
+    2.252
+   ],
+   "bounds_min": [
+    -1.95,
+    0.0,
+    -2.252
+   ],
+   "budget": 70,
+   "fbx": {
+    "bytes": 17500,
+    "path": "unity/Assets/Art/Models/props/tree.fbx",
+    "sha256": "a9f0eed473c65dfcfdafd0aaf92c337677fc7e3bcfa12ebc14e5f3c9d246639b"
+   },
+   "glb": {
+    "bytes": 6748,
+    "path": "unity/Assets/Art/Models/props/tree.glb",
+    "sha256": "e9ee91781bf04d743b93145ccb5e542725e45a49cf689a61462f12500d82b7f5"
+   },
+   "group": "props",
+   "keys": [
+    "leaf",
+    "leafL",
+    "trunk"
+   ],
+   "material": "vc_prop",
+   "sidecar": {
+    "bytes": 728,
+    "path": "unity/Assets/Art/Models/props/tree.json",
+    "sha256": "f362c0d23e94e09eb7c721d6653828d70ce3010c72189d1558b641ab061286b4"
+   },
+   "triangles": 42
+  },
+  "truck_crew": {
+   "bounds_max": [
+    1.25,
+    3.433,
+    3.56
+   ],
+   "bounds_min": [
+    -1.25,
+    0.0,
+    -3.66
+   ],
+   "budget": 600,
+   "fbx": {
+    "bytes": 24940,
+    "path": "unity/Assets/Art/Models/props/truck_crew.fbx",
+    "sha256": "dde0599f1b1f50cd57d38a007b6ff918eee4c6763c881aab9729340cb1280adf"
+   },
+   "glb": {
+    "bytes": 30648,
+    "path": "unity/Assets/Art/Models/props/truck_crew.glb",
+    "sha256": "c5b55583957601e9fa3dd32b7d2f072195e4ecf5d9855bcfe8510d7fb0bdc538"
+   },
+   "group": "props",
+   "keys": [
+    "boom",
+    "carglass",
+    "charcoal",
+    "l_amber",
+    "l_head",
+    "l_red",
+    "steelD",
+    "truck",
+    "truckD",
+    "tyre"
+   ],
+   "material": "vc_prop",
+   "sidecar": {
+    "bytes": 1239,
+    "path": "unity/Assets/Art/Models/props/truck_crew.json",
+    "sha256": "4aeaa866bd3fb9a73b5bf24ca4172518e98bf611d68753b30db0592b3db04950"
+   },
+   "triangles": 294
+  },
+  "wind_blades": {
+   "bounds_max": [
+    24.0,
+    20.985,
+    0.4
+   ],
+   "bounds_min": [
+    -12.346,
+    -20.91,
+    -1.8
+   ],
+   "budget": 60,
+   "fbx": {
+    "bytes": 16476,
+    "path": "unity/Assets/Art/Models/props/wind_blades.fbx",
+    "sha256": "376f89db85946488ed736f9a6bbcbe393e108399be58adf5be1f337fab7e7c45"
+   },
+   "glb": {
+    "bytes": 2912,
+    "path": "unity/Assets/Art/Models/props/wind_blades.glb",
+    "sha256": "c7bd76134ea36935c12dde412b90616bf8f8816d1a7063f03fc7df31d8d9c44d"
+   },
+   "group": "props",
+   "keys": [
+    "turbine"
+   ],
+   "material": "vc_blade",
+   "sidecar": {
+    "bytes": 581,
+    "path": "unity/Assets/Art/Models/props/wind_blades.json",
+    "sha256": "d8ddf3d1e9736c6a36eae3135eeb7275b470c860c9c569450a7090daecfba94e"
+   },
+   "triangles": 12
+  }
+ },
+ "schema": 2,
+ "shaders": {
+  "vc_blade": "Assets/Art/Shaders/VcBlades.shader",
+  "vc_prop": "Assets/Art/Shaders/VcProp.shader (+ VcPropLow.shader)",
+  "vc_world": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)"
+ },
+ "space": "unity: x east, y up, z north, metres",
+ "target": "Unity 6 LTS URP (Android, portrait)"
+}

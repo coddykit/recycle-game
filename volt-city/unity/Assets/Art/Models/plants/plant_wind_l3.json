@@ -1,0 +1,32 @@
+{
+ "group": "plants",
+ "id": "plant_wind_l3",
+ "material": "vc_world",
+ "palette": {
+  "l_red": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FF3B30"
+  },
+  "turbine": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#EEF1F3"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 912,
+ "unity_bounds_max": [
+  -21.501,
+  113.517,
+  330.145
+ ],
+ "unity_bounds_min": [
+  -265.384,
+  -8.0,
+  249.046
+ ],
+ "uv": "UV0.x battery strip 0..1, UV0.y plant type index + .5",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

@@ -1,0 +1,215 @@
+{
+ "_doc": "DESIGN section 5: the 15 chaos events. kind: random (rolled per shift with the forecast) | scheduled (chapter calendar) | triggered (by another event / a hookup). negative events count towards caps.max_negative. Hours are diorama hours of the shift (10 sim s = 1 h); dur_s in sim seconds. chance = per shift (plant_trip: per thermal unit). min_chapter: first chapter it can roll in; chapter-1 random events only after the tutorial shifts at ch1_scale x chance. Nothing here hurts anyone (content policy section 11).",
+ "caps": {
+  "max_negative": 2,
+  "no_storm_after_one_star": true,
+  "tutorial_shifts": 2,
+  "ch1_scale": 2.0
+ },
+ "events": [
+  {
+   "id": "thunderstorm",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.18,
+   "min_chapter": 2,
+   "start_h": [
+    9,
+    19
+   ],
+   "dur_h": [
+    3,
+    5
+   ],
+   "faults": [
+    1,
+    4
+   ],
+   "forecast": true
+  },
+  {
+   "id": "heatwave",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.08,
+   "min_chapter": 2,
+   "from_h": 12,
+   "to_h": 20,
+   "pct": [
+    20,
+    30
+   ],
+   "shifts": [
+    1,
+    3
+   ],
+   "forecast": true
+  },
+  {
+   "id": "cold_snap",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.06,
+   "min_chapter": 2,
+   "from_h": 6,
+   "to_h": 9,
+   "pct": [
+    25,
+    25
+   ],
+   "forecast": true
+  },
+  {
+   "id": "match_night",
+   "kind": "scheduled",
+   "negative": false,
+   "district": "stadium_row",
+   "from_min": 1170,
+   "to_min": 1290,
+   "pct": 40
+  },
+  {
+   "id": "halftime_surge",
+   "kind": "triggered",
+   "negative": false,
+   "parent": "match_night",
+   "at_min": 1230,
+   "dur_s": 20,
+   "pct": 15
+  },
+  {
+   "id": "festival",
+   "kind": "scheduled",
+   "negative": false,
+   "district": "market_square",
+   "from_h": 18,
+   "to_h": 23,
+   "pct": 25,
+   "tariff_pct": 50
+  },
+  {
+   "id": "plant_trip",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.05,
+   "min_chapter": 1,
+   "start_h": [
+    1,
+    22
+   ],
+   "dur_s": [
+    30,
+    90
+   ],
+   "per_unit": true
+  },
+  {
+   "id": "squirrel",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.1,
+   "min_chapter": 1,
+   "start_h": [
+    1,
+    22
+   ],
+   "part_pct": 25,
+   "repair_s": 6
+  },
+  {
+   "id": "balloons",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.06,
+   "min_chapter": 1,
+   "start_h": [
+    10,
+    21
+   ],
+   "repair_s": 4
+  },
+  {
+   "id": "fog",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.1,
+   "min_chapter": 1,
+   "start_h": [
+    0,
+    20
+   ],
+   "dur_h": [
+    3,
+    3
+   ],
+   "wind_pct": -70,
+   "needs_plant": "wind"
+  },
+  {
+   "id": "cloud_front",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.15,
+   "min_chapter": 1,
+   "start_h": [
+    8,
+    15
+   ],
+   "dur_h": [
+    1,
+    2
+   ],
+   "solar_pct": -60,
+   "needs_weather": [
+    "sunny",
+    "hot",
+    "windy",
+    "calm"
+   ],
+   "needs_plant": "solar"
+  },
+  {
+   "id": "eclipse",
+   "kind": "scheduled",
+   "negative": false,
+   "from_h": 11,
+   "to_h": 13,
+   "solar_pct": -80
+  },
+  {
+   "id": "fuel_spike",
+   "kind": "random",
+   "negative": true,
+   "chance": 0.07,
+   "min_chapter": 2,
+   "gas_pct": 50,
+   "needs_plant": "gas",
+   "forecast": true
+  },
+  {
+   "id": "hospital_test",
+   "kind": "scheduled",
+   "negative": false,
+   "district": "hospital_hill",
+   "from_h": 10,
+   "to_h": 14,
+   "bonus_shift_pct": 15
+  },
+  {
+   "id": "new_district_rush",
+   "kind": "triggered",
+   "negative": false,
+   "from_h": 18,
+   "to_h": 22,
+   "pct": 30
+  }
+ ],
+ "faults": {
+  "line_repair_s": 8,
+  "transformer_repair_s": 6,
+  "tree_trim_cut_pct": [
+   25,
+   45
+  ]
+ }
+}

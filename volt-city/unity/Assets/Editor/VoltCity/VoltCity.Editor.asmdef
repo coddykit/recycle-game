@@ -1,0 +1,23 @@
+{
+    "name": "VoltCity.Editor",
+    "rootNamespace": "VoltCity.EditorTools",
+    "references": [
+        "CoddyKit.Core",
+        "CoddyKit.Runtime",
+        "CoddyKit.Editor",
+        "VoltCity.App",
+        "Unity.RenderPipelines.Core.Runtime",
+        "Unity.RenderPipelines.Universal.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

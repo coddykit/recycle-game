@@ -1,0 +1,54 @@
+# Volt City art name denylist (P2; seeded from docs/DESIGN.md section 11). validate_art.py also reads
+# tests/ip_denylist.txt when the project skeleton provides it. Plain entry = whole word(s); ~entry = substring.
+# Real utilities / grid operators
+National Grid
+ConEd
+Con Edison
+PG&E
+PGE
+Pacific Gas
+Duke Energy
+EDF
+E.ON
+Enel
+TEPCO
+Iberdrola
+ERCOT
+Statnett
+RWE
+Vattenfall
+Engie
+Exelon
+# real plants / dams
+Hoover
+Three Gorges
+Itaipu
+Drax
+Battersea
+# disasters
+Chernobyl
+Fukushima
+Three Mile Island
+# games / brands near the theme
+Power Grid
+Funkenschlag
+~simcity
+Cities Skylines
+Power to the People
+# vehicle / equipment makers (generic shapes only)
+~caterpillar
+Liebherr
+Vestas
+Siemens
+~gamesa
+Tesla
+Powerpack
+Megapack
+Ford
+Toyota
+Volkswagen
+Boeing
+Airbus
+# nuclear (not in v1)
+~nuclear
+reactor

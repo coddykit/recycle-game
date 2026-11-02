@@ -1,0 +1,80 @@
+{
+ "_doc": "Per-shift weather kind (rolled with the forecast, 1 shift ahead; forecast_plus = 3). wind = mean capacity factor + diurnal swing (peak at 15:00); solar = factor on the clear-sky curve (sunrise 06:00, sunset 19:00); inflow = hydro inflow factor; temp = demand factor (hot: midday +, cold: morning/evening +). after = transition weights to the next shift's kind.",
+ "kinds": {
+  "sunny": {
+   "wind": 0.28,
+   "swing": 0.1,
+   "solar": 1.0,
+   "inflow": 0.8,
+   "temp": "mild",
+   "weight": 30
+  },
+  "hot": {
+   "wind": 0.18,
+   "swing": 0.08,
+   "solar": 1.0,
+   "inflow": 0.6,
+   "temp": "hot",
+   "weight": 12
+  },
+  "cloudy": {
+   "wind": 0.4,
+   "swing": 0.12,
+   "solar": 0.45,
+   "inflow": 1.0,
+   "temp": "mild",
+   "weight": 22
+  },
+  "windy": {
+   "wind": 0.72,
+   "swing": 0.15,
+   "solar": 0.8,
+   "inflow": 1.0,
+   "temp": "mild",
+   "weight": 16
+  },
+  "calm": {
+   "wind": 0.1,
+   "swing": 0.05,
+   "solar": 0.9,
+   "inflow": 0.8,
+   "temp": "cold",
+   "weight": 10
+  },
+  "rainy": {
+   "wind": 0.5,
+   "swing": 0.12,
+   "solar": 0.25,
+   "inflow": 1.8,
+   "temp": "mild",
+   "weight": 10
+  }
+ },
+ "temp": {
+  "hot": {
+   "from_h": 11,
+   "to_h": 19,
+   "pct": 8
+  },
+  "cold": {
+   "from_h": 6,
+   "to_h": 10,
+   "pct": 6
+  },
+  "mild": {
+   "from_h": 0,
+   "to_h": 0,
+   "pct": 0
+  }
+ },
+ "storm": {
+  "wind": 0.85,
+  "solar": 0.15,
+  "inflow": 2.5,
+  "cutout": 0.95
+ },
+ "persistence_pct": 35,
+ "solar_rise_h": 6,
+ "solar_set_h": 19,
+ "noise_pct": 6
+}

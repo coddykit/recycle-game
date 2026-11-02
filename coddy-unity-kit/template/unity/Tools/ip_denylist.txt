@@ -1,0 +1,4 @@
+# @TITLE@ IP / content denylist (U0 skeleton; F0 fills it from STRATEGY.md / IP_RULES.md: real brands, rival titles,
+# real people / places that must not appear). Spec: games/@SLUG@/IP_RULES.md section 5 (same engine as Volt City / Grid Boss).
+# Scanner: unity/Tools/ip_denylist.py (runs in Tools/check.sh and jenkins/preflight.py).
+# Plain entry = case-insensitive, word-bounded regex on normalised text. ~entry = substring (non-Latin scripts). # = comment.

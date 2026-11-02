@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19103, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: VoltPanelText
+  m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.PanelTextSettings
+  m_Version: 
+  m_DefaultFontAsset: {fileID: 11400000, guid: 43dfe8201a37b42a2b61918be518fa51, type: 2}
+  m_DefaultFontAssetPath: Fonts & Materials/
+  m_FallbackFontAssets:
+  - {fileID: 11400000, guid: 7c35e7d5f1eda46e0ab82c47617d2ca4, type: 2}
+  - {fileID: 11400000, guid: 94a8c446ad1104e918b1ae393811721b, type: 2}
+  - {fileID: 11400000, guid: 4362b2efcc96340178e16dcc159f2f82, type: 2}
+  - {fileID: 11400000, guid: 34ba4f849ac984c739e0c0d2cb7d1aef, type: 2}
+  - {fileID: 11400000, guid: 9602a186775264e2bb93124703cb753c, type: 2}
+  m_FallbackOSFontAssets: []
+  m_MatchMaterialPreset: 0
+  m_MissingCharacterUnicode: 0
+  m_ClearDynamicDataOnBuild: 1
+  m_EnableEmojiSupport: 0
+  m_EmojiFallbackTextAssets: []
+  m_DefaultSpriteAsset: {fileID: 0}
+  m_DefaultSpriteAssetPath: Sprite Assets/
+  m_FallbackSpriteAssets: []
+  m_MissingSpriteCharacterUnicode: 0
+  m_DefaultStyleSheet: {fileID: 0}
+  m_DefaultColorGradientPresetsPath: Text Color Gradients/
+  m_UnicodeLineBreakingRules:
+    m_UnicodeLineBreakingRules: {fileID: 0}
+    m_LeadingCharacters: {fileID: 0}
+    m_FollowingCharacters: {fileID: 0}
+    m_UseModernHangulLineBreakingRules: 0
+  m_DisplayWarnings: 0
+  m_FontReferences: []

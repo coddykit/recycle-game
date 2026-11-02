@@ -1,0 +1,19 @@
+{
+    "name": "VoltCity.App",
+    "rootNamespace": "VoltCity.App",
+    "references": [
+        "CoddyKit.Core",
+        "CoddyKit.Runtime",
+        "VoltCity.Sim",
+        "VoltCity.Game"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

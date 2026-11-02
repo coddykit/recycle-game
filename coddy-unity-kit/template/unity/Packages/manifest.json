@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "com.unity.render-pipelines.universal": "17.3.0",
+    "com.unity.inputsystem": "1.20.1",
+    "com.unity.test-framework": "1.6.0",
+    "com.unity.modules.androidjni": "1.0.0",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.imageconversion": "1.0.0",
+    "com.unity.modules.jsonserialize": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.modules.unitywebrequest": "1.0.0",
+    "com.unity.modules.unitywebrequesttexture": "1.0.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "OpenUPM (vendor SDKs added at P4: Google Mobile Ads + UMP, EDM4U, RevenueCat) - games/volt-city/docs/UNITY.md section 4",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.google.ads.mobile",
+        "com.google.external-dependency-manager",
+        "com.revenuecat.purchases-unity"
+      ]
+    }
+  ]
+}
