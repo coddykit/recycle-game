@@ -34,7 +34,7 @@
    "id": "s6",
    "headline": "Hire the right teams",
    "sub": "Nurses, doctors, porters, cleaners and more",
-   "scene": "Teams sheet open with all six teams and their hire buttons; one team pulsing because the lens named it"
+   "scene": "Teams sheet open with all six teams, their counts and hire buttons; the lens chip above names the team that is short"
   },
   {
    "id": "s7",
@@ -46,7 +46,7 @@
    "id": "s8",
    "headline": "Hand over, earn your stars",
    "sub": "Nine stars a shift for care, waits and flow",
-   "scene": "Shift report after a good day: star rows for care / waits / flow, treated count, net cash, Continue button (no ad button)"
+   "scene": "Shift report after a good day: star rows for care / waits / flow, treated count, net cash and the next-shift button (no rewarded-ad button in the frame)"
   }
  ],
  "feature": "Find the bottleneck. Keep beds moving."
