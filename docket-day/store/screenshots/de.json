@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Führe deine eigene Kanzlei",
+   "sub": "Vom Garagenbüro bis zur Gerichtsreihe",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "Plane Menschen in den Kalender",
+   "sub": "Zieh dein Team auf jede Aufgabe vor der Frist",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "Zwei Termine, eine Anwältin",
+   "sub": "Decken, Gastanwalt holen oder Aufschub bitten",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "Wähle deine Mandanten",
+   "sub": "Annehmen, weiterverweisen oder Mauer bauen",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "Vorbereitung gewinnt Fälle",
+   "sub": "Jede Forderung dem passenden Beweis zuordnen",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "Vergleich oder Gerichtssaal",
+   "sub": "Jeder Richter hat Gewohnheiten. Plane dafür.",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "Rechne ab, verdiene Sterne",
+   "sub": "Stunden werden Rechnungen, Treuhand ist sicher",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "Baue eine lebendige Kanzlei",
+   "sub": "Bibliothek, Beweisraum, Kriegsraum und mehr",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "Führe eine Kanzlei voller Fälle"
+}

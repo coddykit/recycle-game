@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Administre seu escritório",
+   "sub": "Da garagem à Fileira do Fórum",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "Encaixe a equipe na agenda",
+   "sub": "Arraste sua equipe para cada tarefa a tempo",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "Duas audiências, um advogado",
+   "sub": "Cubra, chame um convidado ou peça prazo",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "Escolha seus clientes",
+   "sub": "Aceite, encaminhe ou crie uma barreira ética",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "A preparação vence casos",
+   "sub": "Associe cada alegação à prova que a sustenta",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "Acordo ou tribunal",
+   "sub": "Cada juiz tem seus hábitos. Planeje para eles",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "Fature o dia, ganhe estrelas",
+   "sub": "Horas viram notas, custódia intacta",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "Monte um escritório ativo",
+   "sub": "Biblioteca, sala de provas, sala de guerra e mais",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "Dirija o escritório mais movimentado"
+}

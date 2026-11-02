@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Kendi hukuk bürona sahip ol",
+   "sub": "Garaj cephesinden Adliye Sırası'na",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "Herkesi takvime sığdır",
+   "sub": "Her görevi son tarihinden önce sürükle",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "İki duruşma, tek avukat",
+   "sub": "Başka avukat, konuk avukat ya da erteleme",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "Müvekkillerini seç",
+   "sub": "Kabul et, reddet, yönlendir ya da duvar kur",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "Hazırlık davaları kazandırır",
+   "sub": "Her iddiayı kanıtıyla eşleştir",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "Uzlaş ya da mahkemeye git",
+   "sub": "Her hâkimin alışkanlıkları var. Plan yap.",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "Günü faturala, yıldız kazan",
+   "sub": "Saatler faturaya döner, emanet para güvende",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "Meşgul bir büro kur",
+   "sub": "Kütüphane, delil odası, savaş odası ve diğerleri",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "Şehrin en yoğun hukuk bürosunu yönet"
+}

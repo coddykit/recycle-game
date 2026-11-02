@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Dirige un café concurrido",
+   "sub": "Tickets, baristas y cola en el mostrador",
+   "scene": "Corner Cafe at the morning peak (~08:00): 6+ tickets on the rail, 3 baristas on espresso and steam, a queue at the counter, HUD visible, guide finished, Medium tier"
+  },
+  {
+   "id": "s2",
+   "headline": "Elige el próximo ticket",
+   "sub": "Plazo primero, orden de llegada o habituales",
+   "scene": "House rule sheet open over the bar: Deadline first selected, one ticket flagged Priority, a pre-order with its pickup time on the rail"
+  },
+  {
+   "id": "s3",
+   "headline": "Ajusta el espresso perfecto",
+   "sub": "El café amargo trae malas reseñas",
+   "scene": "Grinder held mid dial-in: the tune meter climbing back into the green, 'Grinder dialled in' toast, espresso machine pulling a shot"
+  },
+  {
+   "id": "s4",
+   "headline": "¿Lluvia o calor? Planifica",
+   "sub": "Prepara bebidas calientes o hielo antes de abrir",
+   "scene": "Morning plan with the forecast strip showing rain tomorrow and the Prep hot drinks card (urn) open; the cart under its awning in the background"
+  },
+  {
+   "id": "s5",
+   "headline": "Tuesta tus propios granos",
+   "sub": "Pulsa Sacar en el punto del primer crack",
+   "scene": "Roastery tab: drum roaster running, the progress bar inside the 70-86 % sweet spot, 'First crack! Drop now' marker, green coffee market below"
+  },
+  {
+   "id": "s6",
+   "headline": "Vende granos al por mayor",
+   "sub": "Contratos con el Bistró y el Quiosco",
+   "scene": "Wholesale list with the Harbour Bistro contract signed (kg / every N days / quality), house beans quality 85+, resting racks filled"
+  },
+  {
+   "id": "s7",
+   "headline": "De carrito a tostadero",
+   "sub": "Los locales antiguos siguen ganando",
+   "scene": "Grow tab: Quayside Cart and Corner Cafe owned as branches with their daily income, Roastery Hall open; the roastery diorama behind"
+  },
+  {
+   "id": "s8",
+   "headline": "Reseñas de cinco estrellas",
+   "sub": "Buenos granos y servicio rápido llenan la pared",
+   "scene": "Day report after a strong roastery day: average review near 5 stars, served / walk-out numbers, sales and net, Collect button (no reward-video button in frame)"
+  }
+ ],
+ "feature": "Dirige el bar. Tuesta los granos."
+}
