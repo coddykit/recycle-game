@@ -112,6 +112,10 @@ namespace BottleRoute.Sim
             S.Minute = Gd.DayStart;
             S.Today = new DayStats { Day = S.Day };
             foreach (var p in S.Points) { p.FullMin = 0; p.Arrivals = p.Turned = p.Deposited = p.Picked = 0; p.BusyUntil = 0; }
+            // a wrong sensor / app number resyncs overnight (plan §7: crises are short, never a permanent trap — a frozen
+            // "has room" number would otherwise keep the machine off every route for good)
+            for (int i = 0; i < S.Points.Count; i++)
+                if (S.Points[i].SensorOffline) { S.Points[i].SensorOffline = false; Emit("sensor_fixed", i); }
             foreach (var t in S.Trucks) { t.KmToday = 0; t.Trips = 0; }
             S.Events.RemoveAll(e => e.UntilDay < S.Day);
             UpdateMarket();

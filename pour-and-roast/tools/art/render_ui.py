@@ -174,7 +174,7 @@ def main():
     char("sack", (-1.8, 1.0, 0), yaw=-25)
     char("cat", (1.4, -0.4, 0), yaw=-30, scale=1.3)
     char("plant", (2.1, 1.0, 0), yaw=10)
-    camera((0.3, -6.5, 2.6), (0.1, 0.2, 0.9), lens=40)
+    camera((1.0, -6.5, 2.6), (0.8, 0.2, 0.9), lens=42)   # keeps the half wall to the bar out of the frame
     render(os.path.join(UI, "intro_3.png"), 720, 720)
     # boot curtain (portrait): the whole cast on walnut
     reset(bg=(0.29, 0.23, 0.2))

@@ -9,3 +9,5 @@
 {"kind": "sfx", "id": "grind", "seconds": 1.5, "credits": 15, "remaining": 28207, "cost_from": "header", "hash": "01825261", "took": 2.0, "t": "2026-11-02T08:04:04"}
 {"kind": "sfx", "id": "roast", "seconds": 2.0, "credits": 20, "remaining": 28187, "cost_from": "header", "hash": "4fa07679", "took": 1.8, "t": "2026-11-02T08:04:08"}
 {"kind": "music", "id": "music_calm", "seconds": 60, "credits": 750, "remaining": 27437, "cost_from": "rate", "hash": "9fc83616", "took": 9.2, "t": "2026-11-02T08:04:20"}
+{"kind": "music", "id": "music_busy", "seconds": 60, "credits": 750, "remaining": 26687, "cost_from": "rate", "hash": "2ffbf0a9", "took": 7.8, "t": "2026-11-02T08:04:39"}
+{"kind": "batch_end", "spent": 1625, "remaining": 26687, "t": "2026-11-02T08:04:49"}

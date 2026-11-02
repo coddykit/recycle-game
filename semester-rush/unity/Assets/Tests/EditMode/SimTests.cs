@@ -772,5 +772,28 @@ namespace SemesterRush.Sim.Tests
                 Assert.Greater(rep.MinCash, -2000, "seed " + seed);
             }
         }
+
+        /// <summary>Plan section 6 content map at 1× (a week ≈ 4.5 real minutes): the Quad opens at ~1 h (weeks 10–17),
+        /// the Science Campus at ~3 h (weeks 30–50), ±25 % — docs/BALANCE.md.</summary>
+        [Test]
+        public void ChaptersOpenOnThePlansClock()
+        {
+            foreach (long seed in new long[] { 1, 2, 3 })
+            {
+                var rep = BalanceRunner.Run(TestData.Gd(), seed, 50);
+                int quad = ZoneWeek(rep, "quad"), science = ZoneWeek(rep, "science");
+                TestContext.WriteLine("seed " + seed + ": quad after week " + quad + ", science after week " + science);
+                Assert.That(quad, Is.InRange(10, 17), "seed " + seed + " quad");
+                Assert.That(science, Is.InRange(30, 50), "seed " + seed + " science");
+                Assert.Less(rep.Prestige, TestData.Gd().PrestigeMax, "seed " + seed + ": prestige keeps headroom for chapters 4-6");
+            }
+        }
+
+        static int ZoneWeek(BalanceReport rep, string zone)
+        {
+            foreach (var l in rep.Log)
+                if (l.EndsWith(" zone " + zone)) return int.Parse(l.Split(' ')[1]);
+            return 999;
+        }
     }
 }

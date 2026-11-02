@@ -262,19 +262,19 @@ def feature_graphic():
     kit("parasol", (-3.0, 12.0, 0))
     kit("parasol", (17.5, 12.5, 0))
     for i, (x, h) in enumerate([(-34, 1.0), (-14, 1.15), (6, 0.9), (26, 1.2), (46, 1.05)]):
-        kit("d_office_a" if i % 2 == 0 else "d_office_b", (x, 60 + (i % 2) * 8, 0), yaw=0, scale=h)
-    kit("d_house_a", (-22, 30, 0), yaw=0)
-    kit("d_shop_a", (34, 30, 0), yaw=0)
+        kit("d_office_a" if i % 2 == 0 else "d_office_b", (x * 1.6, 120 + (i % 2) * 12, 0), yaw=0, scale=h)
+    kit("d_house_a", (-24, 40, 0), yaw=0)
+    kit("d_shop_a", (36, 40, 0), yaw=0)
     kit("d_kiosk", (-30, 24, 0), yaw=0, scale=0.9)
-    char("cashier", (2.6, 2.2, 0), yaw=95, scale=1.0)
-    char("chef", (12.4, 2.5, 0), yaw=85, scale=1.0)
+    char("cashier", (2.6, 2.2, 0), yaw=95, scale=1.7)
+    char("chef", (12.4, 2.5, 0), yaw=85, scale=1.7)
     shirts = ["#4C7FD1", "#E57A3C", "#9B59B6", "#3FB0AC", "#F2C744", "#E57A3C", "#4C7FD1", "#3FB0AC", "#9B59B6"]
     line = [(4.6, 0.6), (5.2, -0.6), (6.0, -1.8), (7.0, -3.0), (13.6, 0.8), (14.4, -0.4), (15.4, -1.6), (16.6, -2.6), (17.8, -3.4)]
     for i, (x, y) in enumerate(line):
         figure(x, y, 160 + (i * 23) % 40, shirts[i])
     figure(-1.0, -1.0, -20, "#3FB0AC", burger=True)
     figure(9.6, -2.2, 200, "#F2C744", burger=True)
-    char("burger", (-6.4, -5.5, 0.2), yaw=-25, scale=4.2)
+    char("burger", (-0.6, -10.5, 0.3), yaw=-25, scale=3.2)
     cam = camera((5.0, -22.0, 7.0), (6.0, 10.0, 3.2), lens=30)
     backdrop(cam, "#FFE7B8", "#F59A62", dist=300, size=700, radial=False)
     render(os.path.join(STORE, "feature-graphic.png"), 1024, 500)

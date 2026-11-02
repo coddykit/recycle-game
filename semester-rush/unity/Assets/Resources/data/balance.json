@@ -22,7 +22,7 @@
     "hall_m":  { "kind": "hall",    "room": "lecture", "seats": 90,  "price": 5200,  "upkeep": 80,  "build_min": 1080 },
     "hall_l":  { "kind": "hall",    "room": "lecture", "seats": 160, "price": 11000, "upkeep": 140, "build_min": 1500 },
     "lab":     { "kind": "lab",     "room": "lab",     "seats": 50,  "price": 7500,  "upkeep": 120, "build_min": 1200 },
-    "library": { "kind": "library", "price": 2200, "upkeep": 50, "build_min": 540, "prestige": 3, "quality": 0.04 },
+    "library": { "kind": "library", "price": 2200, "upkeep": 50, "build_min": 540, "prestige": 2, "quality": 0.04 },
     "canteen": { "kind": "canteen", "meals": 80, "price": 3500, "upkeep": 70, "build_min": 900 },
     "dorm":    { "kind": "dorm",    "beds": 80, "rent": 14, "price": 4500, "upkeep": 70, "build_min": 1200 }
   },
@@ -80,8 +80,8 @@
     "intake_grow": 1.2, "intake_select": 1.05, "intake_select_apt": 0.04, "intake_grow_apt": -0.03, "registry_grow": 0.03
   },
   "prestige": {
-    "weekly_gain": 45, "grade_par": 0.55, "semester_gain": 70, "max": 1000, "free_weeks": 3,
-    "clubs": 3, "dorm_comfort": 1, "gym": 2
+    "weekly_gain": 30, "grade_par": 0.55, "semester_gain": 46, "max": 1000, "free_weeks": 3,
+    "clubs": 2, "dorm_comfort": 1, "gym": 1
   },
   "events": { "free_weeks": 1, "per_day": [0, 0.25, 0.35, 0.45, 0.5], "decision_min": 90 },
   "offline": { "min_s": 120, "cap_h": 4, "cap_h_plus": 12, "rate": 0.5, "rate_plus": 0.8, "weeks_per_hour": 0.5 },

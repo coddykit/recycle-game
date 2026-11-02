@@ -80,7 +80,7 @@ namespace BottleRoute.Sim
                 if (r.Count > 0) sim.Dispatch(ti, r);
             }
             // technicians
-            for (int i = 0; i < s.Points.Count; i++) if (s.Points[i].Jammed && !s.Points[i].TechCalled) sim.SendTech("point", i);
+            for (int i = 0; i < s.Points.Count; i++) if ((s.Points[i].Jammed || s.Points[i].SensorOffline) && !s.Points[i].TechCalled) sim.SendTech("point", i);
             if (s.Depot.BalerDown) sim.SendTech("baler", 0);
             // till + bales
             if (s.Depot.Till > 200) sim.CollectTill();

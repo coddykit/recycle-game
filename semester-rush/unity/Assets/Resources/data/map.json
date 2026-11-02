@@ -4,7 +4,7 @@
   "zones": [
     { "id": "college", "chapter": 1, "prestige": 0,   "cost": 0 },
     { "id": "quad",    "chapter": 2, "prestige": 220, "cost": 7000 },
-    { "id": "science", "chapter": 3, "prestige": 480, "cost": 30000 }
+    { "id": "science", "chapter": 3, "prestige": 680, "cost": 60000 }
   ],
   "nodes": [
     { "id": "entrance",       "zone": "college", "kind": "entrance", "x": 0.0,  "y": 0.0 },
