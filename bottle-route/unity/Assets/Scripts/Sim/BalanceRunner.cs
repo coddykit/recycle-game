@@ -84,8 +84,19 @@ namespace BottleRoute.Sim
             if (s.Depot.BalerDown) sim.SendTech("baler", 0);
             // till + bales
             if (s.Depot.Till > 200) sim.CollectTill();
+            // tenders (chapter 5): take every offer the yard can hold, hand bales over as soon as they are there, and keep
+            // promised material out of spot sales unless the yard is about to stop the baler
+            foreach (var t in new List<Tender>(s.Tenders))
+            {
+                if (!t.Accepted) sim.AcceptTender(t.Id);
+                if (sim.CanDeliver(t)) sim.DeliverTender(t.Id);
+            }
             for (int m = 0; m < Mats.N; m++)
-                if (s.Depot.Bales[m] > 0 && (sim.MarketMult(m) >= 1.05 || s.Depot.Yard >= s.Depot.YardCap - 2 || (m == Mats.Glass && sim.GlassBayFull))) sim.Sell(m);
+            {
+                bool full = s.Depot.Yard >= s.Depot.YardCap - 2 || (m == Mats.Glass && sim.GlassBayFull);
+                if (sim.BalesPromised(m) > 0 && !full) continue;
+                if (s.Depot.Bales[m] > 0 && (sim.MarketMult(m) >= 1.05 || full)) sim.Sell(m);
+            }
             if (!calm) return;
             double buffer = Math.Max(800, sim.DayIncome() * 0.8);
             // districts first (the chapter goal), then research, then the network
@@ -110,6 +121,7 @@ namespace BottleRoute.Sim
                 if (c.Ok && s.Cash - c.Cost > buffer * 1.5) { sim.Buy(id); rep.Log.Add("day " + s.Day + " bought " + id); }
             }
             if (s.Depot.IntakeTotal > sim.CountPerMinute * 120 && sim.CanBuy("line").Ok && s.Cash - sim.Gd.Price("line") > buffer) sim.Buy("line");
+            if (s.Depot.IntakeTotal > sim.CountPerMinute * 90 && sim.CanBuy("bulk_centre").Ok && s.Cash - sim.Gd.Price("bulk_centre") > buffer * 2) { sim.Buy("bulk_centre"); rep.Log.Add("day " + s.Day + " bought bulk_centre"); }
             int pointsPerTruck = s.Points.Count / Math.Max(1, s.Trucks.Count);
             if (pointsPerTruck > 4 && sim.CanBuy("truck:van").Ok && s.Cash - 2500 > buffer * 2) sim.Buy("truck:van");
             if (s.Techs == 0 && s.Day > 3 && sim.CanBuy("tech").Ok && s.Cash - 300 > buffer) sim.Buy("tech");

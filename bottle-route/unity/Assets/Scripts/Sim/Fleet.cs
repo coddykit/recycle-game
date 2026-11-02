@@ -5,6 +5,8 @@
 //   * Every km costs fuel (fuel spike ×, fuel saver research, rewarded voucher ½).
 //   * The planner ("Suggest" button and the Dispatcher) picks due points by their service policy, nearest-first weighted by
 //     urgency, within the truck's capacity; the route optimiser research adds a 2-opt pass. Computed on demand, never per frame.
+//   * Ferry (chapter 7): on a ferry edge the truck waits at the pier for the next departure, pays the ticket, sails at the
+//     ferry speed and burns no fuel; the estimate adds the expected wait from the planned clock.
 using System;
 using System.Collections.Generic;
 
@@ -15,6 +17,8 @@ namespace BottleRoute.Sim
         public bool Ok;
         public string Error = "";
         public double Km, Cost, Minutes, LoadPct;
+        public double FerryWait;      // minutes waiting at piers on this route (included in Minutes)
+        public int Ferries;           // crossings (tickets, included in Cost)
     }
 
     public sealed partial class Simulation
@@ -143,12 +147,19 @@ namespace BottleRoute.Sim
         /// <summary>Re-plans the current leg from the truck's position: continue to the next stop / home from the next node.</summary>
         void Reroute(TruckState t)
         {
-            if (t.Path.Count >= 2)
+            if (t.Path.Count >= 2 && AtPier(t) && NextFerrySegment(t, out _, out _, out int pier))
+            {
+                // still on the quay: no crossing, the new leg starts from the pier
+                t.AtNode = pier;
+                t.FerryAt = 0;
+            }
+            else if (t.Path.Count >= 2)
             {
                 // finish the current road segment first: we treat the truck as standing at the segment's far node
                 int seg = SegmentIndex(t);
                 double done = SegmentStartKm(t, seg + 1);
                 double extra = Math.Max(0, done - t.PathPos);
+                if (OnFerry(t)) { extra = 0; t.FerryAt = 0; }   // the boat finishes its crossing (no fuel on the water)
                 ChargeKm(t, extra);
                 t.AtNode = t.Path[Math.Min(seg + 1, t.Path.Count - 1)];
             }
@@ -224,8 +235,28 @@ namespace BottleRoute.Sim
                 {
                     case TruckStatus.Drive:
                     {
-                        double d = Math.Min(v.SpeedKmh / 60.0 * dt, Math.Max(0, t.PathKm - t.PathPos));
+                        double limit = t.PathKm, speed = v.SpeedKmh;
+                        bool sail = false;
+                        if (NextFerrySegment(t, out double fs, out double fe))
+                        {
+                            if (t.PathPos >= fs - 1e-6)
+                            {
+                                // at the pier: queue for the next boat (ticket once), then sail at the ferry speed
+                                if (t.FerryAt <= 0) { t.FerryAt = NextFerry(S.Minute); PayFerry(t); Emit("ferry_wait", ti, -1, t.FerryAt - S.Minute); }
+                                if (S.Minute < t.FerryAt - 1e-9) break;
+                                sail = true; limit = fe; speed = Gd.FerrySpeedKmh;
+                            }
+                            else limit = fs;
+                        }
+                        double d = Math.Min(speed / 60.0 * dt, Math.Max(0, limit - t.PathPos));
                         t.PathPos += d;
+                        if (sail)
+                        {
+                            if (t.PathPos >= fe - 1e-6) { t.PathPos = Math.Max(t.PathPos, fe); t.FerryAt = 0; }
+                            if (t.PathPos >= t.PathKm - 1e-9) Arrive(ti);
+                            break;
+                        }
+                        if (t.PathPos >= limit - 1e-9 && limit < t.PathKm) t.PathPos = limit;   // stop exactly at the pier
                         ChargeKm(t, d);
                         if (JamAllowed && d > 0)
                         {
@@ -302,6 +333,7 @@ namespace BottleRoute.Sim
             t.Path.Clear();
             t.PathKm = t.PathPos = 0;
             t.Voucher = false;
+            t.FerryAt = 0;
             Emit("truck_home", ti);
         }
 
@@ -467,9 +499,35 @@ namespace BottleRoute.Sim
                     kg += estC * mix[m] * Gd.Materials[m].Kg;
                 }
             }
-            e.Km = RouteKm(stops, v.Alley);
-            e.Cost = e.Km * v.CostKm * FuelMult * (S.FuelVoucher ? 0.5 : 1.0);
-            e.Minutes = e.Km / Math.Max(1, v.SpeedKmh) * 60 + stops.Count * v.ServiceMin + Gd.UnloadBaseMin;
+            // walk the route on a clock: road km at the truck's speed, ferry crossings wait for the next departure
+            double start = S.Phase == Phases.Live ? S.Minute : Gd.DayStart, clock = start, road = 0;
+            void Leg(int a, int b)
+            {
+                if (!Gd.Graph.HasFerry || Gd.Graph.FerryKm(a, b, v.Alley) <= 0)
+                {
+                    double km = Gd.Graph.Km(a, b, v.Alley);
+                    road += km; clock += km / Math.Max(1, v.SpeedKmh) * 60;
+                    return;
+                }
+                var path = Gd.Graph.Path(a, b, v.Alley);
+                for (int k = 1; k < path.Count; k++)
+                {
+                    double seg = Gd.Graph.Km(path[k - 1], path[k], v.Alley);
+                    if (Gd.Graph.IsFerry(path[k - 1], path[k]))
+                    {
+                        double w = NextFerry(clock) - clock;
+                        e.FerryWait += w; e.Ferries++;
+                        clock += w + seg / Math.Max(1, Gd.FerrySpeedKmh) * 60;
+                    }
+                    else { road += seg; clock += seg / Math.Max(1, v.SpeedKmh) * 60; }
+                }
+            }
+            int at = Gd.DepotNode;
+            foreach (int i in stops) { Leg(at, S.Points[i].Node); at = S.Points[i].Node; clock += v.ServiceMin; }
+            Leg(at, Gd.DepotNode);
+            e.Km = road;
+            e.Cost = e.Km * v.CostKm * FuelMult * (S.FuelVoucher ? 0.5 : 1.0) + e.Ferries * Gd.FerryTicket;
+            e.Minutes = clock - start + Gd.UnloadBaseMin;
             e.LoadPct = Math.Max(vol / Math.Max(1, v.VolL), kg / Math.Max(1, v.Kg));
             e.Ok = true;
             return e;

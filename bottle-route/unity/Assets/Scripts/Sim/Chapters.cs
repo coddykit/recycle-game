@@ -183,16 +183,19 @@ namespace BottleRoute.Sim
         public bool OnFerry(TruckState t) => t.Status == TruckStatus.Drive && t.FerryAt > 0 && S.Minute >= t.FerryAt - 1e-9;
 
         /// <summary>The first ferry segment on the truck's path that ends after its position: segment start / end km.</summary>
-        bool NextFerrySegment(TruckState t, out double start, out double end)
+        bool NextFerrySegment(TruckState t, out double start, out double end) => NextFerrySegment(t, out start, out end, out _);
+
+        bool NextFerrySegment(TruckState t, out double start, out double end, out int pier)
         {
             start = end = 0;
+            pier = -1;
             if (!Gd.Graph.HasFerry || t.Path.Count < 2) return false;
             double km = 0;
             for (int i = 1; i < t.Path.Count; i++)
             {
                 var a = Gd.Nodes[t.Path[i - 1]]; var b = Gd.Nodes[t.Path[i]];
                 double seg = Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Y - b.Y) * (a.Y - b.Y)) * Gd.RoadFactor;
-                if (Gd.Graph.IsFerry(t.Path[i - 1], t.Path[i]) && km + seg > t.PathPos + 1e-6) { start = km; end = km + seg; return true; }
+                if (Gd.Graph.IsFerry(t.Path[i - 1], t.Path[i]) && km + seg > t.PathPos + 1e-6) { start = km; end = km + seg; pier = t.Path[i - 1]; return true; }
                 km += seg;
             }
             return false;
