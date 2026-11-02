@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Leite ein Dino-Schutzgebiet",
+   "sub": "Herden füttern, Ranger schicken, Insel beruhigen",
+   "scene": "Live day ~11:00 at Medium tier, Landing Cove + Fern Valley open, mixed herds grazing, safari tram between stops, HUD (day, coins, rating) visible, 1-2 pins on the diorama, guide finished, no purchase owned"
+  },
+  {
+   "id": "s2",
+   "headline": "Schick den richtigen Ranger",
+   "sub": "Fütterer, Tierarzt, Pfleger, Zaun-Techniker",
+   "scene": "A hungry-herd pin tapped: send sheet open with the Feeder highlighted and the route drawn along the service road, ETA shown"
+  },
+  {
+   "id": "s3",
+   "headline": "Plane jeden Morgen",
+   "sub": "Futterplan und Fahrplan der Safaribahn",
+   "scene": "Morning plan screen (paused): feed board with crates per station and the 'needs ~n a day' hint, tram timetable with 2 cars, 'Open the park' button"
+  },
+  {
+   "id": "s4",
+   "headline": "Paare die Herden klug",
+   "sub": "Ernährung, Lebensraum und Temperament entscheiden",
+   "scene": "Harmony card open after tapping two animals in one paddock (e.g. Triceratops + Maiasaura, green harmony bar), paddock behind it"
+  },
+  {
+   "id": "s5",
+   "headline": "Grabe und brüte neue Arten",
+   "sub": "Jede Grabungsstelle zeigt, was sie hergibt",
+   "scene": "Hatchery sheet: dig site chart with the exact species per site, one egg in the incubator with the temperature slider in the warm band, 'Hatches in' timer"
+  },
+  {
+   "id": "s6",
+   "headline": "Meistere das Inselchaos",
+   "sub": "Regen, Hitze und Staub. Niemand wird verletzt.",
+   "scene": "A real rain squall day: flooded-path pin on the tram line, a Fence Tech on the way, tram waiting at the station, overcast light"
+  },
+  {
+   "id": "s7",
+   "headline": "Erschließe neue Zonen",
+   "sub": "Farntal und die heißen Dünen der Dünen-Mesa",
+   "scene": "Dune Mesa freshly opened (bot or real save past ~2.5 h): water point and shade sail in a dune paddock, Miragaia and Protoceratops, longer tram loop"
+  },
+  {
+   "id": "s8",
+   "headline": "Steigere deine Bewertung",
+   "sub": "Tagesberichte zeigen, was funktioniert hat",
+   "scene": "Day report with the stars row, Sanctuary Rating, visitors, tram riders, animal care and profit, 'Next day' button; no rewarded-ad button in the frame"
+  }
+ ],
+ "feature": "Leite den Tag. Halte die Insel ruhig."
+}

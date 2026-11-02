@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Administre um café movimentado",
+   "sub": "Pedidos, baristas e fila no balcão",
+   "scene": "Corner Cafe at the morning peak (~08:00): 6+ tickets on the rail, 3 baristas on espresso and steam, a queue at the counter, HUD visible, guide finished, Medium tier"
+  },
+  {
+   "id": "s2",
+   "headline": "Escolha o próximo pedido",
+   "sub": "Primeiro a chegar, prazo ou clientes fiéis",
+   "scene": "House rule sheet open over the bar: Deadline first selected, one ticket flagged Priority, a pre-order with its pickup time on the rail"
+  },
+  {
+   "id": "s3",
+   "headline": "Ajuste o shot perfeito",
+   "sub": "Espresso amargo gera avaliações ruins",
+   "scene": "Grinder held mid dial-in: the tune meter climbing back into the green, 'Grinder dialled in' toast, espresso machine pulling a shot"
+  },
+  {
+   "id": "s4",
+   "headline": "Chuva ou calor? Planeje",
+   "sub": "Prepare bebidas quentes ou gelo extra",
+   "scene": "Morning plan with the forecast strip showing rain tomorrow and the Prep hot drinks card (urn) open; the cart under its awning in the background"
+  },
+  {
+   "id": "s5",
+   "headline": "Torre seus próprios grãos",
+   "sub": "Toque em Descarregar no primeiro estalo",
+   "scene": "Roastery tab: drum roaster running, the progress bar inside the 70-86 % sweet spot, 'First crack! Drop now' marker, green coffee market below"
+  },
+  {
+   "id": "s6",
+   "headline": "Venda grãos no atacado",
+   "sub": "Contratos com Bistrô do Porto e Quiosque",
+   "scene": "Wholesale list with the Harbour Bistro contract signed (kg / every N days / quality), house beans quality 85+, resting racks filled"
+  },
+  {
+   "id": "s7",
+   "headline": "Do carrinho ao Salão de Torra",
+   "sub": "Pontos antigos continuam como filiais",
+   "scene": "Grow tab: Quayside Cart and Corner Cafe owned as branches with their daily income, Roastery Hall open; the roastery diorama behind"
+  },
+  {
+   "id": "s8",
+   "headline": "Avaliações de cinco estrelas",
+   "sub": "Grãos ótimos e atendimento rápido enchem a parede",
+   "scene": "Day report after a strong roastery day: average review near 5 stars, served / walk-out numbers, sales and net, Collect button (no reward-video button in frame)"
+  }
+ ],
+ "feature": "Administre o bar. Torre os grãos."
+}
