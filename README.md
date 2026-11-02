@@ -8,6 +8,11 @@ taşır:
 - **Yapılan oyun:** `bottle-route/` (Unity 6; başlangıç: `bottle-route/README.md`). Plan: `RECYCLING_GAME_PLAN.md` = **Bottle Route: Recycling Tycoon** (depozito makineleri dolar; boşaltma
   turu, yakıt ve maliyet dengesi; "Borderline Empire gibi").
 - **Kurallar ve standartlar:** kökteki diğer md dosyaları (aşağıda).
+- **Sonraki 6 oyun (sahip 11-02: bu repoda Claude cloud yapacak; CoddyApps fabrikasından çıkarıldı):**
+  `UNIVERSITY_GAME_PLAN.md` (Semester Rush: Campus Dean), `HOSPITAL_GAME_PLAN.md` (Charge Nurse: Hospital Manager),
+  `LAW_FIRM_GAME_PLAN.md` (Docket Day: Law Firm Rush), `DINOSAUR_PARK_GAME_PLAN.md` (Ridgeback Rangers: Dino Sanctuary),
+  `BURGER_GAME_PLAN.md` (Grill Convoy: Burger Truck Manager), `COFFEE_GAME_PLAN.md` (Pour & Roast: Cafe Manager).
+  Plan sırası/özgünlük kuralları `NEXT_WAVE_PLANS_README.md`'de (o tablodaki 1–5 numaralı oyunlar CoddyApps'te yapılıyor).
 
 Kaynak: `coddykit/CoddyApps` `origin/main` 59c4bcc12c (2026-11-02).
 
@@ -26,6 +31,7 @@ Kaynak: `coddykit/CoddyApps` `origin/main` 59c4bcc12c (2026-11-02).
 | `LESSONS_LEARNED.md`, `LESSONS_MATRIX.md` | Dersler + oyun başına uyum matrisi |
 | `NEW_GAMES_STRATEGY_2026-10-20.md` | "Kaos içinde süreç yönetimi" oyun stratejisi |
 | `RECYCLING_GAME_PLAN.md`, `NEXT_WAVE_PLANS_README.md` | Bottle Route planı + plan şablonu / özgünlük kuralları |
+| `UNIVERSITY_`, `HOSPITAL_`, `LAW_FIRM_`, `DINOSAUR_PARK_`, `BURGER_`, `COFFEE_GAME_PLAN.md` | Sonraki 6 oyunun planları (her biri ayrı klasörde yapılır) |
 | `IAP_STANDARD.md` | Geniş IAP kataloğu standardı |
 | `REWARDED_ADS_STRATEGY.md` | Ödüllü reklam yerleşimleri ve tavanları |
 | `REVENUECAT_AD_TRACKING.md` | RevenueCat reklam olay takibi |
@@ -41,7 +47,7 @@ Belgeler monorepo yollarını kullanır. Eşleme:
 | `games/<oyun>/` | `<oyun>/` (örnek: `smuggler/`; yeni oyun kendi klasörüne, ör. `bottle-route/`) |
 | `games/CLAUDE.md`, `games/NEW_GAME_PLAYBOOK.md`, `games/LESSONS_LEARNED.md` | kökte aynı adla |
 | `games/tools/IAP_STANDARD.md`, `REWARDED_ADS_STRATEGY.md`, `REVENUECAT_AD_TRACKING.md` | kökte aynı adla |
-| `games/docs/next-wave-2026-10-31/recycling.md` / `README.md` | `RECYCLING_GAME_PLAN.md` / `NEXT_WAVE_PLANS_README.md` |
+| `games/docs/next-wave-2026-10-31/<plan>.md` / `README.md` | `<PLAN>_GAME_PLAN.md` / `NEXT_WAVE_PLANS_README.md` |
 | `games/tools/<ui\|perf\|audio\|ads>/README.md` | `<UI\|PERF\|AUDIO\|ADS>_KIT_README.md` |
 | `games/tools/ui` (coddy_ui kiti) | `smuggler/addons/coddy_ui/` |
 | `games/tools/perf/addons/coddy_perf` | `smuggler/addons/coddy_perf/` |
