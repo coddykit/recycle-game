@@ -63,7 +63,7 @@
  "crisis.glass_break.t": "Glass broke",
  "crisis.heat_wave.b": "Everyone is drinking more. Machines fill 60 % faster for two days.",
  "crisis.heat_wave.t": "Heat wave",
- "crisis.jam.b": "A bottle is stuck. Send a technician.",
+ "crisis.jam.b": "A bottle is stuck. Send a technician, or a truck crew clears it when they empty it.",
  "crisis.jam.t": "Machine jammed",
  "crisis.match_day.b": "The stadium fills up from 16:00 to 18:00. Have a truck nearby.",
  "crisis.match_day.t": "Match day",

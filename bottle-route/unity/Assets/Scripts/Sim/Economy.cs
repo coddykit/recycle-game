@@ -324,6 +324,9 @@ namespace BottleRoute.Sim
             return "";
         }
 
+        /// <summary>Real seconds pass for the research timer only (balance bot / tests that advance game minutes directly).</summary>
+        public void AdvanceResearch(double realS) { if (realS > 0) TickResearch(realS); }
+
         void TickResearch(double realS)
         {
             if (S.Researching == "") return;

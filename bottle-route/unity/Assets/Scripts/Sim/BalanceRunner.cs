@@ -58,6 +58,7 @@ namespace BottleRoute.Sim
             while (sim.Phase == Phases.Live && guard++ < 100000)
             {
                 sim.AdvanceMinutes(5);
+                sim.AdvanceResearch(5 / sim.Gd.GameMinPerRealS);   // research runs on real time: 5 game min = 2 s at 1×
                 sim.DrainEvents();
                 Manage(sim, rep, false);
                 if (double.IsNaN(sim.S.Cash) || double.IsInfinity(sim.S.Cash)) rep.Finite = false;

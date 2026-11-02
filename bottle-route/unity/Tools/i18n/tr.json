@@ -63,7 +63,7 @@
  "crisis.glass_break.t": "Cam kırıldı",
  "crisis.heat_wave.b": "Herkes daha çok içecek içiyor. Makineler iki gün boyunca %60 daha hızlı doluyor.",
  "crisis.heat_wave.t": "Sıcak dalgası",
- "crisis.jam.b": "Bir şişe sıkıştı. Bir teknisyen gönder.",
+ "crisis.jam.b": "Bir şişe sıkıştı. Bir teknisyen gönder ya da kamyon ekibi boşaltırken temizler.",
  "crisis.jam.t": "Makine sıkıştı",
  "crisis.match_day.b": "Stat 16:00 ile 18:00 arası doluyor. Yakınında bir kamyon bulundur.",
  "crisis.match_day.t": "Maç günü",

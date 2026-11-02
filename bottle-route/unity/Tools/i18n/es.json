@@ -63,7 +63,7 @@
  "crisis.glass_break.t": "Se rompió el vidrio",
  "crisis.heat_wave.b": "Todos beben más. Las máquinas se llenan un 60 % más rápido durante dos días.",
  "crisis.heat_wave.t": "Ola de calor",
- "crisis.jam.b": "Una botella se ha atascado. Envía a un técnico.",
+ "crisis.jam.b": "Una botella se ha atascado. Envía a un técnico, o el equipo del camión la desatasca al vaciar la máquina.",
  "crisis.jam.t": "Máquina atascada",
  "crisis.match_day.b": "El estadio se llena de 16:00 a 18:00. Ten un camión cerca.",
  "crisis.match_day.t": "Día de partido",

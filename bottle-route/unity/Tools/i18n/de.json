@@ -63,7 +63,7 @@
  "crisis.glass_break.t": "Glas zerbrochen",
  "crisis.heat_wave.b": "Alle trinken mehr. Automaten füllen sich zwei Tage lang 60 % schneller.",
  "crisis.heat_wave.t": "Hitzewelle",
- "crisis.jam.b": "Eine Flasche steckt fest. Schick einen Techniker.",
+ "crisis.jam.b": "Eine Flasche steckt fest. Schick einen Techniker, oder das Transportteam befreit sie beim Leeren.",
  "crisis.jam.t": "Automat verklemmt",
  "crisis.match_day.b": "Das Stadion füllt sich von 16:00 bis 18:00 Uhr. Halte einen Lkw in der Nähe bereit.",
  "crisis.match_day.t": "Spieltag",

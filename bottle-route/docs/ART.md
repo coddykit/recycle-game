@@ -25,8 +25,24 @@ bottom-centre, +Y up, 1 unit = 1 m, decimate per LOD, 1024 + 512 PNG) → `tools
 importer and the project must not get one).
 
 **Crowd lesson applied:** the citizens walking on the map are ~20–30 px — Meshy figures read worse than chunky canonical
-figures at that size (Sky Tower 10-23, Kaiten 10-27). The map crowd therefore uses the Blender chunky figure (one mesh,
-MultiMesh, vertex colours per archetype, 15 Hz on Low); the Meshy citizen is only used where it is large.
+figures at that size (Sky Tower 10-23, Kaiten 10-27). The map crowd therefore uses the chunky canonical figure (`MeshKit.Figure`,
+GPU-instanced, one palette swatch per archetype, half the walkers at 15 Hz on Low); the Meshy citizen is only used where it is large.
 
 To redo: `export TMPDIR=<scratch>`; key in `~/.config/meshy/api_key` (needs `api.meshy.ai` + `assets.meshy.ai` in the
 environment's allowed domains); Blender 4.x with numpy and an EGL/Mesa stack for the turntable renders.
+
+## Blender kit + UI renders (2026-11-02)
+
+`tools/art/kit.py` (Blender 4.0 headless) builds 8 props on the palette UVs: `machine_s`, `machine_m`, `shop`,
+`horeca`, `van`, `bike`, `compactor`, `baler` → `unity/Assets/Resources/kit/*.fbx` (1720 tris in total; every prop ≤ 400).
+`RegionWorld` loads them from `Resources/kit` and falls back to the procedural `MeshKit` meshes when one is missing.
+The Meshy bale LODs 1/2 come from `tools/art/glb2fbx_lod.py` (LOD0 → decimated FBX): Blender 4.0's glTF exporter wrote
+empty files for the decimated bale LODs ("Array length mismatch"); the optimizer's LOD0 is fine.
+
+`tools/art/render_ui.py` renders, from the repo's own models only: `Resources/ui/coach_operator.png` (guide portrait),
+`intro_1..3.png` (pager), `curtain.png` (boot), `Art/Icon/icon_full.png` + `icon_adaptive_fg.png` — a **placeholder**
+icon; the owner picks the final icon from candidates at P7 (the build still needs `icon_adaptive_bg / round / legacy`,
+`BottleIcons` fails closed until then). Palette: `unity/Tools/make_palette.py`.
+
+Still to do at P2: district building kit (today: procedural blocks), depot hall model, baler press animation (Medium /
+High only), litter decal art, a real art gate (Low draws / tris measured in the editor).

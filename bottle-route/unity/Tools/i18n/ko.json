@@ -63,7 +63,7 @@
  "crisis.glass_break.t": "유리 파손",
  "crisis.heat_wave.b": "모두 음료를 더 많이 마셔요. 이틀 동안 회수기가 60 % 더 빨리 차요.",
  "crisis.heat_wave.t": "폭염",
- "crisis.jam.b": "병이 끼었어요. 정비사를 보내세요.",
+ "crisis.jam.b": "병이 끼었어요. 정비사를 보내세요. 아니면 수거 트럭 팀이 회수기를 비울 때 치워 줘요.",
  "crisis.jam.t": "회수기 걸림",
  "crisis.match_day.b": "16:00부터 18:00까지 경기장이 가득 차요. 근처에 트럭을 대기시키세요.",
  "crisis.match_day.t": "경기 날",

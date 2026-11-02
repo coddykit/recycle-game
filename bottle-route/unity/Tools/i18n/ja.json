@@ -63,7 +63,7 @@
  "crisis.glass_break.t": "ガラスが割れた",
  "crisis.heat_wave.b": "みんながたくさん飲んでいます。2日間、回収機が60 %速くたまります。",
  "crisis.heat_wave.t": "猛暑",
- "crisis.jam.b": "ボトルが詰まりました。技術者を向かわせてください。",
+ "crisis.jam.b": "ボトルが詰まりました。技術者を向かわせるか、回収車のスタッフが回収時に取り除きます。",
  "crisis.jam.t": "回収機が詰まった",
  "crisis.match_day.b": "16:00〜18:00はスタジアムが混みます。近くにトラックを待機させましょう。",
  "crisis.match_day.t": "試合の日",

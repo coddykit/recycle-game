@@ -163,6 +163,18 @@ namespace BottleRoute.Sim.Tests
     public class FleetTests
     {
         [Test]
+        public void TheCrewClearsAJamWhenTheyEmptyTheMachine()
+        {
+            var sim = TestData.NewSim();
+            sim.Jam(0, "t");
+            Assert.Contains(0, sim.SuggestRoute(0), "a jammed machine is always due");
+            sim.StartDay();
+            sim.Dispatch(0, new List<int> { 0 });
+            for (int i = 0; i < 200 && sim.S.Points[0].Jammed; i++) sim.AdvanceMinutes(1);
+            Assert.IsFalse(sim.S.Points[0].Jammed);
+        }
+
+        [Test]
         public void DispatchNeedsAFreeDriver()
         {
             var sim = TestData.NewSim();
@@ -620,8 +632,11 @@ namespace BottleRoute.Sim.Tests
             TestContext.Progress.WriteLine("BALANCE 7 days seed 42\n" + rep.Table());
             Assert.IsTrue(rep.Finite);
             Assert.AreEqual(7, rep.Days.Count);
-            Assert.Greater(rep.Cash, TestData.Gd().StartCash, "a sensible player is richer after a week");
-            foreach (var d in rep.Days) Assert.Greater(d.Collected, 0, "day " + d.Day);
+            double week = 0;
+            foreach (var d in rep.Days) { Assert.Greater(d.Collected, 0, "day " + d.Day); week += d.Net; }
+            Assert.Greater(week, 0, "a sensible player earns over a week (money also went into research / machines)");
+            Assert.Greater(rep.Days[6].Net, rep.Days[0].Net, "the network grows: day 7 earns more than day 1");
+            Assert.Less(rep.Days[6].TurnedRate, 0.15, "no wall of turned-away citizens after the forgiving days");
         }
 
         [Test]

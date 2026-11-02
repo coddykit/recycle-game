@@ -340,6 +340,8 @@ namespace BottleRoute.Sim
             p.LastServiceMin = S.Minute;
             p.EstVol = Volume(p);
             if (p.SensorOffline) { p.SensorOffline = false; Emit("sensor_fixed", i); }
+            // the crew clears a simple jam while they are there (a technician is the fast, remote fix)
+            if (p.Jammed) { p.Jammed = false; p.TechCalled = false; Emit("fixed", i, ti); }
             Emit("serviced", ti, i, took);
         }
 
@@ -348,6 +350,7 @@ namespace BottleRoute.Sim
         /// <summary>Is this point due by its own service policy (what the Dispatcher and "Suggest" serve)?</summary>
         public bool Due(PointState p)
         {
+            if (p.Jammed) return true;   // a jammed machine needs a visit whatever its rule
             switch (p.Policy)
             {
                 case Policies.Fixed: return p.LastServiceDay != S.Day && S.Day - p.LastServiceDay >= Math.Max(1, p.FixedEvery);

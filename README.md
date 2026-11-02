@@ -5,7 +5,7 @@ taşır:
 
 - **Örnek oyun:** `smuggler/` = **Borderline Empire** (canlı, Godot 4.7.2, Google Play). Filonun kanıtlanmış kalıbı:
   2.5D diorama, kaos içinde süreç yönetimi, onboarding, 10 dil, IAP kataloğu, house reklam + ödüllü AdMob, perf profilleri.
-- **Yapılacak oyun:** `RECYCLING_GAME_PLAN.md` = **Bottle Route: Recycling Tycoon** (depozito makineleri dolar; boşaltma
+- **Yapılan oyun:** `bottle-route/` (Unity 6; başlangıç: `bottle-route/README.md`). Plan: `RECYCLING_GAME_PLAN.md` = **Bottle Route: Recycling Tycoon** (depozito makineleri dolar; boşaltma
   turu, yakıt ve maliyet dengesi; "Borderline Empire gibi").
 - **Kurallar ve standartlar:** kökteki diğer md dosyaları (aşağıda).
 
