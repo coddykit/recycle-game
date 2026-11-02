@@ -9,6 +9,13 @@
 //     (Resources/kit/*.bytes, KitPiece) MERGED into the same district / depot mesh — 0 extra draws on every tier; Low
 //     merges the *_low twins (no bevels / windows). The procedural boxes stay as the fallback. Medium/High only: the
 //     baler press ram (+1 draw, animated without allocation).
+//   * chapters 5-7 (2026-11-02): the Industrial Estate, Riviera Resort, Hill Villages and the Island are built from the
+//     same map JSON with the same kit pieces. Low merges EVERY district into ONE mesh (8 districts = 1 draw, was 4 draws
+//     for 4); Medium/High keep one mesh per district (culling). The island ground, the two piers and the dashed ferry lane
+//     are merged into the ground mesh (0 extra draws); Medium/High add the ferry boat (+1 draw, no allocation), which
+//     carries a truck while it sails. Large remote machines / hotels reuse the big machine / café props, scaled up.
+//     Low draws the return points INSTANCED (one draw per prop kind: machine S, machine M/L, shop, café/hotel) instead of
+//     one GameObject per point — the 38 sites of chapters 1-7 cost ≤ 4 draws on Low (Medium/High keep the GameObjects).
 //   * picking: a tap ray-casts the ground plane (no physics module) and picks the nearest truck / point / depot.
 using System;
 using System.Collections.Generic;
@@ -41,11 +48,18 @@ namespace BottleRoute.World
 
         Material mat, matInst, matBalePet, matBaleAlu;
         GameObject depotObj;
-        Transform balerRam;
-        float ramPhase;
+        Transform balerRam, boat;
+        Vector3 ferryA, ferryB;
+        float ramPhase, boatBob;
         bool lowBuilt;
         readonly Dictionary<string, GameObject> districtObjs = new Dictionary<string, GameObject>();
         readonly List<GameObject> pointObjs = new List<GameObject>();
+        // Low: instanced point props (kit mesh + the prefab's root / child transform, or the procedural fallback)
+        static readonly string[] PropKinds = { "machine_s", "machine_m", "shop", "horeca" };
+        readonly Mesh[] propMesh = new Mesh[4];
+        readonly Matrix4x4[] propLocal = new Matrix4x4[4];
+        readonly bool[] propKit = new bool[4];
+        readonly List<Matrix4x4>[] pointBatches = { new List<Matrix4x4>(), new List<Matrix4x4>(), new List<Matrix4x4>(), new List<Matrix4x4>() };
         readonly List<Transform> truckObjs = new List<Transform>();
         readonly List<string> truckTypes = new List<string>();
         Crowd crowd;
@@ -80,6 +94,7 @@ namespace BottleRoute.World
             baleMeshAlu ??= BoxMesh(Pal.Alu);
             litterMesh = FlatMesh(Pal.Litter, 1.2f);
             glassMesh = BoxMesh(Pal.Glass);
+            LoadPropMeshes();
             BuildStatic();
             crowd = new Crowd(this, matInst, low);
             if (tap != null) tap.Tapped += OnTap;
@@ -104,15 +119,91 @@ namespace BottleRoute.World
             var gd = Sim.Gd;
             // ground + sea (two big quads)
             var k = new MeshKit();
-            k.Quad(new Vector3(-150, 0, -40), new Vector3(-150, 0, 650), new Vector3(850, 0, 650), new Vector3(850, 0, -40), Pal.Grass);
-            k.Quad(new Vector3(-400, -0.5f, -400), new Vector3(-400, -0.5f, -40), new Vector3(1100, -0.5f, -40), new Vector3(1100, -0.5f, -400), Pal.Water);
-            k.Strip(new Vector3(-150, 0, -40), new Vector3(850, 0, -40), 16f, 0.05f, Pal.Sand);
-            // roads: one strip per edge, discs on the nodes
+            // land covers every mainland node (+ margin); the coast is the line z = -40 (map y = -0.4)
+            float minX = -150, maxX = 850, maxZ = 650;
+            foreach (var n in gd.Nodes)
+            {
+                if (n.Y < -0.4) continue;
+                var w = ToWorld(n.X, n.Y);
+                minX = Mathf.Min(minX, w.x - 150); maxX = Mathf.Max(maxX, w.x + 150); maxZ = Mathf.Max(maxZ, w.z + 120);
+            }
+            k.Quad(new Vector3(minX, 0, -40), new Vector3(minX, 0, maxZ), new Vector3(maxX, 0, maxZ), new Vector3(maxX, 0, -40), Pal.Grass);
+            k.Quad(new Vector3(minX - 300, -0.5f, -800), new Vector3(minX - 300, -0.5f, -40), new Vector3(maxX + 300, -0.5f, -40), new Vector3(maxX + 300, -0.5f, -800), Pal.Water);
+            k.Strip(new Vector3(minX, 0, -40), new Vector3(maxX, 0, -40), 16f, 0.05f, Pal.Sand);
+            BuildIsland(k);
+            // roads: one strip per edge, discs on the nodes; a ferry edge is a dashed lane on the water between two piers
             foreach (var e in gd.Edges)
-                k.Strip(ToWorld(gd.Nodes[e.A].X, gd.Nodes[e.A].Y), ToWorld(gd.Nodes[e.B].X, gd.Nodes[e.B].Y), e.Alley ? 6f : 11f, 0.1f, e.Alley ? Pal.Concrete : Pal.Road);
+            {
+                Vector3 a = ToWorld(gd.Nodes[e.A].X, gd.Nodes[e.A].Y), b = ToWorld(gd.Nodes[e.B].X, gd.Nodes[e.B].Y);
+                if (e.Ferry) { FerryLane(k, a, b); continue; }
+                k.Strip(a, b, e.Alley ? 6f : 11f, 0.1f, e.Alley ? Pal.Concrete : Pal.Road);
+            }
             foreach (var n in gd.Nodes) k.Disc(ToWorld(n.X, n.Y), n.Kind == "site" ? 9f : 7f, 0.11f, n.Kind == "site" ? Pal.Concrete : Pal.Road);
             Spawn("Ground", k.Build("ground"), Vector3.zero);
             BuildDepot();
+            BuildFerry();
+        }
+
+        /// <summary>Sea nodes (map y below the coast) form the island: a sand disc + a grass disc around them.</summary>
+        void BuildIsland(MeshKit k)
+        {
+            var gd = Sim.Gd;
+            Vector3 c = Vector3.zero;
+            int n = 0;
+            foreach (var nd in gd.Nodes) if (nd.Y < -0.4) { c += ToWorld(nd.X, nd.Y); n++; }
+            if (n == 0) return;
+            c /= n;
+            float r = 0;
+            foreach (var nd in gd.Nodes) if (nd.Y < -0.4) r = Mathf.Max(r, (ToWorld(nd.X, nd.Y) - c).magnitude);
+            k.Disc(c, r + 75f, -0.05f, Pal.Sand, 24);
+            k.Disc(c, r + 55f, 0.02f, Pal.Grass, 24);
+        }
+
+        /// <summary>Two concrete piers reaching into the water and a dashed lane between them (merged into the ground).</summary>
+        static void FerryLane(MeshKit k, Vector3 a, Vector3 b)
+        {
+            var dir = (b - a).normalized;
+            float yaw = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+            k.Box(a + dir * 16f + Vector3.down * 0.4f, new Vector3(7f, 0.9f, 34f), yaw, Pal.Concrete);
+            k.Box(b - dir * 16f + Vector3.down * 0.4f, new Vector3(7f, 0.9f, 34f), yaw, Pal.Concrete);
+            float len = (b - a).magnitude;
+            for (float s = 40f; s < len - 40f; s += 26f)
+                k.Strip(a + dir * s, a + dir * Mathf.Min(s + 12f, len - 40f), 2f, -0.44f, Pal.RoadLine);   // just above the water (-0.5)
+        }
+
+        /// <summary>Medium/High: the ferry boat (+1 draw). Low: none — trucks simply cross the dashed lane.</summary>
+        void BuildFerry()
+        {
+            if (boat != null) { Destroy(boat.gameObject); boat = null; }
+            var gd = Sim.Gd;
+            var fe = gd.Edges.Find(e => e.Ferry);
+            if (fe == null) return;
+            ferryA = NodePos(fe.A); ferryB = NodePos(fe.B);
+            if (Low) return;
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(9f, 1f, 20f), 0, Pal.TruckWhite, Pal.Panel);              // hull + car deck
+            k.Box(new Vector3(0, 1f, -7.5f), new Vector3(7f, 3.2f, 4f), 0, Pal.Brand, Pal.TruckWhite); // bridge
+            k.Box(new Vector3(0, 2.6f, -9.55f), new Vector3(5f, 0.9f, 0.1f), 0, Pal.Window);
+            var parked = ferryA + (ferryB - ferryA).normalized * 30f + new Vector3(0, -0.9f, 0);
+            boat = Spawn("Ferry", k.Build("ferry"), parked).transform;
+            var d = ferryB - ferryA;
+            boat.localRotation = Quaternion.Euler(0, Mathf.Atan2(d.x, d.z) * Mathf.Rad2Deg, 0);
+        }
+
+        /// <summary>The boat carries a truck that is sailing; otherwise it waits at the mainland pier, bobbing a little.</summary>
+        void AnimateFerry(float dt)
+        {
+            if (boat == null) return;
+            boatBob += dt;
+            for (int i = 0; i < truckObjs.Count && i < Sim.S.Trucks.Count; i++)
+            {
+                if (!Sim.OnFerry(Sim.S.Trucks[i])) continue;
+                boat.localPosition = truckObjs[i].localPosition + new Vector3(0, -1.1f, 0);
+                boat.localRotation = truckObjs[i].localRotation;
+                return;
+            }
+            var home = ferryA + (ferryB - ferryA).normalized * 30f;
+            boat.localPosition = Vector3.Lerp(boat.localPosition, home + new Vector3(0, -0.9f + 0.15f * Mathf.Sin(boatBob * 1.7f), 0), 1f - Mathf.Exp(-3f * dt));
         }
 
         /// <summary>Depot compound: the kit piece (hall, count line unit, baler house, yard pad, glass bays, office) merged
@@ -205,22 +296,54 @@ namespace BottleRoute.World
         static readonly Bld[] Fair = { new Bld("bld_harbour_b", 13f), new Bld("bld_uni_a", 14f) };
         static readonly int[] Walls = { Pal.WallCream, Pal.WallTerracotta, Pal.WallBlue, Pal.WallCream };
 
-        static Bld[] SetFor(string district) => district == "oldtown" ? OldTown : district == "university" ? Campus : district == "stadium" ? Fair : Harbour;
+        static readonly Bld[] Works = { new Bld("bld_harbour_b", 13f), new Bld("bld_uni_a", 14f), new Bld("bld_harbour_b", 13f) };
+        static readonly Bld[] Resort = { new Bld("bld_harbour_a", 11f), new Bld("bld_uni_b", 11f), new Bld("bld_old_a", 10f) };
+        static readonly Bld[] Village = { new Bld("bld_old_a", 10f), new Bld("bld_old_b", 12f) };
 
-        void BuildDistrict(DistrictDef dd)
+        static Bld[] SetFor(string district) => district switch
         {
-            if (districtObjs.TryGetValue(dd.Id, out var old)) Destroy(old);
+            "oldtown" => OldTown, "university" => Campus, "stadium" => Fair,
+            "industrial" => Works, "riviera" => Resort, "villages" => Village, "island" => Village,
+            _ => Harbour,
+        };
+
+        /// <summary>Share of street slots that are trees: dense in the villages / island, few on the estate.</summary>
+        static double TreeShare(string district) => district switch { "villages" => 0.55, "island" => 0.45, "riviera" => 0.3, "industrial" => 0.08, _ => 0.18 };
+
+        /// <summary>Low: every district in ONE mesh (1 draw for all chapters). Medium/High: one mesh per district.</summary>
+        void BuildDistricts()
+        {
+            foreach (var go in districtObjs.Values)
+                if (go != null) { var mf = go.GetComponent<MeshFilter>(); if (mf != null) Destroy(mf.sharedMesh); Destroy(go); }
+            districtObjs.Clear();
+            if (Low)
+            {
+                var all = new MeshKit();
+                foreach (var dd in Sim.Gd.Districts) AppendDistrict(dd, all);
+                districtObjs["all"] = Spawn("Districts", all.Build("districts_low"), Vector3.zero);
+                return;
+            }
+            foreach (var dd in Sim.Gd.Districts)
+            {
+                var k = new MeshKit();
+                AppendDistrict(dd, k);
+                districtObjs[dd.Id] = Spawn("District_" + dd.Id, k.Build("district_" + dd.Id), Vector3.zero);
+            }
+        }
+
+        void AppendDistrict(DistrictDef dd, MeshKit k)
+        {
             bool open = Sim.Unlocked(dd.Id);
             var gd = Sim.Gd;
             var rng = new System.Random(StableHash(dd.Id));
-            var k = new MeshKit();
             int[] walls = Walls;
             var set = SetFor(dd.Id);
+            double trees = TreeShare(dd.Id);
             bool lowKit = Low || !open;   // locked districts are grey silhouettes: the cheap twins are enough
             foreach (var e in gd.Edges)
             {
                 var na = gd.Nodes[e.A]; var nb = gd.Nodes[e.B];
-                if (na.District != dd.Id) continue;   // each street belongs to its first node's district (no double rows)
+                if (na.District != dd.Id || e.Ferry) continue;   // each street belongs to its first node's district (no double rows)
                 Vector3 a = ToWorld(na.X, na.Y), b = ToWorld(nb.X, nb.Y);
                 var dir = b - a; float len = dir.magnitude; if (len < 30f) continue;
                 dir /= len;
@@ -229,7 +352,7 @@ namespace BottleRoute.World
                 for (float s = 22f; s < len - 22f; s += 17f + (float)rng.NextDouble() * 6f)
                     for (int sd = -1; sd <= 1; sd += 2)
                     {
-                        if (rng.NextDouble() < 0.18) { k.Tree(a + dir * s + side * sd * 16f, 1.4f, yaw); continue; }
+                        if (rng.NextDouble() < trees) { k.Tree(a + dir * s + side * sd * 16f, 1.4f, yaw); continue; }
                         var bld = set[rng.Next(set.Length)];
                         var km = KitPiece.Load(lowKit ? bld.Name + "_low" : bld.Name);
                         if (km != null)
@@ -256,21 +379,56 @@ namespace BottleRoute.World
                 if (km != null) k.Append(km, st, 0, 1f, -1, -1, open ? -1 : Pal.Locked);
                 else k.Box(st, new Vector3(60, 14, 40), 0, open ? Pal.Panel : Pal.Locked, open ? Pal.Grass : Pal.Locked);
             }
-            districtObjs[dd.Id] = Spawn("District_" + dd.Id, k.Build("district_" + dd.Id), Vector3.zero);
+        }
+
+        static int PropKind(string kind) => kind == "machine_m" || kind == "machine_l" ? 1 : kind == "shop" ? 2 : kind == "horeca" || kind == "hotel" ? 3 : 0;
+
+        /// <summary>The meshes the Low tier instances, with the same root rotation / scale Prop() gives the kit prefab.</summary>
+        void LoadPropMeshes()
+        {
+            for (int k = 0; k < PropKinds.Length; k++)
+            {
+                var prefab = Resources.Load<GameObject>("kit/" + PropKinds[k]);
+                var mf = prefab != null ? prefab.GetComponentInChildren<MeshFilter>() : null;
+                propKit[k] = mf != null && mf.sharedMesh != null;
+                if (propKit[k])
+                {
+                    propMesh[k] = mf.sharedMesh;
+                    propLocal[k] = Matrix4x4.TRS(Vector3.zero, prefab.transform.localRotation, prefab.transform.localScale)
+                        * (prefab.transform.worldToLocalMatrix * mf.transform.localToWorldMatrix);
+                }
+                else
+                {
+                    propMesh[k] = k == 0 ? MeshKit.Machine(false) : k == 1 ? MeshKit.Machine(true) : k == 2 ? MeshKit.Shop() : MeshKit.Horeca();
+                    propLocal[k] = Matrix4x4.identity;
+                }
+            }
         }
 
         void BuildPoints()
         {
             foreach (var go in pointObjs) Destroy(go);
             pointObjs.Clear();
+            foreach (var b in pointBatches) b.Clear();
             for (int i = 0; i < Sim.S.Points.Count; i++)
             {
                 var p = Sim.S.Points[i];
                 var pos = PointPos(i) + new Vector3(0, 0.2f, 4f);
+                float extra = p.Kind == "machine_l" || p.Kind == "hotel" ? 1.35f : 1f;
+                if (Low)
+                {
+                    int pk = PropKind(p.Kind);
+                    float ks = (propKit[pk] && pk <= 1 ? MachineKitScale : 1f) * extra;
+                    pointBatches[pk].Add(Matrix4x4.TRS(pos, Quaternion.identity, Vector3.one * ks) * propLocal[pk]);
+                    continue;
+                }
                 // fronts face the camera (south, -Z). Blender kit: front = -Y, exported with axis_forward -Z (verify in the editor)
+                bool big = p.Kind == "machine_m" || p.Kind == "machine_l";
                 GameObject go = p.Kind == "shop" ? Prop("shop", MeshKit.Shop, pos, 0)
-                    : p.Kind == "horeca" ? Prop("horeca", MeshKit.Horeca, pos, 0)
-                    : Prop(p.Kind == "machine_m" ? "machine_m" : "machine_s", () => MeshKit.Machine(p.Kind == "machine_m"), pos, 0, MachineKitScale);
+                    : p.Kind == "horeca" || p.Kind == "hotel" ? Prop("horeca", MeshKit.Horeca, pos, 0)
+                    : Prop(big ? "machine_m" : "machine_s", () => MeshKit.Machine(big), pos, 0, MachineKitScale);
+                // chapter 7 large remote machine / chapter 6 hotel: the same props, a size up (no new mesh, no new draw kind)
+                if (extra != 1f) go.transform.localScale *= extra;
                 go.name = "Point_" + i;
                 pointObjs.Add(go);
             }
@@ -337,7 +495,7 @@ namespace BottleRoute.World
             for (int i = 0; i < n && gd.Edges.Count > 0; i++)
             {
                 var e = gd.Edges[rng.Next(gd.Edges.Count)];
-                if (!Sim.Unlocked(gd.Nodes[e.A].District)) continue;
+                if (e.Ferry || !Sim.Unlocked(gd.Nodes[e.A].District)) continue;
                 Vector3 a = NodePos(e.A), b = NodePos(e.B);
                 var p = Vector3.Lerp(a, b, (float)rng.NextDouble()) + new Vector3((float)rng.NextDouble() * 14f - 7f, 0, (float)rng.NextDouble() * 14f - 7f);
                 litter.Add(Matrix4x4.TRS(p, Quaternion.Euler(0, rng.Next(360), 0), Vector3.one * (0.6f + (float)rng.NextDouble())));
@@ -388,12 +546,14 @@ namespace BottleRoute.World
                 if (lowBuilt != Low)
                 {
                     lowBuilt = Low;
-                    foreach (var dd in Sim.Gd.Districts) BuildDistrict(dd);
+                    BuildDistricts();
                     BuildDepot();
+                    BuildFerry();
+                    BuildPoints();   // GameObjects on Medium/High, instanced batches on Low
                 }
                 if (dCount != builtDistricts)
                 {
-                    foreach (var dd in Sim.Gd.Districts) BuildDistrict(dd);
+                    BuildDistricts();
                     if (builtDistricts >= 0 && rig != null) rig.Fit(UnlockedBounds(), false);
                     builtDistricts = dCount;
                     BuildLitter();
@@ -406,6 +566,7 @@ namespace BottleRoute.World
 
             float dt = Time.deltaTime;
             AnimateRam(dt);
+            AnimateFerry(dt);
             slowAcc += dt;
             bool tick = !Low || slowAcc >= 1f / 15f;
             if (tick)
@@ -420,6 +581,8 @@ namespace BottleRoute.World
             if (balesPet.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matBalePet), baleMeshPet, 0, balesPet);
             if (balesAlu.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matBaleAlu), baleMeshAlu, 0, balesAlu);
             if (glassPiles.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), glassMesh, 0, glassPiles);
+            for (int k = 0; k < pointBatches.Length; k++)
+                if (pointBatches[k].Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), propMesh[k], 0, pointBatches[k]);
             crowd.Draw();
         }
 

@@ -106,3 +106,5 @@ were used in this pass.
 
 Still to do: litter decal art, a real art gate in the editor (Low draws / tris measured by perf_gate), the facing check
 above.
+
+**Chapters 5–7 (2026-11-02):** the new districts use the existing kit pieces (Industrial: harbour_b / uni_a; Riviera: harbour_a / uni_b / old_a; Villages + Island: old_a / old_b, more trees). Low merges ALL districts into one mesh (8 districts = 1 draw, was 4) and draws the return points instanced (≤ 4 draws instead of one per point: 38 sites at the end); island ground, piers and the dashed ferry lane are merged into the ground (0 draws). Medium/High: one mesh per district (+4) and the ferry boat (+1). Low estimate, fully built: ≈ 25 draws (was ≈ 46 with chapters 1–4 fully built), ≈ +4.7k tris (≈ 118 buildings + 65 trees, Low twins). Verify in the editor: point-prop facing/scale of the instanced kit meshes on Low (submesh 0, prefab root transform), boat height under a sailing truck.

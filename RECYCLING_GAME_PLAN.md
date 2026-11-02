@@ -347,7 +347,7 @@ English core from [ASO] (chaos table, US; columns = popularity band, difficulty,
 - Service policies + Dispatcher (3 rule slots), research 20 nodes.
 - 3 graphics tiers, 10 languages, 14-step onboarding, full IAP catalog (except scenario regions), rewarded placements,
   house ads, Firebase events, in-app review gate.
-- Out of MVP: chapters 5–7, island/ferry, electric fleet, tenders, second region, cosmetics beyond liveries.
+- Out of MVP: electric fleet, second region, cosmetics beyond liveries. (Chapters 5–7 incl. tenders, season, island/ferry are built since 2026-11-02 — `bottle-route/docs/CHAPTERS_5_7_HANDOFF.md`.)
 - **MVP success metrics (soft launch, internal → production):** D1 ≥ 35 %, tutorial completion ≥ 70 %, first-session
   length ≥ 8 min, crash-free ≥ 99.5 %, Low p95 ≤ 50 ms.
 

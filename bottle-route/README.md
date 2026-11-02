@@ -36,6 +36,7 @@ Gerçek DOA / TÜÇA / bakanlık / market adı yok (taklit kuralı).
     plan §6 tempo (Old Town ~32 dk, University ~88 dk, Stadium ~2,4 sa; `docs/BALANCE.md`).
   - Unity'ye bağlı kod (kit Runtime + App + World + UI) UnityEngine 2021.3 referanslarına karşı derleniyor (yalnız 2
     Unity-6 API'si farklı); 83 C# dosyası iki tanım kümesinde sözdizimi hatasız.
+- **Bölüm 5–7 (2026-11-02):** Sanayi Bölgesi (balya ihaleleri, toplu sayım merkezi), Riviera (yaz sezonu ×3, oteller), Tepe Köyleri + Ada (büyük uzak makineler, feribot); 145 test, tempo planla uyumlu (`docs/BALANCE.md`, `docs/CHAPTERS_5_7_HANDOFF.md`).
 - **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, performans ölçümü (perf_gate), emülatör
   smoke, AAB. → `docs/UNITY.md` §2: ilk açılış adımları (Mac Mini / sahibin Unity'si).
 - **Boş bırakılan kimlikler (P8, Patron):** AdMob ödüllü birim, AdMob uygulama kimliği, RevenueCat anahtarı, Firebase
