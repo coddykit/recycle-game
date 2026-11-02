@@ -1,0 +1,129 @@
+{
+ "total_mb": 1.65,
+ "assets": {
+  "ui_tap": {
+   "kind": "sfx",
+   "dur": 0.26,
+   "lufs": -26.9,
+   "tp": -2.7,
+   "peak": -2.8,
+   "head_sil": 0.001,
+   "tail_sil": 0.013,
+   "kb": 6.8,
+   "ch": 1,
+   "flags": []
+  },
+  "coins": {
+   "kind": "sfx",
+   "dur": 0.71,
+   "lufs": -15.6,
+   "tp": -2.1,
+   "peak": -2.7,
+   "head_sil": 0.0,
+   "tail_sil": 0.037,
+   "kb": 10.7,
+   "ch": 1,
+   "flags": []
+  },
+  "success": {
+   "kind": "sfx",
+   "dur": 0.87,
+   "lufs": -15.2,
+   "tp": -1.7,
+   "peak": -1.7,
+   "head_sil": 0.0,
+   "tail_sil": 0.053,
+   "kb": 10.4,
+   "ch": 1,
+   "flags": []
+  },
+  "warning": {
+   "kind": "sfx",
+   "dur": 0.9,
+   "lufs": -14.3,
+   "tp": -2.7,
+   "peak": -2.7,
+   "head_sil": 0.0,
+   "tail_sil": 0.062,
+   "kb": 9.6,
+   "ch": 1,
+   "flags": []
+  },
+  "truck": {
+   "kind": "sfx",
+   "dur": 1.48,
+   "lufs": -14.2,
+   "tp": -2.5,
+   "peak": -2.5,
+   "head_sil": 0.0,
+   "tail_sil": 0.147,
+   "kb": 16.0,
+   "ch": 1,
+   "flags": []
+  },
+  "machine_crunch": {
+   "kind": "sfx",
+   "dur": 1.03,
+   "lufs": -16.5,
+   "tp": -2.1,
+   "peak": -2.3,
+   "head_sil": 0.0,
+   "tail_sil": 0.05,
+   "kb": 14.0,
+   "ch": 1,
+   "flags": []
+  },
+  "baler_press": {
+   "kind": "sfx",
+   "dur": 1.92,
+   "lufs": -14.2,
+   "tp": -3.0,
+   "peak": -3.2,
+   "head_sil": 0.001,
+   "tail_sil": 0.066,
+   "kb": 21.0,
+   "ch": 1,
+   "flags": []
+  },
+  "sold": {
+   "kind": "sfx",
+   "dur": 1.2,
+   "lufs": -18.5,
+   "tp": -2.7,
+   "peak": -2.7,
+   "head_sil": 0.0,
+   "tail_sil": 0.438,
+   "kb": 12.6,
+   "ch": 1,
+   "flags": []
+  },
+  "music_calm": {
+   "kind": "music",
+   "dur": 56.0,
+   "lufs": -18.0,
+   "tp": -3.7,
+   "peak": -3.8,
+   "head_sil": 0.0,
+   "tail_sil": 0.0,
+   "kb": 776.0,
+   "ch": 2,
+   "seam_jump": 0.04,
+   "seam_step_db": 1.2,
+   "flags": []
+  },
+  "music_busy": {
+   "kind": "music",
+   "dur": 55.6,
+   "lufs": -18.0,
+   "tp": -2.8,
+   "peak": -2.9,
+   "head_sil": 0.0,
+   "tail_sil": 0.0,
+   "kb": 813.9,
+   "ch": 2,
+   "seam_jump": 0.055,
+   "seam_step_db": -6.8,
+   "flags": []
+  }
+ }
+}

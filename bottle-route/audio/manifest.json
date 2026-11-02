@@ -1,0 +1,89 @@
+{
+ "game": "bottle-route",
+ "style": {
+  "sfx": "bright clean civic mobile tycoon game, seaside town",
+  "music": "seamless loop, mobile game background music"
+ },
+ "assets": [
+  {
+   "id": "ui_tap",
+   "kind": "sfx",
+   "duration": 0.5,
+   "prompt": "short soft rounded UI click, a light wooden tap, clean",
+   "influence": 0.6,
+   "event": "any button"
+  },
+  {
+   "id": "coins",
+   "kind": "sfx",
+   "duration": 1.0,
+   "prompt": "a few bright coins dropping into a small metal tray, cheerful money pickup",
+   "influence": 0.6,
+   "event": "collect money"
+  },
+  {
+   "id": "success",
+   "kind": "sfx",
+   "duration": 1.5,
+   "prompt": "short upbeat positive chime, two rising marimba notes, reward feeling",
+   "influence": 0.6,
+   "event": "purchase / goal reached"
+  },
+  {
+   "id": "warning",
+   "kind": "sfx",
+   "duration": 1.2,
+   "prompt": "gentle two-tone alert chime, attention but not scary, mobile game notification",
+   "influence": 0.6,
+   "event": "crisis / problem"
+  },
+  {
+   "id": "truck",
+   "kind": "sfx",
+   "duration": 1.5,
+   "prompt": "small delivery van engine starting and pulling away, cartoon light",
+   "influence": 0.5,
+   "event": "dispatch"
+  },
+  {
+   "id": "machine_crunch",
+   "kind": "sfx",
+   "duration": 1.2,
+   "prompt": "plastic bottles and cans being crushed in a recycling machine, satisfying crunch",
+   "influence": 0.6,
+   "event": "machine emptied"
+  },
+  {
+   "id": "baler_press",
+   "kind": "sfx",
+   "duration": 2.0,
+   "prompt": "hydraulic press compressing a bale of plastic, a hiss then a solid thump",
+   "influence": 0.6,
+   "event": "bale done"
+  },
+  {
+   "id": "sold",
+   "kind": "sfx",
+   "duration": 1.2,
+   "prompt": "cash register ka-ching with a soft bell, sale completed",
+   "influence": 0.6,
+   "event": "bales sold"
+  },
+  {
+   "id": "music_calm",
+   "kind": "music",
+   "duration": 60,
+   "loop": true,
+   "prompt": "relaxed light acoustic and marimba groove, sunny seaside town morning, warm and optimistic, instrumental, no vocals",
+   "event": "planning / quiet time"
+  },
+  {
+   "id": "music_busy",
+   "kind": "music",
+   "duration": 60,
+   "loop": true,
+   "prompt": "upbeat bouncy pizzicato and light percussion, busy cheerful city workday, steady tempo, instrumental, no vocals",
+   "event": "live day / rush"
+  }
+ ]
+}
