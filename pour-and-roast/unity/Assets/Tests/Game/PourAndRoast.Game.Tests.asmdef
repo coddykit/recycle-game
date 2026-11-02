@@ -1,0 +1,27 @@
+{
+    "name": "PourAndRoast.Game.Tests",
+    "rootNamespace": "PourAndRoast.Game.Tests",
+    "references": [
+        "PourAndRoast.Sim",
+        "PourAndRoast.Game",
+        "CoddyKit.Core",
+        "PourAndRoast.Sim.Tests",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

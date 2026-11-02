@@ -1,0 +1,27 @@
+{
+    "name": "BottleRoute.Game.Tests",
+    "rootNamespace": "BottleRoute.Game.Tests",
+    "references": [
+        "BottleRoute.Sim",
+        "BottleRoute.Game",
+        "CoddyKit.Core",
+        "BottleRoute.Sim.Tests",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

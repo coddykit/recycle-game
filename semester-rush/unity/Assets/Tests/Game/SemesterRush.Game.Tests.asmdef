@@ -1,0 +1,27 @@
+{
+    "name": "SemesterRush.Game.Tests",
+    "rootNamespace": "SemesterRush.Game.Tests",
+    "references": [
+        "SemesterRush.Sim",
+        "SemesterRush.Game",
+        "CoddyKit.Core",
+        "SemesterRush.Sim.Tests",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
