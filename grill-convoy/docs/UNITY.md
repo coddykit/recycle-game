@@ -15,7 +15,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.grillconvoy`. Built on 
 | `GrillConvoy.World` | yes (+ Input System) | diorama, crowd, camera rig, picking |
 | `GrillConvoy.UI` | yes (+ Input System) | entry point (`GrillMain`), screens, sheets, guide view, audio |
 | `GrillConvoy.Editor` | editor | project setup + scenes, Android build, fonts, icons, art import |
-| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — **asmdefs to add in the editor** (see §2 step 5) |
+| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — asmdefs committed (`<NS>.Sim.Tests`, `<NS>.Game.Tests`) |
 
 ## 2. First open (owner / Patron, with the Unity editor)
 
@@ -28,7 +28,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.grillconvoy`. Built on 
    Menu: **Coddy › Grill Convoy › Apply Project Setup**, **Coddy › Validate Project** (`PROJECT_VALID`).
 4. Press Play in `Assets/Scenes/Boot.unity` (or `Region.unity` directly — it boots the kit itself). Expected: curtain →
    Cinder Bay → intro pager → guide step 1 (spotlight on "Open the window", truck #1 at the Office Plaza).
-5. Test runner: create two test asmdefs (copy Volt City's): `GrillConvoy.Sim.Tests` (refs `GrillConvoy.Sim`, nunit,
+5. Test runner (asmdefs already committed; if the editor complains, compare with Volt City's): `GrillConvoy.Sim.Tests` (refs `GrillConvoy.Sim`, nunit,
    `UNITY_INCLUDE_TESTS`) in `Assets/Tests/EditMode`, `GrillConvoy.Game.Tests` (refs Sim, Game, CoddyKit.Core,
    `GrillConvoy.Sim.Tests`) in `Assets/Tests/Game`. Then Test Runner → EditMode → Run All (140 expected, as under .NET;
    `EveryLanguageIsComplete` fails until the 9 translations are merged centrally).
@@ -72,7 +72,7 @@ of 64 dp), the house banner lifting the bottom bar (`SafeAreaPadding`), Low tier
   commissary; Meshy heroes (chef, cashier, fan, burger) only in pre-rendered UI art (the crowd = chunky instanced figures).
 - No world-space UI: truck / pitch badges are UI Toolkit markers placed from the camera at 30 Hz (Low 10 Hz).
 - The truck layout editor is a UI Toolkit grid (tap a station, tap a tile), not 3D.
-- Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
+- Test asmdefs are committed (nunit by precompiled reference name); check they resolve on the first open.
 
 ## First editor check: face culling of procedural meshes (2026-11-02)
 

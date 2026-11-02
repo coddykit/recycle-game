@@ -23,7 +23,7 @@ Bu dosya ortak durumu ve ortak adımları anlatır.
 ## Ortak sıradaki adımlar (sırayla)
 1. **Unity Editor ilk açılış** (Mac Mini / sahibin Unity 6000.3.x'i): her oyunun `docs/UNITY.md` §2 adımları —
    `Tools/fetch_packages.sh` → projeyi aç (ProjectSetup kendiliğinden çalışır) → Coddy › Validate Project → Play.
-   Test asmdef'leri editörde oluştur (UNITY.md §2 adım 5) ve EditMode testlerini koş.
+   Test asmdef'leri repoda; Test Runner → EditMode → Run All (UNITY.md §2 adım 5).
 2. **İlk bakılacaklar:** derleme hataları (yalnız `QualitySettings.count`, `SystemLanguage.Hindi` Unity 6 farkı bilinir),
    prosedürel mesh yüz yönü (MeshKit.Quad saat yönüne çevrildi; içi dışa görünen yüz = köşe sırası ters), Blender FBX
    ekseni (-90° X kök dönüşü korunmalı), arayüz işaretçi konumu, koç spotlight hedefleri, banner yuvası.

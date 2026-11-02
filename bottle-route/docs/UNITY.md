@@ -15,7 +15,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.bottleroute`. Built on 
 | `BottleRoute.World` | yes (+ Input System) | diorama, crowd, camera rig, picking |
 | `BottleRoute.UI` | yes (+ Input System) | entry point (`BottleMain`), screens, sheets, guide view, audio |
 | `BottleRoute.Editor` | editor | project setup + scenes, Android build, fonts, icons, art import |
-| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — **asmdefs to add in the editor** (see §2 step 5) |
+| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — asmdefs committed (`<NS>.Sim.Tests`, `<NS>.Game.Tests`) |
 
 ## 2. First open (owner / Patron, with the Unity editor)
 
@@ -28,7 +28,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.bottleroute`. Built on 
    Menu: **Coddy › Bottle Route › Apply Project Setup**, **Coddy › Validate Project** (`PROJECT_VALID`).
 4. Press Play in `Assets/Scenes/Boot.unity` (or `Region.unity` directly — it boots the kit itself). Expected: curtain →
    town → intro pager → guide step 1 (spotlight on the Fish Market machine).
-5. Test runner: create two test asmdefs (copy Volt City's): `BottleRoute.Sim.Tests` (refs `BottleRoute.Sim`, nunit,
+5. Test runner (asmdefs already committed; if the editor complains, compare with Volt City's): `BottleRoute.Sim.Tests` (refs `BottleRoute.Sim`, nunit,
    `UNITY_INCLUDE_TESTS`) in `Assets/Tests/EditMode`, `BottleRoute.Game.Tests` (refs Sim, Game, CoddyKit.Core,
    `BottleRoute.Sim.Tests`) in `Assets/Tests/Game`. Then Test Runner → EditMode → Run All (125 expected, as under .NET).
 6. **One commit** with everything the editor generated: `ProjectSettings/*`, `Packages/packages-lock.json`,
@@ -68,7 +68,7 @@ house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (ta
 
 - Diorama is procedural (map JSON → roads, blocks, props) on ONE palette material; Blender kit props + Meshy bales.
 - No world-space UI: fill gauges are UI Toolkit markers placed from the camera at 30 Hz (Low 10 Hz).
-- Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
+- Test asmdefs are committed (nunit by precompiled reference name); check they resolve on the first open.
 
 ## First editor check: face culling of procedural meshes (2026-11-02)
 

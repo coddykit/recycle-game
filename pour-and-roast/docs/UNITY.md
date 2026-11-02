@@ -15,7 +15,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.pourandroast`. Built on
 | `PourAndRoast.World` | yes (+ Input System) | cafe diorama (`CafeWorld`), customers + staff (`Crowd`), camera rig, picking |
 | `PourAndRoast.UI` | yes (+ Input System) | entry point (`RoastMain`), screen (rail, ticket bar, station markers), sheets, guide view, audio |
 | `PourAndRoast.Editor` | editor | project setup + scenes, Android build, fonts, icons, art import |
-| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — **asmdefs to add in the editor** (see §2 step 5) |
+| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — asmdefs committed (`<NS>.Sim.Tests`, `<NS>.Game.Tests`) |
 
 ## 2. First open (owner / Patron, with the Unity editor)
 
@@ -28,7 +28,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.pourandroast`. Built on
    Menu: **Coddy › Pour & Roast › Apply Project Setup**, **Coddy › Validate Project** (`PROJECT_VALID`).
 4. Press Play in `Assets/Scenes/Boot.unity` (or `Cafe.unity` directly — it boots the kit itself). Expected: curtain →
    the quayside cart → intro pager → guide step 1 (spotlight on "Open the doors").
-5. Test runner: create two test asmdefs (copy Volt City's): `PourAndRoast.Sim.Tests` (refs `PourAndRoast.Sim`, nunit,
+5. Test runner (asmdefs already committed; if the editor complains, compare with Volt City's): `PourAndRoast.Sim.Tests` (refs `PourAndRoast.Sim`, nunit,
    `UNITY_INCLUDE_TESTS`) in `Assets/Tests/EditMode`, `PourAndRoast.Game.Tests` (refs Sim, Game, CoddyKit.Core,
    `PourAndRoast.Sim.Tests`) in `Assets/Tests/Game`. Then Test Runner → EditMode → Run All (135 expected, as under .NET; `EveryLanguageIsComplete` fails until the central translation).
 6. **One commit** with everything the editor generated: `ProjectSettings/*`, `Packages/packages-lock.json`,
@@ -75,7 +75,7 @@ with top-left coordinates), the ticket rail width on a 360 dp phone (5 cards + "
 - Customers and staff are chunky instanced figures (no GameObjects); Low: ≤ 14 customers at 15 Hz.
 - Save slots: `career.json` + `career_<n>.json` (Settings → Save slots; the Edition +1, Extra Saves +3); switching a slot
   reloads the scene.
-- Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
+- Test asmdefs are committed (nunit by precompiled reference name); check they resolve on the first open.
 
 ## First editor check: face culling of procedural meshes (2026-11-02)
 

@@ -15,7 +15,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.docketday`. Built on th
 | `DocketDay.World` | yes (+ Input System) | diorama, crowd, camera rig, picking |
 | `DocketDay.UI` | yes (+ Input System) | entry point (`DocketMain`), screens, sheets, guide view, audio |
 | `DocketDay.Editor` | editor | project setup + scenes, Android build, fonts, icons, art import |
-| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — **asmdefs to add in the editor** (see §2 step 5) |
+| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — asmdefs committed (`<NS>.Sim.Tests`, `<NS>.Game.Tests`) |
 
 ## 2. First open (owner / Patron, with the Unity editor)
 
@@ -28,7 +28,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.docketday`. Built on th
    Menu: **Coddy › Docket Day › Apply Project Setup**, **Coddy › Validate Project** (`PROJECT_VALID`).
 4. Press Play in `Assets/Scenes/Boot.unity` (or `Region.unity` directly — it boots the kit itself). Expected: curtain →
    the firm's street → intro pager → guide step 1 (spotlight on the reception marker).
-5. Test runner: create two test asmdefs (copy Volt City's): `DocketDay.Sim.Tests` (refs `DocketDay.Sim`, nunit,
+5. Test runner (asmdefs already committed; if the editor complains, compare with Volt City's): `DocketDay.Sim.Tests` (refs `DocketDay.Sim`, nunit,
    `UNITY_INCLUDE_TESTS`) in `Assets/Tests/EditMode`, `DocketDay.Game.Tests` (refs Sim, Game, CoddyKit.Core,
    `DocketDay.Sim.Tests`) in `Assets/Tests/Game`. Then Test Runner → EditMode → Run All (134 expected, as under .NET; `EveryLanguageIsComplete` red until the central translation).
 6. **One commit** with everything the editor generated: `ProjectSettings/*`, `Packages/packages-lock.json`,
@@ -72,7 +72,7 @@ house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (ta
 - The Docket Rail + people row are UI Toolkit (drag = PointerDown/Move/Up with pointer capture after an upward move; the
   horizontal ScrollViews keep sideways drags). Check on a device: a sideways swipe scrolls, an upward drag picks a person up.
 - The hearing scene is a UI overlay with pre-rendered Meshy portraits (fixed poses, no skeletons).
-- Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
+- Test asmdefs are committed (nunit by precompiled reference name); check they resolve on the first open.
 
 ## First editor check: face culling of procedural meshes (2026-11-02)
 

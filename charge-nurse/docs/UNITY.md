@@ -15,7 +15,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.chargenurse`. Built on 
 | `ChargeNurse.World` | yes (+ Input System) | diorama, crowd, camera rig, picking |
 | `ChargeNurse.UI` | yes (+ Input System) | entry point (`NurseMain`), screens, sheets, guide view, audio |
 | `ChargeNurse.Editor` | editor | project setup + scenes, Android build, fonts, icons, art import |
-| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — **asmdefs to add in the editor** (see §2 step 5) |
+| tests | EditMode | `Assets/Tests/EditMode` (sim), `Assets/Tests/Game` (game layer) — asmdefs committed (`<NS>.Sim.Tests`, `<NS>.Game.Tests`) |
 
 ## 2. First open (owner / Patron, with the Unity editor)
 
@@ -28,7 +28,7 @@ Unity 6 LTS + URP, Android only, portrait, `com.coddykit.chargenurse`. Built on 
    Menu: **Coddy › Charge Nurse › Apply Project Setup**, **Coddy › Validate Project** (`PROJECT_VALID`).
 4. Press Play in `Assets/Scenes/Boot.unity` (or `Hospital.unity` directly — it boots the kit itself). Expected: curtain →
    the clinic → intro pager → guide step 1 (spotlight on the waiting patient #1).
-5. Test runner: create two test asmdefs (copy Volt City's): `ChargeNurse.Sim.Tests` (refs `ChargeNurse.Sim`, nunit,
+5. Test runner (asmdefs already committed; if the editor complains, compare with Volt City's): `ChargeNurse.Sim.Tests` (refs `ChargeNurse.Sim`, nunit,
    `UNITY_INCLUDE_TESTS`) in `Assets/Tests/EditMode`, `ChargeNurse.Game.Tests` (refs Sim, Game, CoddyKit.Core,
    `ChargeNurse.Sim.Tests`) in `Assets/Tests/Game`. Then Test Runner → EditMode → Run All (124 expected, as under .NET; `EveryLanguageIsComplete` fails until the central translation).
 6. **One commit** with everything the editor generated: `ProjectSettings/*`, `Packages/packages-lock.json`,
@@ -68,7 +68,7 @@ house banner lifting the bottom bar (`SafeAreaPadding`), Low tier draw count (ta
 
 - Diorama is procedural (map JSON → cut-away rooms, corridors with a heat-map UV, props) on ONE palette material; Blender kit props; Meshy heroes only in the UI renders.
 - No world-space UI: bay / bed badges and waiting-patient chips are UI Toolkit markers placed from the camera at 30 Hz (Low 10 Hz).
-- Test asmdefs are not committed yet (they need editor GUIDs only for the nunit reference; see §2 step 5).
+- Test asmdefs are committed (nunit by precompiled reference name); check they resolve on the first open.
 
 ## First editor check: face culling of procedural meshes (2026-11-02)
 

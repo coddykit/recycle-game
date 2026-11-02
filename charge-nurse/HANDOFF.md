@@ -15,7 +15,7 @@ Ortak durum ve ortak adımlar: kökteki `HANDOFF.md`. Plan: `HOSPITAL_GAME_PLAN.
 - Release env'leri: `CHARGENURSE_ADMOB_APP_ID`, `CHARGENURSE_KEYSTORE*`, `CHARGENURSE_VERSION_*`, `CHARGENURSE_RELEASE`; `config/google-services.json` (git dışı). Kimlikler boş.
 
 ## Sıradaki iş (sırayla)
-1. Editörde ilk açılış (`docs/UNITY.md` §2) → derleme hatalarını düzelt → test asmdef'leri → EditMode testleri.
+1. Editörde ilk açılış (`docs/UNITY.md` §2) → derleme hatalarını düzelt → Test Runner'da EditMode testleri (asmdef'ler repoda).
 2. Görsel kontrol: yüz yönü, FBX ekseni, arayüz işaretçileri, koç spotlight, banner yuvası; editörün ürettiği dosyaları tek commit.
 3. Düşük profilde perf_gate (draw ≤150, prim ≤300k, bellek ≤250 MB, p95 ≤50 ms) → ekran görüntüleri (8 × 10 dil) → UI puanı ≥8,5.
 4. AAB + emülatör smoke → Patron: kimlikler, Play Console, §15 hesap adımları.
