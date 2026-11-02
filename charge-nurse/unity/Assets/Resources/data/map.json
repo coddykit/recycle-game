@@ -3,8 +3,8 @@
   "_doc": "Charge Nurse campus (1 unit = 1 m, x east, y north = away from the camera). Wings open by chapter; zones are rooms on one corridor spine. kind: reception | waiting | triage | bays | ward | test | or | lounge | ambulance | lift | hall. Beds/bays take slots in their zone.",
   "wings": [
     { "id": "clinic", "chapter": 1, "reputation": 0,  "cost": 0,     "arrivals": 1.0, "start_beds": {} },
-    { "id": "town",   "chapter": 2, "reputation": 60, "cost": 10000, "arrivals": 1.45, "start_beds": { "bays_t": 1, "general": 3 } },
-    { "id": "city",   "chapter": 3, "reputation": 72, "cost": 40000, "arrivals": 2.0, "start_beds": { "icu": 2, "surgical": 3 } }
+    { "id": "town",   "chapter": 2, "reputation": 60, "cost": 38000, "arrivals": 1.45, "start_beds": { "bays_t": 1, "general": 3 } },
+    { "id": "city",   "chapter": 3, "reputation": 72, "cost": 180000, "arrivals": 2.0, "start_beds": { "icu": 2, "surgical": 3 } }
   ],
   "zones": [
     { "id": "reception", "kind": "reception", "wing": "clinic", "x": 4,  "y": -8, "w": 8,  "d": 6 },

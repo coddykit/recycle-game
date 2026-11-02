@@ -25,7 +25,7 @@ grep -rn -i -E "Codigames|Law Empire|Justice Empire|Idle Law Firm|Ace Attorney|S
 grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY" "$UNITY" --include=*.cs --include=*.json --include=*.md --include=*.py --include=*.sh && bad "a secret in the repo"
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
 for f in coach_counsel hearing_judge hearing_client intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
-for f in desk reception bookshelf coffee cabinet conference boxes board courthouse lamp bench office_cat_lod1 office_cat_lod2; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in desk reception bookshelf coffee cabinet conference boxes board courthouse lamp bench townhouse_a townhouse_b townhouse_c tree planter hydrant skyline floor_shell office_decor roof_top entrance office_cat_lod1 office_cat_lod2; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
 
 step "store listing + screenshot copy (store/validate.py)"

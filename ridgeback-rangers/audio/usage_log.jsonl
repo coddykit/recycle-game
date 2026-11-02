@@ -1,0 +1,15 @@
+{"kind": "batch_start", "remaining": 33315, "limit": 40000, "calls": 13, "est": 1661, "t": "2026-11-02T07:57:40"}
+{"kind": "sfx", "id": "ui_tap", "seconds": 0.5, "credits": 5, "remaining": 33310, "cost_from": "header", "hash": "ef0f3195", "took": 1.8, "t": "2026-11-02T07:57:41"}
+{"kind": "sfx", "id": "coins", "seconds": 1.0, "credits": 10, "remaining": 33300, "cost_from": "header", "hash": "03bf6fea", "took": 1.6, "t": "2026-11-02T07:57:46"}
+{"kind": "sfx", "id": "success", "seconds": 1.5, "credits": 15, "remaining": 33285, "cost_from": "header", "hash": "96a93834", "took": 1.5, "t": "2026-11-02T07:57:49"}
+{"kind": "sfx", "id": "warning", "seconds": 1.2, "credits": 12, "remaining": 33273, "cost_from": "header", "hash": "a65357d6", "took": 1.5, "t": "2026-11-02T07:57:53"}
+{"kind": "sfx", "id": "pin", "seconds": 0.8, "credits": 8, "remaining": 33265, "cost_from": "header", "hash": "668e1090", "took": 1.6, "t": "2026-11-02T07:57:57"}
+{"kind": "sfx", "id": "alarm", "seconds": 1.5, "credits": 15, "remaining": 33250, "cost_from": "header", "hash": "101e2fb0", "took": 1.6, "t": "2026-11-02T07:58:00"}
+{"kind": "sfx", "id": "radio", "seconds": 1.0, "credits": 10, "remaining": 33240, "cost_from": "header", "hash": "26a8a09f", "took": 1.6, "t": "2026-11-02T07:58:04"}
+{"kind": "sfx", "id": "crate", "seconds": 1.0, "credits": 10, "remaining": 33230, "cost_from": "header", "hash": "f86ca07f", "took": 1.5, "t": "2026-11-02T07:58:07"}
+{"kind": "sfx", "id": "gate", "seconds": 1.5, "credits": 15, "remaining": 33215, "cost_from": "header", "hash": "80dfbb5b", "took": 1.8, "t": "2026-11-02T07:58:11"}
+{"kind": "sfx", "id": "tram", "seconds": 2.0, "credits": 20, "remaining": 33195, "cost_from": "header", "hash": "7e4e4972", "took": 2.9, "t": "2026-11-02T07:58:16"}
+{"kind": "sfx", "id": "hatch", "seconds": 1.5, "credits": 15, "remaining": 33180, "cost_from": "header", "hash": "77ff177f", "took": 1.6, "t": "2026-11-02T07:58:20"}
+{"kind": "music", "id": "music_calm", "seconds": 60, "credits": 750, "remaining": 31429, "cost_from": "rate", "hash": "7568d99e", "took": 145.6, "t": "2026-11-02T08:00:48"}
+{"kind": "music", "id": "music_busy", "seconds": 60, "credits": 750, "remaining": 30679, "cost_from": "rate", "hash": "5a49d9b2", "took": 10.7, "t": "2026-11-02T08:01:08"}
+{"kind": "batch_end", "spent": 1635, "remaining": 30679, "t": "2026-11-02T08:01:17"}

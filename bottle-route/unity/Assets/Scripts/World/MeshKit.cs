@@ -39,8 +39,29 @@ namespace BottleRoute.World
             var u = Pal.Uv(swatch);
             v.Add(a); v.Add(b); v.Add(c); v.Add(d);
             for (int k = 0; k < 4; k++) { n.Add(nn); uv.Add(u); }
-            t.Add(i); t.Add(i + 2); t.Add(i + 1);
-            t.Add(i); t.Add(i + 3); t.Add(i + 2);
+            // Unity front faces are CLOCKWISE seen from the outside (cross(b-a, c-a) = outward normal). The earlier
+            // (i, i+2, i+1) order was counter-clockwise: with back-face culling every box, road strip and the ground
+            // quad were culled from outside (polish pass 2026-11-02; Disc already wound clockwise).
+            t.Add(i); t.Add(i + 1); t.Add(i + 2);
+            t.Add(i); t.Add(i + 2); t.Add(i + 3);
+        }
+
+        /// <summary>Merges a Blender-kit piece (KitPiece, Resources/kit/*.bytes) into this mesh: one draw, no GameObject.
+        /// yaw in degrees, uniform scale. Palette swaps: wall replaces WallCream, roof replaces RoofRed; all ≥ 0 paints
+        /// every vertex (locked districts).</summary>
+        public void Append(KitPiece km, Vector3 pos, float yaw, float scale, int wall = -1, int roof = -1, int all = -1)
+        {
+            var q = Quaternion.Euler(0, yaw, 0);
+            int b = v.Count;
+            for (int i = 0; i < km.V.Length; i++)
+            {
+                v.Add(pos + q * (km.V[i] * scale));
+                n.Add(q * km.N[i]);
+                int sw = km.Sw[i];
+                int to = all >= 0 ? all : wall >= 0 && sw == Pal.WallCream ? wall : roof >= 0 && sw == Pal.RoofRed ? roof : sw;
+                uv.Add(to == sw ? km.Uv[i] : Pal.Uv(to));
+            }
+            for (int i = 0; i < km.T.Length; i++) t.Add(b + km.T[i]);
         }
 
         /// <summary>Axis box on the ground rotated by yaw (degrees). top swatch may differ (roofs).</summary>

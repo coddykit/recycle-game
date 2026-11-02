@@ -24,12 +24,15 @@ yok; referans oyunun adı, görseli, metni kullanılmadı.
 | `unity/Tools` | `check.sh` (tüm kapılar), `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/*.json` |
 | `tools/art`, `tools/meshy` | Blender kiti + arayüz render'ları, Meshy istemcisi + optimizer |
 | `docs/` | `UNITY.md`, `BALANCE.md`, `MONETIZATION_PARITY.md`, `ART.md` |
+| `store/` | Play metni (`listing/en-US.json`; 9 dil merkezi çeviride), ekran görüntüsü planı (`screenshots/en.json`), Data safety CSV, `validate.py` (check.sh çağırır), feature graphic + ikon adayları c1–c3 (`tools/art/render_store.py`) |
 
 ## Durum (2026-11-02)
 
-- `sh unity/Tools/check.sh` → yalnız beklenen `EveryLanguageIsComplete` kırmızı (9 dil merkezi çeviriyi bekliyor;
-  metinler yalnız İngilizce, `Tools/i18n/en.json`). 124 testin 123'ü yeşil (sim 41, oyun 28, kit 55); Unity'ye bağlı
-  kod referans derlemede temiz.
+- `sh unity/Tools/check.sh` → PASS (125 test yeşil, mağaza metni doğrulaması dahil); Unity'ye bağlı kod referans
+  derlemede temiz.
+- Cilalama (11-02): mağaza metni + görseller, kampüs kiti (giriş, ambulans sundurması, asansör, ağaçlar, otopark — statik
+  parçalar kampüs ağına birleşik, Düşük'te 0 ek çizim), tempo plana göre (Kasaba Hastanesi ~13.–14. vardiya ≈ 1 sa,
+  Şehir Hastanesi ~44. vardiya ≈ 3 sa). Ayrıntı `docs/ART.md`, `docs/BALANCE.md`.
 - Doğrulanmadı: Unity Editor'da sahne, cihazda görünüm, perf_gate, emülatör smoke, AAB (`docs/UNITY.md` §2).
 - Boş kimlikler (P8, Patron): AdMob ödüllü birim + uygulama, RevenueCat anahtarı, Firebase config.
 - Sahip onayı bekleyen `ad_free` listesi: noads, premium, bundle (+ v1.1 chief_pass).

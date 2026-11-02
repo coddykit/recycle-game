@@ -3,7 +3,9 @@
 All numbers live in `unity/Assets/Resources/data/*.json`; the bot is `Sim/BalanceRunner.cs` (a sensible player who does
 not micro-manage: answers ambulances, hands over in the window, calls the surge team on a surge day, and between shifts
 spends on what the bottleneck lens named most often that day). Tests: `BalanceTests` (7 days profitable, never broke,
-average ≥ 4.5/9 stars; day 1 earns with < 20 % bad outcomes on 3 seeds; Town Hospital within 20 shifts).
+average ≥ 4.5/9 stars, more beds and staff than at the start; day 1 earns with < 20 % bad outcomes on 3 seeds; Town
+Hospital within 20 shifts; `ChaptersArriveOnThePlanClock`: Town Hospital on shift 11–19 and City General on shift 34–56,
+seeds 9 and 42).
 
 ## Time
 
@@ -38,7 +40,52 @@ helps), highway crash (4–12 tagged arrivals, sized to the chapter), power cut 
 upgrade prevents), scanner down (120 min), sick calls (one team −1 today), stomach bug (2 ward beds closed 2 days),
 supply delay (supplies ×1.5, announced), inspection (bonus 400 / fine 200 at the shift change).
 
-## 7 days, seed 42 (`BalanceRunner.Run(gd, 42, 7)`)
+## Tempo to the plan (polish pass 2026-11-02)
+
+Plan §6: chapter 2 (Town Hospital) at ~1 h, chapter 3 (City General) at ~3 h. A shift is 4 real min at 1× (+ ~20–30 s
+on the morning plan and the report), so ~1 h ≈ shift 13–15 and ~3 h ≈ shift 40–45. The P1 numbers opened both wings far
+too early (cash piled up to ~380 k by day 60). Only the wing prices changed (`map.json`); day-1 economy, staff, rooms,
+upgrades and crises are untouched.
+
+| `map.json` wings | before | after |
+|---|---|---|
+| Town Hospital cost (reputation 60) | 10 000 | **38 000** |
+| City General cost (reputation 72) | 40 000 | **180 000** |
+
+Bot (`BalanceRunner`, 60 days, scratch harness over the same data):
+
+| seed | Town Hospital before → after | City General before → after | cash at day 60 before → after |
+|---|---|---|---|
+| 9 | day 5 → **13** | day 16 → **44** | 383 737 → 128 611 |
+| 42 | day 5 → **14** | day 17 → **44** | 381 939 → 111 093 |
+| 3 | day 6 → **14** | day 17 → **43** | 363 783 → 139 325 |
+| 7 | day 5 → **13** | day 16 → **46** | 370 477 → 94 627 |
+| 11 | — → **14** | — → **47** | — → 93 899 |
+
+In real time at 1×: Town Hospital ~52–56 min of shifts (~1 h with the plan / report screens; plan 1 h), City General
+~2.9–3.1 h (plan 3 h) — inside ±25 %. Week 1 is now the clinic chapter: the bot fills the clinic (X-ray, doctors, bays,
+obs beds, triage training, porter tablets, waiting hall) and saves for the Town Hospital; all 16 upgrades are bought by
+the time City General opens.
+
+### 7 days, seed 42 — after (`BalanceRunner.Run(gd, 42, 7)`)
+
+```
+day  arr treat bad  wait blk%   fees  ward  costs    net stars
+  1   36    34   4    49    0   4290   210   1511   2989   5/9
+  2   30    30   0    14    2   3780    70   1578   2272   9/9
+  3   37    38   3    21    7   6682   219   1888   5013   6/9
+  4   39    39   2    17    0   4822   146   1988   2980   8/9
+  5   30    28   1    19    6   5206   296   1992   3510   8/9
+  6   28    30   2    12    1   4803   225   1935   3093   8/9
+  7   29    30   1    12    0   4458   225   1981   2702   8/9
+cash 15109 reputation 77.1 chapter 1 beds 10 staff 11 upgrades 5 minCash 1076
+```
+
+Day 1 is unchanged (profitable on every seed: +1 303 … +2 989, bad outcomes ≤ 12 %), never broke (min cash 1 076),
+average 7.4 / 9 stars. The old assertion "day 7 treats more than day 1" assumed the Town Hospital on day 5; it now checks
+that the hospital grew (beds 6 → 10, staff 6 → 11).
+
+### 7 days, seed 42 — before (P1)
 
 ```
 day  arr treat bad  wait blk%   fees  ward  costs    net stars
@@ -52,10 +99,11 @@ day  arr treat bad  wait blk%   fees  ward  costs    net stars
 cash 7764 reputation 73.5 chapter 2 beds 14 staff 13 upgrades 4 minCash 1076
 ```
 
-Bot purchases: day 1 X-ray + doctor + bay, day 2 cleaner + triage training, day 3 obs bed + doctor, day 5 **Town
-Hospital**, day 6 lab, day 7 surge team (flu week). 20 days (seed 9): City General on day ~16–17, 74 treated / shift,
-net ~9 k, reputation ~70. Rough days exist (a crash or flu week into a full ward drops a day to 1–3 stars) and recover
-within 1–2 days — the bot does not tap Discharge / Clean or use rewards, a real player has those levers.
+Bot purchases (before): day 1 X-ray + doctor + bay, day 2 cleaner + triage training, day 3 obs bed + doctor, day 5 Town
+Hospital, day 6 lab, day 7 surge team (flu week). Rough days exist (a crash or flu week into a full ward drops a day to
+1–3 stars) and recover within 1–2 days — the bot does not tap Discharge / Clean or use rewards, a real player has those
+levers.
 
-Not tuned yet (needs real play): the money curve after City General (cash piles up — chapters 4–6 are v1.1), the
-night team share, inspection frequency.
+Not tuned yet (needs real play): the money curve after City General (cash still piles up — chapters 4–6 are v1.1), the
+night team share, inspection frequency, whether ~9 shifts of saving in a full clinic feel slow (a progress hint on the
+Town Hospital card would help; the cash packs / starter scale with day income, unchanged).

@@ -25,7 +25,7 @@ grep -rn -i -w -E "Starbucks|Costa Coffee|Tim Hortons|Dunkin|Nescafe|Nespresso|L
 grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY" "$UNITY" --include=*.cs --include=*.json --include=*.md --include=*.py --include=*.sh && bad "a secret in the repo"
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
 for f in coach_barista intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
-for f in cart counter back_bar espresso_1 espresso_2 grinder fridge pastry_case pickup_shelf ice_maker roaster table rest_rack packing_bench sack_lod1 plant_lod1 cat_lod1; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in cart counter back_bar espresso_1 espresso_2 grinder fridge pastry_case pickup_shelf ice_maker roaster table rest_rack packing_bench sack_lod1 plant_lod1 cat_lod1 shell_cart shell_cart_low shell_corner shell_corner_low shell_roastery shell_roastery_low; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
 
 step "store listing + screenshot copy (store/validate.py)"

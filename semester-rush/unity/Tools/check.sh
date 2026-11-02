@@ -26,7 +26,12 @@ grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRI
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
 for f in coach_dean intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
 for f in hall_s hall_m hall_l lab library canteen dorm admin plot scaffold bus_stop; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in tree_oak tree_maple lamp bench bike_rack gate_open gate_closed; do [ -f "$A/Resources/kit/merge/$f.fbx" ] || bad "missing kit/merge/$f.fbx (tools/art/kit.py; merged into the zone / path meshes)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
+
+step "store listing (store/validate.py)"
+st=$(python3 "$(dirname "$UNITY")/store/validate.py" 2>&1); rc=$?
+echo "$st" | grep -E "^FAIL|STORE_LISTING" ; [ $rc -eq 0 ] || fail=1
 
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
 out=$(sh "$HERE/dotnet_check.sh" 2>&1); echo "$out" | grep -E "Error|Passed!|Failed" ; echo "$out" | grep -q "Passed!" || fail=1

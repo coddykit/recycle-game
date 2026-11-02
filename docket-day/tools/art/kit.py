@@ -349,7 +349,7 @@ def skyline():
     x = -70.0
     while x < 80.0:
         w = rnd.uniform(6, 11)
-        h = rnd.uniform(14, 34)
+        h = rnd.uniform(7, 17)
         p.box((x + w / 2, rnd.uniform(-2, 2), 0), (w, 6, h), rnd.choice((BLUEWALL, ROOFGREY, STONE)), top=ROOFGREY)
         x += w + rnd.uniform(0.5, 3)
     return p.build()
@@ -379,13 +379,14 @@ def floor_shell():
 
 
 def office_decor():
-    """Per-floor clutter merged into the tower mesh (Medium/High): two potted plants, a water cooler, a wall clock."""
+    """Per-floor clutter merged into the tower mesh (Medium/High), floor = slab top: two potted plants, a water cooler, a
+    wall clock. Positions avoid the desk rows and the room props (RegionWorld.BuildRooms)."""
     p = Prop("office_decor")
-    for x in (-12.4, 12.4):
-        p.cyl((x, 5.6, 0.35), 0.35, 0.7, TRUNK, segs=8)
-        p.blob((x, 5.6, 1.25), 0.6, TREE, squash=1.1)
-    p.box((5.2, 6.2, 0), (0.6, 0.6, 1.1), WHITE, bevel=0.04)                         # cooler
-    p.cyl((5.2, 6.2, 1.35), 0.24, 0.5, TEAL, segs=8)
+    for x in (-13.0, 13.0):                                                            # front corners, clear of desks + rooms
+        p.cyl((x, -5.6, 0.35), 0.35, 0.7, TRUNK, segs=8)
+        p.blob((x, -5.6, 1.25), 0.6, TREE, squash=1.1)
+    p.box((9.5, 6.2, 0), (0.6, 0.6, 1.1), WHITE, bevel=0.04)                         # cooler (back wall, between rooms)
+    p.cyl((9.5, 6.2, 1.35), 0.24, 0.5, TEAL, segs=8)
     p.cyl((-4.3, 6.95, 4.6), 0.45, 0.08, WHITE, segs=12, axis="Y")                    # clock (no numbers)
     p.cyl((-4.3, 6.92, 4.6), 0.5, 0.06, DARK, segs=12, axis="Y")
     return p.build()
@@ -411,16 +412,14 @@ def roof_top():
 
 
 def entrance():
-    """The Garage Front: rolled-up shutter box under the lintel, a wide step, two planters and a doormat (pivot = the
-    front step centre; kept low so it never hides the reception desk)."""
+    """The Garage Front: rolled-up shutter box tucked under the lintel, a wide step, one planter and a doormat (pivot =
+    the front step centre; kept low and clear of the office cat on the right, so it never hides the reception desk)."""
     p = Prop("entrance")
     p.box((0, 0, 0), (4.4, 2.2, 0.25), CONCRETE, bevel=0.04)                          # step
     p.box((0, 0.2, 0.25), (2.4, 1.2, 0.03), BRAND)                                     # doormat
-    for x in (-2.8, 2.8):
-        p.box((x, 0.1, 0), (1.0, 1.0, 0.7), CONCRETE, top=TRUNK, bevel=0.05)          # planters
-        p.blob((x, 0.1, 1.05), 0.55, TREE, squash=0.85)
-    p.box((0, 1.0, 4.85), (6.0, 0.6, 0.45), METAL, bevel=0.04)                         # shutter box
-    p.box((0, 0.72, 4.75), (5.8, 0.06, 0.12), DARK)
+    p.box((-2.9, 0.1, 0), (1.0, 1.0, 0.7), CONCRETE, top=TRUNK, bevel=0.05)           # planter (left; the cat sits right)
+    p.blob((-2.9, 0.1, 1.05), 0.55, TREE, squash=0.85)
+    p.box((0, 1.15, 5.0), (6.0, 0.3, 0.4), METAL, bevel=0.04)                          # shutter box
     return p.build()
 
 

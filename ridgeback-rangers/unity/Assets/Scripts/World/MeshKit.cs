@@ -105,6 +105,29 @@ namespace RidgebackRangers.World
             if (topR > 0) Disc(c + Vector3.up * (h - 0.5f), topR, c.y + h - 0.5f, topSwatch >= 0 ? topSwatch : swatch, segs);
         }
 
+        /// <summary>Appends a Blender-kit prop from the merge bank (KitBank) at bottomCenter, turned by yaw, scaled per axis
+        /// (the kit is 1 unit = 1 m; the diorama draws props at 2.2×). low = its "_low" twin when there is one. Returns false
+        /// when the bank lacks the prop, so the caller draws its procedural fallback.</summary>
+        public bool Kit(string name, Vector3 bottomCenter, float yaw, Vector3 scale, bool low = false)
+        {
+            var e = KitBank.Get(name, low);
+            if (e == null) return false;
+            var q = Quaternion.Euler(0, yaw, 0);
+            var inv = new Vector3(1f / scale.x, 1f / scale.y, 1f / scale.z);   // normals: inverse-transpose of the axis scale
+            int i0 = v.Count;
+            for (int i = 0; i < e.Pos.Length; i++)
+            {
+                v.Add(bottomCenter + q * Vector3.Scale(e.Pos[i], scale));
+                n.Add((q * Vector3.Scale(e.Normal[i], inv)).normalized);
+                uv.Add(Pal.Uv(e.Swatch[i]));
+            }
+            for (int i = 0; i < e.Index.Length; i++) t.Add(i0 + e.Index[i]);
+            return true;
+        }
+
+        public bool Kit(string name, Vector3 bottomCenter, float yaw, float scale, bool low = false) =>
+            Kit(name, bottomCenter, yaw, new Vector3(scale, scale, scale), low);
+
         /// <summary>A low-poly tree (trunk + two stacked boxes).</summary>
         public void Tree(Vector3 at, float s, float yaw, int leaves = Pal.Tree)
         {
@@ -120,9 +143,12 @@ namespace RidgebackRangers.World
             for (int k = 0; k < 4; k++) Box(at + Vector3.up * 2.4f * s, new Vector3(0.7f, 0.25f, 3.2f) * s, yaw + k * 45f, Pal.Fern);
         }
 
-        /// <summary>A fence ring around a paddock (posts + two rails), tier 1 wood, 2 steel, 3 double moat (+ water ditch).</summary>
-        public void Fence(Vector3 c, float w, float d, int tier, float integrity)
+        /// <summary>A fence ring around a paddock (posts + two rails), tier 1 wood, 2 steel, 3 double moat (+ water ditch).
+        /// kit = Medium/High: the bevelled Blender posts / rails from the merge bank (Low keeps these boxes).</summary>
+        public void Fence(Vector3 c, float w, float d, int tier, float integrity, bool kit = false)
         {
+            string kp = "fence" + Mathf.Clamp(tier, 1, 3);
+            if (kit && KitBank.Has(kp + "_post") && KitBank.Has(kp + "_rail")) { KitFence(c, w, d, tier, integrity, kp); return; }
             int post = tier == 1 ? Pal.Wood : Pal.Steel;
             float h = tier == 1 ? 1.8f : 2.4f;
             Vector3[] corners = { c + new Vector3(-w / 2, 0, -d / 2), c + new Vector3(w / 2, 0, -d / 2), c + new Vector3(w / 2, 0, d / 2), c + new Vector3(-w / 2, 0, d / 2) };
@@ -145,6 +171,32 @@ namespace RidgebackRangers.World
                         if (broken < 2) Box(Vector3.Lerp(a, b, 0.85f) + Vector3.up * y, new Vector3(0.2f, 0.25f, len * 0.3f), yaw, post);
                     }
                 }
+            }
+            if (tier == 3)
+            {
+                Strip(corners[0] - new Vector3(0, 0, 1.6f), corners[1] - new Vector3(0, 0, 1.6f), 1.6f, 0.13f, Pal.Water);
+                Strip(corners[3] + new Vector3(0, 0, 1.6f), corners[2] + new Vector3(0, 0, 1.6f), 1.6f, 0.13f, Pal.Water);
+            }
+        }
+
+        void KitFence(Vector3 c, float w, float d, int tier, float integrity, string kp)
+        {
+            float h = tier == 1 ? 1.8f : 2.4f;
+            Vector3[] corners = { c + new Vector3(-w / 2, 0, -d / 2), c + new Vector3(w / 2, 0, -d / 2), c + new Vector3(w / 2, 0, d / 2), c + new Vector3(-w / 2, 0, d / 2) };
+            int broken = integrity < 0.6f ? 2 : integrity < 0.85f ? 1 : 0;
+            for (int i = 0; i < 4; i++)
+            {
+                var a = corners[i]; var b = corners[(i + 1) % 4];
+                float len = Vector3.Distance(a, b);
+                int posts = Mathf.Max(2, Mathf.RoundToInt(len / 5f));
+                float yaw = Mathf.Atan2(b.x - a.x, b.z - a.z) * Mathf.Rad2Deg;
+                for (int p = 0; p < posts; p++) Kit(kp + "_post", Vector3.Lerp(a, b, p / (float)posts), yaw, h);   // the next side draws the corner
+                if (i == 0 && broken > 0)   // loose tiles: a gap in the front rails, as in the procedural fence
+                {
+                    Kit(kp + "_rail", Vector3.Lerp(a, b, 0.2f), yaw, new Vector3(h, h, len * 0.4f));
+                    if (broken < 2) Kit(kp + "_rail", Vector3.Lerp(a, b, 0.85f), yaw, new Vector3(h, h, len * 0.3f));
+                }
+                else Kit(kp + "_rail", Vector3.Lerp(a, b, 0.5f), yaw, new Vector3(h, h, len));
             }
             if (tier == 3)
             {

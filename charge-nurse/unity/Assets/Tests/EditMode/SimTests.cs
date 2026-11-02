@@ -709,7 +709,9 @@ namespace ChargeNurse.Sim.Tests
             double week = 0;
             foreach (var d in rep.Days) { Assert.Greater(d.Treated, 0, "day " + d.Day); week += d.Net; }
             Assert.Greater(week, 0, "a sensible player earns over a week (money also went into rooms / staff)");
-            Assert.Greater(rep.Days[6].Treated, rep.Days[0].Treated, "the hospital grows: day 7 treats more than day 1");
+            // polish-pass tempo: the Town Hospital opens around shift 13-14 (~1 h), so week 1 grows the clinic, not the wing
+            Assert.Greater(rep.Beds, 6, "the hospital grows: more beds than the starting six");
+            Assert.Greater(rep.Staff, 6, "the hospital grows: more staff than the starting six teams");
             Assert.Greater(rep.MinCash, 0, "never broke");
             Assert.GreaterOrEqual(rep.Days.Average(d => d.Stars), 4.5, "no wall: most shifts go well");
         }
@@ -732,6 +734,28 @@ namespace ChargeNurse.Sim.Tests
             TestContext.Progress.WriteLine("BALANCE 20 days seed 9\n" + rep.Table() + string.Join("\n", rep.Log));
             Assert.GreaterOrEqual(rep.Chapter, 2, "Town Hospital within 20 shifts (~80 min of play)");
             Assert.Greater(rep.Beds, 8);
+        }
+
+        [Test]
+        public void ChaptersArriveOnThePlanClock()
+        {
+            // plan §6: chapter 2 at ~1 h, chapter 3 at ~3 h of play; a shift = 4 real min at 1x (+ plan / report screens)
+            // -> Town Hospital around shift 15, City General around shift 45, within about ±25 %
+            foreach (long seed in new long[] { 9, 42 })
+            {
+                var rep = BalanceRunner.Run(TestData.Gd(), seed, 56);
+                int town = -1, city = -1;
+                foreach (var l in rep.Log)
+                {
+                    var p = l.Split(' ');
+                    if (p.Length < 3) continue;
+                    if (p[2] == "wing:town" && town < 0) town = int.Parse(p[1]);
+                    if (p[2] == "wing:city" && city < 0) city = int.Parse(p[1]);
+                }
+                TestContext.Progress.WriteLine("BALANCE seed " + seed + ": Town Hospital day " + town + ", City General day " + city);
+                Assert.That(town, Is.InRange(11, 19), "Town Hospital at ~1 h (seed " + seed + ")");
+                Assert.That(city, Is.InRange(34, 56), "City General at ~3 h (seed " + seed + ")");
+            }
         }
     }
 }

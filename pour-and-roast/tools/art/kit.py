@@ -5,6 +5,8 @@ bottom-centre, front = -Y in Blender (Unity -Z after the FBX axis swap). Exports
 contact sheet. Same shapes as the procedural fallbacks in PourAndRoast.World.MeshKit (the game uses the kit when present).
   blender -b --python pour-and-roast/tools/art/kit.py -- <unity dir> [<sheet.png>]
 Budget (Low draws: one material, one mesh per prop): machine ≤ 600 tris, furniture ≤ 500, cart ≤ 900. No text anywhere.
+Venue shells (polish pass 2026-11-02): shell_cart / shell_corner / shell_roastery + `_low` twins, each ONE mesh that replaces
+the procedural shell (0 extra draws); every dressing piece in them ≤ ~250 tris (window 204, jar shelf 220, chalkboard 160, pendant 80).
 """
 import math
 import os
@@ -20,7 +22,7 @@ OUT = os.path.join(UNITY, "Assets/Resources/kit")
 PALETTE = os.path.join(UNITY, "Assets/Resources/materials/palette.png")
 
 # swatches (PourAndRoast.World.Pal)
-FLOOR, FLOORD, QUAY, QUAYD, CREAM, BRICK, TRIM, TOP, WALNUT, BRAND, STEEL, STEELD, BLACK, COPPER = 0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14
+FLOOR, FLOORD, QUAY, QUAYD, CREAM, SAGE, BRICK, TRIM, TOP, WALNUT, BRAND, STEEL, STEELD, BLACK, COPPER = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
 WATER, AWNING, TEAL, PLANT, PLANTD, WINDOW, COFFEE, MILK, GREENB, GOLD, SACK, PASTRY, CHALK, SEA, CUP, WHITE = 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 26, 27, 28, 43, 45, 47
 
 
@@ -283,13 +285,13 @@ def wainscot(p, x0, x1, z, hi, along="x"):
         p.box(((x0 + x1) / 2, z - 0.05, 0.88), (x1 - x0, 0.08, 0.06), WALNUT, bevel=0.012 if hi else 0.0, skip=("back", "bottom"))
         if hi:
             for i in range(n):
-                p.box((x0 + step * (i + 0.5), z - 0.05, 0.16), (step - 0.3, 0.03, 0.56), CREAM, skip=("back", "bottom"))
+                p.box((x0 + step * (i + 0.5), z - 0.05, 0.16), (step - 0.3, 0.03, 0.56), WALNUT, skip=("back", "bottom"))
     else:
         p.box((z + 0.02, (x0 + x1) / 2, 0.0), (0.04, x1 - x0, 0.9), TRIM, skip=("left", "bottom"))
         p.box((z + 0.05, (x0 + x1) / 2, 0.88), (0.08, x1 - x0, 0.06), WALNUT, bevel=0.012 if hi else 0.0, skip=("left", "bottom"))
         if hi:
             for i in range(n):
-                p.box((z + 0.05, x0 + step * (i + 0.5), 0.16), (0.03, step - 0.3, 0.56), CREAM, skip=("left", "bottom"))
+                p.box((z + 0.05, x0 + step * (i + 0.5), 0.16), (0.03, step - 0.3, 0.56), WALNUT, skip=("left", "bottom"))
 
 
 def chalkboard(p, x, z, w, hi):
@@ -359,9 +361,10 @@ def cafe_room(p, L, hi):
     if hi:
         crown(p, x0, x1, z1, "x")
         crown(p, z0, z1, x0, "y")
-        p.quad(L["cx"] - 1.6, z0 + 0.3, L["cx"] + 1.6, -0.2, 0.004, BRAND)          # runner rug in front of the counter
-        p.quad(L["cx"] - 1.45, z0 + 0.45, L["cx"] + 1.45, -0.35, 0.006, AWNING)
-        p.quad(x1 - 1.6, z0 + 0.1, x1 - 0.2, z0 + 1.0, 0.004, TEAL)                # door mat
+    # flat rugs (0 draws, 6 tris, also on Low): a runner where the queue stands + the door mat
+    p.quad(L["cx"] - 1.25, z0 + 0.7, L["cx"] + 1.25, -0.3, 0.004, BRAND)
+    p.quad(L["cx"] - 1.12, z0 + 0.83, L["cx"] + 1.12, -0.43, 0.006, SAGE)
+    p.quad(x1 - 1.6, z0 + 0.1, x1 - 0.2, z0 + 1.0, 0.004, TEAL)
 
 
 def shell_cafe(hi):
@@ -407,19 +410,19 @@ def shell_cart(hi):
     L = CART
     x0, x1, z0, z1 = L["x0"], L["x1"], L["z0"], L["z1"]
     p = Prop("shell_cart" + ("" if hi else "_low"))
-    p.quad(x0 - 2, z0 - 1, x1 + 2, z1 + 0.85, 0.0, QUAY)                        # quay
+    p.quad(x0 - 12, z0 - 12, x1 + 12, z1 + 0.85, 0.0, QUAY)                     # quay (runs on past the frame)
     for i in range(6):                                                            # paving stripes (procedural twin)
         xx = x0 + 1 + i * 1.7
         p.quad(xx - 0.75, z0 + 0.5, xx + 0.75, z0 + 1.1, 0.005, QUAYD)
-    p.quad(-30, z1 + 0.85, 30, z1 + 15, -0.3, SEA)                                # harbour water (deeper behind: orientation check)
-    p.box((0, z1 + 0.85, -0.6), (x1 - x0 + 4, 0.1, 0.6), QUAYD, skip=("back", "bottom"))    # quay wall face down to the water
+    p.quad(-30, z1 + 0.85, 30, z1 + 25, -0.3, SEA)                                # harbour water (deeper behind: orientation check)
+    p.box((0, z1 + 0.85, -0.6), (x1 - x0 + 24, 0.1, 0.6), QUAYD, skip=("back", "bottom"))   # quay wall face down to the water
     if hi:
-        n = 7
-        w = (x1 - x0 + 4) / n
+        n = 11
+        w = (x1 - x0 + 24) / n
         for i in range(n):                                                        # stone coping blocks
-            p.box((x0 - 2 + w * (i + 0.5), z1 + 0.6, 0.0), (w - 0.04, 0.5, 0.18), QUAY if i % 2 else QUAYD, bevel=0.03, skip=("bottom",))
+            p.box((x0 - 12 + w * (i + 0.5), z1 + 0.6, 0.0), (w - 0.04, 0.5, 0.18), QUAY if i % 2 else QUAYD, bevel=0.03, skip=("bottom",))
     else:
-        p.box((0, z1 + 0.6, 0.0), (x1 - x0 + 4, 0.5, 0.18), QUAYD, skip=("bottom",))
+        p.box((0, z1 + 0.6, 0.0), (x1 - x0 + 24, 0.5, 0.18), QUAYD, skip=("bottom",))
     for sx in (-1, 1):                                                            # bollards
         if hi:
             p.cyl((sx * 4.2, z1 + 0.3, 0.3), 0.16, 0.6, BLACK, segs=12)
@@ -519,7 +522,7 @@ def main():
     for ob in shells:
         ob.data.materials.append(mat)
         export(ob)
-    objs += shells
+        bpy.data.objects.remove(ob)          # not on the contact sheet (they sit at the venue origin)
     if SHEET:
         sheet([o for o in objs if o.name in ("cart", "counter", "espresso_3", "grinder", "fridge", "pastry_case", "roaster", "table", "rest_rack", "packing_bench")])
 

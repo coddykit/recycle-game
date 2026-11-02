@@ -1,0 +1,153 @@
+{
+ "total_mb": 1.44,
+ "assets": {
+  "ui_tap": {
+   "kind": "sfx",
+   "dur": 0.11,
+   "lufs": -22.6,
+   "tp": -2.4,
+   "peak": -2.4,
+   "head_sil": 0.0,
+   "tail_sil": 0.014,
+   "kb": 5.0,
+   "ch": 1,
+   "flags": []
+  },
+  "coins": {
+   "kind": "sfx",
+   "dur": 1.0,
+   "lufs": -17.5,
+   "tp": -0.6,
+   "peak": -1.9,
+   "head_sil": 0.0,
+   "tail_sil": 0.062,
+   "kb": 14.3,
+   "ch": 1,
+   "flags": []
+  },
+  "success": {
+   "kind": "sfx",
+   "dur": 1.48,
+   "lufs": -14.0,
+   "tp": -3.2,
+   "peak": -3.2,
+   "head_sil": 0.0,
+   "tail_sil": 0.533,
+   "kb": 14.5,
+   "ch": 1,
+   "flags": []
+  },
+  "warning": {
+   "kind": "sfx",
+   "dur": 1.2,
+   "lufs": -15.9,
+   "tp": -2.5,
+   "peak": -2.5,
+   "head_sil": 0.0,
+   "tail_sil": 0.463,
+   "kb": 11.3,
+   "ch": 1,
+   "flags": []
+  },
+  "truck": {
+   "kind": "sfx",
+   "dur": 1.48,
+   "lufs": -14.4,
+   "tp": -2.0,
+   "peak": -2.0,
+   "head_sil": 0.0,
+   "tail_sil": 0.012,
+   "kb": 18.9,
+   "ch": 1,
+   "flags": []
+  },
+  "open": {
+   "kind": "sfx",
+   "dur": 1.05,
+   "lufs": -20.5,
+   "tp": -1.6,
+   "peak": -1.6,
+   "head_sil": 0.0,
+   "tail_sil": 0.086,
+   "kb": 11.9,
+   "ch": 1,
+   "flags": []
+  },
+  "sizzle": {
+   "kind": "sfx",
+   "dur": 2.0,
+   "lufs": -14.2,
+   "tp": -2.3,
+   "peak": -2.4,
+   "head_sil": 0.0,
+   "tail_sil": 0.04,
+   "kb": 21.3,
+   "ch": 1,
+   "flags": []
+  },
+  "bell": {
+   "kind": "sfx",
+   "dur": 1.0,
+   "lufs": -15.6,
+   "tp": -1.8,
+   "peak": -2.3,
+   "head_sil": 0.0,
+   "tail_sil": 0.049,
+   "kb": 10.4,
+   "ch": 1,
+   "flags": []
+  },
+  "hiss": {
+   "kind": "sfx",
+   "dur": 1.2,
+   "lufs": -14.2,
+   "tp": -2.5,
+   "peak": -2.5,
+   "head_sil": 0.0,
+   "tail_sil": 0.346,
+   "kb": 13.5,
+   "ch": 1,
+   "flags": []
+  },
+  "place": {
+   "kind": "sfx",
+   "dur": 0.4,
+   "lufs": -17.8,
+   "tp": -2.5,
+   "peak": -2.5,
+   "head_sil": 0.0,
+   "tail_sil": 0.056,
+   "kb": 6.8,
+   "ch": 1,
+   "flags": []
+  },
+  "music_calm": {
+   "kind": "music",
+   "dur": 57.0,
+   "lufs": -18.0,
+   "tp": -4.5,
+   "peak": -4.5,
+   "head_sil": 0.0,
+   "tail_sil": 0.0,
+   "kb": 646.0,
+   "ch": 2,
+   "seam_jump": 0.14,
+   "seam_step_db": -11.0,
+   "flags": []
+  },
+  "music_busy": {
+   "kind": "music",
+   "dur": 57.0,
+   "lufs": -18.1,
+   "tp": -5.0,
+   "peak": -5.1,
+   "head_sil": 0.002,
+   "tail_sil": 0.01,
+   "kb": 700.5,
+   "ch": 2,
+   "seam_jump": 0.003,
+   "seam_step_db": -4.1,
+   "flags": []
+  }
+ }
+}

@@ -1,0 +1,129 @@
+{
+ "total_mb": 1.42,
+ "assets": {
+  "ui_tap": {
+   "kind": "sfx",
+   "dur": 0.48,
+   "lufs": -20.0,
+   "tp": -2.1,
+   "peak": -2.5,
+   "head_sil": 0.0,
+   "tail_sil": 0.124,
+   "kb": 7.6,
+   "ch": 1,
+   "flags": []
+  },
+  "coins": {
+   "kind": "sfx",
+   "dur": 1.0,
+   "lufs": -14.3,
+   "tp": -1.0,
+   "peak": -2.8,
+   "head_sil": 0.0,
+   "tail_sil": 0.18,
+   "kb": 12.8,
+   "ch": 1,
+   "flags": []
+  },
+  "success": {
+   "kind": "sfx",
+   "dur": 0.98,
+   "lufs": -14.8,
+   "tp": -2.5,
+   "peak": -2.5,
+   "head_sil": 0.0,
+   "tail_sil": 0.056,
+   "kb": 9.7,
+   "ch": 1,
+   "flags": []
+  },
+  "warning": {
+   "kind": "sfx",
+   "dur": 1.2,
+   "lufs": -15.5,
+   "tp": -2.3,
+   "peak": -2.3,
+   "head_sil": 0.0,
+   "tail_sil": 0.444,
+   "kb": 11.8,
+   "ch": 1,
+   "flags": []
+  },
+  "tag": {
+   "kind": "sfx",
+   "dur": 0.5,
+   "lufs": -32.0,
+   "tp": -2.9,
+   "peak": -3.3,
+   "head_sil": 0.002,
+   "tail_sil": 0.014,
+   "kb": 8.4,
+   "ch": 1,
+   "flags": []
+  },
+  "clean": {
+   "kind": "sfx",
+   "dur": 1.11,
+   "lufs": -14.2,
+   "tp": -2.8,
+   "peak": -4.3,
+   "head_sil": 0.0,
+   "tail_sil": 0.022,
+   "kb": 13.0,
+   "ch": 1,
+   "flags": []
+  },
+  "siren": {
+   "kind": "sfx",
+   "dur": 1.59,
+   "lufs": -14.7,
+   "tp": -2.6,
+   "peak": -2.6,
+   "head_sil": 0.0,
+   "tail_sil": 0.102,
+   "kb": 13.8,
+   "ch": 1,
+   "flags": []
+  },
+  "shift_end": {
+   "kind": "sfx",
+   "dur": 2.0,
+   "lufs": -13.9,
+   "tp": -2.2,
+   "peak": -2.2,
+   "head_sil": 0.0,
+   "tail_sil": 0.465,
+   "kb": 17.5,
+   "ch": 1,
+   "flags": []
+  },
+  "music_calm": {
+   "kind": "music",
+   "dur": 54.5,
+   "lufs": -18.0,
+   "tp": -5.2,
+   "peak": -5.2,
+   "head_sil": 0.0,
+   "tail_sil": 0.0,
+   "kb": 581.1,
+   "ch": 2,
+   "seam_jump": 0.376,
+   "seam_step_db": -6.0,
+   "flags": []
+  },
+  "music_busy": {
+   "kind": "music",
+   "dur": 57.0,
+   "lufs": -18.0,
+   "tp": -2.4,
+   "peak": -2.4,
+   "head_sil": 0.0,
+   "tail_sil": 0.0,
+   "kb": 777.5,
+   "ch": 2,
+   "seam_jump": 0.145,
+   "seam_step_db": -0.3,
+   "flags": []
+  }
+ }
+}

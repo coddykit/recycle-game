@@ -141,7 +141,14 @@ def feature():
     sun = bpy.data.objects["sun"]
     sun.rotation_euler = mathutils.Euler((math.radians(50), math.radians(10), math.radians(-40)))
     sun.data.color = (1.0, 0.95, 0.86)
-    R.camera((15, -27, 19), (14.5, 4.0, 0.6), lens=34)
+    # foreground: visitors' cars, a hedge, patients waiting where the corridor turns red
+    for x, name in ((-1.5, "car_a"), (1.4, "car_b"), (7.2, "car_c")):
+        R.kit(name, (x, -4.4, 0), yaw=180)
+    for x in (10.5, 13.6, 16.7):
+        R.kit("hedge", (x, -3.4, 0))
+    R.char("patient", (14.4, 0.6, 0), yaw=-30, scale=0.95)
+    R.char("patient", (11.0, 0.3, 0), yaw=20, scale=0.9)
+    R.camera((16.5, -24, 17.5), (16.0, 2.6, 0.4), lens=29)
     R.render(os.path.join(STORE, "feature-graphic.png"), 1024, 500)
 
 

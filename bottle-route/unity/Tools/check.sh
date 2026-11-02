@@ -26,7 +26,17 @@ grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRI
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
 for f in coach_operator intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
 for f in machine_s machine_m shop horeca van bike compactor bale_pet_lod1 bale_alu_lod1; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in bld_harbour_a bld_harbour_b bld_old_a bld_old_b bld_uni_a bld_uni_b stadium depot_hall; do
+  for v in "$f" "${f}_low"; do [ -f "$A/Resources/kit/$v.bytes" ] || bad "missing kit/$v.bytes (tools/art/kit.py, merged into the district / depot mesh)"; done
+done
 [ $fail -eq 0 ] && echo "static gates PASS"
+
+step "merged kit pieces (tools/art/kit_check.py)"
+python3 "$UNITY/../tools/art/kit_check.py" | tail -3 | grep -E "KIT_CHECK|FAIL" ; python3 "$UNITY/../tools/art/kit_check.py" >/dev/null 2>&1 || bad "kit_check"
+
+step "store listing + art (store/validate.py)"
+st=$(python3 "$UNITY/../store/validate.py" 2>&1); echo "$st" | grep -E "FAIL|PASS|en-US"
+echo "$st" | grep -q "STORE_LISTING_PASS" || bad "store/validate.py"
 
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
 out=$(sh "$HERE/dotnet_check.sh" 2>&1); echo "$out" | grep -E "Error|Passed!|Failed" ; echo "$out" | grep -q "Passed!" || fail=1

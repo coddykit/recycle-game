@@ -1,0 +1,14 @@
+{"kind": "batch_start", "remaining": 35231, "limit": 40000, "calls": 12, "est": 1637, "t": "2026-11-02T07:55:55"}
+{"kind": "sfx", "id": "ui_tap", "seconds": 0.5, "credits": 5, "remaining": 35226, "cost_from": "header", "hash": "7535789f", "took": 2.1, "t": "2026-11-02T07:55:57"}
+{"kind": "sfx", "id": "coins", "seconds": 1.0, "credits": 10, "remaining": 35216, "cost_from": "header", "hash": "cf6f5106", "took": 1.5, "t": "2026-11-02T07:56:01"}
+{"kind": "sfx", "id": "success", "seconds": 1.5, "credits": 15, "remaining": 35201, "cost_from": "header", "hash": "93aa2bc1", "took": 1.5, "t": "2026-11-02T07:56:05"}
+{"kind": "sfx", "id": "warning", "seconds": 1.2, "credits": 12, "remaining": 35189, "cost_from": "header", "hash": "5de6dc91", "took": 2.0, "t": "2026-11-02T07:56:09"}
+{"kind": "sfx", "id": "door", "seconds": 1.0, "credits": 10, "remaining": 35179, "cost_from": "header", "hash": "b3216792", "took": 1.8, "t": "2026-11-02T07:56:13"}
+{"kind": "sfx", "id": "paper", "seconds": 0.8, "credits": 8, "remaining": 35171, "cost_from": "header", "hash": "1b0ebc81", "took": 2.0, "t": "2026-11-02T07:56:17"}
+{"kind": "sfx", "id": "gavel", "seconds": 1.0, "credits": 10, "remaining": 35161, "cost_from": "header", "hash": "9bfd9d45", "took": 1.9, "t": "2026-11-02T07:56:21"}
+{"kind": "sfx", "id": "verdict_win", "seconds": 2.0, "credits": 20, "remaining": 35141, "cost_from": "header", "hash": "024ab979", "took": 1.5, "t": "2026-11-02T07:56:25"}
+{"kind": "sfx", "id": "verdict_lose", "seconds": 1.5, "credits": 15, "remaining": 35126, "cost_from": "header", "hash": "b2b18566", "took": 1.6, "t": "2026-11-02T07:56:29"}
+{"kind": "sfx", "id": "meow", "seconds": 1.0, "credits": 10, "remaining": 35039, "cost_from": "header", "hash": "d8b83096", "took": 3.4, "t": "2026-11-02T07:56:35"}
+{"kind": "music", "id": "music_calm", "seconds": 60, "credits": 750, "remaining": 34289, "cost_from": "rate", "hash": "554a84a0", "took": 9.7, "t": "2026-11-02T07:56:46"}
+{"kind": "music", "id": "music_busy", "seconds": 60, "credits": 750, "remaining": 33539, "cost_from": "rate", "hash": "5e0630de", "took": 8.9, "t": "2026-11-02T07:57:06"}
+{"kind": "batch_end", "spent": 1615, "remaining": 33539, "t": "2026-11-02T07:57:15"}

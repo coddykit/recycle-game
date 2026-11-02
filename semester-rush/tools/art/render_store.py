@@ -202,47 +202,46 @@ def feature():
 
 
 def icon_dean():
-    """c1 — the dean, head and shoulders, the clock tower behind on brand maroon."""
+    """c1 — the dean, head and shoulders, smiling, the clock tower behind him on brand maroon."""
     reset(MAROON, 1.0)
-    plane(60, (0, 0, 0), GRASS)
-    kit("admin", (0.4, 9.0, 0), scale=0.55)
-    char("dean", (0.0, 0.0, 0), yaw=6, scale=1.0)
-    camera((0.1, -3.4, 1.75), (0.0, 0.0, 1.55), lens=60)
+    plane(80, (0, 0, 0), GRASS)
+    kit("admin", (1.6, 14.0, 0), scale=0.9)
+    kit("merge/tree_maple", (-4.5, 9.0, 0), scale=1.0)
+    char("dean", (0.0, 0.0, 0), yaw=8, scale=1.0)
+    camera((0.22, -1.2, 1.63), (0.0, 0.0, 1.43), lens=40)
     render(os.path.join(STORE, "icon-candidates/c1.png"), 512, 512)
 
 
 def icon_tower():
-    """c2 — the bell: the clock tower from below with an autumn maple and an oak, the gold gate open in front."""
-    reset((0.95, 0.66, 0.36), 0.9)
+    """c2 — the bell: the clock tower (blank clock face) against a warm sky, an autumn maple in the corner."""
+    reset((0.56, 0.16, 0.23), 1.0)
     plane(200, (0, 0, 0), GRASS)
-    path(0, -10, 0, 6, w=2.2)
-    kit("admin", (0.0, 7.0, 0), scale=1.0)
-    kit("merge/gate_open", (0.0, -1.5, 0), scale=1.0)
-    kit("merge/tree_maple", (-6.2, 2.5, 0), yaw=25, scale=1.25)
-    kit("merge/tree_oak", (6.4, 3.0, 0), yaw=80, scale=1.2)
-    camera((0.0, -14.0, 1.4), (0.0, 4.0, 6.0), lens=26)
+    kit("admin", (0.0, 0.0, 0), scale=1.0)
+    kit("merge/tree_maple", (-6.4, -6.0, 0), yaw=25, scale=1.5)
+    kit("merge/tree_oak", (6.6, -5.5, 0), yaw=80, scale=1.4)
+    camera((0.0, -27.0, 6.5), (0.0, 0.0, 8.0), lens=58)
     render(os.path.join(STORE, "icon-candidates/c2.png"), 512, 512)
 
 
 def icon_rush():
-    """c3 — the bell change from above: a brick hall, paths crossing, students in faculty colours streaming in."""
+    """c3 — the bell change from above: a brick hall, paths crossing, students hurrying in under a lamp."""
     reset((0.36, 0.08, 0.12), 0.8)
     plane(80, (0, 0, 0), GRASS)
-    path(-12, -12, 12, 12, w=2.0)
-    path(-12, 12, 12, -12, w=2.0)
-    kit("hall_m", (0.0, 7.5, 0), scale=0.55)
-    kit("merge/tree_maple", (-6.5, 1.0, 0), scale=0.75)
-    kit("merge/tree_oak", (6.5, 0.0, 0), scale=0.75)
-    kit("merge/lamp", (1.6, -1.8, 0), scale=0.7)
-    for i, (x, y, yaw) in enumerate(((-3.6, -3.4, 135), (-1.9, -1.6, 135), (3.4, -3.6, -135), (1.6, -1.9, -135), (-0.2, 0.4, 180), (0.4, 2.4, 180))):
-        char("student", (x, y, 0), yaw=yaw, scale=0.85, arms=75)
-    camera((0.0, -11.0, 10.5), (0.0, 1.2, 0.8), lens=40)
+    path(-12, -12, 12, 12, w=1.6)
+    path(-12, 12, 12, -12, w=1.6)
+    kit("hall_m", (0.0, 5.2, 0), scale=0.42)
+    kit("merge/tree_maple", (-3.4, 0.4, 0), scale=0.55)
+    kit("merge/tree_oak", (3.5, 0.2, 0), scale=0.55)
+    for x, y, yaw in ((-1.5, -1.6, 140), (-0.7, -0.7, 135), (1.5, -1.5, -140), (0.7, -0.8, -135), (0.0, 0.3, 180), (-2.3, -2.4, 140)):
+        char("student", (x, y, 0), yaw=yaw, scale=0.9, arms=75)
+    camera((0.0, -5.6, 5.0), (0.0, 0.6, 0.9), lens=34)
     render(os.path.join(STORE, "icon-candidates/c3.png"), 512, 512)
 
 
 def main():
     os.makedirs(os.path.join(STORE, "icon-candidates"), exist_ok=True)
-    feature()
+    if "--icons" not in argv:
+        feature()
     icon_dean()
     icon_tower()
     icon_rush()

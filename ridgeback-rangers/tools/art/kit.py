@@ -402,7 +402,7 @@ def tree_fern(low=False):
     if low:
         p.lathe((0, 0, 0), [(0.2, 0), (0.14, 1.4)], 4, TRUNK, top=False, phase=math.pi / 4)
         for k in range(5):
-            p.frond((0, 0, 1.4), k * 2 * math.pi / 5 + 0.3, 1.5, 0.3, 0.9, FERN, segs=1)
+            p.frond((0, 0, 1.4), k * 2 * math.pi / 5 + 0.3, 1.7, 0.42, 0.9, FERN, segs=1)
         return p.build()
     p.lathe((0, 0, 0), [(0.24, 0), (0.21, 0.4), (0.19, 0.8), (0.16, 1.2), (0.14, 1.55)], 7, TRUNK, swatches=[BARK, TRUNK, BARK, TRUNK])
     for k in range(8):
@@ -523,7 +523,7 @@ def volcano(low=False):
         return p.build()
     prof = [(43.2, 0), (37.5, 5.5), (30.0, 12.0), (22.0, 19.0), (14.5, 25.5), (9.6, 30.2), (8.2, 31.8), (6.4, 30.6)]
     p.lathe((0, 0, 0), prof, 20, VROCK, top=False, jitter=0.07, rng=rng,
-            swatches=[FOREST, GRASSD, VROCK, VROCK, VROCK, ROCK, VROCK])
+            swatches=[GRASSD, MOSS, VROCK, VROCK, VROCK, ROCK, VROCK])
     p.lathe((0, 0, 0), [(6.4, 30.6), (0.0, 30.4)], 20, LAVA, top=False)
     # two cooled lava tongues down the front face (dark rock) with a glowing seam
     for x0 in (-3.0, 4.0):

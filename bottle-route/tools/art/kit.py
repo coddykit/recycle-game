@@ -6,7 +6,7 @@ Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resour
 Budget (Low draws: one material, one mesh per prop): machine ≤ 400 tris, vehicle ≤ 900, building ≤ 600.
 
 Polish pass (2026-11-02): district buildings (harbour / old town / university, two each), the stadium shell and the depot
-compound. These are MERGED into the district / depot mesh at run time (RegionWorld → MeshKit.Append: 0 extra draws on
+compound. These are MERGED into the district / depot mesh at run time (RegionWorld → KitPiece + MeshKit.Append: 0 extra draws on
 every tier), so they are written as `kit/<name>.bytes` (BRKM v1: Unity space, flat normals, palette UVs, uint16 indices,
 clockwise = front) instead of FBX: the merge needs readable vertex data and a known axis (Blender x, y, z → Unity x, z, y;
 front = Blender -X = the street side; the depot is authored in depot-local Unity x / z). Each has a `<name>_low` twin

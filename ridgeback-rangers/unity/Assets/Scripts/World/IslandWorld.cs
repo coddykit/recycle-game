@@ -5,6 +5,11 @@
 //   * 1 km of map = 100 world units; props and animals are drawn larger than life so they read at map zoom.
 //   * one palette material for the island (MeshKit + the Blender kit) + one per species for the Meshy dinosaurs;
 //     instanced draws for animals and people, merged meshes for every zone / paddock.
+//   * P2 polish: the Blender kit's merge bank (KitBank, Resources/kit/props.bytes) is APPENDED into those merged meshes —
+//     buildings, trees, tree ferns, rocks, the volcano, hills, dig sites, kiosks, water points, shade sails, and on
+//     Medium/High the bevelled fences and path lamps. So the kit adds 0 draws (the buildings even stop being separate
+//     objects: −6 to −9 draws on every tier). Low uses the "_low" twins (never more triangles than the old boxes) and the
+//     procedural fences; no lamps. Missing bank = the old procedural shapes / FBX props (fallback kept).
 //   * Low tier: no shadows (QualityTiers), ≤ 24 animals / half the visitors at 15 Hz, no foliage sway, no lava glow.
 //   * picking: a tap ray-casts the ground plane (no physics module) and picks an animal, the tram, the gate, a paddock or an
 //     empty paddock slot.
@@ -43,9 +48,11 @@ namespace RidgebackRangers.World
         readonly List<GameObject> paddockObjs = new List<GameObject>();
         readonly List<Transform> tramCars = new List<Transform>();
         GameObject railObj;
+        readonly List<GameObject> staticObjs = new List<GameObject>();
         Herd herd;
         People people;
-        string builtKey = "", builtZones = "";
+        const int NotBuilt = int.MinValue;
+        int builtKey = NotBuilt, builtZones = NotBuilt, builtDeco = NotBuilt;
         bool dirty = true;
         float slowAcc;
         MaterialPropertyBlock mpb;
@@ -79,6 +86,10 @@ namespace RidgebackRangers.World
             Low = low;
             herd?.SetLow(low);
             people?.SetLow(low);
+            // the merged meshes carry tier-specific kit props (fences, lamps, "_low" twins): rebuild them all (rare: a settings change)
+            if (Sim != null) BuildStatic();
+            builtDeco = NotBuilt;   // rebuild the zones without re-fitting the camera
+            builtKey = NotBuilt;
             MarkDirty();
         }
 
@@ -88,6 +99,8 @@ namespace RidgebackRangers.World
 
         void BuildStatic()
         {
+            foreach (var go in staticObjs) if (go != null) Destroy(go);
+            staticObjs.Clear();
             var gd = Sim.Gd;
             var k = new MeshKit();
             // sea, beach ring, island (ellipses)
@@ -95,24 +108,47 @@ namespace RidgebackRangers.World
             var c = new Vector3(150, 0, 125);
             k.Disc(c, 205, -0.1f, Pal.Sand, 28, 170);
             k.Disc(c, 192, 0f, Pal.Grass, 28, 158);
-            // the volcano behind the sanctuary (a cheap cone; the lava glow is Medium/High only, see Update)
-            k.Cone(new Vector3(150, 0, 300), 95, 70, Pal.VolcanoRock, 14, 16, Pal.Lava);
-            k.Cone(new Vector3(40, 0, 285), 55, 32, Pal.GrassDark, 10, 6);
-            k.Cone(new Vector3(265, 0, 285), 60, 38, Pal.GrassDark, 10, 6);
+            // the volcano behind the sanctuary + two wooded hills (kit; the old cones as fallback)
+            if (!k.Kit("volcano", new Vector3(150, 0, 300), 0, KitScale, Low)) k.Cone(new Vector3(150, 0, 300), 95, 70, Pal.VolcanoRock, 14, 16, Pal.Lava);
+            if (!k.Kit("hill", new Vector3(40, 0, 285), 30, new Vector3(2.2f, 2.13f, 2.2f), Low)) k.Cone(new Vector3(40, 0, 285), 55, 32, Pal.GrassDark, 10, 6);
+            if (!k.Kit("hill", new Vector3(265, 0, 285), -20, new Vector3(2.4f, 2.53f, 2.4f), Low)) k.Cone(new Vector3(265, 0, 285), 60, 38, Pal.GrassDark, 10, 6);
             // the service road: one strip per edge, discs on the nodes
             foreach (var e in gd.Edges)
                 k.Strip(ToWorld(gd.Nodes[e.A].X, gd.Nodes[e.A].Y), ToWorld(gd.Nodes[e.B].X, gd.Nodes[e.B].Y), 6f, 0.1f, Pal.Path);
             foreach (var n in gd.Nodes) if (n.Kind != "paddock") k.Disc(ToWorld(n.X, n.Y), n.Kind == "dig" ? 9f : 5f, 0.11f, n.Kind == "dig" ? Pal.Mud : Pal.Path);
+            // the dig sites: an earth ring, rib bones and a tool crate on the mud patch
+            int dn = 0;
+            foreach (var n in gd.Nodes) if (n.Kind == "dig") k.Kit("dig_site", ToWorld(n.X, n.Y), 35f * dn++, KitScale, Low);
+            // path lamps along the service road (Medium/High only: Low keeps its triangle budget)
+            if (!Low && KitBank.Has("lamp"))
+                foreach (var e in gd.Edges)
+                {
+                    Vector3 a = NodePos(e.A), b = NodePos(e.B), ab = b - a;
+                    float len = ab.magnitude;
+                    if (len < 24f) continue;
+                    var side = Vector3.Cross(Vector3.up, ab / len) * 4.6f;
+                    for (float d = 12f; d < len - 10f; d += 30f) k.Kit("lamp", a + ab * (d / len) + side, 0, KitScale);
+                }
             // the gate plaza and the beach in front of it
             k.Disc(GatePos + new Vector3(0, 0, 8), 16, 0.12f, Pal.Stone, 12);
-            Spawn("Ground", k.Build("ground"), Vector3.zero);
-            // buildings (Blender kit, procedural fallback)
-            Prop("gate", "gate", GatePos, 0);
-            Prop("hq", "hq", NodePos(gd.HqNode), 0);
-            Prop("barn", "barn", NodePos(gd.BarnNode), 0);
-            Prop("vet", "vet", NodePos(gd.VetNode), 0);
-            Prop("hatchery", "hatchery", HatcheryPos, 0);
-            Prop("station", "station", StationPos + new Vector3(0, 0, 4), 0);
+            // buildings: merged into the ground mesh from the kit bank (0 draws), else the FBX prop / procedural fallback
+            Building(k, "gate", GatePos);
+            Building(k, "hq", NodePos(gd.HqNode));
+            Building(k, "barn", NodePos(gd.BarnNode));
+            Building(k, "vet", NodePos(gd.VetNode));
+            Building(k, "hatchery", HatcheryPos);
+            Building(k, "station", StationPos + new Vector3(0, 0, 4));
+            staticObjs.Add(Spawn("Ground", k.Build("ground"), Vector3.zero));
+        }
+
+        /// <summary>Kit props are 1 unit = 1 m; the diorama draws them larger than life.</summary>
+        public const float KitScale = 2.2f;
+
+        void Building(MeshKit k, string name, Vector3 pos, Transform parent = null)
+        {
+            if (k.Kit(name, pos, 0, KitScale)) return;
+            var go = Prop(name, name, pos, 0, parent);
+            if (parent == null) staticObjs.Add(go);
         }
 
         GameObject Spawn(string name, Mesh mesh, Vector3 pos, Transform parent = null)
@@ -138,7 +174,7 @@ namespace RidgebackRangers.World
                 go = Instantiate(prefab, parent != null ? parent : transform);
                 foreach (var r in go.GetComponentsInChildren<Renderer>()) { r.sharedMaterial = mat; r.shadowCastingMode = Low ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On; }
                 go.transform.localPosition = pos;
-                go.transform.localScale = Vector3.one * 2.2f;   // kit props are 1 unit = 1 m; the diorama draws them larger than life
+                go.transform.localScale = Vector3.one * KitScale;   // kit props are 1 unit = 1 m; the diorama draws them larger than life
             }
             else go = Spawn(kitName, kitName == "tram_car" ? MeshKit.TramCar() : MeshKit.Building(fallback), pos, parent);
             go.transform.localRotation = Quaternion.Euler(0, yaw, 0);
@@ -164,13 +200,28 @@ namespace RidgebackRangers.World
             {
                 var p = zc + new Vector3((float)(rng.NextDouble() * 2 - 1) * 70f, 0, (float)(rng.NextDouble() * 2 - 1) * 55f);
                 if (NearAny(p, 26f)) continue;
-                if (z.Biome == "dune") { if (rng.NextDouble() < 0.5) k.Box(p, new Vector3(3f, 2f, 2.5f), rng.Next(90), Pal.Rock); else k.Fern(p, 1.6f, rng.Next(360)); }
-                else if (rng.NextDouble() < 0.5) k.Tree(p, 1.8f, rng.Next(360), open ? Pal.Tree : Pal.Locked);
-                else k.Fern(p, 1.7f, rng.Next(360));
+                double roll = rng.NextDouble();
+                int yaw = rng.Next(360);
+                float s = KitScale * (0.85f + (float)rng.NextDouble() * 0.3f);
+                // open zones: Blender kit foliage (locked zones keep the greyed procedural shapes)
+                // (kit trees stand ~1.35× the old boxes: a tree should top an adult dinosaur, Herd.BaseLength 9)
+                if (z.Biome == "dune")
+                {
+                    if (roll < 0.5) { if (!(open && k.Kit("rock", p, yaw, s, Low))) k.Box(p, new Vector3(3f, 2f, 2.5f), yaw % 90, Pal.Rock); }
+                    else if (!(open && k.Kit("tree_fern", p, yaw, s * 1.3f, Low))) k.Fern(p, 1.6f, yaw);
+                }
+                else if (roll < 0.5) { if (!(open && k.Kit(roll < 0.2 ? "tree_tall" : "tree", p, yaw, s * 1.35f, Low))) k.Tree(p, 1.8f, yaw, open ? Pal.Tree : Pal.Locked); }
+                else if (!(open && k.Kit("tree_fern", p, yaw, s * 1.3f, Low))) k.Fern(p, 1.7f, yaw);
+            }
+            int view = gd.ViewOf(z.Id);
+            if (open && view >= 0) Building(k, "view", NodePos(view) + new Vector3(0, 0, 4), root.transform);
+            // the snack kiosk and the gift hut by the gate plaza, once bought (merged: 0 draws)
+            if (z.Id == "cove")
+            {
+                if (Sim.S.Cafe > 0) k.Kit("kiosk_cafe", GatePos + new Vector3(-26, 0, 16), 0, KitScale, Low);
+                if (Sim.Has("gift")) k.Kit("kiosk_gift", GatePos + new Vector3(26, 0, 16), 0, KitScale, Low);
             }
             Spawn("Ground_" + z.Id, k.Build("zone_" + z.Id), Vector3.zero, root.transform);
-            int view = gd.ViewOf(z.Id);
-            if (open && view >= 0) Prop("view", "view", NodePos(view) + new Vector3(0, 0, 4), 0, root.transform);
             zoneObjs[z.Id] = root;
         }
 
@@ -198,9 +249,10 @@ namespace RidgebackRangers.World
                 var k = new MeshKit();
                 bool dune = Sim.BiomeOf(pd) == "dune";
                 k.Disc(c, PaddockSize.x * 0.5f, 0.08f, dune ? Pal.Sand : Pal.Grass, 12, PaddockSize.y * 0.5f);
-                k.Fence(c, PaddockSize.x, PaddockSize.y, pd.Fence, (float)pd.Integrity);
-                if (pd.Water) k.Disc(c + new Vector3(12, 0, 7), 4.5f, 0.15f, Pal.Water, 10, 3f);
-                if (pd.Shade) { k.Box(c + new Vector3(-12, 0, 7), new Vector3(0.4f, 5f, 0.4f), 0, Pal.Wood); k.Box(c + new Vector3(-12, 5, 7), new Vector3(8f, 0.2f, 6f), 15, Pal.Sunset); }
+                k.Fence(c, PaddockSize.x, PaddockSize.y, pd.Fence, (float)pd.Integrity, kit: !Low);
+                if (pd.Water && !k.Kit("water_point", c + new Vector3(12, 0, 7), 0, KitScale, Low)) k.Disc(c + new Vector3(12, 0, 7), 4.5f, 0.15f, Pal.Water, 10, 3f);
+                if (pd.Shade && !k.Kit("shade_sail", c + new Vector3(-12, 0, 7), 15, KitScale, Low))
+                { k.Box(c + new Vector3(-12, 0, 7), new Vector3(0.4f, 5f, 0.4f), 0, Pal.Wood); k.Box(c + new Vector3(-12, 5, 7), new Vector3(8f, 0.2f, 6f), 15, Pal.Sunset); }
                 var go = Spawn("Paddock_" + p, k.Build("paddock_" + p), Vector3.zero);
                 paddockObjs.Add(go);
             }
@@ -279,31 +331,44 @@ namespace RidgebackRangers.World
 
         // ------------------------------------------------------------------ frame
 
-        string PaddockKey()
+        // rebuild keys: plain int hashes, so the idle frame allocates nothing (P2 polish: these were strings built every frame)
+        int PaddockKey()
         {
-            var sb = new System.Text.StringBuilder();
-            foreach (var p in Sim.S.Paddocks) sb.Append(p.Node).Append(p.Fence).Append(p.Water ? 'w' : '-').Append(p.Shade ? 's' : '-').Append(p.Integrity < 0.6 ? 2 : p.Integrity < 0.85 ? 1 : 0).Append(',');
-            return sb.ToString();
+            int h = 17;
+            foreach (var p in Sim.S.Paddocks)
+                h = (((h * 31 + p.Node) * 31 + p.Fence) * 31 + (p.Water ? 1 : 0) + (p.Shade ? 2 : 0)) * 31 + (p.Integrity < 0.6 ? 2 : p.Integrity < 0.85 ? 1 : 0);
+            return h * 31 + Sim.S.Paddocks.Count;
         }
+
+        int ZoneKey()
+        {
+            int h = 17;
+            foreach (var z in Sim.S.Zones) h = h * 31 + z.GetHashCode();
+            return h * 31 + Sim.S.Zones.Count;
+        }
+
+        int DecoKey() => Sim.S.Cafe * 2 + (Sim.Has("gift") ? 1 : 0);
 
         void Update()
         {
             if (Sim == null) return;
-            string zones = string.Join(",", Sim.S.Zones);
-            if (dirty || zones != builtZones)
+            int zones = ZoneKey(), deco = DecoKey();
+            bool zonesChanged = zones != builtZones, decoChanged = deco != builtDeco || builtZones == NotBuilt;
+            if (dirty || zonesChanged || decoChanged)
             {
                 dirty = false;
-                if (zones != builtZones)
+                if (zonesChanged || decoChanged)
                 {
                     foreach (var z in Sim.Gd.Zones) BuildZone(z);
                     BuildRail();
-                    if (builtZones != "" && rig != null) rig.Fit(UnlockedBounds(), false);
+                    if (zonesChanged && builtZones != NotBuilt && rig != null) rig.Fit(UnlockedBounds(), false);
                     builtZones = zones;
-                    builtKey = "";
+                    builtDeco = deco;
+                    builtKey = NotBuilt;
                 }
                 SyncTram();
             }
-            string key = PaddockKey();
+            int key = PaddockKey();
             if (key != builtKey) { BuildPaddocks(); builtKey = key; }
             if (tramCars.Count != Sim.S.Tram.Cars) SyncTram();
 

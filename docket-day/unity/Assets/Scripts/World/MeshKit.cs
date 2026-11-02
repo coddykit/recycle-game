@@ -32,9 +32,15 @@ namespace DocketDay.World
         readonly List<Vector2> uv = new List<Vector2>();
         readonly List<int> t = new List<int>();
         public int Vertices => v.Count;
+        public int Triangles => t.Count / 3;
+
+        /// <summary>Placement applied to everything added (lets a procedural fallback land where the kit model would).</summary>
+        public Matrix4x4 Xf = Matrix4x4.identity;
+        bool HasXf => Xf != Matrix4x4.identity;
 
         public void Quad(Vector3 a, Vector3 b, Vector3 c, Vector3 d, int swatch)
         {
+            if (HasXf) { a = Xf.MultiplyPoint3x4(a); b = Xf.MultiplyPoint3x4(b); c = Xf.MultiplyPoint3x4(c); d = Xf.MultiplyPoint3x4(d); }
             var nn = Vector3.Cross(b - a, d - a).normalized;
             int i = v.Count;
             var u = Pal.Uv(swatch);
@@ -76,11 +82,12 @@ namespace DocketDay.World
         {
             var u = Pal.Uv(swatch);
             int i0 = v.Count;
-            v.Add(new Vector3(c.x, y, c.z)); n.Add(Vector3.up); uv.Add(u);
+            var up = HasXf ? Xf.MultiplyVector(Vector3.up).normalized : Vector3.up;
+            v.Add(Xf.MultiplyPoint3x4(new Vector3(c.x, y, c.z))); n.Add(up); uv.Add(u);
             for (int s = 0; s <= segs; s++)
             {
                 float a = s * Mathf.PI * 2f / segs;
-                v.Add(new Vector3(c.x + Mathf.Cos(a) * r, y, c.z + Mathf.Sin(a) * r)); n.Add(Vector3.up); uv.Add(u);
+                v.Add(Xf.MultiplyPoint3x4(new Vector3(c.x + Mathf.Cos(a) * r, y, c.z + Mathf.Sin(a) * r))); n.Add(up); uv.Add(u);
             }
             for (int s = 0; s < segs; s++) { t.Add(i0); t.Add(i0 + 2 + s); t.Add(i0 + 1 + s); }
         }
@@ -91,6 +98,41 @@ namespace DocketDay.World
             Box(at, new Vector3(0.6f, 2.2f, 0.6f) * s, yaw, Pal.Trunk);
             Box(at + Vector3.up * 2f * s, new Vector3(3.2f, 2.4f, 3.2f) * s, yaw + 15f, Pal.Tree);
             Box(at + Vector3.up * 4.2f * s, new Vector3(2f, 1.6f, 2f) * s, yaw + 40f, Pal.Tree);
+        }
+
+        /// <summary>Appends a readable mesh (a Blender kit prop on the palette UVs) under matrix m. remap = swatch pairs
+        /// {from, to, from, to…}: faces painted with `from` take `to` (office styles recolour the walls / trim).
+        /// Build-time only (allocates the source arrays once); never per frame.</summary>
+        public bool Append(Mesh src, Matrix4x4 m, int[] remap = null)
+        {
+            if (src == null || !src.isReadable) return false;
+            var sv = src.vertices; var sn = src.normals; var su = src.uv; var st = src.triangles;
+            if (sv.Length == 0 || st.Length == 0) return false;
+            int i0 = v.Count;
+            Vector2[] from = null, to = null;
+            if (remap != null && remap.Length >= 2)
+            {
+                from = new Vector2[remap.Length / 2]; to = new Vector2[remap.Length / 2];
+                for (int k = 0; k < from.Length; k++) { from[k] = Pal.Uv(remap[2 * k]); to[k] = Pal.Uv(remap[2 * k + 1]); }
+            }
+            for (int k = 0; k < sv.Length; k++)
+            {
+                v.Add(m.MultiplyPoint3x4(sv[k]));
+                n.Add(sn.Length == sv.Length ? m.MultiplyVector(sn[k]).normalized : Vector3.up);
+                var u = su.Length == sv.Length ? su[k] : Pal.Uv(Pal.Concrete);
+                if (from != null)
+                    for (int r = 0; r < from.Length; r++)
+                        if (Mathf.Abs(u.x - from[r].x) < 1e-3f && Mathf.Abs(u.y - from[r].y) < 1e-3f) { u = to[r]; break; }
+                uv.Add(u);
+            }
+            bool mirror = m.determinant < 0;
+            for (int k = 0; k < st.Length; k += 3)
+            {
+                t.Add(i0 + st[k]);
+                if (mirror) { t.Add(i0 + st[k + 2]); t.Add(i0 + st[k + 1]); }
+                else { t.Add(i0 + st[k + 1]); t.Add(i0 + st[k + 2]); }
+            }
+            return true;
         }
 
         public Mesh Build(string name)
@@ -108,78 +150,79 @@ namespace DocketDay.World
 
         // ------------------------------------------------------------------ props (fallbacks when the Blender kit is absent)
 
-        public static Mesh Desk()
+        public static Mesh Desk() { var k = new MeshKit(); Desk(k); return k.Build("desk"); }
+
+        public static void Desk(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(2.4f, 1.0f, 1.2f), 0, Pal.Wood, Pal.Wood);
             k.Box(new Vector3(0, 1.0f, 0.3f), new Vector3(0.9f, 0.6f, 0.08f), 0, Pal.Dark);           // monitor
             k.Box(new Vector3(0.7f, 1.0f, -0.2f), new Vector3(0.5f, 0.12f, 0.4f), 0, Pal.Folder);   // file stack
             k.Box(new Vector3(0, 0, -1.0f), new Vector3(0.8f, 0.6f, 0.8f), 0, Pal.Brand);             // chair
-            return k.Build("desk");
         }
 
-        public static Mesh Reception()
+        public static Mesh Reception() { var k = new MeshKit(); Reception(k); return k.Build("reception"); }
+
+        public static void Reception(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(4.2f, 1.2f, 1.2f), 0, Pal.Brand, Pal.Wood);
             k.Box(new Vector3(-1.2f, 1.2f, 0), new Vector3(0.6f, 0.7f, 0.5f), 0, Pal.Lamp);
             k.Box(new Vector3(1f, 1.2f, 0.2f), new Vector3(0.9f, 0.55f, 0.08f), 0, Pal.Dark);
-            return k.Build("reception");
         }
 
-        public static Mesh Bookshelf()
+        public static Mesh Bookshelf() { var k = new MeshKit(); Bookshelf(k); return k.Build("bookshelf"); }
+
+        public static void Bookshelf(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(3f, 3.4f, 0.8f), 0, Pal.Wood, Pal.Wood);
             for (int r = 0; r < 3; r++) k.Box(new Vector3(0, 0.3f + r * 1.05f, -0.42f), new Vector3(2.6f, 0.7f, 0.05f), 0, r % 2 == 0 ? Pal.Carpet : Pal.Classic);
-            return k.Build("bookshelf");
         }
 
-        public static Mesh Coffee()
+        public static Mesh Coffee() { var k = new MeshKit(); Coffee(k); return k.Build("coffee"); }
+
+        public static void Coffee(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(2f, 1.0f, 1f), 0, Pal.Wood, Pal.Concrete);
             k.Box(new Vector3(-0.4f, 1f, 0), new Vector3(0.7f, 0.9f, 0.6f), 0, Pal.Metal, Pal.Dark);
             k.Box(new Vector3(0.5f, 1f, 0), new Vector3(0.25f, 0.3f, 0.25f), 0, Pal.White);
-            return k.Build("coffee");
         }
 
-        public static Mesh Cabinet()
+        public static Mesh Cabinet() { var k = new MeshKit(); Cabinet(k); return k.Build("cabinet"); }
+
+        public static void Cabinet(MeshKit k)
         {
-            var k = new MeshKit();
             for (int i = -1; i <= 1; i++) k.Box(new Vector3(i * 0.95f, 0, 0), new Vector3(0.85f, 2.2f, 0.9f), 0, Pal.Metal, Pal.Metal);
-            return k.Build("cabinet");
         }
 
-        public static Mesh Conference()
+        public static Mesh Conference() { var k = new MeshKit(); Conference(k); return k.Build("conference"); }
+
+        public static void Conference(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(4.6f, 0.95f, 2f), 0, Pal.Wood, Pal.Wood);
             for (int i = -1; i <= 1; i++) for (int s = -1; s <= 1; s += 2) k.Box(new Vector3(i * 1.4f, 0, s * 1.5f), new Vector3(0.7f, 0.6f, 0.7f), 0, Pal.Dark);
-            return k.Build("conference");
         }
 
-        public static Mesh Boxes()
+        public static Mesh Boxes() { var k = new MeshKit(); Boxes(k); return k.Build("boxes"); }
+
+        public static void Boxes(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(1.2f, 0.8f, 0.9f), 10, Pal.Folder);
             k.Box(new Vector3(1.1f, 0, 0.2f), new Vector3(1f, 0.8f, 0.9f), -8, Pal.Sand);
             k.Box(new Vector3(0.5f, 0.8f, 0.1f), new Vector3(1f, 0.7f, 0.8f), 4, Pal.Folder);
-            return k.Build("boxes");
         }
 
-        public static Mesh Board()
+        public static Mesh Board() { var k = new MeshKit(); Board(k); return k.Build("board"); }
+
+        public static void Board(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(3.2f, 2.6f, 0.2f), 0, Pal.White);
             k.Box(new Vector3(-0.6f, 1.2f, -0.12f), new Vector3(0.8f, 0.6f, 0.02f), 0, Pal.Folder);
             k.Box(new Vector3(0.7f, 1.6f, -0.12f), new Vector3(0.7f, 0.5f, 0.02f), 0, Pal.Warning);
-            return k.Build("board");
         }
 
-        public static Mesh Courthouse()
+        public static Mesh Courthouse() { var k = new MeshKit(); Courthouse(k); return k.Build("courthouse"); }
+
+        public static void Courthouse(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(26f, 1.2f, 4f), 0, Pal.Stone);                                  // steps
             k.Box(new Vector3(0, 0, 3.5f), new Vector3(24f, 2.0f, 3f), 0, Pal.Stone);
             k.Box(new Vector3(0, 2f, 9f), new Vector3(24f, 11f, 12f), 0, Pal.Stone, Pal.RoofGrey);          // hall
@@ -187,23 +230,22 @@ namespace DocketDay.World
             k.Box(new Vector3(0, 12f, 4f), new Vector3(25f, 1.4f, 3.2f), 0, Pal.Stone);                      // architrave
             k.Box(new Vector3(0, 13.4f, 4.5f), new Vector3(20f, 2.4f, 2.4f), 0, Pal.Stone, Pal.RoofGrey);    // pediment block
             k.Box(new Vector3(0, 2f, 2.9f), new Vector3(3.2f, 5f, 0.2f), 0, Pal.Wood);                       // door
-            return k.Build("courthouse");
         }
 
-        public static Mesh Lamp()
+        public static Mesh Lamp() { var k = new MeshKit(); Lamp(k); return k.Build("lamp"); }
+
+        public static void Lamp(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(0.25f, 4.2f, 0.25f), 0, Pal.Dark);
             k.Box(new Vector3(0, 4.2f, 0), new Vector3(0.7f, 0.6f, 0.7f), 0, Pal.Amber);
-            return k.Build("lamp");
         }
 
-        public static Mesh Bench()
+        public static Mesh Bench() { var k = new MeshKit(); Bench(k); return k.Build("bench"); }
+
+        public static void Bench(MeshKit k)
         {
-            var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(2.2f, 0.5f, 0.7f), 0, Pal.Wood);
             k.Box(new Vector3(0, 0.5f, 0.3f), new Vector3(2.2f, 0.7f, 0.12f), 0, Pal.Wood);
-            return k.Build("bench");
         }
 
         /// <summary>The chunky canonical person (staff + clients), ~2.6 units tall so it reads at diorama zoom. shirt = role colour.

@@ -1,5 +1,5 @@
 """Pour & Roast — renders the UI art from the repo's own models (Meshy hero characters / props in unity/Assets/Art/Meshy
-and the Blender cafe kit in unity/Assets/Resources/kit): the coach portrait (Mara, the head barista), the three intro pager
+and the Blender cafe kit in unity/Assets/Resources/kit, venue shells included): the coach portrait (Mara, the head barista), the three intro pager
 images, the boot curtain and a placeholder app icon set (the owner picks the final icon at P7). EEVEE, headless.
 No text, no logos, no real brands anywhere in the art.
   blender -b --python pour-and-roast/tools/art/render_ui.py -- <unity dir>
@@ -144,9 +144,10 @@ def main():
     char("barista", (0, 0, 0))
     camera((0.1, -1.6, 1.55), (0, 0, 1.47), lens=85)
     render(os.path.join(UI, "coach_barista.png"), 256, 256)
-    # intro 1: the cart on the quay, Mara behind it, a commuter waiting
+    # intro 1: the cart on the quay (the venue shell: quay, bollards, lamp post, crates, boats in the harbour), Mara behind
+    # it, a commuter waiting
     reset(bg=(0.66, 0.78, 0.84))
-    ground(color=(0.5, 0.48, 0.45))
+    kit("shell_cart", (0, -0.4, 0))                   # the cart stands at (0, 1.0) in the shell -> (0, 0.6) here
     kit("cart", (0, 0.6, 0))
     kit("espresso_1", (0.05, 0.75, 1.1))
     char("barista", (1.75, 0.5, 0), yaw=-25)
@@ -165,9 +166,9 @@ def main():
     char("customer", (1.3, -0.9, 0), yaw=-20)
     camera((0.4, -6.0, 2.8), (0, 0.2, 1.1), lens=40)
     render(os.path.join(UI, "intro_2.png"), 720, 720)
-    # intro 3: the roastery — drum roaster, sacks, the cafe cat
+    # intro 3: the roastery — drum roaster under its duct, brick back room, sacks, the cafe cat
     reset()
-    ground()
+    kit("shell_roastery", (-8.0, -2.6, 0))            # the roaster stands at (8.2, 3.2) in the shell -> (0.2, 0.6) here
     kit("roaster", (0.2, 0.6, 0))
     char("sack", (-1.2, 0.4, 0), yaw=15)
     char("sack", (-1.8, 1.0, 0), yaw=-25)

@@ -1,0 +1,10 @@
+{"kind": "batch_start", "remaining": 28312, "limit": 40000, "calls": 11, "est": 1649, "t": "2026-11-02T08:03:33"}
+{"kind": "sfx", "id": "ui_tap", "seconds": 0.5, "credits": 5, "remaining": 28307, "cost_from": "header", "hash": "b51d1afd", "took": 1.8, "t": "2026-11-02T08:03:35"}
+{"kind": "sfx", "id": "coins", "seconds": 1.0, "credits": 10, "remaining": 28297, "cost_from": "header", "hash": "9d6c40ca", "took": 1.9, "t": "2026-11-02T08:03:39"}
+{"kind": "sfx", "id": "success", "seconds": 1.5, "credits": 15, "remaining": 28282, "cost_from": "header", "hash": "575fee78", "took": 2.1, "t": "2026-11-02T08:03:43"}
+{"kind": "sfx", "id": "warning", "seconds": 1.2, "credits": 12, "remaining": 28270, "cost_from": "header", "hash": "12c75746", "took": 1.6, "t": "2026-11-02T08:03:47"}
+{"kind": "sfx", "id": "order", "seconds": 0.8, "credits": 8, "remaining": 28262, "cost_from": "header", "hash": "ca787b46", "took": 1.9, "t": "2026-11-02T08:03:51"}
+{"kind": "sfx", "id": "espresso", "seconds": 2.0, "credits": 20, "remaining": 28242, "cost_from": "header", "hash": "358dcdc0", "took": 1.8, "t": "2026-11-02T08:03:55"}
+{"kind": "sfx", "id": "milk", "seconds": 2.0, "credits": 20, "remaining": 28222, "cost_from": "header", "hash": "414266aa", "took": 1.6, "t": "2026-11-02T08:03:59"}
+{"kind": "sfx", "id": "grind", "seconds": 1.5, "credits": 15, "remaining": 28207, "cost_from": "header", "hash": "01825261", "took": 2.0, "t": "2026-11-02T08:04:04"}
+{"kind": "sfx", "id": "roast", "seconds": 2.0, "credits": 20, "remaining": 28187, "cost_from": "header", "hash": "4fa07679", "took": 1.8, "t": "2026-11-02T08:04:08"}

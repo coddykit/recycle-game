@@ -5,6 +5,8 @@
 // the cups on the pickup shelf update from the sim each frame (Low: 15 Hz, ≤ 14 customers).
 //   * 1 unit = 1 m; one palette material for everything (MeshKit) + instanced draws for figures and cups;
 //   * Low tier: no shadows (QualityTiers), customers ≤ 14 at 15 Hz, no weather light change, static window backdrop;
+//   * the shell (floor, walls, dressing / the quay) is ONE kit mesh per venue (Resources/kit/shell_<venue>[_low]), the
+//     procedural shell is its fallback;
 //   * picking: a tap ray-casts the floor plane (no physics module) and picks the nearest station / barista.
 using System;
 using System.Collections.Generic;
@@ -46,6 +48,7 @@ namespace PourAndRoast.World
         float slowAcc;
         MaterialPropertyBlock mpb;
         GameObject espressoGo;
+        Mesh shellMesh;   // owned: the themed kit-shell copy or the procedural shell (destroyed on rebuild)
 
         public Vector3 StationPos(string id) => stations.TryGetValue(id ?? "", out var p) ? p : Vector3.zero;
         public bool HasStation(string id) => stations.ContainsKey(id ?? "");
@@ -156,29 +159,10 @@ namespace PourAndRoast.World
             stations.Clear();
             var v = Sim.Venue;
             lay = LayoutFor(Sim.S.Venue);
-            var k = new MeshKit();
-            // ground: quay + sea for the cart; a floor + two cutaway walls + windows for the cafes
-            if (lay.Cart)
-            {
-                k.Floor(new Vector3(0, 0, 0), new Vector2(lay.X1 - lay.X0 + 4, lay.Z1 - lay.Z0 + 2), 0, Pal.Quay);
-                for (int i = 0; i < 6; i++) k.Floor(new Vector3(lay.X0 + 1 + i * 1.7f, 0, lay.Z0 + 0.8f), new Vector2(1.5f, 0.6f), 0.005f, Pal.QuayDark);
-                k.Floor(new Vector3(0, -0.3f, lay.Z1 + 8), new Vector2(60, 14), -0.3f, Pal.Sea);
-                k.Box(new Vector3(0, 0, lay.Z1 + 0.6f), new Vector3(lay.X1 - lay.X0 + 4, 0.6f, 0.4f), 0, Pal.QuayDark);   // quay edge
-                for (int i = -1; i <= 1; i += 2) k.Box(new Vector3(i * 4.2f, 0, lay.Z1 + 0.3f), new Vector3(0.3f, 0.9f, 0.3f), 0, Pal.Black);   // bollards
-            }
-            else
-            {
-                k.Floor(new Vector3((lay.X0 + lay.X1) * 0.5f, 0, (lay.Z0 + lay.Z1) * 0.5f), new Vector2(lay.X1 - lay.X0, lay.Z1 - lay.Z0), 0, FloorSwatch);
-                k.Floor(new Vector3((lay.X0 + lay.X1) * 0.5f, -0.02f, (lay.Z0 + lay.Z1) * 0.5f), new Vector2(lay.X1 - lay.X0 + 30, lay.Z1 - lay.Z0 + 30), -0.02f, Pal.Quay);
-                float w = lay.X1 - lay.X0;
-                k.Box(new Vector3((lay.X0 + lay.X1) * 0.5f, 0, lay.Z1 + 0.1f), new Vector3(w, 3.2f, 0.2f), 0, WallSwatch, TrimSwatch);   // back wall
-                k.Box(new Vector3(lay.X0 - 0.1f, 0, (lay.Z0 + lay.Z1) * 0.5f), new Vector3(0.2f, 3.2f, lay.Z1 - lay.Z0), 0, WallSwatch, TrimSwatch);   // left wall
-                k.Box(new Vector3((lay.X0 + lay.X1) * 0.5f, 0, lay.Z1 - 0.01f), new Vector3(w, 0.9f, 0.04f), 0, TrimSwatch);   // wainscot
-                for (int i = 0; i < 3; i++) k.Box(new Vector3(lay.X0 + 0.02f, 1.2f, lay.Z0 + 1.6f + i * 2.4f), new Vector3(0.04f, 1.3f, 1.6f), 0, Pal.Window);   // windows (harbour light)
-                k.Box(new Vector3(lay.X0 + 2.2f, 1.5f, lay.Z1 - 0.02f), new Vector3(2.2f, 1.2f, 0.04f), 0, Pal.Chalk);   // chalk menu board (no text)
-                if (lay.Roastery) k.Box(new Vector3(5.6f, 0, 2.2f), new Vector3(0.15f, 2.4f, 5.6f), 0, TrimSwatch, Pal.Walnut);   // half wall to the back room
-            }
-            Spawn("Shell", k.Build("shell_" + Sim.S.Venue), Vector3.zero);
+            if (shellMesh != null) { Destroy(shellMesh); shellMesh = null; }
+            // the venue shell: the Blender kit shell when present (floor + cutaway walls + window frames, wainscot, lamps,
+            // shelves / the quay, bollards, lamp post, crates, boats — ONE mesh, so 0 extra draws), else the procedural one
+            if (!KitShell()) ProceduralShell();
 
             // the bar
             float cx = lay.CounterX;
@@ -228,6 +212,97 @@ namespace PourAndRoast.World
             ApplyWeather();
             builtKey = Key();
             if (rig != null) rig.Fit(new List<Bounds> { new Bounds(new Vector3((lay.X0 + lay.X1) * 0.5f, 0, (lay.Z0 + lay.Z1) * 0.5f), new Vector3(lay.X1 - lay.X0, 1, lay.Z1 - lay.Z0)) }, true);
+        }
+
+        void ProceduralShell()
+        {
+            var k = new MeshKit();
+            // ground: quay + sea for the cart; a floor + two cutaway walls + windows for the cafes
+            if (lay.Cart)
+            {
+                k.Floor(new Vector3(0, 0, 0), new Vector2(lay.X1 - lay.X0 + 4, lay.Z1 - lay.Z0 + 2), 0, Pal.Quay);
+                for (int i = 0; i < 6; i++) k.Floor(new Vector3(lay.X0 + 1 + i * 1.7f, 0, lay.Z0 + 0.8f), new Vector2(1.5f, 0.6f), 0.005f, Pal.QuayDark);
+                k.Floor(new Vector3(0, -0.3f, lay.Z1 + 8), new Vector2(60, 14), -0.3f, Pal.Sea);
+                k.Box(new Vector3(0, 0, lay.Z1 + 0.6f), new Vector3(lay.X1 - lay.X0 + 4, 0.6f, 0.4f), 0, Pal.QuayDark);   // quay edge
+                for (int i = -1; i <= 1; i += 2) k.Box(new Vector3(i * 4.2f, 0, lay.Z1 + 0.3f), new Vector3(0.3f, 0.9f, 0.3f), 0, Pal.Black);   // bollards
+            }
+            else
+            {
+                k.Floor(new Vector3((lay.X0 + lay.X1) * 0.5f, 0, (lay.Z0 + lay.Z1) * 0.5f), new Vector2(lay.X1 - lay.X0, lay.Z1 - lay.Z0), 0, FloorSwatch);
+                k.Floor(new Vector3((lay.X0 + lay.X1) * 0.5f, -0.02f, (lay.Z0 + lay.Z1) * 0.5f), new Vector2(lay.X1 - lay.X0 + 30, lay.Z1 - lay.Z0 + 30), -0.02f, Pal.Quay);
+                float w = lay.X1 - lay.X0;
+                k.Box(new Vector3((lay.X0 + lay.X1) * 0.5f, 0, lay.Z1 + 0.1f), new Vector3(w, 3.2f, 0.2f), 0, WallSwatch, TrimSwatch);   // back wall
+                k.Box(new Vector3(lay.X0 - 0.1f, 0, (lay.Z0 + lay.Z1) * 0.5f), new Vector3(0.2f, 3.2f, lay.Z1 - lay.Z0), 0, WallSwatch, TrimSwatch);   // left wall
+                k.Box(new Vector3((lay.X0 + lay.X1) * 0.5f, 0, lay.Z1 - 0.01f), new Vector3(w, 0.9f, 0.04f), 0, TrimSwatch);   // wainscot
+                for (int i = 0; i < 3; i++) k.Box(new Vector3(lay.X0 + 0.02f, 1.2f, lay.Z0 + 1.6f + i * 2.4f), new Vector3(0.04f, 1.3f, 1.6f), 0, Pal.Window);   // windows (harbour light)
+                k.Box(new Vector3(lay.X0 + 2.2f, 1.5f, lay.Z1 - 0.02f), new Vector3(2.2f, 1.2f, 0.04f), 0, Pal.Chalk);   // chalk menu board (no text)
+                if (lay.Roastery) k.Box(new Vector3(5.6f, 0, 2.2f), new Vector3(0.15f, 2.4f, 5.6f), 0, TrimSwatch, Pal.Walnut);   // half wall to the back room
+            }
+            shellMesh = k.Build("shell_" + Sim.S.Venue);
+            Spawn("Shell", shellMesh, Vector3.zero);
+        }
+
+        /// <summary>Resources/kit/shell_&lt;venue&gt;[_low] (tools/art/kit.py). Theme looks recolour the walls / floor / trim by
+        /// moving their UVs to the theme swatches (needs a readable mesh: RoastArtImport keeps the shells readable; when it is
+        /// not, the procedural shell carries the theme). Guard: the kit shells are authored with more ground in front of the
+        /// cafes (behind the cart: the harbour), so a mesh that arrives turned 180° by the FBX axis conversion is turned back.</summary>
+        bool KitShell()
+        {
+            var prefab = Resources.Load<GameObject>("kit/shell_" + Sim.S.Venue + (Low ? "_low" : ""));
+            var src = prefab != null ? prefab.GetComponentInChildren<MeshFilter>() : null;
+            if (src == null || src.sharedMesh == null) return false;
+            var map = lay.Cart ? null : ThemeRemap();   // the quay has no theme (same as the procedural cart)
+            if (map != null && !src.sharedMesh.isReadable) return false;
+            var go = Instantiate(prefab, transform);
+            go.name = "Shell";
+            go.transform.localPosition = Vector3.zero;
+            foreach (var r in go.GetComponentsInChildren<Renderer>())
+            {
+                r.sharedMaterial = mat;
+                r.shadowCastingMode = Low ? UnityEngine.Rendering.ShadowCastingMode.Off : UnityEngine.Rendering.ShadowCastingMode.On;
+                r.receiveShadows = !Low;
+            }
+            if (map != null)
+            {
+                var mf = go.GetComponentInChildren<MeshFilter>();
+                shellMesh = Recolour(mf.sharedMesh, map);
+                mf.sharedMesh = shellMesh;
+            }
+            built.Add(go);
+            var rend = go.GetComponentInChildren<Renderer>();
+            if (rend != null && (lay.Cart ? rend.bounds.center.z < 0f : rend.bounds.center.z > 0f))
+                go.transform.localRotation = Quaternion.Euler(0, 180f, 0) * go.transform.localRotation;
+            return true;
+        }
+
+        /// <summary>Kit swatch -> theme swatch (walls, floor, floor seams, trim), or null for the default look.</summary>
+        int[] ThemeRemap()
+        {
+            if (Theme != "theme_nordic" && Theme != "theme_artdeco") return null;
+            var map = new int[Pal.Size * Pal.Size];
+            for (int i = 0; i < map.Length; i++) map[i] = i;
+            map[Pal.WallCream] = WallSwatch;
+            map[Pal.FloorWood] = FloorSwatch;
+            map[Pal.FloorDark] = Theme == "theme_nordic" ? Pal.Locked : Pal.Deco;
+            map[Pal.Trim] = TrimSwatch;
+            return map;
+        }
+
+        static Mesh Recolour(Mesh src, int[] map)
+        {
+            var m = Instantiate(src);
+            m.name = src.name + "_themed";
+            var uvs = new List<Vector2>(m.vertexCount);
+            m.GetUVs(0, uvs);
+            for (int i = 0; i < uvs.Count; i++)
+            {
+                int x = Mathf.Clamp((int)(uvs[i].x * Pal.Size), 0, Pal.Size - 1), y = Mathf.Clamp((int)((1f - uvs[i].y) * Pal.Size), 0, Pal.Size - 1);
+                int sw = y * Pal.Size + x;
+                if (map[sw] != sw) uvs[i] = Pal.Uv(map[sw]);
+            }
+            m.SetUVs(0, uvs);
+            m.UploadMeshData(true);
+            return m;
         }
 
         string Key()

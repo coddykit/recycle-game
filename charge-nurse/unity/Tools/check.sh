@@ -25,10 +25,32 @@ grep -rn -i -w -E "Codigames|Hospital Empire|Empire Tycoon|Mayo Clinic|Cleveland
 grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY" "$UNITY" --include=*.cs --include=*.json --include=*.md --include=*.py --include=*.sh && bad "a secret in the repo"
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
 for f in coach_nurse intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
-for f in bay bed desk chairs ambulance xray lab ct or_table; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in bay bed desk chairs ambulance xray lab ct or_table entrance amb_canopy lift hvac sign tree_round tree_cone hedge bench planter car_a car_b car_c stretcher; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+grep -q 'isReadable = assetPath.Contains("/Resources/kit/")' "$A/Editor/ChargeNurse/NurseArtImport.cs" || bad "kit FBX must import readable (HospitalWorld merges static props into the campus mesh: 0 extra draws)"
 for f in nurse doctor patient; do [ -f "$A/Art/Meshy/${f}_lod0.fbx" ] || bad "missing Art/Meshy/${f}_lod0.fbx (tools/meshy + tools/art/glb2fbx.py)"; done
 grep -rn -i -E "\b(blood|bleed|gore|corpse|dies|died|dead)\b" "$UNITY/Tools/i18n/en.json" && bad "graphic wording (plan §5 tone: no gore, no death)"
 [ $fail -eq 0 ] && echo "static gates PASS"
+
+step "store listing + store art (store/validate.py)"
+STORE="$(dirname "$UNITY")/store"
+python3 "$STORE/validate.py" || fail=1
+for f in feature-graphic.png icon-candidates/c1.png icon-candidates/c2.png icon-candidates/c3.png play-data-safety.csv screenshots/en.json; do
+  [ -f "$STORE/$f" ] || bad "missing store/$f (tools/art/render_store.py / store templates)"
+done
+python3 - "$STORE" <<'PY' || fail=1
+import sys
+from pathlib import Path
+from PIL import Image
+s = Path(sys.argv[1])
+bad = []
+for p, size in [("feature-graphic.png", (1024, 500))] + [(f"icon-candidates/c{i}.png", (512, 512)) for i in (1, 2, 3)]:
+    if (s / p).exists():
+        im = Image.open(s / p)
+        if im.size != size: bad.append(f"{p} is {im.size}, want {size}")
+        if p.startswith("icon") and im.mode == "RGBA" and im.getextrema()[3][0] < 255: bad.append(f"{p} has transparency (full-bleed)")
+print("\n".join("FAIL: " + b for b in bad) or "store art sizes PASS")
+sys.exit(1 if bad else 0)
+PY
 
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
 out=$(sh "$HERE/dotnet_check.sh" 2>&1); echo "$out" | grep -E "Error|Passed!|Failed" ; echo "$out" | grep -q "Passed!" || fail=1
