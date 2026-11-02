@@ -1,0 +1,442 @@
+{
+ "en": {
+  "empire": {
+   "label": "LOGISTICS TYCOON",
+   "headline": "From one hatchback\nto an empire",
+   "chip": "Idle earnings",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "PICK YOUR ROUTE",
+   "headline": "Fast, normal\nor safe?",
+   "chip": "Risk vs. reward",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "ROAD EVENTS",
+   "headline": "Handle trouble\non the road",
+   "chip": "Rivals & inspections",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10 VEHICLES",
+   "headline": "Build a fleet\nand hire drivers",
+   "chip": "Upgrade every truck",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "GROW YOUR HQ",
+   "headline": "Garage to\nUnderground HQ",
+   "chip": "Automate dispatch",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8 REGIONS",
+   "headline": "Expand across\nfictional lands",
+   "chip": "New border crossings",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "MEET DOT",
+   "headline": "A mentor who\nknows every road",
+   "chip": "Play offline",
+   "icon": "🎧"
+  }
+ },
+ "tr": {
+  "empire": {
+   "label": "LOJİSTİK TYCOON",
+   "headline": "Tek arabadan\nimparatorluğa",
+   "chip": "Boştayken kazanç",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "ROTANI SEÇ",
+   "headline": "Hızlı, normal\nya da güvenli?",
+   "chip": "Risk ve ödül",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "YOL OLAYLARI",
+   "headline": "Yoldaki sorunlarla\nbaşa çık",
+   "chip": "Rakipler ve denetimler",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10 ARAÇ",
+   "headline": "Filonu kur,\nşoför tut",
+   "chip": "Her aracı geliştir",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "MERKEZİNİ BÜYÜT",
+   "headline": "Garajdan\nYeraltı Merkezi'ne",
+   "chip": "Sevkiyatı otomatikleştir",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8 BÖLGE",
+   "headline": "Kurgusal ülkelere\nyayıl",
+   "chip": "Yeni sınır kapıları",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "DOT İLE TANIŞ",
+   "headline": "Her yolu bilen\nbir akıl hocası",
+   "chip": "Çevrimdışı oyna",
+   "icon": "🎧"
+  }
+ },
+ "de": {
+  "empire": {
+   "label": "LOGISTIK-TYCOON",
+   "headline": "Vom Kleinwagen\nzum Imperium.",
+   "chip": "Passives Einkommen",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "ROUTE WÄHLEN",
+   "headline": "Schnell, normal\noder sicher?",
+   "chip": "Risiko oder Belohnung",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "EREIGNISSE UNTERWEGS",
+   "headline": "Probleme unterwegs\nmeistern.",
+   "chip": "Rivalen & Kontrollen",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10 FAHRZEUGE",
+   "headline": "Flotte aufbauen\nFahrer anheuern.",
+   "chip": "Jeden Lkw aufrüsten",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "HQ AUSBAUEN",
+   "headline": "Garage wird\nzum Untergrund-HQ.",
+   "chip": "Aufträge automatisieren",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8 REGIONEN",
+   "headline": "In fiktive Länder\nexpandieren.",
+   "chip": "Neue Grenzübergänge",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "TRIFF DOT",
+   "headline": "Mentorin für\njede Straße.",
+   "chip": "Offline spielen",
+   "icon": "🎧"
+  }
+ },
+ "es": {
+  "empire": {
+   "label": "MAGNATE LOGÍSTICO",
+   "headline": "De un coche\na un imperio.",
+   "chip": "Ingresos automáticos",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "ELIGE TU RUTA",
+   "headline": "¿Rápida, normal\no segura?",
+   "chip": "Riesgo y recompensa",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "EVENTOS EN RUTA",
+   "headline": "Resuelve problemas\nen carretera.",
+   "chip": "Rivales e inspecciones",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10 VEHÍCULOS",
+   "headline": "Crea tu flota\ny ficha chóferes.",
+   "chip": "Mejora cada camión",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "MEJORA TU BASE",
+   "headline": "Del garaje a\nla base subterránea.",
+   "chip": "Automatiza los envíos",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8 REGIONES",
+   "headline": "Crece por tierras\nficticias.",
+   "chip": "Cruces fronterizos",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "CONOCE A DOT",
+   "headline": "Tu mentora,\nexperta en rutas.",
+   "chip": "Juega sin conexión",
+   "icon": "🎧"
+  }
+ },
+ "fr": {
+  "empire": {
+   "label": "MAGNAT LOGISTIQUE",
+   "headline": "D’une citadine\nà un empire.",
+   "chip": "Gains passifs",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "CHOISIS TA ROUTE",
+   "headline": "Rapide, normal\nou sûr ?",
+   "chip": "Risques et récompenses",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "ÉVÉNEMENTS ROUTIERS",
+   "headline": "Gérez les imprévus\nen route.",
+   "chip": "Rivaux et inspections",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10 VÉHICULES",
+   "headline": "Bâtissez votre flotte\nrecrutez des chauffeurs.",
+   "chip": "Améliorez chaque camion",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "DÉVELOPPE TON QG",
+   "headline": "Du garage au\nQG souterrain.",
+   "chip": "Départs automatisés",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8 RÉGIONS",
+   "headline": "Conquérez des terres\nfictives.",
+   "chip": "Nouveaux passages",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "RENCONTRE DOT",
+   "headline": "Un mentor qui\nconnaît chaque route.",
+   "chip": "Jouez hors ligne",
+   "icon": "🎧"
+  }
+ },
+ "ja": {
+  "empire": {
+   "label": "輸送王",
+   "headline": "1台のハッチバックから\n帝国を築こう。",
+   "chip": "放置で収益",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "ルートを選択",
+   "headline": "速達、通常\nそれとも安全？",
+   "chip": "リスクと報酬",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "道中のイベント",
+   "headline": "道中のトラブルを\n切り抜けよう。",
+   "chip": "ライバル＆検問",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10台の車両",
+   "headline": "車両をそろえて\nドライバーを雇おう。",
+   "chip": "トラックを強化",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "本部を拡張",
+   "headline": "ガレージから\n地下本部へ。",
+   "chip": "配送を自動化",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8つの地域",
+   "headline": "架空の国々へ\n事業を広げよう。",
+   "chip": "新たな国境越え",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "DOTに会おう",
+   "headline": "すべての道を知る\nメンター。",
+   "chip": "オフラインで遊べる",
+   "icon": "🎧"
+  }
+ },
+ "ko": {
+  "empire": {
+   "label": "물류 타이쿤",
+   "headline": "해치백 한 대로\n제국을 일구세요.",
+   "chip": "가만히 있어도 수익",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "경로를 선택하세요",
+   "headline": "빠르게, 보통으로\n아니면 안전하게?",
+   "chip": "위험과 보상",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "도로 이벤트",
+   "headline": "도로 위 문제를\n해결하세요.",
+   "chip": "경쟁자와 검문",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "차량 10대",
+   "headline": "차량을 모으고\n운전자를 고용하세요.",
+   "chip": "트럭마다 업그레이드",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "본부를 키우세요",
+   "headline": "차고에서\n지하 본부까지.",
+   "chip": "배차 자동화",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "지역 8곳",
+   "headline": "가상의 땅을 가로질러\n사업을 확장하세요.",
+   "chip": "새로운 국경 검문소",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "DOT을 만나보세요",
+   "headline": "모든 길을 아는\n멘토를 만나보세요.",
+   "chip": "오프라인 플레이",
+   "icon": "🎧"
+  }
+ },
+ "pt": {
+  "empire": {
+   "label": "MAGNATA DA LOGÍSTICA",
+   "headline": "De um hatch\na um império.",
+   "chip": "Ganhos automáticos",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "ESCOLHA SUA ROTA",
+   "headline": "Rápida, normal\nou segura?",
+   "chip": "Risco e recompensa",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "EVENTOS NA ESTRADA",
+   "headline": "Lide com problemas\nna estrada.",
+   "chip": "Rivais e inspeções",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10 VEÍCULOS",
+   "headline": "Monte sua frota\ne contrate motoristas.",
+   "chip": "Melhore cada caminhão",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "EXPANDA SUA BASE",
+   "headline": "Da garagem à base\nsubterrânea.",
+   "chip": "Automatize os envios",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8 REGIÕES",
+   "headline": "Expanda por terras\nfictícias.",
+   "chip": "Novas passagens",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "CONHEÇA DOT",
+   "headline": "Mentora de\ntodas as rotas.",
+   "chip": "Jogue offline",
+   "icon": "🎧"
+  }
+ },
+ "ru": {
+  "empire": {
+   "label": "ЛОГИСТИЧЕСКИЙ ТАЙКУН",
+   "headline": "От одной малолитражки\nдо империи.",
+   "chip": "Доход в простое",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "ВЫБЕРИ МАРШРУТ",
+   "headline": "Быстро, обычно\nили безопасно?",
+   "chip": "Риск или награда",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "ДОРОЖНЫЕ СОБЫТИЯ",
+   "headline": "Решай проблемы\nв пути.",
+   "chip": "Соперники и проверки",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10 МАШИН",
+   "headline": "Собери автопарк\nи нанимай водителей.",
+   "chip": "Улучшай каждый грузовик",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "РАЗВИВАЙ ШТАБ",
+   "headline": "От гаража до\nподземного штаба.",
+   "chip": "Автоматизируй рейсы",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8 РЕГИОНОВ",
+   "headline": "Расширяйся по\nвымышленным землям.",
+   "chip": "Новые погранпереходы",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "ЗНАКОМЬСЯ С ДОТ",
+   "headline": "Наставник, знающий\nвсе дороги.",
+   "chip": "Играй без интернета",
+   "icon": "🎧"
+  }
+ },
+ "zh": {
+  "empire": {
+   "label": "物流大亨",
+   "headline": "从一辆小轿车\n到物流帝国。",
+   "chip": "放置也能赚钱",
+   "icon": "💰"
+  },
+  "dispatch": {
+   "label": "选择你的路线",
+   "headline": "快速、普通\n还是安全？",
+   "chip": "风险与回报",
+   "icon": "🧭"
+  },
+  "event": {
+   "label": "道路事件",
+   "headline": "处理路上\n突发状况。",
+   "chip": "对手与检查",
+   "icon": "⚡"
+  },
+  "fleet": {
+   "label": "10辆车",
+   "headline": "组建车队\n招募司机。",
+   "chip": "升级每辆卡车",
+   "icon": "🚚"
+  },
+  "upgrades": {
+   "label": "扩建你的总部",
+   "headline": "从车库到\n地下总部。",
+   "chip": "自动调度",
+   "icon": "🏗️"
+  },
+  "map": {
+   "label": "8个地区",
+   "headline": "扩张至\n虚构国度。",
+   "chip": "新的边境口岸",
+   "icon": "🗺️"
+  },
+  "mentor": {
+   "label": "认识DOT",
+   "headline": "熟知每条路的\n导师。",
+   "chip": "离线畅玩",
+   "icon": "🎧"
+  }
+ }
+}

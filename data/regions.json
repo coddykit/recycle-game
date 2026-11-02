@@ -1,0 +1,630 @@
+[
+ {
+  "id": "dust_valley",
+  "name": "Dust Valley",
+  "tagline": "Sun-baked starter turf",
+  "grid": [
+   0,
+   0
+  ],
+  "econ": 1.0,
+  "risk": 0,
+  "unlock_cost": 0,
+  "unlock_rep": 0,
+  "ground": "E2BE78",
+  "ground2": "D9AE66",
+  "side": "A86F43",
+  "road_tint": "4A4540",
+  "towns": [
+   [
+    "Rustwater",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Mesa Town",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Cactus Junction",
+    [
+     11,
+     9
+    ]
+   ]
+  ],
+  "trees": [
+   "cactus",
+   "cactus",
+   "tree_dry",
+   "bush"
+  ],
+  "tree_count": 34,
+  "rocks": [
+   "rock_desert",
+   "rock_small"
+  ],
+  "rock_count": 10,
+  "mountains": [
+   "mountain_desert"
+  ],
+  "mountain_count": 3,
+  "houses": [
+   "house_adobe",
+   "house_adobe",
+   "shop"
+  ],
+  "hub_buildings": [
+   "house_adobe",
+   "shop",
+   "apartment",
+   "house_adobe"
+  ],
+  "house_colors": [
+   "F3DDA5",
+   "F4D1AE",
+   "E8C47A",
+   "F7B267",
+   "F4F1EA"
+  ],
+  "favored": [
+   "mystery_crates",
+   "night_delivery",
+   "priority_delivery"
+  ],
+  "checkpoint_color": "F28C28",
+  "checkpoint_style": "checkpoint_adobe"
+ },
+ {
+  "id": "green_republic",
+  "name": "Green Republic",
+  "tagline": "Polite farms, rich clients",
+  "grid": [
+   -1,
+   0
+  ],
+  "econ": 1.35,
+  "risk": 4,
+  "unlock_cost": 2000,
+  "unlock_rep": 5,
+  "ground": "8FCB6B",
+  "ground2": "7DBE5C",
+  "side": "6B4A2E",
+  "road_tint": "45474D",
+  "towns": [
+   [
+    "Leafton",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Clover Farms",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Mossbridge",
+    [
+     9,
+     11
+    ]
+   ]
+  ],
+  "trees": [
+   "tree_round",
+   "tree_round",
+   "tree_pine",
+   "bush"
+  ],
+  "tree_count": 46,
+  "rocks": [
+   "rock_small"
+  ],
+  "rock_count": 6,
+  "mountains": [
+   "mountain"
+  ],
+  "mountain_count": 1,
+  "houses": [
+   "house_cottage",
+   "house_cottage",
+   "barn",
+   "windmill"
+  ],
+  "hub_buildings": [
+   "house_cottage",
+   "shop",
+   "apartment",
+   "office"
+  ],
+  "house_colors": [
+   "F4F1EA",
+   "F3DDA5",
+   "DDF1FA",
+   "F4D1AE"
+  ],
+  "favored": [
+   "luxury_goods",
+   "anonymous_passenger",
+   "mystery_crates"
+  ],
+  "checkpoint_color": "5DBB63",
+  "checkpoint_style": "checkpoint"
+ },
+ {
+  "id": "free_coast",
+  "name": "Free Coast",
+  "tagline": "Ports, gulls and no questions",
+  "grid": [
+   -1,
+   -1
+  ],
+  "econ": 1.8,
+  "risk": 8,
+  "unlock_cost": 10000,
+  "unlock_rep": 25,
+  "ground": "B8DB8A",
+  "ground2": "EBD9A0",
+  "side": "8E6A44",
+  "road_tint": "45474D",
+  "towns": [
+   [
+    "Port Azul",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Gullhaven",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Sandy Cove",
+    [
+     11,
+     9
+    ]
+   ]
+  ],
+  "trees": [
+   "tree_palm",
+   "tree_palm",
+   "bush",
+   "tree_round"
+  ],
+  "tree_count": 30,
+  "rocks": [
+   "rock_small"
+  ],
+  "rock_count": 6,
+  "mountains": [],
+  "mountain_count": 0,
+  "houses": [
+   "house_cottage",
+   "shop",
+   "container",
+   "container"
+  ],
+  "hub_buildings": [
+   "crane",
+   "container",
+   "apartment",
+   "lighthouse",
+   "shop"
+  ],
+  "house_colors": [
+   "8EC9F0",
+   "F4F1EA",
+   "F7A8B8",
+   "FFD23F",
+   "9FE2BF"
+  ],
+  "favored": [
+   "exotic_cargo",
+   "rare_artifacts",
+   "anonymous_passenger"
+  ],
+  "checkpoint_color": "3D8BD9",
+  "coast": true,
+  "checkpoint_style": "checkpoint_port"
+ },
+ {
+  "id": "iron_federation",
+  "name": "Iron Federation",
+  "tagline": "Smokestacks and strict paperwork",
+  "grid": [
+   -2,
+   -1
+  ],
+  "econ": 2.4,
+  "risk": 12,
+  "unlock_cost": 30000,
+  "unlock_rep": 60,
+  "ground": "9EAA8C",
+  "ground2": "8E9A7E",
+  "side": "5A5248",
+  "road_tint": "3E4148",
+  "towns": [
+   [
+    "Steelgrad",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Boltworks",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Coalridge",
+    [
+     9,
+     11
+    ]
+   ]
+  ],
+  "trees": [
+   "tree_pine",
+   "tree_pine",
+   "bush"
+  ],
+  "tree_count": 30,
+  "rocks": [
+   "rock_small"
+  ],
+  "rock_count": 8,
+  "mountains": [
+   "mountain"
+  ],
+  "mountain_count": 2,
+  "houses": [
+   "factory",
+   "apartment",
+   "container"
+  ],
+  "hub_buildings": [
+   "factory",
+   "office_tower",
+   "apartment",
+   "factory"
+  ],
+  "house_colors": [
+   "B5B0A6",
+   "C9CCD1",
+   "8C929C",
+   "E5484D",
+   "3D8BD9"
+  ],
+  "favored": [
+   "restricted_electronics",
+   "exotic_cargo",
+   "high_value"
+  ],
+  "checkpoint_color": "8C929C",
+  "checkpoint_style": "checkpoint_industrial"
+ },
+ {
+  "id": "red_frontier",
+  "name": "Red Frontier",
+  "tagline": "Canyons, dust devils, big payouts",
+  "grid": [
+   -2,
+   -2
+  ],
+  "econ": 3.2,
+  "risk": 16,
+  "unlock_cost": 80000,
+  "unlock_rep": 120,
+  "ground": "D88A5A",
+  "ground2": "C97A4C",
+  "side": "7A3E26",
+  "road_tint": "4A4038",
+  "towns": [
+   [
+    "Fort Ember",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Canyon Rest",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Scorch Creek",
+    [
+     11,
+     9
+    ]
+   ]
+  ],
+  "trees": [
+   "tree_dry",
+   "tree_autumn",
+   "cactus"
+  ],
+  "tree_count": 26,
+  "rocks": [
+   "rock_desert"
+  ],
+  "rock_count": 10,
+  "mountains": [
+   "mountain_desert"
+  ],
+  "mountain_count": 3,
+  "houses": [
+   "house_wood",
+   "house_wood",
+   "barn"
+  ],
+  "hub_buildings": [
+   "house_wood",
+   "shop",
+   "house_wood",
+   "office"
+  ],
+  "house_colors": [
+   "C4693D",
+   "A0703F",
+   "F7B267",
+   "E8C47A"
+  ],
+  "favored": [
+   "rare_artifacts",
+   "high_value",
+   "emergency_transport"
+  ],
+  "checkpoint_color": "B8573A",
+  "checkpoint_style": "checkpoint_adobe"
+ },
+ {
+  "id": "frostland",
+  "name": "Frostland",
+  "tagline": "Cold roads, warm profits",
+  "grid": [
+   -3,
+   -2
+  ],
+  "econ": 4.3,
+  "risk": 18,
+  "unlock_cost": 320000,
+  "unlock_rep": 220,
+  "ground": "E8F2F7",
+  "ground2": "D5E6EF",
+  "side": "6E7F8C",
+  "road_tint": "50555E",
+  "towns": [
+   [
+    "Glacierholm",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Pinecrest",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Icefall",
+    [
+     9,
+     11
+    ]
+   ]
+  ],
+  "trees": [
+   "tree_snowpine",
+   "tree_snowpine",
+   "tree_snowpine"
+  ],
+  "tree_count": 44,
+  "rocks": [
+   "rock_small"
+  ],
+  "rock_count": 6,
+  "mountains": [
+   "mountain_snow"
+  ],
+  "mountain_count": 3,
+  "houses": [
+   "house_cabin",
+   "house_cabin",
+   "apartment"
+  ],
+  "hub_buildings": [
+   "house_cabin",
+   "apartment",
+   "office",
+   "house_cabin"
+  ],
+  "house_colors": [
+   "A0703F",
+   "8B5A3C",
+   "C2453D",
+   "3F6FB5"
+  ],
+  "favored": [
+   "emergency_transport",
+   "secret_documents",
+   "vip_passenger"
+  ],
+  "checkpoint_color": "8EC9F0",
+  "checkpoint_style": "checkpoint_cabin"
+ },
+ {
+  "id": "golden_isles",
+  "name": "Golden Isles",
+  "tagline": "Yachts, villas, velvet ropes",
+  "grid": [
+   -3,
+   -3
+  ],
+  "econ": 5.8,
+  "risk": 20,
+  "unlock_cost": 850000,
+  "unlock_rep": 350,
+  "ground": "A6DE8E",
+  "ground2": "F0DFA6",
+  "side": "B08A55",
+  "road_tint": "4A4C52",
+  "towns": [
+   [
+    "Aurum Bay",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Coral Key",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Sunreef",
+    [
+     11,
+     9
+    ]
+   ]
+  ],
+  "trees": [
+   "tree_palm",
+   "tree_palm",
+   "bush"
+  ],
+  "tree_count": 34,
+  "rocks": [
+   "rock_small"
+  ],
+  "rock_count": 4,
+  "mountains": [],
+  "mountain_count": 0,
+  "houses": [
+   "house_villa",
+   "house_villa",
+   "shop"
+  ],
+  "hub_buildings": [
+   "house_villa",
+   "office_tower",
+   "house_villa",
+   "lighthouse"
+  ],
+  "house_colors": [
+   "2BB3A8",
+   "3D8BD9",
+   "F06EAA",
+   "F2C14E"
+  ],
+  "favored": [
+   "vip_passenger",
+   "luxury_goods",
+   "high_value"
+  ],
+  "checkpoint_color": "F2C14E",
+  "coast": true,
+  "checkpoint_style": "checkpoint_port"
+ },
+ {
+  "id": "neon_state",
+  "name": "Neon State",
+  "tagline": "The city that never logs off",
+  "grid": [
+   -4,
+   -3
+  ],
+  "econ": 8.0,
+  "risk": 24,
+  "unlock_cost": 2400000,
+  "unlock_rep": 500,
+  "ground": "4A3F6B",
+  "ground2": "3F355E",
+  "side": "231C3A",
+  "road_tint": "2B2F36",
+  "towns": [
+   [
+    "Neon City",
+    [
+     1,
+     1
+    ]
+   ],
+   [
+    "Glowtown",
+    [
+     -11,
+     -11
+    ]
+   ],
+   [
+    "Circuit Park",
+    [
+     9,
+     11
+    ]
+   ]
+  ],
+  "trees": [
+   "bush",
+   "tree_round"
+  ],
+  "tree_count": 14,
+  "rocks": [],
+  "rock_count": 0,
+  "mountains": [],
+  "mountain_count": 0,
+  "houses": [
+   "house_modern",
+   "neon_block",
+   "neon_block"
+  ],
+  "hub_buildings": [
+   "neon_tower",
+   "neon_block",
+   "neon_tower",
+   "office_tower",
+   "neon_tower"
+  ],
+  "house_colors": [
+   "FF4FD8",
+   "3CF2FF",
+   "B36BFF",
+   "5CFF8A"
+  ],
+  "favored": [
+   "restricted_electronics",
+   "secret_documents",
+   "high_value"
+  ],
+  "checkpoint_color": "FF4FD8",
+  "checkpoint_style": "checkpoint_neon"
+ }
+]

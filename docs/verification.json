@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-09",
+  "godot": "4.7.2",
+  "blender": "5.2.2",
+  "gameplay_checks": 218,
+  "gameplay_failures": 0,
+  "localization_keys": 565,
+  "locales": [
+    "en",
+    "tr",
+    "de",
+    "es",
+    "fr",
+    "ja",
+    "ko",
+    "pt",
+    "ru",
+    "zh"
+  ],
+  "ui_checks": 80,
+  "ui_passed": 80,
+  "blender_models": 82,
+  "android_debug_apk": "build/BorderlineEmpire-debug.apk",
+  "android_debug_sha256": "b8ebf371839f4ba8c02a291316dd1d1aa2cf1dca2e1bba691f583c42efb669eb",
+  "live_monetization": "deferred_by_owner",
+  "signed_store_builds": "not_verified",
+  "native_sandbox_payments": "not_verified",
+  "android_debug_export": "passed",
+  "android_emulator_smoke": "passed with Firebase Analytics native initialization and HTTP 204 event upload",
+  "android_runtime_errors": 0,
+  "apk_locale_resources": 10,
+  "firebase_analytics": "Android runtime verified; iOS configured, runtime pending"
+}

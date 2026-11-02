@@ -1,0 +1,42 @@
+[
+  {
+    "language": "en-US",
+    "text": "1.3.9\n• The guide points at the right button in every step, and the world map keeps your place.\n• Expired contracts now close with a short message.\n• The new-contract card no longer covers windows.\n• Clearer title screen and map overview."
+  },
+  {
+    "language": "tr-TR",
+    "text": "1.3.9\n• Rehber her adımda doğru düğmeyi gösteriyor, dünya haritası da kaldığın yeri koruyor.\n• Süresi dolan sözleşmeler artık kısa bir mesajla kapanıyor.\n• Yeni sözleşme kartı artık pencerelerin üstünü kapatmıyor.\n• Daha net başlık ekranı ve harita görünümü."
+  },
+  {
+    "language": "de-DE",
+    "text": "1.3.9\n• Die Anleitung zeigt in jedem Schritt auf die richtige Taste, und die Weltkarte merkt sich deine Position.\n• Abgelaufene Aufträge schließen jetzt mit einer kurzen Meldung.\n• Die Karte für neue Aufträge verdeckt keine Fenster mehr.\n• Übersichtlicherer Titelbildschirm und Kartenansicht."
+  },
+  {
+    "language": "es-ES",
+    "text": "1.3.9\n• La guía señala el botón correcto en cada paso y el mapa del mundo recuerda dónde estabas.\n• Los contratos caducados ahora se cierran con un mensaje breve.\n• La tarjeta de nuevo contrato ya no tapa las ventanas.\n• Pantalla de título y vista del mapa más claras."
+  },
+  {
+    "language": "fr-FR",
+    "text": "1.3.9\n• Le guide montre le bon bouton à chaque étape, et la carte du monde garde votre position.\n• Les contrats expirés se ferment désormais avec un court message.\n• La carte de nouveau contrat ne recouvre plus les fenêtres.\n• Écran titre et vue de la carte plus clairs."
+  },
+  {
+    "language": "pt-BR",
+    "text": "1.3.9\n• O guia aponta o botão certo em cada etapa, e o mapa-múndi guarda onde você estava.\n• Contratos expirados agora fecham com uma mensagem curta.\n• O cartão de novo contrato não cobre mais as janelas.\n• Tela de título e visão do mapa mais claras."
+  },
+  {
+    "language": "ru-RU",
+    "text": "1.3.9\n• Обучение на каждом шаге указывает на нужную кнопку, а карта мира запоминает, где вы были.\n• Истёкшие контракты теперь закрываются коротким сообщением.\n• Карточка нового контракта больше не закрывает окна.\n• Более понятные титульный экран и обзор карты."
+  },
+  {
+    "language": "ja-JP",
+    "text": "1.3.9\n• ガイドが各ステップで正しいボタンを示し、ワールドマップは元の位置を保つようになりました。\n• 期限切れの契約は短いメッセージで閉じるようになりました。\n• 新しい契約カードがウィンドウに重ならなくなりました。\n• タイトル画面とマップ全体表示が見やすくなりました。"
+  },
+  {
+    "language": "ko-KR",
+    "text": "1.3.9\n• 가이드가 단계마다 올바른 버튼을 가리키고, 월드 맵은 보던 위치를 유지합니다.\n• 만료된 계약은 이제 짧은 메시지와 함께 닫힙니다.\n• 새 계약 카드가 더 이상 창을 가리지 않습니다.\n• 타이틀 화면과 지도 전체 보기가 더 깔끔해졌습니다."
+  },
+  {
+    "language": "zh-CN",
+    "text": "1.3.9\n• 引导在每一步都会指向正确的按钮，世界地图也会保留你原来的位置。\n• 过期的合同现在会以简短提示关闭。\n• 新合同卡片不再遮挡窗口。\n• 标题画面和地图总览更清晰。"
+  }
+]

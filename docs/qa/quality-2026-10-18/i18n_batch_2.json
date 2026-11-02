@@ -1,0 +1,62 @@
+{
+  "tab.contracts": {
+    "en": "Contracts",
+    "tr": "Sözleşmeler",
+    "de": "Aufträge",
+    "es": "Contratos",
+    "fr": "Contrats",
+    "ja": "契約",
+    "ko": "계약",
+    "pt": "Contratos",
+    "ru": "Контракты",
+    "zh": "合约"
+  },
+  "tab.fleet": {
+    "en": "Fleet",
+    "tr": "Filo",
+    "de": "Fuhrpark",
+    "es": "Flota",
+    "fr": "Flotte",
+    "ja": "車両",
+    "ko": "차량",
+    "pt": "Frota",
+    "ru": "Автопарк",
+    "zh": "车队"
+  },
+  "tab.map": {
+    "en": "Map",
+    "tr": "Harita",
+    "de": "Karte",
+    "es": "Mapa",
+    "fr": "Carte",
+    "ja": "マップ",
+    "ko": "지도",
+    "pt": "Mapa",
+    "ru": "Карта",
+    "zh": "地图"
+  },
+  "tab.upgrades": {
+    "en": "Upgrades",
+    "tr": "Geliştirme",
+    "de": "Ausbau",
+    "es": "Mejoras",
+    "fr": "Évolutions",
+    "ja": "強化",
+    "ko": "업그레이드",
+    "pt": "Melhorias",
+    "ru": "Улучшения",
+    "zh": "升级"
+  },
+  "tab.business": {
+    "en": "Business",
+    "tr": "İşletme",
+    "de": "Firma",
+    "es": "Negocio",
+    "fr": "Entreprise",
+    "ja": "事業",
+    "ko": "사업",
+    "pt": "Negócios",
+    "ru": "Бизнес",
+    "zh": "业务"
+  }
+}

@@ -1,0 +1,13 @@
+{
+ "manifest": "MANIFEST",
+ "slides": {
+  "01_empire": {"lead": "TURN ONE HATCHBACK INTO A", "key": "DELIVERY EMPIRE", "sub": "IDLE LOGISTICS TYCOON · 8 FICTIONAL REGIONS", "stamp": "APPROVED"},
+  "02_contracts": {"lead": "CHOOSE YOUR", "key": "CONTRACTS", "sub": "CRATES · DOCUMENTS · VIP PASSENGERS", "stamp": "URGENT"},
+  "03_dispatch": {"lead": "FAST, NORMAL", "key": "OR SAFE?", "sub": "PICK THE VEHICLE AND THE ROUTE", "stamp": "ROUTED"},
+  "04_event": {"lead": "HANDLE EVERY", "key": "ROAD SURPRISE", "sub": "INSPECTIONS · RIVALS · BREAKDOWNS", "stamp": "CHECKED"},
+  "05_fleet": {"lead": "UPGRADE YOUR", "key": "TRUCK FLEET", "sub": "10 VEHICLES · DRIVERS · HEADQUARTERS", "stamp": "UPGRADED"},
+  "06_map": {"lead": "EXPAND ACROSS", "key": "8 REGIONS", "sub": "EVERY BORDER CROSSING IS YOUR CALL", "stamp": "CLEARED"},
+  "07_auto": {"lead": "AUTOMATE THE", "key": "WHOLE EMPIRE", "sub": "IDLE EARNINGS, EVEN WHILE YOU ARE AWAY", "stamp": "AUTOMATED"}
+ },
+ "feature": {"lead": "IDLE DELIVERY TYCOON", "sub": "ROUTES · TRUCKS · 8 REGIONS"}
+}

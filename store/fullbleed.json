@@ -1,0 +1,210 @@
+{
+ "_doc": "Full-bleed Play art (owner rule 2026-10-28) for games/tools/store/fullbleed.py. Anchor = which part of the raw frame is kept (0 top .. 1 bottom); band = caption band side. Fonts = the game's store-deck faces (store/deck/fonts, OFL) - stencil + typewriter crate labels, Noto Sans Condensed Black / PT Mono for Cyrillic, Noto Sans CJK 900/700.",
+ "game": "games/smuggler",
+ "package": "com.coddykit.borderlineempire",
+ "brand": "BORDERLINE EMPIRE",
+ "raw": "/Volumes/BuildSSD/store-assets/borderlineempire-play-2026-10-31-fb-raw/raw",
+ "copy": "games/smuggler/store/circuit/copy.json",
+ "icon": "games/smuggler/store/icons/icon_512.png",
+ "locales": [
+  "en-US",
+  "tr-TR",
+  "de-DE",
+  "es-ES",
+  "fr-FR",
+  "ja-JP",
+  "ko-KR",
+  "pt-BR",
+  "ru-RU",
+  "zh-CN"
+ ],
+ "headline_idx": 0,
+ "kicker_idx": 1,
+ "style": {
+  "kind": "crate",
+  "bg": "#d0a265",
+  "bg2": "#ab7d43",
+  "hazard_a": "#ffcd28",
+  "hazard_b": "#1b1b24",
+  "head": "#1b1b24",
+  "head_shadow": "#f3d9a8",
+  "kicker": "#8e1f14",
+  "icon_frame": "stamp",
+  "icon_ring": "#a8241a",
+  "icon_rot": -6,
+  "icon_frac": 0.56
+ },
+ "fonts": {
+  "default": {
+   "head": [
+    [
+     "games/smuggler/store/deck/fonts/BigShouldersStencilDisplay.ttf",
+     {
+      "wght": 900
+     }
+    ],
+    [
+     "games/smuggler/store/deck/fonts/RussoOne-Regular.ttf"
+    ]
+   ],
+   "kick": [
+    [
+     "games/smuggler/store/deck/fonts/SpecialElite-Regular.ttf"
+    ],
+    [
+     "games/smuggler/store/deck/fonts/PTMono-Regular.ttf"
+    ]
+   ]
+  },
+  "ru-RU": {
+   "head": [
+    [
+     "/Volumes/BuildSSD/game-deps/font-src/NotoSans.ttf",
+     {
+      "wght": 900,
+      "wdth": 62.5
+     }
+    ]
+   ],
+   "kick": [
+    [
+     "games/smuggler/store/deck/fonts/PTMono-Regular.ttf"
+    ]
+   ]
+  },
+  "ja-JP": {
+   "upper": false,
+   "head": [
+    [
+     "games/smuggler/store/deck/fonts/Noto-Sans-JP_wght-900.ttf"
+    ]
+   ],
+   "kick": [
+    [
+     "games/smuggler/store/deck/fonts/Noto-Sans-JP_wght-700.ttf"
+    ]
+   ]
+  },
+  "ko-KR": {
+   "upper": false,
+   "head": [
+    [
+     "games/smuggler/store/deck/fonts/Noto-Sans-KR_wght-900.ttf"
+    ]
+   ],
+   "kick": [
+    [
+     "games/smuggler/store/deck/fonts/Noto-Sans-KR_wght-700.ttf"
+    ]
+   ]
+  },
+  "zh-CN": {
+   "upper": false,
+   "head": [
+    [
+     "games/smuggler/store/deck/fonts/Noto-Sans-SC_wght-900.ttf"
+    ]
+   ],
+   "kick": [
+    [
+     "games/smuggler/store/deck/fonts/Noto-Sans-SC_wght-700.ttf"
+    ]
+   ]
+  }
+ },
+ "slides": [
+  {
+   "id": "01-empire",
+   "band": "bottom",
+   "phone": 0.0,
+   "tablet": 0.0
+  },
+  {
+   "id": "02-dispatch",
+   "band": "top",
+   "phone": 1.0,
+   "tablet": 0.7
+  },
+  {
+   "id": "03-event",
+   "band": "top",
+   "phone": 1.0,
+   "tablet": 0.7
+  },
+  {
+   "id": "04-fleet",
+   "band": "top",
+   "phone": 1.0,
+   "tablet": 0.7
+  },
+  {
+   "id": "05-upgrades",
+   "band": "top",
+   "phone": 1.0,
+   "tablet": 0.7
+  },
+  {
+   "id": "06-map",
+   "band": "bottom",
+   "phone": 0.0,
+   "tablet": 0.0
+  },
+  {
+   "id": "07-contracts",
+   "band": "top",
+   "phone": 1.0,
+   "tablet": 0.7
+  },
+  {
+   "id": "08-frost",
+   "band": "bottom",
+   "phone": 0.0,
+   "tablet": 0.0
+  }
+ ],
+ "feature": {
+  "slide": "06-map",
+  "raw_kind": "tablet",
+  "anchor": 0.45,
+  "corner": "tr",
+  "_anchor_doc": "0.45 = tablet 06-map rows 600-1186: below the Iron Federation label (clipped by the left edge at rows ~490-555) and above the green region label (~1340); 0.33 cut that label at the image edge"
+ },
+ "notes": "Raw frames re-shot 2026-10-30 for the 10-31 batch (#75) from origin/main incl. 9c622a1f3a (HUD x1/x2 game speed button beside the influence chip, shown after the tutorial; frames show x1), same pipeline as the 10-29 sets: store/deck/capture_raw.sh playphone/playtab (quality=high) under shot-lock + games/tools/store/capture.py banner wrapper, then store/circuit/assemble.py; per-frame state in that raw/scenes.json. Captions = that set's copy (store/circuit/copy.json): big = slide tag, kicker = headline.",
+ "overrides": {
+  "_doc": "Shorter big captions where the copy.json tag does not fit one line at >=5% height; same meaning.",
+  "en-US": {
+   "08-frost": {
+    "head": "Go international"
+   }
+  },
+  "de-DE": {
+   "03-event": {
+    "head": "Ärger unterwegs"
+   },
+   "08-frost": {
+    "head": "International"
+   }
+  },
+  "fr-FR": {
+   "08-frost": {
+    "head": "À l'international"
+   }
+  },
+  "pt-BR": {
+   "01-empire": {
+    "head": "Magnata logístico"
+   }
+  },
+  "ru-RU": {
+   "01-empire": {
+    "head": "Тайкун доставки"
+   },
+   "03-event": {
+    "head": "События в пути"
+   },
+   "08-frost": {
+    "head": "Сеть без границ"
+   }
+  }
+ }
+}

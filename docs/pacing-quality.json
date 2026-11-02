@@ -1,0 +1,1168 @@
+{
+  "schema": 2,
+  "engine": "Godot 4.7.2",
+  "horizon_seconds": 3600,
+  "detail_horizon_seconds": 1800,
+  "budgets": {
+    "first_delivery": 90,
+    "first_upgrade": 900,
+    "2nd vehicle": 1500,
+    "region: Green Republic": 2100,
+    "Auto Accept": 3600
+  },
+  "max_forced_idle_15_s_ceiling": 30,
+  "policy": "One decision each second; wait for tutorial delivery before spending; then original bot policy. Forced idle = no dispatch/event/affordable core progression action. Bot action gaps include voluntary saving. Ten 0.1 s ticks per second; old qa_pacing used eleven. Audio feedback suspended to exclude wall-clock pitch RNG. No ads or IAP.",
+  "source_sha256": {
+    "scripts/contracts/contract_manager.gd": "0a0f7b8800365eb88e2b1e378bdedc00c0d7db2dd1600585a2b25d22eba1bced",
+    "scripts/progression/progression_manager.gd": "556b395bbfa2de0987cf6902a2e3a02a6a802f4e88225c2bf7cb30e900878733",
+    "scripts/vehicles/vehicle_manager.gd": "1dbb17a4bbbfc77f2e3b62420c072ce2712245c76cb71665a12aa2f72dc370d8",
+    "tests/test_runner.gd": "2190f554cc32d6942bc23cb503072d5045dab26de2620567bc4a0426f26d4a9b",
+    "scripts/economy/economy_manager.gd": "b2ece7c19dbf69f7738e74c4ec2a579956cf48e48442678f4d38bf5267b4d23a"
+  },
+  "summary": {
+    "False": {
+      "first_delivery": {
+        "median": 14.0,
+        "tail_max": 14.0,
+        "ceiling": 90
+      },
+      "first_upgrade": {
+        "median": 14.0,
+        "tail_max": 14.0,
+        "ceiling": 900
+      },
+      "2nd vehicle": {
+        "median": 241.0,
+        "tail_max": 257.0,
+        "ceiling": 1500
+      },
+      "region: Green Republic": {
+        "median": 408.0,
+        "tail_max": 520.0,
+        "ceiling": 2100
+      },
+      "Auto Accept": {
+        "median": 1338.0,
+        "tail_max": 1368.0,
+        "ceiling": 3600
+      }
+    },
+    "True": {
+      "first_delivery": {
+        "median": 14.0,
+        "tail_max": 14.0,
+        "ceiling": 90
+      },
+      "first_upgrade": {
+        "median": 14.0,
+        "tail_max": 14.0,
+        "ceiling": 900
+      },
+      "2nd vehicle": {
+        "median": 200.0,
+        "tail_max": 237.0,
+        "ceiling": 1500
+      },
+      "region: Green Republic": {
+        "median": 350.0,
+        "tail_max": 357.0,
+        "ceiling": 2100
+      },
+      "Auto Accept": {
+        "median": 1247.0,
+        "tail_max": 1576.0,
+        "ceiling": 3600
+      }
+    }
+  },
+  "runs": [
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 0.0,
+      "daily_rewards": false,
+      "earned": 2346736.0,
+      "failed_jobs": 1.0,
+      "first_30": {
+        "deliveries": 177.0,
+        "earned": 365779.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 31,
+      "max_bot_action_gap_30_s": 31,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 257.0,
+        "4 vehicles": 887.0,
+        "8 vehicles": 1997.0,
+        "Auto Accept": 1259.0,
+        "Auto Dispatch": 2568.0,
+        "first depot": 1292.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 229.0,
+        "garage L3 (Regional Warehouse)": 887.0,
+        "garage L4 (Logistics Center)": 2284.0,
+        "region: Free Coast": 1066.0,
+        "region: Green Republic": 396.0,
+        "region: Iron Federation": 1651.0,
+        "region: Red Frontier": 2498.0,
+        "stage 2 Growing Fleet": 257.0,
+        "stage 3 Garage Expansion": 257.0,
+        "stage 4 Multiple Routes": 606.0,
+        "stage 5 Second Region": 606.0,
+        "stage 6 Regional Network": 1066.0,
+        "stage 7 Automation": 1259.0,
+        "stage 8 Multiple Depots": 1723.0
+      },
+      "seconds": 3600,
+      "seed": "12345",
+      "travel_30": {
+        "outbound_s": {
+          "n": 183,
+          "median_s": 28.0,
+          "max_s": 53.0
+        },
+        "return_s": {
+          "n": 176,
+          "median_s": 7.72418050347162,
+          "max_s": 16.051809352575
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 18.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 85.0,
+          "outbound_s": 16.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 110.0,
+          "outbound_s": 15.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_b"
+        },
+        {
+          "at": 134.0,
+          "outbound_s": 23.0,
+          "return_s": 7.67762058245134,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 176.0,
+          "outbound_s": 24.0,
+          "return_s": 7.20362337698328,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 210.0,
+          "outbound_s": 19.0,
+          "return_s": 5.54695958600887,
+          "route": "r0_b:r0_hub"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 0.0,
+      "daily_rewards": false,
+      "earned": 2281619.0,
+      "failed_jobs": 0.0,
+      "first_30": {
+        "deliveries": 191.0,
+        "earned": 397777.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 27,
+      "max_bot_action_gap_30_s": 27,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 189.0,
+        "4 vehicles": 781.0,
+        "8 vehicles": 2021.0,
+        "Auto Accept": 1046.0,
+        "Auto Dispatch": 2655.0,
+        "first depot": 1250.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 158.0,
+        "garage L3 (Regional Warehouse)": 781.0,
+        "garage L4 (Logistics Center)": 2300.0,
+        "region: Free Coast": 1001.0,
+        "region: Green Republic": 380.0,
+        "region: Iron Federation": 1665.0,
+        "region: Red Frontier": 2525.0,
+        "stage 2 Growing Fleet": 189.0,
+        "stage 3 Garage Expansion": 189.0,
+        "stage 4 Multiple Routes": 547.0,
+        "stage 5 Second Region": 547.0,
+        "stage 6 Regional Network": 1001.0,
+        "stage 7 Automation": 1046.0,
+        "stage 8 Multiple Depots": 1741.0
+      },
+      "seconds": 3600,
+      "seed": "42",
+      "travel_30": {
+        "outbound_s": {
+          "n": 196,
+          "median_s": 27.5,
+          "max_s": 58.0
+        },
+        "return_s": {
+          "n": 189,
+          "median_s": 7.52525319610565,
+          "max_s": 15.6276030666992
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 87.0,
+          "outbound_s": 18.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 114.0,
+          "outbound_s": 19.0,
+          "return_s": 5.45320445958409,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 142.0,
+          "outbound_s": 15.0,
+          "return_s": 7.4547344865452,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 168.0,
+          "outbound_s": 21.0,
+          "return_s": 7.4547344865452,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 190.0,
+          "outbound_s": 24.0,
+          "return_s": 5.66733809898288,
+          "route": "r0_a:r0_hub"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 0.0,
+      "daily_rewards": false,
+      "earned": 2086929.0,
+      "failed_jobs": 1.0,
+      "first_30": {
+        "deliveries": 172.0,
+        "earned": 302895.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 28,
+      "max_bot_action_gap_30_s": 28,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 256.0,
+        "4 vehicles": 1001.0,
+        "8 vehicles": 2170.0,
+        "Auto Accept": 1368.0,
+        "Auto Dispatch": 2749.0,
+        "first depot": 1433.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 222.0,
+        "garage L3 (Regional Warehouse)": 1001.0,
+        "garage L4 (Logistics Center)": 2427.0,
+        "region: Free Coast": 1299.0,
+        "region: Green Republic": 520.0,
+        "region: Iron Federation": 1780.0,
+        "region: Red Frontier": 2611.0,
+        "stage 2 Growing Fleet": 256.0,
+        "stage 3 Garage Expansion": 256.0,
+        "stage 4 Multiple Routes": 700.0,
+        "stage 5 Second Region": 700.0,
+        "stage 6 Regional Network": 1299.0,
+        "stage 7 Automation": 1368.0,
+        "stage 8 Multiple Depots": 1893.0
+      },
+      "seconds": 3600,
+      "seed": "2026",
+      "travel_30": {
+        "outbound_s": {
+          "n": 177,
+          "median_s": 27.0,
+          "max_s": 57.0
+        },
+        "return_s": {
+          "n": 170,
+          "median_s": 7.54540137480648,
+          "max_s": 15.0099325225529
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 85.0,
+          "outbound_s": 20.0,
+          "return_s": 5.5554749598768,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 114.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 143.0,
+          "outbound_s": 19.0,
+          "return_s": 5.54695958600887,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 171.0,
+          "outbound_s": 24.0,
+          "return_s": 7.20362337698328,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 205.0,
+          "outbound_s": 16.0,
+          "return_s": 7.67762058245134,
+          "route": "r0_hub:r0_a"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 0.0,
+      "daily_rewards": false,
+      "earned": 2237345.0,
+      "failed_jobs": 0.0,
+      "first_30": {
+        "deliveries": 186.0,
+        "earned": 338593.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 24,
+      "max_bot_action_gap_30_s": 24,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 189.0,
+        "4 vehicles": 900.0,
+        "8 vehicles": 2143.0,
+        "Auto Accept": 1338.0,
+        "Auto Dispatch": 2688.0,
+        "first depot": 1408.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 165.0,
+        "garage L3 (Regional Warehouse)": 900.0,
+        "garage L4 (Logistics Center)": 2139.0,
+        "region: Free Coast": 1133.0,
+        "region: Green Republic": 408.0,
+        "region: Iron Federation": 1765.0,
+        "region: Red Frontier": 2563.0,
+        "stage 2 Growing Fleet": 189.0,
+        "stage 3 Garage Expansion": 189.0,
+        "stage 4 Multiple Routes": 567.0,
+        "stage 5 Second Region": 567.0,
+        "stage 6 Regional Network": 1133.0,
+        "stage 7 Automation": 1338.0,
+        "stage 8 Multiple Depots": 1839.0
+      },
+      "seconds": 3600,
+      "seed": "701",
+      "travel_30": {
+        "outbound_s": {
+          "n": 187,
+          "median_s": 27.0,
+          "max_s": 54.0
+        },
+        "return_s": {
+          "n": 180,
+          "median_s": 7.23958612676605,
+          "max_s": 15.5649768383328
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 85.0,
+          "outbound_s": 18.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 112.0,
+          "outbound_s": 19.0,
+          "return_s": 5.45320445958409,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 140.0,
+          "outbound_s": 22.0,
+          "return_s": 7.00946438443883,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 174.0,
+          "outbound_s": 14.0,
+          "return_s": 7.00946438443883,
+          "route": "r0_hub:r0_b"
+        },
+        {
+          "at": 190.0,
+          "outbound_s": 28.0,
+          "return_s": 8.46915381402317,
+          "route": "r0_b:r0_a"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 0.0,
+      "daily_rewards": false,
+      "earned": 2213528.0,
+      "failed_jobs": 1.0,
+      "first_30": {
+        "deliveries": 177.0,
+        "earned": 328762.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 31,
+      "max_bot_action_gap_30_s": 31,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 241.0,
+        "4 vehicles": 954.0,
+        "8 vehicles": 2059.0,
+        "Auto Accept": 1359.0,
+        "Auto Dispatch": 2691.0,
+        "first depot": 1375.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 211.0,
+        "garage L3 (Regional Warehouse)": 954.0,
+        "garage L4 (Logistics Center)": 2331.0,
+        "region: Free Coast": 1256.0,
+        "region: Green Republic": 471.0,
+        "region: Iron Federation": 1691.0,
+        "region: Red Frontier": 2559.0,
+        "stage 2 Growing Fleet": 241.0,
+        "stage 3 Garage Expansion": 241.0,
+        "stage 4 Multiple Routes": 618.0,
+        "stage 5 Second Region": 618.0,
+        "stage 6 Regional Network": 1256.0,
+        "stage 7 Automation": 1359.0,
+        "stage 8 Multiple Depots": 1828.0
+      },
+      "seconds": 3600,
+      "seed": "908",
+      "travel_30": {
+        "outbound_s": {
+          "n": 179,
+          "median_s": 28.0,
+          "max_s": 53.0
+        },
+        "return_s": {
+          "n": 172,
+          "median_s": 7.546581570268851,
+          "max_s": 14.7993542119473
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 87.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 116.0,
+          "outbound_s": 20.0,
+          "return_s": 5.54695958600887,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 145.0,
+          "outbound_s": 24.0,
+          "return_s": 7.20362337698328,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 179.0,
+          "outbound_s": 23.0,
+          "return_s": 7.67762058245134,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 222.0,
+          "outbound_s": 19.0,
+          "return_s": 5.54695958600887,
+          "route": "r0_b:r0_hub"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 600.0,
+      "daily_rewards": true,
+      "earned": 2061690.0,
+      "failed_jobs": 0.0,
+      "first_30": {
+        "deliveries": 182.0,
+        "earned": 378230.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 31,
+      "max_bot_action_gap_30_s": 31,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 200.0,
+        "4 vehicles": 846.0,
+        "8 vehicles": 2087.0,
+        "Auto Accept": 1247.0,
+        "Auto Dispatch": 2802.0,
+        "first depot": 1290.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 166.0,
+        "garage L3 (Regional Warehouse)": 846.0,
+        "garage L4 (Logistics Center)": 2392.0,
+        "region: Free Coast": 1058.0,
+        "region: Green Republic": 342.0,
+        "region: Iron Federation": 1679.0,
+        "region: Red Frontier": 2638.0,
+        "stage 2 Growing Fleet": 200.0,
+        "stage 3 Garage Expansion": 200.0,
+        "stage 4 Multiple Routes": 520.0,
+        "stage 5 Second Region": 520.0,
+        "stage 6 Regional Network": 1058.0,
+        "stage 7 Automation": 1247.0,
+        "stage 8 Multiple Depots": 1819.0
+      },
+      "seconds": 3600,
+      "seed": "12345",
+      "travel_30": {
+        "outbound_s": {
+          "n": 189,
+          "median_s": 29.0,
+          "max_s": 69.0
+        },
+        "return_s": {
+          "n": 182,
+          "median_s": 7.63254234734085,
+          "max_s": 15.6909112503654
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 18.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 85.0,
+          "outbound_s": 16.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 110.0,
+          "outbound_s": 15.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_b"
+        },
+        {
+          "at": 134.0,
+          "outbound_s": 23.0,
+          "return_s": 7.67762058245134,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 176.0,
+          "outbound_s": 24.0,
+          "return_s": 7.20362337698328,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 201.0,
+          "outbound_s": 20.0,
+          "return_s": 8.58266948004257,
+          "route": "r0_hub:r0_a"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 600.0,
+      "daily_rewards": true,
+      "earned": 2131185.0,
+      "failed_jobs": 2.0,
+      "first_30": {
+        "deliveries": 181.0,
+        "earned": 359569.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 27,
+      "max_bot_action_gap_30_s": 27,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 155.0,
+        "4 vehicles": 835.0,
+        "8 vehicles": 2124.0,
+        "Auto Accept": 1244.0,
+        "Auto Dispatch": 2737.0,
+        "first depot": 1360.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 131.0,
+        "garage L3 (Regional Warehouse)": 835.0,
+        "garage L4 (Logistics Center)": 2399.0,
+        "region: Free Coast": 1089.0,
+        "region: Green Republic": 350.0,
+        "region: Iron Federation": 1720.0,
+        "region: Red Frontier": 2629.0,
+        "stage 2 Growing Fleet": 155.0,
+        "stage 3 Garage Expansion": 155.0,
+        "stage 4 Multiple Routes": 483.0,
+        "stage 5 Second Region": 483.0,
+        "stage 6 Regional Network": 1089.0,
+        "stage 7 Automation": 1244.0,
+        "stage 8 Multiple Depots": 1799.0
+      },
+      "seconds": 3600,
+      "seed": "42",
+      "travel_30": {
+        "outbound_s": {
+          "n": 187,
+          "median_s": 28.0,
+          "max_s": 49.0
+        },
+        "return_s": {
+          "n": 180,
+          "median_s": 7.5104411820361054,
+          "max_s": 15.9511912782029
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 5.5554749598768,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 87.0,
+          "outbound_s": 16.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 112.0,
+          "outbound_s": 18.0,
+          "return_s": 5.45320445958409,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 139.0,
+          "outbound_s": 15.0,
+          "return_s": 7.4547344865452,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 156.0,
+          "outbound_s": 26.0,
+          "return_s": 5.93311629314198,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 165.0,
+          "outbound_s": 15.0,
+          "return_s": 7.4547344865452,
+          "route": "r0_hub:r0_a"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 600.0,
+      "daily_rewards": true,
+      "earned": 1774153.0,
+      "failed_jobs": 1.0,
+      "first_30": {
+        "deliveries": 156.0,
+        "earned": 277213.0,
+        "regions": 3,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 24,
+      "max_bot_action_gap_30_s": 28,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 223.0,
+        "4 vehicles": 1091.0,
+        "8 vehicles": 2323.0,
+        "Auto Accept": 1576.0,
+        "Auto Dispatch": 3048.0,
+        "first depot": 1649.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 190.0,
+        "garage L3 (Regional Warehouse)": 1091.0,
+        "garage L4 (Logistics Center)": 2659.0,
+        "region: Free Coast": 1350.0,
+        "region: Green Republic": 357.0,
+        "region: Iron Federation": 1951.0,
+        "region: Red Frontier": 2906.0,
+        "stage 2 Growing Fleet": 223.0,
+        "stage 3 Garage Expansion": 223.0,
+        "stage 4 Multiple Routes": 712.0,
+        "stage 5 Second Region": 712.0,
+        "stage 6 Regional Network": 1350.0,
+        "stage 7 Automation": 1576.0,
+        "stage 8 Multiple Depots": 2062.0
+      },
+      "seconds": 3600,
+      "seed": "2026",
+      "travel_30": {
+        "outbound_s": {
+          "n": 161,
+          "median_s": 27.0,
+          "max_s": 46.0
+        },
+        "return_s": {
+          "n": 154,
+          "median_s": 8.07129315751569,
+          "max_s": 15.3810814469105
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 85.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 114.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 143.0,
+          "outbound_s": 19.0,
+          "return_s": 5.54695958600887,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 171.0,
+          "outbound_s": 19.0,
+          "return_s": 5.54695958600887,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 199.0,
+          "outbound_s": 23.0,
+          "return_s": 7.67762058245134,
+          "route": "r0_b:r0_a"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 600.0,
+      "daily_rewards": true,
+      "earned": 2633444.0,
+      "failed_jobs": 0.0,
+      "first_30": {
+        "deliveries": 189.0,
+        "earned": 441360.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 28,
+      "max_bot_action_gap_30_s": 28,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 154.0,
+        "4 vehicles": 832.0,
+        "8 vehicles": 1857.0,
+        "Auto Accept": 1191.0,
+        "Auto Dispatch": 2528.0,
+        "first depot": 1226.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 129.0,
+        "garage L3 (Regional Warehouse)": 832.0,
+        "garage L4 (Logistics Center)": 2127.0,
+        "region: Free Coast": 1128.0,
+        "region: Frostland": 3464.0,
+        "region: Green Republic": 238.0,
+        "region: Iron Federation": 1540.0,
+        "region: Red Frontier": 2371.0,
+        "stage 2 Growing Fleet": 154.0,
+        "stage 3 Garage Expansion": 154.0,
+        "stage 4 Multiple Routes": 578.0,
+        "stage 5 Second Region": 578.0,
+        "stage 6 Regional Network": 1128.0,
+        "stage 7 Automation": 1191.0,
+        "stage 8 Multiple Depots": 1616.0,
+        "stage 9 International Network": 3464.0
+      },
+      "seconds": 3600,
+      "seed": "701",
+      "travel_30": {
+        "outbound_s": {
+          "n": 194,
+          "median_s": 28.0,
+          "max_s": 56.0
+        },
+        "return_s": {
+          "n": 187,
+          "median_s": 7.65482346809967,
+          "max_s": 15.2616994736912
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 5.66274909504072,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 85.0,
+          "outbound_s": 16.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 110.0,
+          "outbound_s": 19.0,
+          "return_s": 5.5554749598768,
+          "route": "r0_b:r0_hub"
+        },
+        {
+          "at": 138.0,
+          "outbound_s": 15.0,
+          "return_s": 7.20362337698328,
+          "route": "r0_hub:r0_b"
+        },
+        {
+          "at": 155.0,
+          "outbound_s": 29.0,
+          "return_s": 7.67522248280534,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 163.0,
+          "outbound_s": 16.0,
+          "return_s": 7.67762058245134,
+          "route": "r0_hub:r0_a"
+        }
+      ]
+    },
+    {
+      "cash_starved_seconds": 0.0,
+      "daily_grants": 600.0,
+      "daily_rewards": true,
+      "earned": 2792026.0,
+      "failed_jobs": 0.0,
+      "first_30": {
+        "deliveries": 179.0,
+        "earned": 357304.0,
+        "regions": 4,
+        "vehicles": 7
+      },
+      "forced_idle_30_s": 12,
+      "idle_seconds": 0.0,
+      "max_bot_action_gap_15_s": 29,
+      "max_bot_action_gap_30_s": 29,
+      "max_forced_idle_15_s": 12,
+      "max_forced_idle_30_s": 12,
+      "milestones": {
+        "2nd vehicle": 237.0,
+        "4 vehicles": 909.0,
+        "8 vehicles": 2030.0,
+        "Auto Accept": 1247.0,
+        "Auto Dispatch": 2554.0,
+        "first depot": 1316.0,
+        "first_delivery": 14.0,
+        "first_new_route": 22.0,
+        "first_upgrade": 14.0,
+        "garage L2 (Local Depot)": 208.0,
+        "garage L3 (Regional Warehouse)": 909.0,
+        "garage L4 (Logistics Center)": 2030.0,
+        "region: Free Coast": 1216.0,
+        "region: Frostland": 3443.0,
+        "region: Green Republic": 356.0,
+        "region: Iron Federation": 1678.0,
+        "region: Red Frontier": 2367.0,
+        "stage 2 Growing Fleet": 237.0,
+        "stage 3 Garage Expansion": 237.0,
+        "stage 4 Multiple Routes": 661.0,
+        "stage 5 Second Region": 661.0,
+        "stage 6 Regional Network": 1216.0,
+        "stage 7 Automation": 1247.0,
+        "stage 8 Multiple Depots": 1749.0,
+        "stage 9 International Network": 3443.0
+      },
+      "seconds": 3600,
+      "seed": "908",
+      "travel_30": {
+        "outbound_s": {
+          "n": 181,
+          "median_s": 27.0,
+          "max_s": 86.0
+        },
+        "return_s": {
+          "n": 174,
+          "median_s": 7.44645228766813,
+          "max_s": 15.5339160231895
+        }
+      },
+      "opening_trips": [
+        {
+          "at": 1.0,
+          "outbound_s": 12.0,
+          "return_s": 6.0,
+          "route": "r0_hub:r0_a"
+        },
+        {
+          "at": 22.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 51.0,
+          "outbound_s": 20.0,
+          "return_s": 5.5554749598768,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 86.0,
+          "outbound_s": 20.0,
+          "return_s": 6.0,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 115.0,
+          "outbound_s": 20.0,
+          "return_s": 5.54695958600887,
+          "route": "r0_a:r0_hub"
+        },
+        {
+          "at": 144.0,
+          "outbound_s": 24.0,
+          "return_s": 7.00946438443883,
+          "route": "r0_a:r0_b"
+        },
+        {
+          "at": 178.0,
+          "outbound_s": 21.0,
+          "return_s": 7.4547344865452,
+          "route": "r0_b:r0_a"
+        },
+        {
+          "at": 219.0,
+          "outbound_s": 17.0,
+          "return_s": 5.45320445958409,
+          "route": "r0_b:r0_hub"
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "human_playthrough": "not measured by this tool",
+  "baseline_commit": "72ce41db2d866d562100b80a2852e41c0278abfa",
+  "rebase_validation": "4fa2d99372 money boundary change: all 10 full run rows identical after rebase; money 5/5, gameplay 253/253, early boundaries 16/16 PASS."
+}

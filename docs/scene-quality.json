@@ -1,0 +1,110 @@
+{
+  "fault_injection": {
+    "coplanar_pair": true,
+    "missing_asset": true,
+    "missing_mesh": true,
+    "separated_planes": true
+  },
+  "issues": [],
+  "limits": "Conservative static upward-face overlap candidates. Terrain/road layering is intentional. MultiMesh bounds are checked; per-instance contact/occlusion still needs rendered review.",
+  "mesh_count": 159,
+  "models": 82,
+  "regions": [
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 0,
+      "static_floor_groups": 0
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 1,
+      "static_floor_groups": 118
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 2,
+      "static_floor_groups": 161
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 3,
+      "static_floor_groups": 128
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 4,
+      "static_floor_groups": 127
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 5,
+      "static_floor_groups": 124
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 6,
+      "static_floor_groups": 167
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "low",
+      "region": 7,
+      "static_floor_groups": 122
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 0,
+      "static_floor_groups": 0
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 1,
+      "static_floor_groups": 118
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 2,
+      "static_floor_groups": 161
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 3,
+      "static_floor_groups": 128
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 4,
+      "static_floor_groups": 127
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 5,
+      "static_floor_groups": 124
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 6,
+      "static_floor_groups": 167
+    },
+    {
+      "overlap_candidates": [],
+      "quality": "high",
+      "region": 7,
+      "static_floor_groups": 122
+    }
+  ]
+}

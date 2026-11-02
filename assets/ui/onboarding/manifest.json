@@ -1,0 +1,221 @@
+{
+  "game": "smuggler",
+  "source": {
+    "game": "smuggler",
+    "capture_driver_sha256": "ad835b60a4c59c94cb8eaaa0d7c405f1b50e97aed837dc46023016ee67e8cf5b",
+    "commit": "c2400ce2e931298fea0771e22814593c084671b4",
+    "tracked_diff_sha256": "e695294476dc94f1cc9fcf020e65dbf59341ca5dfb56ea9270565cbe0eb3d2a3"
+  },
+  "capture": "native scene viewport, no HUD or painted replacement",
+  "size": [
+    512,
+    384
+  ],
+  "total_bytes": 692685,
+  "rgba_upper_bound_bytes": 2359296,
+  "images": [
+    {
+      "camera": "[X: (0.703579, 0.0, -0.710617), Y: (-0.544364, 0.642788, -0.538973), Z: (0.456776, 0.766044, 0.452252), O: (10.25532, 19.91716, 9.598617)]",
+      "camera_distance": 26.0,
+      "camera_note": "follows the hatchback on its first job (World.select_vehicle framing), distance 26",
+      "earned_by": "reference bot (tests/soak_test.gd _bot_step) every 1 game s, GameManager.tick(0.25), seed 20261024; title tapped, Skip intro",
+      "earned_state": {
+        "bot": "reference bot (tests/soak_test.gd _bot_step) every 1 game s, GameManager.tick(0.25), seed 20261024; title tapped, Skip intro",
+        "businesses": {},
+        "cash": 170.0,
+        "deliveries": 0.0,
+        "depots": [],
+        "game_seconds": 8.0,
+        "garage_level": 1.0,
+        "intro_done": true,
+        "jobs": 1.0,
+        "out_jobs": 1.0,
+        "regions_unlocked": 1.0,
+        "reputation": 0.0,
+        "stage": 0.0,
+        "vehicles": [
+          "hatchback"
+        ]
+      },
+      "id": "01-first-run",
+      "intro_beat": "car",
+      "moment": "first_run",
+      "moving_fleet": 1,
+      "quality": "high",
+      "state": {
+        "businesses": {},
+        "cash": 170.0,
+        "deliveries": 0,
+        "depots": [],
+        "garage_level": 1,
+        "intro_done": true,
+        "jobs": 1,
+        "regions_unlocked": 1,
+        "reputation": 0,
+        "stage": 0,
+        "vehicles": [
+          "hatchback"
+        ]
+      },
+      "ui_hidden": "UI CanvasLayer (HUD / modals / tutorial) + 20 world words / job pins / route ribbon / bubbles",
+      "viewport": "1024x768",
+      "file": "01-first-run.png",
+      "sha256": "48fc2c33eedde70ccb2682f37e727ca54d7c1d188729ecb35ad2e75d68fe1550",
+      "bytes": 182915
+    },
+    {
+      "camera": "[X: (0.703517, 0.0, -0.710679), Y: (-0.544412, 0.642788, -0.538925), Z: (0.456816, 0.766044, 0.452212), O: (-4.110689, 36.77013, 14.32982)]",
+      "camera_distance": 48.0,
+      "camera_note": "the player's busiest stretch of road ({ \"vehicles\": 2, \"at\": (-26.03784, 0.0, -7.376341) }, 36 from the garage), distance 48",
+      "earned_by": "reference bot (tests/soak_test.gd _bot_step) every 1 game s, GameManager.tick(0.25), seed 20261024; title tapped, Skip intro",
+      "earned_state": {
+        "bot": "reference bot (tests/soak_test.gd _bot_step) every 1 game s, GameManager.tick(0.25), seed 20261024; title tapped, Skip intro",
+        "businesses": {
+          "contract_office": 1.0,
+          "driver_lounge": 1.0,
+          "fleet_capacity": 1.0,
+          "maintenance_bay": 1.0
+        },
+        "cash": 318.75,
+        "deliveries": 22.0,
+        "depots": [],
+        "game_seconds": 502.0,
+        "garage_level": 2.0,
+        "intro_done": true,
+        "jobs": 3.0,
+        "out_jobs": 3.0,
+        "regions_unlocked": 2.0,
+        "reputation": 36.0,
+        "stage": 2.0,
+        "vehicles": [
+          "hatchback",
+          "hatchback",
+          "small_van"
+        ]
+      },
+      "id": "02-routes",
+      "intro_beat": "map",
+      "moment": "routes",
+      "moving_fleet": 3,
+      "quality": "high",
+      "state": {
+        "businesses": {
+          "contract_office": 1,
+          "driver_lounge": 1,
+          "fleet_capacity": 1,
+          "maintenance_bay": 1
+        },
+        "cash": 318.75,
+        "deliveries": 22,
+        "depots": [],
+        "garage_level": 2,
+        "intro_done": true,
+        "jobs": 3,
+        "regions_unlocked": 2,
+        "reputation": 36,
+        "stage": 2,
+        "vehicles": [
+          "hatchback",
+          "hatchback",
+          "small_van"
+        ]
+      },
+      "ui_hidden": "UI CanvasLayer (HUD / modals / tutorial) + 24 world words / job pins / route ribbon / bubbles",
+      "viewport": "1024x768",
+      "file": "02-routes.png",
+      "sha256": "5b824eb1746ef2f5662147b4ca57d4ba752fe7af1f484edebe088c49c7ee992c",
+      "bytes": 240553
+    },
+    {
+      "camera": "[X: (0.703584, 0.0, -0.710612), Y: (-0.544361, 0.642788, -0.538976), Z: (0.456773, 0.766044, 0.452255), O: (39.66434, 103.416, 50.05441)]",
+      "camera_distance": 135.0,
+      "camera_note": "home valley \u2192 region 3 at 0.25, distance 135",
+      "earned_by": "reference bot (tests/soak_test.gd _bot_step) every 1 game s, GameManager.tick(0.25), seed 20261024; title tapped, Skip intro",
+      "earned_state": {
+        "bot": "reference bot (tests/soak_test.gd _bot_step) every 1 game s, GameManager.tick(0.25), seed 20261024; title tapped, Skip intro",
+        "businesses": {
+          "automated_dispatch": 2.0,
+          "contract_office": 5.0,
+          "dispatch_center": 3.0,
+          "driver_lounge": 4.0,
+          "fleet_capacity": 4.0,
+          "maintenance_bay": 5.0,
+          "operations_room": 3.0,
+          "regional_network": 2.0,
+          "warehouse": 3.0
+        },
+        "cash": 1388.75,
+        "deliveries": 228.0,
+        "depots": [
+          1.0,
+          2.0
+        ],
+        "game_seconds": 1965.0,
+        "garage_level": 4.0,
+        "intro_done": true,
+        "jobs": 8.0,
+        "out_jobs": 6.0,
+        "regions_unlocked": 4.0,
+        "reputation": 565.0,
+        "stage": 7.0,
+        "vehicles": [
+          "hatchback",
+          "hatchback",
+          "small_van",
+          "small_van",
+          "pickup",
+          "pickup",
+          "cargo_van",
+          "box_truck",
+          "small_van"
+        ]
+      },
+      "id": "03-empire",
+      "intro_beat": "border",
+      "moment": "empire",
+      "moving_fleet": 8,
+      "quality": "high",
+      "state": {
+        "businesses": {
+          "automated_dispatch": 2,
+          "contract_office": 5,
+          "dispatch_center": 3,
+          "driver_lounge": 4,
+          "fleet_capacity": 4,
+          "maintenance_bay": 5,
+          "operations_room": 3,
+          "regional_network": 2,
+          "warehouse": 3
+        },
+        "cash": 1388.75,
+        "deliveries": 228,
+        "depots": [
+          1,
+          2
+        ],
+        "garage_level": 4,
+        "intro_done": true,
+        "jobs": 8,
+        "regions_unlocked": 4,
+        "reputation": 565,
+        "stage": 7,
+        "vehicles": [
+          "hatchback",
+          "hatchback",
+          "small_van",
+          "small_van",
+          "pickup",
+          "pickup",
+          "cargo_van",
+          "box_truck",
+          "small_van"
+        ]
+      },
+      "ui_hidden": "UI CanvasLayer (HUD / modals / tutorial) + 31 world words / job pins / route ribbon / bubbles",
+      "viewport": "1024x768",
+      "file": "03-empire.png",
+      "sha256": "1a6ff3b66aee45ad4446b78cc766eca8d3ba08969ffda30ac10c59c5dd51f576",
+      "bytes": 269217
+    }
+  ]
+}

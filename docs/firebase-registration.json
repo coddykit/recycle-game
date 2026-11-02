@@ -1,0 +1,78 @@
+{
+  "project_id": "coddykit-game",
+  "bundle_id": "com.coddykit.borderlineempire",
+  "display_name": "Borderline Empire (Smuggler)",
+  "verified_at": "2026-10-09",
+  "apps": [
+    {
+      "platform": "ANDROID",
+      "app_id": "1:998857716666:android:14dcaec9519b4b43d42383",
+      "state": "ACTIVE"
+    },
+    {
+      "platform": "IOS",
+      "app_id": "1:998857716666:ios:df7af90fbbef8bf7d42383",
+      "state": "ACTIVE"
+    }
+  ],
+  "android_config": "google-services.json",
+  "ios_config": "GoogleService-Info.plist",
+  "native_firebase_sdk_integrated": true,
+  "analytics_property": {
+    "id": "557673345",
+    "displayName": "coddykit-game",
+    "analyticsAccountId": "410951682"
+  },
+  "analytics_streams": [
+    {
+      "app": "projects/coddykit-game/androidApps/1:998857716666:android:14dcaec9519b4b43d42383",
+      "streamId": "16096275075"
+    },
+    {
+      "app": "projects/coddykit-game/iosApps/1:998857716666:ios:df7af90fbbef8bf7d42383",
+      "streamId": "16096334095"
+    }
+  ],
+  "sdk_version": "godot-x/firebase 3.1.0",
+  "ios_runtime_verification": "pending signed/device build",
+  "android_runtime_verification": {
+    "sdk_initialized": true,
+    "analytics_storage": "granted",
+    "ad_storage": "denied",
+    "ad_user_data": "denied",
+    "ad_personalization": "denied",
+    "observed_events": [
+      "first_open",
+      "session_start",
+      "game_ready"
+    ],
+    "upload_http_status": 204,
+    "device": "Pixel 7 Android 35 emulator",
+    "date": "2026-10-09",
+    "note": "evidence was collected with the old bundle com.borderlineempire.game; not yet re-run with com.coddykit.borderlineempire"
+  },
+  "previous_bundle_id": "com.borderlineempire.game",
+  "bundle_switched_at": "2026-10-09",
+  "previous_apps": [
+    {
+      "platform": "ANDROID",
+      "app_id": "1:998857716666:android:e1cfc815f63b631ed42383",
+      "bundle_id": "com.borderlineempire.game",
+      "note": "old bundle, still in Firebase project, not used",
+      "ga4_stream_id": "16095545337"
+    },
+    {
+      "platform": "IOS",
+      "app_id": "1:998857716666:ios:cea7b19ad1446d3bd42383",
+      "bundle_id": "com.borderlineempire.game",
+      "note": "old bundle, still in Firebase project, not used",
+      "ga4_stream_id": "16095538108"
+    }
+  ],
+  "analytics_streams_source": "Firebase Management API projects/coddykit-game/analyticsDetails readback 2026-10-09 (streamMappings for the com.coddykit.borderlineempire apps)",
+  "previous_apps_note": "Old com.borderlineempire.game Firebase apps and their GA4 streams (16095545337 Android, 16095538108 iOS) are still in the project; the game no longer uses them.",
+  "device_verification": {
+    "status": "pending",
+    "checklist": "docs/FIREBASE_DEVICE_TEST.md"
+  }
+}

@@ -1,0 +1,54 @@
+name: Game tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  headless-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GODOT_VERSION: "4.7.2"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Cache Godot
+        id: cache-godot
+        uses: actions/cache@v4
+        with:
+          path: ~/godot
+          key: godot-${{ env.GODOT_VERSION }}-stable-linux
+
+      - name: Download Godot
+        if: steps.cache-godot.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ~/godot
+          curl -sSL -o /tmp/godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_linux.x86_64.zip"
+          unzip -q /tmp/godot.zip -d ~/godot
+          mv ~/godot/Godot_v${GODOT_VERSION}-stable_linux.x86_64 ~/godot/godot
+
+      - name: Import project
+        run: |
+          set -o pipefail
+          ~/godot/godot --headless --editor --import --quit 2>&1 | tee import.log
+          ! grep -E "SCRIPT ERROR|Parse Error" import.log
+
+      - name: Check data files
+        run: |
+          for f in data/*.json; do python3 -c "import json,sys; json.load(open('$f'))" || exit 1; done
+          python3 tools/i18n/validate.py
+
+      - name: Gameplay test (bot plays 45 simulated minutes)
+        run: |
+          set -o pipefail
+          ~/godot/godot --headless res://tests/test_runner.tscn 2>&1 | tee test.log
+          ! grep -E "SCRIPT ERROR|Parse Error" test.log
+          grep -q "RESULT: PASS" test.log
+
+      - name: Upload test log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-log
+          path: test.log

@@ -1,0 +1,42 @@
+[
+  {
+    "language": "en-US",
+    "text": "1.3.0\n• New modern interface: guided first-run onboarding, a cleaner HUD, a redesigned shop and a Settings screen with privacy options.\n• Smoother finger scrolling in every list and sheet.\n• Safer saves: your progress is better protected.\n• Smoother play on weak phones."
+  },
+  {
+    "language": "tr-TR",
+    "text": "1.3.0\n• Yepyeni modern arayüz: adım adım ilk açılış rehberi, daha sade ekran göstergeleri, yenilenen mağaza ve gizlilik seçenekli Ayarlar ekranı.\n• Tüm liste ve sayfalarda daha akıcı parmakla kaydırma.\n• Daha güvenli kayıt: ilerlemen daha iyi korunuyor.\n• Zayıf telefonlarda daha akıcı oynanış."
+  },
+  {
+    "language": "de-DE",
+    "text": "1.3.0\n• Neue, moderne Oberfläche: geführtes Onboarding beim ersten Start, übersichtlicheres HUD, neu gestalteter Shop und Einstellungen mit Datenschutzoptionen.\n• Flüssigeres Scrollen mit dem Finger in allen Listen und Fenstern.\n• Sicherer speichern: Dein Fortschritt ist besser geschützt.\n• Flüssigeres Spielen auf schwächeren Handys."
+  },
+  {
+    "language": "es-ES",
+    "text": "1.3.0\n• Nueva interfaz moderna: tutorial guiado en el primer inicio, HUD más limpio, tienda rediseñada y Ajustes con opciones de privacidad.\n• Desplazamiento con el dedo más fluido en todas las listas y hojas.\n• Guardado más seguro: tu progreso está mejor protegido.\n• Juego más fluido en móviles modestos."
+  },
+  {
+    "language": "fr-FR",
+    "text": "1.3.0\n• Nouvelle interface moderne : tutoriel guidé au premier lancement, interface de jeu plus claire, boutique repensée et Réglages avec options de confidentialité.\n• Défilement au doigt plus fluide dans toutes les listes et fenêtres.\n• Sauvegardes plus sûres : votre progression est mieux protégée.\n• Jeu plus fluide sur les téléphones modestes."
+  },
+  {
+    "language": "ja-JP",
+    "text": "1.3.0\n• 新しいモダンなインターフェース：初回起動時のガイド付きチュートリアル、すっきりしたHUD、刷新されたショップ、プライバシー設定付きの設定画面。\n• すべてのリストとシートで指のスクロールがより滑らかに。\n• セーブがより安全に：進行状況をしっかり保護します。\n• 低性能の端末でもより滑らかにプレイできます。"
+  },
+  {
+    "language": "ko-KR",
+    "text": "1.3.0\n• 새롭고 현대적인 인터페이스: 첫 실행 단계별 안내, 더 깔끔한 HUD, 새로워진 상점, 개인정보 옵션이 있는 설정 화면.\n• 모든 목록과 시트에서 손가락 스크롤이 더 부드러워졌습니다.\n• 더 안전한 저장: 진행 상황이 더 잘 보호됩니다.\n• 저사양 휴대폰에서도 더 부드럽게 플레이할 수 있습니다."
+  },
+  {
+    "language": "pt-BR",
+    "text": "1.3.0\n• Nova interface moderna: tutorial guiado na primeira abertura, HUD mais limpo, loja redesenhada e Ajustes com opções de privacidade.\n• Rolagem com o dedo mais suave em todas as listas e telas.\n• Salvamento mais seguro: seu progresso está mais protegido.\n• Jogo mais fluido em celulares mais simples."
+  },
+  {
+    "language": "ru-RU",
+    "text": "1.3.0\n• Новый современный интерфейс: пошаговое обучение при первом запуске, более чистый HUD, обновлённый магазин и настройки с параметрами конфиденциальности.\n• Более плавная прокрутка пальцем во всех списках и окнах.\n• Надёжнее сохранения: ваш прогресс лучше защищён.\n• Игра плавнее на слабых телефонах."
+  },
+  {
+    "language": "zh-CN",
+    "text": "1.3.0\n• 全新现代界面：首次启动的分步引导、更简洁的HUD、重新设计的商店，以及带隐私选项的设置页面。\n• 所有列表和面板的手指滚动更顺滑。\n• 存档更安全：你的进度得到更好的保护。\n• 在低端手机上运行更流畅。"
+  }
+]

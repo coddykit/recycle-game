@@ -1,0 +1,52 @@
+{
+ "product_id": "com.coddykit.borderlineempire.empire_pass",
+ "type": "NON_CONSUMABLE",
+ "usd": 3.99,
+ "reference_name": "Empire Pass",
+ "entitlement": "empire_pass",
+ "rc_package": "$rc_lifetime",
+ "review_note": "Non-consumable, not a subscription. Unlocks a permanent x1.25 delivery payout multiplier and lets the player claim the sponsor cash bonus without watching a rewarded video. Reach it: Business tab (bottom bar, right) -> Shop & sponsor bonus -> Empire Pass -> Buy. Restore Purchases is in the same Shop panel. Offline single-player game; no account; any sandbox Apple ID works.",
+ "translation": "names = the game's own strings (translations/strings.csv, nitrorouter); descriptions = data/iap.json empire_pass.desc (1.2.0, live on Play 2026-10-19; earlier 1.1.0 text by nitrorouter gpt-5.6-luna 2026-10-10)",
+ "locales": {
+  "en-US": {
+   "name": "Empire Pass",
+   "description": "Permanent ×1.25 delivery pay, sponsor bonus without the video, ads gone."
+  },
+  "tr": {
+   "name": "İmparatorluk Bileti",
+   "description": "Kalıcı 1,25× teslimat ücreti, videosuz sponsor bonusu, reklamsız oyun."
+  },
+  "de-DE": {
+   "name": "Empire-Pass",
+   "description": "Dauerhaft 1,25× Lieferlohn, Sponsor-Bonus ohne Video, keine Werbung."
+  },
+  "es-ES": {
+   "name": "Pase del Imperio",
+   "description": "Entregas ×1,25 para siempre, bonus de patrocinador sin vídeo y sin anuncios."
+  },
+  "fr-FR": {
+   "name": "Pass Empire",
+   "description": "Paiements ×1,25 permanents, bonus sponsor sans vidéo, plus de pub."
+  },
+  "ja": {
+   "name": "エンパイアパス",
+   "description": "配達報酬が永久に1.25倍。動画なしでスポンサーボーナス、広告なし。"
+  },
+  "ko": {
+   "name": "엠파이어 패스",
+   "description": "배송 보수 영구 1.25배, 광고 없이 스폰서 보너스, 광고 제거."
+  },
+  "pt-BR": {
+   "name": "Passe do Império",
+   "description": "Entregas ×1,25 para sempre, bônus de patrocinador sem vídeo e sem anúncios."
+  },
+  "ru": {
+   "name": "Имперский пропуск",
+   "description": "Постоянно ×1,25 к оплате доставок, бонус спонсора без видео, без рекламы."
+  },
+  "zh-Hans": {
+   "name": "帝国通行证",
+   "description": "配送收益永久 ×1.25，免看视频领赞助奖金，并移除广告。"
+  }
+ }
+}

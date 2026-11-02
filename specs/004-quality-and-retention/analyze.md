@@ -1,0 +1,3 @@
+# Analysis
+First pass: new reward UI depends on durable state; do not ship it before snapshots/rollback. Offline trips and manager estimate must not overlap. Migration must preserve existing Connections (inspection discovered to_dict omitted them). A future schema must never be rotated away. UI strings need API translation before final QA.
+Second pass: use one modal queue and existing tutorial targets; preserve the tutorial itself. QA must remain isolated and Analytics disabled. Native verification and public publication are different gates. P2 calendar is not required for the daily-job pilot. No unresolved implementation decision requires blocking input.

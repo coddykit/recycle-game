@@ -1,0 +1,42 @@
+[
+  {
+    "language": "en-US",
+    "text": "1.3.8\n• Tabs and windows have a new, cleaner design.\n• Intro pages and pop-ups now also fit phones with on-screen navigation buttons.\n• A tap now registers only once, so buttons no longer react twice on phones."
+  },
+  {
+    "language": "tr-TR",
+    "text": "1.3.8\n• Sekmeler ve pencereler yeni, daha sade bir tasarıma kavuştu.\n• Giriş sayfaları ve açılır pencereler de artık ekranda gezinme düğmeleri olan telefonlara tam sığıyor.\n• Bir dokunuş artık yalnızca bir kez algılanıyor; düğmeler telefonlarda iki kez tepki vermiyor."
+  },
+  {
+    "language": "de-DE",
+    "text": "1.3.8\n• Tabs und Fenster haben ein neues, aufgeräumteres Design.\n• Auch Einführungsseiten und Pop-ups passen jetzt auf Handys mit Navigationstasten auf dem Bildschirm.\n• Ein Tippen zählt jetzt nur noch einmal – Tasten reagieren auf Handys nicht mehr doppelt."
+  },
+  {
+    "language": "es-ES",
+    "text": "1.3.8\n• Las pestañas y ventanas tienen un diseño nuevo y más limpio.\n• Las páginas de introducción y las ventanas emergentes ahora también se adaptan a los teléfonos con botones de navegación en pantalla.\n• Cada toque se registra una sola vez, así que los botones ya no reaccionan dos veces en los teléfonos."
+  },
+  {
+    "language": "fr-FR",
+    "text": "1.3.8\n• Les onglets et les fenêtres ont un nouveau design, plus épuré.\n• Les pages d’introduction et les fenêtres contextuelles s’adaptent elles aussi aux téléphones avec boutons de navigation à l’écran.\n• Un appui n’est plus compté qu’une fois : les boutons ne réagissent plus deux fois sur téléphone."
+  },
+  {
+    "language": "ja-JP",
+    "text": "1.3.8\n• タブとウィンドウのデザインを一新し、すっきり見やすくしました。\n• 紹介ページやポップアップも、画面にナビゲーションボタンがあるスマートフォンに合わせて表示されるようになりました。\n• タップが1回だけ認識されるようになり、スマートフォンでボタンが二重に反応しなくなりました。"
+  },
+  {
+    "language": "ko-KR",
+    "text": "1.3.8\n• 탭과 창이 더 깔끔한 새 디자인으로 바뀌었습니다.\n• 소개 화면과 팝업도 화면 내비게이션 버튼이 있는 휴대폰에 맞게 표시됩니다.\n• 이제 탭이 한 번만 인식되어 휴대폰에서 버튼이 두 번 반응하지 않습니다."
+  },
+  {
+    "language": "pt-BR",
+    "text": "1.3.8\n• As abas e janelas ganharam um visual novo e mais limpo.\n• As páginas de introdução e as janelas pop-up agora também se ajustam a celulares com botões de navegação na tela.\n• Cada toque agora é registrado só uma vez, então os botões não reagem mais duas vezes no celular."
+  },
+  {
+    "language": "ru-RU",
+    "text": "1.3.8\n• Вкладки и окна получили новый, более аккуратный дизайн.\n• Вступительные страницы и всплывающие окна теперь тоже подстраиваются под телефоны с экранными кнопками навигации.\n• Касание теперь срабатывает только один раз — кнопки на телефонах больше не реагируют дважды."
+  },
+  {
+    "language": "zh-CN",
+    "text": "1.3.8\n• 标签页和窗口换上了更简洁的新设计。\n• 介绍页面和弹窗现在也能适配带屏幕导航按钮的手机。\n• 现在每次点按只会被识别一次，手机上的按钮不再重复响应。"
+  }
+]

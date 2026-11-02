@@ -1,0 +1,60 @@
+{
+  "endpoint": "https://api.nitrorouter.com/v1/chat/completions",
+  "requested_model": "gpt-6-luna",
+  "locales": {
+    "tr": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "de": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "es": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "fr": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "ja": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "ko": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "pt": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "ru": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    },
+    "zh": {
+      "calls": 2,
+      "response_models": [
+        "gpt-6-luna"
+      ]
+    }
+  }
+}

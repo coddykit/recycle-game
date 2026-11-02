@@ -1,0 +1,42 @@
+[
+  {
+    "language": "en-US",
+    "text": "1.2.5\n• Smoother and cooler on every phone: lighter Low graphics at 30 FPS, a calmer frame rate while you are not touching the screen, and the graphics step down by themselves if a phone struggles.\n• Buttons in the panels answer every tap again.\n• Fixes for rare ad-related crashes."
+  },
+  {
+    "language": "tr-TR",
+    "text": "1.2.5\n• Her telefonda daha akıcı ve serin: 30 FPS'te daha hafif Düşük grafik, ekrana dokunmadığında daha sakin kare hızı; telefon zorlanırsa grafik kendiliğinden bir kademe düşer.\n• Panellerdeki düğmeler yine her dokunuşa yanıt veriyor.\n• Reklamlarla ilgili nadir çökmeler giderildi."
+  },
+  {
+    "language": "de-DE",
+    "text": "1.2.5\n• Auf jedem Handy flüssiger und kühler: leichtere Grafik „Niedrig“ bei 30 FPS, eine ruhigere Bildrate, wenn du den Bildschirm nicht berührst, und die Grafik stellt sich von selbst herunter, wenn ein Handy ins Schwitzen kommt.\n• Die Schaltflächen in den Panels reagieren wieder auf jeden Tipp.\n• Behebt seltene Abstürze im Zusammenhang mit Werbung."
+  },
+  {
+    "language": "es-ES",
+    "text": "1.2.5\n• Más fluido y más fresco en cualquier móvil: gráficos Bajo más ligeros a 30 FPS, una tasa de fotogramas más tranquila cuando no tocas la pantalla, y los gráficos bajan de nivel por sí solos si el móvil se resiente.\n• Los botones de los paneles vuelven a responder a cada toque.\n• Corrige algunos fallos poco frecuentes relacionados con anuncios."
+  },
+  {
+    "language": "fr-FR",
+    "text": "1.2.5\n• Plus fluide et moins chaud sur chaque téléphone : graphismes Bas plus légers à 30 FPS, une cadence d'images plus calme quand tu ne touches pas l'écran, et les graphismes baissent d'eux-mêmes si un téléphone peine.\n• Les boutons des panneaux répondent à nouveau à chaque toucher.\n• Corrige de rares plantages liés aux publicités."
+  },
+  {
+    "language": "ja-JP",
+    "text": "1.2.5\n• どの端末でもより滑らかで発熱も抑えめに：30 FPSで軽くなった「低」グラフィック、画面に触れていない間はより落ち着いたフレームレート、端末が重いとグラフィックが自動で一段下がります。\n• パネル内のボタンがすべてのタップに再び反応します。\n• 広告関連のまれなクラッシュを修正しました。"
+  },
+  {
+    "language": "ko-KR",
+    "text": "1.2.5\n• 모든 휴대폰에서 더 부드럽고 시원하게: 30 FPS에서 더 가벼워진 낮음 그래픽, 화면을 만지지 않을 때 더 차분한 프레임 속도, 휴대폰이 버거워하면 그래픽이 스스로 한 단계 낮아집니다.\n• 패널의 버튼이 모든 탭에 다시 반응합니다.\n• 드물게 발생하던 광고 관련 충돌을 수정했습니다."
+  },
+  {
+    "language": "pt-BR",
+    "text": "1.2.5\n• Mais fluido e mais frio em qualquer celular: gráficos Baixo mais leves a 30 FPS, uma taxa de quadros mais calma quando você não está tocando na tela, e os gráficos se reduzem sozinhos se o celular travar.\n• Os botões dos painéis voltam a responder a cada toque.\n• Correções para falhas raras relacionadas a anúncios."
+  },
+  {
+    "language": "ru-RU",
+    "text": "1.2.5\n• Плавнее и прохладнее на любом телефоне: облегчённая графика «Низкая» при 30 FPS, более спокойная частота кадров, пока вы не трогаете экран, и графика сама понижается, если телефон не справляется.\n• Кнопки в панелях снова реагируют на каждое нажатие.\n• Исправлены редкие сбои, связанные с рекламой."
+  },
+  {
+    "language": "zh-CN",
+    "text": "1.2.5\n• 在每部手机上都更流畅、更凉爽：30 FPS 下更轻量的“低”画质，不触摸屏幕时更平稳的帧率，手机吃力时画质会自动降低一档。\n• 面板中的按钮重新响应每一次点击。\n• 修复了少数与广告相关的崩溃。"
+  }
+]

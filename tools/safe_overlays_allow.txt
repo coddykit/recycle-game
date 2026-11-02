@@ -1,0 +1,2 @@
+# Edge-anchored files that clear the system bars without reading UiSafeArea (guard: tools/ui/check_safe_overlays.py)
+scripts/ui/title_card.gd: title column starts 210 px below the top (status bar ≤ 110), TAP TO START sits 234 px and the version caption 150 px above the bottom (nav bar 126); the whole card is the tap target

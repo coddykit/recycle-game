@@ -1,0 +1,138 @@
+{
+  "cases": [
+    {
+      "case": "en-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "tr-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "de-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "es-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "fr-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "ja-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "ko-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "pt-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "ru-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "zh-dark",
+      "resolution": "360x720",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "en-light",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "de-light",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "ru-light",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "ja-light",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    },
+    {
+      "case": "privacy",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 0,
+      "errors": []
+    },
+    {
+      "case": "advisor",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 0,
+      "errors": []
+    },
+    {
+      "case": "offline",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 0,
+      "errors": []
+    },
+    {
+      "case": "reset",
+      "resolution": "320x640",
+      "passed": true,
+      "panels": 0,
+      "errors": []
+    },
+    {
+      "case": "tablet",
+      "resolution": "768x1024",
+      "passed": true,
+      "panels": 9,
+      "errors": []
+    }
+  ],
+  "limits": "Desktop rendered sizes; native density/safe-area/device tests recorded separately. Reset-modal capture reopens the privacy modal after Back; its PASS does not prove the reset confirmation screenshot. No native-device verification."
+}

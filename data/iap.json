@@ -1,0 +1,712 @@
+{
+ "_doc": "Borderline Empire shop catalog (coddy_iap, games/tools/shop). Keys starting with _ are ignored. Prices come from the store; usd = reference only. Product ids never change once live.",
+ "prefix": "com.coddykit.borderlineempire.",
+ "legacy": {},
+ "revenuecat": {
+  "api": "https://api.revenuecat.com/v1",
+  "android_key": "goog_LcSfpPKJjYaTKvTTrzkliQmEDol",
+  "ios_key": "appl_ZkkhOViMIdRfytYVQQfDbGHJhRP"
+ },
+ "groups": [
+  {
+   "id": "bundle",
+   "title": {
+    "en": "All in one",
+    "tr": "Hepsi bir arada",
+    "de": "Alles in einem",
+    "es": "Todo en uno",
+    "fr": "Tout en un",
+    "ja": "まとめてお得",
+    "ko": "올인원",
+    "pt": "Tudo em um",
+    "ru": "Всё в одном",
+    "zh": "全部合一"
+   }
+  },
+  {
+   "id": "perm",
+   "title": {
+    "en": "Permanent upgrades",
+    "tr": "Kalıcı yükseltmeler",
+    "de": "Dauerhafte Upgrades",
+    "es": "Mejoras permanentes",
+    "fr": "Améliorations permanentes",
+    "ja": "永久アップグレード",
+    "ko": "영구 업그레이드",
+    "pt": "Melhorias permanentes",
+    "ru": "Постоянные улучшения",
+    "zh": "永久升级"
+   }
+  },
+  {
+   "id": "look",
+   "title": {
+    "en": "Looks",
+    "tr": "Görünümler",
+    "de": "Looks",
+    "es": "Aspectos",
+    "fr": "Apparences",
+    "ja": "見た目",
+    "ko": "외형",
+    "pt": "Visuais",
+    "ru": "Оформление",
+    "zh": "外观"
+   }
+  },
+  {
+   "id": "offer",
+   "title": {
+    "en": "Offers",
+    "tr": "Teklifler",
+    "de": "Angebote",
+    "es": "Ofertas",
+    "fr": "Offres",
+    "ja": "特別オファー",
+    "ko": "특별 제안",
+    "pt": "Ofertas",
+    "ru": "Предложения",
+    "zh": "特惠"
+   }
+  },
+  {
+   "id": "cash",
+   "title": {
+    "en": "Cash",
+    "tr": "Nakit",
+    "de": "Bargeld",
+    "es": "Efectivo",
+    "fr": "Argent",
+    "ja": "資金",
+    "ko": "자금",
+    "pt": "Dinheiro",
+    "ru": "Деньги",
+    "zh": "现金"
+   }
+  }
+ ],
+ "order": [
+  "bundle",
+  "premium",
+  "empire_pass",
+  "noads",
+  "automation_plus",
+  "offline_plus",
+  "paint_street",
+  "paint_military",
+  "paint_luxury",
+  "hq_theme",
+  "driver_portraits",
+  "cosmetics_all",
+  "starter",
+  "legacy_pack",
+  "cash_s",
+  "cash_m",
+  "cash_l"
+ ],
+ "products": {
+  "bundle": {
+   "kind": "permanent",
+   "usd": 14.99,
+   "group": "bundle",
+   "icon": "star",
+   "grants": [
+    "empire_pass",
+    "paint_gold",
+    "hq_theme",
+    "auto_plus",
+    "offline_plus",
+    "paint_street",
+    "paint_military",
+    "paint_luxury",
+    "driver_portraits",
+    "no_ads"
+   ],
+   "title": {
+    "en": "Ultimate Bundle",
+    "tr": "Nihai Paket",
+    "de": "Ultimatives Paket",
+    "es": "Pack definitivo",
+    "fr": "Pack ultime",
+    "ja": "アルティメットバンドル",
+    "ko": "얼티밋 번들",
+    "pt": "Pacote definitivo",
+    "ru": "Максимальный набор",
+    "zh": "终极礼包"
+   },
+   "desc": {
+    "en": "No ads + Kingpin Edition + Longer Offline Earnings + the whole Cosmetics Collection + Quick Start, cheaper together.",
+    "tr": "Reklamsız + Kingpin Sürümü + Uzun Çevrimdışı Kazanç + tüm Kozmetik Koleksiyonu + Hızlı Başlangıç, birlikte daha ucuz.",
+    "de": "Ohne Werbung + Kingpin-Edition + Längere Offline-Einnahmen + komplette Kosmetik-Kollektion + Schnellstart, zusammen günstiger.",
+    "es": "Sin anuncios + Edición Kingpin + Ganancias offline más largas + toda la colección de estética + Inicio rápido, más barato junto.",
+    "fr": "Sans pub + Édition Kingpin + Gains hors ligne prolongés + toute la collection d'apparence + Démarrage rapide, moins cher ensemble.",
+    "ja": "広告なし＋キングピン・エディション＋オフライン収益延長＋コスメコレクション全部＋クイックスタートをまとめてお得に。",
+    "ko": "광고 제거 + 킹핀 에디션 + 오프라인 수익 연장 + 외형 컬렉션 전체 + 빠른 시작을 함께 더 저렴하게.",
+    "pt": "Sem anúncios + Edição Kingpin + Ganhos offline mais longos + toda a Coleção de visuais + Início rápido, mais barato junto.",
+    "ru": "Без рекламы + Издание «Кингпин» + дольше офлайн-доход + вся коллекция оформления + быстрый старт — вместе дешевле.",
+    "zh": "无广告 + 教父版 + 延长离线收益 + 全部外观 + 快速开局，合买更划算。"
+   },
+   "parts": [
+    "premium",
+    "offline_plus",
+    "cosmetics_all",
+    "starter"
+   ],
+   "fx": "starter",
+   "once": true
+  },
+  "premium": {
+   "kind": "permanent",
+   "usd": 9.99,
+   "group": "perm",
+   "icon": "star",
+   "grants": [
+    "empire_pass",
+    "paint_gold",
+    "hq_theme",
+    "auto_plus",
+    "no_ads"
+   ],
+   "title": {
+    "en": "Kingpin Edition",
+    "tr": "Kingpin Sürümü",
+    "de": "Kingpin-Edition",
+    "es": "Edición Kingpin",
+    "fr": "Édition Kingpin",
+    "ja": "キングピン・エディション",
+    "ko": "킹핀 에디션",
+    "pt": "Edição Kingpin",
+    "ru": "Издание «Кингпин»",
+    "zh": "教父版"
+   },
+   "desc": {
+    "en": "Empire Pass + gold fleet paint + HQ Signature + the Crisis Manager automation. Ads gone for good.",
+    "tr": "İmparatorluk Bileti + altın filo boyası + Karargâh İmzası + Kriz Yöneticisi otomasyonu. Reklamlar sonsuza dek kalkar.",
+    "de": "Empire-Pass + Gold-Flottenlack + HQ-Signatur + Krisenmanager-Automatik. Nie wieder Werbung.",
+    "es": "Pase del Imperio + pintura dorada de flota + firma del cuartel + automatización de Gestor de crisis. Sin anuncios para siempre.",
+    "fr": "Pass Empire + peinture dorée de flotte + signature du QG + automatisation Gestionnaire de crise. Plus jamais de pub.",
+    "ja": "エンパイアパス＋ゴールドの車両塗装＋本部シグネチャー＋危機管理の自動化。広告は二度と出ません。",
+    "ko": "엠파이어 패스 + 골드 차량 도색 + 본부 시그니처 + 위기 관리자 자동화. 광고가 영구히 사라집니다.",
+    "pt": "Passe do Império + pintura dourada da frota + assinatura da sede + automação do Gestor de crises. Sem anúncios para sempre.",
+    "ru": "Имперский пропуск + золотая покраска парка + подпись штаба + автоматизация «Кризис-менеджер». Реклама отключена навсегда.",
+    "zh": "帝国通行证 + 金色车队涂装 + 总部招牌 + 危机经理自动化。永久无广告。"
+   }
+  },
+  "empire_pass": {
+   "kind": "permanent",
+   "usd": 3.99,
+   "group": "perm",
+   "icon": "trophy",
+   "grants": [
+    "empire_pass",
+    "no_ads"
+   ],
+   "title": {
+    "en": "Empire Pass",
+    "tr": "İmparatorluk Bileti",
+    "de": "Empire-Pass",
+    "es": "Pase del Imperio",
+    "fr": "Pass Empire",
+    "ja": "エンパイアパス",
+    "ko": "엠파이어 패스",
+    "pt": "Passe do Império",
+    "ru": "Имперский пропуск",
+    "zh": "帝国通行证"
+   },
+   "desc": {
+    "en": "Permanent ×1.25 delivery pay, sponsor bonus without the video, ads gone.",
+    "tr": "Kalıcı 1,25× teslimat ücreti, videosuz sponsor bonusu, reklamsız oyun.",
+    "de": "Dauerhaft 1,25× Lieferlohn, Sponsor-Bonus ohne Video, keine Werbung.",
+    "es": "Entregas ×1,25 para siempre, bonus de patrocinador sin vídeo y sin anuncios.",
+    "fr": "Paiements ×1,25 permanents, bonus sponsor sans vidéo, plus de pub.",
+    "ja": "配達報酬が永久に1.25倍。動画なしでスポンサーボーナス、広告なし。",
+    "ko": "배송 보수 영구 1.25배, 광고 없이 스폰서 보너스, 광고 제거.",
+    "pt": "Entregas ×1,25 para sempre, bônus de patrocinador sem vídeo e sem anúncios.",
+    "ru": "Постоянно ×1,25 к оплате доставок, бонус спонсора без видео, без рекламы.",
+    "zh": "配送收益永久 ×1.25，免看视频领赞助奖金，并移除广告。"
+   },
+   "id": "com.coddykit.borderlineempire.empire_pass"
+  },
+  "noads": {
+   "kind": "permanent",
+   "usd": 2.99,
+   "group": "perm",
+   "icon": "shield",
+   "grants": [
+    "no_ads"
+   ],
+   "title": {
+    "en": "Remove Ads",
+    "tr": "Reklamları Kaldır",
+    "de": "Werbung entfernen",
+    "es": "Quitar anuncios",
+    "fr": "Supprimer les pubs",
+    "ja": "広告を削除",
+    "ko": "광고 제거",
+    "pt": "Remover anúncios",
+    "ru": "Убрать рекламу",
+    "zh": "移除广告"
+   },
+   "desc": {
+    "en": "No more ads, ever. The sponsor bonus is yours without watching a video.",
+    "tr": "Bir daha reklam yok. Sponsor bonusunu video izlemeden alırsın.",
+    "de": "Nie wieder Werbung. Den Sponsor-Bonus gibt es ohne Video.",
+    "es": "Sin anuncios nunca más. El bonus del patrocinador es tuyo sin ver un vídeo.",
+    "fr": "Plus jamais de pub. Le bonus sponsor est à toi sans regarder de vidéo.",
+    "ja": "広告は二度と表示されません。スポンサーボーナスも動画なしで受け取れます。",
+    "ko": "다시는 광고가 나오지 않습니다. 스폰서 보너스도 영상 없이 받습니다.",
+    "pt": "Nunca mais anúncios. O bônus do patrocinador é seu sem assistir a vídeo.",
+    "ru": "Рекламы больше не будет. Бонус спонсора — без просмотра видео.",
+    "zh": "再也没有广告。赞助奖金无需观看视频即可领取。"
+   }
+  },
+  "automation_plus": {
+   "kind": "permanent",
+   "usd": 3.99,
+   "group": "perm",
+   "icon": "robot",
+   "grants": [
+    "auto_plus"
+   ],
+   "title": {
+    "en": "Crisis Manager",
+    "tr": "Kriz Yöneticisi",
+    "de": "Krisenmanager",
+    "es": "Gestor de crisis",
+    "fr": "Gestionnaire de crise",
+    "ja": "危機管理",
+    "ko": "위기 관리자",
+    "pt": "Gestor de crises",
+    "ru": "Кризис-менеджер",
+    "zh": "危机经理"
+   },
+   "desc": {
+    "en": "A fifth automation line: road events are handled and daily jobs claimed for you. You can switch it off.",
+    "tr": "Beşinci otomasyon hattı: yol olaylarını halleder, günlük görevleri senin yerine toplar. İstersen kapatabilirsin.",
+    "de": "Eine fünfte Automatisierung: erledigt Straßenereignisse und holt die Tagesaufträge für dich ab. Abschaltbar.",
+    "es": "Una quinta línea de automatización: resuelve los imprevistos y cobra los trabajos diarios por ti. Puedes apagarla.",
+    "fr": "Une cinquième ligne d'automatisation : gère les incidents de route et encaisse les missions du jour à ta place. Désactivable.",
+    "ja": "5つ目の自動化。道中のイベントを処理し、デイリー任務の報酬も代わりに受け取ります。いつでもオフにできます。",
+    "ko": "다섯 번째 자동화 라인: 도로 이벤트를 처리하고 일일 임무 보상도 대신 받습니다. 언제든 끌 수 있습니다.",
+    "pt": "Uma quinta linha de automação: resolve os imprevistos e coleta as tarefas diárias por você. Dá para desligar.",
+    "ru": "Пятая линия автоматизации: решает дорожные события и забирает ежедневные задания за вас. Можно отключить.",
+    "zh": "第五条自动化线路：替你处理途中事件并自动领取每日任务奖励，可随时关闭。"
+   }
+  },
+  "offline_plus": {
+   "kind": "permanent",
+   "usd": 2.99,
+   "group": "perm",
+   "icon": "clock",
+   "grants": [
+    "offline_plus"
+   ],
+   "title": {
+    "en": "Longer Offline Earnings",
+    "tr": "Uzun Çevrimdışı Kazanç",
+    "de": "Längere Offline-Einnahmen",
+    "es": "Ganancias offline más largas",
+    "fr": "Gains hors ligne prolongés",
+    "ja": "オフライン収益延長",
+    "ko": "오프라인 수익 연장",
+    "pt": "Ganhos offline mais longos",
+    "ru": "Дольше офлайн-доход",
+    "zh": "延长离线收益"
+   },
+   "desc": {
+    "en": "Offline progress now lasts up to 8 hours instead of 2.",
+    "tr": "Çevrimdışı ilerleme 2 saat yerine 8 saate kadar sürer.",
+    "de": "Offline-Fortschritt zählt bis zu 8 statt 2 Stunden.",
+    "es": "El progreso sin conexión dura hasta 8 horas en vez de 2.",
+    "fr": "La progression hors ligne dure jusqu'à 8 h au lieu de 2 h.",
+    "ja": "オフライン進行が2時間から最大8時間まで続きます。",
+    "ko": "오프라인 진행이 2시간에서 최대 8시간까지 이어집니다.",
+    "pt": "O progresso offline dura até 8 horas em vez de 2.",
+    "ru": "Офлайн-прогресс идёт до 8 часов вместо 2.",
+    "zh": "离线进度最长可达 8 小时（原为 2 小时）。"
+   }
+  },
+  "paint_street": {
+   "kind": "permanent",
+   "usd": 1.99,
+   "group": "look",
+   "icon": "truck",
+   "grants": [
+    "paint_street"
+   ],
+   "title": {
+    "en": "Street Paint Set",
+    "tr": "Sokak Boya Seti",
+    "de": "Street-Lackset",
+    "es": "Set de pintura Street",
+    "fr": "Set de peintures Street",
+    "ja": "ストリート塗装セット",
+    "ko": "스트리트 도색 세트",
+    "pt": "Kit de pintura Street",
+    "ru": "Набор «Стрит»",
+    "zh": "街头涂装套装"
+   },
+   "desc": {
+    "en": "Six loud street colours for your vehicles. Looks only.",
+    "tr": "Araçların için altı gösterişli sokak rengi. Yalnızca görünüm.",
+    "de": "Sechs knallige Straßenfarben für deine Fahrzeuge. Nur fürs Aussehen.",
+    "es": "Seis colores urbanos llamativos para tus vehículos. Solo estética.",
+    "fr": "Six couleurs de rue éclatantes pour tes véhicules. Purement esthétique.",
+    "ja": "車両用の派手なストリートカラー6色。見た目だけの要素です。",
+    "ko": "차량용 화려한 스트리트 색상 6종. 외형만 바뀝니다.",
+    "pt": "Seis cores urbanas chamativas para seus veículos. Só visual.",
+    "ru": "Шесть ярких уличных цветов для машин. Только внешний вид.",
+    "zh": "为车辆提供六种鲜艳的街头配色。仅改变外观。"
+   }
+  },
+  "paint_military": {
+   "kind": "permanent",
+   "usd": 1.99,
+   "group": "look",
+   "icon": "truck",
+   "grants": [
+    "paint_military"
+   ],
+   "title": {
+    "en": "Military Paint Set",
+    "tr": "Askeri Boya Seti",
+    "de": "Militär-Lackset",
+    "es": "Set de pintura militar",
+    "fr": "Set de peintures militaires",
+    "ja": "ミリタリー塗装セット",
+    "ko": "밀리터리 도색 세트",
+    "pt": "Kit de pintura militar",
+    "ru": "Набор «Милитари»",
+    "zh": "军事涂装套装"
+   },
+   "desc": {
+    "en": "Six matte olive, sand and steel colours. Looks only.",
+    "tr": "Altı mat zeytin, kum ve çelik rengi. Yalnızca görünüm.",
+    "de": "Sechs matte Oliv-, Sand- und Stahltöne. Nur fürs Aussehen.",
+    "es": "Seis tonos mate de oliva, arena y acero. Solo estética.",
+    "fr": "Six teintes mates olive, sable et acier. Purement esthétique.",
+    "ja": "オリーブ、サンド、スチールのマット6色。見た目だけです。",
+    "ko": "올리브·샌드·스틸 무광 색상 6종. 외형만 바뀝니다.",
+    "pt": "Seis tons foscos de oliva, areia e aço. Só visual.",
+    "ru": "Шесть матовых оттенков оливы, песка и стали. Только внешний вид.",
+    "zh": "六种哑光橄榄、沙色与钢灰配色。仅改变外观。"
+   }
+  },
+  "paint_luxury": {
+   "kind": "permanent",
+   "usd": 1.99,
+   "group": "look",
+   "icon": "truck",
+   "grants": [
+    "paint_luxury"
+   ],
+   "title": {
+    "en": "Luxury Paint Set",
+    "tr": "Lüks Boya Seti",
+    "de": "Luxus-Lackset",
+    "es": "Set de pintura de lujo",
+    "fr": "Set de peintures de luxe",
+    "ja": "ラグジュアリー塗装セット",
+    "ko": "럭셔리 도색 세트",
+    "pt": "Kit de pintura de luxo",
+    "ru": "Набор «Люкс»",
+    "zh": "奢华涂装套装"
+   },
+   "desc": {
+    "en": "Six pearl, champagne and deep jewel colours. Looks only.",
+    "tr": "Altı inci, şampanya ve koyu mücevher rengi. Yalnızca görünüm.",
+    "de": "Sechs Perlmutt-, Champagner- und tiefe Juwelentöne. Nur fürs Aussehen.",
+    "es": "Seis tonos perla, champán y joya intensos. Solo estética.",
+    "fr": "Six teintes nacrées, champagne et bijou profond. Purement esthétique.",
+    "ja": "パール、シャンパン、深い宝石色の6色。見た目だけです。",
+    "ko": "펄·샴페인·짙은 보석 색상 6종. 외형만 바뀝니다.",
+    "pt": "Seis tons de pérola, champanhe e joia profunda. Só visual.",
+    "ru": "Шесть оттенков жемчуга, шампанского и глубоких самоцветов. Только внешний вид.",
+    "zh": "六种珍珠、香槟与深宝石配色。仅改变外观。"
+   }
+  },
+  "hq_theme": {
+   "kind": "permanent",
+   "usd": 1.99,
+   "group": "look",
+   "icon": "garage",
+   "grants": [
+    "hq_theme"
+   ],
+   "title": {
+    "en": "HQ Signature",
+    "tr": "Karargâh İmzası",
+    "de": "HQ-Signatur",
+    "es": "Firma del cuartel",
+    "fr": "Signature du QG",
+    "ja": "本部シグネチャー",
+    "ko": "본부 시그니처",
+    "pt": "Assinatura da sede",
+    "ru": "Подпись штаб-квартиры",
+    "zh": "总部招牌"
+   },
+   "desc": {
+    "en": "A lit gold sign over your HQ and six extra company colours. Looks only.",
+    "tr": "Karargâhının üstünde parlayan altın tabela ve altı ek şirket rengi. Yalnızca görünüm.",
+    "de": "Ein leuchtendes Goldschild über deinem HQ und sechs weitere Firmenfarben. Nur fürs Aussehen.",
+    "es": "Un cartel dorado iluminado sobre tu cuartel y seis colores de empresa extra. Solo estética.",
+    "fr": "Une enseigne dorée lumineuse sur ton QG et six couleurs d'entreprise en plus. Purement esthétique.",
+    "ja": "本部の上に輝くゴールドの看板と、会社カラー6色を追加。見た目だけです。",
+    "ko": "본부 위의 빛나는 금색 간판과 회사 색상 6종 추가. 외형만 바뀝니다.",
+    "pt": "Uma placa dourada iluminada sobre a sede e seis cores de empresa extras. Só visual.",
+    "ru": "Светящаяся золотая вывеска над штабом и шесть дополнительных цветов компании. Только внешний вид.",
+    "zh": "总部上方的金色发光招牌，外加六种公司配色。仅改变外观。"
+   }
+  },
+  "driver_portraits": {
+   "kind": "permanent",
+   "usd": 1.99,
+   "group": "look",
+   "icon": "driver",
+   "grants": [
+    "driver_portraits"
+   ],
+   "title": {
+    "en": "Driver Portraits",
+    "tr": "Sürücü Portreleri",
+    "de": "Fahrerporträts",
+    "es": "Retratos de conductores",
+    "fr": "Portraits de chauffeurs",
+    "ja": "ドライバーの肖像",
+    "ko": "운전사 초상화",
+    "pt": "Retratos dos motoristas",
+    "ru": "Портреты водителей",
+    "zh": "司机肖像"
+   },
+   "desc": {
+    "en": "Every driver gets their own face on the payroll. Looks only.",
+    "tr": "Bordrodaki her sürücü kendi yüzüne kavuşur. Yalnızca görünüm.",
+    "de": "Jeder Fahrer bekommt in der Lohnliste sein eigenes Gesicht. Nur fürs Aussehen.",
+    "es": "Cada conductor tiene su propia cara en la nómina. Solo estética.",
+    "fr": "Chaque chauffeur a son propre visage dans la paie. Purement esthétique.",
+    "ja": "給与名簿の全ドライバーに専用の顔が付きます。見た目だけです。",
+    "ko": "급여 명단의 모든 운전사가 고유한 얼굴을 갖습니다. 외형만 바뀝니다.",
+    "pt": "Cada motorista ganha o próprio rosto na folha de pagamento. Só visual.",
+    "ru": "У каждого водителя в списке появляется собственное лицо. Только внешний вид.",
+    "zh": "每位司机在名册中都有专属头像。仅改变外观。"
+   }
+  },
+  "cosmetics_all": {
+   "kind": "permanent",
+   "usd": 4.99,
+   "group": "look",
+   "icon": "star",
+   "grants": [
+    "paint_street",
+    "paint_military",
+    "paint_luxury",
+    "paint_gold",
+    "hq_theme",
+    "driver_portraits"
+   ],
+   "title": {
+    "en": "Cosmetics Collection",
+    "tr": "Kozmetik Koleksiyonu",
+    "de": "Kosmetik-Kollektion",
+    "es": "Colección de estética",
+    "fr": "Collection d'apparence",
+    "ja": "コスメコレクション",
+    "ko": "외형 컬렉션",
+    "pt": "Coleção de visuais",
+    "ru": "Коллекция оформления",
+    "zh": "外观全收集"
+   },
+   "desc": {
+    "en": "All three paint sets, HQ Signature, Driver Portraits and the gold paint. Looks only.",
+    "tr": "Üç boya seti, Karargâh İmzası, Sürücü Portreleri ve altın boya. Yalnızca görünüm.",
+    "de": "Alle drei Lacksets, HQ-Signatur, Fahrerporträts und der Goldlack. Nur fürs Aussehen.",
+    "es": "Los tres sets de pintura, la firma del cuartel, los retratos y la pintura dorada. Solo estética.",
+    "fr": "Les trois sets de peinture, la signature du QG, les portraits et la peinture dorée. Purement esthétique.",
+    "ja": "塗装セット3種、本部シグネチャー、ドライバーの肖像、ゴールド塗装のすべて。見た目だけです。",
+    "ko": "도색 세트 3종, 본부 시그니처, 운전사 초상화, 골드 도색까지 모두. 외형만 바뀝니다.",
+    "pt": "Os três kits de pintura, a assinatura da sede, os retratos e a pintura dourada. Só visual.",
+    "ru": "Все три набора покраски, подпись штаба, портреты и золотая покраска. Только внешний вид.",
+    "zh": "三套涂装、总部招牌、司机肖像和金色涂装，全部拥有。仅改变外观。"
+   },
+   "parts": [
+    "paint_street",
+    "paint_military",
+    "paint_luxury",
+    "hq_theme",
+    "driver_portraits"
+   ]
+  },
+  "starter": {
+   "kind": "permanent",
+   "usd": 1.99,
+   "group": "offer",
+   "icon": "bolt",
+   "grants": [],
+   "title": {
+    "en": "Quick Start",
+    "tr": "Hızlı Başlangıç",
+    "de": "Schnellstart",
+    "es": "Inicio rápido",
+    "fr": "Démarrage rapide",
+    "ja": "クイックスタート",
+    "ko": "빠른 시작",
+    "pt": "Início rápido",
+    "ru": "Быстрый старт",
+    "zh": "快速开局"
+   },
+   "desc": {
+    "en": "A cash boost and a skilled driver for your first days. Only once.",
+    "tr": "İlk günlerin için nakit desteği ve yetenekli bir sürücü. Yalnızca bir kez.",
+    "de": "Ein Geldschub und ein erfahrener Fahrer für deine ersten Tage. Nur einmal.",
+    "es": "Un empujón de dinero y un conductor experto para tus primeros días. Solo una vez.",
+    "fr": "Un coup de pouce en argent et un chauffeur expérimenté pour tes premiers jours. Une seule fois.",
+    "ja": "最初の数日のための資金と腕利きドライバー1人。1回限り。",
+    "ko": "처음 며칠을 위한 자금과 숙련된 운전사 1명. 한 번만.",
+    "pt": "Um reforço de dinheiro e um motorista experiente para os primeiros dias. Só uma vez.",
+    "ru": "Деньги и опытный водитель на первые дни. Только один раз.",
+    "zh": "为前几天提供启动资金和一名熟练司机。仅限一次。"
+   },
+   "fx": "starter",
+   "once": true
+  },
+  "legacy_pack": {
+   "kind": "consumable",
+   "usd": 3.99,
+   "group": "offer",
+   "icon": "cash",
+   "grants": [],
+   "title": {
+    "en": "Legacy Head Start",
+    "tr": "Miras Başlangıcı",
+    "de": "Vermächtnis-Vorsprung",
+    "es": "Impulso de legado",
+    "fr": "Coup d'envoi Héritage",
+    "ja": "レガシー・スタートダッシュ",
+    "ko": "레거시 스타트",
+    "pt": "Impulso de legado",
+    "ru": "Старт наследия",
+    "zh": "传承起步包"
+   },
+   "desc": {
+    "en": "For a new run after selling your empire: cash worth about 20 minutes of your last run's income.",
+    "tr": "İmparatorluğu sattıktan sonraki yeni tur için: son turundaki yaklaşık 20 dakikalık gelire denk nakit.",
+    "de": "Für einen neuen Durchgang nach dem Verkauf: Geld im Wert von etwa 20 Minuten deines letzten Einkommens.",
+    "es": "Para una nueva partida tras vender tu imperio: dinero equivalente a unos 20 minutos de tus ingresos anteriores.",
+    "fr": "Pour une nouvelle partie après la vente de ton empire : de l'argent équivalant à environ 20 minutes de tes revenus précédents.",
+    "ja": "帝国を売却して新しく始めるときに：前回の収入およそ20分ぶんの資金。",
+    "ko": "제국을 팔고 새로 시작할 때: 지난 판 수입 약 20분 분량의 자금.",
+    "pt": "Para uma nova partida após vender o império: dinheiro equivalente a cerca de 20 minutos da renda anterior.",
+    "ru": "Для нового круга после продажи империи: деньги, равные примерно 20 минутам прошлого дохода.",
+    "zh": "出售帝国后开始新周目：相当于上一周目约 20 分钟收入的现金。"
+   },
+   "fx": "legacy_pack"
+  },
+  "cash_s": {
+   "kind": "consumable",
+   "usd": 0.99,
+   "group": "cash",
+   "icon": "cash",
+   "grants": [],
+   "title": {
+    "en": "Small Cash Pack",
+    "tr": "Küçük Nakit",
+    "de": "Kleines Geldpaket",
+    "es": "Paquete de dinero pequeño",
+    "fr": "Petit pack d'argent",
+    "ja": "資金パック（小）",
+    "ko": "자금 팩 (소)",
+    "pt": "Pacote de dinheiro pequeno",
+    "ru": "Малый пакет денег",
+    "zh": "小额现金包"
+   },
+   "desc": {
+    "en": "About half an hour of your income, at once.",
+    "tr": "Gelirinin yaklaşık yarım saati, anında.",
+    "de": "Etwa eine halbe Stunde deines Einkommens, sofort.",
+    "es": "Aproximadamente media hora de tus ingresos, al instante.",
+    "fr": "Environ une demi-heure de tes revenus, tout de suite.",
+    "ja": "収入およそ30分ぶんを今すぐ受け取れます。",
+    "ko": "수입 약 30분 분량을 바로 받습니다.",
+    "pt": "Cerca de meia hora da sua renda, na hora.",
+    "ru": "Около получаса вашего дохода — сразу.",
+    "zh": "约相当于 30 分钟收入，立即到账。"
+   },
+   "fx": "cash_s"
+  },
+  "cash_m": {
+   "kind": "consumable",
+   "usd": 2.99,
+   "group": "cash",
+   "icon": "cash",
+   "grants": [],
+   "title": {
+    "en": "Medium Cash Pack",
+    "tr": "Orta Nakit",
+    "de": "Mittleres Geldpaket",
+    "es": "Paquete de dinero mediano",
+    "fr": "Pack d'argent moyen",
+    "ja": "資金パック（中）",
+    "ko": "자금 팩 (중)",
+    "pt": "Pacote de dinheiro médio",
+    "ru": "Средний пакет денег",
+    "zh": "中额现金包"
+   },
+   "desc": {
+    "en": "About an hour and a quarter of your income.",
+    "tr": "Gelirinin yaklaşık bir saat on beş dakikası.",
+    "de": "Etwa eineinviertel Stunden deines Einkommens.",
+    "es": "Aproximadamente una hora y cuarto de tus ingresos.",
+    "fr": "Environ une heure et quart de tes revenus.",
+    "ja": "収入およそ1時間15分ぶん。",
+    "ko": "수입 약 1시간 15분 분량.",
+    "pt": "Cerca de uma hora e quinze da sua renda.",
+    "ru": "Около часа пятнадцати минут вашего дохода.",
+    "zh": "约相当于 1 小时 15 分钟收入。"
+   },
+   "fx": "cash_m"
+  },
+  "cash_l": {
+   "kind": "consumable",
+   "usd": 6.99,
+   "group": "cash",
+   "icon": "cash",
+   "grants": [],
+   "title": {
+    "en": "Large Cash Pack",
+    "tr": "Büyük Nakit",
+    "de": "Großes Geldpaket",
+    "es": "Paquete de dinero grande",
+    "fr": "Grand pack d'argent",
+    "ja": "資金パック（大）",
+    "ko": "자금 팩 (대)",
+    "pt": "Pacote de dinheiro grande",
+    "ru": "Большой пакет денег",
+    "zh": "大额现金包"
+   },
+   "desc": {
+    "en": "About two and a half hours of your income.",
+    "tr": "Gelirinin yaklaşık iki buçuk saati.",
+    "de": "Etwa zweieinhalb Stunden deines Einkommens.",
+    "es": "Aproximadamente dos horas y media de tus ingresos.",
+    "fr": "Environ deux heures et demie de tes revenus.",
+    "ja": "収入およそ2時間30分ぶん。",
+    "ko": "수입 약 2시간 30분 분량.",
+    "pt": "Cerca de duas horas e meia da sua renda.",
+    "ru": "Около двух с половиной часов вашего дохода.",
+    "zh": "约相当于 2 小时 30 分钟收入。"
+   },
+   "fx": "cash_l"
+  }
+ },
+ "offers": {
+  "cooldown_days": 3,
+  "starter": {
+   "day_min": 3,
+   "day_max": 7,
+   "per_game": 1
+  },
+  "legacy_pack": {
+   "event": "prestige",
+   "per_game": 3
+  }
+ }
+}

@@ -1,0 +1,27 @@
+{
+  "product_id": "com.coddykit.borderlineempire.empire_pass",
+  "entitlement": "empire_pass",
+  "revenuecat_android_key": "goog_LcSfpPKJjYaTKvTTrzkliQmEDol",
+  "revenuecat_ios_key": "appl_ZkkhOViMIdRfytYVQQfDbGHJhRP",
+  "rewarded_android": "ca-app-pub-5045495642689387/6320083416",
+  "rewarded_ios": "ca-app-pub-5045495642689387/1682000256",
+  "reward_cooldown_seconds": 600,
+  "pass_delivery_multiplier": 1.25,
+  "placements": {
+    "sponsor": {
+      "daily_cap": 5
+    },
+    "offline_double": {
+      "daily_cap": 3,
+      "cooldown_seconds": 300
+    },
+    "repair_finish": {
+      "daily_cap": 4,
+      "cooldown_seconds": 180
+    },
+    "daily_double": {
+      "daily_cap": 3,
+      "cooldown_seconds": 120
+    }
+  }
+}

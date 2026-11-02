@@ -1,0 +1,167 @@
+{
+ "Cash": {
+  "tr": "Nakit",
+  "de": "Bargeld",
+  "es": "Efectivo",
+  "fr": "Argent",
+  "ja": "資金",
+  "ko": "자금",
+  "pt": "Dinheiro",
+  "ru": "Деньги",
+  "zh": "现金"
+ },
+ "Reputation": {
+  "tr": "İtibar",
+  "de": "Ansehen",
+  "es": "Reputación",
+  "fr": "Réputation",
+  "ja": "評判",
+  "ko": "평판",
+  "pt": "Reputação",
+  "ru": "Репутация",
+  "zh": "声望"
+ },
+ "Heat": {
+  "tr": "Isı",
+  "de": "Hitze",
+  "es": "Calor",
+  "fr": "Chaleur",
+  "ja": "熱量",
+  "ko": "열기",
+  "pt": "Calor",
+  "ru": "Нагрев",
+  "zh": "热度"
+ },
+ "Rotate left": {
+  "tr": "Sola döndür",
+  "de": "Nach links drehen",
+  "es": "Girar a la izquierda",
+  "fr": "Pivoter à gauche",
+  "ja": "左に回転",
+  "ko": "왼쪽으로 회전",
+  "pt": "Girar para a esquerda",
+  "ru": "Повернуть влево",
+  "zh": "向左旋转"
+ },
+ "Rotate right": {
+  "tr": "Sağa döndür",
+  "de": "Nach rechts drehen",
+  "es": "Girar a la derecha",
+  "fr": "Pivoter à droite",
+  "ja": "右に回転",
+  "ko": "오른쪽으로 회전",
+  "pt": "Girar para a direita",
+  "ru": "Повернуть вправо",
+  "zh": "向右旋转"
+ },
+ "STAGE %d/%d · %s": {
+  "tr": "AŞAMA %d/%d · %s",
+  "de": "ETAPPE %d/%d · %s",
+  "es": "ETAPA %d/%d · %s",
+  "fr": "ÉTAPE %d/%d · %s",
+  "ja": "ステージ %d/%d · %s",
+  "ko": "스테이지 %d/%d · %s",
+  "pt": "ETAPA %d/%d · %s",
+  "ru": "ЭТАП %d/%d · %s",
+  "zh": "阶段%d/%d · %s"
+ },
+ "Random name": {
+  "tr": "Rastgele ad",
+  "de": "Zufälliger Name",
+  "es": "Nombre al azar",
+  "fr": "Nom aléatoire",
+  "ja": "ランダムな名前",
+  "ko": "무작위 이름",
+  "pt": "Nome aleatório",
+  "ru": "Случайное название",
+  "zh": "随机名称"
+ },
+ "Tap the highlighted spot": {
+  "tr": "Vurgulanan yere dokun",
+  "de": "Tippe auf die markierte Stelle",
+  "es": "Toca el punto resaltado",
+  "fr": "Touchez l’endroit en surbrillance",
+  "ja": "ハイライトされた場所をタップ",
+  "ko": "강조된 곳을 탭하세요",
+  "pt": "Toque no ponto destacado",
+  "ru": "Нажмите на выделенное место",
+  "zh": "点击高亮位置"
+ },
+ "Privacy options": {
+  "tr": "Gizlilik seçenekleri",
+  "de": "Datenschutzoptionen",
+  "es": "Opciones de privacidad",
+  "fr": "Options de confidentialité",
+  "ja": "プライバシーの選択",
+  "ko": "개인정보 옵션",
+  "pt": "Opções de privacidade",
+  "ru": "Параметры конфиденциальности",
+  "zh": "隐私选项"
+ },
+ "Privacy policy": {
+  "tr": "Gizlilik politikası",
+  "de": "Datenschutzerklärung",
+  "es": "Política de privacidad",
+  "fr": "Politique de confidentialité",
+  "ja": "プライバシーポリシー",
+  "ko": "개인정보 처리방침",
+  "pt": "Política de privacidade",
+  "ru": "Политика конфиденциальности",
+  "zh": "隐私政策"
+ },
+ "Sound": {
+  "tr": "Ses",
+  "de": "Ton",
+  "es": "Sonido",
+  "fr": "Son",
+  "ja": "サウンド",
+  "ko": "사운드",
+  "pt": "Som",
+  "ru": "Звук",
+  "zh": "声音"
+ },
+ "Comfort": {
+  "tr": "Konfor",
+  "de": "Komfort",
+  "es": "Comodidad",
+  "fr": "Confort",
+  "ja": "快適設定",
+  "ko": "편의 설정",
+  "pt": "Conforto",
+  "ru": "Удобство",
+  "zh": "舒适设置"
+ },
+ "Help": {
+  "tr": "Yardım",
+  "de": "Hilfe",
+  "es": "Ayuda",
+  "fr": "Aide",
+  "ja": "ヘルプ",
+  "ko": "도움말",
+  "pt": "Ajuda",
+  "ru": "Помощь",
+  "zh": "帮助"
+ },
+ "Purchases & support": {
+  "tr": "Satın alımlar ve destek",
+  "de": "Käufe & Support",
+  "es": "Compras y soporte",
+  "fr": "Achats et assistance",
+  "ja": "購入とサポート",
+  "ko": "구매 및 지원",
+  "pt": "Compras e suporte",
+  "ru": "Покупки и поддержка",
+  "zh": "购买与支持"
+ },
+ "How your data is used": {
+  "tr": "Verilerin nasıl kullanıldığı",
+  "de": "Wie deine Daten verwendet werden",
+  "es": "Cómo se usan tus datos",
+  "fr": "Comment vos données sont utilisées",
+  "ja": "データの利用について",
+  "ko": "데이터 사용 방식",
+  "pt": "Como seus dados são usados",
+  "ru": "Как используются ваши данные",
+  "zh": "数据使用说明"
+ }
+}

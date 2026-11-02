@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "998857716666",
+    "project_id": "coddykit-game",
+    "storage_bucket": "coddykit-game.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998857716666:android:14dcaec9519b4b43d42383",
+        "android_client_info": {
+          "package_name": "com.coddykit.borderlineempire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEMcZKxLf_k5dmOHKzQjqCwpwAuZBlCtI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

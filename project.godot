@@ -1,0 +1,103 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[admob]
+
+general/android/app_id="ca-app-pub-5045495642689387~7497433714"
+general/ios/app_id="ca-app-pub-5045495642689387~6233645479"
+
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
+[application]
+
+config/name="Borderline Empire"
+config/description="Hybrid-casual shadow-logistics tycoon. Build a fictional underground delivery empire."
+config/version="1.4.3"
+run/main_scene="res://scenes/boot/boot.tscn"
+config/quit_on_go_back=false
+config/features=PackedStringArray("4.7", "GL Compatibility")
+boot_splash/bg_color=Color(0.105882, 0.117647, 0.192157, 1)
+boot_splash/show_image=false
+config/icon="res://store/icons/icon_512.png"
+
+[audio]
+
+buses/default_bus_layout=""
+
+[autoload]
+
+Data="*res://scripts/core/data.gd"
+Models="*res://scripts/core/model_library.gd"
+EconomyManager="*res://scripts/economy/economy_manager.gd"
+RegionManager="*res://scripts/world/region_manager.gd"
+HeatManager="*res://scripts/world/heat_manager.gd"
+ProgressionManager="*res://scripts/progression/progression_manager.gd"
+VehicleManager="*res://scripts/vehicles/vehicle_manager.gd"
+EventManager="*res://scripts/core/event_manager.gd"
+ContractManager="*res://scripts/contracts/contract_manager.gd"
+SaveManager="*res://scripts/core/save_manager.gd"
+AudioManager="*res://scripts/core/audio_manager.gd"
+UIManager="*res://scripts/ui/ui_manager.gd"
+TutorialManager="*res://scripts/progression/tutorial_manager.gd"
+GameManager="*res://scripts/core/game_manager.gd"
+DailyManager="*res://scripts/progression/daily_manager.gd"
+Iap="*res://addons/coddy_iap/IapStore.gd"
+Ads="*res://scripts/monetization/coddy_ads.gd"
+Monetization="*res://scripts/monetization/monetization.gd"
+Analytics="*res://scripts/autoload/Analytics.gd"
+
+[coddy_ads]
+
+app_id="borderline-empire"
+max_ad_content_rating="PG"
+admob_interstitial_android="ca-app-pub-5045495642689387/3168498430"
+admob_interstitial_ios=""
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=1280
+window/size/window_width_override=432
+window/size/window_height_override=864
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godotx_revenue_cat/plugin.cfg", "res://addons/admob/plugin.cfg", "res://addons/godotx_firebase/plugin.cfg", "res://addons/coddy_firebase_gradle/plugin.cfg")
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/strings.en.translation", "res://translations/strings.tr.translation", "res://translations/strings.de.translation", "res://translations/strings.es.translation", "res://translations/strings.fr.translation", "res://translations/strings.ja.translation", "res://translations/strings.ko.translation", "res://translations/strings.pt.translation", "res://translations/strings.ru.translation", "res://translations/strings.zh.translation")
+
+[physics]
+
+common/physics_ticks_per_second=30
+common/max_physics_steps_per_frame=1
+2d/physics_engine="Dummy"
+3d/physics_engine="Dummy"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+lights_and_shadows/directional_shadow/size=2048
+lights_and_shadows/directional_shadow/size.mobile=1024
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=1
+anti_aliasing/quality/msaa_3d=1
+environment/defaults/default_clear_color=Color(0.427451, 0.721569, 0.858824, 1)

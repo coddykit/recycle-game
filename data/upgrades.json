@@ -1,0 +1,258 @@
+{
+ "vehicle": [
+  {
+   "id": "engine",
+   "name": "Engine",
+   "icon": "bolt",
+   "max": 5,
+   "desc": "+8% speed",
+   "mult": 1.0
+  },
+  {
+   "id": "capacity",
+   "name": "Capacity",
+   "icon": "box",
+   "max": 5,
+   "desc": "+cargo space",
+   "mult": 1.15
+  },
+  {
+   "id": "reliability",
+   "name": "Reliability",
+   "icon": "shield",
+   "max": 5,
+   "desc": "+6 reliability",
+   "mult": 0.9
+  },
+  {
+   "id": "navigation",
+   "name": "Navigation",
+   "icon": "map",
+   "max": 5,
+   "desc": "-3% trip risk",
+   "mult": 1.0
+  },
+  {
+   "id": "fuel",
+   "name": "Fuel Efficiency",
+   "icon": "cash",
+   "max": 5,
+   "desc": "-8% running cost",
+   "mult": 0.7
+  },
+  {
+   "id": "suspension",
+   "name": "Suspension",
+   "icon": "truck",
+   "max": 5,
+   "desc": "+3 rel, fewer spills",
+   "mult": 0.8
+  },
+  {
+   "id": "maintenance",
+   "name": "Maintenance",
+   "icon": "wrench",
+   "max": 5,
+   "desc": "-12% repair time",
+   "mult": 0.7
+  },
+  {
+   "id": "handling",
+   "name": "Cargo Handling",
+   "icon": "trophy",
+   "max": 5,
+   "desc": "+4% contract pay",
+   "mult": 1.1
+  }
+ ],
+ "garage": [
+  {
+   "level": 1,
+   "name": "Small Garage",
+   "cost": 0,
+   "rep": 0,
+   "vehicles": 1,
+   "offers": 3,
+   "perks": [
+    "1 parking space",
+    "Basic office"
+   ]
+  },
+  {
+   "level": 2,
+   "name": "Local Depot",
+   "cost": 1200,
+   "rep": 3,
+   "vehicles": 2,
+   "offers": 4,
+   "perks": [
+    "2 parking spaces",
+    "Tier 2 vehicles",
+    "Business upgrades"
+   ]
+  },
+  {
+   "level": 3,
+   "name": "Regional Warehouse",
+   "cost": 9000,
+   "rep": 25,
+   "vehicles": 4,
+   "offers": 5,
+   "perks": [
+    "4 parking spaces",
+    "Tier 3 vehicles",
+    "Automation & depots"
+   ]
+  },
+  {
+   "level": 4,
+   "name": "Logistics Center",
+   "cost": 60000,
+   "rep": 90,
+   "vehicles": 6,
+   "offers": 6,
+   "perks": [
+    "6 parking spaces",
+    "Tier 4 vehicles",
+    "Auto Dispatch"
+   ]
+  },
+  {
+   "level": 5,
+   "name": "Underground HQ",
+   "cost": 420000,
+   "rep": 250,
+   "vehicles": 9,
+   "offers": 7,
+   "perks": [
+    "9 parking spaces",
+    "Tier 5 vehicles",
+    "Regional Manager"
+   ]
+  }
+ ],
+ "business": [
+  {
+   "id": "contract_office",
+   "name": "Contract Office",
+   "icon": "contract",
+   "max": 5,
+   "base": 800,
+   "growth": 2.2,
+   "garage": 2,
+   "desc": "+1 contract offer, faster arrivals"
+  },
+  {
+   "id": "fleet_capacity",
+   "name": "Fleet Capacity",
+   "icon": "truck",
+   "max": 5,
+   "base": 2000,
+   "growth": 2.4,
+   "garage": 2,
+   "desc": "+1 vehicle space"
+  },
+  {
+   "id": "maintenance_bay",
+   "name": "Maintenance Bay",
+   "icon": "wrench",
+   "max": 5,
+   "base": 1200,
+   "growth": 2.1,
+   "garage": 2,
+   "desc": "-15% repair time, -5% running cost"
+  },
+  {
+   "id": "driver_lounge",
+   "name": "Driver Lounge",
+   "icon": "driver",
+   "max": 5,
+   "base": 1500,
+   "growth": 2.2,
+   "garage": 2,
+   "desc": "+1 driver bench, +5 stress resistance"
+  },
+  {
+   "id": "warehouse",
+   "name": "Warehouse",
+   "icon": "box",
+   "max": 5,
+   "base": 2500,
+   "growth": 2.3,
+   "garage": 3,
+   "desc": "+6% contract pay"
+  },
+  {
+   "id": "dispatch_center",
+   "name": "Dispatch Center",
+   "icon": "clock",
+   "max": 5,
+   "base": 4000,
+   "growth": 2.3,
+   "garage": 3,
+   "desc": "-5% travel time"
+  },
+  {
+   "id": "operations_room",
+   "name": "Operations Room",
+   "icon": "risk",
+   "max": 5,
+   "base": 5000,
+   "growth": 2.3,
+   "garage": 3,
+   "desc": "-3% risk, +20% heat cooldown"
+  },
+  {
+   "id": "regional_network",
+   "name": "Regional Network",
+   "icon": "depot",
+   "max": 7,
+   "base": 7000,
+   "growth": 2.4,
+   "garage": 3,
+   "desc": "+1 regional depot permit"
+  },
+  {
+   "id": "automated_dispatch",
+   "name": "Automated Dispatch",
+   "icon": "robot",
+   "max": 4,
+   "costs": [
+    6000,
+    18000,
+    45000,
+    150000
+   ],
+   "garages": [
+    3,
+    3,
+    4,
+    5
+   ],
+   "garage": 3,
+   "levels": [
+    "Auto Accept",
+    "Auto Assign",
+    "Auto Dispatch",
+    "Regional Manager"
+   ],
+   "level_desc": [
+    "Accepts good contracts for you",
+    "Matches the best vehicle to each job",
+    "Sends idle vehicles out automatically",
+    "Handles events & earns while you're away"
+   ],
+   "desc": "Automate your operation"
+  },
+  {
+   "id": "advanced_logistics",
+   "name": "Advanced Logistics",
+   "icon": "trophy",
+   "max": 5,
+   "base": 60000,
+   "growth": 2.5,
+   "garage": 5,
+   "desc": "+8% pay, +4% speed"
+  }
+ ]
+}

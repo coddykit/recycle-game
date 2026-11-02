@@ -1,0 +1,356 @@
+{
+ "default": "en-US",
+ "langs": {
+  "de-DE": {
+   "featureGraphic": [
+    {"id": "6637909793926146579", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "17380145023197506022", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "6460266708435377994", "sha1": "a4862befd7bf621a6f341051ea7d648b21e9e84d", "source": {"kind": "unknown", "path": null}},
+    {"id": "11298330420698211039", "sha1": "dd26aa75b87c531cc6f14fccd2dcd8d73277a1a9", "source": {"kind": "unknown", "path": null}},
+    {"id": "6243524969476196777", "sha1": "fd92fc8f7f4260b408bb51e9b96d8b48beabe3e3", "source": {"kind": "unknown", "path": null}},
+    {"id": "12733021989646599360", "sha1": "dfe7073ed571ce458e27e100317baaa2a5a65f18", "source": {"kind": "unknown", "path": null}},
+    {"id": "12622979335167460685", "sha1": "90af028131b633ab40036356d6d24f153ac58ddf", "source": {"kind": "unknown", "path": null}},
+    {"id": "12606717252245106752", "sha1": "8c5d2b04b1e146a642d96ebc7d64ab55590c380a", "source": {"kind": "unknown", "path": null}},
+    {"id": "1009112500744429418", "sha1": "04496ad9494964a30f9b46b9f251cf89736de9f9", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "456580774577743326", "sha1": "b995daab99ded8ce3f39b1cefc9a58b9bec897b6", "source": {"kind": "unknown", "path": null}},
+    {"id": "13532339118089627712", "sha1": "c53f24f20a175b56045a2333684366397c7340d0", "source": {"kind": "unknown", "path": null}},
+    {"id": "5508596057046453926", "sha1": "5c6a89708c2f07ab52e1f74bcda6a9364a56b758", "source": {"kind": "unknown", "path": null}},
+    {"id": "7777160579013968812", "sha1": "76dfda9809b9bee7b6f75fd14fd859f02d498b58", "source": {"kind": "unknown", "path": null}},
+    {"id": "1795611941883461909", "sha1": "670275f31d5f6f8f410196bf1c326d93825757f4", "source": {"kind": "unknown", "path": null}},
+    {"id": "11685643947511274949", "sha1": "112e80e6fa095e4deaa9ab5c0f93b07b4f848eab", "source": {"kind": "unknown", "path": null}},
+    {"id": "6498623145474716283", "sha1": "c998dfbaac69032d5770e8b9ccd7127db9187265", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "13102847115477181540", "sha1": "b995daab99ded8ce3f39b1cefc9a58b9bec897b6", "source": {"kind": "unknown", "path": null}},
+    {"id": "4322538385050379258", "sha1": "c53f24f20a175b56045a2333684366397c7340d0", "source": {"kind": "unknown", "path": null}},
+    {"id": "8547505955753954242", "sha1": "5c6a89708c2f07ab52e1f74bcda6a9364a56b758", "source": {"kind": "unknown", "path": null}},
+    {"id": "5706051671925946720", "sha1": "76dfda9809b9bee7b6f75fd14fd859f02d498b58", "source": {"kind": "unknown", "path": null}},
+    {"id": "13496663419654058584", "sha1": "670275f31d5f6f8f410196bf1c326d93825757f4", "source": {"kind": "unknown", "path": null}},
+    {"id": "2106993562202165812", "sha1": "112e80e6fa095e4deaa9ab5c0f93b07b4f848eab", "source": {"kind": "unknown", "path": null}},
+    {"id": "247341223191231676", "sha1": "c998dfbaac69032d5770e8b9ccd7127db9187265", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "en-US": {
+   "featureGraphic": [
+    {"id": "7346367460688862676", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "15440207671364095949", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "6864970158017393617", "sha1": "e161043aae9d73dffbe4cf009b1f0ff69b09eed3", "source": {"kind": "unknown", "path": null}},
+    {"id": "8430873622286192378", "sha1": "92b2f2c7d928591fccb22e7c1b8dbadb59e84b1c", "source": {"kind": "unknown", "path": null}},
+    {"id": "10252476655186517501", "sha1": "a63437faaa8e5504b5a278c0fd370a93b0a481ef", "source": {"kind": "unknown", "path": null}},
+    {"id": "16438489246562814793", "sha1": "ce0cd3c0649b94f76c71a6d664e779af26ac8b96", "source": {"kind": "unknown", "path": null}},
+    {"id": "3760196427901125638", "sha1": "e06e9b4e8e8f1f9f96cf1aedcd78023ae7b136bb", "source": {"kind": "unknown", "path": null}},
+    {"id": "2725038034693143229", "sha1": "913aabaac330e5e7b791d42d9f789f62246b64cd", "source": {"kind": "unknown", "path": null}},
+    {"id": "2128747379415282354", "sha1": "37130dee94b154ce417005461ab5381a9edcdc70", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "7238908259291118695", "sha1": "1a9a04f9d565a386c27679280b7791cb7f0e6685", "source": {"kind": "unknown", "path": null}},
+    {"id": "15570809052444242836", "sha1": "91225ca10d3af03923b76889ac7b0832ea58a5d8", "source": {"kind": "unknown", "path": null}},
+    {"id": "8683553878110692729", "sha1": "db5f525c0b0b63f57f0525122e8e3655f57ca149", "source": {"kind": "unknown", "path": null}},
+    {"id": "6986023360639915275", "sha1": "68f9cb74a911142e96e2bfdcfcf00aefb5a544a6", "source": {"kind": "unknown", "path": null}},
+    {"id": "8523069922327900123", "sha1": "83041c2c0d8efd32b69703ebd3d0568a9b61c291", "source": {"kind": "unknown", "path": null}},
+    {"id": "14828018602934734744", "sha1": "1c253336432ace263109de6f241446940ced2152", "source": {"kind": "unknown", "path": null}},
+    {"id": "12758310647924668747", "sha1": "68c1fa371c025fbefa89722eb16689dcf5d479e8", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "17352544142610590359", "sha1": "1a9a04f9d565a386c27679280b7791cb7f0e6685", "source": {"kind": "unknown", "path": null}},
+    {"id": "5880907771567327143", "sha1": "91225ca10d3af03923b76889ac7b0832ea58a5d8", "source": {"kind": "unknown", "path": null}},
+    {"id": "16313507011398181435", "sha1": "db5f525c0b0b63f57f0525122e8e3655f57ca149", "source": {"kind": "unknown", "path": null}},
+    {"id": "13942761664714256764", "sha1": "68f9cb74a911142e96e2bfdcfcf00aefb5a544a6", "source": {"kind": "unknown", "path": null}},
+    {"id": "16805899554881733934", "sha1": "83041c2c0d8efd32b69703ebd3d0568a9b61c291", "source": {"kind": "unknown", "path": null}},
+    {"id": "4704868727975295827", "sha1": "1c253336432ace263109de6f241446940ced2152", "source": {"kind": "unknown", "path": null}},
+    {"id": "11090286375051587947", "sha1": "68c1fa371c025fbefa89722eb16689dcf5d479e8", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "es-ES": {
+   "featureGraphic": [
+    {"id": "16002963263862054887", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "14000872376850577913", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "9072253897798616105", "sha1": "62d42e73ae4bb10fcd7541deadad8494dbbc0a10", "source": {"kind": "unknown", "path": null}},
+    {"id": "7615859122252122822", "sha1": "1d546144cd689c0d9790fb831049f2b0f816a787", "source": {"kind": "unknown", "path": null}},
+    {"id": "9484641489935465045", "sha1": "65591426d68baa905947604e71774a92cd5ef080", "source": {"kind": "unknown", "path": null}},
+    {"id": "102711708017449431", "sha1": "9ab90fb27bc2f9b715c0da64efdb02c374da0d44", "source": {"kind": "unknown", "path": null}},
+    {"id": "1493101328638802741", "sha1": "c670296af183dbd639c91ccc9538e745e71f8cbf", "source": {"kind": "unknown", "path": null}},
+    {"id": "17088056794754772072", "sha1": "3b2862f2e46cf2991ebac50365329b4b8c301349", "source": {"kind": "unknown", "path": null}},
+    {"id": "1122300507650764950", "sha1": "9ccceb5c671e0f8333da2916469c9f14960cc143", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "2506071579421787140", "sha1": "da379b150f7ceb5cba777b02f82976279e3f02d3", "source": {"kind": "unknown", "path": null}},
+    {"id": "14223776837652325898", "sha1": "846929786dfa21f5e228590d0aeda79e8d5134d7", "source": {"kind": "unknown", "path": null}},
+    {"id": "8673311724072637143", "sha1": "cec2a2a7e45c4826fdb71824e3f3baa071f41017", "source": {"kind": "unknown", "path": null}},
+    {"id": "16195080067255036413", "sha1": "3399d6215c499c2700e963362096dc50ba612a34", "source": {"kind": "unknown", "path": null}},
+    {"id": "16259471172371206170", "sha1": "92420751cfb5108d00adbc2e4bb4008fc47fa2ef", "source": {"kind": "unknown", "path": null}},
+    {"id": "10565924305962768837", "sha1": "6593104e2f8dcf8edef0bf86add3bfb89d267a90", "source": {"kind": "unknown", "path": null}},
+    {"id": "10880891775259210395", "sha1": "1f6dabdb58c6bb90a557e858eeb1b6fc21a6a89f", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "7503084786792627931", "sha1": "da379b150f7ceb5cba777b02f82976279e3f02d3", "source": {"kind": "unknown", "path": null}},
+    {"id": "12361848428903198304", "sha1": "846929786dfa21f5e228590d0aeda79e8d5134d7", "source": {"kind": "unknown", "path": null}},
+    {"id": "1272004688299925401", "sha1": "cec2a2a7e45c4826fdb71824e3f3baa071f41017", "source": {"kind": "unknown", "path": null}},
+    {"id": "18447228671477478", "sha1": "3399d6215c499c2700e963362096dc50ba612a34", "source": {"kind": "unknown", "path": null}},
+    {"id": "1055839772644007073", "sha1": "92420751cfb5108d00adbc2e4bb4008fc47fa2ef", "source": {"kind": "unknown", "path": null}},
+    {"id": "11505078402981052661", "sha1": "6593104e2f8dcf8edef0bf86add3bfb89d267a90", "source": {"kind": "unknown", "path": null}},
+    {"id": "1462589949937458605", "sha1": "1f6dabdb58c6bb90a557e858eeb1b6fc21a6a89f", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "fr-FR": {
+   "featureGraphic": [
+    {"id": "7196364646040767713", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "13575594922385090876", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "7518393677527503764", "sha1": "5f6738a4100b2b39e72ef791c23e83431cb0d00c", "source": {"kind": "unknown", "path": null}},
+    {"id": "1580270873101782369", "sha1": "5accf1d55185f5f832f3ddbf51a7afa443160572", "source": {"kind": "unknown", "path": null}},
+    {"id": "9219411593254394610", "sha1": "1fa4fd6e4d38222b7e7f5244363646cff23604bc", "source": {"kind": "unknown", "path": null}},
+    {"id": "10898124421931672490", "sha1": "c60ae0df72f17f2d9f1b20b2d260012ce7261479", "source": {"kind": "unknown", "path": null}},
+    {"id": "14943350518133672582", "sha1": "ffaba7c2bb7b842a045d143df070c15ba19ec259", "source": {"kind": "unknown", "path": null}},
+    {"id": "17651917071802000161", "sha1": "453c58ae7794a3931fd9858ade3a267e7114a702", "source": {"kind": "unknown", "path": null}},
+    {"id": "4895391908235680581", "sha1": "06fabc22b6b1db9264a7e92a655d509984a728ab", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "2576479467900494174", "sha1": "d5f95a1ddfbaabce0eb3b96b868cbf3b3c4ccad3", "source": {"kind": "unknown", "path": null}},
+    {"id": "14046342441579672146", "sha1": "90cbe66462ef17972b5b8e39773b8d51c7199e61", "source": {"kind": "unknown", "path": null}},
+    {"id": "17301409157323843060", "sha1": "a0c1500d03066a2c4ed26a110cd705d5325f30ed", "source": {"kind": "unknown", "path": null}},
+    {"id": "12492340083861796763", "sha1": "c6acaa179eca149a14435e8e8b6496f6f36dbd66", "source": {"kind": "unknown", "path": null}},
+    {"id": "13130520999020413261", "sha1": "ab15f10121bb2911bc9afef888cc2046d5b8b628", "source": {"kind": "unknown", "path": null}},
+    {"id": "15182484298743225158", "sha1": "0ff603858404a1baaf7a0d2007fe82aa37e90b69", "source": {"kind": "unknown", "path": null}},
+    {"id": "951380230523787284", "sha1": "4f820eec5db00ef9414ca511ef3912599f049192", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "14719262854191489990", "sha1": "d5f95a1ddfbaabce0eb3b96b868cbf3b3c4ccad3", "source": {"kind": "unknown", "path": null}},
+    {"id": "943266534163334433", "sha1": "90cbe66462ef17972b5b8e39773b8d51c7199e61", "source": {"kind": "unknown", "path": null}},
+    {"id": "6160321988058156490", "sha1": "a0c1500d03066a2c4ed26a110cd705d5325f30ed", "source": {"kind": "unknown", "path": null}},
+    {"id": "5431105377213661760", "sha1": "c6acaa179eca149a14435e8e8b6496f6f36dbd66", "source": {"kind": "unknown", "path": null}},
+    {"id": "1661203806354061762", "sha1": "ab15f10121bb2911bc9afef888cc2046d5b8b628", "source": {"kind": "unknown", "path": null}},
+    {"id": "16031159984156241487", "sha1": "0ff603858404a1baaf7a0d2007fe82aa37e90b69", "source": {"kind": "unknown", "path": null}},
+    {"id": "2739950908507282137", "sha1": "4f820eec5db00ef9414ca511ef3912599f049192", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "ja-JP": {
+   "featureGraphic": [
+    {"id": "14061386282747477736", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "12916204371760011340", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "11596254003687724892", "sha1": "587f75bf3158d4b542008796049f5db86b5bb036", "source": {"kind": "unknown", "path": null}},
+    {"id": "1313206118359066459", "sha1": "98e0c9b99e50426e929015c4b2d0f51a2d03645a", "source": {"kind": "unknown", "path": null}},
+    {"id": "13088739551679454207", "sha1": "ef5ea9944184202d37cdb9c2d39f8ef2ad06abca", "source": {"kind": "unknown", "path": null}},
+    {"id": "4270287433360258504", "sha1": "1d8eac5921a69fe599b1b88a12bd29ce4e08a63e", "source": {"kind": "unknown", "path": null}},
+    {"id": "2060022410105837562", "sha1": "1dca7ac6a73b9c797d4c89dd607a1706939fea17", "source": {"kind": "unknown", "path": null}},
+    {"id": "12674756369597794179", "sha1": "0ba96fa25bf83f5d5b081f28883cf5340b1f9e09", "source": {"kind": "unknown", "path": null}},
+    {"id": "3814049263638046006", "sha1": "ac2e8c9241e3223cb955f3ec90ccaffce7c77f9f", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "6603278544992637493", "sha1": "707a92dc3069349af43a664e2a2541683bdb0608", "source": {"kind": "unknown", "path": null}},
+    {"id": "11549562179259657407", "sha1": "33420938d9bfae9968f93a657098432835874dd7", "source": {"kind": "unknown", "path": null}},
+    {"id": "11764933859259169282", "sha1": "50a0787336ba7d062dbc16fce9fa83f8b84c2a57", "source": {"kind": "unknown", "path": null}},
+    {"id": "8245754131812042087", "sha1": "3978fde3afad5136ba9ce5d575affd4cd83e6596", "source": {"kind": "unknown", "path": null}},
+    {"id": "1945853316865630722", "sha1": "0285606a340c732fd27ebab0b48efe21b99e6251", "source": {"kind": "unknown", "path": null}},
+    {"id": "4270386787964982000", "sha1": "65af1a951689b5ff69082beb7e0f5d60b2a28a60", "source": {"kind": "unknown", "path": null}},
+    {"id": "5264993725810076797", "sha1": "96f9f208e63425d53ff4a960d49044002f528022", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "12923948678526650859", "sha1": "707a92dc3069349af43a664e2a2541683bdb0608", "source": {"kind": "unknown", "path": null}},
+    {"id": "5385747193446255701", "sha1": "33420938d9bfae9968f93a657098432835874dd7", "source": {"kind": "unknown", "path": null}},
+    {"id": "7176877089684903085", "sha1": "50a0787336ba7d062dbc16fce9fa83f8b84c2a57", "source": {"kind": "unknown", "path": null}},
+    {"id": "11558244353793294061", "sha1": "3978fde3afad5136ba9ce5d575affd4cd83e6596", "source": {"kind": "unknown", "path": null}},
+    {"id": "16518598074740175266", "sha1": "0285606a340c732fd27ebab0b48efe21b99e6251", "source": {"kind": "unknown", "path": null}},
+    {"id": "3425148587428992495", "sha1": "65af1a951689b5ff69082beb7e0f5d60b2a28a60", "source": {"kind": "unknown", "path": null}},
+    {"id": "6786497210375675850", "sha1": "96f9f208e63425d53ff4a960d49044002f528022", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "ko-KR": {
+   "featureGraphic": [
+    {"id": "1082599814295636971", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "7533699227766616395", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "14274813700683589199", "sha1": "4ed54038b6995a95826b406b40499263271408c5", "source": {"kind": "unknown", "path": null}},
+    {"id": "3728845496842245123", "sha1": "dd9e192ed34db8de4c9ba5bafe73228027190c57", "source": {"kind": "unknown", "path": null}},
+    {"id": "171351274425001364", "sha1": "a165239ed9dd17d4f493ea4a305949b0dd078743", "source": {"kind": "unknown", "path": null}},
+    {"id": "3976049659667527069", "sha1": "20dcc65295205d7465032afe8157ff548b9c432e", "source": {"kind": "unknown", "path": null}},
+    {"id": "9034650527136053894", "sha1": "9d45278012de9ceeb9680d34437eacf90242c901", "source": {"kind": "unknown", "path": null}},
+    {"id": "9540527828600482727", "sha1": "92b97ea2517d0eaef04ba958b8c973e815146e9a", "source": {"kind": "unknown", "path": null}},
+    {"id": "9937556573652191874", "sha1": "c55c65096ec60dbcbce4c1e6d97e724dc4112fe7", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "13502293246319221514", "sha1": "353e2d12d64ee200864e0c3a8afcdc0a9d2ddad0", "source": {"kind": "unknown", "path": null}},
+    {"id": "18341566516955314758", "sha1": "09e18382ae3edaf0778b43450a5566271377db8e", "source": {"kind": "unknown", "path": null}},
+    {"id": "6995575542227826858", "sha1": "74222394d6b22bd2641de6ccf18f2541b0b238dc", "source": {"kind": "unknown", "path": null}},
+    {"id": "10672375703845382397", "sha1": "9d77107a0db76bf8cd95bc7530518ff68870e701", "source": {"kind": "unknown", "path": null}},
+    {"id": "3801930479337450440", "sha1": "d563a73fdbb8e81425b66b2716be9aa43bfe4f38", "source": {"kind": "unknown", "path": null}},
+    {"id": "16393126962894891065", "sha1": "b5c4d5564eaf3e963a8a6bdfe3b748998603b2b2", "source": {"kind": "unknown", "path": null}},
+    {"id": "18192702585385927022", "sha1": "8a2ff7ff6d96ef1d8280406fb85ba45e146789ca", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "11314879363224614665", "sha1": "353e2d12d64ee200864e0c3a8afcdc0a9d2ddad0", "source": {"kind": "unknown", "path": null}},
+    {"id": "3245685704138318149", "sha1": "09e18382ae3edaf0778b43450a5566271377db8e", "source": {"kind": "unknown", "path": null}},
+    {"id": "7330654452179214722", "sha1": "74222394d6b22bd2641de6ccf18f2541b0b238dc", "source": {"kind": "unknown", "path": null}},
+    {"id": "8401950066899206598", "sha1": "9d77107a0db76bf8cd95bc7530518ff68870e701", "source": {"kind": "unknown", "path": null}},
+    {"id": "7760108415123927170", "sha1": "d563a73fdbb8e81425b66b2716be9aa43bfe4f38", "source": {"kind": "unknown", "path": null}},
+    {"id": "17064926593814834493", "sha1": "b5c4d5564eaf3e963a8a6bdfe3b748998603b2b2", "source": {"kind": "unknown", "path": null}},
+    {"id": "12729051238510141474", "sha1": "8a2ff7ff6d96ef1d8280406fb85ba45e146789ca", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "pt-BR": {
+   "featureGraphic": [
+    {"id": "7375692660251672652", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "8636572130180768361", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "18387882148948853763", "sha1": "7132be1b3c6b885d8d56124b46e8462189d80616", "source": {"kind": "unknown", "path": null}},
+    {"id": "9916131235200867093", "sha1": "d25b98c9b3cc5c7f8e79dd51e38e7ef9571d67d4", "source": {"kind": "unknown", "path": null}},
+    {"id": "2733609434001028070", "sha1": "b3f90ed3202cd02c2247f6d82b1fe666c6cd0528", "source": {"kind": "unknown", "path": null}},
+    {"id": "15103904305117501525", "sha1": "99baecec8f3b377799bca9a738e856e7a689ad6b", "source": {"kind": "unknown", "path": null}},
+    {"id": "9327822977250060013", "sha1": "4f739d8df1660609789e6a27aff414e931fbf5ea", "source": {"kind": "unknown", "path": null}},
+    {"id": "4254226785584924545", "sha1": "5cb3ce10aafa179d7263a62eff72e0060abaae30", "source": {"kind": "unknown", "path": null}},
+    {"id": "17968127538089668623", "sha1": "75851b7514b1f67d2b25f27a15224681663974bb", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "13949841370080607061", "sha1": "bcdaee445936ad3bf16a30d92be25b976092ea41", "source": {"kind": "unknown", "path": null}},
+    {"id": "7922677183342440492", "sha1": "097b1a779979ea6229b48076c91ebfb431f5779c", "source": {"kind": "unknown", "path": null}},
+    {"id": "17277961378775065377", "sha1": "b9e659abd8064b73424d92fd9420dd12de1a3fe2", "source": {"kind": "unknown", "path": null}},
+    {"id": "18231010246459164808", "sha1": "d07d356525edd68fa8e69604633ed04ce0bf1204", "source": {"kind": "unknown", "path": null}},
+    {"id": "17379267794073826701", "sha1": "040887af860d4b5f65f4a1603b1624709ab02144", "source": {"kind": "unknown", "path": null}},
+    {"id": "11707882496705374812", "sha1": "b03df5a5af23493ec7f89aaa5ad3b79aba413996", "source": {"kind": "unknown", "path": null}},
+    {"id": "2636422076977342249", "sha1": "e2c3cdc3b09b815a84e636fc3ac503bba7eeae32", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "630807318466235152", "sha1": "bcdaee445936ad3bf16a30d92be25b976092ea41", "source": {"kind": "unknown", "path": null}},
+    {"id": "10731499969282032043", "sha1": "097b1a779979ea6229b48076c91ebfb431f5779c", "source": {"kind": "unknown", "path": null}},
+    {"id": "6215129705865753966", "sha1": "b9e659abd8064b73424d92fd9420dd12de1a3fe2", "source": {"kind": "unknown", "path": null}},
+    {"id": "5318506886396000117", "sha1": "d07d356525edd68fa8e69604633ed04ce0bf1204", "source": {"kind": "unknown", "path": null}},
+    {"id": "14022337680002284146", "sha1": "040887af860d4b5f65f4a1603b1624709ab02144", "source": {"kind": "unknown", "path": null}},
+    {"id": "9650797036948356848", "sha1": "b03df5a5af23493ec7f89aaa5ad3b79aba413996", "source": {"kind": "unknown", "path": null}},
+    {"id": "12668400827530606505", "sha1": "e2c3cdc3b09b815a84e636fc3ac503bba7eeae32", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "ru-RU": {
+   "featureGraphic": [
+    {"id": "6886696193301779549", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "16953945765664165717", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "16632248025107712560", "sha1": "d1bb54f5aca136c60c7dea64b8596ed9a60790bc", "source": {"kind": "unknown", "path": null}},
+    {"id": "5999187373590755894", "sha1": "293cb894568df746b7fb1b67499a55d4c485d909", "source": {"kind": "unknown", "path": null}},
+    {"id": "12603547136703050578", "sha1": "6a552040f43026d1b98b5d53d0f61ba524794469", "source": {"kind": "unknown", "path": null}},
+    {"id": "2540889070018727647", "sha1": "02b21c21980a1221bfe2aa2b91ac043ff1c3a6b4", "source": {"kind": "unknown", "path": null}},
+    {"id": "11188011219014696816", "sha1": "4d834270989488a678d9331f88477bbc8c014d7e", "source": {"kind": "unknown", "path": null}},
+    {"id": "16906625678047561512", "sha1": "b570c636e3694b4b18d39d5a7f90e47a6f34dcb7", "source": {"kind": "unknown", "path": null}},
+    {"id": "6734164281721757294", "sha1": "9729a6985aae6bf944c0208bc4cf448354521b34", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "3085827759173046717", "sha1": "13a8bf9318b1534b85da32e415f8f80f0808b43f", "source": {"kind": "unknown", "path": null}},
+    {"id": "6640033679049484035", "sha1": "99549a45b13391e1086c6cbef5f3b96ef30a5df7", "source": {"kind": "unknown", "path": null}},
+    {"id": "12624601402477019321", "sha1": "ad38335baa3f090e3cdaa0eef08e080b8b573efc", "source": {"kind": "unknown", "path": null}},
+    {"id": "15888691739050734244", "sha1": "9415b993813f5635c1de133309ab6a38bb2aac53", "source": {"kind": "unknown", "path": null}},
+    {"id": "13994585437895910771", "sha1": "9530a6d936085b2e54b58cb86fab839e0cae1487", "source": {"kind": "unknown", "path": null}},
+    {"id": "4691520388621995760", "sha1": "07c03aeec816a7f6bd0ba034ae13bab73f4f4ea7", "source": {"kind": "unknown", "path": null}},
+    {"id": "5220099987663929639", "sha1": "26d5fbd9ed6dddf79713328a6884090d77f3db15", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "12522261633314246123", "sha1": "13a8bf9318b1534b85da32e415f8f80f0808b43f", "source": {"kind": "unknown", "path": null}},
+    {"id": "11618177667175593068", "sha1": "99549a45b13391e1086c6cbef5f3b96ef30a5df7", "source": {"kind": "unknown", "path": null}},
+    {"id": "17649074950859590657", "sha1": "ad38335baa3f090e3cdaa0eef08e080b8b573efc", "source": {"kind": "unknown", "path": null}},
+    {"id": "6327030979375860260", "sha1": "9415b993813f5635c1de133309ab6a38bb2aac53", "source": {"kind": "unknown", "path": null}},
+    {"id": "2716975551989322464", "sha1": "9530a6d936085b2e54b58cb86fab839e0cae1487", "source": {"kind": "unknown", "path": null}},
+    {"id": "18031255261572877554", "sha1": "07c03aeec816a7f6bd0ba034ae13bab73f4f4ea7", "source": {"kind": "unknown", "path": null}},
+    {"id": "2084282126378681987", "sha1": "26d5fbd9ed6dddf79713328a6884090d77f3db15", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "tr-TR": {
+   "featureGraphic": [
+    {"id": "4706931543438713868", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "2576376241620774860", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "11220335961730851199", "sha1": "ef7df8824dead0c91beff425a69b0c4e33f82195", "source": {"kind": "unknown", "path": null}},
+    {"id": "4766774002259228621", "sha1": "2ce1257dcdce2759553f8e5f3f28f4e6b587ed33", "source": {"kind": "unknown", "path": null}},
+    {"id": "3348874893202069790", "sha1": "4ff4b23a496251a84898b6be4c631f6e4720eea8", "source": {"kind": "unknown", "path": null}},
+    {"id": "5137366710331318073", "sha1": "87c1926e53e2e585cae1a9713a66a09e4a4db61e", "source": {"kind": "unknown", "path": null}},
+    {"id": "15151241130382514487", "sha1": "8f5f6973b6bc1191a6600ebfb63c0a9d2a386f0b", "source": {"kind": "unknown", "path": null}},
+    {"id": "16338371703029612779", "sha1": "e998c7030b5bcaff105c03fa86b98ff370a70c4d", "source": {"kind": "unknown", "path": null}},
+    {"id": "17103789926499753821", "sha1": "8074bdcd040cba56479e91781be78f2d86126f81", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "12975338646859116051", "sha1": "cafa972bded903fe10b8fb2f950fe7a7e464e7ee", "source": {"kind": "unknown", "path": null}},
+    {"id": "11340901844913640406", "sha1": "61159e517c294a798de488114e66429463fe2c5c", "source": {"kind": "unknown", "path": null}},
+    {"id": "3132450452836280357", "sha1": "964d696df9237bc059e351dba6455b7b7b93fd51", "source": {"kind": "unknown", "path": null}},
+    {"id": "3946683376541634296", "sha1": "f8be5e3ac4550f366bf1348efcee557ec09fff44", "source": {"kind": "unknown", "path": null}},
+    {"id": "821927687684766116", "sha1": "0933e66573477dc4a1b9a1137b99a40e76bc3e01", "source": {"kind": "unknown", "path": null}},
+    {"id": "9408313259905966030", "sha1": "6e76eca34aefb5fe3d1d5ef9b1a52b7b22b0eb0c", "source": {"kind": "unknown", "path": null}},
+    {"id": "17594474289006687675", "sha1": "df4a34587bcbc92bc8d0e9fbf4b6880d7a630081", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "9059822799682770154", "sha1": "cafa972bded903fe10b8fb2f950fe7a7e464e7ee", "source": {"kind": "unknown", "path": null}},
+    {"id": "2268483942645295903", "sha1": "61159e517c294a798de488114e66429463fe2c5c", "source": {"kind": "unknown", "path": null}},
+    {"id": "11321570634701791692", "sha1": "964d696df9237bc059e351dba6455b7b7b93fd51", "source": {"kind": "unknown", "path": null}},
+    {"id": "8463395808198836846", "sha1": "f8be5e3ac4550f366bf1348efcee557ec09fff44", "source": {"kind": "unknown", "path": null}},
+    {"id": "6087270673016185021", "sha1": "0933e66573477dc4a1b9a1137b99a40e76bc3e01", "source": {"kind": "unknown", "path": null}},
+    {"id": "250069113193961407", "sha1": "6e76eca34aefb5fe3d1d5ef9b1a52b7b22b0eb0c", "source": {"kind": "unknown", "path": null}},
+    {"id": "13331024719501932509", "sha1": "df4a34587bcbc92bc8d0e9fbf4b6880d7a630081", "source": {"kind": "unknown", "path": null}}
+   ]
+  },
+  "zh-CN": {
+   "featureGraphic": [
+    {"id": "8894763833057186779", "sha1": "fb2caf213edd15b57e0f565975d8c2c2e4c3af82", "source": {"kind": "unknown", "path": null}}
+   ],
+   "icon": [
+    {"id": "678179153769573416", "sha1": "e1b5b1f224cadbe1a3d069819805859b2abd6e9c", "source": {"kind": "unknown", "path": null}}
+   ],
+   "phoneScreenshots": [
+    {"id": "11919067620559355978", "sha1": "8227162a8bc1fe74e609455a6a2383bea800e6f2", "source": {"kind": "unknown", "path": null}},
+    {"id": "2164517495809774295", "sha1": "11b42c573f281118d7eb11b4c1e0c7ec4c6407f3", "source": {"kind": "unknown", "path": null}},
+    {"id": "9264094204960613735", "sha1": "9cd778e3d1cf6866ef8ccc0dcf92231768339e78", "source": {"kind": "unknown", "path": null}},
+    {"id": "639321614753305340", "sha1": "258e7e65478272eec0f1481b50dab43975b09a8b", "source": {"kind": "unknown", "path": null}},
+    {"id": "13075103473154277184", "sha1": "fd97242c631df653f197ac79a7a34996f4b492b5", "source": {"kind": "unknown", "path": null}},
+    {"id": "6710129170922547977", "sha1": "3c82db32011acdba15c135ad6254345a745955a1", "source": {"kind": "unknown", "path": null}},
+    {"id": "12307837668695061487", "sha1": "bfb3bf046a8e89b887fa1fd9e421a925802851e9", "source": {"kind": "unknown", "path": null}}
+   ],
+   "sevenInchScreenshots": [
+    {"id": "12794324077675426930", "sha1": "41e2a2fe2e73285c812003568d3b2273302acfd3", "source": {"kind": "unknown", "path": null}},
+    {"id": "13053077229193210629", "sha1": "28250e00cb4c441e9edc4edcc4db93245df5cfae", "source": {"kind": "unknown", "path": null}},
+    {"id": "17740290662210536087", "sha1": "4289253125690fe7c13d8eef0897dab7b02e8f8a", "source": {"kind": "unknown", "path": null}},
+    {"id": "4621846578441770363", "sha1": "102f16225afddc05291cd91e75365fe13757a34f", "source": {"kind": "unknown", "path": null}},
+    {"id": "4232266594334572728", "sha1": "40ad4ecf9e1b0129f9e5cadf9f3365bc2489853e", "source": {"kind": "unknown", "path": null}},
+    {"id": "13852117797152961797", "sha1": "14012d01758a695e77cf303a463434f3507486d7", "source": {"kind": "unknown", "path": null}},
+    {"id": "14854621526182923984", "sha1": "19c5c6e4d737f59760e731e4a409734dba8442b8", "source": {"kind": "unknown", "path": null}}
+   ],
+   "tenInchScreenshots": [
+    {"id": "15797497096439031654", "sha1": "41e2a2fe2e73285c812003568d3b2273302acfd3", "source": {"kind": "unknown", "path": null}},
+    {"id": "5327384050026523408", "sha1": "28250e00cb4c441e9edc4edcc4db93245df5cfae", "source": {"kind": "unknown", "path": null}},
+    {"id": "167843551377954428", "sha1": "4289253125690fe7c13d8eef0897dab7b02e8f8a", "source": {"kind": "unknown", "path": null}},
+    {"id": "2658878215729390097", "sha1": "102f16225afddc05291cd91e75365fe13757a34f", "source": {"kind": "unknown", "path": null}},
+    {"id": "10363497867377817403", "sha1": "40ad4ecf9e1b0129f9e5cadf9f3365bc2489853e", "source": {"kind": "unknown", "path": null}},
+    {"id": "15926401288940163602", "sha1": "14012d01758a695e77cf303a463434f3507486d7", "source": {"kind": "unknown", "path": null}},
+    {"id": "10406061029173994354", "sha1": "19c5c6e4d737f59760e731e4a409734dba8442b8", "source": {"kind": "unknown", "path": null}}
+   ]
+  }
+ },
+ "store": "play"
+}

@@ -1,0 +1,79 @@
+{
+ "app": "smuggler",
+ "appDir": "@GAME@",
+ "workDir": "@WORK@/work",
+ "langs": [
+  "en",
+  "tr",
+  "de",
+  "es",
+  "fr",
+  "ja",
+  "ko",
+  "pt",
+  "ru",
+  "zh"
+ ],
+ "stores": {
+  "iosBundle": "com.coddykit.borderlineempire",
+  "androidPackage": "com.coddykit.borderlineempire"
+ },
+ "brand": {
+  "name": "Borderline Empire",
+  "subject": "casual idle logistics tycoon game set in fictional countries (deliveries, trucks, routes, border crossings)",
+  "color": "#6A44C8",
+  "icon": "@WORK@/work/icon.png",
+  "code": ""
+ },
+ "deck": {
+  "style": "coddy",
+  "motif": "rays",
+  "chipBg": "rgba(11,16,40,.82)",
+  "hueSpread": 0.35,
+  "copy": "@GAME@/store/deck/copy.json",
+  "slots": [
+   {
+    "slot": "empire",
+    "from": "01_empire",
+    "layout": "hero"
+   },
+   {
+    "slot": "dispatch",
+    "from": "02_dispatch",
+    "layout": "tilt-right",
+    "chipY": 0.3
+   },
+   {
+    "slot": "event",
+    "from": "03_event",
+    "layout": "tilt-left",
+    "chipY": 0.72
+   },
+   {
+    "slot": "fleet",
+    "from": "04_fleet",
+    "layout": "tilt-right",
+    "chipY": 0.3
+   },
+   {
+    "slot": "upgrades",
+    "from": "05_upgrades",
+    "layout": "tilt-left",
+    "chipY": 0.3
+   },
+   {
+    "slot": "map",
+    "from": "06_map",
+    "layout": "tilt-right",
+    "chipY": 0.72
+   },
+   {
+    "slot": "mentor",
+    "from": "07_mentor",
+    "layout": "straight",
+    "chipY": 0.3
+   }
+  ],
+  "dropOnIos": []
+ }
+}

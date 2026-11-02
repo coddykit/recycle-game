@@ -1,0 +1,97 @@
+[
+ {
+  "id": "inside_contact",
+  "name": "Inside Contact",
+  "icon": "risk",
+  "max": 3,
+  "costs": [
+   6,
+   14,
+   27
+  ],
+  "desc": "-15% random event chance"
+ },
+ {
+  "id": "big_clients",
+  "name": "Big Client List",
+  "icon": "cash",
+  "max": 5,
+  "costs": [
+   4,
+   9,
+   18,
+   30,
+   48
+  ],
+  "desc": "+5% contract pay"
+ },
+ {
+  "id": "night_owls",
+  "name": "Night Owl Network",
+  "icon": "heat",
+  "max": 3,
+  "costs": [
+   8,
+   15,
+   30
+  ],
+  "desc": "+15% heat cooldown"
+ },
+ {
+  "id": "fixer",
+  "name": "The Fixer",
+  "icon": "contract",
+  "max": 2,
+  "costs": [
+   9,
+   24
+  ],
+  "desc": "+1 offer slot, offers last longer"
+ },
+ {
+  "id": "mechanic",
+  "name": "Friendly Mechanic",
+  "icon": "wrench",
+  "max": 3,
+  "costs": [
+   4,
+   10,
+   21
+  ],
+  "desc": "-25% repair time"
+ },
+ {
+  "id": "lawyer",
+  "name": "Smooth Lawyer",
+  "icon": "shield",
+  "max": 2,
+  "costs": [
+   12,
+   27
+  ],
+  "desc": "Halves failure penalties"
+ },
+ {
+  "id": "union",
+  "name": "Union Rep",
+  "icon": "driver",
+  "max": 3,
+  "costs": [
+   6,
+   14,
+   27
+  ],
+  "desc": "-15% driver salaries"
+ },
+ {
+  "id": "scout",
+  "name": "Talent Scout",
+  "icon": "star",
+  "max": 2,
+  "costs": [
+   9,
+   22
+  ],
+  "desc": "Better drivers on the hiring board"
+ }
+]

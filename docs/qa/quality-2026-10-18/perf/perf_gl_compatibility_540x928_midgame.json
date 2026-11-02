@@ -1,0 +1,232 @@
+{
+  "date": "2026-10-18",
+  "driver": "opengl3",
+  "gpu": "Apple M4",
+  "panels": {
+    "business": {
+      "first_frame_ms": 7.1,
+      "open_ms": 41.1,
+      "static_mb": 102.4
+    },
+    "contracts": {
+      "first_frame_ms": 8.2,
+      "open_ms": 41.5,
+      "static_mb": 100.8
+    },
+    "daily": {
+      "first_frame_ms": 7.1,
+      "open_ms": 13.4,
+      "static_mb": 212.5
+    },
+    "dispatch": {
+      "first_frame_ms": 21.3,
+      "open_ms": 23.8,
+      "static_mb": 103.8
+    },
+    "fleet": {
+      "first_frame_ms": 5.5,
+      "open_ms": 34.0,
+      "static_mb": 103.5
+    },
+    "map": {
+      "first_frame_ms": 6.8,
+      "open_ms": 26.6,
+      "static_mb": 104.3
+    },
+    "settings": {
+      "first_frame_ms": 5.8,
+      "open_ms": 37.8,
+      "static_mb": 212.7
+    },
+    "shop": {
+      "first_frame_ms": 5.7,
+      "open_ms": 15.0,
+      "static_mb": 213.3
+    },
+    "upgrades": {
+      "first_frame_ms": 13.4,
+      "open_ms": 49.5,
+      "static_mb": 101.4
+    }
+  },
+  "renderer": "gl_compatibility",
+  "stage": "midgame",
+  "stalls": {
+    "jobs_on_road": 9,
+    "main_instantiate_ms": 418.6,
+    "scenario_build_ms": 385.5,
+    "switch_to_high_ms": 0.5,
+    "switch_to_high_next_frame_ms": 103.4,
+    "switch_to_low_ms": 0.1,
+    "switch_to_low_next_frame_ms": 4.5,
+    "switch_to_medium_ms": 0.9,
+    "switch_to_medium_next_frame_ms": 100.4,
+    "unlock_region_1_ms": 256.8,
+    "unlock_region_2_ms": 9.8,
+    "unlock_region_3_ms": 5.5,
+    "unlock_region_4_ms": 6.9,
+    "unlock_region_5_ms": 6.6,
+    "unlock_region_6_ms": 5.6,
+    "unlock_region_7_ms": 3.1,
+    "vehicles": 9
+  },
+  "tiers": {
+    "high_far": {
+      "census": {
+        "label3d": 49,
+        "lights": 1,
+        "mesh_instances": 378,
+        "multimesh": 74,
+        "particles": 77,
+        "visible_meshes": 321
+      },
+      "draw_calls": 364.5,
+      "frame_ms_max": 7.16,
+      "frame_ms_mean": 3.02,
+      "frame_ms_p50": 2.84,
+      "frame_ms_p95": 4.45,
+      "frame_ms_p99": 4.91,
+      "frames_over_33ms": 0,
+      "frames_over_50ms": 0,
+      "mem_static_mb": 96.7,
+      "mem_video_mb": 47.1,
+      "nodes": 1013,
+      "objects": 630.5,
+      "primitives_k": 60.4,
+      "render_cpu_ms": 1.38,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0
+    },
+    "high_near": {
+      "census": {
+        "label3d": 49,
+        "lights": 1,
+        "mesh_instances": 378,
+        "multimesh": 74,
+        "particles": 77,
+        "visible_meshes": 321
+      },
+      "draw_calls": 375.2,
+      "frame_ms_max": 56.61,
+      "frame_ms_mean": 6.08,
+      "frame_ms_p50": 3.26,
+      "frame_ms_p95": 18.2,
+      "frame_ms_p99": 47.27,
+      "frames_over_33ms": 5,
+      "frames_over_50ms": 2,
+      "mem_static_mb": 96.7,
+      "mem_video_mb": 47.1,
+      "nodes": 1013,
+      "objects": 627.1,
+      "primitives_k": 47.5,
+      "render_cpu_ms": 2.76,
+      "render_gpu_ms": 0.0,
+      "render_scale": 1.0
+    },
+    "low_far": {
+      "census": {
+        "label3d": 49,
+        "lights": 1,
+        "mesh_instances": 299,
+        "multimesh": 74,
+        "particles": 77,
+        "visible_meshes": 251
+      },
+      "draw_calls": 303.3,
+      "frame_ms_max": 5.84,
+      "frame_ms_mean": 3.35,
+      "frame_ms_p50": 3.28,
+      "frame_ms_p95": 5.11,
+      "frame_ms_p99": 5.6,
+      "frames_over_33ms": 0,
+      "frames_over_50ms": 0,
+      "mem_static_mb": 96.5,
+      "mem_video_mb": 41.4,
+      "nodes": 941,
+      "objects": 677.7,
+      "primitives_k": 49.3,
+      "render_cpu_ms": 1.43,
+      "render_gpu_ms": 0.0,
+      "render_scale": 0.699999988079071
+    },
+    "low_near": {
+      "census": {
+        "label3d": 49,
+        "lights": 1,
+        "mesh_instances": 296,
+        "multimesh": 74,
+        "particles": 77,
+        "visible_meshes": 248
+      },
+      "draw_calls": 296.3,
+      "frame_ms_max": 6.19,
+      "frame_ms_mean": 3.51,
+      "frame_ms_p50": 3.32,
+      "frame_ms_p95": 5.41,
+      "frame_ms_p99": 6.17,
+      "frames_over_33ms": 0,
+      "frames_over_50ms": 0,
+      "mem_static_mb": 96.5,
+      "mem_video_mb": 41.4,
+      "nodes": 935,
+      "objects": 652.4,
+      "primitives_k": 39.2,
+      "render_cpu_ms": 1.51,
+      "render_gpu_ms": 0.0,
+      "render_scale": 0.699999988079071
+    },
+    "medium_far": {
+      "census": {
+        "label3d": 49,
+        "lights": 1,
+        "mesh_instances": 346,
+        "multimesh": 74,
+        "particles": 77,
+        "visible_meshes": 289
+      },
+      "draw_calls": 335.6,
+      "frame_ms_max": 6.9,
+      "frame_ms_mean": 3.76,
+      "frame_ms_p50": 3.64,
+      "frame_ms_p95": 5.52,
+      "frame_ms_p99": 6.41,
+      "frames_over_33ms": 0,
+      "frames_over_50ms": 0,
+      "mem_static_mb": 96.5,
+      "mem_video_mb": 47.8,
+      "nodes": 975,
+      "objects": 602.6,
+      "primitives_k": 55.3,
+      "render_cpu_ms": 1.55,
+      "render_gpu_ms": 0.0,
+      "render_scale": 0.850000023841858
+    },
+    "medium_near": {
+      "census": {
+        "label3d": 49,
+        "lights": 1,
+        "mesh_instances": 348,
+        "multimesh": 74,
+        "particles": 77,
+        "visible_meshes": 291
+      },
+      "draw_calls": 398.4,
+      "frame_ms_max": 6.72,
+      "frame_ms_mean": 3.5,
+      "frame_ms_p50": 3.44,
+      "frame_ms_p95": 5.15,
+      "frame_ms_p99": 6.23,
+      "frames_over_33ms": 0,
+      "frames_over_50ms": 0,
+      "mem_static_mb": 96.7,
+      "mem_video_mb": 47.8,
+      "nodes": 987,
+      "objects": 687.4,
+      "primitives_k": 48.9,
+      "render_cpu_ms": 1.47,
+      "render_gpu_ms": 0.0,
+      "render_scale": 0.850000023841858
+    }
+  },
+  "window": "(540, 928)"
+}

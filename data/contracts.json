@@ -1,0 +1,29 @@
+{
+  "categories": [
+    {"id": "mystery_crates", "name": "Mystery Crates", "icon": "box", "color": "C4693D", "kind": "cargo", "per_unit": 60, "units": [1, 8], "risk": 10, "deadline": 1.7, "heat": 4, "rep": 1, "rep_required": 0, "requires": ""},
+    {"id": "priority_delivery", "name": "Priority Delivery", "icon": "bolt", "color": "F28C28", "kind": "cargo", "per_unit": 110, "units": [1, 8], "risk": 14, "deadline": 1.25, "heat": 4, "rep": 2, "rep_required": 2, "requires": ""},
+    {"id": "restricted_electronics", "name": "Restricted Electronics", "icon": "bolt", "color": "3D8BD9", "kind": "cargo", "per_unit": 95, "units": [2, 10], "risk": 22, "deadline": 1.6, "heat": 6, "rep": 1, "rep_required": 3, "requires": ""},
+    {"id": "anonymous_passenger", "name": "Anonymous Passenger", "icon": "person", "color": "6B2F5B", "kind": "passenger", "per_unit": 150, "units": [1, 6], "risk": 24, "deadline": 1.6, "heat": 7, "rep": 1, "rep_required": 4, "requires": "passenger"},
+    {"id": "night_delivery", "name": "Night Delivery", "icon": "clock", "color": "1F3A63", "kind": "cargo", "per_unit": 75, "units": [2, 12], "risk": 6, "deadline": 2.0, "heat": 2, "rep": 1, "rep_required": 5, "requires": ""},
+    {"id": "secret_documents", "name": "Secret Documents", "icon": "contract", "color": "4A505A", "kind": "cargo", "per_unit": 380, "units": [1, 1], "risk": 28, "deadline": 1.25, "heat": 6, "rep": 2, "rep_required": 6, "requires": ""},
+    {"id": "luxury_goods", "name": "Luxury Goods", "icon": "trophy", "color": "D6338C", "kind": "cargo", "per_unit": 120, "units": [1, 6], "risk": 18, "deadline": 1.6, "heat": 5, "rep": 2, "rep_required": 8, "requires": ""},
+    {"id": "emergency_transport", "name": "Emergency Transport", "icon": "risk", "color": "E5484D", "kind": "cargo", "per_unit": 140, "units": [1, 6], "risk": 15, "deadline": 1.2, "heat": 3, "rep": 3, "rep_required": 10, "requires": ""},
+    {"id": "vip_passenger", "name": "VIP Passenger", "icon": "star", "color": "F2C14E", "kind": "passenger", "per_unit": 420, "units": [1, 2], "risk": 20, "deadline": 1.35, "heat": 5, "rep": 3, "rep_required": 12, "requires": "passenger"},
+    {"id": "rare_artifacts", "name": "Rare Artifacts", "icon": "trophy", "color": "8E5CD9", "kind": "cargo", "per_unit": 220, "units": [1, 4], "risk": 32, "deadline": 1.6, "heat": 8, "rep": 2, "rep_required": 15, "requires": ""},
+    {"id": "exotic_cargo", "name": "Exotic Cargo", "icon": "box", "color": "2BB3A8", "kind": "cargo", "per_unit": 85, "units": [4, 20], "risk": 24, "deadline": 1.7, "heat": 6, "rep": 2, "rep_required": 20, "requires": ""},
+    {"id": "high_value", "name": "High Value Cargo", "icon": "shield", "color": "B8860B", "kind": "cargo", "per_unit": 300, "units": [2, 10], "risk": 42, "deadline": 1.6, "heat": 12, "rep": 4, "rep_required": 30, "requires": "armored"}
+  ],
+  "modifiers": [
+    {"id": "rush", "name": "Rush Job", "desc": "+35% pay, tight deadline", "reward": 1.35, "deadline": 0.8, "heat": 1.0, "rep": 0},
+    {"id": "fragile", "name": "Fragile", "desc": "+20% pay, bumpy roads hurt", "reward": 1.2, "deadline": 1.0, "heat": 1.0, "rep": 0},
+    {"id": "good_word", "name": "Good Word", "desc": "+2 reputation", "reward": 1.0, "deadline": 1.0, "heat": 1.0, "rep": 2},
+    {"id": "low_profile", "name": "Low Profile", "desc": "Half heat, -10% pay", "reward": 0.9, "deadline": 1.0, "heat": 0.5, "rep": 0},
+    {"id": "hot_item", "name": "Hot Item", "desc": "+50% pay, double heat", "reward": 1.5, "deadline": 1.0, "heat": 2.0, "rep": 0},
+    {"id": "bulk", "name": "Bulk Order", "desc": "More units, -10% per unit", "reward": 0.9, "deadline": 1.1, "heat": 1.0, "rep": 0, "units": 1.5}
+  ],
+  "routes": [
+    {"id": "fast", "name": "FAST", "label": "Highway", "time": 0.75, "cost": 0.18, "risk": 14, "color": "F28C28", "icon": "bolt"},
+    {"id": "normal", "name": "NORMAL", "label": "Main roads", "time": 1.0, "cost": 0.09, "risk": 0, "color": "3D8BD9", "icon": "route"},
+    {"id": "long", "name": "SAFE", "label": "Back roads", "time": 1.4, "cost": 0.04, "risk": -12, "color": "3DDC84", "icon": "shield"}
+  ]
+}

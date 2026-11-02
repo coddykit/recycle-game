@@ -1,0 +1,220 @@
+{
+  "app": "smuggler",
+  "steps": {
+    "rc-project": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "firebase-pool": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "facebook-app": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "asc-record": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "ios-capabilities": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "gp-record": {
+      "status": "done",
+      "evidence": "Play API snapshot docs/play-snapshot-2026-10-13.json; package com.coddykit.borderlineempire, Console app 4974066353564376708.",
+      "ts": "2026-10-13T10:08:50+0300"
+    },
+    "google-oauth-sha1": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "eas-init": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "admob-records": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "analysis": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "design": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "icon-splash": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "scaffold": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "speckit-gate": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "onboarding": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "ui-standards": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "legal-pages": {
+      "status": "blocked",
+      "evidence": "Local privacy summary exists; public policy per-app SDK section omits Borderline Empire and in-app public policy link remains to be resolved.",
+      "ts": "2026-10-13T10:08:50+0300"
+    },
+    "paywall": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "subscriptions": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "ads": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "guest-first": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "demo-screenshots": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "iap-review-shot": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "descriptions": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "aso-title": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "listing-upload": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "iap-review-upload": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "ios-declarations": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "gp-declarations": {
+      "status": "blocked",
+      "evidence": "Console 8/11: IARC completed, Ads/Government/Finance/Health/Simulation saved; Data Safety/listing present. Premium reviewer access blocks Sign in details and target13+; public policy needs app-specific addendum. See docs/PLAY_RELEASE_2026-10-13.md.",
+      "ts": "2026-10-13T10:40:05+0300"
+    },
+    "store-availability": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "att-tracking": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "review-notes": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "prelaunch-audit": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "backend-deploy": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "subs-ready": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "refund-control": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "e2e-test": {
+      "status": "blocked",
+      "evidence": "Final AAB native purchase/restore/reward/consent evidence missing. Local CI passes 220 gameplay and 60 quality, but these are not device billing tests.",
+      "ts": "2026-10-13T10:31:33+0300"
+    },
+    "jenkins-job": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "native-build": {
+      "status": "done",
+      "evidence": "Android 1.1.0 (1791874686), signed AAB, Linux CI 220/60 passed, Mini upload and internal draft read-back docs/play-upload-1.1.0.log. iOS outside this Google Play task.",
+      "ts": "2026-10-13T10:08:50+0300"
+    },
+    "internal-testing": {
+      "status": "blocked",
+      "evidence": "New internal draft uploaded; tester group, rollout confirmation and final-candidate native test evidence still required.",
+      "ts": "2026-10-13T10:08:50+0300"
+    },
+    "select-build": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    },
+    "submit": {
+      "status": "blocked",
+      "evidence": "New build uploaded; Console declarations and final-bundle native evidence remain incomplete. User intends production with new version after preparation.",
+      "ts": "2026-10-13T10:08:50+0300"
+    },
+    "facebook-platforms": {
+      "status": "todo",
+      "evidence": "",
+      "ts": ""
+    }
+  }
+}

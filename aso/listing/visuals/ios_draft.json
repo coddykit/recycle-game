@@ -1,0 +1,318 @@
+{
+ "locales": {
+  "de-DE": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "dabcd781a3c3996323593a82a48763fc", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "0e332061fc440dcc7860910cf8496178", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "f5fe6cf1ef76cbdd38a3ac8aafc7a21d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "bfd8cf78329094caf8f715eb484a84ec", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "5133c31e24698ff67e4a4b00b9b07afa", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "36a9b826ead6f3ad7637e607be0607df", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "8bb4761d448f854d36026ae7a856e86e", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "ac611845287243fe24a074560cebf491", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "69647432ccccf3349a86fcd2dca5aee3", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "e76a7eb261e0d197ab622450ac7d3aaa", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "cca5bcfe7f37c71727c93454ae467e20", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "a8f03f5f8583bd43b1f71ef546fd6d6a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "b51cafbf541abd9a1253d7e44706fecb", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "6174b142eb3ba6f4d25c17dd2325e997", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "92f6330f3637626ede942d03fdf0f96f", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "b089d121cdf429def545abbe423c7029", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "94a397c9a4bc8cb267ddde2a67d4df4a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "4ad52ede9f5e0996ff0580d0db5fcde0", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "1641fa4710781c560fc413b1f0d42305", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "5110f02ccf5e2c3a0e02220a7aeffee7", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "520fdf5770a29316808130c471a32d4f", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "en-US": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "f6f45aecc8d00e72b8c9353c52d00db4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "6709bb0741813e48521270b4a969e5a8", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "c9852d91b948f6939ac2257094ce4104", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "ce92078d90d8ce30f3fae98dfbc88c48", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "aa8f33c7c963fa5e6712c5749fbf58d6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "f929ad9fee422e8d446a74b8bb63ff12", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "a0111e31d4412f959e0725a63c867462", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "8647a246bdc62f23cc34840fff349610", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "d2e5daaa33716bbb357ace42fb828cce", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "bcfd9381a53b537c493b6c486052c12d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "5556e39e2c157e58734ebfe6359863b4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "c010bb2d4eef8896768809223726a4c6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "4fa7bba22364df95014a5f905f6a82b0", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "4f45010741c9cd268f3aeacc0a956b1e", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "bc3027f5b05355ea02aa21abcd2db390", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "c8c5ae5fd4f24ef949586b98674762c9", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "c723d87d9e36694bd904c1e0d582772c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "b510d44e834f872eac88f8529bdbf652", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "f3379329e7af928582ed141e5d1473b2", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "2bd2c03b38d1f281e0abee6b6d886013", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "98e30533b861b3f45193d3ca75e4457f", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "es-ES": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "e1863e88af2d2954e7531f931b5eaed0", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "007040018fb4367fa84f3762516b5a10", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "711763223a750215efc35b1dd110172e", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "24cc52c90a3c5ce0e5c0f0b8abf63bd4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "65372f5691890613760996c75a220791", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "0101766fa8acfc6609e790a58b55b218", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "9289edcb935ee8c481b4e1bea4c2084e", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "94f3e1cc80a0c51305328a8483971f94", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "9428e926088bae89e1aa8e0b3e7efab5", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "70b00ea932d0942624dc6a455b89c26a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "4ef0bf5fd6cc8d356407aac39adc1ae5", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "1d5befb5b08aed246e18ef906ea4ab8f", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "0eef739b9181ef61833e3d5480a7b608", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "4552f8e5b870eb64282bbaf027dcc0a4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "ebf909bee22128b5e4ef6a1c5dac60d9", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "739a2b716db0a955bfbe92874b76e85e", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "8685fd5bd9ec063c35998a8b85b530ff", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "413fb67185775d9ec4f6b08a0b7e302e", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "1556b9ecef76bc64566d369b85e48df2", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "6b7413ac62ee0b5fae29ff3187c7c2d1", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "63e2b79986f1ee1ce91743195738a096", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "fr-FR": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "8051b194142f3abb677d16de15dcd59c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "3ef888fe94e31c555b7fbf8562a76eba", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "fc755ae8723f1c35f6a4ae5c4ab16d8b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "14b3156113b7ba4ca53eb3a3b6b2393d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "f7ed128a461fb89ce54e11b03e5a9a80", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "dc0b28fa4721540455de785d44a76ffb", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "0180fc422117ded8a62396e1f67fea08", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "e7b0e0bc88eec27768906db6fb6fabb2", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "25692c66d2faccdb690a3760b1024e64", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "3f37cf89aa2a888d3db9715eb5ef4cb6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "9e027206195e8f99182f5358995dd0ad", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "5662b9fb22ecea2be3f09ed72851ab36", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "ff7ed8deb9f2713a583f87bfd0935e18", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "19c02a3cf690a01db1fa5bd91c75f39d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "d2186f3b0f498edcec754ba4462938a4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "4d03b0fbbd3ae5b96f5729a191523b15", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "e4323ec70cf00ee0b4ff9c4c23cf23b3", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "c7c77739ce780c379d4b05dd83c72229", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "2c9a29f11b95c1e0b39173ad2fb7d082", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "cc90646b47d9118d00ea3e813327d7b2", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "e50c8ebb021d584524ff7efcfb0de0f3", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "ja": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "a1a3fb03a0ef091f91546550bbd52f5a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "b2ed576194c9335e27c7c3f831ba5793", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "90b034b5270ff692ed937394651698f3", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "d10c1b97eec1aac34c7322bec59f390c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "e0a8400206af7aef2aa8b1eaf591d587", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "b113fbf6be33ac40b2013e25db886831", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "67b3372d877c13b7736a774c5a38e121", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "202ea31b0f2314bbafb35acbd8ce7b0a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "852b50bd2717057a8cdb76137a27355c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "c9a9784735c4fa6af10ad77656d5aa3b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "ba4ad6e490bbe32e33c51f98468f0503", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "65126230b49ba15abbacdbb908bdfc52", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "9247b22e2cb698ca7278cdae7ddd8441", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "997f33cc982c2f1045b5a5c5eb9cd538", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "030979e58abccb18e5bfa8468ad6feb8", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "c7bac6ba2da18a07e83414733db3b6e1", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "f8dca47ea0a6a1d2b906ea0a7ad3f5ab", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "b18a2aa3dbc6b50c139fb7021f9f43e2", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "77ee5e3ba3efdc2619859074b885948d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "50960dc14ea450e9f647da0bb6ea0468", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "9e85146b003df9654573d2445bf27ccb", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "ko": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "45a92b6897e8d14c76f3db39f2d13b10", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "19f4b3dc314cc1036380fc213ba404e3", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "0238704b6435e5829b7877f3afa645ef", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "dacf546adeddea3350f1a107e0a5790a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "7b72cf969be18196192bc3b26d1f9a16", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "46e9a2f9c0cb58be8a252790991e9c45", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "2aa775d737ad4c2937cbd18cf1979c63", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "b6739c40bc5cc6836aeaf60810dd6903", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "2f3cc030d14fd9eb191ea7348bdfb2a1", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "99a0625e2510b16b00c4bf3ea4cc28c8", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "3a745d9f7639f7b71b43b9b461c7daae", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "954b0c4e4972c016cb742793df267255", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "1f6e558a24c4e436e3d604b3e8360ff5", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "44e7fcc28d8889197642f268a8e49163", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "65d494f75dcf4ffe0e4fa7a173069957", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "935f16348e1200aa059770f0862451a4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "ff3af7a1448584c8da008465fd9c81e4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "af42092c37155e5413da1dc7c590cffa", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "7a359e66a6a0f12732bedfecda526e2c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "e6e513ad705d1f28ae806ce49e0abdf9", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "e540f6dad769fedc67543ffd3ba9175e", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "pt-BR": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "cad0183c65bde22d35b3f70975a19c68", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "dd7f7556faafd5f7d58686f5361b8938", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "c2d4a4bb406b4ebdb6270a8e6110b29b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "5413cc1be4078924738385f923e9c27d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "dc72fa082e2471f00edf6373a557967c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "a342b875046bad0c6a378a995b84c105", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "721105bf3a20337e7b991bc3cf821813", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "b900b53f53a96d5edde745e16c2fe09c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "21e05ff508a388804e0bda689900c48b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "6a3994322f07696ef0242b941fa5f540", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "ab1ace3055237d51340295a21f1fa0e3", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "2ab71c88ef5bd01541abb5d5410f5e3d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "da173ef2dbdde1618b49138680dbdc82", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "da69473543477a885cfe8009ff5a41f1", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "25970eb99c897e521bfc914856a44d74", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "2bb9d6bf3110466e3b52abf74303d599", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "cbc542d817973e337ccbe2d8ea5e8980", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "0b50247b3adb42cd07f633144e5dc9cc", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "bd223dbde062a9018ad266803c968093", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "98203febd13d1801e46b8d067b157136", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "9371222ecf865530632cfebeda4528a2", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "ru": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "a2e1c60504ff747dbf538a2e82dc4845", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "7c671fabc121a762488769e28b23a866", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "68fefbd7f62490fbb15dafa63136b2fc", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "78519c4a22bbce59a855a4bf8cf8a893", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "5518b28fda5af678b8cfabbb093c30f6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "ba721b84bd68f3fe88f3806c84fc2ec6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "b3e342bf32718d6b7809f5cfc1a10b9f", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "b6299ca81a72f0f2603802276cbd19d6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "e7600166887c1c18ec89da03dc90aa46", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "6c2e2ef22ded9515e3d328cd8d8d3629", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "bd9aad743b23779b16d4c5937d6771cb", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "8db48589fb72c4cf798788cb260515ea", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "7ef7b4cfe9c5409d0b4bc6abdd0a67df", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "6c86281b8e8547376d18d44983a5e67a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "77947b0636acadb2067f8835c8ecc6d1", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "a6151e60034d971daaacda133d13a6b9", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "8243b33cabc5e5cb302251a25b372b7c", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "e8570eb7d80beb1b9052f01ca4dd0c98", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "58b748bb6c103a22ca930b46bf140af6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "c011d7f18af8c363089def61a1abf570", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "2f1a12505ee048482c773e948835f8b3", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "tr": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "5009577efdcc2661bcd01155c41eda42", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "25909607dbed8804f20e4c0e40161138", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "031ec63d9d847aecc14270ad58b792ac", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "694d2e92182f996f9fbba94f95fa5ecf", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "093ac0b23e0a4dc745bcbeed8afda14d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "3bed082b773151d1be0eadce13657f0b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "5771e4c3641d47d7b1413263d89554dc", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "510b671ee6f9fb86c089e9cbe151889b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "d59dd287d3a3a581b879e0ea7baf86c9", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "77d6983683f53922a6f9ea2206ec5df9", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "205be3f956239e6ed091b073ebb5376b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "22b6290d90f7d3533be136639179d653", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "6adaa51c276b32e2d772c3625ce70180", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "4978ea8d5868433b638c39c4de541d3d", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "5cf20a511bc91c8f687598ec67f159b2", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "0d1068de491c05339a7f84a657da4626", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "405310964bf68f3b84538e7752648281", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "117b48506b09a8ddd7c2d0bd01fbd033", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "ee5622b89f4013281ecce79e2dafdf50", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "b9a6097d93a98b8779f74a2ad72f0ec1", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "9b695ef29b38a4f90199cf69011d96b9", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  },
+  "zh-Hans": {
+   "sets": {
+    "APP_IPAD_PRO_3GEN_129": [
+     {"file": "01-empire.png", "h": 2752, "md5": "000fa626e2b08d6cd6d453f3c28033fe", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "02-dispatch.png", "h": 2752, "md5": "fd633ed4fa81bbb1f876d9e808c16fdd", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "03-event.png", "h": 2752, "md5": "f06f738c094c2d8b759e049f4e38be8a", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "04-fleet.png", "h": 2752, "md5": "896cfce843cf78520126d1ceeff66d57", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "05-upgrades.png", "h": 2752, "md5": "6e48b4d32456284dcdf2fa9bb848f661", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "06-map.png", "h": 2752, "md5": "3f527963ba1b655fd00c4cd91c67d394", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064},
+     {"file": "07-mentor.png", "h": 2752, "md5": "7fdacaf683a3ac99c2fa9ec6f5a645c5", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 2064}
+    ],
+    "APP_IPHONE_65": [
+     {"file": "01-empire.png", "h": 2778, "md5": "2622812a047d9730b5f1d349d06e8d30", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "02-dispatch.png", "h": 2778, "md5": "17d85ea0a587f0aa42f59fe45e0244b0", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "03-event.png", "h": 2778, "md5": "d3143d18291a4fdee79adfad4b000533", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "04-fleet.png", "h": 2778, "md5": "f719b6be6b45288abb6466d08ef4faa7", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "05-upgrades.png", "h": 2778, "md5": "900d4324f21a9ba7ae0ac864fa13e6a8", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "06-map.png", "h": 2778, "md5": "46080f2d88ae4e0d7bb10b73552eea09", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284},
+     {"file": "07-mentor.png", "h": 2778, "md5": "7458a45688f240c24d8a4cf9872cb3c4", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1284}
+    ],
+    "APP_IPHONE_67": [
+     {"file": "01-empire.png", "h": 2868, "md5": "47d568f7627979dab4d7f7ccda170e2b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "02-dispatch.png", "h": 2868, "md5": "2f3bc132b63e68f2274cfe63f44c8646", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "03-event.png", "h": 2868, "md5": "a9ca8f809d55587d222214ea40efdcc8", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "04-fleet.png", "h": 2868, "md5": "940a56089fa057a1b9f03d0e01c6e9fa", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "05-upgrades.png", "h": 2868, "md5": "1e583f0b0ccf1408bf4ed12b119ac9c6", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "06-map.png", "h": 2868, "md5": "257f323ad6ecc34c31aa088cd583f70b", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320},
+     {"file": "07-mentor.png", "h": 2868, "md5": "4770bdfa3c84d555a0a4a4bbadf17654", "source": {"kind": "unknown", "path": null}, "state": "COMPLETE", "w": 1320}
+    ]
+   }
+  }
+ },
+ "role": "edit",
+ "state": "PREPARE_FOR_SUBMISSION",
+ "store": "ios",
+ "version": "1.0"
+}

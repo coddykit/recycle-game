@@ -1,0 +1,1169 @@
+{
+  "package": "com.coddykit.borderlineempire",
+  "checked_at": "2026-10-13T06:43:50.164Z",
+  "scope": "API snapshot; Console declarations and device behavior are separate",
+  "tracks": [
+    {
+      "track": "production"
+    },
+    {
+      "track": "beta"
+    },
+    {
+      "track": "alpha"
+    },
+    {
+      "track": "internal",
+      "releases": [
+        {
+          "name": "1.0",
+          "versionCodes": [
+            "1791611984"
+          ],
+          "status": "draft"
+        }
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "versionCode": 1791611984,
+      "sha1": "f52fb45e66ae471b939f004248eeccde8c3802b5",
+      "sha256": "3321c58084ceaee65cd1602f0b66fdcd461f2197e9aaca4430225468433cb75a"
+    }
+  ],
+  "details": {
+    "defaultLanguage": "en-US",
+    "contactWebsite": "https://coddykit.com",
+    "contactEmail": "coddy@coddykit.com"
+  },
+  "listings": [
+    {
+      "language": "en-US",
+      "title": "Idle Tycoon: Borderline Empire",
+      "fullDescription": "Every empire starts with one rusty hatchback.\n\nBorderline Empire is a casual idle tycoon game about running a delivery and logistics business in eight made-up countries. Meet Dot, a retired dispatcher who knows every back road, name your company, pick its colour and start taking the jobs nobody else wants. Fast routes pay more. Safe routes keep the heat down. You make the call.\n\nRUN THE ROUTES\n• Pick contracts, choose a vehicle and a route (Fast, Normal or Safe), then watch the delivery roll across a hand-crafted low-poly world.\n• Handle surprises on the road: rival crews, inspections, breakdowns, road closures and nervous passengers.\n• Keep each region's Heat in check, or the next border crossing gets a lot harder.\n• Three daily logistics jobs with bonus rewards every day.\n\nBUILD YOUR FLEET\n• Collect and upgrade 10 vehicles, from the old hatchback to vans, pickups and box trucks: engine, capacity, navigation, suspension and more.\n• Hire drivers with their own rarity and skills.\n• Expand your headquarters from a dusty garage into a Logistics Center and an Underground HQ.\n• Unlock 8 fictional regions, each with its own landscape, towns and border crossing.\n\nAUTOMATE THE BUSINESS\n• Auto Accept, Auto Assign and Auto Dispatch take over the routine work, then Regional Managers run whole regions while you plan.\n• Earn Influence and spend it on permanent Connections.\n• Reach Empire status, prestige and come back stronger with Legacy Stars.\n\nMADE FOR SHORT BREAKS\n• Satisfying 30-second sessions, with idle earnings while you're away.\n• One-thumb portrait controls.\n• Voiced mentor and announcer.\n• Play without an account. Core gameplay works offline.\n• Optional sponsor rewards and a one-time Empire Pass. No forced ads.\n\nIf you like truck games, delivery games, business and manager games or any idle tycoon, Borderline Empire gives you a whole transport empire to run from your pocket.\n\nAll countries, companies, people and goods in the game are fictional. Risk is shown only as numbers; there is no violence and no real-world locations.",
+      "shortDescription": "Truck delivery tycoon: grow a logistics empire across 8 fictional regions."
+    },
+    {
+      "language": "tr-TR",
+      "title": "Idle Tycoon: Borderline Empire",
+      "fullDescription": "Her imparatorluk paslı bir hatchback ile başlar.\n\nBorderline Empire, sekiz kurgusal ülkede teslimat ve lojistik işletmesi yönettiğin casual idle tycoon oyunudur. Her kestirme yolu bilen emekli sevkiyat görevlisi Dot ile tanış, şirketine isim ver, rengini seç ve kimsenin istemediği işleri almaya başla. Hızlı rotalar daha çok kazandırır. Güvenli rotalar Heat seviyesini düşük tutar. Karar senin.\n\nROTALARI YÖNET\n• Sözleşmeleri seç, bir araç ve rota belirle (Hızlı, Normal veya Güvenli), ardından teslimatın el yapımı low-poly dünyada ilerleyişini izle.\n• Yolda çıkan sürprizlerle ilgilen: rakip ekipler, denetimler, arızalar, yol kapanmaları ve tedirgin yolcular.\n• Her bölgenin Heat seviyesini kontrol altında tut; yoksa bir sonraki sınır geçişi çok daha zor olur.\n• Her gün bonus ödüller sunan üç günlük lojistik işi.\n\nFİLONU KUR\n• Eski hatchback'ten vanlara, pickuplara ve box truck'lara kadar 10 aracı topla ve geliştir: motor, kapasite, navigasyon, süspansiyon ve daha fazlası.\n• Kendine özgü nadirlik ve becerilere sahip sürücüler işe al.\n• Merkezini tozlu bir garajdan Logistics Center'a ve Underground HQ'ya dönüştür.\n• Her biri kendine özgü manzaralara, kasabalara ve sınır geçişlerine sahip 8 kurgusal bölgenin kilidini aç.\n\nİŞLETMENİ OTOMATİKLEŞTİR\n• Auto Accept, Auto Assign ve Auto Dispatch rutin işleri devralır; ardından Regional Managers sen plan yaparken tüm bölgeleri yönetir.\n• Influence kazan ve bunu kalıcı Connections için harca.\n• Empire statüsüne ve prestije ulaş, ardından Legacy Stars ile daha güçlü geri dön.\n\nKISA MOLALAR İÇİN TASARLANDI\n• Tatmin edici 30 saniyelik oturumlar ve sen yokken devam eden idle kazançları.\n• Tek parmakla kullanılan dikey ekran kontrolleri.\n• Seslendirmeli mentor ve spiker.\n• Hesap olmadan oyna. Temel oynanış offline çalışır.\n• İsteğe bağlı sponsor ödülleri ve tek seferlik Empire Pass. Zorunlu reklam yok.\n\nKamyon oyunlarını, teslimat oyunlarını, işletme ve yönetim oyunlarını ya da herhangi bir idle tycoon oyununu seviyorsan Borderline Empire, cebinden yöneteceğin koca bir taşımacılık imparatorluğu sunar.\n\nOyundaki tüm ülkeler, şirketler, kişiler ve mallar kurgusaldır. Risk yalnızca sayılarla gösterilir; şiddet ve gerçek dünyadan konumlar yoktur.",
+      "shortDescription": "Kamyon teslimat tycoon'u: 8 kurgusal bölgede lojistik imparatorluğu kur."
+    },
+    {
+      "language": "de-DE",
+      "title": "Idle Tycoon: Borderline Empire",
+      "fullDescription": "Jedes Imperium beginnt mit einem rostigen Kleinwagen.\n\nBorderline Empire ist ein lockeres Idle-Tycoon-Spiel über den Aufbau eines Liefer- und Logistikunternehmens in acht erfundenen Ländern. Lerne Dot kennen, eine pensionierte Disponentin, die jede Nebenstraße kennt. Benenne dein Unternehmen, wähle seine Farbe und nimm die Aufträge an, die sonst niemand will. Schnelle Routen bringen mehr Geld. Sichere Routen halten den Heat niedrig. Du entscheidest.\n\nFAHRE DIE ROUTEN\n• Wähle Verträge, ein Fahrzeug und eine Route (Fast, Normal oder Safe), und beobachte, wie die Lieferung durch eine handgefertigte Low-Poly-Welt fährt.\n• Meistere Überraschungen unterwegs: rivalisierende Crews, Kontrollen, Pannen, Straßensperren und nervöse Fahrgäste.\n• Halte den Heat jeder Region unter Kontrolle, sonst wird der nächste Grenzübertritt deutlich schwieriger.\n• Drei tägliche Logistikaufträge mit Bonusbelohnungen jeden Tag.\n\nBAUE DEINE FLOTTE AUF\n• Sammle und verbessere 10 Fahrzeuge – vom alten Kleinwagen über Vans und Pick-ups bis zu Koffer-Lkw: Motor, Kapazität, Navigation, Federung und mehr.\n• Stelle Fahrer mit eigener Seltenheit und eigenen Fähigkeiten ein.\n• Erweitere deine Zentrale von einer staubigen Garage zu einem Logistics Center und einem Underground HQ.\n• Schalte 8 erfundene Regionen frei, jede mit eigener Landschaft, eigenen Städten und eigenem Grenzübergang.\n\nAUTOMATISIERE DAS GESCHÄFT\n• Auto Accept, Auto Assign und Auto Dispatch übernehmen die Routine. Danach verwalten Regional Managers ganze Regionen, während du planst.\n• Verdiene Influence und gib sie für dauerhafte Connections aus.\n• Erreiche den Empire-Status, führe einen Prestige-Lauf durch und kehre mit Legacy Stars stärker zurück.\n\nFÜR KURZE PAUSEN GEMACHT\n• Befriedigende 30-Sekunden-Sessions mit Idle-Einnahmen, während du abwesend bist.\n• Hochformat-Steuerung mit einer Hand.\n• Gesprochener Mentor und Ansager.\n• Spiele ohne Konto. Das Kernspiel funktioniert offline.\n• Optionale Sponsor-Belohnungen und ein einmaliger Empire Pass. Keine erzwungenen Werbeanzeigen.\n\nWenn du Lkw-Spiele, Liefer-Spiele, Business- und Manager-Spiele oder Idle-Tycoons magst, gibt dir Borderline Empire ein ganzes Transportimperium, das du unterwegs leiten kannst.\n\nAlle Länder, Unternehmen, Personen und Waren im Spiel sind erfunden. Risiken werden nur als Zahlen dargestellt; es gibt keine Gewalt und keine realen Orte.",
+      "shortDescription": "Lkw-Liefer-Tycoon: Werde zum Logistikboss in 8 erfundenen Regionen."
+    },
+    {
+      "language": "es-ES",
+      "title": "Idle Tycoon: Borderline Empire",
+      "fullDescription": "Todo imperio empieza con un viejo hatchback.\n\nBorderline Empire es un juego casual de tipo idle tycoon sobre la gestión de un negocio de entregas y logística en ocho países ficticios. Conoce a Dot, una despachadora jubilada que conoce cada camino secundario, ponle nombre a tu empresa, elige su color y empieza a aceptar los trabajos que nadie más quiere. Las rutas rápidas pagan más. Las rutas seguras mantienen la Heat a raya. Tú decides.\n\nRECORRE LAS RUTAS\n• Elige contratos, selecciona un vehículo y una ruta (Rápida, Normal o Segura), y observa cómo la entrega avanza por un mundo low-poly hecho a mano.\n• Afronta imprevistos en carretera: cuadrillas rivales, inspecciones, averías, cortes de carretera y pasajeros nerviosos.\n• Mantén bajo control la Heat de cada región o el siguiente cruce fronterizo será mucho más difícil.\n• Tres trabajos de logística diarios con recompensas extra cada día.\n\nCONSTRUYE TU FLOTA\n• Colecciona y mejora 10 vehículos, desde el viejo hatchback hasta furgonetas, pick-ups y camiones carrozados: motor, capacidad, navegación, suspensión y mucho más.\n• Contrata conductores con su propia rareza y habilidades.\n• Amplía tu sede desde un garaje polvoriento hasta un Logistics Center y un Underground HQ.\n• Desbloquea 8 regiones ficticias, cada una con su propio paisaje, pueblos y cruce fronterizo.\n\nAUTOMATIZA EL NEGOCIO\n• Auto Accept, Auto Assign y Auto Dispatch se encargan del trabajo rutinario; después, los Regional Managers gestionan regiones enteras mientras tú haces planes.\n• Gana Influence y gástala en Connections permanentes.\n• Alcanza el estado Empire, consigue prestigio y vuelve más fuerte con Legacy Stars.\n\nDISEÑADO PARA PARTIDAS CORTAS\n• Sesiones satisfactorias de 30 segundos, con ganancias idle mientras no estás.\n• Controles verticales con una sola mano.\n• Mentor y locutor con voz.\n• Juega sin cuenta. La jugabilidad principal funciona sin conexión.\n• Recompensas opcionales de patrocinadores y un Empire Pass de pago único. Sin anuncios obligatorios.\n\nSi te gustan los juegos de camiones, los juegos de entregas, los juegos de negocios y gestión o cualquier idle tycoon, Borderline Empire te ofrece todo un imperio de transporte que dirigir desde el bolsillo.\n\nTodos los países, empresas, personajes y mercancías del juego son ficticios. El riesgo se muestra únicamente con números; no hay violencia ni ubicaciones del mundo real.",
+      "shortDescription": "Negocio de camiones: crea un imperio logístico en 8 regiones ficticias."
+    },
+    {
+      "language": "fr-FR",
+      "title": "Idle Tycoon: Borderline Empire",
+      "fullDescription": "Tout empire commence avec une vieille citadine.\n\nBorderline Empire est un jeu de gestion idle décontracté consacré à la gestion d'une entreprise de livraison et de logistique dans huit pays inventés. Faites connaissance avec Dot, un répartiteur à la retraite qui connaît chaque route secondaire, donnez un nom à votre entreprise, choisissez sa couleur et commencez à accepter les missions que personne d'autre ne veut. Les itinéraires rapides rapportent davantage. Les itinéraires sûrs réduisent la Heat. La décision vous appartient.\n\nSILLONNEZ LES ROUTES\n• Choisissez des contrats, un véhicule et un itinéraire (Fast, Normal ou Safe), puis regardez la livraison traverser un monde low-poly créé à la main.\n• Gérez les imprévus sur la route : équipes rivales, contrôles, pannes, routes fermées et passagers nerveux.\n• Maintenez la Heat de chaque région à un niveau raisonnable, sinon le prochain passage de frontière sera bien plus difficile.\n• Trois missions de logistique quotidiennes avec des récompenses bonus chaque jour.\n\nDÉVELOPPEZ VOTRE FLOTTE\n• Collectionnez et améliorez 10 véhicules, de la vieille citadine aux vans, pickups et camions à caisse : moteur, capacité, navigation, suspension et plus encore.\n• Recrutez des chauffeurs avec leur propre rareté et leurs compétences.\n• Agrandissez votre quartier général, d'un garage poussiéreux à un Logistics Center puis à un Underground HQ.\n• Déverrouillez 8 régions fictives, chacune avec ses paysages, ses villes et son passage de frontière.\n\nAUTOMATISEZ L'ENTREPRISE\n• Auto Accept, Auto Assign et Auto Dispatch prennent en charge les tâches répétitives, puis les Regional Managers gèrent des régions entières pendant que vous planifiez.\n• Gagnez de l'Influence et dépensez-la dans des Connections permanentes.\n• Atteignez le statut Empire, faites votre prestige et revenez plus fort grâce aux Legacy Stars.\n\nCONÇU POUR LES COURTES PAUSES\n• Des sessions satisfaisantes de 30 secondes, avec des gains idle pendant votre absence.\n• Des commandes en mode portrait à une main.\n• Un mentor et un annonceur doublés.\n• Jouez sans compte. Le gameplay principal fonctionne hors ligne.\n• Récompenses sponsorisées facultatives et Empire Pass disponible une seule fois. Aucune publicité forcée.\n\nSi vous aimez les jeux de camion, de livraison, de commerce et de gestion, ou tout jeu de type idle tycoon, Borderline Empire vous offre tout un empire de transport à diriger depuis votre poche.\n\nTous les pays, entreprises, personnes et biens présents dans le jeu sont fictifs. Le risque est uniquement représenté par des chiffres ; il n'y a ni violence ni lieux réels.",
+      "shortDescription": "Livraison en camion : bâtissez un empire logistique dans 8 régions fictives."
+    },
+    {
+      "language": "ja-JP",
+      "title": "放置ゲーム: Borderline Empire",
+      "fullDescription": "すべての帝国は、古びたハッチバック1台から始まる。\n\nBorderline Empireは、8つの架空の国で配送・物流ビジネスを運営するカジュアルな放置ゲームです。裏道を知り尽くした引退配車係のDotに出会い、会社名とカラーを決め、誰も引き受けたがらない仕事を始めましょう。速いルートは報酬が高く、安全なルートならHeatを抑えられます。決断するのはあなたです。\n\nルートを走ろう\n• 契約を選び、車両とルート（Fast、Normal、Safe）を決めて、手作りのローポリ世界を配送車が進む様子を見届けよう。\n• ライバルチーム、検査、故障、通行止め、不安な乗客など、道中のトラブルに対応しよう。\n• 各地域のHeatを抑えよう。さもないと、次の国境越えが一気に難しくなる。\n• 毎日3件の物流ジョブに挑戦。毎日ボーナス報酬を獲得しよう。\n\n車両を増やそう\n• 古いハッチバックからバン、ピックアップ、ボックストラックまで、10台の車両を集めてアップグレード。エンジン、積載量、ナビゲーション、サスペンションなどを強化しよう。\n• それぞれ異なるレアリティとスキルを持つドライバーを雇おう。\n• 本部をほこりっぽいガレージからLogistics Center、さらにUnderground HQへと拡張しよう。\n• それぞれ独自の風景、街、国境越えがある8つの架空地域をアンロックしよう。\n\nビジネスを自動化しよう\n• Auto Accept、Auto Assign、Auto Dispatchで日々の作業を任せよう。計画を立てている間も、Regional Managersが地域全体を運営してくれる。\n• Influenceを獲得し、恒久的なConnectionsに使おう。\n• Empireステータスに到達し、プレステージでLegacy Starsを手に入れて、より強くなって再出発しよう。\n\n短い休憩にぴったり\n• 30秒で満足できるプレイ。離れている間も放置収益を獲得。\n• 片手で操作できる縦画面コントロール。\n• ボイス付きのメンターとアナウンサー。\n• アカウント登録なしでプレイ可能。コアゲームプレイはオフラインに対応。\n• 任意で受け取れるスポンサー報酬と、1回限りのEmpire Pass。強制広告なし。\n\nトラックゲーム、配送ゲーム、ビジネスゲーム、経営ゲーム、放置ゲームが好きなら、Borderline Empireでポケットから運送帝国を運営しよう。\n\nゲーム内の国、会社、人、貨物はすべて架空です。リスクは数字でのみ示され、暴力や実在の場所は登場しません。",
+      "shortDescription": "トラック配送経営シミュレーション。8つの架空地域で物流帝国を築こう。"
+    },
+    {
+      "language": "ko-KR",
+      "title": "방치형 타이쿤: Borderline Empire",
+      "fullDescription": "모든 제국은 낡은 해치백 한 대에서 시작합니다.\n\nBorderline Empire는 8개의 가상 국가에서 배송 및 물류 사업을 운영하는 캐주얼 방치형 타이쿤 게임입니다. 모든 뒷길을 꿰고 있는 은퇴한 배차 담당자 Dot을 만나 회사를 짓고, 색상을 고른 뒤 아무도 맡지 않으려는 일부터 시작하세요. 빠른 경로는 더 많은 수익을 가져옵니다. 안전한 경로는 위험도를 낮춥니다. 선택은 당신의 몫입니다.\n\n경로를 운영하세요\n• 계약을 고르고 차량과 경로(Fast, Normal 또는 Safe)를 선택한 다음, 정교하게 제작된 로우 폴리 세계를 가로지르는 배송을 지켜보세요.\n• 도로 위의 변수에 대응하세요: 경쟁 조직, 검문, 고장, 도로 폐쇄, 불안해하는 승객이 기다립니다.\n• 각 지역의 Heat를 관리하세요. 그렇지 않으면 다음 국경 통과가 훨씬 어려워집니다.\n• 매일 보너스 보상을 제공하는 3개의 일일 물류 업무를 완료하세요.\n\n차량을 키우세요\n• 오래된 해치백부터 밴, 픽업, 박스 트럭까지 10종의 차량을 수집하고 업그레이드하세요. 엔진, 적재량, 내비게이션, 서스펜션 등을 강화할 수 있습니다.\n• 각자 고유한 희귀도와 스킬을 가진 기사를 고용하세요.\n• 본부를 먼지 쌓인 차고에서 Logistics Center와 Underground HQ로 확장하세요.\n• 각자 고유한 풍경, 마을, 국경 통과 지점을 갖춘 8개의 가상 지역을 잠금 해제하세요.\n\n사업을 자동화하세요\n• Auto Accept, Auto Assign, Auto Dispatch가 반복 업무를 맡아주고, Regional Managers가 당신이 계획하는 동안 지역 전체를 운영합니다.\n• Influence를 획득하고 영구적인 Connections에 사용하세요.\n• Empire 등급에 도달하고, 프레스티지를 통해 Legacy Stars와 함께 더 강해져 다시 시작하세요.\n\n짧은 휴식에 맞춘 플레이\n• 30초 만에 즐기는 만족스러운 세션과 자리를 비운 동안에도 쌓이는 방치형 수익을 경험하세요.\n• 한 손으로 조작하는 세로 화면 컨트롤.\n• 음성이 지원되는 멘토와 아나운서.\n• 계정 없이 플레이하세요. 핵심 게임플레이는 오프라인에서도 작동합니다.\n• 선택형 스폰서 보상과 1회 구매형 Empire Pass. 강제 광고 없음.\n\n트럭 게임, 배송 게임, 사업 및 경영 게임 또는 방치형 타이쿤을 좋아한다면, Borderline Empire에서 손안의 운송 제국 전체를 운영해 보세요.\n\n게임 속 모든 국가, 회사, 인물과 물품은 허구입니다. 위험 요소는 숫자로만 표시되며, 폭력이나 실제 지명은 등장하지 않습니다.",
+      "shortDescription": "트럭 배송 타이쿤, 8개 가상 지역에서 물류 제국을 키우세요."
+    },
+    {
+      "language": "pt-BR",
+      "title": "Idle Tycoon: Borderline Empire",
+      "fullDescription": "Todo império começa com um hatch velho.\n\nBorderline Empire é um jogo casual de gestão ociosa sobre administrar um negócio de entregas e logística em oito países fictícios. Conheça Dot, uma despachante aposentada que conhece todos os atalhos, dê um nome à sua empresa, escolha sua cor e comece a aceitar os trabalhos que ninguém mais quer. Rotas rápidas pagam mais. Rotas seguras mantêm o Heat baixo. A decisão é sua.\n\nCORRA PELAS ROTAS\n• Escolha contratos, selecione um veículo e uma rota (Fast, Normal ou Safe), depois acompanhe a entrega por um mundo low-poly criado à mão.\n• Lide com imprevistos na estrada: equipes rivais, inspeções, panes, bloqueios e passageiros nervosos.\n• Mantenha o Heat de cada região sob controle ou a próxima travessia de fronteira ficará muito mais difícil.\n• Três trabalhos logísticos diários com recompensas bônus todos os dias.\n\nCONSTRUA SUA FROTA\n• Colete e aprimore 10 veículos, do hatch antigo a vans, picapes e caminhões-baú: motor, capacidade, navegação, suspensão e muito mais.\n• Contrate motoristas com raridades e habilidades próprias.\n• Expanda sua sede de uma garagem empoeirada para um Logistics Center e um Underground HQ.\n• Desbloqueie 8 regiões fictícias, cada uma com sua própria paisagem, cidades e passagem de fronteira.\n\nAUTOMATIZE O NEGÓCIO\n• Auto Accept, Auto Assign e Auto Dispatch cuidam do trabalho rotineiro, enquanto Regional Managers administram regiões inteiras e você planeja.\n• Ganhe Influence e use-a em Connections permanentes.\n• Alcance o status Empire, faça prestígio e volte mais forte com Legacy Stars.\n\nFEITO PARA PAUSAS CURTAS\n• Sessões satisfatórias de 30 segundos, com ganhos ociosos enquanto você está longe.\n• Controles em modo retrato para usar com uma mão.\n• Mentor e locutor com voz.\n• Jogue sem criar uma conta. A jogabilidade principal funciona offline.\n• Recompensas opcionais de patrocinadores e um Empire Pass único. Sem anúncios forçados.\n\nSe você gosta de jogos de caminhão, entregas, negócios e gestão ou de qualquer jogo de gestão ociosa, Borderline Empire oferece um império de transporte inteiro para administrar na palma da sua mão.\n\nTodos os países, empresas, pessoas e mercadorias do jogo são fictícios. O risco é mostrado apenas como números; não há violência nem locais do mundo real.",
+      "shortDescription": "Administre entregas, cresça e domine o transporte em 8 regiões fictícias."
+    },
+    {
+      "language": "ru-RU",
+      "title": "Айдл-тайкун: Borderline Empire",
+      "fullDescription": "Каждая империя начинается с одного ржавого хэтчбека.\n\nBorderline Empire — казуальная idle-игра в жанре тайкун о ведении бизнеса по доставке и логистике в восьми вымышленных странах. Познакомьтесь с Dot — бывшим диспетчером, который знает каждую просёлочную дорогу. Назовите свою компанию, выберите её цвет и начните брать заказы, от которых все остальные отказались бы. Быстрые маршруты приносят больше денег. Безопасные маршруты помогают не повышать Heat. Решать вам.\n\nВЕДИТЕ МАРШРУТЫ\n• Выбирайте контракты, транспорт и маршрут (Fast, Normal или Safe), а затем наблюдайте за доставкой в созданном вручную мире с низкополигональной графикой.\n• Реагируйте на неожиданности в дороге: конкурирующие экипажи, проверки, поломки, перекрытия дорог и нервных пассажиров.\n• Следите за Heat каждого региона, иначе следующий пограничный переход станет намного сложнее.\n• Три ежедневных логистических задания с бонусными наградами каждый день.\n\nРАЗВИВАЙТЕ АВТОПАРК\n• Соберите и улучшите 10 транспортных средств — от старого хэтчбека до фургонов, пикапов и грузовых фургонов. Улучшайте двигатель, вместимость, навигацию, подвеску и многое другое.\n• Нанимайте водителей с собственной редкостью и навыками.\n• Расширяйте штаб-квартиру: от пыльного гаража до Logistics Center и Underground HQ.\n• Открывайте 8 вымышленных регионов, каждый со своими пейзажами, городами и пограничным переходом.\n\nАВТОМАТИЗИРУЙТЕ БИЗНЕС\n• Auto Accept, Auto Assign и Auto Dispatch берут на себя рутинную работу, а Regional Managers управляют целыми регионами, пока вы строите планы.\n• Зарабатывайте Influence и тратьте его на постоянные Connections.\n• Достигните статуса Empire, совершайте престиж и возвращайтесь сильнее с Legacy Stars.\n\nДЛЯ КОРОТКИХ ПЕРЕРЫВОВ\n• Удовлетворяющие 30-секундные игровые сессии и доход в idle-режиме, пока вас нет.\n• Управление одной рукой в портретной ориентации.\n• Озвученные наставник и диктор.\n• Играйте без аккаунта. Основной игровой процесс работает офлайн.\n• Дополнительные награды от спонсоров и разовый Empire Pass. Принудительной рекламы нет.\n\nЕсли вам нравятся игры про грузовики, доставку, бизнес, управление или тайкуны в idle-жанре, Borderline Empire позволит управлять целой транспортной империей прямо из кармана.\n\nВсе страны, компании, люди и товары в игре вымышлены. Риск показывается только в виде чисел; насилия и реальных мест нет.",
+      "shortDescription": "Тайкун грузоперевозок: развивайте империю доставки в 8 вымышленных регионах."
+    },
+    {
+      "language": "zh-CN",
+      "title": "放置大亨: Borderline Empire",
+      "fullDescription": "每个帝国，都从一辆锈迹斑斑的两厢车开始。\n\nBorderline Empire 是一款休闲放置经营游戏，讲述在8个虚构国家经营配送与物流业务的故事。认识 Dot——熟悉每条偏僻道路的退休调度员；为公司命名、选择颜色，然后开始接手别人都不愿做的订单。路线越快，收入越高；路线越安全，Heat 越低。决定权在你手中。\n\n规划路线\n• 挑选合同、选择车辆和路线（Fast、Normal 或 Safe），看着配送任务穿过精心打造的 low-poly 世界。\n• 应对路上的突发状况：竞争车队、检查、抛锚、道路封闭和紧张的乘客。\n• 控制每个地区的 Heat，否则下一次过境会更加困难。\n• 每天完成3项物流任务，每日领取额外奖励。\n\n打造车队\n• 收集并升级10辆车辆，从老旧两厢车到厢式货车、皮卡和箱式卡车：发动机、容量、导航、悬挂等属性都能提升。\n• 聘用拥有不同稀有度和技能的司机。\n• 将总部从尘土飞扬的车库扩建为 Logistics Center，再发展成 Underground HQ。\n• 解锁8个虚构地区，每个地区都有独特的地貌、城镇和过境点。\n\n自动化业务\n• Auto Accept、Auto Assign 和 Auto Dispatch 接管日常工作；Regional Managers 负责整个地区，让你专心规划。\n• 赚取 Influence，并将其投入永久性的 Connections。\n• 达到 Empire status，通过 prestige 变得更强，并用 Legacy Stars 重新出发。\n\n适合短暂休息\n• 每次游玩只需30秒，离开游戏时也能持续获得放置收益。\n• 单手竖屏操作。\n• 配有语音导师和播报员。\n• 无需账号即可游玩。核心玩法支持离线运行。\n• 可选赞助奖励和一次性 Empire Pass。没有强制广告。\n\n如果你喜欢卡车、配送、商业经营、管理类游戏，或任何放置大亨游戏，Borderline Empire 将让你随身经营一个完整的运输帝国。\n\n游戏中的所有国家、公司、人物和货物均为虚构。风险只以数字呈现；游戏不含暴力，也不包含现实世界地点。",
+      "shortDescription": "卡车运输大亨：在8个虚构地区发展你的物流帝国。"
+    }
+  ],
+  "images": {
+    "en-US": {
+      "phoneScreenshots": [
+        {
+          "id": "6864970158017393617",
+          "sha256": "29ebc51d965e7c728dca177bc6f7b61e4363456d3601d0a247ba826c9836540f"
+        },
+        {
+          "id": "8430873622286192378",
+          "sha256": "a4169284e0ff4762422a3ccb5b26de7ba9b1fe2384e9e369bf2dd98f33b95539"
+        },
+        {
+          "id": "10252476655186517501",
+          "sha256": "2f9a1e8d95d5ef59df0da609ba60ad894804d040025a69dbe7f70cb87ca05e2e"
+        },
+        {
+          "id": "16438489246562814793",
+          "sha256": "cc3319ca8e495d99bcbe930f90510f9a502c7d2c179de1daf1713de2c13cdbb2"
+        },
+        {
+          "id": "3760196427901125638",
+          "sha256": "096ed7fa4b04fbaeef1735b8014aeb03bf630c09ff55864de84892b993a76320"
+        },
+        {
+          "id": "2725038034693143229",
+          "sha256": "61bf6e3c076a7f8ff9e708c5fd379f7c3b3243330809eeb3c72e785ad56dbc19"
+        },
+        {
+          "id": "2128747379415282354",
+          "sha256": "d987f16f1a7ac5602f2a4903db622c90cd9aaf8b4409a508ee55e7b0de2d857a"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "7238908259291118695",
+          "sha256": "7b6568752747a00c3f6338d5926cf30238445c665a0baccb2710df596c7990f5"
+        },
+        {
+          "id": "15570809052444242836",
+          "sha256": "415717675e6cbec3e880aac8f216cc893aec7a9b8204117d466a655a826fa9ef"
+        },
+        {
+          "id": "8683553878110692729",
+          "sha256": "0c27e39c5033869a40a3727908fd355f737a01fc41b0d23a172fe030c239af47"
+        },
+        {
+          "id": "6986023360639915275",
+          "sha256": "21b33bfc67ee451977b33277c0c8bc464e7924bc3b90a0f14087d93776fa462b"
+        },
+        {
+          "id": "8523069922327900123",
+          "sha256": "49756e031ba6e65523f727e82155f80cf122e4cdd50a892f9e4e6329ba3d4ab9"
+        },
+        {
+          "id": "14828018602934734744",
+          "sha256": "4ffae0d581a2c8d63016d356c3479fc666092d33fa7c0010fffcea27104b18be"
+        },
+        {
+          "id": "12758310647924668747",
+          "sha256": "94ace66a522c7b59c683eeafbee215dd28a004ddbb1e0961ea2a78df8e7c1e2d"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "17352544142610590359",
+          "sha256": "7b6568752747a00c3f6338d5926cf30238445c665a0baccb2710df596c7990f5"
+        },
+        {
+          "id": "5880907771567327143",
+          "sha256": "415717675e6cbec3e880aac8f216cc893aec7a9b8204117d466a655a826fa9ef"
+        },
+        {
+          "id": "16313507011398181435",
+          "sha256": "0c27e39c5033869a40a3727908fd355f737a01fc41b0d23a172fe030c239af47"
+        },
+        {
+          "id": "13942761664714256764",
+          "sha256": "21b33bfc67ee451977b33277c0c8bc464e7924bc3b90a0f14087d93776fa462b"
+        },
+        {
+          "id": "16805899554881733934",
+          "sha256": "49756e031ba6e65523f727e82155f80cf122e4cdd50a892f9e4e6329ba3d4ab9"
+        },
+        {
+          "id": "4704868727975295827",
+          "sha256": "4ffae0d581a2c8d63016d356c3479fc666092d33fa7c0010fffcea27104b18be"
+        },
+        {
+          "id": "11090286375051587947",
+          "sha256": "94ace66a522c7b59c683eeafbee215dd28a004ddbb1e0961ea2a78df8e7c1e2d"
+        }
+      ],
+      "icon": [
+        {
+          "id": "15440207671364095949",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "7346367460688862676",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "tr-TR": {
+      "phoneScreenshots": [
+        {
+          "id": "11220335961730851199",
+          "sha256": "ff6ff8528b40373f3889ef6fb64ebbf0f229f4948a91a9c8150ed6fbdb52813d"
+        },
+        {
+          "id": "4766774002259228621",
+          "sha256": "6bc0bac5660698f8c7862a3021353978096f4d23757cf35469163387f140068b"
+        },
+        {
+          "id": "3348874893202069790",
+          "sha256": "169b6164d61dc0cb2535e32e572c720511d776a5d91e478f358d8d31ac17083c"
+        },
+        {
+          "id": "5137366710331318073",
+          "sha256": "a376b632377fc3c96792b91f6f189eb7796b414b39125e0a275ba4e4b67ab4c8"
+        },
+        {
+          "id": "15151241130382514487",
+          "sha256": "39732ba8cd756eb67252d0cedcd0b7b9419208fdad53263c3fe28bab9d9fb4d0"
+        },
+        {
+          "id": "16338371703029612779",
+          "sha256": "c3ffdbd9178cf7bdeb6c5c92bb5e51fc36a7cce5de9b095c45d5701869b4d3d3"
+        },
+        {
+          "id": "17103789926499753821",
+          "sha256": "a8836ba42fc95dc35ac8707793542007c80aa6a5d2da953ba5e693af2c8a95a6"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "12975338646859116051",
+          "sha256": "e77b6051c77560c948cc724468b8ed2657eea3bca5e1d66dfd46524d65f4af80"
+        },
+        {
+          "id": "11340901844913640406",
+          "sha256": "19dee475c9feb1114c9e179e1c63a8679ec9402d94dfc7ea43b2b890559d9726"
+        },
+        {
+          "id": "3132450452836280357",
+          "sha256": "576803a0f7efad298597025c2c08905d162a3bca6ceb0546ddb75693847bc6bd"
+        },
+        {
+          "id": "3946683376541634296",
+          "sha256": "46f406186c2bdf8cef38d07344c95167ef5f5628672136e0aad05909d4aa31d2"
+        },
+        {
+          "id": "821927687684766116",
+          "sha256": "451798dab1b9f3f11c208ec7f8247a9c23d7a1b492a26ae3d7fcc958b7e2e8ed"
+        },
+        {
+          "id": "9408313259905966030",
+          "sha256": "d20d0d62f87da3c902d23b475db92143b4981e3878ce3ac2c50f5af7bc7c0292"
+        },
+        {
+          "id": "17594474289006687675",
+          "sha256": "9c253b18a39130f87a015136008771a1fe1cc161db886a953fa23667e9fad178"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "9059822799682770154",
+          "sha256": "e77b6051c77560c948cc724468b8ed2657eea3bca5e1d66dfd46524d65f4af80"
+        },
+        {
+          "id": "2268483942645295903",
+          "sha256": "19dee475c9feb1114c9e179e1c63a8679ec9402d94dfc7ea43b2b890559d9726"
+        },
+        {
+          "id": "11321570634701791692",
+          "sha256": "576803a0f7efad298597025c2c08905d162a3bca6ceb0546ddb75693847bc6bd"
+        },
+        {
+          "id": "8463395808198836846",
+          "sha256": "46f406186c2bdf8cef38d07344c95167ef5f5628672136e0aad05909d4aa31d2"
+        },
+        {
+          "id": "6087270673016185021",
+          "sha256": "451798dab1b9f3f11c208ec7f8247a9c23d7a1b492a26ae3d7fcc958b7e2e8ed"
+        },
+        {
+          "id": "250069113193961407",
+          "sha256": "d20d0d62f87da3c902d23b475db92143b4981e3878ce3ac2c50f5af7bc7c0292"
+        },
+        {
+          "id": "13331024719501932509",
+          "sha256": "9c253b18a39130f87a015136008771a1fe1cc161db886a953fa23667e9fad178"
+        }
+      ],
+      "icon": [
+        {
+          "id": "2576376241620774860",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "4706931543438713868",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "de-DE": {
+      "phoneScreenshots": [
+        {
+          "id": "6460266708435377994",
+          "sha256": "6df22194471e4d723017010a3e4ce08b22840360c2c87b1747c5de5b9ac2dbd5"
+        },
+        {
+          "id": "11298330420698211039",
+          "sha256": "495e9db0f48eb1d453ca0820b6adc33324c30d1ec51cbea3f7470d39ce16485e"
+        },
+        {
+          "id": "6243524969476196777",
+          "sha256": "e36cecc9d522d2fe2cf48bdad7a8ae2c76deaab33945b743b2a5a1a50be5310f"
+        },
+        {
+          "id": "12733021989646599360",
+          "sha256": "2a48159ae18507505788e5a9295ca15c82b985bedc8b6998c8303e7445c3def8"
+        },
+        {
+          "id": "12622979335167460685",
+          "sha256": "761f8b92e9a813f131c6ca1d2e506de2950ba8179bae4d2e7131483e266a9ab4"
+        },
+        {
+          "id": "12606717252245106752",
+          "sha256": "f41edb1af56cc02bfad8ccbe00617998329c4b47d92fc2fc8cd9e2226bc947f2"
+        },
+        {
+          "id": "1009112500744429418",
+          "sha256": "6507cab1dfe94dc81ebe6c06aa6ee7dee8cb5ab151efeef6b721e199841239ea"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "456580774577743326",
+          "sha256": "e503089ca3bbc29dedd60bb511765776c9924982ed47e93fdd389d84fb507349"
+        },
+        {
+          "id": "13532339118089627712",
+          "sha256": "9d7182b4d21fa6a128596a92f6c5fd87babcdefb8474b260375a2dc9f55a69c7"
+        },
+        {
+          "id": "5508596057046453926",
+          "sha256": "99a5a0b78fea4a562187a1648b54bda53f36b2f537d37315271888efed23996f"
+        },
+        {
+          "id": "7777160579013968812",
+          "sha256": "214ab3c7381e216344e982145be019c16a4789355f75a780d7d025b4133e642b"
+        },
+        {
+          "id": "1795611941883461909",
+          "sha256": "97dd8c548bd6872620921e8564807d4bebfa09e57f4e9acf948a9ef195d9dec4"
+        },
+        {
+          "id": "11685643947511274949",
+          "sha256": "c634320bf471155c3bf43244eb0d46f0de0dda9c7ae908799bfe3221a63aadea"
+        },
+        {
+          "id": "6498623145474716283",
+          "sha256": "6376c4b235cfe4fcc55a3238476a3caf078f77cd1559f653558871c06022df36"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "13102847115477181540",
+          "sha256": "e503089ca3bbc29dedd60bb511765776c9924982ed47e93fdd389d84fb507349"
+        },
+        {
+          "id": "4322538385050379258",
+          "sha256": "9d7182b4d21fa6a128596a92f6c5fd87babcdefb8474b260375a2dc9f55a69c7"
+        },
+        {
+          "id": "8547505955753954242",
+          "sha256": "99a5a0b78fea4a562187a1648b54bda53f36b2f537d37315271888efed23996f"
+        },
+        {
+          "id": "5706051671925946720",
+          "sha256": "214ab3c7381e216344e982145be019c16a4789355f75a780d7d025b4133e642b"
+        },
+        {
+          "id": "13496663419654058584",
+          "sha256": "97dd8c548bd6872620921e8564807d4bebfa09e57f4e9acf948a9ef195d9dec4"
+        },
+        {
+          "id": "2106993562202165812",
+          "sha256": "c634320bf471155c3bf43244eb0d46f0de0dda9c7ae908799bfe3221a63aadea"
+        },
+        {
+          "id": "247341223191231676",
+          "sha256": "6376c4b235cfe4fcc55a3238476a3caf078f77cd1559f653558871c06022df36"
+        }
+      ],
+      "icon": [
+        {
+          "id": "17380145023197506022",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "6637909793926146579",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "es-ES": {
+      "phoneScreenshots": [
+        {
+          "id": "9072253897798616105",
+          "sha256": "98c32bb1a9a1c2d1f406490bdfb45e183e5f68ff91d8294d702336697f226b54"
+        },
+        {
+          "id": "7615859122252122822",
+          "sha256": "cfd60a22375a7268db657f2b88f76b5650bf8b8834b431958be3b28a5b1a642b"
+        },
+        {
+          "id": "9484641489935465045",
+          "sha256": "91e35376f6cfa8b0cf2f4bf5f0ab2c857dd903e2034d0fae5aba09ce9ebe19a1"
+        },
+        {
+          "id": "102711708017449431",
+          "sha256": "f02408ce91feb4279dca09664c1cf0dd4203ea9f68392415756405488680dd76"
+        },
+        {
+          "id": "1493101328638802741",
+          "sha256": "98bddb948a3172238d11de31f3fe84915fff5d54d8f38a7603d9e128adbe6c9b"
+        },
+        {
+          "id": "17088056794754772072",
+          "sha256": "199723c5a9a4f9cfda29a8e7a66612b0b23b6b7d3ab42651a51a0ad8674de818"
+        },
+        {
+          "id": "1122300507650764950",
+          "sha256": "e881132d966fae858d3757737e9763d8569e9aac9c692afa2ff3620286bc45dc"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "2506071579421787140",
+          "sha256": "4e6ec8757cbdcc5dea7046222def603fe6a860c1dae271ab77ed49c3f7b0e303"
+        },
+        {
+          "id": "14223776837652325898",
+          "sha256": "da7c55f632fd4f4568690b92cac9237daa9109e074dacae52766a1e87ad1b385"
+        },
+        {
+          "id": "8673311724072637143",
+          "sha256": "29ae5b56d4a9144857be1e7fdc135ed4ea76e35885575591579fe7e43ff8b2df"
+        },
+        {
+          "id": "16195080067255036413",
+          "sha256": "37a28ecd67d8d98c9307bf28a478c4a5b20d332d5ac13ce7570254e47285f741"
+        },
+        {
+          "id": "16259471172371206170",
+          "sha256": "7c8135d37e20c747cbc81fa81a608d799ba1a1ea3c0cab6baf2736aa43b03a8a"
+        },
+        {
+          "id": "10565924305962768837",
+          "sha256": "fdf02c21a71834fc8210f00eaa2be3bd6751e21abb2327613a1d17227baeb6f6"
+        },
+        {
+          "id": "10880891775259210395",
+          "sha256": "a657a4f15dec72960c31e1413abad8c3e6e8990a504bf8d94cc7524cf009fe3e"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "7503084786792627931",
+          "sha256": "4e6ec8757cbdcc5dea7046222def603fe6a860c1dae271ab77ed49c3f7b0e303"
+        },
+        {
+          "id": "12361848428903198304",
+          "sha256": "da7c55f632fd4f4568690b92cac9237daa9109e074dacae52766a1e87ad1b385"
+        },
+        {
+          "id": "1272004688299925401",
+          "sha256": "29ae5b56d4a9144857be1e7fdc135ed4ea76e35885575591579fe7e43ff8b2df"
+        },
+        {
+          "id": "18447228671477478",
+          "sha256": "37a28ecd67d8d98c9307bf28a478c4a5b20d332d5ac13ce7570254e47285f741"
+        },
+        {
+          "id": "1055839772644007073",
+          "sha256": "7c8135d37e20c747cbc81fa81a608d799ba1a1ea3c0cab6baf2736aa43b03a8a"
+        },
+        {
+          "id": "11505078402981052661",
+          "sha256": "fdf02c21a71834fc8210f00eaa2be3bd6751e21abb2327613a1d17227baeb6f6"
+        },
+        {
+          "id": "1462589949937458605",
+          "sha256": "a657a4f15dec72960c31e1413abad8c3e6e8990a504bf8d94cc7524cf009fe3e"
+        }
+      ],
+      "icon": [
+        {
+          "id": "14000872376850577913",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "16002963263862054887",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "fr-FR": {
+      "phoneScreenshots": [
+        {
+          "id": "7518393677527503764",
+          "sha256": "5dccc1f338323473e96a8931ede521a3eebad745aa40ae6c300202a222791df7"
+        },
+        {
+          "id": "1580270873101782369",
+          "sha256": "edcf8afdbd5d66d70289b5050443940fb340f6e1c4bd181312e3ba26270544d0"
+        },
+        {
+          "id": "9219411593254394610",
+          "sha256": "bc1efcacc97c019afa64b2ed4ed5c456544325a0e25172da6531543870f2dd3c"
+        },
+        {
+          "id": "10898124421931672490",
+          "sha256": "d09b9e6d94f73d32e285a659abe094e2e4130247dac6dadf08d98f01311d8c16"
+        },
+        {
+          "id": "14943350518133672582",
+          "sha256": "fb8f3ad45611b2ec8944462842ac9da71ff89fbdafaeb908b2aa8bf634c258bc"
+        },
+        {
+          "id": "17651917071802000161",
+          "sha256": "c82abeebfd5a9a4c4a8bf075ab4b0582cd728e77ae306c34aa7aaec7065146c6"
+        },
+        {
+          "id": "4895391908235680581",
+          "sha256": "693745198f9c8ef73ac84d3472f99106ca7af978b198bc01fffa90b3614eac11"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "2576479467900494174",
+          "sha256": "8421a5d03aa44030a7d4daa316296b3d67ed8304177e12f1ac0c52ead37be9a9"
+        },
+        {
+          "id": "14046342441579672146",
+          "sha256": "3f9608d30a55075c1a2f12362cfae676362967eea8b3d6d7d73d577c5a5c8632"
+        },
+        {
+          "id": "17301409157323843060",
+          "sha256": "1b8bdf3eec90ad7826103176cb7b9788dc6e56be8e8b4280fd6bc689b984abaa"
+        },
+        {
+          "id": "12492340083861796763",
+          "sha256": "b0d1102607248a774376c23e6126b9289c32f0916128af4ec6f7dbfb68981226"
+        },
+        {
+          "id": "13130520999020413261",
+          "sha256": "701b5d0b1321d631652ea4da92a628a89f1ba062f18b060ea2f0d3061de07098"
+        },
+        {
+          "id": "15182484298743225158",
+          "sha256": "38d3633bc6e2e87480f3366ccb60583289d76ac6e8642a713ac44e8514986399"
+        },
+        {
+          "id": "951380230523787284",
+          "sha256": "21d16930b77a6278dc5bd5d2703aad998384939a88e24bdb14b9ddee44ee3b5e"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "14719262854191489990",
+          "sha256": "8421a5d03aa44030a7d4daa316296b3d67ed8304177e12f1ac0c52ead37be9a9"
+        },
+        {
+          "id": "943266534163334433",
+          "sha256": "3f9608d30a55075c1a2f12362cfae676362967eea8b3d6d7d73d577c5a5c8632"
+        },
+        {
+          "id": "6160321988058156490",
+          "sha256": "1b8bdf3eec90ad7826103176cb7b9788dc6e56be8e8b4280fd6bc689b984abaa"
+        },
+        {
+          "id": "5431105377213661760",
+          "sha256": "b0d1102607248a774376c23e6126b9289c32f0916128af4ec6f7dbfb68981226"
+        },
+        {
+          "id": "1661203806354061762",
+          "sha256": "701b5d0b1321d631652ea4da92a628a89f1ba062f18b060ea2f0d3061de07098"
+        },
+        {
+          "id": "16031159984156241487",
+          "sha256": "38d3633bc6e2e87480f3366ccb60583289d76ac6e8642a713ac44e8514986399"
+        },
+        {
+          "id": "2739950908507282137",
+          "sha256": "21d16930b77a6278dc5bd5d2703aad998384939a88e24bdb14b9ddee44ee3b5e"
+        }
+      ],
+      "icon": [
+        {
+          "id": "13575594922385090876",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "7196364646040767713",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "ja-JP": {
+      "phoneScreenshots": [
+        {
+          "id": "11596254003687724892",
+          "sha256": "c329dcb81e339569244518c42acf0691aab065b35060c5ec888ea50a598d70cf"
+        },
+        {
+          "id": "1313206118359066459",
+          "sha256": "950b67939d19a8a91b84487642ee0fc8262a2ad7685b0f61debed2567ffe1a8d"
+        },
+        {
+          "id": "13088739551679454207",
+          "sha256": "fd8e5e1f48adf2450c7e54cbe98cdd279324bfca4662dcb6a6f085c0bed7a092"
+        },
+        {
+          "id": "4270287433360258504",
+          "sha256": "1d0453349a8bb3172b58eab723d356c66cca057c3dcbdbd009ccde42ab25009c"
+        },
+        {
+          "id": "2060022410105837562",
+          "sha256": "aa7f7c3b2666017f551c8e85d79607ccd69951df2798afbf8088f24d2f75bfe6"
+        },
+        {
+          "id": "12674756369597794179",
+          "sha256": "5d6137e41322b9aa36f3b4aec88d3bf63f284dfc454fec5f024ebe73dc1fd47a"
+        },
+        {
+          "id": "3814049263638046006",
+          "sha256": "9433f750ba5ac81c9abef362a51304773245daf848ef5d2b5825b8d03d8a0613"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "6603278544992637493",
+          "sha256": "90338bac4ce966a508a7006280e66a3b6e1e26abb189d8044f7322407bf076b8"
+        },
+        {
+          "id": "11549562179259657407",
+          "sha256": "f7c1b3bb8b20053cfdf98c3a48d53925fea41c11b924b8ca7fa6bfaa49d5ae30"
+        },
+        {
+          "id": "11764933859259169282",
+          "sha256": "1c879a66b84a343a97c086fbf0e269271cbf25cccfd3767943a67a45ed407f38"
+        },
+        {
+          "id": "8245754131812042087",
+          "sha256": "28c702958558dd3a16d08ccaede5924cafea3d99e24b3dc48bde7e8824bc939d"
+        },
+        {
+          "id": "1945853316865630722",
+          "sha256": "af1a86ffa2f976c0c271fbeea828115ca8339ebd74f5f609cc3c1869a9d42432"
+        },
+        {
+          "id": "4270386787964982000",
+          "sha256": "6b4d706673bb6ea4f7abcb47c2c83cadf6f0f8904091b245cd61f7f6ed40d3f6"
+        },
+        {
+          "id": "5264993725810076797",
+          "sha256": "a2d68785d4a7530f24829f57309f6f4efcbbd874acd1dac6ff4932cbdc119fda"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "12923948678526650859",
+          "sha256": "90338bac4ce966a508a7006280e66a3b6e1e26abb189d8044f7322407bf076b8"
+        },
+        {
+          "id": "5385747193446255701",
+          "sha256": "f7c1b3bb8b20053cfdf98c3a48d53925fea41c11b924b8ca7fa6bfaa49d5ae30"
+        },
+        {
+          "id": "7176877089684903085",
+          "sha256": "1c879a66b84a343a97c086fbf0e269271cbf25cccfd3767943a67a45ed407f38"
+        },
+        {
+          "id": "11558244353793294061",
+          "sha256": "28c702958558dd3a16d08ccaede5924cafea3d99e24b3dc48bde7e8824bc939d"
+        },
+        {
+          "id": "16518598074740175266",
+          "sha256": "af1a86ffa2f976c0c271fbeea828115ca8339ebd74f5f609cc3c1869a9d42432"
+        },
+        {
+          "id": "3425148587428992495",
+          "sha256": "6b4d706673bb6ea4f7abcb47c2c83cadf6f0f8904091b245cd61f7f6ed40d3f6"
+        },
+        {
+          "id": "6786497210375675850",
+          "sha256": "a2d68785d4a7530f24829f57309f6f4efcbbd874acd1dac6ff4932cbdc119fda"
+        }
+      ],
+      "icon": [
+        {
+          "id": "12916204371760011340",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "14061386282747477736",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "ko-KR": {
+      "phoneScreenshots": [
+        {
+          "id": "14274813700683589199",
+          "sha256": "b4b74e87211152be9e21b742754c1fd727893e2dfb9a44ad22b1f9368b0fb283"
+        },
+        {
+          "id": "3728845496842245123",
+          "sha256": "30cd166db9d5eea2badf74a7f52a977b363d473ef313b82d3745f43f3a487532"
+        },
+        {
+          "id": "171351274425001364",
+          "sha256": "80b833c153a685b20317a89db38c6e4eb5ff5558d272915546bc83cad8d9fddf"
+        },
+        {
+          "id": "3976049659667527069",
+          "sha256": "d63ba9364a62da2e7f2a30271f1a3965f03ff6dc280a439cc75fbcb225fe29e7"
+        },
+        {
+          "id": "9034650527136053894",
+          "sha256": "0664f534ccab0c080e207e37f039197c67c2eaa86e4f9c116b37187b7147c040"
+        },
+        {
+          "id": "9540527828600482727",
+          "sha256": "a1bdbf960eddd1f54f10586c34e4ee525c4a9cef5837b0f28f28de88dd598d8a"
+        },
+        {
+          "id": "9937556573652191874",
+          "sha256": "4616e1f6b231c5041453e6a3c2a2a33d1bf7f898d176ae766fcef201b9e0c721"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "13502293246319221514",
+          "sha256": "cb0d52da2255bf564defd5fb1c191ca3227ace80c68e33dbaec04c0c0545df89"
+        },
+        {
+          "id": "18341566516955314758",
+          "sha256": "34ffcd362a237acf224cbf4519bb46fc88c7b9c818853284821c6d312c1f554d"
+        },
+        {
+          "id": "6995575542227826858",
+          "sha256": "f3cb29a68fb9e676d766511d48aac27d2c59091edc9191da8b21ef53c308d58b"
+        },
+        {
+          "id": "10672375703845382397",
+          "sha256": "0b4397ca4751b260aedc62ce96e67ef25e64d4e53950600b02525323b7c3b3ff"
+        },
+        {
+          "id": "3801930479337450440",
+          "sha256": "d5a9366c71385814df33b19e70a94cefeba9d7c50e0e2592e215b3132f23de95"
+        },
+        {
+          "id": "16393126962894891065",
+          "sha256": "73fff02439a3585c05dfd73af5a86a4fe2930e6035b9afab862a50c35615433d"
+        },
+        {
+          "id": "18192702585385927022",
+          "sha256": "05a967f8828917558c2c9e1c0944666f1b8cdc355d5a490a44ba2f014acee80d"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "11314879363224614665",
+          "sha256": "cb0d52da2255bf564defd5fb1c191ca3227ace80c68e33dbaec04c0c0545df89"
+        },
+        {
+          "id": "3245685704138318149",
+          "sha256": "34ffcd362a237acf224cbf4519bb46fc88c7b9c818853284821c6d312c1f554d"
+        },
+        {
+          "id": "7330654452179214722",
+          "sha256": "f3cb29a68fb9e676d766511d48aac27d2c59091edc9191da8b21ef53c308d58b"
+        },
+        {
+          "id": "8401950066899206598",
+          "sha256": "0b4397ca4751b260aedc62ce96e67ef25e64d4e53950600b02525323b7c3b3ff"
+        },
+        {
+          "id": "7760108415123927170",
+          "sha256": "d5a9366c71385814df33b19e70a94cefeba9d7c50e0e2592e215b3132f23de95"
+        },
+        {
+          "id": "17064926593814834493",
+          "sha256": "73fff02439a3585c05dfd73af5a86a4fe2930e6035b9afab862a50c35615433d"
+        },
+        {
+          "id": "12729051238510141474",
+          "sha256": "05a967f8828917558c2c9e1c0944666f1b8cdc355d5a490a44ba2f014acee80d"
+        }
+      ],
+      "icon": [
+        {
+          "id": "7533699227766616395",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "1082599814295636971",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "pt-BR": {
+      "phoneScreenshots": [
+        {
+          "id": "18387882148948853763",
+          "sha256": "2711de1e648c0e52c32e63a319784b0975bfbca808f37dd3b746b4ffc6b4665a"
+        },
+        {
+          "id": "9916131235200867093",
+          "sha256": "1d37de05df2dcb684a00ac6f704b8b79851a1926579f09bd200315cd661a0b74"
+        },
+        {
+          "id": "2733609434001028070",
+          "sha256": "949fd1353995aba206530039d1f1eb1f9ae32d59223a64fb9a6dcbc816b6e7d1"
+        },
+        {
+          "id": "15103904305117501525",
+          "sha256": "972d65a836081c0e76f94359a6175bda958365a155cce81a052686081241c913"
+        },
+        {
+          "id": "9327822977250060013",
+          "sha256": "5bbf7ce6cac960b283a8c3d4da28260f8115ee2cf0c85ecdb8bd190f91e4e337"
+        },
+        {
+          "id": "4254226785584924545",
+          "sha256": "a6df4680b9863c77b310a39d32a4a3ff6371b5a5e088d4e922a1b8bda55b500d"
+        },
+        {
+          "id": "17968127538089668623",
+          "sha256": "9287a6a77a1a75ac564f7e55fa752aa49141629a6e377f89ca4775b331d3c206"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "13949841370080607061",
+          "sha256": "7e51f634260a33ac748e830110167de4700adfe370b1fcb67df6a72dad9d71c4"
+        },
+        {
+          "id": "7922677183342440492",
+          "sha256": "b1cffbd1488baad185ae6dc89abd3b293c379d28096646c658b8e96211cc44d8"
+        },
+        {
+          "id": "17277961378775065377",
+          "sha256": "f1b8c6ffb16433e3f83df0f2b1ac5caf3777794caa5b91171867f20dfe359ac8"
+        },
+        {
+          "id": "18231010246459164808",
+          "sha256": "01cde8653d9ea042301fde8a25e1348bfc826f4420d7db1509a841769612aa4b"
+        },
+        {
+          "id": "17379267794073826701",
+          "sha256": "d5de0eeff2521a96ce22f2577d3e775befee50832135a83c7766c3ca5f920f01"
+        },
+        {
+          "id": "11707882496705374812",
+          "sha256": "206351063010935266f1468ab2925ffcac4c84002e79d589d67610a10b0a828f"
+        },
+        {
+          "id": "2636422076977342249",
+          "sha256": "5bd9a2389e4e5c08ede2a5afc0654acda9719cf57466a6ab1435a690c5df3238"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "630807318466235152",
+          "sha256": "7e51f634260a33ac748e830110167de4700adfe370b1fcb67df6a72dad9d71c4"
+        },
+        {
+          "id": "10731499969282032043",
+          "sha256": "b1cffbd1488baad185ae6dc89abd3b293c379d28096646c658b8e96211cc44d8"
+        },
+        {
+          "id": "6215129705865753966",
+          "sha256": "f1b8c6ffb16433e3f83df0f2b1ac5caf3777794caa5b91171867f20dfe359ac8"
+        },
+        {
+          "id": "5318506886396000117",
+          "sha256": "01cde8653d9ea042301fde8a25e1348bfc826f4420d7db1509a841769612aa4b"
+        },
+        {
+          "id": "14022337680002284146",
+          "sha256": "d5de0eeff2521a96ce22f2577d3e775befee50832135a83c7766c3ca5f920f01"
+        },
+        {
+          "id": "9650797036948356848",
+          "sha256": "206351063010935266f1468ab2925ffcac4c84002e79d589d67610a10b0a828f"
+        },
+        {
+          "id": "12668400827530606505",
+          "sha256": "5bd9a2389e4e5c08ede2a5afc0654acda9719cf57466a6ab1435a690c5df3238"
+        }
+      ],
+      "icon": [
+        {
+          "id": "8636572130180768361",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "7375692660251672652",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "ru-RU": {
+      "phoneScreenshots": [
+        {
+          "id": "16632248025107712560",
+          "sha256": "09dddf6caeea9336ea0b2efa91eb3c1d2488dfbb5a6c14c298247a044a084fcf"
+        },
+        {
+          "id": "5999187373590755894",
+          "sha256": "eb502bec6ad6abe12932eae6635de7694825ad0fca5be2d587501055ece38744"
+        },
+        {
+          "id": "12603547136703050578",
+          "sha256": "4a9c5e2080457d4df37bdfb5e69e28caaa1f51b3cc932f2f0b9aaf2f058d04e7"
+        },
+        {
+          "id": "2540889070018727647",
+          "sha256": "df852bf6af8074eb2607246b02ea3a916e8ea21baf7147ce95b174adb65495b1"
+        },
+        {
+          "id": "11188011219014696816",
+          "sha256": "e2d21ba316ed9cefa34dbce30be44e67665d5355ed2e707a74cb18a6801e453d"
+        },
+        {
+          "id": "16906625678047561512",
+          "sha256": "ddd0b1eb917011ca941367044532fde6020666bc17108c21a5d699abb899aad9"
+        },
+        {
+          "id": "6734164281721757294",
+          "sha256": "ed0b56288d3183260107445e4520f241e61af8fa73fa2ff5dd8dc06d4a4bd6aa"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "3085827759173046717",
+          "sha256": "dfd995c471939563f8dc8c70eb3541aef5903d6844136abc9f472658ce4eadb6"
+        },
+        {
+          "id": "6640033679049484035",
+          "sha256": "270af0ded3b0f1b4176a0cd4062f84fad1729853c35fc710d77e47dbff7b78d6"
+        },
+        {
+          "id": "12624601402477019321",
+          "sha256": "52e10d3b0570dead6f976356ac7c44b1d8ec3cdb69a2c85df5513f285feada2e"
+        },
+        {
+          "id": "15888691739050734244",
+          "sha256": "4b02b3a281ef514abfff406460d5cab285f8c64893a5ed9d0df60e2bfb4ba453"
+        },
+        {
+          "id": "13994585437895910771",
+          "sha256": "b066db5dceab8f8e8a95d812b07046b6d77905426443f4856ee3670e0e98b69b"
+        },
+        {
+          "id": "4691520388621995760",
+          "sha256": "ee7f3d892459ffe8cfd4671117ca2e060a127b5e16eafda9065526d1a253477d"
+        },
+        {
+          "id": "5220099987663929639",
+          "sha256": "241ac36b9aae437fb99890f53bb7a1050916869c712d1bd0c478f6b76cb708e3"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "12522261633314246123",
+          "sha256": "dfd995c471939563f8dc8c70eb3541aef5903d6844136abc9f472658ce4eadb6"
+        },
+        {
+          "id": "11618177667175593068",
+          "sha256": "270af0ded3b0f1b4176a0cd4062f84fad1729853c35fc710d77e47dbff7b78d6"
+        },
+        {
+          "id": "17649074950859590657",
+          "sha256": "52e10d3b0570dead6f976356ac7c44b1d8ec3cdb69a2c85df5513f285feada2e"
+        },
+        {
+          "id": "6327030979375860260",
+          "sha256": "4b02b3a281ef514abfff406460d5cab285f8c64893a5ed9d0df60e2bfb4ba453"
+        },
+        {
+          "id": "2716975551989322464",
+          "sha256": "b066db5dceab8f8e8a95d812b07046b6d77905426443f4856ee3670e0e98b69b"
+        },
+        {
+          "id": "18031255261572877554",
+          "sha256": "ee7f3d892459ffe8cfd4671117ca2e060a127b5e16eafda9065526d1a253477d"
+        },
+        {
+          "id": "2084282126378681987",
+          "sha256": "241ac36b9aae437fb99890f53bb7a1050916869c712d1bd0c478f6b76cb708e3"
+        }
+      ],
+      "icon": [
+        {
+          "id": "16953945765664165717",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "6886696193301779549",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    },
+    "zh-CN": {
+      "phoneScreenshots": [
+        {
+          "id": "11919067620559355978",
+          "sha256": "28ef25131a8d3f69a178706639811838d7c9bb0865b04eea0aceaf21d5c73560"
+        },
+        {
+          "id": "2164517495809774295",
+          "sha256": "98430793467d4cb22f95635a7237b0f7ec13abba6b03f5a5884251ca7dd0569e"
+        },
+        {
+          "id": "9264094204960613735",
+          "sha256": "e24dcbbabb7ea280e3f547c4e844ee186197e760431455d930fcab98929306d4"
+        },
+        {
+          "id": "639321614753305340",
+          "sha256": "05feacdc741652d9331d3f297c0b25d0eaf95264e56b0709225736169973dff8"
+        },
+        {
+          "id": "13075103473154277184",
+          "sha256": "48097a7d41ad75f0bc796c1a27b95020e60f37e88338d722012f6850950bf4d5"
+        },
+        {
+          "id": "6710129170922547977",
+          "sha256": "f7788d5dde3474ee3c6bac2d8195375c2f6b0be928a0502a8ea5f7cb7aeed5d8"
+        },
+        {
+          "id": "12307837668695061487",
+          "sha256": "37a440fc30e7ce51e62929860f52b18b3d485cc45590b5156db20bc199679fe9"
+        }
+      ],
+      "sevenInchScreenshots": [
+        {
+          "id": "12794324077675426930",
+          "sha256": "650768c5bcc928b1b10eb4125eb128a34e9e76458ad2f76a3716aa4e570ec0bc"
+        },
+        {
+          "id": "13053077229193210629",
+          "sha256": "5f7cd0f60fd248ae3ac700c5e4c7e7d9d8ce91cb7290910de450d32334582436"
+        },
+        {
+          "id": "17740290662210536087",
+          "sha256": "77fbdfedd52e1fc66c8d80bed7811e492bfcba684af25e5ba566420daa2cc1f7"
+        },
+        {
+          "id": "4621846578441770363",
+          "sha256": "b81ff15960e6cfc8415f49b3d47267d6818e9b1b356d5b86103ee34258234465"
+        },
+        {
+          "id": "4232266594334572728",
+          "sha256": "0cc0cec7db0b4154c8591abba8cbb1eba7b78645577c5e2e69dbb5ef247c5fca"
+        },
+        {
+          "id": "13852117797152961797",
+          "sha256": "49f16d631e43107b329eebf5afa00a8d6275b902e66afcdc2112bb931de025d9"
+        },
+        {
+          "id": "14854621526182923984",
+          "sha256": "7dcb10a8cd03029aa4cf352cbe529ed0a55db8a32dd89ae21a9378dcab1e7d65"
+        }
+      ],
+      "tenInchScreenshots": [
+        {
+          "id": "15797497096439031654",
+          "sha256": "650768c5bcc928b1b10eb4125eb128a34e9e76458ad2f76a3716aa4e570ec0bc"
+        },
+        {
+          "id": "5327384050026523408",
+          "sha256": "5f7cd0f60fd248ae3ac700c5e4c7e7d9d8ce91cb7290910de450d32334582436"
+        },
+        {
+          "id": "167843551377954428",
+          "sha256": "77fbdfedd52e1fc66c8d80bed7811e492bfcba684af25e5ba566420daa2cc1f7"
+        },
+        {
+          "id": "2658878215729390097",
+          "sha256": "b81ff15960e6cfc8415f49b3d47267d6818e9b1b356d5b86103ee34258234465"
+        },
+        {
+          "id": "10363497867377817403",
+          "sha256": "0cc0cec7db0b4154c8591abba8cbb1eba7b78645577c5e2e69dbb5ef247c5fca"
+        },
+        {
+          "id": "15926401288940163602",
+          "sha256": "49f16d631e43107b329eebf5afa00a8d6275b902e66afcdc2112bb931de025d9"
+        },
+        {
+          "id": "10406061029173994354",
+          "sha256": "7dcb10a8cd03029aa4cf352cbe529ed0a55db8a32dd89ae21a9378dcab1e7d65"
+        }
+      ],
+      "icon": [
+        {
+          "id": "678179153769573416",
+          "sha256": "0b4ad977f089035f3f487f1fd41c356a5bb59baf82885370bf99404a2b5a80ba"
+        }
+      ],
+      "featureGraphic": [
+        {
+          "id": "8894763833057186779",
+          "sha256": "cd60fd76872188e0b926d17376a8a0ada05183c7ff4a2890c238f45ba6eb96bc"
+        }
+      ]
+    }
+  },
+  "edit_validation": "passed (unchanged edit only)",
+  "products": [
+    {
+      "id": "com.coddykit.borderlineempire.empire_pass",
+      "locales": [
+        "en-US",
+        "tr-TR",
+        "de-DE",
+        "es-ES",
+        "fr-FR",
+        "ja-JP",
+        "ko-KR",
+        "pt-BR",
+        "ru-RU",
+        "zh-CN"
+      ],
+      "options": [
+        {
+          "id": "buy",
+          "state": "ACTIVE",
+          "regions": 171
+        }
+      ]
+    }
+  ]
+}

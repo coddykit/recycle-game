@@ -1,0 +1,49 @@
+sh tools/check.sh — exit 0, 2026-10-28, code 8f2a9b777e
+CODDY_UI_TESTS: 966 checks, 0 failures
+TOUCH_SCROLL_TESTS: 134 checks, 0 failures
+TOUCHSCROLL checks=62 failures=0
+TOUCHSCROLL checks=62 failures=0
+TOUCHSCROLL checks=62 failures=0
+TOUCHSCROLL checks=62 failures=0
+RESULT: PASS
+EARLY_PACING checks=16 failures=0
+PACING PASS
+QUALITY checks=60 failures=0
+LIFECYCLE checks=90 failures=0
+TAPREFRESH checks=7 failures=0
+PHONETAP checks=6 failures=0
+TAB_OPEN_PROBE: worst=68 ms limit=100 ms, 0 failures
+TAB_OPEN_PROBE: worst=85 ms limit=100 ms, 0 failures
+GFXNOTICE checks=8 failures=0
+GFX checks=57 failures=0
+SETTINGS-MEM checks=7 failures=0
+IAP checks=493 failures=0
+IAPMATRIX checks=154 failures=0
+RC ADS checks=46 failures=0
+ANALYTICS CONSENT checks=28 failures=0
+ADS SDK INIT checks=19 failures=0
+CAMERA_FRAME checks=51 failures=0
+DESERT_REDO checks=46 failures=0
+LOWBATCH checks=13 failures=0
+PHYSICS GATE checks=6 failures=0
+PERF checks=17 failures=0
+TRAFFIC checks=6 failures=0
+ONBOARDING checks=249 failures=0
+BANNER checks=13 failures=0
+LAYOUT-SCAN done: 72 screens, 0 findings, languages ["en", "de", "ru"]
+PERF_GATE start prims=21132 draws=43 ui_draws=45 process_ms=5.30 (p95 5.30) frame_ms=1.66 static_mb=100 PASS
+PERF_GATE midgame_near prims=33918 draws=41 ui_draws=68 process_ms=6.36 (p95 8.12) frame_ms=1.84 static_mb=103 PASS
+PERF_GATE lategame_far prims=82425 draws=90 ui_draws=66 process_ms=10.53 (p95 10.53) frame_ms=2.48 static_mb=105 PASS
+PERF_GATE tab_shop prims=83046 draws=92 ui_draws=86 process_ms=80.61 (p95 80.61) frame_ms=2.68 static_mb=109 PASS
+PERF_GATE: 4 scenes, 0 failures (limits: primitives 300000, draws 150, static 250 MB)
+HOUSE_FONTS: 10 locales, 0 failures
+
+Before: same engine/perf hook, baseline gameplay and HUD (under GPU slot lock, Dummy audio)
+PERF_GATE start prims=20576 draws=42 ui_draws=45 process_ms=257.42 (p95 257.42) frame_ms=14.69 static_mb=100 PASS
+PERF_GATE midgame_near prims=34039 draws=40 ui_draws=66 process_ms=80.86 (p95 139.73) frame_ms=11.57 static_mb=103 PASS
+PERF_GATE lategame_far prims=83363 draws=96 ui_draws=63 process_ms=207.32 (p95 267.18) frame_ms=17.40 static_mb=105 PASS
+PERF_GATE tab_shop prims=87757 draws=114 ui_draws=83 process_ms=132.70 (p95 139.58) frame_ms=15.23 static_mb=109 PASS
+PERF_GATE: 4 scenes, 0 failures (limits: primitives 300000, draws 150, static 250 MB)
+
+After the full suite: measurement-only audio RNG isolation added; before/after ten-run pacing gates PASS; seed12345 daily repeated in a fresh process, entire report row identical.
+Post-rebase onto 4fa2d99372 money boundary fix: MONEY_REVIEW 5/5; gameplay 253/253; EARLY_PACING 16/16; pacing 10/10 PASS and all ten full rows equal the recorded evidence. Both check.sh gates retained in merge resolution.

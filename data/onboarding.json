@@ -1,0 +1,26 @@
+{
+  "mentor": "Dot",
+  "intro": [
+    {"text": "Hey there, rookie! I'm Dot. Thirty years running dispatch in this valley.", "cam": "hq", "anim": "wave", "voice": "mentor_hello"},
+    {"text": "I'm retiring, so this little garage is yours now. One rusty hatchback, one driver, big dreams.", "cam": "car", "anim": "idle", "voice": "mentor_garage"},
+    {"text": "Out there are eight regions full of clients who need things moved. Quickly. Quietly. No questions.", "cam": "map", "anim": "idle", "voice": "mentor_regions"},
+    {"text": "Every border, every route, every risk... from now on, that's your call.", "cam": "border", "anim": "idle", "voice": "mentor_border"},
+    {"name_step": true, "text": "First things first: every empire needs a name.", "cam": "hq", "anim": "idle", "voice": "mentor_name"},
+    {"text": "{company}. I like it! Now let's earn your first dollar.", "cam": "hq", "anim": "cheer", "voice": "mentor_go"}
+  ],
+  "company_first": ["Borderline", "Dusty", "Midnight", "Velvet", "Lucky", "Silent", "Rusty", "Golden", "Shadow", "Quickstep", "Mirage", "Comet"],
+  "company_last": ["Logistics", "Freight Co.", "Express", "Couriers", "Transport", "Haulage", "Deliveries", "& Sons", "Movers", "Shipping"],
+  "tabs": {
+    "contracts": {"deliveries": 0, "hint": ""},
+    "fleet": {"deliveries": 1, "hint": "Complete your first delivery to unlock the Fleet."},
+    "upgrades": {"deliveries": 2, "hint": "Complete 2 deliveries to unlock Upgrades."},
+    "map": {"deliveries": 3, "hint": "Complete 3 deliveries to unlock the World Map."},
+    "business": {"deliveries": 5, "hint": "Complete 5 deliveries to unlock Business."}
+  },
+  "tab_unlocked": {
+    "fleet": "Your Fleet is open! Upgrade cars and hire drivers here.",
+    "upgrades": "Upgrades unlocked! Grow the garage and your business.",
+    "map": "The World Map is open! Plan your expansion.",
+    "business": "Business unlocked! Track your empire and automate it."
+  }
+}

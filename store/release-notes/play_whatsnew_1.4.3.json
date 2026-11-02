@@ -1,0 +1,15 @@
+{
+ "_": "DRAFT S5 #74 10-30 for the next smuggler release (1.4.3); not bumped.",
+ "generic": {
+  "en-US": "• New ×1 / ×2 game speed button after the tutorial.\n• City traffic no longer drives through your fleet vehicles.\n• Tabs and lists open at once, even while your finger is still on the screen.\n• More room at the bottom on phones with a hidden navigation bar.\n• Fixed a rare crash at start-up.",
+  "tr-TR": "• Eğitimden sonra yeni ×1 / ×2 oyun hızı düğmesi.\n• Şehir trafiği artık filonuzdaki araçların içinden geçmiyor.\n• Sekmeler ve listeler parmağınız ekrandayken bile anında açılır.\n• Gezinme çubuğu gizli olan telefonlarda alt kısımda daha fazla alan.\n• Açılışta görülen nadir bir çökme düzeltildi.",
+  "de-DE": "• Neuer Button für die Spielgeschwindigkeit ×1 / ×2 nach dem Tutorial.\n• Der Stadtverkehr fährt nicht mehr durch deine Flottenfahrzeuge.\n• Reiter und Listen öffnen sich sofort, auch wenn der Finger noch auf dem Bildschirm liegt.\n• Mehr Platz unten auf Handys mit ausgeblendeter Navigationsleiste.\n• Seltenen Absturz beim Start behoben.",
+  "es-ES": "• Nuevo botón de velocidad de juego ×1 / ×2 tras el tutorial.\n• El tráfico de la ciudad ya no atraviesa los vehículos de tu flota.\n• Las pestañas y las listas se abren al instante, incluso mientras tienes el dedo en la pantalla.\n• Más espacio abajo en los teléfonos con la barra de navegación oculta.\n• Se corrigió un cierre poco frecuente al iniciar.",
+  "fr-FR": "• Nouveau bouton de vitesse ×1 / ×2 après le tutoriel.\n• La circulation urbaine ne traverse plus vos véhicules de flotte.\n• Les onglets et les listes s'ouvrent tout de suite, même si votre doigt est encore sur l'écran.\n• Plus de place en bas sur les téléphones à barre de navigation masquée.\n• Correction d'un plantage rare au démarrage.",
+  "pt-BR": "• Novo botão de velocidade ×1 / ×2 depois do tutorial.\n• O trânsito da cidade não passa mais pelos veículos da sua frota.\n• Abas e listas abrem na hora, mesmo com o dedo ainda na tela.\n• Mais espaço na parte de baixo em celulares com a barra de navegação oculta.\n• Corrigida uma falha rara na inicialização.",
+  "ru-RU": "• Новая кнопка скорости игры ×1 / ×2 после обучения.\n• Городской транспорт больше не проезжает сквозь машины вашего парка.\n• Вкладки и списки открываются сразу, даже пока палец ещё на экране.\n• Больше места внизу на телефонах со скрытой панелью навигации.\n• Исправлен редкий вылет при запуске.",
+  "ja-JP": "• チュートリアルの後に、新しいゲーム速度ボタン「×1 / ×2」が追加されました。\n• 市内の交通が、あなたの車両群を通り抜けなくなりました。\n• 指を画面に置いたままでも、タブやリストがすぐに開きます。\n• ナビゲーションバーを隠したスマホでは、画面下の余白が広くなりました。\n• 起動時のまれなクラッシュを修正しました。",
+  "ko-KR": "• 튜토리얼 후 새로운 게임 속도 버튼 ×1 / ×2가 추가되었습니다.\n• 도시 교통이 내 차량 무리를 통과하지 않게 되었습니다.\n• 손가락을 화면에 댄 채로도 탭과 목록이 바로 열립니다.\n• 내비게이션 바를 숨긴 휴대폰에서는 화면 아래 여유 공간이 넓어졌습니다.\n• 시작 시 드물게 발생하던 충돌을 수정했습니다.",
+  "zh-CN": "• 教程结束后新增 ×1 / ×2 游戏速度按钮。\n• 城市车流不再穿过你车队的车辆。\n• 标签页和列表会立即打开，即使手指还停在屏幕上。\n• 在有隐藏导航栏的手机上，底部空间更宽裕。\n• 修复了启动时偶尔出现的崩溃。"
+ }
+}

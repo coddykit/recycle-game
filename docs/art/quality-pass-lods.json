@@ -1,0 +1,128 @@
+{
+  "apartment": {
+    "0": {
+      "min": [
+        -1.05,
+        0.0,
+        -1.05
+      ],
+      "max": [
+        1.05,
+        3.7,
+        1.058
+      ],
+      "size": [
+        2.1,
+        3.7,
+        2.107
+      ],
+      "tris": 880,
+      "path": "res://assets/models/lod0/apartment.glb",
+      "sha256": "24cfdf067e0a66ef0f1eabdc3712448eb544eac46b4719365cf99f9019a3021f"
+    },
+    "1": {
+      "min": [
+        -1.05,
+        0.0,
+        -1.05
+      ],
+      "max": [
+        1.05,
+        3.7,
+        1.05
+      ],
+      "size": [
+        2.1,
+        3.7,
+        2.1
+      ],
+      "tris": 772,
+      "path": "res://assets/models/apartment.glb",
+      "sha256": "88926843c8955f17f9ce658567c7ec9d0c264411594d7eba8902388e0b22540a"
+    }
+  },
+  "office": {
+    "0": {
+      "min": [
+        -1.05,
+        0.0,
+        -1.05
+      ],
+      "max": [
+        1.05,
+        2.3,
+        0.95
+      ],
+      "size": [
+        2.1,
+        2.3,
+        2.0
+      ],
+      "tris": 564,
+      "path": "res://assets/models/lod0/office.glb",
+      "sha256": "703355979aa3d1cab7f5a1ec2334dbe0aa3f05896db6e68917913f712a80401e"
+    },
+    "1": {
+      "min": [
+        -1.05,
+        0.0,
+        -1.05
+      ],
+      "max": [
+        1.05,
+        2.3,
+        0.95
+      ],
+      "size": [
+        2.1,
+        2.3,
+        2.0
+      ],
+      "tris": 516,
+      "path": "res://assets/models/office.glb",
+      "sha256": "1260833192d865f5536f911d22bf5fe30f3130d12b10a4c91ebe0b14db416afe"
+    }
+  },
+  "shop": {
+    "0": {
+      "min": [
+        -0.96,
+        0.0,
+        -1.143
+      ],
+      "max": [
+        0.96,
+        1.48,
+        0.79
+      ],
+      "size": [
+        1.92,
+        1.48,
+        1.933
+      ],
+      "tris": 316,
+      "path": "res://assets/models/lod0/shop.glb",
+      "sha256": "afea880157151ac6d2aac962432239a8a502879b13d95924d7d627e386f34c95"
+    },
+    "1": {
+      "min": [
+        -0.96,
+        0.0,
+        -1.143
+      ],
+      "max": [
+        0.96,
+        1.48,
+        0.79
+      ],
+      "size": [
+        1.92,
+        1.48,
+        1.933
+      ],
+      "tris": 292,
+      "path": "res://assets/models/shop.glb",
+      "sha256": "cee14f1727e89a41033d0e31f777d3c702ddd2ee105ec1f6560943cd12342605"
+    }
+  }
+}

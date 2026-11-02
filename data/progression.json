@@ -1,0 +1,40 @@
+{
+  "stages": [
+    {"name": "Single Vehicle", "desc": "One car, one driver, big dreams.", "req": []},
+    {"name": "Growing Fleet", "desc": "Own 2 vehicles", "req": [["vehicles", 2]]},
+    {"name": "Garage Expansion", "desc": "Reach Local Depot", "req": [["garage", 2]]},
+    {"name": "Multiple Routes", "desc": "3 vehicles, 25 deliveries", "req": [["vehicles", 3], ["deliveries", 25]]},
+    {"name": "Second Region", "desc": "Unlock a second region", "req": [["regions", 2]]},
+    {"name": "Regional Network", "desc": "3 regions, Regional Warehouse", "req": [["regions", 3], ["garage", 3]]},
+    {"name": "Automation", "desc": "Buy your first automation", "req": [["automation", 1]]},
+    {"name": "Multiple Depots", "desc": "Build 2 regional depots", "req": [["depots", 2]]},
+    {"name": "International Network", "desc": "Unlock 6 regions", "req": [["regions", 6]]},
+    {"name": "Shadow Logistics Empire", "desc": "Underground HQ & all 8 regions", "req": [["garage", 5], ["regions", 8]]}
+  ],
+  "goals": [
+    {"text": "Complete your first delivery", "type": "deliveries", "value": 1, "reward": 100},
+    {"text": "Upgrade your vehicle", "type": "vehicle_upgrades", "value": 1, "reward": 120},
+    {"text": "Complete 3 deliveries", "type": "deliveries", "value": 3, "reward": 200},
+    {"text": "Upgrade your garage", "type": "garage", "value": 2, "reward": 300},
+    {"text": "Buy a second vehicle", "type": "vehicles", "value": 2, "reward": 400},
+    {"text": "Unlock Green Republic", "type": "regions", "value": 2, "reward": 750},
+    {"text": "Deliver across a border", "type": "cross_border", "value": 1, "reward": 500},
+    {"text": "Buy a business upgrade", "type": "business_upgrades", "value": 1, "reward": 600},
+    {"text": "Earn $10K in total", "type": "earned", "value": 10000, "reward": 800},
+    {"text": "Reach Regional Warehouse", "type": "garage", "value": 3, "reward": 1500},
+    {"text": "Own 4 vehicles", "type": "vehicles", "value": 4, "reward": 2000},
+    {"text": "Unlock Free Coast", "type": "regions", "value": 3, "reward": 2500},
+    {"text": "Buy Auto Accept", "type": "automation", "value": 1, "reward": 3000},
+    {"text": "Build a regional depot", "type": "depots", "value": 1, "reward": 4000},
+    {"text": "Hire a Skilled driver", "type": "skilled_drivers", "value": 1, "reward": 3000},
+    {"text": "Unlock Iron Federation", "type": "regions", "value": 4, "reward": 8000},
+    {"text": "Reach Logistics Center", "type": "garage", "value": 4, "reward": 12000},
+    {"text": "Buy Auto Dispatch", "type": "automation", "value": 3, "reward": 20000},
+    {"text": "Unlock Red Frontier", "type": "regions", "value": 5, "reward": 25000},
+    {"text": "Own 8 vehicles", "type": "vehicles", "value": 8, "reward": 40000},
+    {"text": "Unlock Frostland", "type": "regions", "value": 6, "reward": 60000},
+    {"text": "Reach Underground HQ", "type": "garage", "value": 5, "reward": 100000},
+    {"text": "Unlock Golden Isles", "type": "regions", "value": 7, "reward": 150000},
+    {"text": "Unlock Neon State", "type": "regions", "value": 8, "reward": 300000}
+  ]
+}

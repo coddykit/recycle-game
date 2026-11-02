@@ -1,0 +1,492 @@
+{
+ "en-US": {
+  "category": "Logistics tycoon",
+  "feature": [
+   "Build a delivery\nempire",
+   "Trucks, routes and border crossings"
+  ],
+  "slides": [
+   [
+    "Logistics tycoon",
+    "From one hatchback\nto an empire",
+    "Idle earnings while you're away"
+   ],
+   [
+    "Pick your route",
+    "Fast, normal\nor safe?",
+    "Risk vs. reward on every job"
+   ],
+   [
+    "Road events",
+    "Handle trouble\non the road",
+    "Rivals, inspections, road closures"
+   ],
+   [
+    "10 vehicles",
+    "Build a fleet\nand hire drivers",
+    "Upgrade every truck"
+   ],
+   [
+    "Grow your HQ",
+    "Garage to\nUnderground HQ",
+    "Automate dispatch as you grow"
+   ],
+   [
+    "8 regions",
+    "Expand across\nfictional lands",
+    "New border crossings to unlock"
+   ],
+   [
+    "Contracts",
+    "Choose the jobs\nworth the risk",
+    "Cargo, passengers, cross-border runs"
+   ],
+   [
+    "International network",
+    "From desert roads\nto snowy passes",
+    "Each land has its own look and pay"
+   ]
+  ]
+ },
+ "tr-TR": {
+  "category": "Lojistik tycoon",
+  "feature": [
+   "Teslimat\nimparatorluğu kur",
+   "Kamyonlar, rotalar, sınır kapıları"
+  ],
+  "slides": [
+   [
+    "Lojistik tycoon",
+    "Tek arabadan\nimparatorluğa",
+    "Sen yokken de kazanç"
+   ],
+   [
+    "Rotanı seç",
+    "Hızlı, normal\nya da güvenli?",
+    "Her işte risk ve ödül"
+   ],
+   [
+    "Yol olayları",
+    "Yoldaki sorunlarla\nbaşa çık",
+    "Rakipler, denetimler, kapalı yollar"
+   ],
+   [
+    "10 araç",
+    "Filonu kur,\nşoför tut",
+    "Her aracı geliştir"
+   ],
+   [
+    "Merkezini büyüt",
+    "Garajdan\nYeraltı Merkezi'ne",
+    "Büyüdükçe sevkiyatı otomatikleştir"
+   ],
+   [
+    "8 bölge",
+    "Kurgusal ülkelere\nyayıl",
+    "Açılacak yeni sınır kapıları"
+   ],
+   [
+    "Sözleşmeler",
+    "Riske değen\nişleri seç",
+    "Kargo, yolcu ve sınır ötesi işler"
+   ],
+   [
+    "Uluslararası ağ",
+    "Çöl yollarından\nkarlı geçitlere",
+    "Her ülkenin kendi görünümü ve kazancı"
+   ]
+  ]
+ },
+ "de-DE": {
+  "category": "Logistik-Tycoon",
+  "feature": [
+   "Baue ein\nLieferimperium",
+   "Lkw, Routen und Grenzübergänge"
+  ],
+  "slides": [
+   [
+    "Logistik-Tycoon",
+    "Vom Kleinwagen\nzum Imperium",
+    "Einnahmen, auch wenn du weg bist"
+   ],
+   [
+    "Route wählen",
+    "Schnell, normal\noder sicher?",
+    "Risiko und Lohn bei jedem Auftrag"
+   ],
+   [
+    "Ereignisse unterwegs",
+    "Probleme unterwegs\nmeistern",
+    "Rivalen, Kontrollen, Sperrungen"
+   ],
+   [
+    "10 Fahrzeuge",
+    "Flotte aufbauen,\nFahrer anheuern",
+    "Jedes Fahrzeug aufrüsten"
+   ],
+   [
+    "HQ ausbauen",
+    "Von der Garage\nzum Untergrund-HQ",
+    "Disposition automatisieren"
+   ],
+   [
+    "8 Regionen",
+    "In fiktive Länder\nexpandieren",
+    "Neue Grenzübergänge freischalten"
+   ],
+   [
+    "Aufträge",
+    "Wähle Aufträge,\ndie sich lohnen",
+    "Fracht, Fahrgäste, Grenzfahrten"
+   ],
+   [
+    "Internationales Netz",
+    "Von Wüstenpisten\nzu Schneepässen",
+    "Jedes Land mit eigenem Look und Lohn"
+   ]
+  ]
+ },
+ "es-ES": {
+  "category": "Magnate logístico",
+  "feature": [
+   "Crea un imperio\nde reparto",
+   "Camiones, rutas y fronteras"
+  ],
+  "slides": [
+   [
+    "Magnate logístico",
+    "De un utilitario\na un imperio",
+    "Ingresos mientras no juegas"
+   ],
+   [
+    "Elige tu ruta",
+    "¿Rápida, normal\no segura?",
+    "Riesgo y recompensa en cada encargo"
+   ],
+   [
+    "Eventos en ruta",
+    "Resuelve problemas\nen carretera",
+    "Rivales, inspecciones y cortes"
+   ],
+   [
+    "10 vehículos",
+    "Crea tu flota\ny ficha chóferes",
+    "Mejora cada camión"
+   ],
+   [
+    "Mejora tu base",
+    "Del garaje a la\nbase subterránea",
+    "Automatiza los envíos al crecer"
+   ],
+   [
+    "8 regiones",
+    "Crece por tierras\nficticias",
+    "Nuevos pasos fronterizos"
+   ],
+   [
+    "Contratos",
+    "Elige encargos\nque compensen",
+    "Carga, pasajeros y viajes fronterizos"
+   ],
+   [
+    "Red internacional",
+    "De rutas de arena\na pasos nevados",
+    "Cada región con su paisaje y su paga"
+   ]
+  ]
+ },
+ "fr-FR": {
+  "category": "Magnat logistique",
+  "feature": [
+   "Bâtis un empire\nde livraison",
+   "Camions, routes et frontières"
+  ],
+  "slides": [
+   [
+    "Magnat logistique",
+    "D’une citadine\nà un empire",
+    "Des gains même en ton absence"
+   ],
+   [
+    "Choisis ta route",
+    "Rapide, normale\nou sûre ?",
+    "Risque et gain à chaque mission"
+   ],
+   [
+    "Imprévus en route",
+    "Gère les imprévus\nsur la route",
+    "Rivaux, contrôles, routes barrées"
+   ],
+   [
+    "10 véhicules",
+    "Ta flotte et\ntes chauffeurs",
+    "Améliore chaque camion"
+   ],
+   [
+    "Développe ton QG",
+    "Du garage au\nQG souterrain",
+    "Automatise les départs"
+   ],
+   [
+    "8 régions",
+    "Conquiers des\nterres fictives",
+    "Nouveaux postes-frontières"
+   ],
+   [
+    "Contrats",
+    "Des missions\nà ta mesure",
+    "Fret, passagers, trajets frontaliers"
+   ],
+   [
+    "Réseau international",
+    "Du désert aux\ncols enneigés",
+    "Chaque pays a son décor et sa paie"
+   ]
+  ]
+ },
+ "ja-JP": {
+  "category": "輸送会社経営",
+  "feature": [
+   "配送帝国を\n築こう",
+   "トラック・ルート・国境越え"
+  ],
+  "slides": [
+   [
+    "輸送会社経営",
+    "1台の車から\n帝国へ",
+    "離れていても収益"
+   ],
+   [
+    "ルートを選択",
+    "速達・通常\nそれとも安全？",
+    "どの仕事もリスクと報酬"
+   ],
+   [
+    "道中のイベント",
+    "道中のトラブルを\n切り抜けよう",
+    "ライバル・検問・通行止め"
+   ],
+   [
+    "10台の車両",
+    "車両をそろえ\n運転手を雇おう",
+    "トラックを強化"
+   ],
+   [
+    "本部を拡張",
+    "ガレージから\n地下本部へ",
+    "成長に合わせて配送を自動化"
+   ],
+   [
+    "8つの地域",
+    "架空の国々へ\n事業を拡大",
+    "新たな国境を開放"
+   ],
+   [
+    "契約",
+    "割に合う仕事を\n選び抜こう",
+    "貨物・乗客・越境便"
+   ],
+   [
+    "国際ネットワーク",
+    "砂漠の道から\n雪の峠まで",
+    "地域ごとに景色も報酬も違う"
+   ]
+  ]
+ },
+ "ko-KR": {
+  "category": "물류 타이쿤",
+  "feature": [
+   "배송 제국을\n세워 보세요",
+   "트럭, 경로, 국경 통과"
+  ],
+  "slides": [
+   [
+    "물류 타이쿤",
+    "해치백 한 대로\n제국까지",
+    "자리를 비워도 수익"
+   ],
+   [
+    "경로 선택",
+    "빠르게, 보통,\n안전하게?",
+    "모든 의뢰에 위험과 보상"
+   ],
+   [
+    "도로 이벤트",
+    "도로 위 문제를\n해결하세요",
+    "경쟁자, 검문, 도로 통제"
+   ],
+   [
+    "차량 10대",
+    "차량을 모으고\n기사를 고용",
+    "트럭마다 업그레이드"
+   ],
+   [
+    "본부 확장",
+    "차고에서\n지하 본부까지",
+    "성장하며 배차 자동화"
+   ],
+   [
+    "지역 8곳",
+    "가상의 나라로\n사업 확장",
+    "새 국경 검문소 개방"
+   ],
+   [
+    "계약",
+    "해볼 만한 의뢰를\n골라 보세요",
+    "화물, 승객, 국경 운송"
+   ],
+   [
+    "국제 네트워크",
+    "사막 길에서\n눈 덮인 고개로",
+    "지역마다 다른 풍경과 보수"
+   ]
+  ]
+ },
+ "pt-BR": {
+  "category": "Magnata da logística",
+  "feature": [
+   "Monte um império\nde entregas",
+   "Caminhões, rotas e fronteiras"
+  ],
+  "slides": [
+   [
+    "Magnata da logística",
+    "De um hatch\na um império",
+    "Ganhos mesmo quando você sai"
+   ],
+   [
+    "Escolha sua rota",
+    "Rápida, normal\nou segura?",
+    "Risco e recompensa em cada frete"
+   ],
+   [
+    "Eventos na estrada",
+    "Resolva problemas\nna estrada",
+    "Rivais, inspeções e bloqueios"
+   ],
+   [
+    "10 veículos",
+    "Monte sua frota\ne sua equipe",
+    "Melhore cada caminhão"
+   ],
+   [
+    "Expanda sua base",
+    "Da garagem à\nbase subterrânea",
+    "Automatize os envios ao crescer"
+   ],
+   [
+    "8 regiões",
+    "Expanda por\nterras fictícias",
+    "Novas fronteiras para abrir"
+   ],
+   [
+    "Contratos",
+    "Escolha fretes\nque valem o risco",
+    "Carga, passageiros e rotas na fronteira"
+   ],
+   [
+    "Rede internacional",
+    "Do deserto às\nserras nevadas",
+    "Cada região com visual e pagamento"
+   ]
+  ]
+ },
+ "ru-RU": {
+  "category": "Логистический тайкун",
+  "feature": [
+   "Построй империю\nдоставки",
+   "Грузовики, маршруты, границы"
+  ],
+  "slides": [
+   [
+    "Логистический тайкун",
+    "От малолитражки\nдо империи",
+    "Доход, даже когда ты не в игре"
+   ],
+   [
+    "Выбери маршрут",
+    "Быстро, обычно\nили безопасно?",
+    "Риск и награда в каждом рейсе"
+   ],
+   [
+    "Дорожные события",
+    "Решай проблемы\nв пути",
+    "Соперники, проверки, перекрытия"
+   ],
+   [
+    "10 машин",
+    "Собери автопарк\nи найми водителей",
+    "Улучшай каждый грузовик"
+   ],
+   [
+    "Развивай штаб",
+    "От гаража до\nподземного штаба",
+    "Автоматизируй рейсы по мере роста"
+   ],
+   [
+    "8 регионов",
+    "Расширяйся\nза границу",
+    "Новые погранпереходы"
+   ],
+   [
+    "Контракты",
+    "Выбирай заказы,\nстоящие риска",
+    "Грузы, пассажиры, рейсы через границу"
+   ],
+   [
+    "Международная сеть",
+    "От пустынь\nдо снегов",
+    "В каждой стране свой пейзаж и доход"
+   ]
+  ]
+ },
+ "zh-CN": {
+  "category": "物流大亨",
+  "feature": [
+   "打造你的\n物流帝国",
+   "卡车、路线与边境口岸"
+  ],
+  "slides": [
+   [
+    "物流大亨",
+    "从一辆小车\n到物流帝国",
+    "离线也有收益"
+   ],
+   [
+    "选择路线",
+    "快速、普通\n还是安全？",
+    "每单都有风险与回报"
+   ],
+   [
+    "道路事件",
+    "处理路上的\n突发状况",
+    "对手、检查与封路"
+   ],
+   [
+    "10辆车",
+    "组建车队\n招募司机",
+    "升级每一辆车"
+   ],
+   [
+    "扩建总部",
+    "从车库\n到地下总部",
+    "随规模增长自动调度"
+   ],
+   [
+    "8个地区",
+    "扩张到\n虚构国度",
+    "解锁新的边境口岸"
+   ],
+   [
+    "合约",
+    "挑选值得\n冒险的订单",
+    "货物、乘客、跨境运输"
+   ],
+   [
+    "国际网络",
+    "从沙漠公路\n到雪山隘口",
+    "每个地区风景与收益各不同"
+   ]
+  ]
+ }
+}

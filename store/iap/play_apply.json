@@ -1,0 +1,391 @@
+{
+ "dry": false,
+ "at": "2026-10-19T05:29:41.765Z",
+ "regionsVersion": "2026/01",
+ "products": {
+  "bundle": {
+   "id": "com.coddykit.borderlineempire.bundle",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "14.99 USD",
+    "DE": "15.99 EUR",
+    "TR": "294.99 TRY",
+    "BR": "24.99 BRL",
+    "IN": "390 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "premium": {
+   "id": "com.coddykit.borderlineempire.premium",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "9.99 USD",
+    "DE": "10.99 EUR",
+    "TR": "209.99 TRY",
+    "BR": "17.99 BRL",
+    "IN": "220 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "noads": {
+   "id": "com.coddykit.borderlineempire.noads",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "2.99 USD",
+    "DE": "3.19 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "automation_plus": {
+   "id": "com.coddykit.borderlineempire.automation_plus",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "3.99 USD",
+    "DE": "4.19 EUR",
+    "TR": "88.99 TRY",
+    "BR": "7.49 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "offline_plus": {
+   "id": "com.coddykit.borderlineempire.offline_plus",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "2.99 USD",
+    "DE": "3.19 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "paint_street": {
+   "id": "com.coddykit.borderlineempire.paint_street",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "1.99 USD",
+    "DE": "2.09 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "paint_military": {
+   "id": "com.coddykit.borderlineempire.paint_military",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "1.99 USD",
+    "DE": "2.09 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "paint_luxury": {
+   "id": "com.coddykit.borderlineempire.paint_luxury",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "1.99 USD",
+    "DE": "2.09 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "hq_theme": {
+   "id": "com.coddykit.borderlineempire.hq_theme",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "1.99 USD",
+    "DE": "2.09 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "driver_portraits": {
+   "id": "com.coddykit.borderlineempire.driver_portraits",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "1.99 USD",
+    "DE": "2.09 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "cosmetics_all": {
+   "id": "com.coddykit.borderlineempire.cosmetics_all",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "4.99 USD",
+    "DE": "5.49 EUR",
+    "TR": "119.99 TRY",
+    "BR": "9.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "starter": {
+   "id": "com.coddykit.borderlineempire.starter",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "1.99 USD",
+    "DE": "2.09 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "legacy_pack": {
+   "id": "com.coddykit.borderlineempire.legacy_pack",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "3.99 USD",
+    "DE": "4.19 EUR",
+    "TR": "88.99 TRY",
+    "BR": "7.49 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "cash_s": {
+   "id": "com.coddykit.borderlineempire.cash_s",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "0.99 USD",
+    "DE": "1.09 EUR",
+    "TR": "58.99 TRY",
+    "BR": "4.99 BRL",
+    "IN": "110 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "cash_m": {
+   "id": "com.coddykit.borderlineempire.cash_m",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "2.99 USD",
+    "DE": "3.19 EUR",
+    "TR": "88.99 TRY",
+    "BR": "7.49 BRL",
+    "IN": "170 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  },
+  "cash_l": {
+   "id": "com.coddykit.borderlineempire.cash_l",
+   "state": "ACTIVE",
+   "regions": 174,
+   "prices": {
+    "US": "6.99 USD",
+    "DE": "7.49 EUR",
+    "TR": "149.99 TRY",
+    "BR": "12.99 BRL",
+    "IN": "220 INR"
+   },
+   "listings": [
+    "en-US",
+    "tr-TR",
+    "de-DE",
+    "es-ES",
+    "fr-FR",
+    "ja-JP",
+    "ko-KR",
+    "pt-BR",
+    "ru-RU",
+    "zh-CN"
+   ]
+  }
+ }
+}

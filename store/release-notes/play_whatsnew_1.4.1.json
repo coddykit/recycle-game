@@ -1,0 +1,15 @@
+{
+  "_": "Play What's new for 1.4.1 (Patron round 6, 2026-10-28): C1 opening pacing + C3 cash fix + kit scroll fix + house ads list.",
+  "generic": {
+    "en-US": "• Faster start: the first runs are shorter, and the screen now shows what to do next.\n• Purchases now need enough cash: you can no longer buy more than your balance covers.\n• Smoother menus: the scroll bar no longer flickers on a still screen.\n• Stability improvements.",
+    "tr-TR": "• Daha hızlı başlangıç: ilk seferler daha kısa ve ekran artık sıradaki adımı gösteriyor.\n• Satın almalar artık yeterli nakit istiyor: bakiyenizi aşan alım yapılamıyor.\n• Daha akıcı menüler: kaydırma çubuğu artık sabit ekranda yanıp sönmüyor.\n• Kararlılık iyileştirmeleri.",
+    "de-DE": "• Schnellerer Einstieg: Die ersten Fahrten sind kürzer, und der Bildschirm zeigt jetzt den nächsten Schritt.\n• Käufe brauchen jetzt genug Bargeld: Du kannst nicht mehr kaufen, als dein Guthaben deckt.\n• Ruhigere Menüs: Die Bildlaufleiste flackert auf einem stillen Bildschirm nicht mehr auf.\n• Verbesserte Stabilität.",
+    "es-ES": "• Inicio más ágil: los primeros viajes son más cortos y la pantalla indica el siguiente paso.\n• Las compras ahora requieren dinero suficiente: ya no puedes gastar más de tu saldo.\n• Menús más fluidos: la barra de desplazamiento ya no parpadea con la pantalla quieta.\n• Mejoras de estabilidad.",
+    "fr-FR": "• Début plus rapide : les premiers trajets sont plus courts et l’écran indique la prochaine étape.\n• Les achats exigent désormais assez d’argent : impossible de dépenser plus que votre solde.\n• Menus plus fluides : la barre de défilement ne clignote plus sur un écran immobile.\n• Améliorations de la stabilité.",
+    "pt-BR": "• Começo mais rápido: as primeiras viagens são mais curtas e a tela mostra o próximo passo.\n• As compras agora exigem dinheiro suficiente: não dá mais para gastar além do seu saldo.\n• Menus mais suaves: a barra de rolagem não pisca mais com a tela parada.\n• Melhorias de estabilidade.",
+    "ru-RU": "• Быстрое начало: первые рейсы короче, а на экране теперь виден следующий шаг.\n• Для покупок теперь нужно достаточно денег: потратить больше баланса больше нельзя.\n• Более плавные меню: полоса прокрутки больше не мелькает на неподвижном экране.\n• Улучшения стабильности.",
+    "ja-JP": "• テンポのよい序盤：最初の運び仕事が短くなり、次にやることが画面に表示されます。\n• 購入には十分な所持金が必要になりました。残高を超える買い物はできません。\n• メニューがより快適に：静止した画面でスクロールバーがちらつかなくなりました。\n• 安定性を改善しました。",
+    "ko-KR": "• 더 빠른 시작: 첫 운반이 짧아졌고 화면에 다음 할 일이 표시됩니다.\n• 이제 구매하려면 충분한 현금이 필요합니다. 잔액을 넘는 구매는 할 수 없습니다.\n• 더 매끄러운 메뉴: 화면이 멈춰 있을 때 스크롤 막대가 깜박이지 않습니다.\n• 안정성 개선.",
+    "zh-CN": "• 更快上手：最初几趟运输更短，屏幕会提示下一步该做什么。\n• 现在购买需要足够的现金：不能再花超过余额的钱。\n• 菜单更流畅：静止画面上的滚动条不再闪烁。\n• 稳定性改进。"
+  }
+}

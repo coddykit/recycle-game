@@ -1,0 +1,106 @@
+{
+ "at": "2026-10-19T05:33:52.467Z",
+ "project": "proj134e4759",
+ "iosApp": "app94be42332a",
+ "playApp": "appa937d937a2",
+ "products": {
+  "bundle": {
+   "play": "prod3e734c0869"
+  },
+  "premium": {
+   "play": "prodccac631e4a"
+  },
+  "empire_pass": {
+   "play": "prod191d8bc401"
+  },
+  "noads": {
+   "play": "prod74d883121a"
+  },
+  "automation_plus": {
+   "play": "prod1f669fe197"
+  },
+  "offline_plus": {
+   "play": "prod15094e94fe"
+  },
+  "paint_street": {
+   "play": "prod5344bf6ac9"
+  },
+  "paint_military": {
+   "play": "prod2a8a61dd5b"
+  },
+  "paint_luxury": {
+   "play": "prod76646a8eda"
+  },
+  "hq_theme": {
+   "play": "prodc544f83a2d"
+  },
+  "driver_portraits": {
+   "play": "prod6b25178d2c"
+  },
+  "cosmetics_all": {
+   "play": "prodbc0288c7a9"
+  },
+  "starter": {
+   "play": "prod023552b27a"
+  },
+  "legacy_pack": {
+   "play": "prodf958285cd8"
+  },
+  "cash_s": {
+   "play": "prodd3a71bdf16"
+  },
+  "cash_m": {
+   "play": "prodc484e14c01"
+  },
+  "cash_l": {
+   "play": "prodfd4e168d03"
+  }
+ },
+ "entitlements": {
+  "bundle": "entl2bfd4a5749",
+  "premium": "entlb9b10d1377",
+  "empire_pass": "entl1665e03b33",
+  "noads": "entla27a7f1143",
+  "automation_plus": "entl86837c7548",
+  "offline_plus": "entl498df3b5b5",
+  "paint_street": "entle38535a116",
+  "paint_military": "entl77a5af8c85",
+  "paint_luxury": "entl1aef9fc10d",
+  "hq_theme": "entl85a22b8393",
+  "driver_portraits": "entle759985b73",
+  "cosmetics_all": "entlde421737f9",
+  "starter": "entlfc3df2fd84"
+ },
+ "offerings": {
+  "shop": {
+   "id": "ofrnga9f543d543",
+   "current": false,
+   "packages": [
+    "premium:1",
+    "bundle:1",
+    "empire_pass:1",
+    "noads:1",
+    "automation_plus:1",
+    "offline_plus:1",
+    "paint_street:1",
+    "paint_military:1",
+    "paint_luxury:1",
+    "hq_theme:1",
+    "driver_portraits:1",
+    "cosmetics_all:1",
+    "starter:1",
+    "legacy_pack:1",
+    "cash_s:1",
+    "cash_m:1",
+    "cash_l:1"
+   ]
+  },
+  "default": {
+   "id": "ofrngf58a9fb05f",
+   "current": true,
+   "packages": [
+    "$rc_lifetime:2"
+   ]
+  }
+ }
+}

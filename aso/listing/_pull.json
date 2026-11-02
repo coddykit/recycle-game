@@ -1,0 +1,41 @@
+{
+ "at": "2026-10-10T05:37:33.682Z",
+ "run": "2026-10-10_083638",
+ "files": {
+  "ios_draft": [
+   "de-DE",
+   "en-US",
+   "es-ES",
+   "fr-FR",
+   "ja",
+   "ko",
+   "pt-BR",
+   "ru",
+   "tr",
+   "zh-Hans"
+  ],
+  "ios": [],
+  "play": [
+   "de-DE",
+   "en-US",
+   "es-ES",
+   "fr-FR",
+   "ja-JP",
+   "ko-KR",
+   "pt-BR",
+   "ru-RU",
+   "tr-TR",
+   "zh-CN"
+  ]
+ },
+ "ios_draft": {
+  "version": "1.0",
+  "state": "PREPARE_FOR_SUBMISSION",
+  "source": "edit"
+ },
+ "ios": null,
+ "play": {
+  "langs": 10,
+  "default": "en-US"
+ }
+}

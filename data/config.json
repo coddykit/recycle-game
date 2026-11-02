@@ -1,0 +1,20 @@
+{
+  "title": "Borderline Empire",
+  "subtitle": "Shadow Logistics Tycoon",
+  "version": "1.2.4",
+  "start_cash": 250,
+  "start_vehicle": "hatchback",
+  "start_driver": {"name": "Rita Redline", "rarity": "common", "speed": 30, "reliability": 35, "stress": 30},
+  "tile_size": 40.0,
+  "tile_spacing": 44.0,
+  "save_interval": 20.0,
+  "offline_cap_seconds": 7200,
+  "offline_plus_cap_seconds": 28800,
+  "max_queue": 4,
+  "offer_lifetime": [70, 120],
+  "offer_interval": 7.0,
+  "first_contract": {
+    "category": "mystery_crates", "origin": "r0_hub", "dest": "r0_a",
+    "units": 2, "reward": 350, "risk": 0
+  }
+}

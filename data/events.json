@@ -1,0 +1,72 @@
+[
+  {"id": "breakdown", "title": "Vehicle Breakdown", "text": "Something under the hood just went 'clunk'.", "icon": "wrench", "weight": 10, "kind": "any", "reliability": true,
+   "choices": [
+     {"label": "Repair Immediately", "cost_frac": 0.14, "cost_min": 40, "delay": 5},
+     {"label": "Temporary Fix", "cost_frac": 0.04, "cost_min": 15, "risk": 12},
+     {"label": "Wait for Support", "delay": 18}
+   ]},
+  {"id": "traffic", "title": "Heavy Traffic", "text": "The whole road is a parking lot.", "icon": "clock", "weight": 12, "kind": "any",
+   "choices": [
+     {"label": "Wait it Out", "delay": 10},
+     {"label": "Paid Shortcut", "cost_frac": 0.08, "cost_min": 25, "delay": 2},
+     {"label": "Squeeze Through", "risk": 10}
+   ]},
+  {"id": "road_closure", "title": "Road Closure", "text": "Orange cones as far as the eye can see.", "icon": "route", "weight": 8, "kind": "any",
+   "choices": [
+     {"label": "Take the Detour", "delay": 14},
+     {"label": "Pay the Toll Road", "cost_frac": 0.1, "cost_min": 30, "delay": 3},
+     {"label": "Lay Low a While", "delay": 22, "heat": -6}
+   ]},
+  {"id": "weather", "title": "Severe Weather", "text": "Storm clouds roll in out of nowhere.", "icon": "risk", "weight": 8, "kind": "any",
+   "choices": [
+     {"label": "Wait it Out", "delay": 18},
+     {"label": "Drive Carefully", "delay": 7, "risk": 8},
+     {"label": "Push On", "chance": 0.6, "fail": {"damage": 20, "delay": 8}}
+   ]},
+  {"id": "nervous_passenger", "title": "Nervous Passenger", "text": "Your passenger keeps asking 'are we there yet?'", "icon": "person", "weight": 10, "kind": "passenger",
+   "choices": [
+     {"label": "Calm Them Down", "chance": 0.7, "stress": true, "fail": {"rep": -2, "reward_mult": 0.85}},
+     {"label": "Buy Snacks", "cost_frac": 0.05, "cost_min": 20},
+     {"label": "Floor It", "delay": -5, "risk": 10}
+   ]},
+  {"id": "lost_cargo", "title": "Lost Cargo", "text": "One crate seems to have... wandered off.", "icon": "box", "weight": 8, "kind": "cargo", "fragile": true,
+   "choices": [
+     {"label": "Search for It", "delay": 15},
+     {"label": "Compensate Client", "cost_frac": 0.18, "cost_min": 40},
+     {"label": "Deliver Partial", "reward_mult": 0.65}
+   ]},
+  {"id": "rival", "title": "Rival Interference", "text": "A rival crew is tailing your vehicle.", "icon": "risk", "weight": 7, "kind": "any",
+   "choices": [
+     {"label": "Pay Them Off", "cost_frac": 0.16, "cost_min": 50},
+     {"label": "Outrun Them", "chance": 0.55, "speed": true, "fail": {"risk": 20}},
+     {"label": "Long Way Round", "delay": 20}
+   ]},
+  {"id": "engine", "title": "Engine Problem", "text": "The engine light is blinking a worrying rhythm.", "icon": "wrench", "weight": 8, "kind": "any", "reliability": true,
+   "choices": [
+     {"label": "Quick Patch", "cost_frac": 0.08, "cost_min": 30, "delay": 3},
+     {"label": "Limp Along", "delay": 15},
+     {"label": "Ignore It", "risk": 15, "damage": 15}
+   ]},
+  {"id": "inspection", "title": "Unexpected Inspection", "text": "A routine stop. Paperwork, please!", "icon": "contract", "weight": 9, "kind": "any", "heat_scaled": true,
+   "choices": [
+     {"label": "Wait Patiently", "delay": 15, "heat": 5},
+     {"label": "Pay Processing Fee", "cost_frac": 0.15, "cost_min": 50},
+     {"label": "Smooth Talk", "chance": 0.6, "stress": true, "fail": {"fail_contract": true}}
+   ]},
+  {"id": "wrong_address", "title": "Wrong Address", "text": "The drop point is a laundromat. Again.", "icon": "pin", "weight": 6, "kind": "any",
+   "choices": [
+     {"label": "Re-route", "delay": 12},
+     {"label": "Call the Client", "cost_frac": 0.03, "cost_min": 10, "delay": 4}
+   ]},
+  {"id": "fuel", "title": "Fuel Shortage", "text": "The needle has been on E for a while.", "icon": "bolt", "weight": 6, "kind": "any",
+   "choices": [
+     {"label": "Refuel at Premium", "cost_frac": 0.07, "cost_min": 20},
+     {"label": "Coast to a Station", "delay": 10}
+   ]},
+  {"id": "fatigue", "title": "Driver Fatigue", "text": "Your driver is yawning louder than the engine.", "icon": "driver", "weight": 7, "kind": "any",
+   "choices": [
+     {"label": "Take a Rest", "delay": 14},
+     {"label": "Energy Drinks", "cost_frac": 0.04, "cost_min": 15},
+     {"label": "Push On", "risk": 12}
+   ]}
+]

@@ -1,0 +1,15 @@
+{
+  "_": "Play What's new for 1.4.0 (S2 round 5 = patched engine, Patron #159, 2026-10-27).",
+  "generic": {
+    "en-US": "• Stability and performance improvements.\n• Visual improvements to the scenery.",
+    "tr-TR": "• Kararlılık ve performans iyileştirmeleri.\n• Çevre görsellerinde iyileştirmeler.",
+    "de-DE": "• Verbesserungen bei Stabilität und Leistung.\n• Optische Verbesserungen der Umgebung.",
+    "es-ES": "• Mejoras de estabilidad y rendimiento.\n• Mejoras visuales del escenario.",
+    "fr-FR": "• Améliorations de la stabilité et des performances.\n• Améliorations visuelles des décors.",
+    "pt-BR": "• Melhorias de estabilidade e desempenho.\n• Melhorias visuais no cenário.",
+    "ru-RU": "• Улучшения стабильности и производительности.\n• Улучшена графика окружения.",
+    "ja-JP": "• 安定性とパフォーマンスを改善しました。\n• 背景のビジュアルを改善しました。",
+    "ko-KR": "• 안정성 및 성능 개선.\n• 배경 그래픽 개선.",
+    "zh-CN": "• 稳定性和性能改进。\n• 场景画面优化。"
+  }
+}

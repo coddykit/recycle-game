@@ -1,0 +1,79 @@
+{
+  "Green Republic": {
+    "tr": "Yeşil Cumhuriyet",
+    "de": "Grüne Republik",
+    "es": "República Verde",
+    "fr": "République verte",
+    "ja": "グリーン共和国",
+    "ko": "그린 공화국",
+    "pt": "República Verde",
+    "ru": "Зелёная Республика",
+    "zh": "绿色共和国"
+  },
+  "Free Coast": {
+    "tr": "Serbest Kıyı",
+    "de": "Freie Küste",
+    "es": "Costa Libre",
+    "fr": "Côte libre",
+    "ja": "自由海岸",
+    "ko": "자유 해안",
+    "pt": "Costa Livre",
+    "ru": "Свободное побережье",
+    "zh": "自由海岸"
+  },
+  "Iron Federation": {
+    "tr": "Demir Federasyonu",
+    "de": "Eisenföderation",
+    "es": "Federación de Hierro",
+    "fr": "Fédération de fer",
+    "ja": "鉄の連邦",
+    "ko": "강철 연방",
+    "pt": "Federação de Ferro",
+    "ru": "Железная Федерация",
+    "zh": "钢铁联邦"
+  },
+  "Red Frontier": {
+    "tr": "Kızıl Sınır",
+    "de": "Rote Grenze",
+    "es": "Frontera Roja",
+    "fr": "Frontière rouge",
+    "ja": "赤の辺境",
+    "ko": "붉은 변경",
+    "pt": "Fronteira Vermelha",
+    "ru": "Красный фронтир",
+    "zh": "红色边境"
+  },
+  "Frostland": {
+    "tr": "Ayaz Diyarı",
+    "de": "Frostland",
+    "es": "Tierra Helada",
+    "fr": "Terre gelée",
+    "ja": "フロストランド",
+    "ko": "서리의 땅",
+    "pt": "Terra do Gelo",
+    "ru": "Ледяные земли",
+    "zh": "冰霜之地"
+  },
+  "Golden Isles": {
+    "tr": "Altın Adalar",
+    "de": "Goldene Inseln",
+    "es": "Islas Doradas",
+    "fr": "Îles dorées",
+    "ja": "黄金諸島",
+    "ko": "황금 제도",
+    "pt": "Ilhas Douradas",
+    "ru": "Золотые острова",
+    "zh": "黄金群岛"
+  },
+  "Neon State": {
+    "tr": "Neon Devleti",
+    "de": "Neonstaat",
+    "es": "Estado Neón",
+    "fr": "État néon",
+    "ja": "ネオン州",
+    "ko": "네온 주",
+    "pt": "Estado Neon",
+    "ru": "Неоновый штат",
+    "zh": "霓虹州"
+  }
+}

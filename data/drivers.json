@@ -1,0 +1,10 @@
+{
+  "first": ["Rita", "Tom", "Lev", "Ana", "Kofi", "Mila", "Jax", "Nina", "Oskar", "Priya", "Bo", "Zed", "Luz", "Ivo", "Mags", "Rudy", "Suki", "Ted", "Vera", "Wes", "Dot", "Hank", "Yara", "Gus"],
+  "nick": ["Redline", "Two-Gears", "Quickstep", "Ghost", "Biscuit", "Velvet", "Static", "Boomer", "Lucky", "Nightowl", "Dash", "Tumbleweed", "Hush", "Rocket", "Patch", "Smoky", "Comet", "Moss", "Breeze", "Gravel", "Sprocket", "Mirage"],
+  "rarities": [
+    {"id": "common", "name": "Common", "color": "A7AEB8", "stats": [18, 42], "hire": 250, "salary": 8, "weight": 60, "rep": 0},
+    {"id": "skilled", "name": "Skilled", "color": "3DDC84", "stats": [38, 62], "hire": 1800, "salary": 25, "weight": 28, "rep": 5},
+    {"id": "expert", "name": "Expert", "color": "4DA3FF", "stats": [58, 82], "hire": 9000, "salary": 70, "weight": 10, "rep": 25},
+    {"id": "elite", "name": "Elite", "color": "FFC93C", "stats": [78, 98], "hire": 45000, "salary": 180, "weight": 3, "rep": 60}
+  ]
+}

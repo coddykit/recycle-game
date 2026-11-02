@@ -1,0 +1,20 @@
+{
+  "generator": "tools/blender/build_review_lod2.py",
+  "models": {
+    "barn": {
+      "lod0_triangles": 492,
+      "lod1_triangles": 354,
+      "lod1": "res://assets/models/lod1/barn.glb"
+    },
+    "warehouse": {
+      "lod0_triangles": 536,
+      "lod1_triangles": 385,
+      "lod1": "res://assets/models/lod1/warehouse.glb"
+    },
+    "house_cottage": {
+      "lod0_triangles": 316,
+      "lod1_triangles": 227,
+      "lod1": "res://assets/models/lod1/house_cottage.glb"
+    }
+  }
+}

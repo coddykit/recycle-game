@@ -1,0 +1,5 @@
+10-09 16:14:53.670  6072  6072 I FirebaseInitProvider: FirebaseApp initialization successful
+10-09 16:15:02.649  6072  6109 I godot   : [Analytics] Native analytics ready; analytics storage granted, ads denied
+10-09 16:15:02.658  6072  6101 V FA      : Setting storage consent(FE): source=API,ad_storage=denied,analytics_storage=granted
+10-09 16:15:02.690  6072  6101 V FA      : Setting DMA consent(FE): source=API,ad_user_data=denied
+10-09 16:15:04.490  4604  6115 V FA-SVC  : Successful upload. Got network response. code, size: 204, 0

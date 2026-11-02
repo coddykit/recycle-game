@@ -1,0 +1,17 @@
+{
+ "at": "2026-10-10T05:46:51.889Z",
+ "deck_dirs": [],
+ "files": {
+  "ios": null,
+  "ios_draft": {
+   "role": "edit",
+   "state": "PREPARE_FOR_SUBMISSION",
+   "version": "1.0"
+  },
+  "play": {
+   "default": "en-US",
+   "langs": 10
+  }
+ },
+ "run": "2026-10-10_083638"
+}

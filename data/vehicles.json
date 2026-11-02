@@ -1,0 +1,187 @@
+[
+ {
+  "id": "hatchback",
+  "name": "Old Hatchback",
+  "tier": 1,
+  "price": 600,
+  "capacity": 2,
+  "speed": 1.0,
+  "reliability": 60,
+  "op_cost": 12,
+  "risk_mod": 0,
+  "tags": [
+   "cargo",
+   "passenger"
+  ],
+  "paint": "E05A47",
+  "upgrade_base": 90,
+  "garage": 1,
+  "blurb": "Rusty, trusty, mostly paid off."
+ },
+ {
+  "id": "small_van",
+  "name": "Small Van",
+  "tier": 1,
+  "price": 900,
+  "capacity": 4,
+  "speed": 0.95,
+  "reliability": 64,
+  "op_cost": 22,
+  "risk_mod": 0,
+  "tags": [
+   "cargo"
+  ],
+  "paint": "3D8BD9",
+  "upgrade_base": 150,
+  "garage": 1,
+  "blurb": "Twice the boxes, half the legroom."
+ },
+ {
+  "id": "pickup",
+  "name": "Pickup Truck",
+  "tier": 2,
+  "price": 4000,
+  "capacity": 5,
+  "speed": 1.2,
+  "reliability": 72,
+  "op_cost": 40,
+  "risk_mod": -3,
+  "tags": [
+   "cargo"
+  ],
+  "paint": "5DBB63",
+  "upgrade_base": 480,
+  "garage": 2,
+  "blurb": "Fast off the line, rugged on dirt."
+ },
+ {
+  "id": "cargo_van",
+  "name": "Cargo Van",
+  "tier": 2,
+  "price": 4800,
+  "capacity": 7,
+  "speed": 1.05,
+  "reliability": 70,
+  "op_cost": 45,
+  "risk_mod": 0,
+  "tags": [
+   "cargo"
+  ],
+  "paint": "F4F1EA",
+  "upgrade_base": 550,
+  "garage": 2,
+  "blurb": "The beige backbone of every network."
+ },
+ {
+  "id": "minibus",
+  "name": "Minibus",
+  "tier": 3,
+  "price": 13000,
+  "capacity": 8,
+  "speed": 1.1,
+  "reliability": 74,
+  "op_cost": 80,
+  "risk_mod": 0,
+  "tags": [
+   "passenger"
+  ],
+  "paint": "FFD23F",
+  "upgrade_base": 1500,
+  "garage": 3,
+  "blurb": "Group tours with very private itineraries."
+ },
+ {
+  "id": "box_truck",
+  "name": "Box Truck",
+  "tier": 3,
+  "price": 15000,
+  "capacity": 12,
+  "speed": 1.0,
+  "reliability": 75,
+  "op_cost": 90,
+  "risk_mod": 2,
+  "tags": [
+   "cargo"
+  ],
+  "paint": "F28C28",
+  "upgrade_base": 1700,
+  "garage": 3,
+  "blurb": "A warehouse on wheels."
+ },
+ {
+  "id": "heavy_truck",
+  "name": "Heavy Truck",
+  "tier": 4,
+  "price": 48000,
+  "capacity": 22,
+  "speed": 1.0,
+  "reliability": 78,
+  "op_cost": 220,
+  "risk_mod": 4,
+  "tags": [
+   "cargo"
+  ],
+  "paint": "8E5CD9",
+  "upgrade_base": 5200,
+  "garage": 4,
+  "blurb": "Moves mountains. Literally, if paid."
+ },
+ {
+  "id": "armored",
+  "name": "Armored Transport",
+  "tier": 4,
+  "price": 62000,
+  "capacity": 10,
+  "speed": 1.05,
+  "reliability": 88,
+  "op_cost": 260,
+  "risk_mod": -14,
+  "tags": [
+   "cargo",
+   "armored"
+  ],
+  "paint": "7A8B3A",
+  "upgrade_base": 6500,
+  "garage": 4,
+  "blurb": "Required for High Value Cargo."
+ },
+ {
+  "id": "luxury",
+  "name": "Luxury Transport",
+  "tier": 5,
+  "price": 150000,
+  "capacity": 7,
+  "speed": 1.4,
+  "reliability": 90,
+  "op_cost": 450,
+  "risk_mod": -8,
+  "tags": [
+   "passenger",
+   "armored"
+  ],
+  "paint": "2B2F36",
+  "upgrade_base": 15000,
+  "garage": 5,
+  "blurb": "VIPs travel quietly. And in style."
+ },
+ {
+  "id": "hitech",
+  "name": "High-Tech Transporter",
+  "tier": 5,
+  "price": 170000,
+  "capacity": 18,
+  "speed": 1.6,
+  "reliability": 92,
+  "op_cost": 500,
+  "risk_mod": -10,
+  "tags": [
+   "cargo",
+   "passenger",
+   "armored"
+  ],
+  "paint": "2BB3A8",
+  "upgrade_base": 17000,
+  "garage": 5,
+  "blurb": "Prototype tech nobody asks about."
+ }
+]

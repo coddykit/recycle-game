@@ -1,0 +1,461 @@
+{
+ "tr": {
+  "manifest": "MANİFEST",
+  "slides": {
+   "01_empire": {
+    "lead": "BİR HATCHBACK'TEN",
+    "key": "İMPARATORLUK",
+    "sub": "BOŞTA LOJİSTİK · 8 KURGUSAL BÖLGE",
+    "stamp": "ONAYLI"
+   },
+   "02_contracts": {
+    "lead": "SEÇ",
+    "key": "İŞLER",
+    "sub": "KASALAR · BELGELER · VIP YOLCU",
+    "stamp": "ACİL"
+   },
+   "03_dispatch": {
+    "lead": "HIZLI / ORTA",
+    "key": "GÜVENLİ?",
+    "sub": "ARACI VE ROTAYI SEÇ",
+    "stamp": "ROTALI"
+   },
+   "04_event": {
+    "lead": "HER",
+    "key": "YOL SÜRPRİZİ",
+    "sub": "KONTROL · RAKİP · ARIZA",
+    "stamp": "KONTROL"
+   },
+   "05_fleet": {
+    "lead": "TIRLARI",
+    "key": "YÜKSELT",
+    "sub": "10 ARAÇ · SÜRÜCÜ · MERKEZ",
+    "stamp": "GELİŞMİŞ"
+   },
+   "06_map": {
+    "lead": "YAYIL",
+    "key": "8 BÖLGE",
+    "sub": "HER SINIR KAPISI SENİN KARARIN",
+    "stamp": "GEÇTİ"
+   },
+   "07_auto": {
+    "lead": "TÜM AĞI",
+    "key": "OTOMASYON",
+    "sub": "SİZ YOKKEN BİLE GELİR",
+    "stamp": "OTOMATİK"
+   }
+  },
+  "feature": {
+   "lead": "TESLİMAT PATRONU",
+   "sub": "ROTALAR · TIRLAR · 8 BÖLGE"
+  }
+ },
+ "de": {
+  "manifest": "MANIFEST",
+  "slides": {
+   "01_empire": {
+    "lead": "MACH EINEN KLEINWAGEN ZUM",
+    "key": "LIEFERIMPERIUM",
+    "sub": "IDLE-LOGISTIK · 8 FIKTIVE REGIONEN",
+    "stamp": "OK"
+   },
+   "02_contracts": {
+    "lead": "WÄHLE DEINE",
+    "key": "AUFTRÄGE",
+    "sub": "KISTEN · PAPIERE · VIP-GÄSTE",
+    "stamp": "EILIG"
+   },
+   "03_dispatch": {
+    "lead": "SCHNELL, NORMAL",
+    "key": "ODER SICHER?",
+    "sub": "FAHRZEUG UND ROUTE WÄHLEN",
+    "stamp": "GEPLANT"
+   },
+   "04_event": {
+    "lead": "MEISTERE JEDE",
+    "key": "ÜBERRASCHUNG",
+    "sub": "KONTROLLEN · RIVALEN · PANNE",
+    "stamp": "GEPRÜFT"
+   },
+   "05_fleet": {
+    "lead": "TUNE DEINE",
+    "key": "LKW-FLOTTE",
+    "sub": "10 LKW · FAHRER · ZENTRALE",
+    "stamp": "GETUNT"
+   },
+   "06_map": {
+    "lead": "ERWEITERE AUF",
+    "key": "8 REGIONEN",
+    "sub": "JEDER GRENZÜBERGANG: DEINE WAHL",
+    "stamp": "FREI"
+   },
+   "07_auto": {
+    "lead": "AUTOMATISIERE",
+    "key": "DAS IMPERIUM",
+    "sub": "IDLE-ERTRÄGE, AUCH WENN DU WEG BIST",
+    "stamp": "AUTO"
+   }
+  },
+  "feature": {
+   "lead": "IDLE-LIEFER-TYCOON",
+   "sub": "ROUTEN · LKW · 8 REGIONEN"
+  }
+ },
+ "es": {
+  "manifest": "MANIFIESTO",
+  "slides": {
+   "01_empire": {
+    "lead": "CONVIERTE UN COCHE EN",
+    "key": "IMPERIO LOGÍSTICO",
+    "sub": "TYCOON LOGÍSTICO · 8 REGIONES",
+    "stamp": "APROBADO"
+   },
+   "02_contracts": {
+    "lead": "ELIGE TUS",
+    "key": "CONTRATOS",
+    "sub": "CAJAS · PAPELES · PASAJEROS VIP",
+    "stamp": "URGENTE"
+   },
+   "03_dispatch": {
+    "lead": "RÁPIDO, NORMAL",
+    "key": "¿O SEGURO?",
+    "sub": "ELIGE VEHÍCULO Y RUTA",
+    "stamp": "RUTEADO"
+   },
+   "04_event": {
+    "lead": "GESTIONA CADA",
+    "key": "SORPRESA VIAL",
+    "sub": "CONTROLES · RIVALES · AVERÍAS",
+    "stamp": "VISTO"
+   },
+   "05_fleet": {
+    "lead": "MEJORA TU",
+    "key": "FLOTA",
+    "sub": "10 VEHÍCULOS · PILOTOS · SEDE",
+    "stamp": "MEJORADO"
+   },
+   "06_map": {
+    "lead": "EXPÁNDETE POR",
+    "key": "8 REGIONES",
+    "sub": "CADA FRONTERA ES TU DECISIÓN",
+    "stamp": "LIBRE"
+   },
+   "07_auto": {
+    "lead": "AUTOMATIZA TU",
+    "key": "IMPERIO",
+    "sub": "INGRESOS INACTIVOS, AUN LEJOS",
+    "stamp": "AUTO"
+   }
+  },
+  "feature": {
+   "lead": "TYCOON LOGÍSTICO",
+   "sub": "RUTAS · CAMIONES · 8 ÁREAS"
+  }
+ },
+ "fr": {
+  "manifest": "MANIFESTE",
+  "slides": {
+   "01_empire": {
+    "lead": "UNE CITADINE, PUIS UN",
+    "key": "EMPIRE ROUTIER",
+    "sub": "TYCOON LOGISTIQUE · 8 RÉGIONS",
+    "stamp": "APPROUVÉ"
+   },
+   "02_contracts": {
+    "lead": "CHOISISSEZ",
+    "key": "CONTRATS",
+    "sub": "CAISSES · DOCS · PASSAGERS VIP",
+    "stamp": "URGENT"
+   },
+   "03_dispatch": {
+    "lead": "RAPIDE, NORMAL",
+    "key": "OU SÛR ?",
+    "sub": "CHOISISSEZ VÉHICULE ET ROUTE",
+    "stamp": "ROUTÉ"
+   },
+   "04_event": {
+    "lead": "GÉREZ CHAQUE",
+    "key": "SURPRISE DE ROUTE",
+    "sub": "CONTRÔLES · RIVAUX · PANNES",
+    "stamp": "VÉRIFIÉ"
+   },
+   "05_fleet": {
+    "lead": "AMÉLIOREZ",
+    "key": "FLOTTE CAMIONS",
+    "sub": "10 VÉHICULES · CHAUFFEURS · QG",
+    "stamp": "AMÉLIORÉ"
+   },
+   "06_map": {
+    "lead": "ÉTENDEZ VOTRE",
+    "key": "8 RÉGIONS",
+    "sub": "CHAQUE FRONTIÈRE EST VOTRE CHOIX",
+    "stamp": "VALIDÉ"
+   },
+   "07_auto": {
+    "lead": "AUTOMATISEZ",
+    "key": "TOUT L'EMPIRE",
+    "sub": "GAINS INACTIFS, MÊME ABSENT",
+    "stamp": "AUTOMATISÉ"
+   }
+  },
+  "feature": {
+   "lead": "TYCOON LOGISTIQUE",
+   "sub": "ROUTES · TRUCKS · 8 ZONES"
+  }
+ },
+ "ja": {
+  "manifest": "貨物明細書",
+  "slides": {
+   "01_empire": {
+    "lead": "1台のハッチバックを",
+    "key": "配送帝国に",
+    "sub": "放置物流経営 · 架空の8地域",
+    "stamp": "承認済み"
+   },
+   "02_contracts": {
+    "lead": "選べる",
+    "key": "契約",
+    "sub": "木箱 · 書類 · VIP乗客",
+    "stamp": "緊急"
+   },
+   "03_dispatch": {
+    "lead": "高速、通常",
+    "key": "それとも安全?",
+    "sub": "車両とルートを選択",
+    "stamp": "経路確定"
+   },
+   "04_event": {
+    "lead": "あらゆる",
+    "key": "道中トラブル",
+    "sub": "検査 · ライバル · 故障",
+    "stamp": "確認済み"
+   },
+   "05_fleet": {
+    "lead": "トラック車両を",
+    "key": "強化",
+    "sub": "10台 · ドライバー · 本部",
+    "stamp": "強化済み"
+   },
+   "06_map": {
+    "lead": "国境を越えて",
+    "key": "8地域",
+    "sub": "国境検問所もすべてあなた次第",
+    "stamp": "許可済み"
+   },
+   "07_auto": {
+    "lead": "帝国全体を",
+    "key": "自動化",
+    "sub": "放置収益、離れていても",
+    "stamp": "自動化済み"
+   }
+  },
+  "feature": {
+   "lead": "放置配送経営",
+   "sub": "ルート · トラック · 8地域"
+  }
+ },
+ "ko": {
+  "manifest": "화물 명세서",
+  "slides": {
+   "01_empire": {
+    "lead": "해치백 한 대로",
+    "key": "배송 제국",
+    "sub": "방치형 물류 타이쿤 · 가상 지역 8곳",
+    "stamp": "승인"
+   },
+   "02_contracts": {
+    "lead": "원하는",
+    "key": "계약",
+    "sub": "상자 · 서류 · VIP 승객",
+    "stamp": "긴급"
+   },
+   "03_dispatch": {
+    "lead": "빠르게, 보통으로",
+    "key": "안전하게?",
+    "sub": "차량과 경로를 선택하세요",
+    "stamp": "배정"
+   },
+   "04_event": {
+    "lead": "모든",
+    "key": "도로 변수",
+    "sub": "검문 · 경쟁자 · 고장",
+    "stamp": "확인"
+   },
+   "05_fleet": {
+    "lead": "업그레이드하는",
+    "key": "트럭 선단",
+    "sub": "차량 10대 · 운전기사 · 본부",
+    "stamp": "강화"
+   },
+   "06_map": {
+    "lead": "가로질러 확장",
+    "key": "8개 지역",
+    "sub": "모든 국경 통과를 직접 결정",
+    "stamp": "통과"
+   },
+   "07_auto": {
+    "lead": "자동화로",
+    "key": "제국 전체",
+    "sub": "자리를 비워도 계속되는 방치형 수익",
+    "stamp": "자동화"
+   }
+  },
+  "feature": {
+   "lead": "방치형 배송 타이쿤",
+   "sub": "경로 · 트럭 · 지역 8곳"
+  }
+ },
+ "pt": {
+  "manifest": "ROMANEIO",
+  "slides": {
+   "01_empire": {
+    "lead": "DE UM HATCH A UM",
+    "key": "IMPÉRIO",
+    "sub": "TYCOON OCIOSO · 8 REGIÕES FICTÍCIAS",
+    "stamp": "APROVADO"
+   },
+   "02_contracts": {
+    "lead": "ESCOLHA SEUS",
+    "key": "CONTRATOS",
+    "sub": "CAIXAS · DOCS · PASSAGEIROS VIP",
+    "stamp": "ALERTA"
+   },
+   "03_dispatch": {
+    "lead": "RÁPIDO, NORMAL",
+    "key": "OU SEGURO?",
+    "sub": "ESCOLHA O VEÍCULO E A ROTA",
+    "stamp": "GUIADO"
+   },
+   "04_event": {
+    "lead": "LIDE COM CADA",
+    "key": "SURPRESA NA ESTRADA",
+    "sub": "INSPEÇÕES · RIVAIS · PANES",
+    "stamp": "CONFERIDO"
+   },
+   "05_fleet": {
+    "lead": "MELHORE OS",
+    "key": "CAMINHÕES",
+    "sub": "10 VEÍCULOS · EQUIPE · SEDE",
+    "stamp": "MELHORADO"
+   },
+   "06_map": {
+    "lead": "EXPANDA POR",
+    "key": "8 REGIÕES",
+    "sub": "CADA FRONTEIRA É SUA ESCOLHA",
+    "stamp": "LIVRE"
+   },
+   "07_auto": {
+    "lead": "AUTOMATIZE O",
+    "key": "IMPÉRIO",
+    "sub": "GANHOS OCIOSOS, MESMO LONGE",
+    "stamp": "AUTO"
+   }
+  },
+  "feature": {
+   "lead": "TYCOON DE ENTREGAS",
+   "sub": "ROTAS · CAMINHÕES · 8 REGIÕES"
+  }
+ },
+ "ru": {
+  "manifest": "МАНИФЕСТ",
+  "slides": {
+   "01_empire": {
+    "lead": "ИЗ ХЭТЧБЕКА — ЦЕЛАЯ",
+    "key": "ИМПЕРИЯ ДОСТАВКИ",
+    "sub": "ТАЙКУН ДОСТАВОК · 8 РЕГИОНОВ",
+    "stamp": "ОДОБРЕНО"
+   },
+   "02_contracts": {
+    "lead": "ВЫБИРАЙТЕ",
+    "key": "КОНТРАКТЫ",
+    "sub": "ЯЩИКИ · БУМАГИ · VIP-ПАССАЖИРЫ",
+    "stamp": "СРОЧНО"
+   },
+   "03_dispatch": {
+    "lead": "БЫСТРО ИЛИ",
+    "key": "БЕЗ РИСКА?",
+    "sub": "ВЫБЕРИТЕ ТС И МАРШРУТ",
+    "stamp": "ОТПРАВЛЕНО"
+   },
+   "04_event": {
+    "lead": "СПРАВЬТЕСЬ С ЛЮБЫМ",
+    "key": "СЮРПРИЗОМ",
+    "sub": "ПРОВЕРКИ · СОПЕРНИКИ · ПОЛОМКИ",
+    "stamp": "ПРОВЕРЕНО"
+   },
+   "05_fleet": {
+    "lead": "УЛУЧШИ СВОЙ",
+    "key": "ГРУЗОВИКИ",
+    "sub": "10 МАШИН · ВОДИТЕЛИ · БАЗА",
+    "stamp": "УЛУЧШЕНО"
+   },
+   "06_map": {
+    "lead": "ОХВАТИ",
+    "key": "8 РЕГИОНОВ",
+    "sub": "КАЖДЫЙ КПП — ВАШ ВЫБОР",
+    "stamp": "ПРОПУЩЕНО"
+   },
+   "07_auto": {
+    "lead": "АВТОМАТИЗИРУЙ",
+    "key": "ВСЮ ИМПЕРИЮ",
+    "sub": "ДОХОД ИДЁТ, ДАЖЕ КОГДА ВАС НЕТ",
+    "stamp": "АВТО"
+   }
+  },
+  "feature": {
+   "lead": "ТАЙКУН ДОСТАВОК",
+   "sub": "МАРШРУТЫ · ФУРЫ · 8 РЕГИОНОВ"
+  }
+ },
+ "zh": {
+  "manifest": "货运清单",
+  "slides": {
+   "01_empire": {
+    "lead": "从一辆掀背车打造",
+    "key": "配送帝国",
+    "sub": "放置型物流大亨 · 8个虚构地区",
+    "stamp": "已批准"
+   },
+   "02_contracts": {
+    "lead": "选择你的",
+    "key": "合约",
+    "sub": "箱件 · 文件 · VIP乘客",
+    "stamp": "紧急"
+   },
+   "03_dispatch": {
+    "lead": "快速、普通",
+    "key": "还是安全？",
+    "sub": "选择车辆与路线",
+    "stamp": "已规划"
+   },
+   "04_event": {
+    "lead": "应对每个",
+    "key": "路上意外",
+    "sub": "检查 · 对手 · 抛锚",
+    "stamp": "已检查"
+   },
+   "05_fleet": {
+    "lead": "升级你的",
+    "key": "卡车车队",
+    "sub": "10辆车 · 司机 · 总部",
+    "stamp": "已升级"
+   },
+   "06_map": {
+    "lead": "拓展至",
+    "key": "8个地区",
+    "sub": "每个边境口岸都由你决定",
+    "stamp": "已放行"
+   },
+   "07_auto": {
+    "lead": "自动化",
+    "key": "整个帝国",
+    "sub": "放置收益，离开时也不停",
+    "stamp": "已自动化"
+   }
+  },
+  "feature": {
+   "lead": "放置型配送大亨",
+   "sub": "路线 · 卡车 · 8个地区"
+  }
+ }
+}

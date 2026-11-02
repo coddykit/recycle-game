@@ -1,0 +1,86 @@
+{
+  "libraries": [
+    {
+      "library": "base/lib/arm64-v8a/libandroidx.graphics.path.so",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "supports_16kb": true
+    },
+    {
+      "library": "base/lib/arm64-v8a/libc++_shared.so",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "supports_16kb": true
+    },
+    {
+      "library": "base/lib/arm64-v8a/libdatastore_shared_counter.so",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "supports_16kb": true
+    },
+    {
+      "library": "base/lib/arm64-v8a/libgodot_android.so",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "supports_16kb": true
+    },
+    {
+      "library": "base/lib/armeabi-v7a/libandroidx.graphics.path.so",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384
+      ],
+      "supports_16kb": true
+    },
+    {
+      "library": "base/lib/armeabi-v7a/libc++_shared.so",
+      "load_segment_alignment": [
+        4096,
+        4096,
+        4096
+      ],
+      "supports_16kb": false
+    },
+    {
+      "library": "base/lib/armeabi-v7a/libdatastore_shared_counter.so",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "supports_16kb": true
+    },
+    {
+      "library": "base/lib/armeabi-v7a/libgodot_android.so",
+      "load_segment_alignment": [
+        4096,
+        4096,
+        4096
+      ],
+      "supports_16kb": false
+    }
+  ],
+  "all_16kb": false,
+  "excluded_store_files": [],
+  "arm64_16kb": true,
+  "scope": "ELF PT_LOAD alignment; 16KB Android devices use 64-bit ABIs. APK ZIP alignment and native runtime remain separate checks.",
+  "manifest": {
+    "package": "com.coddykit.borderlineempire",
+    "version_name": "1.1.0",
+    "version_code": 1791874686,
+    "target_sdk": 36
+  },
+  "bundletool_validation": "passed (official Google bundletool 1.18.3)"
+}

@@ -1,0 +1,604 @@
+{
+ "airport-baron": {
+  "title": {
+   "de": "Airport Tycoon: Flugzeugspiele",
+   "en": "Airport Tycoon: Airplane Games",
+   "es": "Airport Tycoon: Juego de Avión",
+   "fr": "Airport Tycoon: Jeu avion",
+   "ja": "Airport Tycoon: 飛行機ゲーム",
+   "ko": "Airport Tycoon: 비행기게임",
+   "pt": "Airport Tycoon: Jogo de Avião",
+   "ru": "Airport Tycoon: Игра самолёты",
+   "tr": "Airport Tycoon: Uçak Oyunları",
+   "zh": "Airport Tycoon: 飞机游戏"
+  },
+  "slogan": {
+   "de": "Mach den Flugplatz zum Drehkreuz",
+   "en": "Grow an airfield into a hub",
+   "es": "Convierte un aeródromo en hub",
+   "fr": "Fais d'un aérodrome un hub",
+   "hi": "छोटे हवाई अड्डे को हब बनाएँ",
+   "ja": "小さな空港をハブに",
+   "ko": "작은 공항을 허브로 키워라",
+   "pt": "Transforme um aeródromo em hub",
+   "ru": "Преврати аэродром в хаб",
+   "tr": "Küçük havalimanını merkeze çevir"
+  }
+ },
+ "borderline-empire": {
+  "title": {
+   "de": "Idle Tycoon: Borderline Empire",
+   "en": "Idle Tycoon: Borderline Empire",
+   "es": "Idle Tycoon: Borderline Empire",
+   "fr": "Idle Tycoon: Borderline Empire",
+   "ja": "放置ゲーム: Borderline Empire",
+   "ko": "방치형 타이쿤: Borderline Empire",
+   "pt": "Idle Tycoon: Borderline Empire",
+   "ru": "Айдл-тайкун: Borderline Empire",
+   "tr": "Idle Tycoon: Borderline Empire",
+   "zh": "放置大亨: Borderline Empire"
+  },
+  "slogan": {
+   "de": "Bau ein Speditions-Imperium",
+   "en": "Build a trucking empire",
+   "es": "Crea un imperio de camiones",
+   "fr": "Bâtis un empire du transport",
+   "hi": "ट्रक लॉजिस्टिक्स साम्राज्य बनाएँ",
+   "ja": "トラック物流帝国を築こう",
+   "ko": "트럭 물류 제국을 세워라",
+   "pt": "Construa um império de caminhões",
+   "ru": "Построй транспортную империю",
+   "tr": "Kamyon lojistik imparatorluğu kur"
+  }
+ },
+ "bureaucracy-office": {
+  "title": {
+   "de": "Stamp Office: Bürokratie-Sim",
+   "en": "Stamp Office: Bureaucracy Sim",
+   "es": "Stamp Office: Burocracia",
+   "fr": "Stamp Office: Bureaucratie",
+   "hi": "Stamp Office: नौकरशाही सिम",
+   "ja": "Stamp Office: お役所経営シム",
+   "ko": "Stamp Office: 관청 경영 시뮬",
+   "pt": "Stamp Office: Burocracia",
+   "ru": "Stamp Office: Бюрократия",
+   "tr": "Stamp Office: Bürokrasi Oyunu"
+  },
+  "slogan": {
+   "de": "Bändige die Amtsschlange",
+   "en": "Tame the government queue",
+   "es": "Domina la cola de la oficina",
+   "fr": "Dompte la file de l'administration",
+   "hi": "सरकारी दफ़्तर की कतार सँभालें",
+   "ja": "役所の行列をさばこう",
+   "ko": "관공서 대기줄을 정리하라",
+   "pt": "Domine a fila da repartição",
+   "ru": "Укроти очередь в госконторе",
+   "tr": "Devlet dairesindeki sırayı erit"
+  }
+ },
+ "canal-control": {
+  "title": {
+   "de": "Canal Control: Schiffsverkehr",
+   "en": "Canal Control: Ship Traffic",
+   "es": "Canal Control: Tráfico",
+   "fr": "Canal Control: Trafic maritime",
+   "hi": "Canal Control: जहाज़ यातायात",
+   "ja": "Canal Control: 船舶交通",
+   "ko": "Canal Control: 선박 교통 관리",
+   "pt": "Canal Control: Jogo de Navios",
+   "ru": "Canal Control: игра про порт",
+   "tr": "Canal Control: Gemi Trafiği"
+  },
+  "slogan": {
+   "de": "Lotse Schiffe durch den Kanal",
+   "en": "Guide ships through a busy canal",
+   "es": "Guía barcos por un canal lleno",
+   "fr": "Guide les navires dans le canal",
+   "hi": "व्यस्त नहर में जहाज़ चलाएँ",
+   "ja": "混み合う運河で船を誘導",
+   "ko": "붐비는 운하에서 배를 안내하라",
+   "pt": "Guie navios por um canal agitado",
+   "ru": "Проводи суда через канал",
+   "tr": "Gemileri kanaldan geçir"
+  }
+ },
+ "chaiwala-rush": {
+  "title": {
+   "de": "Chaiwala Rush: Teestand-Spiel",
+   "en": "Chaiwala Rush: Tea Stall Game",
+   "es": "Chaiwala Rush: Juego de Té",
+   "fr": "Chaiwala Rush: Jeu de Thé",
+   "hi": "Chaiwala Rush: चाय टपरी गेम",
+   "ja": "Chaiwala Rush: チャイ屋台ゲーム",
+   "ko": "Chaiwala Rush: 차이 가판 게임",
+   "pt": "Chaiwala Rush: Jogo de Chá",
+   "ru": "Chaiwala Rush: Чайная лавка",
+   "tr": "Chaiwala Rush: Çay Tezgahı"
+  },
+  "slogan": {
+   "de": "Serviere Chai im Pendlerstrom",
+   "en": "Serve chai to the train rush",
+   "es": "Sirve chai a la hora punta",
+   "fr": "Sers le chai à l'heure de pointe",
+   "hi": "ट्रेन की भीड़ को चाय पिलाएँ",
+   "ja": "通勤ラッシュにチャイを",
+   "ko": "출근길 손님에게 차이를",
+   "pt": "Sirva chai na hora do rush",
+   "ru": "Чай для толпы у поезда",
+   "tr": "Tren kalabalığına çay yetiştir"
+  }
+ },
+ "corrupt-state": {
+  "title": {
+   "de": "Politik Tycoon: Corrupt State",
+   "en": "Politics Tycoon: Corrupt State",
+   "es": "Político Tycoon: Corrupt State",
+   "fr": "Politics Tycoon: Corrupt State",
+   "ja": "政治タイクーン：Corrupt State",
+   "ko": "정치 타이쿤: Corrupt State",
+   "pt": "Político Tycoon: Corrupt State",
+   "ru": "Тайкун власти: Corrupt State",
+   "tr": "Yolsuzluk Oyunu: Corrupt State",
+   "zh": "政治大亨：Corrupt State"
+  },
+  "slogan": {
+   "de": "Steig zur Macht auf, ohne Skandal",
+   "en": "Rise to power, don't get caught",
+   "es": "Llega al poder sin que te pillen",
+   "fr": "Prends le pouvoir, sans scandale",
+   "hi": "सत्ता पाएँ, पकड़े न जाएँ",
+   "ja": "権力を握れ、バレるな",
+   "ko": "권력을 쥐어라, 들키지 말고",
+   "pt": "Chegue ao poder sem ser pego",
+   "ru": "Рвись к власти, не попадись",
+   "tr": "Güce yüksel, yakalanma"
+  }
+ },
+ "disaster-command": {
+  "title": {
+   "de": "Disaster Command: Rettung",
+   "en": "Disaster Command: Evacuation",
+   "es": "Disaster Command: Rescate",
+   "fr": "Disaster Command: Secours",
+   "hi": "Disaster Command: बचाव",
+   "ja": "Disaster Command：避難指揮",
+   "ko": "Disaster Command: 재난 구조",
+   "pt": "Disaster Command: Resgate",
+   "ru": "Disaster Command: Спасение",
+   "tr": "Disaster Command: Tahliye"
+  },
+  "slogan": {
+   "de": "Führe Rettungsteams in der Krise",
+   "en": "Lead rescue teams in a crisis",
+   "es": "Dirige rescates en plena crisis",
+   "fr": "Mène les secours en pleine crise",
+   "hi": "संकट में बचाव दल चलाएँ",
+   "ja": "危機で救助隊を指揮せよ",
+   "ko": "위기 속 구조대를 지휘하라",
+   "pt": "Comande resgates na crise",
+   "ru": "Командуй спасателями в кризис",
+   "tr": "Krizde kurtarma ekiplerini yönet"
+  }
+ },
+ "doner-night": {
+  "title": {
+   "de": "Doner Night: Döner Tycoon",
+   "en": "Doner Night: Kebab Shop Tycoon",
+   "es": "Doner Night: Tycoon del kebab",
+   "fr": "Doner Night: Tycoon du kebab",
+   "hi": "Doner Night: कबाब टाइकून",
+   "ja": "Doner Night: ケバブ店タイクーン",
+   "ko": "Doner Night: 케밥 가게 타이쿤",
+   "pt": "Doner Night: Tycoon do kebab",
+   "ru": "Doner Night: Магнат дёнеров",
+   "tr": "Doner Night: Döner Büfesi"
+  },
+  "slogan": {
+   "de": "Mach die Nachtschwärmer satt",
+   "en": "Feed the late-night crowds",
+   "es": "Alimenta a la multitud nocturna",
+   "fr": "Nourris la foule de la nuit",
+   "hi": "देर रात की भीड़ को खिलाएँ",
+   "ja": "深夜の行列を満たそう",
+   "ko": "심야 손님들을 배불리 먹여라",
+   "pt": "Alimente a multidão da madrugada",
+   "ru": "Накорми ночную толпу",
+   "tr": "Gece kalabalığını doyur"
+  }
+ },
+ "driftwood": {
+  "title": {
+   "de": "Driftwood: Castaway Survival",
+   "en": "Driftwood: Castaway Survival",
+   "es": "Driftwood: Castaway Survival",
+   "fr": "Driftwood: Castaway Survival",
+   "hi": "Driftwood: Castaway Survival",
+   "ja": "Driftwood: Castaway Survival",
+   "ko": "Driftwood: Castaway Survival",
+   "pt": "Driftwood: Castaway Survival",
+   "ru": "Driftwood: Castaway Survival",
+   "tr": "Driftwood: Castaway Survival"
+  },
+  "slogan": {
+   "de": "Überlebe die Insel, werde gerettet",
+   "en": "Survive the island, get rescued",
+   "es": "Sobrevive en la isla y escapa",
+   "fr": "Survis sur l'île, sois secouru",
+   "hi": "द्वीप पर बचे रहें, बचाव पाएँ",
+   "ja": "無人島を生き抜き、救助を待て",
+   "ko": "무인도에서 살아남아 구조되라",
+   "pt": "Sobreviva na ilha e seja salvo",
+   "ru": "Выживи на острове и спасись",
+   "tr": "Adada hayatta kal, kurtul"
+  }
+ },
+ "kaiten-sushi": {
+  "title": {
+   "de": "Kaiten Sushi: Sushi-Bar-Tycoon",
+   "en": "Kaiten Sushi: Conveyor Tycoon",
+   "es": "Kaiten Sushi: Tycoon de sushi",
+   "fr": "Kaiten Sushi : Tycoon de sushi",
+   "ja": "回転寿司：寿司屋経営ゲーム",
+   "ko": "회전초밥: 초밥집 경영 게임",
+   "pt": "Kaiten Sushi: Magnata do Sushi",
+   "ru": "Kaiten Sushi: Суши-ресторан",
+   "tr": "Kaiten Sushi: Suşi Restoranı",
+   "zh": "迴轉壽司：壽司店經營大亨"
+  },
+  "slogan": {
+   "de": "Halte das Sushi-Band am Laufen",
+   "en": "Keep the sushi belt rolling",
+   "es": "Mantén la cinta de sushi en marcha",
+   "fr": "Fais tourner le tapis à sushis",
+   "hi": "सुशी बेल्ट चलती रहे",
+   "ja": "回転寿司を回し続けよう",
+   "ko": "회전초밥 벨트를 계속 돌려라",
+   "pt": "Mantenha a esteira girando",
+   "ru": "Пусть суши-лента не стоит",
+   "tr": "Suşi bandını hiç durdurma"
+  }
+ },
+ "last-haven": {
+  "title": {
+   "de": "Zombie Spiele: Last Haven",
+   "en": "Zombie Games: Last Haven",
+   "es": "Juegos de Zombies: Last Haven",
+   "fr": "Jeux de Zombie: Last Haven",
+   "ja": "ゾンビ経営ゲーム: Last Haven",
+   "ko": "좀비 타이쿤: Last Haven",
+   "pt": "Jogos de Zumbi: Last Haven",
+   "ru": "Игры про зомби: Last Haven",
+   "tr": "Zombi Oyunları: Last Haven",
+   "zh": "僵尸生存模拟经营: Last Haven"
+  },
+  "slogan": {
+   "de": "Rette Überlebende, halte die Mauer",
+   "en": "Rescue survivors, hold the walls",
+   "es": "Rescata supervivientes, resiste",
+   "fr": "Sauve les survivants, tiens bon",
+   "hi": "बचे लोगों को बचाएँ, दीवार थामें",
+   "ja": "生存者を救い、壁を守れ",
+   "ko": "생존자를 구하고 벽을 지켜라",
+   "pt": "Resgate sobreviventes e resista",
+   "ru": "Спасай выживших, держи стены",
+   "tr": "Hayatta kalanları kurtar"
+  }
+ },
+ "lifeguard-hq": {
+  "title": {
+   "de": "Lifeguard HQ: Strandrettung",
+   "en": "Lifeguard HQ: Beach Rescue",
+   "es": "Lifeguard HQ: Rescate playero",
+   "fr": "Lifeguard HQ: Secours de plage",
+   "hi": "Lifeguard HQ: बीच बचाव",
+   "ja": "Lifeguard HQ: ビーチ救助",
+   "ko": "Lifeguard HQ: 해변 구조",
+   "pt": "Lifeguard HQ: Resgate na praia",
+   "ru": "Lifeguard HQ: Пляжное спасение",
+   "tr": "Lifeguard HQ: Plaj Kurtarma"
+  },
+  "slogan": {
+   "de": "Rette Schwimmer am Strand",
+   "en": "Rescue swimmers, guard the beach",
+   "es": "Rescata bañistas, cuida la playa",
+   "fr": "Sauve les nageurs, veille la plage",
+   "hi": "तैराकों को बचाएँ, तट सँभालें",
+   "ja": "泳ぐ人を救い、浜を守れ",
+   "ko": "수영객을 구하고 해변을 지켜라",
+   "pt": "Salve banhistas, proteja a praia",
+   "ru": "Спасай пловцов на пляже",
+   "tr": "Yüzücüleri kurtar, sahili koru"
+  }
+ },
+ "money-district": {
+  "title": {
+   "de": "Money District: Finanz-Tycoon",
+   "en": "Money District: Finance Tycoon",
+   "es": "Money District: Finanzas",
+   "fr": "Money District: Jeu de Finance",
+   "ja": "Money District: 経営ゲーム",
+   "ko": "Money District: 재테크 게임",
+   "pt": "Money District: Finanças",
+   "ru": "Money District: Финансы",
+   "tr": "Money District: Finans Oyunu",
+   "zh": "Money District: 理财经营游戏"
+  },
+  "slogan": {
+   "de": "Plane, investiere, bau die Stadt",
+   "en": "Budget, invest, build your city",
+   "es": "Ahorra, invierte, crea tu ciudad",
+   "fr": "Budget, investis, bâtis ta ville",
+   "hi": "बजट, निवेश और अपना शहर",
+   "ja": "節約・投資で街をつくろう",
+   "ko": "예산·투자로 도시를 세워라",
+   "pt": "Planeje, invista, crie a cidade",
+   "ru": "Копи, инвестируй, строй город",
+   "tr": "Bütçele, yatırım yap, şehir kur"
+  }
+ },
+ "parts-rush": {
+  "title": {
+   "de": "Flughafen: Parts Rush",
+   "en": "Airport Simulator: Parts Rush",
+   "es": "Aeropuerto: Parts Rush",
+   "fr": "Jeu de Gestion: Parts Rush",
+   "ja": "空港ゲーム: Parts Rush",
+   "ko": "공항게임: Parts Rush",
+   "pt": "Jogo de Aeroporto: Parts Rush",
+   "ru": "Игра Аэропорт: Parts Rush",
+   "tr": "Havalimanı Oyunu: Parts Rush",
+   "zh": "机场模拟器: Parts Rush"
+  },
+  "slogan": {
+   "de": "Liefer Teile, halte Jets oben",
+   "en": "Rush parts, keep planes flying",
+   "es": "Lleva piezas, que vuelen",
+   "fr": "Livre les pièces aux avions",
+   "hi": "पुर्ज़े पहुँचाएँ, विमान उड़ाएँ",
+   "ja": "部品を届けて飛行機を飛ばせ",
+   "ko": "부품을 날라 비행기를 띄워라",
+   "pt": "Entregue peças, mantenha os aviões",
+   "ru": "Вези детали, пусть летают",
+   "tr": "Parça yetiştir, uçaklar uçsun"
+  }
+ },
+ "pest-patrol": {
+  "title": {
+   "de": "Critter Crew: Schädlingsdienst",
+   "en": "Critter Crew: Pest Control",
+   "es": "Critter Crew: Equipo de plagas",
+   "fr": "Critter Crew: Anti-nuisibles",
+   "hi": "Critter Crew: कीट नियंत्रण",
+   "ja": "Critter Crew: 害虫お引っ越し隊",
+   "ko": "Critter Crew: 해충 이사 대작전",
+   "pt": "Critter Crew: Turma Antipragas",
+   "ru": "Critter Crew: Ловцы вредителей",
+   "tr": "Critter Crew: Haşere Ekibi"
+  },
+  "slogan": {
+   "de": "Fang Schädlinge in der Kleinstadt",
+   "en": "Catch pests in a cozy town",
+   "es": "Atrapa plagas en un pueblo",
+   "fr": "Chasse les nuisibles en ville",
+   "hi": "शहर में कीट पकड़ें",
+   "ja": "町の害虫をつかまえよう",
+   "ko": "아늑한 마을의 해충을 잡아라",
+   "pt": "Pegue pragas numa cidade",
+   "ru": "Лови вредителей в городке",
+   "tr": "Şirin kasabada haşere avla"
+  }
+ },
+ "pharmacy-rush": {
+  "title": {
+   "de": "Pharmacy Rush: Laden-Tycoon",
+   "en": "Pharmacy Rush: Shop Tycoon",
+   "es": "Pharmacy Rush: Tienda Tycoon",
+   "fr": "Pharmacy Rush : Magasin Tycoon",
+   "hi": "Pharmacy Rush: दुकान टाइकून",
+   "ja": "Pharmacy Rush：お店経営ゲーム",
+   "ko": "Pharmacy Rush: 가게 경영 게임",
+   "pt": "Pharmacy Rush: Magnata da Loja",
+   "ru": "Pharmacy Rush: Магнат магазина",
+   "tr": "Pharmacy Rush: Eczaneni İşlet"
+  },
+  "slogan": {
+   "de": "Füll Regale, bediene die Schlange",
+   "en": "Stock shelves, serve the queue",
+   "es": "Llena estantes, atiende la cola",
+   "fr": "Remplis les rayons, sers la file",
+   "hi": "शेल्फ़ भरें, कतार निपटाएँ",
+   "ja": "棚を補充して列をさばこう",
+   "ko": "선반을 채우고 손님을 받아라",
+   "pt": "Abasteça e atenda a fila",
+   "ru": "Заполняй полки, обслуживай",
+   "tr": "Rafları doldur, sırayı erit"
+  }
+ },
+ "pit-lane-boss": {
+  "title": {
+   "de": "Pit Lane Boss: Rennmanager",
+   "en": "Pit Lane Boss: Racing Manager",
+   "es": "Pit Lane Boss: Jefe de equipo",
+   "fr": "Pit Lane Boss: Chef d'écurie",
+   "hi": "Pit Lane Boss: रेसिंग मैनेजर",
+   "it": "Pit Lane Boss: Manager corse",
+   "ja": "Pit Lane Boss: レーシングマネージャー",
+   "ko": "Pit Lane Boss: 레이싱 매니저 게임",
+   "pt": "Pit Lane Boss: Chefe de equipe",
+   "ru": "Pit Lane Boss: Менеджер гонок",
+   "tr": "Pit Lane Boss: Yarış Menajeri"
+  },
+  "slogan": {
+   "de": "Triff die Wahl an der Boxenmauer",
+   "en": "Make the call from the pit wall",
+   "es": "Decide desde el muro de boxes",
+   "fr": "Décide depuis le muret des stands",
+   "hi": "पिट वॉल से फ़ैसला आप लें",
+   "it": "Decidi dal muretto dei box",
+   "ja": "ピットウォールから指示を出せ",
+   "ko": "피트월에서 작전을 지휘하라",
+   "pt": "Decida do muro dos boxes",
+   "ru": "Решай всё с пит-уолла",
+   "tr": "Pit duvarından kararı sen ver"
+  }
+ },
+ "silent-evidence": {
+  "title": {
+   "de": "Silent Evidence: Detektivspiel",
+   "en": "Silent Evidence: Detective Game",
+   "es": "Silent Evidence: Detectives",
+   "fr": "Silent Evidence : jeu de détective",
+   "hi": "Silent Evidence: जासूसी गेम",
+   "ja": "Silent Evidence: 探偵ゲーム",
+   "ko": "Silent Evidence: 탐정 게임",
+   "pt": "Silent Evidence: Detetive Noir",
+   "ru": "Silent Evidence: Детектив",
+   "tr": "Silent Evidence: Dedektif Oyunu",
+   "zh": "Silent Evidence：悬疑游戏"
+  },
+  "slogan": {
+   "de": "Lies die Spuren, nenn den Täter",
+   "en": "Read the evidence, name the killer",
+   "es": "Lee las pistas, nombra al culpable",
+   "fr": "Lis les preuves, nomme le tueur",
+   "hi": "सबूत पढ़ें, क़ातिल का नाम बताएँ",
+   "ja": "証拠を読み、犯人を指せ",
+   "ko": "증거를 읽고 범인을 지목하라",
+   "pt": "Leia as pistas, aponte o culpado",
+   "ru": "Изучи улики, назови убийцу",
+   "tr": "Kanıtı oku, katili bul",
+   "zh": "读懂证据，指出凶手"
+  }
+ },
+ "ski-resort": {
+  "title": {
+   "de": "Skigebiet Spiele: Snow Empire",
+   "en": "Ski Resort Games: Snow Empire",
+   "es": "Estación de esquí: Snow Empire",
+   "fr": "Jeu de ski: Snow Empire",
+   "ja": "スキー場経営ゲーム: Snow Empire",
+   "ko": "스키 리조트 게임: Snow Empire",
+   "pt": "Jogo de Esqui: Snow Empire",
+   "ru": "Лыжный курорт: Snow Empire",
+   "tr": "Kayak Oyunu: Snow Empire",
+   "zh": "滑雪场经营：Snow Empire"
+  },
+  "slogan": {
+   "de": "Baue dein Skigebiet-Imperium",
+   "en": "Build your own ski resort empire",
+   "es": "Crea tu imperio de esquí",
+   "fr": "Bâtis ton empire de ski",
+   "hi": "अपना स्की रिज़ॉर्ट बनाएँ",
+   "ja": "スキーリゾート帝国を築こう",
+   "ko": "스키 리조트 제국을 세워라",
+   "pt": "Construa seu império de esqui",
+   "ru": "Построй свой горнолыжный курорт",
+   "tr": "Kendi kayak merkezini kur"
+  }
+ },
+ "sky-tower-ops": {
+  "title": {
+   "de": "Sky Tower Ops: Aufzugspiel",
+   "en": "Sky Tower Ops: Elevator Game",
+   "es": "Sky Tower Ops: Juego ascensor",
+   "fr": "Sky Tower Ops: Jeu d'ascenseur",
+   "ja": "Sky Tower Ops: エレベーターゲーム",
+   "ko": "Sky Tower Ops: 엘리베이터 게임",
+   "pt": "Sky Tower Ops: Jogo Elevador",
+   "ru": "Sky Tower Ops: Игра про лифты",
+   "tr": "Sky Tower Ops: Asansör Oyunu",
+   "zh": "Sky Tower Ops: 電梯遊戲"
+  },
+  "slogan": {
+   "de": "Lenke Aufzüge, bau den Turm aus",
+   "en": "Run the elevators, grow the tower",
+   "es": "Dirige ascensores, crece la torre",
+   "fr": "Gère les ascenseurs, monte la tour",
+   "hi": "लिफ़्ट चलाएँ, टावर बढ़ाएँ",
+   "ja": "エレベーターで塔を育てよう",
+   "ko": "엘리베이터로 타워를 키워라",
+   "pt": "Comande elevadores, cresça a torre",
+   "ru": "Управляй лифтами, расти башню",
+   "tr": "Asansörleri yönet, kuleyi büyüt"
+  }
+ },
+ "trading-sim": {
+  "title": {
+   "de": "Trading Sim: Market Tycoon",
+   "en": "Trading Sim: Market Tycoon",
+   "es": "Trading Sim: Market Tycoon",
+   "fr": "Trading Sim: Market Tycoon",
+   "it": "Trading Sim: Market Tycoon",
+   "ja": "Trading Sim: Market Tycoon",
+   "ko": "Trading Sim: Market Tycoon",
+   "pt": "Trading Sim: Market Tycoon",
+   "tr": "Trading Sim: Market Tycoon",
+   "zh": "Trading Sim: Market Tycoon"
+  },
+  "slogan": {
+   "de": "Handle dich zum eigenen Fonds",
+   "en": "Trade your way to a fund",
+   "es": "Opera en bolsa hasta tu fondo",
+   "fr": "Trade jusqu'à ton propre fonds",
+   "hi": "ट्रेड करें, अपना फ़ंड बनाएँ",
+   "ja": "トレードでファンドを作ろう",
+   "ko": "트레이딩으로 펀드를 세워라",
+   "pt": "Negocie até ter seu próprio fundo",
+   "ru": "Торгуй и создай свой фонд",
+   "tr": "Borsada yüksel, fon kur"
+  }
+ },
+ "train-baron": {
+  "title": {
+   "de": "Train Tycoon: Eisenbahnspiele",
+   "en": "Train Tycoon: Railway Games",
+   "es": "Train Tycoon: Juegos de trenes",
+   "fr": "Train Tycoon: Jeux de trains",
+   "ja": "Train Tycoon: 鉄道ゲーム",
+   "ko": "Train Tycoon: 철도 게임",
+   "pt": "Train Tycoon: Jogos de trem",
+   "ru": "Train Tycoon: Игры про поезда",
+   "tr": "Train Tycoon: Tren Oyunları",
+   "zh": "Train Tycoon: 火车游戏"
+  },
+  "slogan": {
+   "de": "Leg Gleise, bau ein Bahnimperium",
+   "en": "Lay track, build a rail empire",
+   "es": "Tiende vías, crea tu imperio",
+   "fr": "Pose des rails, bâtis ton empire",
+   "hi": "पटरी बिछाएँ, रेल साम्राज्य",
+   "ja": "線路を敷き鉄道帝国を",
+   "ko": "선로를 깔고 철도 제국을",
+   "pt": "Construa trilhos e um império",
+   "ru": "Прокладывай пути, строй империю",
+   "tr": "Ray döşe, demiryolu imparatorluğu"
+  }
+ },
+ "travel-tycoon": {
+  "title": {
+   "de": "Travel Tycoon: Kappadokien",
+   "en": "Travel Tycoon: Cappadocia",
+   "es": "Travel Tycoon: Capadocia",
+   "fr": "Travel Tycoon: Cappadoce",
+   "ja": "Travel Tycoon: カッパドキア",
+   "ko": "Travel Tycoon: 카파도키아",
+   "pt": "Travel Tycoon: Capadócia",
+   "ru": "Travel Tycoon: Каппадокия",
+   "tr": "Travel Tycoon: Kapadokya",
+   "zh": "Travel Tycoon: 卡帕多奇亚"
+  },
+  "slogan": {
+   "de": "Leite ein Reisebüro in Kappadokien",
+   "en": "Run a tour agency in Cappadocia",
+   "es": "Dirige una agencia en Capadocia",
+   "fr": "Gère une agence en Cappadoce",
+   "hi": "कप्पादोकिया में टूर एजेंसी",
+   "ja": "カッパドキアで旅行会社経営",
+   "ko": "카파도키아 여행사를 운영하라",
+   "pt": "Gerencie uma agência na Capadócia",
+   "ru": "Турагентство в Каппадокии",
+   "tr": "Kapadokya'da tur acentesi kur"
+  }
+ }
+}

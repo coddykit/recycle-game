@@ -1,0 +1,40 @@
+# Godot
+.godot/
+.import/
+*.tmp
+export/
+build/
+*.apk
+*.aab
+*.ipa
+android/build/
+# Python
+__pycache__/
+*.pyc
+
+# Generated QA output and resumable translation cache
+docs/qa/*.png
+docs/qa/*.png.import
+docs/qa/*.log
+translations/api-cache/
+
+# Reproducible native iOS SDK payloads (tools/native/setup_ios.sh)
+ios/plugins/**/*.xcframework/
+
+# Generated verification artifacts
+docs/qa/**
+!docs/qa/.gdignore
+# evidence of the 2026-10-18 quality pass is committed (images, perf JSON, notes)
+!docs/qa/quality-2026-10-18/
+!docs/qa/quality-2026-10-18/**
+# evidence of the 2026-10-19 shop / ads / rating work (W5) is committed
+!docs/qa/w5-2026-10-19/
+!docs/qa/w5-2026-10-19/**
+!android/
+android/*
+!android/revenue_cat/
+!android/firebase_core/
+!android/firebase_analytics/
+!android/firebase_core/*.aar
+!android/firebase_analytics/*.aar
+!android/revenue_cat/*.aar

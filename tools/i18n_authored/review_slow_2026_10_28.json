@@ -1,0 +1,14 @@
+{
+  "STAGE %d · Tap for advice": {
+    "en": "STAGE %d · Tap for advice",
+    "tr": "AŞAMA %d · İpucu için dokun",
+    "de": "STUFE %d · Tipp antippen",
+    "es": "ETAPA %d · Toca para consejos",
+    "fr": "ÉTAPE %d · Touchez pour un conseil",
+    "ja": "ステージ%d · タップでヒント",
+    "ko": "단계 %d · 눌러서 도움말",
+    "pt": "ETAPA %d · Toque para dicas",
+    "ru": "ЭТАП %d · Нажмите для совета",
+    "zh": "阶段%d · 点击查看提示"
+  }
+}

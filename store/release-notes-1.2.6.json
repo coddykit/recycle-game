@@ -1,0 +1,42 @@
+[
+  {
+    "language": "en-US",
+    "text": "1.2.6\n• Smoother on weaker phones: Low graphics now light the scene more cheaply and the game does less background work every frame.\n• Small fixes and polish."
+  },
+  {
+    "language": "tr-TR",
+    "text": "1.2.6\n• Zayıf telefonlarda daha akıcı: Düşük grafik artık sahneyi daha ucuz aydınlatıyor ve oyun her karede arka planda daha az iş yapıyor.\n• Küçük düzeltmeler ve iyileştirmeler."
+  },
+  {
+    "language": "de-DE",
+    "text": "1.2.6\n• Flüssiger auf schwächeren Handys: Die niedrige Grafik beleuchtet die Szene jetzt günstiger, und das Spiel erledigt pro Bild weniger Hintergrundarbeit.\n• Kleine Fehlerbehebungen und Feinschliff."
+  },
+  {
+    "language": "es-ES",
+    "text": "1.2.6\n• Más fluido en móviles menos potentes: los gráficos bajos ahora iluminan la escena de forma más económica y el juego hace menos trabajo en segundo plano en cada fotograma.\n• Pequeñas correcciones y mejoras."
+  },
+  {
+    "language": "fr-FR",
+    "text": "1.2.6\n• Plus fluide sur les téléphones modestes : les graphismes bas éclairent désormais la scène à moindre coût et le jeu fait moins de travail en arrière-plan à chaque image.\n• Petites corrections et améliorations."
+  },
+  {
+    "language": "ja-JP",
+    "text": "1.2.6\n• 性能の低い端末でもよりなめらかに：低画質ではシーンのライティングが軽くなり、フレームごとのバックグラウンド処理も減りました。\n• 細かな修正と改善。"
+  },
+  {
+    "language": "ko-KR",
+    "text": "1.2.6\n• 사양이 낮은 휴대폰에서도 더 부드럽게: 낮은 그래픽에서 장면 조명이 더 가벼워지고, 프레임마다 처리하는 백그라운드 작업이 줄었습니다.\n• 사소한 버그 수정과 개선."
+  },
+  {
+    "language": "pt-BR",
+    "text": "1.2.6\n• Mais fluido em celulares mais fracos: o gráfico baixo agora ilumina a cena de forma mais leve e o jogo faz menos trabalho em segundo plano a cada quadro.\n• Pequenas correções e melhorias."
+  },
+  {
+    "language": "ru-RU",
+    "text": "1.2.6\n• Плавнее на слабых телефонах: на низкой графике сцена теперь освещается легче, а игра выполняет меньше фоновой работы в каждом кадре.\n• Небольшие исправления и улучшения."
+  },
+  {
+    "language": "zh-CN",
+    "text": "1.2.6\n• 在配置较低的手机上更流畅：低画质下场景光照更省资源，游戏每一帧的后台工作也更少。\n• 一些小修复和优化。"
+  }
+]
