@@ -37,7 +37,7 @@ namespace GrillConvoy.EditorTools
             Product = GrillGameConfig.ProductName,
             Package = GrillGameConfig.Package,
             Version = "0.1.0",
-            SplashBackground = new Color(0.059f, 0.231f, 0.180f, 1f), // #0F3B2E
+            SplashBackground = new Color(0.239f, 0.098f, 0.078f, 1f), // #3D1914 (dusk brick)
         };
 
         static GrillProjectSetup()

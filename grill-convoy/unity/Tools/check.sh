@@ -21,11 +21,13 @@ grep -rn -E "InterstitialAd\b|BannerView\b|AdView\b" "$A" --include=*.cs | grep 
 grep -rn "PlayerPrefs" "$A/Scripts" --include=*.cs && bad "PlayerPrefs (saves go through SaveRepository, §14)"
 grep -rn -E "purchased_any|has_purchased|HasPurchased" "$A/Scripts" --include=*.cs && bad "'bought anything' must not decide ads (§3)"
 grep -rn -i -E "free trial|try free|subscription" "$A/Resources" "$UNITY/Tools/i18n" && bad "trial / subscription wording (§1)"
-grep -rn -w -E "DOA|TÜÇA|TUCA|Sıfır Atık|BİM|Carrefour|Return and Earn" "$A/Resources" "$UNITY/Tools/i18n" "$A/Scripts" && bad "real scheme / brand names (impersonation rule)"
+grep -rn -i -w -E "McDonald'?s|Burger King|Wendy'?s|Five Guys|Shake Shack|In-N-Out|Whopper|Big Mac|Codigames|Idle Burger Empire|Carl'?s Jr|Hardee'?s|Jack in the Box|Sonic Drive-In|White Castle" "$A/Resources" "$UNITY/Tools/i18n" "$A/Scripts" && bad "real chain / reference-game names (originality rule, plan §0)"
 grep -rn -E "msy_[A-Za-z0-9]{8,}|goog_[A-Za-z0-9]{8,}|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY" "$UNITY" --include=*.cs --include=*.json --include=*.md --include=*.py --include=*.sh && bad "a secret in the repo"
 for f in palette.png; do [ -f "$A/Resources/materials/$f" ] || bad "missing $f (Tools/make_palette.py)"; done
-for f in coach_operator intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
-for f in machine_s machine_m shop horeca van bike compactor bale_pet_lod1 bale_alu_lod1; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in coach_chef intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui/$f.png" ] || bad "missing ui/$f.png (tools/art/render_ui.py)"; done
+for f in truck_starter truck_box commissary parasol menu_board; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
+for f in chef cashier fan burger; do [ -f "$A/Art/Meshy/${f}_lod0.fbx" ] && [ -f "$A/Art/Meshy/${f}_base.png" ] || bad "missing Art/Meshy/$f (docs/ART.md)"; done
+for f in icon_full icon_adaptive_fg; do [ -f "$A/Art/Icon/$f.png" ] || bad "missing Art/Icon/$f.png (tools/art/render_ui.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
 
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
@@ -39,5 +41,5 @@ if [ "${1:-}" != "--fast" ]; then
 fi
 
 echo
-if [ $fail -eq 0 ]; then echo "BOTTLE_ROUTE_CHECK: PASS"; else echo "BOTTLE_ROUTE_CHECK: FAIL"; fi
+if [ $fail -eq 0 ]; then echo "GRILL_CONVOY_CHECK: PASS"; else echo "GRILL_CONVOY_CHECK: FAIL"; fi
 exit $fail

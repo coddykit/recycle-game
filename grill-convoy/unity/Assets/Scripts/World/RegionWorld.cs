@@ -1,11 +1,12 @@
-// Grill Convoy — the 2.5D diorama of the coastal region (design §8). Built ONCE from the map data (ground, sea, roads,
-// district blocks, trees), rebuilt only when something structural changes (district unlocked, point bought, Green Rating
-// day change); trucks / walkers / bale stacks update from the sim each frame (Low: 15 Hz).
+// Grill Convoy — the 2.5D city diorama of Cinder Bay (design §8): harbour commissary, road graph, three pitch "stages"
+// (Office Plaza: paved square + office blocks; Boardwalk: deck along the beach + parasols; Stadium: the bowl), trucks that
+// drive the roads and park with the hatch toward the crowd, the line in front of every open truck, steam over busy grills
+// and the cartoon flare-up pulse. Built ONCE from the map data, rebuilt only when a pitch unlocks; trucks / crowd update
+// from the sim each frame (Low: 15 Hz). Day -> evening light from the game clock (a light colour, free on every tier).
 //   * 1 km of map = 100 world units; props are drawn larger than life so they read at map zoom.
-//   * one palette material for everything (MeshKit) + instanced draws for walkers, bales and litter.
-//   * the town visibly gets cleaner as the Green Rating rises: fewer litter bits (the plan's cheap "wow").
-//   * Low tier: no shadows (QualityTiers), walkers ≤ 50 % at 15 Hz, litter ≤ 50 %, no baler press animation.
-//   * picking: a tap ray-casts the ground plane (no physics module) and picks the nearest truck / point / depot.
+//   * one palette material for everything (MeshKit) + instanced draws for the crowd, steam and flames.
+//   * Low tier: no shadows (QualityTiers), ≤ 16 figures per line at 15 Hz, half the leavers, no steam puffs.
+//   * picking: a tap ray-casts the ground plane (no physics module) and picks the nearest truck / pitch / commissary.
 using System;
 using System.Collections.Generic;
 using CoddyKit;
@@ -16,14 +17,16 @@ namespace GrillConvoy.World
 {
     public struct WorldHit
     {
-        public string Kind;   // point | truck | depot | none
-        public int Index;
+        public string Kind;   // truck | pitch | commissary | none
+        public int Index;     // truck index / pitch node
         public override string ToString() => Kind + ":" + Index;
     }
 
     public sealed class RegionWorld : MonoBehaviour
     {
         public const float Scale = 100f;   // world units per map km
+        /// <summary>Yaw offset of the Blender kit trucks (verify in the editor: the cab must lead when driving).</summary>
+        public const float KitYaw = 0f;
 
         public Camera cam;
         public CameraRig rig;
@@ -35,25 +38,26 @@ namespace GrillConvoy.World
         public bool Low { get; private set; }
         public string Livery = "";
 
-        Material mat, matInst, matBalePet, matBaleAlu;
+        Material mat, matInst;
         readonly Dictionary<string, GameObject> districtObjs = new Dictionary<string, GameObject>();
-        readonly List<GameObject> pointObjs = new List<GameObject>();
         readonly List<Transform> truckObjs = new List<Transform>();
         readonly List<string> truckTypes = new List<string>();
         Crowd crowd;
-        Mesh baleMeshPet, baleMeshAlu, litterMesh, glassMesh;
-        readonly List<Matrix4x4> litter = new List<Matrix4x4>();
-        readonly List<Matrix4x4> balesPet = new List<Matrix4x4>(), balesAlu = new List<Matrix4x4>(), glassPiles = new List<Matrix4x4>();
-        int builtPoints = -1, builtDistricts = -1, builtYard = -1, builtGlass = -1;
-        double builtRating = -1;
+        Mesh puffMesh, flameMesh;
+        readonly List<Matrix4x4> puffs = new List<Matrix4x4>(), flames = new List<Matrix4x4>();
+        // cosmetics shown at every open truck (store "looks": crew outfits, window awnings, menu board styles)
+        readonly Mesh[] crewMesh = new Mesh[2], awningMesh = new Mesh[2], boardMesh = new Mesh[2];
+        readonly List<Matrix4x4> crewAt = new List<Matrix4x4>(), awningAt = new List<Matrix4x4>(), boardAt = new List<Matrix4x4>();
+        bool uniforms, awnings, boards;
+        int builtDistricts = -1;
         bool dirty = true;
         float slowAcc;
         MaterialPropertyBlock mpb;
 
         public static Vector3 ToWorld(double x, double y) => new Vector3((float)(x * Scale), 0f, (float)(y * Scale));
         public Vector3 NodePos(int node) { var n = Sim.Gd.Nodes[node]; return ToWorld(n.X, n.Y); }
-        public Vector3 PointPos(int i) => NodePos(Sim.S.Points[i].Node);
-        public Vector3 DepotPos => NodePos(Sim.Gd.DepotNode);
+        public Vector3 CommissaryPos => NodePos(Sim.Gd.DepotNode);
+        public Vector3 PitchPos(int node) => NodePos(node);
 
         public void Init(Simulation sim, bool low)
         {
@@ -63,18 +67,26 @@ namespace GrillConvoy.World
             mat = Resources.Load<Material>(low ? "materials/palette_low" : "materials/palette") ?? Resources.Load<Material>("materials/palette");
             if (mat == null) { mat = new Material(Shader.Find("Universal Render Pipeline/Simple Lit")); mat.mainTexture = Resources.Load<Texture2D>("materials/palette"); }
             matInst = new Material(mat) { enableInstancing = true, name = "palette_instanced" };
-            baleMeshPet = KitMesh("kit/bale_pet_lod" + (low ? "2" : "1"));
-            baleMeshAlu = KitMesh("kit/bale_alu_lod" + (low ? "2" : "1"));
-            matBalePet = BaleMaterial("kit/bale_pet_base" + (low ? "_low" : ""), baleMeshPet != null);
-            matBaleAlu = BaleMaterial("kit/bale_alu_base" + (low ? "_low" : ""), baleMeshAlu != null);
-            baleMeshPet ??= BoxMesh(Pal.Pet);
-            baleMeshAlu ??= BoxMesh(Pal.Alu);
-            litterMesh = FlatMesh(Pal.Litter, 1.2f);
-            glassMesh = BoxMesh(Pal.Glass);
+            puffMesh = MeshKit.Puff();
+            flameMesh = MeshKit.Flame();
+            crewMesh[0] = MeshKit.Figure(Pal.White, false);
+            crewMesh[1] = MeshKit.Figure(Pal.Retro, false);
+            awningMesh[0] = MeshKit.Awning(Pal.Sunset, Pal.White);
+            awningMesh[1] = MeshKit.Awning(Pal.Retro, Pal.Yellow);
+            boardMesh[0] = MeshKit.Board(Pal.Window);
+            boardMesh[1] = MeshKit.Board(Pal.Neon);
             BuildStatic();
             crowd = new Crowd(this, matInst, low);
             if (tap != null) tap.Tapped += OnTap;
             if (rig != null) rig.Fit(UnlockedBounds(), true);
+            MarkDirty();
+        }
+
+        /// <summary>A new career (slot switch): same city, other trucks.</summary>
+        public void Rebind(Simulation sim)
+        {
+            Sim = sim;
+            builtDistricts = -1;
             MarkDirty();
         }
 
@@ -93,24 +105,16 @@ namespace GrillConvoy.World
         void BuildStatic()
         {
             var gd = Sim.Gd;
-            // ground + sea (two big quads)
             var k = new MeshKit();
-            k.Quad(new Vector3(-150, 0, -40), new Vector3(-150, 0, 650), new Vector3(850, 0, 650), new Vector3(850, 0, -40), Pal.Grass);
-            k.Quad(new Vector3(-400, -0.5f, -400), new Vector3(-400, -0.5f, -40), new Vector3(1100, -0.5f, -40), new Vector3(1100, -0.5f, -400), Pal.Water);
-            k.Strip(new Vector3(-150, 0, -40), new Vector3(850, 0, -40), 16f, 0.05f, Pal.Sand);
-            // roads: one strip per edge, discs on the nodes
+            k.Quad(new Vector3(-150, 0, -30), new Vector3(-150, 0, 420), new Vector3(750, 0, 420), new Vector3(750, 0, -30), Pal.Grass);
+            k.Quad(new Vector3(-400, -0.5f, -400), new Vector3(-400, -0.5f, -30), new Vector3(1100, -0.5f, -30), new Vector3(1100, -0.5f, -400), Pal.Water);
+            k.Strip(new Vector3(-150, 0, -38), new Vector3(750, 0, -38), 16f, 0.05f, Pal.Sand);
             foreach (var e in gd.Edges)
-                k.Strip(ToWorld(gd.Nodes[e.A].X, gd.Nodes[e.A].Y), ToWorld(gd.Nodes[e.B].X, gd.Nodes[e.B].Y), e.Alley ? 6f : 11f, 0.1f, e.Alley ? Pal.Concrete : Pal.Road);
-            foreach (var n in gd.Nodes) k.Disc(ToWorld(n.X, n.Y), n.Kind == "site" ? 9f : 7f, 0.11f, n.Kind == "site" ? Pal.Concrete : Pal.Road);
+                k.Strip(ToWorld(gd.Nodes[e.A].X, gd.Nodes[e.A].Y), ToWorld(gd.Nodes[e.B].X, gd.Nodes[e.B].Y), 11f, 0.1f, Pal.Road);
+            foreach (var n in gd.Nodes) k.Disc(ToWorld(n.X, n.Y), n.IsPitch ? 9f : 7f, 0.11f, Pal.Road);
             Spawn("Ground", k.Build("ground"), Vector3.zero);
-            // depot compound
-            var d = new MeshKit();
-            var dp = DepotPos;
-            d.Box(dp + new Vector3(-14, 0, -6), new Vector3(26, 11, 18), 0, Pal.Depot, Pal.RoofGrey);
-            d.Box(dp + new Vector3(10, 0, -10), new Vector3(10, 7, 9), 0, Pal.Brand, Pal.RoofGrey);       // baler house
-            d.Box(dp + new Vector3(-14, 0, 6), new Vector3(20, 0.4f, 8), 0, Pal.Concrete);             // intake apron
-            d.Box(dp + new Vector3(-2, 11, -6), new Vector3(6, 3, 4), 0, Pal.Panel);                  // count line roof unit
-            Spawn("Depot", d.Build("depot"), Vector3.zero);
+            var c = Prop("commissary", MeshKit.Commissary, CommissaryPos + new Vector3(0, 0, 18f), 0);
+            c.name = "Commissary";
         }
 
         GameObject Spawn(string name, Mesh mesh, Vector3 pos, Transform parent = null)
@@ -142,25 +146,6 @@ namespace GrillConvoy.World
             return go;
         }
 
-        /// <summary>The Meshy bales keep their own 1024 / 512 texture (not the palette): an instanced clone of the palette material.</summary>
-        Material BaleMaterial(string texPath, bool meshy)
-        {
-            var m = new Material(mat) { enableInstancing = true, name = texPath };
-            var tex = meshy ? Resources.Load<Texture2D>(texPath) : null;
-            if (tex != null) { m.mainTexture = tex; if (m.HasProperty("_BaseMap")) m.SetTexture("_BaseMap", tex); }
-            return m;
-        }
-
-        static Mesh KitMesh(string path)
-        {
-            var go = Resources.Load<GameObject>(path);
-            var mf = go != null ? go.GetComponentInChildren<MeshFilter>() : null;
-            return mf != null ? mf.sharedMesh : null;
-        }
-
-        static Mesh BoxMesh(int swatch) { var k = new MeshKit(); k.Box(Vector3.zero, Vector3.one, 0, swatch); return k.Build("box_" + swatch); }
-        static Mesh FlatMesh(int swatch, float s) { var k = new MeshKit(); k.Quad(new Vector3(-s, 0.15f, -s), new Vector3(-s, 0.15f, s), new Vector3(s, 0.15f, s), new Vector3(s, 0.15f, -s), swatch); return k.Build("flat_" + swatch); }
-
         void BuildDistrict(DistrictDef dd)
         {
             if (districtObjs.TryGetValue(dd.Id, out var old)) Destroy(old);
@@ -168,51 +153,63 @@ namespace GrillConvoy.World
             var gd = Sim.Gd;
             var rng = new System.Random(dd.Id.GetHashCode() & 0x7fffffff);
             var k = new MeshKit();
-            int[] walls = { Pal.WallCream, Pal.WallTerracotta, Pal.WallBlue, Pal.WallCream };
+            int[] walls = { Pal.WallCream, Pal.WallTerracotta, Pal.WallTeal, Pal.WallCream };
+            // street blocks along the district's roads
             foreach (var e in gd.Edges)
             {
                 var na = gd.Nodes[e.A]; var nb = gd.Nodes[e.B];
                 if (na.District != dd.Id && nb.District != dd.Id) continue;
                 Vector3 a = ToWorld(na.X, na.Y), b = ToWorld(nb.X, nb.Y);
-                var dir = b - a; float len = dir.magnitude; if (len < 30f) continue;
+                var dir = b - a; float len = dir.magnitude; if (len < 40f) continue;
                 dir /= len;
                 var side = Vector3.Cross(Vector3.up, dir);
                 float yaw = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-                for (float s = 22f; s < len - 22f; s += 17f + (float)rng.NextDouble() * 6f)
+                for (float s = 26f; s < len - 26f; s += 18f + (float)rng.NextDouble() * 7f)
                     for (int sd = -1; sd <= 1; sd += 2)
                     {
-                        if (rng.NextDouble() < 0.18) { k.Tree(a + dir * s + side * sd * 16f, 1.4f, yaw); continue; }
-                        float w = 10f + (float)rng.NextDouble() * 6f, h = (dd.Id == "oldtown" ? 9f : 7f) + (float)rng.NextDouble() * (dd.Id == "university" ? 22f : 14f);
+                        var c = a + dir * s + side * sd * 18f;
+                        if (c.z < -20f) continue;   // not on the beach
+                        if (rng.NextDouble() < 0.25) { k.Tree(c, 1.4f, yaw); continue; }
+                        float w = 10f + (float)rng.NextDouble() * 6f, h = (dd.Id == "plaza" ? 14f : 7f) + (float)rng.NextDouble() * (dd.Id == "plaza" ? 26f : 10f);
                         int wall = open ? walls[rng.Next(walls.Length)] : Pal.Locked;
                         int roof = open ? (rng.NextDouble() < 0.5 ? Pal.RoofRed : Pal.RoofGrey) : Pal.Locked;
-                        var c = a + dir * s + side * sd * (w * 0.5f + 9f);
                         k.Box(c, new Vector3(w, h, 10f), yaw, wall, roof);
                         if (open && !Low) k.Box(c + Vector3.up * h * 0.55f - side * sd * 5.05f, new Vector3(w * 0.7f, 1.2f, 0.1f), yaw, Pal.Window);
                     }
             }
-            if (dd.Id == "stadium")
+            foreach (int p in gd.Pitches)
             {
-                var st = ToWorld(6.3, 1.25);
-                k.Box(st, new Vector3(60, 14, 40), 0, open ? Pal.Panel : Pal.Locked, open ? Pal.Grass : Pal.Locked);
+                if (gd.Nodes[p].District != dd.Id) continue;
+                var c = NodePos(p);
+                switch (dd.Id)
+                {
+                    case "plaza":
+                        k.Disc(c + new Vector3(0, 0, -12), 34f, 0.12f, open ? Pal.Paving : Pal.Locked, 16);
+                        for (int i = 0; i < 4; i++) k.Box(c + new Vector3(-36 + i * 24, 0, 34), new Vector3(16, open ? 34 + i * 7 : 20, 14), 0, open ? Pal.WallTeal : Pal.Locked, open ? Pal.Steel : Pal.Locked);
+                        for (int i = -1; i <= 1; i += 2) { k.Box(c + new Vector3(i * 20, 0, -30), new Vector3(10, 1.2f, 4), 0, open ? Pal.Wood : Pal.Locked); if (open) k.Tree(c + new Vector3(i * 20, 1.2f, -30), 1.1f, 0); }
+                        if (open && !Low) for (int i = -2; i <= 2; i++) k.Umbrella(c + new Vector3(i * 8, 0.12f, -22), 0.9f, Pal.Brand);
+                        break;
+                    case "boardwalk":
+                        k.Box(c + new Vector3(0, 0, -16), new Vector3(170, 0.6f, 16), 0, open ? Pal.Wood : Pal.Locked);
+                        for (int i = -3; i <= 3; i++) k.Umbrella(c + new Vector3(i * 22, 0, -42), 1.3f, open ? (i % 2 == 0 ? Pal.Sunset : Pal.Retro) : Pal.Locked);
+                        for (int i = -2; i <= 2; i++) k.Box(c + new Vector3(i * 30 + 10, 0, 22), new Vector3(12, 6, 9), 0, open ? Pal.WallCream : Pal.Locked, open ? Pal.Sunset : Pal.Locked);
+                        break;
+                    case "stadium":
+                    {
+                        var bowl = c + new Vector3(40, 0, 40);
+                        for (int i = 0; i < 14; i++)
+                        {
+                            float ang = i * Mathf.PI * 2f / 14f;
+                            var pos = bowl + new Vector3(Mathf.Cos(ang) * 46f, 0, Mathf.Sin(ang) * 32f);
+                            k.Box(pos, new Vector3(22, 16, 8), -ang * Mathf.Rad2Deg + 90, open ? Pal.Stadium : Pal.Locked, open ? Pal.Steel : Pal.Locked);
+                        }
+                        k.Disc(bowl + Vector3.up * 0.2f, 36f, 0.2f, open ? Pal.GrassDark : Pal.Locked, 16);
+                        k.Disc(c + new Vector3(0, 0, -10), 26f, 0.12f, open ? Pal.Paving : Pal.Locked, 14);
+                        break;
+                    }
+                }
             }
             districtObjs[dd.Id] = Spawn("District_" + dd.Id, k.Build("district_" + dd.Id), Vector3.zero);
-        }
-
-        void BuildPoints()
-        {
-            foreach (var go in pointObjs) Destroy(go);
-            pointObjs.Clear();
-            for (int i = 0; i < Sim.S.Points.Count; i++)
-            {
-                var p = Sim.S.Points[i];
-                var pos = PointPos(i) + new Vector3(0, 0.2f, 4f);
-                // fronts face the camera (south, -Z). Blender kit: front = -Y, exported with axis_forward -Z (verify in the editor)
-                GameObject go = p.Kind == "shop" ? Prop("shop", MeshKit.Shop, pos, 0)
-                    : p.Kind == "horeca" ? Prop("horeca", MeshKit.Horeca, pos, 0)
-                    : Prop(p.Kind == "machine_m" ? "machine_m" : "machine_s", () => MeshKit.Machine(p.Kind == "machine_m"), pos, 0);
-                go.name = "Point_" + i;
-                pointObjs.Add(go);
-            }
         }
 
         void SyncTrucks()
@@ -222,7 +219,7 @@ namespace GrillConvoy.World
             {
                 string type = Sim.S.Trucks[i].Type;
                 if (i < truckObjs.Count && truckTypes[i] == type) continue;
-                var go = Prop(type, () => MeshKit.Truck(type), DepotPos, 0);
+                var go = Prop("truck_" + type, () => MeshKit.Truck(type), ParkedPos(i), 90 + KitYaw);
                 go.name = "Truck_" + i;
                 if (i < truckObjs.Count) { Destroy(truckObjs[i].gameObject); truckObjs[i] = go.transform; truckTypes[i] = type; }
                 else { truckObjs.Add(go.transform); truckTypes.Add(type); }
@@ -236,9 +233,9 @@ namespace GrillConvoy.World
         {
             Color tint = Livery switch
             {
-                "gold_livery" => new Color(1f, 0.84f, 0.35f),
-                "livery_sunset" => new Color(1f, 0.62f, 0.5f),
-                "livery_forest" => new Color(0.55f, 0.85f, 0.6f),
+                "gold_trim" => new Color(1f, 0.86f, 0.4f),
+                "livery_retro" => new Color(0.6f, 0.9f, 1f),
+                "livery_neon" => new Color(1f, 0.6f, 0.95f),
                 _ => Color.white,
             };
             foreach (var t in truckObjs)
@@ -250,54 +247,40 @@ namespace GrillConvoy.World
                 }
         }
 
-        void BuildLitter()
+        /// <summary>Owned looks (store cosmetics): crew outfits, striped window awnings, neon menu boards.</summary>
+        public void SetCosmetics(bool crewOutfits, bool windowAwnings, bool menuBoards)
         {
-            litter.Clear();
-            int max = Low ? 120 : 260;
-            int n = (int)(max * Math.Max(0, 1.0 - Sim.S.Rating / 100.0) * 1.4);
-            var rng = new System.Random(Sim.S.Day * 31 + 7);
-            var gd = Sim.Gd;
-            for (int i = 0; i < n && gd.Edges.Count > 0; i++)
-            {
-                var e = gd.Edges[rng.Next(gd.Edges.Count)];
-                if (!Sim.Unlocked(gd.Nodes[e.A].District)) continue;
-                Vector3 a = NodePos(e.A), b = NodePos(e.B);
-                var p = Vector3.Lerp(a, b, (float)rng.NextDouble()) + new Vector3((float)rng.NextDouble() * 14f - 7f, 0, (float)rng.NextDouble() * 14f - 7f);
-                litter.Add(Matrix4x4.TRS(p, Quaternion.Euler(0, rng.Next(360), 0), Vector3.one * (0.6f + (float)rng.NextDouble())));
-            }
-            builtRating = Sim.S.Rating;
-        }
-
-        void BuildYard()
-        {
-            balesPet.Clear(); balesAlu.Clear(); glassPiles.Clear();
-            var basePos = DepotPos + new Vector3(18, 0, 10);
-            int k = 0;
-            void Stack(List<Matrix4x4> list, int count, Vector3 size)
-            {
-                for (int i = 0; i < count; i++, k++)
-                {
-                    int col = k % 6, row = (k / 6) % 4, lay = k / 24;
-                    list.Add(Matrix4x4.TRS(basePos + new Vector3(col * 4.4f, lay * 3.6f, row * 4.4f), Quaternion.identity, size));
-                }
-            }
-            Stack(balesPet, Math.Min(48, Sim.S.Depot.Bales[Mats.Pet]), Vector3.one * 3.6f);
-            Stack(balesAlu, Math.Min(48, Sim.S.Depot.Bales[Mats.Alu]), Vector3.one * 3.6f);
-            for (int i = 0; i < Math.Min(8, Sim.S.Depot.Bales[Mats.Glass]); i++)
-                glassPiles.Add(Matrix4x4.TRS(DepotPos + new Vector3(-30 - i * 5f, 0, 14), Quaternion.identity, new Vector3(4.5f, 2f, 4.5f)));
-            builtYard = Sim.S.Depot.Yard;
-            builtGlass = Sim.S.Depot.Bales[Mats.Glass];
+            uniforms = crewOutfits; awnings = windowAwnings; boards = menuBoards;
         }
 
         public List<Bounds> UnlockedBounds()
         {
             var o = new List<Bounds>();
-            var b = new Bounds(DepotPos, Vector3.one * 60f);
+            var b = new Bounds(CommissaryPos, Vector3.one * 60f);
             foreach (var n in Sim.Gd.Nodes) if (Sim.Unlocked(n.District)) b.Encapsulate(ToWorld(n.X, n.Y));
-            b.Expand(new Vector3(40, 0, 40));
+            b.Expand(new Vector3(60, 0, 60));
             o.Add(b);
             return o;
         }
+
+        // ------------------------------------------------------------------ positions
+
+        /// <summary>Where truck i parks: at its pitch (several trucks side by side) or in a row at the commissary.</summary>
+        Vector3 ParkedPos(int i)
+        {
+            var t = Sim.S.Trucks[i];
+            if (t.Open && t.AtNode != Sim.Gd.DepotNode)
+            {
+                int slot = 0;
+                for (int k = 0; k < i; k++) if (Sim.S.Trucks[k].Open && Sim.S.Trucks[k].AtNode == t.AtNode) slot++;
+                return NodePos(t.AtNode) + new Vector3(-8f + slot * 16f, 0.2f, 6f);
+            }
+            return CommissaryPos + new Vector3(-16 + i * 9f, 0.2f, -4f);
+        }
+
+        public Vector3 TruckWorld(int i) => i >= 0 && i < truckObjs.Count ? truckObjs[i].localPosition : CommissaryPos;
+        /// <summary>The serving hatch side facing the camera (the line forms here).</summary>
+        public Vector3 HatchWorld(int i) => TruckWorld(i) + new Vector3(0, 0, -3f);
 
         // ------------------------------------------------------------------ frame
 
@@ -310,16 +293,13 @@ namespace GrillConvoy.World
                 int dCount = Sim.S.Districts.Count;
                 if (dCount != builtDistricts)
                 {
-                    foreach (var dd in Sim.Gd.Districts) BuildDistrict(dd);
+                    foreach (var dd in Sim.Gd.Districts) if (dd.Id != "harbour") BuildDistrict(dd);
                     if (builtDistricts >= 0 && rig != null) rig.Fit(UnlockedBounds(), false);
                     builtDistricts = dCount;
-                    BuildLitter();
                 }
-                if (Sim.S.Points.Count != builtPoints || PointKindsChanged()) { BuildPoints(); builtPoints = Sim.S.Points.Count; }
-                if (Math.Abs(builtRating - Sim.S.Rating) > 2) BuildLitter();
                 SyncTrucks();
             }
-            if (Sim.S.Depot.Yard != builtYard || Sim.S.Depot.Bales[Mats.Glass] != builtGlass) BuildYard();
+            if (truckObjs.Count != Sim.S.Trucks.Count) SyncTrucks();
 
             float dt = Time.deltaTime;
             slowAcc += dt;
@@ -329,25 +309,16 @@ namespace GrillConvoy.World
                 float step = Low ? slowAcc : dt;
                 slowAcc = 0f;
                 MoveTrucks(step);
-                crowd.Tick(step);
+                crowd.Tick(step, Sim);
+                Effects();
+                Light();
             }
-            // instanced draws (no GameObjects)
-            if (litter.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), litterMesh, 0, litter);
-            if (balesPet.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matBalePet), baleMeshPet, 0, balesPet);
-            if (balesAlu.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matBaleAlu), baleMeshAlu, 0, balesAlu);
-            if (glassPiles.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), glassMesh, 0, glassPiles);
+            if (puffs.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), puffMesh, 0, puffs);
+            if (flames.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), flameMesh, 0, flames);
+            if (crewAt.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), crewMesh[uniforms ? 1 : 0], 0, crewAt);
+            if (awningAt.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), awningMesh[awnings ? 1 : 0], 0, awningAt);
+            if (boardAt.Count > 0) Graphics.RenderMeshInstanced(new RenderParams(matInst), boardMesh[boards ? 1 : 0], 0, boardAt);
             crowd.Draw();
-        }
-
-        readonly List<string> lastKinds = new List<string>();
-        bool PointKindsChanged()
-        {
-            bool changed = lastKinds.Count != Sim.S.Points.Count;
-            for (int i = 0; i < Sim.S.Points.Count && !changed; i++) changed = lastKinds[i] != Sim.S.Points[i].Kind;
-            if (!changed) return false;
-            lastKinds.Clear();
-            foreach (var p in Sim.S.Points) lastKinds.Add(p.Kind);
-            return true;
         }
 
         void MoveTrucks(float dt)
@@ -355,21 +326,70 @@ namespace GrillConvoy.World
             for (int i = 0; i < truckObjs.Count && i < Sim.S.Trucks.Count; i++)
             {
                 var t = Sim.S.Trucks[i];
-                var (x, y, heading) = Sim.TruckPos(t);
-                var target = ToWorld(x, y) + new Vector3(0, 0.2f, 0);
-                if (!t.Busy) target = DepotPos + new Vector3(-20 + i * 6f, 0.2f, 14f);   // parked in a row at the depot
                 var tr = truckObjs[i];
+                Vector3 target;
+                Quaternion rot;
+                if (t.Status == TruckStatus.Drive)
+                {
+                    var (x, y, heading) = Sim.TruckPos(t);
+                    target = ToWorld(x, y) + new Vector3(0, 0.2f, 0);
+                    rot = Quaternion.Euler(0, (float)(heading * Mathf.Rad2Deg) + KitYaw, 0);
+                }
+                else { target = ParkedPos(i); rot = Quaternion.Euler(0, 90 + KitYaw, 0); }
                 float k = 1f - Mathf.Exp(-12f * dt);   // smooth the 15 Hz / step jumps
                 tr.localPosition = Vector3.Lerp(tr.localPosition, target, k);
-                if (t.Status == TruckStatus.Drive) tr.localRotation = Quaternion.Slerp(tr.localRotation, Quaternion.Euler(0, (float)(heading * Mathf.Rad2Deg), 0), k);
+                tr.localRotation = Quaternion.Slerp(tr.localRotation, rot, k);
             }
         }
 
-        /// <summary>Sim events -> walkers (deposit / turned away).</summary>
+        /// <summary>Steam over a working grill (Medium / High only) and the flare-up pulse (every tier: it is gameplay).</summary>
+        void Effects()
+        {
+            puffs.Clear();
+            flames.Clear();
+            crewAt.Clear();
+            awningAt.Clear();
+            boardAt.Clear();
+            float time = Time.time;
+            for (int i = 0; i < truckObjs.Count && i < Sim.S.Trucks.Count; i++)
+            {
+                var t = Sim.S.Trucks[i];
+                if (!t.Open) continue;
+                var top = truckObjs[i].localPosition + new Vector3(0, 4.2f, 0);
+                var at = truckObjs[i].localPosition;
+                for (int c = 0; c < Mathf.Min(2, t.Crew.Count); c++)
+                    crewAt.Add(Matrix4x4.TRS(at + new Vector3(-1.2f + c * 2.4f, 0.4f, -0.3f), Quaternion.Euler(0, 180, 0), Vector3.one * 1.3f));
+                awningAt.Add(Matrix4x4.TRS(at + new Vector3(0, 3.1f, -1.9f), Quaternion.identity, Vector3.one));
+                boardAt.Add(Matrix4x4.TRS(at + new Vector3(4.4f, 0, -3.4f), Quaternion.Euler(0, 200, 0), Vector3.one));
+                if (t.Flaring)
+                {
+                    float s = 1.4f + 0.35f * Mathf.Sin(time * 9f + i);
+                    flames.Add(Matrix4x4.TRS(top, Quaternion.Euler(0, time * 90f, 0), Vector3.one * s));
+                }
+                else if (!Low && t.Queue.Count > 0 && t.Propane > 0)
+                    for (int p = 0; p < 3; p++)
+                    {
+                        float ph = (time * 0.6f + p / 3f + i * 0.17f) % 1f;
+                        puffs.Add(Matrix4x4.TRS(top + new Vector3(Mathf.Sin(ph * 6f + p) * 0.6f, ph * 5f, 0), Quaternion.Euler(0, ph * 120f, 0), Vector3.one * (0.6f + ph * 1.4f)));
+                    }
+            }
+        }
+
+        /// <summary>Morning to evening on the sun (colour + angle only; no extra light, no shader branch).</summary>
+        void Light()
+        {
+            if (sun == null) return;
+            float f = Mathf.Clamp01((float)((Sim.S.Minute - Sim.Gd.DayStart) / Math.Max(1, Sim.Gd.DayMinutes)));
+            sun.color = Color.Lerp(new Color(1f, 0.97f, 0.9f), new Color(1f, 0.72f, 0.5f), Mathf.SmoothStep(0.55f, 1f, f));
+            sun.transform.rotation = Quaternion.Euler(Mathf.Lerp(55f, 22f, f), -30f + 60f * f, 0);
+        }
+
+        /// <summary>Sim events -> leavers in the crowd, structure rebuilds.</summary>
         public void OnSimEvent(SimEvent e)
         {
-            if (e.Type == "deposit" || e.Type == "turned") crowd.Spawn(e.A, e.B, e.Type == "turned");
-            else if (e.Type == "district" || e.Type == "point_new" || e.Type == "bought" || e.Type == "day_start") MarkDirty();
+            if (e.Type == "served" && e.Text != "hand") crowd.Leave(e.A, e.B >= 3 ? 2 : e.B >= 2 ? 1 : 0, true);
+            else if (e.Type == "walked" || e.Type == "sold_out") crowd.Leave(e.A, 0, false);
+            else if (e.Type == "district" || e.Type == "truck_new" || e.Type == "day_start") MarkDirty();
         }
 
         // ------------------------------------------------------------------ picking
@@ -380,7 +400,7 @@ namespace GrillConvoy.World
             Picked?.Invoke(hit);
         }
 
-        /// <summary>Screen px (bottom-left origin) -> what is there. Trucks win over points, points over the depot.</summary>
+        /// <summary>Screen px (bottom-left origin) -> what is there. Trucks win over pitches, pitches over the commissary.</summary>
         public WorldHit Pick(Vector2 screen)
         {
             var none = new WorldHit { Kind = "none", Index = -1 };
@@ -391,22 +411,22 @@ namespace GrillConvoy.World
             if (dist < 0) return none;
             var g = ray.origin + ray.direction * dist;
             float pickR = 22f * Mathf.Max(0.6f, rig != null ? rig.Zoom : 1f);
-            float best = pickR * pickR;
+            float best = pickR * pickR * 0.8f;
             var res = none;
             for (int i = 0; i < truckObjs.Count; i++)
             {
                 float d = (truckObjs[i].localPosition - g).sqrMagnitude;
-                if (d < best * 0.8f) { best = d; res = new WorldHit { Kind = "truck", Index = i }; }
+                if (d < best) { best = d; res = new WorldHit { Kind = "truck", Index = i }; }
             }
             if (res.Kind == "truck") return res;
-            best = pickR * pickR;
-            for (int i = 0; i < Sim.S.Points.Count; i++)
+            best = 40f * 40f;
+            foreach (int p in Sim.Gd.Pitches)
             {
-                float d = (PointPos(i) - g).sqrMagnitude;
-                if (d < best) { best = d; res = new WorldHit { Kind = "point", Index = i }; }
+                float d = (PitchPos(p) - g).sqrMagnitude;
+                if (d < best) { best = d; res = new WorldHit { Kind = "pitch", Index = p }; }
             }
-            if (res.Kind == "point") return res;
-            if ((DepotPos - g).sqrMagnitude < 45f * 45f) return new WorldHit { Kind = "depot", Index = 0 };
+            if (res.Kind == "pitch") return res;
+            if ((CommissaryPos - g).sqrMagnitude < 45f * 45f) return new WorldHit { Kind = "commissary", Index = 0 };
             return none;
         }
 
@@ -418,7 +438,5 @@ namespace GrillConvoy.World
             if (s.z <= 0) return null;
             return new Vector2(s.x, Screen.height - s.y);
         }
-
-        public Vector3 TruckWorld(int i) => i >= 0 && i < truckObjs.Count ? truckObjs[i].localPosition : DepotPos;
     }
 }

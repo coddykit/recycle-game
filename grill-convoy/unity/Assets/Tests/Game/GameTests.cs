@@ -38,7 +38,7 @@ namespace GrillConvoy.Game.Tests
         }
 
         /// <summary>Lets the world catch up for a guide step that waits for it (van driving, count line, baler).</summary>
-        public static void Run(Coach c, GameSession s, GameActions a, int frames = 400)
+        public static void Run(Coach c, GameSession s, GameActions a, int frames = 2000)
         {
             for (int i = 0; i < frames && c.Active && c.FastForward(s.Sim); i++) c.Drive(s.Sim, a, 0.1);
             c.Drive(s.Sim, a, 0.05);
@@ -49,7 +49,21 @@ namespace GrillConvoy.Game.Tests
 
     public class GuideTests
     {
-        static readonly string[] Right = { "", "select_point:0", "select_truck:0", "select_point:0", "select_point:1", "go", "", "depot", "till", "baler", "sell:0", "fuel_info", "policy:1:threshold:80", "buy:bin_m:1", "buy:driver" };
+        static readonly string[] Right = { "", "start_day", "ticket", "cook:grill", "cook:flip", "cook:assemble", "cook:serve", "next_day", "buy:hire:0:runner",
+            "move:0:11:4", "prep:patty", "load:0:patty:20", "start_day", "allhands:0", "extinguish:0" };
+
+        /// <summary>Plays the guide up to (not including) step `until`.</summary>
+        static void PlayTo(Coach c, GameSession s, GameActions a, int until)
+        {
+            for (int step = 1; step < until && c.Active; step++)
+            {
+                G.Run(c, s, a);
+                Assert.AreEqual(step, c.Step, "step order");
+                var r = a.Run(Right[step]);
+                Assert.IsTrue(r.Ok, "step " + step + " action " + Right[step] + " failed: " + r.Error);
+                G.Run(c, s, a);
+            }
+        }
 
         [Test]
         public void TheWholeGuideCompletesWithTheRightActions()
@@ -57,43 +71,36 @@ namespace GrillConvoy.Game.Tests
             var (s, a, c) = G.NewGuide();
             var events = new List<string>();
             c.Analytics = (n, p) => events.Add(n);
-            for (int step = 1; step <= Coach.Steps; step++)
-            {
-                if (!c.Active) break;
-                if (step == 6)   // the guide waits for the van, no tap; the world runs fast
-                {
-                    G.Run(c, s, a);
-                    continue;
-                }
-                Assert.AreEqual(step, c.Step, "step order");
-                var r = a.Run(Right[step]);
-                Assert.IsTrue(r.Ok, "step " + step + " action " + Right[step] + " failed: " + r.Error);
-                if (c.Step != 6) G.Run(c, s, a);
-            }
+            PlayTo(c, s, a, Coach.Steps + 1);
             G.Run(c, s, a);
             Assert.IsFalse(c.Active, "guide finished at step " + c.Step);
             Assert.IsFalse(s.Sim.S.Tutorial, "crises may start after the guide");
             Assert.IsTrue(s.Settings.CoachDone);
-            Assert.AreEqual(2, s.Sim.S.Drivers);
-            Assert.IsTrue(s.Sim.S.Points.Exists(p => p.Kind == "machine_m"));
+            Assert.IsTrue(s.Sim.S.Trucks[0].Crew.Contains(Roles.Runner));
+            Assert.AreEqual(2, s.Sim.S.Day);
+            Assert.AreEqual(Phases.Live, s.Sim.Phase, "the guide ends mid-service: the player keeps playing day 2");
             Assert.Contains("onboarding_complete", events);
+            Assert.AreEqual(Coach.Steps, events.Count(e => e == "onboarding_step"));
         }
 
         [Test]
-        public void WrongTapsNeverAdvanceAndRepeatTheHint()
+        public void EveryStepRefusesAWrongActionAndRepeatsTheHint()
         {
-            var (s, a, c) = G.NewGuide();
-            Assert.AreEqual(1, c.Step);
-            var r = a.Run("select_point:2");
-            Assert.IsFalse(r.Ok);
-            Assert.AreEqual("blocked", r.Error);
-            Assert.AreEqual(1, c.Step);
-            Assert.AreEqual(1, c.WrongTaps);
-            Assert.AreEqual(1, c.Flash);
-            Assert.IsFalse(a.Run("buy:driver").Ok, "no shortcuts during the guide");
-            Assert.AreEqual(1, c.Step);
-            Assert.IsTrue(a.Run("select_point:0").Ok);
-            Assert.AreEqual(2, c.Step);
+            for (int step = 1; step <= Coach.Steps; step++)
+            {
+                var (s, a, c) = G.NewGuide();
+                PlayTo(c, s, a, step);
+                G.Run(c, s, a);
+                Assert.AreEqual(step, c.Step);
+                int flash = c.Flash;
+                string wrong = step == 8 ? "buy:hire:0:cashier" : step == 10 ? "prep:bun" : "research:fryer";
+                var r = a.Run(wrong);
+                Assert.IsFalse(r.Ok, "step " + step);
+                Assert.AreEqual("blocked", r.Error);
+                Assert.AreEqual(step, c.Step, "a wrong action never advances");
+                Assert.AreEqual(flash + 1, c.Flash, "the hint pulses again");
+                Assert.IsTrue(a.Run(Right[step]).Ok, "the right action still works at step " + step);
+            }
         }
 
         [Test]
@@ -108,14 +115,16 @@ namespace GrillConvoy.Game.Tests
         }
 
         [Test]
-        public void TimeIsPausedWhileTheGuideWaitsForThePlayer()
+        public void TimeIsPausedWhileTheGuideWaitsForThePlayer_FastWhileItWaitsForTheWorld()
         {
             var (s, a, c) = G.NewGuide();
-            for (int i = 1; i <= 5; i++) a.Run(Right[i]);
-            Assert.AreEqual(6, c.Step);
-            Assert.IsTrue(c.FastForward(s.Sim));
+            PlayTo(c, s, a, 3);
+            Assert.IsFalse(c.FastForward(s.Sim), "waiting for the grill tap: paused");
+            Assert.IsTrue(a.Run("cook:grill").Ok);
+            Assert.AreEqual(4, c.Step);
+            Assert.IsTrue(c.FastForward(s.Sim), "the patty is sizzling: the world runs");
             G.Run(c, s, a);
-            Assert.AreEqual(7, c.Step);
+            Assert.IsFalse(c.FastForward(s.Sim), "ready to flip: the guide waits for the tap");
             double m = s.Sim.S.Minute;
             c.Drive(s.Sim, a, 1.0);
             s.Sim.Advance(1.0);
@@ -128,47 +137,59 @@ namespace GrillConvoy.Game.Tests
             var (s, a, c) = G.NewGuide();
             var events = new List<string>();
             c.Analytics = (n, p) => events.Add(n);
-            a.Run("select_point:0");
+            a.Run("start_day");
             c.Skip(s.Sim);
             Assert.IsFalse(c.Active);
             Assert.IsTrue(s.Settings.CoachDone);
             Assert.Contains("onboarding_skip", events);
-            Assert.IsTrue(a.Run("buy:driver").Ok || a.Run("buy:driver").Error == "cash", "everything is allowed after a skip");
+            Assert.AreEqual(0, s.Sim.HandStage, "the crew takes over the hand ticket");
+            Assert.IsTrue(a.Run("research:fryer").Ok, "everything is allowed after a skip");
             s.Settings.ReplayGuide();
             Assert.IsFalse(s.Settings.CoachDone);
             Assert.AreEqual(0, s.Settings.CoachStep);
             var c2 = new Coach();
             a.Allowed = c2.Allows;
             c2.Begin(s.Sim, a, s.Settings.CoachStep);
-            Assert.IsTrue(c2.Active);
-            Assert.AreEqual(1, c2.Step);
+            Assert.IsTrue(c2.Active, "replay never locks: it re-derives where the career is");
         }
 
         [Test]
-        public void RelaunchMidRouteDraftGoesBackToPickingTheVan()
+        public void RelaunchMidHandTicketResumesAtTheSameStation()
         {
             string dir = G.TempDir();
             var (s, a, c) = G.NewGuide(dir);
-            a.Run(Right[1]); a.Run(Right[2]); a.Run(Right[3]);
-            Assert.AreEqual(4, c.Step);
-            s.Save();
-            var (s2, a2, c2) = G.NewGuide(dir);   // relaunch: the draft (UI state) is gone
-            Assert.AreEqual(2, c2.Step, "pick the van again, never stuck at 'add the second machine'");
-            Assert.IsTrue(a2.Run("select_truck:0").Ok);
-            Assert.AreEqual(3, c2.Step);
-        }
-
-        [Test]
-        public void RelaunchAfterGoContinuesWithTheVanOnTheRoad()
-        {
-            string dir = G.TempDir();
-            var (s, a, c) = G.NewGuide(dir);
-            for (int i = 1; i <= 5; i++) a.Run(Right[i]);
+            PlayTo(c, s, a, 5);
+            Assert.AreEqual(5, c.Step);
             s.Save();
             var (s2, a2, c2) = G.NewGuide(dir);
+            Assert.AreEqual(5, c2.Step, "the flipped patty is still on the grill after a relaunch");
+            Assert.IsTrue(a2.Run("cook:assemble").Ok);
             Assert.AreEqual(6, c2.Step);
-            G.Run(c2, s2, a2);
-            Assert.AreEqual(7, c2.Step);
+        }
+
+        [Test]
+        public void RelaunchOnTheNextMorningContinuesWithTheHire()
+        {
+            string dir = G.TempDir();
+            var (s, a, c) = G.NewGuide(dir);
+            PlayTo(c, s, a, 8);
+            s.Save();
+            var (s2, a2, c2) = G.NewGuide(dir);
+            Assert.AreEqual(8, c2.Step);
+            Assert.IsTrue(a2.Run("buy:hire:0:runner").Ok);
+            Assert.AreEqual(9, c2.Step);
+        }
+
+        [Test]
+        public void AStepWhoseActionIsImpossibleIsPassedNeverBlocked()
+        {
+            var (s, a, c) = G.NewGuide();
+            PlayTo(c, s, a, 8);
+            s.Sim.S.Cash = 10;   // cannot afford the hire nor the prep batch
+            c.Sync(s.Sim, a);
+            Assert.AreEqual(9, c.Step, "the hire is passed when there is no money; the layout step is free");
+            Assert.IsTrue(a.Run("move:0:11:4").Ok);
+            Assert.AreEqual(11, c.Step, "the prep step is passed too");
         }
 
         [Test]
@@ -177,6 +198,7 @@ namespace GrillConvoy.Game.Tests
             var (s, a, c) = G.NewGuide();
             Assert.IsTrue(s.Sim.S.Tutorial);
             Assert.IsFalse(s.Sim.RewardOffer("daily_bonus", 1_800_000_000).Ok);
+            Assert.IsFalse(s.Sim.CrisesAllowed);
         }
     }
 
@@ -223,7 +245,7 @@ namespace GrillConvoy.Game.Tests
             var s = new GameSession(TestData.Gd(), dir) { Now = () => now };
             s.LoadOrNew(3);
             s.Sim.EndTutorial();
-            s.Sim.S.History.Add(new DayStats { Fees = 2000 });
+            s.Sim.S.History.Add(new DayStats { Sales = 2000 });
             s.Save();
             now += 3 * 3600;
             var o = s.Resume();
@@ -257,8 +279,8 @@ namespace GrillConvoy.Game.Tests
         {
             var cat = IapCatalog.Parse(TestData.Read("Assets/Resources/data/iap.json"));
             var adFree = cat.Order.Where(cat.GrantsAdFree).OrderBy(x => x).ToArray();
-            CollectionAssert.AreEqual(new[] { "bundle", "noads", "premium", "route_pass" }, adFree, "fleet §3/§8 table");
-            foreach (var cheap in new[] { "cash_s", "cash_xl", "starter", "speed", "dispatcher_plus", "offline_plus", "cosmetics_all", "livery_sunset" })
+            CollectionAssert.AreEqual(new[] { "bundle", "convoy_pass", "noads", "premium" }, adFree, "fleet §3/§8 table");
+            foreach (var cheap in new[] { "cash_s", "cash_xl", "starter", "crisis", "comeback", "milestone", "speed", "automation", "slots", "offline_plus", "cosmetics_all", "livery_retro", "uniforms" })
                 Assert.IsFalse(cat.GrantsAdFree(cheap), cheap);
         }
 
@@ -273,6 +295,38 @@ namespace GrillConvoy.Game.Tests
             Assert.IsTrue(shop.Buy("noads"));
             Assert.IsTrue(shop.AdFree);
             Assert.AreEqual("owned", shop.WhyNot("noads"));
+        }
+
+        [Test]
+        public void TheCatalogueIsThePlansTwentyTwoProducts()
+        {
+            var cat = IapCatalog.Parse(TestData.Read("Assets/Resources/data/iap.json"));
+            Assert.AreEqual(22, cat.Order.Count);
+            foreach (var p in cat.Products.Values) Assert.LessOrEqual(p.Usd, 19.99, p.Slug + ": nothing above $19.99 (plan §10)");
+            Assert.IsTrue(cat.Products["bundle"].Grants.Contains("automation"));
+        }
+
+        [Test]
+        public void EditionGivesItsStarterPackOnceAndAnExtraSlot()
+        {
+            var (shop, fake, s) = Shop();
+            double cash = s.Sim.S.Cash;
+            Assert.IsTrue(shop.Buy("premium"));
+            Assert.Greater(s.Sim.S.Cash, cash);
+            Assert.AreEqual(2, GameSession.SlotCount(shop.Has));
+            double after = s.Sim.S.Cash;
+            shop.Restore();
+            Assert.AreEqual(after, s.Sim.S.Cash, 1e-6, "once per device");
+        }
+
+        [Test]
+        public void OfferPacksDeliverTheirExtras()
+        {
+            var (shop, fake, s) = Shop();
+            s.Settings.FirstSeen -= 5 * 86400;   // offers wait for day 3
+            Assert.AreEqual("crisis", shop.TryOffer("propane", false));
+            Assert.IsTrue(shop.Buy("crisis"));
+            Assert.AreEqual(3, s.Sim.S.PropaneKits);
         }
 
         [Test]
@@ -306,6 +360,10 @@ namespace GrillConvoy.Game.Tests
             shop.Buy("speed");
             s.ApplyPerks(shop.Has);
             Assert.AreEqual(s.Gd.PaidMaxSpeed, s.Sim.MaxSpeed);
+            shop.Buy("automation");
+            s.ApplyPerks(shop.Has);
+            s.Sim.S.Research.Add("dispatcher");
+            Assert.AreEqual(s.Gd.RuleSlots + s.Gd.PlusSlots, s.Sim.RuleSlots);
         }
 
         [Test]
@@ -399,13 +457,23 @@ namespace GrillConvoy.Game.Tests
         {
             var loc = G.Loc();
             var gd = TestData.Gd();
-            foreach (var n in gd.Nodes) if (n.Kind == "site" || n.Kind == "depot") Assert.IsTrue(loc.Has("place." + n.Id), n.Id);
+            foreach (int p in gd.Pitches) { var n = gd.Nodes[p]; Assert.IsTrue(loc.Has("place." + n.Id), n.Id); Assert.IsTrue(loc.Has("pitch." + n.Id + ".d"), n.Id); Assert.IsTrue(loc.Has("curve." + n.Curve), n.Curve); }
             foreach (var d in gd.Districts) Assert.IsTrue(loc.Has("district." + d.Id), d.Id);
             foreach (var r in gd.Research) { Assert.IsTrue(loc.Has("research." + r.Id + ".t"), r.Id); Assert.IsTrue(loc.Has("research." + r.Id + ".d"), r.Id); }
-            foreach (var e in gd.Events) Assert.IsTrue(loc.Has("crisis." + e.Id + ".t"), e.Id);
-            foreach (var v in gd.Vehicles.Keys) Assert.IsTrue(loc.Has("truck." + v), v);
-            foreach (var k in gd.PointKinds.Keys) Assert.IsTrue(loc.Has("kind." + k), k);
-            foreach (var s in new[] { "idle", "drive", "service", "unload", "wait", "broken" }) Assert.IsTrue(loc.Has("truck.status." + s), s);
+            foreach (var e in gd.Events) { Assert.IsTrue(loc.Has("crisis." + e.Id + ".t"), e.Id); Assert.IsTrue(loc.Has("crisis." + e.Id + ".b"), e.Id); }
+            Assert.IsTrue(loc.Has("crisis.match_day.t"));
+            foreach (var v in gd.Vehicles.Keys) { Assert.IsTrue(loc.Has("truck." + v), v); Assert.IsTrue(loc.Has("truck." + v + ".d"), v); }
+            foreach (var c in gd.Cards) Assert.IsTrue(loc.Has("card." + c.Id), c.Id);
+            foreach (var st in Stations.All) { Assert.IsTrue(loc.Has("station." + st), st); Assert.IsTrue(loc.Has("station." + st + ".d"), st); }
+            foreach (var r in Roles.All) { Assert.IsTrue(loc.Has("role." + r), r); Assert.IsTrue(loc.Has("role." + r + ".d"), r); }
+            foreach (var w in gd.WeatherIds) Assert.IsTrue(loc.Has("weather." + w), w);
+            foreach (var id in Stock.Ids) Assert.IsTrue(loc.Has("stock." + id), id);
+            foreach (var k in new[] { "offline", "runner", "patties", "prep", "rescue", "daily" }) { Assert.IsTrue(loc.Has("reward." + k + ".t"), k); Assert.IsTrue(loc.Has("reward." + k + ".b"), k); }
+            for (int i = 0; i < 3; i++) { Assert.IsTrue(loc.Has("tier." + i)); Assert.IsTrue(loc.Has("tier." + i + ".d")); Assert.IsTrue(loc.Has("medal." + i)); }
+            for (int i = 1; i <= 6; i++) Assert.IsTrue(loc.Has("cook." + i), "cook." + i);
+            foreach (var s in new[] { "idle", "drive", "service", "restock" }) Assert.IsTrue(loc.Has("truck.status." + s), s);
+            foreach (var ph in new[] { "plan", "live", "report" }) Assert.IsTrue(loc.Has("phase." + ph), ph);
+            foreach (var b in new[] { "menu", "kitchen", "ops" }) Assert.IsTrue(loc.Has("research.branch." + b), b);
         }
 
         [Test]
@@ -444,7 +512,7 @@ namespace GrillConvoy.Game.Tests
         {
             // overflow guard for the 48 dp pills (fleet §9 "10 dilde metin taşmaz"; de / ru run longest)
             var loc = G.Loc();
-            var shortKeys = loc.Keys.Where(k => k.StartsWith("tab.") || k == "truck.go" || k == "hud.start_day" || k == "hud.next_day" || k == "coach.skip" || k == "intro.start" || k.StartsWith("shop.group.")).ToList();
+            var shortKeys = loc.Keys.Where(k => k.StartsWith("tab.") || k == "truck.go" || k == "hud.start_day" || k == "hud.open_window" || k == "hud.next_day" || k == "coach.skip" || k == "intro.start" || k.StartsWith("shop.group.") || k.StartsWith("bar.") && !k.StartsWith("bar.info") && !k.StartsWith("bar.driving") || k.StartsWith("cook.") || k.StartsWith("station.") && !k.EndsWith(".d")).ToList();
             var bad = new List<string>();
             foreach (var k in shortKeys)
                 foreach (var l in Loc.Languages)

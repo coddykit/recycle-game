@@ -1,4 +1,4 @@
-// Grill Convoy — boot scene: the game's own curtain (no Unity / engine logo; splash background #0F3B2E) on the first
+// Grill Convoy — boot scene: the game's own curtain (no Unity / engine logo; splash background #3D1914) on the first
 // frame, then the kit (CoddyKitHost: tiers before any 3D, cached purchase rights, house ads, consent -> rewarded), then
 // the Region scene loads async under the curtain. No house banner over the curtain (KitConfig.Loading).
 using System.Collections;
@@ -56,7 +56,7 @@ namespace GrillConvoy.App
             var root = curtainDocument.rootVisualElement;
             var curtain = new VisualElement { name = "Curtain" };
             curtain.AddToClassList("coddy-curtain");
-            curtain.style.backgroundColor = new Color(0.059f, 0.231f, 0.180f);
+            curtain.style.backgroundColor = new Color(0.239f, 0.098f, 0.078f);
             if (curtainArt != null)
             {
                 var art = new VisualElement { name = "CurtainArt", pickingMode = PickingMode.Ignore };

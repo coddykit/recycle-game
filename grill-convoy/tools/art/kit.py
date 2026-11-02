@@ -1,9 +1,11 @@
-"""Grill Convoy — Blender kit (fleet: buildings / machines / vehicles = Blender, characters = Meshy). Builds low-poly props
-whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png, order = GrillConvoy.World.Pal),
-so the whole town shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot bottom-centre, front = -Y in
-Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
+"""Grill Convoy — Blender kit (fleet: buildings / vehicles = Blender, characters / food heroes = Meshy). Builds low-poly
+props whose UVs point at swatches of the game palette (unity/Assets/Resources/materials/palette.png, order =
+GrillConvoy.World.Pal), so the whole city shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m, pivot
+bottom-centre. Trucks: the cab leads toward +Y in Blender; the serving hatch + awning are on BOTH long sides (whichever
+side faces the crowd; RegionWorld.KitYaw fixes the heading in one place if the FBX axis swap flips it). No text, no logos.
+Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
   blender -b --python grill-convoy/tools/art/kit.py -- <unity dir> [<sheet.png>]
-Budget (Low draws: one material, one mesh per prop): machine ≤ 400 tris, vehicle ≤ 900, building ≤ 600.
+Budget (Low draws: one material, one mesh per prop): vehicle ≤ 900 tris, building ≤ 600.
 """
 import math
 import os
@@ -19,8 +21,9 @@ OUT = os.path.join(UNITY, "Assets/Resources/kit")
 PALETTE = os.path.join(UNITY, "Assets/Resources/materials/palette.png")
 
 # swatches (GrillConvoy.World.Pal)
-GRASS, ROAD, CONCRETE, CREAM, TERRA, BLUEWALL, ROOFRED, ROOFGREY = 0, 2, 4, 5, 6, 7, 8, 9
-BRAND, PANEL, WHITE, TGREEN, DEPOT, WINDOW, PET, ALU, GLASS, WARN, YELLOW, SUNSET, TRUNK, TREE = 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 28, 18, 17
+GRASS, ROAD, PAVING, CREAM, TERRA, TEAL, ROOFRED, ROOFGREY = 0, 2, 4, 5, 6, 7, 8, 9
+BRAND, STEEL, TCREAM, TTEAL, COMMISSARY, WINDOW, BUN, PATTY, CHEESE, WARN, YELLOW, LETTUCE = 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 26
+SUNSET, WOOD, TRUNK, TREE, WHITE, LIGHTS = 28, 31, 18, 17, 39, 42
 
 
 def uv_of(sw):
@@ -98,86 +101,61 @@ class Prop:
         return ob
 
 
-def machine(big):
-    p = Prop("machine_m" if big else "machine_s")
-    w, h = (2.0, 2.3) if big else (1.4, 2.0)
-    p.box((0, 0, 0), (w, 1.0, h), BRAND, top=PANEL, bevel=0.06)
-    p.box((0, -0.52, h * 0.30), (w * 0.72, 0.06, h * 0.30), PANEL, bevel=0.02)       # bottle door
-    p.cyl((0, -0.56, h * 0.45), 0.16, 0.06, WINDOW, segs=12, axis="Y")               # the bottle hole
-    p.box((0, -0.52, h * 0.78), (w * 0.5, 0.06, h * 0.14), WINDOW)                  # screen
-    p.box((0, 0, h), (w + 0.25, 1.25, 0.12), PANEL)                                  # canopy
-    for i, sw in enumerate((PET, ALU, GLASS)):                                       # three material stripes
-        p.box(((i - 1) * w * 0.28, -0.53, h * 0.06), (w * 0.22, 0.04, 0.12), sw)
+def truck(name, big):
+    """A burger truck: cab at +Y, kitchen box behind, serving hatch + striped awning + counter on both sides."""
+    p = Prop(name)
+    L, W, H = (7.2, 2.6, 3.0) if big else (6.0, 2.4, 2.7)
+    body = TTEAL if big else BRAND
+    cab_y = L * 0.36
+    p.box((0, cab_y, 0.45), (W * 0.95, L * 0.26, H * 0.68), TCREAM, bevel=0.14)                 # cab
+    p.box((0, cab_y + L * 0.13, 0.45 + H * 0.38), (W * 0.8, 0.05, H * 0.24), WINDOW)            # windscreen
+    p.box((0, -L * 0.12, 0.45), (W, L * 0.72, H), body, top=STEEL, bevel=0.1)                   # kitchen box
+    p.box((0, -L * 0.12, 0.45 + H * 0.1), (W + 0.02, L * 0.7, 0.12), WHITE)                     # skirt stripe
+    for s in (-1, 1):
+        x = s * (W * 0.5)
+        p.box((x + s * 0.03, -L * 0.12, 0.45 + H * 0.42), (0.06, L * 0.46, H * 0.36), WINDOW)   # hatch
+        p.box((x + s * 0.28, -L * 0.12, 0.45 + H * 0.38), (0.55, L * 0.46, 0.08), STEEL)         # counter
+        for i in range(4):                                                                       # striped awning
+            p.box((x + s * 0.6, -L * 0.12 - L * 0.2 + i * L * 0.135, 0.45 + H * 0.82), (1.1, L * 0.135, 0.1), SUNSET if i % 2 == 0 else WHITE)
+        p.box((x + s * 0.04, L * 0.08, 0.45 + H * 0.45), (0.05, 0.6, 0.9), YELLOW)               # menu board (blank)
+    p.box((0, -L * 0.3, 0.45 + H), (0.55, 0.55, 0.7), STEEL)                                     # vent hood
+    p.cyl((0, -L * 0.3, 0.45 + H + 0.85), 0.18, 0.3, STEEL, segs=8)
+    p.box((0, L * 0.02, 0.45 + H), (W * 0.65, 0.12, 0.85), YELLOW, bevel=0.03)                   # roof sign (no text)
+    p.cyl((0, L * 0.02, 0.45 + H + 0.42), 0.32, 0.16, BUN, segs=10, axis="Y")                    # burger badge on the sign
+    for y in (cab_y - 0.2, -L * 0.32):
+        for x in (-W * 0.42, W * 0.42):
+            p.wheel(x, y, r=0.46 if big else 0.42)
     return p.build()
 
 
-def shop():
-    p = Prop("shop")
-    p.box((0, 0, 0), (5.5, 4.5, 3.6), CREAM, top=ROOFRED, bevel=0.05)
-    p.box((0, -2.6, 2.5), (5.8, 1.4, 0.18), BRAND)                                     # awning
-    p.box((-1.4, -2.4, 0), (1.6, 0.8, 1.0), PANEL)                                     # bag counter
-    p.box((1.3, -2.27, 0.4), (1.8, 0.05, 1.6), WINDOW)
-    p.box((-1.4, -2.4, 1.0), (1.2, 0.6, 0.6), PET)
+def commissary():
+    p = Prop("commissary")
+    p.box((0, 0, 0), (26, 16, 9), COMMISSARY, top=ROOFGREY, bevel=0.1)
+    p.box((-6, -8.05, 0), (8, 0.3, 5), STEEL)                                                   # loading door
+    p.box((6, -8.05, 4), (9, 0.3, 2.4), WINDOW)                                                 # windows
+    p.box((0, 2, 9), (4, 4, 3), STEEL, bevel=0.05)                                              # cold-room unit
+    p.box((0, -8.3, 6.6), (14, 0.4, 1.6), BRAND)                                                # sign band (no text)
+    p.cyl((-8, 3, 9 + 1.2), 0.5, 2.4, STEEL, segs=8)                                            # chimney
+    for x in (-10, -2):
+        p.box((x, -10, 0), (3.5, 2.5, 0.6), WOOD)                                               # pallets
     return p.build()
 
 
-def horeca():
-    p = Prop("horeca")
-    p.box((0, 0, 0), (6.5, 5.5, 4.0), TERRA, top=ROOFGREY, bevel=0.05)
-    p.box((0, -2.78, 1.3), (4.2, 0.05, 1.8), WINDOW)
-    for x in (-2.0, 2.0):
-        p.cyl((x, -4.4, 1.2), 0.07, 2.4, TRUNK, segs=6)
-        p.cyl((x, -4.4, 2.45), 1.2, 0.18, SUNSET, segs=8)
-        p.cyl((x, -4.4, 0.55), 0.55, 0.08, PANEL, segs=8)
-    p.box((3.6, 0.8, 0), (1.2, 1.6, 1.3), GLASS, bevel=0.04)                            # glass bags crate
+def parasol():
+    p = Prop("parasol")
+    p.cyl((0, 0, 1.6), 0.07, 3.2, STEEL, segs=6)
+    p.cyl((0, 0, 3.15), 1.6, 0.2, SUNSET, segs=8)
+    p.cyl((0, 0, 0.5), 0.6, 0.06, WOOD, segs=8)                                                 # table
     return p.build()
 
 
-def van():
-    p = Prop("van")
-    p.box((0, -1.55, 0.35), (2.0, 1.2, 1.7), WHITE, bevel=0.12)                        # cab
-    p.box((0, 0.45, 0.35), (2.1, 3.0, 2.15), WHITE, bevel=0.08)                        # box
-    p.box((0, -2.16, 1.25), (1.7, 0.04, 0.6), WINDOW)                                  # windscreen
-    p.box((0, 0.45, 1.25), (2.14, 2.6, 0.45), BRAND)                                   # brand stripe
-    for x in (-0.95, 0.95):
-        for y in (-1.5, 1.3):
-            p.wheel(x, y)
-    return p.build()
-
-
-def bike():
-    p = Prop("bike")
-    p.box((0, -0.7, 0.55), (1.2, 1.1, 1.0), WHITE, bevel=0.06)                         # cargo box in front
-    p.box((0, -0.7, 1.05), (1.24, 1.14, 0.12), BRAND)
-    p.box((0, 0.55, 0.35), (0.12, 1.4, 0.1), WINDOW)                                   # frame
-    p.box((0, 0.9, 0.35), (0.1, 0.1, 0.9), WINDOW)                                     # seat post
-    p.box((0, 0.9, 1.25), (0.3, 0.45, 0.08), WINDOW)
-    for y in (-1.2, 1.25):
-        p.cyl((0, y, 0.34), 0.34, 0.1, WINDOW, segs=12, axis="X")
-    for x in (-0.55, 0.55):
-        p.cyl((x, -1.0, 0.3), 0.3, 0.1, WINDOW, segs=10, axis="X")
-    return p.build()
-
-
-def compactor():
-    p = Prop("compactor")
-    p.box((0, -2.4, 0.5), (2.4, 1.6, 2.3), WHITE, bevel=0.12)
-    p.box((0, 0.6, 0.5), (2.5, 4.4, 2.8), TGREEN, bevel=0.1)
-    p.box((0, 3.0, 0.6), (2.3, 0.6, 2.4), PANEL, bevel=0.06)                           # rear loader
-    p.box((0, -3.21, 1.7), (2.0, 0.04, 0.8), WINDOW)
-    p.box((0, 0.6, 2.2), (2.54, 3.6, 0.3), PANEL)
-    for x in (-1.15, 1.15):
-        for y in (-2.2, 0.0, 1.6):
-            p.wheel(x, y, r=0.5, w=0.35)
-    return p.build()
-
-
-def depot_baler():
-    p = Prop("baler")
-    p.box((0, 0, 0), (4.0, 3.0, 3.2), BRAND, top=ROOFGREY, bevel=0.05)
-    p.box((0, -1.55, 0.2), (2.4, 0.1, 2.0), WINDOW)
-    p.box((0, 0, 3.2), (1.0, 1.0, 1.6), PANEL)                                        # press cylinder housing
-    p.box((2.4, 0, 0), (1.0, 2.2, 1.6), YELLOW, bevel=0.04)                            # feed hopper
+def menu_board():
+    p = Prop("menu_board")
+    p.box((0, 0, 0), (1.2, 0.5, 0.15), WOOD)
+    p.box((0, 0, 0.15), (1.0, 0.12, 1.5), WINDOW, bevel=0.03)                                   # blank chalk board
+    for i in range(3):
+        p.box((-0.15, -0.07, 0.5 + i * 0.35), (0.5, 0.02, 0.06), WHITE)                          # chalk lines, no letters
+        p.cyl((0.3, -0.08, 0.53 + i * 0.35), 0.08, 0.04, BUN, segs=8, axis="Y")
     return p.build()
 
 
@@ -215,7 +193,7 @@ def sheet(objs):
     x = -20.0
     for ob in objs:
         ob.location = (x, 0, 0)
-        x += 6.0 if ob.name not in ("compactor", "horeca", "shop") else 8.5
+        x += 6.0 if ob.name not in ("commissary",) else 18.0
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
@@ -236,7 +214,7 @@ def main():
     reset()
     os.makedirs(OUT, exist_ok=True)
     mat = material()
-    objs = [machine(False), machine(True), shop(), horeca(), van(), bike(), compactor(), depot_baler()]
+    objs = [truck("truck_starter", False), truck("truck_box", True), parasol(), menu_board(), commissary()]
     total = 0
     for ob in objs:
         ob.data.materials.append(mat)

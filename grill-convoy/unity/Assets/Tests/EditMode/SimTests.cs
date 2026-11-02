@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using NUnit.Framework;
 using GrillConvoy.Sim;
 
@@ -42,6 +43,25 @@ namespace GrillConvoy.Sim.Tests
             if (!tutorial) s.EndTutorial();
             return s;
         }
+
+        /// <summary>A career on day 4+ (crises allowed) with the truck at home, ready for the morning plan.</summary>
+        public static Simulation Morning(int day = 5, long seed = 7)
+        {
+            var s = NewSim(seed);
+            s.S.Day = day;
+            var t = s.S.Trucks[0];
+            t.Status = TruckStatus.Idle;
+            t.AtNode = s.Gd.DepotNode;
+            return s;
+        }
+
+        public static void OpenAt(Simulation s, int ti, string pitch)
+        {
+            var t = s.S.Trucks[ti];
+            t.Pitch = s.Gd.Node(pitch);
+            t.AtNode = t.Pitch;
+            t.Status = TruckStatus.Service;
+        }
     }
 
     public class DataTests
@@ -51,33 +71,26 @@ namespace GrillConvoy.Sim.Tests
         {
             var gd = TestData.Gd();
             Assert.IsTrue(gd.Ok, string.Join("; ", gd.Errors));
-            Assert.AreEqual(4, gd.Districts.Count);
+            Assert.AreEqual(3, gd.Pitches.Count, "MVP: 3 pitches");
+            Assert.AreEqual(8, gd.Cards.Count, "MVP: 8 menu cards");
+            Assert.AreEqual(8, gd.StationDefs.Count, "MVP: 8 station types");
+            Assert.AreEqual(5, gd.Archetypes.Count, "MVP: 5 customer types");
+            Assert.AreEqual(2, gd.Vehicles.Count, "MVP: 2 trucks");
             Assert.GreaterOrEqual(gd.Research.Count, 20);
         }
 
         [Test]
-        public void EverySiteReachableFromDepotByVan_AndAlleysBlockTheCompactor()
+        public void EveryPitchReachableFromTheCommissary_PathsMatchKm()
         {
             var gd = TestData.Gd();
-            foreach (var n in gd.Nodes)
+            foreach (int p in gd.Pitches)
             {
-                Assert.Less(gd.Graph.Km(gd.DepotNode, n.Index, true), RoadGraph.Inf, n.Id);
-                if (n.Kind == "site" && n.Alley)
-                    Assert.IsFalse(gd.Graph.Reachable(gd.DepotNode, n.Index, false) && !n.Alley, n.Id);
+                Assert.Less(gd.Graph.Km(gd.DepotNode, p), RoadGraph.Inf, gd.Nodes[p].Id);
+                var path = gd.Graph.Path(gd.DepotNode, p);
+                Assert.AreEqual(gd.DepotNode, path[0]);
+                Assert.AreEqual(p, path[path.Count - 1]);
+                Assert.AreEqual(gd.Graph.Km(gd.DepotNode, p), gd.Graph.PathKm(path), 1e-6);
             }
-            int church = gd.Node("o_church");
-            Assert.AreEqual(RoadGraph.Inf, gd.Graph.Km(gd.DepotNode, church, false), "the church alley is van/bike only");
-        }
-
-        [Test]
-        public void PathsAreConnectedAndMatchKm()
-        {
-            var gd = TestData.Gd();
-            int a = gd.DepotNode, b = gd.Node("u_dorms");
-            var p = gd.Graph.Path(a, b);
-            Assert.AreEqual(a, p[0]);
-            Assert.AreEqual(b, p[p.Count - 1]);
-            Assert.AreEqual(gd.Graph.Km(a, b), gd.Graph.PathKm(p), 1e-6);
         }
 
         [Test]
@@ -85,20 +98,31 @@ namespace GrillConvoy.Sim.Tests
         {
             foreach (var r in TestData.Gd().Research) Assert.LessOrEqual(r.Minutes, 20, r.Id);
         }
+
+        [Test]
+        public void TheStadiumIsFurtherThanThePlaza()
+        {
+            var gd = TestData.Gd();
+            Assert.Greater(gd.Graph.Km(gd.DepotNode, gd.Node("p_stadium")), gd.Graph.Km(gd.DepotNode, gd.Node("p_plaza")));
+        }
     }
 
     public class CoreTests
     {
         [Test]
-        public void NewCareerStartsInThePlanWithThreeMachinesTwoVansOneDriver()
+        public void NewCareerStartsWithTruckOneAtThePlazaWindowClosed()
         {
             var sim = TestData.NewSim(1, tutorial: true);
             Assert.AreEqual(Phases.Plan, sim.Phase);
-            Assert.AreEqual(3, sim.S.Points.Count);
-            Assert.AreEqual(2, sim.S.Trucks.Count);
-            Assert.AreEqual(1, sim.S.Drivers);
+            Assert.AreEqual(1, sim.S.Trucks.Count);
+            var t = sim.S.Trucks[0];
+            Assert.AreEqual(sim.Gd.Node("p_plaza"), t.AtNode);
+            Assert.IsTrue(t.Open);
+            Assert.AreEqual(2, t.Crew.Count);
+            Assert.Greater(t.Load[Stock.Patty], 0);
             Assert.IsTrue(sim.S.Tutorial);
-            Assert.Greater(sim.FillPct(sim.S.Points[0]), 0.75, "the first machine starts almost full (guide step 2)");
+            Assert.IsTrue(sim.PitchOpen(sim.Gd.Node("p_plaza")));
+            Assert.IsFalse(sim.PitchOpen(sim.Gd.Node("p_boardwalk")));
         }
 
         [Test]
@@ -117,301 +141,392 @@ namespace GrillConvoy.Sim.Tests
         }
 
         [Test]
-        public void MachineFillsThenTurnsCitizensAway()
+        public void CustomersQueueAndGetServed_SalesAndStockMove()
         {
             var sim = TestData.NewSim();
-            var p = sim.S.Points[0];
-            sim.FillTo(p, 1.0);
             sim.StartDay();
-            int turned = p.Turned;
-            for (int i = 0; i < 40; i++) sim.Deposit(0, 20, new[] { 1.0, 0, 0 }, 0);
-            Assert.Greater(p.Turned, turned);
-            Assert.IsTrue(sim.IsFull(p) || sim.FillPct(p) > 0.95);
+            int patties = sim.S.Trucks[0].Load[Stock.Patty];
+            sim.AdvanceMinutes(180);   // into the lunch rush
+            Assert.Greater(sim.S.Today.Served, 20);
+            Assert.Greater(sim.S.Today.Sales, 0);
+            Assert.Less(sim.S.Trucks[0].Load[Stock.Patty], patties);
         }
 
         [Test]
-        public void EstimateWithoutSensorDiffersFromLiveSensor()
+        public void ALongLineMakesPeopleWalkAway()
         {
             var sim = TestData.NewSim();
-            var p = sim.S.Points[1];
+            var t = sim.S.Trucks[0];
+            t.Crew.Clear();
+            t.Crew.Add(Roles.Cashier);   // a one-person truck at lunch
             sim.StartDay();
-            sim.Fire("heat_wave");
-            sim.AdvanceMinutes(120);
-            double est = sim.DisplayPct(p);
-            p.Sensor = true;
-            Assert.AreEqual(sim.FillPct(p), sim.DisplayPct(p), 1e-9, "a sensor shows the real bar");
-            Assert.AreNotEqual(sim.FillPct(p), est, "without a sensor the bar is an estimate (heat wave not in it)");
+            sim.AdvanceMinutes(200);
+            Assert.Greater(sim.S.Today.Walked, 0);
+            Assert.LessOrEqual(t.Queue.Count, sim.QueueCap(t) + 10);
         }
 
         [Test]
-        public void JammedMachineTurnsEveryoneAwayUntilATechnicianFixesIt()
+        public void ASoldOutTruckTurnsCustomersAway()
         {
             var sim = TestData.NewSim();
-            sim.S.Techs = 1;
+            sim.S.Trucks[0].Load[Stock.Patty] = 0;
             sim.StartDay();
-            sim.Jam(0, "test");
-            int t0 = sim.S.Points[0].Turned;
-            Assert.AreEqual(0, sim.Deposit(0, 3, new[] { 1.0, 0, 0 }, 0));
-            Assert.AreEqual(t0 + 1, sim.S.Points[0].Turned);
-            Assert.AreEqual("", sim.SendTech("point", 0));
-            Assert.AreEqual("already", sim.SendTech("point", 0));
-            sim.AdvanceMinutes(90);
-            Assert.IsFalse(sim.S.Points[0].Jammed);
+            sim.AdvanceMinutes(150);
+            Assert.Greater(sim.S.Today.SoldOut, 0);
+            Assert.Greater(sim.S.Today.SelloutMin, 100);
+            Assert.AreEqual(0, sim.S.Today.Served);
+        }
+
+        [Test]
+        public void TheMenuBoardChangesWhoStops()
+        {
+            var a = TestData.NewSim(3);
+            var b = TestData.NewSim(3);
+            b.S.Trucks[0].Menu.Clear();
+            b.S.Trucks[0].Menu.Add("kids");   // office workers do not want the kids' burger
+            a.StartDay(); b.StartDay();
+            a.AdvanceMinutes(240); b.AdvanceMinutes(240);
+            Assert.Greater(a.S.Today.Arrivals, b.S.Today.Arrivals * 1.2);
+        }
+    }
+
+    public class LineTests
+    {
+        [Test]
+        public void StartLineIsWindowBound_RunnerAndCashierHelp()
+        {
+            var sim = TestData.NewSim();
+            var t = sim.S.Trucks[0];
+            var l0 = sim.Line(t);
+            Assert.IsTrue(l0.Complete);
+            Assert.AreEqual(Stations.Window, l0.Bottleneck, "no cashier: the window is the slowest stage");
+            t.Crew.Add(Roles.Runner);
+            Assert.Greater(sim.Line(t).Throughput, l0.Throughput, "the runner floats to the slowest stage");
+            t.Crew[2] = Roles.Cashier;
+            Assert.Greater(sim.Line(t).Throughput, l0.Throughput);
+        }
+
+        [Test]
+        public void WalkingDistanceSlowsTheLine_AdjacencyBonusesSpeedItUp()
+        {
+            var sim = TestData.NewSim();
+            var t = sim.S.Trucks[0];
+            t.Crew.Add(Roles.Cashier);
+            double near = sim.Line(t).Throughput;
+            // grill to the far corner: two extra tiles of walking
+            var g = t.Layout.Find(s => s.Type == Stations.Grill);
+            g.X = 3; g.Y = 2;
+            var far = sim.Line(t);
+            Assert.Greater(far.WalkTiles, 0);
+            Assert.Less(far.Throughput, near);
+            g.X = 1; g.Y = 2;
+            // toaster next to the bench: +15 % on the bench (guide step 9)
+            t.Crew[0] = Roles.Griller; t.Crew[1] = Roles.Assembler;
+            t.Layout.Add(new StationTile { Type = Stations.Grill, X = 2, Y = 2 });
+            double before = sim.Line(t).Assembly;
+            var toaster = t.Layout.Find(s => s.Type == Stations.Toaster);
+            Assert.IsFalse(sim.Adjacent(t, Stations.Toaster, Stations.Assembly));
+            Assert.AreEqual("", sim.Move(0, toaster.Y * sim.GridW(t) + toaster.X, 1 * sim.GridW(t) + 0));
+            Assert.IsTrue(sim.Adjacent(t, Stations.Toaster, Stations.Assembly));
+            Assert.Greater(sim.Line(t).Assembly, before);
+        }
+
+        [Test]
+        public void MoveSwapsUndoRestoresAndPresetsRoundTrip()
+        {
+            var sim = TestData.NewSim();
+            var t = sim.S.Trucks[0];
+            int w = sim.GridW(t);
+            string before = Json.Write(StationTile.WriteList(t.Layout));
+            Assert.AreEqual("", sim.SavePreset(0, 0));
+            Assert.AreEqual("", sim.Move(0, 0 * w + 1, 2 * w + 1), "window onto the grill tile: swap");
+            Assert.AreEqual(Stations.Grill, t.Layout[sim.TileIndexAt(t, 1, 0)].Type);
+            Assert.AreEqual("", sim.UndoLayout(0));
+            Assert.AreEqual(before, Json.Write(StationTile.WriteList(t.Layout)));
+            sim.Move(0, 3 * 1 + 2 * w, 0);
+            Assert.AreEqual("", sim.LoadPreset(0, 0));
+            Assert.AreEqual(Stations.Toaster, t.Layout[sim.TileIndexAt(t, 3, 2)].Type);
+            Assert.AreEqual("invalid", sim.SavePreset(0, 1), "a second preset slot needs the Convoy Pass");
+            sim.SetPerks(new Dictionary<string, bool> { { "convoy_pass", true } });
+            Assert.AreEqual("", sim.SavePreset(0, 1));
+        }
+
+        [Test]
+        public void AutoArrangeNeverMakesTheLineWorse()
+        {
+            var sim = TestData.NewSim();
+            sim.S.Cash = 1e6;
+            sim.S.Research.Add("fryer");
+            sim.S.Research.Add("drink_fridge");
+            foreach (var st in new[] { "grill", "assembly", "fryer", "fridge" }) Assert.AreEqual("", sim.Buy("station:0:" + st), st);
+            var t = sim.S.Trucks[0];
+            t.Crew.Add(Roles.Cashier);
+            double before = sim.LayoutScore(t);
+            string r = sim.AutoLayout(0);
+            Assert.That(r, Is.EqualTo("").Or.EqualTo("no_better"));
+            Assert.GreaterOrEqual(sim.LayoutScore(t), before - 1e-9);
+            var seen = new HashSet<int>();
+            foreach (var s in t.Layout) Assert.IsTrue(seen.Add(s.Y * 10 + s.X), "no two stations on one tile");
+        }
+
+        [Test]
+        public void ACoreStationCannotBeSold_OthersRefundHalf()
+        {
+            var sim = TestData.NewSim();
+            var t = sim.S.Trucks[0];
+            int w = sim.GridW(t);
+            Assert.AreEqual("last", sim.Remove(0, 0 * w + 1));
+            double cash = sim.S.Cash;
+            Assert.AreEqual("", sim.Remove(0, 2 * w + 3));
+            Assert.AreEqual(cash + sim.Gd.StationDefs["toaster"].Price * 0.5, sim.S.Cash, 1e-6);
+        }
+
+        [Test]
+        public void MenuBoardSlotsAndResearchGates()
+        {
+            var sim = TestData.NewSim();
+            Assert.AreEqual("research", sim.ToggleCard(0, "double"));
+            sim.S.Research.Add("card_double");
+            sim.S.Research.Add("card_spicy");
+            Assert.AreEqual("", sim.ToggleCard(0, "double"));
+            Assert.AreEqual("board_full", sim.ToggleCard(0, "spicy"), "3 cards until the bigger board");
+            Assert.AreEqual("", sim.ToggleCard(0, "classic"));
+            Assert.AreEqual("", sim.ToggleCard(0, "cheese"));
+            Assert.AreEqual("last", sim.ToggleCard(0, "double"));
+            Assert.AreEqual("research", sim.SetTier(0, 2));
         }
     }
 
     public class FleetTests
     {
         [Test]
-        public void TheCrewClearsAJamWhenTheyEmptyTheMachine()
+        public void StartOfDaySendsTrucksToTheirPitches()
         {
-            var sim = TestData.NewSim();
-            sim.Jam(0, "t");
-            Assert.Contains(0, sim.SuggestRoute(0), "a jammed machine is always due");
+            var sim = TestData.Morning();
+            var t = sim.S.Trucks[0];
+            t.Pitch = sim.Gd.Node("p_plaza");
             sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0 });
-            for (int i = 0; i < 200 && sim.S.Points[0].Jammed; i++) sim.AdvanceMinutes(1);
-            Assert.IsFalse(sim.S.Points[0].Jammed);
-        }
-
-        [Test]
-        public void DispatchNeedsAFreeDriver()
-        {
-            var sim = TestData.NewSim();
-            Assert.AreEqual("", sim.Dispatch(0, new List<int> { 0 }));
-            Assert.AreEqual("no_driver", sim.Dispatch(1, new List<int> { 1 }));
-            sim.S.Cash = 10000;
-            Assert.AreEqual("", sim.Buy("driver"));
-            Assert.AreEqual("", sim.Dispatch(1, new List<int> { 1 }));
-        }
-
-        [Test]
-        public void TruckEmptiesMachinesUnloadsAndTheDepotEarnsFees()
-        {
-            var sim = TestData.NewSim();
-            double before = sim.FillPct(sim.S.Points[0]);
-            Assert.Greater(before, 0.5);
-            sim.StartDay();
-            Assert.AreEqual("", sim.Dispatch(0, new List<int> { 0, 1 }));
-            bool serviced = false, unloaded = false;
-            for (int i = 0; i < 300 && !unloaded; i++)
-            {
-                sim.AdvanceMinutes(1);
-                foreach (var e in sim.DrainEvents())
-                {
-                    if (e.Type == "serviced" && e.B == 0) serviced = true;
-                    if (e.Type == "unloaded") unloaded = true;
-                }
-            }
-            Assert.IsTrue(serviced && unloaded);
-            Assert.Less(sim.FillPct(sim.S.Points[0]), before);
+            Assert.AreEqual(TruckStatus.Drive, t.Status);
+            for (int i = 0; i < 60 && !t.Open; i++) sim.AdvanceMinutes(1);
+            Assert.IsTrue(t.Open);
+            Assert.AreEqual(sim.Gd.Node("p_plaza"), t.AtNode);
             Assert.Greater(sim.S.Today.Km, 0);
             Assert.Greater(sim.S.Today.Fuel, 0);
-            sim.AdvanceMinutes(120);
-            Assert.Greater(sim.S.Depot.Till + sim.S.Today.Fees, 0, "the count line earned handling fees");
-            Assert.Greater(sim.CollectTill(), 0);
         }
 
         [Test]
-        public void GlassFillsTheTruckByWeightBeforeVolume()
+        public void RestockRunGoesHomeReloadsAndComesBack()
         {
             var sim = TestData.NewSim();
             var t = sim.S.Trucks[0];
-            t.Load[Mats.Glass] = 1700;  // 646 kg of 700, only 1530 l of 1800
-            Assert.IsTrue(sim.LoadLimitedByWeight(t));
-            Assert.Greater(sim.LoadPct(t), 0.9);
+            sim.StartDay();
+            sim.AdvanceMinutes(30);
+            t.Load[Stock.Patty] = 5;
+            int fridge = sim.S.Commissary.Stock[Stock.Patty];
+            Assert.AreEqual("", sim.Restock(0));
+            Assert.AreEqual(0, t.Queue.Count, "the line disperses");
+            bool home = false;
+            for (int i = 0; i < 120 && !(home && t.Open); i++)
+            {
+                sim.AdvanceMinutes(1);
+                if (t.Status == TruckStatus.Restock) home = true;
+            }
+            Assert.IsTrue(home, "it stopped at the commissary");
+            Assert.IsTrue(t.Open, "and opened again at its pitch");
+            Assert.Greater(t.Load[Stock.Patty], 5);
+            Assert.Less(sim.S.Commissary.Stock[Stock.Patty], fridge + 5);
         }
 
         [Test]
-        public void CompactorTruckCannotServeAlleyPoints()
+        public void RecallClosesAndRelocateMovesMidDay()
+        {
+            var sim = TestData.NewSim();
+            sim.S.Districts.Add("boardwalk");
+            sim.StartDay();
+            sim.AdvanceMinutes(20);
+            Assert.AreEqual("", sim.AssignPitch(0, sim.Gd.Node("p_boardwalk")));
+            var t = sim.S.Trucks[0];
+            for (int i = 0; i < 80 && !t.Open; i++) sim.AdvanceMinutes(1);
+            Assert.AreEqual(sim.Gd.Node("p_boardwalk"), t.AtNode);
+            Assert.AreEqual("", sim.Recall(0));
+            for (int i = 0; i < 80 && t.Busy; i++) sim.AdvanceMinutes(1);
+            Assert.IsFalse(t.Busy);
+            Assert.AreEqual("locked", sim.AssignPitch(0, sim.Gd.Node("p_stadium")));
+        }
+
+        [Test]
+        public void TrucksComeHomeAtDayEndAndLeftoversPartlySpoil()
+        {
+            var sim = TestData.NewSim();
+            sim.StartDay();
+            sim.AdvanceMinutes(sim.Gd.DayMinutes + 1);
+            Assert.AreEqual(Phases.Report, sim.Phase);
+            foreach (var t in sim.S.Trucks) { Assert.IsFalse(t.Busy); Assert.AreEqual(0, t.Load[Stock.Patty]); }
+            var sim2 = TestData.NewSim();
+            sim2.S.Trucks[0].Crew.Clear();   // nobody cooks: everything comes back
+            sim2.StartDay();
+            sim2.AdvanceMinutes(sim2.Gd.DayMinutes + 1);
+            Assert.Greater(sim2.S.History[0].Waste, 0, "night spoilage of the patties that came back");
+        }
+    }
+
+    public class CommissaryTests
+    {
+        [Test]
+        public void PrepCostsNowAndLandsAfterItsTime()
+        {
+            var sim = TestData.NewSim();
+            sim.StartDay();
+            double cash = sim.S.Cash;
+            int stock = sim.S.Commissary.Stock[Stock.Patty];
+            Assert.AreEqual("", sim.Prep(Stock.Patty));
+            Assert.AreEqual(cash - sim.BatchCost(Stock.Patty), sim.S.Cash, 1e-6);
+            sim.AdvanceMinutes(sim.Gd.StockDefs[Stock.Patty].PrepMin + 1);
+            Assert.AreEqual(stock + sim.BatchSize(Stock.Patty), sim.S.Commissary.Stock[Stock.Patty]);
+        }
+
+        [Test]
+        public void TheQueueAndTheFridgeAreCapped()
         {
             var sim = TestData.NewSim();
             sim.S.Cash = 1e6;
-            sim.S.Districts.Add("oldtown");
-            sim.S.Research.Add("compactor_truck");
-            sim.S.Research.Add("fuel_saver");
-            Assert.AreEqual("", sim.Buy("machine:o_church"));
-            Assert.AreEqual("", sim.Buy("truck:compactor"));
-            int church = sim.S.Points.Count - 1, comp = sim.S.Trucks.Count - 1;
-            Assert.IsFalse(sim.CanServe(sim.S.Trucks[comp], sim.S.Points[church]));
-            Assert.IsTrue(sim.CanServe(sim.S.Trucks[0], sim.S.Points[church]));
+            for (int i = 0; i < Simulation.MaxPrepQueue; i++) Assert.AreEqual("", sim.Prep(Stock.Bun));
+            Assert.AreEqual("queue_full", sim.Prep(Stock.Bun));
+            var sim2 = TestData.NewSim();
+            sim2.S.Cash = 1e6;
+            sim2.S.Commissary.Stock[Stock.Patty] = sim2.Gd.StockDefs[Stock.Patty].Cap - 10;
+            Assert.AreEqual("fridge_full", sim2.Prep(Stock.Patty));
         }
 
         [Test]
-        public void SuggestRouteServesDuePointsOnlyAndRespectsPolicies()
+        public void LoadingNeedsTheTruckAtHomeAndRespectsCaps()
         {
             var sim = TestData.NewSim();
-            foreach (var p in sim.S.Points) p.Sensor = true;
-            sim.FillTo(sim.S.Points[0], 0.9);
-            sim.FillTo(sim.S.Points[1], 0.2);
-            sim.FillTo(sim.S.Points[2], 0.85);
-            sim.SetPolicy(2, Policies.Call, 0);
-            var r = sim.SuggestRoute(0);
-            CollectionAssert.Contains(r, 0);
-            CollectionAssert.DoesNotContain(r, 1);
-            CollectionAssert.DoesNotContain(r, 2, "on-call points wait for a manual route");
-            sim.SetPolicy(1, Policies.Threshold, 60);
-            sim.FillTo(sim.S.Points[1], 0.65);
-            CollectionAssert.Contains(sim.SuggestRoute(0), 1);
+            Assert.AreEqual(0, sim.Load(0, Stock.Patty, 20, out string why));
+            Assert.AreEqual("away", why, "truck #1 stands at the plaza on day 1");
+            var m = TestData.Morning();
+            int fridge = m.S.Commissary.Stock[Stock.Patty];
+            int moved = m.Load(0, Stock.Patty, 1000, out _);
+            Assert.AreEqual(Math.Min(fridge, m.TruckCap(m.S.Trucks[0], Stock.Patty) - 120), moved);
+            Assert.AreEqual(-10, m.Load(0, Stock.Patty, -10, out _));
         }
 
         [Test]
-        public void EstimateGivesKmCostAndLoad()
-        {
-            var sim = TestData.NewSim();
-            var e = sim.Estimate(0, new List<int> { 0, 1, 2 });
-            Assert.IsTrue(e.Ok);
-            Assert.Greater(e.Km, 1);
-            Assert.Greater(e.Cost, 0);
-            Assert.Greater(e.Minutes, 10);
-            Assert.Greater(e.LoadPct, 0);
-        }
-
-        [Test]
-        public void RecallSendsTheTruckHome()
-        {
-            var sim = TestData.NewSim();
-            sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
-            sim.AdvanceMinutes(2);
-            Assert.AreEqual("", sim.Recall(0));
-            for (int i = 0; i < 200 && sim.S.Trucks[0].Busy; i++) sim.AdvanceMinutes(1);
-            Assert.IsFalse(sim.S.Trucks[0].Busy);
-        }
-
-        [Test]
-        public void DispatcherDrivesAutoTrucksByPolicy()
+        public void NextDayRepacksLikeYesterday()
         {
             var sim = TestData.NewSim();
             sim.S.Cash = 1e5;
-            sim.S.Research.Add("route_optimizer");
-            sim.S.Research.Add("dispatcher");
-            Assert.AreEqual("", sim.Buy("dispatcher"));
-            Assert.IsTrue(sim.S.Trucks[0].Auto);
-            foreach (var p in sim.S.Points) p.Sensor = true;
-            sim.FillTo(sim.S.Points[0], 0.95);
             sim.StartDay();
-            sim.AdvanceMinutes(2);
-            Assert.IsTrue(sim.S.Trucks[0].Busy, "the Dispatcher sent the auto truck to the full machine");
+            sim.AdvanceMinutes(sim.Gd.DayMinutes + 1);
+            sim.NextDay();
+            var t = sim.S.Trucks[0];
+            Assert.Greater(t.Load[Stock.Patty], 0, "the crew packed the truck from the commissary");
+            Assert.LessOrEqual(t.Load[Stock.Patty], t.Pack[Stock.Patty]);
         }
 
         [Test]
-        public void AutoSlotsAreCapped()
+        public void SuggestedPackFollowsTheForecast()
         {
-            var sim = TestData.NewSim();
-            Assert.AreEqual("no_dispatcher", sim.SetAuto(0, true));
-            sim.S.Depot.Dispatcher = true;
-            for (int i = 0; i < 4; i++) { sim.S.Trucks.Add(new TruckState { Id = 10 + i, Type = "van", AtNode = sim.Gd.DepotNode }); }
-            int ok = 0;
-            for (int i = 0; i < sim.S.Trucks.Count; i++) if (sim.SetAuto(i, true) == "") ok++;
-            Assert.AreEqual(sim.Gd.DispatcherSlots, ok);
-            sim.SetPerks(new Dictionary<string, bool> { { "dispatcher_plus", true } });
-            Assert.AreEqual(sim.Gd.DispatcherSlots + sim.Gd.PlusSlots, sim.AutoSlots);
+            var sim = TestData.Morning();
+            sim.S.Trucks[0].Pitch = sim.Gd.Node("p_plaza");
+            int plaza = sim.Gd.Node("p_plaza");
+            double weekdayC = sim.ForecastCustomers(plaza);
+            var weekday = sim.SuggestPack(0);
+            sim.S.Day = 6;   // Saturday: the offices are closed
+            Assert.Less(sim.ForecastCustomers(plaza), weekdayC * 0.7);
+            sim.S.Day = 13;  // a Saturday, with rain
+            sim.S.Weather = "rain";
+            var weekend = sim.SuggestPack(0);
+            Assert.Greater(weekday[Stock.Patty], weekend[Stock.Patty]);
+            Assert.LessOrEqual(weekday[Stock.Patty], sim.TruckCap(sim.S.Trucks[0], Stock.Patty));
+            Assert.AreEqual(0, weekday[Stock.Side], "no fryer, no fridge: no sides");
         }
     }
 
-    public class DepotTests
+    public class CrisisTests
     {
         [Test]
-        public void CountLineThenBalerMakesBalesAndTheyCanBeSold()
+        public void FlareUpHalvesTheGrillUntilExtinguished()
         {
             var sim = TestData.NewSim();
-            sim.S.Depot.Intake[Mats.Pet] = 2500;   // 75 kg PET
-            sim.S.Depot.Intake[Mats.Alu] = 2500;   // 37.5 kg alu
             sim.StartDay();
-            sim.AdvanceMinutes(400);
-            Assert.Greater(sim.S.Depot.Bales[Mats.Pet] + sim.S.Depot.Bales[Mats.Alu], 0);
+            var t = sim.S.Trucks[0];
+            t.Crew.Add(Roles.Cashier);
+            double before = sim.LiveThroughput(t);
+            sim.Flare(0);
+            Assert.IsTrue(t.Flaring);
+            Assert.AreEqual(before * 0.5, sim.LiveThroughput(t), 1e-9);
+            Assert.AreEqual("", sim.Extinguish(0));
+            Assert.AreEqual(before, sim.LiveThroughput(t), 1e-9);
+            sim.Flare(0);
+            sim.AdvanceMinutes(sim.Gd.Svc.FlareMin + 1);
+            Assert.IsFalse(t.Flaring, "a flare-up burns out by itself (never a hard lock)");
+        }
+
+        [Test]
+        public void EmptyPropaneDarkensTheGrill_SwapCostsCashOrAKit()
+        {
+            var sim = TestData.NewSim();
+            sim.StartDay();
+            var t = sim.S.Trucks[0];
+            t.Propane = 0;
+            Assert.AreEqual(0, sim.LiveThroughput(t));
             double cash = sim.S.Cash;
-            double got = sim.Sell(Mats.Pet) + sim.Sell(Mats.Alu);
-            Assert.Greater(got, 0);
-            Assert.AreEqual(cash + got, sim.S.Cash, 1e-6);
-            Assert.AreEqual(0, sim.Sell(Mats.Pet));
+            Assert.AreEqual("", sim.SwapPropane(0));
+            Assert.AreEqual(cash - sim.Gd.Svc.PropaneSwap, sim.S.Cash, 1e-6);
+            Assert.Greater(sim.LiveThroughput(t), 0);
+            t.Propane = 0;
+            sim.S.PropaneKits = 1;
+            cash = sim.S.Cash;
+            Assert.AreEqual("", sim.SwapPropane(0));
+            Assert.AreEqual(cash, sim.S.Cash, 1e-6);
+            Assert.AreEqual(0, sim.S.PropaneKits);
         }
 
         [Test]
-        public void FullYardStopsTheBaler_AndBalerDownStopsIt()
+        public void HalftimeStampedeIsOnTheCalendar()
         {
             var sim = TestData.NewSim();
-            sim.S.Depot.Bales[Mats.Pet] = sim.S.Depot.YardCap;
-            sim.S.Depot.BalerIn[Mats.Pet] = 500;
-            sim.StartDay();
-            sim.AdvanceMinutes(60);
-            Assert.AreEqual(500, sim.S.Depot.BalerIn[Mats.Pet], 1e-9);
-            sim.Sell(Mats.Pet);
-            sim.BalerDown("test");
-            sim.AdvanceMinutes(60);
-            Assert.AreEqual(500, sim.S.Depot.BalerIn[Mats.Pet], 1e-9);
+            sim.S.Districts.Add("boardwalk");
+            sim.S.Districts.Add("stadium");
+            int stadium = sim.Gd.Node("p_stadium");
+            int day = sim.Gd.MatchEvery;
+            Assert.IsTrue(sim.MatchDay(day));
+            Assert.IsFalse(sim.MatchDay(day + 1));
+            sim.S.Day = day;
+            sim.S.Minute = sim.Gd.HalftimeFrom + 1;
+            Assert.IsTrue(sim.Halftime(stadium));
+            Assert.AreEqual(sim.Gd.HalftimeMult, sim.EventMult(stadium), 1e-9);
+            Assert.AreEqual(1.0, sim.EventMult(sim.Gd.Node("p_plaza")), 1e-9);
         }
 
         [Test]
-        public void BaleCrashLowersOnlyThatMaterial()
+        public void RivalTruckSplitsTheCrowd_CounterOfferWinsSomeBack()
         {
             var sim = TestData.NewSim();
-            double[] before = { sim.BalePrice(0), sim.BalePrice(1), sim.BalePrice(2) };
-            sim.Fire("bale_crash");
-            var e = sim.S.Events.Find(x => x.Id == "bale_crash");
-            for (int m = 0; m < Mats.N; m++)
-                if (m == e.Target) Assert.Less(sim.BalePrice(m), before[m]);
-                else Assert.AreEqual(before[m], sim.BalePrice(m), 1e-9);
+            int plaza = sim.Gd.Node("p_plaza");
+            sim.S.Day = 6;
+            sim.PitchState(plaza).Rep = 60;
+            Assert.IsTrue(sim.Fire("rival"));
+            var t = sim.S.Trucks[0];
+            double mult = sim.RivalMult(plaza, t);
+            Assert.Less(mult, 1.0);
+            Assert.AreEqual("", sim.Promo(0));
+            Assert.Greater(sim.RivalMult(plaza, t), mult);
         }
 
         [Test]
-        public void CountingCentreTakesBulkHaulsWithoutBlockingAMachine()
-        {
-            var sim = TestData.NewSim();
-            sim.StartDay();
-            sim.Fire("bulk_returner");
-            bool blocked = sim.S.Points.Exists(p => p.BusyUntil > sim.S.Minute);
-            Assert.IsTrue(blocked);
-            var sim2 = TestData.NewSim();
-            sim2.S.Depot.Centre = true;
-            sim2.StartDay();
-            double cash = sim2.S.Cash;
-            sim2.Fire("bulk_returner");
-            Assert.IsFalse(sim2.S.Points.Exists(p => p.BusyUntil > sim2.S.Minute));
-            Assert.Greater(sim2.S.Cash, cash);
-        }
-    }
-
-    public class EconomyTests
-    {
-        static void PlayDay(Simulation sim) => BalanceRunner.PlayDay(sim, new BalanceReport());
-
-        [Test]
-        public void DayEndsWithAReportStarsAndCosts()
-        {
-            var sim = TestData.NewSim();
-            PlayDay(sim);
-            Assert.AreEqual(Phases.Report, sim.Phase);
-            var d = sim.S.History[sim.S.History.Count - 1];
-            Assert.Greater(d.Wages, 0);
-            Assert.Greater(d.Collected, 0);
-            Assert.That(d.Stars, Is.InRange(0, 9));
-            Assert.IsTrue(sim.NextDay());
-            Assert.AreEqual(2, sim.S.Day);
-            Assert.AreEqual(Phases.Plan, sim.Phase);
-        }
-
-        [Test]
-        public void TrucksComeHomeAtDayEnd()
+        public void AllHandsBoostsThenCoolsDown()
         {
             var sim = TestData.NewSim();
             sim.StartDay();
-            sim.AdvanceMinutes(sim.Gd.DayMinutes - 3);
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
-            sim.AdvanceMinutes(10);
-            Assert.AreEqual(Phases.Report, sim.Phase);
-            foreach (var t in sim.S.Trucks) Assert.IsFalse(t.Busy);
-        }
-
-        [Test]
-        public void FirstDaysAndTheGuideNeverLowerTheRating()
-        {
-            var sim = TestData.NewSim(3, tutorial: true);
-            double r0 = sim.S.Rating;
-            sim.StartDay();
-            sim.AdvanceMinutes(sim.Gd.DayMinutes + 5);   // nobody empties anything
-            Assert.GreaterOrEqual(sim.S.Rating, r0);
+            var t = sim.S.Trucks[0];
+            double x = sim.LiveThroughput(t);
+            Assert.AreEqual("", sim.AllHands(0));
+            Assert.AreEqual(x * sim.Gd.Svc.AllHandsMult, sim.LiveThroughput(t), 1e-9);
+            Assert.AreEqual("cooldown", sim.AllHands(0));
+            sim.AdvanceMinutes(sim.Gd.Svc.AllHandsMin + 1);
+            Assert.AreEqual(x, sim.LiveThroughput(t), 1e-6);
         }
 
         [Test]
@@ -420,31 +535,68 @@ namespace GrillConvoy.Sim.Tests
             var sim = TestData.NewSim(5);
             for (int d = 0; d < sim.Gd.EventFreeDays; d++)
             {
-                PlayDay(sim);
+                BalanceRunner.PlayDay(sim, new BalanceReport());
                 foreach (var e in sim.DrainEvents()) Assert.AreNotEqual("crisis", e.Type);
+                Assert.AreEqual(0, sim.S.Planned.Count);
                 sim.NextDay();
             }
             Assert.AreEqual(sim.Gd.EventFreeDays + 1, sim.S.Day);
+            Assert.IsFalse(new[] { "hot", "rain" }.Contains(sim.S.History[0].Weather));
+        }
+    }
+
+    public class EconomyTests
+    {
+        [Test]
+        public void DayEndsWithAReportStarsAndCosts()
+        {
+            var sim = TestData.NewSim();
+            BalanceRunner.PlayDay(sim, new BalanceReport());
+            Assert.AreEqual(Phases.Report, sim.Phase);
+            var d = sim.S.History[sim.S.History.Count - 1];
+            Assert.Greater(d.Wages, 0);
+            Assert.Greater(d.Permits, 0);
+            Assert.Greater(d.Served, 0);
+            Assert.That(d.Stars, Is.InRange(0, 9));
+            Assert.IsTrue(sim.NextDay());
+            Assert.AreEqual(2, sim.S.Day);
+            Assert.AreEqual(Phases.Plan, sim.Phase);
         }
 
         [Test]
-        public void PurchasesCheckCashResearchAndDistricts()
+        public void FirstDaysAndTheGuideNeverLowerFame()
+        {
+            var sim = TestData.NewSim(3, tutorial: true);
+            sim.S.Trucks[0].Crew.Clear();
+            double f0 = sim.S.Fame;
+            sim.StartDay();
+            sim.AdvanceMinutes(sim.Gd.DayMinutes + 5);   // nobody cooks
+            Assert.GreaterOrEqual(sim.S.Fame, f0);
+        }
+
+        [Test]
+        public void PurchasesCheckCashFameChaptersAndResearch()
         {
             var sim = TestData.NewSim();
             sim.S.Cash = 100;
-            Assert.AreEqual("cash", sim.Buy("machine:h_quay"));
+            Assert.AreEqual("cash", sim.Buy("hire:0:runner"));
             sim.S.Cash = 1e6;
-            Assert.AreEqual("", sim.Buy("machine:h_quay"));
-            Assert.AreEqual("owned", sim.Buy("machine:h_quay"));
-            Assert.AreEqual("locked", sim.Buy("machine:o_square"));
-            Assert.AreEqual("research", sim.Buy("sensor:0"));
-            Assert.AreEqual("", sim.Buy("bin_m:0"), "the bigger bin needs no research (guide step 13)");
-            sim.S.Rating = 10;
-            Assert.AreEqual("rating", sim.Buy("district:oldtown"));
-            sim.S.Rating = 60;
-            Assert.AreEqual("", sim.Buy("district:oldtown"));
-            Assert.AreEqual("", sim.Buy("machine:o_square"));
-            Assert.AreEqual("locked", sim.Buy("district:stadium"), "chapters unlock in order");
+            Assert.AreEqual("", sim.Buy("hire:0:runner"));
+            Assert.AreEqual("max", sim.Buy("hire:0:cashier"), "the starter truck takes 3 crew");
+            Assert.AreEqual("research", sim.Buy("station:0:fryer"));
+            Assert.AreEqual("", sim.Buy("station:0:grill"));
+            Assert.AreEqual("research", sim.Buy("station:0:window"), "a second window needs research");
+            Assert.AreEqual("chapter", sim.Buy("truck:box"), "truck #2 comes with the stadium chapter");
+            sim.S.Fame = 10;
+            Assert.AreEqual("fame", sim.Buy("pitch:boardwalk"));
+            Assert.AreEqual("locked", sim.Buy("pitch:stadium"), "pitches unlock in order");
+            sim.S.Fame = 60;
+            Assert.AreEqual("", sim.Buy("pitch:boardwalk"));
+            Assert.AreEqual("", sim.Buy("pitch:stadium"));
+            Assert.AreEqual("", sim.Buy("truck:box"));
+            Assert.AreEqual(2, sim.S.Trucks.Count);
+            Assert.AreEqual("max", sim.Buy("truck:box"));
+            Assert.AreEqual("research", sim.Buy("extend:0"));
         }
 
         [Test]
@@ -452,21 +604,22 @@ namespace GrillConvoy.Sim.Tests
         {
             var sim = TestData.NewSim();
             sim.S.Cash = 1e5;
-            Assert.AreEqual("", sim.StartResearch("sensors"));
-            Assert.AreEqual("busy", sim.StartResearch("route_optimizer"));
+            Assert.AreEqual("", sim.StartResearch("fryer"));
+            Assert.AreEqual("busy", sim.StartResearch("card_spicy"));
             sim.Advance(1.0);
-            Assert.IsFalse(sim.Has("sensors"));
+            Assert.IsFalse(sim.Has("fryer"));
             sim.Touch(1000);
             sim.Offline(1000 + 3600);
-            Assert.IsTrue(sim.Has("sensors"));
-            Assert.AreEqual("requires", sim.CanResearch("jam_guard"));
+            Assert.IsTrue(sim.Has("fryer"));
+            Assert.AreEqual("requires", sim.CanResearch("card_premium"));
+            Assert.AreEqual("locked", sim.CanResearch("card_kids"), "the kids' card needs the Boardwalk");
         }
 
         [Test]
-        public void OfflinePayIsCappedAndScalesWithOfflinePlus()
+        public void OfflinePayIsCappedScalesWithRulesAndOfflinePlus()
         {
             var sim = TestData.NewSim();
-            sim.S.History.Add(new DayStats { Fees = 1000 });
+            sim.S.History.Add(new DayStats { Sales = 1000 });
             const long t0 = 1_800_000_000;
             sim.Touch(t0);
             Assert.IsNull(sim.Offline(t0 + 30), "short absence pays nothing");
@@ -478,6 +631,21 @@ namespace GrillConvoy.Sim.Tests
             sim.Touch(t0);
             var b = sim.Offline(t0 + 100 * 3600);
             Assert.Greater(b.Amount, a.Amount);
+            sim.S.Research.Add("dispatcher");
+            Assert.AreEqual("", sim.SetAuto(0, true));
+            sim.Touch(t0);
+            Assert.Greater(sim.Offline(t0 + 100 * 3600).Amount, b.Amount, "a convoy on rules earns more while away");
+        }
+
+        [Test]
+        public void RuleSlotsAreCappedAndGrowWithThePassAndHeadCookPlus()
+        {
+            var sim = TestData.NewSim();
+            Assert.AreEqual("research", sim.SetAuto(0, true));
+            sim.S.Research.Add("dispatcher");
+            Assert.AreEqual(sim.Gd.RuleSlots, sim.RuleSlots);
+            sim.SetPerks(new Dictionary<string, bool> { { "convoy_pass", true }, { "automation", true } });
+            Assert.AreEqual(sim.Gd.RuleSlots + sim.Gd.PassSlots + sim.Gd.PlusSlots, sim.RuleSlots);
         }
 
         [Test]
@@ -487,6 +655,42 @@ namespace GrillConvoy.Sim.Tests
             double floor = sim.Gd.DayIncomeFloor;
             Assert.AreEqual(floor, sim.DayIncome());
             Assert.AreEqual(floor * 2.5, sim.GrantCash(2.5), 1e-9);
+        }
+    }
+
+    public class GuideSimTests
+    {
+        [Test]
+        public void TheHandCookedTicketGoesThroughEveryStationInOrder()
+        {
+            var sim = TestData.NewSim(1, tutorial: true);
+            sim.StartDay();
+            sim.BeginHandTicket();
+            Assert.AreEqual("order", sim.HandCook("flip"), "out of order does nothing");
+            Assert.AreEqual("", sim.HandCook("ticket"));
+            Assert.AreEqual("", sim.HandCook("grill"));
+            Assert.AreEqual(3, sim.HandStage);
+            Assert.AreEqual("order", sim.HandCook("flip"), "still sizzling");
+            sim.AdvanceMinutes(3);
+            Assert.AreEqual(4, sim.HandStage);
+            Assert.AreEqual("", sim.HandCook("flip"));
+            Assert.AreEqual("", sim.HandCook("assemble"));
+            double cash = sim.S.Cash;
+            Assert.AreEqual("", sim.HandCook("serve"));
+            Assert.Greater(sim.S.Cash, cash);
+            Assert.AreEqual(0, sim.HandStage);
+            Assert.AreEqual(1, sim.S.Today.Served);
+        }
+
+        [Test]
+        public void NoCustomersArriveWhileTheHandTicketIsOpen()
+        {
+            var sim = TestData.NewSim(1, tutorial: true);
+            sim.StartDay();
+            sim.BeginHandTicket();
+            sim.AdvanceMinutes(60);
+            Assert.AreEqual(1, sim.S.Trucks[0].Queue.Count);
+            Assert.AreEqual(0, sim.S.Today.Served);
         }
     }
 
@@ -504,17 +708,15 @@ namespace GrillConvoy.Sim.Tests
         {
             var sim = TestData.NewSim();
             long now = 86400L * 20000 + 100;
-            Assert.IsTrue(sim.GrantReward("fuel_voucher", now).Ok);
-            Assert.AreEqual("context", sim.RewardOffer("fuel_voucher", now + 5000).Reason, "a voucher is waiting");
-            sim.S.FuelVoucher = false;
-            Assert.AreEqual("cooldown", sim.RewardOffer("fuel_voucher", now + 10).Reason);
-            Assert.IsTrue(sim.GrantReward("fuel_voucher", now + 1000).Ok);
-            sim.S.FuelVoucher = false;
-            Assert.AreEqual("cap", sim.RewardOffer("fuel_voucher", now + 5000).Reason);
+            sim.StartDay();
+            Assert.IsTrue(sim.GrantReward("bonus_patties", now).Ok);
+            Assert.AreEqual("cooldown", sim.RewardOffer("bonus_patties", now + 10).Reason);
+            Assert.IsTrue(sim.GrantReward("bonus_patties", now + 700).Ok);
+            Assert.IsTrue(sim.GrantReward("bonus_patties", now + 1400).Ok);
+            Assert.AreEqual("cap", sim.RewardOffer("bonus_patties", now + 5000).Reason);
             var back = SaveCodec.Decode(SaveCodec.Encode(sim), sim.Gd).Sim;
-            back.S.FuelVoucher = false;
-            Assert.AreEqual("cap", back.RewardOffer("fuel_voucher", now + 5000).Reason, "caps survive a relaunch");
-            Assert.IsTrue(back.RewardOffer("fuel_voucher", now + 86400).Ok, "a new UTC day resets the cap");
+            Assert.AreEqual("cap", back.RewardOffer("bonus_patties", now + 5000).Reason, "caps survive a relaunch");
+            Assert.IsTrue(back.RewardOffer("bonus_patties", now + 86400).Ok, "a new UTC day resets the cap");
         }
 
         [Test]
@@ -530,28 +732,42 @@ namespace GrillConvoy.Sim.Tests
         }
 
         [Test]
-        public void EmergencyEmptyNeedsAFullMachineAndEmptiesIt()
+        public void CrisisRescueOnlyWhenATruckIsInTrouble()
         {
             var sim = TestData.NewSim();
             long now = 86400L * 20000;
-            foreach (var p in sim.S.Points) sim.FillTo(p, 0.3);
-            Assert.AreEqual("context", sim.RewardOffer("emergency_empty", now).Reason);
-            sim.FillTo(sim.S.Points[1], 1.0);
-            var r = sim.GrantReward("emergency_empty", now);
-            Assert.IsTrue(r.Ok);
-            Assert.AreEqual(0, sim.Containers(sim.S.Points[1]), 1e-9);
-            Assert.Greater(sim.S.Depot.IntakeTotal, 0);
+            sim.StartDay();
+            Assert.AreEqual("context", sim.RewardOffer("crisis_rescue", now).Reason);
+            sim.Flare(0);
+            Assert.IsTrue(sim.GrantReward("crisis_rescue", now).Ok);
+            Assert.IsFalse(sim.S.Trucks[0].Flaring);
         }
 
         [Test]
-        public void BalerRescueOnlyWhenTheBalerIsDown()
+        public void QuickPrepFinishesTheBatchInProgress()
         {
             var sim = TestData.NewSim();
             long now = 86400L * 20000;
-            Assert.IsFalse(sim.RewardOffer("baler_rescue", now).Ok);
-            sim.BalerDown("t");
-            Assert.IsTrue(sim.GrantReward("baler_rescue", now).Ok);
-            Assert.IsFalse(sim.S.Depot.BalerDown);
+            Assert.AreEqual("context", sim.RewardOffer("quick_prep", now).Reason);
+            sim.Prep(Stock.Patty);
+            int before = sim.S.Commissary.Stock[Stock.Patty];
+            Assert.IsTrue(sim.GrantReward("quick_prep", now).Ok);
+            Assert.AreEqual(before + sim.BatchSize(Stock.Patty), sim.S.Commissary.Stock[Stock.Patty]);
+            Assert.AreEqual(0, sim.S.Commissary.Queue.Count);
+        }
+
+        [Test]
+        public void ExtraRunnerHelpsOneOpenTruckForAWhile()
+        {
+            var sim = TestData.NewSim();
+            long now = 86400L * 20000;
+            Assert.AreEqual("context", sim.RewardOffer("extra_runner", now).Reason, "only while the day runs");
+            sim.StartDay();
+            double x = sim.Line(sim.S.Trucks[0]).Throughput;
+            Assert.IsTrue(sim.GrantReward("extra_runner", now).Ok);
+            Assert.Greater(sim.Line(sim.S.Trucks[0]).Throughput, x);
+            sim.AdvanceMinutes(sim.Gd.Svc.HelperMin + 1);
+            Assert.AreEqual(x, sim.Line(sim.S.Trucks[0]).Throughput, 1e-9);
         }
     }
 
@@ -562,9 +778,9 @@ namespace GrillConvoy.Sim.Tests
         {
             var sim = TestData.NewSim(11);
             sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
-            sim.AdvanceMinutes(37);
-            sim.Jam(2, "t");
+            sim.AdvanceMinutes(150);
+            sim.Flare(0);
+            sim.Prep(Stock.Patty);
             string a = SaveCodec.Encode(sim);
             var r = SaveCodec.Decode(a, sim.Gd);
             Assert.IsTrue(r.Ok, r.Error);
@@ -580,18 +796,22 @@ namespace GrillConvoy.Sim.Tests
         {
             var gd = TestData.Gd();
             Assert.IsFalse(SaveCodec.Decode("", gd).Ok);
-            Assert.IsFalse(SaveCodec.Decode("{\"game\":\"volt-city\",\"v\":1}", gd).Ok);
+            Assert.IsFalse(SaveCodec.Decode("{\"game\":\"bottle-route\",\"v\":1}", gd).Ok);
             var sim = TestData.NewSim();
             string ok = SaveCodec.Encode(sim);
-            Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"type\":\"van\"", "\"type\":\"ufo\""), gd).Ok);
+            Assert.IsTrue(SaveCodec.Decode(ok, gd).Ok);
+            Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"type\":\"starter\"", "\"type\":\"ufo\""), gd).Ok);
             Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"phase\":\"plan\"", "\"phase\":\"party\""), gd).Ok);
+            Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"t\":\"toaster\"", "\"t\":\"jacuzzi\""), gd).Ok);
+            Assert.IsFalse(SaveCodec.Decode(ok.Replace("\"griller\"", "\"astronaut\""), gd).Ok);
         }
 
         [Test]
-        public void DecoderAcceptsNegativeCashAndTheReportScreen()
+        public void DecoderAcceptsNegativeCashTheReportAndAnEmptyCommissary()
         {
             var sim = TestData.NewSim();
             sim.S.Cash = -1234.5;
+            sim.S.Commissary.Stock = new int[Stock.N];
             sim.StartDay();
             sim.AdvanceMinutes(sim.Gd.DayMinutes + 1);
             Assert.AreEqual(Phases.Report, sim.Phase);
@@ -603,22 +823,41 @@ namespace GrillConvoy.Sim.Tests
         [Test]
         public void FuzzEveryMinuteOfADayDecodes()
         {
-            // fleet §14 save fuzz: guide phase, purchase moment, mid-route, unloading, report — 0 unreadable saves
+            // fleet §14 save fuzz: guide hand ticket, purchase moment, mid-restock, flare-up, layout edit, report — 0 unreadable
             var sim = TestData.NewSim(21, tutorial: true);
             sim.S.Cash = 1e5;
             sim.StartDay();
-            sim.Dispatch(0, new List<int> { 0, 1, 2 });
+            sim.BeginHandTicket();
             int bad = 0;
             for (int m = 0; m < sim.Gd.DayMinutes + 2; m++)
             {
-                if (m == 30) sim.Buy("machine:h_quay");
-                if (m == 60) sim.Buy("driver");
-                if (m == 61) sim.Dispatch(1, sim.SuggestRoute(1, true));
-                if (m == 200) sim.EndTutorial();
+                if (m == 2) sim.HandCook("ticket");
+                if (m == 3) sim.HandCook("grill");
+                if (m == 6) { sim.HandCook("flip"); sim.HandCook("assemble"); sim.HandCook("serve"); }
+                if (m == 30) sim.Buy("hire:0:runner");
+                if (m == 40) sim.Buy("station:0:grill");
+                if (m == 41) sim.AutoLayout(0);
+                if (m == 60) sim.Prep(Stock.Patty);
+                if (m == 120) sim.EndTutorial();
+                if (m == 130) sim.Flare(0);
+                if (m == 200) sim.Restock(0);
+                if (m == 210) sim.SavePreset(0, 0);
                 sim.AdvanceMinutes(1);
                 var r = SaveCodec.Decode(SaveCodec.Encode(sim), sim.Gd);
-                if (!r.Ok) bad++;
+                if (!r.Ok) { bad++; TestContext.Progress.WriteLine("minute " + m + ": " + r.Error); }
             }
+            Assert.AreEqual(0, bad);
+        }
+
+        [Test]
+        public void FuzzSevenBotDaysEveryHourDecodes()
+        {
+            int bad = 0;
+            BalanceRunner.Run(TestData.Gd(), 77, 7, true, sim =>
+            {
+                for (int h = 0; h < 3; h++)
+                    if (!SaveCodec.Decode(SaveCodec.Encode(sim), sim.Gd).Ok) bad++;
+            });
             Assert.AreEqual(0, bad);
         }
     }
@@ -633,10 +872,11 @@ namespace GrillConvoy.Sim.Tests
             Assert.IsTrue(rep.Finite);
             Assert.AreEqual(7, rep.Days.Count);
             double week = 0;
-            foreach (var d in rep.Days) { Assert.Greater(d.Collected, 0, "day " + d.Day); week += d.Net; }
-            Assert.Greater(week, 0, "a sensible player earns over a week (money also went into research / machines)");
-            Assert.Greater(rep.Days[6].Net, rep.Days[0].Net, "the network grows: day 7 earns more than day 1");
-            Assert.Less(rep.Days[6].TurnedRate, 0.15, "no wall of turned-away citizens after the forgiving days");
+            foreach (var d in rep.Days) { Assert.Greater(d.Served, 0, "day " + d.Day); week += d.Net; }
+            Assert.Greater(week, 0, "a sensible player earns over a week (money also went into stations / research)");
+            double late = (rep.Days[4].Net + rep.Days[5].Net + rep.Days[6].Net) / 3.0;
+            Assert.Greater(late, rep.Days[0].Net, "the business grows: days 5-7 earn more than day 1");
+            Assert.Greater(rep.MinCash, 0, "never broke");
         }
 
         [Test]
@@ -645,16 +885,16 @@ namespace GrillConvoy.Sim.Tests
             var rep = BalanceRunner.Run(TestData.Gd(), 3, 1);
             var d = rep.Days[0];
             Assert.Greater(d.Net, 0, "day 1 earns money");
-            Assert.Less(d.TurnedRate, 0.25, "day 1 is not a wall of turned-away citizens");
+            Assert.Less(d.LostRate, 0.35, "day 1 is not a wall of walk-aways");
         }
 
         [Test]
-        public void TwentyDaysReachOldTownAndMore()
+        public void TwentyDaysReachTheBoardwalkAndTheStadium()
         {
             var rep = BalanceRunner.Run(TestData.Gd(), 9, 20);
             TestContext.Progress.WriteLine("BALANCE 20 days seed 9\n" + rep.Table() + string.Join("\n", rep.Log));
-            Assert.GreaterOrEqual(rep.Chapter, 2, "Old Town unlocked within 20 days (~80 min of play)");
-            Assert.Greater(rep.Points, 3);
+            Assert.GreaterOrEqual(rep.Chapter, 2, "the Boardwalk within 20 days (~100 min of play)");
+            Assert.Greater(rep.Stations, 4, "the truck grew");
         }
     }
 }

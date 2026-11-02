@@ -1,54 +1,45 @@
-# Grill Convoy: Recycling Tycoon (Unity 6)
+# Grill Convoy: Burger Truck Manager (Unity 6)
 
-Plan: kökteki `RECYCLING_GAME_PLAN.md`. Filo kuralları: kökteki `CLAUDE.md`. Örnek alınan oyunlar: `smuggler/`
-(Borderline Empire, Godot) ve monorepodaki `games/volt-city` (Grid Keeper, filonun ilk Unity oyunu; CoddyUnityKit
-oradan kopyalandı).
+Plan: kökteki `BURGER_GAME_PLAN.md` (#184). Filo kuralları: kökteki `CLAUDE.md`. Şablon: `bottle-route/` (yol ağı, rota
+planlayıcı ve kamyon hareketi oradan uyarlandı), kurallar `GAME_TEMPLATE.md`.
 
-**Oyun:** Kıyıdaki bir bölge depozito sistemini yeni açtı. Vatandaşlar şişe/kutu/camı makinelere getiriyor, makineler
-doluyor; sen kamyonlara rota çiziyorsun (her km yakıt), boşaltma kuralı koyuyorsun (%60/%80/%95, her gün, çağrılınca),
-depoda sayım hattı ücret kazandırıyor, pres balya yapıyor, balyayı günün fiyatından satıyorsun. Az boşaltırsan makine
-taşar, insanlar geri döner, Yeşil Puan düşer; çok boşaltırsan yarı boş kamyonlar yakıt yakar. Krizler: sıcak hava,
-maç günü, sıkışma, sensör arızası, toplu iade, arıza, yakıt zammı, balya fiyatı çöküşü, pres arızası, cam kırılması.
-Gerçek DOA / TÜÇA / bakanlık / market adı yok (taklit kuralı).
+**Oyun:** Liman şehri Cinder Bay. Bir eski burger kamyonu ve Office Plaza izniyle başlarsın. Her sabah hangi kamyonun
+hangi noktaya (Office Plaza öğle yoğunluğu, Boardwalk sıcak/hafta sonu, Stadium maç günü devre arası izdihamı) gideceğini,
+ne kadar köfte / ekmek / yan ürün yükleneceğini, mürettebatın rollerini (ızgaracı, hazırlayıcı, kasiyer, koşucu) ve menü
+panosunu seçersin; kamyonun içindeki 4×3 (sonra 5×4) **mutfak yerleşimi** asıl yapı bulmacasıdır: ızgara → tezgâh → pencere
+arası yürüme hattı yavaşlatır, tost makinesi / sos rafı tezgâha, içecek dolabı / fritöz pencereye bitişikse bonus verir.
+Servis gerçek zamanlıdır: kuyruk, sabır, tükenme (sell-out), fazla yük = gece bozulma (waste). Merkez mutfakta (commissary)
+parti hazırlanır, gün içinde ikmal turu atılır. Krizler: devre arası izdihamı, yağmur, sıcak hava, propan bitmesi, yağ
+alevlenmesi, rakip kamyon — kısa, önceden duyurulur, oyun bitmez. Gerçek zincir / referans oyun adı yok (özgünlük kuralı).
 
 ## Klasörler
 
 | Yol | Ne |
 |---|---|
-| `unity/` | Unity 6 projesi (URP, Android, portre). `unity/Assets/CoddyKit` = filo Unity kiti (volt-city'den) |
-| `unity/Assets/Scripts/Sim` | `GrillConvoy.Sim` — motordan bağımsız simülasyon (yol ağı, makineler, kamyonlar, depo, pazar, krizler, ekonomi, kayıt) |
-| `unity/Assets/Scripts/Game` | `GrillConvoy.Game` — motordan bağımsız oyun katmanı (oturum/kayıt, eylemler, 14 adımlı rehber, mağaza, ödüllü reklam, yorum anı, analitik, 10 dil) |
-| `unity/Assets/Scripts/{App,World,UI}` | Unity katmanı: açılış, diorama, UI Toolkit ekranları |
-| `unity/Assets/Editor/GrillConvoy` | proje kurulumu (sahneler, malzemeler, Android politikası), Android derleme, font, ikon, içe aktarma |
-| `unity/Assets/Resources` | veri (`data/*.json`), metinler (`i18n/strings.csv`), kit modelleri, palet, arayüz görselleri, fontlar |
-| `unity/Assets/Tests` | NUnit testleri (EditMode) — aynı dosyalar .NET ile de koşar |
-| `unity/Tools` | `check.sh` (tüm kapılar), `dotnet_check.sh`, `unity_ref_check.sh`, `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/*.json` |
-| `tools/meshy`, `tools/art` | Meshy istemcisi + optimizer (filo aracı), Blender kiti, arayüz render'ları |
-| `docs/` | `UNITY.md` (editörde ilk açılış), `ART.md`, `BALANCE.md`, `MONETIZATION_PARITY.md` |
+| `unity/` | Unity 6 projesi (URP, Android, portre). `unity/Assets/CoddyKit` = filo Unity kiti (yalnız house-ads tablosuna `grill-convoy` satırı eklendi) |
+| `unity/Assets/Scripts/Sim` | `GrillConvoy.Sim` — motordan bağımsız simülasyon (yol ağı, kamyonlar, mutfak hattı + yerleşim, müşteriler, merkez mutfak, krizler, ekonomi, kayıt, denge botu) |
+| `unity/Assets/Scripts/Game` | `GrillConvoy.Game` — oturum/kayıt (+ kariyer yuvaları), eylemler, 14 adımlı rehber, mağaza, ödüllü reklam, yorum anı, analitik, metinler |
+| `unity/Assets/Scripts/{App,World,UI}` | Unity katmanı: açılış, şehir dioraması, UI Toolkit ekranları (yerleşim editörü dahil) |
+| `unity/Assets/Resources` | veri (`data/*.json`), metinler (`i18n/strings.csv`), Blender kiti, palet, arayüz görselleri |
+| `unity/Assets/Art` | Meshy kahramanları (şef, kasiyer, taraftar, burger) + geçici ikon |
+| `unity/Tools` | `check.sh` (tüm kapılar), `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/en.json` (kaynak) |
+| `tools/meshy`, `tools/art` | Meshy istemcisi + optimizer, Blender kiti (`kit.py`), UI render'ları (`render_ui.py`) |
+| `docs/` | `UNITY.md`, `ART.md`, `BALANCE.md`, `MONETIZATION_PARITY.md` |
 
 ## Durum (2026-11-02)
 
-- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → `BOTTLE_ROUTE_CHECK: PASS`
-  - 125 NUnit testi (sim 43, oyun katmanı 27, CoddyKit 55): rehberin 14 adımı baştan sona, yanlış dokunuş, atla/tekrar,
-    yarıda bırakıp yeniden açma, kayıt güvenliği (fuzz, `.unreadable` saklanır), mağaza kuralları (`ad_free` yalnız
-    noads/premium/route_pass/bundle), ödül tavanları, 10 dil eksiksiz + yer tutucular, denge botu 7/20 gün.
-  - Unity'ye bağlı kod (kit Runtime + App + World + UI) UnityEngine 2021.3 referanslarına karşı derleniyor (yalnız 2
-    Unity-6 API'si farklı); 83 C# dosyası iki tanım kümesinde sözdizimi hatasız.
-- **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, performans ölçümü (perf_gate), emülatör
-  smoke, AAB. → `docs/UNITY.md` §2: ilk açılış adımları (Mac Mini / sahibin Unity'si).
-- **Boş bırakılan kimlikler (P8, Patron):** AdMob ödüllü birim, AdMob uygulama kimliği, RevenueCat anahtarı, Firebase
-  config. Uydurma kimlik yok (§5).
+- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → yalnız beklenen `EveryLanguageIsComplete` kırmızı (9 dil
+  merkezde Haiku ile çevrilecek; `Tools/i18n/<dil>.json` boş). 140 NUnit testinden 139'u yeşil (sim 54, oyun 31, kit 55):
+  rehberin 14 adımı (doğru / yanlış eylem / atla / yeniden aç / yapılamayan adım geçilir), kayıt fuzz'ı (el ile pişirilen
+  bilet, ikmal turu, alevlenme, yerleşim değişikliği), mağaza kuralları (`ad_free` yalnız noads / premium / convoy_pass /
+  bundle), ödül tavanları, 7 / 20 günlük denge. Unity'ye bağlı kod UnityEngine referanslarına karşı derleniyor.
+- **Doğrulanmadı:** Unity Editor'da derleme, sahne, cihazda görünüm, perf_gate, emülatör smoke, AAB → `docs/UNITY.md` §2.
+- **Boş kimlikler (P8, Patron):** AdMob ödüllü birim + uygulama kimliği, RevenueCat anahtarı, Firebase config.
+- **Sahip onayı bekleyen:** CLAUDE.md §8 satırı (`grill-convoy`: noads, premium, convoy_pass, bundle).
 
 ## Komutlar
 
 ```bash
 sh grill-convoy/unity/Tools/check.sh
-```
-
-```bash
 python3 grill-convoy/unity/Tools/i18n_merge.py && python3 grill-convoy/unity/Tools/build_iap.py
-```
-
-```bash
-blender -b --python grill-convoy/tools/art/kit.py -- grill-convoy/unity
 ```

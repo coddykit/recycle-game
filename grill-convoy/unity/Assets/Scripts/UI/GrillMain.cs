@@ -8,7 +8,8 @@
 //   * events -> world walkers / toasts / first-time tips / review moments / offers;
 //   * house banner: only after the pager + guide, never over a sheet with a purchase, the pager or the loading curtain
 //     (kit rule: hidden for ad_free); the screen's bottom bar is lifted by the banner height (SafeAreaPadding);
-//   * house interstitial: only at "Next day" after a report, never in session 1 or the guide (kit pacing decides);
+//   * house interstitial: only at "Next day" after a report (a natural break), never in session 1 or the guide (kit pacing);
+//   * career slots (Extra Saves / the Edition): Settings switches the slot, the world rebinds;
 //   * save on pause / quit, offline pay on resume (welcome-back card with the ×2 rewarded opt-in).
 // Opening the Region scene directly in the editor boots the kit itself.
 using System;
@@ -86,7 +87,7 @@ namespace GrillConvoy.UI
             };
             Shop.LoadPrices();
             Session.ApplyPerks(kit.Purchases.Has);
-            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplyLivery(); Screen?.Refresh(true); };
+            perksChanged = () => { Session.ApplyPerks(kit.Purchases.Has); ApplyLivery(); Screen?.Refresh(true); Screen?.MarkSheetDirty(); };
             kit.Purchases.Changed += perksChanged;
             Rewards = new GrillRewards(() => Session.Sim, kit.Rewarded) { AdFree = () => kit.Purchases.AdFree };
             Rewards.Granted += (placement, r) =>
@@ -136,7 +137,7 @@ namespace GrillConvoy.UI
             yield return null;
             kit.Tiers.EndShaderWork();
             GrillBoot.Ready();
-            Track("br_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
+            Track("gc_session", new Dictionary<string, object> { { "n", (long)st.Sessions }, { "tier", kit.Tiers.Current.ToString().ToLowerInvariant() } });
 
             // onboarding: pager (once) -> guide (until done or skipped)
             if (!st.IntroDone) Screen.ShowPager(() => { st.IntroDone = true; st.Save(); BeginGuideIfNeeded(); });
@@ -156,7 +157,7 @@ namespace GrillConvoy.UI
             if (!Ready || Screen == null) return false;
             if (Coach.Active || Screen.PagerOpen || !Session.Settings.IntroDone) return false;
             string k = Screen.SheetKind;
-            return k != "shop";
+            return k != "shop" && k != "offline";
         }
 
         void Update()
@@ -169,6 +170,7 @@ namespace GrillConvoy.UI
             List<SimEvent> events = Session.Tick(dt);
             foreach (var e in events) OnEvent(e);
             Screen.Tick(dt, low);
+            Audio.PlayMusic(sim.Phase == Phases.Live && !sim.S.Paused ? "music_busy" : "music_calm");
             if (!Coach.Active && !Screen.WindowOpen && sim.Phase == Phases.Live) kit.Review.TickPlay(dt);
             string deferred = review.TakeDeferred(Coach.Active);
             if (deferred != "") Wow(deferred);
@@ -177,35 +179,38 @@ namespace GrillConvoy.UI
         void OnEvent(SimEvent e)
         {
             world.OnSimEvent(e);
-            if (e.Type == "deposit" || e.Type == "turned") return;
+            if (e.Type == "served" && e.Text != "hand") Audio.Play("coins");
             var sim = Session.Sim;
             switch (e.Type)
             {
                 case "day_done":
-                    Track("br_day_done", new Dictionary<string, object> { { "day", (long)e.A }, { "stars", (long)e.B } });
-                    if (!Coach.Active) Screen.OpenSheet("report");
+                    Track("gc_day_done", new Dictionary<string, object> { { "day", (long)e.A }, { "stars", (long)e.B } });
+                    Screen.OpenSheet("report");
                     Shop.TryOffer("day_report", Coach.Active);
                     break;
-                case "bale": Audio.Play("baler_press"); break;
-                case "sold":
-                    Audio.Play("sold");
-                    UiToastHost.Show(Loc.F("toast.sold", "n", e.B, "cash", Fmt.Money((long)e.V, Loc.Lang)), ToastKind.Success);
-                    Track("bale_sold", new Dictionary<string, object> { { "mat", Mats.Ids[Math.Max(0, Math.Min(2, e.A))] }, { "n", (long)e.B } });
-                    break;
+                case "opened": Audio.Play("open"); break;
                 case "research_done": UiToastHost.Show(Loc.F("research.finished", "name", Loc.T("research." + e.Text + ".t")), ToastKind.Success); break;
+                case "prep_done": UiToastHost.Show(Loc.F("toast.prep_done", "n", e.B, "name", Loc.T("stock." + Stock.Ids[Math.Max(0, Math.Min(Stock.N - 1, e.A))])), ToastKind.Info); break;
                 case "district":
                     UiToastHost.Show(Loc.F("toast.district", "name", Loc.T("district." + e.Text)), ToastKind.Success);
-                    Track("district_unlock", new Dictionary<string, object> { { "district", e.Text } });
+                    Track("pitch_unlock", new Dictionary<string, object> { { "district", e.Text } });
                     break;
+                case "truck_new": Shop.TryOffer("truck_new", Coach.Active); break;
                 case "crisis":
-                    UiToastHost.Show(Loc.T("crisis." + e.Text + ".t") + " — " + Loc.T("crisis." + e.Text + ".b"), ToastKind.Warning);
+                    if (!Coach.Active)
+                    {
+                        UiToastHost.Show(Loc.T("crisis." + e.Text + ".t") + " — " + Loc.T("crisis." + e.Text + ".b"), ToastKind.Warning);
+                        Track("crisis", new Dictionary<string, object> { { "id", e.Text } });
+                        if (e.Text == "propane") Shop.TryOffer("propane", Coach.Active);
+                    }
                     Audio.Play("warning");
-                    Track("crisis", new Dictionary<string, object> { { "id", e.Text } });
-                    if (e.Text == "match_day") Shop.TryOffer("match_day", Coach.Active);
                     break;
-                case "jam": Audio.Play("warning"); break;
-                case "serviced": Audio.Play("machine_crunch"); break;
+                case "propane_low": Audio.Play("warning"); break;
+                case "extinguished": Audio.Play("hiss"); break;
+                case "all_hands": Audio.Play("bell"); break;
+                case "hand": Audio.Play(e.B == 3 ? "sizzle" : "ui_tap"); break;
             }
+            if (e.Type != "joined" && e.Type != "served" && e.Type != "hand") Screen.MarkSheetDirty();
             if (!Coach.Active)
             {
                 string tip = Coach.TipFor(e, sim);
@@ -229,9 +234,10 @@ namespace GrillConvoy.UI
 
         static string SoundFor(string action)
         {
-            if (action.StartsWith("go")) return "truck";
-            if (action.StartsWith("till")) return "coins";
-            if (action.StartsWith("buy:") || action.StartsWith("research:")) return "success";
+            if (action.StartsWith("send") || action.StartsWith("start_day") || action.StartsWith("restock")) return "truck";
+            if (action.StartsWith("cook:serve")) return "coins";
+            if (action.StartsWith("buy:") || action.StartsWith("research:") || action.StartsWith("prep:")) return "success";
+            if (action.StartsWith("move:") || action.StartsWith("auto_layout")) return "place";
             return "";
         }
 
@@ -290,14 +296,40 @@ namespace GrillConvoy.UI
             Screen.OpenSheet("settings");
         }
 
+        /// <summary>Settings → Looks: the truck paint among the owned liveries ("" = the default).</summary>
+        public bool Owns(string entitlement) => kit.Purchases.Has(entitlement);
+
+        public void SetLivery(string livery)
+        {
+            Session.Settings.Livery = livery ?? "";
+            Session.Settings.Save();
+            ApplyLivery();
+            Screen.OpenSheet("settings");
+        }
+
+        public int SlotCount => GameSession.SlotCount(kit.Purchases.Has);
+
+        public void SwitchSlot(int slot)
+        {
+            if (Coach.Active) { UiToastHost.Show(Loc.T("hud.speed_guide"), ToastKind.Info); return; }
+            string e = Session.SwitchSlot(slot, SlotCount, Math.Abs(DateTime.UtcNow.Ticks % 2147483000L) + 1);
+            if (e != "") { UiToastHost.Show(Loc.T("err." + e), ToastKind.Warning); return; }
+            Session.ApplyPerks(kit.Purchases.Has);
+            world.Rebind(Session.Sim);
+            Track("slot_switch", new Dictionary<string, object> { { "slot", (long)(slot + 1) } });
+            Screen.OpenSheet("settings");
+            Screen.Refresh(true);
+        }
+
         public void ShowPrivacyOptions() => CoddyServices.Consent.ShowPrivacyOptions(_ => { });
 
         void ApplyLivery()
         {
             string l = Session.Settings.Livery;
-            if (l == "" && kit.Purchases.Has("gold_livery")) l = "gold_livery";
+            if (l == "" && kit.Purchases.Has("gold_trim")) l = "gold_trim";
             if (l != "" && !kit.Purchases.Has(l)) l = "";
             world.SetLivery(l);
+            world.SetCosmetics(kit.Purchases.Has("uniforms"), kit.Purchases.Has("window_awnings"), kit.Purchases.Has("menuboards"));
         }
 
         void Track(string name, Dictionary<string, object> p)

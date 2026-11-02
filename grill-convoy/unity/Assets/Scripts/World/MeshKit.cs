@@ -165,6 +165,24 @@ namespace GrillConvoy.World
             return k.Build("figure_" + shirt + (burger ? "_b" : ""));
         }
 
+        /// <summary>A striped window awning (looks: the store's awning set swaps the stripes).</summary>
+        public static Mesh Awning(int a, int b)
+        {
+            var k = new MeshKit();
+            for (int i = 0; i < 6; i++) k.Box(new Vector3(-2.5f + i * 1.0f, 0, 0), new Vector3(1.0f, 0.14f, 1.3f), 0, i % 2 == 0 ? a : b);
+            return k.Build("awning_" + a);
+        }
+
+        /// <summary>A sidewalk menu board (looks: chalk or neon), no text.</summary>
+        public static Mesh Board(int face)
+        {
+            var k = new MeshKit();
+            k.Box(Vector3.zero, new Vector3(1.4f, 0.2f, 0.6f), 0, Pal.Wood);
+            k.Box(new Vector3(0, 0.2f, 0), new Vector3(1.2f, 1.8f, 0.15f), 0, face);
+            for (int i = 0; i < 3; i++) k.Box(new Vector3(-0.15f, 0.6f + i * 0.4f, -0.09f), new Vector3(0.6f, 0.07f, 0.02f), 0, Pal.White);
+            return k.Build("board_" + face);
+        }
+
         /// <summary>A soft puff (steam card stand-in: three offset boxes), white.</summary>
         public static Mesh Puff()
         {

@@ -14,14 +14,14 @@ namespace GrillConvoy.App
     {
         public const string AppId = "grill-convoy";                 // ads-config X-App-ID, house-ad host id
         public const string Package = "com.coddykit.grillconvoy";
-        public const string ProductName = "Grill Convoy";           // store title "Grill Convoy: Recycling Tycoon" (30 chars)
+        public const string ProductName = "Grill Convoy";           // store title "Grill Convoy: Burger Trucks" (27 chars, plan §11)
         public const string PrivacyUrl = "https://www.coddykit.com/pages/privacy-policy";
 
         // ---- P8 (Patron): real ids. Keep the constant names (a preflight reads them). ----
         public const string AdMobRewardedAndroid = "";   // ADMOB_REWARDED_GRILLCONVOY_ANDROID (store-automation/.env)
         public const string RevenueCatAndroidKey = "";   // RC public SDK key goog_… (project Grill Convoy)
 
-        /// <summary>RC entitlements that remove forced ads (fleet §3/§8): noads, granted by noads / premium / route_pass / bundle.</summary>
+        /// <summary>RC entitlements that remove forced ads (fleet §3/§8): noads, granted by noads / premium / convoy_pass / bundle.</summary>
         public static readonly string[] AdFreeEntitlements = Commerce.AdFreeEntitlements;
 
         public static Dictionary<string, RewardedLimit> RewardedLimits() => GrillRewards.KitLimits();
