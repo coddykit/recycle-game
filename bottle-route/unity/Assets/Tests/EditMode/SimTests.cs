@@ -415,6 +415,25 @@ namespace BottleRoute.Sim.Tests
         }
 
         [Test]
+        public void AWrongSensorResyncsOvernight()
+        {
+            // plan §7: crises are short; a frozen "has room" number must not keep a machine off every route for good
+            var sim = TestData.NewSim(5);
+            PlayDay(sim);
+            Assert.IsTrue(sim.NextDay());
+            sim.StartDay();
+            Assert.IsTrue(sim.Fire("sensor_offline"));
+            int i = sim.S.Points.FindIndex(p => p.SensorOffline);
+            Assert.GreaterOrEqual(i, 0);
+            Assert.LessOrEqual(sim.DisplayPct(sim.S.Points[i]), 0.4 + 1e-9);
+            sim.AdvanceMinutes(sim.Gd.DayMinutes + 5);
+            sim.DrainEvents();
+            Assert.IsTrue(sim.NextDay());
+            Assert.IsFalse(sim.S.Points[i].SensorOffline, "resynced by the next morning");
+            Assert.IsTrue(sim.DrainEvents().Exists(e => e.Type == "sensor_fixed" && e.A == i));
+        }
+
+        [Test]
         public void NoCrisesDuringTheGuideOrTheFirstDays()
         {
             var sim = TestData.NewSim(5);
@@ -648,12 +667,36 @@ namespace BottleRoute.Sim.Tests
             Assert.Less(d.TurnedRate, 0.25, "day 1 is not a wall of turned-away citizens");
         }
 
+        /// <summary>Plan §6 content map at 1× (a day = 4 real minutes): Old Town ~30 min, University Hill ~1.5 h, Stadium &
+        /// Fairground ~2.5 h. The median district day of five seeds must sit within ±25 % (polish pass 2026-11-02).</summary>
+        [Test]
+        public void TempoFollowsThePlanContentMap()
+        {
+            var opened = new Dictionary<string, List<int>> { ["oldtown"] = new List<int>(), ["university"] = new List<int>(), ["stadium"] = new List<int>() };
+            foreach (long seed in new long[] { 1, 2, 3, 4, 5 })
+            {
+                var rep = BalanceRunner.Run(TestData.Gd(), seed, 50);
+                foreach (var key in new List<string>(opened.Keys))
+                {
+                    int day = 999;
+                    foreach (var l in rep.Log)
+                        if (l.EndsWith(" district " + key)) day = int.Parse(l.Split(' ')[1]);
+                    opened[key].Add(day);
+                }
+            }
+            double Minutes(string key) { var d = opened[key]; d.Sort(); return d[d.Count / 2] * 4.0; }
+            TestContext.Progress.WriteLine($"TEMPO median minutes: oldtown {Minutes("oldtown")} university {Minutes("university")} stadium {Minutes("stadium")}");
+            Assert.That(Minutes("oldtown"), Is.InRange(30 * 0.75, 30 * 1.25), "Old Town at ~30 min");
+            Assert.That(Minutes("university"), Is.InRange(90 * 0.75, 90 * 1.25), "University Hill at ~1.5 h");
+            Assert.That(Minutes("stadium"), Is.InRange(150 * 0.75, 150 * 1.25), "Stadium & Fairground at ~2.5 h");
+        }
+
         [Test]
         public void TwentyDaysReachOldTownAndMore()
         {
             var rep = BalanceRunner.Run(TestData.Gd(), 9, 20);
             TestContext.Progress.WriteLine("BALANCE 20 days seed 9\n" + rep.Table() + string.Join("\n", rep.Log));
-            Assert.GreaterOrEqual(rep.Chapter, 2, "Old Town unlocked within 20 days (~80 min of play)");
+            Assert.GreaterOrEqual(rep.Chapter, 2, "Old Town unlocked within 20 days (~80 min of play; plan: ~30 min)");
             Assert.Greater(rep.Points, 3);
         }
     }

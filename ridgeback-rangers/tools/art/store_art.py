@@ -451,44 +451,44 @@ def feature_graphic():
 
 
 def icon_longneck():
-    """c1: a long-neck rising over the tree-fern canopy, the volcano at sunset behind it."""
-    sc, mats = scene_set("#E9875B", "#F6C78F")
-    disc((0, 0), 300, 0.0, mats["grassd"], 32)
-    prop("volcano", (14, 160, 0), 0, 1.4)
-    dino("longneck", (0, 4, 0), yaw=-150, scale=14.0)
-    for (x, y, nm, yaw, s) in ((-7, -6, "tree_fern", 10, 3.4), (7, -8, "tree_fern", 70, 3.0), (-13, 6, "tree", 30, 3.0), (12, 4, "tree_tall", 0, 2.6), (0, -12, "tree_fern", 200, 3.0)):
+    """c1: a long-neck's head and neck rising against a sunset volcano — one big silhouette that reads at 48 px."""
+    sc, mats = scene_set("#B9473A", "#F5B97A")
+    disc((0, 0), 400, 0.0, mats["grassd"], 32)
+    prop("volcano", (-30, 150, 0), 0, 1.5)
+    dino("longneck", (1.8, 0.5, 0), yaw=-40, scale=11.0)
+    for (x, y, nm, yaw, s) in ((-3.2, -3.6, "tree_fern", 10, 2.0), (4.2, -3.8, "tree_fern", 70, 2.0), (9, 8, "tree_tall", 0, 3.0)):
         prop(nm, (x, y, 0), yaw, s)
-    sun((70, 0, -20), 3.0, "#FFC48A", 2)
-    fill((75, 0, 160), 1.2, "#FFB98A")
-    camera((4, -40, 6), (2, 6, 9.5), lens=50)
+    sun((78, 0, 200), 3.6, "#FFB070", 2)
+    fill((60, 0, -20), 0.9, "#FFC9A0")
+    camera((0.8, -9.0, 1.0), (-0.4, 0, 6.0), lens=24)
     render(os.path.join(STORE, "icon-candidates/c1.png"), 512, 512, 96)
 
 
 def icon_horned():
-    """c2: a horned herbivore three-quarter, low and side-lit at the paddock fence, deep green dusk."""
-    sc, mats = scene_set("#2F6E46", "#7FB08A")
-    disc((0, 0), 200, 0.0, mats["grass"], 32)
-    dino("horned", (0, 0, 0), yaw=-140, scale=7.0)
-    fence((0, 0), 30, 16, 1, False, None)
-    for (x, y, nm, yaw, s) in ((-8, 8, "tree_fern", 10, 2.6), (8, 9, "tree", 60, 2.4), (11, 2, "tree_fern", 120, 2.2)):
+    """c2: a plated herbivore in profile, back-lit by the evening sun — calm, grown-up, readable as a shape."""
+    sc, mats = scene_set("#7A3E48", "#F2A56B")
+    disc((0, 0), 400, 0.0, mats["grassd"], 32)
+    prop("volcano", (40, 220, 0), 0, 1.6)
+    dino("plated", (0, 0, 0), yaw=90, scale=8.0)
+    for (x, y, nm, yaw, s) in ((-7.5, 3, "tree_fern", 10, 2.6), (7, 4, "tree_fern", 120, 2.8), (-12, 9, "tree_tall", 0, 3.2), (12, 10, "tree", 60, 3.2)):
         prop(nm, (x, y, 0), yaw, s)
-    sun((45, 0, -75), 4.5, "#FFD9A8", 2)
-    fill((70, 0, 120), 0.7, "#9EC8FF")
-    camera((-6.5, -10.5, 3.0), (0.3, 0.6, 1.9), lens=42)
+    sun((76, 0, 165), 4.2, "#FFB67A", 2)
+    fill((55, 0, -10), 0.7, "#9FB8FF")
+    camera((0.5, -7.6, 1.3), (0.15, 0, 2.15), lens=34)
     render(os.path.join(STORE, "icon-candidates/c2.png"), 512, 512, 96)
 
 
 def icon_warden():
     """c3: the Chief Warden in front, a long-neck behind her over the trees — the 'you run the sanctuary' icon."""
-    sc, mats = scene_set("#3FB6C9", "#CFEFE6")
+    sc, mats = scene_set("#2E8C9A", "#D8EFE2")
     disc((0, 0), 200, 0.0, mats["grass"], 32)
     warden((0, 0, 0), yaw=-15, scale=1.0)
-    dino("longneck", (2.2, 9, 0), yaw=-130, scale=9.0)
-    for (x, y, nm, yaw, s) in ((-3.5, 6, "tree_fern", 10, 1.4), (-6, 10, "tree", 60, 1.6), (6, 8, "tree_fern", 120, 1.4)):
+    dino("longneck", (1.7, 5.0, 0), yaw=-30, scale=6.5)
+    for (x, y, nm, yaw, s) in ((-2.6, 4, "tree_fern", 10, 1.4), (-4.5, 9, "tree_tall", 60, 1.6)):
         prop(nm, (x, y, 0), yaw, s)
     sun((50, 0, -40), 3.6, "#FFE6C4", 2)
     fill((70, 0, 150), 1.0, "#BFE0FF")
-    camera((0.6, -3.8, 1.75), (0.5, 0, 2.0), lens=40)
+    camera((0.25, -1.5, 1.4), (0.3, 0, 1.62), lens=26)
     render(os.path.join(STORE, "icon-candidates/c3.png"), 512, 512, 96)
 
 

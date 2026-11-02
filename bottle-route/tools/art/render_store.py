@@ -228,7 +228,7 @@ def icon_machine():
     slab("disc", (0, 0, -0.05), (30, 30, 0.05), kit.GRASS)
     kitprop("machine_m", (0.45, 0.35, 0), yaw=-24)
     bale("pet", (-1.25, -0.6, 0), yaw=18, scale=0.95)
-    camera((2.2, -6.2, 2.9), (-0.3, 0, 1.25), ortho=3.9)
+    camera((2.2, -6.2, 2.9), (-0.05, 0, 1.25), ortho=4.1)
     render(os.path.join(STORE, "icon-candidates/c1.png"), 512, 512)
 
 

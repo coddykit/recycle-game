@@ -766,9 +766,13 @@ namespace DocketDay.Sim.Tests
         }
 
         [Test]
-        public void TwentyFiveDaysReachMainStreet()
+        public void MainStreetComesAtThePlansPace()
         {
-            var rep = BalanceRunner.Run(TestData.Gd(), 9, 25);
+            // plan §6: chapter 2 at ~1.5 h of 1× play = ~30 days of 3 min (polish pass 2026-11-02: the bot gets there on
+            // days 27–31); not in the first 20 days (it used to take 14), and always within 40
+            var early = BalanceRunner.Run(TestData.Gd(), 9, 20);
+            Assert.AreEqual(1, early.Chapter, "Main Street is not a first-hour unlock");
+            var rep = BalanceRunner.Run(TestData.Gd(), 9, 40);
             TestContext.WriteLine(rep.Table() + string.Join("\n", rep.Log));
             Assert.GreaterOrEqual(rep.Chapter, 2);
             Assert.IsTrue(rep.Finite);

@@ -12,8 +12,8 @@
   "role_order": ["partner", "associate", "paralegal", "intern", "receptionist", "investigator", "clerk"],
   "chapters": [
     { "id": "garage",          "chapter": 1, "desks": 5,  "standing": 0,   "closed": 0,  "cost": 0 },
-    { "id": "main_street",     "chapter": 2, "desks": 8,  "standing": 4.0, "closed": 15, "cost": 6000 },
-    { "id": "courthouse_row",  "chapter": 3, "desks": 12, "standing": 12.0, "closed": 70, "cost": 25000 }
+    { "id": "main_street",     "chapter": 2, "desks": 8,  "standing": 6.8, "closed": 80, "cost": 15000 },
+    { "id": "courthouse_row",  "chapter": 3, "desks": 12, "standing": 15.0, "closed": 190, "cost": 60000 }
   ],
   "rooms": [
     { "id": "library",    "chapter": 1, "cost": 900,  "build_s": 60,  "prep": 1.25 },
