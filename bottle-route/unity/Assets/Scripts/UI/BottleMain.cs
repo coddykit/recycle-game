@@ -204,6 +204,17 @@ namespace BottleRoute.UI
                     if (e.Text == "match_day") Shop.TryOffer("match_day", Coach.Active);
                     break;
                 case "jam": Audio.Play("warning"); break;
+                // chapters 5-7
+                case "season_start": UiToastHost.Show(Loc.T("season.start"), ToastKind.Success); break;
+                case "season_end": UiToastHost.Show(Loc.T("season.end"), ToastKind.Info); break;
+                case "tender_offer":
+                    UiToastHost.Show(Loc.F("toast.tender_offer", "mat", Loc.T("mat." + Mats.Ids[Math.Max(0, Math.Min(2, e.B))]), "n", (long)e.V), ToastKind.Info);
+                    break;
+                case "tender_done":
+                    Audio.Play("sold");
+                    UiToastHost.Show(Loc.F("toast.tender_done", "cash", Fmt.Money((long)e.V, Loc.Lang)), ToastKind.Success);
+                    break;
+                case "tender_expired": UiToastHost.Show(Loc.T("toast.tender_expired"), ToastKind.Info); break;
                 case "serviced": Audio.Play("machine_crunch"); break;
             }
             if (!Coach.Active)

@@ -406,6 +406,42 @@ namespace BottleRoute.Game.Tests
             foreach (var v in gd.Vehicles.Keys) Assert.IsTrue(loc.Has("truck." + v), v);
             foreach (var k in gd.PointKinds.Keys) Assert.IsTrue(loc.Has("kind." + k), k);
             foreach (var s in new[] { "idle", "drive", "service", "unload", "wait", "broken" }) Assert.IsTrue(loc.Has("truck.status." + s), s);
+            Assert.IsTrue(loc.Has("crisis.season.t") && loc.Has("crisis.season.b"), "the season chip (ActiveCrises)");
+            foreach (var n in gd.Nodes)
+                if (n.Kind == "site") Assert.IsTrue(loc.Has("buy." + (n.Site == "machine" ? "machine" : n.Site)) && loc.Has("buy." + (n.Site == "machine" ? "machine" : n.Site) + ".d"), n.Site);
+        }
+
+        /// <summary>Chapters 5-7: every new district and mechanic explains itself once (fleet §9: a contextual tip the first
+        /// time a feature shows up), and the tip text exists in all 10 languages.</summary>
+        [Test]
+        public void NewChaptersAndMechanicsHaveOneTimeTips()
+        {
+            var loc = G.Loc();
+            var sim = TestData.NewSim();
+            var cases = new List<(SimEvent e, string tip)>
+            {
+                (new SimEvent { Type = "district", Text = "industrial" }, "tip.industrial"),
+                (new SimEvent { Type = "district", Text = "riviera" }, "tip.riviera"),
+                (new SimEvent { Type = "district", Text = "villages" }, "tip.villages"),
+                (new SimEvent { Type = "district", Text = "island" }, "tip.island"),
+                (new SimEvent { Type = "tender_offer" }, "tip.tender"),
+                (new SimEvent { Type = "season_start" }, "tip.season"),
+                (new SimEvent { Type = "ferry_wait" }, "tip.ferry"),
+            };
+            foreach (var (e, tip) in cases)
+            {
+                Assert.AreEqual(tip, Coach.TipFor(e, sim), e.ToString());
+                foreach (var l in Loc.Languages) Assert.AreNotEqual("", loc.Cell(tip, l), l + " " + tip);
+            }
+            foreach (var d in TestData.Gd().Districts)
+                if (d.Chapter > 1) Assert.AreEqual("tip." + d.Id, Coach.TipFor(new SimEvent { Type = "district", Text = d.Id }, sim), "every district after the first has a tip");
+            // shown once: the settings remember it (the same path BottleMain uses)
+            string dir = G.TempDir();
+            var st = GameSettings.Load(dir);
+            Assert.IsFalse(st.HintSeen("tip.ferry"));
+            st.MarkHint("tip.ferry");
+            st.Save();
+            Assert.IsTrue(GameSettings.Load(dir).HintSeen("tip.ferry"), "persisted: never shown twice");
         }
 
         [Test]

@@ -6,10 +6,10 @@
     { "id": "oldtown",    "chapter": 2, "rating": 45, "cost": 1500,  "archetypes": [0.40, 0.25, 0.05, 0.15, 0.15, 0.00] },
     { "id": "university", "chapter": 3, "rating": 55, "cost": 10000,  "archetypes": [0.25, 0.10, 0.50, 0.10, 0.05, 0.00] },
     { "id": "stadium",    "chapter": 4, "rating": 64, "cost": 30000, "archetypes": [0.35, 0.35, 0.15, 0.05, 0.10, 0.00] },
-    { "id": "industrial", "chapter": 5, "rating": 66, "cost": 110000,"archetypes": [0.45, 0.10, 0.05, 0.30, 0.00, 0.10] },
-    { "id": "riviera",    "chapter": 6, "rating": 68, "cost": 230000, "archetypes": [0.20, 0.25, 0.05, 0.10, 0.40, 0.00] },
-    { "id": "villages",   "chapter": 7, "rating": 70, "cost": 330000, "archetypes": [0.25, 0.40, 0.00, 0.30, 0.05, 0.00] },
-    { "id": "island",     "chapter": 7, "rating": 72, "cost": 300000, "archetypes": [0.15, 0.30, 0.00, 0.15, 0.40, 0.00] }
+    { "id": "industrial", "chapter": 5, "rating": 66, "cost": 130000, "archetypes": [0.45, 0.10, 0.05, 0.30, 0.00, 0.10] },
+    { "id": "riviera",    "chapter": 6, "rating": 68, "cost": 250000, "archetypes": [0.20, 0.25, 0.05, 0.10, 0.40, 0.00] },
+    { "id": "villages",   "chapter": 7, "rating": 70, "cost": 320000, "archetypes": [0.25, 0.40, 0.00, 0.30, 0.05, 0.00] },
+    { "id": "island",     "chapter": 7, "rating": 72, "cost": 200000, "archetypes": [0.15, 0.30, 0.00, 0.15, 0.40, 0.00], "requires": "villages" }
   ],
   "nodes": [
     { "id": "depot",     "x": 0.0, "y": 0.0, "district": "harbour", "kind": "depot" },

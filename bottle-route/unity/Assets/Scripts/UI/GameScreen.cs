@@ -388,6 +388,7 @@ namespace BottleRoute.UI
                 var e = Act.DraftEstimate;
                 UiKit.SetText(routeEst, e != null && e.Ok
                     ? L.F("route.est", "km", Fmt.Km(e.Km, L.Lang), "cost", Money(e.Cost), "min", (long)Math.Round(e.Minutes), "pct", Fmt.Pct(e.LoadPct, L.Lang))
+                        + (e.Ferries > 0 ? " · " + L.F("route.ferry", "min", (long)Math.Round(e.FerryWait)) : "")
                     : (Sim.FreeDrivers <= 0 && !t.Busy ? L.T("truck.no_driver") : L.T("route.hint")));
                 goBtn.SetEnabled(Act.Draft.Count > 0);
             }

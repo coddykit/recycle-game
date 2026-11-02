@@ -17,7 +17,7 @@ namespace BottleRoute.Sim
     public sealed class ArchetypeDef { public string Id; public int Min, Max; public double[] Mix; public double Weekend, Evening; public double Mean => (Min + Max) * 0.5; }
     public sealed class PointKindDef { public string Id; public double CapL, LeaseDay, JamPer1000, ShopFee, PickupBonus; public bool Citizens; public double[] Mix; }
     public sealed class VehicleDef { public string Id; public double VolL, Kg, SpeedKmh, CostKm, ServiceMin, PetCompress, Price; public bool Alley; public string Research; }
-    public sealed class DistrictDef { public string Id; public int Chapter; public double Rating, Cost; public double[] Archetypes; }
+    public sealed class DistrictDef { public string Id, Requires = ""; public int Chapter; public double Rating, Cost; public double[] Archetypes; }
     public sealed class NodeDef { public int Index; public string Id, District, Kind, Site; public double X, Y, Rate; public bool Alley, EventSite, Pier; }
     public sealed class EdgeDef { public int A, B; public double Km; public bool Alley, Ferry; }
     public sealed class ResearchDef { public string Id, Branch, District; public double Cost, Minutes; public List<string> Requires = new List<string>(); }
@@ -251,7 +251,11 @@ namespace BottleRoute.Sim
             if (m == null) return;
             RoadFactor = J.D(m, "road_factor", 1.2);
             foreach (var d in J.Arr(m, "districts") ?? new List<object>())
-                Districts.Add(new DistrictDef { Id = J.S(d, "id"), Chapter = J.I(d, "chapter"), Rating = J.D(d, "rating"), Cost = J.D(d, "cost"), Archetypes = Dbl(d, "archetypes", new[] { 1.0 }) });
+                Districts.Add(new DistrictDef
+                {
+                    Id = J.S(d, "id"), Chapter = J.I(d, "chapter"), Rating = J.D(d, "rating"), Cost = J.D(d, "cost"), Archetypes = Dbl(d, "archetypes", new[] { 1.0 }),
+                    Requires = J.S(d, "requires"),
+                });
             foreach (var n in J.Arr(m, "nodes") ?? new List<object>())
             {
                 var nd = new NodeDef
@@ -303,6 +307,7 @@ namespace BottleRoute.Sim
             if (DepotNode < 0) Errors.Add("map: no depot");
             if (Archetypes.Count == 0) Errors.Add("balance: no archetypes");
             foreach (var d in Districts) if (d.Archetypes.Length != Archetypes.Count) Errors.Add("map: district " + d.Id + " archetype weights");
+            foreach (var d in Districts) if (d.Requires != "" && District(d.Requires) == null) Errors.Add("map: district " + d.Id + " requires " + d.Requires);
             foreach (var n in Nodes)
             {
                 if (District(n.District) == null) Errors.Add("map: node " + n.Id + " unknown district");

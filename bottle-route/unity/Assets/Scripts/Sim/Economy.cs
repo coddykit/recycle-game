@@ -243,7 +243,7 @@ namespace BottleRoute.Sim
                     var dd = Gd.District(arg);
                     if (dd == null) { r.Reason = "invalid"; return r; }
                     if (Unlocked(arg)) { r.Reason = "owned"; return r; }
-                    if (dd.Chapter > Chapter + 1) { r.Reason = "locked"; return r; }
+                    if (dd.Chapter > Chapter + 1 || (dd.Requires != "" && !Unlocked(dd.Requires))) { r.Reason = "locked"; return r; }
                     if (S.Rating < dd.Rating) { r.Reason = "rating"; return r; }
                     r.Cost = dd.Cost;
                     break;

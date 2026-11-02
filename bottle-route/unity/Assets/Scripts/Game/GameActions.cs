@@ -7,6 +7,7 @@
 //   clear              clear the draft / deselect
 //   recall:<t>         call a truck home
 //   depot | baler | till | sell:<m> | fuel_info
+//   tender:<accept|decline|deliver>:<id>   chapter 5 bale tenders (market sheet)
 //   policy:<i>:<threshold|fixed|call>:<value>
 //   buy:<id>           sim purchase (machine:<node>, bin_m:<i>, driver, …)
 //   research:<id>
@@ -142,6 +143,16 @@ namespace BottleRoute.Game
                     if (got <= 0) return ActionResult.Fail("nothing");
                     Session.Save();
                     return ActionResult.Done(got);
+                }
+                case "tender":
+                {
+                    // tender:accept:<id> | tender:decline:<id> | tender:deliver:<id>
+                    string op = a.Length > 1 ? a[1] : "";
+                    int tid = Int(a, 2);
+                    string e = op == "accept" ? sim.AcceptTender(tid) : op == "decline" ? sim.DeclineTender(tid) : op == "deliver" ? sim.DeliverTender(tid) : "invalid";
+                    if (e != "") return ActionResult.Fail(e);
+                    Session.Save();
+                    return ActionResult.Done();
                 }
                 case "policy":
                 {

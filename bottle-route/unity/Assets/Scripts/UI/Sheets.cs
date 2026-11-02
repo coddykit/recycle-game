@@ -126,6 +126,10 @@ namespace BottleRoute.UI
             else if (p.BusyUntil > Sim.S.Minute) Add(UiKit.Text(L.T("point.busy"), "coddy-body"));
             else if (Sim.IsFull(p)) Add(UiKit.Text(L.T("point.full"), "coddy-body"));
             if (node.Alley) Add(UiKit.Text(L.T("point.alley"), "coddy-caption-muted"));
+            if (Sim.Gd.SeasonDistricts.Contains(node.District))
+                Add(UiKit.Text(L.F(Sim.InSeason ? "point.season_on" : "point.season_off", "n", Sim.SeasonDaysLeft), "coddy-caption-muted"));
+            if (Sim.Gd.Graph.FerryKm(Sim.Gd.DepotNode, p.Node) > 0)
+                Add(UiKit.Text(L.F("point.ferry", "n", (long)Math.Round(Sim.Gd.FerryEveryMin)), "coddy-caption-muted"));
             Add(UiKit.Text(L.F("point.today", "dep", p.Deposited, "turned", p.Turned), "coddy-caption-muted"));
 
             if (p.Jammed || p.SensorOffline)
@@ -194,11 +198,31 @@ namespace BottleRoute.UI
                 Card(L.T("mat." + Mats.Ids[m]), L.F("depot.price", "pct", Fmt.Pct(Sim.MarketMult(m), L.Lang)),
                     n > 0 ? L.F("depot.sell", "n", n, "cash", Money(Math.Round(n * price))) : L.T("depot.none"), () => main.Run("sell:" + mm), n > 0, "primary", "sell:" + m);
             }
+            // chapter 5: bale tenders (the market's second channel)
+            if (Sim.TendersOpen)
+            {
+                Section(L.T("tender.title"));
+                if (Sim.S.Tenders.Count == 0) Add(UiKit.Text(L.T("tender.none"), "coddy-caption-muted"));
+                foreach (var t in Sim.S.Tenders)
+                {
+                    int id = t.Id;
+                    string name = L.F("tender.name", "mat", L.T("mat." + Mats.Ids[t.Mat]), "n", t.Bales);
+                    string terms = L.F("tender.terms", "price", Money(t.Price), "pct", Fmt.Pct(Sim.TenderPremium(t), L.Lang), "day", t.DueDay);
+                    if (!t.Accepted)
+                    {
+                        Card(name, terms, L.T("tender.accept"), () => main.Run("tender:accept:" + id), true, "primary", "tender_" + id);
+                        Add(UiKit.ActionPill(L.T("tender.decline"), () => main.Run("tender:decline:" + id), true, "tonal"));
+                    }
+                    else
+                        Card(name, terms + " · " + L.F("tender.have", "have", d.Bales[t.Mat], "n", t.Bales), L.T("tender.deliver"),
+                            () => main.Run("tender:deliver:" + id), Sim.CanDeliver(t), "primary");
+                }
+            }
             Section(L.T("upgrade.title"));
-            foreach (var item in new[] { "line", "intake", "yard", "centre" })
+            foreach (var item in new[] { "line", "intake", "yard", "centre", "bulk_centre" })
             {
                 var b = Sim.CanBuy(item);
-                if (b.Reason == "owned" || b.Reason == "max") continue;
+                if (b.Reason == "owned" || b.Reason == "max" || b.Reason == "locked") continue;
                 string it = item;
                 Card(L.T("buy." + item), L.T("buy." + item + ".d"), BuyLabel(b), () => Buy(it), b.Ok);
             }
@@ -213,7 +237,8 @@ namespace BottleRoute.UI
             {
                 int ti = i;
                 var t = Sim.S.Trucks[i];
-                string sub = L.T("truck.status." + t.Status) + " · " + L.F("truck.load", "pct", Fmt.Pct(Sim.LoadPct(t), L.Lang))
+                string status = Sim.AtPier(t) ? L.T("truck.ferry_wait") : Sim.OnFerry(t) ? L.T("truck.ferry") : L.T("truck.status." + t.Status);
+                string sub = status + " · " + L.F("truck.load", "pct", Fmt.Pct(Sim.LoadPct(t), L.Lang))
                     + (t.Stops.Count > 0 ? " · " + L.F("truck.stops", "n", t.Stops.Count) : "") + (Sim.LoadLimitedByWeight(t) && Sim.LoadPct(t) > 0.5 ? " · " + L.T("truck.weight") : "");
                 if (t.Busy && (t.Status == TruckStatus.Drive || t.Status == TruckStatus.Service))
                     Card(L.F("truck.name", "type", L.T("truck." + t.Type), "n", i + 1), sub, L.T("truck.recall"), () => main.Run("recall:" + ti), true, "tonal");

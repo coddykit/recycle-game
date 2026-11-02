@@ -65,7 +65,8 @@ namespace BottleRoute.Sim
             Emit(on ? "season_start" : "season_end", S.Day, -1, Gd.SeasonMult);
         }
 
-        double EventWeight(EventDef e) => e.Id == "heat_wave" && InSeason ? e.Weight * Gd.SeasonHeatWeight : e.Weight;
+        /// <summary>Crisis draw weight today: heat waves are likelier in the summer season.</summary>
+        public double EventWeight(EventDef e) => e.Id == "heat_wave" && InSeason ? e.Weight * Gd.SeasonHeatWeight : e.Weight;
 
         // ------------------------------------------------------------------------------------------------ tenders
 

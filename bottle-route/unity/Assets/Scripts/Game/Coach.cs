@@ -212,7 +212,17 @@ namespace BottleRoute.Game
                 case "yard_full": return "tip.yard";
                 case "baler_down": return "tip.baler_down";
                 case "gate_queue": return "tip.gate";
-                case "district": return e.Text == "oldtown" ? "tip.oldtown" : e.Text == "university" ? "tip.university" : e.Text == "stadium" ? "tip.stadium" : "";
+                case "district":
+                    switch (e.Text)
+                    {
+                        case "oldtown": case "university": case "stadium":
+                        case "industrial": case "riviera": case "villages": case "island": return "tip." + e.Text;
+                    }
+                    return "";
+                // chapters 5-7: each new mechanic explains itself the first time it shows up
+                case "tender_offer": return "tip.tender";
+                case "season_start": return "tip.season";
+                case "ferry_wait": return "tip.ferry";
                 case "research_done":
                     return e.Text == "sensors" ? "tip.sensors" : e.Text == "dispatcher" ? "tip.dispatcher" : e.Text == "counting_centre" ? "tip.centre"
                         : e.Text == "horeca" ? "tip.horeca" : e.Text == "shop_points" ? "tip.shops" : "";

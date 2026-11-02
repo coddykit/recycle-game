@@ -51,7 +51,7 @@ namespace BottleRoute.Sim.Tests
         {
             var gd = TestData.Gd();
             Assert.IsTrue(gd.Ok, string.Join("; ", gd.Errors));
-            Assert.AreEqual(4, gd.Districts.Count);
+            Assert.AreEqual(8, gd.Districts.Count, "chapters 1-7 (the island is the second district of chapter 7)");
             Assert.GreaterOrEqual(gd.Research.Count, 20);
         }
 
@@ -689,6 +689,35 @@ namespace BottleRoute.Sim.Tests
             Assert.That(Minutes("oldtown"), Is.InRange(30 * 0.75, 30 * 1.25), "Old Town at ~30 min");
             Assert.That(Minutes("university"), Is.InRange(90 * 0.75, 90 * 1.25), "University Hill at ~1.5 h");
             Assert.That(Minutes("stadium"), Is.InRange(150 * 0.75, 150 * 1.25), "Stadium & Fairground at ~2.5 h");
+        }
+
+        /// <summary>Plan §6 chapters 5-7 at 1×: Industrial Estate ~4 h (day 60), Riviera Resort ~6 h (day 90), Hill Villages
+        /// ~8 h (day 120), the Island inside chapter 7 (before ~10 h × 1.25). Median of five seeds within ±25 % (2026-11-02).
+        /// About 1 s per seed (145 game days each).</summary>
+        [Test, Category("Long")]
+        public void LateChaptersFollowThePlanContentMap()
+        {
+            var keys = new[] { "industrial", "riviera", "villages", "island" };
+            var opened = new Dictionary<string, List<int>>();
+            foreach (var k in keys) opened[k] = new List<int>();
+            foreach (long seed in new long[] { 1, 2, 3, 4, 5 })
+            {
+                var rep = BalanceRunner.Run(TestData.Gd(), seed, 145);
+                Assert.IsTrue(rep.Finite);
+                foreach (var key in keys)
+                {
+                    int day = 999;
+                    foreach (var l in rep.Log)
+                        if (l.EndsWith(" district " + key)) day = int.Parse(l.Split(' ')[1]);
+                    opened[key].Add(day);
+                }
+            }
+            double Minutes(string key) { var d = opened[key]; d.Sort(); return d[d.Count / 2] * 4.0; }
+            TestContext.Progress.WriteLine($"TEMPO median minutes: industrial {Minutes("industrial")} riviera {Minutes("riviera")} villages {Minutes("villages")} island {Minutes("island")}");
+            Assert.That(Minutes("industrial"), Is.InRange(240 * 0.75, 240 * 1.25), "Industrial Estate at ~4 h");
+            Assert.That(Minutes("riviera"), Is.InRange(360 * 0.75, 360 * 1.25), "Riviera Resort at ~6 h");
+            Assert.That(Minutes("villages"), Is.InRange(480 * 0.75, 480 * 1.25), "Hill Villages at ~8 h");
+            Assert.That(Minutes("island"), Is.InRange(Minutes("villages"), 600 * 1.25), "the Island later in chapter 7");
         }
 
         [Test]
