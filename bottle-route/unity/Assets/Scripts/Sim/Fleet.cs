@@ -505,6 +505,8 @@ namespace BottleRoute.Sim
         public string SendTech(string kind, int target)
         {
             if (S.Phase == Phases.Report) return "report";
+            if (kind == "point" && target >= 0 && target < S.Points.Count && S.Points[target].TechCalled) return "already";
+            if (kind == "baler" && S.TechJobs.Exists(j => j.Kind == "baler")) return "already";
             if (FreeTechs <= 0) return "no_tech";
             int node = Gd.DepotNode;
             if (kind == "point")
