@@ -35,19 +35,19 @@ namespace BottleRoute.Sim
                 if (t.Status == TruckStatus.Drive || t.Status == TruckStatus.Broken)
                 {
                     int from = t.Path.Count > 0 ? t.Path[t.Path.Count - 1] : t.AtNode;
-                    double rest = Math.Max(0, t.PathKm - t.PathPos) + (t.Target >= 0 ? Gd.Graph.Km(from, Gd.DepotNode, VehicleOf(t).Alley) : 0);
+                    double rest = RoadKmLeft(t) + (t.Target >= 0 ? Gd.Graph.RoadKm(from, Gd.DepotNode, VehicleOf(t).Alley) : 0);
                     if (rest < RoadGraph.Inf) ChargeKm(t, rest);
                 }
                 else if (t.Status == TruckStatus.Service && t.AtNode != Gd.DepotNode)
                 {
                     if (t.Target >= 0 && t.Target < S.Points.Count) Pick(ti, t.Target);
-                    double back = Gd.Graph.Km(t.AtNode, Gd.DepotNode, VehicleOf(t).Alley);
+                    double back = Gd.Graph.RoadKm(t.AtNode, Gd.DepotNode, VehicleOf(t).Alley);
                     if (back < RoadGraph.Inf) ChargeKm(t, back);
                 }
                 for (int m = 0; m < Mats.N; m++) { S.Depot.Intake[m] += t.Load[m]; t.Load[m] = 0; }
                 if (t.Status != TruckStatus.Idle) t.Trips++;
                 t.Status = TruckStatus.Idle; t.AtNode = Gd.DepotNode; t.Target = -1; t.Stops.Clear(); t.Path.Clear(); t.PathKm = t.PathPos = 0;
-                t.Voucher = false; t.ResumeStatus = "";
+                t.Voucher = false; t.ResumeStatus = ""; t.FerryAt = 0;
             }
             // the depot keeps counting / baling for the wrap-up (second shift research: one more hour)
             int wrap = Gd.DepotWrapupMin + (Has("second_shift") ? 60 : 0);
@@ -57,11 +57,12 @@ namespace BottleRoute.Sim
             S.TechJobs.Clear();
             foreach (var p in S.Points) p.TechCalled = false;
             CollectTill();
+            AutoDeliverTenders();
 
             var td = S.Today;
             td.Wages = S.Drivers * Gd.DriverWage + S.Techs * Gd.TechWage;
             foreach (var p in S.Points) td.Leases += KindOf(p).LeaseDay;
-            td.Power = Gd.DepotPower + Math.Max(0, S.Depot.Lines - 1) * Gd.LinePower;
+            td.Power = Gd.DepotPower + Math.Max(0, S.Depot.Lines - 1) * Gd.LinePower + (S.Depot.BulkCentre ? Gd.BulkCentrePower : 0);
             S.Cash -= td.Wages + td.Leases + td.Power;
             td.BacklogEnd = S.Depot.IntakeTotal;
             td.CountCap = CountPerMinute * (Gd.DayMinutes + wrap);
@@ -119,7 +120,10 @@ namespace BottleRoute.Sim
             foreach (var t in S.Trucks) { t.KmToday = 0; t.Trips = 0; }
             S.Events.RemoveAll(e => e.UntilDay < S.Day);
             UpdateMarket();
+            ExpireTenders();
+            UpdateSeason();
             PlanDay();
+            OfferTender();
             S.NextDispatchAt = Gd.DayStart;
             S.Phase = Phases.Plan;
             S.Paused = false;
@@ -157,8 +161,8 @@ namespace BottleRoute.Sim
         // ------------------------------------------------------------------------------------------------ purchases
 
         /// <summary>Price + whether it can be bought now. Ids: machine:&lt;node&gt;, shop:&lt;node&gt;, horeca:&lt;node&gt;,
-        /// bin_m:&lt;point&gt;, compactor:&lt;point&gt;, sensor:&lt;point&gt;, truck:&lt;type&gt;, driver, tech, line, yard, intake,
-        /// centre, dispatcher, district:&lt;id&gt;.</summary>
+        /// machine_l:&lt;node&gt; (large remote machine), hotel:&lt;node&gt;, bin_m:&lt;point&gt;, compactor:&lt;point&gt;,
+        /// sensor:&lt;point&gt;, truck:&lt;type&gt;, driver, tech, line, yard, intake, centre, bulk_centre, dispatcher, district:&lt;id&gt;.</summary>
         public BuyInfo CanBuy(string id)
         {
             var r = new BuyInfo();
@@ -170,15 +174,17 @@ namespace BottleRoute.Sim
             switch (kind)
             {
                 case "machine":
+                case "machine_l":
                 case "shop":
                 case "horeca":
+                case "hotel":
                 {
                     int node = Gd.Node(arg);
                     if (node < 0 || Gd.Nodes[node].Kind != "site" || Gd.Nodes[node].Site != kind) { r.Reason = "invalid"; return r; }
                     if (PointAt(node) >= 0) { r.Reason = "owned"; return r; }
                     if (!Unlocked(Gd.Nodes[node].District)) { r.Reason = "locked"; return r; }
                     if (kind == "shop" && !Has("shop_points")) { r.Reason = "research"; return r; }
-                    if (kind == "horeca" && !Has("horeca")) { r.Reason = "research"; return r; }
+                    if ((kind == "horeca" || kind == "hotel") && !Has("horeca")) { r.Reason = "research"; return r; }
                     r.Cost = Gd.Price(kind == "machine" ? "machine_s" : kind);
                     break;
                 }
@@ -189,7 +195,7 @@ namespace BottleRoute.Sim
                     if (!int.TryParse(arg, out int pi) || pi < 0 || pi >= S.Points.Count) { r.Reason = "invalid"; return r; }
                     var p = S.Points[pi];
                     if (!p.IsMachine) { r.Reason = "invalid"; return r; }
-                    if (kind == "bin_m" && p.Kind == "machine_m") { r.Reason = "owned"; return r; }
+                    if (kind == "bin_m" && p.Kind != "machine_s") { r.Reason = "owned"; return r; }
                     if (kind == "compactor" && p.Compactor) { r.Reason = "owned"; return r; }
                     if (kind == "sensor" && p.Sensor) { r.Reason = "owned"; return r; }
                     if (kind == "compactor" && !Has("compactor")) { r.Reason = "research"; return r; }
@@ -224,6 +230,10 @@ namespace BottleRoute.Sim
                     if (d.Centre) { r.Reason = "owned"; return r; }
                     if (!Has("counting_centre")) { r.Reason = "research"; return r; }
                     r.Cost = Gd.Price("centre"); break;
+                case "bulk_centre":
+                    if (d.BulkCentre) { r.Reason = "owned"; return r; }
+                    if (!Unlocked(Gd.BulkCentreDistrict)) { r.Reason = "locked"; return r; }
+                    r.Cost = Gd.Price("bulk_centre"); break;
                 case "dispatcher":
                     if (d.Dispatcher) { r.Reason = "owned"; return r; }
                     if (!Has("dispatcher")) { r.Reason = "research"; return r; }
@@ -257,11 +267,11 @@ namespace BottleRoute.Sim
             var d = S.Depot;
             switch (kind)
             {
-                case "machine": case "shop": case "horeca":
+                case "machine": case "machine_l": case "shop": case "horeca": case "hotel":
                 {
                     int node = Gd.Node(arg);
                     var p = new PointState { Node = node, Kind = kind == "machine" ? "machine_s" : kind, LastServiceDay = S.Day, LastServiceMin = S.Minute };
-                    if (kind != "machine") { p.Policy = Policies.Fixed; p.FixedEvery = 1; }
+                    if (kind != "machine" && kind != "machine_l") { p.Policy = Policies.Fixed; p.FixedEvery = 1; }
                     S.Points.Add(p);
                     Emit("point_new", S.Points.Count - 1);
                     break;
@@ -282,6 +292,7 @@ namespace BottleRoute.Sim
                 case "yard": d.YardCap += Gd.YardCap / 2; break;
                 case "intake": d.IntakeCap += Gd.IntakeCap / 2; break;
                 case "centre": d.Centre = true; break;
+                case "bulk_centre": d.BulkCentre = true; break;
                 case "dispatcher":
                     d.Dispatcher = true;
                     for (int i = 0; i < S.Trucks.Count && AutoCount < AutoSlots; i++) S.Trucks[i].Auto = true;

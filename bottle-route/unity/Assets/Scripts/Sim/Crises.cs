@@ -30,7 +30,7 @@ namespace BottleRoute.Sim
                 var pool = Gd.Events.FindAll(EventEligible);
                 if (pool.Count == 0) break;
                 var w = new double[pool.Count];
-                for (int i = 0; i < w.Length; i++) w[i] = pool[i].Weight;
+                for (int i = 0; i < w.Length; i++) w[i] = EventWeight(pool[i]);
                 var e = pool[Rng.PickWeighted(w)];
                 if (Announced.Contains(e.Id)) Fire(e.Id);
                 else S.Planned.Add(new PlannedEvent { Id = e.Id, At = Gd.DayStart + 60 + Rng.Frand() * (Gd.DayMinutes - 120) });
@@ -165,6 +165,7 @@ namespace BottleRoute.Sim
         public List<string> ActiveCrises()
         {
             var o = new List<string>();
+            if (InSeason) o.Add("season");
             foreach (var e in S.Events) o.Add(e.Id);
             if (S.Depot.BalerDown) o.Add("baler_down");
             foreach (var p in S.Points) { if (p.Jammed) { o.Add("jam"); break; } }

@@ -46,7 +46,7 @@ namespace BottleRoute.Sim
     public sealed class PointState
     {
         public int Node;
-        public string Kind = "machine_s";      // machine_s | machine_m | shop | horeca
+        public string Kind = "machine_s";      // machine_s | machine_m | machine_l | shop | horeca | hotel
         public double[] Fill = new double[Mats.N]; // containers by material
         public bool Sensor, Compactor, Jammed, SensorOffline;
         public double FrozenPct;                // what the screen shows while the sensor/app is wrong
@@ -61,7 +61,7 @@ namespace BottleRoute.Sim
         public double FullMin;
         public int Arrivals, Turned, Deposited, Picked;
 
-        public bool IsMachine => Kind == "machine_s" || Kind == "machine_m";
+        public bool IsMachine => Kind == "machine_s" || Kind == "machine_m" || Kind == "machine_l";
 
         public JObj ToJson()
         {
@@ -106,6 +106,7 @@ namespace BottleRoute.Sim
         public string ResumeStatus = "";              // after a breakdown
         public bool Auto;                             // driven by the Dispatcher
         public bool Voucher;                          // rewarded fuel voucher: this route at half fuel cost
+        public double FerryAt;                        // ferry departure (day minute) the truck waits for / sails with; 0 = none
         public double KmToday;
         public int Trips;
 
@@ -117,7 +118,7 @@ namespace BottleRoute.Sim
             {
                 ["id"] = (long)Id, ["type"] = Type, ["status"] = Status, ["stops"] = JW.Arr(Stops), ["path"] = JW.Arr(Path), ["path_km"] = PathKm,
                 ["pos"] = PathPos, ["target"] = (long)Target, ["at"] = (long)AtNode, ["load"] = JW.Arr(Load), ["left"] = TimeLeft, ["resume"] = ResumeStatus,
-                ["auto"] = Auto, ["voucher"] = Voucher, ["km"] = KmToday, ["trips"] = (long)Trips,
+                ["auto"] = Auto, ["voucher"] = Voucher, ["km"] = KmToday, ["trips"] = (long)Trips, ["ferry"] = FerryAt,
             };
         }
 
@@ -128,6 +129,7 @@ namespace BottleRoute.Sim
                 Id = J.I(o, "id"), Type = J.S(o, "type", "van"), Status = J.S(o, "status", TruckStatus.Idle), Stops = JW.Ints(o, "stops"), Path = JW.Ints(o, "path"),
                 PathKm = JW.D(o, "path_km"), PathPos = JW.D(o, "pos"), Target = J.I(o, "target", -1), AtNode = J.I(o, "at"), Load = JW.Dbl(o, "load", Mats.N),
                 TimeLeft = JW.D(o, "left"), ResumeStatus = J.S(o, "resume"), Auto = J.B(o, "auto"), Voucher = J.B(o, "voucher"), KmToday = JW.D(o, "km"), Trips = J.I(o, "trips"),
+                FerryAt = Math.Max(0, JW.D(o, "ferry")),
             };
             if (!TruckStatus.Valid(t.Status)) t.Status = TruckStatus.Idle;
             return t;
@@ -153,6 +155,7 @@ namespace BottleRoute.Sim
         public double Till;                               // counted fees not banked yet (tap the coins)
         public int Lines = 1, YardCap = 12, IntakeCap = 2500;
         public bool BalerDown, Centre, Dispatcher;
+        public bool BulkCentre;                           // chapter 5 depot upgrade: extra count throughput
         public int Yard => Bales[Mats.Pet] + Bales[Mats.Alu];
         public double IntakeTotal => Intake[0] + Intake[1] + Intake[2];
 
@@ -163,6 +166,7 @@ namespace BottleRoute.Sim
             {
                 ["intake"] = JW.Arr(Intake), ["baler_in"] = JW.Arr(BalerIn), ["press"] = JW.Arr(Press), ["bales"] = b, ["till"] = Till,
                 ["lines"] = (long)Lines, ["yard_cap"] = (long)YardCap, ["intake_cap"] = (long)IntakeCap, ["baler_down"] = BalerDown, ["centre"] = Centre, ["dispatcher"] = Dispatcher,
+                ["bulk_centre"] = BulkCentre,
             };
         }
 
@@ -173,6 +177,7 @@ namespace BottleRoute.Sim
                 Intake = JW.Dbl(o, "intake", Mats.N), BalerIn = JW.Dbl(o, "baler_in", Mats.N), Press = JW.Dbl(o, "press", Mats.N), Till = JW.D(o, "till"),
                 Lines = J.I(o, "lines", gd.LinesStart), YardCap = J.I(o, "yard_cap", gd.YardCap), IntakeCap = J.I(o, "intake_cap", gd.IntakeCap),
                 BalerDown = J.B(o, "baler_down"), Centre = J.B(o, "centre"), Dispatcher = J.B(o, "dispatcher"),
+                BulkCentre = J.B(o, "bulk_centre"),
             };
             var b = J.Arr(o, "bales");
             if (b != null) for (int i = 0; i < Mats.N && i < b.Count; i++) d.Bales[i] = Math.Max(0, J.I(b[i]));
@@ -235,6 +240,25 @@ namespace BottleRoute.Sim
         }
     }
 
+    /// <summary>Chapter 5 bale tender: deliver Bales of material Mat by the end of DueDay at a fixed Price per bale (glass:
+    /// per tonne). An offer lapses after OfferUntil; an accepted one that runs out costs nothing but the premium.</summary>
+    public sealed class Tender
+    {
+        public int Id, Mat, Bales, OfferUntil, DueDay;
+        public double Price;
+        public bool Accepted;
+        public JObj ToJson() => new JObj
+        {
+            ["id"] = (long)Id, ["mat"] = (long)Mat, ["bales"] = (long)Bales, ["offer_until"] = (long)OfferUntil, ["due"] = (long)DueDay,
+            ["price"] = Price, ["accepted"] = Accepted,
+        };
+        public static Tender Read(object o) => new Tender
+        {
+            Id = J.I(o, "id"), Mat = J.I(o, "mat"), Bales = J.I(o, "bales"), OfferUntil = J.I(o, "offer_until"), DueDay = J.I(o, "due"),
+            Price = JW.D(o, "price"), Accepted = J.B(o, "accepted"),
+        };
+    }
+
     public sealed class RewardUse
     {
         public long UtcDay;
@@ -280,6 +304,10 @@ namespace BottleRoute.Sim
         public long Containers;           // career total collected
         public int Bales;                 // career total pressed
         public List<string> Seen = new List<string>(); // first-time tips shown (sim side markers)
+        // chapters 5-7 (all optional in the save: an older career loads with none of them)
+        public List<Tender> Tenders = new List<Tender>();
+        public int NextTenderId = 1;
+        public bool SeasonOn;             // the summer season was running at the last morning (start / end announcements)
 
         public JObj ToJson()
         {
@@ -290,6 +318,7 @@ namespace BottleRoute.Sim
             var pl = new List<object>(); foreach (var e in Planned) pl.Add(e.ToJson());
             var hi = new List<object>(); foreach (var h in History) hi.Add(h.ToJson());
             var rw = new JObj(); foreach (var kv in Rewards) rw[kv.Key] = kv.Value.ToJson();
+            var tn = new List<object>(); foreach (var t in Tenders) tn.Add(t.ToJson());
             return new JObj
             {
                 ["game"] = "bottle-route", ["v"] = (long)Version, ["seed"] = Seed, ["rng"] = RngState, ["day"] = (long)Day, ["minute"] = Minute, ["phase"] = Phase,
@@ -299,6 +328,7 @@ namespace BottleRoute.Sim
                 ["today"] = Today.ToJson(), ["history"] = hi, ["next_dispatch"] = NextDispatchAt, ["tutorial"] = Tutorial, ["voucher"] = FuelVoucher,
                 ["rewards"] = rw, ["offline_pending"] = OfflinePending, ["last_seen"] = LastSeen, ["best_stars"] = (long)BestDayStars,
                 ["three_star_days"] = (long)ThreeStarDays, ["containers"] = Containers, ["bales"] = (long)Bales, ["seen"] = JW.Arr(Seen),
+                ["tenders"] = tn, ["tender_id"] = (long)NextTenderId, ["season"] = SeasonOn,
             };
         }
     }

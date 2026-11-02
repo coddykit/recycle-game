@@ -18,8 +18,8 @@ namespace BottleRoute.Sim
     public sealed class PointKindDef { public string Id; public double CapL, LeaseDay, JamPer1000, ShopFee, PickupBonus; public bool Citizens; public double[] Mix; }
     public sealed class VehicleDef { public string Id; public double VolL, Kg, SpeedKmh, CostKm, ServiceMin, PetCompress, Price; public bool Alley; public string Research; }
     public sealed class DistrictDef { public string Id; public int Chapter; public double Rating, Cost; public double[] Archetypes; }
-    public sealed class NodeDef { public int Index; public string Id, District, Kind, Site; public double X, Y, Rate; public bool Alley, EventSite; }
-    public sealed class EdgeDef { public int A, B; public double Km; public bool Alley; }
+    public sealed class NodeDef { public int Index; public string Id, District, Kind, Site; public double X, Y, Rate; public bool Alley, EventSite, Pier; }
+    public sealed class EdgeDef { public int A, B; public double Km; public bool Alley, Ferry; }
     public sealed class ResearchDef { public string Id, Branch, District; public double Cost, Minutes; public List<string> Requires = new List<string>(); }
     public sealed class EventDef { public string Id, District; public double Weight, Mult; public int MinDay, Days, From, To, BusyMin, Min, Max, BrokenMin; }
     public sealed class RewardDef { public string Id; public int PerDay; public long CooldownS; public double Days; }
@@ -67,6 +67,20 @@ namespace BottleRoute.Sim
         public double OfflineMinS = 120, OfflineCapH = 4, OfflineCapHPlus = 10, OfflineRate = 0.5, OfflineRatePlus = 0.75, OfflineDaysPerHour = 0.5;
         public readonly Dictionary<string, RewardDef> Rewards = new Dictionary<string, RewardDef>();
         public double RewardSingleMaxDays = 0.2;
+        // chapter 5: bulk counting centre (depot upgrade) + bale tenders
+        public string BulkCentreDistrict = "industrial";
+        public double BulkCentrePerHour = 1200, BulkCentrePower = 30;
+        public string TenderDistrict = "industrial";
+        public int TenderMaxOpen = 2, TenderOfferDays = 2, TenderDueMin = 4, TenderDueMax = 7;
+        public double TenderChance = 0.45, TenderPremiumMin = 1.25, TenderPremiumMax = 1.45;
+        public double[] TenderWeights = { 0.5, 0.3, 0.2 };
+        public readonly int[][] TenderBales = { new[] { 4, 8 }, new[] { 2, 5 }, new[] { 2, 3 } };
+        // chapter 6: summer season (a multi-day window of tourist arrivals in the season districts)
+        public List<string> SeasonDistricts = new List<string>();
+        public int SeasonEvery = 20, SeasonStart = 10, SeasonDays = 5;
+        public double SeasonMult = 3, SeasonHeatWeight = 3;
+        // chapter 7: the island ferry (departures every N game minutes from the day start)
+        public double FerryEveryMin = 40, FerrySpeedKmh = 18, FerryTicket = 30;
 
         // map
         public double RoadFactor = 1.2;
@@ -210,6 +224,26 @@ namespace BottleRoute.Sim
                     Rewards[kv.Key] = new RewardDef { Id = kv.Key, PerDay = J.I(kv.Value, "per_day", 1), CooldownS = J.L(kv.Value, "cooldown_s"), Days = J.D(kv.Value, "days") };
                 }
             DayIncomeFloor = J.D(b, "day_income_floor", 600);
+
+            var bc = J.Obj(b, "bulk_centre");
+            BulkCentreDistrict = J.S(bc, "district", "industrial"); BulkCentrePerHour = J.D(bc, "count_per_hour", 1200); BulkCentrePower = J.D(bc, "power", 30);
+            var tn = J.Obj(b, "tenders");
+            TenderDistrict = J.S(tn, "district", "industrial"); TenderMaxOpen = J.I(tn, "max_open", 2); TenderChance = J.D(tn, "chance", 0.45);
+            TenderOfferDays = J.I(tn, "offer_days", 2); TenderDueMin = J.I(tn, "due_min", 4); TenderDueMax = J.I(tn, "due_max", 7);
+            TenderPremiumMin = J.D(tn, "premium_min", 1.25); TenderPremiumMax = J.D(tn, "premium_max", 1.45);
+            TenderWeights = Dbl(tn, "weights", TenderWeights);
+            var tb = J.Obj(tn, "bales");
+            for (int i = 0; i < Mats.N; i++)
+            {
+                var r = J.DblArr(tb, Mats.Ids[i]);
+                if (r != null && r.Length >= 2) TenderBales[i] = new[] { (int)r[0], (int)r[1] };
+            }
+            var se = J.Obj(b, "season");
+            SeasonDistricts = J.StrList(se, "districts") ?? new List<string>();
+            SeasonEvery = J.I(se, "every_days", 20); SeasonStart = J.I(se, "start_day", 10); SeasonDays = J.I(se, "days", 5);
+            SeasonMult = J.D(se, "mult", 3); SeasonHeatWeight = J.D(se, "heat_weight", 3);
+            var fe = J.Obj(b, "ferry");
+            FerryEveryMin = J.D(fe, "every_min", 40); FerrySpeedKmh = J.D(fe, "speed_kmh", 18); FerryTicket = J.D(fe, "ticket", 30);
         }
 
         void ReadMap(object m)
@@ -223,7 +257,7 @@ namespace BottleRoute.Sim
                 var nd = new NodeDef
                 {
                     Index = Nodes.Count, Id = J.S(n, "id"), X = J.D(n, "x"), Y = J.D(n, "y"), District = J.S(n, "district"), Kind = J.S(n, "kind"),
-                    Site = J.S(n, "site"), Rate = J.D(n, "rate"), Alley = J.B(n, "alley"), EventSite = J.B(n, "event"),
+                    Site = J.S(n, "site"), Rate = J.D(n, "rate"), Alley = J.B(n, "alley"), EventSite = J.B(n, "event"), Pier = J.B(n, "pier"),
                 };
                 if (NodeIndex.ContainsKey(nd.Id)) { Errors.Add("map: duplicate node " + nd.Id); continue; }
                 NodeIndex[nd.Id] = nd.Index;
@@ -236,7 +270,8 @@ namespace BottleRoute.Sim
                 int a = Node(J.Str(l[0])), b = Node(J.Str(l[1]));
                 if (a < 0 || b < 0) { Errors.Add("map: edge to unknown node " + J.Str(l[0]) + "-" + J.Str(l[1])); continue; }
                 double dx = Nodes[a].X - Nodes[b].X, dy = Nodes[a].Y - Nodes[b].Y;
-                Edges.Add(new EdgeDef { A = a, B = b, Km = Math.Sqrt(dx * dx + dy * dy) * RoadFactor, Alley = l.Count > 2 && J.Str(l[2]) == "alley" });
+                string flag = l.Count > 2 ? J.Str(l[2]) : "";
+                Edges.Add(new EdgeDef { A = a, B = b, Km = Math.Sqrt(dx * dx + dy * dy) * RoadFactor, Alley = flag == "alley", Ferry = flag == "ferry" });
             }
         }
 
@@ -284,6 +319,13 @@ namespace BottleRoute.Sim
             foreach (var id in new[] { "offline_x2", "emergency_empty", "fuel_voucher", "baler_rescue", "daily_bonus" })
                 if (!Rewards.ContainsKey(id)) Errors.Add("balance: reward " + id);
             foreach (var mat in Materials) if (mat == null || mat.BaleKg <= 0 || mat.VolL <= 0) { Errors.Add("balance: materials"); break; }
+            foreach (var d in SeasonDistricts) if (District(d) == null) Errors.Add("balance: season district " + d);
+            if (District(TenderDistrict) == null) Errors.Add("balance: tender district " + TenderDistrict);
+            if (District(BulkCentreDistrict) == null) Errors.Add("balance: bulk centre district " + BulkCentreDistrict);
+            if (SeasonEvery < 1 || SeasonDays < 0 || SeasonDays > SeasonEvery) Errors.Add("balance: season window");
+            if (FerryEveryMin < 1 || FerrySpeedKmh <= 0) Errors.Add("balance: ferry");
+            foreach (var e in Edges)
+                if (e.Ferry && (!Nodes[e.A].Pier || !Nodes[e.B].Pier)) Errors.Add("map: a ferry edge must join two piers");
         }
     }
 }

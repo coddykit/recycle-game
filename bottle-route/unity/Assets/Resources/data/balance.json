@@ -12,7 +12,8 @@
     { "id": "family",   "min": 12, "max": 30, "mix": [0.55, 0.20, 0.25], "weekend": 2.2, "evening": 0.8 },
     { "id": "student",  "min": 4,  "max": 10, "mix": [0.35, 0.60, 0.05], "weekend": 0.8, "evening": 2.0 },
     { "id": "eco",      "min": 6,  "max": 15, "mix": [0.40, 0.30, 0.30], "weekend": 1.2, "evening": 1.0 },
-    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 }
+    { "id": "tourist",  "min": 3,  "max": 8,  "mix": [0.60, 0.30, 0.10], "weekend": 1.4, "evening": 1.2 },
+    { "id": "bulk",     "min": 20, "max": 60, "mix": [0.55, 0.35, 0.10], "weekend": 1.0, "evening": 0.7 }
   ],
   "hour_curve": [0.7, 0.8, 0.9, 1.0, 1.1, 0.9, 0.9, 1.1, 1.4, 1.2],
   "weekend_mult": 1.25,
@@ -20,7 +21,9 @@
     "machine_s": { "cap_l": 240, "lease_day": 14, "jam_per_1000": 1.2, "citizens": true },
     "machine_m": { "cap_l": 480, "lease_day": 22, "jam_per_1000": 1.0, "citizens": true },
     "shop":      { "cap_l": 160, "lease_day": 0,  "jam_per_1000": 0,   "citizens": true, "shop_fee": 0.3 },
-    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] }
+    "horeca":    { "cap_l": 300, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 30, "mix": [0.25, 0.15, 0.60] },
+    "machine_l": { "cap_l": 1000, "lease_day": 34, "jam_per_1000": 0.8, "citizens": true },
+    "hotel":     { "cap_l": 600, "lease_day": 0,  "jam_per_1000": 0,   "citizens": false, "pickup_bonus": 60, "mix": [0.35, 0.15, 0.50] }
   },
   "compactor_pet": 2.5,
   "compactor_jam_mult": 1.6,
@@ -40,7 +43,8 @@
   "depot": { "count_per_hour": 420, "lines_start": 1, "lines_max": 3, "baler_kg_per_hour": 90, "baler_jam_per_bale": 0.02, "yard_cap": 12, "intake_cap": 2500, "glass_bay_t": 3, "tech_speed_kmh": 30, "tech_fix_min": 20 },
   "prices": {
     "machine_s": 600, "bin_m": 700, "compactor": 900, "sensor": 250, "shop": 150, "horeca": 300,
-    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000
+    "driver": 300, "tech": 300, "line": 2200, "yard": 1200, "intake": 1000, "centre": 5000, "dispatcher": 3000,
+    "machine_l": 2400, "hotel": 600, "bulk_centre": 15000
   },
   "dispatcher": { "slots": 3, "pass_slots": 1, "plus_slots": 3, "every_min": 15, "max_stops": 8 },
   "stars": {
@@ -58,5 +62,13 @@
     "daily_bonus":     { "per_day": 1, "cooldown_s": 0, "days": 0.15 },
     "single_max_days": 0.2
   },
-  "day_income_floor": 600
+  "day_income_floor": 600,
+  "bulk_centre": { "district": "industrial", "count_per_hour": 1200, "power": 30 },
+  "tenders": {
+    "district": "industrial", "max_open": 2, "chance": 0.45, "offer_days": 2, "due_min": 4, "due_max": 7,
+    "premium_min": 1.25, "premium_max": 1.45, "weights": [0.5, 0.3, 0.2],
+    "bales": { "pet": [4, 8], "alu": [2, 5], "glass": [2, 3] }
+  },
+  "season": { "districts": ["riviera", "island"], "every_days": 20, "start_day": 10, "days": 5, "mult": 3.0, "heat_weight": 3.0 },
+  "ferry": { "every_min": 40, "speed_kmh": 18, "ticket": 30 }
 }

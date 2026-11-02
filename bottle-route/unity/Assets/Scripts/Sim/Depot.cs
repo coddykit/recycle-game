@@ -10,7 +10,7 @@ namespace BottleRoute.Sim
 {
     public sealed partial class Simulation
     {
-        public double CountPerMinute => S.Depot.Lines * Gd.CountPerHour * (Has("count_speed") ? 1.25 : 1.0) / 60.0;
+        public double CountPerMinute => (S.Depot.Lines * Gd.CountPerHour + (S.Depot.BulkCentre ? Gd.BulkCentrePerHour : 0)) * (Has("count_speed") ? 1.25 : 1.0) / 60.0;
         public double BalerKgPerMinute => Gd.BalerKgPerHour * (Has("baler_speed") ? 1.4 : 1.0) / 60.0;
         public int GlassBayCap => (int)Math.Round(Gd.GlassBayT * (Has("glass_crusher") ? 2 : 1));
         public bool YardFull => S.Depot.Yard >= S.Depot.YardCap;

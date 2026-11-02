@@ -84,6 +84,17 @@ namespace BottleRoute.Sim
             s.Today = DayStats.Read(J.Obj(o, "today"));
             foreach (var h in J.Arr(o, "history") ?? new List<object>()) s.History.Add(DayStats.Read(h));
             if (J.Obj(o, "rewards") is JObj rw) foreach (var kv in rw) s.Rewards[kv.Key] = RewardUse.Read(kv.Value);
+            // chapters 5-7: optional (an older save has none of these and loads with the defaults)
+            foreach (var t in J.Arr(o, "tenders") ?? new List<object>())
+            {
+                var tn = Tender.Read(t);
+                if (tn.Mat < 0 || tn.Mat >= Mats.N || tn.Bales <= 0 || !Finite(tn.Price) || tn.Price < 0) return Fail("tender");
+                s.Tenders.Add(tn);
+            }
+            s.NextTenderId = Math.Max(1, J.I(o, "tender_id", 1));
+            foreach (var tn in s.Tenders) s.NextTenderId = Math.Max(s.NextTenderId, tn.Id + 1);
+            s.SeasonOn = J.B(o, "season");
+            foreach (var ts in s.Trucks) if (!Finite(ts.FerryAt)) return Fail("not_finite");
             return new DecodeResult { Ok = true, Sim = new Simulation(gd, s) };
         }
 

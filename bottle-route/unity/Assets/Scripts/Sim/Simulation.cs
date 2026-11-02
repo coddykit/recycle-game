@@ -197,8 +197,9 @@ namespace BottleRoute.Sim
             return w;
         }
 
-        /// <summary>Base containers per hour at a point now (site rate × hour curve), without events or weekend.</summary>
-        public double BaseRate(PointState p) => NodeOf(p).Rate * Gd.HourCurve[HourIndex];
+        /// <summary>Base containers per hour at a point now (site rate × hour curve × the summer season, which is on the
+        /// calendar so the estimate knows it), without events or weekend.</summary>
+        public double BaseRate(PointState p) => NodeOf(p).Rate * Gd.HourCurve[HourIndex] * SeasonMult(p);
 
         /// <summary>Event multiplier for a point now (heat wave, match day window).</summary>
         public double DemandMult(PointState p)
