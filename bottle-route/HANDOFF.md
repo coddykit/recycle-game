@@ -10,7 +10,7 @@ Ortak durum ve ortak adımlar: kökteki `HANDOFF.md`. Plan: `RECYCLING_GAME_PLAN
 - Editörde HİÇ açılmadı: derleme, sahne, cihazda görünüm, perf, AAB doğrulanmadı.
 
 ## Oyuna özel notlar
-- Bölge 5–7 (Sanayi, Riviera, Dağ Köyleri+Ada) bu oturumun sonunda eklendi/eklenmekte — durum: `docs/CHAPTERS_5_7_HANDOFF.md`. Denge soruları: `docs/BALANCE.md` 'Known tuning questions' (önerilen rota fazla sürüyor, %80 kuralı bot varyantı, balya gelirinin dalgalılığı).
+- Bölge 5–7 (Sanayi: balya ihaleleri + toplu sayım merkezi; Riviera: oteller + yaz sezonu ×3; Dağ Köyleri + Ada: büyük uzak makineler + feribot) eklendi, 145 test yeşil; editörde bakılacaklar: `docs/CHAPTERS_5_7_HANDOFF.md`. Denge soruları: `docs/BALANCE.md` 'Known tuning questions' (önerilen rota fazla sürüyor, %80 kuralı bot varyantı, balya gelirinin dalgalılığı).
 - `ad_free` veren ürünler (CLAUDE.md §8'e onayla eklenecek): **noads, premium, route_pass, bundle** — diğer her ürün reklamı kapatmaz.
 - Release env'leri: `BOTTLEROUTE_ADMOB_APP_ID`, `BOTTLEROUTE_KEYSTORE*`, `BOTTLEROUTE_VERSION_*`, `BOTTLEROUTE_RELEASE`; `config/google-services.json` (git dışı). Kimlikler boş.
 
