@@ -81,7 +81,11 @@ namespace BottleRoute.Game
         public static string ClockMin(double minute) => Clock(minute / 60.0);
 
         /// <summary>0..1 -> "86 %".</summary>
-        public static string Pct(double f) => ((long)Math.Round(Math.Max(0, f) * 100)).ToString(CultureInfo.InvariantCulture) + " %";
+        public static string Pct(double f, string lang = "en")
+        {
+            string n = ((long)Math.Round(Math.Max(0, f) * 100)).ToString(CultureInfo.InvariantCulture);
+            return lang == "tr" ? "%" + n : n + " %";   // Turkish writes the sign first (%80)
+        }
 
         /// <summary>Road km: "4.2 km" (one decimal below 10).</summary>
         public static string Km(double km, string lang = "en") => (km < 10 ? OneDec(Math.Round(km, 1), lang) : Int((long)Math.Round(km), lang)) + " km";
