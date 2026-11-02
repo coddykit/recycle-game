@@ -738,5 +738,24 @@ namespace PourAndRoast.Sim.Tests
             Assert.GreaterOrEqual(rep.Chapter, 2, "Corner Cafe within 25 days (~1.5 h of play)");
             Assert.AreEqual(0, rep.StuckTickets);
         }
+
+        /// <summary>Plan §6 tempo: Corner Cafe at ~1:15 h, Roastery Hall at ~3:00 h, ±25 % (a day ≈ 4.7 real min at 1×:
+        /// 3.7 min of service + the morning plan).</summary>
+        [Test]
+        public void ChapterTempoFollowsThePlan()
+        {
+            var rep = BalanceRunner.Run(TestData.Gd(), 9, 50);
+            int Day(string venue)
+            {
+                foreach (var l in rep.Log) if (l.EndsWith(" venue " + venue)) return int.Parse(l.Split(' ')[1]);
+                return 999;
+            }
+            double perDay = 660.0 / TestData.Gd().GameMinPerRealS / 60.0 + 1.0;
+            double corner = (Day("corner") - 1) * perDay, roastery = (Day("roastery") - 1) * perDay;
+            TestContext.Progress.WriteLine($"TEMPO seed 9: corner {corner:0} min, roastery {roastery:0} min");
+            Assert.That(corner, Is.InRange(75 * 0.75, 75 * 1.25), "Corner Cafe ~1:15 h");
+            Assert.That(roastery, Is.InRange(180 * 0.75, 180 * 1.25), "Roastery Hall ~3:00 h");
+            Assert.AreEqual(0, rep.StuckTickets);
+        }
     }
 }

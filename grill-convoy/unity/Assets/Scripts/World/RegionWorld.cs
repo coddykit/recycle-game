@@ -6,6 +6,9 @@
 //   * 1 km of map = 100 world units; props are drawn larger than life so they read at map zoom.
 //   * one palette material for everything (MeshKit) + instanced draws for the crowd, steam and flames.
 //   * Low tier: no shadows (QualityTiers), ≤ 16 figures per line at 15 Hz, half the leavers, no steam puffs.
+//   * Medium / High: Blender-kit district pieces (Resources/kit/d_*: office towers, townhouses, shops, beach kiosks, stadium
+//     stands, harbour sheds + crane + boats, string lights, floodlights) merged INTO the district meshes — same draws as
+//     the procedural blocks Low keeps (+1 harbour mesh on Medium / High only). docs/ART.md has the numbers.
 //   * picking: a tap ray-casts the ground plane (no physics module) and picks the nearest truck / pitch / commissary.
 using System;
 using System.Collections.Generic;
@@ -95,6 +98,7 @@ namespace GrillConvoy.World
             if (low == Low) return;
             Low = low;
             crowd?.SetLow(low);
+            builtDistricts = -1;   // district meshes differ per tier (kit pieces on Medium / High only)
             MarkDirty();
         }
 
@@ -146,9 +150,71 @@ namespace GrillConvoy.World
             return go;
         }
 
+        // ------------------------------------------------------------------ Blender-kit district pieces (Medium / High)
+
+        sealed class KitPiece { public Vector3[] V, N; public Vector2[] Uv; public int[] T; public Matrix4x4 Local; }
+        readonly Dictionary<string, KitPiece> kitPieces = new Dictionary<string, KitPiece>();
+
+        /// <summary>Nominal size (x width, y height, z depth, metres) of the scalable pieces — tools/art/kit.py builds them so.</summary>
+        static readonly Dictionary<string, Vector3> KitNominal = new Dictionary<string, Vector3>
+        {
+            { "d_office_a", new Vector3(16, 40, 14) }, { "d_office_b", new Vector3(16, 32, 14) }, { "d_house_a", new Vector3(12, 10, 10) },
+            { "d_shop_a", new Vector3(12, 8, 10) }, { "d_kiosk", new Vector3(12, 6, 9) }, { "d_stand", new Vector3(22, 16, 10) },
+        };
+
+        /// <summary>Resources/kit/d_* read once (the importer marks only these readable); null = missing / unreadable.</summary>
+        KitPiece Piece(string name)
+        {
+            if (kitPieces.TryGetValue(name, out var p)) return p;
+            var prefab = Resources.Load<GameObject>("kit/" + name);
+            var mf = prefab != null ? prefab.GetComponentInChildren<MeshFilter>() : null;
+            var mesh = mf != null ? mf.sharedMesh : null;
+            if (mesh != null && mesh.isReadable)
+                p = new KitPiece
+                {
+                    V = mesh.vertices, N = mesh.normals, Uv = mesh.uv, T = mesh.triangles,
+                    Local = Matrix4x4.Translate(-prefab.transform.position) * mf.transform.localToWorldMatrix,
+                };
+            kitPieces[name] = p;
+            return p;
+        }
+
+        /// <summary>Merges a kit piece into the district mesh (Medium / High only; Low keeps the procedural blocks, so the Low
+        /// scene is unchanged). size = target size for the scalable pieces (else scale 1). Front of a piece = its local +Z.
+        /// Returns false when the caller should draw its procedural fallback.</summary>
+        bool KitInto(MeshKit k, string name, Vector3 pos, float yaw, bool open, Vector3? size = null)
+        {
+            if (Low) return false;
+            var p = Piece(name);
+            if (p == null) return false;
+            var sc = Vector3.one;
+            if (size.HasValue && KitNominal.TryGetValue(name, out var nom))
+                sc = new Vector3(size.Value.x / nom.x, size.Value.y / nom.y, size.Value.z / nom.z);
+            k.Append(p.V, p.N, p.Uv, p.T, Matrix4x4.TRS(pos, Quaternion.Euler(0, yaw, 0), sc) * p.Local, open ? -1 : Pal.Locked);
+            return true;
+        }
+
+        int ChapterOf(string district)
+        {
+            foreach (var d in Sim.Gd.Districts) if (d.Id == district) return d.Chapter;
+            return 0;
+        }
+
+        /// <summary>The district that dresses an edge's street blocks: the later chapter, ties not the harbour — a shared road
+        /// is built once (both ends used to build it, doubling the blocks).</summary>
+        string EdgeOwner(NodeDef a, NodeDef b)
+        {
+            if (a.District == b.District) return a.District;
+            int ca = ChapterOf(a.District), cb = ChapterOf(b.District);
+            if (ca != cb) return ca > cb ? a.District : b.District;
+            return a.District == "harbour" ? b.District : a.District;
+        }
+
         void BuildDistrict(DistrictDef dd)
         {
-            if (districtObjs.TryGetValue(dd.Id, out var old)) Destroy(old);
+            if (districtObjs.TryGetValue(dd.Id, out var old)) { Destroy(old); districtObjs.Remove(dd.Id); }
+            bool harbour = dd.Id == "harbour";
+            if (harbour && Low) return;   // Low: the harbour stays the bare commissary yard (0 extra draws)
             bool open = Sim.Unlocked(dd.Id);
             var gd = Sim.Gd;
             var rng = new System.Random(dd.Id.GetHashCode() & 0x7fffffff);
@@ -158,7 +224,7 @@ namespace GrillConvoy.World
             foreach (var e in gd.Edges)
             {
                 var na = gd.Nodes[e.A]; var nb = gd.Nodes[e.B];
-                if (na.District != dd.Id && nb.District != dd.Id) continue;
+                if (EdgeOwner(na, nb) != dd.Id) continue;
                 Vector3 a = ToWorld(na.X, na.Y), b = ToWorld(nb.X, nb.Y);
                 var dir = b - a; float len = dir.magnitude; if (len < 40f) continue;
                 dir /= len;
@@ -171,6 +237,9 @@ namespace GrillConvoy.World
                         if (c.z < -20f) continue;   // not on the beach
                         if (rng.NextDouble() < 0.25) { k.Tree(c, 1.4f, yaw); continue; }
                         float w = 10f + (float)rng.NextDouble() * 6f, h = (dd.Id == "plaza" ? 14f : 7f) + (float)rng.NextDouble() * (dd.Id == "plaza" ? 26f : 10f);
+                        // kit: the facade faces the road, width along the street
+                        string piece = h > 24f ? "d_office_b" : h > 10f ? "d_house_a" : "d_shop_a";
+                        if (KitInto(k, piece, c, yaw - 90f * sd, open, new Vector3(w, h, 10f))) continue;
                         int wall = open ? walls[rng.Next(walls.Length)] : Pal.Locked;
                         int roof = open ? (rng.NextDouble() < 0.5 ? Pal.RoofRed : Pal.RoofGrey) : Pal.Locked;
                         k.Box(c, new Vector3(w, h, 10f), yaw, wall, roof);
@@ -185,14 +254,44 @@ namespace GrillConvoy.World
                 {
                     case "plaza":
                         k.Disc(c + new Vector3(0, 0, -12), 34f, 0.12f, open ? Pal.Paving : Pal.Locked, 16);
-                        for (int i = 0; i < 4; i++) k.Box(c + new Vector3(-36 + i * 24, 0, 34), new Vector3(16, open ? 34 + i * 7 : 20, 14), 0, open ? Pal.WallTeal : Pal.Locked, open ? Pal.Steel : Pal.Locked);
-                        for (int i = -1; i <= 1; i += 2) { k.Box(c + new Vector3(i * 20, 0, -30), new Vector3(10, 1.2f, 4), 0, open ? Pal.Wood : Pal.Locked); if (open) k.Tree(c + new Vector3(i * 20, 1.2f, -30), 1.1f, 0); }
+                        for (int i = 0; i < 4; i++)
+                        {
+                            float h = open ? 34 + i * 7 : 20;
+                            var at = c + new Vector3(-36 + i * 24, 0, 34);
+                            if (!KitInto(k, i % 2 == 0 ? "d_office_a" : "d_office_b", at, 180f, open, new Vector3(16, h, 14)))
+                                k.Box(at, new Vector3(16, h, 14), 0, open ? Pal.WallTeal : Pal.Locked, open ? Pal.Steel : Pal.Locked);
+                        }
+                        for (int i = -1; i <= 1; i += 2)
+                        {
+                            var at = c + new Vector3(i * 20, 0, -30);
+                            if (KitInto(k, "d_planter", at, 180f, open)) continue;
+                            k.Box(at, new Vector3(10, 1.2f, 4), 0, open ? Pal.Wood : Pal.Locked); if (open) k.Tree(at + Vector3.up * 1.2f, 1.1f, 0);
+                        }
                         if (open && !Low) for (int i = -2; i <= 2; i++) k.Umbrella(c + new Vector3(i * 8, 0.12f, -22), 0.9f, Pal.Brand);
+                        if (open)
+                        {
+                            KitInto(k, "d_lights", c + new Vector3(0, 0.12f, -26), 0f, true);       // Medium / High extras
+                            KitInto(k, "d_bits", c + new Vector3(28, 0.12f, -8), 200f, true);
+                        }
                         break;
                     case "boardwalk":
                         k.Box(c + new Vector3(0, 0, -16), new Vector3(170, 0.6f, 16), 0, open ? Pal.Wood : Pal.Locked);
                         for (int i = -3; i <= 3; i++) k.Umbrella(c + new Vector3(i * 22, 0, -42), 1.3f, open ? (i % 2 == 0 ? Pal.Sunset : Pal.Retro) : Pal.Locked);
-                        for (int i = -2; i <= 2; i++) k.Box(c + new Vector3(i * 30 + 10, 0, 22), new Vector3(12, 6, 9), 0, open ? Pal.WallCream : Pal.Locked, open ? Pal.Sunset : Pal.Locked);
+                        for (int i = -2; i <= 2; i++)
+                        {
+                            var at = c + new Vector3(i * 30 + 10, 0, 22);
+                            if (!KitInto(k, "d_kiosk", at, 180f, open, new Vector3(12, 6, 9)))
+                                k.Box(at, new Vector3(12, 6, 9), 0, open ? Pal.WallCream : Pal.Locked, open ? Pal.Sunset : Pal.Locked);
+                        }
+                        if (open)
+                        {
+                            for (int i = -1; i <= 1; i += 2)
+                            {
+                                KitInto(k, "d_lifeguard", c + new Vector3(i * 76, 0.05f, -36), 180f, true);
+                                KitInto(k, "d_lights", c + new Vector3(i * 42, 0.6f, -22), 0f, true);
+                            }
+                            KitInto(k, "d_bits", c + new Vector3(-24, 0.6f, -12), 160f, true);
+                        }
                         break;
                     case "stadium":
                     {
@@ -200,14 +299,36 @@ namespace GrillConvoy.World
                         for (int i = 0; i < 14; i++)
                         {
                             float ang = i * Mathf.PI * 2f / 14f;
-                            var pos = bowl + new Vector3(Mathf.Cos(ang) * 46f, 0, Mathf.Sin(ang) * 32f);
-                            k.Box(pos, new Vector3(22, 16, 8), -ang * Mathf.Rad2Deg + 90, open ? Pal.Stadium : Pal.Locked, open ? Pal.Steel : Pal.Locked);
+                            var off = new Vector3(Mathf.Cos(ang) * 46f, 0, Mathf.Sin(ang) * 32f);
+                            if (KitInto(k, "d_stand", bowl + off, Mathf.Atan2(-off.x, -off.z) * Mathf.Rad2Deg, open, new Vector3(22, 16, 8))) continue;
+                            k.Box(bowl + off, new Vector3(22, 16, 8), -ang * Mathf.Rad2Deg + 90, open ? Pal.Stadium : Pal.Locked, open ? Pal.Steel : Pal.Locked);
                         }
                         k.Disc(bowl + Vector3.up * 0.2f, 36f, 0.2f, open ? Pal.GrassDark : Pal.Locked, 16);
                         k.Disc(c + new Vector3(0, 0, -10), 26f, 0.12f, open ? Pal.Paving : Pal.Locked, 14);
+                        if (open)
+                            for (int i = 0; i < 4; i++)
+                            {
+                                var off = new Vector3(i % 2 == 0 ? -60f : 60f, 0, i < 2 ? -44f : 44f);
+                                KitInto(k, "d_floodlight", bowl + off, Mathf.Atan2(-off.x, -off.z) * Mathf.Rad2Deg, true);
+                            }
                         break;
                     }
                 }
+            }
+            if (harbour)
+            {
+                // Medium / High: the working harbour around the commissary — sheds, a gantry crane on the shore, a pier, boats
+                var cp = CommissaryPos;
+                KitInto(k, "d_warehouse", new Vector3(5, 0, cp.z + 48), 180f, true);
+                KitInto(k, "d_warehouse", new Vector3(-2, 0, cp.z - 28), 180f, true);
+                if (KitInto(k, "d_crane", new Vector3(-8, 0.05f, -40), 180f, true))
+                {
+                    k.Box(new Vector3(-8, 0, -58), new Vector3(6, 0.8f, 24), 0, Pal.Wood);
+                    KitInto(k, "d_boat", new Vector3(12, -0.5f, -62), 160f, true);
+                    KitInto(k, "d_boat", new Vector3(-32, -0.5f, -66), 205f, true);
+                }
+                KitInto(k, "d_bits", cp + new Vector3(20, 0.1f, 4), 180f, true);
+                if (k.Vertices == 0) return;
             }
             districtObjs[dd.Id] = Spawn("District_" + dd.Id, k.Build("district_" + dd.Id), Vector3.zero);
         }
@@ -293,7 +414,7 @@ namespace GrillConvoy.World
                 int dCount = Sim.S.Districts.Count;
                 if (dCount != builtDistricts)
                 {
-                    foreach (var dd in Sim.Gd.Districts) if (dd.Id != "harbour") BuildDistrict(dd);
+                    foreach (var dd in Sim.Gd.Districts) BuildDistrict(dd);
                     if (builtDistricts >= 0 && rig != null) rig.Fit(UnlockedBounds(), false);
                     builtDistricts = dCount;
                 }

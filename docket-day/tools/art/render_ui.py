@@ -176,4 +176,5 @@ def main():
     print("RENDER_DONE")
 
 
-main()
+if __name__ == "__main__":   # render_store.py imports the helpers without rendering the UI set
+    main()

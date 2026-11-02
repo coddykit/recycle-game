@@ -16,7 +16,8 @@ namespace RidgebackRangers.World
             RoofRed = 8, RoofSlate = 9, Brand = 10, Panel = 11, White = 12, Jungle = 13, Wood = 14, Water = 15, Sand = 16,
             Tree = 17, Trunk = 18, Locked = 19, Dark = 20, Steel = 21, Rock = 22, Fern = 23, Warning = 24, Yellow = 25, Mud = 26,
             Gold = 27, Sunset = 28, Forest = 29, Glacier = 30, Khaki = 31, SkinTone = 32, ShirtA = 33, ShirtB = 34, ShirtC = 35, ShirtD = 36, ShirtE = 37,
-            Trousers = 38, PureWhite = 39, VolcanoRock = 40, Lava = 41, EggShell = 42, DinoOlive = 43;
+            Trousers = 38, PureWhite = 39, VolcanoRock = 40, Lava = 41, EggShell = 42, DinoOlive = 43,
+            LeafLight = 44, Canvas = 45, Bone = 46, Moss = 47, Lamp = 48, Bark = 49, SailTeal = 50;
         public const int Size = 8;
 
         public static Vector2 Uv(int swatch)
@@ -41,8 +42,10 @@ namespace RidgebackRangers.World
             var u = Pal.Uv(swatch);
             v.Add(a); v.Add(b); v.Add(c); v.Add(d);
             for (int k = 0; k < 4; k++) { n.Add(nn); uv.Add(u); }
-            t.Add(i); t.Add(i + 2); t.Add(i + 1);
-            t.Add(i); t.Add(i + 3); t.Add(i + 2);
+            // Unity front face: Cross(v1 - v0, v2 - v0) points at the viewer = the outward normal above (P2 polish fix: the old
+            // (a, c, b) order wound every box / strip / cone inward, so back-face culling hid the outside)
+            t.Add(i); t.Add(i + 1); t.Add(i + 2);
+            t.Add(i); t.Add(i + 2); t.Add(i + 3);
         }
 
         /// <summary>Axis box on the ground rotated by yaw (degrees). top swatch may differ (roofs).</summary>

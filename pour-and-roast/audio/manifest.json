@@ -1,0 +1,97 @@
+{
+ "game": "pour-and-roast",
+ "style": {
+  "sfx": "cozy coffee shop mobile game, rainy quay",
+  "music": "seamless loop, mobile game background music"
+ },
+ "assets": [
+  {
+   "id": "ui_tap",
+   "kind": "sfx",
+   "duration": 0.5,
+   "prompt": "short soft rounded UI click, a light wooden tap, clean",
+   "influence": 0.6,
+   "event": "any button"
+  },
+  {
+   "id": "coins",
+   "kind": "sfx",
+   "duration": 1.0,
+   "prompt": "a few bright coins dropping into a small metal tray, cheerful money pickup",
+   "influence": 0.6,
+   "event": "collect money"
+  },
+  {
+   "id": "success",
+   "kind": "sfx",
+   "duration": 1.5,
+   "prompt": "short upbeat positive chime, two rising marimba notes, reward feeling",
+   "influence": 0.6,
+   "event": "purchase / goal reached"
+  },
+  {
+   "id": "warning",
+   "kind": "sfx",
+   "duration": 1.2,
+   "prompt": "gentle two-tone alert chime, attention but not scary, mobile game notification",
+   "influence": 0.6,
+   "event": "crisis / problem"
+  },
+  {
+   "id": "order",
+   "kind": "sfx",
+   "duration": 0.8,
+   "prompt": "paper order ticket torn and pinned to a rail, soft",
+   "influence": 0.6,
+   "event": "new order"
+  },
+  {
+   "id": "espresso",
+   "kind": "sfx",
+   "duration": 2.0,
+   "prompt": "espresso machine pulling a shot, gentle hiss and drip",
+   "influence": 0.6,
+   "event": "shot pulled"
+  },
+  {
+   "id": "milk",
+   "kind": "sfx",
+   "duration": 2.0,
+   "prompt": "steam wand frothing milk in a metal pitcher",
+   "influence": 0.6,
+   "event": "milk steamed"
+  },
+  {
+   "id": "grind",
+   "kind": "sfx",
+   "duration": 1.5,
+   "prompt": "coffee grinder grinding beans, short burst",
+   "influence": 0.6,
+   "event": "grinder"
+  },
+  {
+   "id": "roast",
+   "kind": "sfx",
+   "duration": 2.0,
+   "prompt": "coffee beans cracking in a drum roaster, first crack pops",
+   "influence": 0.6,
+   "event": "roast drop"
+  },
+  {
+   "id": "music_calm",
+   "kind": "music",
+   "duration": 60,
+   "loop": true,
+   "prompt": "cozy acoustic guitar and soft brushed jazz, rainy morning in a small cafe, instrumental, no vocals",
+   "event": "planning / quiet time"
+  },
+  {
+   "id": "music_busy",
+   "kind": "music",
+   "duration": 60,
+   "loop": true,
+   "prompt": "warm upbeat bossa nova with light percussion and piano, busy cafe rush hour, instrumental, no vocals",
+   "event": "live day / rush"
+  }
+ ]
+}

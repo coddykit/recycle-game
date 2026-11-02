@@ -1,6 +1,8 @@
 // Semester Rush — import rules for the art (no glTF importer in this project; models arrive as FBX):
 //   * kit + Meshy FBX: 1 unit = 1 m (Blender FBX_SCALE_UNITS), no imported materials (the game assigns the palette
 //     material, or the model's own texture for the Meshy oak), no cameras / lights, readable off (memory), normals kept;
+//     EXCEPT Resources/kit/merge/ (trees, lamps, benches, bike racks, gates: a few hundred tris each): readable, because
+//     CampusWorld merges them into the zone / path meshes (0 extra draws);
 //   * the palette texture: point filter, no mipmaps, uncompressed (8×8 px — any blur mixes neighbouring swatches);
 //   * Meshy textures: max 1024 (the _low twins 512), ASTC on Android.
 using UnityEditor;
@@ -19,7 +21,7 @@ namespace SemesterRush.EditorTools
             m.materialImportMode = ModelImporterMaterialImportMode.None;
             m.importCameras = false;
             m.importLights = false;
-            m.isReadable = false;
+            m.isReadable = assetPath.Contains("/Resources/kit/merge/");
             m.importNormals = ModelImporterNormals.Import;
             m.animationType = ModelImporterAnimationType.None;
             m.importAnimation = false;

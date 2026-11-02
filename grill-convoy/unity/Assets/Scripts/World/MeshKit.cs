@@ -101,6 +101,30 @@ namespace GrillConvoy.World
             Box(at + Vector3.up * 3.0f * s, new Vector3(3.6f, 0.35f, 3.6f) * s, 45, canopy);
         }
 
+        /// <summary>Copies a Blender-kit piece (palette UVs already set) into this mesh through m. swatch ≥ 0 repaints every
+        /// face with one swatch (locked districts read as grey silhouettes). A mirroring matrix flips the winding back.</summary>
+        public void Append(Vector3[] pv, Vector3[] pn, Vector2[] puv, int[] pt, Matrix4x4 m, int swatch = -1)
+        {
+            if (pv == null || pt == null || pv.Length == 0) return;
+            int i0 = v.Count;
+            var nm = m.inverse.transpose;
+            var su = swatch >= 0 ? Pal.Uv(swatch) : Vector2.zero;
+            bool hasN = pn != null && pn.Length == pv.Length, hasUv = puv != null && puv.Length == pv.Length;
+            for (int i = 0; i < pv.Length; i++)
+            {
+                v.Add(m.MultiplyPoint3x4(pv[i]));
+                n.Add(hasN ? nm.MultiplyVector(pn[i]).normalized : Vector3.up);
+                uv.Add(swatch >= 0 || !hasUv ? (swatch >= 0 ? su : Pal.Uv(Pal.Locked)) : puv[i]);
+            }
+            bool flip = m.determinant < 0f;
+            for (int i = 0; i + 2 < pt.Length; i += 3)
+            {
+                t.Add(i0 + pt[i]);
+                t.Add(i0 + (flip ? pt[i + 2] : pt[i + 1]));
+                t.Add(i0 + (flip ? pt[i + 1] : pt[i + 2]));
+            }
+        }
+
         public Mesh Build(string name)
         {
             var m = new Mesh { name = name };

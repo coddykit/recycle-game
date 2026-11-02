@@ -28,6 +28,11 @@ for f in coach_counsel hearing_judge hearing_client intro_1 intro_2 intro_3 curt
 for f in desk reception bookshelf coffee cabinet conference boxes board courthouse lamp bench office_cat_lod1 office_cat_lod2; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
 
+step "store listing + screenshot copy (store/validate.py)"
+st=$(python3 "$(dirname "$UNITY")/store/validate.py" 2>&1); rc=$?
+echo "$st" | tail -4
+[ $rc -eq 0 ] || fail=1
+
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
 out=$(sh "$HERE/dotnet_check.sh" 2>&1); echo "$out" | grep -E "Error|Passed!|Failed" ; echo "$out" | grep -q "Passed!" || fail=1
 echo "$out" | grep -q "Failed!" && fail=1

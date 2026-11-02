@@ -4,6 +4,9 @@
 //   * 1 hectometre of map = 30 world units; props are drawn larger than life (×1.6) so they read at campus zoom.
 //   * one palette material for everything (MeshKit) + instanced draws for walkers, dots and ribbons.
 //   * Low tier: no shadows (QualityTiers), half the walkers at 15 Hz, half the trees, no hero oak.
+//   * campus dressing (polish pass): Blender trees (oak / autumn maple), lamps, benches, bike racks and the shortcut gates
+//     from Resources/kit/merge are MERGED into the zone / path meshes — 0 extra draws on every tier (the gates even save
+//     their own draws). Medium / High only; Low keeps the cheaper procedural trees and gates (Low must not get heavier).
 //   * campus themes (cosmetic IAP) tint the buildings with a property block (no extra material, no extra pass).
 //   * picking: a tap ray-casts the ground plane (no physics module) and picks the nearest building / plot / gate.
 using System;
@@ -39,7 +42,6 @@ namespace SemesterRush.World
         Material mat, matInst;
         readonly Dictionary<string, GameObject> zoneObjs = new Dictionary<string, GameObject>();
         readonly Dictionary<int, GameObject> nodeObjs = new Dictionary<int, GameObject>();
-        readonly Dictionary<int, GameObject> gateObjs = new Dictionary<int, GameObject>();
         GameObject paths, oak;
         Crowd crowd;
         string builtKey = "";
@@ -136,11 +138,16 @@ namespace SemesterRush.World
             // trees away from nodes and paths (deterministic per zone)
             var rng = new System.Random(z.Id.GetHashCode() & 0x7fffffff);
             int trees = open ? (Low ? 14 : 30) : (Low ? 6 : 12);
+            KitGeo oakG = Low ? null : KitGeo.Load("tree_oak"), mapleG = Low ? null : KitGeo.Load("tree_maple");
             for (int i = 0, tries = 0; i < trees && tries < 400; tries++)
             {
                 var p = new Vector3(minX + (float)rng.NextDouble() * (maxX - minX), 0.05f, minZ + (float)rng.NextDouble() * (maxZ - minZ));
                 if (NearNodeOrPath(p, 14f)) continue;
-                k.Tree(p, 1.6f + (float)rng.NextDouble() * 0.8f, rng.Next(90));
+                float size = 1.6f + (float)rng.NextDouble() * 0.8f;
+                int yaw = rng.Next(90);
+                var g = i % 3 == 2 && mapleG != null ? mapleG : oakG;
+                if (g != null) k.Add(g, p, yaw * 4f, size * 1.1f);
+                else k.Tree(p, size, yaw);
                 i++;
             }
             zoneObjs[z.Id] = Spawn("Zone_" + z.Id, k.Build("zone_" + z.Id), Vector3.zero);
@@ -176,7 +183,68 @@ namespace SemesterRush.World
                 k.Strip(a, b, w, 0.08f, Pal.Path);
             }
             foreach (var n in gd.Nodes) if (Sim.Unlocked(n.Zone)) k.Disc(NodePos(n.Index), n.Kind == "junction" ? 6f : 9f, 0.09f, n.Kind == "junction" ? Pal.Path : Pal.Stone);
+            AddGates(k);
+            if (!Low) AddDressing(k);
             paths = Spawn("Paths", k.Build("paths"), Vector3.zero);
+        }
+
+        /// <summary>The shortcut gates, merged into the paths mesh (rebuilt when one opens): Blender model on Medium / High,
+        /// the procedural one on Low or when the kit file is missing.</summary>
+        void AddGates(MeshKit k)
+        {
+            var gd = Sim.Gd;
+            KitGeo openG = Low ? null : KitGeo.Load("gate_open"), closedG = Low ? null : KitGeo.Load("gate_closed");
+            MeshKit openP = null, closedP = null;
+            foreach (var e in gd.Edges)
+            {
+                if (e.Type != "gate" || !Sim.Unlocked(gd.Nodes[e.A].Zone) || !Sim.Unlocked(gd.Nodes[e.B].Zone)) continue;
+                bool open = Sim.S.OpenGates.Contains(e.Index);
+                var d = NodePos(e.B) - NodePos(e.A);
+                float yaw = Mathf.Atan2(d.x, d.z) * Mathf.Rad2Deg;
+                var pos = EdgeMid(e.Index);
+                var g = open ? openG : closedG;
+                if (g != null) { k.Add(g, pos, yaw, PropScale); continue; }
+                var proc = open ? (openP ??= MeshKit.GateKit(true)) : (closedP ??= MeshKit.GateKit(false));
+                k.Add(proc, pos, yaw, PropScale);
+            }
+        }
+
+        /// <summary>Medium / High: lamps and benches along the open paths, bike racks at the teaching buildings.</summary>
+        void AddDressing(MeshKit k)
+        {
+            var gd = Sim.Gd;
+            KitGeo lamp = KitGeo.Load("lamp"), bench = KitGeo.Load("bench"), rack = KitGeo.Load("bike_rack");
+            const float spacing = 38f, clear = 16f;
+            foreach (var e in gd.Edges)
+            {
+                if (e.Type != "path" || !Sim.Unlocked(gd.Nodes[e.A].Zone) || !Sim.Unlocked(gd.Nodes[e.B].Zone)) continue;
+                Vector3 a = NodePos(e.A), b = NodePos(e.B);
+                var dir = b - a; dir.y = 0;
+                float len = dir.magnitude;
+                if (len < clear * 2f) continue;
+                dir /= len;
+                var side = Vector3.Cross(Vector3.up, dir);
+                float half = (Sim.S.Widened.Contains(e.Index) ? 9f : 6f) * 0.5f;
+                int slot = 0;
+                for (float f = clear; f <= len - clear; f += spacing, slot++)
+                {
+                    var at = a + dir * f;
+                    if ((slot & 1) == 0) { if (lamp != null) k.Add(lamp, at + side * (half + 2.5f) + Vector3.up * 0.05f, 0, PropScale); }
+                    else if (bench != null)
+                    {
+                        var s = -side;   // across the path, facing it
+                        k.Add(bench, at + s * (half + 2.5f) + Vector3.up * 0.05f, Mathf.Atan2(s.x, s.z) * Mathf.Rad2Deg, PropScale);
+                    }
+                }
+            }
+            if (rack == null) return;
+            foreach (var b in Sim.S.Buildings)
+            {
+                if (!b.Built || !Sim.Unlocked(gd.Nodes[b.Node].Zone)) continue;
+                var def = Sim.DefOf(b);
+                if (!def.Teaching && b.Def != "library") continue;
+                k.Add(rack, NodePos(b.Node) + new Vector3(13f, 0.1f, -1f), 0, PropScale);
+            }
         }
 
         void BuildNodes()
@@ -196,24 +264,6 @@ namespace SemesterRush.World
                 nodeObjs[n.Index] = go;
             }
             ApplyTheme();
-        }
-
-        void BuildGates()
-        {
-            foreach (var go in gateObjs.Values) Destroy(go);
-            gateObjs.Clear();
-            var gd = Sim.Gd;
-            foreach (var e in gd.Edges)
-            {
-                if (e.Type != "gate" || !Sim.Unlocked(gd.Nodes[e.A].Zone) || !Sim.Unlocked(gd.Nodes[e.B].Zone)) continue;
-                bool open = Sim.S.OpenGates.Contains(e.Index);
-                var d = NodePos(e.B) - NodePos(e.A);
-                float yaw = Mathf.Atan2(d.x, d.z) * Mathf.Rad2Deg;
-                var go = Spawn("Gate_" + e.Index, MeshKit.Gate(open), EdgeMid(e.Index));
-                go.transform.localRotation = Quaternion.Euler(0, yaw, 0);
-                go.transform.localScale = Vector3.one * PropScale;
-                gateObjs[e.Index] = go;
-            }
         }
 
         void BuildOak()
@@ -322,7 +372,6 @@ namespace SemesterRush.World
                     }
                     BuildPaths();
                     BuildNodes();
-                    BuildGates();
                     builtKey = key;
                 }
             }

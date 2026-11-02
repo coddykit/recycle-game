@@ -14,7 +14,7 @@ BASE = [
     "#C89B6D", "#4E9F4C", "#7A5434", "#B9BEC2", "#33414E", "#4CB860", "#F2C744", "#F08A3C",   # 16-23 wood, tree, trunk, locked, window, tag green, tag yellow, tag orange
     "#E0533F", "#3D7FE0", "#AEB8C2", "#E7B93B", "#C9B6E4", "#2F6E46", "#167C78", "#D9C7A0",   # 24-31 tag red, siren blue, OR floor, gold, lavender, forest, teal dark, retro beige
     "#E8B894", "#B5D3EE", "#2BA39A", "#F4F6F8", "#F08A3C", "#8E6CC4", "#3B4A5A", "#4C7FD1",   # 32-39 skin, gown, nurse, doctor coat, porter, cleaner, trousers, clerk
-    "#2E4A7A", "#9CC3E6", "#9AA3AC", "#7FF0E6", "#2A2D31", "#FFFFFF",                        # 40-45 tech, mattress, machine, screen, rubber, white
+    "#2E4A7A", "#9CC3E6", "#9AA3AC", "#7FF0E6", "#2A2D31", "#FFFFFF", "#6E757D", "#5E9E58",  # 40-47 tech, mattress, machine, screen, rubber, white, asphalt, hedge
 ]
 THEMES = {
     "modern":    {3: "#F2F4F7", 5: "#E3E8EE", 6: "#D5DEE8", 7: "#AFC3D9", 10: "#3D7FE0", 13: "#C7D8EE", 14: "#E6EAF0", 16: "#9AA3AC"},

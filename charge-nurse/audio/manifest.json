@@ -1,0 +1,89 @@
+{
+ "game": "charge-nurse",
+ "style": {
+  "sfx": "calm caring hospital management mobile game, never scary",
+  "music": "seamless loop, mobile game background music"
+ },
+ "assets": [
+  {
+   "id": "ui_tap",
+   "kind": "sfx",
+   "duration": 0.5,
+   "prompt": "short soft rounded UI click, a light wooden tap, clean",
+   "influence": 0.6,
+   "event": "any button"
+  },
+  {
+   "id": "coins",
+   "kind": "sfx",
+   "duration": 1.0,
+   "prompt": "a few bright coins dropping into a small metal tray, cheerful money pickup",
+   "influence": 0.6,
+   "event": "collect money"
+  },
+  {
+   "id": "success",
+   "kind": "sfx",
+   "duration": 1.5,
+   "prompt": "short upbeat positive chime, two rising marimba notes, reward feeling",
+   "influence": 0.6,
+   "event": "purchase / goal reached"
+  },
+  {
+   "id": "warning",
+   "kind": "sfx",
+   "duration": 1.2,
+   "prompt": "gentle two-tone alert chime, attention but not scary, mobile game notification",
+   "influence": 0.6,
+   "event": "crisis / problem"
+  },
+  {
+   "id": "tag",
+   "kind": "sfx",
+   "duration": 0.6,
+   "prompt": "soft plastic tag clipped onto a clipboard, gentle click",
+   "influence": 0.6,
+   "event": "triage colour set"
+  },
+  {
+   "id": "clean",
+   "kind": "sfx",
+   "duration": 1.2,
+   "prompt": "quick spray and wipe on a clean surface, fresh sparkle at the end",
+   "influence": 0.6,
+   "event": "bed cleaned"
+  },
+  {
+   "id": "siren",
+   "kind": "sfx",
+   "duration": 2.0,
+   "prompt": "distant ambulance siren passing far away, soft and calm, not alarming",
+   "influence": 0.5,
+   "event": "ambulance arriving"
+  },
+  {
+   "id": "shift_end",
+   "kind": "sfx",
+   "duration": 2.0,
+   "prompt": "gentle warm three-note chime, end of a long shift, relief",
+   "influence": 0.6,
+   "event": "handover / shift end"
+  },
+  {
+   "id": "music_calm",
+   "kind": "music",
+   "duration": 60,
+   "loop": true,
+   "prompt": "gentle reassuring ambient piano and soft pads, quiet hospital night, hopeful, instrumental, no vocals",
+   "event": "planning / quiet time"
+  },
+  {
+   "id": "music_busy",
+   "kind": "music",
+   "duration": 60,
+   "loop": true,
+   "prompt": "focused steady light electronic pulse with soft piano, busy but calm hospital day, instrumental, no vocals",
+   "event": "live day / rush"
+  }
+ ]
+}

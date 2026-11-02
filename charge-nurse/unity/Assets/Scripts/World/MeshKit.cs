@@ -17,7 +17,7 @@ namespace ChargeNurse.World
             Wood = 16, Tree = 17, Trunk = 18, Locked = 19, Window = 20, TagGreen = 21, TagYellow = 22, TagOrange = 23,
             TagRed = 24, Siren = 25, OrFloor = 26, Gold = 27, Lavender = 28, Forest = 29, TealDark = 30, Retro = 31,
             Skin = 32, Gown = 33, Nurse = 34, Doctor = 35, Porter = 36, Cleaner = 37, Trousers = 38, Clerk = 39,
-            Tech = 40, Mattress = 41, Machine = 42, Screen = 43, Rubber = 44, White = 45;
+            Tech = 40, Mattress = 41, Machine = 42, Screen = 43, Rubber = 44, White = 45, Asphalt = 46, Hedge = 47;
         public const int Size = 8;
         public static readonly int[] Tags = { TagGreen, TagYellow, TagOrange, TagRed };
 
@@ -89,17 +89,116 @@ namespace ChargeNurse.World
             Box(at + Vector3.up * 2.6f * s, new Vector3(1.1f, 1.0f, 1.1f) * s, yaw + 40f, Pal.Tree);
         }
 
-        /// <summary>Cut-away room: floor, tall back + side walls, a knee-high front wall (the camera looks in from the south).</summary>
-        public void Room(Vector3 c, float w, float d, int floor, int wall, bool open)
+        /// <summary>Cut-away room: floor, tall back + side walls, a knee-high front wall (the camera looks in from the south).
+        /// Polish pass: the back wall carries glass windows facing the camera (one quad each, ~3.5 m apart); a locked wing is a
+        /// closed exterior block with two dark window bands on its front (plan §8 low plan: exterior boxes with window
+        /// textures) and, off Low, a roof parapet.</summary>
+        public void Room(Vector3 c, float w, float d, int floor, int wall, bool open, bool detail = false)
         {
             Floor(c, w, d, 0.06f, floor);
-            if (!open) { Box(c, new Vector3(w, 3.2f, d), 0, Pal.Locked, Pal.RoofGrey); return; }
             float x = w * 0.5f, z = d * 0.5f, th = 0.25f;
+            if (!open)
+            {
+                Box(c, new Vector3(w, 3.2f, d), 0, Pal.Locked, Pal.RoofGrey);
+                float zf = c.z - z - 0.01f;
+                WallQuad(c.x - x + 0.5f, c.x + x - 0.5f, 0.9f, 1.5f, zf, Pal.Window);
+                WallQuad(c.x - x + 0.5f, c.x + x - 0.5f, 2.0f, 2.6f, zf, Pal.Window);
+                if (detail) Box(c + new Vector3(0, 3.2f, 0), new Vector3(w + 0.2f, 0.25f, d + 0.2f), 0, Pal.Panel, Pal.RoofGrey);
+                return;
+            }
             Box(c + new Vector3(0, 0, z), new Vector3(w, 2.6f, th), 0, wall, Pal.Panel);
             Box(c + new Vector3(-x, 0, 0), new Vector3(th, 2.6f, d), 0, wall, Pal.Panel);
             Box(c + new Vector3(x, 0, 0), new Vector3(th, 2.6f, d), 0, wall, Pal.Panel);
             Box(c + new Vector3(-x * 0.55f, 0, -z), new Vector3(w * 0.45f, 0.5f, th), 0, wall, Pal.Panel);   // door gap in the middle
             Box(c + new Vector3(x * 0.55f, 0, -z), new Vector3(w * 0.45f, 0.5f, th), 0, wall, Pal.Panel);
+            int windows = Mathf.Max(1, Mathf.FloorToInt(w / 3.5f));
+            float step = w / windows, zb = c.z + z - th * 0.5f - 0.01f;
+            for (int i = 0; i < windows; i++)
+            {
+                float wx = c.x - x + step * (i + 0.5f);
+                WallQuad(wx - 0.7f, wx + 0.7f, 1.15f, 2.15f, zb, Pal.Glass);
+            }
+        }
+
+        /// <summary>A quad on a wall that faces the camera (−z), from x0..x1, y0..y1 at depth z.</summary>
+        public void WallQuad(float x0, float x1, float y0, float y1, float z, int swatch)
+        {
+            if (x1 <= x0) return;
+            Quad(new Vector3(x0, y0, z), new Vector3(x0, y1, z), new Vector3(x1, y1, z), new Vector3(x1, y0, z), swatch);
+        }
+
+        /// <summary>Parking lot (asphalt + bay lines) — flat quads only.</summary>
+        public void Parking(Vector3 c, int bays, float bayW = 2.6f, float bayD = 5f)
+        {
+            float w = bays * bayW;
+            Floor(c, w + 1f, bayD + 1f, 0.03f, Pal.Asphalt);
+            for (int i = 0; i <= bays; i++)
+            {
+                float lx = c.x - w * 0.5f + i * bayW;
+                Strip(new Vector3(lx, 0, c.z - bayD * 0.5f + 0.3f), new Vector3(lx, 0, c.z + bayD * 0.5f), 0.12f, 0.045f, Pal.White);
+            }
+        }
+
+        /// <summary>The Low / fallback entrance porch: two posts, a slab with a teal top, glass doors (4 boxes).</summary>
+        public void Porch(Vector3 at)
+        {
+            Box(at + new Vector3(0, 0, 0.1f), new Vector3(3.0f, 2.3f, 0.12f), 0, Pal.Glass);
+            Box(at + new Vector3(-2.8f, 0, -1.7f), new Vector3(0.22f, 2.55f, 0.22f), 0, Pal.Panel);
+            Box(at + new Vector3(2.8f, 0, -1.7f), new Vector3(0.22f, 2.55f, 0.22f), 0, Pal.Panel);
+            Box(at + new Vector3(0, 2.55f, -1.0f), new Vector3(6.4f, 0.16f, 2.4f), 0, Pal.White, Pal.Brand);
+        }
+
+        // ------------------------------------------------------------------ merging kit models (static props, 0 extra draws)
+
+        static readonly List<Vector3> tv = new List<Vector3>(), tn = new List<Vector3>();
+        static readonly List<Vector2> tuv = new List<Vector2>();
+        static readonly List<int> tt = new List<int>();
+
+        /// <summary>Appends a Blender-kit prefab (Resources/kit, imported readable) at pos / yaw into this mesh — the same
+        /// placement HospitalWorld.Prop gives an instance (the root's rotation replaced by the yaw, its scale kept). False when
+        /// the prefab is missing or a mesh is not readable: the caller then uses its procedural fallback.</summary>
+        public bool Append(GameObject prefab, Vector3 pos, float yaw)
+        {
+            if (prefab == null) return false;
+            var filters = prefab.GetComponentsInChildren<MeshFilter>(true);
+            if (filters.Length == 0) return false;
+            foreach (var f in filters) if (f.sharedMesh == null || !f.sharedMesh.isReadable) return false;
+            var root = prefab.transform;
+            var place = Matrix4x4.TRS(pos, Quaternion.Euler(0, yaw, 0), root.localScale);
+            foreach (var f in filters) AppendMesh(f.sharedMesh, place * (root.worldToLocalMatrix * f.transform.localToWorldMatrix));
+            return true;
+        }
+
+        void AppendMesh(Mesh mesh, Matrix4x4 m)
+        {
+            int baseV = v.Count;
+            mesh.GetVertices(tv); mesh.GetNormals(tn); mesh.GetUVs(0, tuv);
+            for (int i = 0; i < tv.Count; i++)
+            {
+                v.Add(m.MultiplyPoint3x4(tv[i]));
+                n.Add(i < tn.Count ? m.MultiplyVector(tn[i]).normalized : Vector3.up);
+                uv.Add(i < tuv.Count ? tuv[i] : Pal.Uv(Pal.Machine));
+            }
+            bool flip = m.determinant < 0;
+            for (int s = 0; s < mesh.subMeshCount; s++)
+            {
+                mesh.GetTriangles(tt, s);
+                for (int i = 0; i + 2 < tt.Count; i += 3)
+                {
+                    t.Add(baseV + tt[i]);
+                    t.Add(baseV + (flip ? tt[i + 2] : tt[i + 1]));
+                    t.Add(baseV + (flip ? tt[i + 1] : tt[i + 2]));
+                }
+            }
+        }
+
+        /// <summary>Appends another builder's geometry (procedural fallbacks) at pos / yaw.</summary>
+        public void Append(MeshKit other, Vector3 pos, float yaw)
+        {
+            var q = Quaternion.Euler(0, yaw, 0);
+            int baseV = v.Count;
+            for (int i = 0; i < other.v.Count; i++) { v.Add(pos + q * other.v[i]); n.Add(q * other.n[i]); uv.Add(other.uv[i]); }
+            foreach (int i in other.t) t.Add(baseV + i);
         }
 
         public Mesh Build(string name)
@@ -147,15 +246,19 @@ namespace ChargeNurse.World
             return k.Build(bay ? "bay" : "bed");
         }
 
-        public static Mesh Desk()
+        public static Mesh Desk() => DeskKit().Build("desk");
+
+        public static MeshKit DeskKit()
         {
             var k = new MeshKit();
             k.Box(Vector3.zero, new Vector3(2.6f, 1.05f, 0.8f), 0, Pal.Brand, Pal.Wood);
             k.Box(new Vector3(-0.6f, 1.05f, 0.1f), new Vector3(0.5f, 0.35f, 0.08f), 0, Pal.Screen);
-            return k.Build("desk");
+            return k;
         }
 
-        public static Mesh Chairs(int n)
+        public static Mesh Chairs(int n) => ChairsKit(n).Build("chairs" + n);
+
+        public static MeshKit ChairsKit(int n)
         {
             var k = new MeshKit();
             for (int i = 0; i < n; i++)
@@ -164,7 +267,7 @@ namespace ChargeNurse.World
                 k.Box(new Vector3(x, 0, 0), new Vector3(0.7f, 0.45f, 0.65f), 0, Pal.Machine, Pal.Brand);
                 k.Box(new Vector3(x, 0.45f, 0.28f), new Vector3(0.7f, 0.5f, 0.1f), 0, Pal.Brand);
             }
-            return k.Build("chairs" + n);
+            return k;
         }
 
         public static Mesh Machine(string kind)

@@ -6,6 +6,8 @@
 //   * the corridors are ONE mesh whose UVs carry the flow heat map (calm / busy / jammed) and the lens's red line —
 //     0 extra draws (plan §8 low-profile plan).
 //   * Low tier: no shadows (QualityTiers), ≤ 28 people at 15 Hz, no decorative props (plants, trees thinned).
+//   * static kit props (furniture, entrance, lift, canopies, trees, cars) are MERGED into the one campus mesh (MeshKit.Append)
+//     — 0 extra draws on every tier; Medium / High only add decor geometry to that mesh (polish pass 2026-11-02).
 //   * picking: a tap ray-casts the ground plane (no physics module) and picks the nearest waiting patient / bed / room.
 using System;
 using System.Collections.Generic;
@@ -187,52 +189,118 @@ namespace ChargeNurse.World
             return go;
         }
 
+        readonly Dictionary<string, GameObject> kitCache = new Dictionary<string, GameObject>();
+
+        GameObject KitPrefab(string name)
+        {
+            if (!kitCache.TryGetValue(name, out var go)) { go = Resources.Load<GameObject>("kit/" + name); kitCache[name] = go; }
+            return go;
+        }
+
+        /// <summary>A static kit prop merged into the campus mesh (0 extra draws); procedural fallback when the kit model is
+        /// missing or not readable; nothing when there is no fallback (decor).</summary>
+        void Static(MeshKit g, string kitName, Func<MeshKit> fallback, Vector3 pos, float yaw)
+        {
+            if (!g.Append(KitPrefab(kitName), pos, yaw) && fallback != null) g.Append(fallback(), pos, yaw);
+        }
+
+        static MeshKit PorchKit() { var k = new MeshKit(); k.Porch(Vector3.zero); return k; }
+        static MeshKit LiftKit() { var k = new MeshKit(); k.Box(Vector3.zero, new Vector3(3, 3, 3), 0, Pal.Machine); return k; }
+        static MeshKit TreeKit(float s) { var k = new MeshKit(); k.Tree(Vector3.zero, s, 0); return k; }
+
         void Rebuild()
         {
             foreach (var go in built) if (go != null) Destroy(go);
             built.Clear();
             var gd = Sim.Gd;
-            // grounds: lawn, paving under the campus, trees along the edge (thinned on Low)
+            bool detail = !Low;   // Medium / High decor: kit trees, hedges, cars, benches, canopies, rooftop plant
+            // grounds: lawn, paving under the campus, trees along the edge (Low: fewer, procedural box trees)
             var g = new MeshKit();
             g.Floor(new Vector3(45, 0, 5), 160, 90, 0f, Pal.Grass);
             g.Floor(new Vector3(45, 0, 4), 104, 42, 0.02f, Pal.Paving);
             var rng = new System.Random(7);
+            int ti = 0;
             for (float x = -8; x < 100; x += Low ? 9f : 4.5f)
             {
-                g.Tree(new Vector3(x + (float)rng.NextDouble(), 0, 28 + (float)rng.NextDouble() * 3), 1.2f, (float)rng.NextDouble() * 90);
-                g.Tree(new Vector3(x + 2 + (float)rng.NextDouble(), 0, -19 - (float)rng.NextDouble() * 3), 1.0f, (float)rng.NextDouble() * 90);
+                var a = new Vector3(x + (float)rng.NextDouble(), 0, 28 + (float)rng.NextDouble() * 3);
+                var b = new Vector3(x + 2 + (float)rng.NextDouble(), 0, -19 - (float)rng.NextDouble() * 3);
+                float ya = (float)rng.NextDouble() * 90, yb = (float)rng.NextDouble() * 90;
+                if (detail)
+                {
+                    Static(g, (ti & 1) == 0 ? "tree_round" : "tree_cone", () => TreeKit(1.2f), a, ya);
+                    Static(g, (ti & 1) == 0 ? "tree_cone" : "tree_round", () => TreeKit(1.0f), b, yb);
+                }
+                else { g.Tree(a, 1.2f, ya); g.Tree(b, 1.0f, yb); }
+                ti++;
             }
-            // rooms (open wings furnished; locked wings are closed blocks)
+            // visitor parking south of triage (flat quads on every tier; parked cars off Low)
+            var park = new Vector3(15, 0, -14.6f);
+            g.Parking(park, 5);
+            if (detail)
+            {
+                Static(g, "car_a", null, park + new Vector3(-5.2f, 0, 0.2f), 180);
+                Static(g, "car_b", null, park + new Vector3(0f, 0, 0.1f), 180);
+                Static(g, "car_c", null, park + new Vector3(2.6f, 0, 0.3f), 180);
+                for (float x = -4; x <= 0; x += 4) Static(g, "hedge", null, new Vector3(x, 0, -16.2f), 0);
+                for (float x = 48; x <= 92; x += 4) Static(g, "hedge", null, new Vector3(x, 0, -16.2f), 0);
+            }
+            // rooms (open wings furnished; locked wings are closed blocks with window bands, rooftop plant off Low)
             foreach (var z in gd.Zones)
             {
                 if (z.Kind == "hall") continue;
                 bool open = Sim.Unlocked(z.Wing);
                 int floor = z.Kind == "or" ? Pal.OrFloor : z.Kind == "ambulance" ? Pal.Concrete : Pal.Floor;
                 int wall = z.Kind == "ward" ? Pal.WallMint : z.Kind == "test" || z.Kind == "or" ? Pal.WallBlue : Pal.WallCream;
-                if (z.Kind == "ambulance") { g.Floor(W(z.X, z.Y), (float)z.W, (float)z.D, 0.05f, open ? Pal.Concrete : Pal.Locked); continue; }
-                g.Room(W(z.X, z.Y), (float)z.W, (float)z.D, floor, wall, open);
+                if (z.Kind == "ambulance")
+                {
+                    g.Floor(W(z.X, z.Y), (float)z.W, (float)z.D, 0.05f, open ? Pal.Concrete : Pal.Locked);
+                    if (open && detail)
+                    {
+                        Static(g, "amb_canopy", null, W(z.X, z.Y + z.D * 0.5 - 0.4), 0);
+                        Static(g, "stretcher", null, W(z.X + z.W * 0.5 - 1.7, z.Y + z.D * 0.5 - 1.4), 0);
+                    }
+                    continue;
+                }
+                g.Room(W(z.X, z.Y), (float)z.W, (float)z.D, floor, wall, open, detail);
+                if (!open && detail)
+                {
+                    float top = 3.45f;
+                    if (z.W >= 9) { Static(g, "hvac", null, W(z.X - z.W * 0.22, z.Y) + Vector3.up * top, 0); Static(g, "hvac", null, W(z.X + z.W * 0.22, z.Y) + Vector3.up * top, 0); }
+                    else Static(g, "hvac", null, W(z.X, z.Y) + Vector3.up * top, 0);
+                }
             }
-            Spawn("Campus", g.Build("campus"), Vector3.zero);
-            BuildCorridors();
-            // furniture
+            // main entrance on the reception's west wall (side walls are full height: the porch hides nothing inside)
+            var rec = gd.Zones[gd.Zone("reception")];
+            var porch = W(rec.X - rec.W * 0.5 - 0.15, rec.Y);
+            if (!detail || !g.Append(KitPrefab("entrance"), porch, 90)) g.Append(PorchKit(), porch, 90);
+            if (detail)
+            {
+                Static(g, "sign", null, W(rec.X - rec.W * 0.5 - 3.4, rec.Y - rec.D * 0.5 - 1.4), 0);
+                Static(g, "planter", null, W(rec.X - rec.W * 0.5 - 1.2, rec.Y + rec.D * 0.5 + 1.0), 0);
+                Static(g, "planter", null, W(rec.X - rec.W * 0.5 - 1.2, rec.Y - rec.D * 0.5 - 1.0), 0);
+                Static(g, "bench", null, W(rec.X - rec.W * 0.5 - 3.6, rec.Y + rec.D * 0.5 + 2.6), 90);
+            }
+            // static furniture merged into the campus mesh too (Low: 4–6 draws fewer than one object per prop)
             foreach (var z in gd.Zones)
             {
                 if (!Sim.Unlocked(z.Wing)) continue;
                 var c = W(z.X, z.Y);
                 switch (z.Kind)
                 {
-                    case "reception": Prop("desk", MeshKit.Desk, c + new Vector3(0, 0, 1.2f), 0); break;
-                    case "triage": Prop("desk", MeshKit.Desk, c + new Vector3(0, 0, 1.2f), 0); break;
+                    case "reception": Static(g, "desk", MeshKit.DeskKit, c + new Vector3(0, 0, 1.2f), 0); break;
+                    case "triage": Static(g, "desk", MeshKit.DeskKit, c + new Vector3(0, 0, 1.2f), 0); break;
                     case "waiting":
-                        Prop("chairs", () => MeshKit.Chairs(4), c + new Vector3(0, 0, 1.8f), 0);
-                        Prop("chairs", () => MeshKit.Chairs(4), c + new Vector3(0, 0, -0.6f), 0);
+                        Static(g, "chairs", () => MeshKit.ChairsKit(4), c + new Vector3(0, 0, 1.8f), 0);
+                        Static(g, "chairs", () => MeshKit.ChairsKit(4), c + new Vector3(0, 0, -0.6f), 0);
                         break;
                     case "lounge":
-                        if (Sim.Has("discharge_lounge")) Prop("chairs", () => MeshKit.Chairs(4), c + new Vector3(0, 0, 0.6f), 0);
+                        if (Sim.Has("discharge_lounge")) Static(g, "chairs", () => MeshKit.ChairsKit(4), c + new Vector3(0, 0, 0.6f), 0);
                         break;
-                    case "lift": Spawn("Lift", BoxMesh(Pal.Machine, new Vector3(3, 3, 3)), c, 0); break;
+                    case "lift": Static(g, "lift", LiftKit, c, 0); break;
                 }
             }
+            Spawn("Campus", g.Build("campus"), Vector3.zero);
+            BuildCorridors();
             for (int i = 0; i < Sim.S.Beds.Count; i++)
             {
                 var b = Sim.S.Beds[i];

@@ -28,6 +28,11 @@ for f in coach_barista intro_1 intro_2 intro_3 curtain; do [ -f "$A/Resources/ui
 for f in cart counter back_bar espresso_1 espresso_2 grinder fridge pastry_case pickup_shelf ice_maker roaster table rest_rack packing_bench sack_lod1 plant_lod1 cat_lod1; do [ -f "$A/Resources/kit/$f.fbx" ] || bad "missing kit/$f.fbx (tools/art/kit.py)"; done
 [ $fail -eq 0 ] && echo "static gates PASS"
 
+step "store listing + screenshot copy (store/validate.py)"
+sto=$(python3 "$(dirname "$UNITY")/store/validate.py" 2>&1); echo "$sto" | tail -3
+[ "$(echo "$sto" | tail -1)" = "STORE_LISTING_PASS" ] || bad "store listing (store/validate.py)"
+for f in feature-graphic.png icon-candidates/c1.png icon-candidates/c2.png icon-candidates/c3.png play-data-safety.csv; do [ -f "$(dirname "$UNITY")/store/$f" ] || bad "missing store/$f (tools/art/render_store.py)"; done
+
 step "engine-free compile + NUnit (Sim, Game, CoddyKit.Core)"
 out=$(sh "$HERE/dotnet_check.sh" 2>&1); echo "$out" | grep -E "Error|Passed!|Failed" ; echo "$out" | grep -q "Passed!" || fail=1
 echo "$out" | grep -q "Failed!" && fail=1

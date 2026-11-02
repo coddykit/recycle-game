@@ -1,6 +1,8 @@
 // Grill Convoy — import rules for the art (no glTF importer in this project; models arrive as FBX):
 //   * kit + Meshy FBX: 1 unit = 1 m (Blender FBX_SCALE_UNITS), no imported materials (the game assigns the palette
 //     material, or the model's own texture for the Meshy heroes), no cameras / lights, readable off (memory), normals kept;
+//     EXCEPT the district pieces Resources/kit/d_*.fbx: readable ON — RegionWorld copies their vertices once into the
+//     district mesh on Medium / High (0 extra draws; a few KB of CPU copy, ~4k tris in all);
 //   * the palette texture: point filter, no mipmaps, uncompressed (8×8 px — any blur mixes neighbouring swatches);
 //   * Meshy textures: max 1024 (the _low twins 512), ASTC on Android.
 using UnityEditor;
@@ -19,7 +21,7 @@ namespace GrillConvoy.EditorTools
             m.materialImportMode = ModelImporterMaterialImportMode.None;
             m.importCameras = false;
             m.importLights = false;
-            m.isReadable = false;
+            m.isReadable = assetPath.Contains("/Resources/kit/d_");
             m.importNormals = ModelImporterNormals.Import;
             m.animationType = ModelImporterAnimationType.None;
             m.importAnimation = false;

@@ -27,6 +27,40 @@ namespace SemesterRush.World
         }
     }
 
+    /// <summary>Raw geometry of a Blender dressing prop (Resources/kit/merge, readable import) for merging into a zone /
+    /// path mesh. Loaded once per name; null = missing or not readable (the caller keeps its procedural fallback).</summary>
+    public sealed class KitGeo
+    {
+        public Vector3[] V, N;
+        public Vector2[] Uv;
+        public int[] T;
+        public int Tris => T.Length / 3;
+
+        static readonly Dictionary<string, KitGeo> cache = new Dictionary<string, KitGeo>();
+
+        public static KitGeo Load(string name)
+        {
+            if (cache.TryGetValue(name, out var g)) return g;
+            var prefab = Resources.Load<GameObject>("kit/merge/" + name);
+            var mf = prefab != null ? prefab.GetComponentInChildren<MeshFilter>() : null;
+            var mesh = mf != null ? mf.sharedMesh : null;
+            if (mesh != null && mesh.isReadable)
+            {
+                // relative to the prefab root: CampusWorld places kit props with their root at identity (Prop()).
+                var m = prefab.transform.worldToLocalMatrix * mf.transform.localToWorldMatrix;
+                var vs = mesh.vertices;
+                var ns = mesh.normals;
+                var us = mesh.uv;
+                if (ns.Length != vs.Length) ns = new Vector3[vs.Length];
+                if (us.Length != vs.Length) { us = new Vector2[vs.Length]; for (int i = 0; i < us.Length; i++) us[i] = Pal.Uv(Pal.Stone); }
+                for (int i = 0; i < vs.Length; i++) { vs[i] = m.MultiplyPoint3x4(vs[i]); ns[i] = m.MultiplyVector(ns[i]).normalized; }
+                g = new KitGeo { V = vs, N = ns, Uv = us, T = mesh.triangles };
+            }
+            cache[name] = g;
+            return g;
+        }
+    }
+
     public sealed class MeshKit
     {
         readonly List<Vector3> v = new List<Vector3>();
@@ -118,6 +152,24 @@ namespace SemesterRush.World
             Box(at + Vector3.up * 4.2f * s, new Vector3(2f, 1.6f, 2f) * s, yaw + 40f, Pal.Tree);
         }
 
+        /// <summary>Merges a Blender dressing prop at pos, turned by yaw (degrees), uniformly scaled.</summary>
+        public void Add(KitGeo g, Vector3 pos, float yaw, float scale)
+        {
+            var q = Quaternion.Euler(0, yaw, 0);
+            int i0 = v.Count;
+            for (int i = 0; i < g.V.Length; i++) { v.Add(pos + q * (g.V[i] * scale)); n.Add(q * g.N[i]); uv.Add(g.Uv[i]); }
+            for (int i = 0; i < g.T.Length; i++) t.Add(i0 + g.T[i]);
+        }
+
+        /// <summary>Merges another (procedural) kit at pos, turned by yaw, uniformly scaled.</summary>
+        public void Add(MeshKit o, Vector3 pos, float yaw, float scale)
+        {
+            var q = Quaternion.Euler(0, yaw, 0);
+            int i0 = v.Count;
+            for (int i = 0; i < o.v.Count; i++) { v.Add(pos + q * (o.v[i] * scale)); n.Add(q * o.n[i]); uv.Add(o.uv[i]); }
+            for (int i = 0; i < o.t.Count; i++) t.Add(i0 + o.t[i]);
+        }
+
         public Mesh Build(string name)
         {
             var m = new Mesh { name = name };
@@ -205,7 +257,10 @@ namespace SemesterRush.World
         }
 
         /// <summary>An iron gate in a hedge: open = the bars swing aside.</summary>
-        public static Mesh Gate(bool open)
+        public static Mesh Gate(bool open) => GateKit(open).Build(open ? "gate_open" : "gate_closed");
+
+        /// <summary>The gate's procedural geometry (Low tier, or when kit/merge/gate_* is missing); merged into the paths.</summary>
+        public static MeshKit GateKit(bool open)
         {
             var k = new MeshKit();
             k.Box(new Vector3(-4.5f, 0, 0), new Vector3(5, 1.6f, 1.2f), 0, Pal.Ivy);
@@ -218,7 +273,7 @@ namespace SemesterRush.World
                 k.Box(new Vector3(1.9f, 0.2f, -1.4f), new Vector3(0.12f, 2.4f, 2.6f), 0, Pal.Window);
             }
             else k.Box(new Vector3(0, 0.2f, 0), new Vector3(3.4f, 2.4f, 0.12f), 0, Pal.Window);
-            return k.Build(open ? "gate_open" : "gate_closed");
+            return k;
         }
 
         /// <summary>The bus stop at the entrance (commuters arrive here).</summary>

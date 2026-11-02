@@ -1,0 +1,8 @@
+{"kind": "batch_start", "remaining": 38399, "limit": 40000, "calls": 8, "est": 1581, "t": "2026-11-02T07:53:00"}
+{"kind": "sfx", "id": "ui_tap", "seconds": 0.5, "credits": 5, "remaining": 38394, "cost_from": "header", "hash": "b6be14ac", "took": 1.5, "t": "2026-11-02T07:53:01"}
+{"kind": "sfx", "id": "coins", "seconds": 1.0, "credits": 10, "remaining": 38384, "cost_from": "header", "hash": "d7591219", "took": 1.5, "t": "2026-11-02T07:53:05"}
+{"kind": "sfx", "id": "success", "seconds": 1.5, "credits": 15, "remaining": 38369, "cost_from": "header", "hash": "41e7b8a6", "took": 1.6, "t": "2026-11-02T07:53:09"}
+{"kind": "sfx", "id": "warning", "seconds": 1.2, "credits": 12, "remaining": 38357, "cost_from": "header", "hash": "a07e6f94", "took": 1.5, "t": "2026-11-02T07:53:13"}
+{"kind": "sfx", "id": "bell", "seconds": 2.0, "credits": 20, "remaining": 38337, "cost_from": "header", "hash": "950bac70", "took": 1.5, "t": "2026-11-02T07:53:17"}
+{"kind": "sfx", "id": "place", "seconds": 0.6, "credits": 6, "remaining": 38331, "cost_from": "header", "hash": "b6b8d226", "took": 2.0, "t": "2026-11-02T07:53:21"}
+{"kind": "music", "id": "music_calm", "seconds": 60, "credits": 750, "remaining": 37581, "cost_from": "rate", "hash": "feee0c93", "took": 7.5, "t": "2026-11-02T07:53:30"}

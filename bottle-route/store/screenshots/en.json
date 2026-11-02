@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Run the bottle return network",
+   "sub": "Machines, trucks and a depot in one town",
+   "scene": "Harbour Quarter mid-day (~13:00), Medium tier, guide finished: 5 machines with in-world fill bars, a van on its route, citizens with bags walking to a machine, depot at the edge, HUD with cash, Green Rating and day clock"
+  },
+  {
+   "id": "s2",
+   "headline": "Empty before they overflow",
+   "sub": "Every machine shows how full it is",
+   "scene": "Point sheet open on a machine at 92 % (red bar, 'Full — citizens are turned away' about to show), a citizen turning back with a bag beside it, other bars green/amber"
+  },
+  {
+   "id": "s3",
+   "headline": "Draw routes that save fuel",
+   "sub": "Every kilometre costs. Plan the ring.",
+   "scene": "Route being built: three machines tapped (numbered stops), route line on the roads, fuel badge showing the trip cost, Go button highlighted"
+  },
+  {
+   "id": "s4",
+   "headline": "Set the service rule",
+   "sub": "Empty at 60, 80 or 95 %, or only on call",
+   "scene": "Service rule sheet on a busy corner machine with 'Empty at 80 %' selected, Dispatcher hint line below"
+  },
+  {
+   "id": "s5",
+   "headline": "Count, press and sell bales",
+   "sub": "Sell when the bale price is right",
+   "scene": "Depot tab: count line queue, baler with a PET bale, yard with stacked PET and aluminium bales, Sell button with today's price"
+  },
+  {
+   "id": "s6",
+   "headline": "Handle the heat wave",
+   "sub": "Match days, jams, breakdowns and more",
+   "scene": "Heat wave event card on screen, machines filling fast (several amber bars), a second truck heading out, technician on the way to a jammed machine"
+  },
+  {
+   "id": "s7",
+   "headline": "Open new districts",
+   "sub": "Old Town lanes, University Hill, the stadium",
+   "scene": "Old Town just opened: narrow lanes with a cargo bike on an alley, café pickup point, toast 'Next district: University Hill'"
+  },
+  {
+   "id": "s8",
+   "headline": "Earn three-star days",
+   "sub": "Service, efficiency and depot flow",
+   "scene": "Day report with 3 stars, bottles collected, bottles per km, profit and Green Rating up (no rewarded-ad button in the frame)"
+  }
+ ],
+ "feature": "Keep the town's bottles moving"
+}

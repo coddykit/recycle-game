@@ -6,6 +6,9 @@ camera sees), head of a bed at +Y. Exports FBX into unity/Assets/Resources/kit/ 
 no real brand or emergency-service emblems (the ambulance carries plain stripes only).
   blender -b --python charge-nurse/tools/art/kit.py -- <unity dir> [<sheet.png>]
 Budget (Low draws: one material, one mesh per prop): furniture ≤ 500 tris, machine ≤ 700, vehicle ≤ 900.
+Polish pass (2026-11-02): campus / building props (entrance porch, ambulance-bay canopy, lift core, rooftop plant, triage
+wayfinding pylon) and grounds (two trees, hedge, bench, planter, three parked cars, stretcher), each ≤ 600 tris. These are
+STATIC: HospitalWorld merges them into the one campus mesh (0 extra draws), so they import readable (NurseArtImport).
 """
 import math
 import os
@@ -24,6 +27,8 @@ PALETTE = os.path.join(UNITY, "Assets/Resources/materials/palette.png")
 GRASS, PAVING, FLOOR, CONCRETE, CREAM, MINT, BLUEWALL, ROOF, ROOFGREY = 0, 2, 3, 4, 5, 6, 7, 8, 9
 BRAND, PANEL, LINEN, CURTAIN, GLASS, WOOD, WINDOW = 10, 11, 12, 13, 15, 16, 20
 TAGRED, SIREN, MATTRESS, MACHINE, SCREEN, RUBBER, WHITE = 24, 25, 41, 42, 43, 44, 45
+LOCKED, TREE, TRUNK, TAGGREEN, TAGYELLOW, TAGORANGE, GOLD, FOREST, TEALDARK, GRASSDARK = 19, 17, 18, 21, 22, 23, 27, 29, 30, 1
+ASPHALT, HEDGE = 46, 47
 
 
 def uv_of(sw):
@@ -191,6 +196,136 @@ def or_table():
     return p.build()
 
 
+# ---------------------------------------------------------------- polish pass: building shells + grounds (static, merged)
+
+def entrance():
+    """Main-entrance porch: a slim canopy on two posts over sliding glass doors (south front of the reception)."""
+    p = Prop("entrance")
+    p.box((0, 0.1, 0), (6.4, 0.25, 0.12), CONCRETE)                                   # threshold
+    p.box((0, 0.0, 0.12), (3.0, 0.12, 2.3), GLASS)                                     # sliding doors
+    p.box((0, -0.02, 0.12), (0.08, 0.14, 2.3), PANEL)                                  # door split
+    p.box((0, 0.0, 2.42), (3.4, 0.2, 0.22), PANEL)                                     # door head
+    for x in (-1.75, 1.75):
+        p.box((x, 0.0, 0.12), (0.18, 0.2, 2.5), PANEL)                                 # frame
+    for x in (-2.8, 2.8):
+        p.box((x, -1.7, 0), (0.22, 0.22, 2.55), PANEL, bevel=0.04)                     # posts
+    p.box((0, -1.0, 2.55), (6.4, 2.4, 0.16), WHITE, top=BRAND, bevel=0.05)             # canopy slab, teal top
+    p.box((0, -2.18, 2.48), (6.42, 0.06, 0.08), BRAND)                                 # fascia stripe
+    p.box((0, -0.8, 0.0), (2.6, 1.4, 0.03), RUBBER)                                    # door mat
+    return p.build()
+
+
+def amb_canopy():
+    """Ambulance-bay canopy along the back of the bay (bay doors, roof, bollards; plain stripe, no emblem)."""
+    p = Prop("amb_canopy")
+    for x in (-3.8, 3.8):
+        p.box((x, -1.6, 0), (0.24, 0.24, 3.0), PANEL, bevel=0.04)                      # posts
+    p.box((0, -0.6, 3.0), (8.4, 2.6, 0.18), WHITE, top=ROOFGREY, bevel=0.05)           # roof
+    p.box((0, -1.92, 2.92), (8.42, 0.06, 0.1), TAGRED)                                 # red edge stripe
+    p.box((0, 0.6, 0), (2.4, 0.2, 2.6), GLASS)                                         # bay doors
+    p.box((0, 0.6, 2.6), (2.7, 0.24, 0.25), PANEL)
+    for x in (-4.0, -3.4, 3.4, 4.0):
+        p.cyl((x, -2.0, 0.45), 0.12, 0.9, TAGYELLOW, segs=8)                           # bollards (clear of the parked ambulance)
+    return p.build()
+
+
+def lift():
+    """Lift core for City General (chapter 3 lift congestion): shaft, two door pairs, floor indicator, roof cap."""
+    p = Prop("lift")
+    p.box((0, 0.2, 0), (3.0, 2.6, 3.4), CONCRETE, top=ROOFGREY, bevel=0.06)          # shaft
+    p.box((0, 0.2, 3.4), (3.2, 2.8, 0.18), PANEL, bevel=0.03)                          # cap
+    for x in (-0.68, 0.68):
+        p.box((x, -1.12, 0.05), (1.1, 0.06, 2.2), PANEL)                               # door surround
+        p.box((x - 0.26, -1.15, 0.1), (0.5, 0.04, 2.05), MACHINE)                      # door leaves
+        p.box((x + 0.26, -1.15, 0.1), (0.5, 0.04, 2.05), MACHINE)
+        p.box((x, -1.16, 2.35), (0.5, 0.03, 0.2), SCREEN)                              # floor indicator
+    p.box((0, -1.15, 1.0), (0.12, 0.04, 0.3), TAGGREEN)                                # call button
+    return p.build()
+
+
+def hvac():
+    """Rooftop plant unit (sits on closed wing blocks and on room walls)."""
+    p = Prop("hvac")
+    p.box((0, 0, 0), (1.8, 1.1, 0.8), MACHINE, top=PANEL, bevel=0.05)
+    p.cyl((-0.45, 0, 0.84), 0.36, 0.08, RUBBER, segs=10)                               # fan grilles
+    p.cyl((0.45, 0, 0.84), 0.36, 0.08, RUBBER, segs=10)
+    p.box((1.1, 0, 0), (0.35, 0.35, 0.5), PANEL)                                       # duct
+    return p.build()
+
+
+def sign():
+    """Wayfinding pylon by the entrance: the four triage colours as plain bands (no text, no cross / emblem)."""
+    p = Prop("sign")
+    p.box((0, 0, 0), (0.9, 0.35, 0.25), CONCRETE, bevel=0.03)
+    p.box((0, 0, 0.25), (0.7, 0.22, 2.6), BRAND, top=WHITE, bevel=0.05)
+    for i, sw in enumerate((TAGGREEN, TAGYELLOW, TAGORANGE, TAGRED)):
+        p.box((0, -0.12, 0.6 + i * 0.45), (0.56, 0.02, 0.3), sw)
+    return p.build()
+
+
+def tree_round():
+    p = Prop("tree_round")
+    p.cyl((0, 0, 0.7), 0.13, 1.4, TRUNK, segs=6)
+    p.box((0, 0, 1.2), (1.7, 1.7, 1.3), TREE, bevel=0.32, rot=10)
+    p.box((0.15, 0.1, 2.2), (1.1, 1.1, 0.9), TREE, bevel=0.25, rot=35)
+    return p.build()
+
+
+def tree_cone():
+    p = Prop("tree_cone")
+    p.cyl((0, 0, 0.45), 0.12, 0.9, TRUNK, segs=6)
+    for z, r, h in ((0.8, 0.95, 1.2), (1.6, 0.72, 1.0), (2.3, 0.45, 0.9)):
+        res = bmesh.ops.create_cone(p.bm, cap_ends=True, segments=7, radius1=r, radius2=0.0, depth=h)
+        bmesh.ops.translate(p.bm, verts=res["verts"], vec=(0, 0, z + h / 2))
+        p._paint(list({f for v in res["verts"] for f in v.link_faces}), FOREST)
+    return p.build()
+
+
+def hedge():
+    p = Prop("hedge")
+    p.box((0, 0, 0), (3.0, 0.8, 0.75), HEDGE, bevel=0.18)
+    return p.build()
+
+
+def bench():
+    p = Prop("bench")
+    for x in (-0.65, 0.65):
+        p.box((x, 0, 0), (0.08, 0.45, 0.42), MACHINE)
+    p.box((0, 0, 0.42), (1.6, 0.48, 0.07), WOOD, bevel=0.02)
+    p.box((0, 0.24, 0.5), (1.6, 0.06, 0.4), WOOD, bevel=0.02)
+    return p.build()
+
+
+def planter():
+    p = Prop("planter")
+    p.box((0, 0, 0), (1.2, 1.2, 0.55), CONCRETE, bevel=0.06)
+    p.box((0, 0, 0.55), (0.95, 0.95, 0.5), HEDGE, bevel=0.2)
+    return p.build()
+
+
+def car(name, body):
+    """A generic parked hatchback (no badge, no plate text)."""
+    p = Prop(name)
+    p.box((0, 0, 0.28), (1.7, 3.8, 0.7), body, bevel=0.14)                             # body
+    p.box((0, 0.25, 0.98), (1.5, 2.1, 0.62), WINDOW, top=body, bevel=0.12)             # cabin + glass
+    p.box((0, -1.91, 0.55), (1.2, 0.04, 0.16), WHITE)                                  # front lamps strip
+    p.box((0, 1.91, 0.6), (1.3, 0.04, 0.14), TAGRED)                                   # rear lamps strip
+    for x in (-0.82, 0.82):
+        for y in (-1.2, 1.25):
+            p.cyl((x, y, 0.33), 0.33, 0.24, RUBBER, segs=8, axis="X")
+    return p.build()
+
+
+def stretcher():
+    p = Prop("stretcher")
+    p.box((0, 0, 0.62), (0.62, 1.95, 0.14), MACHINE, top=LINEN, bevel=0.03)
+    p.box((0, 0.7, 0.76), (0.5, 0.35, 0.12), WHITE, bevel=0.04)                        # pillow
+    p.box((0, 0, 0.12), (0.08, 1.5, 0.5), PANEL)
+    for y in (-0.8, 0.8):
+        p.box((0, y, 0.0), (0.55, 0.08, 0.12), MACHINE)
+    return p.build()
+
+
 def export(ob):
     bpy.ops.object.select_all(action="DESELECT")
     ob.select_set(True)
@@ -219,18 +354,21 @@ def sheet(objs):
     import mathutils
     scene = bpy.context.scene
     scene.render.engine = "BLENDER_EEVEE"
-    scene.render.resolution_x, scene.render.resolution_y = 1600, 400
+    scene.render.resolution_x, scene.render.resolution_y = 2000, 1000
     scene.render.film_transparent = False
     world = bpy.data.worlds.new("w"); world.color = (0.85, 0.9, 0.92); scene.world = world
-    x = -10.0
-    for ob in objs:
-        ob.location = (x, 0, 0)
-        x += 4.5
+    rows = [objs[:9], objs[9:14], objs[14:]]   # furniture + machines, building shells, grounds
+    for r, row in enumerate(rows):
+        widths = [ob.dimensions.x + 1.2 for ob in row]
+        x = -sum(widths) / 2
+        for ob, w in zip(row, widths):
+            ob.location = (x + w / 2, -r * 8.0, 0)
+            x += w
     cam = bpy.data.objects.new("cam", bpy.data.cameras.new("cam"))
     scene.collection.objects.link(cam)
     cam.data.type = "ORTHO"
-    cam.data.ortho_scale = 44
-    cam.location = (8, -40, 22)
+    cam.data.ortho_scale = 38
+    cam.location = (0, -52, 26)
     cam.rotation_euler = mathutils.Euler((math.radians(62), 0, 0))
     scene.camera = cam
     sun = bpy.data.objects.new("sun", bpy.data.lights.new("sun", "SUN"))
@@ -246,7 +384,9 @@ def main():
     reset()
     os.makedirs(OUT, exist_ok=True)
     mat = material()
-    objs = [bed(True), bed(False), desk(), chairs(), ambulance(), xray(), lab(), ct(), or_table()]
+    objs = [bed(True), bed(False), desk(), chairs(), ambulance(), xray(), lab(), ct(), or_table(),
+            entrance(), amb_canopy(), lift(), hvac(), sign(), tree_round(), tree_cone(), hedge(), bench(), planter(),
+            car("car_a", WHITE), car("car_b", FOREST), car("car_c", GOLD), stretcher()]
     total = 0
     for ob in objs:
         ob.data.materials.append(mat)

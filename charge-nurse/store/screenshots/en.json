@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Keep the hospital moving",
+   "sub": "Patient flow from front door to ward bed",
+   "scene": "Town Hospital mid-shift (~11:00), Medium tier, campus cutaway with walking staff, bays and general ward busy, corridors mostly calm, HUD with stars and cash"
+  },
+  {
+   "id": "s2",
+   "headline": "Tag every arrival",
+   "sub": "Green, yellow, orange, red: colour + shape",
+   "scene": "Triage card open on a new walk-in: the four colour buttons with their shapes, a short queue at the front desk behind"
+  },
+  {
+   "id": "s3",
+   "headline": "Find the real bottleneck",
+   "sub": "Tap the lens, read the cause in one line",
+   "scene": "Bottleneck lens sheet open naming 'Discharges wait'; the matching corridor glows red in the diorama"
+  },
+  {
+   "id": "s4",
+   "headline": "Accept or divert ambulances",
+   "sub": "Take the bonus or protect a full ED",
+   "scene": "Ambulance call banner with Accept / Divert and the minutes-to-answer counter, ambulance at the bay, red-tag shape icon"
+  },
+  {
+   "id": "s5",
+   "headline": "Handle the chaos",
+   "sub": "Flu week, crashes, power cuts and more",
+   "scene": "Announced crisis running (flu week or highway crash): crisis card, busy orange/red corridors, surge team called (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s6",
+   "headline": "Hire the right teams",
+   "sub": "Nurses, doctors, porters, cleaners and more",
+   "scene": "Teams sheet open with all six teams and their hire buttons; one team pulsing because the lens named it"
+  },
+  {
+   "id": "s7",
+   "headline": "Grow to City General",
+   "sub": "Clinic to town hospital to city campus",
+   "scene": "Wide zoom-out of all three wings open: operating room, ICU, surgical ward and lift lit; 'City General is open!' toast"
+  },
+  {
+   "id": "s8",
+   "headline": "Hand over, earn your stars",
+   "sub": "Nine stars a shift for care, waits and flow",
+   "scene": "Shift report after a good day: star rows for care / waits / flow, treated count, net cash, Continue button (no ad button)"
+  }
+ ],
+ "feature": "Find the bottleneck. Keep beds moving."
+}

@@ -4,6 +4,9 @@ so the whole town shares ONE material. Bevelled boxes + cylinders, 1 unit = 1 m,
 Blender (Unity -Z after the FBX axis swap). Exports FBX into unity/Assets/Resources/kit/ and a contact sheet.
   blender -b --python semester-rush/tools/art/kit.py -- <unity dir> [<sheet.png>]
 Budget (Low draws: one material, one mesh per prop): building ≤ 1500 tris, small prop ≤ 600.
+Campus dressing (polish pass 2026-11-02) goes to Resources/kit/merge/: trees, lamps, benches, bike racks and the shortcut
+gates. CampusWorld MERGES these into the zone / path meshes (readable import, 0 extra draws on every tier); Medium / High
+use them, Low keeps the cheaper procedural trees and gates (Low must not get heavier).
 """
 import math
 import os
@@ -235,11 +238,90 @@ def bus_stop():
     return p.build()
 
 
-def export(ob):
+# ---------------------------------------------------------------- campus dressing (merged into the zone / path meshes)
+
+
+def blob(p, center, size, sw, rot=0.0):
+    """A chunky canopy lump: a bevelled box (one bevel segment keeps it cheap)."""
+    p.box(center, size, sw, bevel=min(size) * 0.22, rot=rot)
+
+
+def tree_oak():
+    p = Prop("tree_oak")
+    p.cyl((0, 0, 1.3), 0.32, 2.6, TRUNK, segs=6)
+    p.box((0.35, 0, 1.9), (0.9, 0.22, 0.22), TRUNK, rot=25)                          # a branch
+    blob(p, (0, 0, 2.2), (3.4, 3.0, 2.2), TREE, rot=12)
+    blob(p, (-0.9, 0.5, 3.6), (2.2, 2.0, 1.7), TREE, rot=-20)
+    blob(p, (0.8, -0.4, 3.8), (2.0, 1.9, 1.6), IVY, rot=35)
+    return p.build()
+
+
+def tree_maple():
+    """An autumn maple (the campus season colour, plan section 8): a taller oval crown in copper with a golden top."""
+    p = Prop("tree_maple")
+    p.cyl((0, 0, 1.4), 0.28, 2.8, TRUNK, segs=6)
+    blob(p, (0, 0, 2.3), (2.8, 2.6, 2.4), COPPER, rot=20)
+    blob(p, (0.2, -0.1, 4.2), (2.0, 1.9, 1.9), COPPER, rot=-15)
+    blob(p, (-0.3, 0.3, 5.6), (1.2, 1.2, 1.1), YELLOW, rot=40)
+    return p.build()
+
+
+def lamp():
+    p = Prop("lamp")
+    p.box((0, 0, 0), (0.6, 0.6, 0.3), SLATE, bevel=0.05)
+    p.cyl((0, 0, 1.9), 0.09, 3.4, SLATE, segs=6)
+    p.box((0, 0, 3.55), (0.55, 0.55, 0.5), WINLIGHT, bevel=0.06)                     # the lantern
+    p.box((0, 0, 4.05), (0.75, 0.75, 0.14), SLATE, bevel=0.03)
+    return p.build()
+
+
+def bench():
+    p = Prop("bench")
+    for x in (-0.8, 0.8):
+        p.box((x, 0, 0), (0.12, 0.5, 0.42), SLATE)
+    p.box((0, 0, 0.42), (2.0, 0.55, 0.08), WOOD, bevel=0.02)
+    p.box((0, 0.28, 0.6), (2.0, 0.08, 0.42), WOOD, bevel=0.02)                      # back rest
+    return p.build()
+
+
+def bike_rack():
+    """A rack with two parked bikes (plan section 8 'bikes'), faculty-neutral colours."""
+    p = Prop("bike_rack")
+    p.box((0, 0, 0), (3.2, 0.12, 0.12), SLATE)
+    for i, (x, sw) in enumerate(((-0.8, BRAND), (0.8, YELLOW))):
+        for y in (-0.55, 0.55):
+            p.cyl((x, y, 0.36), 0.36, 0.06, WINDOW, segs=8, axis="Y")                # wheels
+        p.box((x, 0, 0.36), (0.08, 1.0, 0.08), sw)                                   # frame
+        p.box((x, 0.15, 0.36), (0.08, 0.08, 0.5), sw)
+        p.box((x, 0.15, 0.86), (0.25, 0.3, 0.06), WINDOW)                             # saddle
+        p.box((x, -0.45, 0.4), (0.5, 0.06, 0.5), SLATE)                               # bars
+    return p.build()
+
+
+def gate(open_):
+    """The shortcut gate in an ivy hedge (open = the leaves swing aside). Front = -Y, the path runs along Y."""
+    p = Prop("gate_open" if open_ else "gate_closed")
+    for side in (-1, 1):
+        p.box((side * 3.7, 0, 0), (3.6, 1.0, 1.5), IVY, bevel=0.25)                   # hedge (along X)
+        p.box((side * 1.6, 0, 0), (0.6, 0.6, 2.2), STONE, bevel=0.05)                 # pillar
+        p.box((side * 1.6, 0, 2.2), (0.75, 0.75, 0.18), TRIM, bevel=0.04)             # cap
+    if open_:
+        for side in (-1, 1):
+            p.box((side * 1.4, -0.75, 0.1), (0.08, 1.4, 1.6), WINDOW)
+            p.box((side * 1.4, -0.75, 1.55), (0.12, 1.45, 0.1), GOLD)
+    else:
+        p.box((0, 0, 0.1), (2.6, 0.08, 1.6), WINDOW)
+        p.box((0, 0, 1.55), (2.65, 0.12, 0.1), GOLD)
+        p.box((0, -0.06, 0.6), (0.3, 0.06, 0.3), GOLD)                               # lock
+    return p.build()
+
+
+def export(ob, sub=""):
     bpy.ops.object.select_all(action="DESELECT")
     ob.select_set(True)
     bpy.context.view_layer.objects.active = ob
-    path = os.path.join(OUT, ob.name + ".fbx")
+    os.makedirs(os.path.join(OUT, sub), exist_ok=True)
+    path = os.path.join(OUT, sub, ob.name + ".fbx")
     bpy.ops.export_scene.fbx(filepath=path, use_selection=True, apply_scale_options="FBX_SCALE_UNITS", axis_forward="-Z", axis_up="Y",
                              object_types={"MESH"}, path_mode="STRIP", embed_textures=False, mesh_smooth_type="FACE", add_leaf_bones=False)
     tris = sum(len(p.vertices) - 2 for p in ob.data.polygons)
@@ -296,9 +378,15 @@ def main():
     for ob in objs:
         ob.data.materials.append(mat)
         total += export(ob)
-    print("KIT_DONE props", len(objs), "tris", total)
+    merge = [tree_oak(), tree_maple(), lamp(), bench(), bike_rack(), gate(True), gate(False)]
+    for ob in merge:
+        ob.data.materials.append(mat)
+        tris = export(ob, "merge")
+        assert tris <= 600, ob.name + " over the 600-tri prop budget"
+        total += tris
+    print("KIT_DONE props", len(objs) + len(merge), "tris", total)
     if SHEET:
-        sheet(objs)
+        sheet(objs + merge)
 
 
 main()

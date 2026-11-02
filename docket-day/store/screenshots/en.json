@@ -1,0 +1,53 @@
+{
+ "shots": [
+  {
+   "id": "s1",
+   "headline": "Run your own law firm",
+   "sub": "From a garage-front office to Courthouse Row",
+   "scene": "Diorama at mid-morning, Main Street Suite: office tower cutaway with staff at desks, the office cat on the front step, the courthouse across the street; HUD with day, cash, trust and Standing"
+  },
+  {
+   "id": "s2",
+   "headline": "Fit people into the calendar",
+   "sub": "Drag your team onto every task before it's due",
+   "scene": "Matters tab with the Docket Rail open: colour-coded filings, evidence and prep blocks over 10 days, a paralegal card mid-drag onto an amber filing"
+  },
+  {
+   "id": "s3",
+   "headline": "Two hearings, one lawyer",
+   "sub": "Cover, call visiting counsel or ask for more time",
+   "scene": "A red collision marker on the rail, the collision sheet showing Cover / Visiting / Continuance levers"
+  },
+  {
+   "id": "s4",
+   "headline": "Pick your clients",
+   "sub": "Accept, refer or build an ethical wall",
+   "scene": "Reception: an intake card with area, fee model, deadlines, judge and a purple conflict badge; Accept / Decline / Refer / Wall buttons"
+  },
+  {
+   "id": "s5",
+   "headline": "Prep wins cases",
+   "sub": "Match every claim with the exhibit that proves it",
+   "scene": "Prep table mid-match: three claims on the left, exhibit cards on the right, one pair linked, odds rising"
+  },
+  {
+   "id": "s6",
+   "headline": "Settle or go to court",
+   "sub": "Every judge has habits. Plan for them",
+   "scene": "Hearing scene: judge, your counsel and the client portraits, odds bar, the Objection! timing marker in the green, Sustained! banner"
+  },
+  {
+   "id": "s7",
+   "headline": "Bill the day, earn stars",
+   "sub": "Hours become invoices. Trust money stays safe",
+   "scene": "Day report: three stars for deadlines, clients and billing, fees, salaries, rent, net, Billing run button (no rewarded-ad button in frame)"
+  },
+  {
+   "id": "s8",
+   "headline": "Build a busy practice",
+   "sub": "Library, evidence room, war room and more",
+   "scene": "Office tab with the library and conference room built, an evidence room under construction (build timer), new hire on the Team tab badge"
+  }
+ ],
+ "feature": "Run the busiest law firm in town"
+}
