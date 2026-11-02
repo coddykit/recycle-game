@@ -76,8 +76,8 @@ namespace SemesterRush.World
             var u = Pal.Uv(swatch);
             v.Add(a); v.Add(b); v.Add(c); v.Add(d);
             for (int k = 0; k < 4; k++) { n.Add(nn); uv.Add(u); }
-            t.Add(i); t.Add(i + 2); t.Add(i + 1);
-            t.Add(i); t.Add(i + 3); t.Add(i + 2);
+            t.Add(i); t.Add(i + 1); t.Add(i + 2);
+            t.Add(i); t.Add(i + 2); t.Add(i + 3);   // clockwise = Unity front face (fleet §0 fix from bottle-route)
         }
 
         /// <summary>Axis box on the ground rotated by yaw (degrees). top swatch may differ (roofs).</summary>
@@ -117,7 +117,7 @@ namespace SemesterRush.World
             var u = Pal.Uv(swatch);
             v.Add(a); v.Add(b); v.Add(c);
             for (int k = 0; k < 3; k++) { n.Add(nn); uv.Add(u); }
-            t.Add(i); t.Add(i + 2); t.Add(i + 1);
+            t.Add(i); t.Add(i + 1); t.Add(i + 2);   // clockwise = Unity front face (fleet §0 fix from bottle-route)
         }
 
         /// <summary>A flat strip on the ground from a to b (paths), y lifted a little to avoid z-fighting.</summary>

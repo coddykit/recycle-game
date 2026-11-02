@@ -217,7 +217,7 @@ def reset(sky_top="#F2B880", sky_bottom="#9FC9C2", strength=1.0, filmic=True):
     nt.links.new(coord.outputs["Generated"], sep.inputs[0])
     nt.links.new(sep.outputs["Z"], rng_.inputs["Value"])
     rng_.inputs["From Min"].default_value = -0.05
-    rng_.inputs["From Max"].default_value = 0.45
+    rng_.inputs["From Max"].default_value = 0.22
     nt.links.new(rng_.outputs["Result"], ramp.inputs["Fac"])
     ramp.color_ramp.elements[0].color = (*srgb(sky_bottom), 1)
     ramp.color_ramp.elements[1].color = (*srgb(sky_top), 1)
@@ -429,18 +429,18 @@ def feature_graphic():
     # the paddock: wood fence, a mixed herd, a drinking pool
     disc((6, 16), 19, 0.03, mats["grassd"], 24, 13)
     fence((6, 16), 36, 22, 1, False, None)
-    dino("horned", (-2, 10, 0), yaw=-120, scale=6.0)
-    dino("horned", (-9, 18, 0), yaw=-70, scale=4.5)
-    dino("duckbill", (12, 12, 0), yaw=-160, scale=6.5)
-    dino("plated", (4, 20, 0), yaw=-100, scale=5.5)
-    dino("longneck", (16, 24, 0), yaw=-140, scale=13.0)
+    dino("horned", (-3, 9, 0), yaw=-125, scale=7.5)
+    dino("horned", (-10, 18, 0), yaw=-70, scale=5.5)
+    dino("duckbill", (12, 11, 0), yaw=-160, scale=8.0)
+    dino("plated", (3, 20, 0), yaw=-95, scale=7.0)
+    dino("longneck", (17, 24, 0), yaw=-140, scale=15.0)
     prop("water_point", (18, 7, 0), 0, 1.6)
     # the tram line and the service road in front, a car at the stop, the Chief Warden on the path
     strip((-200, -6), (200, -6), 3.2, 0.14, flat_mat("rail", srgb("#9A6B43")))
     strip((-200, -14), (200, -14), 6, 0.1, mats["path"])
     tram((22, -6, 0.2), yaw=90, scale=2.0)
-    warden((-10, -11, 0), yaw=-40, scale=1.9)
-    prop("lamp", (-2, -18, 0), 0, 2.0)
+    warden((-9, -12, 0), yaw=-35, scale=2.6)
+    prop("lamp", (-34, -18, 0), 0, 2.0)
     prop("lamp", (40, -18, 0), 0, 2.0)
     for (x, y, nm, yaw, s) in ((-26, -6, "tree_fern", 20, 3.6), (-22, 14, "tree", 80, 3.6), (-34, 30, "tree_tall", 0, 3.6), (36, 10, "tree_fern", 140, 3.4),
                                (44, 30, "tree", 200, 3.4), (-6, 44, "tree_tall", 10, 3.4), (28, 46, "tree_fern", 60, 3.0), (54, 4, "rock", 30, 2.4),
@@ -450,7 +450,7 @@ def feature_graphic():
     prop("view", (-22, 34, 0), 0, 2.0)
     sun((64, 0, -62), 4.0, "#FFCB94", 2.5)
     fill((65, 0, 130), 0.8, "#AFC8FF")
-    camera((-6, -46, 11), (8, 18, 7), lens=32)
+    camera((-3, -36, 8.5), (7, 16, 6.5), lens=30)
     render(os.path.join(STORE, "feature-graphic.png"), 1024, 500, 96)
 
 

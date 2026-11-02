@@ -2,8 +2,8 @@
   * store/feature-graphic.png (1024×500): the cart on the quay at the harbour, Mara at the machine, customers waiting;
     the left third stays calm for the tagline the store renderer lays over it later (no text here);
   * store/icon-candidates/c1..c3.png (512×512, full bleed, no text, big shapes that read at 48 px):
-      c1 takeaway cup + croissant on burnt orange (the current placeholder's idea, closer and bolder),
-      c2 the drum roaster with its glowing drum on teal,
+      c1 takeaway cup + croissant on teal (the current placeholder's idea, closer and bolder),
+      c2 the drum roaster with its orange drum on deep navy,
       c3 a latte with heart art seen from above on walnut.
 The owner picks the icon later (docs/ART.md); unity/Assets/Art/Icon keeps the placeholder until then.
 EEVEE, headless. No text, no logos, no real brands.
@@ -31,7 +31,7 @@ def srgb(h):
     return tuple(lin(int(h[i:i + 2], 16)) for i in (1, 3, 5))
 
 
-BRAND, TEAL, WALNUT, CREAM, COFFEE, CUP, FOAM = "#D9693B", "#2C7A7B", "#6E4B35", "#F3E6CF", "#4B2E22", "#F4F1EA", "#EED9B8"
+BRAND, TEAL, WALNUT, CREAM, COFFEE, CUP, FOAM, NAVY = "#D9693B", "#2C7A7B", "#6E4B35", "#F3E6CF", "#4B2E22", "#F4F1EA", "#F7EEDD", "#1F3B4D"
 
 
 def reset(bg="#F3E6CF", strength=1.0):
@@ -162,19 +162,18 @@ def feature():
     kit("cart", (0, 0.6, 0))
     kit("espresso_1", (0.05, 0.75, 1.1))
     kit("grinder", (-0.95, 0.75, 1.1))
-    kit("table", (2.9, -2.2, 0), yaw=20)
-    char("barista", (0.55, 1.5, 0), yaw=-10)
-    char("customer", (-1.75, -0.9, 0), yaw=-30)
-    char("customer", (-2.45, -1.75, 0), yaw=-15, scale=0.95)
-    char("cat", (1.9, -1.0, 0), yaw=-35, scale=1.3)
-    char("sack", (3.7, 2.2, 0), yaw=-20)
-    camera((1.6, -9.2, 3.4), (0.6, 0.6, 1.0), lens=36)
+    char("barista", (1.8, 0.45, 0), yaw=-30)
+    char("customer", (-1.55, -0.75, 0), yaw=-40)
+    char("cat", (0.9, -1.25, 0), yaw=-25, scale=1.3)
+    char("sack", (2.75, 1.7, 0), yaw=-20)
+    char("plant", (-3.3, 1.9, 0), yaw=10)
+    camera((-1.4, -8.6, 3.1), (-0.9, 0.6, 1.05), lens=34)
     render(os.path.join(STORE, "feature-graphic.png"), 1024, 500)
 
 
 def icon_cup():
-    reset(bg=BRAND)
-    backdrop(BRAND)
+    reset(bg=TEAL)
+    backdrop(TEAL)
     takeaway_cup((0.12, 0.15, 0))
     char("croissant", (-0.55, -0.3, 0), yaw=25, scale=1.7)
     for i, (x, y) in enumerate(((0.75, -0.35), (0.62, -0.62), (0.9, -0.62))):
@@ -184,13 +183,12 @@ def icon_cup():
 
 
 def icon_roaster():
-    reset(bg=TEAL)
-    backdrop(TEAL)
+    reset(bg=NAVY)
+    backdrop(NAVY)
     kit("roaster", (0.0, 0.0, 0), yaw=-18)
-    # the drum glows a little (it is roasting); an emissive card behind the drum door
     for i, (x, y) in enumerate(((-0.75, -0.55), (-0.95, -0.35), (-0.6, -0.3), (0.95, -0.7))):
         bean((x, y, 0.05), (0, 0, math.radians(40 * i)), s=0.09)
-    camera((1.2, -5.2, 2.6), (0.15, 0.0, 0.95), ortho=2.55)
+    camera((1.2, -5.2, 2.6), (0.2, 0.0, 0.85), ortho=2.15)
     render(os.path.join(STORE, "icon-candidates/c2.png"), 512, 512)
 
 
@@ -201,19 +199,17 @@ def icon_latte():
     cyl((0, 0, 0.06), 0.7, 0.42, flat("cup", CUP, rough=0.3))
     bpy.ops.mesh.primitive_torus_add(major_radius=0.18, minor_radius=0.06, location=(0.82, 0, 0.3), rotation=(math.radians(90), 0, 0))
     bpy.context.active_object.data.materials.append(flat("handle", CUP, rough=0.3))
-    cyl((0, 0, 0.44), 0.63, 0.03, flat("coffee", "#8A5A3C", rough=0.5))
+    cyl((0, 0, 0.48), 0.6, 0.02, flat("coffee", "#6B3F26", rough=0.5))
     foam = flat("foam", FOAM, rough=0.6)
-    # heart: two lobes + a point, flattened onto the crema
-    for x in (-0.15, 0.15):
-        bpy.ops.mesh.primitive_uv_sphere_add(radius=0.2, location=(x, 0.08, 0.47), segments=32, ring_count=12)
-        o = bpy.context.active_object
-        o.scale = (1, 1, 0.08)
-        o.data.materials.append(foam)
-        bpy.ops.object.shade_smooth()
-    bpy.ops.mesh.primitive_cylinder_add(vertices=3, radius=0.34, depth=0.012, location=(0, -0.12, 0.475), rotation=(0, 0, math.radians(-90)))
-    o = bpy.context.active_object
-    o.scale = (1.0, 0.86, 1)
-    o.data.materials.append(foam)
+    # heart: two round lobes + a triangle pointing down (towards the bottom of the frame), flat on the crema
+    for x in (-0.16, 0.16):
+        bpy.ops.mesh.primitive_cylinder_add(vertices=40, radius=0.2, depth=0.01, location=(x, 0.1, 0.505))
+        bpy.context.active_object.data.materials.append(foam)
+    me = bpy.data.meshes.new("tip")
+    me.from_pydata([(-0.345, 0.06, 0.505), (0.345, 0.06, 0.505), (0.0, -0.4, 0.505)], [], [(0, 1, 2)])
+    tip = bpy.data.objects.new("tip", me)
+    bpy.context.scene.collection.objects.link(tip)
+    me.materials.append(foam)
     for i, (x, y) in enumerate(((-0.95, 0.8), (-0.75, 0.95), (0.95, -0.85))):
         bean((x, y, 0.04), (0, 0, math.radians(50 * i)), s=0.11)
     camera((0, -0.35, 6.0), (0, 0, 0.3), ortho=2.25)

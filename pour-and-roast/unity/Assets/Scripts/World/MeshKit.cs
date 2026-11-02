@@ -42,8 +42,8 @@ namespace PourAndRoast.World
             var u = Pal.Uv(swatch);
             v.Add(a); v.Add(b); v.Add(c); v.Add(d);
             for (int k = 0; k < 4; k++) { n.Add(nn); uv.Add(u); }
-            t.Add(i); t.Add(i + 2); t.Add(i + 1);
-            t.Add(i); t.Add(i + 3); t.Add(i + 2);
+            t.Add(i); t.Add(i + 1); t.Add(i + 2);
+            t.Add(i); t.Add(i + 2); t.Add(i + 3);   // clockwise = Unity front face (fleet §0 fix from bottle-route)
         }
 
         /// <summary>Axis box standing on bottomCenter, rotated by yaw (degrees). The top swatch may differ.</summary>

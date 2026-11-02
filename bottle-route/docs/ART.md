@@ -44,5 +44,65 @@ empty files for the decimated bale LODs ("Array length mismatch"); the optimizer
 icon; the owner picks the final icon from candidates at P7 (the build still needs `icon_adaptive_bg / round / legacy`,
 `BottleIcons` fails closed until then). Palette: `unity/Tools/make_palette.py`.
 
-Still to do at P2: district building kit (today: procedural blocks), depot hall model, baler press animation (Medium /
-High only), litter decal art, a real art gate (Low draws / tris measured in the editor).
+## Polish pass (2026-11-02, cloud): district kit, depot, stadium, store art
+
+**What changed in the diorama.** The procedural district blocks, the stadium box and the depot boxes are replaced by
+Blender-kit pieces from `tools/art/kit.py` (bevelled, palette UVs, one material). They are **merged into the meshes that
+already existed** (one mesh per district, one depot mesh) by `MeshKit.Append`, so the draw count does not change on any
+tier. They ship as `Resources/kit/<name>.bytes` (BRKM v1, read by `World/KitPiece.cs`): Unity-space vertices + flat
+normals + palette UVs + clockwise uint16 triangles — no readable-mesh import flag and no FBX axis guess for merged
+geometry. Every piece has a `<name>_low` twin (no bevels, no windows) used on **Low** and for locked (grey) districts.
+Wall swatch cream → cream / terracotta / blue and roof red → red / grey are swapped per building (palette swaps, no new
+material). The procedural boxes stay as the fallback when a piece is missing.
+
+| Piece | Where | Tris (Medium/High) | Low twin |
+|---|---|---|---|
+| `bld_harbour_a` | Harbour Quarter: two-storey house, gable roof, chimney, planter | 98 | 16 |
+| `bld_harbour_b` | Harbour Quarter / Stadium streets: fish hall / shed, awning, bottle crates | 156 | 16 |
+| `bld_old_a` | Old Town: tall narrow house, steep roof, balcony | 100 | 16 |
+| `bld_old_b` | Old Town / University: corner block, cornice, arcade, roof terrace | 108 | 22 |
+| `bld_uni_a` | University Hill / Stadium streets: faculty block, window bands, roof plant, canopy | 110 | 22 |
+| `bld_uni_b` | University Hill: library / dorm tower | 90 | 22 |
+| `stadium` | Stadium & Fairground: oval bowl of stands, pitch, canopies, 4 floodlights (60 × 40 m) | 220 | 82 |
+| `depot_hall` | Depot: hall + yard doors, count-line unit, rooftop solar, baler house + hopper + conveyor, press housing, yard pad, glass bays, sorted skips, gate office | 472 | 84 |
+
+All ≤ 600 tris (`tools/art/kit_check.py`, run by `check.sh`: also UVs on swatch centres, unit normals, winding, Low twin
+≤ 40 %). Placement: each street now belongs to the district of its first node (before, a street between two districts got
+two overlapping rows).
+
+**Budget (estimate from the map, all four districts built; editor perf_gate still to run):**
+
+| | Before | After |
+|---|---|---|
+| Low draws | ground 1 + districts 4 + depot 1 + props / instanced | **unchanged** (merged; 0 extra) |
+| Low tris, district blocks + stadium + depot | ≈ 4.0k | ≈ 5.0k (+≈ 1k, ≈ +2 % of a ≈ 45k Low scene) |
+| Medium/High tris, same | ≈ 6.6k | ≈ 26k |
+| Medium/High draws | — | **+1**: the baler press ram (animated while a bale is pressed, no allocation; not created on Low) |
+
+**Fixes found on the way.** `MeshKit.Quad` wound its triangles counter-clockwise seen from outside; Unity's front face is
+clockwise, so with back-face culling every box, road strip, the ground quad and the walkers would have rendered inside-out
+(`Disc` was already right). Fixed (`t = i, i+1, i+2 / i, i+2, i+3`). The kit machines are life-size (1.4 / 2.0 m) while
+the map draws props larger than life (fallback 3.2 / 4.4 m): they get a ×2.2 map scale. `Prop` now keeps the importer's
+root rotation under the yaw (FBX axis conversion). District rows use a stable FNV hash (String.GetHashCode is randomised
+per process on .NET Core). **Verify in the editor:** the facing of the FBX kit props (machines / shop / café / trucks:
+front = Blender −Y) — the merged pieces above have a known axis.
+
+UI art (`render_ui.py`) was not re-rendered: the props it shows (machines, van, bales, Meshy cast) did not change.
+
+### Store art (`tools/art/render_store.py`, Blender EEVEE, own models only, no text)
+
+- `store/feature-graphic.png` (1024 × 500): a harbour street with the new buildings, the deposit corner (machines, shop,
+  citizens and the operator), van + compactor on the front road, the depot with bale stacks, the stadium in the back.
+  The tagline (`store/screenshots/en.json` `feature`) is composited later.
+- Icon candidates (512 × 512, full-bleed, no text; checked at 48 px) — **the owner picks one**; the placeholder in
+  `unity/Assets/Art/Icon` stays until then:
+  - `store/icon-candidates/c1.png` — the deposit machine (big teal silhouette) with a PET bale, mint field;
+  - `store/icon-candidates/c2.png` — the collection van on the road, a machine behind, warm sand background;
+  - `store/icon-candidates/c3.png` — a pyramid of PET / aluminium bales on deep green.
+
+Redo: `blender -b --python bottle-route/tools/art/kit.py -- bottle-route/unity [<sheet.png> <merged_sheet.png>]`, then
+`blender -b --python bottle-route/tools/art/render_store.py -- bottle-route/unity bottle-route/store`. No Meshy credits
+were used in this pass.
+
+Still to do: litter decal art, a real art gate in the editor (Low draws / tris measured by perf_gate), the facing check
+above.

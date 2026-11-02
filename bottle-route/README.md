@@ -25,13 +25,15 @@ Gerçek DOA / TÜÇA / bakanlık / market adı yok (taklit kuralı).
 | `unity/Tools` | `check.sh` (tüm kapılar), `dotnet_check.sh`, `unity_ref_check.sh`, `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/*.json` |
 | `tools/meshy`, `tools/art` | Meshy istemcisi + optimizer (filo aracı), Blender kiti, arayüz render'ları |
 | `docs/` | `UNITY.md` (editörde ilk açılış), `ART.md`, `BALANCE.md`, `MONETIZATION_PARITY.md` |
+| `store/` | Play listesi (`listing/en-US.json`; diğer 9 dil merkezde çevrilir), ekran görüntüsü planı (`screenshots/en.json`), `play-data-safety.csv`, `feature-graphic.png`, ikon adayları `icon-candidates/c1..c3.png` (sahip seçer), `validate.py` (check.sh çalıştırır) |
 
 ## Durum (2026-11-02)
 
 - **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → `BOTTLE_ROUTE_CHECK: PASS`
-  - 125 NUnit testi (sim 43, oyun katmanı 27, CoddyKit 55): rehberin 14 adımı baştan sona, yanlış dokunuş, atla/tekrar,
+  - 127 NUnit testi (sim 45, oyun katmanı 27, CoddyKit 55): rehberin 14 adımı baştan sona, yanlış dokunuş, atla/tekrar,
     yarıda bırakıp yeniden açma, kayıt güvenliği (fuzz, `.unreadable` saklanır), mağaza kuralları (`ad_free` yalnız
-    noads/premium/route_pass/bundle), ödül tavanları, 10 dil eksiksiz + yer tutucular, denge botu 7/20 gün.
+    noads/premium/route_pass/bundle), ödül tavanları, 10 dil eksiksiz + yer tutucular, denge botu 7/20 gün +
+    plan §6 tempo (Old Town ~32 dk, University ~88 dk, Stadium ~2,4 sa; `docs/BALANCE.md`).
   - Unity'ye bağlı kod (kit Runtime + App + World + UI) UnityEngine 2021.3 referanslarına karşı derleniyor (yalnız 2
     Unity-6 API'si farklı); 83 C# dosyası iki tanım kümesinde sözdizimi hatasız.
 - **Doğrulanmadı:** Unity Editor'da derleme, sahne kurulumu, cihazda görünüm, performans ölçümü (perf_gate), emülatör
@@ -51,4 +53,5 @@ python3 bottle-route/unity/Tools/i18n_merge.py && python3 bottle-route/unity/Too
 
 ```bash
 blender -b --python bottle-route/tools/art/kit.py -- bottle-route/unity
+blender -b --python bottle-route/tools/art/render_store.py -- bottle-route/unity bottle-route/store
 ```

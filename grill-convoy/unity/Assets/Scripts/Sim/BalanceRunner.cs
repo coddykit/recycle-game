@@ -1,5 +1,5 @@
 // Grill Convoy sim core — headless balance bot (design §15 P1: 30 min / 2 h / 7 days). Plays like a sensible new player:
-// sends each truck to the busiest free pitch, packs by the forecast, keeps the commissary prepped, restocks before selling
+// sends each truck to the free pitch that sells the most burgers (crowd × group size, capped by its line), packs by the forecast, keeps the commissary prepped, restocks before selling
 // out, puts out flare-ups, swaps propane, uses All hands when the line is long, hires, buys stations where the line is
 // slowest (auto-arranged), researches and unlocks pitches when it can afford a buffer. Deterministic per seed.
 using System;
@@ -118,7 +118,7 @@ namespace GrillConvoy.Sim
                 foreach (int p in sim.Gd.Pitches)
                 {
                     if (!sim.PitchOpen(p) || taken.Contains(p)) continue;
-                    double c = sim.ForecastCustomers(p) - sim.NodeAt(p).Permit / 4.0;
+                    double c = PitchValue(sim, t, p);
                     if (c > bestC) { bestC = c; best = p; }
                 }
                 if (best >= 0) { taken.Add(best); sim.AssignPitch(ti, best); }
@@ -142,6 +142,19 @@ namespace GrillConvoy.Sim
                     if (!t.Menu.Contains(c.Id) && sim.CardAvailable(c) && t.Menu.Count < sim.MenuSlots && c.Until == 0) sim.ToggleCard(ti, c.Id);
                 sim.ApplySuggestedPack(ti);
             }
+        }
+
+        /// <summary>What a sensible player reads off the pitch card: the forecast crowd × how much that crowd orders (match fans
+        /// and beach families buy for the group), capped by what the truck's line can make in a day, minus the permit.</summary>
+        static double PitchValue(Simulation sim, TruckState t, int p)
+        {
+            var n = sim.NodeAt(p);
+            double per = 0, wsum = 0;
+            for (int a = 0; a < n.Arch.Length && a < sim.Gd.Archetypes.Count; a++) { per += n.Arch[a] * sim.Gd.Archetypes[a].Mean; wsum += n.Arch[a]; }
+            per = wsum > 0 ? per / wsum : 1;
+            double items = sim.ForecastCustomers(p) * per;
+            double cap = sim.Line(t).Throughput * (sim.Gd.DayEnd - sim.Gd.DayStart) * 0.85;
+            return Math.Min(items, cap) * 6.0 - n.Permit;
         }
 
         static IEnumerable<string> Priority(Simulation sim)

@@ -525,10 +525,8 @@ def volcano(low=False):
     p.lathe((0, 0, 0), prof, 20, VROCK, top=False, jitter=0.07, rng=rng,
             swatches=[GRASSD, MOSS, VROCK, VROCK, VROCK, ROCK, VROCK])
     p.lathe((0, 0, 0), [(6.4, 30.6), (0.0, 30.4)], 20, LAVA, top=False)
-    # two cooled lava tongues down the front face (dark rock) with a glowing seam
-    for x0 in (-3.0, 4.0):
-        p.face([(x0 - 1.4, -9.0, 30.0), (x0 + 1.4, -9.0, 30.0), (x0 * 1.6 + 2.2, -25.0, 17.0), (x0 * 1.6 - 2.2, -25.0, 17.0)], DARK)
-        p.face([(x0 - 0.35, -9.4, 30.0), (x0 + 0.35, -9.4, 30.0), (x0 * 1.3 + 0.4, -18.0, 23.6), (x0 * 1.3 - 0.4, -18.0, 23.6)], LAVA)
+    # one thin glowing seam down the front face (no dark patches: two of them read as a face from the game camera)
+    p.face([(1.2, -9.6, 30.0), (2.0, -9.6, 30.0), (3.4, -17.2, 24.4), (2.8, -17.2, 24.4)], LAVA)
     return p.build()
 
 

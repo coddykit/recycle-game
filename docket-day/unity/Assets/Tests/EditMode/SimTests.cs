@@ -488,7 +488,7 @@ namespace DocketDay.Sim.Tests
         {
             var sim = TestData.NewSim();
             Assert.AreEqual("standing", sim.CanMoveUp());
-            for (int i = 0; i < sim.S.Standing.Length; i++) sim.S.Standing[i] = 3;
+            for (int i = 0; i < sim.S.Standing.Length; i++) sim.S.Standing[i] = 4;   // 2 chapter-1 areas × 4 = 8 ≥ the Main Street gate (6.8)
             Assert.AreEqual("closed", sim.CanMoveUp());
             sim.S.Closed = 100;
             sim.S.Cash = 0;

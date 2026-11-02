@@ -24,11 +24,13 @@ geçer. Krizler: sürpriz dilekçe, elektrik kesintisi, hastalık izni, yedek h�
 | `unity/Tools` | `check.sh` (tüm kapılar), `build_iap.py`, `i18n_merge.py`, `make_palette.py`, `i18n/*.json` |
 | `tools/meshy`, `tools/art` | Meshy istemcisi + optimizer, Blender kiti (`kit.py`), arayüz render'ları (`render_ui.py`) |
 | `docs/` | `UNITY.md`, `ART.md`, `BALANCE.md`, `MONETIZATION_PARITY.md` |
+| `store/` | Play listing (`listing/en-US.json`, other 9 locales translated centrally), screenshot plan + copy (`screenshots/en.json`), `play-data-safety.csv`, feature graphic, icon candidates `icon-candidates/c1..c3.png`, `validate.py` (run by `check.sh`) |
 
 ## Durum (2026-11-02)
 
-- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → yalnız beklenen `EveryLanguageIsComplete` kırmızı (9 dil
-  merkezi çeviriyi bekliyor; İngilizce kaynak `Tools/i18n/en.json`, 491 anahtar). 133/134 NUnit testi yeşil (sim 45,
+- **Cloud polish (2026-11-02):** mağaza dosyaları (`store/`), Blender kiti sokak + kule (birleşik mesh, Düşük'te 22–38 → 5
+  statik draw), tempo plan §6'ya (bölüm 2 ~86 dk, bölüm 3 ~196 dk) — `docs/ART.md`, `docs/BALANCE.md`.
+- **Doğrulandı (editörsüz):** `sh unity/Tools/check.sh` → `DOCKET_DAY_CHECK: PASS` (mağaza metni kapısı dahil). 133/134 NUnit testi yeşil (sim 45,
   oyun katmanı 34, CoddyKit 55); Unity'ye bağlı kod UnityEngine referanslarına karşı derleniyor (`UNITY_REF_CHECK: PASS`).
 - **Doğrulanmadı:** Unity Editor'da derleme/sahne, cihazda görünüm, perf_gate, emülatör smoke, AAB → `docs/UNITY.md` §2.
 - **Boş kimlikler (P8, Patron):** AdMob ödüllü birim + uygulama kimliği, RevenueCat anahtarı, Firebase config. Uydurma yok.
@@ -40,4 +42,6 @@ sh docket-day/unity/Tools/check.sh
 python3 docket-day/unity/Tools/i18n_merge.py && python3 docket-day/unity/Tools/build_iap.py
 blender -b --python docket-day/tools/art/kit.py -- docket-day/unity
 blender -b --python docket-day/tools/art/render_ui.py -- docket-day/unity
+blender -b --python docket-day/tools/art/render_store.py -- docket-day/unity
+python3 docket-day/store/validate.py
 ```
