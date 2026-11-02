@@ -58,6 +58,7 @@ namespace BottleRoute.Sim
         public readonly Dictionary<string, double> Prices = new Dictionary<string, double>();
         // dispatcher
         public int DispatcherSlots = 3, PassSlots = 1, PlusSlots = 3, DispatchEveryMin = 15, MaxStops = 8;
+        public double WorthPct = 0.50, WorthDetour = 0.25;   // suggested route fallback: min fill and max detour for a non-due point
         // stars
         public double[] StarService = { 0.12, 0.06, 0.02 }, StarEfficiency = { 12, 25, 40 }, StarThroughput = { 0.7, 0.35, 0.1 };
         // events
@@ -206,6 +207,7 @@ namespace BottleRoute.Sim
             var dp = J.Obj(b, "dispatcher");
             DispatcherSlots = J.I(dp, "slots", 3); PassSlots = J.I(dp, "pass_slots", 1); PlusSlots = J.I(dp, "plus_slots", 3);
             DispatchEveryMin = J.I(dp, "every_min", 15); MaxStops = J.I(dp, "max_stops", 8);
+            WorthPct = J.D(dp, "worth_pct", 0.50); WorthDetour = J.D(dp, "worth_detour", 0.25);
 
             var st = J.Obj(b, "stars");
             StarService = Dbl(st, "service", StarService); StarEfficiency = Dbl(st, "efficiency", StarEfficiency); StarThroughput = Dbl(st, "throughput", StarThroughput);

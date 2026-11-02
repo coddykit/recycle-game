@@ -402,8 +402,10 @@ namespace BottleRoute.Sim
             return false;
         }
 
-        /// <summary>A route for this truck: due points (or, with anyWorthIt, every point at ≥ 30 % on the map), nearest
-        /// first weighted by urgency, within the truck's capacity (estimated from the map bars), ≤ max stops.</summary>
+        /// <summary>A route for this truck: due points, nearest first weighted by urgency, within the truck's capacity
+        /// (estimated from the map bars), ≤ max stops. With anyWorthIt, non-due points join only when they are fairly full
+        /// (≥ WorthPct) and cheap to add (insertion detour ≤ WorthDetour × the route); with nothing due the fullest such point
+        /// seeds the trip. Nothing qualifying = empty route (leave the truck idle).</summary>
         public List<int> SuggestRoute(int truck, bool anyWorthIt = false)
         {
             var route = new List<int>();
@@ -415,7 +417,31 @@ namespace BottleRoute.Sim
             {
                 var p = S.Points[i];
                 if (!CanServe(t, p) || Claimed(i, truck)) continue;
-                if (Due(p) || (anyWorthIt && DisplayPct(p) >= 0.30)) cand.Add(i);
+                if (Due(p) || (anyWorthIt && DisplayPct(p) >= Gd.WorthPct)) cand.Add(i);
+            }
+            if (anyWorthIt)
+            {
+                // non-due candidates: keep only the due ones at first, then add the cheap non-due ones in order of fill
+                var due = cand.FindAll(i => Due(S.Points[i]));
+                var extra = cand.FindAll(i => !Due(S.Points[i]));
+                extra.Sort((a, b) => DisplayPct(S.Points[b]).CompareTo(DisplayPct(S.Points[a])));
+                var chosen = new List<int>(due);
+                if (chosen.Count == 0 && extra.Count > 0) { chosen.Add(extra[0]); extra.RemoveAt(0); }
+                foreach (int i in extra)
+                {
+                    if (chosen.Count >= Gd.MaxStops) break;
+                    double before = RouteKm(chosen, v.Alley);
+                    var with = new List<int>(chosen);
+                    double bestKm = double.MaxValue;
+                    for (int pos = 0; pos <= chosen.Count; pos++)
+                    {
+                        with.Insert(pos, i);
+                        bestKm = Math.Min(bestKm, RouteKm(with, v.Alley));
+                        with.RemoveAt(pos);
+                    }
+                    if (bestKm - before <= Gd.WorthDetour * before) chosen.Add(i);
+                }
+                cand = chosen;
             }
             double vol = 0, kg = 0;
             int at = Gd.DepotNode;

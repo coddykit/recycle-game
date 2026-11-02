@@ -256,6 +256,28 @@ namespace BottleRoute.Sim.Tests
         }
 
         [Test]
+        public void WorthItFallbackIsStrict()
+        {
+            var sim = TestData.NewSim();
+            foreach (var p in sim.S.Points) p.Sensor = true;
+            for (int i = 0; i < sim.S.Points.Count; i++) sim.FillTo(sim.S.Points[i], 0.2);
+            Assert.AreEqual(0, sim.SuggestRoute(0, true).Count, "all points low: leave the truck idle");
+            sim.FillTo(sim.S.Points[1], 0.40);
+            Assert.AreEqual(0, sim.SuggestRoute(0, true).Count, "40 % is below the worth-it fill");
+            sim.FillTo(sim.S.Points[0], 0.9);
+            sim.Gd.WorthDetour = 0.0;
+            var tight = sim.SuggestRoute(0, true);
+            CollectionAssert.Contains(tight, 0, "a due point is still routed");
+            sim.FillTo(sim.S.Points[1], 0.55);
+            CollectionAssert.DoesNotContain(sim.SuggestRoute(0, true), 1, "a 55 % point with a real detour is skipped");
+            sim.Gd.WorthDetour = 100.0;
+            var loose = sim.SuggestRoute(0, true);
+            CollectionAssert.Contains(loose, 0);
+            CollectionAssert.Contains(loose, 1, "a cheap 55 % neighbour is added");
+            CollectionAssert.DoesNotContain(sim.SuggestRoute(0), 1, "without anyWorthIt only due points are served");
+        }
+
+        [Test]
         public void EstimateGivesKmCostAndLoad()
         {
             var sim = TestData.NewSim();
