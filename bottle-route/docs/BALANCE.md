@@ -137,8 +137,9 @@ pay ≈ 5–15 % of income in the bot (more on the days they land).
 
 ## Known tuning questions (for P1 sign-off)
 
-1. ~~Efficiency stars sit at 1/3~~ — thresholds lowered to 10 / 18 / 28 (2026-11-02); the suggested route still serves
-   "any ≥ 30 %" when nothing is due (the bot over-drives).
+1. ~~Efficiency stars sit at 1/3~~ — thresholds lowered to 10 / 18 / 28 (2026-11-02). ~~The suggested route served "any ≥ 30 %"~~ — fallback now needs
+   ≥ 45 % fill and a detour ≤ 50 % of the route (`dispatcher.worth_pct` / `worth_detour`); nothing qualifying = truck stays idle.
+   7-day seed 42: 657 → 480 km (-27 %), stars 6/9 → 7/9 every day, ~1.4 fewer wasted trips/day; tempo tests unchanged.
 2. The "empty at ~80 %" rule should be good but not always optimal: add a bot variant per policy and compare (plan §15 P1).
 3. Bale income is lumpy (sales on days 2, 10, 16): consider smaller PET bales or tenders (tenders are in since chapters 5–7, 2026-11-02).
 4. ~~University / Stadium pacing~~ — tuned to the plan's §6 map (2026-11-02, above).
