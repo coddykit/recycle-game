@@ -419,34 +419,38 @@ def scene_set(sky_top, sky_bottom):
 
 def feature_graphic():
     """1024×500: late afternoon on Ridgeback Isle — a mixed herd in a timber paddock, the safari tram on its rail, the
-    Chief Warden at the fence, tree ferns, and the volcano behind. No text (the composer adds the tagline)."""
-    sc, mats = scene_set("#F4B183", "#F7DDB5")
-    disc((0, 40), 400, 0.0, mats["grass"], 48)
-    disc((0, 300), 900, -0.5, mats["sea"], 16)
-    prop("volcano", (40, 330, 0), 10, 2.0)
-    prop("hill", (-160, 260, 0), 0, (2.4, 2.4, 2.2))
-    prop("hill", (190, 250, 0), 40, (2.0, 2.0, 1.9))
-    # paddock (centre-right), wood fence, a mixed herd
-    disc((14, 22), 30, 0.03, mats["grassd"], 24, 20)
-    fence((14, 22), 52, 34, 1, False, None)
-    dino("horned", (2, 16, 0), yaw=-150, scale=9.0)
-    dino("horned", (-12, 28, 0), yaw=-110, scale=6.0)
-    dino("duckbill", (24, 26, 0), yaw=150, scale=9.5)
-    dino("longneck", (32, 46, 0), yaw=-170, scale=17.0)
-    prop("water_point", (30, 10, 0), 0, 2.2)
-    # the tram rail in front, a car arriving
-    strip((-120, -14), (160, -14), 3.2, 0.14, flat_mat("rail", srgb("#9A6B43")))
-    strip((-160, -26), (160, -26), 6, 0.1, mats["path"])
-    tram((-30, -14, 0.2), yaw=90, scale=2.2)
-    warden((-46, -6, 0), yaw=-35, scale=2.0)
-    for (x, y, nm, yaw, s) in ((-70, 10, "tree_fern", 20, 3.2), (-58, 34, "tree", 80, 2.8), (-86, 46, "tree_tall", 0, 2.8), (66, 30, "tree_fern", 140, 3.0),
-                               (80, 58, "tree", 200, 2.6), (-20, 70, "tree_tall", 10, 2.6), (54, 70, "tree_fern", 60, 2.6), (100, 8, "rock", 30, 2.4),
-                               (-104, 20, "tree_fern", 300, 3.0), (110, 40, "tree_tall", 0, 2.8), (-40, 84, "tree", 50, 2.6), (20, 90, "tree", 90, 2.6)):
+    Chief Warden on the path, tree ferns, and the volcano behind. No text (the composer adds the tagline)."""
+    sc, mats = scene_set("#D9774F", "#F8D7A4")
+    disc((0, 40), 600, 0.0, mats["grass"], 48)
+    disc((0, 700), 1400, -0.5, mats["sea"], 16)
+    prop("volcano", (30, 190, 0), 10, 1.7)
+    prop("hill", (-110, 150, 0), 0, (2.0, 2.0, 1.6))
+    prop("hill", (150, 150, 0), 40, (2.2, 2.2, 1.8))
+    # the paddock: wood fence, a mixed herd, a drinking pool
+    disc((6, 16), 19, 0.03, mats["grassd"], 24, 13)
+    fence((6, 16), 36, 22, 1, False, None)
+    dino("horned", (-2, 10, 0), yaw=-120, scale=6.0)
+    dino("horned", (-9, 18, 0), yaw=-70, scale=4.5)
+    dino("duckbill", (12, 12, 0), yaw=-160, scale=6.5)
+    dino("plated", (4, 20, 0), yaw=-100, scale=5.5)
+    dino("longneck", (16, 24, 0), yaw=-140, scale=13.0)
+    prop("water_point", (18, 7, 0), 0, 1.6)
+    # the tram line and the service road in front, a car at the stop, the Chief Warden on the path
+    strip((-200, -6), (200, -6), 3.2, 0.14, flat_mat("rail", srgb("#9A6B43")))
+    strip((-200, -14), (200, -14), 6, 0.1, mats["path"])
+    tram((22, -6, 0.2), yaw=90, scale=2.0)
+    warden((-10, -11, 0), yaw=-40, scale=1.9)
+    prop("lamp", (-2, -18, 0), 0, 2.0)
+    prop("lamp", (40, -18, 0), 0, 2.0)
+    for (x, y, nm, yaw, s) in ((-26, -6, "tree_fern", 20, 3.6), (-22, 14, "tree", 80, 3.6), (-34, 30, "tree_tall", 0, 3.6), (36, 10, "tree_fern", 140, 3.4),
+                               (44, 30, "tree", 200, 3.4), (-6, 44, "tree_tall", 10, 3.4), (28, 46, "tree_fern", 60, 3.0), (54, 4, "rock", 30, 2.4),
+                               (-46, 6, "tree_fern", 300, 3.4), (62, 26, "tree_tall", 0, 3.6), (-24, 52, "tree", 50, 3.2), (12, 58, "tree", 90, 3.2),
+                               (-60, 40, "tree", 120, 3.4), (80, 50, "tree_fern", 10, 3.2), (-14, -2, "rock", 70, 1.6)):
         prop(nm, (x, y, 0), yaw, s)
-    prop("view", (-4, 64, 0), 0, 2.2)
-    sun((62, 0, -58), 4.2, "#FFD2A1", 2.5)
-    fill((70, 0, 140), 0.9, "#AFC8FF")
-    camera((-58, -86, 26), (6, 30, 16), lens=30)
+    prop("view", (-22, 34, 0), 0, 2.0)
+    sun((64, 0, -62), 4.0, "#FFCB94", 2.5)
+    fill((65, 0, 130), 0.8, "#AFC8FF")
+    camera((-6, -46, 11), (8, 18, 7), lens=32)
     render(os.path.join(STORE, "feature-graphic.png"), 1024, 500, 96)
 
 
@@ -483,7 +487,7 @@ def icon_warden():
     sc, mats = scene_set("#2E8C9A", "#D8EFE2")
     disc((0, 0), 200, 0.0, mats["grass"], 32)
     warden((0, 0, 0), yaw=-15, scale=1.0)
-    dino("longneck", (1.7, 5.0, 0), yaw=-30, scale=6.5)
+    dino("longneck", (1.35, 4.0, 0), yaw=-30, scale=4.2)
     for (x, y, nm, yaw, s) in ((-2.6, 4, "tree_fern", 10, 1.4), (-4.5, 9, "tree_tall", 60, 1.6)):
         prop(nm, (x, y, 0), yaw, s)
     sun((50, 0, -40), 3.6, "#FFE6C4", 2)
