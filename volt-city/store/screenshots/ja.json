@@ -1,0 +1,46 @@
+{
+ "_doc": "Screenshot slide texts (store/SCREENSHOTS.md). headline <= 28 chars (ja/ko <= 14), chip <= 28 chars (ja/ko <= 14); feature = feature-graphic tagline <= 32 chars.",
+ "shots": [
+  {
+   "id": "01-peak",
+   "headline": "街の明かりを守ろう",
+   "chip": "リアルタイム電力網"
+  },
+  {
+   "id": "02-storm",
+   "headline": "嵐のときは作業班を派遣",
+   "chip": "15種類のイベント"
+  },
+  {
+   "id": "03-balance",
+   "headline": "需給のバランスを取ろう",
+   "chip": "蒸気・ガス・水力・風・太陽"
+  },
+  {
+   "id": "04-forecast",
+   "headline": "猛暑に先手を打とう",
+   "chip": "次のシフトの予報"
+  },
+  {
+   "id": "05-ripple",
+   "headline": "新しい地区に明かりを",
+   "chip": "8つの地区"
+  },
+  {
+   "id": "06-build",
+   "headline": "クリーンな電力網を建設",
+   "chip": "50件の投資"
+  },
+  {
+   "id": "07-shed",
+   "headline": "どの地区を停電させるか",
+   "chip": "ホスピタルヒルは最後"
+  },
+  {
+   "id": "08-report",
+   "headline": "3つ星のシフトを目指す",
+   "chip": "5章+エンドレスモード"
+  }
+ ],
+ "feature": "明かりを灯し続けよう"
+}

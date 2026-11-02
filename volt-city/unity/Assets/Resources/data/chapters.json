@@ -1,0 +1,104 @@
+{
+ "_doc": "DESIGN section 6: 5 chapters. A chapter opens when its opening district is hooked up (chapter 1 = start). calendar = scheduled events by chapter-relative shift number: every = repeat period, first = first shift (0-based) it falls on; an event whose district is not hooked up is skipped. goal = what completes the chapter (the balance runner's 'finished chapter 5').",
+ "chapters": [
+  {
+   "id": 1,
+   "opens_with": "",
+   "calendar": [],
+   "goal": {
+    "hookup": "hilltop"
+   }
+  },
+  {
+   "id": 2,
+   "opens_with": "hilltop",
+   "calendar": [
+    {
+     "event": "festival",
+     "every": 6,
+     "first": 3
+    }
+   ],
+   "goal": {
+    "hookup": "tech_park"
+   }
+  },
+  {
+   "id": 3,
+   "opens_with": "tech_park",
+   "calendar": [
+    {
+     "event": "festival",
+     "every": 6,
+     "first": 2
+    }
+   ],
+   "goal": {
+    "hookup": "stadium_row"
+   }
+  },
+  {
+   "id": 4,
+   "opens_with": "stadium_row",
+   "calendar": [
+    {
+     "event": "match_night",
+     "every": 4,
+     "first": 1
+    },
+    {
+     "event": "festival",
+     "every": 6,
+     "first": 4
+    },
+    {
+     "event": "hospital_test",
+     "every": 5,
+     "first": 2
+    },
+    {
+     "event": "eclipse",
+     "every": 0,
+     "first": 5
+    }
+   ],
+   "goal": {
+    "hookup": "airport_flats"
+   }
+  },
+  {
+   "id": 5,
+   "opens_with": "airport_flats",
+   "calendar": [
+    {
+     "event": "match_night",
+     "every": 4,
+     "first": 1
+    },
+    {
+     "event": "festival",
+     "every": 6,
+     "first": 3
+    },
+    {
+     "event": "hospital_test",
+     "every": 5,
+     "first": 2
+    },
+    {
+     "event": "eclipse",
+     "every": 0,
+     "first": 6
+    }
+   ],
+   "goal": {
+    "good_shifts": 3,
+    "min_stars": 2,
+    "rating": 4.0
+   }
+  }
+ ],
+ "endless": {
+  "challenge_every_days": 7
+ }
+}

@@ -1,0 +1,42 @@
+{
+ "group": "plants",
+ "id": "plant_battery_l3",
+ "material": "vc_world",
+ "palette": {
+  "batt_strip": {
+   "code": 0.65,
+   "index": 13,
+   "srgb": "#7DF2A0"
+  },
+  "battery": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#D9DEE3"
+  },
+  "cyan": {
+   "code": 0.15,
+   "index": 3,
+   "srgb": "#39C6E0"
+  },
+  "lgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C2C6CA"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 164,
+ "unity_bounds_max": [
+  114.0,
+  6.0,
+  -24.0
+ ],
+ "unity_bounds_min": [
+  64.0,
+  1.6,
+  -40.62
+ ],
+ "uv": "UV0.x battery strip 0..1, UV0.y plant type index + .5",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

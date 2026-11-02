@@ -1,0 +1,137 @@
+{
+ "group": "world",
+ "id": "district_tech_park",
+ "material": "vc_world",
+ "palette": {
+  "asphaltD": {
+   "code": 0.8,
+   "index": 16,
+   "srgb": "#3E4248"
+  },
+  "blue": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#2F6CC8"
+  },
+  "charcoal": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#3A3E45"
+  },
+  "concreteL": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#CFCBC2"
+  },
+  "dgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#5A5F66"
+  },
+  "e_lamp": {
+   "code": 0.35,
+   "index": 7,
+   "srgb": "#FFD9A0"
+  },
+  "e_pool": {
+   "code": 0.75,
+   "index": 15,
+   "srgb": "#4C5057"
+  },
+  "galv": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#9EA6AD"
+  },
+  "glassD": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#3B6680"
+  },
+  "green": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#3E9A55"
+  },
+  "l_cyan": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#5FE6FF"
+  },
+  "l_red": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FF3B30"
+  },
+  "lgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C2C6CA"
+  },
+  "red": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#D23B36"
+  },
+  "roofK": {
+   "code": 0.6,
+   "index": 12,
+   "srgb": "#3C424B"
+  },
+  "roofL": {
+   "code": 0.6,
+   "index": 12,
+   "srgb": "#8F949A"
+  },
+  "sandstone": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#D7BF94"
+  },
+  "teal": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#2A8F8C"
+  },
+  "w_concreteL": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#CFCBC2"
+  },
+  "w_glass": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#6F9FBA"
+  },
+  "w_glassD": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#3B6680"
+  },
+  "w_steel": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#B4BCC4"
+  },
+  "white": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#F2F1EC"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 1062,
+ "unity_bounds_max": [
+  230.7,
+  69.75,
+  137.45
+ ],
+ "unity_bounds_min": [
+  113.3,
+  3.4,
+  32.55
+ ],
+ "uv": "UV0/UV1 per material code (vckit module doc)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

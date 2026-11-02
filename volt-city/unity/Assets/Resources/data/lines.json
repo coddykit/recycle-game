@@ -1,0 +1,102 @@
+{
+ "_doc": "8 corridors, one per district, from the main bus. capacity_mw per level (L0 built, L1, L2 = the two line upgrades). site = where a line fault sits on the road graph. Smart substations tie two corridors: while one is out its district is fed through the partner (if the partner has room).",
+ "corridors": [
+  {
+   "id": "c_harbor",
+   "district": "old_harbor",
+   "capacity_mw": [
+    21,
+    27,
+    36
+   ],
+   "site": "l_harbor"
+  },
+  {
+   "id": "c_riverside",
+   "district": "riverside",
+   "capacity_mw": [
+    24,
+    32,
+    42
+   ],
+   "site": "l_riverside"
+  },
+  {
+   "id": "c_hilltop",
+   "district": "hilltop",
+   "capacity_mw": [
+    24,
+    34,
+    46
+   ],
+   "site": "l_hilltop"
+  },
+  {
+   "id": "c_market",
+   "district": "market_square",
+   "capacity_mw": [
+    32,
+    41,
+    54
+   ],
+   "site": "l_market"
+  },
+  {
+   "id": "c_tech",
+   "district": "tech_park",
+   "capacity_mw": [
+    45,
+    58,
+    76
+   ],
+   "site": "l_tech"
+  },
+  {
+   "id": "c_stadium",
+   "district": "stadium_row",
+   "capacity_mw": [
+    33,
+    45,
+    58
+   ],
+   "site": "l_stadium"
+  },
+  {
+   "id": "c_hospital",
+   "district": "hospital_hill",
+   "capacity_mw": [
+    30,
+    38,
+    50
+   ],
+   "site": "l_hospital"
+  },
+  {
+   "id": "c_airport",
+   "district": "airport_flats",
+   "capacity_mw": [
+    54,
+    70,
+    92
+   ],
+   "site": "l_airport"
+  }
+ ],
+ "ties": [
+  {
+   "id": "sub_1",
+   "a": "c_harbor",
+   "b": "c_riverside"
+  },
+  {
+   "id": "sub_2",
+   "a": "c_market",
+   "b": "c_stadium"
+  },
+  {
+   "id": "sub_3",
+   "a": "c_hospital",
+   "b": "c_hilltop"
+  }
+ ]
+}

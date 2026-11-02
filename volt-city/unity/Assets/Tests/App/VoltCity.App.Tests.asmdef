@@ -1,0 +1,28 @@
+{
+    "name": "VoltCity.App.Tests",
+    "rootNamespace": "VoltCity.App.Tests",
+    "references": [
+        "CoddyKit.Core",
+        "CoddyKit.Runtime",
+        "CoddyKit.Editor",
+        "VoltCity.App",
+        "VoltCity.Editor",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

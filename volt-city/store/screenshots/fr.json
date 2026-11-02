@@ -1,0 +1,46 @@
+{
+ "_doc": "Screenshot slide texts (store/SCREENSHOTS.md). headline <= 28 chars (ja/ko <= 14), chip <= 28 chars (ja/ko <= 14); feature = feature-graphic tagline <= 32 chars.",
+ "shots": [
+  {
+   "id": "01-peak",
+   "headline": "Garde les lumières allumées",
+   "chip": "Réseau en temps réel"
+  },
+  {
+   "id": "02-storm",
+   "headline": "Répare les pannes d'orage",
+   "chip": "15 types d'événements"
+  },
+  {
+   "id": "03-balance",
+   "headline": "Équilibre offre et demande",
+   "chip": "Vapeur, gaz, vent, soleil"
+  },
+  {
+   "id": "04-forecast",
+   "headline": "Anticipe les canicules",
+   "chip": "Prévisions, service suivant"
+  },
+  {
+   "id": "05-ripple",
+   "headline": "Allume de nouveaux quartiers",
+   "chip": "8 quartiers"
+  },
+  {
+   "id": "06-build",
+   "headline": "Bâtis un réseau plus propre",
+   "chip": "50 investissements"
+  },
+  {
+   "id": "07-shed",
+   "headline": "Choisis qui reste allumé",
+   "chip": "Hospital Hill en dernier"
+  },
+  {
+   "id": "08-report",
+   "headline": "Gagne des services 3 étoiles",
+   "chip": "5 chapitres + mode sans fin"
+  }
+ ],
+ "feature": "Garde les lumières allumées"
+}

@@ -1,0 +1,21 @@
+{
+    "name": "VoltCity.World",
+    "rootNamespace": "VoltCity.World",
+    "references": [
+        "VoltCity.Game",
+        "VoltCity.Sim",
+        "VoltCity.Art",
+        "CoddyKit.Core",
+        "CoddyKit.Runtime",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

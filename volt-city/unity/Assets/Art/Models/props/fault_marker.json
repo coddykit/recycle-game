@@ -1,0 +1,32 @@
+{
+ "group": "props",
+ "id": "fault_marker",
+ "material": "vc_prop",
+ "palette": {
+  "l_amber": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FFB020"
+  },
+  "l_red": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FF3B30"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcProp.shader (+ VcPropLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 72,
+ "unity_bounds_max": [
+  4.225,
+  8.946,
+  4.225
+ ],
+ "unity_bounds_min": [
+  -4.225,
+  0.0,
+  -4.225
+ ],
+ "uv": "UV0.x / UV0.y morph flags (truck boom; car roof / tail); vehicles: nose = Unity local +Z",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

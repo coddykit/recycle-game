@@ -1,0 +1,67 @@
+{
+ "group": "plants",
+ "id": "plant_hydro_l1",
+ "material": "vc_world",
+ "palette": {
+  "concrete": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#B5B1A8"
+  },
+  "concreteD": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#8C887F"
+  },
+  "concreteL": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#CFCBC2"
+  },
+  "cyan": {
+   "code": 0.15,
+   "index": 3,
+   "srgb": "#39C6E0"
+  },
+  "galv": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#9EA6AD"
+  },
+  "l_warm": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FFE2B0"
+  },
+  "roofL": {
+   "code": 0.6,
+   "index": 12,
+   "srgb": "#8F949A"
+  },
+  "steelD": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#7A828A"
+  },
+  "water": {
+   "code": 0.5,
+   "index": 10,
+   "srgb": "#2D6A86"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 135,
+ "unity_bounds_max": [
+  226.0,
+  12.0,
+  440.0
+ ],
+ "unity_bounds_min": [
+  96.0,
+  -4.0,
+  275.7
+ ],
+ "uv": "UV0.x battery strip 0..1, UV0.y plant type index + .5",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

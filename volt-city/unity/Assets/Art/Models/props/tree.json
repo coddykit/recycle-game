@@ -1,0 +1,37 @@
+{
+ "group": "props",
+ "id": "tree",
+ "material": "vc_prop",
+ "palette": {
+  "leaf": {
+   "code": 0.05,
+   "index": 1,
+   "srgb": "#4F9446"
+  },
+  "leafL": {
+   "code": 0.05,
+   "index": 1,
+   "srgb": "#79B85A"
+  },
+  "trunk": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#6E4E34"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcProp.shader (+ VcPropLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 42,
+ "unity_bounds_max": [
+  2.517,
+  8.8,
+  2.252
+ ],
+ "unity_bounds_min": [
+  -1.95,
+  0.0,
+  -2.252
+ ],
+ "uv": "UV0.x / UV0.y morph flags (truck boom; car roof / tail); vehicles: nose = Unity local +Z",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

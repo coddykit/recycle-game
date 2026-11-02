@@ -1,0 +1,169 @@
+{
+ "_doc": "DESIGN section 6: 6 types x 3 levels. capacity_mw per level (index 0 = L1). min_pct = minimum stable output while running; delay_s = how long after the tap the new setpoint starts; ramp_pct_s = output change per sim second (% of capacity); fuel = $ per MWh at price level 1; co2 = t per MWh; source: thermal | hydro | wind | solar | battery. Old Smoky L1 is the free start unit (its investments are L2, L3). site = bus on the grid (main = the city bus; hilltop = behind c_hilltop).",
+ "plants": [
+  {
+   "id": "steam",
+   "kind": "thermal",
+   "source": "thermal",
+   "capacity_mw": [
+    45,
+    80,
+    120
+   ],
+   "min_pct": 25,
+   "delay_s": 6,
+   "ramp_pct_s": 2.5,
+   "fuel": 0.55,
+   "co2": 1.0,
+   "governor": true,
+   "trip": true,
+   "start_level": 1,
+   "site": "main",
+   "upkeep": [
+    20,
+    35,
+    55
+   ]
+  },
+  {
+   "id": "gas",
+   "kind": "peaker",
+   "source": "thermal",
+   "capacity_mw": [
+    25,
+    45,
+    70
+   ],
+   "min_pct": 20,
+   "delay_s": 1,
+   "ramp_pct_s": 12,
+   "start_s": 3,
+   "fuel": 1.35,
+   "co2": 0.5,
+   "governor": true,
+   "trip": true,
+   "site": "main",
+   "upkeep": [
+    15,
+    25,
+    40
+   ]
+  },
+  {
+   "id": "hydro",
+   "kind": "hydro",
+   "source": "hydro",
+   "capacity_mw": [
+    20,
+    40,
+    60
+   ],
+   "min_pct": 0,
+   "delay_s": 1,
+   "ramp_pct_s": 15,
+   "fuel": 0.0,
+   "co2": 0.0,
+   "governor": true,
+   "trip": false,
+   "reservoir_mwh": [
+    130,
+    260,
+    420
+   ],
+   "inflow_mw": [
+    6,
+    12,
+    18
+   ],
+   "site": "main",
+   "upkeep": [
+    25,
+    45,
+    70
+   ]
+  },
+  {
+   "id": "wind",
+   "kind": "wind",
+   "source": "wind",
+   "capacity_mw": [
+    25,
+    50,
+    80
+   ],
+   "min_pct": 0,
+   "delay_s": 0,
+   "ramp_pct_s": 100,
+   "fuel": 0.0,
+   "co2": 0.0,
+   "governor": false,
+   "trip": false,
+   "site": "hilltop",
+   "needs_district": "hilltop",
+   "upkeep": [
+    25,
+    50,
+    75
+   ]
+  },
+  {
+   "id": "solar",
+   "kind": "solar",
+   "source": "solar",
+   "capacity_mw": [
+    25,
+    50,
+    80
+   ],
+   "min_pct": 0,
+   "delay_s": 0,
+   "ramp_pct_s": 100,
+   "fuel": 0.0,
+   "co2": 0.0,
+   "governor": false,
+   "trip": false,
+   "site": "main",
+   "upkeep": [
+    20,
+    40,
+    60
+   ]
+  },
+  {
+   "id": "battery",
+   "kind": "battery",
+   "source": "battery",
+   "capacity_mw": [
+    10,
+    25,
+    45
+   ],
+   "energy_mwh": [
+    30,
+    70,
+    130
+   ],
+   "eff_pct": 95,
+   "min_pct": 0,
+   "delay_s": 0,
+   "ramp_pct_s": 100,
+   "fuel": 0.0,
+   "co2": 0.0,
+   "governor": false,
+   "trip": false,
+   "site": "main",
+   "upkeep": [
+    15,
+    30,
+    50
+   ]
+  }
+ ],
+ "setpoint_steps": 10,
+ "battery_modes": [
+  "charge",
+  "hold",
+  "discharge",
+  "auto"
+ ]
+}

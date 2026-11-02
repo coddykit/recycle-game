@@ -1,0 +1,397 @@
+{
+ "_doc": "DESIGN sections 6-7: the 50 investments in their intended order (order = i of cost = 420 x 1.15^i, rounded; the order is the curve, not forced: anything whose prerequisites hold can be bought). kind: plant (target type, level) | line (target district, upgrade 1/2) | substation (tie) | crew_truck (truck count) | crew_speed | tree_trim | dr (smart meters / Demand Response level) | weather_station | dispatcher (auto-baseload / auto-battery / auto-crew; purchasable from chapter 3/4/5, earlier with the dispatcher perk). Income gain = value: the contract level each one adds (config.gd derives it from cost / payback, balance.json investment.*). Old Smoky L1 is the free start unit.",
+ "investments": [
+  {
+   "id": "line_riverside_1",
+   "order": 0,
+   "kind": "line",
+   "level": 1,
+   "cost": 420,
+   "target": "riverside"
+  },
+  {
+   "id": "gas_1",
+   "order": 1,
+   "kind": "plant",
+   "level": 1,
+   "cost": 483,
+   "target": "gas"
+  },
+  {
+   "id": "crew_truck_2",
+   "order": 2,
+   "kind": "crew_truck",
+   "level": 2,
+   "cost": 555
+  },
+  {
+   "id": "line_harbor_1",
+   "order": 3,
+   "kind": "line",
+   "level": 1,
+   "cost": 639,
+   "target": "old_harbor"
+  },
+  {
+   "id": "battery_1",
+   "order": 4,
+   "kind": "plant",
+   "level": 1,
+   "cost": 735,
+   "target": "battery"
+  },
+  {
+   "id": "steam_2",
+   "order": 5,
+   "kind": "plant",
+   "level": 2,
+   "cost": 845,
+   "target": "steam"
+  },
+  {
+   "id": "tree_trim_1",
+   "order": 6,
+   "kind": "tree_trim",
+   "level": 1,
+   "cost": 971
+  },
+  {
+   "id": "dr_1",
+   "order": 7,
+   "kind": "dr",
+   "level": 1,
+   "cost": 1117
+  },
+  {
+   "id": "hydro_1",
+   "order": 8,
+   "kind": "plant",
+   "level": 1,
+   "cost": 1285,
+   "target": "hydro"
+  },
+  {
+   "id": "line_hilltop_1",
+   "order": 9,
+   "kind": "line",
+   "level": 1,
+   "cost": 1478,
+   "target": "hilltop"
+  },
+  {
+   "id": "wind_1",
+   "order": 10,
+   "kind": "plant",
+   "level": 1,
+   "cost": 1699,
+   "target": "wind"
+  },
+  {
+   "id": "crew_speed_1",
+   "order": 11,
+   "kind": "crew_speed",
+   "level": 1,
+   "cost": 1954
+  },
+  {
+   "id": "solar_1",
+   "order": 12,
+   "kind": "plant",
+   "level": 1,
+   "cost": 2247,
+   "target": "solar"
+  },
+  {
+   "id": "smart_sub_1",
+   "order": 13,
+   "kind": "substation",
+   "level": 1,
+   "cost": 2584,
+   "target": "sub_1"
+  },
+  {
+   "id": "gas_2",
+   "order": 14,
+   "kind": "plant",
+   "level": 2,
+   "cost": 2972,
+   "target": "gas"
+  },
+  {
+   "id": "line_market_1",
+   "order": 15,
+   "kind": "line",
+   "level": 1,
+   "cost": 3418,
+   "target": "market_square"
+  },
+  {
+   "id": "crew_truck_3",
+   "order": 16,
+   "kind": "crew_truck",
+   "level": 3,
+   "cost": 3930
+  },
+  {
+   "id": "weather_station",
+   "order": 17,
+   "kind": "weather_station",
+   "level": 1,
+   "cost": 4520
+  },
+  {
+   "id": "battery_2",
+   "order": 18,
+   "kind": "plant",
+   "level": 2,
+   "cost": 5198,
+   "target": "battery"
+  },
+  {
+   "id": "line_riverside_2",
+   "order": 19,
+   "kind": "line",
+   "level": 2,
+   "cost": 5977,
+   "target": "riverside"
+  },
+  {
+   "id": "wind_2",
+   "order": 20,
+   "kind": "plant",
+   "level": 2,
+   "cost": 6874,
+   "target": "wind"
+  },
+  {
+   "id": "hydro_2",
+   "order": 21,
+   "kind": "plant",
+   "level": 2,
+   "cost": 7905,
+   "target": "hydro"
+  },
+  {
+   "id": "line_harbor_2",
+   "order": 22,
+   "kind": "line",
+   "level": 2,
+   "cost": 9091,
+   "target": "old_harbor"
+  },
+  {
+   "id": "auto_baseload",
+   "order": 23,
+   "kind": "dispatcher",
+   "level": 1,
+   "cost": 10454,
+   "target": "baseload",
+   "chapter": 3
+  },
+  {
+   "id": "line_tech_1",
+   "order": 24,
+   "kind": "line",
+   "level": 1,
+   "cost": 12023,
+   "target": "tech_park"
+  },
+  {
+   "id": "solar_2",
+   "order": 25,
+   "kind": "plant",
+   "level": 2,
+   "cost": 13826,
+   "target": "solar"
+  },
+  {
+   "id": "steam_3",
+   "order": 26,
+   "kind": "plant",
+   "level": 3,
+   "cost": 15900,
+   "target": "steam"
+  },
+  {
+   "id": "tree_trim_2",
+   "order": 27,
+   "kind": "tree_trim",
+   "level": 2,
+   "cost": 18285
+  },
+  {
+   "id": "smart_sub_2",
+   "order": 28,
+   "kind": "substation",
+   "level": 1,
+   "cost": 21028,
+   "target": "sub_2"
+  },
+  {
+   "id": "line_hilltop_2",
+   "order": 29,
+   "kind": "line",
+   "level": 2,
+   "cost": 24182,
+   "target": "hilltop"
+  },
+  {
+   "id": "crew_truck_4",
+   "order": 30,
+   "kind": "crew_truck",
+   "level": 4,
+   "cost": 27809
+  },
+  {
+   "id": "dr_2",
+   "order": 31,
+   "kind": "dr",
+   "level": 2,
+   "cost": 31980
+  },
+  {
+   "id": "line_stadium_1",
+   "order": 32,
+   "kind": "line",
+   "level": 1,
+   "cost": 36777,
+   "target": "stadium_row"
+  },
+  {
+   "id": "auto_battery",
+   "order": 33,
+   "kind": "dispatcher",
+   "level": 1,
+   "cost": 42294,
+   "target": "battery",
+   "chapter": 4
+  },
+  {
+   "id": "gas_3",
+   "order": 34,
+   "kind": "plant",
+   "level": 3,
+   "cost": 48638,
+   "target": "gas"
+  },
+  {
+   "id": "line_market_2",
+   "order": 35,
+   "kind": "line",
+   "level": 2,
+   "cost": 55934,
+   "target": "market_square"
+  },
+  {
+   "id": "battery_3",
+   "order": 36,
+   "kind": "plant",
+   "level": 3,
+   "cost": 64324,
+   "target": "battery"
+  },
+  {
+   "id": "line_hospital_1",
+   "order": 37,
+   "kind": "line",
+   "level": 1,
+   "cost": 73972,
+   "target": "hospital_hill"
+  },
+  {
+   "id": "wind_3",
+   "order": 38,
+   "kind": "plant",
+   "level": 3,
+   "cost": 85068,
+   "target": "wind"
+  },
+  {
+   "id": "crew_speed_2",
+   "order": 39,
+   "kind": "crew_speed",
+   "level": 2,
+   "cost": 97828
+  },
+  {
+   "id": "line_tech_2",
+   "order": 40,
+   "kind": "line",
+   "level": 2,
+   "cost": 112503,
+   "target": "tech_park"
+  },
+  {
+   "id": "smart_sub_3",
+   "order": 41,
+   "kind": "substation",
+   "level": 1,
+   "cost": 129378,
+   "target": "sub_3"
+  },
+  {
+   "id": "hydro_3",
+   "order": 42,
+   "kind": "plant",
+   "level": 3,
+   "cost": 148785,
+   "target": "hydro"
+  },
+  {
+   "id": "line_airport_1",
+   "order": 43,
+   "kind": "line",
+   "level": 1,
+   "cost": 171103,
+   "target": "airport_flats"
+  },
+  {
+   "id": "auto_crew",
+   "order": 44,
+   "kind": "dispatcher",
+   "level": 1,
+   "cost": 196768,
+   "target": "crew",
+   "chapter": 5
+  },
+  {
+   "id": "solar_3",
+   "order": 45,
+   "kind": "plant",
+   "level": 3,
+   "cost": 226283,
+   "target": "solar"
+  },
+  {
+   "id": "line_stadium_2",
+   "order": 46,
+   "kind": "line",
+   "level": 2,
+   "cost": 260226,
+   "target": "stadium_row"
+  },
+  {
+   "id": "crew_truck_5",
+   "order": 47,
+   "kind": "crew_truck",
+   "level": 5,
+   "cost": 299259
+  },
+  {
+   "id": "line_hospital_2",
+   "order": 48,
+   "kind": "line",
+   "level": 2,
+   "cost": 344148,
+   "target": "hospital_hill"
+  },
+  {
+   "id": "line_airport_2",
+   "order": 49,
+   "kind": "line",
+   "level": 2,
+   "cost": 395771,
+   "target": "airport_flats"
+  }
+ ]
+}

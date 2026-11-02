@@ -1,0 +1,122 @@
+{
+ "group": "world",
+ "id": "district_riverside",
+ "material": "vc_world",
+ "palette": {
+  "brickD": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#84442F"
+  },
+  "concreteL": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#CFCBC2"
+  },
+  "dgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#5A5F66"
+  },
+  "e_lamp": {
+   "code": 0.35,
+   "index": 7,
+   "srgb": "#FFD9A0"
+  },
+  "e_pool": {
+   "code": 0.75,
+   "index": 15,
+   "srgb": "#4C5057"
+  },
+  "grassD": {
+   "code": 0.7,
+   "index": 14,
+   "srgb": "#4A7A3A"
+  },
+  "lgrey": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C2C6CA"
+  },
+  "roofB": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#3E5A7A"
+  },
+  "roofG": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#5D6A5E"
+  },
+  "roofK": {
+   "code": 0.6,
+   "index": 12,
+   "srgb": "#3C424B"
+  },
+  "roofR": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#B0503A"
+  },
+  "roofT": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#C46A47"
+  },
+  "w_brick": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#A4553D"
+  },
+  "w_concreteL": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#CFCBC2"
+  },
+  "w_cream": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#F1E3C2"
+  },
+  "w_plaster": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#E9DFCB"
+  },
+  "w_plasterB": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#B5CEDC"
+  },
+  "w_plasterG": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#C3D8B3"
+  },
+  "w_plasterP": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#EDC4B0"
+  },
+  "w_plasterY": {
+   "code": 0.4,
+   "index": 8,
+   "srgb": "#EED69A"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 1604,
+ "unity_bounds_max": [
+  1.7,
+  23.95,
+  16.45
+ ],
+ "unity_bounds_min": [
+  -111.7,
+  1.8,
+  -76.45
+ ],
+ "uv": "UV0/UV1 per material code (vckit module doc)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

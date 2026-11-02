@@ -1,0 +1,37 @@
+{
+ "group": "world",
+ "id": "grid_lines",
+ "material": "vc_world",
+ "palette": {
+  "galv": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#9EA6AD"
+  },
+  "pylon": {
+   "code": 0.85,
+   "index": 17,
+   "srgb": "#A9B2BA"
+  },
+  "wire": {
+   "code": 0.25,
+   "index": 5,
+   "srgb": "#3A4048"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 1564,
+ "unity_bounds_max": [
+  243.266,
+  50.635,
+  297.292
+ ],
+ "unity_bounds_min": [
+  -153.275,
+  0.5,
+  -264.5
+ ],
+ "uv": "UV0/UV1 per material code (vckit module doc)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

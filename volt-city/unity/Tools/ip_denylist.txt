@@ -1,0 +1,81 @@
+# Volt City IP / content denylist (P0 2026-10-27; moved to the Unity project 2026-10-27). Seeded from docs/DESIGN.md section 11 +
+# docs/STORE.md section 1 (rival / collision names). Spec: games/volt-city/IP_RULES.md section 5 (same as Grid Boss / Driftwood).
+# Scanner: unity/Tools/ip_denylist.py (runs in Tools/check.sh and jenkins/preflight.py).
+# Plain entry = case-insensitive, word-bounded regex on normalised text. ~entry = substring (non-Latin scripts). # = comment.
+# Normalisation: lowercase, NFKD-style accent fold, leetspeak (0o 3e 4a @a $s 5s 7t), separators (space - _ . / middle dot)
+# folded to one space; an entry's " ?" matches "with or without a separator". CamelCase identifiers are split too
+# (RiversideSubstation -> riverside substation) because C# / asset names are CamelCase.
+# NOT listed on purpose: the generic lowercase phrase "power grid" (the store text uses it lowercase only; the P6 title
+# "Grid Keeper: Energy Tycoon" avoids it — docs/NAME_CHECK.md) - the board-game rule is enforced by the entries below + tools/store lint + human review (IP_RULES 2).
+
+# --- real utilities / grid operators (DESIGN 11) ---
+national ?grid
+con ?ed
+consolidated ?edison
+pg ?& ?e
+pacific ?gas ?(and|&) ?electric
+duke ?energy
+edf
+electricite ?de ?france
+e ?on ?(se|energie|energy|ag|group)
+enel
+tepco
+tokyo ?electric
+iberdrola
+ercot
+statnett
+rwe
+vattenfall
+engie
+southern ?california ?edison
+dominion ?energy
+exelon
+entergy
+# --- real plants / dams / stations (DESIGN 11) ---
+hoover ?dam
+hoover
+three ?gorges
+itaipu
+drax
+battersea
+grand ?coulee
+# --- disaster names (DESIGN 11) ---
+chernobyl
+chornobyl
+fukushima
+three ?mile ?island
+# --- the board game "Power Grid" and its publishers (DESIGN 11, STORE 1); the bare phrase is human-reviewed ---
+power ?grid ?board ?game
+power ?grid ?the ?board ?game
+funkenschlag
+rio ?grande ?games
+2f ?spiele
+friedemann ?friese
+# --- city builders / grid games named in F0 (DESIGN 2 + 11, STORE 1) ---
+simcity
+sim ?city
+cities ?skylines
+power ?to ?the ?people
+texas ?power ?grid ?challenge
+energy ?manager
+idle ?energy
+power ?inc
+reactor ?energy ?sector ?tycoon
+volt ?block
+lights ?on ?move ?to ?build
+blackout ?bingo
+# --- content: no nuclear in v1, nobody is hurt (DESIGN 11; the harm check in ip_denylist.py covers sentences) ---
+nuclear ?plant
+nuclear ?power ?plant
+meltdown
+radiation ?leak
+electrocute
+electrocuted
+electrocution
+casualties
+fatalities
+# --- non-Latin spellings of the marks above (substring) ---
+~チェルノブイリ
+~чернобыль
+~福島第一
+~ファンケンシュラーク

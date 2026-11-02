@@ -1,0 +1,47 @@
+{
+ "group": "grid",
+ "id": "substation",
+ "material": "vc_world",
+ "palette": {
+  "concreteD": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#8C887F"
+  },
+  "cyan": {
+   "code": 0.15,
+   "index": 3,
+   "srgb": "#39C6E0"
+  },
+  "galv": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#9EA6AD"
+  },
+  "insul": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#DCE6EE"
+  },
+  "steelD": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#7A828A"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 214,
+ "unity_bounds_max": [
+  9.0,
+  9.5,
+  7.0
+ ],
+ "unity_bounds_min": [
+  -9.0,
+  0.0,
+  -7.0
+ ],
+ "uv": "UV0.x corridor index (-1 on substations)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

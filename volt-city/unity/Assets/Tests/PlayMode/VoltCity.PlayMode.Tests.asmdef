@@ -1,0 +1,29 @@
+{
+    "name": "VoltCity.PlayMode.Tests",
+    "rootNamespace": "VoltCity.PlayMode.Tests",
+    "references": [
+        "VoltCity.UI",
+        "VoltCity.World",
+        "VoltCity.Art",
+        "VoltCity.Game",
+        "VoltCity.Sim",
+        "VoltCity.App",
+        "CoddyKit.Core",
+        "CoddyKit.Runtime",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

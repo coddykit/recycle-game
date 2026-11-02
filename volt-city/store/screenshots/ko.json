@@ -1,0 +1,46 @@
+{
+ "_doc": "Screenshot slide texts (store/SCREENSHOTS.md). headline <= 28 chars (ja/ko <= 14), chip <= 28 chars (ja/ko <= 14); feature = feature-graphic tagline <= 32 chars.",
+ "shots": [
+  {
+   "id": "01-peak",
+   "headline": "도시에 불을 밝혀 두세요",
+   "chip": "실시간 전력망"
+  },
+  {
+   "id": "02-storm",
+   "headline": "폭풍이 오면 작업반 출동",
+   "chip": "이벤트 15가지"
+  },
+  {
+   "id": "03-balance",
+   "headline": "공급과 수요의 균형",
+   "chip": "발전 방식 5가지"
+  },
+  {
+   "id": "04-forecast",
+   "headline": "폭염에 미리 대비하세요",
+   "chip": "다음 교대 예보"
+  },
+  {
+   "id": "05-ripple",
+   "headline": "새 구역에 불을 밝혀요",
+   "chip": "구역 8곳"
+  },
+  {
+   "id": "06-build",
+   "headline": "더 깨끗한 전력망 짓기",
+   "chip": "투자 50가지"
+  },
+  {
+   "id": "07-shed",
+   "headline": "어디를 끊을지 고르세요",
+   "chip": "호스피털 힐은 맨 마지막"
+  },
+  {
+   "id": "08-report",
+   "headline": "별 3개 교대에 도전",
+   "chip": "5장 + 무한 모드"
+  }
+ ],
+ "feature": "불을 꺼뜨리지 마세요"
+}

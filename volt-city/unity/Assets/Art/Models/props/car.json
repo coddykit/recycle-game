@@ -1,0 +1,47 @@
+{
+ "group": "props",
+ "id": "car",
+ "material": "vc_prop",
+ "palette": {
+  "carbody": {
+   "code": 0.95,
+   "index": 19,
+   "srgb": "#FFFFFF"
+  },
+  "carglass": {
+   "code": 0.9,
+   "index": 18,
+   "srgb": "#2A3A4C"
+  },
+  "l_head": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FFF2D6"
+  },
+  "l_red": {
+   "code": 0.3,
+   "index": 6,
+   "srgb": "#FF3B30"
+  },
+  "tyre": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#1E1F22"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcProp.shader (+ VcPropLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 156,
+ "unity_bounds_max": [
+  0.9,
+  1.456,
+  2.04
+ ],
+ "unity_bounds_min": [
+  -0.9,
+  0.0,
+  -2.27
+ ],
+ "uv": "UV0.x / UV0.y morph flags (truck boom; car roof / tail); vehicles: nose = Unity local +Z",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}

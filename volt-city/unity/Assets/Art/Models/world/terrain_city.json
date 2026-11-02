@@ -1,0 +1,67 @@
+{
+ "group": "world",
+ "id": "terrain_city",
+ "material": "vc_world",
+ "palette": {
+  "asphalt": {
+   "code": 0.8,
+   "index": 16,
+   "srgb": "#4C5057"
+  },
+  "concrete": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#B5B1A8"
+  },
+  "concreteD": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#8C887F"
+  },
+  "field": {
+   "code": 0.7,
+   "index": 14,
+   "srgb": "#86A456"
+  },
+  "grass": {
+   "code": 0.7,
+   "index": 14,
+   "srgb": "#5E8E45"
+  },
+  "grassD": {
+   "code": 0.7,
+   "index": 14,
+   "srgb": "#4A7A3A"
+  },
+  "meadow": {
+   "code": 0.7,
+   "index": 14,
+   "srgb": "#73994C"
+  },
+  "pier": {
+   "code": 1.0,
+   "index": 20,
+   "srgb": "#7C6A55"
+  },
+  "wheat": {
+   "code": 0.7,
+   "index": 14,
+   "srgb": "#B3A562"
+  }
+ },
+ "shader": "Assets/Art/Shaders/VcWorld.shader (+ VcWorldLow.shader)",
+ "space": "unity: x east, y up, z north, metres",
+ "triangles": 9990,
+ "unity_bounds_max": [
+  1500.0,
+  83.666,
+  2200.0
+ ],
+ "unity_bounds_min": [
+  -1500.0,
+  -7.0,
+  -1300.0
+ ],
+ "uv": "UV0/UV1 per material code (vckit module doc)",
+ "vertex_colour": "sRGB-encoded palette x baked AO; alpha = material code (index = round(a * 20))"
+}
